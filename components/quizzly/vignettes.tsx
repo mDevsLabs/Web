@@ -64,6 +64,12 @@ function dessin(id: string) {
   if (id === "cadre-ardoise") {
     return <Anneau classe="stroke-q-level" />;
   }
+  if (id === "cadre-diamant") {
+    return <Anneau classe="stroke-cyan-400" />;
+  }
+  if (id === "cadre-amethyste") {
+    return <Anneau classe="stroke-purple-500" />;
+  }
   if (id === "recharge-coeurs") {
     return (
       <svg aria-hidden className="size-16 text-q-heart" viewBox="0 0 64 64">

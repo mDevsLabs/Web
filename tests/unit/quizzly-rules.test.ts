@@ -309,8 +309,8 @@ describe("calendrier de Paris", () => {
 });
 
 describe("carte scolaire", () => {
-  it("prévoit trois chapitres par matière", () => {
-    expect(cheminsChapitresAttendus()).toHaveLength(309);
+  it("prévoit dix chapitres par matière", () => {
+    expect(cheminsChapitresAttendus()).toHaveLength(1030);
   });
 
   it("traite une sélection vide comme toutes les matières", () => {

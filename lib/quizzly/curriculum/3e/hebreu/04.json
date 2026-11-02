@@ -1,0 +1,2593 @@
+{
+  "id": "3e-hebreu-04",
+  "year": "3e",
+  "subject": "hebreu",
+  "title": "La grammaire de l'hébreu",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : L'article défini Ha- et ses règles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se forme l'article défini en hébreu devant un mot courant ?",
+              "options": [
+                "On préfixe la lettre Hé (הַ) avec un pata'h et un dagesh",
+                "On ajoute le suffixe -im à la fin du nom",
+                "On place un mot séparé et invariable avant le nom",
+                "On double systématiquement la dernière consonne du mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article défini en hébreu est un préfixe : la lettre Hé (הַ) s'attache directement au début du mot sans espace ni tiret."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En hébreu, existe-t-il un article indéfini (équivalent de « un » ou « une ») ?",
+              "options": [
+                "Non, l'absence d'article défini indique la valeur indéfinie",
+                "Oui, c'est la lettre Aleph préfixée au nom",
+                "Oui, c'est le mot « e'had » placé obligatoirement devant",
+                "Oui, c'est la particule « shel » rattachée au nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hébreu ne possède pas d'article indéfini : un mot employé seul sans article défini a une valeur indéfinie (ex: sefer = un livre)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le mot « ha-sefer » (הַסֵּפֶר) ?",
+              "options": ["Le livre", "Un livre", "Des livres", "Au livre"],
+              "correctAnswers": [0],
+              "explanation": "« Sefer » signifie « livre ». Avec l'article défini hé (הַ), « ha-sefer » signifie « le livre »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'article défini hébreu varie-t-il selon le genre ou le nombre du nom ?",
+              "options": [
+                "Non, c'est le même préfixe pour le masculin, le féminin et le pluriel",
+                "Oui, il existe une forme masculine et une forme féminine distincte",
+                "Oui, il change uniquement devant les noms au pluriel",
+                "Oui, il prend le suffixe -ot au féminin pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article défini hébreu est invariable : il s'utilise sous la même forme pour le masculin, le féminin, le singulier et le pluriel."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propositions sont vraies concernant l'article défini en hébreu ?",
+              "options": [
+                "Il s'attache directement au nom sans espace ni tiret",
+                "Il est invariable en genre et en nombre",
+                "Il se place toujours après la dernière lettre du nom",
+                "Il s'accorde en prenant la terminaison -im au pluriel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'article hébreu est un morphème préfixé inséparable et invariable qui s'attache directement à l'initiale du mot."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « la maison » en hébreu (sachant que maison = bayit) ?",
+              "options": [
+                "Ha-bayit (הַבַּיִת)",
+                "Bayit-ha",
+                "Le-bayit",
+                "Be-bayit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On préfixe l'article Ha- devant bayit (בַּיִת), ce qui donne ha-bayit (הַבַּיִת)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que provoque régulièrement l'article défini sur la première consonne du mot qui le suit ?",
+              "options": [
+                "L'insertion d'un dagesh fort qui redouble la consonne",
+                "La suppression de la première voyelle du radical",
+                "La transformation de la lettre en consonne muette",
+                "Le déplacement de l'accent tonique sur le préfixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Régulièrement, l'article défini s'accompagne d'un dagesh 'hazak (point de redoublement) dans la première consonne du mot."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Devant les consonnes gutturales (comme Aleph, Ayin, Het, Resh), quelle modification subit souvent l'article ?",
+              "options": [
+                "Sa voyelle s'allonge souvent en qamats (הָ)",
+                "L'article disparaît totalement à l'oral comme à l'écrit",
+                "La consonne gutturale reçoit obligatoirement un dagesh",
+                "L'article est remplacé par la préposition Lamed"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les consonnes gutturales ne pouvant pas recevoir de dagesh, la voyelle de l'article s'allonge souvent par compensation en qamats (ha-ir = הָעִיר)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « ha-talmidim » (הַתַּלְמִידִים) ?",
+              "options": [
+                "Les élèves (masculin ou groupe mixte pluriel)",
+                "Un élève studieux",
+                "Une élève de la classe",
+                "Aux élèves de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Talmidim » est le pluriel de talmid (élève). Avec l'article défini Ha-, cela signifie « les élèves »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si « yélèd » (יֶלֶד) signifie « garçon / enfant », que signifie « ha-yélèd » ?",
+              "options": [
+                "Le garçon / L'enfant",
+                "Un garçon",
+                "Des enfants",
+                "Au garçon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ajout de l'article défini transforme le nom indéfini « yélèd » (un garçon) en « ha-yélèd » (le garçon)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Les prépositions inséparables Be-, Le-, Ke-",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie la préposition inséparable « Be- » (בְּ) préfixée à un nom ?",
+              "options": [
+                "Dans, en, à ou avec",
+                "De, depuis, hors de",
+                "Vers, en direction de",
+                "Sans, contre, malgré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préposition inséparable « Be- » exprime principalement la localisation spatiale ou temporelle (dans, en, à) ainsi que le moyen (avec)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie la préposition inséparable « Le- » (לְ) préfixée à un nom ?",
+              "options": [
+                "À, pour, vers",
+                "Dans, à l'intérieur de",
+                "Depuis, en provenance de",
+                "Comme, semblable à"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préposition inséparable « Le- » exprime la direction, la destination ou l'attribution (à, pour, vers)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie la préposition inséparable « Ke- » (כְּ) préfixée à un nom ?",
+              "options": [
+                "Comme, selon, environ",
+                "Dans, au milieu de",
+                "Contre, en face de",
+                "Sous, en dessous de"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préposition inséparable « Ke- » sert à exprimer la comparaison ou l'approximation (comme, selon, environ)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lorsqu'une préposition inséparable (Be, Le, Ke) rencontre l'article défini « Ha- » ?",
+              "options": [
+                "La préposition absorbe l'article et prend sa voyelle (ex: ba- au lieu de be-ha-)",
+                "L'article est conservé et s'écrit séparément avec un espace",
+                "La préposition se place obligatoirement à la fin du nom",
+                "Le nom perd automatiquement sa première consonne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La consonne de la préposition remplace la lettre Hé de l'article tout en gardant la voyelle de l'article (ex: be + ha-bayit = ba-bayit)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes illustrent la fusion d'une préposition inséparable avec l'article défini ?",
+              "options": [
+                "Ba-bayit (בַּבַּיִת, dans la maison)",
+                "La-talmid (לַתַּלְמִיד, à l'élève)",
+                "Be-bayit (בְּבַיִת, dans une maison)",
+                "Le-sefer (לְסֵפֶר, pour un livre)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ba-bayit » et « la-talmid » contiennent l'article absorbé (voyelle pata'h/qamats), tandis que « be-bayit » et « le-sefer » sont indéfinis (cheva)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « dans une ville » (ville = ir) sans article ?",
+              "options": [
+                "Be-ir (בְּעִיר)",
+                "Ba-ir (בָּעִיר)",
+                "Le-ir (לְעִיר)",
+                "Me-ir (מֵעִיר)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans l'article défini, la préposition « Be- » conserve sa vocalisation ordinaire (cheva) : « be-ir » signifie « dans une ville »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « dans la ville » avec l'article défini absorbé ?",
+              "options": ["Ba-ir (בָּעִיר)", "Be-ha-ir", "Le-ha-ir", "Ke-ha-ir"],
+              "correctAnswers": [0],
+              "explanation": "L'article défini est absorbé par la préposition Be- qui prend la voyelle qamats devant la consonne gutturale : « ba-ir »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la traduction exacte de « le-David » (לְדָוִד) ?",
+              "options": [
+                "À David / Pour David",
+                "Dans David",
+                "Comme David",
+                "De David (provenance)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préposition Lamed indique le destinataire ou l'attribution : « le-David » signifie « à David » ou « pour David »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « comme un roi » (roi = melekh) en hébreu ?",
+              "options": [
+                "Ke-melekh (כְּמֶלֶךְ)",
+                "Ka-melekh",
+                "Be-melekh",
+                "Le-melekh"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On préfixe « Ke- » (comme) directement devant melekh sans article défini : « ke-melekh »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans la phrase « Hou holekh la-kita » (הוּא הוֹלֵךְ לַכִּתָּה), que signifie « la-kita » ?",
+              "options": [
+                "En classe / À la classe (avec l'article défini)",
+                "Dans une classe inconnue",
+                "Comme la classe",
+                "Sans la classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« La-kita » est la fusion de la préposition « le- » et de l'article « ha- » devant « kita » (la classe)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : La préposition Min (Me-) et l'origine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie la préposition « Min » (מִן) ou son préfixe « Me- / Mi- » ?",
+              "options": [
+                "De, depuis, hors de",
+                "Vers, en direction de",
+                "Dans, à l'intérieur de",
+                "Sur, au-dessus de"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Min » indique le point de départ spatial, temporel ou l'origine : de, depuis, hors de."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sous quelle forme la préposition « Min » s'attache-t-elle le plus couramment au mot suivant ?",
+              "options": [
+                "Sous la forme du préfixe Mem (מִ ou מֵ)",
+                "Sous la forme du préfixe Noun (נ)",
+                "Sous la forme du suffixe final -im",
+                "Elle s'écrit obligatoirement en deux mots séparés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En hébreu courant, « min » est le plus souvent abrégée en une lettre préfixée Mem (מִ- ou מֵ-)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « d'Israël » ou « depuis Israël » ?",
+              "options": [
+                "Mi-Yisrael (מִיִּשְׂרָאֵל)",
+                "Be-Yisrael",
+                "Le-Yisrael",
+                "Ke-Yisrael"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On préfixe le Mem de provenance : « Mi-Yisrael » signifie « d'Israël » ou « depuis Israël »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que devient la voyelle du préfixe « Mi- » devant une lettre gutturale ou un He ?",
+              "options": [
+                "Elle prend la voyelle tséré et devient « Me- » (מֵ)",
+                "Elle se transforme en son « ou » long",
+                "Elle s'élide et disparaît complètement",
+                "Elle est remplacée par la lettre Vav"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant une gutturale ou un He, la voyelle 'hiriq s'allonge régulièrement en tséré : « Me- » (ex: me-ha-bayit = מֵהַבַּיִת)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement la préposition d'origine Min/Me- ?",
+              "options": [
+                "Ani mi-Tzarfat (Je viens de France)",
+                "Hu ba me-ha-bayit (Il vient de la maison)",
+                "Ani be-Tzarfat (Je suis en France - préposition de lieu)",
+                "Hu holekh le-Paris (Il va à Paris - préposition de direction)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Mi-Tzarfat » et « me-ha-bayit » expriment la provenance et l'origine avec la préposition Min/Me-."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « d'une maison » (sans article défini) ?",
+              "options": [
+                "Mi-bayit (מִבַּיִת)",
+                "Me-ha-bayit",
+                "Ba-bayit",
+                "La-bayit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans l'article défini, la préposition s'attache avec un 'hiriq et un dagesh : « mi-bayit »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « de la maison » (avec l'article défini) ?",
+              "options": [
+                "Me-ha-bayit (מֵהַבַּיִת)",
+                "Mi-bayit",
+                "Ba-bayit",
+                "Le-bayit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à Be, Le et Ke, la préposition Min N'ABSORBE PAS le Hé de l'article : elle devient « Me- » devant « ha-bayit »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la question usuelle « Me-ayin ata ? » (מֵאַיִן אַתָּה) ?",
+              "options": [
+                "D'où viens-tu ? (à un garçon)",
+                "Où vas-tu maintenant ?",
+                "Qui es-tu réellement ?",
+                "Quand viens-tu nous voir ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Me-ayin » signifie « d'où ». La question demande donc l'origine géographique de l'interlocuteur masculin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « de Jérusalem » en hébreu ?",
+              "options": [
+                "Mi-Yerushalayim (מִירוּשָׁלַיִם)",
+                "Be-Yerushalayim",
+                "Le-Yerushalayim",
+                "Ke-Yerushalayim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe Mem s'associe au nom de la ville : « Mi-Yerushalayim » (de Jérusalem)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle fonction comparative peut remplir la préposition « Min » après un adjectif ?",
+              "options": [
+                "Elle exprime le comparatif « plus ... que » (ex: gadol mi...)",
+                "Elle exprime le superlatif absolu « extrêmement »",
+                "Elle exprime l'égalité stricte « autant que »",
+                "Elle annule la valeur de l'adjectif qualificatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En hébreu, « gadol mi-David » signifie littéralement « grand à partir de David », c'est-à-dire « plus grand que David »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Le genre des noms : masculin et féminin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison la plus fréquente des noms féminins réguliers au singulier ?",
+              "options": [
+                "La voyelle kamats suivie de la lettre Hé (-ah / ָה)",
+                "Le suffixe -im rattaché au radical",
+                "La lettre Noun finale (ן)",
+                "Le préfixe Mem rattaché au début"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La très grande majorité des noms féminins réguliers au singulier se terminent par le suffixe « -ah » écrit avec un Hé final."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En dehors de « -ah », quelle autre consonne finale caractérise fréquemment les noms féminins ?",
+              "options": [
+                "La lettre Tav (ת), comme dans les terminaisons -et ou -at",
+                "La lettre Lamed finale",
+                "La lettre Shin finale",
+                "La lettre Pe finale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lettre Tav finale caractérise de nombreux noms et participes féminins (ex: delet = porte, rakevet = train, machberet = cahier)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le mot « yélèd » (יֶלֶד) signifie « garçon ». Quel est le mot régulier pour « fille » ?",
+              "options": ["Yaldah (יַלְדָּה)", "Yaldat", "Yeladim", "Yeledet"],
+              "correctAnswers": [0],
+              "explanation": "Le féminin correspondant à « yélèd » est « yaldah » (יַלְדָּה)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le féminin régulier du mot « talmid » (תַּלְמִיד, élève garçon) ?",
+              "options": [
+                "Talmidah (תַּלְמִידָה)",
+                "Talmidot",
+                "Talmida",
+                "Talmidit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ajoute le suffixe féminin régulier -ah (ָה) : « talmid » devient « talmidah »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels noms parmi les suivants sont de genre féminin en hébreu ?",
+              "options": [
+                "Morah (מוֹרָה, enseignante)",
+                "Delet (דֶּלֶת, porte)",
+                "Sefer (סֵפֶר, livre)",
+                "Shulchan (שֻׁלְחָן, table)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Morah » (terminaison -ah) et « Delet » (terminaison en Tav) sont féminins. « Sefer » et « Shulchan » sont masculins."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel genre grammatical portent la plupart des parties doubles du corps humain (mains, pieds, yeux, oreilles) ?",
+              "options": [
+                "Le genre féminin",
+                "Le genre masculin",
+                "Le genre neutre",
+                "Elles sont totalement invariables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En hébreu, les organes pairs du corps (yad = main, regel = pied, ayin = œil, ozen = oreille) sont presque tous féminins."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le mot « yad » (יָד, main) est donc de genre :",
+              "options": [
+                "Féminin, bien qu'il ne se termine ni par -ah ni par -et",
+                "Masculin régulier",
+                "Neutre invariable",
+                "Exclusivement pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Yad » est un nom féminin par nature (organe double), même sans marque visible de féminin au singulier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le mot « bayit » (בַּיִת, maison) se termine par la lettre Tav. Quel est son genre réel ?",
+              "options": [
+                "Masculin (la lettre Tav fait partie intégrante de la racine)",
+                "Féminin régulier",
+                "Neutre indéfini",
+                "Pluriel collectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Bayit » est masculin : son Tav final appartient à la racine et n'est pas un suffixe féminin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment transforme-t-on le mot « haver » (חָבֵר, ami) en son équivalent féminin ?",
+              "options": [
+                "Haverah (חֲבֵרָה, amie)",
+                "Haverot",
+                "Haveret",
+                "Havrim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ajout du suffixe régulier -ah donne « haverah » (une amie)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En règle générale, les noms de pays et de villes en hébreu sont :",
+              "options": [
+                "Du genre féminin",
+                "Du genre masculin",
+                "De genre neutre",
+                "Toujours pluriels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les villes et les pays sont presque universellement traités comme des noms féminins (ex: Yerushalayim hi ir gedolah)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : L'accord des adjectifs au singulier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où se place l'adjectif qualificatif par rapport au nom qu'il qualifie en hébreu ?",
+              "options": [
+                "Toujours après le nom",
+                "Toujours avant le nom",
+                "Au tout début de la phrase",
+                "Entre la préposition et le nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En hébreu, l'adjectif qualificatif se place systématiquement APRÈS le nom qu'il qualifie (ex: sefer gadol = un grand livre)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur quels critères l'adjectif qualificatif doit-il obligatoirement s'accorder avec le nom ?",
+              "options": [
+                "En genre, en nombre et en définitude (présence de l'article)",
+                "Uniquement en genre",
+                "Uniquement en nombre",
+                "Uniquement selon la personne grammaticale du sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif s'accorde en genre (masculin/féminin), en nombre (singulier/pluriel) et en état défini (présence ou absence de l'article)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si l'adjectif masculin est « gadol » (גָּדוֹל, grand), quelle est sa forme féminine singulière ?",
+              "options": ["Gedolah (גְּדוֹלָה)", "Gdolot", "Gdolim", "Gedolat"],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif « gadol » fait au féminin singulier « gedolah » (avec modification vocalique due au recul d'accent)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si « katan » (קָטָן) signifie « petit », quelle forme qualifie un nom féminin singulier ?",
+              "options": ["Ktanah (קְטַנָּה)", "Ktanot", "Ktanim", "Katanah"],
+              "correctAnswers": [0],
+              "explanation": "Au féminin singulier, « katan » devient « ktanah » (קְטַנָּה)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles associations nom-adjectif au singulier sont correctement accordées ?",
+              "options": [
+                "Yeled tov (יֶלֶד טוֹב, un bon garçon)",
+                "Yaldah tovah (יַלְדָּה טוֹבָה, une bonne fille)",
+                "Yeled tovah (discordance de genre)",
+                "Yaldah tov (discordance de genre)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Yeled tov » associe deux masculins singuliers, et « yaldah tovah » associe deux féminins singuliers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « une jolie maison » sachant que « bayit » est masculin et « yafeh » signifie joli ?",
+              "options": [
+                "Bayit yafeh (בַּיִת יָפֶה)",
+                "Bayit yafah",
+                "Yafah bayit",
+                "Yafeh bayit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Bayit » étant masculin, l'adjectif se met au masculin singulier « yafeh » et se place après le nom : « bayit yafeh »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « une grande ville » sachant que « ir » (עִיר) est un nom féminin ?",
+              "options": [
+                "Ir gedolah (עִיר גְּדוֹלָה)",
+                "Ir gadol",
+                "Gadol ir",
+                "Gedolah ir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ir » étant féminin, l'adjectif doit s'accorder au féminin singulier : « ir gedolah »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme féminine singulière de l'adjectif « tov » (טוֹב, bon) ?",
+              "options": ["Tovah (טוֹבָה)", "Tovat", "Tovot", "Tovim"],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif « tov » reçoit le suffixe régulier -ah : « tovah »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la forme féminine singulière de « 'hadash » (חָדָשׁ, nouveau) ?",
+              "options": [
+                "Hadashah (חֲדָשָׁה)",
+                "Hadashot",
+                "Hadashit",
+                "Hadashim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au féminin singulier, « 'hadash » devient « 'hadashah » (חֲדָשָׁה)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans l'expression « sefer me'anyen » (סֵפֶר מְעַנְיֵן), quelle est la fonction de « me'anyen » ?",
+              "options": [
+                "Adjectif masculin singulier qualifiant le nom sefer (un livre intéressant)",
+                "Verbe conjugué au passé",
+                "Nom féminin complément du nom",
+                "Préposition inséparable de temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Me'anyen » est un adjectif masculin singulier placé après « sefer » pour signifier « un livre intéressant »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Le pluriel régulier des noms (-im et -ot)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison régulière la plus fréquente du pluriel des noms masculins ?",
+              "options": ["-im (ִים)", "-ot (וֹת)", "-ayim", "-eh"],
+              "correctAnswers": [0],
+              "explanation": "La terminaison régulière du masculin pluriel est le suffixe « -im » (ex: talmid -> talmidim)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison régulière la plus fréquente du pluriel des noms féminins ?",
+              "options": ["-ot (וֹת)", "-im (ִים)", "-at", "-et"],
+              "correctAnswers": [0],
+              "explanation": "La terminaison régulière du féminin pluriel est le suffixe « -ot » (ex: talmidah -> talmidot)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le pluriel régulier du nom masculin « talmid » (élève garçon) ?",
+              "options": [
+                "Talmidim (תַּלְמִידִים)",
+                "Talmidot",
+                "Talmidimot",
+                "Talmidei"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nom masculin « talmid » prend la marque régulière -im : « talmidim »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le pluriel régulier du nom féminin « talmidah » (élève fille) ?",
+              "options": [
+                "Talmidot (תַּלְמִידוֹת)",
+                "Talmidim",
+                "Talmidat",
+                "Talmidotei"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La terminaison -ah du singulier est remplacée par -ot au pluriel : « talmidot »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels couples singulier -> pluriel sont réguliers et parfaitement formés ?",
+              "options": [
+                "Sefer -> Sfarim (סֵפֶר -> סְפָרִים, livre -> livres)",
+                "Morah -> Morot (מוֹרָה -> מוֹרוֹת, enseignante -> enseignantes)",
+                "Yeled -> Yeldot (forme erronée)",
+                "Talmid -> Talmidot (discordance de genre)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Sefer -> sfarim » (masculin régulier en -im) et « morah -> morot » (féminin régulier en -ot) sont exacts."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « morèh » (מוֹרֶה, enseignant masculin) ?",
+              "options": ["Morim (מוֹרִים)", "Morot", "Morimot", "Moriyot"],
+              "correctAnswers": [0],
+              "explanation": "Le mot masculin « morèh » forme son pluriel en retranchant sa voyelle finale : « morim » (מוֹרִים)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le pluriel du mot féminin « kita » (כִּתָּה, classe) ?",
+              "options": ["Kitot (כִּתּוֹת)", "Kitim", "Kitate", "Kitotim"],
+              "correctAnswers": [0],
+              "explanation": "« Kita » prend la terminaison régulière féminine -ot : « kitot » (classes)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le pluriel du mot masculin « haver » (חָבֵר, ami) ?",
+              "options": ["Haverim (חֲבֵרִים)", "Haverot", "Havroim", "Haverote"],
+              "correctAnswers": [0],
+              "explanation": "Le masculin pluriel régulier de « haver » est « haverim » (amis)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le pluriel du mot féminin « haverah » (חֲבֵרָה, amie) ?",
+              "options": ["Haverot (חֲבֵרוֹת)", "Haverim", "Havarot", "Haverat"],
+              "correctAnswers": [0],
+              "explanation": "Le féminin pluriel régulier de « haverah » est « haverot » (amies)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que devient généralement la désinence -ah du féminin singulier au pluriel ?",
+              "options": [
+                "Elle est remplacée par la désinence -ot",
+                "Elle est conservée et on lui accole le suffixe -im",
+                "Elle se double en -ahah",
+                "Elle reste intacte sans aucune modification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La terminaison du féminin singulier (-ah) tombe et cède sa place à la terminaison plurielle (-ot)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Les pluriels irréguliers et formes mixtes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Le mot masculin « bayit » (בַּיִת, maison) a un pluriel particulier. Lequel ?",
+              "options": [
+                "Batim (בָּתִּים), avec terminaison -im mais modification du radical",
+                "Bayitot",
+                "Bayitim",
+                "Batot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Bayit » forme son pluriel irrégulier en « batim » (בָּתִּים), qui reste de genre masculin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le mot masculin « shulchan » (שֻׁלְחָן, table) forme quel pluriel ?",
+              "options": [
+                "Shulchanot (שֻׁלְחָנוֹת), avec terminaison en -ot bien qu'étant masculin",
+                "Shulchanim",
+                "Shulchanotim",
+                "Shulchanei"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Shulchan » est masculin mais prend une terminaison en -ot : « shulchanot ». Ses adjectifs s'accordent toutefois au masculin !"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le mot féminin « ir » (עִיר, ville) prend quel pluriel ?",
+              "options": [
+                "Arim (עָרִים), avec terminaison en -im bien qu'étant féminin",
+                "Irot",
+                "Irim",
+                "Arot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ir » est féminin mais prend la terminaison -im au pluriel : « arim » (עָרִים). Ses adjectifs s'accordent au féminin !"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le mot féminin « ishah » (אִשָּׁה, femme) a pour pluriel irrégulier :",
+              "options": ["Nashim (נָשִׁים)", "Ishot", "Ishim", "Nashot"],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel de « ishah » est totalement irrégulier : « nashim » (femmes), qui reste grammaticalement féminin."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels noms masculins prennent une terminaison en « -ot » tout en restant masculins ?",
+              "options": [
+                "Shulchan (שֻׁלְחָן -> שֻׁלְחָנוֹת, table)",
+                "Makom (מָקוֹם -> מְקוֹמוֹת, lieu / endroit)",
+                "Sefer (סֵפֶר -> סְפָרִים, livre)",
+                "Talmid (תַּלְמִיד -> תַּלְמִידִים, élève)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Shulchan » et « Makom » sont masculins et prennent -ot au pluriel. Leurs adjectifs doivent impérativement rester au masculin pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment accorde-t-on l'adjectif avec un nom masculin ayant un pluriel en « -ot » (ex: shulchanot) ?",
+              "options": [
+                "L'adjectif prend la terminaison masculine -im (ex: shulchanot gdolim)",
+                "L'adjectif prend la terminaison féminine -ot",
+                "L'adjectif reste au singulier invariable",
+                "L'adjectif prend les deux terminaisons à la fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accord se fait selon le GENRE RÉEL du nom et non sa terminaison apparente : « shulchanot gdolim » (tables grandes)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment accorde-t-on l'adjectif avec le mot féminin « nashim » (נָשִׁים, femmes) ?",
+              "options": [
+                "L'adjectif prend la marque féminine plurielle -ot (ex: nashim tovot)",
+                "L'adjectif prend la marque masculine -im",
+                "L'adjectif ne s'accorde jamais avec ce nom",
+                "L'adjectif se met au singulier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Nashim » étant féminin, ses adjectifs s'accordent au féminin pluriel régulier : « nashim tovot » (de bonnes femmes)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le pluriel irrégulier du mot masculin « yom » (יוֹם, jour) ?",
+              "options": ["Yamim (יָמִים)", "Yomot", "Yomim", "Yamatim"],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel de « yom » subit une modification de voyelle : « yamim » (יָמִים, des jours)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison du duel en hébreu (pour les paires d'organes ou mesures de temps doubles) ?",
+              "options": ["-ayim (ַיִם)", "-ot", "-im", "-otay"],
+              "correctAnswers": [0],
+              "explanation": "Le duel se termine par le suffixe « -ayim » (ex: yadayim = deux mains, raglayim = deux pieds, shnatayim = deux ans)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie le mot à forme duelle « yadayim » (יָדַיִם) ?",
+              "options": [
+                "Deux mains / Les deux mains (forme duelle de yad)",
+                "Une seule main gauche",
+                "Des doigts de la main",
+                "Deux pieds qui marchent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Yadayim » est la forme duelle de « yad » (main) et désigne la paire de mains."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : L'accord nom-adjectif au singulier et au pluriel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la règle fondamentale pour accorder un adjectif qualificatif en hébreu ?",
+              "options": [
+                "L'adjectif s'accorde selon le genre RÉEL du nom, pas selon sa désinence visible",
+                "L'adjectif copie systématiquement la même terminaison sonore que le nom",
+                "L'adjectif reste toujours au masculin singulier",
+                "L'adjectif s'accorde uniquement avec le premier mot de la phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le genre grammatical réel commande l'accord : un nom masculin pluriel en -ot réclamera un adjectif masculin en -im."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « des garçons intelligents » (yeled, 'hakham) ?",
+              "options": [
+                "Yeladim 'hakhamim (יְלָדִים חֲכָמִים)",
+                "Yeladim 'hakhamot",
+                "Yeladot 'hakhamim",
+                "Yeladim 'hakham"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux mots masculins au pluriel régulier : nom en -im + adjectif en -im."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « des filles intelligentes » ?",
+              "options": [
+                "Yeladot 'hakhamot (יְלָדוֹת חֲכָמוֹת)",
+                "Yeladot 'hakhamim",
+                "Yeladim 'hakhamot",
+                "Yeladot 'hakhamah"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux mots féminins au pluriel régulier : nom en -ot + adjectif en -ot."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sachant que « arim » (villes) est féminin pluriel, comment dit-on « de grandes villes » ?",
+              "options": [
+                "Arim gdolot (עָרִים גְּדוֹלוֹת)",
+                "Arim gdolim",
+                "Arim gadol",
+                "Arot gdolot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Arim » est féminin : son adjectif prend impérativement la marque féminine plurielle « gdolot »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels groupes nominaux au pluriel sont correctement accordés ?",
+              "options": [
+                "Sfarim 'hadashim (סְפָרִים חֲדָשִׁים, des livres nouveaux)",
+                "Tmounot yafot (תְּמוּנוֹת יָפוֹת, de belles images)",
+                "Sfarim 'hadashot (discordance de genre)",
+                "Tmounot yafim (discordance de genre)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Sfarim » (masc. pluriel) s'accorde avec « 'hadashim », et « tmounot » (fém. pluriel) avec « yafot »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sachant que « shulchanot » (tables) est masculin, comment dit-on « de grandes tables » ?",
+              "options": [
+                "Shulchanot gdolim (שֻׁלְחָנוֹת גְּדוֹלִים)",
+                "Shulchanot gdolot",
+                "Shulchanim gdolim",
+                "Shulchanot gadol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Shulchanot » étant de genre masculin, l'adjectif qualificatif prend la terminaison masculine « gdolim »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « de petites fenêtres » sachant que « 'halon » (fenêtre) est masculin et fait « 'halonot » au pluriel ?",
+              "options": [
+                "'Halonot ktanim (חַלּוֹנוֹת קְטַנִּים)",
+                "'Halonot ktanot",
+                "'Halonim ktanim",
+                "'Halonot katan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nom masculin « 'halonot » exige l'adjectif masculin pluriel « ktanim »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « talmidim tovim » (תַּלְמִידִים טוֹבִים) ?",
+              "options": [
+                "De bons élèves (garçons ou groupe mixte)",
+                "Une très bonne élève",
+                "De bonnes élèves filles exclusivement",
+                "Un excellent professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le masculin pluriel s'emploie pour des garçons ou pour un groupe mixte : « de bons élèves »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment s'accorde un adjectif qualifiant un groupe composé à la fois d'hommes et de femmes ?",
+              "options": [
+                "Au masculin pluriel",
+                "Au féminin pluriel",
+                "Au duel neutre",
+                "L'adjectif reste invariable au singulier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En hébreu, comme en français, le masculin pluriel prévaut pour qualifier un groupe mixte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « des maisons anciennes » sachant que « batim » (maisons) est masculin pluriel ?",
+              "options": [
+                "Batim yeshanim (בָּתִּים יְשָׁנִים)",
+                "Batim yeshanot",
+                "Batot yeshanot",
+                "Batim yashan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Batim » étant masculin pluriel, l'adjectif s'accorde en « yeshanim »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : L'article défini et l'adjectif (le double article)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lorsque le nom déterminé par l'article défini « Ha- » est qualifié par un adjectif épithète ?",
+              "options": [
+                "L'adjectif doit OBLIGATOIREMENT porter aussi l'article défini Ha- (le double article)",
+                "L'adjectif ne prend jamais l'article défini",
+                "L'article est placé uniquement sur l'adjectif et retiré du nom",
+                "L'adjectif est remplacé par une proposition relative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la règle du double article : pour qualifier un nom défini, l'adjectif épithète doit aussi recevoir l'article défini."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « le grand livre » en hébreu ?",
+              "options": [
+                "Ha-sefer ha-gadol (הַסֵּפֶר הַגָּדוֹל)",
+                "Ha-sefer gadol",
+                "Sefer ha-gadol",
+                "Gadol ha-sefer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nom et l'adjectif portent tous les deux l'article : « ha-sefer ha-gadol »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la différence essentielle entre « ha-sefer ha-gadol » et « ha-sefer gadol » ?",
+              "options": [
+                "« Ha-sefer ha-gadol » = « le grand livre » (groupe nominal) ; « Ha-sefer gadol » = « le livre est grand » (phrase complète)",
+                "Il n'y a aucune différence, les deux formulations sont interchangeables",
+                "La première expression est au pluriel, la seconde au singulier",
+                "La première est une négation, la seconde une affirmation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence d'article sur l'adjectif transforme celui-ci en attribut du sujet, formant une phrase complète : « le livre est grand »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « la jolie fille » en hébreu ?",
+              "options": [
+                "Ha-yaldah ha-yafah (הַיַּלְדָּה הַיָּפָה)",
+                "Ha-yaldah yafah",
+                "Yaldah ha-yafah",
+                "Ha-yeled ha-yafeh"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On applique le double article au féminin : « ha-yaldah ha-yafah »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels groupes nominaux illustrent fidèlement la règle du double article défini ?",
+              "options": [
+                "Ha-bayit ha-katan (הַבַּיִת הַקָּטָן, la petite maison)",
+                "Ha-talmidah ha-tovah (הַתַּלְמִידָה הַטּוֹבָה, la bonne élève)",
+                "Ha-bayit katan (phrase : la maison est petite)",
+                "Bayit ha-katan (construction agrammaticale)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ha-bayit ha-katan » et « ha-talmidah ha-tovah » sont des groupes nominaux définis complets avec double article."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « les nouveaux livres » (défini au pluriel) ?",
+              "options": [
+                "Ha-sfarim ha-'hadashim (הַסְּפָרִים הַחֲדָשִׁים)",
+                "Ha-sfarim 'hadashim",
+                "Sfarim ha-'hadashim",
+                "Ha-sfarim ha-'hadashot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double article + accord au masculin pluriel : « ha-sfarim ha-'hadashim »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « les bonnes élèves » (filles, défini) ?",
+              "options": [
+                "Ha-talmidot ha-tovot (הַתַּלְמִידוֹת הַטּוֹבוֹת)",
+                "Ha-talmidot ha-tovim",
+                "Ha-talmidim ha-tovot",
+                "Talmidot ha-tovot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double article + accord au féminin pluriel : « ha-talmidot ha-tovot »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si un nom défini est qualifié par deux adjectifs successifs, comment s'applique l'article défini ?",
+              "options": [
+                "Chaque adjectif prend l'article défini (ex: ha-sefer ha-gadol ve-ha-yafeh)",
+                "Seul le premier adjectif prend l'article",
+                "Seul le deuxième adjectif prend l'article",
+                "L'article est supprimé sur les deux adjectifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les adjectifs épithètes qualifiant un nom défini doivent recevoir l'article défini."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « Ha-morah ha-'hadashah » (הַמּוֹרָה הַחֲדָשָׁה) ?",
+              "options": [
+                "La nouvelle enseignante",
+                "L'enseignante est nouvelle",
+                "Une nouvelle enseignante",
+                "De nouvelles enseignantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le double article indique qu'il s'agit du groupe nominal « la nouvelle enseignante »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « Ha-morah 'hadashah » sans article sur l'adjectif ?",
+              "options": [
+                "L'enseignante est nouvelle",
+                "La nouvelle enseignante",
+                "Une enseignante quelconque",
+                "Les enseignantes nouvelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence d'article sur l'adjectif en fait un attribut : c'est une phrase nominale qui affirme « l'enseignante est nouvelle »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Révision et synthèse : accords et prépositions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans l'expression « ba-bayit ha-gadol » (בַּבַּיִת הַגָּדוֹל), que signifie ce groupe prépositionnel ?",
+              "options": [
+                "Dans la grande maison",
+                "Dans une grande maison",
+                "Vers la grande maison",
+                "Comme une grande maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ba-bayit » contient l'article absorbé (dans la maison) et l'adjectif prend son article : « dans la grande maison »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi l'adjectif « gadol » porte-t-il l'article « ha- » dans « ba-bayit ha-gadol » ?",
+              "options": [
+                "Parce que le nom bayit est défini grâce à l'article absorbé dans la préposition ba-",
+                "Parce que c'est une exception réservée à l'adjectif gadol",
+                "Parce que tout adjectif porte obligatoirement l'article en hébreu",
+                "Pour remplacer la lettre prépositionnelle manquante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même absorbé phonétiquement dans « ba- », l'article défini rend le nom défini, ce qui exige le « ha- » sur l'adjectif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « aux bons amis » (masculin pluriel défini) ?",
+              "options": [
+                "La-haverim ha-tovim (לַחֲבֵרִים הַטּוֹבִים)",
+                "Le-haverim ha-tovim",
+                "La-haverot ha-tovot",
+                "Be-haverim tovim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préposition Le- absorbe l'article (la-) et l'adjectif masculin pluriel prend Ha- : « la-haverim ha-tovim »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la traduction correcte de « d'une ville ancienne » (sans article défini ; ville = ir, fém.) ?",
+              "options": [
+                "Me-ir yeshanah (מֵעִיר יְשָׁנָה)",
+                "Me-ha-ir ha-yeshanah",
+                "Mi-ir yashan",
+                "Be-ir yeshanah"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans article, la préposition d'origine devant la gutturale Ayin donne « me-ir », et l'adjectif féminin s'accorde sans article : « yeshanah »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations résument fidèlement les règles d'accords et d'articles en hébreu ?",
+              "options": [
+                "L'article défini Ha- s'attache directement au nom sans espace ni tiret",
+                "L'adjectif épithète s'accorde en genre, nombre et définitude avec le nom",
+                "L'hébreu utilise un article indéfini obligatoire devant les noms singuliers",
+                "Les adjectifs qualificatifs se placent toujours avant le nom"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'article est un préfixe inséparable et l'adjectif épithète suit le nom tout en s'accordant en genre, nombre et définitude."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « la petite table » sachant que « shulchan » est masculin ?",
+              "options": [
+                "Ha-shulchan ha-katan (הַשֻּׁלְחָן הַקָּטָן)",
+                "Ha-shulchan katan",
+                "Ha-shulchan ha-ktanah",
+                "Shulchan ha-katan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Shulchan » étant masculin, on emploie le double article masculin : « ha-shulchan ha-katan »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « me-ha-kita ha-gedolah » (מֵהַכִּתָּה הַגְּדוֹלָה) ?",
+              "options": [
+                "De la grande classe",
+                "Dans la grande classe",
+                "Vers une grande classe",
+                "Comme la grande classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Me-ha- » indique la provenance avec l'article conservé : « de la grande classe »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le pluriel défini de « ha-yom » (le jour) ?",
+              "options": ["Ha-yamim (הַיָּמִים)", "Ha-yomot", "Ha-yomim", "Yamim"],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel de yom étant yamim, avec l'article défini cela donne « ha-yamim » (les jours)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « les belles histoires » sachant que « sipur » (histoire) est masculin et a pour pluriel « sipurim » ?",
+              "options": [
+                "Ha-sipurim ha-yafim (הַסִּפּוּרִים הַיָּפִים)",
+                "Ha-sipurot ha-yafot",
+                "Ha-sipurim ha-yafot",
+                "Sipurim yafim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double article + masculin pluriel : « ha-sipurim ha-yafim »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans la phrase « Ha-yeladim ba-bayit », quel est le sens ?",
+              "options": [
+                "Les enfants sont dans la maison",
+                "Les enfants de la maison",
+                "Des enfants dans une maison",
+                "L'enfant va à la maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une phrase nominale avec complément de lieu : « Les enfants sont dans la maison »."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Les pronoms personnels sujets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel pronom personnel signifie « Je » (ou « Moi ») en hébreu, pour le masculin et le féminin ?",
+              "options": [
+                "Ani (אֲנִי)",
+                "Ata (אַתָּה)",
+                "Hou (הוּא)",
+                "Anachnou (אֲנַחְנוּ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ani » (אֲנִי) est le pronom personnel sujet de la 1ère personne du singulier, commun au masculin et au féminin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « Tu » quand on s'adresse à un garçon ou un homme ?",
+              "options": ["Ata (אַתָּה)", "At (אַתְּ)", "Hou (הוּא)", "Atem (אַתֶּם)"],
+              "correctAnswers": [0],
+              "explanation": "« Ata » (אַתָּה) est le pronom personnel de la 2e personne du masculin singulier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « Tu » quand on s'adresse à une fille ou une femme ?",
+              "options": ["At (אַתְּ)", "Ata (אַתָּה)", "Hi (הִיא)", "Aten (אַתֶּן)"],
+              "correctAnswers": [0],
+              "explanation": "« At » (אַתְּ) est le pronom personnel de la 2e personne du féminin singulier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on respectivement « Il » et « Elle » en hébreu ?",
+              "options": [
+                "Hou (הוּא) et Hi (הִיא)",
+                "Hi (הִיא) et Hou (הוּא)",
+                "Ata (אַתָּה) et At (אַתְּ)",
+                "Hem (הֵם) et Hen (הֵן)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention au piège pour les francophones : « Hou » (הוּא) signifie « Il » et « Hi » (הִיא) signifie « Elle » !"
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels pronoms représentent la 2e personne du pluriel (« Vous ») en hébreu ?",
+              "options": [
+                "Atem (אַתֶּם, masculin pluriel ou mixte)",
+                "Aten (אַתֶּן, féminin pluriel exclusif)",
+                "Anachnou (אֲנַחְנוּ, nous)",
+                "Hem (הֵם, ils)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'hébreu distingue le « vous » masculin/mixte (« Atem ») du « vous » exclusivement féminin (« Aten »)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel pronom personnel signifie « Nous » en hébreu pour les deux genres ?",
+              "options": [
+                "Anachnou (אֲנַחְנוּ)",
+                "Atem (אַתֶּם)",
+                "Hem (הֵם)",
+                "Hen (הֵן)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Anachnou » (אֲנַחְנוּ) est invariable en genre et signifie « nous »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « Ils » (masculin pluriel ou groupe mixte) en hébreu ?",
+              "options": ["Hem (הֵם)", "Hen (הֵן)", "Atem", "Hou"],
+              "correctAnswers": [0],
+              "explanation": "« Hem » (הֵם) est le pronom de la 3e personne du masculin pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « Elles » (féminin pluriel exclusif) en hébreu ?",
+              "options": ["Hen (הֵן)", "Hem (הֵם)", "Aten", "Hi"],
+              "correctAnswers": [0],
+              "explanation": "« Hen » (הֵן) est le pronom de la 3e personne du féminin pluriel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lequel de ces pronoms est une variante solennelle ou biblique de « Ani » (Je) ?",
+              "options": ["Anokhi (אָנֹכִי)", "Atem", "Elekh", "Zot"],
+              "correctAnswers": [0],
+              "explanation": "« Anokhi » (אָנֹכִי) est la forme archaïque ou poétique fréquente dans la Bible pour dire « Je / Moi »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans la phrase « Ani talmid », que signifie cette expression ?",
+              "options": [
+                "Je suis élève (dit par un garçon)",
+                "Tu es élève",
+                "Il est élève",
+                "Nous sommes élèves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ani » (je) + « talmid » (élève masculin) forme la phrase nominale « Je suis élève »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : La phrase nominale au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on le verbe « être » au présent en hébreu ?",
+              "options": [
+                "Il n'y a pas de verbe être au présent : la phrase est dite nominale",
+                "On conjugue obligatoirement le verbe liheyot au présent",
+                "On insère systématiquement la particule yesh",
+                "On utilise l'article Ha- comme verbe auxiliaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe « être » n'existe pas au présent en hébreu : la simple juxtaposition du sujet et de l'attribut forme une phrase complète."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « David est un bon professeur » en hébreu ?",
+              "options": [
+                "David moreh tov (דָּוִד מוֹרֶה טוֹב)",
+                "David liheyot moreh tov",
+                "David hu tov moreh",
+                "Moreh tov David hu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On juxtapose le sujet et le groupe attribut sans verbe : « David moreh tov »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « La maison est grande » ?",
+              "options": [
+                "Ha-bayit gadol (הַבַּיִת גָּדוֹל)",
+                "Ha-bayit ha-gadol",
+                "Bayit gadol",
+                "Ha-bayit hu ha-gadol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sujet est défini (« ha-bayit ») et l'adjectif attribut est indéfini (« gadol ») : « ha-bayit gadol » = « la maison est grande »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « Sarah morah » (שָׂרָה מוֹרָה) ?",
+              "options": [
+                "Sarah est enseignante",
+                "L'enseignante Sarah",
+                "Sarah et l'enseignante",
+                "Sarah cherche une enseignante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (Sarah) + attribut (morah) = « Sarah est enseignante »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propositions hébraïques constituent des phrases nominales complètes au présent ?",
+              "options": [
+                "Ha-yeled ba-bayit (L'enfant est dans la maison)",
+                "Ani talmidah (Je suis élève)",
+                "Ha-bayit ha-katan (La petite maison - groupe nominal seul)",
+                "Ha-sefer ha-tov (Le bon livre - groupe nominal seul)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Ha-yeled ba-bayit » et « Ani talmidah » contiennent un sujet et un prédicat complets sans verbe au présent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour servir de lien (copule) dans une phrase nominale, quel pronom peut-on insérer entre sujet et attribut ?",
+              "options": [
+                "Le pronom personnel de la 3e personne correspondant (hou, hi, hem, hen)",
+                "Le pronom personnel de la 1ère personne ani",
+                "La particule de liaison et",
+                "La préposition inséparable be-"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On emploie souvent hou, hi, hem ou hen comme copule : « David hu moreh » (David [il] est professeur)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Jérusalem est une ville ancienne » avec un pronom copule ?",
+              "options": [
+                "Yerushalayim hi ir yeshanah (יְרוּשָׁלַיִם הִיא עִיר יְשָׁנָה)",
+                "Yerushalayim hou ir yeshanah",
+                "Yerushalayim hi ha-ir",
+                "Yerushalayim yeshanah ir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Yerushalayim » étant féminin, on utilise la copule féminine « hi » : « Yerushalayim hi ir yeshanah »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « Ha-talmidim ba-kita » ?",
+              "options": [
+                "Les élèves sont dans la classe",
+                "Les élèves vont vers la classe",
+                "La classe des élèves",
+                "Dans la classe avec des élèves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (« ha-talmidim ») + complément locatif (« ba-kita ») = « Les élèves sont dans la classe »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Nous sommes contents / heureux » (heureux = samea'h, pluriel = sme'him) ?",
+              "options": [
+                "Anachnou sme'him (אֲנַחְנוּ שְׂמֵחִים)",
+                "Anachnou samea'h",
+                "Anachnou sme'hot",
+                "Hem sme'him"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Anachnou » suivi de l'adjectif accordé au masculin pluriel donne « anachnou sme'him »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « Hu po » (הוּא פֹּה) ?",
+              "options": [
+                "Il est ici",
+                "Elle est ici",
+                "Il va là-bas",
+                "Qui est ici ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hu » (il) + « po » (ici) = « Il est ici »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : La négation simple avec « lo » (לא)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le mot principal pour exprimer la négation « non » ou « ne ... pas » en hébreu ?",
+              "options": ["Lo (לֹא)", "Al (אַל)", "Ein (אֵין)", "Lama (לָמָּה)"],
+              "correctAnswers": [0],
+              "explanation": "« Lo » (לֹא) est la négation universelle employée pour dire « non » et pour nier un verbe ou un adjectif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se place la particule de négation « lo » dans une phrase simple ?",
+              "options": [
+                "Directement avant le mot nié (adjectif, nom attribut ou verbe)",
+                "Toujours en toute fin de proposition",
+                "Toujours entre le nom et son article défini",
+                "Après le complément d'objet direct"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lo » se place immédiatement devant l'élément qu'il nie (ex: lo gadol = pas grand, lo kotev = n'écrit pas)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Le livre n'est pas grand » en hébreu ?",
+              "options": [
+                "Ha-sefer lo gadol (הַסֵּפֶר לֹא גָּדוֹל)",
+                "Ha-sefer gadol lo",
+                "Lo ha-sefer gadol",
+                "Ha-sefer ein gadol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On place « lo » devant l'adjectif attribut : « ha-sefer lo gadol »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit un garçon « Je ne suis pas fatigué » (fatigué = ayef) ?",
+              "options": [
+                "Ani lo ayef (אֲנִי לֹא עָיֵף)",
+                "Ani lo ayefah",
+                "Lo ani ayef",
+                "Ani ayef lo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ani lo ayef » est la tournure correcte au masculin singulier."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases négatives avec « lo » sont parfaitement bien construites ?",
+              "options": [
+                "Hi lo morah (Elle n'est pas enseignante)",
+                "Anachnou lo ba-bayit (Nous ne sommes pas à la maison)",
+                "Hi morah lo (ordre des mots incorrect)",
+                "Lo hi morah (ordre inhabituel)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Lo » se place directement devant l'attribut (« lo morah ») ou devant le complément locatif (« lo ba-bayit »)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment répond-on poliment « Non, merci » en hébreu ?",
+              "options": [
+                "Lo, toda (לֹא, תּוֹדָה)",
+                "Ken, toda",
+                "Lo, bevakasha",
+                "Sli'ha, toda"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lo » (non) + « toda » (merci) = « Lo, toda »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Elles ne sont pas ici » (ici = po) ?",
+              "options": [
+                "Hen lo po (הֵן לֹא פֹּה)",
+                "Hem lo po",
+                "Hen lo sham",
+                "Aten lo po"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hen » (elles) + « lo po » (ne sont pas ici) = « Hen lo po »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « Dani lo talmid 'hadash » ?",
+              "options": [
+                "Dani n'est pas un nouvel élève",
+                "Dani est un nouvel élève",
+                "Dani ne connaît pas le nouvel élève",
+                "Le nouvel élève ne s'appelle pas Dani"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Dani lo » nie l'attribut « talmid 'hadash » : « Dani n'est pas un nouvel élève »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre « lo » (לֹא) et « al » (אַל) ?",
+              "options": [
+                "« Lo » est la négation déclarative standard ; « Al » s'utilise pour l'interdiction ou la défense (impératif négatif)",
+                "« Lo » signifie oui et « Al » signifie non",
+                "« Lo » s'utilise exclusivement au passé",
+                "Il n'y a aucune différence, ils sont interchangeables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On emploie « lo » pour nier un fait (ex: lo kotev) et « al » pour exprimer une défense (ex: al tikhtov = n'écris pas !)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « Ce n'est pas difficile » (difficile = kasheh) ?",
+              "options": [
+                "Zeh lo kasheh (זֶה לֹא קָשֶׁה)",
+                "Zot lo kasheh",
+                "Zeh lo kashah",
+                "Kasheh lo zeh"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Zeh » (ceci/c'est) + « lo kasheh » (pas difficile) = « Zeh lo kasheh »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Les mots interrogatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif signifie « Qui ? » en hébreu ?",
+              "options": [
+                "Mi ? (מִי)",
+                "Ma ? (מָה)",
+                "Eifo ? (אֵיפֹה)",
+                "Lama ? (לָמָּה)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mi » (מִי) interroge sur l'identité d'une personne : « Qui ? »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif signifie « Quoi ? » ou « Que ? » en hébreu ?",
+              "options": [
+                "Ma ? (מָה)",
+                "Mi ? (מִי)",
+                "Matai ? (מָתַי)",
+                "Eikh ? (אֵיךְ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ma » (מָה) interroge sur une chose ou une action : « Que / Quoi ? »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif exprime le lieu de situation (« Où ? ») ?",
+              "options": [
+                "Eifo ? (אֵיפֹה)",
+                "Le'an ? (לְאָן)",
+                "Me'ayin ? (מֵאַיִן)",
+                "Lama ? (לָמָּה)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Eifo » (אֵיפֹה) demande où se trouve quelque chose ou quelqu'un."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif signifie « Pourquoi ? » en hébreu ?",
+              "options": [
+                "Lama ? (לָמָּה)",
+                "Matai ? (מָתַי)",
+                "Kama ? (כַּמָּה)",
+                "Mi ? (מִי)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lama » (לָמָּה) ou « Madoua » (מַדּוּעַ) signifient « Pourquoi ? »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mots interrogatifs sont spécifiquement liés à la direction ou à l'origine spatiale ?",
+              "options": [
+                "Le'an ? (לְאָן, vers où ?)",
+                "Me'ayin ? (מֵאַיִן, d'où ?)",
+                "Matai ? (מָתַי, quand ?)",
+                "Kama ? (כַּמָּה, combien ?)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Le'an » (vers où, avec préfixe Le-) et « Me'ayin » (d'où, avec préfixe Me-) expriment le mouvement spatial."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « Quand ? » en hébreu ?",
+              "options": ["Matai ? (מָתַי)", "Ma ?", "Mi ?", "Eikh ?"],
+              "correctAnswers": [0],
+              "explanation": "« Matai » (מָתַי) sert à interroger sur le temps : « Quand ? »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « Comment ? » (la manière) en hébreu ?",
+              "options": ["Eikh ? (אֵיךְ)", "Eifo ?", "Lama ?", "Mi ?"],
+              "correctAnswers": [0],
+              "explanation": "« Eikh » (אֵיךְ) signifie « Comment ? » (ex: Eikh kor'im lekha ? = Comment t'appelles-tu ?)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « Combien ? » en hébreu ?",
+              "options": ["Kama ? (כַּמָּה)", "Lama ?", "Matai ?", "Ma ?"],
+              "correctAnswers": [0],
+              "explanation": "« Kama » (כַּמָּה) interroge sur la quantité ou le prix : « Combien ? »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment formule-t-on la question courante « Qu'est-ce que c'est ? » ?",
+              "options": [
+                "Ma zeh ? (מָה זֶה)",
+                "Mi zeh ?",
+                "Eifo zeh ?",
+                "Lama zeh ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ma » (quoi) + « zeh » (ceci) = « Ma zeh ? » (Qu'est-ce que c'est ?)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment formule-t-on la question « Qui est-ce ? » ?",
+              "options": [
+                "Mi zeh ? (מִי זֶה)",
+                "Ma zeh ?",
+                "Matai zeh ?",
+                "Eikh zeh ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mi » (qui) + « zeh » (ceci/celui-ci) = « Mi zeh ? » (Qui est-ce ?)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : L'expression de la possession avec « shel » (של)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mot invariable exprime la possession et l'appartenance (« de ») en hébreu moderne ?",
+              "options": ["Shel (שֶׁל)", "Et (אֶת)", "Be (בְּ)", "Al (עַל)"],
+              "correctAnswers": [0],
+              "explanation": "« Shel » (שֶׁל) est la particule de possession par excellence en hébreu moderne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « le livre de David » en hébreu ?",
+              "options": [
+                "Ha-sefer shel David (הַסֵּפֶר שֶׁל דָּוִד)",
+                "Sefer shel David",
+                "David shel ha-sefer",
+                "Ha-sefer le-David shel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On définit le nom avec l'article Ha- puis on ajoute « shel David » : « ha-sefer shel David »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme pronominale de « shel » signifiant « à moi / mon / ma » ?",
+              "options": [
+                "Sheli (שֶׁלִּי)",
+                "Shelkha (שֶׁלְּךָ)",
+                "Shelah (שֶׁלָּהּ)",
+                "Shelano (שֶׁלָּנוּ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sheli » (שֶׁלִּי) combine « shel » et le suffixe de 1ère personne pour signifier « à moi / mon / ma / mes »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « mon livre » en hébreu moderne courant ?",
+              "options": [
+                "Ha-sefer sheli (הַסֵּפֶר שֶׁלִּי)",
+                "Sefer sheli",
+                "Sheli sefer",
+                "Ha-sefer li"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En hébreu moderne, un nom possédé par un pronom porte généralement l'article défini : « ha-sefer sheli »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes du pronom possessif « shel » existent réellement en hébreu ?",
+              "options": [
+                "Shelkha (שֶׁלְּךָ, à toi masculin)",
+                "Shelakh (שֶׁלָּךְ, à toi féminin)",
+                "Shelou (forme inexistante)",
+                "Shelot (forme inexistante)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Shelkha » s'adresse à un homme et « shelakh » à une femme pour dire « ton / ta / à toi »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « notre maison » en hébreu ?",
+              "options": [
+                "Ha-bayit shelano (הַבַּיִת שֶׁלָּנוּ)",
+                "Ha-bayit sheli",
+                "Bayit shelano",
+                "Ha-bayit shelahem"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Shelano » signifie « à nous / notre » : « ha-bayit shelano »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « sa voiture » (la voiture d'elle ; voiture = mekhonit) ?",
+              "options": [
+                "Ha-mekhonit shelah (הַמְּכוֹנִית שֶׁלָּהּ)",
+                "Ha-mekhonit shelo",
+                "Ha-mekhonit sheli",
+                "Mekhonit shelah"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Shelah » (avec suffixe féminin) renvoie à une possédante féminine : « ha-mekhonit shelah »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « sa voiture » (la voiture de lui) ?",
+              "options": [
+                "Ha-mekhonit shelo (הַמְּכוֹנִית שֶׁלּוֹ)",
+                "Ha-mekhonit shelah",
+                "Ha-mekhonit sheli",
+                "Ha-mekhonit shelkha"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Shelo » (avec suffixe masculin) renvoie à un possédant masculin : « ha-mekhonit shelo »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « À qui est ce livre ? » en hébreu ?",
+              "options": [
+                "Shel mi ha-sefer ha-zeh ? (שֶׁל מִי הַסֵּפֶר הַזֶּה)",
+                "Mi shel ha-sefer ?",
+                "Ma shel ha-sefer ?",
+                "Eifo ha-sefer shel mi ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Shel mi » signifie « de qui / à qui » : « Shel mi ha-sefer ha-zeh ? »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans l'expression « ha-haverim sheli », que signifie cette formule ?",
+              "options": [
+                "Mes amis",
+                "Mon meilleur ami",
+                "Leurs amis",
+                "Ses amies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Haverim » (amis) + « sheli » (à moi) = « mes amis »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : L'existence : « yesh » (יש) et « ein » (אין)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mot invariable emploie-t-on pour exprimer « il y a » en hébreu ?",
+              "options": ["Yesh (יֵשׁ)", "Ein (אֵין)", "Po (פֹּה)", "Sham (שָׁם)"],
+              "correctAnswers": [0],
+              "explanation": "« Yesh » (יֵשׁ) affirme l'existence d'une chose ou d'une personne : « il y a »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mot emploie-t-on pour exprimer « il n'y a pas » (l'inexistence) ?",
+              "options": ["Ein (אֵין)", "Lo (לֹא)", "Yesh lo", "Al (אַל)"],
+              "correctAnswers": [0],
+              "explanation": "« Ein » (אֵין) est le contraire de « yesh » et signifie « il n'y a pas »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Il y a un livre sur la table » (sur = al ; table = shulchan) ?",
+              "options": [
+                "Yesh sefer al ha-shulchan (יֵשׁ סֵפֶר עַל הַשֻּׁלְחָן)",
+                "Ein sefer al ha-shulchan",
+                "Sefer al ha-shulchan yesh",
+                "Ha-sefer al ha-shulchan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Yesh » débute la proposition existentielle : « Yesh sefer al ha-shulchan »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Il n'y a pas de pain » (pain = le'hem) ?",
+              "options": [
+                "Ein le'hem (אֵין לֶחֶם)",
+                "Lo le'hem",
+                "Yesh lo le'hem",
+                "Le'hem lo ein"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ein » s'utilise directement devant le nom pour nier son existence : « Ein le'hem »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles tournures expriment fidèlement la possession (« avoir ») avec « yesh le- » ?",
+              "options": [
+                "Yesh li sefer (יֵשׁ לִי סֵפֶר, j'ai un livre / il y a un livre à moi)",
+                "Yesh lekha zman ? (יֵשׁ לְךָ זְמַן, as-tu du temps ?)",
+                "Ani yesh sefer (calque erroné du français)",
+                "Yesh ani sefer (calque erroné du français)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En hébreu, « avoir » se traduit par « il y a à quelqu'un » : yesh li (j'ai), yesh lekha (tu as masc.), etc."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Je n'ai pas le temps » (temps = zman) ?",
+              "options": [
+                "Ein li zman (אֵין לִי זְמַן)",
+                "Lo li zman",
+                "Yesh lo li zman",
+                "Ein zman ani"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La possession négative s'exprime par « ein le- » : « Ein li zman » (je n'ai pas de temps)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « As-tu des frères ? » à une fille ?",
+              "options": [
+                "Yesh lakh a'him ? (יֵשׁ לָךְ אַחִים)",
+                "Yesh lekha a'him ?",
+                "Yesh lo a'him ?",
+                "Ein lakh a'him ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une interlocutrice féminine, la préposition prend la forme « lakh » : « Yesh lakh a'him ? »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'expression idiomatique très courante « Ein be'ayah ! » (אֵין בְּעָיָה) ?",
+              "options": [
+                "Il n'y a pas de problème ! / Pas de souci !",
+                "Il y a un gros problème !",
+                "Où est le problème ?",
+                "C'est un problème grave !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Be'ayah » signifiant « problème », « Ein be'ayah » équivaut à « Aucun problème ! »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « Il y a de la place » (place = makom) en hébreu ?",
+              "options": [
+                "Yesh makom (יֵשׁ מָקוֹם)",
+                "Ein makom",
+                "Yesh po makom ein",
+                "Makom lo yesh"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Yesh makom » signifie « il y a de la place »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « Il n'y a personne » (personne = af e'had) ?",
+              "options": [
+                "Ein af e'had (אֵין אַף אֶחָד)",
+                "Yesh af e'had",
+                "Lo af e'had",
+                "Ein lo ish"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ein af e'had » est la formule consacrée pour signifier « Il n'y a personne »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Le complément d'objet direct défini : la particule « et » (את)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quoi sert la particule grammaticale « et » (אֶת) en hébreu ?",
+              "options": [
+                "À introduire un Complément d'Objet Direct (COD) quand celui-ci est défini",
+                "À traduire la conjonction de coordination 'et' du français",
+                "À marquer le sujet d'un verbe intransitif",
+                "À indiquer obligatoirement le pluriel des verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Et » (אֶת) est un marqueur accusatif spécifique qui précède tout complément d'objet direct défini."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si le COD est INDÉFINI (ex: « Je lis un livre »), utilise-t-on la particule « et » ?",
+              "options": [
+                "Non, « et » n'apparaît JAMAIS devant un COD indéfini",
+                "Oui, « et » est obligatoire devant n'importe quel COD",
+                "Uniquement si le nom indéfini est féminin",
+                "Uniquement devant les noms pluriels indéfinis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle absolue : « et » n'apparaît que si le COD est défini. Devant un indéfini, il n'y a aucune particule."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Je vois le garçon » (je vois = ani ro'eh ; garçon = ha-yeled) ?",
+              "options": [
+                "Ani ro'eh et ha-yeled (אֲנִי רוֹאֶה אֶת הַיֶּלֶד)",
+                "Ani ro'eh ha-yeled",
+                "Ani ro'eh le-ha-yeled",
+                "Ani et ro'eh yeled"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ha-yeled » étant défini par l'article, il doit obligatoirement être précédé de « et »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Je vois un garçon » (indéfini) ?",
+              "options": [
+                "Ani ro'eh yeled (אֲנִי רוֹאֶה יֶלֶד)",
+                "Ani ro'eh et yeled",
+                "Ani ro'eh et ha-yeled",
+                "Ani et yeled ro'eh"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Yeled » étant indéfini, la particule « et » ne s'emploie pas : « Ani ro'eh yeled »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quelles situations un COD est-il considéré comme défini et DOIT être précédé de « et » ?",
+              "options": [
+                "Quand le nom porte l'article défini Ha- (ex: et ha-sefer)",
+                "Quand le nom est un nom propre de personne ou de lieu (ex: et David)",
+                "Quand le nom est singulier indéfini sans article (ex: sefer)",
+                "Quand le nom est pluriel indéfini sans article (ex: sfarim)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les noms précédés de l'article Ha- et les noms propres sont intrinsèquement définis et exigent « et » comme COD."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « J'aime Sarah » (aimer = ohev) en hébreu ?",
+              "options": [
+                "Ani ohev et Sarah (אֲנִי אוֹהֵב אֶת שָׂרָה)",
+                "Ani ohev Sarah",
+                "Ani ohev le-Sarah",
+                "Ani ohev be-Sarah"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sarah étant un nom propre, elle est définie : on doit dire « Ani ohev et Sarah »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « Je connais ce livre » (connaître = makir ; ce livre = ha-sefer ha-zeh) ?",
+              "options": [
+                "Ani makir et ha-sefer ha-zeh (אֲנִי מַכִּיר אֶת הַסֵּפֶר הַזֶּה)",
+                "Ani makir ha-sefer ha-zeh",
+                "Ani makir le-sefer zeh",
+                "Ani et makir ha-sefer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ha-sefer ha-zeh » est défini par l'article et le démonstratif, exigeant « et »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que devient la particule « et » lorsqu'elle reçoit un suffixe pronominal direct (ex: me/moi) ?",
+              "options": [
+                "Elle se décline avec des suffixes accusatifs (oti, otkha, otakh, oto, otah...)",
+                "Elle reste invariable et suivie de ani",
+                "Elle est systématiquement remplacée par le pronom possessif sheli",
+                "Elle fusionne avec le verbe en préfixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Et » se décline avec les pronoms personnels : oti (moi COD), otkha (toi masc.), oto (lui COD), etc."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « Il me voit » (littéralement : il voit moi COD) ?",
+              "options": [
+                "Hu ro'eh oti (הוּא רוֹאֶה אוֹתִי)",
+                "Hu ro'eh li",
+                "Hu ro'eh et ani",
+                "Hu ro'eh sheli"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Oti » est la déclinaison accusative de « et » à la première personne : « Hu ro'eh oti »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit un garçon « Je t'aime » à une fille (t' = toi féminin COD) ?",
+              "options": [
+                "Ani ohev otakh (אֲנִי אוֹהֵב אוֹתָךְ)",
+                "Ani ohev otkha",
+                "Ani ohev lakh",
+                "Ani ohev shelakh"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Otakh » est la 2e personne du féminin singulier de la particule accusative « et » : « Ani ohev otakh »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Le présent des verbes simples (Paal) : le singulier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien de formes différentes un verbe possède-t-il au présent en hébreu ?",
+              "options": [
+                "Quatre formes seulement (masc. singulier, fém. singulier, masc. pluriel, fém. pluriel)",
+                "Six formes distinctes comme en français",
+                "Une forme unique totalement invariable",
+                "Huit formes selon le mode indicatif ou subjonctif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le présent hébreu est en réalité un participe : il n'a que 4 formes correspondant aux 4 combinaisons de genre et de nombre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour la racine K-T-V (כ-ת-ב, écrire), quel est le modèle du présent masculin singulier ?",
+              "options": [
+                "Kotev (כּוֹתֵב)",
+                "Kotevet (כּוֹתֶבֶת)",
+                "Kotvim (כּוֹתְבִים)",
+                "Kotvot (כּוֹתְבוֹת)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le schème du masculin singulier du groupe Paal est po'el (cholam sur la 1ère consonne, tséré sur la 2e) : « kotev »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme féminine singulière régulière pour « écrire » ?",
+              "options": ["Kotevet (כּוֹתֶבֶת)", "Kotevah", "Kotvat", "Kotvim"],
+              "correctAnswers": [0],
+              "explanation": "Le féminin singulier le plus courant prend la terminaison -et : « kotevet »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « Dan écrit une lettre » (lettre = mikhtav) ?",
+              "options": [
+                "Dan kotev mikhtav (דָּן כּוֹתֵב מִכְתָּב)",
+                "Dan kotevet mikhtav",
+                "Dan kotvim mikhtav",
+                "Dan mikhtav kotev"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dan étant masculin singulier, le verbe s'accorde au masculin singulier : « Dan kotev mikhtav »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases au présent singulier sont parfaitement accordées avec leur sujet ?",
+              "options": [
+                "Dina kotevet mikhtav (Dina écrit une lettre)",
+                "David kotev mikhtav (David écrit une lettre)",
+                "Dina kotev mikhtav (désaccord masculin avec sujet féminin)",
+                "David kotevet mikhtav (désaccord féminin avec sujet masculin)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le verbe au présent s'accorde strictement en genre avec son sujet : David kotev (masc.) et Dina kotevet (fém.)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour le verbe LILMOD (étudier), comment dit un garçon « J'étudie l'hébreu » ?",
+              "options": [
+                "Ani lomed ivrit (אֲנִי לוֹמֵד עִבְרִית)",
+                "Ani lomedet ivrit",
+                "Ani lomdim ivrit",
+                "Ani lilmod ivrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un locuteur masculin utilise la forme masculine singulière : « Ani lomed ivrit »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment une fille dit-elle « J'étudie l'hébreu » ?",
+              "options": [
+                "Ani lomedet ivrit (אֲנִי לוֹמֶדֶת עִבְרִית)",
+                "Ani lomed ivrit",
+                "Ani lomdot ivrit",
+                "Ani talmidah ivrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une locutrice féminine utilise la forme féminine singulière : « Ani lomedet ivrit »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour le verbe LALEKHET (aller / marcher), quelle est la forme masculine singulière au présent ?",
+              "options": [
+                "Holekh (הוֹלֵךְ)",
+                "Holekhet (הוֹלֶכֶת)",
+                "Holkhim (הוֹלְכִים)",
+                "Holkhot (הוֹלְכוֹת)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Holekh » (הוֹלֵךְ) est le présent masculin singulier du verbe aller/marcher."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « Sarah va à l'école » (école = beit sefer) ?",
+              "options": [
+                "Sarah holekhet le-veit sefer (שָׂרָה הוֹלֶכֶת לְבֵית סֵפֶר)",
+                "Sarah holekh le-veit sefer",
+                "Sarah holkhat beit sefer",
+                "Sarah holkhot le-veit sefer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sarah est féminin singulier : on emploie « holekhet »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « Hu ohev sfarim » (הוּא אוֹהֵב סְפָרִים) ?",
+              "options": [
+                "Il aime les livres",
+                "Elle aime les livres",
+                "Il écrit des livres",
+                "Il lit des livres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hu » (il) + « ohev » (aime) + « sfarim » (des livres) = « Il aime les livres »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Le présent des verbes simples (Paal) : le pluriel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison du présent masculin pluriel pour les verbes du groupe Paal ?",
+              "options": [
+                "-im (ex: kotvim, lomdim)",
+                "-ot (ex: kotvot, lomdot)",
+                "-ou",
+                "-tem"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au masculin pluriel, le participe verbal reçoit le suffixe « -im » (ex: kotvim = nous/vous/ils écrivent)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison du présent féminin pluriel pour les verbes réguliers ?",
+              "options": ["-ot (ex: kotvot, lomdot)", "-im", "-nah", "-ten"],
+              "correctAnswers": [0],
+              "explanation": "Au féminin pluriel, le verbe au présent reçoit le suffixe « -ot » (ex: kotvot = nous/vous/elles écrivent)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « Nous écrivons » pour un groupe d'hommes ou mixte ?",
+              "options": [
+                "Anachnou kotvim (אֲנַחְנוּ כּוֹתְבִים)",
+                "Anachnou kotvot",
+                "Anachnou kotev",
+                "Anachnou kotevet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet mixte pluriel : « Anachnou kotvim »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « Elles étudient » (groupe féminin) ?",
+              "options": [
+                "Hen lomdot (הֵן לוֹמְדוֹת)",
+                "Hen lomdim",
+                "Hem lomdot",
+                "Hem lomdim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pronom féminin pluriel (« Hen ») + verbe au féminin pluriel (« lomdot ») = « Hen lomdot »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales au présent pluriel sont correctement appariées avec leur pronom ?",
+              "options": [
+                "Hem holkhim (הֵם הוֹלְכִים, ils vont)",
+                "Hen holkhot (הֵן הוֹלְכוֹת, elles vont)",
+                "Hem holkhot (désaccord de genre)",
+                "Hen holkhim (désaccord de genre)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Hem holkhim » est masculin pluriel et « Hen holkhot » est féminin pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « Les garçons lisent un livre » (lire = kore / kor'im) ?",
+              "options": [
+                "Ha-yeladim kor'im sefer (הַיְלָדִים קוֹרְאִים סֵפֶר)",
+                "Ha-yeladim kor'ot sefer",
+                "Ha-yeladim koreh sefer",
+                "Ha-yeladim likro sefer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ha-yeladim » est masculin pluriel : le verbe s'accorde en « kor'im »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « Les filles chantent » (chanter = shar / sharot) ?",
+              "options": [
+                "Ha-yeladot sharot (הַיְלָדוֹת שָׁרוֹת)",
+                "Ha-yeladot sharim",
+                "Ha-yeladot sharet",
+                "Ha-yeladim sharot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ha-yeladot » est féminin pluriel : le verbe s'accorde en « sharot »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la question « Atem lomdim ivrit ? » adressée à une classe mixte ?",
+              "options": [
+                "Étudiez-vous l'hébreu ?",
+                "Parlez-vous couramment anglais ?",
+                "Aimez-vous vos professeurs ?",
+                "Où étudiez-vous la musique ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Atem » (vous masc./mixte) + « lomdim » (étudiez) + « ivrit » (l'hébreu) = « Étudiez-vous l'hébreu ? »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit un groupe de femmes « Nous habitons à Tel-Aviv » (habiter = garot) ?",
+              "options": [
+                "Anachnou garot be-Tel Aviv (אֲנַחְנוּ גָּרוֹת בְּתֵל אָבִיב)",
+                "Anachnou garim be-Tel Aviv",
+                "Anachnou garah be-Tel Aviv",
+                "Hen garim be-Tel Aviv"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un groupe exclusivement féminin accorde le verbe au féminin pluriel : « garot »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans la phrase « Ha-morim medabrim im ha-talmidim », que font les professeurs ?",
+              "options": [
+                "Ils parlent avec les élèves",
+                "Ils écrivent des devoirs aux élèves",
+                "Ils interrogent les nouveaux élèves",
+                "Ils écoutent attentivement les élèves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Medabrim » (du verbe ledaber) signifie « parlent » : « Les professeurs parlent avec les élèves »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Bilan et synthèse : construire des phrases complètes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'ordre des mots le plus canonique et fréquent dans une phrase simple en hébreu moderne ?",
+              "options": [
+                "Sujet - Verbe - Complément (SVO)",
+                "Verbe - Sujet - Complément (VSO obligatoire)",
+                "Complément - Verbe - Sujet (OVS)",
+                "Le verbe se place obligatoirement en dernière position"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En hébreu moderne, l'ordre prédominant est Sujet - Verbe - Complément, bien que d'autres ordres soient possibles par emphase."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on fidèlement « David mange la pomme dans la cuisine » (pomme = tapua'h ; cuisine = mitba'h) ?",
+              "options": [
+                "David okhel et ha-tapua'h ba-mitba'h (דָּוִד אוֹכֵל אֶת הַתַּפּוּחַ בַּמִּטְבָּח)",
+                "David okhel tapua'h mitba'h",
+                "David et ha-tapua'h okhel ba-mitba'h",
+                "David okhelet ha-tapua'h le-mitba'h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (David) + verbe (okhel) + COD défini (« et ha-tapua'h ») + complément locatif (« ba-mitba'h »)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Nous n'avons pas de grande voiture » ?",
+              "options": [
+                "Ein lanou mekhonit gedolah (אֵין לָנוּ מְכוֹנִית גְּדוֹלָה)",
+                "Lo lanou mekhonit gadol",
+                "Ein lanou mekhonit gadol",
+                "Yesh lanou mekhonit gedolah"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ein lanou » (nous n'avons pas) + « mekhonit » (nom féminin) + « gedolah » (adjectif féminin accordé)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment demande-t-on poliment « Où habites-tu ? » à une fille ?",
+              "options": [
+                "Eifo at garah ? (אֵיפֹה אַתְּ גָּרָה)",
+                "Eifo ata gar ?",
+                "Eifo at gar ?",
+                "Le'an at garah ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot interrogatif (« Eifo ») + pronom féminin (« at ») + verbe accordé au féminin (« garah »)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases complètes sont grammaticalement irréprochables en hébreu ?",
+              "options": [
+                "Ha-morah kotevet al ha-lua'h (L'enseignante écrit sur le tableau)",
+                "Ha-talmidim lomdim ivrit ba-kita (Les élèves étudient l'hébreu en classe)",
+                "Ha-morah kotev al ha-lua'h (discordance de genre sujet-verbe)",
+                "Ha-talmidim lomedet ivrit (discordance de nombre sujet-verbe)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux premières phrases respectent parfaitement les accords de genre et de nombre entre sujet et verbe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « Lama ata lo okhel et aruchat ha-boker ? » ?",
+              "options": [
+                "Pourquoi ne manges-tu pas le petit-déjeuner ?",
+                "Quand manges-tu le déjeuner avec nous ?",
+                "Où prépares-tu le repas de ce matin ?",
+                "Que manges-tu pour ton dîner ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Lama » (pourquoi) + « ata lo okhel » (tu ne manges pas) + « et aruchat ha-boker » (le petit-déjeuner) = « Pourquoi ne manges-tu pas le petit-déjeuner ? »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Les nouveaux élèves aiment la leçon d'hébreu » ?",
+              "options": [
+                "Ha-talmidim ha-'hadashim ohavim et shi'our ha-ivrit",
+                "Ha-talmidim 'hadashim ohev shi'our ivrit",
+                "Talmidim ha-'hadashim ohavot shi'our ivrit",
+                "Ha-talmidim ha-'hadashot ohavim et shi'our"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet avec double article (« Ha-talmidim ha-'hadashim ») + verbe masc. pluriel (« ohavim ») + COD défini (« et shi'our ha-ivrit »)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Ma sœur habite en France » (sœur = a'hot ; France = Tzarfat) ?",
+              "options": [
+                "Ha-a'hot sheli garah be-Tzarfat (הָאָחוֹת שֶׁלִּי גָּרָה בְּצָרְפַת)",
+                "Ha-a'hot sheli gar be-Tzarfat",
+                "A'hot sheli garim Tzarfat",
+                "Ha-a'hot sheli holekhet Tzarfat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ha-a'hot sheli » (ma sœur, fém.) + « garah » (habite, fém.) + « be-Tzarfat » (en France)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase exprime fidèlement « Il y a beaucoup d'enfants dans le parc » (beaucoup = harbeh ; parc = park) ?",
+              "options": [
+                "Yesh harbeh yeladim ba-park (יֵשׁ הַרְבֵּה יְלָדִים בַּפַּרְק)",
+                "Ein harbeh yeladim ba-park",
+                "Yesh harbeh yeladim le-park",
+                "Yeladim harbeh yesh be-park"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Yesh » introduit l'existence : « Yesh harbeh yeladim ba-park »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase affirmative « Zeh sefer me'od me'anyen » ?",
+              "options": [
+                "C'est un livre très intéressant",
+                "Ce livre est un peu difficile à lire",
+                "Ce n'est pas un livre intéressant",
+                "Voici des livres très passionnants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Zeh sefer » (c'est un livre) + « me'od me'anyen » (très intéressant) = « C'est un livre très intéressant »."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

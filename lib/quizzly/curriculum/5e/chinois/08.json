@@ -1,0 +1,2443 @@
+{
+  "id": "5e-chinois-08",
+  "year": "5e",
+  "subject": "chinois",
+  "title": "Voyage et ville en chinois",
+  "order": 8,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Se déplacer",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Quiz 01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent un transport en ville ?",
+              "options": [
+                "地铁 dìtiě",
+                "左边 zuǒbian",
+                "公交车 gōngjiāochē",
+                "地图 dìtú"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "地铁 et 公交车 sont des moyens de transport urbains."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « métro » en chinois ?",
+              "options": [
+                "火车 huǒchē",
+                "地铁 dìtiě",
+                "飞机 fēijī",
+                "船 chuán"
+              ],
+              "correctAnswers": [1],
+              "explanation": "地铁 dìtiě signifie littéralement « chemin de fer souterrain »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie 站 zhàn dans « 地铁站 dìtiě zhàn » ?",
+              "options": ["Ticket", "Gare ou arrêt", "Rue", "Pont"],
+              "correctAnswers": [1],
+              "explanation": "站 zhàn désigne une gare ou un arrêt."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tu prends le métro : tu dis surtout…",
+              "options": [
+                "我坐地铁 wǒ zuò dìtiě",
+                "我吃饭 wǒ chīfàn",
+                "我睡觉 wǒ shuìjiào",
+                "我写字 wǒ xiězì"
+              ],
+              "correctAnswers": [0],
+              "explanation": "坐 zuò avec un transport signifie « prendre / voyager en »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où achètes-tu souvent un billet de métro ?",
+              "options": [
+                "À la gare 火车站",
+                "À la station de métro 地铁站",
+                "Au supermarché",
+                "À l'école"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les billets se prennent à l'entrée ou aux guichets de la station."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "票 piào veut dire…",
+              "options": ["Carte", "Ticket", "Porte", "Escalier"],
+              "correctAnswers": [1],
+              "explanation": "票 piào est le mot général pour un ticket."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le métro est généralement…",
+              "options": [
+                "Sous la ville",
+                "Sur la mer",
+                "Dans le ciel",
+                "Dans la montagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "地 dì évoque le sol : le métro circule sous terre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "换 huàn dans « 换乘 huànchéng » signifie…",
+              "options": ["Manger", "Changer de ligne", "Dormir", "Couper"],
+              "correctAnswers": [1],
+              "explanation": "换乘 huànchéng veut dire « correspondance » entre lignes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase parle du métro ?",
+              "options": [
+                "地铁很快 dìtiě hěn kuài",
+                "苹果很甜 píngguǒ hěn tián",
+                "今天下雨 jīntiān xiàyǔ",
+                "我喜欢猫 wǒ xǐhuan māo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很快 hěn kuài dit que le métro est rapide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Entrer dans le métro, on dit souvent…",
+              "options": [
+                "进地铁 jìn dìtiě",
+                "进书 jìn shū",
+                "进饭 jìn fàn",
+                "进睡 jìn shuì"
+              ],
+              "correctAnswers": [0],
+              "explanation": "进 jìn signifie « entrer dans »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Quiz 02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des véhicules de rue ?",
+              "options": [
+                "出租车 chūzūchē",
+                "自行车 zìxíngchē",
+                "左边 zuǒbian",
+                "公交车 gōngjiāochē"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "出租车 et 公交车 circulent sur la route."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "公交车 gōngjiāochē, c'est…",
+              "options": ["Un taxi", "Un bus", "Un train", "Un avion"],
+              "correctAnswers": [1],
+              "explanation": "公交 désigne le transport public ; 车 est le véhicule."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "出租车 chūzūchē correspond à…",
+              "options": ["Bus scolaire", "Taxi", "Métro", "Vélo"],
+              "correctAnswers": [1],
+              "explanation": "出租 chūzū signifie « louer » : voiture de location avec chauffeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour « je prends le bus », on dit…",
+              "options": [
+                "我坐公交车 wǒ zuò gōngjiāochē",
+                "我开公交车 wǒ kāi gōngjiāochē",
+                "我吃公交车 wǒ chī gōngjiāochē",
+                "我看公交车 wǒ kàn gōngjiāochē"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passager : 坐 ; conducteur : 开."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "自行车 zìxíngchē veut dire…",
+              "options": ["Moto", "Vélo", "Camion", "Tramway"],
+              "correctAnswers": [1],
+              "explanation": "自行 signifie « par soi-même » : vélo à pédalage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Où attend-on le bus ?",
+              "options": [
+                "公交站 gōngjiāo zhàn",
+                "飞机场 fēijīchǎng",
+                "游泳池 yóuyǒngchí",
+                "图书馆 túshūguǎn"
+              ],
+              "correctAnswers": [0],
+              "explanation": "公交站 est l'arrêt de bus."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "开车 kāichē signifie…",
+              "options": [
+                "Conduire une voiture",
+                "Marcher vite",
+                "Monter un escalier",
+                "Lire un plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "开 kāi avec 车 : conduire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot n'est pas un transport ?",
+              "options": [
+                "地铁 dìtiě",
+                "桌子 zhuōzi",
+                "出租车 chūzūchē",
+                "自行车 zìxíngchē"
+              ],
+              "correctAnswers": [1],
+              "explanation": "桌子 zhuōzi signifie « table »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "路 lù dans « 马路 mǎlù » veut dire…",
+              "options": ["Route", "Maison", "Eau", "Ciel"],
+              "correctAnswers": [0],
+              "explanation": "马路 mǎlù désigne la route (litt. « route du cheval »)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour aller loin en ville, tu peux…",
+              "options": [
+                "坐出租车 zuò chūzūchē",
+                "坐桌子 zuò zhuōzi",
+                "坐书 zuò shū",
+                "坐水 zuò shuǐ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le taxi sert aux trajets plus longs ou plus directs."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Quiz 03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots indiquent un côté ?",
+              "options": [
+                "左边 zuǒbian",
+                "右边 yòubian",
+                "上面 shàngmiàn",
+                "中间 zhōngjiān"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "左边 et 右边 parlent de gauche et de droite."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "左边 zuǒbian signifie…",
+              "options": ["À droite", "À gauche", "Devant", "Derrière"],
+              "correctAnswers": [1],
+              "explanation": "左 zuǒ est « gauche » ; 边 biān « côté »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "右边 yòubian signifie…",
+              "options": ["À gauche", "À droite", "En haut", "En bas"],
+              "correctAnswers": [1],
+              "explanation": "右 yòu veut dire « droite »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La sortie est à gauche : tu dis…",
+              "options": [
+                "出口在左边 chūkǒu zài zuǒbian",
+                "出口在右边 chūkǒu zài yòubian",
+                "出口在上边 chūkǒu zài shàngbian",
+                "出口在里边 chūkǒu zài lǐbian"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 zài indique la position ; 左边 localise à gauche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tu tournes à droite pour le bus : …",
+              "options": [
+                "往右转 wǎng yòu zhuǎn",
+                "往左转 wǎng zuǒ zhuǎn",
+                "往上走 wǎng shàng zǒu",
+                "往下走 wǎng xià zǒu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "转 zhuǎn est « tourner » ; 往 wǎng « vers »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle paire est l'opposé gauche/droite ?",
+              "options": [
+                "左 zuǒ / 右 yòu",
+                "大 dà / 大 dà",
+                "我 wǒ / 我 wǒ",
+                "好 hǎo / 好 hǎo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "左 et 右 forment une paire d'opposés directionnels."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une voiture chinoise, le volant est en général…",
+              "options": [
+                "À gauche du conducteur (côté 左)",
+                "Au milieu du coffre",
+                "Sous le siège arrière",
+                "Sur le toit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En Chine, la conduite est à gauche : le volant est côté gauche du véhicule."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "边 biān se traduit souvent par…",
+              "options": ["Côté", "Couleur", "Nombre", "Heure"],
+              "correctAnswers": [0],
+              "explanation": "边 marque un flanc ou un bord."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« À droite de la station » : …",
+              "options": [
+                "地铁站右边 dìtiě zhàn yòubian",
+                "地铁站左边 dìtiě zhàn zuǒbian",
+                "地铁站上面 dìtiě zhàn shàngmiàn",
+                "地铁站里面 dìtiě zhàn lǐmiàn"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On place le repère puis le côté yòubian."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour repérer une porte à gauche, tu entends…",
+              "options": [
+                "门在左边 mén zài zuǒbian",
+                "门在右边 mén zài yòubian",
+                "门在天上 mén zài tiānshàng",
+                "门在海里 mén zài hǎilǐ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "门 mén est « porte » ; 在 zuǒbian la situe à gauche."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Quiz 04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes décrivent se déplacer à pied ou en conduisant ?",
+              "options": ["走 zǒu", "开 kāi", "听 tīng", "写 xiě"],
+              "correctAnswers": [0, 1],
+              "explanation": "走 marche ; 开 avec 车 conduit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "走 zǒu veut dire…",
+              "options": [
+                "Marcher / aller à pied",
+                "Nager",
+                "Voler",
+                "Peindre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "走 est le verbe de base pour se déplacer à pied."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "我走路 wǒ zǒulù signifie…",
+              "options": [
+                "Je marche (à pied)",
+                "Je conduis",
+                "Je dors",
+                "Je mange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "走路 zǒulù est l'expression courante pour « marcher »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour « il va à l'école à pied » : …",
+              "options": [
+                "他走路去学校 tā zǒulù qù xuéxiào",
+                "他睡觉去学校 tā shuìjiào qù xuéxiào",
+                "他吃饭去学校 tā chīfàn qù xuéxiào",
+                "他写字去学校 tā xiězì qù xuéxiào"
+              ],
+              "correctAnswers": [0],
+              "explanation": "去学校 qù xuéxiào : aller à l'école ; 走路 précise le mode."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "快 kuài dans « 走得快 zǒu de kuài » : …",
+              "options": ["Vite", "Lentement", "Triste", "Froid"],
+              "correctAnswers": [0],
+              "explanation": "快 kuài signifie « rapide »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "慢 màn veut dire…",
+              "options": ["Lent", "Cher", "Lourd", "Propre"],
+              "correctAnswers": [0],
+              "explanation": "慢 màn s'oppose à 快 pour la vitesse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "我开车 wǒ kāichē : …",
+              "options": ["Je conduis", "Je cours", "Je nage", "Je chante"],
+              "correctAnswers": [0],
+              "explanation": "开车 est l'expression standard pour conduire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "去 qù dans « 去商店 qù shāngdiàn » : …",
+              "options": ["Aller", "Venir", "Rester", "Tomber"],
+              "correctAnswers": [0],
+              "explanation": "去 qù marque le déplacement vers un lieu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase parle d'un déplacement à pied ?",
+              "options": [
+                "我们走回家 wǒmen zǒu huí jiā",
+                "我们吃回家 wǒmen chī huí jiā",
+                "我们睡回家 wǒmen shuì huí jiā",
+                "我们听回家 wǒmen tīng huí jiā"
+              ],
+              "correctAnswers": [0],
+              "explanation": "走 huí jiā : rentrer à pied à la maison."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "回 huí avec 家 jiā donne…",
+              "options": [
+                "Rentrer chez soi",
+                "Ouvrir la fenêtre",
+                "Acheter du pain",
+                "Lire un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "回家 huí jiā est « retourner à la maison »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Quiz 05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont liés à un trajet en transport ?",
+              "options": ["站 zhàn", "票 piào", "苹果 píngguǒ", "线 xiàn"],
+              "correctAnswers": [0, 1],
+              "explanation": "站 et 票 servent aux transports ; 线 peut être une ligne de métro."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "线 xiàn pour le métro, c'est…",
+              "options": ["Une ligne", "Une soupe", "Un chapeau", "Un animal"],
+              "correctAnswers": [0],
+              "explanation": "一号线 yī hào xiàn : « ligne numéro un »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "号 hào dans « 三号站 sān hào zhàn » : …",
+              "options": ["Numéro", "Couleur", "Saveur", "Taille de chaussure"],
+              "correctAnswers": [0],
+              "explanation": "号 indique un numéro d'ordre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "入口 rùkǒu signifie…",
+              "options": ["Entrée", "Sortie", "Toit", "Cuisine"],
+              "correctAnswers": [0],
+              "explanation": "入 rù « entrer » + 口 kǒu « bouche / ouverture »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "出口 chūkǒu signifie…",
+              "options": ["Sortie", "Entrée", "Mur", "Jardin"],
+              "correctAnswers": [0],
+              "explanation": "出 chū veut dire « sortir »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "刷卡 shuākǎ pour entrer dans le métro : …",
+              "options": [
+                "Passer sa carte",
+                "Chantez une chanson",
+                "Acheter des chaussures",
+                "Appeler un ami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "刷 shuā « passer / scanner » + 卡 kǎ « carte »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "下一班 xià yī bān : …",
+              "options": [
+                "Le prochain (bus, train…)",
+                "Le repas d'hier",
+                "La leçon de maths",
+                "La couleur bleue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下一班 désigne le prochain départ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "到了 dàole annonce…",
+              "options": [
+                "On est arrivé",
+                "On part demain",
+                "Il pleut",
+                "C'est fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "到 dào « arriver » + 了 marque le changement d'état."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "请排队 qǐng páiduì : …",
+              "options": [
+                "Veuillez faire la queue",
+                "Veuillez courir",
+                "Veuillez dormir",
+                "Veuillez crier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "排队 páiduì : se mettre en file."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Où vois-tu souvent 请勿吸烟 qǐng wù xīyān ?",
+              "options": [
+                "Dans le métro ou le bus",
+                "Dans la piscine du ciel",
+                "Sur la lune",
+                "Dans un conte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请勿吸烟 interdit de fumer dans les transports."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Quiz 06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs parlent de distance ?",
+              "options": ["远 yuǎn", "近 jìn", "热 rè", "甜 tián"],
+              "correctAnswers": [0, 1],
+              "explanation": "远 « loin » et 近 « près » décrivent la distance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "远 yuǎn signifie…",
+              "options": ["Loin", "Près", "Petit", "Nouveau"],
+              "correctAnswers": [0],
+              "explanation": "远 s'oppose à 近."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "近 jìn signifie…",
+              "options": ["Près", "Loin", "Grand", "Vieux"],
+              "correctAnswers": [0],
+              "explanation": "近 jìn indique la proximité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La gare est loin : …",
+              "options": [
+                "火车站很远 huǒchē zhàn hěn yuǎn",
+                "火车站很近 huǒchē zhàn hěn jìn",
+                "火车站很甜 huǒchē zhàn hěn tián",
+                "火车站很热 huǒchē zhàn hěn rè"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很远 hěn yuǎn : « très loin »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "地铁站很近 : …",
+              "options": [
+                "La station de métro est proche",
+                "Le métro est interdit",
+                "Le métro est bleu",
+                "Le métro est un fruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很近 hěn jìn : « très proche »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour un lieu proche, tu prends souvent…",
+              "options": [
+                "走路 zǒulù",
+                "飞机 fēijī",
+                "火箭 huǒjiàn",
+                "潜水艇 qiánshuǐtǐng"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À proximité, on marche ou on prend un petit trajet urbain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "公里 gōnglǐ correspond à…",
+              "options": ["Kilomètre", "Gramme", "Litre", "Degré Celsius"],
+              "correctAnswers": [0],
+              "explanation": "公里 est l'unité de distance kilométrique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "分钟 fēnzhōng mesure…",
+              "options": [
+                "Le temps (minutes)",
+                "Le poids",
+                "La température",
+                "La couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "分钟 compte les minutes d'un trajet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "十分钟 shí fēnzhōng : …",
+              "options": [
+                "Dix minutes",
+                "Dix kilomètres",
+                "Dix personnes",
+                "Dix livres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "十 shí vaut dix ; 分钟 des minutes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si c'est trop loin, tu peux…",
+              "options": [
+                "坐地铁 zuò dìtiě",
+                "坐苹果 zuò píngguǒ",
+                "坐书 zuò shū",
+                "坐猫 zuò māo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une longue distance urbaine, le métro est adapté."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Quiz 07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels lieux se trouvent en ville ?",
+              "options": [
+                "商店 shāngdiàn",
+                "公园 gōngyuán",
+                "火山 huǒshān",
+                "沙漠 shāmò"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "商店 et 公园 sont des lieux urbains courants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "商店 shāngdiàn : …",
+              "options": ["Magasin", "Hôpital", "Aéroport", "Ferme"],
+              "correctAnswers": [0],
+              "explanation": "商 shāng « commerce » + 店 diàn « boutique »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "公园 gōngyuán : …",
+              "options": ["Parc public", "Gare", "Prison", "Usine"],
+              "correctAnswers": [0],
+              "explanation": "公园 est un parc où l'on se promène."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "学校 xuéxiào : …",
+              "options": [
+                "École",
+                "Restaurant",
+                "Stade olympique seul",
+                "Océan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学校 est l'établissement scolaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "医院 yīyuàn : …",
+              "options": [
+                "Hôpital",
+                "Banque",
+                "Cinéma",
+                "Marché aux poissons volants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "医院 regroupe 医 médecine et 院 établissement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "银行 yínháng : …",
+              "options": ["Banque", "Bibliothèque", "Piscine", "Montagne"],
+              "correctAnswers": [0],
+              "explanation": "银行 désigne la banque."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "我去商店 wǒ qù shāngdiàn : …",
+              "options": [
+                "Je vais au magasin",
+                "Je mange à l'école",
+                "Je dors au parc",
+                "Je nage en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "去 + lieu : se rendre quelque part."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "市中心 shì zhōngxīn : …",
+              "options": [
+                "Centre-ville",
+                "Banlieue lointaine",
+                "Campagne",
+                "Pôle Nord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中心 zhōngxīn est le « centre » de la ville."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot désigne « ville » ?",
+              "options": [
+                "城市 chéngshì",
+                "桌子 zhuōzi",
+                "铅笔 qiānbǐ",
+                "牛奶 niúnǎi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "城市 chéngshì signifie « ville »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour traverser la ville, on combine souvent…",
+              "options": ["地铁 et 公交车", "书 et 笔", "猫 et 狗", "雨 et 雪"],
+              "correctAnswers": [0],
+              "explanation": "Métro et bus se complètent dans les grandes villes chinoises."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Quiz 08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots concernent l'heure d'un déplacement ?",
+              "options": [
+                "现在 xiànzài",
+                "几点 jǐ diǎn",
+                "红色 hóngsè",
+                "高兴 gāoxìng"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "现在 et 几点 servent à situer ou demander l'heure."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "现在 xiànzài : …",
+              "options": ["Maintenant", "Hier", "Jamais", "Toujours demain"],
+              "correctAnswers": [0],
+              "explanation": "现在 indique le moment présent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "几点 jǐ diǎn sert à…",
+              "options": [
+                "Demander l'heure",
+                "Demander la couleur",
+                "Demander un animal",
+                "Demander un plat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "几点 : « à quelle heure ? »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "地铁几点到？ dìtiě jǐ diǎn dào ? : …",
+              "options": [
+                "À quelle heure arrive le métro ?",
+                "Quelle est la couleur du métro ?",
+                "Combien coûte une pomme ?",
+                "Où est ton chat ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "到 dào ici : arriver ; 几点 : quelle heure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "早 zǎo / 晚 wǎn : …",
+              "options": [
+                "Tôt / tard",
+                "Chaud / froid",
+                "Grand / petit",
+                "Bleu / vert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "早 « tôt » et 晚 « tard » parlent du moment."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "今天 jīntiān : …",
+              "options": [
+                "Aujourd'hui",
+                "L'année dernière",
+                "Dans cent ans",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "今天 situe l'action aujourd'hui."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "明天 míngtiān : …",
+              "options": [
+                "Demain",
+                "Hier",
+                "Ce matin seulement",
+                "La nuit d'hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天 est « demain »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "我八点坐地铁 wǒ bā diǎn zuò dìtiě : …",
+              "options": [
+                "Je prends le métro à huit heures",
+                "Je mange huit pommes",
+                "Je dors huit jours",
+                "J'ai huit chats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "八点 bā diǎn : huit heures ; 坐 dìtiě : prendre le métro."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "迟到 chídào signifie…",
+              "options": [
+                "Être en retard",
+                "Être en avance",
+                "Être malade",
+                "Être content"
+              ],
+              "correctAnswers": [0],
+              "explanation": "迟到 est utilisé quand on rate l'heure prévue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "准时 zhǔnshí : …",
+              "options": ["À l'heure", "En retard", "Perdu", "Fermé"],
+              "correctAnswers": [0],
+              "explanation": "准时 insiste sur la ponctualité du transport."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Quiz 09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots aident à choisir un moyen de transport ?",
+              "options": ["坐 zuò", "开 kāi", "听 tīng", "洗 xǐ"],
+              "correctAnswers": [0, 1],
+              "explanation": "坐 pour être passager ; 开 pour conduire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我骑自行车 wǒ qí zìxíngchē : …",
+              "options": [
+                "Je fais du vélo",
+                "Je lis un vélo",
+                "Je mange un vélo",
+                "Je vends la pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "骑 qí avec 自行车 : pédaler / faire du vélo."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "上 shàng dans « 上车 shàng chē » : …",
+              "options": [
+                "Monter (dans le véhicule)",
+                "Descendre",
+                "Casser",
+                "Peindre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "上车 : monter dans le bus, taxi, etc."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "下车 xià chē : …",
+              "options": [
+                "Descendre du véhicule",
+                "Monter dans l'avion invisible",
+                "Ouvrir un livre",
+                "Fermer les yeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下 xià indique la descente du véhicule."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "小心 xiǎoxīn dans le métro : …",
+              "options": [
+                "Attention / prudence",
+                "Bon appétit",
+                "Bonne nuit",
+                "Joyeux Noël"
+              ],
+              "correctAnswers": [0],
+              "explanation": "小心 rappelle de faire attention aux portes et aux escaliers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "安全 ānquán : …",
+              "options": ["Sécurité", "Danger", "Bruit", "Faim"],
+              "correctAnswers": [0],
+              "explanation": "安全 est affiché pour rappeler les règles de sécurité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "行李 xíngli : …",
+              "options": ["Bagages", "Devoirs", "Chaussures seules", "Nuages"],
+              "correctAnswers": [0],
+              "explanation": "行李 désigne les bagages en voyage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "护照 hùzhào : …",
+              "options": ["Passeport", "Téléphone", "Stylo", "Gateau"],
+              "correctAnswers": [0],
+              "explanation": "护照 est le passeport pour voyager à l'étranger."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "旅行 lǚxíng : …",
+              "options": ["Voyage", "Cuisine", "Sport de bureau", "Silence"],
+              "correctAnswers": [0],
+              "explanation": "旅行 regroupe 旅 et 行, mouvement et trajet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En ville, 地铁 dìtiě est surtout…",
+              "options": [
+                "Rapide pour éviter les embouteillages",
+                "Un animal",
+                "Une couleur",
+                "Un fruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le métro contourne la circulation de surface."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Quiz 10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes résument « se déplacer » en 5e ?",
+              "options": [
+                "地铁 dìtiě",
+                "左边 zuǒbian",
+                "右边 yòubian",
+                "月亮 yuèliang"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "地铁 et les côtés 左/右 reviennent dans les trajets urbains."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je vais au parc en bus : …",
+              "options": [
+                "我坐公交车去公园 wǒ zuò gōngjiāochē qù gōngyuán",
+                "我睡觉去公园 wǒ shuìjiào qù gōngyuán",
+                "我写字去公园 wǒ xiězì qù gōngyuán",
+                "我喝水去公园 wǒ hē shuǐ qù gōngyuán"
+              ],
+              "correctAnswers": [0],
+              "explanation": "坐公交车 qù gōngyuán enchaîne transport et destination."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La station est à droite : …",
+              "options": [
+                "站在右边 zhàn zài yòubian",
+                "站在左边 zhàn zài zuǒbian",
+                "站在天上 zhàn zài tiānshàng",
+                "站在水里 zhàn zài shuǐ lǐ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 yòubian place la gare côté droit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Synonyme de « marcher » ici : …",
+              "options": [
+                "走路 zǒulù",
+                "开车 kāichē",
+                "坐飞机 zuò fēijī",
+                "游泳 yóuyǒng"
+              ],
+              "correctAnswers": [0],
+              "explanation": "走路 est la forme usuelle pour aller à pied."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où entends-tu 下一站 xià yī zhàn ?",
+              "options": [
+                "Dans le métro ou le bus",
+                "Dans un conte de fées",
+                "Sur Mars",
+                "Dans une chanson sans transport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下一站 annonce le prochain arrêt."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "票 piào peut être…",
+              "options": [
+                "Un ticket de métro",
+                "Un nuage",
+                "Une montagne",
+                "Une étoile filante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "票 sert pour les titres de transport."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "远 yuǎn s'oppose à…",
+              "options": ["近 jìn", "好 hǎo", "多 duō", "新 xīn"],
+              "correctAnswers": [0],
+              "explanation": "远 et 近 forment la paire distance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour changer de ligne de métro : …",
+              "options": [
+                "换乘 huànchéng",
+                "吃饭 chīfàn",
+                "睡觉 shuìjiào",
+                "唱歌 chànggē"
+              ],
+              "correctAnswers": [0],
+              "explanation": "换乘 est la correspondance entre lignes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "城市 chéngshì + 地铁 dìtiě évoque…",
+              "options": [
+                "La vie urbaine et ses transports",
+                "La campagne sans route",
+                "La mer sans bateau",
+                "Le ciel sans avion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les grandes 城市 s'appuient sur le réseau 地铁."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte pour un taxi : …",
+              "options": [
+                "我坐出租车 wǒ zuò chūzūchē",
+                "我吃出租车 wǒ chī chūzūchē",
+                "我听出租车 wǒ tīng chūzūchē",
+                "我写出租车 wǒ xiě chūzūchē"
+              ],
+              "correctAnswers": [0],
+              "explanation": "坐 marque le taxi comme moyen de transport."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Demander son chemin",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Quiz 01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions servent à demander un itinéraire ?",
+              "options": [
+                "怎么走 zěnme zǒu",
+                "在哪里 zài nǎlǐ",
+                "多少钱 duōshao qián",
+                "几点 jǐ diǎn"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "怎么走 et 在哪里 orientent vers un lieu ou un chemin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "怎么走 zěnme zǒu veut dire…",
+              "options": [
+                "Comment y aller ? / Comment marcher ?",
+                "Combien ça coûte ?",
+                "Quelle heure est-il ?",
+                "Quel est ton nom ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "怎么 zěnme « comment » + 走 zǒu « aller à pied / prendre un chemin »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "去地铁站怎么走？ qù dìtiě zhàn zěnme zǒu ? : …",
+              "options": [
+                "Comment aller à la station de métro ?",
+                "Où est ton chat ?",
+                "Quelle est ta couleur préférée ?",
+                "Veux-tu manger ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "去 … 怎么走 est la formule standard pour demander la route."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "怎么 zěnme demande surtout…",
+              "options": [
+                "La manière / comment",
+                "La couleur",
+                "Le poids",
+                "L'âge du soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "怎么 interroge sur la façon de faire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réponse courte : « tout droit » …",
+              "options": [
+                "直走 zhí zǒu",
+                "左转 zuǒ zhuǎn",
+                "睡觉 shuìjiào",
+                "吃饭 chīfàn"
+              ],
+              "correctAnswers": [0],
+              "explanation": "直 zhí « droit » + 走 « marcher »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "请 qǐng devant une question : …",
+              "options": [
+                "Politesse (« s'il vous plaît »)",
+                "Colère",
+                "Refus",
+                "Sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请 adoucit la demande d'itinéraire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "请问 qǐngwèn s'emploie pour…",
+              "options": [
+                "Demander poliment (excusez-moi, puis question)",
+                "Crier",
+                "Couper la parole",
+                "Partir sans réponse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请问 ouvre souvent une question à un passant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "到 dào dans « 怎么到 …？ zěnme dào … ? » : …",
+              "options": ["Arriver / atteindre", "Manger", "Dormir", "Lire"],
+              "correctAnswers": [0],
+              "explanation": "怎么到 interroge sur l'arrivée à un lieu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tu ne connais pas la rue : tu demandes…",
+              "options": [
+                "这条路怎么走？ zhè tiáo lù zěnme zǒu ?",
+                "这条路多少钱？ zhè tiáo lù duōshao qián ?",
+                "这条路几点？ zhè tiáo lù jǐ diǎn ?",
+                "这条路是什么颜色？ zhè tiáo lù shì shénme yánsè ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "路 lù est la rue ; 怎么走 demande le parcours."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "条 tiáo avec 路 lù : …",
+              "options": [
+                "Classificateur pour routes",
+                "Classificateur pour liquides seulement",
+                "Verbe « courir »",
+                "Adjectif « bleu »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一条路 : « une route » (条 pour objets longs)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Quiz 02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions localisent un lieu ?",
+              "options": [
+                "在哪里 zài nǎlǐ",
+                "在哪儿 zài nǎr",
+                "为什么 wèishénme",
+                "怎么样 zěnmeyàng"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "在哪里 et 在哪儿 demandent « où ? » (registres proches)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "在哪里 zài nǎlǐ : …",
+              "options": [
+                "Où est-ce ? / Où se trouve… ?",
+                "Pourquoi ?",
+                "Combien ?",
+                "Qui ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 situe ; 哪里 / 哪儿 « où »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "地铁站在哪里？ dìtiě zhàn zài nǎlǐ ? : …",
+              "options": [
+                "Où est la station de métro ?",
+                "Quelle heure est-il ?",
+                "Quel est ton sport ?",
+                "Combien de frères as-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On place le lieu avant 在哪里."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "在 zài indique souvent…",
+              "options": [
+                "Position / être à un endroit",
+                "Couleur",
+                "Nombre",
+                "Goût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 marque la localisation."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "这里 zhèlǐ : …",
+              "options": [
+                "Ici",
+                "Là-bas",
+                "Nulle part",
+                "Partout dans l'espace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这里 désigne le lieu proche de l'orateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "那里 nàlǐ : …",
+              "options": [
+                "Là-bas",
+                "Ici",
+                "Devant toi seulement",
+                "Sous terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "那里 pointe un endroit plus éloigné."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "附近 fùjìn : …",
+              "options": [
+                "Aux alentours / à proximité",
+                "Très loin",
+                "Au pôle Nord",
+                "Dans le passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "附近 aide quand le lieu est « près d'ici »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "银行在这附近 yínháng zài zhè fùjìn : …",
+              "options": [
+                "La banque est par ici / dans le coin",
+                "La banque est sur la lune",
+                "La banque est un oiseau",
+                "La banque n'existe pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "这附近 précise « dans les environs immédiats »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "对面 duìmiàn : …",
+              "options": ["En face", "Derrière", "Sous", "Dans le sac"],
+              "correctAnswers": [0],
+              "explanation": "对面 situe un repère vis-à-vis."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "商店在马路对面 shāngdiàn zài mǎlù duìmiàn : …",
+              "options": [
+                "Le magasin est de l'autre côté de la route",
+                "Le magasin vole",
+                "Le magasin est une école",
+                "Le magasin est fermé pour toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "马路 duìmiàn : de l'autre côté de la rue."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Quiz 03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots donnent une direction à suivre ?",
+              "options": [
+                "直走 zhí zǒu",
+                "左转 zuǒ zhuǎn",
+                "睡觉 shuìjiào",
+                "游泳 yóuyǒng"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "直走 et 左转 orientent le passant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "左转 zuǒ zhuǎn : …",
+              "options": [
+                "Tourner à gauche",
+                "Tourner à droite",
+                "Monter au ciel",
+                "Descendre sous l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "左 zuǒ + 转 zhuǎn « tourner »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "右转 yòu zhuǎn : …",
+              "options": [
+                "Tourner à droite",
+                "Aller tout droit",
+                "Reculer",
+                "Sauter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "右 yòu indique la direction droite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "往 wǎng dans « 往左走 wǎng zuǒ zǒu » : …",
+              "options": [
+                "Vers (direction)",
+                "Sans",
+                "Contre",
+                "Autour de la lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "往 marque la direction vers laquelle on va."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "一直 yīzhí avec 走 : …",
+              "options": [
+                "Tout droit / continuer",
+                "S'arrêter",
+                "Tourner en rond",
+                "Revenir en arrière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一直走 : « continue tout droit »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "到第二个路口 dào dì èr ge lùkǒu : …",
+              "options": [
+                "Jusqu'au deuxième carrefour",
+                "Jusqu'à la mer",
+                "Jusqu'à minuit",
+                "Jusqu'au sommet de l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "路口 lùkǒu est le carrefour."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "然后 ránhòu : …",
+              "options": ["Ensuite / puis", "Avant", "Jamais", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "然后 enchaîne les étapes de l'itinéraire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "第一个 dì yī ge : …",
+              "options": ["Le premier", "Le dernier", "Le milieu", "Le zéro"],
+              "correctAnswers": [0],
+              "explanation": "第一 « premier » compte les rues ou feux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "过马路 guò mǎlù : …",
+              "options": [
+                "Traverser la route",
+                "Construire un pont",
+                "Peindre un mur",
+                "Fermer la rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "过 guò « traverser » + 马路."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Instruction sûre au feu : …",
+              "options": [
+                "等绿灯 děng lǜdēng",
+                "跑红灯 pǎo hóngdēng",
+                "闭眼睛 bì yǎnjing",
+                "扔手机 rēng shǒujī"
+              ],
+              "correctAnswers": [0],
+              "explanation": "等绿灯 : attendre le feu vert."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Quiz 04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots situent devant ou derrière ?",
+              "options": [
+                "前面 qiánmiàn",
+                "后面 hòumiàn",
+                "里面 lǐmiàn",
+                "上面 shàngmiàn"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "前面 et 后面 indiquent avant et arrière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "前面 qiánmiàn : …",
+              "options": ["Devant", "Derrière", "À l'intérieur", "Au-dessus"],
+              "correctAnswers": [0],
+              "explanation": "前 qián « devant » + 面 « face »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "后面 hòumiàn : …",
+              "options": [
+                "Derrière",
+                "Devant",
+                "Sous la table",
+                "Dans le ciel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "后 hòu signifie « arrière »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "银行在前面 yínháng zài qiánmiàn : …",
+              "options": [
+                "La banque est devant",
+                "La banque est derrière",
+                "La banque est un rêve",
+                "La banque est fermée hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在 qiánmiàn localise devant toi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "学校在邮局后面 xuéxiào zài yóujú hòumiàn : …",
+              "options": [
+                "L'école est derrière la poste",
+                "L'école est sur la lune",
+                "L'école est un bus",
+                "L'école est une pomme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "邮局 yóujú est le bureau de poste, repère spatial."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "邮局 yóujú : …",
+              "options": ["Bureau de poste", "Hôpital", "Stade", "Restaurant"],
+              "correctAnswers": [0],
+              "explanation": "邮 « poste » + 局 « bureau »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "旁边 pángbiān : …",
+              "options": [
+                "À côté",
+                "Loin",
+                "En haut",
+                "Dehors seulement la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "旁边 précise « à côté de » un repère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "地铁站在商店旁边 dìtiě zhàn zài shāngdiàn pángbiān : …",
+              "options": [
+                "La station est à côté du magasin",
+                "La station est dans l'océan",
+                "La station est une chanson",
+                "La station est un stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "旁边 lie deux lieux voisins."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "东 dōng / 西 xī / 南 nán / 北 běi sont…",
+              "options": [
+                "Les points cardinaux",
+                "Des fruits",
+                "Des animaux",
+                "Des verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils servent parfois dans les indications urbaines."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "往北走 wǎng běi zǒu : …",
+              "options": [
+                "Marcher vers le nord",
+                "Marcher vers le sud",
+                "Manger du riz",
+                "Dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "往 + point cardinal + 走 donne la direction."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Quiz 05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots concernent lire un plan ?",
+              "options": ["地图 dìtú", "路 lù", "糖 táng", "猫 māo"],
+              "correctAnswers": [0, 1],
+              "explanation": "地图 montre les routes ; 路 désigne les rues."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "地图 dìtú : …",
+              "options": ["Carte / plan", "Téléphone", "Chaussure", "Gateau"],
+              "correctAnswers": [0],
+              "explanation": "地 « terre » + 图 « dessin / carte »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "看地图 kàn dìtú : …",
+              "options": [
+                "Regarder la carte",
+                "Manger la carte",
+                "Jeter la carte",
+                "Peindre un chat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "看 « regarder » aide à se repérer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "手机地图 shǒujī dìtú : …",
+              "options": [
+                "Carte sur le téléphone",
+                "Carte sur la lune",
+                "Carte en chocolat",
+                "Carte sans rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "手机 shǒujī est le portable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "位置 wèizhi : …",
+              "options": [
+                "Position / emplacement",
+                "Couleur",
+                "Musique",
+                "Parfum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "位置 indique où l'on se trouve sur la carte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "导航 dǎoháng : …",
+              "options": ["GPS / navigation", "Cuisine", "Sport", "Poésie"],
+              "correctAnswers": [0],
+              "explanation": "导航 guide pas à pas comme 怎么走."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "标 biāo dans « 标记 biāojì » : …",
+              "options": ["Marquer un point", "Effacer", "Cacher", "Oublier"],
+              "correctAnswers": [0],
+              "explanation": "On marque la destination sur la carte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "东北 dōngběi est…",
+              "options": ["Nord-est", "Sud-ouest", "Un métier", "Un légume"],
+              "correctAnswers": [0],
+              "explanation": "Combinaison de 东 et 北."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "距离 jùlí : …",
+              "options": ["Distance", "Heure", "Prix", "Nom"],
+              "correctAnswers": [0],
+              "explanation": "距离 aide à estimer la marche ou le trajet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si tu es perdu, tu peux…",
+              "options": [
+                "看地图 kàn dìtú",
+                "闭眼睛 bì yǎnjing",
+                "扔手机 rēng shǒujī",
+                "忘记路 wàngjì lù"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La carte complète une question 怎么走."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Quiz 06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes évoquent être perdu ou chercher ?",
+              "options": ["迷路 mílù", "找 zhǎo", "听 tīng", "洗 xǐ"],
+              "correctAnswers": [0, 1],
+              "explanation": "迷路 « s'être perdu » ; 找 « chercher »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "迷路 mílù : …",
+              "options": [
+                "Se perdre / être perdu",
+                "Trouver facilement",
+                "Manger",
+                "Danser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "迷 mí « perdre le chemin » + 路 lù."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "我迷路了 wǒ mílù le : …",
+              "options": [
+                "Je suis perdu",
+                "Je suis content",
+                "Je suis à l'heure",
+                "Je suis chez moi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 marque la situation actuelle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "找 zhǎo : …",
+              "options": ["Chercher", "Vendre", "Casser", "Peindre"],
+              "correctAnswers": [0],
+              "explanation": "找 la gare : chercher la station."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "帮 bāng dans « 帮我 bāng wǒ » : …",
+              "options": ["Aider", "Ignorer", "Moquer", "Punir"],
+              "correctAnswers": [0],
+              "explanation": "帮我怎么走 : « aide-moi (à savoir) comment aller »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "可以 kěyǐ … 吗 ma ? : …",
+              "options": [
+                "Demande polie de permission",
+                "Ordre impoli",
+                "Insulte",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "可以…吗 adoucit « puis-je… ? »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "对不起 duìbuqǐ : …",
+              "options": [
+                "Désolé / excusez-moi",
+                "Merci beaucoup",
+                "Au revoir",
+                "Bon anniversaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On s'excuse avant de déranger pour un itinéraire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "谢谢 xièxie après une aide : …",
+              "options": ["Remercier", "Refuser", "Crier", "Partir sans mot"],
+              "correctAnswers": [0],
+              "explanation": "谢谢 clôt poliment l'échange."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "知道 zhīdào : …",
+              "options": ["Savoir / connaître", "Oublier", "Douter", "Rêver"],
+              "correctAnswers": [0],
+              "explanation": "你知道怎么走吗？ : « sais-tu comment y aller ? »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "不客气 bú kèqi répond à…",
+              "options": ["谢谢", "再见", "你好", "对不起"],
+              "correctAnswers": [0],
+              "explanation": "不客气 : « je t'en prie » après merci."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Quiz 07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots parlent d'arriver ?",
+              "options": ["到 dào", "到达 dàodá", "离开 líkāi", "出发 chūfā"],
+              "correctAnswers": [0, 1],
+              "explanation": "到 et 到达 signalent l'arrivée ; 离开/出发 le départ."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "到达 dàodá : …",
+              "options": [
+                "Arriver (à destination)",
+                "Partir",
+                "Tourner",
+                "Sauter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "到达 est plus formel que 到了."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "离 lí dans « 离这里很远 lí zhèlǐ hěn yuǎn » : …",
+              "options": [
+                "Être à (distance) de",
+                "Manger avec",
+                "Dormir sur",
+                "Courir sans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "离 mesure la distance par rapport à un point."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "走十分钟就到 zǒu shí fēnzhōng jiù dào : …",
+              "options": [
+                "En dix minutes de marche, on arrive",
+                "En dix heures de sommeil",
+                "En dix livres",
+                "En dix chats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "就 dào enchaîne rapidité et arrivée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "入口在前面 rùkǒu zài qiánmiàn : …",
+              "options": [
+                "L'entrée est devant",
+                "La sortie est derrière la lune",
+                "Le mur parle",
+                "La porte est un bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère spatial pour entrer dans un bâtiment."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "出口 chūkǒu pour sortir du métro : …",
+              "options": ["Sortie", "Cuisine", "Toit", "Jardin secret"],
+              "correctAnswers": [0],
+              "explanation": "On cherche 出口 pour quitter la station."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "就 jiu dans « 就在附近 jiù zài fùjìn » : …",
+              "options": [
+                "Justement / tout près",
+                "Très loin",
+                "Jamais",
+                "Hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "就在 insiste : c'est vraiment proche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "看见 kànjiàn : …",
+              "options": ["Voir / apercevoir", "Entendre", "Sentir", "Goûter"],
+              "correctAnswers": [0],
+              "explanation": "看见 la station : l'apercevoir au loin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "那个 nàge + bâtiment : …",
+              "options": [
+                "Ce bâtiment-là (au loin)",
+                "Ce stylo",
+                "Cette pomme",
+                "Cette chanson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "那个 pointe un repère visible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "到了请告诉我 dàole qǐng gàosu wǒ : …",
+              "options": [
+                "Dis-moi quand on arrive",
+                "Mange quand on arrive",
+                "Dors quand on arrive",
+                "Crie quand on arrive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "告诉 gàosu : informer de l'arrivée."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Quiz 08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels repères urbains guident dans la rue ?",
+              "options": [
+                "红绿灯 hónglǜdēng",
+                "路口 lùkǒu",
+                "牛奶 niúnǎi",
+                "铅笔 qiānbǐ"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Feux et carrefours structurent les indications."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "红绿灯 hónglǜdēng : …",
+              "options": ["Feu tricolore", "Lampe de poche", "Stylo", "Chaise"],
+              "correctAnswers": [0],
+              "explanation": "红 rouge + 绿 vert + 灯 lumière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "路口 lùkǒu : …",
+              "options": ["Carrefour", "Pont", "Tunnel seul", "Plage"],
+              "correctAnswers": [0],
+              "explanation": "路 + 口 « bouche » : intersection."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "桥 qiáo : …",
+              "options": ["Pont", "Tour", "Ciel", "Nuage"],
+              "correctAnswers": [0],
+              "explanation": "过桥 guò qiáo : traverser le pont."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "广场 guǎngchǎng : …",
+              "options": ["Place publique", "Couloir", "Cave", "Grenier"],
+              "correctAnswers": [0],
+              "explanation": "Place repère fréquent dans les villes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "丁字路口 dīngzì lùkǒu ressemble à…",
+              "options": [
+                "Un carrefour en T",
+                "Un cercle parfait",
+                "Une étoile",
+                "Un triangle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "丁 évoque la forme en T de la rue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "人行道 rénxíngdào : …",
+              "options": ["Trottoir", "Piste d'avion", "Rivière", "Toit"],
+              "correctAnswers": [0],
+              "explanation": "人行 « marche piétonne » + 道 voie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "别 bie dans « 别过马路 bié guò mǎlù » : …",
+              "options": [
+                "Ne pas (interdiction douce)",
+                "Encore",
+                "Toujours",
+                "Peut-être"
+              ],
+              "correctAnswers": [0],
+              "explanation": "别 interdit de traverser au mauvais moment."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "安全岛 ānquándǎo (concept) : …",
+              "options": [
+                "Refuge au milieu de la route",
+                "Île tropicale",
+                "Banc de poissons",
+                "Nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zone intermédiaire pour traverser en deux temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "过了桥右转 guòle qiáo yòu zhuǎn : …",
+              "options": [
+                "Après le pont, tourne à droite",
+                "Avant le pont, dors",
+                "Sous le pont, mange",
+                "Sans pont, vole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "过了 marque l'étape une fois le pont passé."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Quiz 09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules sont polies pour demander la route ?",
+              "options": [
+                "请问 qǐngwèn",
+                "麻烦您 máfan nín",
+                "滚 gǔn",
+                "闭嘴 bì zuǐ"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "请问 et 麻烦您 restent courtois ; les autres sont impolis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "麻烦您了 máfan nín le : …",
+              "options": [
+                "Désolé de vous déranger",
+                "Je vous insulte",
+                "Je pars",
+                "Je m'en fiche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "麻烦 admet qu'on sollicite l'autre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "您好 nín hǎo s'adresse à…",
+              "options": [
+                "Quelqu'un qu'on respecte (您)",
+                "Un animal",
+                "Un mur",
+                "Une voiture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "您 est le vous de politesse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "打扰一下 dǎrǎo yīxià : …",
+              "options": [
+                "Excusez-moi (je vous interromps)",
+                "Félicitations",
+                "Bonne nuit",
+                "Bon voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On lance ainsi une question dans la rue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "是不是在左边？ shì bu shì zài zuǒbian ? : …",
+              "options": [
+                "Est-ce que c'est à gauche ?",
+                "Est-ce que c'est bon à manger ?",
+                "Est-ce que c'est minuit ?",
+                "Est-ce que c'est un chat ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "是不是 demande une confirmation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "对 duì quand tu confirmes : …",
+              "options": ["Oui / c'est correct", "Non", "Peut-être", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "对 valide une indication entendue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "不对 bú duì : …",
+              "options": [
+                "Ce n'est pas correct",
+                "C'est parfait",
+                "C'est loin",
+                "C'est proche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不对 corrige une mauvaise direction."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "再说一遍 zàishuō yī biàn : …",
+              "options": [
+                "Répétez s'il vous plaît",
+                "Chantez",
+                "Courez",
+                "Partez"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Utile si tu n'as pas saisi 怎么走."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "慢走 màn zǒu au revoir : …",
+              "options": [
+                "« Allez doucement » (politesse)",
+                "« Courez vite »",
+                "« Sautez »",
+                "« Dormez »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule amicale en se quittant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combinaison typique : …",
+              "options": [
+                "请问，地铁站怎么走？ qǐngwèn, dìtiě zhàn zěnme zǒu ?",
+                "请问，地铁站多少钱？ qǐngwèn, dìtiě zhàn duōshao qián ?",
+                "请问，地铁站是什么？ qǐngwèn, dìtiě zhàn shì shénme ?",
+                "请问，地铁站睡觉？ qǐngwèn, dìtiě zhàn shuìjiào ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请问 + lieu + 怎么走 est le modèle clé de 5e."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Quiz 10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments résument « demander son chemin » ?",
+              "options": [
+                "怎么走 zěnme zǒu",
+                "在哪里 zài nǎlǐ",
+                "左边 zuǒbian",
+                "右边 yòubian"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Demander puis orienter avec où et comment."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Itinéraire : métro puis marche…",
+              "options": [
+                "先坐地铁，再走五分钟 xiān zuò dìtiě, zài zǒu wǔ fēnzhōng",
+                "先睡觉，再吃饭 xiān shuìjiào, zài chīfàn",
+                "先写字，再游泳 xiān xiězì, zài yóuyǒng",
+                "先猫，再狗 xiān māo, zài gǒu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "先…再… enchaîne les étapes du trajet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tu confirmes : « à droite » …",
+              "options": [
+                "右边 yòubian",
+                "左边 zuǒbian",
+                "上面 shàngmiàn",
+                "里面 lǐmiàn"
+              ],
+              "correctAnswers": [0],
+              "explanation": "右边 rappelle la direction droite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tu confirmes : « à gauche » …",
+              "options": ["左边 zuǒbian", "右边 yòubian", "远 yuǎn", "近 jìn"],
+              "correctAnswers": [0],
+              "explanation": "左边 est la traduction directe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où est l'entrée du métro ? …",
+              "options": [
+                "地铁入口在哪里？ dìtiě rùkǒu zài nǎlǐ ?",
+                "地铁入口多少钱？ dìtiě rùkǒu duōshao qián ?",
+                "地铁入口几点？ dìtiě rùkǒu jǐ diǎn ?",
+                "地铁入口是什么颜色？ dìtiě rùkǒu shì shénme yánsè ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在哪里 localise l'entrée 入口."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponse : deux rues plus loin…",
+              "options": [
+                "再走两条路 zài zǒu liǎng tiáo lù",
+                "再吃两条路 zài chī liǎng tiáo lù",
+                "再听两条路 zài tīng liǎng tiáo lù",
+                "再睡两条路 zài shuì liǎng tiáo lù"
+              ],
+              "correctAnswers": [0],
+              "explanation": "再 zǒu continue le parcours ; 两条路 deux rues."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si tu vois 地铁 dìtiě sur un panneau…",
+              "options": [
+                "Tu es près d'une station ou ligne",
+                "Tu es dans une bibliothèque",
+                "Tu es sous l'eau",
+                "Tu es dans l'espace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pictogramme ou le mot guide vers le métro."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "迷路时 mílù shí tu demandes…",
+              "options": [
+                "请问，我现在在哪里？ qǐngwèn, wǒ xiànzài zài nǎlǐ ?",
+                "请问，我现在吃什么？ qǐngwèn, wǒ xiànzài chī shénme ?",
+                "请问，我现在几岁？ qǐngwèn, wǒ xiànzài jǐ suì ?",
+                "请问，我现在是什么颜色？ qǐngwèn, wǒ xiànzài shì shénme yánsè ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在哪里 recentre ta position quand tu es perdu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase complète : …",
+              "options": [
+                "从这儿怎么走才能到公园？ cóng zhèr zěnme zǒu cái néng dào gōngyuán ?",
+                "从这儿怎么睡才能到公园？ cóng zhèr zěnme shuì cái néng dào gōngyuán ?",
+                "从这儿怎么吃才能到公园？ cóng zhèr zěnme chī cái néng dào gōngyuán ?",
+                "从这儿怎么听才能到公园？ cóng zhèr zěnme tīng cái néng dào gōngyuán ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "从 « partir de » + 怎么走 + 到 « arriver au parc »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif du chapitre : …",
+              "options": [
+                "Se déplacer en ville et demander son chemin en chinois",
+                "Cuisiner des plats français",
+                "Étudier les planètes",
+                "Apprendre le latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voyage et ville : transports, directions, politesse."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -27,7 +27,6 @@ import openFoodFactsPluginManifest from "./open-food-facts/index.json";
 import openLibraryPluginManifest from "./open-library/index.json";
 import openalexPluginManifest from "./openalex/index.json";
 import posthogPluginManifest from "./posthog/index.json";
-import quizzlyPluginManifest from "./quizzly/index.json";
 import resendPluginManifest from "./resend/index.json";
 import sentryPluginManifest from "./sentry/index.json";
 import sonarcloudPluginManifest from "./sonarcloud/index.json";
@@ -75,7 +74,6 @@ export const PLUGIN_MANIFESTS = [
   openLibraryPluginManifest,
   openalexPluginManifest,
   posthogPluginManifest,
-  quizzlyPluginManifest,
   resendPluginManifest,
   sentryPluginManifest,
   sonarcloudPluginManifest,

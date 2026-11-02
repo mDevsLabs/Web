@@ -1,0 +1,2718 @@
+{
+  "id": "2nde-ses-04",
+  "year": "2nde",
+  "subject": "ses",
+  "title": "Marché et prix",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Offre et demande",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Qu'est-ce qu'un marché ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En sciences économiques, comment définit-on un marché ?",
+              "options": [
+                "Un lieu uniquement physique réservé aux commerçants ambulants",
+                "Un lieu réel ou fictif de rencontre entre offreurs et demandeurs",
+                "Un bâtiment administratif géré par le ministère de l'Économie",
+                "Un accord politique fixant les salaires minimaux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le marché est le lieu, réel ou virtuel, où se rencontrent des offreurs et des demandeurs pour échanger des biens ou services."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur quel marché s'échangent la force de travail et les rémunérations ?",
+              "options": [
+                "Le marché des biens et services",
+                "Le marché des capitaux",
+                "Le marché du travail",
+                "Le marché des devises"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Sur le marché du travail, les salariés offrent leur force de travail en échange d'un salaire proposé par les employeurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel exemple correspond à un marché dématérialisé (fictif ou en ligne) ?",
+              "options": [
+                "La foire agricole de votre village",
+                "Le marché couvert de fruits et légumes",
+                "Une plateforme de commerce en ligne",
+                "La halle aux poissons municipale"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les plateformes de e-commerce permettent des échanges sans présence physique simultanée des acheteurs et des vendeurs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur le marché des capitaux, que rencontre l'offre de financement ?",
+              "options": [
+                "Des biens manufacturés",
+                "Une demande de fonds prêtables ou d'investissement",
+                "Des matières premières agricoles",
+                "Des heures de travail non qualifié"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le marché des capitaux met en relation les agents ayant une capacité de financement avec ceux ayant un besoin de financement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que permet la monnaie dans les échanges marchands par rapport au troc ?",
+              "options": [
+                "Elle oblige à échanger deux marchandises de même nature",
+                "Elle facilite les échanges en servant d'intermédiaire universel",
+                "Elle rend les échanges impossibles à distance",
+                "Elle supprime la fixation de tout prix"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La monnaie évite la double coïncidence des désirs requise par le troc et sert d'étalon de valeur et de moyen de paiement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qui sont généralement les offreurs sur le marché des biens de consommation courante ?",
+              "options": [
+                "Les ménages acheteurs",
+                "Les entreprises productrices",
+                "Les banques centrales uniquement",
+                "Les tribunaux de commerce"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les entreprises produisent et proposent des biens et services destinés à satisfaire les besoins des demandeurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qui sont les demandeurs sur le marché du travail ?",
+              "options": [
+                "Les employeurs cherchant de la main-d'œuvre",
+                "Les demandeurs d'emploi proposant leurs compétences",
+                "Les clients des supermarchés",
+                "Les actionnaires recevant des dividendes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention au vocabulaire économique : les employeurs sont demandeurs de travail, tandis que les travailleurs offrent leur force de travail."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel marché met en relation les devises étrangères comme l'euro et le dollar ?",
+              "options": [
+                "Le marché boursier des obligations",
+                "Le marché des changes (Forex)",
+                "Le marché immobilier résidentiel",
+                "Le marché des produits dérivés agricoles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le marché des changes est le marché sur lequel s'échangent les monnaies nationales à un certain taux de change."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel terme désigne la quantité totale d'un bien que les acheteurs souhaitent acquérir à un prix donné ?",
+              "options": [
+                "L'offre globale",
+                "La demande",
+                "Le coût marginal",
+                "Le bénéfice brut"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La demande correspond à la quantité de biens ou services que les consommateurs sont disposés à acheter à un prix déterminé."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques s'appliquent à la notion de marché en économie ?",
+              "options": [
+                "Il peut être physique ou virtuel",
+                "Il concerne uniquement les denrées alimentaires",
+                "Il conduit à la formation d'un prix d'échange",
+                "Il exclut toujours l'utilisation de monnaie"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un marché peut être concret ou dématérialisé et aboutit à la fixation d'un prix permettant la transaction."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les institutions et règles du marché",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que le marché est une construction sociale et institutionnelle ?",
+              "options": [
+                "Car il fonctionne spontanément dans la nature sans aucune règle",
+                "Car il nécessite des règles, des lois et de la confiance pour fonctionner",
+                "Car seuls les sociologues ont le droit de fixer les prix",
+                "Car il est interdit par les constitutions démocratiques"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sans cadre juridique, sans respect des contrats ni monnaie stable, les transactions marchandes ne peuvent pas se développer sereinement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel droit garantit à un propriétaire la possibilité d'utiliser, de vendre ou de louer son bien ?",
+              "options": [
+                "Le droit de vote",
+                "Le droit de propriété",
+                "Le droit de grève",
+                "Le droit d'asile"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le droit de propriété sécurise les investissements et permet d'échanger légalement des biens sur un marché."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que protège un brevet d'invention accordé à une entreprise ?",
+              "options": [
+                "Un monopole temporaire d'exploitation d'une innovation technique",
+                "L'obligation de donner gratuitement tous ses produits",
+                "L'exonération totale et définitive de tout impôt",
+                "Le droit de fixer les salaires des fonctionnaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le brevet est un droit de propriété intellectuelle qui incite à l'innovation en accordant une exclusivité temporaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle institution publique veille en France au respect de la concurrence et sanctionne les ententes illicites ?",
+              "options": [
+                "L'Autorité de la concurrence",
+                "L'Académie française",
+                "La Cour des comptes uniquement",
+                "Le Conseil d'État pour les affaires privées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Autorité de la concurrence régule les marchés, surveille les fusions et sanctionne les abus de position dominante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que se passerait-il sur un marché si la confiance entre acheteurs et vendeurs disparaissait totalement ?",
+              "options": [
+                "Le nombre de transactions augmenterait fortement",
+                "Les transactions s'effondreraient en raison des risques de fraude",
+                "Les prix deviendraient automatiquement nuls",
+                "Tous les biens deviendraient gratuits"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La confiance est une institution invisible indispensable : sans elle, la peur de ne pas être payé ou livré bloque les échanges."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel rôle joue un contrat commercial lors d'une transaction importante ?",
+              "options": [
+                "Il supprime toute obligation entre les signataires",
+                "Il formalise les engagements et permet un recours judiciaire en cas de litige",
+                "Il interdit à l'acheteur d'utiliser le produit",
+                "Il oblige l'État à payer la facture"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le contrat définit les droits et devoirs de chaque partie et peut être exécuté sous la contrainte de la justice en cas de manquement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi les normes sanitaires et de sécurité sont-elles imposées par la loi sur les marchés ?",
+              "options": [
+                "Pour réduire volontairement l'espérance de vie des consommateurs",
+                "Pour protéger les consommateurs et garantir la qualité minimale des produits",
+                "Pour interdire définitivement le commerce extérieur",
+                "Pour obliger les clients à payer en espèces"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les normes protègent la santé publique et rassurent les acheteurs sur la conformité des produits mis en vente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le droit de propriété intellectuelle concernant les œuvres littéraires et artistiques ?",
+              "options": [
+                "Le droit de douane",
+                "Le droit d'auteur",
+                "Le droit maritime",
+                "Le droit constitutionnel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le droit d'auteur protège les créations artistiques et permet à leurs créateurs de percevoir des revenus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle conséquence a l'absence de droits de propriété clairement définis sur une ressource naturelle ?",
+              "options": [
+                "Une préservation parfaite et éternelle de la ressource",
+                "Le risque de surexploitation connu sous le nom de tragédie des biens communs",
+                "Une hausse spontanée des prix de cette ressource",
+                "Une distribution égalitaire garantie par les tribunaux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sans droit de propriété ni régulation, chacun a intérêt à puiser au maximum dans la ressource, ce qui conduit à son épuisement."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels éléments font partie des institutions indispensables au bon fonctionnement d'une économie de marché ?",
+              "options": [
+                "Les droits de propriété garantis par l'État",
+                "La possibilité de rompre les contrats sans conséquence juridique",
+                "Une monnaie stable acceptée par tous",
+                "L'absence totale de tout système judiciaire"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les droits de propriété et la monnaie sont deux piliers institutionnels indispensables au commerce pacifié."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La demande et la loi de la demande",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que stipule la loi générale de la demande toutes choses égales par ailleurs ?",
+              "options": [
+                "Quand le prix d'un bien augmente, la quantité demandée augmente",
+                "Quand le prix d'un bien augmente, la quantité demandée diminue",
+                "Le prix n'a aucune influence sur les décisions d'achat",
+                "La demande est toujours égale à l'offre quel que soit le prix"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La loi de la demande indique une relation décroissante entre le prix d'un bien et la quantité demandée par les consommateurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle expression latine les économistes utilisent-ils pour dire 'toutes choses égales par ailleurs' ?",
+              "options": [
+                "Carpe diem",
+                "Ceteris paribus",
+                "Ad hoc",
+                "De facto"
+              ],
+              "correctAnswers": [1],
+              "explanation": "'Ceteris paribus' signifie que l'on étudie l'impact d'une seule variable en supposant que toutes les autres restent inchangées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si le prix des fraises baisse de 50 %, que va faire en général la quantité demandée de fraises ?",
+              "options": [
+                "Elle va diminuer",
+                "Elle va augmenter",
+                "Elle va tomber à zéro",
+                "Elle restera rigoureusement constante pour tous"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une baisse du prix rend le bien plus accessible et attrayant, incitant les consommateurs à en acheter davantage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la disposition à payer d'un consommateur ?",
+              "options": [
+                "Le montant maximal qu'il est prêt à dépenser pour acquérir un bien",
+                "Le montant exact de son salaire mensuel",
+                "Le prix minimal exigé par le commerçant",
+                "La taxe imposée par les services fiscaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La disposition à payer mesure la valeur monétaire que le consommateur accorde à la satisfaction procurée par le bien."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on deux biens qui peuvent satisfaire le même besoin (comme le beurre et la margarine) ?",
+              "options": [
+                "Des biens complémentaires",
+                "Des biens substituables",
+                "Des biens inférieurs uniquement",
+                "Des biens collectifs purs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Des biens substituables sont interchangeables pour le consommateur s'il souhaite satisfaire un même usage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si le prix du café augmente fortement, comment va réagir la demande de thé (bien substituable) ?",
+              "options": [
+                "La demande de thé va baisser",
+                "La demande de thé va augmenter",
+                "La demande de thé va s'annuler",
+                "Le prix du thé va immédiatement chuter à zéro"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les consommateurs se reportent sur le produit substituable devenu relativement moins cher, ce qui augmente sa demande."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on deux biens consommés ensemble, comme la voiture et le carburant ?",
+              "options": [
+                "Des biens indépendants",
+                "Des biens substituables",
+                "Des biens complémentaires",
+                "Des biens de luxe superflus"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Deux biens sont dits complémentaires lorsque la consommation de l'un nécessite ou accompagne l'usage de l'autre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si le prix des cartouches d'imprimante explose, que risque-t-il d'arriver à la demande d'imprimantes ?",
+              "options": [
+                "Elle va fortement progresser",
+                "Elle va diminuer car l'usage de l'imprimante devient plus cher",
+                "Elle deviendra infinie",
+                "Elle ne changera absolument jamais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La hausse du prix d'un bien complémentaire renchérit le coût global d'utilisation et freine la demande du bien principal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel facteur autre que le prix peut faire varier la demande d'un bien ?",
+              "options": [
+                "Le revenu des consommateurs et leurs préférences",
+                "Le coût marginal de la dernière unité produite",
+                "La quantité offerte par les concurrents",
+                "La forme juridique de l'entreprise fabricante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le revenu, les goûts, la mode, la météo et la publicité sont des déterminants majeurs de la demande indépendamment du prix."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels effets expliquent pourquoi la courbe de demande est généralement décroissante avec le prix ?",
+              "options": [
+                "L'effet de substitution (on préfère d'autres biens devenus moins chers)",
+                "L'effet de revenu (la hausse du prix réduit le pouvoir d'achat réel)",
+                "L'obligation légale imposée par la police du commerce",
+                "La volonté des consommateurs de payer toujours plus cher"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quand le prix monte, le pouvoir d'achat diminue (effet revenu) et les biens alternatifs deviennent plus séduisants (effet substitution)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La courbe de demande",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Sur un graphique économique standard d'un marché, où place-t-on habituellement le prix ?",
+              "options": [
+                "Sur l'axe des abscisses (horizontal)",
+                "Sur l'axe des ordonnées (vertical)",
+                "Au centre du graphique en diagonale",
+                "En titre du graphique uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Selon la convention d'Alfred Marshall, le prix figure sur l'axe vertical (ordonnées) et les quantités sur l'axe horizontal (abscisses)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'allure habituelle de la courbe de demande dans le plan (quantité, prix) ?",
+              "options": [
+                "Une droite strictement verticale",
+                "Une courbe décroissante de gauche à droite (pente négative)",
+                "Une courbe croissante de gauche à droite (pente positive)",
+                "Une droite parfaitement horizontale à zéro"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plus le prix est élevé, plus la quantité demandée est faible, ce qui donne une pente négative à la courbe de demande."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que traduit un déplacement LE LONG de la courbe de demande ?",
+              "options": [
+                "Un changement des goûts des consommateurs",
+                "Une variation de la quantité demandée suite à une variation du prix du bien",
+                "Une modification de la population totale",
+                "Une hausse soudaine du revenu disponible des ménages"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Lorsque seul le prix du bien varie, on se déplace le long de la même courbe de demande sans en changer la position."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que provoque une hausse générale des revenus des ménages sur la courbe de demande d'un bien normal ?",
+              "options": [
+                "Un déplacement de toute la courbe vers la droite",
+                "Un déplacement de toute la courbe vers la gauche",
+                "Aucun changement ni déplacement",
+                "Une rotation verticale vers le bas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À chaque niveau de prix, les consommateurs ont davantage de budget et demandent plus de quantités : la courbe se décale vers la droite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que provoque une campagne médiatique révélant la dangerosité d'un produit sur sa courbe de demande ?",
+              "options": [
+                "Un déplacement de la courbe vers la droite",
+                "Un déplacement de la courbe vers la gauche",
+                "Une hausse spontanée des quantités achetées",
+                "Une disparition du coût fixe de production"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La perte de confiance et la dégradation des préférences entraînent une baisse de la demande pour tout niveau de prix (vers la gauche)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un bien dont la demande diminue lorsque le revenu des consommateurs augmente ?",
+              "options": [
+                "Un bien normal",
+                "Un bien supérieur ou de luxe",
+                "Un bien inférieur",
+                "Un bien public"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les biens inférieurs (ex. produits d'entrée de gamme) sont délaissés au profit de biens de meilleure qualité quand le revenu s'accroît."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si le nombre d'acheteurs potentiels augmente fortement grâce à l'ouverture des frontières, la demande globale :",
+              "options": [
+                "Se déplace vers la gauche",
+                "Se déplace vers la droite",
+                "Reste exactement identique",
+                "Devient une droite verticale à quantité nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'accroissement de la taille du marché augmente les quantités demandées à chaque niveau de prix possible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si le prix d'un livre passe de 20 € à 15 €, graphiquement sur la courbe de demande :",
+              "options": [
+                "La courbe de demande tout entière se déplace vers le haut",
+                "On glisse le long de la courbe vers le bas à droite (la quantité demandée augmente)",
+                "La courbe se déplace vers la gauche",
+                "La courbe devient ascendante"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est une variation du prix du bien lui-même : on suit la courbe existante vers un niveau de quantité demandée plus grand."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment obtient-on la courbe de demande globale du marché à partir des demandes individuelles ?",
+              "options": [
+                "En multipliant les prix individuels entre eux",
+                "En sommant horizontalement les quantités demandées par chaque individu pour chaque prix",
+                "En divisant la quantité du premier acheteur par celle du dernier",
+                "En calculant la racine carrée des revenus disponibles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La demande de marché est l'agrégation horizontale des demandes de l'ensemble des consommateurs présents sur le marché."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels événements entraînent un déplacement de la courbe de demande d'un bien vers la droite ?",
+              "options": [
+                "Une hausse du prix d'un produit substituable",
+                "Une hausse du revenu des consommateurs pour un bien normal",
+                "Une hausse du coût de production de l'offreur",
+                "Une taxe carbone frappant directement les usines fabricantes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La hausse du prix d'un substitut reporte les achats vers ce bien, et la hausse du pouvoir d'achat stimule la consommation."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "L'offre et la loi de l'offre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que stipule la loi générale de l'offre toutes choses égales par ailleurs ?",
+              "options": [
+                "Quand le prix augmente, la quantité offerte diminue",
+                "Quand le prix augmente, la quantité offerte augmente",
+                "Les producteurs fabriquent toujours la même quantité quel que soit le prix",
+                "L'offre est déterminée exclusivement par les goûts des consommateurs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La loi de l'offre indique une relation croissante : un prix plus élevé incite les entreprises à produire davantage pour accroître leur profit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi un producteur est-il incité à offrir plus d'unités lorsque le prix de vente monte ?",
+              "options": [
+                "Parce que cela lui permet de rentabiliser des coûts de production plus élevés",
+                "Parce qu'il cherche à faire faillite le plus rapidement possible",
+                "Parce que la loi lui interdit de faire des bénéfices",
+                "Parce que ses clients exigent de payer plus cher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un prix plus rémunérateur permet de couvrir des coûts marginaux croissants et d'espérer un bénéfice supérieur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est l'objectif principal d'une entreprise privée sur un marché concurrentiel ?",
+              "options": [
+                "Minimiser le bien-être de ses clients",
+                "Maximiser son profit (bénéfice)",
+                "Produire à perte pour épuiser ses stocks",
+                "Augmenter ses coûts de fabrication"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'entreprise cherche à maximiser la différence entre son chiffre d'affaires et l'ensemble de ses coûts de production."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le chiffre d'affaires (recette totale) d'une entreprise ?",
+              "options": [
+                "Prix unitaire multiplié par la quantité vendue",
+                "Prix unitaire moins le coût fixe",
+                "Coût total divisé par le nombre de salariés",
+                "Bénéfice net additionné aux impôts locaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La recette totale correspond au montant total des ventes : Recette = Prix x Quantité (RT = P x Q)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le profit économique d'une entreprise ?",
+              "options": [
+                "Chiffre d'affaires moins le coût total de production",
+                "Chiffre d'affaires multiplié par le prix de vente",
+                "Coût total divisé par les impôts sur les sociétés",
+                "Somme des salaires versés aux employés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le profit (ou résultat) est ce qui reste des recettes une fois payées toutes les dépenses de production (Profit = RT - CT)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si le prix de marché du blé s'effondre très en dessous des coûts des agriculteurs :",
+              "options": [
+                "Ils vont doubler immédiatement leurs surfaces cultivées",
+                "Ils réduiront leur production de blé ou se tourneront vers d'autres cultures",
+                "Leurs profits vont s'envoler vers des records historiques",
+                "La quantité offerte sur le marché augmentera spontanément"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Lorsque la vente devient non rentable, les offreurs réduisent leurs quantités offertes pour limiter leurs pertes financières."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel facteur parmi les suivants est un déterminant direct de l'offre ?",
+              "options": [
+                "Le coût des facteurs de production (travail et capital)",
+                "Le revenu disponible des acheteurs étrangers",
+                "La mode vestimentaire chez les lycéens",
+                "Le taux de natalité pour un marché de voitures de sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coût des matières premières, des machines et des salaires conditionne directement la capacité et l'intérêt d'offrir un bien."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que provoque l'arrivée de nouveaux concurrents sur un marché ?",
+              "options": [
+                "Une réduction drastique de l'offre totale",
+                "Une augmentation de la quantité totale offerte à chaque niveau de prix",
+                "L'annulation immédiate de toutes les ventes",
+                "La fixation obligatoire d'un prix infini"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plus il y a d'entreprises productrices sur un marché, plus l'offre agrégée disponible augmente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie être 'faiseur de prix' (price maker) comparé à 'preneur de prix' (price taker) ?",
+              "options": [
+                "Le faiseur de prix n'a aucune influence sur le prix",
+                "Le faiseur de prix possède un pouvoir de marché lui permettant d'influencer le prix de vente",
+                "Le preneur de prix décide unilatéralement du prix mondial",
+                "Les deux termes désignent exactement la même situation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En concurrence parfaite, les offreurs sont preneurs de prix, alors qu'en situation de monopole ou d'oligopole, ils peuvent fixer leur prix."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels facteurs incitent directement les offreurs à augmenter la quantité qu'ils mettent en vente ?",
+              "options": [
+                "Une augmentation du prix de vente sur le marché",
+                "Une baisse du coût des matières premières nécessaires à la fabrication",
+                "Une explosion du prix de l'électricité consommée par les usines",
+                "Une interdiction administrative de recruter des ouvriers"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un prix plus élevé ou des coûts allégés améliorent la rentabilité unitaire et encouragent la production."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La courbe d'offre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est l'allure habituelle de la courbe d'offre dans un repère (quantité en abscisse, prix en ordonnée) ?",
+              "options": [
+                "Décroissante de gauche à droite",
+                "Croissante de gauche à droite (pente positive)",
+                "Une courbe en cloche parfaite",
+                "Une ligne horizontale à prix nul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La courbe d'offre a une pente positive : plus le prix monte sur l'axe vertical, plus les offreurs proposent de grandes quantités."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que représente un déplacement LE LONG de la courbe d'offre ?",
+              "options": [
+                "L'impact d'une innovation technologique majeure",
+                "La variation des quantités offertes consécutive à une variation du prix du bien",
+                "L'introduction d'une nouvelle taxe sur la masse salariale",
+                "Une hausse des cours mondiaux du pétrole brut"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Si seul le prix du bien change, on chemine le long de la courbe d'offre existante."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que provoque une innovation technologique réduisant les coûts de fabrication sur la courbe d'offre ?",
+              "options": [
+                "Un déplacement de toute la courbe d'offre vers la gauche",
+                "Un déplacement de toute la courbe d'offre vers la droite",
+                "Une disparition totale de la courbe d'offre",
+                "Une verticalité stricte de la courbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le progrès technique permet de produire plus à moindre coût, décalant l'offre vers la droite (davantage de quantités pour chaque prix)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que provoque une flambée soudaine du prix de l'énergie sur la courbe d'offre des entreprises industrielles ?",
+              "options": [
+                "Un déplacement de la courbe vers la droite",
+                "Un déplacement de la courbe vers la gauche",
+                "Une augmentation automatique de la rentabilité des usines",
+                "Une hausse de la demande des ménages"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La hausse des coûts de production freine la production rentable, ce qui déplace l'offre vers la gauche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si des conditions climatiques exceptionnelles détruisent la moitié des récoltes d'oranges :",
+              "options": [
+                "La courbe d'offre d'oranges se déplace vers la droite",
+                "La courbe d'offre d'oranges se déplace vers la gauche",
+                "La courbe de demande d'oranges devient horizontale",
+                "Le prix de vente des oranges s'effondrera à zéro"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un choc négatif de production physique restreint les quantités disponibles sur le marché, décalant l'offre vers la gauche."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment obtient-on la courbe d'offre globale du marché ?",
+              "options": [
+                "En divisant la demande par le nombre de producteurs",
+                "En additionnant horizontalement les quantités offertes par chaque entreprise pour chaque niveau de prix",
+                "En soustrayant le prix de vente au coût fixe",
+                "En prenant uniquement la production de la plus petite entreprise"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'offre globale s'obtient par l'agrégation des offres individuelles de tous les producteurs en activité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si une subvention de l'État est accordée aux producteurs de panneaux solaires pour chaque unité fabriquée :",
+              "options": [
+                "Leur courbe d'offre se déplace vers la droite",
+                "Leur courbe d'offre se déplace vers la gauche",
+                "Leurs coûts unitaires de production augmentent",
+                "La production de panneaux solaires s'arrête net"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La subvention allège les coûts nets supportés par les entreprises, encourageant une augmentation de l'offre à tout prix donné."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur la courbe d'offre, que signifie un prix égal à 0 € ?",
+              "options": [
+                "Les offreurs sont prêts à fournir des quantités illimitées",
+                "La quantité offerte sera généralement nulle, aucun producteur ne voulant produire à perte absolue",
+                "Le profit des producteurs est à son maximum théorique",
+                "La demande est forcément égale à zéro"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À un prix nul, les recettes sont nulles et ne couvrent aucun coût de fabrication, l'offre marchande est donc nulle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si le prix de marché du smartphone passe de 300 € à 450 €, sur la courbe d'offre existante :",
+              "options": [
+                "La courbe fait un bond complet vers le bas",
+                "On monte le long de la courbe vers une quantité offerte plus importante",
+                "La courbe se transforme en droite de demande décroissante",
+                "La quantité offerte diminue pour créer une pénurie volontaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il s'agit d'un simple mouvement le long de la courbe d'offre motivé par l'augmentation du prix de vente."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels événements déplacent la courbe d'offre d'un bien manufacturé vers la droite ?",
+              "options": [
+                "Une baisse du prix des matières premières utilisées",
+                "L'introduction d'une machine plus productive et économe",
+                "Une grève générale paralysant définitivement les transports",
+                "Une taxe gouvernementale de 30 % sur chaque produit sorti d'usine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La baisse des coûts d'intrants et les gains de productivité déplacent l'offre vers la droite."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les coûts de production de l'offreur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un coût fixe pour une entreprise ?",
+              "options": [
+                "Un coût qui dépend directement du volume de production réalisé",
+                "Un coût qui ne varie pas à court terme quelle que soit la quantité produite",
+                "Un coût imposé uniquement par l'Union européenne",
+                "Le bénéfice conservé par les actionnaires"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les coûts fixes (loyer de l'entrepôt, amortissement des machines) doivent être payés même si la production est nulle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est un exemple typique de coût variable pour une boulangerie ?",
+              "options": [
+                "L'achat de la farine et de la levure",
+                "Le loyer annuel du local commercial",
+                "L'assurance incendie du bâtiment",
+                "L'achat initial du four à pain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus le boulanger fait de baguettes, plus il doit acheter de farine : la farine est un coût variable."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le coût total de production ?",
+              "options": [
+                "Coûts fixes multipliés par les coûts variables",
+                "Coûts fixes additionnés aux coûts variables",
+                "Coût variable divisé par le prix de vente",
+                "Chiffre d'affaires divisé par les impôts"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le coût total est la somme de l'ensemble des dépenses engagées pour produire : CT = CF + CV."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le coût moyen (ou coût unitaire) ?",
+              "options": [
+                "Le coût total divisé par le nombre d'unités produites",
+                "Le coût de la toute dernière unité produite",
+                "Le prix de vente fixé par l'État",
+                "Le salaire moyen dans le secteur d'activité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coût moyen représente ce que coûte, en moyenne, chaque unité fabriquée (CM = CT / Q)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le coût marginal en économie ?",
+              "options": [
+                "Le coût de production d'une unité supplémentaire",
+                "Le montant des coûts fixes non amortis",
+                "La perte subie par l'entreprise la plus fragile",
+                "Le prix moyen payé par les clients fidèles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coût marginal mesure la hausse du coût total induite par la fabrication d'une unité de bien supplémentaire (Cm = dCT / dQ)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi le coût marginal finit-il généralement par augmenter quand la production s'accroît à court terme ?",
+              "options": [
+                "En raison de la loi des rendements décroissants",
+                "Parce que les clients refusent d'acheter plus",
+                "Parce que les coûts fixes diminuent en valeur absolue",
+                "En vertu d'un décret gouvernemental annuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand les capacités fixes sont saturées, ajouter des facteurs variables (heures supplémentaires, encombrement) coûte de plus en plus cher par unité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on les économies d'échelle ?",
+              "options": [
+                "La baisse du coût moyen lorsque la quantité produite augmente",
+                "La hausse continue du coût fixe par produit",
+                "L'obligation de mesurer les usines avec un décamètre",
+                "La baisse définitive du chiffre d'affaires total"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les économies d'échelle apparaissent quand l'augmentation du volume de production permet de mieux amortir les coûts fixes sur un plus grand nombre d'unités."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une usine produit 100 vélos pour un coût total de 20 000 €, quel est son coût moyen ?",
+              "options": [
+                "20 € par vélo",
+                "200 € par vélo",
+                "2 000 € par vélo",
+                "20 000 € par vélo"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Coût moyen = Coût total / Quantité = 20 000 / 100 = 200 € par vélo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si produire 10 vélos coûte 2 000 € et en produire 11 coûte 2 150 €, quel est le coût marginal du 11e vélo ?",
+              "options": ["150 €", "2 150 €", "195,45 €", "15 €"],
+              "correctAnswers": [0],
+              "explanation": "Coût marginal = Coût total pour 11 unités - Coût total pour 10 unités = 2 150 - 2 000 = 150 €."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les dépenses suivantes d'un restaurant, lesquelles constituent des coûts variables ?",
+              "options": [
+                "L'achat de viande, de légumes et de boissons",
+                "La consommation de gaz et d'électricité pour la cuisson",
+                "Le bail commercial signé pour la location des murs",
+                "L'assurance annuelle responsabilité civile du local"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les ingrédients et l'énergie de cuisson augmentent directement avec le nombre de repas servis chaque soir."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "La maximisation du profit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En situation de concurrence, à quoi est égale la recette marginale tirée d'une unité vendue ?",
+              "options": [
+                "Au prix de marché du bien",
+                "Au coût fixe de l'entreprise",
+                "À zéro systématiquement",
+                "Au profit total cumulé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En concurrence, l'entreprise étant preneuse de prix, chaque unité additionnelle vendue rapporte exactement le prix de vente unitaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tant que le prix de marché est supérieur au coût marginal (Prix > Cm), l'entreprise a intérêt à :",
+              "options": [
+                "Arrêter immédiatement toute production",
+                "Augmenter sa production car cette unité rapporte plus qu'elle ne coûte",
+                "Baisser son prix unilatéralement",
+                "Licencier l'ensemble de ses cadres"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Si une unité supplémentaire rapporte plus qu'elle ne coûte à fabriquer, elle accroît le bénéfice global."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si pour la dernière unité produite, le coût marginal dépasse le prix de marché (Cm > Prix), l'entreprise doit :",
+              "options": [
+                "Réduire sa production pour éliminer cette unité non rentable",
+                "Augmenter encore plus sa cadence de fabrication",
+                "Augmenter les salaires de 50 %",
+                "Ignorer ses comptes financiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette unité coûte plus cher à produire qu'elle ne rapporte : elle détruit du profit et ne doit pas être réalisée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la condition de maximisation du profit pour une entreprise concurrentielle ?",
+              "options": [
+                "Prix = Coût fixe",
+                "Prix = Coût marginal (avec coût marginal croissant)",
+                "Coût total = Zéro",
+                "Recette totale = Coût variable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le profit est maximal au niveau de production où la recette marginale (le prix) est égale au coût marginal."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle courbe correspond, pour les prix supérieurs au seuil de rentabilité, à la courbe d'offre individuelle de l'entreprise ?",
+              "options": [
+                "La courbe de coût fixe",
+                "La partie croissante de sa courbe de coût marginal",
+                "La courbe de demande des consommateurs",
+                "La droite de recette totale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pour chaque prix donné, l'entreprise choisit la quantité où Prix = Coût marginal ; la courbe de coût marginal est donc sa courbe d'offre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le seuil de rentabilité pour une entreprise ?",
+              "options": [
+                "Le niveau de prix où le profit économique est nul (Prix = minimum du coût moyen)",
+                "Le moment où l'entreprise est rachetée par ses salariés",
+                "Le chiffre d'affaires minimal pour payer l'impôt sur la fortune",
+                "Le prix maximal toléré par les associations de consommateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au seuil de rentabilité, le prix couvre tout juste le coût moyen : l'entreprise ne fait ni perte ni bénéfice net."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si le prix de marché est inférieur au coût moyen mais supérieur au coût variable moyen, à court terme l'entreprise :",
+              "options": [
+                "Peut continuer temporairement à produire car elle couvre au moins ses coûts variables",
+                "Doit être immédiatement liquidée par un juge le jour même",
+                "Réalise son profit historique record",
+                "Offre des quantités infinies pour compenser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant qu'elle couvre ses coûts variables, chaque unité vendue contribue à payer une partie des coûts fixes (seuil de fermeture non atteint)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le seuil de fermeture d'une entreprise ?",
+              "options": [
+                "Le niveau de prix en dessous duquel l'entreprise ne couvre même plus ses coûts variables",
+                "L'heure légale de fermeture des magasins le samedi soir",
+                "Le plafond des exportations fixé par les douanes",
+                "Le montant maximal des dividendes versés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous le minimum du coût variable moyen, produire génère une perte supérieure aux seuls coûts fixes : l'entreprise a intérêt à fermer immédiatement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une entreprise vend son bien 50 €. Son coût marginal pour la 100e unité est de 40 €. Pour la 101e, il est de 50 €. Pour la 102e, de 60 €. Combien d'unités doit-elle produire pour maximiser son bénéfice ?",
+              "options": [
+                "100 unités",
+                "101 unités",
+                "102 unités",
+                "Zéro unité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À 101 unités, Prix = Cm = 50 €. La 102e unité coûterait 60 € pour un gain de 50 € (perte de 10 €), elle ne doit donc pas être produite."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant le comportement d'une entreprise rationnelle à la recherche du profit maximal ?",
+              "options": [
+                "Elle compare en permanence ce que rapporte une unité de plus à ce qu'elle coûte",
+                "Elle continue de produire une unité tant que sa recette marginale dépasse son coût marginal",
+                "Elle choisit toujours de produire la quantité la plus gigantesque possible sans regarder les coûts",
+                "Elle fixe toujours ses prix à 1 euro pour faire plaisir aux demandeurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le raisonnement à la marge (comparaison Recette marginale / Coût marginal) est le cœur de la décision économique du producteur."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Offre et demande globales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'offre globale sur un marché particulier ?",
+              "options": [
+                "La somme des quantités offertes par l'ensemble des producteurs présents sur ce marché pour chaque niveau de prix",
+                "L'offre d'une seule grande entreprise multinationale",
+                "La quantité de monnaie en circulation dans le pays",
+                "Le nombre total de brevets déposés à l'INPI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'offre globale ou de marché résulte de l'agrégation de toutes les offres individuelles à un prix donné."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment l'offre globale évolue-t-elle si 50 nouvelles entreprises s'installent sur le marché des glaces artisanales ?",
+              "options": [
+                "L'offre globale diminue",
+                "L'offre globale augmente à chaque niveau de prix (déplacement vers la droite)",
+                "L'offre globale devient une constante négative",
+                "La demande globale se réduit automatiquement à zéro"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'entrée de nouveaux producteurs ajoute de la capacité de production et augmente l'offre totale disponible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si à 2 € la baguette, le boulanger A en produit 200, le boulanger B 150 et le boulanger C 250, quelle est l'offre globale à 2 € ?",
+              "options": [
+                "200 baguettes",
+                "600 baguettes",
+                "1 200 baguettes",
+                "300 baguettes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Offre globale = 200 + 150 + 250 = 600 baguettes au prix de 2 €."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la demande globale sur un marché ?",
+              "options": [
+                "Le PIB total d'une nation",
+                "La somme des quantités demandées par tous les consommateurs du marché pour chaque niveau de prix",
+                "La quantité de biens que le gouvernement impose d'acheter",
+                "Le nombre d'acheteurs insolvables"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La demande de marché additionne les souhaits d'achat de chaque consommateur individuel aux différents prix."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si le prix d'un produit baisse, pourquoi la demande globale augmente-t-elle ?",
+              "options": [
+                "Les clients actuels en achètent plus et de nouveaux clients entrent sur le marché",
+                "Les offreurs décident de cesser toute vente",
+                "Le produit devient subitement rare et convoité",
+                "Le coût marginal de l'acheteur diminue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La baisse du prix produit un double effet : extension des achats des clients existants et arrivée de nouveaux consommateurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'agrégation horizontale des courbes de demande ?",
+              "options": [
+                "Additionner les quantités pour chaque niveau de prix identique",
+                "Additionner les prix pour chaque quantité identique",
+                "Tracer une moyenne des coordonnées géographiques",
+                "Multiplier les pentes de chaque consommateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur le graphique (Prix en ordonnée, Quantité en abscisse), on additionne les valeurs horizontales (les quantités) pour un même prix."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si la population d'une ville double soudainement, que se passe-t-il pour la demande globale de logements locatifs ?",
+              "options": [
+                "Elle s'effondre de 50 %",
+                "Elle augmente fortement et sa courbe se décale vers la droite",
+                "Elle reste parfaitement inchangée",
+                "Elle se transforme en offre globale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'arrivée massive de nouveaux résidents accroît le nombre de demandeurs à chaque niveau de loyer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'offre globale et la demande globale se rencontrent sur un marché pour déterminer :",
+              "options": [
+                "Le code du travail et le taux d'imposition sur le revenu",
+                "Le prix d'équilibre et la quantité échangée",
+                "La liste des ministres du gouvernement",
+                "Le nombre de trimestres requis pour la retraite"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La confrontation des deux courbes globales fixe le prix auquel les échanges vont s'effectuer ainsi que le volume des transactions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la forme des courbes globales dépend-elle de l'hétérogénéité des acteurs ?",
+              "options": [
+                "Tous les consommateurs et producteurs ont des goûts et des coûts rigoureusement identiques",
+                "Chaque agent a des préférences, des revenus ou des coûts de production spécifiques",
+                "Seules les banques décident de la forme des courbes",
+                "Les courbes globales sont toujours de simples lignes droites verticales"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La diversité des coûts entre producteurs et des budgets entre consommateurs lisse les courbes globales d'offre et de demande."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propositions sont vraies concernant l'offre et la demande globales d'un marché ?",
+              "options": [
+                "La demande globale est généralement une fonction décroissante du prix",
+                "L'offre globale est généralement une fonction croissante du prix",
+                "L'offre globale est calculée en additionnant les revenus de tous les acheteurs",
+                "La demande globale ne dépend jamais du nombre de consommateurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La demande globale diminue avec le prix alors que l'offre globale s'élève quand le prix augmente."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "L'élasticité-prix",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que mesure l'élasticité-prix de la demande ?",
+              "options": [
+                "La sensibilité de la quantité demandée d'un bien aux variations de son prix",
+                "La vitesse à laquelle les usines fabriquent un produit",
+                "La déformation physique des emballages lors du transport",
+                "Le montant exact de la taxe sur la valeur ajoutée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élasticité-prix de la demande calcule la réaction relative de la consommation face à un pourcentage de variation du prix."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la formule de l'élasticité-prix de la demande ?",
+              "options": [
+                "Variation en % du prix divisée par la variation en % de la quantité demandée",
+                "Variation en % de la quantité demandée divisée par la variation en % du prix",
+                "Prix unitaire multiplié par la quantité totale vendue",
+                "Coût marginal divisé par le revenu moyen"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Élasticité = (% de variation de la demande) / (% de variation du prix)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En règle générale, quel est le signe de l'élasticité-prix de la demande d'un bien normal ?",
+              "options": [
+                "Positif, car prix et demande varient dans le même sens",
+                "Négatif, car la quantité demandée diminue quand le prix augmente",
+                "Toujours strictement égal à zéro",
+                "Toujours supérieur à +10"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En raison de la loi de la demande, le prix et les quantités varient en sens inverse, rendant le ratio négatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si une hausse du prix de 10 % entraîne une baisse de la quantité demandée de 20 %, l'élasticité-prix vaut :",
+              "options": ["-0,5", "-2", "+2", "-200"],
+              "correctAnswers": [1],
+              "explanation": "Élasticité = -20 % / +10 % = -2. La demande réagit très fortement au prix."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une demande dont la valeur absolue de l'élasticité-prix est supérieure à 1 (|e| > 1) ?",
+              "options": [
+                "Une demande inélastique ou rigide",
+                "Une demande élastique",
+                "Une demande parfaitement nulle",
+                "Une demande constante"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Lorsque |e| > 1, la quantité demandée varie proportionnellement plus vite que la variation du prix : la demande est élastique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel bien a généralement une demande très inélastique (rigide) au prix ?",
+              "options": [
+                "Un médicament vital sans substitut (ex. l'insuline)",
+                "Une marque spécifique de biscuits au chocolat",
+                "Un voyage touristique aux Caraïbes",
+                "Une console de jeux vidéo de salon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les biens de première nécessité indispensables et sans substitut ont une demande rigide : on continue d'acheter même si le prix monte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À quoi ressemble graphiquement une courbe de demande parfaitement inélastique (élasticité nulle) ?",
+              "options": [
+                "Une droite parfaitement horizontale",
+                "Une droite parfaitement verticale",
+                "Une diagonale montante à 45 degrés",
+                "Un demi-cercle parfait"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une droite verticale signifie que quelle que soit la hauteur du prix, la quantité demandée reste strictement identique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'élasticité-prix de l'offre ?",
+              "options": [
+                "La sensibilité de la quantité offerte par les producteurs aux variations du prix du bien",
+                "Le taux d'intérêt fixé par les banques commerciales",
+                "Le pourcentage de salariés en télétravail",
+                "L'usure des machines en fonction des cadences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élasticité de l'offre mesure la rapidité et l'ampleur avec lesquelles les producteurs adaptent leur volume de production quand le prix varie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi l'offre de certains produits agricoles est-elle très inélastique à court terme ?",
+              "options": [
+                "Parce que les cycles biologiques empêchent d'ajuster instantanément les récoltes",
+                "Parce que les agriculteurs n'utilisent jamais de monnaie",
+                "Parce que les tracteurs sont interdits d'usage en hiver",
+                "Parce que les prix sont fixés pour 100 ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fois les semis faits, la récolte dépend de la nature et du temps ; on ne peut pas doubler la production de blé en 48 heures."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels facteurs rendent la demande d'un bien particulièrement élastique par rapport à son prix ?",
+              "options": [
+                "L'existence de nombreux produits substituables très proches",
+                "Le fait que l'achat représente une part majeure du budget du consommateur",
+                "Le caractère vital et sans aucune alternative du médicament",
+                "L'impossibilité matérielle de se passer du bien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La présence d'alternatives et le poids dans le budget incitent les consommateurs à réagir fortement à la moindre hausse de prix."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Équilibre",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le prix et la quantité d'équilibre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le prix d'équilibre sur un marché concurrentiel ?",
+              "options": [
+                "Le prix fixé par décret ministériel",
+                "Le prix pour lequel la quantité offerte est exactement égale à la quantité demandée",
+                "Le prix le plus bas possible accepté par un vendeur en faillite",
+                "Le prix moyen des matières premières importées"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À l'équilibre de marché, les souhaits des acheteurs et des vendeurs coïncident parfaitement : Offre = Demande."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment identifie-t-on graphiquement le point d'équilibre de marché ?",
+              "options": [
+                "À l'intersection de la courbe d'offre et de la courbe de demande",
+                "Au point le plus haut de l'axe des ordonnées",
+                "À l'origine du repère où prix et quantité valent zéro",
+                "Au croisement de la courbe de coût fixe et de l'axe des abscisses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le croisement des deux courbes détermine simultanément le prix d'équilibre (P*) et la quantité d'équilibre (Q*)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie la notion de 'marché qui s'apure' (market clearing) à l'équilibre ?",
+              "options": [
+                "Le marché est nettoyé par les services municipaux chaque soir",
+                "Il n'y a ni surplus invendu ni pénurie de demande non satisfaite",
+                "Toutes les entreprises du secteur sont fermées par les autorités",
+                "Tous les produits sont devenus gratuits pour les ménages"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'apurement du marché signifie que toutes les quantités mises en vente au prix d'équilibre trouvent preneur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si à un prix de 10 €, l'offre est de 500 unités et la demande est de 500 unités :",
+              "options": [
+                "Le marché est en situation de pénurie",
+                "10 € est le prix d'équilibre et 500 unités est la quantité d'équilibre",
+                "Le marché subit une surproduction massive",
+                "Le prix va immédiatement chuter à 2 €"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Puisque l'offre égale la demande, le marché est en équilibre stable à ce niveau de prix."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À l'équilibre de marché, qui parvient à réaliser une transaction ?",
+              "options": [
+                "Tous les demandeurs prêts à payer au moins le prix d'équilibre et tous les offreurs acceptant ce prix",
+                "Uniquement les demandeurs dont la disposition à payer est inférieure au prix d'équilibre",
+                "Seul le producteur ayant le coût de production le plus exorbitant",
+                "Aucun agent économique car le marché reste bloqué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le marché sélectionne les acheteurs qui valorisent le bien au moins au prix d'équilibre et les vendeurs les plus efficaces."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il pour un consommateur dont la disposition à payer est de 8 € si le prix d'équilibre est de 12 € ?",
+              "options": [
+                "Il achète le bien en faisant un crédit obligatoire",
+                "Il renonce à acheter le bien sur ce marché",
+                "Le commerçant est obligé de lui vendre à 8 €",
+                "L'État lui verse automatiquement une prime de 4 €"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le consommateur rationnel n'achète pas si le prix du marché dépasse le montant maximal qu'il était prêt à consentir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il pour un producteur dont le coût marginal est de 15 € si le prix d'équilibre est de 10 € ?",
+              "options": [
+                "Il produit en grande quantité pour compenser sa marge négative",
+                "Il ne produit pas cette unité car cela lui causerait une perte sèche de 5 €",
+                "Il triple son effectif d'ouvriers",
+                "Il oblige les clients à acheter à 15 €"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'offreur rationnel refuse de vendre à perte : il ne fabrique pas si le prix de marché ne couvre pas son coût marginal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que le prix d'équilibre coordonne les actions des agents économiques ?",
+              "options": [
+                "Parce qu'il transmet une information synthétique sur la rareté relative du produit",
+                "Parce qu'il est dicté chaque matin par le président de la République",
+                "Parce qu'il force tout le monde à acheter exactement la même chose",
+                "Parce qu'il supprime toute liberté de choix individuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prix agit comme un signal guidant les choix de consommation et de production sans planification centrale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le modèle standard, si l'offre et la demande ne bougent pas, le prix d'équilibre :",
+              "options": [
+                "Varie de manière purement aléatoire toutes les dix secondes",
+                "Reste stable tant qu'aucun événement extérieur ne vient modifier les comportements",
+                "Monte automatiquement vers l'infini",
+                "Tombe obligatoirement à zéro au bout de 24 heures"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'équilibre est une situation d'état stationnaire : aucune force interne n'incite à modifier le prix ou la quantité."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles conditions caractérisent le point d'équilibre sur un marché concurrentiel ?",
+              "options": [
+                "Quantité offerte = Quantité demandée",
+                "Intersection de la courbe d'offre et de la courbe de demande",
+                "Quantité offerte strictement supérieure à la quantité demandée",
+                "Suppression définitive de toute concurrence entre entreprises"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'équilibre se trouve au croisement des courbes où l'offre et la demande sont rigoureusement égales."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'ajustement par les prix",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que se passe-t-il sur un marché si le prix courant est supérieur au prix d'équilibre ?",
+              "options": [
+                "Une pénurie (la demande dépasse l'offre)",
+                "Un surplus ou excès d'offre (l'offre dépasse la demande)",
+                "L'apurement immédiat du marché",
+                "Une baisse immédiate de la quantité offerte par les producteurs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À un prix trop élevé, les offreurs veulent beaucoup vendre mais les acheteurs se détournent : il y a surproduction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment les offreurs réagissent-ils face à des stocks d'invendus dus à un prix trop haut ?",
+              "options": [
+                "Ils augmentent encore le prix de vente",
+                "Ils baissent leur prix pour écouler les stocks",
+                "Ils cessent de payer l'électricité",
+                "Ils demandent à l'ONU de racheter les invendus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La concurrence entre offreurs pour trouver des clients les pousse à baisser leurs prix jusqu'au prix d'équilibre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que se passe-t-il sur un marché si le prix courant est inférieur au prix d'équilibre ?",
+              "options": [
+                "Un excès d'offre massif",
+                "Une pénurie ou excès de demande (la demande dépasse l'offre)",
+                "Une baisse de l'intérêt des consommateurs",
+                "Une fermeture de tous les magasins"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À un prix très bas, les demandeurs sont nombreux mais les offreurs peu incités à produire : la demande excède l'offre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En situation de pénurie sur un marché libre, quelle est la tendance spontanée du prix ?",
+              "options": [
+                "Le prix a tendance à baisser",
+                "Le prix a tendance à augmenter sous la pression des acheteurs",
+                "Le prix reste bloqué à zéro",
+                "Le prix se divise par deux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les acheteurs insatisfaits sont prêts à payer plus cher pour obtenir le bien, ce qui fait monter le prix vers l'équilibre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel économiste français a modélisé ce processus de tâtonnement vers l'équilibre avec la métaphore du commissaire-priseur ?",
+              "options": [
+                "Léon Walras",
+                "Karl Marx",
+                "John Maynard Keynes",
+                "Thomas Piketty"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Léon Walras a formalisé le mécanisme de tâtonnement où les prix s'ajustent pour équilibrer offre et demande."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle métaphore célèbre d'Adam Smith illustre l'autorégulation harmonieuse du marché sans intervention centrale ?",
+              "options": [
+                "Le pied de biche",
+                "La main invisible",
+                "Le sablier d'or",
+                "La boussole des nations"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pour Adam Smith, en poursuivant son intérêt personnel, chaque individu contribue à l'intérêt général guidé par une main invisible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quand le prix s'élève en réponse à une pénurie, comment réagissent les quantités ?",
+              "options": [
+                "La demande augmente et l'offre diminue",
+                "La demande diminue et l'offre augmente, ramenant le marché à l'équilibre",
+                "Offre et demande disparaissent simultanément",
+                "Les quantités restent strictement figées"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La hausse du prix décourage une partie de la demande et incite les offreurs à produire plus, comblant la pénurie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la flexibilité des prix sur un marché ?",
+              "options": [
+                "La capacité des prix à varier librement à la hausse ou à la baisse selon l'offre et la demande",
+                "L'obligation de changer d'étiquette chaque matin par la loi",
+                "La rigidité absolue des tarifs fixés par convention",
+                "La conversion obligatoire des prix en monnaie étrangère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La flexibilité des prix est la condition nécessaire pour que le marché puisse s'équilibrer spontanément."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que provoque le blocage autoritaire d'un prix en dessous du niveau d'équilibre par les autorités publiques ?",
+              "options": [
+                "Une abondance infinie de biens pour tout le monde",
+                "Une pénurie durable et l'apparition potentielle de files d'attente ou d'un marché noir",
+                "Une baisse durable des coûts des matières premières",
+                "La multiplication immédiate du nombre d'usines"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Si le prix ne peut pas monter pour signaler la rareté, la pénurie s'installe durablement car l'offre reste inférieure à la demande."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles situations décrivent correctement un mécanisme d'ajustement de marché en déséquilibre ?",
+              "options": [
+                "Excès d'offre -> Stocks invendus -> Baisse des prix -> Retour à l'équilibre",
+                "Excès de demande -> Pénurie -> Hausse des prix -> Retour à l'équilibre",
+                "Excès d'offre -> Pénurie -> Multiplication par dix des prix de vente",
+                "Excès de demande -> Surplus d'invendus -> Baisse des prix jusqu'à zéro"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les prix jouent le rôle de variable d'ajustement : ils baissent en cas de surplus et montent en cas de pénurie."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le modèle de concurrence parfaite",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien de conditions le modèle théorique de concurrence pure et parfaite (CPP) compte-t-il traditionnellement ?",
+              "options": [
+                "2 conditions",
+                "3 conditions",
+                "5 conditions",
+                "10 conditions"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La CPP repose sur cinq hypothèses : atomicité, homogénéité, libre entrée/sortie, transparence et mobilité des facteurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'hypothèse d'atomicité du marché en concurrence parfaite ?",
+              "options": [
+                "Les produits sont fabriqués à partir d'énergie nucléaire",
+                "Il existe un grand nombre d'offreurs et de demandeurs de petite taille, aucun ne pouvant influencer le prix à lui seul",
+                "Le marché est dominé par un seul grand groupe mondial",
+                "Tous les acheteurs doivent avoir moins de 18 ans"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'atomicité implique que chaque acteur est une 'goutte d'eau dans l'océan' et prend le prix comme une donnée (price taker)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie la condition d'homogénéité des produits ?",
+              "options": [
+                "Tous les produits proposés par les différents offreurs sont jugés strictement identiques et interchangeables par les clients",
+                "Les produits portent tous des marques de luxe différentes",
+                "Les produits sont obligatoirement de couleurs variées",
+                "Chaque entreprise vante les qualités uniques de sa recette secrète"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'homogénéité empêche la concurrence hors-prix (pas de fidélité à une marque, pas de différenciation)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la condition de libre entrée et de libre sortie sur le marché ?",
+              "options": [
+                "Les portes des magasins doivent rester grandes ouvertes en hiver",
+                "Toute entreprise peut commencer ou cesser son activité sans barrière financière, réglementaire ou technique",
+                "L'État décide chaque matin qui a le droit d'ouvrir un commerce",
+                "Les clients ne peuvent sortir du magasin sans acheter"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'absence de barrières à l'entrée garantit que les surprofits attirent immédiatement de nouveaux concurrents."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que garantit l'hypothèse de transparence de l'information ?",
+              "options": [
+                "Tous les acteurs ont un accès gratuit, parfait et instantané à toutes les informations utiles (prix, qualité, technologies)",
+                "Les vitrines des boutiques doivent être en verre transparent",
+                "Les comptes bancaires des clients sont publiés sur les réseaux sociaux",
+                "Seuls les offreurs connaissent le vrai coût de fabrication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transparence élimine les asymétries d'information : personne ne peut tromper son partenaire d'échange."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la mobilité parfaite des facteurs de production (travail et capital) ?",
+              "options": [
+                "Les salariés et les capitaux peuvent se déplacer instantanément et sans coût d'une activité ou région à une autre",
+                "Les usines doivent obligatoirement être construites sur des péniches",
+                "Les machines ne peuvent jamais être revendues",
+                "Les employés ont interdiction de démissionner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ressources productives se dirigent spontanément vers les secteurs les plus rentables sans obstacle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un marché dominé par un seul et unique offreur ?",
+              "options": [
+                "Un duopole",
+                "Un oligopole",
+                "Un monopole",
+                "Un monopsone"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le monopole est une structure de marché où un seul producteur fait face à une multitude d'acheteurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un marché sur lequel quelques grandes entreprises se partagent l'offre face à de nombreux acheteurs ?",
+              "options": [
+                "Un oligopole",
+                "Un monopole pur",
+                "Une concurrence parfaite",
+                "Un bazar communautaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oligopole (ex. téléphonie mobile, constructeurs aéronautiques) compte un petit nombre d'offreurs puissants."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi le modèle de la CPP est-il utilisé en économie malgré son caractère irréaliste dans la vie quotidienne ?",
+              "options": [
+                "C'est un modèle de référence théorique idéal permettant de comprendre les mécanismes fondamentaux et d'évaluer les marchés réels",
+                "Parce qu'il a été voté à l'unanimité par le Parlement français",
+                "Pour obliger les lycéens à mémoriser des définitions inutiles",
+                "Parce que toutes les boutiques du monde respectent déjà ces 5 critères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le modèle est une simplification stylisée utile pour analyser les écarts entre la théorie et la réalité des marchés."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les conditions suivantes, lesquelles font partie des 5 hypothèses de la Concurrence Pure et Parfaite ?",
+              "options": [
+                "L'atomicité des offreurs et des demandeurs",
+                "La transparence parfaite de l'information",
+                "L'obligation de dépenser tout son salaire avant la fin du mois",
+                "L'interdiction formelle pour toute nouvelle entreprise de pénétrer le marché"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'atomicité et la transparence de l'information sont deux des cinq conditions piliers de la CPP."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le surplus du consommateur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le surplus du consommateur ?",
+              "options": [
+                "La différence entre le prix maximal qu'un acheteur était prêt à payer et le prix qu'il paie réellement sur le marché",
+                "L'argent qui lui reste sur son compte bancaire à la fin de l'année",
+                "Le nombre d'articles achetés en solde dans un grand magasin",
+                "La taxe remboursée par le Trésor public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le surplus mesure le gain net de bien-être ou d'utilité monétaire obtenu par le consommateur lors de l'achat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si Léa était prête à payer jusqu'à 80 € pour un concert mais que le billet officiel coûte 50 €, son surplus est de :",
+              "options": ["130 €", "30 €", "50 €", "80 €"],
+              "correctAnswers": [1],
+              "explanation": "Surplus du consommateur = Disposition à payer - Prix payé = 80 - 50 = 30 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si Thomas est prêt à payer au maximum 15 € pour un livre et que le prix en librairie est de 15 €, quel est son surplus ?",
+              "options": ["0 €", "15 €", "30 €", "-15 €"],
+              "correctAnswers": [0],
+              "explanation": "Le prix payé égale exactement sa disposition à payer : son surplus monétaire est nul mais l'échange s'effectue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Graphiquement, où se situe la surface représentant le surplus total des consommateurs ?",
+              "options": [
+                "Sous la courbe de demande et au-dessus du prix de marché jusqu'à la quantité échangée",
+                "Sous la courbe d'offre et sous l'axe des abscisses",
+                "Au-dessus de la courbe de demande jusqu'à l'infini",
+                "Dans le quart supérieur droit du repère orthonormé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'aire triangulaire délimitée par la courbe de demande au sommet et la droite horizontale du prix d'équilibre en bas."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que devient le surplus des consommateurs si le prix de marché baisse, toutes choses égales par ailleurs ?",
+              "options": [
+                "Il diminue fortement",
+                "Il augmente, car les anciens acheteurs paient moins cher et de nouveaux acheteurs réalisent un surplus",
+                "Il devient automatiquement négatif",
+                "Il ne change jamais car les goûts sont immuables"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une baisse du prix accroît l'écart positif pour les consommateurs existants et permet à d'autres de bénéficier de gains à l'échange."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que devient le surplus d'un consommateur si le prix de marché augmente au-dessus de sa disposition à payer ?",
+              "options": [
+                "Il devient infini",
+                "Il n'achète plus le bien et son surplus devient nul",
+                "Son surplus devient négatif car il est forcé d'acheter",
+                "Il perçoit un dédommagement de l'offreur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ne participant plus à l'échange marchand, il ne retire aucun surplus lié à la transaction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la notion de surplus est-elle importante pour les économistes ?",
+              "options": [
+                "Elle permet de quantifier les gains monétaires tirés de l'échange et d'évaluer le bien-être collectif",
+                "Elle sert à calculer les sanctions pénales des entreprises",
+                "Elle permet de déterminer le taux du livret A",
+                "Elle remplace la comptabilité générale des entreprises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le surplus est un outil clé d'évaluation des politiques publiques (taxes, subventions, quotas) sur le bien-être."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si la disposition à payer dépend de l'utilité ressentie, que reflète la hauteur de la courbe de demande ?",
+              "options": [
+                "Le coût fixe des producteurs",
+                "L'évaluation marginale que les consommateurs accordent à chaque unité successive du bien",
+                "Le niveau d'imposition sur les entreprises",
+                "Le taux de change de l'euro par rapport au dollar"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque point de la courbe de demande indique la disposition à payer pour cette unité spécifique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le cas d'une discrimination par les prix parfaite (l'offreur fait payer à chacun sa disposition maximale à payer) :",
+              "options": [
+                "Le surplus du consommateur devient maximal",
+                "Le surplus du consommateur est entièrement capté par l'offreur et devient nul",
+                "Le marché disparaît instantanément",
+                "Les prix deviennent tous égaux à zéro"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Si chaque client paie exactement sa disposition maximale, le prix payé égale la disposition à payer : le surplus du consommateur est nul."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels facteurs entraînent une augmentation du surplus des consommateurs sur un marché ?",
+              "options": [
+                "Une baisse du prix de vente d'équilibre",
+                "Un déplacement de la courbe d'offre vers la droite (hausse de la production à moindre coût)",
+                "Une hausse des taxes douanières sur les produits importés",
+                "Une pénurie organisée par un cartel de producteurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tout événement qui fait baisser le prix ou augmente les quantités abordables améliore le surplus du consommateur."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le surplus du producteur et surplus total",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le surplus du producteur ?",
+              "options": [
+                "La différence entre le prix perçu par le vendeur et le prix minimal auquel il était prêt à céder son bien (son coût marginal)",
+                "Le stock de marchandises invendues accumulé dans l'entrepôt",
+                "L'amende payée en cas d'infraction au code du travail",
+                "Le montant total des salaires distribués"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le surplus du producteur mesure le gain net que retire l'offreur de sa participation à l'échange marchand."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si un artisan est prêt à fabriquer une table pour 120 € (son coût marginal) et la vend 200 € au marché, quel est son surplus ?",
+              "options": ["320 €", "80 €", "120 €", "200 €"],
+              "correctAnswers": [1],
+              "explanation": "Surplus du producteur = Prix de vente - Coût minimal acceptable = 200 - 120 = 80 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Graphiquement, où se situe la zone représentant le surplus des producteurs ?",
+              "options": [
+                "Au-dessus du prix de marché et sous la courbe de demande",
+                "Au-dessus de la courbe d'offre et au-dessous du prix de marché jusqu'à la quantité échangée",
+                "Sous l'axe des abscisses",
+                "À droite de la quantité maximale possible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est l'aire située entre la droite horizontale du prix de vente reçu et la courbe d'offre (qui reflète les coûts marginaux)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que devient le surplus des producteurs si le prix de vente d'équilibre augmente sur le marché ?",
+              "options": [
+                "Il augmente, car ils gagnent plus sur chaque unité et peuvent vendre des unités supplémentaires rentables",
+                "Il diminue immédiatement à zéro",
+                "Il devient égal aux impôts payés par les acheteurs",
+                "Il reste strictement insensible au prix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La hausse du prix accroît la marge sur les unités déjà vendues et incite à écouler de nouvelles unités lucratives."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le surplus total (ou surplus collectif) sur un marché ?",
+              "options": [
+                "La somme du surplus des consommateurs et du surplus des producteurs",
+                "Le bénéfice net des seules banques commerciales",
+                "Le montant des subventions accordées par Bruxelles",
+                "Le chiffre d'affaires cumulé des entreprises du CAC 40"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surplus total = Surplus du consommateur + Surplus du producteur. Il mesure le gain global généré par le marché pour la société."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À quel niveau de prix le surplus total est-il maximisé sur un marché sans défaillances ?",
+              "options": [
+                "À un prix égal à zéro",
+                "Au prix d'équilibre de concurrence parfaite",
+                "Au prix le plus élevé possible fixé par un monopole",
+                "À un prix fixé au hasard chaque semaine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À l'équilibre concurrentiel, tous les échanges mutuellement avantageux sont réalisés : le surplus total est à son maximum (efficacité au sens de Pareto)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on les gains à l'échange en sciences économiques ?",
+              "options": [
+                "Les avantages mutuels et le bien-être supplémentaire que procure l'échange volontaire par rapport à l'autarcie",
+                "Les commissions prélevées par les agents de change",
+                "Les gains financiers réalisés aux jeux de hasard",
+                "Les réductions accordées pendant les soldes d'hiver"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échange permet à chacun de se spécialiser et d'acquérir des biens à un coût inférieur à ce qu'il aurait dépensé en produisant lui-même."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la 'perte sèche' (deadweight loss) lors d'une perturbation du marché ?",
+              "options": [
+                "La perte de surplus total qui n'est récupérée par aucun agent économique",
+                "L'évaporation naturelle de l'eau dans un entrepôt agricole",
+                "Le déficit budgétaire total de l'État",
+                "Le montant exact des fraudes à la carte bancaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perte sèche représente la disparition d'échanges mutuellement avantageux due à un déséquilibre, une taxe excessive ou un monopole."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on force le marché à produire moins que la quantité d'équilibre Q* :",
+              "options": [
+                "Le surplus total est amputé car des unités dont la valeur pour les acheteurs dépassait le coût des vendeurs ne sont pas produites",
+                "Le surplus total devient infini",
+                "Tous les producteurs deviennent milliardaires",
+                "Les consommateurs ne paient plus aucun produit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Restreindre les quantités sous le niveau d'équilibre empêche des échanges bénéfiques et réduit le surplus collectif."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propositions sont correctes à propos du surplus du producteur et du surplus total ?",
+              "options": [
+                "Le surplus du producteur est lié à la différence entre le prix de vente et son coût marginal",
+                "Le surplus total représente la richesse nette créée par l'ensemble des échanges sur le marché",
+                "Le surplus du producteur est toujours rigoureusement identique au chiffre d'affaires",
+                "Le surplus total est nul lorsque le marché est à l'équilibre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le surplus du producteur est le gain au-dessus des coûts marginaux, et le surplus total mesure le gain social global."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les chocs d'offre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un choc d'offre en économie ?",
+              "options": [
+                "Une modification imprévue et exogène des conditions de production qui affecte les coûts ou les capacités des offreurs",
+                "Une panne électrique de cinq minutes dans un supermarché",
+                "Un changement brusque des goûts musicaux des jeunes",
+                "Une augmentation du nombre d'enfants par foyer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un choc d'offre modifie la fonction de production ou le coût des intrants pour l'ensemble des entreprises d'un secteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est un exemple classique de choc d'offre négatif ?",
+              "options": [
+                "Une hausse brutale et massive du cours mondial du baril de pétrole",
+                "La découverte d'une nouvelle technique agricole doublant les rendements à coût zéro",
+                "Une baisse des cotisations patronales sur les salaires",
+                "Une météo printanière exceptionnellement favorable aux cultures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La flambée des prix de l'énergie renchérit les coûts de transport et de fabrication : c'est un choc d'offre négatif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que provoque graphiquement un choc d'offre négatif sur le marché ?",
+              "options": [
+                "Un déplacement de la courbe d'offre vers la gauche (vers le haut)",
+                "Un déplacement de la courbe d'offre vers la droite",
+                "Un déplacement de la courbe de demande vers la droite",
+                "La disparition de toute courbe sur le graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les coûts augmentant, les producteurs exigent un prix plus élevé pour chaque quantité : la courbe d'offre se déplace vers la gauche."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles sont les conséquences d'un choc d'offre négatif sur le prix et la quantité d'équilibre ?",
+              "options": [
+                "Hausse du prix d'équilibre et baisse de la quantité d'équilibre",
+                "Baisse du prix d'équilibre et hausse de la quantité d'équilibre",
+                "Baisse simultanée du prix et de la quantité",
+                "Hausse simultanée du prix et de la quantité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rareté accrue et les coûts accrus font monter le prix (P* monte) et réduisent le volume d'échanges (Q* baisse)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un choc d'offre positif ?",
+              "options": [
+                "Un événement qui améliore la productivité ou réduit les coûts de production des entreprises",
+                "Une hausse des impôts sur la production",
+                "Une destruction d'usines suite à un conflit",
+                "Une grève générale de plusieurs mois dans les ports"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le progrès technique, la baisse du coût des intrants ou une baisse de fiscalité constituent des chocs d'offre positifs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que provoque un choc d'offre positif sur le prix et la quantité d'équilibre ?",
+              "options": [
+                "Baisse du prix d'équilibre et hausse de la quantité échangée",
+                "Hausse du prix d'équilibre et baisse de la quantité échangée",
+                "Augmentation massive du chômage sans aucun effet sur les prix",
+                "Stagnation complète de toutes les variables économiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La courbe d'offre se déplace vers la droite : les biens deviennent plus abondants et moins chers à produire (P* baisse, Q* augmente)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la situation macroéconomique combinant inflation (prix en hausse) et récession (baisse de l'activité) suite à un choc d'offre négatif ?",
+              "options": [
+                "La stagflation",
+                "La déflation",
+                "L'hyper-croissance",
+                "L'expansionnisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La stagflation (stagnation + inflation) a notamment frappé les économies occidentales lors des chocs pétroliers des années 1970."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une maladie décime les cheptels de volailles dans tout le pays, sur le marché du poulet :",
+              "options": [
+                "Le prix du poulet monte et la quantité vendue diminue",
+                "Le prix du poulet s'effondre et les ventes explosent",
+                "La courbe de demande se déplace seule vers la droite",
+                "Les poulets deviennent des biens publics gratuits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un choc d'offre négatif typique : l'offre diminue, provoquant une hausse du prix et un recul des volumes vendus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'automatisation dans l'industrie automobile réduit de moitié le temps d'assemblage d'une voiture :",
+              "options": [
+                "L'offre de voitures augmente (vers la droite), faisant baisser leur prix d'équilibre",
+                "L'offre de voitures s'effondre immédiatement",
+                "La demande de voitures diminue car les robots n'achètent pas de voitures",
+                "Le prix de vente double instantanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gain de productivité déplace l'offre vers la droite : les voitures sont produites à moindre coût et en plus grande quantité."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels événements représentent des chocs d'offre positifs pour l'économie ?",
+              "options": [
+                "Une découverte technologique majeure réduisant le coût des batteries électriques",
+                "Une baisse durable des tarifs du fret maritime mondial",
+                "Un gel printanier tardif anéantissant les vergers d'arbres fruitiers",
+                "Une guerre coupant les approvisionnements en gaz naturel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les baisses de coûts de transport et les avancées technologiques améliorent l'offre et abaissent les prix de revient."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les chocs de demande",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un choc de demande en économie ?",
+              "options": [
+                "Une variation imprévue et exogène du comportement des acheteurs influençant leur volonté de consommer",
+                "Une panne d'imprimante dans un ministère",
+                "Une modification exclusive des coûts de l'énergie",
+                "Une rupture de stock chez un grossiste local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un choc de demande modifie les intentions d'achat des demandeurs à chaque niveau de prix (revenu, confiance, mode, etc.)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel événement constitue un choc de demande positif pour le marché des vélos ?",
+              "options": [
+                "Une prise de conscience écologique combinée à des primes publiques à l'achat de vélos",
+                "Une hausse spectaculaire du prix de l'acier entrant dans la fabrication des cadres",
+                "L'interdiction municipale formelle de circuler à vélo en ville",
+                "La faillite simultanée des trois plus grands constructeurs de cycles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préférence accrue pour les mobilités douces et les aides financières poussent les ménages à acheter plus de vélos."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que provoque graphiquement un choc de demande positif sur le marché ?",
+              "options": [
+                "Un déplacement de la courbe de demande vers la droite",
+                "Un déplacement de la courbe de demande vers la gauche",
+                "Un déplacement de la courbe d'offre vers la gauche",
+                "Une courbe de demande devenant horizontale à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À chaque niveau de prix, les consommateurs souhaitent acheter de plus grandes quantités : la courbe se déplace vers la droite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles sont les conséquences d'un choc de demande positif sur le nouvel équilibre de marché ?",
+              "options": [
+                "Hausse du prix d'équilibre et hausse de la quantité d'équilibre",
+                "Baisse du prix d'équilibre et baisse de la quantité d'équilibre",
+                "Hausse du prix mais effondrement de la quantité vendue",
+                "Baisse du prix et quantité vendue inchangée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'engouement des acheteurs crée une tension sur le marché : le prix monte (P* s'élève) et la quantité vendue s'accroît (Q* augmente)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel événement constitue un choc de demande négatif pour le secteur touristique d'une région ?",
+              "options": [
+                "Une crise sanitaire ou sécuritaire majeure dissuadant les voyageurs de venir",
+                "L'ouverture d'une nouvelle ligne de train à grande vitesse très bon marché",
+                "Une baisse générale des tarifs hôteliers",
+                "L'obtention du titre de capitale mondiale de la culture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La peur ou les restrictions sanitaires réduisent massivement la volonté et la possibilité des touristes de consommer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que provoque un choc de demande négatif sur le prix et la quantité d'équilibre ?",
+              "options": [
+                "Baisse du prix d'équilibre et baisse de la quantité d'équilibre",
+                "Hausse du prix d'équilibre et hausse de la quantité d'équilibre",
+                "Hausse du prix et effondrement de l'offre",
+                "Stabilité absolue des prix et des volumes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La désaffection des clients force les offreurs à baisser leurs tarifs pour écouler leurs produits et les quantités vendues reculent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si le gouvernement décide une baisse générale de l'impôt sur le revenu des ménages :",
+              "options": [
+                "Le pouvoir d'achat augmente, ce qui provoque un choc de demande positif sur les biens normaux",
+                "Les ménages cessent immédiatement de consommer",
+                "Les entreprises voient leurs usines s'arrêter",
+                "La demande globale se déplace vers la gauche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accroissement du revenu disponible stimule les dépenses de consommation des ménages."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une canicule historique en plein été constitue pour le marché des climatiseurs et des ventilateurs :",
+              "options": [
+                "Un choc de demande positif (hausse des prix et des quantités vendues)",
+                "Un choc de demande négatif",
+                "Un choc d'offre négatif exclusif",
+                "Un événement sans aucune incidence sur les ventes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Face aux fortes chaleurs, la demande de rafraîchissement explose immédiatement, déplaçant la courbe vers la droite."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si simultanément un choc de demande positif et un choc d'offre positif touchent un marché :",
+              "options": [
+                "La quantité d'équilibre augmente de façon certaine, mais l'effet sur le prix dépend de l'ampleur relative des deux chocs",
+                "La quantité d'équilibre s'effondre obligatoirement",
+                "Le prix d'équilibre double automatiquement",
+                "Toutes les transactions marchandes sont suspendues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux chocs poussent les quantités à la hausse (Q* monte), tandis que l'un pousse le prix vers le haut et l'autre vers le bas."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels événements représentent des chocs de demande négatifs pour le marché des voitures thermiques à essence ?",
+              "options": [
+                "Une taxe carbone très lourde pénalisant l'achat et la circulation des véhicules polluants",
+                "L'interdiction prochaine de rouler dans les grandes métropoles avec ces véhicules",
+                "Une baisse de 50 % du cours mondial de l'essence à la pompe",
+                "La fermeture définitive de toutes les bornes de recharge électrique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les sanctions fiscales et les interdictions de circulation découragent fortement les acheteurs de véhicules thermiques."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les taxes et les subventions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'effet direct de l'introduction d'une taxe forfaitaire par unité vendue payée par les producteurs ?",
+              "options": [
+                "Elle déplace la courbe d'offre vers le haut (vers la gauche) du montant exact de la taxe",
+                "Elle supprime immédiatement toute demande pour le bien",
+                "Elle déplace la courbe d'offre vers le bas (vers la droite)",
+                "Elle oblige les banques à prêter à taux zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La taxe augmente le coût marginal net de chaque unité : pour offrir la même quantité, le producteur exige un prix supérieur équivalent à la taxe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Après l'instauration d'une taxe unitaire sur un produit, comment évolue le nouvel équilibre de marché ?",
+              "options": [
+                "Le prix payé par le consommateur augmente et la quantité échangée diminue",
+                "Le prix payé par le consommateur baisse et la quantité échangée augmente",
+                "Le prix reste parfaitement inchangé et la quantité devient infinie",
+                "Le surplus total de la société est multiplié par deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La taxe renchérit le bien, décourage une partie de la demande et réduit le volume des transactions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on l'incidence fiscale d'une taxe ?",
+              "options": [
+                "La répartition réelle du fardeau économique de la taxe entre acheteurs et vendeurs",
+                "Le lieu où se situe le centre des impôts",
+                "Le montant total des fraudes fiscales en entreprise",
+                "Le pourcentage de contrôleurs fiscaux diplômés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'incidence fiscale montre qui supporte véritablement la taxe, indépendamment de celui qui signe le chèque au Trésor public."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "De quoi dépend la répartition de la taxe entre consommateurs et producteurs ?",
+              "options": [
+                "Des élasticités-prix relatives de l'offre et de la demande",
+                "De la couleur des billets de banque utilisés",
+                "Du jour de la semaine où la taxe a été votée au Parlement",
+                "De la météo lors du passage en caisse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le côté du marché le plus inélastique (le moins flexible) supporte la plus grande part du fardeau fiscal."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si la demande d'un bien est très inélastique (ex. le tabac ou l'essence), qui supporte l'essentiel de la taxe ?",
+              "options": [
+                "Les consommateurs, car ils ne peuvent pas facilement réduire leurs achats",
+                "Les producteurs exclusivement",
+                "L'État lui-même",
+                "Les générations futures uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pouvant pas se passer du bien, les consommateurs absorbent la quasi-totalité de la hausse du prix provoquée par la taxe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi une taxe engendre-t-elle généralement une perte sèche pour l'économie ?",
+              "options": [
+                "Car la recette fiscale perçue par l'État est inférieure à la perte cumulée de surplus des consommateurs et des producteurs",
+                "Car l'argent collecté par l'État est physiquement brûlé à la Banque de France",
+                "Car les entreprises arrêtent définitivement de produire tout autre bien",
+                "Car les consommateurs deviennent tous insolvables le jour même"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En réduisant le volume des échanges sous le niveau optimal, la taxe détruit des transactions qui auraient été mutuellement avantageuses."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une subvention unitaire versée aux producteurs ?",
+              "options": [
+                "Une aide financière accordée par l'État pour chaque unité produite, agissant comme un impôt négatif",
+                "Une amende infligée pour chaque défaut constaté sur les pièces",
+                "Une taxe prélevée sur les bénéfices exceptionnels",
+                "Un prêt à rembourser en 24 heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La subvention allège les coûts de revient, déplaçant la courbe d'offre vers le bas (vers la droite)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelles sont les conséquences d'une subvention accordée à un bien écologique (ex. vélos électriques) ?",
+              "options": [
+                "Le prix payé par le consommateur diminue et la quantité échangée augmente",
+                "Le prix payé par le consommateur monte à des sommets",
+                "La production est immédiatement stoppée par décret",
+                "Le surplus des consommateurs est réduit à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La subvention stimule les ventes en rendant le bien plus abordable pour les acheteurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le but d'une taxe pigouvienne (comme la taxe carbone) ?",
+              "options": [
+                "Inciter les agents à réduire une activité polluante en intégrant son coût social dans le prix de marché",
+                "Rendre l'État propriétaire de toutes les stations-service",
+                "Interdire totalement le commerce international",
+                "Supprimer la monnaie fiduciaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La taxe pigouvienne internalise les externalités négatives en alignant le coût privé sur le coût réel pour la collectivité."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels sont les effets démontrés d'une taxe unitaire sur un marché concurrentiel standard ?",
+              "options": [
+                "Une diminution de la quantité totale échangée à l'équilibre",
+                "Un écart (coin fiscal) entre le prix payé par l'acheteur et le prix net perçu par le vendeur",
+                "Une disparition définitive de tout rôle pour les prix",
+                "Une augmentation automatique du bien-être global de tous les agents sans exception"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La taxe réduit le volume d'échanges et crée une différence entre le prix payé par l'acheteur et celui gardé par le producteur."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Le contrôle des prix par l'État",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un prix plafond (ou prix maximal) imposé par les pouvoirs publics ?",
+              "options": [
+                "Un niveau de prix au-dessus duquel il est légalement interdit de vendre un bien",
+                "Le montant maximal des impôts qu'un citoyen peut payer par an",
+                "Le prix plancher réservé aux produits agricoles",
+                "Le coût de fabrication maximal d'un bâtiment public"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prix plafond vise souvent à protéger les consommateurs modestes en empêchant les prix de monter trop haut (ex. blocage des loyers)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour qu'un prix plafond ait un effet réel sur le marché (soit contraignant), il doit être fixé :",
+              "options": [
+                "En dessous du prix d'équilibre de marché",
+                "Au-dessus du prix d'équilibre de marché",
+                "À un niveau rigoureusement égal à un million d'euros",
+                "Au niveau du coût moyen des entreprises allemandes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S'il est fixé au-dessus de l'équilibre, le marché fonctionne normalement à son prix d'équilibre qui est déjà légal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle conséquence indésirable découle directement de l'instauration d'un prix plafond contraignant ?",
+              "options": [
+                "Une pénurie durable : la demande excède l'offre car les producteurs réduisent leur offre tandis que les acheteurs affluent",
+                "Une surproduction gigantesque impossible à écouler",
+                "La hausse automatique du pouvoir d'achat de tous les offreurs",
+                "L'annulation immédiate de toutes les dettes souveraines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au prix plafond artificiellement bas, l'offre est découragée et la demande encouragée, créant une pénurie structurelle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment les biens sont-ils souvent alloués en cas de pénurie due à un prix plafond ?",
+              "options": [
+                "Par des files d'attente, du rationnement ou l'apparition d'un marché noir illégal",
+                "Par tirage au sort organisé par la Banque mondiale",
+                "Par vente aux enchères au plus offrant officiel",
+                "Par don gratuit de l'ensemble des usines aux salariés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mécanisme des prix étant bloqué, l'ajustement se fait par le temps perdu, le copinage ou des transactions clandestines."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un prix plancher (ou prix minimal) imposé par la loi ?",
+              "options": [
+                "Un niveau de prix en dessous duquel il est interdit d'acheter ou de vendre un bien ou service",
+                "Le tarif de base pour poser du parquet dans une maison",
+                "La taxe minimale imposée aux entreprises du bâtiment",
+                "Le budget de fonctionnement d'un tribunal d'instance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prix plancher cherche généralement à garantir un revenu minimum aux offreurs (ex. salaire minimum, prix garanti aux agriculteurs)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour qu'un prix plancher soit contraignant, il doit être fixé :",
+              "options": [
+                "Au-dessus du prix d'équilibre de marché",
+                "En dessous du prix d'équilibre de marché",
+                "À zéro euro très exactement",
+                "Au niveau de l'inflation annuelle moyenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fixé au-dessus de l'équilibre, il empêche le prix de descendre vers le niveau d'apurement du marché."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle conséquence économique résulte d'un prix plancher contraignant (comme dans le cas des surplus agricoles européens d'autrefois) ?",
+              "options": [
+                "Un surplus ou excès d'offre durable (stocks d'invendus)",
+                "Une pénurie dramatique de produits",
+                "Une disparition totale des agriculteurs du territoire",
+                "Une chute des impôts locaux à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À un prix artificiellement haut, les producteurs produisent massivement alors que les consommateurs freinent leurs achats."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur le marché du travail, quel dispositif correspond à un prix plancher fixé par l'État ?",
+              "options": [
+                "Le salaire minimum (ex. le SMIC en France)",
+                "L'impôt de solidarité sur la fortune",
+                "L'indemnité légale de licenciement économique",
+                "La taxe d'apprentissage versée aux lycées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SMIC interdit d'employer un travailleur en dessous d'un salaire horaire déterminé afin de protéger son niveau de vie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Selon la théorie néoclassique standard, si le salaire minimum est fixé au-dessus du salaire d'équilibre sur un marché du travail concurrentiel :",
+              "options": [
+                "Il risque de créer un chômage classique (offre de travail supérieure à la demande de travail des entreprises)",
+                "Il garantit automatiquement le plein emploi pour l'ensemble des citoyens",
+                "Il oblige les entreprises à doubler leurs profits nets",
+                "Il supprime toute cotisation patronale de santé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coût du travail accru peut inciter certaines entreprises à embaucher moins de travailleurs peu qualifiés."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels effets néfastes peuvent apparaître lors d'une politique de contrôle direct des prix par l'État ?",
+              "options": [
+                "L'apparition de marchés noirs et de transactions informelles non déclarées",
+                "Des déséquilibres persistants entre les quantités offertes et les quantités demandées",
+                "L'apurement immédiat et sans délai de tous les marchés nationaux",
+                "La maximisation garantie du surplus total collectif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le contrôle des prix entrave le signal de rareté et génère des pénuries, des surplus durables et des marchés parallèles."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Les limites du marché et gains à l'échange",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une externalité en économie ?",
+              "options": [
+                "L'effet de l'action d'un agent économique sur le bien-être d'un tiers sans compensation monétaire sur le marché",
+                "Le commerce réalisé exclusivement avec des pays situés hors de l'Union européenne",
+                "Le résultat d'un match de football joué sur un terrain extérieur",
+                "Une amende infligée par un juge pour stationnement gênant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une externalité (positive ou négative) échappe au système de prix du marché : elle n'est ni payée ni indemnisée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La pollution rejetée par une usine chimique dans une rivière est un exemple :",
+              "options": [
+                "D'externalité négative",
+                "D'externalité positive",
+                "De bien public pur",
+                "D'information parfaitement transparente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'usine fait subir une nuisance aux riverains et pêcheurs sans leur verser de dédommagement spontané."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La recherche scientifique fondamentale ou la vaccination collective sont des exemples :",
+              "options": [
+                "D'externalités positives (ou bénéfices externes)",
+                "D'abus de position dominante illégal",
+                "D'ententes tarifaires condamnables",
+                "De monopoles d'État inefficaces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces activités génèrent des retombées positives pour l'ensemble de la société au-delà du seul bénéfice individuel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un bien public (ou bien collectif pur) ?",
+              "options": [
+                "Un bien non rival (la consommation d'une personne ne réduit pas celle d'une autre) et non excluable (on ne peut empêcher personne d'en profiter)",
+                "Un bien vendu exclusivement dans les supermarchés d'État",
+                "Une marchandise réservée aux fonctionnaires titulaires",
+                "Un service payant disponible uniquement sur abonnement mensuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éclairage public ou la défense nationale sont des biens non rivaux et non excluables."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel comportement opportuniste menace la production privée des biens publics ?",
+              "options": [
+                "Le comportement de passager clandestin (free rider)",
+                "L'abus de biens sociaux par les administrateurs",
+                "La concurrence déloyale par les prix cassés",
+                "L'achat compulsif lors des ventes flash"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun espérant profiter du bien sans payer, personne ne veut financer le bien privé : l'État doit intervenir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une asymétrie d'information sur un marché ?",
+              "options": [
+                "Une situation où l'une des parties à la transaction dispose de plus d'informations pertinentes que l'autre",
+                "Une panne d'écran sur les téléviseurs des salles de marché",
+                "Une différence de langue entre acheteurs et vendeurs étrangers",
+                "Le refus de publier les petites annonces dans le journal local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'asymétrie d'information (ex. vente de voiture d'occasion) empêche un choix parfaitement éclairé et peut bloquer les échanges."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel économiste a illustré la sélection adverse à travers le marché des voitures d'occasion ('market for lemons') ?",
+              "options": [
+                "George Akerlof",
+                "David Ricardo",
+                "François Quesnay",
+                "Milton Friedman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "George Akerlof a montré que l'ignorance de la qualité réelle pousse les acheteurs à proposer un prix bas, éliminant les bonnes voitures."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le pouvoir de marché d'une entreprise ?",
+              "options": [
+                "La capacité d'une entreprise à fixer un prix supérieur au prix concurrentiel sans perdre tous ses clients",
+                "La puissance électrique installée dans ses ateliers de montage",
+                "Le nombre de filiales ouvertes dans les paradis fiscaux",
+                "L'autorisation de battre monnaie pour payer ses sous-traitants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En situation de concurrence imparfaite (monopole, oligopole), l'entreprise est faiseuse de prix et réduit le surplus des consommateurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi l'État met-il en place des politiques de la concurrence et régule-t-il les fusions d'entreprises ?",
+              "options": [
+                "Pour empêcher les monopoles abusifs et préserver le bien-être des consommateurs par des prix compétitifs",
+                "Pour interdire définitivement le commerce sur Internet",
+                "Pour forcer toutes les entreprises à fabriquer exactement la même marque",
+                "Pour supprimer toute rentabilité dans le secteur privé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La régulation concurrentielle vise à maintenir une saine émulation entre producteurs au bénéfice du consommateur."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles situations constituent des défaillances de marché justifiant l'intervention des pouvoirs publics ?",
+              "options": [
+                "La présence de fortes externalités négatives comme la pollution industrielle",
+                "L'existence de biens publics purs qui ne peuvent être financés par le marché seul",
+                "L'obtention d'un équilibre parfait entre l'offre et la demande sans aucune intervention",
+                "La maximisation totale du surplus collectif par la concurrence pure"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les externalités et les biens publics sont des défaillances typiques où le marché décentralisé échoue à allouer efficacement les ressources."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

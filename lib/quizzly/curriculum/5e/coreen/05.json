@@ -1,0 +1,2633 @@
+{
+  "id": "5e-coreen-05",
+  "year": "5e",
+  "subject": "coreen",
+  "title": "Le passé en coréen",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles transcriptions correspondent aux fins passées polies -았어요 / -었어요 ?",
+              "options": ["asseoyo", "eosseoyo", "haeyo", "gayo"],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux variantes du passé poli se lisent asseoyo ou eosseoyo selon le verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le mot coréen pour « hier » est :",
+              "options": [
+                "어제 (eoje)",
+                "오늘 (oneul)",
+                "내일 (naeil)",
+                "아침 (achim)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "어제 (eoje) situe une action la veille."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "공부하다 au passé poli :",
+              "options": [
+                "공부했어요 (gongbuhaesseoyo)",
+                "공부해요 (gongbuhaeyo)",
+                "공부할 거예요 (gongbuhal geoyeyo)",
+                "공부하고 (gongbuhago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 devient 했어요 : 공부했어요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase correcte : hier j'ai regardé un film.",
+              "options": [
+                "어제 영화를 봤어요 (eoje yeonghwareul bwasseoyo)",
+                "어제 영화를 봐요 (eoje yeonghwareul bwayo)",
+                "내일 영화를 봤어요 (naeil yeonghwareul bwasseoyo)",
+                "어제 책을 봤어요 (eoje chaegeul bwasseoyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "봤어요 est le passé de 보다 avec 어제."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "사다 (sada, acheter) au passé poli :",
+              "options": [
+                "샀어요 (sasseoyo)",
+                "사요 (sayo)",
+                "살 거예요 (sal geoyeyo)",
+                "사고 (sago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "사 + -았 → 샀어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Hier matin » en coréen :",
+              "options": [
+                "어제 아침에 (eoje achime)",
+                "오늘 아침에 (oneul achime)",
+                "어제 밤에 (eoje bame)",
+                "내일 아침에 (naeil achime)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On juxtapose 어제 et 아침에."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "그러고 (geureogo) signifie :",
+              "options": [
+                "Puis / et ensuite",
+                "Seulement hier",
+                "Très tôt",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "그러고 enchaîne deux faits dans l'ordre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "놀다 (nolda) au passé poli :",
+              "options": [
+                "놀았어요 (norasseoyo)",
+                "놀아요 (norayo)",
+                "놀 거예요 (nol geoyeyo)",
+                "놀고 (nolgo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "놀 + -았어요 → 놀았어요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Hier j'ai téléphoné à ma mère. »",
+              "options": [
+                "어제 어머니에게 전화했어요 (eoje eomeonige jeonhwahaesseoyo)",
+                "어제 어머니에게 전화해요 (eoje eomeonige jeonhwahaeyo)",
+                "어제 아버지에게 전화했어요 (eoje abeojige jeonhwahaesseoyo)",
+                "내일 어머니에게 전화했어요 (naeil eomeonige jeonhwahaesseoyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "전화하다 → 전화했어요 avec 어제."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "읽다 (ikda) au passé poli :",
+              "options": [
+                "읽었어요 (ilgeosseoyo)",
+                "읽어요 (ilgeoyo)",
+                "읽을 거예요 (ilgeul geoyeyo)",
+                "읽고 (ilkgo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "읽 + -었어요 → 읽었어요."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots coréens indiquent un moment passé lié à la journée d'hier ?",
+              "options": [
+                "어제 (eoje)",
+                "아침에 (achime) avec 어제",
+                "내일 (naeil)",
+                "해요 (haeyo) seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "어제 marque hier ; 어제 아침에 précise le matin d'hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 수영했어요 」 signifie :",
+              "options": [
+                "Hier j'ai nagé",
+                "Aujourd'hui je nage",
+                "Demain je nagerai",
+                "Hier matin seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "수영하다 au passé avec 어제 raconte hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "마시다 au passé poli :",
+              "options": [
+                "마셨어요 (masyeosseoyo)",
+                "마셔요 (masyeoyo)",
+                "마실 거예요 (masil geoyeyo)",
+                "마시고 (masigo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "마시 + -었 → 마셨어요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 어제 친구를 만났어요 」 :",
+              "options": [
+                "Hier j'ai rencontré un ami",
+                "Hier je rencontre un ami",
+                "Demain j'ai rencontré un ami",
+                "Hier j'ai rencontré un prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "만났어요 est passé ; 친구 est ami."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "듣다 (deutda) au passé poli :",
+              "options": [
+                "들었어요 (deureosseoyo)",
+                "들어요 (deureoyo)",
+                "들을 거예요 (deureul geoyeyo)",
+                "듣고 (deutgo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "듣 → 들 + -었어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Enchaînement passé avec 그러고 :",
+              "options": [
+                "공부했어요 그러고 쉬었어요 (gongbuhaesseoyo geureogo swieosseoyo)",
+                "공부해요 그러고 쉬어요 (gongbuhaeyo geureogo swieoyo)",
+                "공부했어요 내일 쉬었어요 (gongbuhaesseoyo naeil swieosseoyo)",
+                "공부하고 그러고 쉬었어요 (gongbuhago geureogo swieosseoyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux actions passées liées par 그러고."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 어제 아침에 일찍 일어났어요 」 :",
+              "options": [
+                "Hier matin je me suis levé tôt",
+                "Aujourd'hui matin je me lève tôt",
+                "Hier soir je me suis levé tôt",
+                "Hier matin je me couche tôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "일찍 = tôt ; 일어났어요 = passé se lever."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "걷다 (geotda, marcher) au passé poli :",
+              "options": [
+                "걸었어요 (georeosseoyo)",
+                "걸어요 (georeoyo)",
+                "걸을 거예요 (georeul geoyeyo)",
+                "걷고 (geotgo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "걷 → 걸 + -었어요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「 어제 편지를 썼어요 」 :",
+              "options": [
+                "Hier j'ai écrit une lettre",
+                "Hier j'écris une lettre",
+                "Hier j'ai lu une lettre",
+                "Demain j'ai écrit une lettre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "썼어요 = passé de 쓰다 ; 편지 = lettre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "요리하다 au passé poli :",
+              "options": [
+                "요리했어요 (yorihaesseoyo)",
+                "요리해요 (yorihaeyo)",
+                "요리할 거예요 (yorihal geoyeyo)",
+                "요리하고 (yorihago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 했어요 : 요리했어요."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases mélangent correctement lieu + passé + hier ?",
+              "options": [
+                "어제 집에서 쉬었어요 (eoje jibeseo swieosseoyo)",
+                "어제 공원에서 놀았어요 (eoje gongwoneseo norasseoyo)",
+                "어제 집에서 쉬어요 (eoje jibeseo swieoyo)",
+                "오늘 공원에서 놀았어요 (oneul gongwoneseo norasseoyo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Il faut 어제 et -었/았…어요, pas le présent ni aujourd'hui."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 비가 왔어요 」 :",
+              "options": [
+                "Hier il est venu / il a plu (idée pluie)",
+                "Hier le soleil brillait",
+                "Demain il pleuvra",
+                "Hier je suis venu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "비가 왔어요 décrit la pluie au passé avec 어제."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "타다 (tada, monter/prendre) au passé poli :",
+              "options": [
+                "탔어요 (tasseoyo)",
+                "타요 (tayo)",
+                "탈 거예요 (tal geoyeyo)",
+                "타고 (tago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "타 + -았 → 탔어요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 어제 버스를 탔어요 」 :",
+              "options": [
+                "Hier j'ai pris le bus",
+                "Hier je prends le bus",
+                "Hier j'ai pris le métro",
+                "Demain j'ai pris le bus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "탔어요 + 버스를 = transport passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "그리다 (peindre/dessiner) au passé poli :",
+              "options": [
+                "그렸어요 (geuryeosseoyo)",
+                "그려요 (geuryeoyo)",
+                "그릴 거예요 (geuril geoyeyo)",
+                "그리고 (geurigo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "그리 + -었 → 그렸어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 어제 그림을 그렸어요 」 :",
+              "options": [
+                "Hier j'ai dessiné un tableau",
+                "Hier je dessine",
+                "Hier j'ai chanté",
+                "Hier matin demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "그림을 그렸어요 = dessin au passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "부르다 (appeler/chanter) au passé poli :",
+              "options": [
+                "불렀어요 (bulleosseoyo)",
+                "불러요 (bulleoyo)",
+                "부를 거예요 (bureul geoyeyo)",
+                "부르고 (bureugo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "부르 → 불렀 + -었어요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Récit : « Hier j'ai chanté 그러고 j'ai dansé. »",
+              "options": [
+                "어제 노래했어요 그러고 춤췄어요 (eoje noraehaesseoyo geureogo chumchwosseoyo)",
+                "어제 노래해요 그러고 춤춰요 (eoje noraehaeyo geureogo chumchwoyo)",
+                "어제 노래했어요 내일 춤췄어요 (eoje noraehaesseoyo naeil chumchwosseoyo)",
+                "노래하고 그러고 춤췄어요 (noraehago geureogo chumchwosseoyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux passés enchaînés par 그러고 avec 어제 implicite au début du récit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「 어제 아침에 우유를 마셨어요 」 :",
+              "options": [
+                "Hier matin j'ai bu du lait",
+                "Hier soir j'ai bu du lait",
+                "Aujourd'hui matin j'ai bu du lait",
+                "Hier matin j'ai mangé du lait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "아침에 + 마셨어요 + 우유를."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "열다 (yeolda, ouvrir) au passé poli :",
+              "options": [
+                "열었어요 (yeoreosseoyo)",
+                "열어요 (yeoreoyo)",
+                "열 거예요 (yeol geoyeyo)",
+                "열고 (yeolgo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "열 + -었어요 → 열었어요."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes sont bien au passé poli ?",
+              "options": [
+                "닫았어요 (dadasseoyo)",
+                "배웠어요 (baewasseoyo)",
+                "닫아요 (dadayo)",
+                "배워요 (baewoyo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "-았어요 marque le passé ; -아요 est présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 문을 닫았어요 」 :",
+              "options": [
+                "Hier j'ai fermé la porte",
+                "Hier j'ouvre la porte",
+                "Hier j'ai ouvert la fenêtre",
+                "Demain j'ai fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "닫았어요 = fermer au passé ; 문 = porte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "배우다 au passé poli :",
+              "options": [
+                "배웠어요 (baewasseoyo)",
+                "배워요 (baewoyo)",
+                "배울 거예요 (baeul geoyeyo)",
+                "배우고 (baeugo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "배우 + -았 → 배웠어요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 어제 한국어를 배웠어요 」 :",
+              "options": [
+                "Hier j'ai appris le coréen",
+                "Hier j'apprends le coréen",
+                "Hier j'ai appris le français",
+                "Hier matin demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "배웠어요 avec 한국어를 et 어제."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "기다리다 au passé poli :",
+              "options": [
+                "기다렸어요 (gidaryeosseoyo)",
+                "기다려요 (gidaryeoyo)",
+                "기다릴 거예요 (gidaril geoyeyo)",
+                "기다리고 (gidarigo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "기다리 + -었 → 기다렸어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 어제 친구를 기다렸어요 」 :",
+              "options": [
+                "Hier j'ai attendu un ami",
+                "Hier j'attends un ami",
+                "Hier j'ai attendu le bus",
+                "Hier j'ai appelé un ami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "기다렸어요 = attendre au passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 어제 아침에 학교에 갔어요 」 :",
+              "options": [
+                "Hier matin je suis allé à l'école",
+                "Hier soir à l'école",
+                "Aujourd'hui matin à l'école",
+                "Hier matin je viens à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Triple marque : 어제, 아침에, 갔어요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "운동하다 au passé poli :",
+              "options": [
+                "운동했어요 (undonghaesseoyo)",
+                "운동해요 (undonghaeyo)",
+                "운동할 거예요 (undonghal geoyeyo)",
+                "운동하고 (undonghago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 했어요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「 어제 운동했어요 그러고 샤워했어요 」 :",
+              "options": [
+                "Hier j'ai fait du sport puis j'ai pris une douche",
+                "Hier je fais du sport puis douche",
+                "Demain sport puis douche",
+                "Hier douche puis sport passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "그러고 lie sport et douche au passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "답하다 (répondre) au passé poli :",
+              "options": [
+                "답했어요 (daphaesseoyo)",
+                "답해요 (daphaeyo)",
+                "답할 거예요 (daphal geoyeyo)",
+                "답하고 (daphago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 답했어요."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions contiennent 어제 (eoje) ?",
+              "options": [
+                "어제 밤에 (eoje bame)",
+                "어제 오후에 (eoje ohu-e)",
+                "오늘 밤에 (oneul bame)",
+                "내일 오후에 (naeil ohu-e)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Seules les formules avec 어제 situent hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 밤에 늦게 잤어요 」 :",
+              "options": [
+                "Hier soir j'ai dormi tard",
+                "Hier matin j'ai dormi tard",
+                "Aujourd'hui soir je dors tard",
+                "Hier soir je me lève tard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "밤에 = le soir ; 잤어요 = dormir passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "보내다 (envoyer) au passé poli :",
+              "options": [
+                "보냈어요 (bonaesseoyo)",
+                "보내요 (bonaeyo)",
+                "보낼 거예요 (bonael geoyeyo)",
+                "보내고 (bonaego)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "보내 + -았 → 보냈어요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 어제 이메일을 보냈어요 」 :",
+              "options": [
+                "Hier j'ai envoyé un e-mail",
+                "Hier j'envoie un e-mail",
+                "Hier j'ai reçu un e-mail",
+                "Demain j'ai envoyé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "보냈어요 + 이메일을."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "받다 (recevoir) au passé poli :",
+              "options": [
+                "받았어요 (badasseoyo)",
+                "받아요 (badayo)",
+                "받을 거예요 (bad-eul geoyeyo)",
+                "받고 (batgo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "받 + -았 → 받았어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 어제 선물을 받았어요 」 :",
+              "options": [
+                "Hier j'ai reçu un cadeau",
+                "Hier j'offre un cadeau",
+                "Hier j'ai acheté un cadeau",
+                "Hier matin demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "받았어요 = recevoir au passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "정리하다 au passé poli :",
+              "options": [
+                "정리했어요 (jeongnihaesseoyo)",
+                "정리해요 (jeongnihaeyo)",
+                "정리할 거예요 (jeongnihal geoyeyo)",
+                "정리하고 (jeongnihago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 정리했어요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 어제 책상을 정리했어요 」 :",
+              "options": [
+                "Hier j'ai rangé le bureau",
+                "Hier je range",
+                "Hier j'ai sali le bureau",
+                "Hier j'ai ouvert le bureau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "정리하다 = ranger au passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「 어제 아침에 뉴스를 봤어요 」 :",
+              "options": [
+                "Hier matin j'ai regardé les infos",
+                "Hier soir les infos",
+                "Aujourd'hui matin infos",
+                "Hier matin j'ai écouté seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "뉴스를 봤어요 avec 아침에."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "끝내다 (finir) au passé poli :",
+              "options": [
+                "끝냈어요 (kkeutnaesseoyo)",
+                "끝내요 (kkeutnaeyo)",
+                "끝낼 거예요 (kkeutnael geoyeyo)",
+                "끝내고 (kkeutnaego)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "끝내 + -았 → 끝냈어요."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fins sont au passé poli (pas au présent) ?",
+              "options": [
+                "-았어요 (asseoyo)",
+                "-었어요 (eosseoyo)",
+                "-아요/어요 (ayo/eoyo présent)",
+                "-고 (go)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "-았/었…어요 marque le passé poli."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 게임을 끝냈어요 」 :",
+              "options": [
+                "Hier j'ai fini le jeu",
+                "Hier je finis le jeu",
+                "Hier j'ai commencé le jeu",
+                "Demain fini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "끝냈어요 = terminer au passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "시작하다 au passé poli :",
+              "options": [
+                "시작했어요 (sijakhaesseoyo)",
+                "시작해요 (sijakhaeyo)",
+                "시작할 거예요 (sijakhal geoyeyo)",
+                "시작하고 (sijakhago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 시작했어요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 어제 수업을 시작했어요 」 :",
+              "options": [
+                "Hier j'ai commencé le cours",
+                "Hier je commence",
+                "Hier j'ai fini le cours",
+                "Hier matin demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "시작했어요 avec 수업을."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 어제 사진을 찍었어요 」 :",
+              "options": [
+                "Hier j'ai pris une photo",
+                "Hier je prends une photo",
+                "Hier j'ai peint une photo",
+                "Hier j'ai effacé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "찍다 au passé : 찍었어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "찍다 au passé poli :",
+              "options": [
+                "찍었어요 (jjigeosseoyo)",
+                "찍어요 (jjigeoyo)",
+                "찍을 거예요 (jjigeul geoyeyo)",
+                "찍고 (jjikgo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "찍 + -었어요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 어제 공원에서 사진을 찍었어요 그러고 집에 갔어요 」 :",
+              "options": [
+                "Hier au parc photo puis retour maison",
+                "Hier maison puis parc",
+                "Présent parc puis maison",
+                "Hier parc sans passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux passés + 그러고 dans un récit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 어제 아침에 커피를 마셨어요 」 :",
+              "options": [
+                "Hier matin j'ai bu du café",
+                "Hier soir café",
+                "Thé hier matin",
+                "Demain café"
+              ],
+              "correctAnswers": [0],
+              "explanation": "커피를 마셨어요 + 아침에."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "씻다 (laver/se laver) au passé poli :",
+              "options": [
+                "씻었어요 (ssisseosseoyo)",
+                "씻어요 (ssiseoyo)",
+                "씻을 거예요 (ssiseul geoyeyo)",
+                "씻고 (ssitgo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "씻 + -었어요."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 어제 손을 씻었어요 」 :",
+              "options": [
+                "Hier je me suis lavé les mains",
+                "Hier je lave les mains",
+                "Hier j'ai lavé les cheveux",
+                "Demain mains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "손을 씻었어요 = lavage passé."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs enchaînent deux actions racontées au passé ?",
+              "options": [
+                "그러고 (geureogo)",
+                "그리고 (geurigo) dans un récit passé",
+                "어제 (eoje) seul entre deux verbes",
+                "-고 (go) seul sans contexte passé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "그러고 et 그리고 peuvent lier des actions ; 그러고 est la cible du chapitre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 숙제를 끝냈어요 」 :",
+              "options": [
+                "Hier j'ai terminé les devoirs",
+                "Hier je termine",
+                "Hier j'ai commencé",
+                "Demain devoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "끝냈어요 + 숙제를."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 어제 비디오를 봤어요 」 :",
+              "options": [
+                "Hier j'ai regardé une vidéo",
+                "Hier j'écoute",
+                "Hier j'ai lu",
+                "Hier matin demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "봤어요 avec 비디오를."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "춤추다 au passé poli :",
+              "options": [
+                "춤췄어요 (chumchwosseoyo)",
+                "춤춰요 (chumchwoyo)",
+                "출 거예요 (chul geoyeyo)",
+                "춤추고 (chumchugo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "춤추 → 춤춘 + -었 → 춤췄어요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 어제 파티에서 춤췄어요 」 :",
+              "options": [
+                "Hier j'ai dansé à la fête",
+                "Hier je danse",
+                "Hier j'ai chanté seulement",
+                "Demain fête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "파티에서 + 춤췄어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 어제 아침에 세수했어요 」 :",
+              "options": [
+                "Hier matin je me suis lavé le visage",
+                "Hier soir visage",
+                "Aujourd'hui matin",
+                "Hier mains seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "세수하다 → 세수했어요 le matin d'hier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "세수하다 au passé poli :",
+              "options": [
+                "세수했어요 (sesuhaesseoyo)",
+                "세수해요 (sesuhaeyo)",
+                "세수할 거예요 (sesuhal geoyeyo)",
+                "세수하고 (sesuhago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 세수했어요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 어제 친구하고 이야기했어요 」 :",
+              "options": [
+                "Hier j'ai parlé avec un ami",
+                "Hier je parle",
+                "Hier seul",
+                "Demain ami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "이야기하다 passé avec 친구하고."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "이야기하다 au passé poli :",
+              "options": [
+                "이야기했어요 (iyagihaesseoyo)",
+                "이야기해요 (iyagihaeyo)",
+                "이야기할 거예요 (iyagihal geoyeyo)",
+                "이야기하고 (iyagihago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 이야기했어요."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 어제 저녁을 먹었어요 그러고 산책했어요 」 :",
+              "options": [
+                "Hier dîner puis promenade",
+                "Hier promenade puis dîner présent",
+                "Demain dîner",
+                "Dîner sans passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "그러고 enchaîne deux passés du soir."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases situent l'action « hier matin » ?",
+              "options": [
+                "어제 아침에 일어났어요 (eoje achime ireonasseoyo)",
+                "어제 아침에 출발했어요 (eoje achime chulbalhaesseoyo)",
+                "어제 저녁에 일어났어요 (eoje jeonyeoge ireonasseoyo)",
+                "오늘 아침에 출발했어요 (oneul achime chulbalhaesseoyo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Il faut 어제 et 아침에 ensemble."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "일어나다 au passé poli :",
+              "options": [
+                "일어났어요 (ireonasseoyo)",
+                "일어나요 (ireonayo)",
+                "일어날 거예요 (ireonal geoyeyo)",
+                "일어나고 (ireonago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "일어나 + -았 → 일어났어요."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "출발하다 au passé poli :",
+              "options": [
+                "출발했어요 (chulbalhaesseoyo)",
+                "출발해요 (chulbalhaeyo)",
+                "출발할 거예요 (chulbalhal geoyeyo)",
+                "출발하고 (chulbalhago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 출발했어요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 어제 지각했어요 」 :",
+              "options": [
+                "Hier j'étais en retard (je suis arrivé en retard)",
+                "Hier je suis à l'heure",
+                "Demain retard",
+                "Hier matin demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "지각하다 passé = être en retard hier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "지각하다 au passé poli :",
+              "options": [
+                "지각했어요 (jigakhaesseoyo)",
+                "지각해요 (jigakhaeyo)",
+                "지각할 거예요 (jigakhal geoyeyo)",
+                "지각하고 (jigakhago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 지각했어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 어제 아침에 지각했어요 」 :",
+              "options": [
+                "Hier matin j'étais en retard",
+                "Hier soir retard",
+                "Aujourd'hui matin",
+                "Hier à l'heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "아침에 précise le matin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 어제 쇼핑했어요 」 :",
+              "options": [
+                "Hier j'ai fait les courses",
+                "Hier je fais courses",
+                "Hier j'ai vendu",
+                "Demain shopping"
+              ],
+              "correctAnswers": [0],
+              "explanation": "쇼핑하다 → 쇼핑했어요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "쇼핑하다 au passé poli :",
+              "options": [
+                "쇼핑했어요 (syopinghaesseoyo)",
+                "쇼핑해요 (syopinghaeyo)",
+                "쇼핑할 거예요 (syopinghal geoyeyo)",
+                "쇼핑하고 (syopinghago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 쇼핑했어요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「 어제 옷을 샀어요 」 :",
+              "options": [
+                "Hier j'ai acheté des vêtements",
+                "Hier je vends",
+                "Hier j'ai lavé",
+                "Demain vêtements"
+              ],
+              "correctAnswers": [0],
+              "explanation": "샀어요 = acheter passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 어제 아침에 준비했어요 그러고 나갔어요 」 :",
+              "options": [
+                "Hier matin préparation puis sortie",
+                "Hier sortie puis préparation présent",
+                "Demain matin",
+                "Sans 그러고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récit matinal avec deux passés."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots ne signifient PAS « hier » ?",
+              "options": [
+                "오늘 (oneul)",
+                "내일 (naeil)",
+                "어제 (eoje)",
+                "그제 (geuje)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "oneul = aujourd'hui, naeil = demain ; eoje = hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 날씨가 좋았어요 」 :",
+              "options": [
+                "Hier il faisait beau",
+                "Hier il pleut",
+                "Demain beau",
+                "Aujourd'hui beau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "좋았어요 = était bon (temps passé)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "좋다 au passé poli :",
+              "options": [
+                "좋았어요 (joasseoyo)",
+                "좋아요 (joayo)",
+                "좋을 거예요 (jo-eul geoyeyo)",
+                "좋고 (joko)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "좋 + -았 → 좋았어요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 어제 추웠어요 」 :",
+              "options": [
+                "Hier il faisait froid",
+                "Hier chaud",
+                "Demain froid",
+                "Présent froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "춥다 → 추웠어요 au passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "춥다 au passé poli :",
+              "options": [
+                "추웠어요 (chuwosseoyo)",
+                "추워요 (chuwoyo)",
+                "추울 거예요 (chuwul geoyeyo)",
+                "춥고 (chupgo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "춥 → 추우 + -었 → 추웠어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 어제 아침에 날씨가 추웠어요 」 :",
+              "options": [
+                "Hier matin il faisait froid",
+                "Hier soir chaud",
+                "Aujourd'hui matin",
+                "Hier beau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "아침에 + 추웠어요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 어제 더웠어요 」 :",
+              "options": [
+                "Hier il faisait chaud",
+                "Hier froid",
+                "Demain chaud",
+                "Présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "덥다 → 더웠어요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 어제 피곤했어요 」 :",
+              "options": [
+                "Hier j'étais fatigué",
+                "Hier je suis en forme",
+                "Demain fatigué",
+                "Hier matin demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "피곤하다 → 피곤했어요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "피곤하다 au passé poli :",
+              "options": [
+                "피곤했어요 (pigonhaesseoyo)",
+                "피곤해요 (pigonhaeyo)",
+                "피곤할 거예요 (pigonhal geoyeyo)",
+                "피곤하고 (pigonhago)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 피곤했어요."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 어제 일찍 잤어요 그러고 아침에 일찍 일어났어요 」 :",
+              "options": [
+                "Hier coucher tôt puis lever tôt ce matin-là",
+                "Présent seulement",
+                "Demain",
+                "Sans passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récit sommeil avec 그러고 entre passés."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses utilisent un verbe au passé poli après 어제 ?",
+              "options": [
+                "어제 행복했어요 (eoje haengbokhaesseoyo)",
+                "어제 슬펐어요 (eoje seulpeosseoyo)",
+                "어제 행복해요 (eoje haengbokhaeyo)",
+                "내일 슬펐어요 (naeil seulpeosseoyo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "-었/았…어요 après 어제 ; pas le présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 행복했어요 」 :",
+              "options": [
+                "Hier j'étais heureux",
+                "Hier je suis triste",
+                "Demain heureux",
+                "Aujourd'hui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "행복하다 passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "슬프다 au passé poli :",
+              "options": [
+                "슬펐어요 (seulpeosseoyo)",
+                "슬퍼요 (seulpeoyo)",
+                "슬플 거예요 (seulpeul geoyeyo)",
+                "슬프고 (seulpeugo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "슬프 → 슬펐 + -었어요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 어제 영화가 재미있었어요 」 :",
+              "options": [
+                "Hier le film était amusant",
+                "Hier le film est ennuyeux",
+                "Demain film",
+                "Présent film"
+              ],
+              "correctAnswers": [0],
+              "explanation": "재미있다 → 재미있었어요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 어제 아침에 가족과 아침을 먹었어요 」 :",
+              "options": [
+                "Hier matin petit-déjeuner avec la famille",
+                "Hier soir famille",
+                "Seul hier",
+                "Demain famille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "가족과 + 아침을 + 아침에."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 어제 할머니 댁에 갔어요 」 :",
+              "options": [
+                "Hier je suis allé chez grand-mère",
+                "Hier je viens",
+                "Chez grand-père",
+                "Demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "할머니 댁 + 갔어요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 어제 하루 종일 공부했어요 」 :",
+              "options": [
+                "Hier j'ai étudié toute la journée",
+                "Hier une heure",
+                "Demain journée",
+                "Présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하루 종일 = toute la journée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 어제 밤에 꿈을 꿨어요 」 :",
+              "options": [
+                "Hier soir j'ai rêvé",
+                "Hier matin rêve",
+                "Demain",
+                "Pas de passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "꿈꾸다 → 꿨어요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "꿈꾸다 au passé poli :",
+              "options": [
+                "꿨어요 (kkwosseoyo)",
+                "꿔요 (kkwoyo)",
+                "꿀 거예요 (kkul geoyeyo)",
+                "꾸고 (kkugo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "꿈꾸 → 꿨 + -었어요."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour résumer sa journée d'hier : quelle phrase est la plus complète ?",
+              "options": [
+                "어제 아침에 학교에 갔어요 그러고 오후에 친구를 만났어요 (eoje achime hakgyoe gasseoyo geureogo ohu-e chingureul mannasseoyo)",
+                "어제 학교 가요 (eoje hakgyoe gayo)",
+                "내일 친구 만났어요 (naeil chingu mannasseoyo)",
+                "아침에 학교 (achime hakgyo)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueurs de temps + passé + 그러고 forment un mini-récit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs précisent un moment de la journée (avec -에) ?",
+              "options": [
+                "아침에 (achime)",
+                "저녁에 (jeonyeoge)",
+                "어제 (eoje) seul",
+                "했어요 (haesseoyo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "아침에 et 저녁에 situent matin et soir ; 어제 est un jour."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "저녁에 (jeonyeoge) signifie :",
+              "options": ["Le soir / au soir", "Le matin", "Hier", "Puis"],
+              "correctAnswers": [0],
+              "explanation": "저녁 = soir, -에 = moment."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 어제 오후에 수업이 있었어요 」 :",
+              "options": [
+                "Hier après-midi il y avait cours",
+                "Hier matin cours",
+                "Demain après-midi",
+                "Présent cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "오후에 = l'après-midi ; 있었어요 passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "오후 (ohu) signifie :",
+              "options": ["Après-midi", "Matin", "Nuit", "Semaine"],
+              "correctAnswers": [0],
+              "explanation": "오후 est l'après-midi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 어제 밤에 잠을 못 잤어요 」 :",
+              "options": [
+                "Hier soir je n'ai pas pu dormir",
+                "Hier matin sommeil",
+                "Demain nuit",
+                "J'ai bien dormi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "밤에 + 못 + 잤어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "밤 (bam) avec -에 :",
+              "options": [
+                "밤에 (bame) = la nuit / le soir tard",
+                "아침에",
+                "점심에 seulement",
+                "어제 seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "밤에 marque la nuit ou le soir tard."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 어제 점심에 김밥을 먹었어요 」 :",
+              "options": [
+                "Hier à midi j'ai mangé du kimbap",
+                "Hier matin kimbap",
+                "Demain midi",
+                "Présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "점심에 = à l'heure du déjeuner."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "점심 (jeomsim) :",
+              "options": ["Déjeuner / midi", "Petit-déjeuner", "Dîner", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "점심 est le repas de midi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ordre logique : jour puis moment puis action passée ?",
+              "options": [
+                "어제 → 아침에 → 갔어요",
+                "갔어요 → 어제 → 아침에",
+                "아침에 → 내일 → 갔어요",
+                "그러고 → 어제 seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On annonce le jour, le moment, puis le verbe au passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 어제 아침에 일찍 → 저녁에 늦게 」 montre :",
+              "options": [
+                "Contraste matin tôt et soir tard hier",
+                "Demain matin",
+                "Présent seulement",
+                "Sans marqueur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux marqueurs -에 dans la même journée d'hier."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles combinaisons avec 어제 sont possibles pour situer le passé ?",
+              "options": [
+                "어제 아침에 (eoje achime)",
+                "어제 저녁에 (eoje jeonyeoge)",
+                "어제 내일 (eoje naeil)",
+                "어제 -에 sans mot de temps"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On combine 어제 avec 아침에 ou 저녁에."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "일찍 (iljjik) avec passé :",
+              "options": [
+                "일찍 갔어요 = je suis allé tôt",
+                "늦게 seulement",
+                "Demain tôt",
+                "Présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "일찍 modifie l'heure de l'action passée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "늦게 (neutge) :",
+              "options": ["Tard", "Tôt", "Hier", "Puis"],
+              "correctAnswers": [0],
+              "explanation": "늦게 = tard."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 어제 늦게 집에 왔어요 」 :",
+              "options": [
+                "Hier je suis rentré tard",
+                "Hier rentré tôt",
+                "Demain tard",
+                "Présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "늦게 + 왔어요 + 어제."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 어제 아침에 일찍 출발했어요 」 :",
+              "options": [
+                "Hier matin départ tôt",
+                "Hier soir départ",
+                "Aujourd'hui",
+                "Sans passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "아침에 + 일찍 + 출발했어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "하루 (haru) dans 「 어제 하루 」 :",
+              "options": [
+                "La journée entière (hier)",
+                "Une heure",
+                "Demain",
+                "Matin seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하루 = une journée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 어제 하루 동안 비가 왔어요 」 :",
+              "options": [
+                "Hier il a plu toute la journée",
+                "Hier une minute",
+                "Demain pluie",
+                "Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하루 동안 = pendant toute la journée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "동안 (dong-an) :",
+              "options": ["Pendant (durée)", "Après", "Avant hier", "Puis"],
+              "correctAnswers": [0],
+              "explanation": "동안 marque la durée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "그러고 place l'action :",
+              "options": [
+                "Après la première action racontée",
+                "Avant hier",
+                "À la place de -에",
+                "Uniquement au futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "그러고 suit chronologiquement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 아침에 → 점심에 → 저녁에 」 hier décrit :",
+              "options": [
+                "Trois moments d'une même journée passée",
+                "Trois jours différents",
+                "Le futur",
+                "Sans 어제 possible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaîner les repas/temps avec passé raconte la journée."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels suffixes -에 accompagnent un nom de moment ?",
+              "options": ["아침에", "오후에", "어제 sans nom", "았어요"],
+              "correctAnswers": [0, 1],
+              "explanation": "-에 suit 아침, 오후, 저녁, 밤… pour le moment."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 학교 끝나고 집에 갔어요 」 (niveau 5e : fin de cours) :",
+              "options": [
+                "Hier après l'école je suis rentré",
+                "Hier avant l'école",
+                "Demain",
+                "Présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "끝나고 indique après la fin ; 갔어요 passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 어제 아침 7시에 일어났어요 」 :",
+              "options": [
+                "Hier je me suis levé à 7 h du matin",
+                "Hier 7 h soir",
+                "Demain 7 h",
+                "Sans heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "7시에 = à 7 heures avec 아침 contexte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "시 (si) avec -에 :",
+              "options": ["…시에 = à … heures", "Hier seul", "Puis", "Semaine"],
+              "correctAnswers": [0],
+              "explanation": "Heure + 시에."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 어제 저녁 8시에 저녁을 먹었어요 」 :",
+              "options": [
+                "Hier à 20 h j'ai dîné",
+                "Hier matin 8 h",
+                "Demain",
+                "Petit-déjeuner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "저녁 + 8시에 + 저녁을."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "전 (jeon) dans 「 오후에 」 vs matin :",
+              "options": [
+                "아침 = matin ; 오후 = après-midi (contraste)",
+                "Identique",
+                "Futur",
+                "그러고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères de demi-journée pour raconter."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 어제 아침에 날씨가 어땠어요? 」 attend :",
+              "options": [
+                "Une réponse au passé sur le temps d'hier matin",
+                "Futur",
+                "Présent seul",
+                "Sans marqueur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "어땠어요 = comment c'était (passé)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "어떻다 au passé (comment c'était) :",
+              "options": [
+                "어땠어요 (eottaesseoyo)",
+                "어때요 (eottaeyo)",
+                "어떨 거예요",
+                "어떻고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comment était : 어땠어요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「 어제 오후에 친구 집에 갔어요 」 :",
+              "options": [
+                "Hier après-midi chez un ami",
+                "Hier matin",
+                "Demain",
+                "Présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "오후에 situe l'après-midi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueur manquant : 「 어제 ___ 에 숙제했어요 」 (matin)",
+              "options": ["아침 (achim) → 아침에", "내일", "그러고", "했어요"],
+              "correctAnswers": [0],
+              "explanation": "아침에 complète le moment."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots ne sont pas des marqueurs de moment dans la journée ?",
+              "options": [
+                "그러고 (geureogo)",
+                "어제 (eoje) jour",
+                "아침에",
+                "저녁에"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "그러고 connecte ; 어제 est un jour, pas heure seule."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제부터 오늘까지 」 dépasse le 5e ; ici on retient :",
+              "options": [
+                "어제 seul suffit pour « hier » en 5e",
+                "Demain inclus",
+                "Sans passé",
+                "Futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 5e on maîtrise surtout 어제 + -에."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 어제 아침에 버스를 놓쳤어요 」 :",
+              "options": [
+                "Hier matin j'ai raté le bus",
+                "Hier soir bus",
+                "Demain",
+                "Présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "놓치다 passé + 아침에."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "놓치다 au passé poli :",
+              "options": [
+                "놓쳤어요 (nochyeosseoyo)",
+                "놓쳐요",
+                "놓칠 거예요",
+                "놓치고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "놓치 + -었 → 놓쳤어요."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 어제 점심 시간에 도서관에 갔어요 」 :",
+              "options": [
+                "Hier à l'heure du déjeuner bibliothèque",
+                "Hier matin",
+                "Demain",
+                "Maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "점심 시간 = pause déjeuner."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "시간 (sigan) ici :",
+              "options": [
+                "Moment / heure (créneau)",
+                "Semaine",
+                "Puis",
+                "Hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "시간 = moment ou heure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 어제 저녁에 별이 많았어요 」 :",
+              "options": [
+                "Hier soir il y avait beaucoup d'étoiles",
+                "Hier matin",
+                "Demain",
+                "Pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "저녁에 + 많았어요 passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "많다 au passé :",
+              "options": [
+                "많았어요 (manasseoyo)",
+                "많아요",
+                "많을 거예요",
+                "많고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "많 + -았 → 많았어요."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Enchaînement marqueurs : 「 어제 아침에 … 그러고 저녁에 … 」",
+              "options": [
+                "Même jour hier, matin puis soir",
+                "Deux jours",
+                "Futur",
+                "Sans passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un 어제, deux -에, 그러고 entre les faits."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 어제 밤 10시에 잤어요 」 :",
+              "options": [
+                "Hier j'ai dormi à 22 h",
+                "Hier 10 h matin",
+                "Demain",
+                "Réveil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "밤 + 10시에 + 잤어요."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases ordonnent correctement marqueur + passé ?",
+              "options": [
+                "어제 아침에 전화했어요",
+                "어제 저녁에 산책했어요",
+                "전화해요 어제 아침에",
+                "내일 아침에 했어요"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Jour/moment avant verbe passé ; pas demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "산책하다 au passé :",
+              "options": [
+                "산책했어요 (sanchaekhaesseoyo)",
+                "산책해요",
+                "산책할 거예요",
+                "산책하고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 산책했어요."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 어제 오후에 낮잠을 잤어요 」 :",
+              "options": [
+                "Hier après-midi sieste",
+                "Hier nuit",
+                "Demain",
+                "Course"
+              ],
+              "correctAnswers": [0],
+              "explanation": "낮잠 = sieste ; 오후에."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "낮잠 (natjam) :",
+              "options": ["Sieste", "Dîner", "Hier", "Puis"],
+              "correctAnswers": [0],
+              "explanation": "낮잠 = sommeil de l'après-midi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 어제 아침에 신문을 읽었어요 」 :",
+              "options": [
+                "Hier matin journal lu",
+                "Hier soir",
+                "Demain",
+                "Écrire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "읽었어요 + 신문을."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "신문 (sinmun) :",
+              "options": ["Journal (presse)", "Musique", "Bus", "Puis"],
+              "correctAnswers": [0],
+              "explanation": "신문 = journal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 어제 저녁에 가족과 저녁을 먹었어요 」 :",
+              "options": [
+                "Hier soir dîner en famille",
+                "Hier matin",
+                "Seul",
+                "Demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "저녁에 + 저녁을 (repas du soir)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "가족 (gajok) :",
+              "options": ["Famille", "Ami", "École", "Moment"],
+              "correctAnswers": [0],
+              "explanation": "가족 = famille."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Différence 어제 vs 아침에 :",
+              "options": [
+                "어제 = jour ; 아침에 = moment dans la journée",
+                "Synonymes",
+                "Futur",
+                "Passé seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On combine les deux pour préciser."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase modèle 5e :",
+              "options": [
+                "어제 + (아침에/저녁에/오후에) + verbe -았/었어요",
+                "Verbe présent + 내일",
+                "Sans -에",
+                "Lycee connecteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure de base marqueurs + passé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adverbes de temps modifient un verbe au passé hier ?",
+              "options": [
+                "일찍 (iljjik)",
+                "늦게 (neutge)",
+                "그러고 seul",
+                "해요"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "일찍 et 늦게 précisent tôt/tard."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 아침에 일찍 일어났어요 」 vs 「 어제 저녁에 늦게 잤어요 」 :",
+              "options": [
+                "Contraste lever tôt et coucher tard hier",
+                "Même moment",
+                "Demain",
+                "Présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux marqueurs -에 + adverbes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 어제 오후에 잠깐 쉬었어요 」 :",
+              "options": [
+                "Hier après-midi pause courte",
+                "Hier toute la nuit",
+                "Demain",
+                "Sans pause"
+              ],
+              "correctAnswers": [0],
+              "explanation": "잠깐 = un moment ; 쉬었어요 passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "잠깐 (jamkkan) :",
+              "options": [
+                "Un instant / brièvement",
+                "Toujours",
+                "Hier",
+                "Puis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "잠깐 = brièvement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "쉬다 au passé :",
+              "options": [
+                "쉬었어요 (swieosseoyo)",
+                "쉬어요",
+                "쉴 거예요",
+                "쉬고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "쉬 + -었어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 어제 밤에 조용했어요 」 :",
+              "options": [
+                "Hier soir c'était calme",
+                "Hier bruyant",
+                "Demain",
+                "Matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "조용하다 passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "조용하다 au passé :",
+              "options": [
+                "조용했어요 (joyuhaesseoyo)",
+                "조용해요",
+                "조용할 거예요",
+                "조용하고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하다 → 조용했어요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 어제 아침에 시끄러웠어요 」 (école) :",
+              "options": [
+                "Hier matin c'était bruyant",
+                "Hier calme",
+                "Soir",
+                "Demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "시끄럽다 passé au matin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "시끄럽다 au passé :",
+              "options": [
+                "시끄러웠어요 (sikeureowosseoyo)",
+                "시끄러워요",
+                "시끄러울 거예요",
+                "시끄럽고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "시끄럽 → 시끄러웠어요."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "그러고 après deux moments différents hier :",
+              "options": [
+                "Lie une action du matin à une du soir",
+                "Remplace 어제",
+                "Futur",
+                "Présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Connecteur chronologique entre faits passés."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels noms de repas s'accordent avec -에 pour situer hier ?",
+              "options": [
+                "아침에 (petit-déjeuner)",
+                "점심에",
+                "그러고",
+                "았어yo seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Repas + -é = moment du repas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 점심에 학교 밥을 먹었어요 」 :",
+              "options": [
+                "Hier à midi repas à la cantine",
+                "Hier soir",
+                "Demain",
+                "Maison seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "학교 밥 = repas scolaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 어제 아침에 우유와 빵을 먹었어요 」 :",
+              "options": [
+                "Hier matin lait et pain",
+                "Hier dîner",
+                "Demain",
+                "Boire seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "아침에 + petit-déjeuner."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 어제 저녁에 야식을 먹었어요 」 :",
+              "options": [
+                "Hier soir en-cas tard",
+                "Hier matin",
+                "Demain",
+                "Sans manger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "야식 = snack nocturne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "야식 (yasik) :",
+              "options": [
+                "Repas tard le soir / snack",
+                "Déjeuner",
+                "Hier",
+                "Puis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "야식 = manger tard."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 어제 오후에 과일을 먹었어요 」 :",
+              "options": [
+                "Hier après-midi fruits",
+                "Hier nuit",
+                "Demain",
+                "Viande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "오후에 + 과일."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "과일 (gwail) :",
+              "options": ["Fruits", "Légumes", "Eau", "Moment"],
+              "correctAnswers": [0],
+              "explanation": "과일 = fruits."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ordre : marqueur de jour avant marqueur d'heure ?",
+              "options": [
+                "어제 puis 아침에/…시에",
+                "시에 puis 어제 inverse seul",
+                "내일 puis 어제",
+                "Sans ordre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Du général (jour) au précis (moment)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「 어제 」 peut-il être omis si on dit 「 아침에 갔어요 」 sans contexte ?",
+              "options": [
+                "Moins clair : 어제 précise que ce n'est pas aujourd'hui",
+                "Toujours inutile",
+                "Futur",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "어제 évite l'ambiguïté avec ce matin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mini-dialogue : « 어제 뭐 했어요? 」 réponse type :",
+              "options": [
+                "어제 아침에 … 그러고 저녁에 … (passé)",
+                "내일 …",
+                "Présent seul",
+                "Sans marqueur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse avec marqueurs et passé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments forment 「 hier après-midi 」 ?",
+              "options": [
+                "어제 (eoje)",
+                "오후에 (ohu-e)",
+                "아침에 seul",
+                "그러고 seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "어제 + 오후에."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 오후에 수영장에 갔어요 」 :",
+              "options": [
+                "Hier après-midi à la piscine",
+                "Hier matin piscine",
+                "Demain",
+                "Présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "수영장 = piscine ; 오후에."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "수영장 (suyeongjang) :",
+              "options": ["Piscine", "Parc", "Bus", "Puis"],
+              "correctAnswers": [0],
+              "explanation": "수영장 = piscine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 어제 아침에 공기가 맑았어요 」 :",
+              "options": [
+                "Hier matin air clair",
+                "Hier pollué",
+                "Soir",
+                "Demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "맑다 passé = clair."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "맑다 au passé :",
+              "options": [
+                "맑았어요 (malgasseoyo)",
+                "맑아요",
+                "맑을 거예요",
+                "맑고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "맑 + -았어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 어제 저녁에 바람이 불었어요 」 :",
+              "options": [
+                "Hier soir il y avait du vent",
+                "Hier matin",
+                "Demain",
+                "Pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "바람 + 불었어요 passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "불다 (vent) au passé :",
+              "options": [
+                "불었어요 (bureosseoyo)",
+                "불어요",
+                "불 거예요",
+                "불고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "붇 → 불 + -었어요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 어제 밤에 번개가 쳤어요 」 :",
+              "options": ["Hier nuit éclair", "Hier matin", "Demain", "Calme"],
+              "correctAnswers": [0],
+              "explanation": "밤에 + orage passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「 어제 아침에 안개가 있었어요 」 :",
+              "options": [
+                "Hier matin brouillard",
+                "Hier soir",
+                "Demain",
+                "Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "안개 = brouillard ; 있었어요."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "안개 (angae) :",
+              "options": ["Brouillard", "Neige", "Chaleur", "Connecteur"],
+              "correctAnswers": [0],
+              "explanation": "안개 = brouillard."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions demandent un repère temporel passé ?",
+              "options": [
+                "어제 아침에 뭐 했어요?",
+                "어제 저녁에 어디 갔어요?",
+                "내일 뭐 해요?",
+                "지금 뭐 해요?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "어제 + -에 + passé dans la question."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 어제 아침에 어디 갔어요? 」 réponse :",
+              "options": [
+                "학교에 갔어요 (hakgyoe gasseoyo)",
+                "내일 학교",
+                "가요 présent",
+                "Sans lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu + passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 어제 오후에 누구 만났어요? 」 :",
+              "options": [
+                "Question : qui as-tu vu hier après-midi ?",
+                "Demain",
+                "Présent",
+                "Sans passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "누구 + 만났어요."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "누구 (nugu) :",
+              "options": ["Qui", "Où", "Quand hier", "Puis"],
+              "correctAnswers": [0],
+              "explanation": "누구 = qui."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 어제 저녁에 뭐 먹었어요? 」 :",
+              "options": [
+                "Qu'as-tu mangé hier soir ?",
+                "Qu'as-tu mangé demain ?",
+                "Présent",
+                "Sans repas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "저녁에 + 먹었어요 question."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 어제 밤에 잘 잤어요? 」 :",
+              "options": [
+                "As-tu bien dormi la nuit dernière ?",
+                "Demain",
+                "Matin",
+                "Sans dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "밤에 + 잤어요 interrogatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 어제 아침에 몇 시에 일어났어요? 」 :",
+              "options": [
+                "À quelle heure t'es-tu levé hier matin ?",
+                "Demain",
+                "Soir",
+                "Sans heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "몇 시에 = quelle heure."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "몇 시 (myeot si) :",
+              "options": ["Quelle heure", "Quel jour", "Puis", "Hier seul"],
+              "correctAnswers": [0],
+              "explanation": "몇 시 = quelle heure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réponse avec 그러고 :",
+              "options": [
+                "아침에 … 했어요 그러고 오후에 … 했어요",
+                "Présent seulement",
+                "내일",
+                "Un seul moment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaîne deux moments d'hier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Erreur fréquente à éviter :",
+              "options": [
+                "Mettre 내일 avec un verbe au passé",
+                "Utiliser 어제 + 았/었어요",
+                "Ajouter 아침에",
+                "Utiliser 그러고 entre passés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demain ne combine pas avec le passé."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour situer hier dans la journée, quels marqueurs 5e combines-tu ?",
+              "options": [
+                "어제 (eoje)",
+                "아침에/점심에/저녁에 (-에)",
+                "그러고 (geureogo) seul sans jour",
+                "Connecteurs lycée (-는데)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "어제 donne le jour ; -에 précise le moment dans cette journée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Plan de récit :",
+              "options": [
+                "어제 → matin → action passée → 그러고 → soir → action passée",
+                "Passé → demain → matin",
+                "Présent → futur",
+                "Sans 어제"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure narrative 5e."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 어제 아침에 날씨가 좋았어요 그러고 오후에 운동했어요 」 :",
+              "options": [
+                "Beau temps matin puis sport après-midi hier",
+                "Demain",
+                "Présent",
+                "Un seul moment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux -é + 그러고."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 어제 저녁에 비가 그쳤어요 」 :",
+              "options": [
+                "Hier soir la pluie a cessé",
+                "Hier a commencé",
+                "Demain",
+                "Neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "그치다 passé = s'arrêter (pluie)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "그치다 au passé :",
+              "options": [
+                "그쳤어요 (geuchyeosseoyo)",
+                "그쳐요",
+                "그칠 거예요",
+                "그치고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "그치 + -었 → 그쳤어요."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 어제 하루 종일 집에 있었어요 」 :",
+              "options": [
+                "Hier je suis resté à la maison toute la journée",
+                "Hier une heure dehors",
+                "Demain",
+                "École"
+              ],
+              "correctAnswers": [0],
+              "explanation": "하루 종일 + 있었어요."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "있다 au passé :",
+              "options": [
+                "있었어요 (isseosseoyo)",
+                "있어요",
+                "있을 거예요",
+                "있고"
+              ],
+              "correctAnswers": [0],
+              "explanation": "있 + -었어요."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 어제 아침에부터 저녁에까지 바빴어요 」 (idée : de … à …) en 5e on simplifie par :",
+              "options": [
+                "어제 아침에 … 그러고 저녁에 … (passé)",
+                "Futur",
+                "Présent",
+                "Sans marqueur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 5e, enchaîner avec 그러고 suffit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Synthèse : marqueur de temps + passé =",
+              "options": [
+                "Situer une action finie dans le passé d'hier",
+                "Futur poli",
+                "Présent seul",
+                "Impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif du chapitre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase finale modèle :",
+              "options": [
+                "어제 아침에 일어났어요 그러고 학교에 갔어요 그러고 저녁에 숙제했어요",
+                "어제 가요 내일 갔어요",
+                "아침에만 présent",
+                "Sans transcription"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récit complet avec marqueurs et -았/었어요."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

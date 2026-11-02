@@ -1,0 +1,2608 @@
+{
+  "id": "5e-coreen-08",
+  "year": "5e",
+  "subject": "coreen",
+  "title": "Voyage et ville en coréen",
+  "order": 8,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Se déplacer",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Demander un lieu avec 어디 (eodi)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases demandent où se trouve un lieu ?",
+              "explanation": "Deux phrases placent 어디 (eodi) pour interroger sur un emplacement.",
+              "options": [
+                "화장실이 어디 (eodi)예요 ?",
+                "지하철 (jihacheol)을 타요.",
+                "역이 어디 (eodi)예요 ?",
+                "오른쪽 (oreunjjok)으로 가요."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le mot coréen pour « où » est :",
+              "explanation": "어디 (eodi) sert à demander un lieu.",
+              "options": [
+                "어디 (eodi)",
+                "왼쪽 (oenjjok)",
+                "버스 (beoseu)",
+                "역 (yeok)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « 약국이 어디 (eodi)예요 ? », on demande :",
+              "explanation": "어디 (eodi) localise la pharmacie.",
+              "options": [
+                "où est la pharmacie",
+                "quand ouvre la pharmacie",
+                "pourquoi la pharmacie",
+                "combien coûte la pharmacie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour demander où est l'arrêt de bus :",
+              "explanation": "정류장 est l'arrêt et 어디 (eodi) pose la question de lieu.",
+              "options": [
+                "버스 (beoseu) 정류장이 어디 (eodi)예요 ?",
+                "버스 (beoseu)가 빨라요.",
+                "버스 (beoseu)를 좋아해요.",
+                "버스 (beoseu) 표를 먹어요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase ne contient pas une question de lieu ?",
+              "explanation": "La phrase sur la météo ne demande pas un emplacement.",
+              "options": [
+                "은행이 어디 (eodi)예요 ?",
+                "카페가 어디 (eodi)예요 ?",
+                "날씨가 추워요.",
+                "우체국이 어디 (eodi)예요 ?"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Transcription de 어디 (eodi) :",
+              "explanation": "On lit approximativement « eodi ».",
+              "options": ["eodi", "oreunjjok", "jihacheol", "oenjjok"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Où est l'hôtel ? » se dit :",
+              "explanation": "호텔 + 어디 (eodi) forment la question.",
+              "options": [
+                "호텔이 어디 (eodi)예요 ?",
+                "호텔에 자요.",
+                "호텔이 맛있어요.",
+                "호텔을 공부해요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "어디 (eodi) est surtout :",
+              "explanation": "Il introduit une question sur la position.",
+              "options": [
+                "un mot interrogatif de lieu",
+                "une direction",
+                "un véhicule",
+                "une heure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « 박물관이 ___ 예요 ? » pour « où est le musée ? »",
+              "explanation": "On utilise 어디 (eodi) avant 예요.",
+              "options": [
+                "어디 (eodi)",
+                "오른쪽 (oreunjjok)",
+                "지하철 (jihacheol)",
+                "앞 (ap)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réponse logique à « 지하철역이 어디 (eodi)예요 ? » :",
+              "explanation": "On indique un emplacement, pas un sentiment.",
+              "options": [
+                "저기예요. (là-bas)",
+                "맛있어요.",
+                "피곤해요.",
+                "안녕하세요."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Prendre le 지하철 (jihacheol)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes parlent du métro ?",
+              "explanation": "지하철 (jihacheol) est le métro et 지하철역 la station.",
+              "options": [
+                "지하철 (jihacheol)",
+                "지하철역 (jihacheolyeok)",
+                "왼쪽 (oenjjok)",
+                "어디 (eodi)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "지하철 (jihacheol) signifie :",
+              "explanation": "C'est le train souterrain urbain.",
+              "options": ["métro", "bus", "taxi", "avion"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Je monte dans le métro :",
+              "explanation": "타요 indique qu'on prend un transport.",
+              "options": [
+                "지하철 (jihacheol)을 타요.",
+                "지하철 (jihacheol)을 마셔요.",
+                "지하철 (jihacheol)을 그려요.",
+                "지하철 (jihacheol)을 부러워요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une station de métro :",
+              "explanation": "역 (yeok) marque une gare ou station.",
+              "options": [
+                "지하철역 (jihacheolyeok)",
+                "공항 (gonghang)",
+                "택시 (taeksi)",
+                "왼쪽 (oenjjok)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lequel n'est pas un moyen de transport ?",
+              "explanation": "오른쪽 (oreunjjok) est une direction.",
+              "options": [
+                "지하철 (jihacheol)",
+                "버스 (beoseu)",
+                "오른쪽 (oreunjjok)",
+                "기차 (gicha)"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Transcription de 지하철 (jihacheol) :",
+              "explanation": "On prononce « jihacheol ».",
+              "options": ["jihacheol", "eodi", "beoseu", "gonghang"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Trajet cohérent :",
+              "explanation": "타고 … 가요 décrit le déplacement en métro.",
+              "options": [
+                "지하철 (jihacheol)을 타고 시장에 가요.",
+                "지하철 (jihacheol)을 먹어요.",
+                "지하철 (jihacheol)이 왼쪽 (oenjjok)이에요.",
+                "지하철 (jihacheol)을 자요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "지하철 (jihacheol) et 버스 (beoseu) sont :",
+              "explanation": "Bus et métro servent à se déplacer.",
+              "options": [
+                "des transports en commun",
+                "des couleurs",
+                "des salutations",
+                "des heures"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Où attend-on le métro ?",
+              "explanation": "On attend sur le quai de la station.",
+              "options": [
+                "지하철역 (jihacheolyeok)에서",
+                "오른쪽 (oreunjjok)에서",
+                "어디 (eodi) seul",
+                "왼쪽 (oenjjok)만"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Question sur le métro :",
+              "explanation": "어디 (eodi) demande la localisation de la station.",
+              "options": [
+                "지하철역이 어디 (eodi)예요 ?",
+                "지하철 (jihacheol)이 맛있어요 ?",
+                "지하철 (jihacheol)이 슬퍼요 ?",
+                "지하철 (jihacheol)이 안녕하세요 ?"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Tourner à 오른쪽 (oreunjjok)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots indiquent « à droite » ?",
+              "explanation": "Le nom seul ou avec 으로 indique le côté droit.",
+              "options": [
+                "오른쪽 (oreunjjok)",
+                "오른쪽 (oreunjjok)으로",
+                "왼쪽 (oenjjok)",
+                "어디 (eodi)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "오른쪽 (oreunjjok) signifie :",
+              "explanation": "C'est la direction droite.",
+              "options": ["droite", "gauche", "devant", "métro"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tourne à droite :",
+              "explanation": "으로 marque la direction du mouvement.",
+              "options": [
+                "오른쪽 (oreunjjok)으로 가세요.",
+                "왼쪽 (oenjjok)으로 가세요.",
+                "지하철 (jihacheol)을 타세요.",
+                "어디 (eodi)예요 ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Contraire de 오른쪽 (oreunjjok) :",
+              "explanation": "왼쪽 (oenjjok) est la gauche.",
+              "options": [
+                "왼쪽 (oenjjok)",
+                "앞 (ap)",
+                "뒤 (dwi)",
+                "지하철 (jihacheol)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « 오른쪽 (oreunjjok)에 카페가 있어요 », on parle :",
+              "explanation": "에 situe le café du côté droit.",
+              "options": [
+                "d'un lieu à droite",
+                "d'un métro",
+                "d'une heure",
+                "d'un repas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Transcription de 오른쪽 (oreunjjok) :",
+              "explanation": "On lit « oreunjjok ».",
+              "options": ["oreunjjok", "oenjjok", "eodi", "jihacheol"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase indique la droite ?",
+              "explanation": "오른쪽 (oreunjjok) précise le côté.",
+              "options": [
+                "편의점이 오른쪽 (oreunjjok)이에요.",
+                "편의점이 지하철 (jihacheol)이에요.",
+                "편의점을 타요.",
+                "편의점이 어디 (eodi) — incomplet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "오른쪽 (oreunjjok) est une :",
+              "explanation": "On l'utilise pour orienter quelqu'un.",
+              "options": ["direction", "boisson", "monnaie", "couleur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Après le carrefour, à droite :",
+              "explanation": "으로 indique le virage.",
+              "options": [
+                "오른쪽 (oreunjjok)으로 가요.",
+                "오른쪽 (oreunjjok)을 마셔요.",
+                "오른쪽 (oreunjjok)을 자요.",
+                "오른쪽 (oreunjjok)을 공부해요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lequel n'est pas une direction ?",
+              "explanation": "버스 (beoseu) est un véhicule.",
+              "options": [
+                "오른쪽 (oreunjjok)",
+                "왼쪽 (oenjjok)",
+                "버스 (beoseu)",
+                "직진 (jikjin)"
+              ],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Tourner à 왼쪽 (oenjjok)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions parlent de la gauche ?",
+              "explanation": "Le mot seul ou avec 으로 indique la gauche.",
+              "options": [
+                "왼쪽 (oenjjok)",
+                "왼쪽 (oenjjok)으로",
+                "오른쪽 (oreunjjok)",
+                "지하철 (jihacheol)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "왼쪽 (oenjjok) signifie :",
+              "explanation": "C'est l'opposé de droite.",
+              "options": ["gauche", "droite", "métro", "où"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Va à gauche :",
+              "explanation": "으로 marque la direction.",
+              "options": [
+                "왼쪽 (oenjjok)으로 가세요.",
+                "오른쪽 (oreunjjok)으로 가세요.",
+                "택시 (taeksi)를 타세요.",
+                "공항 (gonghang)에 있어요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La banque est à gauche :",
+              "explanation": "에 indique la position à gauche.",
+              "options": [
+                "은행이 왼쪽 (oenjjok)에 있어요.",
+                "은행이 지하철 (jihacheol)에 있어요.",
+                "은행을 타요.",
+                "은행이 맛있어요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transcription de 왼쪽 (oenjjok) :",
+              "explanation": "On prononce « oenjjok ».",
+              "options": ["oenjjok", "oreunjjok", "eodi", "beoseu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Paire de directions :",
+              "explanation": "Droite et gauche s'opposent.",
+              "options": [
+                "오른쪽 (oreunjjok) et 왼쪽 (oenjjok)",
+                "버스 (beoseu) et 택시 (taeksi)",
+                "어디 (eodi) et 지하철 (jihacheol)",
+                "공항 (gonghang) et 역 (yeok)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Instruction au piéton :",
+              "explanation": "건너세요 invite à traverser vers la gauche.",
+              "options": [
+                "왼쪽 (oenjjok)으로 건너세요.",
+                "왼쪽 (oenjjok)을 마시세요.",
+                "왼쪽 (oenjjok)을 읽으세요.",
+                "왼쪽 (oenjjok)이 맛있어요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "왼쪽 (oenjjok) sert à :",
+              "explanation": "C'est un repère spatial.",
+              "options": [
+                "orienter",
+                "saluer",
+                "compter l'heure",
+                "commander un plat"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Après l'église, à gauche :",
+              "explanation": "On place le repère à gauche.",
+              "options": [
+                "교회 다음 왼쪽 (oenjjok)이에요.",
+                "교회 다음 지하철 (jihacheol)이에요.",
+                "교회를 타요.",
+                "교회가 맛있어요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Question de direction :",
+              "explanation": "가면 … indique un chemin vers la gauche.",
+              "options": [
+                "왼쪽 (oenjjok)으로 가면 역이 있어요 ?",
+                "왼쪽 (oenjjok)을 좋아해요 ?",
+                "왼쪽 (oenjjok)이 슬퍼요 ?",
+                "왼쪽 (oenjjok) 안녕 ?"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Le bus 버스 (beoseu)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent le bus ?",
+              "explanation": "타요 et 정류장 concernent le bus.",
+              "options": [
+                "버스 (beoseu)를 타요.",
+                "버스 (beoseu) 정류장",
+                "오른쪽 (oreunjjok) seul",
+                "어디 (eodi) seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "버스 (beoseu) signifie :",
+              "explanation": "Emprunt anglais « bus ».",
+              "options": ["bus", "métro", "taxi", "train"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Arrêt de bus :",
+              "explanation": "정류장 est l'arrêt.",
+              "options": [
+                "버스 (beoseu) 정류장",
+                "버스 (beoseu) 공항",
+                "버스 (beoseu) 왼쪽 (oenjjok)",
+                "버스 (beoseu) 어디 (eodi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Je vais à l'école en bus :",
+              "explanation": "타고 … 가요 décrit le trajet.",
+              "options": [
+                "버스 (beoseu)를 타고 학교에 가요.",
+                "버스 (beoseu)를 먹어요.",
+                "버스 (beoseu)가 오른쪽 (oreunjjok)이에요.",
+                "버스 (beoseu)를 자요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transcription de 버스 (beoseu) :",
+              "explanation": "On lit « beoseu ».",
+              "options": ["beoseu", "jihacheol", "taeksi", "gicha"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Où demander l'arrêt ?",
+              "explanation": "어디 (eodi) localise l'arrêt.",
+              "options": [
+                "버스 (beoseu) 정류장이 어디 (eodi)예요 ?",
+                "버스 (beoseu) 정류장이 맛있어요 ?",
+                "버스 (beoseu) 정류장이 안녕 ?",
+                "버스 (beoseu) 정류장을 공부해요 ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "버스 (beoseu) et 지하철 (jihacheol) :",
+              "explanation": "Les deux servent à circuler en ville.",
+              "options": [
+                "transports urbains",
+                "directions",
+                "jours de la semaine",
+                "fruits"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Monter dans le bus :",
+              "explanation": "올라요 exprime la montée.",
+              "options": [
+                "버스 (beoseu)에 올라요.",
+                "버스 (beoseu)를 그려요.",
+                "버스 (beoseu)를 마셔요.",
+                "버스 (beoseu)를 자요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Numéro de ligne :",
+              "explanation": "번 indique le numéro de ligne.",
+              "options": [
+                "버스 (beoseu) 100번",
+                "버스 (beoseu) 오른쪽 (oreunjjok)",
+                "버스 (beoseu) 지하철 (jihacheol)",
+                "버스 (beoseu) 어디 (eodi) seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase incohérente :",
+              "explanation": "On ne « boit » pas un bus.",
+              "options": [
+                "버스 (beoseu)를 타고 시장에 가요.",
+                "버스 (beoseu)를 마셔요.",
+                "버스 (beoseu) 정류장에서 기다려요.",
+                "버스 (beoseu) 표를 사요."
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Le taxi 택시 (taeksi)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles options parlent du taxi ?",
+              "explanation": "Le mot taxi et 타요 vont ensemble.",
+              "options": [
+                "택시 (taeksi)",
+                "택시 (taeksi)를 타요",
+                "왼쪽 (oenjjok) seul",
+                "지하철역 (jihacheolyeok) seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "택시 (taeksi) signifie :",
+              "explanation": "Emprunt « taxi ».",
+              "options": ["taxi", "bus", "métro", "vélo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Appeler un taxi :",
+              "explanation": "불러요 signifie appeler.",
+              "options": [
+                "택시 (taeksi)를 불러요.",
+                "택시 (taeksi)를 읽어요.",
+                "택시 (taeksi)를 그려요.",
+                "택시 (taeksi)를 자요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aller à l'aéroport en taxi :",
+              "explanation": "Trajet classique en taxi.",
+              "options": [
+                "택시 (taeksi)를 타고 공항 (gonghang)에 가요.",
+                "택시 (taeksi)를 먹어요.",
+                "택시 (taeksi)가 왼쪽 (oenjjok)이에요.",
+                "택시 (taeksi)를 공부해요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transcription de 택시 (taeksi) :",
+              "explanation": "On lit « taeksi ».",
+              "options": ["taeksi", "beoseu", "gicha", "eodi"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le taxi est souvent :",
+              "explanation": "Il va au point demandé.",
+              "options": [
+                "plus direct qu'un bus",
+                "une direction",
+                "une question où",
+                "une heure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Payer le taxi :",
+              "explanation": "요금 est le tarif.",
+              "options": [
+                "택시 (taeksi) 요금을 내요.",
+                "택시 (taeksi) 오른쪽 (oreunjjok)을 내요.",
+                "택시 (taeksi) 어디 (eodi)를 내요.",
+                "택시 (taeksi) 지하철 (jihacheol)을 내요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "택시 (taeksi) vs 버스 (beoseu) :",
+              "explanation": "Deux modes de transport différents.",
+              "options": [
+                "taxi individuel vs bus collectif",
+                "droite vs gauche",
+                "où vs quand",
+                "devant vs derrière"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Destination au chauffeur :",
+              "explanation": "까지 … 가 주세요 demande d'aller à la gare.",
+              "options": [
+                "역 (yeok)까지 가 주세요.",
+                "역 (yeok)을 마셔 주세요.",
+                "역 (yeok)을 그려 주세요.",
+                "역 (yeok)을 자 주세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Question cohérente :",
+              "explanation": "On peut demander où attendre un taxi.",
+              "options": [
+                "택시 (taeksi) 정류장이 어디 (eodi)예요 ?",
+                "택시 (taeksi)가 맛있어요 ?",
+                "택시 (taeksi)가 슬퍼요 ?",
+                "택시 (taeksi) 안녕하세요 ?"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Train et gare 기차 (gicha) · 역 (yeok)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots concernent le train ou la gare ?",
+              "explanation": "기차 est le train et 역 la gare.",
+              "options": [
+                "기차 (gicha)",
+                "역 (yeok)",
+                "오른쪽 (oreunjjok)",
+                "어디 (eodi) seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "기차 (gicha) signifie :",
+              "explanation": "Train sur rails.",
+              "options": ["train", "métro", "bus", "avion"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "역 (yeok) signifie :",
+              "explanation": "Gare ferroviaire ou station.",
+              "options": ["gare", "aéroport", "droite", "arrêt seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Prendre le train :",
+              "explanation": "타요 pour le train aussi.",
+              "options": [
+                "기차 (gicha)를 타요.",
+                "기차 (gicha)를 마셔요.",
+                "기차 (gicha)를 자요.",
+                "기차 (gicha)를 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où est la gare ?",
+              "explanation": "어디 (eodi) localise la gare.",
+              "options": [
+                "역 (yeok)이 어디 (eodi)예요 ?",
+                "역 (yeok)이 맛있어요 ?",
+                "역 (yeok)이 안녕 ?",
+                "역 (yeok)을 공부해요 ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Transcription de 역 (yeok) :",
+              "explanation": "On lit « yeok ».",
+              "options": ["yeok", "gicha", "gonghang", "jihacheol"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Billet de train :",
+              "explanation": "표 est le ticket.",
+              "options": [
+                "기차 (gicha) 표",
+                "기차 (gicha) 왼쪽 (oenjjok)",
+                "기차 (gicha) 어디 (eodi)",
+                "기차 (gicha) 오른쪽 (oreunjjok)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "기차 (gicha) et 지하철 (jihacheol) :",
+              "explanation": "Le métro est un train urbain.",
+              "options": [
+                "deux trains, l'un urbain souterrain",
+                "deux directions",
+                "deux salutations",
+                "deux couleurs"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Attendre le train :",
+              "explanation": "On attend à la gare.",
+              "options": [
+                "역 (yeok)에서 기다려요.",
+                "역 (yeok)을 마셔요.",
+                "역 (yeok)을 자요.",
+                "역 (yeok)을 읽어요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase de voyage :",
+              "explanation": "Trajet vers Busan en train.",
+              "options": [
+                "기차 (gicha)를 타고 부산에 가요.",
+                "기차 (gicha)를 먹어요.",
+                "기차 (gicha)가 슬퍼요.",
+                "기차 (gicha) 안녕하세요."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Aéroport 공항 (gonghang)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions parlent de l'aéroport ?",
+              "explanation": "Le mot et « aller à l'aéroport ».",
+              "options": [
+                "공항 (gonghang)",
+                "공항 (gonghang)에 가요",
+                "왼쪽 (oenjjok) seul",
+                "버스 (beoseu) 정류장 seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "공항 (gonghang) signifie :",
+              "explanation": "Lieu des avions.",
+              "options": ["aéroport", "gare", "métro", "port"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Je vais à l'aéroport :",
+              "explanation": "에 가요 indique la destination.",
+              "options": [
+                "공항 (gonghang)에 가요.",
+                "공항 (gonghang)을 마셔요.",
+                "공항 (gonghang)을 자요.",
+                "공항 (gonghang)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où est l'aéroport ?",
+              "explanation": "어디 (eodi) pour localiser.",
+              "options": [
+                "공항 (gonghang)이 어디 (eodi)예요 ?",
+                "공항 (gonghang)이 맛있어요 ?",
+                "공항 (gonghang)이 피곤해요 ?",
+                "공항 (gonghang) 안녕 ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transcription de 공항 (gonghang) :",
+              "explanation": "On lit « gonghang ».",
+              "options": ["gonghang", "gicha", "yeok", "taeksi"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Avion et aéroport :",
+              "explanation": "L'avion décolle de l'aéroport.",
+              "options": [
+                "비행기 (bihaenggi) utilise 공항 (gonghang)",
+                "비행기 (bihaenggi) est une direction",
+                "공항 (gonghang) est une heure",
+                "공항 (gonghang) est une couleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Taxi vers l'aéroport :",
+              "explanation": "Combinaison taxi + aéroport.",
+              "options": [
+                "택시 (taeksi)를 타고 공항 (gonghang)에 가요.",
+                "택시 (taeksi)를 먹어요.",
+                "공항 (gonghang)을 왼쪽 (oenjjok)만",
+                "공항 (gonghang)을 지하철 (jihacheol)만"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "공항 (gonghang) vs 역 (yeok) :",
+              "explanation": "Deux grands hubs de voyage.",
+              "options": [
+                "avion vs train",
+                "droite vs gauche",
+                "bus vs taxi",
+                "où vs quand"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bagages à l'aéroport :",
+              "explanation": "확인해요 évoque l'enregistrement.",
+              "options": [
+                "공항 (gonghang)에서 가방을 확인해요.",
+                "공항 (gonghang)에서 가방을 마셔요.",
+                "공항 (gonghang)에서 가방을 자요.",
+                "공항 (gonghang)에서 가방을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase incohérente :",
+              "explanation": "On n'étudie pas un aéroport comme une leçon.",
+              "options": [
+                "공항 (gonghang)에 가요.",
+                "공항 (gonghang) 표를 사요.",
+                "공항 (gonghang)을 공부해요.",
+                "공항 (gonghang) 버스 (beoseu)를 타요."
+              ],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Verbes de déplacement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes décrivent un déplacement ?",
+              "explanation": "가요 et 타요 sont des actions de voyage.",
+              "options": [
+                "가요 (gayo — aller)",
+                "타요 (tayo — prendre un transport)",
+                "오른쪽 (oreunjjok)",
+                "어디 (eodi)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "가요 (gayo) signifie :",
+              "explanation": "Verbe aller courant.",
+              "options": ["j'y vais / aller", "manger", "dormir", "lire"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "타요 (tayo) avec un transport :",
+              "explanation": "Utilisé avec bus, métro, taxi.",
+              "options": [
+                "prendre / monter dans",
+                "peindre",
+                "chanter",
+                "nager"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Je vais au parc :",
+              "explanation": "에 가요 pour la destination.",
+              "options": [
+                "공원 (gongwon)에 가요.",
+                "공원 (gongwon)을 타요.",
+                "공원 (gongwon)을 마셔요.",
+                "공원 (gongwon)을 자요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combinaison correcte :",
+              "explanation": "타고 가요 = aller en prenant le métro.",
+              "options": [
+                "지하철 (jihacheol)을 타고 가요.",
+                "지하철 (jihacheol)을 먹어요.",
+                "지하철 (jihacheol)을 자요.",
+                "지하철 (jihacheol)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Venir ici :",
+              "explanation": "와요 est venir.",
+              "options": [
+                "여기 (yeogi)에 와요.",
+                "여기 (yeogi)를 타요.",
+                "여기 (yeogi)를 마셔요.",
+                "여기 (yeogi)를 자요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Marcher :",
+              "explanation": "걸어요 = marcher.",
+              "options": [
+                "걸어요 (georeoyo)",
+                "오른쪽 (oreunjjok)",
+                "지하철 (jihacheol)",
+                "공항 (gonghang) seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traverser la rue :",
+              "explanation": "건너요 = traverser.",
+              "options": [
+                "길 (gil)을 건너요.",
+                "길 (gil)을 마셔요.",
+                "길 (gil)을 자요.",
+                "길 (gil)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Arriver à la gare :",
+              "explanation": "도착해요 = arriver.",
+              "options": [
+                "역 (yeok)에 도착해요.",
+                "역 (yeok)을 먹어요.",
+                "역 (yeok)을 자요.",
+                "역 (yeok)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase de déplacement :",
+              "explanation": "Retour à la maison en bus.",
+              "options": [
+                "버스 (beoseu)를 타고 집 (jip)에 가요.",
+                "버스 (beoseu)를 공부해요.",
+                "버스 (beoseu)가 슬퍼요.",
+                "버스 (beoseu) 안녕하세요."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision — se déplacer en ville",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des moyens de transport de ce chapitre ?",
+              "explanation": "Métro et bus transportent ; droite et gauche orientent.",
+              "options": [
+                "지하철 (jihacheol)",
+                "버스 (beoseu)",
+                "오른쪽 (oreunjjok)",
+                "왼쪽 (oenjjok)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demander un lieu :",
+              "explanation": "어디 (eodi) pose la question.",
+              "options": [
+                "어디 (eodi)예요 ?",
+                "오른쪽 (oreunjjok)예요 ?",
+                "지하철 (jihacheol)예요 ?",
+                "버스 (beoseu)예요 ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Choisir le métro :",
+              "explanation": "타요 avec le métro.",
+              "options": [
+                "지하철 (jihacheol)을 타요.",
+                "지하철 (jihacheol)을 마셔요.",
+                "지하철 (jihacheol)을 자요.",
+                "지하철 (jihacheol)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Indiquer la droite :",
+              "explanation": "Direction droite.",
+              "options": [
+                "오른쪽 (oreunjjok)으로 가세요.",
+                "왼쪽 (oenjjok)으로 가세요.",
+                "어디 (eodi)로 가세요.",
+                "지하철 (jihacheol)로 가세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Indiquer la gauche :",
+              "explanation": "Direction gauche.",
+              "options": [
+                "왼쪽 (oenjjok)으로 가세요.",
+                "오른쪽 (oreunjjok)으로 가세요.",
+                "공항 (gonghang)으로 가세요.",
+                "역 (yeok)을 마시세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Taxi + destination :",
+              "explanation": "Trajet en taxi.",
+              "options": [
+                "택시 (taeksi)를 타고 호텔 (hotel)에 가요.",
+                "택시 (taeksi)를 먹어요.",
+                "택시 (taeksi)를 자요.",
+                "택시 (taeksi)를 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Gare + question :",
+              "explanation": "Localiser la gare.",
+              "options": [
+                "역 (yeok)이 어디 (eodi)예요 ?",
+                "역 (yeok)이 맛있어요 ?",
+                "역 (yeok)이 안녕 ?",
+                "역 (yeok)을 공부해요 ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Aéroport :",
+              "explanation": "Aller à l'aéroport.",
+              "options": [
+                "공항 (gonghang)에 가요.",
+                "공항 (gonghang)을 마셔요.",
+                "공항 (gonghang)을 자요.",
+                "공항 (gonghang)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bus + arrêt :",
+              "explanation": "Attendre à l'arrêt.",
+              "options": [
+                "버스 (beoseu) 정류장에서 기다려요.",
+                "버스 (beoseu) 정류장을 마셔요.",
+                "버스 (beoseu) 정류장을 자요.",
+                "버스 (beoseu) 정류장을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase la plus complète de voyage :",
+              "explanation": "Correspondance métro puis train.",
+              "options": [
+                "지하철 (jihacheol)을 타고 역 (yeok)에서 기차 (gicha)를 타요.",
+                "지하철 (jihacheol)을 먹어요.",
+                "기차 (gicha)가 왼쪽 (oenjjok)이에요.",
+                "공항 (gonghang)이 슬퍼요."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Demander son chemin",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Tout droit 직진 (jikjin)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules disent « tout droit » ?",
+              "explanation": "Le mot seul ou avec 하세요 indique d'avancer sans tourner.",
+              "options": [
+                "직진 (jikjin)",
+                "직진 (jikjin)하세요",
+                "왼쪽 (oenjjok)",
+                "지하철 (jihacheol)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "직진 (jikjin) signifie :",
+              "explanation": "Continuer dans l'axe.",
+              "options": ["tout droit", "à droite", "à gauche", "métro"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Instruction au piéton :",
+              "explanation": "하세요 rend l'instruction polie.",
+              "options": [
+                "직진 (jikjin)하세요.",
+                "직진 (jikjin)을 마시세요.",
+                "직진 (jikjin)을 자세요.",
+                "직진 (jikjin)을 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Après le feu, tout droit :",
+              "explanation": "지나서 puis 직진.",
+              "options": [
+                "신호등 (sinhodeung) 지나서 직진 (jikjin)하세요.",
+                "신호등 (sinhodeung)을 마시세요.",
+                "신호등 (sinhodeung)을 자세요.",
+                "신호등 (sinhodeung)을 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transcription de 직진 (jikjin) :",
+              "explanation": "On lit « jikjin ».",
+              "options": ["jikjin", "oreunjjok", "oenjjok", "eodi"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Contraire de tourner tout de suite :",
+              "explanation": "On ne tourne pas.",
+              "options": [
+                "직진 (jikjin)",
+                "오른쪽 (oreunjjok) seul",
+                "왼쪽 (oenjjok) seul",
+                "버스 (beoseu)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "200 mètres tout droit :",
+              "explanation": "Distance puis direction.",
+              "options": [
+                "200미터 (200 m) 직진 (jikjin)하세요.",
+                "200미터 (200 m)를 마시세요.",
+                "200미터 (200 m)를 자세요.",
+                "200미터 (200 m)를 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "직진 (jikjin) est une :",
+              "explanation": "Repère pour se guider.",
+              "options": ["direction", "boisson", "monnaie", "saison"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase d'aide :",
+              "explanation": "하면 … indique le résultat du chemin.",
+              "options": [
+                "이 길 (gil)로 직진 (jikjin)하면 역 (yeok)이 있어요.",
+                "이 길 (gil)을 마시면",
+                "이 길 (gil)을 자면",
+                "이 길 (gil)을 그리면"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lequel n'oriente pas ?",
+              "explanation": "Le numéro de bus n'indique pas un virage.",
+              "options": [
+                "직진 (jikjin)",
+                "오른쪽 (oreunjjok)",
+                "왼쪽 (oenjjok)",
+                "버스 (beoseu) 번호"
+              ],
+              "correctAnswers": [3]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Devant et derrière 앞 (ap) · 뒤 (dwi)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots indiquent une position relative ?",
+              "explanation": "앞 et 뒤 situent par rapport à un repère.",
+              "options": [
+                "앞 (ap — devant)",
+                "뒤 (dwi — derrière)",
+                "오른쪽 (oreunjjok)",
+                "지하철 (jihacheol)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "앞 (ap) signifie :",
+              "explanation": "Face ou avant.",
+              "options": ["devant", "derrière", "droite", "gauche"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "뒤 (dwi) signifie :",
+              "explanation": "Arrière par rapport à un objet.",
+              "options": ["derrière", "devant", "métro", "bus"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La pharmacie est devant la banque :",
+              "explanation": "앞에 place devant la banque.",
+              "options": [
+                "은행 (eunhaeng) 앞 (ap)에 약국 (yakguk)이 있어요.",
+                "은행 (eunhaeng) 뒤 (dwi)에만 inverse",
+                "은행 (eunhaeng) 지하철 (jihacheol)",
+                "은행 (eunhaeng)을 타요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Derrière l'école :",
+              "explanation": "뒤에 = derrière.",
+              "options": [
+                "학교 (hakgyo) 뒤 (dwi)에 공원 (gongwon)이 있어요.",
+                "학교 (hakgyo) 앞 (ap) — autre sens",
+                "학교 (hakgyo)를 타요.",
+                "학교 (hakgyo)를 마셔요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Transcription de 뒤 (dwi) :",
+              "explanation": "On lit « dwi ».",
+              "options": ["dwi", "ap", "eodi", "jikjin"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Devant la gare :",
+              "explanation": "Rendez-vous devant la gare.",
+              "options": [
+                "역 (yeok) 앞 (ap)에서 만나요.",
+                "역 (yeok) 뒤 (dwi)에서 seulement inverse",
+                "역 (yeok)을 마셔요.",
+                "역 (yeok)을 자요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "앞 (ap) vs 뒤 (dwi) :",
+              "explanation": "Deux positions relatives.",
+              "options": [
+                "opposés avant/arrière",
+                "droite/gauche",
+                "bus/taxi",
+                "où/quand"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le café est derrière le musée :",
+              "explanation": "뒤에 situe le café.",
+              "options": [
+                "박물관 (bakmulgwan) 뒤 (dwi)에 카페 (kape)가 있어요.",
+                "박물관 (bakmulgwan) 앞 (ap) — autre sens",
+                "박물관 (bakmulgwan)을 타요.",
+                "박물관 (bakmulgwan)을 마셔요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Question de repère :",
+              "explanation": "Demande si le magasin est devant l'école.",
+              "options": [
+                "편의점 (pyeonuijeom)이 학교 (hakgyo) 앞 (ap)이에요 ?",
+                "편의점 (pyeonuijeom)이 맛있어요 ?",
+                "편의점 (pyeonuijeom)이 슬퍼요 ?",
+                "편의점 (pyeonuijeom) 안녕 ?"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Combiner droite et gauche",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles instructions tournent sur les côtés ?",
+              "explanation": "Les deux premières tournent de côtés opposés.",
+              "options": [
+                "오른쪽 (oreunjjok)으로 가세요.",
+                "왼쪽 (oenjjok)으로 가세요.",
+                "지하철 (jihacheol)을 타세요.",
+                "공항 (gonghang) 표"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tourner à droite puis à gauche :",
+              "explanation": "Séquence de directions.",
+              "options": [
+                "오른쪽 (oreunjjok), 그다음 왼쪽 (oenjjok)",
+                "왼쪽 (oenjjok), 그다음 지하철 (jihacheol)",
+                "어디 (eodi), 그다음 버스 (beoseu)",
+                "택시 (taeksi), 그다음 공항 (gonghang)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Au carrefour, à droite :",
+              "explanation": "사거리 est le carrefour.",
+              "options": [
+                "사거리 (sageori)에서 오른쪽 (oreunjjok)으로 가세요.",
+                "사거리 (sageori)에서 버스 (beoseu)를 마시세요.",
+                "사거리 (sageori)에서 자세요.",
+                "사거리 (sageori)에서 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La poste est à gauche du marché :",
+              "explanation": "왼쪽에 localise la poste.",
+              "options": [
+                "시장 (sijang) 왼쪽 (oenjjok)에 우체국 (ucheguk)이 있어요.",
+                "시장 (sijang) 오른쪽 (oreunjjok) — autre côté",
+                "시장 (sijang) 지하철 (jihacheol)",
+                "시장 (sijang) 어디 (eodi) seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Indiquer deux côtés :",
+              "explanation": "Deux bâtiments, deux côtés.",
+              "options": [
+                "오른쪽 (oreunjjok)은 은행 (eunhaeng), 왼쪽 (oenjjok)은 약국 (yakguk)",
+                "오른쪽 (oreunjjok)은 버스 (beoseu) 번호",
+                "왼쪽 (oenjjok)은 시간 (sigan)",
+                "지하철 (jihacheol)은 색"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Erreur de direction :",
+              "explanation": "Correction polie du côté.",
+              "options": [
+                "왼쪽 (oenjjok)이 아니라 오른쪽 (oreunjjok)이에요.",
+                "왼쪽 (oenjjok)을 마셔요.",
+                "오른쪽 (oreunjjok)을 자요.",
+                "왼쪽 (oenjjok)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traverser puis à gauche :",
+              "explanation": "건너서 puis virage.",
+              "options": [
+                "길 (gil)을 건너서 왼쪽 (oenjjok)으로 가세요.",
+                "길 (gil)을 마시세요.",
+                "길 (gil)을 자세요.",
+                "길 (gil)을 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "오른쪽 (oreunjjok) / 왼쪽 (oenjjok) servent à :",
+              "explanation": "Vocabulaire de guidage.",
+              "options": [
+                "guider un voyageur",
+                "commander un menu",
+                "dire l'heure",
+                "saluer le matin"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deuxième rue à droite :",
+              "explanation": "Compter les rues puis tourner.",
+              "options": [
+                "두 번째 (beonjjae) 길 (gil) 오른쪽 (oreunjjok)",
+                "두 번째 (beonjjae) 버스 (beoseu)",
+                "두 번째 (beonjjae) 지하철 (jihacheol)",
+                "두 번째 (beonjjae) 공항 (gonghang)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase d'orientation :",
+              "explanation": "Après le pont, c'est à droite.",
+              "options": [
+                "다리 (dari — pont) 건너서 오른쪽 (oreunjjok)이에요.",
+                "다리 (dari)를 마셔요.",
+                "다리 (dari)를 자요.",
+                "다리 (dari)를 그려요."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Demander où avec 어디 (eodi)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions demandent un chemin ou un lieu ?",
+              "explanation": "Les deux premières utilisent 어디 (eodi).",
+              "options": [
+                "화장실 (hwajangsil)이 어디 (eodi)예요 ?",
+                "역 (yeok)이 어디 (eodi)예요 ?",
+                "오른쪽 (oreunjjok)으로 가요.",
+                "직진 (jikjin)하세요."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demander où est le métro :",
+              "explanation": "Localiser la station.",
+              "options": [
+                "지하철역 (jihacheolyeok)이 어디 (eodi)예요 ?",
+                "지하철 (jihacheol)이 맛있어요 ?",
+                "지하철 (jihacheol)이 슬퍼요 ?",
+                "지하철 (jihacheol) 안녕 ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse avec direction :",
+              "explanation": "저기 + direction.",
+              "options": [
+                "저기 (jeogi)요, 오른쪽 (oreunjjok)이에요.",
+                "저기 (jeogi)요, 맛있어요.",
+                "저기 (jeogi)요, 피곤해요.",
+                "저기 (jeogi)요, 안녕하세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Demander un magasin :",
+              "explanation": "Question de lieu.",
+              "options": [
+                "편의점 (pyeonuijeom)이 어디 (eodi)예요 ?",
+                "편의점 (pyeonuijeom)을 타요.",
+                "편의점 (pyeonuijeom)을 자요.",
+                "편의점 (pyeonuijeom)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "어디 (eodi) + 예요 ? sert à :",
+              "explanation": "Structure interrogative douce.",
+              "options": [
+                "demander poliment un emplacement",
+                "commander un taxi seul",
+                "dire bonjour",
+                "compter"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Demander l'arrêt de bus :",
+              "explanation": "Où est l'arrêt ?",
+              "options": [
+                "버스 (beoseu) 정류장이 어디 (eodi)예요 ?",
+                "버스 (beoseu) 정류장을 마셔요 ?",
+                "버스 (beoseu) 정류장을 자요 ?",
+                "버스 (beoseu) 정류장을 그려요 ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Répondre « c'est par là » :",
+              "explanation": "저쪽 indique une direction générale.",
+              "options": [
+                "저쪽 (jeojjok)이에요.",
+                "저쪽 (jeojjok)을 마셔요.",
+                "저쪽 (jeojjok)을 자요.",
+                "저쪽 (jeojjok)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Question incohérente :",
+              "explanation": "몇 시 demande l'heure, pas le lieu.",
+              "options": [
+                "은행 (eunhaeng)이 어디 (eodi)예요 ?",
+                "은행 (eunhaeng)이 몇 시 (myeot si)예요 ?",
+                "우체국 (ucheguk)이 어디 (eodi)예요 ?",
+                "약국 (yakguk)이 어디 (eodi)예요 ?"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Demander le parc :",
+              "explanation": "Où est le parc ?",
+              "options": [
+                "공원 (gongwon)이 어디 (eodi)예요 ?",
+                "공원 (gongwon)을 타요.",
+                "공원 (gongwon)을 마셔요.",
+                "공원 (gongwon)을 자요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Enchaîner question et direction :",
+              "explanation": "On répond par une instruction.",
+              "options": [
+                "역 (yeok)이 어디 (eodi)예요 ? — 직진 (jikjin)하세요.",
+                "역 (yeok)을 마시세요.",
+                "역 (yeok)을 자세요.",
+                "역 (yeok)을 그리세요."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Près et loin 가까이 (gakkai) · 멀리 (meolli)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots parlent de distance ?",
+              "explanation": "가까이 et 멀리 décrivent la distance.",
+              "options": [
+                "가까이 (gakkai — près)",
+                "멀리 (meolli — loin)",
+                "오른쪽 (oreunjjok)",
+                "버스 (beoseu) 번호"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "가까이 (gakkai) signifie :",
+              "explanation": "Proximité.",
+              "options": ["près", "loin", "droite", "métro"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "멀리 (meolli) signifie :",
+              "explanation": "Grande distance.",
+              "options": ["loin", "près", "devant", "derrière"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La gare est proche :",
+              "explanation": "가까이 있어요 = c'est proche.",
+              "options": [
+                "역 (yeok)이 가까이 (gakkai) 있어요.",
+                "역 (yeok)이 멀리 (meolli) 있어요 — inverse",
+                "역 (yeok)을 마셔요.",
+                "역 (yeok)을 자요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'aéroport est loin :",
+              "explanation": "멀리 있어요 = c'est loin.",
+              "options": [
+                "공항 (gonghang)이 멀리 (meolli) 있어요.",
+                "공항 (gonghang)이 가까이 (gakkai) — inverse",
+                "공항 (gonghang)을 그려요.",
+                "공항 (gonghang)을 자요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Transcription de 멀리 (meolli) :",
+              "explanation": "On lit « meolli ».",
+              "options": ["meolli", "gakkai", "jikjin", "eodi"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À pied, c'est près :",
+              "explanation": "Marche + proximité.",
+              "options": [
+                "걸어서 (georeoseo) 가까이 (gakkai)예요.",
+                "걸어서 (georeoseo) 멀리 (meolli)만",
+                "걸어서 (georeoseo) 버스 (beoseu)",
+                "걸어서 (georeoseo) 지하철 (jihacheol) seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Prendre le métro car c'est loin :",
+              "explanation": "Distance motive le métro.",
+              "options": [
+                "멀리 (meolli) 있어서 지하철 (jihacheol)을 타요.",
+                "가까이 (gakkai) 있어서 지하철 (jihacheol)을 타요 — moins logique",
+                "멀리 (meolli) 있어서 자요.",
+                "멀리 (meolli) 있어서 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le café est juste devant, proche :",
+              "explanation": "Devant et proche.",
+              "options": [
+                "앞 (ap)에 가까이 (gakkai) 카페 (kape)가 있어요.",
+                "뒤 (dwi)에 멀리 (meolli)만",
+                "지하철 (jihacheol)에",
+                "버스 (beoseu)에"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Question sur la distance :",
+              "explanation": "Demande si la gare est proche.",
+              "options": [
+                "역 (yeok)이 가까이 (gakkai) 있어요 ?",
+                "역 (yeok)이 맛있어요 ?",
+                "역 (yeok)이 슬퍼요 ?",
+                "역 (yeok) 안녕 ?"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Demander poliment",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules sont polies pour demander de l'aide ?",
+              "explanation": "Excusez-moi et demander l'indication.",
+              "options": [
+                "실례합니다 (sillyehamnida — excusez-moi)",
+                "길 (gil)을 알려 주세요.",
+                "버스 (beoseu) 번호",
+                "오른쪽 (oreunjjok) seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "실례합니다 (sillyehamnida) sert à :",
+              "explanation": "Avant de poser une question.",
+              "options": [
+                "attirer poliment l'attention",
+                "commander un plat",
+                "dire au revoir",
+                "compter"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Demander son chemin :",
+              "explanation": "알려 주세요 = indiquez-moi.",
+              "options": [
+                "길 (gil)을 알려 주세요.",
+                "길 (gil)을 마셔 주세요.",
+                "길 (gil)을 자 주세요.",
+                "길 (gil)을 그려 주세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Après 실례합니다 (sillyehamnida) :",
+              "explanation": "Enchaîner avec la question.",
+              "options": [
+                "역 (yeok)이 어디 (eodi)예요 ?",
+                "역 (yeok)을 먹어요.",
+                "역 (yeok)을 자요.",
+                "역 (yeok)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Merci pour l'aide :",
+              "explanation": "Remerciement.",
+              "options": [
+                "감사합니다 (gamsahamnida).",
+                "실례합니다 (sillyehamnida) seul",
+                "멀리 (meolli) seul",
+                "직진 (jikjin) seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Transcription de 실례합니다 (sillyehamnida) :",
+              "explanation": "Formule de politesse.",
+              "options": ["sillyehamnida", "gamsahamnida", "jikjin", "eodi"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Demander où est la sortie :",
+              "explanation": "출구 est la sortie.",
+              "options": [
+                "출구 (chulgu)가 어디 (eodi)예요 ?",
+                "출구 (chulgu)를 마셔요 ?",
+                "출구 (chulgu)를 자요 ?",
+                "출구 (chulgu)를 그려요 ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase complète :",
+              "explanation": "Politesse + question.",
+              "options": [
+                "실례합니다 (sillyehamnida), 지하철역 (jihacheolyeok)이 어디 (eodi)예요 ?",
+                "지하철 (jihacheol)을 마셔요.",
+                "지하철 (jihacheol)을 자요.",
+                "지하철 (jihacheol)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Répondre en indiquant :",
+              "explanation": "이쪽 = par ici.",
+              "options": [
+                "이쪽 (ijjok)으로 가세요.",
+                "이쪽 (ijjok)을 마시세요.",
+                "이쪽 (ijjok)을 자세요.",
+                "이쪽 (ijjok)을 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Formule non adaptée à demander un chemin :",
+              "explanation": "C'est « bonne nuit », pas une demande de route.",
+              "options": [
+                "길 (gil)을 알려 주세요.",
+                "어디 (eodi)예요 ?",
+                "안녕히 주무세요 (annyeonghi jumuseyo).",
+                "오른쪽 (oreunjjok)으로 가세요."
+              ],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Repères dans la rue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels repères aident à s'orienter ?",
+              "explanation": "Carrefour et feu tricolore guident.",
+              "options": [
+                "사거리 (sageori — carrefour)",
+                "신호등 (sinhodeung — feu)",
+                "버스 (beoseu) 번호 seul",
+                "택시 (taeksi) 색 seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "사거리 (sageori) signifie :",
+              "explanation": "Intersection de routes.",
+              "options": ["carrefour", "pont", "tunnel", "gare"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Au feu, traverser :",
+              "explanation": "Vert = traverser.",
+              "options": [
+                "신호등 (sinhodeung)이 초록색 (choroksaek)일 때 건너세요.",
+                "신호등 (sinhodeung)을 마시세요.",
+                "신호등 (sinhodeung)을 자세요.",
+                "신호등 (sinhodeung)을 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Après le carrefour, à gauche :",
+              "explanation": "Virage au carrefour.",
+              "options": [
+                "사거리 (sageori)에서 왼쪽 (oenjjok)으로 가세요.",
+                "사거리 (sageori)에서 자세요.",
+                "사거리 (sageori)에서 그리세요.",
+                "사거리 (sageori)에서 마시세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le pont est un repère :",
+              "explanation": "건너면 après le pont.",
+              "options": [
+                "다리 (dari) 건너면 역 (yeok)이 있어요.",
+                "다리 (dari)를 마시면",
+                "다리 (dari)를 자면",
+                "다리 (dari)를 그리면"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Devant l'entrée du métro :",
+              "explanation": "Rendez-vous à l'entrée.",
+              "options": [
+                "지하철 (jihacheol) 입구 (ipgu) 앞 (ap)에서 만나요.",
+                "지하철 (jihacheol) 입구 (ipgu) 뒤 (dwi)만",
+                "지하철 (jihacheol)을 마셔요.",
+                "지하철 (jihacheol)을 자요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sortie numérotée :",
+              "explanation": "Numéro de sortie.",
+              "options": [
+                "3번 (beon) 출구 (chulgu)로 나오세요.",
+                "3번 (beon) 버스 (beoseu)를 마시세요.",
+                "3번 (beon) 지하철 (jihacheol)을 자세요.",
+                "3번 (beon) 택시 (taeksi)를 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Repère + direction :",
+              "explanation": "Bâtiment puis droite.",
+              "options": [
+                "큰 건물 (geonmul) 오른쪽 (oreunjjok)에 편의점 (pyeonuijeom)",
+                "큰 건물 (geonmul) 지하철 (jihacheol)",
+                "큰 건물 (geonmul) 어디 (eodi) seul",
+                "큰 건물 (geonmul) 버스 (beoseu) 번호"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traverser prudemment :",
+              "explanation": "Prudence en traversant.",
+              "options": [
+                "길 (gil)을 조심해서 (josimhaeseo) 건너세요.",
+                "길 (gil)을 마시세요.",
+                "길 (gil)을 자세요.",
+                "길 (gil)을 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Instruction après repère :",
+              "explanation": "Passer la banque puis tout droit.",
+              "options": [
+                "은행 (eunhaeng) 지나서 직진 (jikjin)하세요.",
+                "은행 (eunhaeng)을 마시세요.",
+                "은행 (eunhaeng)을 자세요.",
+                "은행 (eunhaeng)을 그리세요."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Lire une indication simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots orientent en ville ?",
+              "explanation": "Sortie et entrée sont des indications courantes.",
+              "options": [
+                "출구 (chulgu — sortie)",
+                "입구 (ipgu — entrée)",
+                "버스 (beoseu) 맛",
+                "택시 (taeksi) 색"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "출구 (chulgu) signifie :",
+              "explanation": "Way out.",
+              "options": ["sortie", "entrée", "droite", "gauche"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "입구 (ipgu) signifie :",
+              "explanation": "Way in.",
+              "options": ["entrée", "sortie", "métro", "bus"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sortie vers la rue :",
+              "explanation": "Sortir par la sortie.",
+              "options": [
+                "출구 (chulgu)로 나가세요.",
+                "입구 (ipgu)로 나가세요 — inverse",
+                "출구 (chulgu)를 마시세요.",
+                "출구 (chulgu)를 자세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Entrée de la station :",
+              "explanation": "On entre par l'entrée.",
+              "options": [
+                "지하철역 (jihacheolyeok) 입구 (ipgu)",
+                "지하철역 (jihacheolyeok) 출구 (chulgu) seul inverse",
+                "지하철 (jihacheol) 버스 (beoseu)",
+                "지하철 (jihacheol) 택시 (taeksi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Flèche « droite » sur un plan :",
+              "explanation": "Flèche vers la droite.",
+              "options": [
+                "→ 오른쪽 (oreunjjok)",
+                "→ 왼쪽 (oenjjok)",
+                "→ 지하철 (jihacheol)",
+                "→ 어디 (eodi)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Flèche « gauche » :",
+              "explanation": "Flèche vers la gauche.",
+              "options": [
+                "← 왼쪽 (oenjjok)",
+                "← 오른쪽 (oreunjjok)",
+                "← 버스 (beoseu)",
+                "← 공항 (gonghang)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Panneau « tout droit » :",
+              "explanation": "Flèche vers l'avant.",
+              "options": [
+                "↑ 직진 (jikjin)",
+                "↑ 멀리 (meolli)",
+                "↑ 가까이 (gakkai)",
+                "↑ 실례합니다 (sillyehamnida)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Demander la sortie :",
+              "explanation": "Où est la sortie ?",
+              "options": [
+                "출구 (chulgu)가 어디 (eodi)예요 ?",
+                "출구 (chulgu)를 마셔요 ?",
+                "출구 (chulgu)를 자요 ?",
+                "출구 (chulgu)를 그려요 ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Enchaînement logique :",
+              "explanation": "Entrer puis prendre le métro.",
+              "options": [
+                "입구 (ipgu)로 들어가서 지하철 (jihacheol)을 타요.",
+                "출구 (chulgu)로 들어가서 — moins logique",
+                "입구 (ipgu)를 마셔요.",
+                "출구 (chulgu)를 자요."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Itinéraire pas à pas",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles étapes décrivent un itinéraire ?",
+              "explanation": "Tout droit puis tourner à droite.",
+              "options": [
+                "직진 (jikjin)하세요",
+                "오른쪽 (oreunjjok)으로 도세요 (doseyo — tournez)",
+                "버스 (beoseu) 색",
+                "공항 (gonghang) 날씨"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Première étape : sortir de la station :",
+              "explanation": "On sort par la sortie.",
+              "options": [
+                "출구 (chulgu)로 나오세요.",
+                "입구 (ipgu)로 나오세요 — inverse",
+                "출구 (chulgu)를 마시세요.",
+                "출구 (chulgu)를 자세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deuxième étape : tout droit 100 m :",
+              "explanation": "Distance puis direction.",
+              "options": [
+                "100미터 (100 m) 직진 (jikjin)하세요.",
+                "100미터 (100 m)를 마시세요.",
+                "100미터 (100 m)를 자세요.",
+                "100미터 (100 m)를 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Troisième étape : tourner :",
+              "explanation": "À la 3e ruelle, tourner.",
+              "options": [
+                "세 번째 (beonjjae) 골목 (gollmok)에서 왼쪽 (oenjjok)으로 도세요.",
+                "세 번째 (beonjjae) 골목 (gollmok)에서 자세요.",
+                "세 번째 (beonjjae) 골목 (gollmok)에서 그리세요.",
+                "세 번째 (beonjjae) 골목 (gollmok)에서 마시세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le musée est au bout :",
+              "explanation": "끝 = au bout.",
+              "options": [
+                "끝 (kkeut)에 박물관 (bakmulgwan)이 있어요.",
+                "앞 (ap)에만",
+                "뒤 (dwi)에만",
+                "버스 (beoseu)에"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Itinéraire avec repère :",
+              "explanation": "Passer à côté de la pharmacie.",
+              "options": [
+                "약국 (yakguk) 옆 (yeop — à côté)으로 가세요.",
+                "약국 (yakguk)을 마시세요.",
+                "약국 (yakguk)을 자세요.",
+                "약국 (yakguk)을 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Recap : métro puis marche :",
+              "explanation": "Descendre puis avancer.",
+              "options": [
+                "지하철 (jihacheol)을 타고 내려서 (naeryeoseo) 직진 (jikjin)하세요.",
+                "지하철 (jihacheol)을 먹어요.",
+                "지하철 (jihacheol)을 자요.",
+                "지하철 (jihacheol)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Demander confirmation :",
+              "explanation": "« C'est bien par ici ? »",
+              "options": [
+                "이쪽 (ijjok) 맞아요 (majayo) ?",
+                "이쪽 (ijjok)을 마셔요 ?",
+                "이쪽 (ijjok)을 자요 ?",
+                "이쪽 (ijjok)을 그려요 ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Corriger : trop loin :",
+              "explanation": "On est allé trop loin.",
+              "options": [
+                "조금 (jogeum) 멀리 (meolli) 갔어요 — revenir",
+                "조금 (jogeum) 가까이 (gakkai) 갔어요 — inverse",
+                "조금 (jogeum) 마셨어요.",
+                "조금 (jogeum) 그렸어요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Itinéraire complet vers la gare :",
+              "explanation": "Séquence jusqu'à voir la gare.",
+              "options": [
+                "직진 (jikjin) 후 (hu — après) 오른쪽 (oreunjjok), 역 (yeok)이 보여요 (boyeoyo).",
+                "직진 (jikjin) 후 (hu) 버스 (beoseu)를 마셔요.",
+                "직진 (jikjin) 후 (hu) 자요.",
+                "직진 (jikjin) 후 (hu) 그려요."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision — demander son chemin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses aident un touriste perdu ?",
+              "explanation": "Instructions de direction concrètes.",
+              "options": [
+                "직진 (jikjin)하세요",
+                "오른쪽 (oreunjjok)으로 가세요",
+                "버스 (beoseu) 번호만",
+                "택시 (taeksi) 색만"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demander poliment :",
+              "explanation": "Excusez-moi + où.",
+              "options": [
+                "실례합니다 (sillyehamnida), 어디 (eodi)예요 ?",
+                "안녕히 주무세요 (annyeonghi jumuseyo).",
+                "버스 (beoseu)를 마셔요.",
+                "지하철 (jihacheol)을 그려요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Proche vs loin :",
+              "explanation": "Paire distance.",
+              "options": [
+                "가까이 (gakkai) / 멀리 (meolli)",
+                "앞 (ap) / 버스 (beoseu)",
+                "뒤 (dwi) / 택시 (taeksi)",
+                "오른쪽 (oreunjjok) / 기차 (gicha)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Devant / derrière :",
+              "explanation": "Repères relatifs.",
+              "options": [
+                "앞 (ap) / 뒤 (dwi)",
+                "직진 (jikjin) / 버스 (beoseu)",
+                "출구 (chulgu) / 색",
+                "입구 (ipgu) / heure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sortie de métro + direction :",
+              "explanation": "Sortie 2 puis gauche.",
+              "options": [
+                "2번 (beon) 출구 (chulgu)로 나와서 왼쪽 (oenjjok)으로 가세요.",
+                "2번 (beon) 출구 (chulgu)를 마시세요.",
+                "2번 (beon) 출구 (chulgu)를 자세요.",
+                "2번 (beon) 출구 (chulgu)를 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Carrefour :",
+              "explanation": "Tourner à droite au carrefour.",
+              "options": [
+                "사거리 (sageori)에서 오른쪽 (oreunjjok)으로 도세요.",
+                "사거리 (sageori)에서 마시세요.",
+                "사거리 (sageori)에서 자세요.",
+                "사거리 (sageori)에서 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Remercier :",
+              "explanation": "Merci après l'aide.",
+              "options": [
+                "감사합니다 (gamsahamnida).",
+                "실례합니다 (sillyehamnida) seul avant question",
+                "멀리 (meolli) seul",
+                "직진 (jikjin) seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Question sur la gare :",
+              "explanation": "La gare est-elle proche ?",
+              "options": [
+                "역 (yeok)이 가까이 (gakkai) 있어요 ?",
+                "역 (yeok)이 맛있어요 ?",
+                "역 (yeok)이 슬퍼요 ?",
+                "역 (yeok) 안녕 ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combinaison repère + droite :",
+              "explanation": "Plusieurs étapes.",
+              "options": [
+                "은행 (eunhaeng) 앞 (ap)에서 직진 (jikjin), 그다음 오른쪽 (oreunjjok)",
+                "은행 (eunhaeng)을 마시세요.",
+                "은행 (eunhaeng)을 자세요.",
+                "은행 (eunhaeng)을 그리세요."
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Meilleure aide pour trouver le métro :",
+              "explanation": "Pointer l'entrée et dire tout droit.",
+              "options": [
+                "지하철역 (jihacheolyeok) 입구 (ipgu)는 저기 (jeogi), 직진 (jikjin)하세요.",
+                "지하철 (jihacheol)을 마시세요.",
+                "지하철 (jihacheol)을 자세요.",
+                "지하철 (jihacheol)을 그려요."
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

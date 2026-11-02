@@ -23,11 +23,12 @@ import {
 import {
   COACH_TENTATIVES_MAX,
   construireTentative,
+  type DerniereTentative,
   scoreRetenu,
 } from "@/lib/quizzly/coach";
 import { lireNomAffiche } from "@/lib/quizzly/display-name";
 import { compterDemandes } from "@/lib/quizzly/friend-store";
-import { corrigerQuiz } from "@/lib/quizzly/grade";
+import { corrigerQuestion, corrigerQuiz } from "@/lib/quizzly/grade";
 import {
   assurerSiege,
   cloreLiguesEchues,
@@ -41,6 +42,7 @@ import {
   precedentQuiz,
   suivantQuiz,
 } from "@/lib/quizzly/load";
+import { portraitsPour, trouverCompteParPseudo } from "@/lib/quizzly/portraits";
 import {
   type ChapterFileName,
   estAnneeScolaire,
@@ -56,6 +58,7 @@ import {
   analyserCleQuete,
   appliquerAchat,
   boosterActif,
+  HEARTS_MAX,
   idsDebloques,
   jourParis,
   MESURES_HEBDOMADAIRES,
@@ -74,7 +77,13 @@ import {
   xpAvecBooster,
 } from "@/lib/quizzly/rules";
 import type { SubmittedAnswer } from "@/lib/quizzly/schema";
-import { articleBoutique, type ShopItem } from "@/lib/quizzly/shop";
+import {
+  articleBoutique,
+  enregistrerArticleMemoire,
+  listerArticlesBoutique,
+  type QuizzlyGift,
+  type ShopItem,
+} from "@/lib/quizzly/shop";
 import { matiereSuivie, normaliserMatieres } from "@/lib/quizzly/subjects";
 
 export type ResumeQuizzly = {
@@ -83,6 +92,7 @@ export type ResumeQuizzly = {
   displayName: string;
   equippedFrame: string | null;
   gems: number;
+  giftsReceived?: QuizzlyGift[];
   hearts: number;
   heartsUpdatedAt: string;
   league: LeagueId;
@@ -197,6 +207,7 @@ export async function resumeQuizzly(
     displayName: nom.displayName,
     equippedFrame: cosmetiques.equippedFrame,
     gems: profil.gems,
+    giftsReceived: cosmetiques.giftsReceived || [],
     hearts: profil.hearts,
     heartsUpdatedAt: profil.heartsUpdatedAt.toISOString(),
     league: ligueOuBronze(profil.league),
@@ -433,14 +444,13 @@ export async function soumettreQuiz(
       },
       aujourdhui
     );
-    const coeurs = Math.max(0, regen.hearts - note.wrongCount);
+    const coeurs = regen.hearts;
     await tx
       .update(quizzlyProfile)
       .set({
         gems: profil.gems + gain.gems,
         hearts: coeurs,
-        heartsUpdatedAt:
-          note.wrongCount > 0 ? maintenant : regen.heartsUpdatedAt,
+        heartsUpdatedAt: regen.heartsUpdatedAt,
         streakBest: recordSerie(serie.streakCount, profil.streakBest),
         streakCount: serie.streakCount,
         streakFreezes: serie.streakFreezes,
@@ -564,6 +574,160 @@ export async function soumettreQuiz(
         totalCount: note.totalCount,
         xpAwarded: gain.xp,
       },
+    };
+  });
+}
+
+export async function traiterReponseQuestion(params: {
+  answers?: readonly {
+    questionId: string;
+    selectedIndexes: readonly number[];
+  }[];
+  correct: boolean;
+  quiz: LoadedQuiz;
+  userId: string;
+}): Promise<{ gameOver: boolean; hearts: number }> {
+  await dbReady();
+  const db = getDb();
+  const maintenant = new Date();
+
+  return db.transaction(async (tx) => {
+    await tx
+      .insert(quizzlyProfile)
+      .values({ userId: params.userId })
+      .onConflictDoNothing({
+        target: quizzlyProfile.userId,
+      });
+    const [profil] = await tx
+      .select()
+      .from(quizzlyProfile)
+      .where(eq(quizzlyProfile.userId, params.userId))
+      .for("update")
+      .limit(1);
+
+    if (!profil) {
+      throw new Error("Profil Quizzly introuvable.");
+    }
+
+    const regen = regeneratedHearts(
+      profil.hearts,
+      profil.heartsUpdatedAt,
+      maintenant
+    );
+
+    if (params.correct) {
+      if (regen.changed) {
+        await tx
+          .update(quizzlyProfile)
+          .set({
+            hearts: regen.hearts,
+            heartsUpdatedAt: regen.heartsUpdatedAt,
+            updatedAt: maintenant,
+          })
+          .where(eq(quizzlyProfile.userId, params.userId));
+      }
+      return {
+        gameOver: regen.hearts <= 0,
+        hearts: regen.hearts,
+      };
+    }
+
+    const coeurs = Math.max(0, regen.hearts - 1);
+    const gameOver = coeurs <= 0;
+    const heartsUpdatedAt =
+      regen.hearts >= HEARTS_MAX ? maintenant : regen.heartsUpdatedAt;
+
+    await tx
+      .update(quizzlyProfile)
+      .set({
+        hearts: coeurs,
+        heartsUpdatedAt,
+        updatedAt: maintenant,
+      })
+      .where(eq(quizzlyProfile.userId, params.userId));
+
+    if (gameOver) {
+      const parId = new Map(params.quiz.questions.map((q) => [q.id, q]));
+      const reponses = params.answers ?? [];
+      let correctCount = 0;
+      const results = reponses.map((rep) => {
+        const q = parId.get(rep.questionId);
+        const correction = q
+          ? corrigerQuestion(q, rep.selectedIndexes)
+          : { correct: false, expectedIndexes: [], givenIndexes: [] };
+        if (correction.correct) {
+          correctCount++;
+        }
+        return {
+          correct: correction.correct,
+          expectedIndexes: correction.expectedIndexes,
+          givenIndexes: correction.givenIndexes,
+          questionId: rep.questionId,
+        };
+      });
+
+      const tentative = construireTentative(
+        params.quiz.questions,
+        {
+          correctCount,
+          passed: false,
+          results,
+          totalCount: params.quiz.questions.length,
+        },
+        maintenant
+      );
+
+      const [existant] = await tx
+        .select()
+        .from(quizzlyQuizProgress)
+        .where(
+          and(
+            eq(quizzlyQuizProgress.userId, params.userId),
+            eq(quizzlyQuizProgress.quizId, params.quiz.id)
+          )
+        )
+        .for("update")
+        .limit(1);
+
+      const retenu = scoreRetenu(
+        existant
+          ? { correctCount: existant.correctCount, passed: existant.passed }
+          : null,
+        { correctCount, passed: false }
+      );
+
+      if (existant) {
+        await tx
+          .update(quizzlyQuizProgress)
+          .set({
+            completedAt: maintenant,
+            correctCount: retenu.correctCount,
+            lastAttempt: tentative,
+            passed: retenu.passed,
+            totalCount: params.quiz.questions.length,
+          })
+          .where(
+            and(
+              eq(quizzlyQuizProgress.userId, params.userId),
+              eq(quizzlyQuizProgress.quizId, params.quiz.id)
+            )
+          );
+      } else {
+        await tx.insert(quizzlyQuizProgress).values({
+          completedAt: maintenant,
+          correctCount: retenu.correctCount,
+          lastAttempt: tentative,
+          passed: retenu.passed,
+          quizId: params.quiz.id,
+          totalCount: params.quiz.questions.length,
+          userId: params.userId,
+        });
+      }
+    }
+
+    return {
+      gameOver,
+      hearts: coeurs,
     };
   });
 }
@@ -808,7 +972,13 @@ export async function acheterArticle(
     await tx
       .update(quizzlyProfile)
       .set({
-        cosmetics: { equippedFrame, ownedFrames },
+        cosmetics: {
+          customItems: cosmetiques.customItems,
+          equippedFrame,
+          giftsReceived: cosmetiques.giftsReceived,
+          giftsSent: cosmetiques.giftsSent,
+          ownedFrames,
+        },
         gems: suivant.gems,
         hearts: suivant.hearts,
         heartsUpdatedAt:
@@ -861,4 +1031,348 @@ export function idsOuverts(
   return idsDebloques(ordre, passes);
 }
 
-export type { ShopItem };
+/**
+ * Créditer des gemmes et/ou de l'XP à un utilisateur (par pseudo ou par identifiant compte).
+ */
+export async function crediterUtilisateurQuizzly(
+  ciblePseudoOuId: string,
+  recompense: { gems?: number; xp?: number }
+): Promise<{
+  gems: number;
+  message: string;
+  ok: boolean;
+  targetDisplayName: string;
+  targetUsername: string;
+  xp: number;
+}> {
+  await dbReady();
+  const identifiantPropre = ciblePseudoOuId.trim();
+  if (!identifiantPropre) {
+    return {
+      gems: 0,
+      message: "Identifiant utilisateur requis.",
+      ok: false,
+      targetDisplayName: "",
+      targetUsername: "",
+      xp: 0,
+    };
+  }
+
+  let targetUserId = identifiantPropre;
+  let targetUsername = identifiantPropre;
+  let targetDisplayName = identifiantPropre;
+
+  const trouve = await trouverCompteParPseudo("admin", identifiantPropre);
+  if (trouve) {
+    targetUserId = trouve.cle;
+    targetUsername = trouve.portrait.username;
+    targetDisplayName = trouve.portrait.displayName;
+  } else {
+    const [existant] = await getDb()
+      .select()
+      .from(quizzlyProfile)
+      .where(eq(quizzlyProfile.userId, targetUserId))
+      .limit(1);
+    if (!existant) {
+      return {
+        gems: 0,
+        message: `Utilisateur « ${identifiantPropre} » introuvable.`,
+        ok: false,
+        targetDisplayName: "",
+        targetUsername: "",
+        xp: 0,
+      };
+    }
+    const portraits = await portraitsPour([targetUserId]);
+    const portrait = portraits.get(targetUserId);
+    if (portrait) {
+      targetUsername = portrait.username;
+      targetDisplayName = portrait.displayName;
+    }
+  }
+
+  await assurerProfil(targetUserId);
+
+  const deltaGems = Math.trunc(recompense.gems ?? 0);
+  const deltaXp = Math.trunc(recompense.xp ?? 0);
+
+  const [maj] = await getDb()
+    .update(quizzlyProfile)
+    .set({
+      gems: sql`GREATEST(0, ${quizzlyProfile.gems} + ${deltaGems})`,
+      updatedAt: new Date(),
+      xp: sql`GREATEST(0, ${quizzlyProfile.xp} + ${deltaXp})`,
+    })
+    .where(eq(quizzlyProfile.userId, targetUserId))
+    .returning({ gems: quizzlyProfile.gems, xp: quizzlyProfile.xp });
+
+  return {
+    gems: maj?.gems ?? 0,
+    message: `${deltaGems >= 0 ? `+${deltaGems}` : deltaGems} gemmes et ${deltaXp >= 0 ? `+${deltaXp}` : deltaXp} XP attribués à ${targetDisplayName}.`,
+    ok: true,
+    targetDisplayName,
+    targetUsername,
+    xp: maj?.xp ?? 0,
+  };
+}
+
+/**
+ * Offrir un cadeau (article de boutique ou gemmes) à un utilisateur destinataire.
+ */
+export async function envoyerCadeauQuizzly(
+  senderUserId: string,
+  donnees: {
+    gems?: number;
+    itemId?: string;
+    message?: string;
+    recipientUsername: string;
+  }
+): Promise<{ message: string; ok: boolean }> {
+  await dbReady();
+  const destPseudo = donnees.recipientUsername.trim();
+  if (!destPseudo) {
+    return { message: "Destinataire requis.", ok: false };
+  }
+  const destinataire = await trouverCompteParPseudo(senderUserId, destPseudo);
+  if (!destinataire) {
+    return { message: `Utilisateur « ${destPseudo} » introuvable.`, ok: false };
+  }
+  if (destinataire.cle === senderUserId) {
+    return {
+      message: "Vous ne pouvez pas vous envoyer un cadeau à vous-même.",
+      ok: false,
+    };
+  }
+
+  const portraits = await portraitsPour([senderUserId]);
+  const expediteurPortrait = portraits.get(senderUserId);
+  const expediteurUsername = expediteurPortrait?.username || "Ami";
+  const expediteurDisplayName = expediteurPortrait?.displayName || "Un ami";
+
+  await assurerProfil(senderUserId);
+  await assurerProfil(destinataire.cle);
+
+  const db = getDb();
+  return db.transaction(async (tx) => {
+    const [senderProfile] = await tx
+      .select()
+      .from(quizzlyProfile)
+      .where(eq(quizzlyProfile.userId, senderUserId))
+      .for("update")
+      .limit(1);
+
+    if (!senderProfile) {
+      return { message: "Profil expéditeur introuvable.", ok: false };
+    }
+
+    let cout = 0;
+    let itemLabel: string | undefined;
+    let itemId: string | undefined;
+    let gemsDonnees = 0;
+
+    if (donnees.itemId) {
+      const art = articleBoutique(donnees.itemId);
+      if (!art) {
+        return { message: "Article inconnu.", ok: false };
+      }
+      cout = art.price;
+      itemLabel = art.label;
+      itemId = art.id;
+    } else if (donnees.gems && donnees.gems > 0) {
+      gemsDonnees = Math.trunc(donnees.gems);
+      cout = gemsDonnees;
+    } else {
+      return {
+        message: "Sélectionnez un article ou un montant de gemmes.",
+        ok: false,
+      };
+    }
+
+    if (senderProfile.gems < cout) {
+      return {
+        message: `Pas assez de gemmes (${senderProfile.gems}/${cout}).`,
+        ok: false,
+      };
+    }
+
+    const [recipientProfile] = await tx
+      .select()
+      .from(quizzlyProfile)
+      .where(eq(quizzlyProfile.userId, destinataire.cle))
+      .for("update")
+      .limit(1);
+
+    if (!recipientProfile) {
+      return { message: "Profil destinataire introuvable.", ok: false };
+    }
+
+    const maintenant = new Date();
+    const giftId = `gift-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+    const nouveauCadeau: QuizzlyGift = {
+      claimed: false,
+      gems: gemsDonnees || undefined,
+      id: giftId,
+      itemId,
+      itemLabel,
+      message: donnees.message?.trim() || "Un cadeau surprise pour toi !",
+      recipientId: destinataire.cle,
+      senderDisplayName: expediteurDisplayName,
+      senderId: senderUserId,
+      senderUsername: expediteurUsername,
+      sentAt: maintenant.toISOString(),
+    };
+
+    const senderCosmetics = normaliserCosmetiques(senderProfile.cosmetics);
+    const updatedSenderSent = [
+      nouveauCadeau,
+      ...(senderCosmetics.giftsSent || []),
+    ];
+    await tx
+      .update(quizzlyProfile)
+      .set({
+        cosmetics: {
+          ...senderCosmetics,
+          giftsSent: updatedSenderSent,
+        },
+        gems: senderProfile.gems - cout,
+        updatedAt: maintenant,
+      })
+      .where(eq(quizzlyProfile.userId, senderUserId));
+
+    const recipientCosmetics = normaliserCosmetiques(
+      recipientProfile.cosmetics
+    );
+    const updatedRecipientReceived = [
+      nouveauCadeau,
+      ...(recipientCosmetics.giftsReceived || []),
+    ];
+    await tx
+      .update(quizzlyProfile)
+      .set({
+        cosmetics: {
+          ...recipientCosmetics,
+          giftsReceived: updatedRecipientReceived,
+        },
+        updatedAt: maintenant,
+      })
+      .where(eq(quizzlyProfile.userId, destinataire.cle));
+
+    return {
+      message: `Cadeau envoyé avec succès à ${destinataire.portrait.displayName} !`,
+      ok: true,
+    };
+  });
+}
+
+/**
+ * Réclamer / ouvrir un cadeau reçu.
+ */
+export async function reclamerCadeauQuizzly(
+  userId: string,
+  giftId: string
+): Promise<{ gems: number; hearts: number; message: string; ok: boolean }> {
+  await dbReady();
+  const db = getDb();
+  return db.transaction(async (tx) => {
+    const [profil] = await tx
+      .select()
+      .from(quizzlyProfile)
+      .where(eq(quizzlyProfile.userId, userId))
+      .for("update")
+      .limit(1);
+
+    if (!profil) {
+      return { gems: 0, hearts: 0, message: "Profil introuvable.", ok: false };
+    }
+
+    const cosmetiques = normaliserCosmetiques(profil.cosmetics);
+    const cadeaux = cosmetiques.giftsReceived || [];
+    const index = cadeaux.findIndex((c) => c.id === giftId);
+    if (index === -1) {
+      return {
+        gems: profil.gems,
+        hearts: profil.hearts,
+        message: "Cadeau introuvable.",
+        ok: false,
+      };
+    }
+
+    const cadeau = cadeaux[index];
+    if (cadeau.claimed) {
+      return {
+        gems: profil.gems,
+        hearts: profil.hearts,
+        message: "Ce cadeau a déjà été réclamé.",
+        ok: false,
+      };
+    }
+
+    const maintenant = new Date();
+    const gemsAjoutees = cadeau.gems || 0;
+    let nouveauxCoeurs = profil.hearts;
+    const ownedFrames = [...cosmetiques.ownedFrames];
+
+    if (cadeau.itemId) {
+      const art = articleBoutique(cadeau.itemId);
+      if (art?.kind === "frame" && !ownedFrames.includes(art.id)) {
+        ownedFrames.push(art.id);
+      } else if (art?.kind === "hearts") {
+        nouveauxCoeurs = HEARTS_MAX;
+      }
+    }
+
+    cadeaux[index] = {
+      ...cadeau,
+      claimed: true,
+      claimedAt: maintenant.toISOString(),
+    };
+
+    const newGems = profil.gems + gemsAjoutees;
+    await tx
+      .update(quizzlyProfile)
+      .set({
+        cosmetics: {
+          ...cosmetiques,
+          giftsReceived: cadeaux,
+          ownedFrames,
+        },
+        gems: newGems,
+        hearts: nouveauxCoeurs,
+        updatedAt: maintenant,
+      })
+      .where(eq(quizzlyProfile.userId, userId));
+
+    return {
+      gems: newGems,
+      hearts: nouveauxCoeurs,
+      message: `Cadeau ouvert ! +${gemsAjoutees} gemmes reçues.`,
+      ok: true,
+    };
+  });
+}
+
+/**
+ * Ajouter un nouvel article à la boutique.
+ */
+export async function ajouterArticleBoutique(
+  item: Omit<ShopItem, "id"> & { id?: string }
+): Promise<{ article: ShopItem; message: string; ok: boolean }> {
+  const idPropre = (
+    item.id || item.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")
+  ).trim();
+  const article: ShopItem = {
+    description: item.description.trim(),
+    id: idPropre,
+    kind: item.kind,
+    label: item.label.trim(),
+    price: Math.max(0, Math.trunc(item.price)),
+  };
+  enregistrerArticleMemoire(article);
+  return {
+    article,
+    message: `Article « ${article.label} » ajouté à la boutique.`,
+    ok: true,
+  };
+}
+
+export type { QuizzlyGift, ShopItem };

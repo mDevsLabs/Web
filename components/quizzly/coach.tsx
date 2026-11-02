@@ -3,6 +3,7 @@
 import { MoreHorizontalIcon, PinIcon } from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
 import useSWR from "swr";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { useResumeQuizzly } from "@/components/quizzly/shell";
@@ -88,7 +89,7 @@ function MenuActions({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        aria-label="Actions"
+        aria-label="Actions de la conversation"
         className="chip px-2"
         type="button"
       >
@@ -101,6 +102,60 @@ function MenuActions({
         </DropdownMenuItem>
         <DropdownMenuItem onSelect={onExporter}>Exporter</DropdownMenuItem>
         <DropdownMenuItem onSelect={onPartager}>Partager</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+function MenuMessageEleve({
+  onCopier,
+  onModifier,
+}: {
+  onCopier: () => void;
+  onModifier: () => void;
+}) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        aria-label="Actions du message"
+        className="chip self-end px-2 text-foreground"
+        type="button"
+      >
+        <MoreHorizontalIcon className="size-3.5" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onSelect={onCopier}>Copier</DropdownMenuItem>
+        <DropdownMenuItem onSelect={onModifier}>Modifier</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+function MenuMessageIa({
+  onCopier,
+  onExporter,
+  onModifier,
+  onPartager,
+}: {
+  onCopier: () => void;
+  onExporter: () => void;
+  onModifier: () => void;
+  onPartager: () => void;
+}) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        aria-label="Actions du message"
+        className="chip self-start px-2"
+        type="button"
+      >
+        <MoreHorizontalIcon className="size-3.5" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start">
+        <DropdownMenuItem onSelect={onCopier}>Copier</DropdownMenuItem>
+        <DropdownMenuItem onSelect={onPartager}>Partager</DropdownMenuItem>
+        <DropdownMenuItem onSelect={onModifier}>Modifier</DropdownMenuItem>
+        <DropdownMenuItem onSelect={onExporter}>Exporter</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
@@ -368,10 +423,19 @@ export function CoachQuizzly({
     try {
       const resultat = await partagerTexte(titre, texte);
       if (resultat === "copie") {
-        setMessage("Texte copié.");
+        toast.success("Texte copié !");
       }
     } catch {
       setMessage("Le partage a échoué.");
+    }
+  }
+
+  async function copierTexte(texte: string) {
+    try {
+      await navigator.clipboard.writeText(texte);
+      toast.success("Message copié !");
+    } catch {
+      setMessage("Impossible de copier dans le presse-papier.");
     }
   }
 
@@ -654,33 +718,40 @@ export function CoachQuizzly({
                   ) : (
                     <p className="whitespace-pre-wrap">{bulle.text}</p>
                   )}
-                  {bulle.id === "epilogue" ? null : (
-                    <MenuActions
-                      epingle={bulle.pinned}
-                      onEpingler={() => {
-                        void patchMessage(bulle.id, { pinned: !bulle.pinned });
+                  {bulle.id === "epilogue" ? null : bulle.role === "user" ? (
+                    <MenuMessageEleve
+                      onCopier={() => {
+                        void copierTexte(bulle.text);
                       }}
-                      onExporter={() => {
-                        telechargerMarkdown(
-                          nomFichierCoach(
-                            bulle.role === "user" ? "moi" : "coach"
-                          ),
-                          markdownMessage(bulle)
-                        );
-                      }}
-                      onPartager={() => {
-                        void partager(
-                          bulle.role === "user" ? "Moi" : "Coach",
-                          bulle.text
-                        );
-                      }}
-                      onRenommer={() =>
+                      onModifier={() =>
                         setRenommage({
                           id: bulle.id,
                           kind: "message",
                           text: bulle.text,
                         })
                       }
+                    />
+                  ) : (
+                    <MenuMessageIa
+                      onCopier={() => {
+                        void copierTexte(bulle.text);
+                      }}
+                      onExporter={() => {
+                        telechargerMarkdown(
+                          nomFichierCoach("coach"),
+                          markdownMessage(bulle)
+                        );
+                      }}
+                      onModifier={() =>
+                        setRenommage({
+                          id: bulle.id,
+                          kind: "message",
+                          text: bulle.text,
+                        })
+                      }
+                      onPartager={() => {
+                        void partager("Coach", bulle.text);
+                      }}
                     />
                   )}
                 </div>

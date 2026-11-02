@@ -1,0 +1,2133 @@
+{
+  "id": "6e-mathematiques-06",
+  "year": "6e",
+  "subject": "mathematiques",
+  "title": "Géométrie et mesures",
+  "order": 6,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Figures",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Figures planes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles figures sont des polygones ?",
+              "options": [
+                "Un triangle",
+                "Un cercle",
+                "Un rectangle",
+                "Une demi-droite"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un polygone est une figure plane fermée formée de segments. Le triangle et le rectangle conviennent ; le cercle et la demi-droite ne sont pas des polygones."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de côtés possède un rectangle ?",
+              "options": ["2", "3", "4", "5"],
+              "correctAnswers": [2],
+              "explanation": "Un rectangle a 4 côtés : deux longueurs et deux largeurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un carré est un rectangle dont tous les côtés…",
+              "options": [
+                "Sont parallèles au cercle",
+                "Ont la même longueur",
+                "Mesurent 0 cm",
+                "Sont courbes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dans un carré, les quatre côtés sont congrus et les quatre angles valent 90°."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La somme des angles intérieurs d'un triangle vaut…",
+              "options": ["90°", "180°", "270°", "360°"],
+              "correctAnswers": [1],
+              "explanation": "Propriété fondamentale : 180° dans tout triangle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le segment du centre du cercle à un point du cercle est le…",
+              "options": ["Diamètre", "Rayon", "Périmètre du carré", "Volume"],
+              "correctAnswers": [1],
+              "explanation": "Rayon noté r ; diamètre d = 2r."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux droites parallèles dans un plan…",
+              "options": [
+                "Se coupent toujours",
+                "Ne se coupent pas",
+                "Forment toujours 90°",
+                "Sont confondues"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Parallèles : même direction, aucune intersection."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux droites perpendiculaires forment un angle de…",
+              "options": ["45°", "60°", "90°", "180°"],
+              "correctAnswers": [2],
+              "explanation": "Perpendiculaires ⟂ ⇒ angle droit 90°."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un triangle équilatéral a…",
+              "options": [
+                "Trois côtés de longueurs différentes",
+                "Trois côtés égaux",
+                "Quatre sommets",
+                "Un angle de 90° obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Équilatéral : 3 côtés égaux, 3 angles de 60°."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le contour d'un cercle s'appelle la…",
+              "options": ["Aire", "Circonférence", "Diagonale", "Hauteur"],
+              "correctAnswers": [1],
+              "explanation": "La circonférence est la ligne qui entoure le disque."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un triangle rectangle possède…",
+              "options": [
+                "Aucun angle droit",
+                "Exactement un angle de 90°",
+                "Trois angles droits",
+                "Quatre côtés"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un angle vaut 90° ; les deux autres sont aigus."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Quadrilatères",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés sont vraies pour tout carré ?",
+              "options": [
+                "Quatre angles de 90°",
+                "Exactement trois côtés",
+                "Quatre côtés de même longueur",
+                "Tous les angles supérieurs à 90°"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Carré : 4 angles droits et 4 côtés égaux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de sommets a un triangle ?",
+              "options": ["2", "3", "4", "6"],
+              "correctAnswers": [1],
+              "explanation": "3 côtés ⇒ 3 sommets."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un quadrilatéral est un polygone à…",
+              "options": [
+                "Trois côtés",
+                "Quatre côtés",
+                "Cinq côtés",
+                "Zéro côté"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Quadrilatère = 4 côtés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un rectangle, les côtés opposés sont…",
+              "options": [
+                "De longueurs égales",
+                "Toujours perpendiculaires entre eux",
+                "Courbes",
+                "Absents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Côtés opposés parallèles et de même longueur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rayon 4 cm : le diamètre vaut…",
+              "options": ["2 cm", "4 cm", "8 cm", "16 cm"],
+              "correctAnswers": [2],
+              "explanation": "d = 2 × 4 = 8 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un triangle isocèle possède…",
+              "options": [
+                "Trois côtés tous différents",
+                "Au moins deux côtés de même longueur",
+                "Quatre côtés",
+                "Aucun sommet"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Isocèle : deux côtés (au minimum) congrus."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour marquer un angle droit sur une figure, on dessine souvent…",
+              "options": [
+                "Un petit carré dans l'angle",
+                "Une flèche seule",
+                "Un cercle plein",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le symbole d'équerre indique 90°."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les diagonales d'un carré se coupent en formant…",
+              "options": [
+                "Un angle de 90°",
+                "Jamais",
+                "Un angle de 180° seulement",
+                "Un triangle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diagonales perpendiculaires au centre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un segment dont les deux extrémités sont sur le cercle est une…",
+              "options": ["Rayon", "Corde", "Droite infinie", "Aire"],
+              "correctAnswers": [1],
+              "explanation": "Corde ; le diamètre est une corde passant par le centre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien d'axes de symétrie axiale possède un carré ?",
+              "options": ["1", "2", "4", "8"],
+              "correctAnswers": [2],
+              "explanation": "4 axes : 2 médianes et 2 diagonales."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Parallèles et perpendiculaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Si deux droites distinctes sont perpendiculaires, alors…",
+              "options": [
+                "Elles se coupent en un angle de 90°",
+                "Elles ne sont pas parallèles",
+                "Elles ne se coupent jamais",
+                "Elles ont la même longueur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Perpendiculaires ⇒ intersection à 90° (si sécantes) ; deux droites perpendiculaires distinctes ne peuvent pas être parallèles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le symbole // signifie que les droites sont…",
+              "options": [
+                "Perpendiculaires",
+                "Parallèles",
+                "Égales en longueur",
+                "Courbes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "// = parallèles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le symbole ⊥ signifie que les droites sont…",
+              "options": [
+                "Parallèles",
+                "Perpendiculaires",
+                "Confondues",
+                "Horizontales seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "⊥ = perpendiculaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un rectangle possède combien d'angles droits ?",
+              "options": ["2", "3", "4", "0"],
+              "correctAnswers": [2],
+              "explanation": "Quatre angles de 90°."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La distance entre deux droites parallèles se mesure le long d'un segment…",
+              "options": [
+                "Oblique quelconque",
+                "Perpendiculaire aux deux droites",
+                "Parallèle aux droites",
+                "Courbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Distance = longueur de la perpendiculaire commune."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de côtés a un triangle ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [2],
+              "explanation": "Triangle = 3 côtés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tous les points d'un cercle sont à la même distance de…",
+              "options": [
+                "La circonférence",
+                "Le centre",
+                "Un sommet du carré",
+                "L'infini"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Cette distance constante est le rayon r."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un losange est un quadrilatère dont…",
+              "options": [
+                "Les quatre côtés ont la même longueur",
+                "Il n'a que deux côtés",
+                "Tous les angles valent 90° obligatoirement",
+                "C'est un cercle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Losange : 4 côtés égaux (angles pas forcément droits)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une médiane d'un triangle relie un sommet au…",
+              "options": [
+                "Milieu du côté opposé",
+                "Centre du cercle",
+                "Sommet adjacent seulement",
+                "Périmètre du rectangle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition de la médiane."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Par une droite d et un point P hors de d, combien de parallèles à d passent par P ?",
+              "options": [
+                "Aucune",
+                "Une seule",
+                "Exactement deux",
+                "Une infinité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Unicité de la parallèle à d passant par P."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Le cercle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments appartiennent à la description d'un cercle de centre O ?",
+              "options": [
+                "Un rayon [OM] avec M sur le cercle",
+                "Le point O centre",
+                "Une aire mesurée en cm",
+                "Un volume en cm³"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Centre O et rayon du centre au cercle ; aire/volume sont d'autres grandeurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rayon 7 cm : diamètre = …",
+              "options": ["3,5 cm", "7 cm", "14 cm", "49 cm"],
+              "correctAnswers": [2],
+              "explanation": "d = 2 × 7 = 14 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Diamètre 12 cm : rayon = …",
+              "options": ["3 cm", "6 cm", "12 cm", "24 cm"],
+              "correctAnswers": [1],
+              "explanation": "r = d ÷ 2 = 12 ÷ 2 = 6 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le disque désigne…",
+              "options": [
+                "Seulement le contour",
+                "La surface intérieure et son contour",
+                "Une droite",
+                "Un segment"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Disque = région plane limitée par un cercle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La plus longue corde d'un cercle est…",
+              "options": [
+                "Un rayon",
+                "Le diamètre",
+                "Une tangente",
+                "Une médiatrice hors cercle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le diamètre est la corde maximale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tous les rayons d'un même cercle ont…",
+              "options": [
+                "Des longueurs différentes",
+                "La même longueur r",
+                "Une longueur nulle",
+                "La longueur du diamètre seulement une fois"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Par définition, r est constant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On mesure habituellement un angle en…",
+              "options": ["Centimètres", "Degrés (°)", "Kilogrammes", "Litres"],
+              "correctAnswers": [1],
+              "explanation": "Unité d'angle : degré."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un triangle scalène a…",
+              "options": [
+                "Trois côtés de longueurs toutes différentes",
+                "Trois côtés égaux",
+                "Deux angles droits",
+                "Quatre côtés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scalène : aucune égalité de côtés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un parallélogramme, les côtés opposés sont…",
+              "options": [
+                "Parallèles",
+                "Toujours perpendiculaires",
+                "Inexistants",
+                "Courbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition du parallélogramme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les diagonales d'un carré sont…",
+              "options": [
+                "De longueurs différentes",
+                "De même longueur",
+                "Absentes",
+                "Parallèles entre elles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Diagonales égales dans un carré."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Solides et vocabulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles figures possèdent au moins un angle de 90° ?",
+              "options": [
+                "Un rectangle",
+                "Un cercle",
+                "Un carré",
+                "Un triangle équilatéral"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Rectangle et carré : quatre angles droits. Équilatéral : 60° ; cercle : pas d'angles au sens polygone."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un sommet d'un polygone est…",
+              "options": [
+                "Le milieu d'un côté",
+                "Un point où se rencontrent deux côtés",
+                "Le centre du cercle",
+                "Une aire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sommet = coin du polygone."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un côté d'un triangle est…",
+              "options": [
+                "Un segment entre deux sommets",
+                "Un rayon",
+                "Une droite infinie obligatoire",
+                "Un volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Côté = arête du triangle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un rectangle, longueur et largeur…",
+              "options": [
+                "Sont toujours égales",
+                "Peuvent être de mesures différentes",
+                "N'existent pas",
+                "Se mesurent en cm³"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Si égales, le rectangle est un carré."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le périmètre mesure…",
+              "options": [
+                "La surface",
+                "La longueur du contour",
+                "Le volume",
+                "La masse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Périmètre en cm, m…"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'aire mesure…",
+              "options": [
+                "Le contour",
+                "L'étendue d'une surface plane",
+                "Un angle",
+                "Une arête"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Aire en cm², m²…"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un pavé droit est…",
+              "options": [
+                "Une figure plane",
+                "Un solide dont les faces sont des rectangles",
+                "Un cercle",
+                "Une demi-droite"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Parallélépipède rectangle (boîte)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une face d'un pavé droit est…",
+              "options": [
+                "Un segment",
+                "Une surface plane",
+                "Un angle seul",
+                "Un rayon"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque face est un rectangle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une arête d'un pavé droit est…",
+              "options": [
+                "Un segment où deux faces se rejoignent",
+                "Une aire",
+                "Un angle de 90° seul",
+                "Le centre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Arête = intersection de deux faces."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un sommet d'un pavé droit est un point où…",
+              "options": [
+                "Trois arêtes se rencontrent",
+                "Le cercle est centré",
+                "Le périmètre vaut 0",
+                "Il n'y a qu'une face"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coin du solide."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Angles et triangles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels noms désignent des triangles ?",
+              "options": [
+                "Triangle isocèle",
+                "Triangle équilatéral",
+                "Cercle",
+                "Rectangle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Isocèle et équilatéral sont des triangles ; rectangle et cercle ne le sont pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un angle aigu mesure…",
+              "options": [
+                "Exactement 90°",
+                "Strictement moins de 90°",
+                "Plus de 180°",
+                "Toujours 180°"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Aigu : 0° < mesure < 90°."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un angle obtus mesure…",
+              "options": [
+                "Moins de 90°",
+                "Entre 90° et 180°",
+                "Exactement 0°",
+                "360°"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Obtus : 90° < mesure < 180°."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un triangle, 50° + 60° + 70° = …",
+              "options": ["160°", "180°", "190°", "360°"],
+              "correctAnswers": [1],
+              "explanation": "50 + 60 + 70 = 180°."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Triangle rectangle : 90° et 35° ; le troisième angle vaut…",
+              "options": ["45°", "55°", "65°", "145°"],
+              "correctAnswers": [1],
+              "explanation": "180 − 90 − 35 = 55°."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Chaque angle d'un triangle équilatéral vaut…",
+              "options": ["45°", "60°", "90°", "120°"],
+              "correctAnswers": [1],
+              "explanation": "180 ÷ 3 = 60°."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une hauteur d'un triangle est perpendiculaire à…",
+              "options": [
+                "La base choisie",
+                "Toujours au cercle",
+                "Une droite parallèle seulement",
+                "Le volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hauteur ⟂ base, issue du sommet opposé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "On peut choisir comme base d'un triangle…",
+              "options": [
+                "N'importe lequel de ses côtés",
+                "Seulement le plus court",
+                "Uniquement le vertical",
+                "Aucun côté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Base = côté de référence au choix."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un segment [AB] est…",
+              "options": [
+                "Une droite infinie",
+                "La portion de droite entre A et B",
+                "Un cercle",
+                "Une aire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Segment borné par A et B."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux angles droits consécutifs le long d'une droite forment un angle plat de…",
+              "options": ["90°", "180°", "360°", "45°"],
+              "correctAnswers": [1],
+              "explanation": "90° + 90° = 180°."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Cube et pavé droit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels solides sont des pavés droits (au sens scolaire) ?",
+              "options": [
+                "Une boîte en forme de parallélépipède rectangle",
+                "Un cube",
+                "Une droite",
+                "Un triangle seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Boîte rectangulaire et cube (cas particulier) sont des pavés droits."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un cube possède combien de faces ?",
+              "options": ["4", "6", "8", "12"],
+              "correctAnswers": [1],
+              "explanation": "6 faces carrées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un cube possède combien d'arêtes ?",
+              "options": ["6", "8", "12", "16"],
+              "correctAnswers": [2],
+              "explanation": "12 arêtes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un cube possède combien de sommets ?",
+              "options": ["6", "8", "10", "12"],
+              "correctAnswers": [1],
+              "explanation": "8 sommets."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un pavé droit qui n'est pas un cube peut avoir des faces…",
+              "options": [
+                "Rectangles qui ne sont pas toutes carrées",
+                "Uniquement circulaires",
+                "Sans arête",
+                "De volume nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faces rectangulaires ; dimensions peuvent différer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une droite, en géométrie, est…",
+              "options": [
+                "Limitée par deux points seulement",
+                "Illimitée des deux côtés",
+                "Toujours courbe",
+                "Une aire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Modèle de droite sans fin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une demi-droite part d'un point et…",
+              "options": [
+                "S'étend dans un seul sens",
+                "S'étend dans les deux sens",
+                "Forme un cercle fermé",
+                "Mesure une aire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Origine + prolongement d'un côté."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les diagonales d'un rectangle (non carré) sont…",
+              "options": [
+                "De même longueur",
+                "Toujours de longueurs différentes",
+                "Absentes",
+                "Des rayons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diagonales égales dans tout rectangle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un carré est aussi…",
+              "options": [
+                "Un triangle",
+                "Un rectangle particulier",
+                "Un cercle",
+                "Une demi-droite"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Carré = rectangle à côtés égaux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux droites parallèles distinctes et une sécante créent des angles correspondants…",
+              "options": [
+                "Toujours inégaux",
+                "Égaux deux à deux (propriété des //)",
+                "Toujours 180°",
+                "Inexistants"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Angles correspondants égaux si droites parallèles."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Symétrie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles figures possèdent au moins un axe de symétrie axiale ?",
+              "options": [
+                "Un rectangle",
+                "Un triangle scalène générique",
+                "Un carré",
+                "Une droite seule sans figure"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Rectangle (2 axes) et carré (4 axes) ; scalène générique souvent aucun."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un axe de symétrie permet de…",
+              "options": [
+                "Superposer les deux moitiés par pliage",
+                "Calculer le volume directement",
+                "Mesurer le rayon",
+                "Rendre les droites parallèles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Symétrie axiale = miroir le long de l'axe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un cercle, le nombre d'axes de symétrie passant par le centre est…",
+              "options": ["0", "2", "4", "Infini"],
+              "correctAnswers": [3],
+              "explanation": "Toute droite par le centre est axe de symétrie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un rectangle qui n'est pas un carré a combien d'axes de symétrie ?",
+              "options": ["0", "2", "4", "8"],
+              "correctAnswers": [1],
+              "explanation": "Médianes : 2 axes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un triangle équilatéral a combien d'axes de symétrie ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [2],
+              "explanation": "3 axes (médiatrices des côtés)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Trois points alignés sont…",
+              "options": [
+                "Sur une même droite",
+                "Toujours sommets d'un carré",
+                "Centres de cercles distincts obligés",
+                "Volume nul en cm³"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Colinéaires = alignés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le milieu I de [AB] vérifie…",
+              "options": [
+                "AI = IB",
+                "AI = 2 × IB",
+                "AB = 0",
+                "I est centre du cercle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "I partage [AB] en deux segments égaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Par un point P, combien de perpendiculaires à une droite d (dans le plan) ?",
+              "options": ["0", "1", "2", "Infinité"],
+              "correctAnswers": [1],
+              "explanation": "Perpendiculaire unique en P à d."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux droites perpendiculaires à une même droite d sont…",
+              "options": [
+                "Parallèles entre elles",
+                "Toujours confondues",
+                "Sécantes en angle 45°",
+                "Des cercles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si a ⟂ d et b ⟂ d, alors a // b (dans le plan)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un parallélogramme rectangle est…",
+              "options": [
+                "Un rectangle",
+                "Un cercle",
+                "Un segment",
+                "Un triangle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parallélogramme avec angle droit = rectangle."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Unités et conversions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs s'expriment avec une unité de longueur (sans carré ni cube) ?",
+              "options": [
+                "Un périmètre en cm",
+                "Un rayon en m",
+                "Une aire en cm²",
+                "Un volume en m³"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Périmètre et rayon : cm, m… ; aire cm² ; volume m³."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1 m = … cm",
+              "options": ["10", "100", "1000", "10000"],
+              "correctAnswers": [1],
+              "explanation": "1 m = 100 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1 m² = … cm²",
+              "options": ["100", "1000", "10000", "1000000"],
+              "correctAnswers": [2],
+              "explanation": "(100 cm)² = 10 000 cm²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'unité cohérente pour le volume d'un pavé droit est…",
+              "options": ["cm", "cm²", "cm³", "°"],
+              "correctAnswers": [2],
+              "explanation": "Volume en unités cubiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rectangle 8 cm sur 3 cm : la longueur (plus grand côté) vaut…",
+              "options": ["3 cm", "8 cm", "11 cm", "24 cm"],
+              "correctAnswers": [1],
+              "explanation": "8 > 3, longueur = 8 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Carré de périmètre 20 cm : côté = …",
+              "options": ["4 cm", "5 cm", "10 cm", "20 cm"],
+              "correctAnswers": [1],
+              "explanation": "c = P ÷ 4 = 20 ÷ 4 = 5 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Demi-périmètre d'un rectangle 6 cm × 2 cm : L + l = …",
+              "options": ["4 cm", "8 cm", "12 cm", "16 cm"],
+              "correctAnswers": [1],
+              "explanation": "6 + 2 = 8 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Aire d'un carré de côté 4 cm : …",
+              "options": ["8 cm²", "16 cm²", "12 cm²", "4 cm²"],
+              "correctAnswers": [1],
+              "explanation": "A = c² = 4² = 16 cm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Aire d'un rectangle 5 cm × 3 cm : …",
+              "options": ["8 cm²", "15 cm²", "16 cm²", "30 cm²"],
+              "correctAnswers": [1],
+              "explanation": "A = 5 × 3 = 15 cm²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Périmètre d'un rectangle 5 cm × 3 cm : …",
+              "options": ["8 cm", "15 cm", "16 cm", "30 cm"],
+              "correctAnswers": [2],
+              "explanation": "P = 2 × (5 + 3) = 2 × 8 = 16 cm."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan figures",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur une feuille quadrillée, on peut observer…",
+              "options": [
+                "Des droites parallèles",
+                "Des droites perpendiculaires",
+                "Un cercle avec des côtés droits",
+                "Un triangle à quatre côtés"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Grille : familles de droites // et ⟂ ; cercle sans côtés ; triangle = 3 côtés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les lignes horizontales et verticales d'une grille sont…",
+              "options": [
+                "Parallèles entre elles toutes",
+                "Perpendiculaires entre une horizontale et une verticale",
+                "Des cercles",
+                "Des volumes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Horizontal ⟂ vertical."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un polygone à 5 côtés s'appelle…",
+              "options": ["Quadrilatère", "Pentagone", "Hexagone", "Triangle"],
+              "correctAnswers": [1],
+              "explanation": "Penta = 5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un hexagone possède … côtés.",
+              "options": ["4", "5", "6", "8"],
+              "correctAnswers": [2],
+              "explanation": "Hexa = 6."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rayon 10 mm : diamètre en cm = …",
+              "options": ["0,5 cm", "1 cm", "2 cm", "20 cm"],
+              "correctAnswers": [2],
+              "explanation": "d = 20 mm = 2 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Somme des angles d'un triangle : …",
+              "options": ["90°", "180°", "270°", "360°"],
+              "correctAnswers": [1],
+              "explanation": "Toujours 180°."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Carré de côté 9 cm : périmètre = …",
+              "options": ["18 cm", "27 cm", "36 cm", "81 cm"],
+              "correctAnswers": [2],
+              "explanation": "P = 4 × 9 = 36 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rectangle 10 cm × 4 cm : aire = …",
+              "options": ["14 cm²", "28 cm²", "40 cm²", "80 cm²"],
+              "correctAnswers": [2],
+              "explanation": "10 × 4 = 40 cm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le volume d'un solide mesure…",
+              "options": [
+                "Le contour",
+                "L'espace occupé",
+                "Un angle",
+                "Une longueur seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Volume en cm³, dm³, m³…"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour un pavé droit, le produit longueur × largeur × hauteur sert à…",
+              "options": [
+                "Le périmètre",
+                "L'aire totale seulement",
+                "Le volume",
+                "Le rayon"
+              ],
+              "correctAnswers": [2],
+              "explanation": "V = L × l × h (formule de volume en 6e)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Périmètres, aires et volumes",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Périmètres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités donnent un périmètre ?",
+              "options": [
+                "P = 2(L + l) pour un rectangle",
+                "P = L × l pour un rectangle",
+                "P = 4c pour un carré de côté c",
+                "A = c² pour un carré"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Périmètre rectangle P = 2(L+l) ; carré P = 4c. L×l et c² sont des aires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Carré côté 6 cm : P = …",
+              "options": ["12 cm", "24 cm", "36 cm", "18 cm"],
+              "correctAnswers": [1],
+              "explanation": "P = 4 × 6 = 24 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rectangle 7 cm × 2 cm : P = …",
+              "options": ["9 cm", "14 cm", "18 cm", "28 cm"],
+              "correctAnswers": [2],
+              "explanation": "P = 2 × (7 + 2) = 18 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Triangle équilatéral côté 5 cm : P = …",
+              "options": ["10 cm", "15 cm", "20 cm", "25 cm"],
+              "correctAnswers": [1],
+              "explanation": "P = 3 × 5 = 15 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Périmètre 40 cm pour un carré : côté = …",
+              "options": ["4 cm", "10 cm", "20 cm", "160 cm"],
+              "correctAnswers": [1],
+              "explanation": "c = 40 ÷ 4 = 10 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rectangle : P = 30 cm et L = 10 cm. Largeur l = …",
+              "options": ["5 cm", "10 cm", "15 cm", "20 cm"],
+              "correctAnswers": [0],
+              "explanation": "30 = 2(10 + l) ⇒ 15 = 10 + l ⇒ l = 5 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La longueur du contour d'un cercle est…",
+              "options": [
+                "Son aire",
+                "Sa circonférence",
+                "Son volume",
+                "Son angle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Circonférence = périmètre du disque."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rectangle 12 cm × 5 cm : P = …",
+              "options": ["17 cm", "34 cm", "60 cm", "120 cm"],
+              "correctAnswers": [1],
+              "explanation": "P = 2 × (12 + 5) = 34 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Carré : P = 48 cm. Côté = …",
+              "options": ["6 cm", "8 cm", "12 cm", "24 cm"],
+              "correctAnswers": [2],
+              "explanation": "c = 48 ÷ 4 = 12 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité adaptée pour un périmètre : …",
+              "options": ["cm²", "cm³", "cm", "kg"],
+              "correctAnswers": [2],
+              "explanation": "Longueur : cm, m…"
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Périmètres variés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels calculs donnent 20 cm de périmètre ?",
+              "options": [
+                "Carré côté 5 cm : P = 4 × 5",
+                "Rectangle 6 × 4 : P = 2 × 10",
+                "Aire carré côté 5 : 25 cm²",
+                "Triangle 3-4-5 : P = 3 + 4 + 5"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "4×5=20 ; 2×(6+4)=20. Aire 25 cm² n'est pas un périmètre ; triangle 3+4+5=12."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Triangle isocèle : deux côtés 8 cm, base 6 cm. P = …",
+              "options": ["14 cm", "22 cm", "24 cm", "16 cm"],
+              "correctAnswers": [1],
+              "explanation": "P = 8 + 8 + 6 = 22 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rectangle : l = 4 cm, P = 26 cm. L = …",
+              "options": ["6 cm", "7 cm", "9 cm", "13 cm"],
+              "correctAnswers": [2],
+              "explanation": "26 = 2(L+4) ⇒ 13 = L+4 ⇒ L = 9 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Carré côté 11 cm : P = …",
+              "options": ["22 cm", "33 cm", "44 cm", "121 cm"],
+              "correctAnswers": [2],
+              "explanation": "P = 4 × 11 = 44 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rectangle 15 m × 3 m : P = …",
+              "options": ["18 m", "36 m", "45 m", "90 m"],
+              "correctAnswers": [1],
+              "explanation": "P = 2 × (15 + 3) = 36 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Périmètre d'un triangle 7 cm, 8 cm et 9 cm : …",
+              "options": ["16 cm", "24 cm", "26 cm", "63 cm"],
+              "correctAnswers": [1],
+              "explanation": "7 + 8 + 9 = 24 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Côté d'un carré de périmètre 100 cm : …",
+              "options": ["10 cm", "25 cm", "50 cm", "400 cm"],
+              "correctAnswers": [1],
+              "explanation": "c = 100 ÷ 4 = 25 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rectangle 2,5 dm × 1 dm : P = …",
+              "options": ["3,5 dm", "5 dm", "7 dm", "2,5 dm²"],
+              "correctAnswers": [2],
+              "explanation": "P = 2 × (2,5 + 1) = 7 dm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Doubler tous les côtés d'un carré multiplie le périmètre par…",
+              "options": ["2", "4", "8", "1"],
+              "correctAnswers": [0],
+              "explanation": "P' = 4×(2c) = 2×(4c) = 2P."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Périmètre rectangle 3 cm × 3 cm (carré) vaut…",
+              "options": ["6 cm", "9 cm", "12 cm", "18 cm"],
+              "correctAnswers": [2],
+              "explanation": "P = 4 × 3 = 12 cm."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Aires du rectangle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules donnent une aire en cm² ?",
+              "options": [
+                "A = L × l (rectangle)",
+                "A = c² (carré)",
+                "P = 2(L + l)",
+                "V = L × l × h"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aires : L×l et c². 2(L+l) est périmètre ; L×l×h volume."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rectangle 8 cm × 5 cm : A = …",
+              "options": ["13 cm²", "26 cm²", "40 cm²", "80 cm²"],
+              "correctAnswers": [2],
+              "explanation": "A = 8 × 5 = 40 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rectangle 12 m × 4 m : A = …",
+              "options": ["16 m²", "32 m²", "48 m²", "96 m²"],
+              "correctAnswers": [2],
+              "explanation": "A = 12 × 4 = 48 m²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aire 35 cm², largeur 5 cm : longueur = …",
+              "options": ["5 cm", "7 cm", "30 cm", "175 cm"],
+              "correctAnswers": [1],
+              "explanation": "L = 35 ÷ 5 = 7 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rectangle 9 dm × 2 dm : A = …",
+              "options": ["11 dm²", "18 dm²", "20 dm²", "22 dm²"],
+              "correctAnswers": [1],
+              "explanation": "A = 9 × 2 = 18 dm²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rectangle 0,5 m × 0,4 m : A = …",
+              "options": ["0,9 m²", "0,2 m²", "2 m²", "0,04 m²"],
+              "correctAnswers": [1],
+              "explanation": "A = 0,5 × 0,4 = 0,20 m²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Aire 72 cm², L = 9 cm : l = …",
+              "options": ["6 cm", "8 cm", "63 cm", "81 cm"],
+              "correctAnswers": [1],
+              "explanation": "l = 72 ÷ 9 = 8 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rectangle 25 mm × 4 mm : A = …",
+              "options": ["29 mm²", "50 mm²", "100 mm²", "100 cm²"],
+              "correctAnswers": [2],
+              "explanation": "A = 25 × 4 = 100 mm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Doubler L et l multiplie l'aire par…",
+              "options": ["2", "4", "8", "1"],
+              "correctAnswers": [1],
+              "explanation": "A' = (2L)(2l) = 4(L×l) = 4A."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité d'aire cohérente : …",
+              "options": ["cm", "cm²", "cm³", "°"],
+              "correctAnswers": [1],
+              "explanation": "Aire en unités carrées."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Aires du carré",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un carré de côté c, quelles affirmations sont exactes ?",
+              "options": ["A = c × c", "P = 4c", "A = 4c", "P = c²"],
+              "correctAnswers": [0, 1],
+              "explanation": "A = c² ; P = 4c. 4c n'est pas une aire ; c² n'est pas un périmètre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Carré côté 7 cm : A = …",
+              "options": ["14 cm²", "28 cm²", "49 cm²", "21 cm²"],
+              "correctAnswers": [2],
+              "explanation": "A = 7² = 49 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Carré côté 10 cm : A = …",
+              "options": ["20 cm²", "40 cm²", "100 cm²", "1000 cm²"],
+              "correctAnswers": [2],
+              "explanation": "A = 10² = 100 cm²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aire 81 cm² : côté = …",
+              "options": ["8 cm", "9 cm", "40,5 cm", "81 cm"],
+              "correctAnswers": [1],
+              "explanation": "c = √81 = 9 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Carré côté 6 dm : A = …",
+              "options": ["12 dm²", "24 dm²", "36 dm²", "216 dm²"],
+              "correctAnswers": [2],
+              "explanation": "A = 6² = 36 dm²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Carré côté 1 m : A = …",
+              "options": ["1 m²", "2 m²", "4 m²", "100 m²"],
+              "correctAnswers": [0],
+              "explanation": "A = 1² = 1 m²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Carré A = 64 cm² : côté = …",
+              "options": ["6 cm", "8 cm", "32 cm", "16 cm"],
+              "correctAnswers": [1],
+              "explanation": "c = √64 = 8 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Carré côté 15 cm : P = … et A = … (aire seule demandée ici)",
+              "options": ["225 cm²", "60 cm²", "30 cm²", "15 cm²"],
+              "correctAnswers": [0],
+              "explanation": "A = 15² = 225 cm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Côté 3 cm : aire du carré vaut … fois le périmètre numériquement (3² vs 12).",
+              "options": [
+                "A = 9 cm² et P = 12 cm donc 9 < 12",
+                "A = 12 cm²",
+                "P = 9 cm",
+                "Égaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A = 9 cm² ; P = 12 cm : valeurs différentes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Rectangle 4 × 4 (carré) : A = …",
+              "options": ["8 cm²", "12 cm²", "16 cm²", "32 cm²"],
+              "correctAnswers": [2],
+              "explanation": "A = 4 × 4 = 16 cm²."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Aires et périmètres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples (L,l) donnent une aire de 24 cm² ?",
+              "options": [
+                "6 cm et 4 cm",
+                "8 cm et 3 cm",
+                "10 cm et 2 cm",
+                "5 cm et 5 cm"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "6 × 4 = 24 cm² et 8 × 3 = 24 cm². 10 × 2 = 20 cm² ; 5 × 5 = 25 cm²."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rectangle 6 × 4 : P = …",
+              "options": ["10 cm", "20 cm", "24 cm", "48 cm"],
+              "correctAnswers": [1],
+              "explanation": "P = 2 × (6 + 4) = 20 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rectangle 6 × 4 : A = …",
+              "options": ["10 cm²", "20 cm²", "24 cm²", "48 cm²"],
+              "correctAnswers": [2],
+              "explanation": "A = 6 × 4 = 24 cm²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Carré P = 32 cm : A = …",
+              "options": ["32 cm²", "64 cm²", "128 cm²", "8 cm²"],
+              "correctAnswers": [1],
+              "explanation": "c = 32÷4 = 8 cm ; A = 8² = 64 cm²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rectangle 20 × 5 : A = …",
+              "options": ["25 cm²", "50 cm²", "100 cm²", "200 cm²"],
+              "correctAnswers": [2],
+              "explanation": "A = 20 × 5 = 100 cm²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rectangle 20 × 5 : P = …",
+              "options": ["25 cm", "50 cm", "100 cm", "200 cm"],
+              "correctAnswers": [1],
+              "explanation": "P = 2 × 25 = 50 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Aire 50 cm², L = 10 cm : l = …",
+              "options": ["5 cm", "40 cm", "500 cm", "25 cm"],
+              "correctAnswers": [0],
+              "explanation": "l = 50 ÷ 10 = 5 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Carré côté 2,5 cm : A = …",
+              "options": ["5 cm²", "6,25 cm²", "10 cm²", "7,5 cm²"],
+              "correctAnswers": [1],
+              "explanation": "A = 2,5² = 6,25 cm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Périmètre et aire d'un même carré ont la même valeur numérique quand c = …",
+              "options": [
+                "2 cm (P=8, A=4)",
+                "4 cm (P=16, A=16)",
+                "1 cm",
+                "10 cm"
+              ],
+              "correctAnswers": [1],
+              "explanation": "4c = c² ⇒ c = 4 (c≠0) : P = A = 16."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Figure plane : augmenter le périmètre…",
+              "options": [
+                "Augmente toujours l'aire",
+                "Ne change pas toujours l'aire",
+                "Annule l'aire",
+                "Donne un volume"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Périmètre et aire sont indépendants."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Volumes — vocabulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions désignent le volume d'un pavé droit ?",
+              "options": [
+                "Longueur × largeur × hauteur",
+                "Espace occupé en cm³",
+                "Périmètre en cm",
+                "Somme des arêtes seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "V = L×l×h ; unité cm³. Périmètre ≠ volume."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pavé 3 cm × 2 cm × 4 cm : V = …",
+              "options": ["9 cm³", "12 cm³", "24 cm³", "48 cm³"],
+              "correctAnswers": [2],
+              "explanation": "V = 3 × 2 × 4 = 24 cm³."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cube arête 5 cm : V = …",
+              "options": ["15 cm³", "25 cm³", "125 cm³", "150 cm³"],
+              "correctAnswers": [2],
+              "explanation": "V = 5³ = 125 cm³."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pavé 10 cm × 2 cm × 3 cm : V = …",
+              "options": ["15 cm³", "30 cm³", "60 cm³", "600 cm³"],
+              "correctAnswers": [2],
+              "explanation": "V = 10 × 2 × 3 = 60 cm³."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1 dm³ = … cm³",
+              "options": ["10", "100", "1000", "10000"],
+              "correctAnswers": [2],
+              "explanation": "1 dm³ = 1000 cm³."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pavé V = 120 cm³, base 10 cm × 3 cm : hauteur = …",
+              "options": ["4 cm", "12 cm", "30 cm", "40 cm"],
+              "correctAnswers": [0],
+              "explanation": "Base = 30 cm² ; h = 120 ÷ 30 = 4 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cube arête 2 cm : V = …",
+              "options": ["4 cm³", "6 cm³", "8 cm³", "12 cm³"],
+              "correctAnswers": [2],
+              "explanation": "V = 2³ = 8 cm³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Unité de volume la plus petite ici : …",
+              "options": ["m³", "dm³", "cm³", "km³"],
+              "correctAnswers": [2],
+              "explanation": "cm³ convient aux petits solides."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pavé 1 m × 1 m × 1 m : V = …",
+              "options": ["1 m³", "3 m³", "1 cm³", "1000 m³"],
+              "correctAnswers": [0],
+              "explanation": "V = 1 × 1 × 1 = 1 m³."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Doubler chaque dimension d'un pavé multiplie le volume par…",
+              "options": ["2", "4", "6", "8"],
+              "correctAnswers": [3],
+              "explanation": "V' = (2L)(2l)(2h) = 8V."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Volumes et faces",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un cube d'arête a, quelles formules sont correctes ?",
+              "options": [
+                "V = a × a × a",
+                "V = a³",
+                "A face carrée = a²",
+                "P = a³"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "V = a³ ; aire d'une face a². a³ n'est pas un périmètre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cube arête 4 cm : aire d'une face = …",
+              "options": ["8 cm²", "12 cm²", "16 cm²", "64 cm²"],
+              "correctAnswers": [2],
+              "explanation": "A_face = 4² = 16 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cube arête 4 cm : V = …",
+              "options": ["16 cm³", "32 cm³", "64 cm³", "128 cm³"],
+              "correctAnswers": [2],
+              "explanation": "V = 4³ = 64 cm³."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pavé 5 × 4 × 2 : V = …",
+              "options": ["11 cm³", "20 cm³", "40 cm³", "80 cm³"],
+              "correctAnswers": [2],
+              "explanation": "V = 5 × 4 × 2 = 40 cm³."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pavé 6 × 6 × 6 (cube) : V = …",
+              "options": ["18 cm³", "36 cm³", "216 cm³", "666 cm³"],
+              "correctAnswers": [2],
+              "explanation": "V = 6³ = 216 cm³."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "V = 90 cm³, L = 5, l = 3 : h = …",
+              "options": ["6 cm", "9 cm", "15 cm", "18 cm"],
+              "correctAnswers": [0],
+              "explanation": "h = 90 ÷ (5×3) = 90 ÷ 15 = 6 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Aquarium 50 cm × 30 cm × 20 cm : V = …",
+              "options": ["100 cm³", "3000 cm³", "30000 cm³", "300000 cm³"],
+              "correctAnswers": [2],
+              "explanation": "V = 50 × 30 × 20 = 30 000 cm³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1 L = … cm³ (vocabulaire courant)",
+              "options": ["1", "10", "100", "1000"],
+              "correctAnswers": [3],
+              "explanation": "1 L = 1 dm³ = 1000 cm³."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pavé : L = 8 cm, l = 5 cm, h = 2 cm : V = …",
+              "options": ["15 cm³", "40 cm³", "80 cm³", "800 cm³"],
+              "correctAnswers": [2],
+              "explanation": "V = 8 × 5 × 2 = 80 cm³."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le volume mesure la capacité intérieure d'un…",
+              "options": ["Segment", "Pavé droit", "Angle", "Demi-droite"],
+              "correctAnswers": [1],
+              "explanation": "Solide comme une boîte (pavé droit)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Problèmes de mesure",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels résultats sont des aires ?",
+              "options": [
+                "Rectangle 7 × 2 : 14 cm²",
+                "Carré côté 5 : 25 cm²",
+                "Périmètre carré côté 5 : 20 cm",
+                "Volume 2×3×4 : 24 cm³"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "14 cm² et 25 cm² sont des aires ; 20 cm est un périmètre ; 24 cm³ un volume."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Terrain rectangulaire 40 m × 25 m : aire = …",
+              "options": ["65 m²", "130 m²", "1000 m²", "100 m²"],
+              "correctAnswers": [2],
+              "explanation": "A = 40 × 25 = 1000 m²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Clôture autour du terrain 40 m × 25 m : longueur = …",
+              "options": ["65 m", "130 m", "1000 m", "100 m"],
+              "correctAnswers": [1],
+              "explanation": "P = 2 × (40 + 25) = 130 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Carrelage carré 50 cm de côté : aire d'une tile = …",
+              "options": ["100 cm²", "200 cm²", "2500 cm²", "5000 cm²"],
+              "correctAnswers": [2],
+              "explanation": "A = 50² = 2500 cm²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Boîte 12 cm × 8 cm × 5 cm : V = …",
+              "options": ["25 cm³", "96 cm³", "480 cm³", "960 cm³"],
+              "correctAnswers": [2],
+              "explanation": "V = 12 × 8 × 5 = 480 cm³."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rectangle 3,2 m × 2,5 m : A = …",
+              "options": ["5,7 m²", "7 m²", "8 m²", "80 m²"],
+              "correctAnswers": [2],
+              "explanation": "A = 3,2 × 2,5 = 8 m²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Carré aire 144 cm² : côté = …",
+              "options": ["10 cm", "12 cm", "14 cm", "72 cm"],
+              "correctAnswers": [1],
+              "explanation": "c = √144 = 12 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pavé V = 180 cm³, dimensions 9 × 4 × h : h = …",
+              "options": ["5 cm", "6 cm", "20 cm", "45 cm"],
+              "correctAnswers": [0],
+              "explanation": "Base 36 ; h = 180 ÷ 36 = 5 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Convertir 2 m² en cm² : …",
+              "options": ["200 cm²", "2000 cm²", "20000 cm²", "2 cm²"],
+              "correctAnswers": [2],
+              "explanation": "2 × 10 000 = 20 000 cm²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Rectangle 14 cm × 6 cm : P = … et on compare à A = 84 cm² ; P vaut …",
+              "options": ["40 cm", "84 cm", "20 cm", "28 cm"],
+              "correctAnswers": [0],
+              "explanation": "P = 2 × (14 + 6) = 40 cm."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Conversions et sens",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles conversions sont exactes ?",
+              "options": [
+                "1 m = 100 cm",
+                "1 m² = 10 000 cm²",
+                "1 cm = 100 m",
+                "1 cm³ = 1 m³"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 m = 100 cm ; 1 m² = (100 cm)² = 10 000 cm²."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "5 km = … m",
+              "options": ["50", "500", "5000", "50000"],
+              "correctAnswers": [2],
+              "explanation": "5 × 1000 = 5000 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "250 cm = … m",
+              "options": ["0,25", "2,5", "25", "2500"],
+              "correctAnswers": [1],
+              "explanation": "250 ÷ 100 = 2,5 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3 dm² = … cm²",
+              "options": ["30", "300", "3000", "30000"],
+              "correctAnswers": [1],
+              "explanation": "1 dm² = 100 cm² ; 3 × 100 = 300 cm²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Périmètre d'un carré de côté 2,5 cm : …",
+              "options": ["5 cm", "6,25 cm", "10 cm", "12,5 cm"],
+              "correctAnswers": [2],
+              "explanation": "P = 4 × 2,5 = 10 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Aire carré côté 2,5 cm : …",
+              "options": ["5 cm²", "6,25 cm²", "10 cm²", "12,5 cm²"],
+              "correctAnswers": [1],
+              "explanation": "A = 2,5² = 6,25 cm²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cube 10 cm d'arête : V = …",
+              "options": ["30 cm³", "100 cm³", "1000 cm³", "3000 cm³"],
+              "correctAnswers": [2],
+              "explanation": "V = 10³ = 1000 cm³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rectangle 100 cm × 0,5 m (0,5 m = 50 cm) : A = …",
+              "options": ["150 cm²", "5000 cm²", "50 cm²", "500 cm²"],
+              "correctAnswers": [1],
+              "explanation": "A = 100 × 50 = 5000 cm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Triangle périmètre 30 cm ; côtés 12 et 9 cm ; troisième = …",
+              "options": ["7 cm", "9 cm", "11 cm", "21 cm"],
+              "correctAnswers": [1],
+              "explanation": "30 − 12 − 9 = 9 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir la grandeur : « distance autour d'un jardin »",
+              "options": ["Aire", "Périmètre", "Volume", "Angle"],
+              "correctAnswers": [1],
+              "explanation": "Tour du jardin = périmètre."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan mesures",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels calculs utilisent une multiplication de trois longueurs ?",
+              "options": [
+                "Volume pavé L × l × h",
+                "Aire rectangle L × l",
+                "Périmètre carré 4c",
+                "Volume cube a × a × a"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Volume pavé et cube : produit de trois dimensions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Carré côté 13 cm : A = …",
+              "options": ["26 cm²", "52 cm²", "169 cm²", "156 cm²"],
+              "correctAnswers": [2],
+              "explanation": "A = 13² = 169 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Carré côté 13 cm : P = …",
+              "options": ["26 cm", "39 cm", "52 cm", "169 cm"],
+              "correctAnswers": [2],
+              "explanation": "P = 4 × 13 = 52 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rectangle 11 × 7 : A = …",
+              "options": ["18 cm²", "36 cm²", "77 cm²", "154 cm²"],
+              "correctAnswers": [2],
+              "explanation": "A = 11 × 7 = 77 cm²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rectangle 11 × 7 : P = …",
+              "options": ["18 cm", "36 cm", "77 cm", "154 cm"],
+              "correctAnswers": [1],
+              "explanation": "P = 2 × 18 = 36 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pavé 7 × 3 × 2 : V = …",
+              "options": ["12 cm³", "21 cm³", "42 cm³", "84 cm³"],
+              "correctAnswers": [2],
+              "explanation": "V = 7 × 3 × 2 = 42 cm³."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rayon 6 cm : diamètre = … (rappel utile pour cercle)",
+              "options": ["3 cm", "6 cm", "12 cm", "36 cm"],
+              "correctAnswers": [2],
+              "explanation": "d = 2 × 6 = 12 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Aire 1 m × 1 m = … en cm²",
+              "options": ["100 cm²", "1000 cm²", "10000 cm²", "1 cm²"],
+              "correctAnswers": [2],
+              "explanation": "1 m² = 10 000 cm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Figure : rectangle 5 × 2 collé à carré côté 2 (aire totale si juxtaposition sans chevauchement, rectangle + carré séparés simples) : A_rect + A_carré = …",
+              "options": ["14 cm²", "10 cm²", "18 cm²", "24 cm²"],
+              "correctAnswers": [0],
+              "explanation": "10 + 4 = 14 cm² (5×2=10 ; 2²=4)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour peindre une face rectangulaire de porte 2 m × 0,8 m, on calcule…",
+              "options": [
+                "Le périmètre 5,6 m",
+                "L'aire 1,6 m²",
+                "Le volume",
+                "Le rayon"
+              ],
+              "correctAnswers": [1],
+              "explanation": "A = 2 × 0,8 = 1,6 m² de surface à peindre."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

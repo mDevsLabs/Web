@@ -181,7 +181,45 @@ export function ParcoursQuizzly() {
 
   return (
     <section className="mx-auto flex max-w-5xl flex-col gap-6 p-4 sm:flex-row sm:p-6">
-      <div className="flex w-full shrink-0 flex-col gap-3 sm:w-64">
+      {/* Barre sticky compacte sur mobile : sélecteur de classe à gauche et rail de matières à droite */}
+      <div className="sticky top-0 z-20 -mx-4 -mt-4 mb-2 flex items-center gap-2 border-b border-border/40 bg-background/95 px-4 py-2.5 backdrop-blur-md sm:hidden">
+        <div className="shrink-0">
+          <MenuDeroulant
+            libelle="Classe"
+            onChoisir={(id) => {
+              setAnneeDemandee(id);
+              setMatiereId(null);
+            }}
+            options={data.years.map((year) => ({
+              id: year,
+              label: libelleAnnee(year),
+            }))}
+            valeur={data.year}
+          />
+        </div>
+        {data.subjects.length === 0 ? null : (
+          <nav
+            aria-label="Matières (mobile)"
+            className="no-scrollbar flex min-w-0 flex-1 items-center gap-1.5 overflow-x-auto py-0.5"
+          >
+            {data.subjects.map((entree) => (
+              <button
+                className="chip inline-flex shrink-0 items-center gap-1.5 px-2.5 py-1.5 text-xs"
+                data-active={entree.id === matiere?.id ? "true" : "false"}
+                key={entree.id}
+                onClick={() => setMatiereId(entree.id)}
+                type="button"
+              >
+                <IconeMatiere id={entree.id} />
+                <span>{entree.label}</span>
+              </button>
+            ))}
+          </nav>
+        )}
+      </div>
+
+      {/* Volet latéral sticky sur grand écran */}
+      <div className="sticky top-4 hidden max-h-[calc(100dvh-5rem)] w-64 shrink-0 self-start flex-col gap-3 overflow-y-auto sm:flex">
         <MenuDeroulant
           libelle="Classe"
           onChoisir={(id) => {

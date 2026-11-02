@@ -149,10 +149,7 @@ export function mergeStreamText(current: string, delta: string): string {
   if (!delta) {
     return current;
   }
-  if (current.endsWith(delta)) {
-    return current;
-  }
-  if (current && delta.startsWith(current)) {
+  if (current && delta.length > current.length && delta.startsWith(current)) {
     return delta;
   }
   return current + delta;

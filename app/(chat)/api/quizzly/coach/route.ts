@@ -11,15 +11,18 @@ import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { enforceChatRateLimit, weeklyQuotaExceeded } from "@/lib/chat/auth";
+import { buildMemoryContext, joinMemoryBlocks } from "@/lib/chat/memory";
 import { getUserPreferences } from "@/lib/db/queries/users";
 import { ChatbotError } from "@/lib/errors";
 import {
   assemblerTentatives,
+  blocsCompteCoach,
   COACH_INTENTS,
   COACH_MESSAGE_MAX,
   messagesPourModele,
   messageVisibleCoach,
   preparerEchangeCoach,
+  promptCoachAvecCompte,
   resoudreModeleCoach,
   texteSuivi,
   vuesErreurs,
@@ -185,10 +188,24 @@ export async function POST(request: Request) {
         message: "Le coach n'a pas pu préparer cette demande.",
       });
     }
-    const [catalogue, prefs] = await Promise.all([
+    const [catalogue, prefs, memoryContext] = await Promise.all([
       fetchUserModels().catch(() => []),
       getUserPreferences(session.userId).catch(() => null),
+      buildMemoryContext({
+        effectiveAgentId: null,
+        effectiveProjectId: null,
+        isGhostMode: false,
+        tier: session.user.tier,
+        userId: session.userId,
+      }).catch(() => null),
     ]);
+    const memoryString = memoryContext ? joinMemoryBlocks(memoryContext) : null;
+    const personal = blocsCompteCoach({
+      instructions: prefs?.customInstructions ?? null,
+      instructionsEnabled: Boolean(prefs?.enabled),
+      memory: memoryString,
+    });
+    const system = promptCoachAvecCompte(pret.system, personal);
     const modelId = resoudreModeleCoach({
       autorise: (id) => isModelAllowedForTier(id, session.user.tier),
       catalogueIds: catalogue.map((modele) => modele.id),
@@ -216,7 +233,7 @@ export async function POST(request: Request) {
     const conversationId = tour.conversation.id;
     const result = streamText({
       abortSignal: request.signal,
-      instructions: `${pret.system}\n\n${pret.faits}`,
+      instructions: `${system}\n\n${pret.faits}`,
       messages: messagesPourModele(tour.messages).map((message) => ({
         content: message.text,
         role: message.role,

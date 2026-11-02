@@ -227,14 +227,6 @@ export function AssistantPanel({
         />
       </div>
       <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-3 py-3">
-        <details className="surface-muted text-xs">
-          <summary className="cursor-pointer font-medium">
-            Prompt système
-          </summary>
-          <pre className="mt-2 max-h-48 overflow-auto whitespace-pre-wrap text-muted-foreground">
-            {systemPrompt?.prompt ?? "Chargement…"}
-          </pre>
-        </details>
         <label className="block text-xs">
           <span className="font-medium">Prompt de cette page</span>
           <textarea

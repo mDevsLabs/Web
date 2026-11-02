@@ -1,0 +1,2343 @@
+{
+  "id": "6e-espagnol-10",
+  "year": "6e",
+  "subject": "espagnol",
+  "title": "Vers l'examen en l'espagnol",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Compréhension",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Salutations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Salutations :",
+              "options": ["Hola", "Adiós", "Buenos días", "Gracias"],
+              "correctAnswers": [0, 2],
+              "explanation": "Hola et Buenos días."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Buenas tardes » =",
+              "options": [
+                "Bon après-midi",
+                "Bonjour matin",
+                "Bonne nuit",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après-midi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Adiós » =",
+              "options": ["Au revoir", "Bonjour", "Merci", "Oui"],
+              "correctAnswers": [0],
+              "explanation": "Départ."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Hasta luego » =",
+              "options": ["À plus tard", "Bonne nuit", "Enchanté", "De rien"],
+              "correctAnswers": [0],
+              "explanation": "Revoir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Buenas noches » =",
+              "options": [
+                "Bonsoir / bonne nuit",
+                "Bonjour",
+                "Bon appétit",
+                "À demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ¿Cómo estás? » =",
+              "options": [
+                "Comment vas-tu ?",
+                "Comment t'appelles-tu ?",
+                "Quelle heure ?",
+                "Où es-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Muy bien, gracias » =",
+              "options": [
+                "Très bien, merci",
+                "Très mal",
+                "Au revoir",
+                "S'il vous plaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poli."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Buenos días » =",
+              "options": [
+                "Bonjour (matin)",
+                "Bonsoir",
+                "Bonne nuit",
+                "À bientôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Me llamo Ana » :",
+              "options": [
+                "Ana se présente",
+                "Ana dit l'heure",
+                "Ana part",
+                "Ana a faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prénom."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« De nada » après",
+              "options": ["Gracias", "Hola", "Adiós", "Perdón"],
+              "correctAnswers": [0],
+              "explanation": "De rien."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Prénom :",
+              "options": [
+                "Me llamo Luis",
+                "Soy Luis",
+                "Tengo Luis",
+                "Adiós Luis"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux formules."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ¿Cómo te llamas? » =",
+              "options": [
+                "Comment t'appelles-tu ?",
+                "Quel âge ?",
+                "D'où viens-tu ?",
+                "Comment vas-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tengo doce años » =",
+              "options": ["J'ai 12 ans", "Il est midi", "12 euros", "12 amis"],
+              "correctAnswers": [0],
+              "explanation": "Âge."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Soy de Francia » =",
+              "options": [
+                "Je viens de France",
+                "Je suis en France",
+                "J'aime la France",
+                "France belle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Origine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Encantado » =",
+              "options": ["Enchanté", "Désolé", "Fatigué", "Fâché"],
+              "correctAnswers": [0],
+              "explanation": "Politesse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ¿Cuántos años tienes? » =",
+              "options": [
+                "Quel âge ?",
+                "Combien ?",
+                "Quelle heure ?",
+                "Taille ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Vivo en París » =",
+              "options": [
+                "J'habite à Paris",
+                "Je vais à Paris",
+                "Capital",
+                "Parisien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habiter."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Mucho gusto » =",
+              "options": ["Enchanté", "Au revoir", "Demain", "Pardon"],
+              "correctAnswers": [0],
+              "explanation": "Rencontre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ella se llama Lucía » :",
+              "options": [
+                "Elle s'appelle Lucía",
+                "Il s'appelle Lucía",
+                "Lucía part",
+                "Lucía dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ella."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« ¿De dónde eres? » =",
+              "options": [
+                "D'où es-tu ?",
+                "Où vas-tu ?",
+                "Espagnol ?",
+                "Langue ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Origine."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "À l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "École :",
+              "options": ["Colegio", "Clase", "Playa", "Cine"],
+              "correctAnswers": [0, 1],
+              "explanation": "École et classe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Clase a las ocho » :",
+              "options": ["Classe à 8 h", "Fin 8 h", "Samedi", "Anglais"],
+              "correctAnswers": [0],
+              "explanation": "Heure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tengo matemáticas » =",
+              "options": [
+                "Cours de maths",
+                "J'aime maths",
+                "Je déteste",
+                "Facile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Profesor simpático » :",
+              "options": ["Prof sympa", "Absent", "Élève", "Méchant"],
+              "correctAnswers": [0],
+              "explanation": "Simpático."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ¿Dónde está la biblioteca? » =",
+              "options": [
+                "Où bibliothèque ?",
+                "Quelle ?",
+                "Heure ?",
+                "Fermée ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Necesito un lápiz » =",
+              "options": ["Besoin crayon", "Mange crayon", "Stylo", "Vends"],
+              "correctAnswers": [0],
+              "explanation": "Besoin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Deberes difíciles » =",
+              "options": ["Devoirs difficiles", "Faciles", "Pas", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Difficiles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Estudio español » =",
+              "options": ["J'étudie espagnol", "Français", "Joue", "Dors"],
+              "correctAnswers": [0],
+              "explanation": "Étudier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Recreo a las diez » :",
+              "options": ["Récré 10 h", "8 h", "Soir", "Pas"],
+              "correctAnswers": [0],
+              "explanation": "Récré."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Mochila azul » =",
+              "options": ["Cartable bleu", "Chambre", "Prof", "Ciel"],
+              "correctAnswers": [0],
+              "explanation": "Cartable."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Matières",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Goûts :",
+              "options": ["Me gusta", "No me gusta", "Son las tres", "Adiós"],
+              "correctAnswers": [0, 1],
+              "explanation": "Aimer / pas aimer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Goma de borrar » =",
+              "options": ["Gomme", "Stylo", "Règle", "Cahier"],
+              "correctAnswers": [0],
+              "explanation": "Gomme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Cuaderno » =",
+              "options": ["Cahier", "Tableau", "Porte", "Cloche"],
+              "correctAnswers": [0],
+              "explanation": "Cahier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« EPS los martes » :",
+              "options": ["Mardi", "Dimanche", "Nuit", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Mardi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ¿Qué asignatura te gusta? » =",
+              "options": [
+                "Quelle matière ?",
+                "Heure ?",
+                "Prof ?",
+                "Cartable ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Pizarra grande » =",
+              "options": [
+                "Grand tableau",
+                "Grande classe",
+                "Grande école",
+                "Grande ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tableau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Uso calculadora » =",
+              "options": ["Calculatrice", "Mange", "Cours", "Chante"],
+              "correctAnswers": [0],
+              "explanation": "Utiliser."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Examen mañana » =",
+              "options": ["Examen demain", "Hier", "Pas", "Facile"],
+              "correctAnswers": [0],
+              "explanation": "Demain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Trabajo en grupo » =",
+              "options": ["Groupe", "Seul", "Dors", "Joue"],
+              "correctAnswers": [0],
+              "explanation": "Groupe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Lección interesante » =",
+              "options": ["Leçon intéressante", "Nulle", "Pas", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Intéressant."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Goûts",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Goûts :",
+              "options": [
+                "Me gusta la pizza",
+                "No me gusta el pescado",
+                "Son las tres",
+                "Hasta luego"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pizza oui, poisson non."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Me encanta el chocolate » =",
+              "options": [
+                "J'adore chocolat",
+                "Je déteste",
+                "Je mange",
+                "Demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encantar."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« ¿Te gusta el fútbol? » =",
+              "options": [
+                "Tu aimes foot ?",
+                "Où joues ?",
+                "Ballon ?",
+                "Prof ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Goût."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« No me gusta nada » =",
+              "options": ["Pas du tout", "Beaucoup", "Un peu", "Je sais pas"],
+              "correctAnswers": [0],
+              "explanation": "Nada."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Me gustan las manzanas » :",
+              "options": ["Pommes pluriel", "Pomme seule", "Verbe", "Heure"],
+              "correctAnswers": [0],
+              "explanation": "Gustan."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Prefiero el té » =",
+              "options": ["Je préfère thé", "Café", "Rien", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Préférer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« A mi hermana le gusta bailar » :",
+              "options": ["Sœur aime danser", "Frère", "Personne", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Sœur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Odio los deberes » =",
+              "options": ["Je déteste devoirs", "J'adore", "Pas", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Odiar."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« ¿Qué te gusta hacer? » =",
+              "options": ["Qu'aimes-tu faire ?", "Heure ?", "Où ?", "Prénom ?"],
+              "correctAnswers": [0],
+              "explanation": "Activité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Me gusta mucho la música » =",
+              "options": ["Aime beaucoup musique", "Déteste", "Demain", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Mucho."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Famille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Famille :",
+              "options": ["Madre", "Padre", "Lápiz", "Pizarra"],
+              "correctAnswers": [0, 1],
+              "explanation": "Parents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Hermano quince años » =",
+              "options": ["Frère 15 ans", "Sœur 15", "Père 15", "Moi 15"],
+              "correctAnswers": [0],
+              "explanation": "Frère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Abuela amable » =",
+              "options": [
+                "Grand-mère gentille",
+                "Grand-père",
+                "Tante",
+                "Mère méchante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abuela."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ¿Cuántas personas en tu familia? » =",
+              "options": [
+                "Combien dans famille ?",
+                "Où famille ?",
+                "Âge famille ?",
+                "Goût ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nombre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Hermana pequeña » =",
+              "options": [
+                "Petite sœur",
+                "Petit frère",
+                "Je suis petit",
+                "Grande sœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sœur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Padres trabajan » =",
+              "options": [
+                "Parents travaillent",
+                "Dorment",
+                "Un parent",
+                "École"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Travailler."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Tío en Madrid » =",
+              "options": ["Oncle à Madrid", "Tante", "Visite", "Loin"],
+              "correctAnswers": [0],
+              "explanation": "Oncle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Es mi prima » =",
+              "options": ["Ma cousine", "Mon cousin", "Ma sœur", "Prof"],
+              "correctAnswers": [0],
+              "explanation": "Cousine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Familia grande » =",
+              "options": ["Famille grande", "Petite", "Pas", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Grande."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Quiero a mi madre » =",
+              "options": ["J'aime ma mère", "Mange", "École", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Affection."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Nombres et heure",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Nombres :",
+              "options": ["Uno", "Dos", "Hola", "Adiós"],
+              "correctAnswers": [0, 1],
+              "explanation": "Un et deux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Son las nueve » =",
+              "options": ["Il est 9 h", "9 ans", "9 euros", "9 amis"],
+              "correctAnswers": [0],
+              "explanation": "Heure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Veinte libros » =",
+              "options": ["20 livres", "20 ans", "20 h", "20 euros"],
+              "correctAnswers": [0],
+              "explanation": "Vingt."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ¿Qué hora es? » =",
+              "options": [
+                "Quelle heure ?",
+                "Quel jour ?",
+                "Quel âge ?",
+                "Quel prix ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Es la una » =",
+              "options": [
+                "Une heure",
+                "Deux heures",
+                "Une personne",
+                "Un euro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une heure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Catorce estudiantes » =",
+              "options": ["14 élèves", "14 h", "14 jours", "14 villes"],
+              "correctAnswers": [0],
+              "explanation": "Quatorze."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« A las siete ceno » =",
+              "options": ["Dîne à 19 h", "Dors 7 h", "7 euros", "7 amis"],
+              "correctAnswers": [0],
+              "explanation": "Soir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Cinco más cinco » =",
+              "options": ["5 + 5", "5 − 5", "Bonjour", "Adiós"],
+              "correctAnswers": [0],
+              "explanation": "Addition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Mediodía » =",
+              "options": ["Midi", "Minuit", "Matin", "Soir"],
+              "correctAnswers": [0],
+              "explanation": "Midi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Son las doce » =",
+              "options": ["Midi ou minuit", "12 ans", "12 livres", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Douze heures."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Hier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Hier :",
+              "options": ["Ayer", "Ayer fui al colegio", "Mañana", "Hoy"],
+              "correctAnswers": [0, 1],
+              "explanation": "Mot et phrase passée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ayer » =",
+              "options": ["Hier", "Demain", "Aujourd'hui", "Maintenant"],
+              "correctAnswers": [0],
+              "explanation": "Hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ayer estudié español » =",
+              "options": [
+                "Étudié espagnol hier",
+                "Étudie demain",
+                "Maintenant",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ayer hizo sol » =",
+              "options": ["Soleil hier", "Pluie", "Demain", "Nuit"],
+              "correctAnswers": [0],
+              "explanation": "Météo."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ¿Qué hiciste ayer? » =",
+              "options": [
+                "Qu'as-tu fait hier ?",
+                "Demain ?",
+                "Heure ?",
+                "Où ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ayer no fui al colegio » =",
+              "options": [
+                "Pas école hier",
+                "École demain",
+                "À l'école",
+                "J'aime école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ayer comí pizza » =",
+              "options": [
+                "Pizza hier",
+                "Demain",
+                "Je n'aime pas",
+                "Demain pizza"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manger."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ayer fue domingo » =",
+              "options": [
+                "Dimanche hier",
+                "Demain dimanche",
+                "Lundi",
+                "Samedi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ayer vi a mi abuela » =",
+              "options": ["Vu abuela hier", "Demain", "Part", "École"],
+              "correctAnswers": [0],
+              "explanation": "Voir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ayer jugamos al fútbol » =",
+              "options": ["Foot hier", "Demain", "Déteste", "Dors"],
+              "correctAnswers": [0],
+              "explanation": "Jouer."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Demain",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Demain :",
+              "options": ["Mañana", "Mañana voy al colegio", "Ayer", "Ahora"],
+              "correctAnswers": [0, 1],
+              "explanation": "Mot et projet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Mañana » =",
+              "options": ["Demain", "Hier", "Aujourd'hui", "Toujours"],
+              "correctAnswers": [0],
+              "explanation": "Demain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Mañana tengo examen » =",
+              "options": ["Examen demain", "Hier", "Pas", "Facile"],
+              "correctAnswers": [0],
+              "explanation": "Avoir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ¿Qué vas a hacer mañana? » =",
+              "options": ["Que feras-tu demain ?", "Hier ?", "Heure ?", "Où ?"],
+              "correctAnswers": [0],
+              "explanation": "Futur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Mañana es lunes » =",
+              "options": ["Lundi demain", "Lundi hier", "Dimanche", "Mardi"],
+              "correctAnswers": [0],
+              "explanation": "Jour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Mañana voy al cine » =",
+              "options": ["Ciné demain", "Ciné hier", "Fermé", "Déteste"],
+              "correctAnswers": [0],
+              "explanation": "Aller."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Mañana no hay clase » =",
+              "options": [
+                "Pas classe demain",
+                "Classe hier",
+                "Maintenant",
+                "Toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas cours."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Nos vemos mañana » =",
+              "options": ["On se voit demain", "Adieu", "Hier", "Maintenant"],
+              "correctAnswers": [0],
+              "explanation": "Revoir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Mañana hace calor » =",
+              "options": ["Chaud demain", "Pluie hier", "Neige", "Froid"],
+              "correctAnswers": [0],
+              "explanation": "Météo."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Mañana es mi cumpleaños » =",
+              "options": ["Anniversaire demain", "Hier", "Pas", "École"],
+              "correctAnswers": [0],
+              "explanation": "Cumpleaños."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Mini-dialogues",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Hola » — « Hola, ¿qué tal? » : les répliques",
+              "options": [
+                "Saluent",
+                "Répondent à une salutation",
+                "Comptent",
+                "Partent"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Échange de salutations."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Gracias » — « De nada » :",
+              "options": [
+                "Merci / de rien",
+                "Bonjour / au revoir",
+                "Oui / non",
+                "Heure / lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politesse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« ¿Cómo te llamas? » — « Me llamo Sara » :",
+              "options": ["Prénom", "Heure", "Goût", "École"],
+              "correctAnswers": [0],
+              "explanation": "Nom."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ¿Te gusta el tenis? » — « Sí, me gusta » :",
+              "options": ["Goût oui", "Goût non", "Heure", "Famille"],
+              "correctAnswers": [0],
+              "explanation": "Oui."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Adiós » — « Hasta mañana » :",
+              "options": ["Au revoir", "Bonjour", "Merci", "Pardon"],
+              "correctAnswers": [0],
+              "explanation": "Départ."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ¿Qué hora es? » — « Son las dos » :",
+              "options": ["Heure", "Âge", "Prix", "Matière"],
+              "correctAnswers": [0],
+              "explanation": "Heure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ayer fui al parque » =",
+              "options": ["Parc hier", "Parc demain", "École", "Jamais"],
+              "correctAnswers": [0],
+              "explanation": "Passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Mañana tengo inglés » =",
+              "options": ["Anglais demain", "Anglais hier", "Pas", "Nuit"],
+              "correctAnswers": [0],
+              "explanation": "Futur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« ¿Dónde está el baño? » =",
+              "options": ["Toilettes où ?", "Bibliothèque", "Prof", "Bus"],
+              "correctAnswers": [0],
+              "explanation": "Lieu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Perdón » — « No pasa nada » :",
+              "options": [
+                "Excuse / rien",
+                "Bonjour / adiós",
+                "Merci / de nada",
+                "Oui / non"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pardon."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Expression",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Répondre aux salutations",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Réponses à « Hola » :",
+              "options": ["Hola", "Buenos días", "Adiós", "Gracias"],
+              "correctAnswers": [0, 1],
+              "explanation": "On peut resaluer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On te dit « ¿Cómo estás? » Tu réponds :",
+              "options": [
+                "Muy bien, gracias",
+                "Me llamo Ana",
+                "Son las tres",
+                "Adiós"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Buenas tardes » → tu dis :",
+              "options": [
+                "Buenas tardes",
+                "Buenas noches",
+                "Hasta luego",
+                "Perdón"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même salutation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelqu'un dit « Gracias » :",
+              "options": ["De nada", "Hola", "Adiós", "Sí"],
+              "correctAnswers": [0],
+              "explanation": "De rien."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tu pars :",
+              "options": ["Adiós", "Hola", "Buenos días", "¿Qué tal?"],
+              "correctAnswers": [0],
+              "explanation": "Au revoir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tu revois demain :",
+              "options": ["Hasta mañana", "Ayer", "Ahora", "Perdón"],
+              "correctAnswers": [0],
+              "explanation": "Demain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le matin à l'école :",
+              "options": ["Buenos días", "Buenas noches", "Adiós", "Gracias"],
+              "correctAnswers": [0],
+              "explanation": "Matin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« ¿Qué tal? » réponse courte :",
+              "options": ["Bien", "Me llamo Luis", "Veinte", "Madrid"],
+              "correctAnswers": [0],
+              "explanation": "Ça va."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tu bouscules quelqu'un :",
+              "options": ["Perdón", "De nada", "Hola", "Adiós"],
+              "correctAnswers": [0],
+              "explanation": "Pardon."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "On te dit « Encantado » :",
+              "options": ["Encantado / Mucho gusto", "Adiós", "Gracias", "No"],
+              "correctAnswers": [0],
+              "explanation": "Réciproque."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour te présenter :",
+              "options": [
+                "Me llamo…",
+                "Tengo … años",
+                "Son las ocho",
+                "Ayer fui…"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom et âge."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ton prénom est Léo :",
+              "options": [
+                "Me llamo Léo",
+                "Adiós Léo",
+                "Gracias Léo",
+                "Hola Léo seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Me llamo."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tu as 11 ans :",
+              "options": [
+                "Tengo once años",
+                "Soy once",
+                "Vivo once",
+                "Once horas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tener años."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tu viens de Lyon :",
+              "options": [
+                "Soy de Lyon",
+                "Voy de Lyon",
+                "Me gusta Lyon",
+                "Lyon adiós"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ser de."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Demander le prénom :",
+              "options": [
+                "¿Cómo te llamas?",
+                "¿Qué hora es?",
+                "¿Te gusta?",
+                "¿Dónde baño?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Demander l'âge :",
+              "options": [
+                "¿Cuántos años tienes?",
+                "¿Cómo estás?",
+                "¿De dónde eres?",
+                "¿Qué tal?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Âge."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tu habites à Bordeaux :",
+              "options": [
+                "Vivo en Bordeaux",
+                "Soy Bordeaux",
+                "Bordeaux gracias",
+                "Ayer Bordeaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vivir en."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Première rencontre polie :",
+              "options": ["Mucho gusto", "Adiós", "Perdón", "No me gusta"],
+              "correctAnswers": [0],
+              "explanation": "Enchanté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Demander l'origine :",
+              "options": [
+                "¿De dónde eres?",
+                "¿Cómo te llamas?",
+                "¿Qué hora es?",
+                "¿Te gusta?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'où."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Soy estudiante » =",
+              "options": [
+                "Je suis élève",
+                "Je suis prof",
+                "Je dors",
+                "Je pars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estudiante."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Parler de l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases école :",
+              "options": [
+                "Voy al colegio",
+                "Tengo clase de música",
+                "Me gusta nadar seul",
+                "Adiós playa"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aller et matière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tu as cours de français :",
+              "options": [
+                "Tengo francés",
+                "Soy francés",
+                "Vivo francés",
+                "Adiós francés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Demander la bibliothèque :",
+              "options": [
+                "¿Dónde está la biblioteca?",
+                "¿Qué hora es?",
+                "¿Cómo te llamas?",
+                "¿Te gusta?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Besoin d'une gomme :",
+              "options": [
+                "Necesito una goma",
+                "Como una goma",
+                "Adiós goma",
+                "Soy goma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Besoin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Devoirs difficiles :",
+              "options": [
+                "Los deberes son difíciles",
+                "Los deberes son fáciles",
+                "No deberes",
+                "Deberes ayer seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Difficiles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tu travailles en groupe :",
+              "options": [
+                "Trabajo en grupo",
+                "Trabajo ayer",
+                "Adiós grupo",
+                "Soy grupo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Groupe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Récré à 10 h :",
+              "options": [
+                "El recreo es a las diez",
+                "El recreo es ayer",
+                "No recreo",
+                "Recreo adiós"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heure."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tu étudies l'espagnol :",
+              "options": [
+                "Estudio español",
+                "Odio español si tu aimes",
+                "Adiós español",
+                "Soy español obligé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étudier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cartable rouge :",
+              "options": [
+                "Mi mochila es roja",
+                "Mi mochila es ayer",
+                "Adiós mochila",
+                "Soy mochila"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Prof sympa :",
+              "options": [
+                "El profesor es simpático",
+                "El profesor es adiós",
+                "No profesor",
+                "Profesor mañana"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simpático."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Exprimer ses goûts",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tu aimes et n'aimes pas :",
+              "options": [
+                "Me gusta el helado",
+                "No me gusta el café",
+                "Son las cinco",
+                "Hasta luego"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gusta / no gusta."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tu adores le sport :",
+              "options": [
+                "Me encanta el deporte",
+                "No me gusta nada",
+                "Adiós deporte",
+                "Soy deporte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encantar."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tu n'aimes pas les légumes :",
+              "options": [
+                "No me gustan las verduras",
+                "Me gustan las verduras",
+                "Verduras ayer",
+                "Soy verduras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négatif pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tu préfères le thé :",
+              "options": [
+                "Prefiero el té",
+                "Prefiero adiós",
+                "Té ayer",
+                "Soy té"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Preferir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Demander un goût :",
+              "options": [
+                "¿Te gusta la música?",
+                "¿Qué hora es?",
+                "¿Dónde estás?",
+                "¿Cómo te llamas?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Te gusta."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponse oui j'aime :",
+              "options": ["Sí, me gusta", "No, gracias", "Adiós", "Perdón"],
+              "correctAnswers": [0],
+              "explanation": "Affirmatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pas du tout :",
+              "options": [
+                "No me gusta nada",
+                "Me gusta mucho",
+                "Mucho gusto",
+                "De nada"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nada."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "J'aime beaucoup lire :",
+              "options": [
+                "Me gusta mucho leer",
+                "Odio leer",
+                "Leer ayer",
+                "Adiós leer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mucho."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'aimes-tu faire ?",
+              "options": [
+                "¿Qué te gusta hacer?",
+                "¿Qué hora es?",
+                "¿De dónde eres?",
+                "¿Dónde baño?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Activité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tu détestes les devoirs :",
+              "options": [
+                "Odio los deberes",
+                "Me encantan los deberes",
+                "Deberes mañana",
+                "Soy deberes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Odiar."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Invitations simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Inviter :",
+              "options": [
+                "¿Quieres jugar?",
+                "¿Vamos al parque?",
+                "Adiós parque",
+                "Ayer parque"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Veux-tu / allons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Proposer le ciné :",
+              "options": [
+                "¿Vamos al cine?",
+                "Voy ayer cine",
+                "Adiós cine",
+                "Soy cine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Allons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Accepter :",
+              "options": [
+                "Sí, vamos",
+                "No, adiós forever",
+                "Perdón hora",
+                "Me llamo…"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oui allons."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Refuser poliment :",
+              "options": [
+                "Lo siento, no puedo",
+                "Sí, claro",
+                "Hola hola",
+                "Gracias gracias"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Désolé je ne peux pas."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ¿Tienes hambre? » tu as faim, tu dis :",
+              "options": [
+                "Sí, tengo hambre",
+                "No tengo hambre nunca",
+                "Adiós comida",
+                "Soy hambre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faim."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Proposer un goûter :",
+              "options": [
+                "¿Quieres un bocadillo?",
+                "¿Qué hora es?",
+                "¿Cómo te llamas?",
+                "Adiós"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sandwich."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rendez-vous demain :",
+              "options": [
+                "Nos vemos mañana",
+                "Nos vemos ayer",
+                "Adiós mañana",
+                "Soy mañana"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Jouer au foot :",
+              "options": [
+                "¿Jugamos al fútbol?",
+                "Jugamos ayer seulement",
+                "Adiós fútbol",
+                "Soy fútbol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jouons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« ¿Estás libre? » = libre, tu dis :",
+              "options": ["Sí, estoy libre", "No estoy", "Adiós", "Gracias"],
+              "correctAnswers": [0],
+              "explanation": "Disponible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Refuser : « No, gracias » =",
+              "options": ["Non merci", "Oui merci", "Bonjour", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Refus poli."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Demander",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Demander :",
+              "options": ["¿Puedo…?", "¿Dónde está…?", "Adiós", "Ayer"],
+              "correctAnswers": [0, 1],
+              "explanation": "Puis-je / où."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demander l'heure :",
+              "options": [
+                "¿Qué hora es?",
+                "¿Cómo te llamas?",
+                "¿Te gusta?",
+                "¿De dónde eres?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où sont les toilettes :",
+              "options": [
+                "¿Dónde está el baño?",
+                "¿Dónde está el cine?",
+                "¿Qué hora es?",
+                "¿Cómo estás?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Baño."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Demander un crayon :",
+              "options": [
+                "¿Tienes un lápiz?",
+                "¿Tienes hambre?",
+                "¿Tienes hermanos?",
+                "Adiós lápiz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avoir crayon."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Puis-je entrer :",
+              "options": [
+                "¿Puedo entrar?",
+                "Entro ayer",
+                "Adiós entrar",
+                "Soy entrar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poder."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Répéter :",
+              "options": [
+                "¿Puedes repetir?",
+                "¿Puedes adiós?",
+                "Repetir ayer",
+                "Soy repetir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Répéter."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Parler plus lentement :",
+              "options": [
+                "Más despacio, por favor",
+                "Más rápido siempre",
+                "Adiós",
+                "Gracias solo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Despacio."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Demander le prix :",
+              "options": [
+                "¿Cuánto cuesta?",
+                "¿Cuántos años?",
+                "¿Qué hora?",
+                "¿Cómo te llamas?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coût."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "S'il vous plaît :",
+              "options": ["Por favor", "De nada", "Adiós", "Perdón seulement"],
+              "correctAnswers": [0],
+              "explanation": "Politesse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Demander de l'aide :",
+              "options": [
+                "¿Me ayudas?",
+                "¿Me adiós?",
+                "Ayudas ayer",
+                "Soy ayuda"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aider."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Heure et rendez-vous",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Heure :",
+              "options": ["Son las tres", "A las cinco", "Adiós", "Ayer"],
+              "correctAnswers": [0, 1],
+              "explanation": "Il est / à … heures."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Il est midi :",
+              "options": [
+                "Es mediodía",
+                "Es medianoche",
+                "Es la una",
+                "Es mañana"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Midi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rendez-vous à 4 h :",
+              "options": [
+                "A las cuatro",
+                "A las cuatro ayer",
+                "Cuatro años",
+                "Adiós cuatro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À quatre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Demander l'heure :",
+              "options": [
+                "¿Qué hora es?",
+                "¿Qué día es?",
+                "¿Qué tal?",
+                "¿De dónde eres?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réponse « Son las ocho » :",
+              "options": ["8 h", "8 ans", "8 euros", "8 amis"],
+              "correctAnswers": [0],
+              "explanation": "Huit heures."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Classe commence 8 h :",
+              "options": [
+                "La clase empieza a las ocho",
+                "La clase ayer",
+                "Adiós clase",
+                "Soy ocho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Empieza."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« A las ocho ceno » signifie :",
+              "options": [
+                "Je dîne à huit heures",
+                "Je dîne hier",
+                "Adiós cena",
+                "Je suis huit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repas du soir à huit heures."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En retard :",
+              "options": [
+                "Llego tarde",
+                "Llego temprano",
+                "Llego ayer",
+                "Adiós tarde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tarde."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À l'heure :",
+              "options": [
+                "Llego a tiempo",
+                "Llego tarde",
+                "Llego adiós",
+                "Soy tiempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Demain à 9 h :",
+              "options": [
+                "Mañana a las nueve",
+                "Ayer a las nueve",
+                "A las nueve ayer",
+                "Adiós nueve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demain neuf."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Parler d'hier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Hier tu dis :",
+              "options": [
+                "Ayer fui al colegio",
+                "Ayer comí pasta",
+                "Mañana voy",
+                "Hoy hola"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux actions passées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Hier j'ai joué :",
+              "options": [
+                "Ayer jugué",
+                "Mañana juego",
+                "Ahora juego",
+                "Adiós juego"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Hier il pleuvait :",
+              "options": [
+                "Ayer llovió",
+                "Mañana llueve",
+                "Hoy sol",
+                "Adiós lluvia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pluie passée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'as-tu fait hier ?",
+              "options": [
+                "¿Qué hiciste ayer?",
+                "¿Qué harás mañana?",
+                "¿Qué hora es?",
+                "¿Cómo te llamas?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question passée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Je n'ai pas travaillé hier :",
+              "options": [
+                "Ayer no trabajé",
+                "Ayer trabajé mucho",
+                "Mañana trabajo",
+                "Adiós trabajo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Hier j'ai vu un film :",
+              "options": [
+                "Ayer vi una película",
+                "Mañana película",
+                "Veo ahora",
+                "Adiós cine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Hier c'était samedi :",
+              "options": [
+                "Ayer fue sábado",
+                "Mañana sábado",
+                "Hoy lunes",
+                "Adiós sábado"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Hier j'étais malade (6e simple) :",
+              "options": [
+                "Ayer estuve malo",
+                "Mañana malo",
+                "Estoy bien",
+                "Adiós malo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Malade hier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "On a mangé hier :",
+              "options": [
+                "Ayer comimos",
+                "Mañana comemos",
+                "Comemos ahora",
+                "Adiós comida"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nous passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Je suis allé au parc hier :",
+              "options": [
+                "Ayer fui al parque",
+                "Mañana parque",
+                "Voy ahora",
+                "Adiós parque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aller passé."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Parler de demain",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Demain :",
+              "options": [
+                "Mañana voy al colegio",
+                "Mañana tengo examen",
+                "Ayer fui",
+                "Ahora como"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux phrases futures."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demain je ferai du sport :",
+              "options": [
+                "Mañana hago deporte",
+                "Ayer deporte",
+                "Ahora duermo",
+                "Adiós deporte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Futur proche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Demain pas d'école :",
+              "options": [
+                "Mañana no hay colegio",
+                "Mañana hay colegio siempre",
+                "Ayer no hay",
+                "Adiós colegio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas école."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que feras-tu demain ?",
+              "options": [
+                "¿Qué vas a hacer mañana?",
+                "¿Qué hiciste ayer?",
+                "¿Qué hora es?",
+                "¿Cómo te llamas?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "On se voit demain :",
+              "options": [
+                "Nos vemos mañana",
+                "Nos vemos ayer",
+                "Adiós",
+                "Hola solo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Revoir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Demain lundi :",
+              "options": [
+                "Mañana es lunes",
+                "Ayer es lunes",
+                "Hoy es lunes toujours",
+                "Adiós lunes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jour futur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Demain j'étudierai :",
+              "options": [
+                "Mañana estudio",
+                "Ayer estudio",
+                "Estudio ayer",
+                "Adiós estudio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étudier demain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Demain anniversaire :",
+              "options": [
+                "Mañana es mi cumpleaños",
+                "Ayer cumpleaños",
+                "No cumpleaños",
+                "Adiós"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anniversaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Il fera beau demain (6e) :",
+              "options": [
+                "Mañana hace buen tiempo",
+                "Ayer llueve",
+                "Ahora nieva",
+                "Adiós sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Météo."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Demain je vais chez ma grand-mère :",
+              "options": [
+                "Mañana voy a casa de mi abuela",
+                "Ayer abuela",
+                "Voy ahora",
+                "Adiós abuela"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visite."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révisions expression",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases utiles à l'oral :",
+              "options": ["Por favor", "Gracias", "Adiós solo", "Números sol"],
+              "correctAnswers": [0, 1],
+              "explanation": "S'il vous plaît et merci."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tu ne comprends pas :",
+              "options": ["No entiendo", "Entiendo todo", "Adiós", "Sí claro"],
+              "correctAnswers": [0],
+              "explanation": "Je ne comprends pas."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tu comprends :",
+              "options": ["Entiendo", "No entiendo", "Perdón", "Adiós"],
+              "correctAnswers": [0],
+              "explanation": "Je comprends."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Répondre « ¿Te gusta el cine? » oui :",
+              "options": [
+                "Sí, me gusta",
+                "No me gusta nada",
+                "Adiós cine",
+                "Soy cine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Goût."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Saluer le prof :",
+              "options": [
+                "Buenos días, profesor",
+                "Adiós profesor entrant",
+                "Gracias profesor",
+                "De nada profesor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Politesse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dire ton âge :",
+              "options": [
+                "Tengo trece años",
+                "Soy trece",
+                "Vivo trece",
+                "Trece horas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ans."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Hier + demain ensemble tu évites ; tu dis seulement demain :",
+              "options": [
+                "Mañana tengo clase",
+                "Ayer mañana",
+                "Ayer y mañana juntos",
+                "Adiós"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase claire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Excuse et réponse :",
+              "options": [
+                "Perdón — No pasa nada",
+                "Hola — Adiós",
+                "Gracias — Hola",
+                "Sí — No"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pardon."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mini-dialogue fin :",
+              "options": [
+                "Hasta luego — Hasta luego",
+                "Hola — Hola forever",
+                "Gracias — Hola",
+                "Perdón — Gracias"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Présentation complète courte :",
+              "options": [
+                "Hola, me llamo…, tengo… años",
+                "Adiós…",
+                "Son las… seul",
+                "Ayer… seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonjour nom âge."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

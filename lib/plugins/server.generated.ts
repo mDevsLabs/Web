@@ -28,7 +28,6 @@ import { openFoodFactsPlugin } from "./open-food-facts";
 import { openLibraryPlugin } from "./open-library";
 import { openalexPlugin } from "./openalex";
 import { posthogPlugin } from "./posthog";
-import { quizzlyPlugin } from "./quizzly";
 import { resendPlugin } from "./resend";
 import { sentryPlugin } from "./sentry";
 import { sonarcloudPlugin } from "./sonarcloud";
@@ -73,7 +72,6 @@ export const PLUGIN_DEFINITIONS: PluginDefinition[] = [
   openLibraryPlugin,
   openalexPlugin,
   posthogPlugin,
-  quizzlyPlugin,
   resendPlugin,
   sentryPlugin,
   sonarcloudPlugin,

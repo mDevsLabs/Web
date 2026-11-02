@@ -1,0 +1,1838 @@
+{
+  "id": "5e-anglais-04",
+  "year": "5e",
+  "subject": "anglais",
+  "title": "La grammaire de l'anglais",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement a ou an ? (Deux réponses)",
+              "options": [
+                "I have an apple.",
+                "She is a honest girl.",
+                "He eats an egg.",
+                "We see a elephant."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "On écrit an devant un son voyelle : apple, egg. honest et elephant commencent par un son consonnesque ou h aspiré → a honest, an elephant serait attendu pour elephant (son voyelle)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « ___ orange » (une orange)",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Orange commence par un son voyelle → an."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « ___ book » (un livre)",
+              "options": ["an", "a", "the", "any"],
+              "correctAnswers": [1],
+              "explanation": "Book commence par une consonne → a."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel article pour « ___ umbrella » ?",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Umbrella se prononce avec un son voyelle → an."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« There is ___ cat on the sofa. »",
+              "options": ["an", "a", "some", "any"],
+              "correctAnswers": [1],
+              "explanation": "Cat = consonne → a."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une phrase affirmative au pluriel, on dit souvent :",
+              "options": ["some books", "any books", "a books", "an books"],
+              "correctAnswers": [0],
+              "explanation": "Some s'utilise au pluriel dans les affirmations."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« I don't have ___ pens. »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [1],
+              "explanation": "Dans une négation, any remplace some."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« ___ sun is bright today. » (le soleil, unique)",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "The pour un objet unique connu (le soleil)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« She is ___ teacher. » (professeur)",
+              "options": ["an", "a", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Teacher commence par une consonne → a."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Do you have ___ milk? » (question)",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "Dans une question, on emploie souvent any avec les noms indénombrables."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes avec some/any sont correctes ? (Deux réponses)",
+              "options": [
+                "I have some friends.",
+                "She has any dog.",
+                "Are there any chairs?",
+                "We need some water."
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Some en affirmation (friends, water indénombrable). Any en question (chairs). « any dog » en affirmation simple est incorrect au niveau 5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « ___ hour » (une heure — h muet)",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Hour se prononce avec un son voyelle → an hour."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« ___ United Kingdom » (pays précis)",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "Les noms de pays composés ou officiels prennent souvent the."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« There aren't ___ students here. »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [1],
+              "explanation": "Négation + pluriel → any."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« He wants ___ ice cream. »",
+              "options": ["a", "an", "the", "any"],
+              "correctAnswers": [1],
+              "explanation": "Ice commence par un son voyelle → an."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Choisis la phrase correcte :",
+              "options": [
+                "She has a umbrella.",
+                "She has an umbrella.",
+                "She has some umbrella.",
+                "She has any umbrella."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Umbrella → an."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Can I have ___ sugar, please? »",
+              "options": ["a", "an", "some", "any"],
+              "correctAnswers": [2],
+              "explanation": "Sugar est indénombrable ; some dans une demande polie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« ___ dog is friendly. » (le chien dont on parle)",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "The pour un chien déjà identifié."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« I see ___ owl in the tree. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Owl → son voyelle → an."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pluriel correct avec article indéfini :",
+              "options": ["a cats", "an cats", "cats", "some cat"],
+              "correctAnswers": [2],
+              "explanation": "Au pluriel, on ne met pas a/an : cats ou some cats."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases ont un article défini correct ? (Deux réponses)",
+              "options": [
+                "The moon is beautiful.",
+                "I like the music in general.",
+                "Close the door, please.",
+                "She goes to the school every day."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "The moon (unique), the door (porte précise). « Music in general » et « school » (institution) n'utilisent pas toujours the au niveau 5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« My brother is ___ artist. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Artist → an."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« There is ___ interesting film on TV. »",
+              "options": ["a", "an", "the", "any"],
+              "correctAnswers": [1],
+              "explanation": "Interesting → an."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Négation : « We don't have ___ time. »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [1],
+              "explanation": "Time indénombrable + négation → any."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ___ Eiffel Tower is in Paris. »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "Monuments uniques → the."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« She bought ___ new bike. »",
+              "options": ["a", "an", "the", "any"],
+              "correctAnswers": [0],
+              "explanation": "New → consonne → a."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Question : « Is there ___ bread left? »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [1],
+              "explanation": "Question + bread → any."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« He is ___ European student. » (son [j])",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [0],
+              "explanation": "European se prononce « yu- » → a."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Affirmation : « I ate ___ biscuits. »",
+              "options": ["any", "some", "a", "an"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel affirmatif → some."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« ___ apple a day keeps the doctor away. » (premier mot)",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [1],
+              "explanation": "Apple → an."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles complétions avec a/an sont justes ? (Deux réponses)",
+              "options": [
+                "a uniform",
+                "an uniform",
+                "a university",
+                "an university"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Uniform et university commencent par le son « y » (consonne) → a."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ old man lives next door. »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [1],
+              "explanation": "Old → an."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« They don't need ___ help. »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [1],
+              "explanation": "Négation → any."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Look at ___ birds in the sky! »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [2],
+              "explanation": "Oiseaux visibles / identifiés → the."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« I need ___ pen to write. »",
+              "options": ["an", "a", "the", "any"],
+              "correctAnswers": [1],
+              "explanation": "Pen → a."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Are there ___ apples in the fridge? »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [1],
+              "explanation": "Question au pluriel → any."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« She plays ___ piano every evening. » (instrument)",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [2],
+              "explanation": "En anglais, les instruments prennent souvent the."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« It is ___ honour to meet you. » (h muet)",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Honour → son voyelle → an."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« We have ___ homework tonight. »",
+              "options": ["a", "an", "some", "any"],
+              "correctAnswers": [2],
+              "explanation": "Homework indénombrable → some en affirmation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Erreur à corriger : « He is an boy. »",
+              "options": ["a boy", "the boy", "some boy", "any boy"],
+              "correctAnswers": [0],
+              "explanation": "Boy → a boy."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases négatives sont correctes ? (Deux réponses)",
+              "options": [
+                "I don't have any money.",
+                "She doesn't have some cats.",
+                "They don't have any ideas.",
+                "We don't have some time."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Négation + any (money, ideas). Some ne convient pas après don't dans ces cas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ octopus has eight legs. » (espèce en général, niveau 5e)",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [1],
+              "explanation": "Octopus → an ; on peut aussi dire An octopus… pour parler de l'animal en général."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Pass me ___ salt, please. » (sur la table)",
+              "options": ["a", "an", "the", "any"],
+              "correctAnswers": [2],
+              "explanation": "Sel visible → the."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« There are ___ chairs in the room. » (affirmation)",
+              "options": ["any", "some", "a", "an"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel affirmatif → some."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ___ idea! That's great! »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [1],
+              "explanation": "Idea → an."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« I haven't got ___ brothers. »",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "Négation + pluriel → any."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« She reads ___ newspaper every morning. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [0],
+              "explanation": "Newspaper → a (habitude générale)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Would you like ___ tea? »",
+              "options": ["a", "some", "any", "an"],
+              "correctAnswers": [1],
+              "explanation": "Offre polie avec indénombrable → some."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« ___ Atlantic Ocean is very large. »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "Océans → the."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« He found ___ wallet in the street. »",
+              "options": ["an", "a", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Wallet → a."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases correctes avec some :",
+              "options": [
+                "There are some grapes.",
+                "There is some grape.",
+                "I want some juice.",
+                "She wants some juices."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Some + pluriel (grapes) ou indénombrable (juice). « some grape » singulier et « juices » au pluriel comptable sont maladroits ici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ elephant is a big animal. »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [1],
+              "explanation": "Elephant → an."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« I don't see ___ problems. »",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "Négation → any."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ___ Queen lives in London. »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "Personnage unique connu → the."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« My sister has ___ orange cat. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Orange (couleur/adjectif) → an orange cat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Do you want ___ cookies? »",
+              "options": ["any", "some", "a", "an"],
+              "correctAnswers": [1],
+              "explanation": "Offre → some même dans une question."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« He wears ___ uniform to school. »",
+              "options": ["an", "a", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Uniform → a."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« ___ children are playing in the park. » (ceux qu'on voit)",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "Enfants identifiés → the."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« There isn't ___ milk in the bottle. »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [1],
+              "explanation": "Négation singulier indénombrable → any."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« She is ___ only child in her family. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [2],
+              "explanation": "Only child → the (unique dans la famille)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Choisis deux questions correctes avec any :",
+              "options": [
+                "Do you have any questions?",
+                "Do you have some questions?",
+                "Is there any noise?",
+                "There is any noise."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Any dans les questions. « There is any » en affirmation est incorrect."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ igloo is made of ice. »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [1],
+              "explanation": "Igloo → an."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« We bought ___ tickets for the concert. »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [0],
+              "explanation": "Pluriel affirmatif → some."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ___ teacher explained the lesson. » (celui du cours)",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "Professeur du cours → the."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« I saw ___ eagle yesterday. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Eagle → an."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« They haven't got ___ pets. »",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "Négation → any."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« ___ bike in the garage is mine. »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "Vélo précis → the."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Add ___ egg to the recipe. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Egg → an."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Are there ___ messages for me? »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [1],
+              "explanation": "Question → any."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« He needs ___ answer now. »",
+              "options": ["an", "a", "the", "some"],
+              "correctAnswers": [0],
+              "explanation": "Answer → an."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases avec the bien employé :",
+              "options": [
+                "The capital of France is Paris.",
+                "I love the life.",
+                "Turn off the light.",
+                "She goes to the bed."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Capitale unique et lumière précise. « the life » et « the bed » (aller dormir) sont des pièges fréquents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ onion makes me cry. »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [1],
+              "explanation": "Onion → an."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« I don't eat ___ meat. » (en général)",
+              "options": ["some", "any", "the", "a"],
+              "correctAnswers": [1],
+              "explanation": "Négation → any (ou pas d'article selon contexte ; ici any convient)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ___ stars are visible tonight. »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "Étoiles du ciel ce soir → the."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« She wants to be ___ astronaut. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Astronaut → an."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« There are some books but no ___ magazines. »",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "No = négation → any."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« ___ window is open. » (celle du salon)",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "Fenêtre identifiée → the."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« He ate ___ sandwich for lunch. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [0],
+              "explanation": "Sandwich → a."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Have you got ___ brothers or sisters? »",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "Question → any."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« It takes ___ hour to get there. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Hour → an."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles options complètent « I have ___ » correctement ? (Deux réponses)",
+              "options": ["some friends", "any friend", "a dog", "an dogs"],
+              "correctAnswers": [0, 2],
+              "explanation": "Some friends et a dog sont corrects. Any friend en affirmation simple et an dogs sont faux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ island is surrounded by water. » (général)",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [1],
+              "explanation": "Island → an."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« We didn't buy ___ vegetables. »",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "Négation passée → any."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Open ___ window on your left. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [2],
+              "explanation": "Fenêtre précise → the."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ___ useful tip! » (son [j])",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [0],
+              "explanation": "Useful → a."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« There is ___ rice in the bowl. »",
+              "options": ["a", "an", "some", "any"],
+              "correctAnswers": [2],
+              "explanation": "Rice indénombrable affirmatif → some."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« ___ Nile is a long river. »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "Fleuves → the."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« She doesn't have ___ umbrella today. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Umbrella après have → an umbrella."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Can you lend me ___ pencil? »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [0],
+              "explanation": "Pencil → a."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« I don't have ___ excuse. »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [1],
+              "explanation": "Négation → any."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux réponses vraies sur some et any :",
+              "options": [
+                "Some est fréquent en affirmation.",
+                "Any est impossible dans une question.",
+                "Any suit souvent les négations.",
+                "Some ne va jamais avec un pluriel."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Some en affirmation ; any en négation (et questions). Any existe dans les questions ; some peut aller avec le pluriel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ English lesson starts at nine. » (le cours d'aujourd'hui)",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "Cours précis → the."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« He is ___ honest person. »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "Honest (h muet) → an."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« There aren't ___ people in the street. »",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "Négation pluriel → any."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« I need ___ information about the trip. »",
+              "options": ["a", "an", "some", "any"],
+              "correctAnswers": [2],
+              "explanation": "Information indénombrable → some."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ___ owl can see in the dark. »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [1],
+              "explanation": "Owl → an."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Put ___ books on ___ shelf. » (premier trou)",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [3],
+              "explanation": "Books pluriel → some books."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Is there ___ bus stop near here? »",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [0],
+              "explanation": "Bus stop → a."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« She didn't drink ___ coffee. »",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "Négation → any."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« ___ end of the film was surprising. »",
+              "options": ["A", "An", "The", "Some"],
+              "correctAnswers": [2],
+              "explanation": "Fin du film (unique) → the."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases au present simple sont correctes ? (Deux réponses)",
+              "options": [
+                "She plays tennis.",
+                "She play tennis.",
+                "They play football.",
+                "He play football."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "He/she/it + verbe-s (plays) ; they + base (play)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« There ___ a cat under the table. »",
+              "options": ["are", "is", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "Singulier → there is."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« There ___ two dogs in the garden. »",
+              "options": ["is", "are", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel → there are."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« My brother ___ video games every day. »",
+              "options": ["play", "plays", "playing", "played"],
+              "correctAnswers": [1],
+              "explanation": "He → plays."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« We ___ to school by bus. »",
+              "options": ["goes", "go", "going", "goed"],
+              "correctAnswers": [1],
+              "explanation": "We → go."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Négation : « She ___ like spinach. »",
+              "options": ["don't", "doesn't", "isn't", "aren't"],
+              "correctAnswers": [1],
+              "explanation": "She → doesn't + base."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Question : « ___ you speak English? »",
+              "options": ["Do", "Does", "Is", "Are"],
+              "correctAnswers": [0],
+              "explanation": "You → Do."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« There isn't ___ milk left. »",
+              "options": ["some", "any", "a", "many"],
+              "correctAnswers": [1],
+              "explanation": "Négation → any."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« The sun ___ in the east. »",
+              "options": ["rise", "rises", "rising", "rose"],
+              "correctAnswers": [1],
+              "explanation": "Vérité générale, he/she/it → rises."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« ___ there a library in your town? »",
+              "options": ["Are", "Is", "Do", "Does"],
+              "correctAnswers": [1],
+              "explanation": "Singulier → Is there."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases avec there is/are correctes :",
+              "options": [
+                "There is a problem.",
+                "There are a problem.",
+                "There are many shops.",
+                "There is many shops."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Is + singulier ; are + pluriel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Tom ___ his homework after dinner. »",
+              "options": ["do", "does", "doing", "did"],
+              "correctAnswers": [1],
+              "explanation": "Tom = he → does."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« I ___ breakfast at seven o'clock. »",
+              "options": ["have", "has", "having", "haves"],
+              "correctAnswers": [0],
+              "explanation": "I → have."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ___ she live in London? »",
+              "options": ["Do", "Does", "Is", "Are"],
+              "correctAnswers": [1],
+              "explanation": "She → Does."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« There ___ some apples on the table. »",
+              "options": ["is", "are", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "Apples pluriel → are."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« They ___ watch TV on school nights. » (négation)",
+              "options": ["doesn't", "don't", "isn't", "aren't"],
+              "correctAnswers": [1],
+              "explanation": "They → don't."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Maria ___ the guitar well. »",
+              "options": ["play", "plays", "playing", "played"],
+              "correctAnswers": [1],
+              "explanation": "She → plays."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Are there ___ students in the classroom? »",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "Question → any."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Water ___ at 100 degrees Celsius. »",
+              "options": ["boil", "boils", "boiling", "boiled"],
+              "correctAnswers": [1],
+              "explanation": "Water = it → boils."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« There ___ no chairs here. »",
+              "options": ["is", "are", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "Chairs pluriel → there are."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions avec Do/Does sont correctes ? (Deux réponses)",
+              "options": [
+                "Do they swim?",
+                "Does they swim?",
+                "Does he swim?",
+                "Do he swim?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Do + they/he base ; Does + he."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« There is ___ interesting museum downtown. »",
+              "options": ["a", "an", "some", "any"],
+              "correctAnswers": [1],
+              "explanation": "Interesting → an."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Birds ___ in the sky. »",
+              "options": ["flies", "fly", "flys", "flying"],
+              "correctAnswers": [1],
+              "explanation": "Birds = they → fly."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« He ___ his room on Saturdays. »",
+              "options": ["clean", "cleans", "cleaning", "cleaned"],
+              "correctAnswers": [1],
+              "explanation": "He → cleans."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« There ___ a lot of traffic today. »",
+              "options": ["are", "is", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "Traffic indénombrable singulier → is."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« I ___ understand this exercise. » (négation)",
+              "options": ["don't", "doesn't", "am not", "isn't"],
+              "correctAnswers": [0],
+              "explanation": "I → don't."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« ___ your parents work nearby? »",
+              "options": ["Do", "Does", "Is", "Are"],
+              "correctAnswers": [0],
+              "explanation": "Parents = they → Do."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« She ___ coffee in the morning. »",
+              "options": ["drink", "drinks", "drinking", "drinked"],
+              "correctAnswers": [1],
+              "explanation": "She → drinks."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« There aren't ___ eggs in the fridge. »",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "Négation → any."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ordre correct :",
+              "options": [
+                "Always she is happy.",
+                "She is always happy.",
+                "She always is happy.",
+                "Happy she is always."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Adverbe de fréquence souvent après be ou avant verbe principal ; ici be → She is always happy."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux négations au present simple correctes :",
+              "options": [
+                "He doesn't eat meat.",
+                "He don't eat meat.",
+                "We don't eat meat.",
+                "We doesn't eat meat."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Doesn't + he ; don't + we."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« There ___ three windows in this room. »",
+              "options": ["is", "are", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "Three windows → are."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« The cat ___ on the roof. »",
+              "options": ["sit", "sits", "sitting", "sitted"],
+              "correctAnswers": [1],
+              "explanation": "It → sits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Do you ___ pizza? »",
+              "options": ["likes", "like", "liking", "liked"],
+              "correctAnswers": [1],
+              "explanation": "Après Do, verbe à la base : like."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« There is ___ sugar in my tea. »",
+              "options": ["some", "any", "a", "many"],
+              "correctAnswers": [0],
+              "explanation": "Affirmation indénombrable → some."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Emma ___ French and English. »",
+              "options": ["speak", "speaks", "speaking", "spoke"],
+              "correctAnswers": [1],
+              "explanation": "She → speaks."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« ___ there any parks near your house? »",
+              "options": ["Is", "Are", "Do", "Does"],
+              "correctAnswers": [1],
+              "explanation": "Parks pluriel → Are there."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« My friends ___ basketball after school. »",
+              "options": ["plays", "play", "playing", "played"],
+              "correctAnswers": [1],
+              "explanation": "They → play."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« It ___ rain a lot in this region. »",
+              "options": ["don't", "doesn't", "isn't", "aren't"],
+              "correctAnswers": [1],
+              "explanation": "It → doesn't."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« There ___ a pen on my desk. »",
+              "options": ["are", "is", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "Singulier → is."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations avec -s à la 3e personne sont justes ? (Deux réponses)",
+              "options": [
+                "My dad cooks dinner.",
+                "My dad cook dinner.",
+                "The train arrives at six.",
+                "The train arrive at six."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Dad/train = he/it → cooks, arrives."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« We ___ there every summer. »",
+              "options": ["goes", "go", "going", "goed"],
+              "correctAnswers": [1],
+              "explanation": "We → go."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Is there ___ bathroom on this floor? »",
+              "options": ["a", "an", "some", "any"],
+              "correctAnswers": [0],
+              "explanation": "Bathroom → a."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« She ___ TV after homework. »",
+              "options": ["watch", "watches", "watchs", "watching"],
+              "correctAnswers": [1],
+              "explanation": "She → watches (ch + es)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« There are ___ children in the playground. »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [0],
+              "explanation": "Affirmation pluriel → some."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ___ he play the piano? »",
+              "options": ["Do", "Does", "Is", "Are"],
+              "correctAnswers": [1],
+              "explanation": "He → Does."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« They ___ in a big house. »",
+              "options": ["lives", "live", "living", "lived"],
+              "correctAnswers": [1],
+              "explanation": "They → live."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« There isn't ___ time to waste. »",
+              "options": ["some", "any", "a", "many"],
+              "correctAnswers": [1],
+              "explanation": "Négation → any."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« The shop ___ at eight. »",
+              "options": ["open", "opens", "opening", "opened"],
+              "correctAnswers": [1],
+              "explanation": "Shop = it → opens."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réponse courte : « Do they dance? » — « Yes, they ___. »",
+              "options": ["do", "does", "are", "is"],
+              "correctAnswers": [0],
+              "explanation": "Do they → Yes, they do."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases avec there + some/any correctes :",
+              "options": [
+                "There is some water.",
+                "There are some water.",
+                "There aren't any tickets.",
+                "There isn't any tickets."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Water → is ; tickets pluriel négatif → aren't any."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« I ___ my teeth twice a day. »",
+              "options": ["brush", "brushes", "brushing", "brushed"],
+              "correctAnswers": [0],
+              "explanation": "I → brush."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« There ___ a famous bridge in this city. »",
+              "options": ["are", "is", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "A bridge → is."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Paul ___ fast because he runs every day. »",
+              "options": ["run", "runs", "running", "ran"],
+              "correctAnswers": [1],
+              "explanation": "He → runs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ___ you have any brothers? »",
+              "options": ["Do", "Does", "Are", "Is"],
+              "correctAnswers": [0],
+              "explanation": "You → Do."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« She ___ to music while she studies. »",
+              "options": ["listen", "listens", "listening", "listened"],
+              "correctAnswers": [1],
+              "explanation": "She → listens."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« There are five ___ in the team. »",
+              "options": ["player", "players", "a player", "an players"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel après five."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« We ___ late for class. » (négation)",
+              "options": ["doesn't", "don't", "isn't", "aren't"],
+              "correctAnswers": [1],
+              "explanation": "We → don't."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Does it ___ often here? » (snow)",
+              "options": ["snows", "snow", "snowing", "snowed"],
+              "correctAnswers": [1],
+              "explanation": "Après Does, base : snow."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« There ___ many stars tonight. »",
+              "options": ["is", "are", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "Stars pluriel → are."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses courtes sont correctes ? (Deux réponses)",
+              "options": [
+                "Does she sing? — Yes, she does.",
+                "Does she sing? — Yes, she do.",
+                "Do you run? — No, I don't.",
+                "Do you run? — No, I doesn't."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Does → she does ; Do → I don't."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« The dog ___ loudly at strangers. »",
+              "options": ["bark", "barks", "barking", "barked"],
+              "correctAnswers": [1],
+              "explanation": "It → barks."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« There is ___ orange juice in the jug. »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [0],
+              "explanation": "Indénombrable affirmatif → some."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« You ___ very well for a beginner. »",
+              "options": ["draws", "draw", "drawing", "drew"],
+              "correctAnswers": [1],
+              "explanation": "You → draw."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Are there ___ good restaurants here? »",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "Question → any."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« He never ___ his phone in class. »",
+              "options": ["use", "uses", "using", "used"],
+              "correctAnswers": [1],
+              "explanation": "He → uses (never ne change pas la règle -s)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« There ___ only one ticket left. »",
+              "options": ["are", "is", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "One ticket → is."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« They ___ pizza on Fridays. »",
+              "options": ["eats", "eat", "eating", "ate"],
+              "correctAnswers": [1],
+              "explanation": "They → eat."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« ___ your sister like maths? »",
+              "options": ["Do", "Does", "Is", "Are"],
+              "correctAnswers": [1],
+              "explanation": "Sister = she → Does."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« I ___ agree with you. » (négation)",
+              "options": ["doesn't", "don't", "isn't", "aren't"],
+              "correctAnswers": [1],
+              "explanation": "I → don't."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases décrivant un lieu avec there is/are :",
+              "options": [
+                "There is a cinema next to the bank.",
+                "There are a cinema next to the bank.",
+                "There are two banks on this street.",
+                "There is two banks on this street."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Cinema singulier → is ; two banks → are."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Maths ___ difficult for some pupils. »",
+              "options": ["is", "are", "am", "be"],
+              "correctAnswers": [0],
+              "explanation": "Matière singulière → is (usage courant 5e)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« She ___ her bike to school. »",
+              "options": ["ride", "rides", "riding", "rode"],
+              "correctAnswers": [1],
+              "explanation": "She → rides."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« We don't ___ meat on Mondays. »",
+              "options": ["eats", "eat", "eating", "ate"],
+              "correctAnswers": [1],
+              "explanation": "Après don't → eat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« There isn't ___ sugar in the bowl. »",
+              "options": ["some", "any", "a", "many"],
+              "correctAnswers": [1],
+              "explanation": "Négation → any."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« The lesson ___ at ten past nine. »",
+              "options": ["start", "starts", "starting", "started"],
+              "correctAnswers": [1],
+              "explanation": "Lesson = it → starts."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« ___ they live in the countryside? »",
+              "options": ["Do", "Does", "Are", "Is"],
+              "correctAnswers": [0],
+              "explanation": "They → Do."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« There are ___ books on the shelf. »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [0],
+              "explanation": "Affirmation → some."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« He ___ breakfast before school. »",
+              "options": ["skip", "skips", "skipping", "skipped"],
+              "correctAnswers": [1],
+              "explanation": "He → skips."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisis la phrase correcte :",
+              "options": [
+                "She don't plays tennis.",
+                "She doesn't play tennis.",
+                "She doesn't plays tennis.",
+                "She not play tennis."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Doesn't + base play."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases mélangent present simple et there is/are correctement ? (Deux réponses)",
+              "options": [
+                "There is a shop. It opens at nine.",
+                "There are a shop. It open at nine.",
+                "There are trees. They are tall.",
+                "There is trees. They is tall."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Shop singulier + opens ; trees pluriel + they are."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« My parents ___ tea in the evening. »",
+              "options": ["drinks", "drink", "drinking", "drinked"],
+              "correctAnswers": [1],
+              "explanation": "They → drink."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Is there ___ ATM in this building? »",
+              "options": ["a", "an", "some", "any"],
+              "correctAnswers": [1],
+              "explanation": "ATM se prononce avec voyelle → an."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« The baby ___ when she is hungry. »",
+              "options": ["cry", "cries", "crying", "cried"],
+              "correctAnswers": [1],
+              "explanation": "She → cries (y → ies)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« There ___ no milk and no bread. » (deux indénombrables, sens global 5e)",
+              "options": ["are", "is", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "Liste vue comme situation singulière → is (niveau 5e)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« I always ___ my bag near the door. »",
+              "options": ["leave", "leaves", "leaving", "left"],
+              "correctAnswers": [0],
+              "explanation": "I → leave."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Does the bus ___ here? »",
+              "options": ["stops", "stop", "stopping", "stopped"],
+              "correctAnswers": [1],
+              "explanation": "Does + base stop."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« There aren't ___ people at the bus stop. »",
+              "options": ["some", "any", "a", "the"],
+              "correctAnswers": [1],
+              "explanation": "Négation → any."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« She ___ English with her pen pal. »",
+              "options": ["practice", "practices", "practicing", "practiced"],
+              "correctAnswers": [1],
+              "explanation": "She → practices."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« ___ there a post office on Main Street? »",
+              "options": ["Are", "Is", "Do", "Does"],
+              "correctAnswers": [1],
+              "explanation": "Post office singulier → Is."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux affirmations habituelles correctes au present simple :",
+              "options": [
+                "We usually walk to school.",
+                "We usually walks to school.",
+                "He often helps his mum.",
+                "He often help his mum."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "We walk ; he helps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« There are ___ new students in our class. »",
+              "options": ["some", "any", "a", "an"],
+              "correctAnswers": [0],
+              "explanation": "Affirmation pluriel → some."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« The film ___ at half past seven. »",
+              "options": ["begin", "begins", "beginning", "began"],
+              "correctAnswers": [1],
+              "explanation": "It → begins."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« They ___ in the same street. »",
+              "options": ["lives", "live", "living", "lived"],
+              "correctAnswers": [1],
+              "explanation": "They → live."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ___ he know the answer? »",
+              "options": ["Do", "Does", "Is", "Are"],
+              "correctAnswers": [1],
+              "explanation": "He → Does."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« There is ___ homework today. » (indénombrable)",
+              "options": ["some", "any", "a", "many"],
+              "correctAnswers": [0],
+              "explanation": "Affirmation → some homework."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« You ___ too fast! Slow down! »",
+              "options": ["runs", "run", "running", "ran"],
+              "correctAnswers": [1],
+              "explanation": "You → run."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« She doesn't ___ cartoons anymore. »",
+              "options": ["watch", "watches", "watching", "watched"],
+              "correctAnswers": [0],
+              "explanation": "Doesn't + watch."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« How many rooms ___ there in your flat? »",
+              "options": ["is", "are", "do", "does"],
+              "correctAnswers": [1],
+              "explanation": "Rooms pluriel → are."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte pour décrire une habitude :",
+              "options": [
+                "My cat always sleep on the sofa.",
+                "My cat always sleeps on the sofa.",
+                "My cat always sleeping on the sofa.",
+                "My cat always slept on the sofa."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Cat = it → sleeps."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

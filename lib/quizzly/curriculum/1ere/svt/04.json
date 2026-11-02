@@ -1,0 +1,2718 @@
+{
+  "id": "1ere-svt-04",
+  "year": "1ere",
+  "subject": "svt",
+  "title": "La cellule et l'organisme",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Organisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La cellule eucaryote et ses organites",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel organite eucaryote renferme l'information génétique sous forme d'ADN associé à des histones ?",
+              "options": [
+                "Le noyau",
+                "La mitochondrie",
+                "L'appareil de Golgi",
+                "Le lysosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le noyau est l'organite volumineux délimité par une enveloppe qui contient le génome nucléaire de la cellule eucaryote."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quel organite a lieu la production majeure d'ATP lors de la respiration cellulaire aérobie ?",
+              "options": [
+                "Le réticulum endoplasmique",
+                "La mitochondrie",
+                "Le centrosome",
+                "Le peroxysome"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La mitochondrie est la centrale énergétique de la cellule eucaryote où se déroulent le cycle de Krebs et la chaîne respiratoire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel organite assure la maturation, l'emballage et l'adressage des protéines néosynthétisées ?",
+              "options": [
+                "L'appareil de Golgi",
+                "Le ribosome libre",
+                "Le nucléole",
+                "La vacuole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'appareil de Golgi reçoit les protéines du réticulum endoplasmique, modifie leurs glucides et les oriente vers leur destination."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où sont synthétisées les protéines destinées aux membranes ou à la sécrétion extracellulaire ?",
+              "options": [
+                "Sur les ribosomes liés au réticulum endoplasmique rugueux",
+                "Sur les ribosomes libres du hyaloplasme",
+                "À l'intérieur de la lumière nucléaire",
+                "Exclusivement dans la matrice mitochondriale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réticulum endoplasmique granuleux (ou rugueux) porte des ribosomes qui insèrent les protéines dans sa lumière ou sa membrane."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel organite spécifique des cellules chlorophylliennes réalise la photosynthèse ?",
+              "options": [
+                "Le chloroplaste",
+                "L'amyloplaste",
+                "Le chromoplaste",
+                "Le peroxysome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chloroplaste contient des thylakoïdes riches en pigments photosynthétiques permettant la conversion d'énergie lumineuse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel compartiment acide cellulaire contient des hydrolases pour dégrader les macromolécules usées ?",
+              "options": [
+                "Le lysosome",
+                "Le centrosome",
+                "Le nucléole",
+                "Le ribosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lysosome maintient un pH acide (environ 5) optimisant l'activité de ses enzymes digestives pour l'autophagie ou l'hétérophagie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel organite détoxifie le peroxyde d'hydrogène grâce à l'enzyme catalase ?",
+              "options": [
+                "Le peroxysome",
+                "Le réticulum lisse",
+                "Le ribosome",
+                "Le complexe golgien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le peroxysome intervient dans l'oxydation des acides gras à longue chaîne et la neutralisation des dérivés réactifs de l'oxygène."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle structure délimite le noyau cellulaire et permet les échanges nucléo-cytoplasmiques ?",
+              "options": [
+                "L'enveloppe nucléaire percée de pores nucléaires",
+                "La membrane plasmique simple et continue",
+                "La lame basale conjonctive",
+                "La paroi pectocellulosique externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'enveloppe nucléaire est constituée de deux membranes concentriques interrompues par des complexes de pores nucléaires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le rôle prépondérant du réticulum endoplasmique lisse (REL) ?",
+              "options": [
+                "La synthèse des lipides et la détoxification cellulaire",
+                "La traduction des ARN messagers en protéines",
+                "La fixation du dioxyde de carbone atmosphérique",
+                "La photolyse de l'eau en dioxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réticulum endoplasmique lisse synthétise les phospholipides, les stéroïdes et participe au stockage du calcium intracellulaire."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels organites de la cellule eucaryote possèdent leur propre génome à ADN circulaire et deux membranes ?",
+              "options": [
+                "La mitochondrie",
+                "Le chloroplaste",
+                "L'appareil de Golgi",
+                "Le lysosome"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La mitochondrie et le chloroplaste partagent ces caractéristiques issues de leur origine endosymbiotique bactérienne ancienne."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La membrane plasmique et les transports",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel modèle décrit la membrane plasmique comme une double couche fluide parsemée de protéines ?",
+              "options": [
+                "Le modèle de la mosaïque fluide",
+                "Le modèle du sandwich rigide",
+                "Le modèle de la pelote lipidique",
+                "Le modèle lamellaire statique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proposé par Singer et Nicolson en 1972, le modèle de la mosaïque fluide rend compte de la dynamique des lipides et protéines."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels lipides amphiphiles forment la structure de base de la bicouche membranaire ?",
+              "options": [
+                "Les phospholipides",
+                "Les triglycérides neutres",
+                "Les acides aminés libres",
+                "Les hydrocarbures saturés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les phospholipides possèdent une tête hydrophile polaire et deux queues hydrophobes d'acides gras s'organisant en bicouche spontanée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle molécule lipidique module la fluidité membranaire des cellules animales en s'intercalant entre les phospholipides ?",
+              "options": [
+                "Le cholestérol",
+                "Le saccharose",
+                "La cellulose",
+                "Le glycogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cholestérol empêche la cristallisation à basse température et limite l'excès de fluidité à température élevée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage spontané de petites molécules non polaires (O2, CO2) à travers la membrane sans protéine ?",
+              "options": [
+                "La diffusion simple",
+                "La diffusion facilitée",
+                "Le transport actif primaire",
+                "La transcytose vésiculaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diffusion simple permet aux molécules lipophiles ou aux petits gaz de traverser la bicouche selon leur gradient de concentration."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Par quels canaux protéiques membranaires les molécules d'eau traversent-elles rapidement la membrane plasmique ?",
+              "options": [
+                "Les aquaporines",
+                "Les intégrines",
+                "Les porines nucléaires",
+                "Les pompes calcium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les aquaporines sont des canaux protéiques tétramériques hautement sélectifs permettant le passage très rapide de l'eau par osmose."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel transport déplace des solutés contre leur gradient électrochimique en consommant de l'ATP ?",
+              "options": [
+                "Le transport actif",
+                "La diffusion simple",
+                "L'osmose passive",
+                "La diffusion facilitée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le transport actif utilise l'énergie issue de l'hydrolyse de l'ATP pour faire passer des ions ou molécules contre leur gradient."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le bilan ionique par cycle de la pompe Na+/K+ ATPase membranaire ?",
+              "options": [
+                "Sortie de 3 ions Na+ et entrée de 2 ions K+",
+                "Sortie de 2 ions Na+ et entrée de 3 ions K+",
+                "Sortie passive de 3 ions Ca2+",
+                "Entrée conjointe de 2 ions Na+ et 2 ions Cl-"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pompe Na+/K+ ATPase expulse 3 ions sodium hors de la cellule et fait entrer 2 ions potassium en hydrolysant une molécule d'ATP."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mécanisme permet l'ingestion de grosses particules ou micro-organismes par invagination de la membrane plasmique ?",
+              "options": [
+                "La phagocytose",
+                "L'exocytose constitutive",
+                "La dialyse passive",
+                "L'efflux ionique simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phagocytose est une forme d'endocytose spécialisée réalisée par des cellules comme les macrophages pour éliminer des débris ou bactéries."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le manteau glucidique protecteur situé à la surface externe des cellules animales ?",
+              "options": [
+                "Le glycocalyx",
+                "Le peptidoglycane",
+                "La cuticule externe",
+                "La couche basale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glycocalyx (ou feutrage glucidique) est formé de glycoprotéines et glycolipides impliqués dans la protection et la reconnaissance cellulaire."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels types de transports membranaires s'effectuent selon le gradient électrochimique sans dépense directe d'ATP ?",
+              "options": [
+                "La diffusion simple à travers les lipides",
+                "La diffusion facilitée par des canaux ou transporteurs",
+                "Le transport actif primaire par des pompes ATPasiques",
+                "L'osmose à travers les aquaporines"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La diffusion simple, facilitée et l'osmose sont des transports passifs thermodynamiquement spontanés ne requérant pas d'ATP."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La matrice extracellulaire et l'adhérence",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle protéine fibreuse structurale est la plus abondante dans la matrice extracellulaire animale ?",
+              "options": [
+                "Le collagène",
+                "L'hémoglobine",
+                "La myosine",
+                "L'insuline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le collagène représente environ un quart des protéines totales chez les mammifères et procure une haute résistance à la traction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels récepteurs transmembranaires ancrent la cellule à la matrice extracellulaire en reliant celle-ci au cytosquelette ?",
+              "options": [
+                "Les intégrines",
+                "Les canaux potassiques",
+                "Les récepteurs olfactifs",
+                "Les aquaporines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les intégrines sont des hétérodimères alpha/bêta connectant la matrice extracellulaire aux microfilaments d'actine intracellulaires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel polymère de glucose constitue la charpente fibreuse fondamentale de la paroi végétale ?",
+              "options": [
+                "La cellulose",
+                "Le glycogène",
+                "Le saccharose",
+                "L'acide hyaluronique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cellulose est un polymère linéaire de glucose réuni en microfibrilles conférant rigidité mécanique et forme à la cellule végétale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle glycoprotéine matricielle animale se lie simultanément au collagène et aux intégrines ?",
+              "options": [
+                "La fibronectine",
+                "La tubuline",
+                "La kératine",
+                "La kinase cycline-dépendante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fibronectine sert de pont moléculaire d'adhérence entre les macromolécules de la matrice et les intégrines membranaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel composé matriciel hydrophile absorbe de grandes quantités d'eau pour résister aux forces de compression dans le cartilage ?",
+              "options": [
+                "Les protéoglycanes",
+                "Les phospholipides",
+                "Les acides gras libres",
+                "Les cytokératines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les protéoglycanes possèdent des chaînes de glycosaminoglycanes chargées négativement retenant l'eau sous forme de gel hydraté amortisseur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle mince matrice extracellulaire spécialisée sépare les épithéliums du tissu conjonctif sous-jacent ?",
+              "options": [
+                "La lame basale",
+                "Le desmosome",
+                "Le centrosome",
+                "Le cortex cellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lame basale, composée notamment de collagène IV et de laminine, sert d'assise et de filtre mécanique pour les cellules épithéliales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel polymère hydrophobe imprègne les parois secondaires des cellules du xylème pour les rendre rigides et imperméables ?",
+              "options": ["La lignine", "L'amidon", "La callose", "Le maltose"],
+              "correctAnswers": [0],
+              "explanation": "La lignification permet le port dressé des plantes terrestres et la conduction de la sève brute sous pression négative."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle couche de pectine cimente les parois primaires de deux cellules végétales adjacentes ?",
+              "options": [
+                "La lamelle moyenne",
+                "La paroi secondaire",
+                "Le tonoplaste",
+                "La cuticule foliaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lamelle moyenne est riche en pectines formant des gels de pectates de calcium qui collent les cellules végétales entre elles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel acide aminé très petit est présent tous les trois résidus dans la triple hélice de collagène ?",
+              "options": [
+                "La glycine",
+                "Le tryptophane",
+                "La phénylalanine",
+                "La méthionine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La petite taille de la glycine lui permet de s'insérer au centre de l'hélice très serrée du tropocollagène sans encombrement stérique."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions majeures la matrice extracellulaire remplit-elle pour les tissus animaux ?",
+              "options": [
+                "Le maintien de l'architecture et la résistance mécanique tissulaire",
+                "L'orientation de la migration et de la morphogenèse cellulaire",
+                "La transmission de signaux de survie et de prolifération",
+                "La réplication autonome du code génétique hors des cellules"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La matrice offre support mécanique, guidage migratoire et signaux trophiques, mais ne réplique aucun ADN indépendamment."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "De la cellule au tissu : différenciation cellulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on une cellule non spécialisée capable de s'autorenouveler et de produire divers types cellulaires ?",
+              "options": [
+                "Une cellule souche",
+                "Une cellule sénescente",
+                "Une cellule énucléée",
+                "Un lymphocyte mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules souches maintiennent un pool indifférencié tout en s'engageant vers des voies de différenciation tissulaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la base moléculaire de la différenciation de cellules possédant le même génome ?",
+              "options": [
+                "L'expression différentielle des gènes",
+                "La perte physique de chromosomes inutiles",
+                "La mutation ciblée des promoteurs",
+                "La duplication anarchique de gènes spécifiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les cellules d'un individu possèdent le même ADN mais n'expriment qu'un sous-ensemble précis de gènes selon leur fonction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel niveau de potentialité qualifie une cellule capable de donner un embryon complet et ses annexes placentaires ?",
+              "options": [
+                "Totipotente",
+                "Pluripotente",
+                "Multipotente",
+                "Unipotente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le zygote et les cellules des tout premiers stades de clivage sont totipotents car ils peuvent régénérer un organisme viable complet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel tissu primaire est constitué de cellules jointives reposant sur une membrane basale et tapissant des cavités ?",
+              "options": [
+                "Le tissu épithélial",
+                "Le tissu conjonctif lâche",
+                "Le tissu musculaire lisse",
+                "Le tissu hématopoïétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les épithéliums forment des barrières physiques protectrices, d'absorption ou de sécrétion, avec très peu de matrice intercellulaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel type de tissu prédomine dans le soutien structural, la liaison mécanique et la nutrition des organes ?",
+              "options": [
+                "Le tissu conjonctif",
+                "Le tissu nerveux",
+                "L'épithélium glandulaire",
+                "L'endothélium vasculaire seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tissu conjonctif se caractérise par des cellules dispersées au sein d'une matrice extracellulaire abondante vascularisée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelles protéines régulatrices se lient à l'ADN pour moduler la transcription de gènes clés de la différenciation ?",
+              "options": [
+                "Les facteurs de transcription",
+                "Les ribozymes de dégradation",
+                "Les filaments d'actine",
+                "Les caspases de clivage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les facteurs de transcription activent ou inhibent l'ARN polymérase pour orchestrer les programmes génétiques de spécialisation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Où se trouvent les zones indifférenciées de division et de croissance continue chez les végétaux ?",
+              "options": [
+                "Dans les méristèmes apicaux et cambiaux",
+                "Dans le parenchyme chlorophyllien",
+                "Dans les stomates des feuilles",
+                "Dans les cellules mortes du liège"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les méristèmes primaires et secondaires assurent la production indéfinie de nouvelles cellules et l'organogenèse végétale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel tissu musculaire involontaire non strié entoure les parois des organes creux et des vaisseaux sanguins ?",
+              "options": [
+                "Le tissu musculaire lisse",
+                "Le tissu musculaire strié squelettique",
+                "Le tissu myocardique",
+                "Le tissu tendineux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le muscle lisse est formé de cellules fusiformes mononucléées assurant le péristaltisme digestif ou la vasomotricité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel terme désigne la perte de caractères différenciés ramenant une cellule vers un état plus primitif ?",
+              "options": [
+                "La dédifférenciation",
+                "La sénescence",
+                "La cytodiérèse",
+                "L'oncogenèse terminale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dédifférenciation permet à des cellules de retrouver une certaine plasticité, comme lors de la formation d'un cal végétal ou de cicatrisation."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques morphologiques et fonctionnelles distinguent les entérocytes différenciés de l'intestin ?",
+              "options": [
+                "Une polarité cellulaire stricte avec un pôle apical et un pôle basal",
+                "Une bordure en brosse de microvillosités amplifiant la surface d'absorption",
+                "L'absence totale de mitochondries pour éviter la consommation de nutriments",
+                "Des jonctions serrées assurant l'étanchéité de la barrière intestinale"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les entérocytes sont polarisés, possèdent des microvillosités et des jonctions serrées, et contiennent de nombreuses mitochondries."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "L'organisation des organes et des systèmes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle suite décrit l'ordre hiérarchique croissant correct des niveaux d'organisation biologique ?",
+              "options": [
+                "Molécule -> Organite -> Cellule -> Tissu -> Organe -> Système",
+                "Cellule -> Organite -> Molécule -> Tissu -> Organe -> Système",
+                "Molécule -> Cellule -> Organite -> Organe -> Tissu -> Système",
+                "Organe -> Tissu -> Système -> Cellule -> Organite -> Molécule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules s'assemblent en organites, qui forment la cellule, unité de base des tissus, eux-mêmes regroupés en organes et systèmes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un organe sur le plan anatomique et fonctionnel ?",
+              "options": [
+                "Une structure composée de plusieurs tissus coordonnés pour assurer une fonction déterminée",
+                "Un groupe homogène de cellules isolées sans vascularisation",
+                "Une colonie bactérienne symbiotique obligatoire",
+                "Un ensemble d'organismes de la même espèce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un organe, comme le cœur ou le rein, intègre tissus épithéliaux, conjonctifs, musculaires et nerveux pour remplir ses missions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel organe régule l'équilibre hydrominéral et filtre le plasma pour produire l'urine ?",
+              "options": [
+                "Le rein",
+                "La rate",
+                "Le pancréas",
+                "La vésicule biliaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rein épure le sang via les néphrons, élimine les déchets azotés comme l'urée et ajuste la volémie et la pression artérielle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel système d'organes assure le transport rapide de l'oxygène, des hormones et des nutriments ?",
+              "options": [
+                "Le système cardiovasculaire",
+                "Le système tégumentaire",
+                "Le système squelettique",
+                "Le système immunitaire seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cœur et le réseau vasculaire propulsent et distribuent le sang à l'ensemble des tissus de l'organisme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel organe végétal souterrain ancre la plante et puise l'eau et les sels minéraux ?",
+              "options": ["La racine", "La feuille", "La tige", "Le pétale"],
+              "correctAnswers": [0],
+              "explanation": "La racine possède des poils absorbants au pôle d'absorption créant une vaste surface d'échange avec la solution du sol."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel tissu conducteur végétal transporte la sève élaborée riche en saccharose vers les organes puits ?",
+              "options": [
+                "Le phloème",
+                "Le xylème",
+                "Le sclérenchyme",
+                "L'épiderme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le phloème transporte les produits de la photosynthèse depuis les feuilles sources vers les racines, bourgeons ou fruits consommateurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel tissu conducteur végétal est constitué de tubes criblés de cellules mortes acheminant la sève brute ?",
+              "options": [
+                "Le xylème",
+                "Le phloème",
+                "Le cambium",
+                "Le collenchyme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le xylème (trachéides et vaisseaux) conduit l'eau et les ions minéraux prélevés dans le sol sous l'effet de la transpiration foliaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel organe possède une double fonction exocrine digestive et endocrine métabolique chez l'Homme ?",
+              "options": ["Le pancréas", "L'estomac", "L'œsophage", "La rate"],
+              "correctAnswers": [0],
+              "explanation": "Le pancréas sécrète le suc pancréatique par ses acini et régule la glycémie par les hormones de ses îlots de Langerhans."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel système d'organes draine les surplus de liquide interstitiel et héberge les cellules immunitaires ?",
+              "options": [
+                "Le système lymphatique",
+                "Le système urinaire",
+                "Le système respiratoire",
+                "Le système digestif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réseau lymphatique recueille la lymphe, la filtre dans les ganglions lymphatiques et participe à la réponse immunitaire adaptative."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels organes participent directement aux échanges de matière et de gaz entre l'organisme humain et son environnement ?",
+              "options": [
+                "Les poumons (échanges gazeux O2 / CO2)",
+                "L'intestin grêle (absorption d'eau et de nutriments)",
+                "Les reins (excrétion urinaire)",
+                "Le squelette osseux axial (échanges directs avec l'air ambiant)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Poumons, intestin et reins constituent les surfaces d'échange majeures du corps avec le milieu extérieur."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Le cytosquelette et l'architecture cellulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les filaments les plus fins du cytosquelette formés de monomères globulaires hélicoïdaux ?",
+              "options": [
+                "Les microfilaments d'actine",
+                "Les microtubules",
+                "Les filaments intermédiaires",
+                "Les fibres de collagène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les microfilaments d'actine mesurent environ 7 nm de diamètre et assurent la motilité, la phagocytose et la cytodiérèse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels polymères cylindriques creux sont assemblés à partir d'hétérodimères de tubuline alpha et bêta ?",
+              "options": [
+                "Les microtubules",
+                "Les microfilaments",
+                "Les tonofilaments",
+                "Les protofibrilles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les microtubules font 25 nm de diamètre et forment des voies de transport vésiculaire ainsi que le fuseau mitotique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle protéine motrice transporte des organites vers l'extrémité positive des microtubules (transport antérograde) ?",
+              "options": [
+                "La kinésine",
+                "La dynéine",
+                "La myosine",
+                "La vinculine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La kinésine utilise l'énergie de l'hydrolyse de l'ATP pour progresser le long des microtubules vers la périphérie cellulaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle protéine motrice glisse le long des filaments d'actine pour générer la contraction musculaire ?",
+              "options": [
+                "La myosine",
+                "La tubuline",
+                "La laminine",
+                "La clathrine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les têtes de myosine s'attachent à l'actine et pivotent en hydrolysant l'ATP, raccourcissant ainsi les sarcomères musculaires."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quels éléments résistants et insolubles du cytosquelette incluent les cytokératines et les lamines nucléaires ?",
+              "options": [
+                "Les filaments intermédiaires",
+                "Les microtubules",
+                "Les microfilaments",
+                "Les fibres de stress"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les filaments intermédiaires (10 nm) confèrent une grande résistance aux stress mécaniques sans instabilité dynamique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel centre organisateur des microtubules (MTOC) contient une paire de centrioles chez les cellules animales ?",
+              "options": [
+                "Le centrosome",
+                "Le centromère",
+                "Le nucléole",
+                "Le kinetochore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le centrosome nucléé les microtubules cellulaires et se duplique avant la mitose pour former les deux pôles du fuseau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle structure dynamique constituée de microtubules tracte les chromosomes lors de l'anaphase mitotique ?",
+              "options": [
+                "Le fuseau mitotique",
+                "L'anneau d'actine",
+                "Le cortex glial",
+                "La plaque basale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les microtubules kinétochoriens se dépolymérisent pour tracter les chromatides sœurs vers les pôles opposés de la cellule."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelles expansions motrices cellulaires renferment un axonème de microtubules en arrangement '9+2' ?",
+              "options": [
+                "Les cils et flagelles",
+                "Les microvillosités intestinales",
+                "Les pseudopodes macrophagiques",
+                "Les stéréocils auditifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cils et flagelles eucaryotes contiennent 9 doublets périphériques et 1 paire centrale de microtubules animés par la dynéine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "De quoi est composé l'anneau contractile qui pince la membrane lors de la division cellulaire animale ?",
+              "options": [
+                "De filaments d'actine et de molécules de myosine",
+                "De microtubules de tubuline gamma",
+                "De kératine et de desmine",
+                "De fibres de collagène intracellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anneau équatorial d'actine et de myosine se resserre sous la membrane plasmique pour séparer les deux cellules filles."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions physiologiques sont assurées par le cytosquelette dans la cellule eucaryote ?",
+              "options": [
+                "Le maintien de la forme cellulaire et le soutien mécanique",
+                "Le transport orienté des vésicules et organites",
+                "La séparation des chromosomes lors de la division mitotique",
+                "La traduction directe des codons des ARN messagers en acides aminés"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le cytosquelette participe à la forme, au transport et à la division cellulaire. La traduction est l'apanage des ribosomes."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les jonctions cellulaires et la cohésion",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles jonctions intercellulaires étanches ferment l'espace paracellulaire dans les épithéliums ?",
+              "options": [
+                "Les jonctions serrées (tight junctions)",
+                "Les jonctions communicantes",
+                "Les desmosomes",
+                "Les hémidesmosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les jonctions serrées (occludines et claudines) créent une barrière imperméable régulant le passage paracellulaire des solutés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles jonctions d'adhérence ponctuelles relient les filaments intermédiaires de deux cellules voisines ?",
+              "options": [
+                "Les desmosomes",
+                "Les jonctions gap",
+                "Les plasmodesmes",
+                "Les invaginations membranaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les desmosomes utilisent des cadhérines desmosomales ancrées aux filaments intermédiaires pour résister aux étirements mécaniques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle famille de protéines d'adhérence calcium-dépendantes relie les cellules entre elles dans les jonctions adhérentes ?",
+              "options": [
+                "Les cadhérines",
+                "Les intégrines",
+                "Les sélectines vasculaires",
+                "Les claudines étanches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cadhérines établissent des liaisons homophiles stables en présence de calcium entre les membranes plasmiques adjacentes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles jonctions forment des canaux directs de continuité métabolique et électrique entre deux cellules animales ?",
+              "options": [
+                "Les jonctions communicantes (gap)",
+                "Les jonctions serrées",
+                "Les desmosomes ceinturants",
+                "Les hémidesmosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les jonctions communicantes (jonctions gap) permettent le passage d'ions et de petites molécules hydrosolubles (calcium, AMPc)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "De quel assemblage de six protéines de connexine est formé chaque demi-canal d'une jonction gap ?",
+              "options": [
+                "Un connexon",
+                "Un ribosome",
+                "Un desmoplakine",
+                "Un canal Na+ voltage-dépendant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux connexons hexamériques alignés de part et d'autre de l'espace intercellulaire constituent le canal aqueux de la jonction gap."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle structure d'ancrage lie les filaments intermédiaires d'une cellule épithéliale à la lame basale ?",
+              "options": [
+                "L'hémidesmosome",
+                "Le desmosome complet",
+                "La zonula adherens",
+                "Le plasmodesme primaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hémidesmosome fait intervenir des intégrines liant les filaments de cytokératine de la cellule à la laminine de la lame basale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quels canaux microscopiques traversent la paroi pectocellulosique pour connecter les cytoplasmes végétaux ?",
+              "options": [
+                "Les plasmodesmes",
+                "Les stomates",
+                "Les lenticelles",
+                "Les pores nucléaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plasmodesmes permettent la continuité membranaire et cytoplasmique et le transport de signaux ou métabolites entre cellules végétales."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel réseau continu est formé par l'ensemble des cytoplasmes végétaux interconnectés par les plasmodesmes ?",
+              "options": [
+                "Le symplasme",
+                "L'apoplasme",
+                "Le tonoplaste",
+                "Le sclérenchyme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La voie symplasmique permet la circulation sélective de solutés à travers le cytoplasme continu des cellules végétales."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le compartiment extracellulaire végétal constitué de l'ensemble des parois et méats ?",
+              "options": [
+                "L'apoplasme",
+                "Le symplasme",
+                "La vacuole",
+                "Le phloème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La voie apoplasmique permet la diffusion libre de l'eau et des ions le long des parois jusqu'aux bandes de Caspary de l'endoderme."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles molécules peuvent diffuser librement à travers les jonctions communicantes (gap) entre deux cellules animales ?",
+              "options": [
+                "Des ions inorganiques (Na+, K+, Ca2+)",
+                "De petits seconds messagers comme l'AMPc ou l'IP3",
+                "De volumineuses protéines enzymatiques ou l'ADN génomique",
+                "Du glucose et des acides aminés libres"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le pore des jonctions gap possède un diamètre de coupure limitant le passage aux molécules de masse inférieure à environ 1 kDa."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Compartimentation cellulaire et endosymbiose",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel avantage métabolique majeur procure la compartimentation interne des cellules eucaryotes ?",
+              "options": [
+                "La séparation spatiale de réactions enzymatiques incompatibles et l'optimisation des gradients chimiques",
+                "L'arrêt complet de la dégradation des macromolécules",
+                "La suppression du besoin en membranes cellulaires",
+                "L'élimination du besoin en enzymes catalytiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compartimentation permet d'isoler des milieux physico-chimiques spécifiques (comme l'acidité lysosomale) et de concentrer les substrats."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que stipule la théorie endosymbiotique pour l'origine des mitochondries et des chloroplastes ?",
+              "options": [
+                "Ils dérivent de bactéries ancestrales internalisées par une cellule hôte sans être digérées",
+                "Ils sont nés d'invaginations successives du noyau cellulaire",
+                "Ils proviennent de virus géants devenus bénéfiques",
+                "Ils résultent de la fragmentation spontanée de la vacuole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formulée par Lynn Margulis, la théorie endosymbiotique montre que ces organites proviennent d'anciennes bactéries aérobies ou photosynthétiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "De quel groupe bactérien descend le précurseur endosymbiotique de la mitochondrie ?",
+              "options": [
+                "Les alphaprotéobactéries",
+                "Les cyanobactéries",
+                "Les spirochètes",
+                "Les archées méthanogènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les analyses phylogénétiques des séquences d'ARN ribosomique relient étroitement les mitochondries aux alphaprotéobactéries actuelles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "De quel groupe bactérien descend l'ancêtre endosymbiotique du chloroplaste ?",
+              "options": [
+                "Les cyanobactéries",
+                "Les entérobactéries",
+                "Les bacilles Gram positifs",
+                "Les protéobactéries sulfureuses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chloroplastes partagent avec les cyanobactéries la photosynthèse oxygénique avec libération de dioxygène et thylakoïdes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle taille ont les ribosomes présents à l'intérieur de la matrice mitochondriale et du stroma plastidial ?",
+              "options": [
+                "Ribosomes de type 70S, semblables aux ribosomes bactériens",
+                "Ribosomes de type 80S, identiques au cytosol eucaryote",
+                "Ribosomes géants de type 120S",
+                "Ribosomes miniatures de type 30S uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leurs ribosomes 70S sont sensibles aux antibiotiques antibactériens (comme le chloramphénicol), preuve de leur origine procaryote."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sous quelle forme se présente le génome des mitochondries et des chloroplastes ?",
+              "options": [
+                "Une ou plusieurs molécules d'ADN circulaire dépourvues d'histones",
+                "Des chromosomes linéaires associés à des histones eucaryotes",
+                "Un brin d'ARN messager instable sans ADN",
+                "Un assemblage peptidique sans acides nucléiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme chez les bactéries, l'ADN des organites semi-autonomes est circulaire, surenroulé et non encapsulé par des histones."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Par quel processus les mitochondries et chloroplastes se multiplient-ils au sein du cytoplasme ?",
+              "options": [
+                "Par scission binaire (fission autonome)",
+                "Par mitose avec condensation chromosomique",
+                "Par méiose réductionnelle",
+                "Par bourgeonnement depuis l'appareil de Golgi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces organites prolifèrent par étranglement et bipartition binaire analogue à la division bactérienne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel phospholipide caractéristique des bactéries retrouve-t-on en abondance dans la membrane interne mitochondriale ?",
+              "options": [
+                "La cardiolipine",
+                "La sphingomyéline",
+                "Le phosphatidylinositol",
+                "Le cholestérol estérifié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cardiolipine (diphosphatidylglycérol) est un composant lipidique typique des membranes bactériennes et mitochondriales internes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la majorité des protéines mitochondriales actuelles sont-elles codées par le génome nucléaire ?",
+              "options": [
+                "En raison du transfert évolutif d'une grande partie des gènes de l'endosymbiote vers le noyau",
+                "Parce que la mitochondrie n'a jamais contenu d'acides nucléiques",
+                "Parce que le noyau détruit systématiquement les transcrits mitochondriaux",
+                "Parce que les ribosomes mitochondriaux sont non fonctionnels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au cours de l'évolution, un transfert massif de gènes a eu lieu vers le noyau, rendant l'organite dépendant de l'importation de protéines cytosoliques."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels arguments expérimentaux soutiennent la théorie de l'origine endosymbiotique des organites énergétiques ?",
+              "options": [
+                "La présence d'une double membrane dont l'interne a une composition proche des membranes bactériennes",
+                "La possession d'un génome propre à ADN circulaire et de ribosomes 70S",
+                "La capacité de se diviser par scission binaire indépendamment du noyau",
+                "La présence d'une épaisse paroi de peptidoglycane dans les mitochondries humaines"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Double membrane, ADN circulaire, ribosomes 70S et division autonome sont des preuves solides. Aucune paroi n'existe dans nos mitochondries."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Particularités cellulaires des végétaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel organite volumineux remplit fréquemment plus de 80 % du volume d'une cellule végétale adulte ?",
+              "options": [
+                "La vacuole centrale",
+                "Le noyau",
+                "Le peroxysome",
+                "Le centrosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La grande vacuole centrale accumule eau, ions, pigments ou tanins et régule la turgescence cellulaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la membrane délimitant la vacuole centrale végétale ?",
+              "options": [
+                "Le tonoplaste",
+                "Le péricarde",
+                "La lame basale",
+                "Le sarcolemme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tonoplaste est une membrane semi-perméable munie de pompes à protons assurant l'accumulation de solutés dans la vacuole."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel phénomène physique confère sa rigidité et son port dressé à une plante herbacée bien hydratée ?",
+              "options": [
+                "La turgescence cellulaire",
+                "La plasmolyse osmotique",
+                "La dessiccation pariétale",
+                "La lipogenèse vacuolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'entrée d'eau dans la vacuole par osmose exerce une pression mécanique contre la paroi pectocellulosique : c'est la turgescence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que subit une cellule végétale placée dans un milieu très hypertonique (solution très concentrée) ?",
+              "options": [
+                "La plasmolyse : la vacuole perd son eau et la membrane plasmique se décolle de la paroi",
+                "La lyse osmotique avec explosion immédiate de la paroi",
+                "Une turgescence maximale augmentant son volume par deux",
+                "L'inhibition définitive de la synthèse de cellulose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En milieu hypertonique, l'eau quitte la cellule par osmose ; la vacuole rétrécit et la membrane se rétracte de la paroi rigide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel complexe enzymatique transmembranaire synthétise les microfibrilles de cellulose à la surface cellulaire ?",
+              "options": [
+                "La cellulose synthase organisée en rosettes",
+                "La rubisco stigmatique",
+                "L'amylase vacuolaire",
+                "L'ARN polymérase pariétale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rosettes de cellulose synthase se déplacent dans la membrane plasmique en extrudant les chaînes de glucanes dans la paroi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel plaste non chlorophyllien stocke des réserves d'amidon dans les organes de réserve (graines, tubercules) ?",
+              "options": [
+                "L'amyloplaste",
+                "Le chromoplaste",
+                "L'élaïoplaste",
+                "Le proplaste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amyloplaste est un plaste spécialisé dans la polymérisation et la mise en réserve du glucose sous forme de grains d'amidon."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel type de plaste accumule des pigments caroténoïdes conférant leur couleur jaune ou orange aux fruits et pétales ?",
+              "options": [
+                "Le chromoplaste",
+                "L'amyloplaste",
+                "L'étioplaste",
+                "Le protéoplaste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chromoplastes accumulent des carotènes et xanthophylles jouant un rôle attracteur pour les pollinisateurs ou disséminateurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelles structures épidermiques formées de deux cellules de garde ménagent un orifice réglable pour les échanges gazeux ?",
+              "options": [
+                "Les stomates",
+                "Les lenticelles",
+                "Les poils absorbants",
+                "Les plasmodesmes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les stomates régulent la transpiration et l'entrée de CO2 par l'ouverture ou fermeture de leur ostiole selon l'état de turgescence des cellules de garde."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel tissu végétal de soutien vivant possède des cellules aux parois épaissies irrégulièrement de cellulose et pectine ?",
+              "options": [
+                "Le collenchyme",
+                "Le sclérenchyme",
+                "Le xylème secondaire",
+                "L'endoderme racinaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le collenchyme confère flexibilité et soutien mécanique aux organes jeunes en croissance comme les tiges et pétioles."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles structures cellulaires sont caractéristiques de la cellule végétale et absentes des cellules animales classiques ?",
+              "options": [
+                "La paroi rigide pectocellulosique externe",
+                "Les plastes (dont les chloroplastes et amyloplastes)",
+                "La grande vacuole centrale régulatrice de turgescence",
+                "Le réticulum endoplasmique granuleux"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Paroi, plastes et grande vacuole centrale distinguent le végétal. Le réticulum endoplasmique est commun à tous les eucaryotes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Techniques d'étude de la cellule et des tissus",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la limite de résolution théorique d'un microscope optique standard utilisant la lumière visible ?",
+              "options": [
+                "Environ 0,2 micromètre (200 nm)",
+                "Environ 2 nanomètres",
+                "Environ 20 picomètres",
+                "Environ 2 millimètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diffraction de la lumière visible limite le pouvoir séparateur du microscope optique à environ 0,2 µm (loi d'Abbe)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel microscope utilise un faisceau d'électrons traversant une coupe ultrafine pour révéler l'ultrastructure interne ?",
+              "options": [
+                "Le microscope électronique à transmission (MET)",
+                "Le microscope électronique à balayage (MEB)",
+                "Le microscope à contraste de phase",
+                "Le microscope polarisant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le MET atteint une résolution de l'ordre de 0,1 à 0,2 nm, permettant d'observer les membranes internes et organites cellulaires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel microscope fournit des images tridimensionnelles détaillées du relief de surface des échantillons ?",
+              "options": [
+                "Le microscope électronique à balayage (MEB)",
+                "Le microscope électronique à transmission (MET)",
+                "Le microscope à fond noir",
+                "Le réfractomètre d'Abbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le MEB balaie la surface métallisée de l'objet et recueille les électrons secondaires émis pour reconstituer la topographie 3D."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle technique emploie des anticorps spécifiques couplés à des fluorophores pour repérer une protéine d'intérêt ?",
+              "options": [
+                "L'immunofluorescence",
+                "La chromatographie d'exclusion",
+                "L'électrophorèse SDS-PAGE",
+                "La spectrophotométrie de masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'immunofluorescence exploite la haute spécificité antigène-anticorps pour visualiser la distribution subcellulaire d'une molécule cible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle méthode isole les organites cellulaires par rotations à vitesses progressivement accrues ?",
+              "options": [
+                "La centrifugation différentielle",
+                "La dialyse à l'équilibre",
+                "L'hybridation in situ",
+                "La spectrométrie RMN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après broyage cellulaire doux, la centrifugation différentielle sédimente successivement noyaux, mitochondries puis microsomes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle protéine fluorescente naturelle issue d'une méduse sert de marqueur génétique pour visualiser des protéines vivantes ?",
+              "options": [
+                "La GFP (Green Fluorescent Protein)",
+                "La myoglobine musculaire",
+                "La luciférase bactérienne",
+                "L'hémocyanine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion génétique avec la GFP permet de suivre la dynamique spatio-temporelle de protéines chimères dans des cellules vivantes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel composé chimique crée des liaisons covalentes pour stabiliser les structures tissulaires avant préparation histologique ?",
+              "options": [
+                "Le formaldéhyde (ou glutaraldéhyde)",
+                "Le méthanol anhydre pur",
+                "L'eau distillée bouillante",
+                "Le chlorure de sodium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fixation chimique fige les protéines et l'architecture tissulaire, empêchant l'autolyse enzymatique post-mortem."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle étape histologique consiste à imprégner le tissu déshydraté dans de la paraffine fondue pour le rigidifier ?",
+              "options": [
+                "L'inclusion",
+                "La fixation",
+                "Le déparaffinage",
+                "L'ombrage métallique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inclusion en paraffine donne un bloc solide permettant la réalisation de coupes microscopiques régulières et fines."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel appareil mécanique de laboratoire découpe les tissus inclus en fines lamelles de quelques micromètres ?",
+              "options": [
+                "Le microtome",
+                "La centrifugeuse",
+                "Le spectrophotomètre",
+                "Le sonicateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le microtome muni d'une lame tranchante réalise des coupes sériées de 2 à 10 µm montées ensuite sur des lames de verre."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles méthodes permettent de localiser spécifiquement des macromolécules sur des coupes de tissus biologiques ?",
+              "options": [
+                "L'immunohistochimie révélée par anticorps couplés à des enzymes ou fluorophores",
+                "L'hybridation in situ utilisant des sondes nucléiques fluorescentes (FISH)",
+                "La microscopie confocale à balayage laser sélectif",
+                "La coloration topographique globale à l'hématoxyline sans sonde spécifique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'immunohistochimie, l'hybridation in situ et la microscopie confocale ciblent des molécules précises. L'hématoxyline colore les noyaux sans ciblage spécifique."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Fonctions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les enzymes, biocatalyseurs cellulaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la définition biochimique fondamentale d'une enzyme ?",
+              "options": [
+                "Une protéine catalytique accélérant une réaction chimique sans être modifiée au bilan final",
+                "Un acide nucléique régulateur consommé lors de la réaction",
+                "Un lipide membranaire fournissant des groupements phosphates",
+                "Une hormone circulante induisant la mitose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une enzyme est un catalyseur biologique hautement efficace qui accélère la vitesse d'une réaction sans altérer son état d'équilibre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Par quel moyen thermodynamique l'enzyme accélère-t-elle la réaction chimique ?",
+              "options": [
+                "En diminuant l'énergie d'activation requise pour atteindre l'état de transition",
+                "En augmentant la variation d'enthalpie libre globale delta G de la réaction",
+                "En élevant la température locale du solvant aqueux",
+                "En modifiant la constante d'équilibre thermodynamique Keq"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En stabilisant l'état de transition, l'enzyme abaisse la barrière d'énergie d'activation, ce qui augmente le nombre de molécules réactives."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la région tridimensionnelle de l'enzyme qui fixe le substrat et réalise la catalyse ?",
+              "options": [
+                "Le site actif",
+                "Le domaine transmembranaire",
+                "Le motif d'adressage",
+                "L'épitope antigénique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le site actif comporte des acides aminés de reconnaissance du substrat (site de fixation) et des acides aminés catalytiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel modèle décrit l'ajustement conformationnel réciproque de l'enzyme et du substrat lors de leur interaction ?",
+              "options": [
+                "Le modèle de l'ajustement induit de Koshland",
+                "Le modèle rigide clé-serrure de Fischer",
+                "Le modèle de la collision aléatoire passive",
+                "Le modèle du tapis roulant dynamique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le modèle de l'ajustement induit stipule que la liaison du substrat induit un changement de conformation optimal du site actif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la double spécificité démontrée par la grande majorité des enzymes ?",
+              "options": [
+                "Spécificité de substrat et spécificité d'action (réaction catalysée)",
+                "Spécificité de température et de pression barométrique",
+                "Spécificité d'organite et de tissu",
+                "Spécificité d'espèce et d'âge cellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une enzyme ne reconnaît qu'un type de substrat précis et ne catalyse qu'un seul type de transformation chimique sur celui-ci."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle entité intermédiaire transitoire se forme lors de la rencontre entre l'enzyme (E) et son substrat (S) ?",
+              "options": [
+                "Le complexe enzyme-substrat [ES]",
+                "Un agrégat protéique insoluble permanent",
+                "Une liaison peptidique irréversible",
+                "Un dimère nucléique covalent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'association réversible E + S <-> [ES] -> E + P est au fondement de toute cinétique enzymatique michaelienne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la molécule non protéique indispensable à l'activité de certaines enzymes (ex: NAD+, coenzyme A) ?",
+              "options": [
+                "Un cofacteur ou coenzyme",
+                "Un inhibiteur irréversible",
+                "Un dénaturant chimique",
+                "Un ribozyme d'épissage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De nombreuses enzymes requièrent un cofacteur inorganique (ion métallique) ou organique (coenzyme) pour effectuer le transfert d'électrons ou de groupes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la partie protéique d'une enzyme inactive sans son cofacteur ?",
+              "options": [
+                "L'apoenzyme",
+                "L'holoenzyme",
+                "La proenzyme",
+                "L'isoenzyme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'apoenzyme est la fraction protéique pure qui, associée à son cofacteur, constitue l'holoenzyme catalytiquement active."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que sont les isoenzymes (ou isozymes) chez un même organisme ?",
+              "options": [
+                "Des formes moléculaires différentes d'une enzyme catalysant la même réaction",
+                "Des enzymes dénaturées par un pH acide",
+                "Des précurseurs inactifs d'hormones stéroïdes",
+                "Des protéines d'adhérence matricielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les isoenzymes présentent des séquences primaires et des paramètres cinétiques différents, adaptés aux besoins spécifiques de tissus distincts."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant le site actif d'une enzyme sont exactes ?",
+              "options": [
+                "Il comprend un sous-site de liaison au substrat et un sous-site catalytique",
+                "Ses acides aminés peuvent être très éloignés dans la séquence primaire mais rapprochés par le repliement 3D",
+                "Une mutation ponctuelle touchant un acide aminé catalytique peut inactiver l'enzyme",
+                "Il est toujours localisé au cœur de la membrane nucléaire lipidique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le site actif résulte du repliement tertiaire de la protéine et rassemble des résidus clés. Il peut être cytosolique, membranaire ou extracellulaire."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Facteurs modulant la cinétique enzymatique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pourquoi la vitesse initiale d'une réaction enzymatique plafonne-t-elle à Vmax à forte concentration de substrat ?",
+              "options": [
+                "Tous les sites actifs des molécules d'enzyme sont saturés par le substrat",
+                "L'enzyme est détruite par l'accumulation de son propre substrat",
+                "Le substrat précipite spontanément en milieu aqueux",
+                "L'équilibre chimique bloque définitivement la dissociation de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À saturation, la totalité de l'enzyme se trouve sous forme de complexe [ES], la vitesse ne dépend plus de la concentration en substrat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que représente la constante de Michaelis (Km) dans la cinétique d'une enzyme ?",
+              "options": [
+                "La concentration en substrat pour laquelle la vitesse initiale atteint la moitié de Vmax",
+                "La température de dénaturation thermique de l'enzyme",
+                "Le nombre de molécules de produit formées par seconde à saturation",
+                "Le pH où l'enzyme est totalement inactive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Km reflète l'affinité apparente de l'enzyme pour son substrat : plus le Km est faible, plus l'affinité de l'enzyme est élevée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que déduit-on d'une enzyme possédant un Km très faible pour son substrat physiologique ?",
+              "options": [
+                "L'enzyme a une forte affinité pour ce substrat et fonctionne efficacement même à faible concentration",
+                "L'enzyme est très peu active et nécessite de fortes concentrations de substrat",
+                "L'enzyme est instable et se dégrade rapidement à 37 °C",
+                "La réaction est thermodynamiquement impossible sans apport d'ATP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un petit Km signifie qu'une faible quantité de substrat suffit pour saturer 50 % des sites actifs enzymatiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel effet produit une élévation de température au-delà de la température optimale d'une enzyme humaine ?",
+              "options": [
+                "Une perte brutale d'activité due à la dénaturation de la conformation tridimensionnelle de la protéine",
+                "Une accélération exponentielle infinie de la catalyse chimique",
+                "Un changement immédiat de la spécificité de substrat",
+                "La transformation réversible de l'enzyme en molécule d'ARN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà de l'optimum thermique, l'agitation rompt les liaisons faibles (hydrogène, hydrophobes) maintenant la structure tertiaire active."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi l'activité d'une enzyme dépend-elle étroitement du pH du milieu réactionnel ?",
+              "options": [
+                "Les ions H+ modifient l'état d'ionisation des chaînes latérales d'acides aminés du site actif",
+                "Le pH modifie la séquence primaire d'acides aminés codée par le gène",
+                "L'acidité détruit systématiquement les liaisons peptidiques covalentes",
+                "Le pH bloque la diffusion brownienne des molécules d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La protonation ou déprotonation des résidus du site actif altère leur charge électrique et empêche la liaison ou la catalyse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel type d'inhibiteur mime la structure du substrat et entre en compétition pour l'accès au site actif ?",
+              "options": [
+                "Un inhibiteur compétitif",
+                "Un inhibiteur non compétitif",
+                "Un effecteur allostérique activateur",
+                "Un régulateur transcriptionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inhibiteur compétitif se fixe réversiblement sur le site actif à la place du substrat, augmentant le Km apparent sans changer Vmax."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel effet observe-t-on sur la cinétique enzymatique en présence d'un inhibiteur compétitif ?",
+              "options": [
+                "Km augmente (baisse d'affinité apparente) tandis que Vmax reste inchangée à forte concentration de substrat",
+                "Vmax diminue fortement tandis que Km reste strictement constant",
+                "Vmax et Km diminuent tous les deux de façon identique",
+                "Vmax augmente et Km devient nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un excès de substrat déplace l'inhibiteur compétitif du site actif, permettant d'atteindre la même Vmax qu'en absence d'inhibiteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel effet cinétique caractérise un inhibiteur non compétitif se fixant hors du site actif ?",
+              "options": [
+                "Il diminue la Vmax sans modifier le Km de l'enzyme",
+                "Il augmente la Vmax et diminue le Km",
+                "Il augmente le Km sans modifier la Vmax",
+                "Il double la vitesse maximale de réaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En se fixant sur un site allostérique, l'inhibiteur non compétitif bloque la catalyse de l'enzyme sans empêcher la fixation du substrat."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la régulation où le produit terminal d'une chaîne métabolique inhibe la première enzyme de la voie ?",
+              "options": [
+                "La rétro-inhibition (feedback négatif)",
+                "La régulation paracrine",
+                "L'induction génique positive",
+                "La phosphorylation oxydative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rétro-inhibition permet à la cellule d'ajuster sa production métabolique et d'éviter l'accumulation inutile de produits finaux."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels paramètres physico-chimiques influencent directement la vitesse d'une réaction enzymatique ?",
+              "options": [
+                "La température du milieu réactionnel",
+                "Le pH de la solution aqueuse",
+                "La concentration en substrat et en enzyme libre",
+                "L'accélération gravitationnelle terrestre standard"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Température, pH et concentrations de substrat/enzyme sont les déterminants majeurs de la cinétique enzymatique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Régulation de la glycémie et communication hormonale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la valeur physiologique de consigne de la glycémie à jeun chez un être humain en bonne santé ?",
+              "options": [
+                "Environ 0,8 à 1,0 g/L (soit environ 5 mmol/L)",
+                "Environ 2,5 à 3,0 g/L (soit 15 mmol/L)",
+                "Environ 0,1 à 0,2 g/L (soit 1 mmol/L)",
+                "Environ 5,0 à 6,0 g/L (soit 30 mmol/L)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La glycémie fait l'objet d'un contrôle homéostatique étroit maintenant la concentration sanguine de glucose autour de 1 g/L."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles cellules endocrines du pancréas sécrètent l'insuline en réponse à une hyperglycémie ?",
+              "options": [
+                "Les cellules bêta des îlots de Langerhans",
+                "Les cellules alpha des îlots de Langerhans",
+                "Les cellules acineuses exocrines",
+                "Les cellules endothéliales des capillaires hépatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules bêta détectent l'élévation du glucose sanguin et libèrent l'insuline par exocytose dans la veine porte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle hormone est la seule hormone hypoglycémiante de l'organisme humain ?",
+              "options": [
+                "L'insuline",
+                "Le glucagon",
+                "L'adrénaline",
+                "Le cortisol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'insuline est l'unique hormone hypoglycémiante : elle favorise l'entrée, l'utilisation et la mise en réserve du glucose circulant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'effet physiologique majeur du glucagon sécrété par les cellules alpha du pancréas ?",
+              "options": [
+                "Stimuler la glycogénolyse hépatique et la libération de glucose dans le sang",
+                "Favoriser le stockage des triglycérides dans les adipocytes",
+                "Augmenter l'entrée du glucose dans les fibres musculaires",
+                "Inhiber la néoglucogenèse rénale et hépatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glucagon est une hormone hyperglycémiante qui active la dégradation du glycogène dans les hépatocytes en cas d'hypoglycémie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel organe est le seul capable de restituer du glucose libre dans la circulation générale à partir de son glycogène ?",
+              "options": [
+                "Le foie",
+                "Le muscle strié squelettique",
+                "Le cerveau",
+                "Le rein seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le foie possède l'enzyme glucose-6-phosphatase qui déphosphoryle le glucose pour qu'il puisse quitter l'hépatocyte vers le sang."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi les muscles squelettiques ne peuvent-ils pas libérer de glucose libre dans le sang pour corriger une hypoglycémie ?",
+              "options": [
+                "Ils ne possèdent pas l'enzyme glucose-6-phosphatase",
+                "Leur glycogène est entièrement insoluble",
+                "Leurs membranes sont dépourvues de tout canal protéique",
+                "Ils ne stockent que des lipides neutres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faute de glucose-6-phosphatase, le glucose-6-phosphate musculaire est obligatoirement consommé sur place par la glycolyse du myocyte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel transporteur membranaire de glucose est transloqué à la membrane sous l'action de l'insuline dans le muscle et le tissu adipeux ?",
+              "options": ["GLUT4", "GLUT1", "GLUT2", "SGLT1"],
+              "correctAnswers": [0],
+              "explanation": "L'insuline stimule la fusion de vésicules contenant GLUT4 avec la membrane plasmique, augmentant l'entrée de glucose dans ces tissus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle maladie endocrinienne auto-immune se traduit par la destruction sélective des cellules bêta pancréatiques dès le jeune âge ?",
+              "options": [
+                "Le diabète de type 1",
+                "Le diabète de type 2",
+                "Le diabète insipide néphrogénique",
+                "Le syndrome de Cushing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diabète de type 1 (insulinodépendant) est causé par des lymphocytes auto-immuns détruisant les cellules sécrétrices d'insuline."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle anomalie caractérise initialement le diabète de type 2 fréquent chez l'adulte en surpoids ?",
+              "options": [
+                "Une insulinorésistance des cellules cibles musculaires, hépatiques et adipeuses",
+                "Une absence congénitale totale de glucagon",
+                "Une destruction virale aiguë de la vésicule biliaire",
+                "Une mutation empêchant la synthèse de glycogène hépatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le diabète de type 2, les récepteurs à l'insuline perdent leur efficacité (insulinorésistance), menant à une hyperglycémie chronique."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels tissus cibles de l'insuline captent et stockent le glucose sous l'action de cette hormone ?",
+              "options": [
+                "Le foie (stockage sous forme de glycogène)",
+                "Les muscles squelettiques (stockage sous forme de glycogène)",
+                "Le tissu adipeux (conversion en triglycérides de réserve)",
+                "Les neurones cérébraux (dépendants exclusivement de récepteurs GLUT4 stimulés)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Foie, muscle et tissu adipeux stockent le glucose sous l'effet de l'insuline. Les neurones absorbent le glucose indépendamment de l'insuline (GLUT1/GLUT3)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Récepteurs cellulaires et signalisation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où se situent les récepteurs spécifiques des hormones peptidiques hydrosolubles ?",
+              "options": [
+                "Dans la membrane plasmique de la cellule cible",
+                "Au sein du génome nucléaire",
+                "Dans la matrice mitochondriale",
+                "À l'intérieur de la lumière lysosomale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pouvant traverser la bicouche lipidique hydrophobe, les hormones peptidiques se lient à des récepteurs transmembranaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels récepteurs membranaires comportent 7 hélices transmembranaires et activent des protéines trimériques à GTP ?",
+              "options": [
+                "Les récepteurs couplés aux protéines G (RCPG)",
+                "Les récepteurs nucléaires aux stéroïdes",
+                "Les canaux ioniques voltage-dépendants",
+                "Les récepteurs à activité sérine protéase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les RCPG constituent la plus vaste famille de récepteurs de surface, transduisant les signaux d'hormones, neurotransmetteurs et photons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel second messager cytosolique est synthétisé à partir d'ATP par l'adénylate cyclase stimulée par une protéine Gs ?",
+              "options": [
+                "L'adénosine monophosphate cyclique (AMPc)",
+                "Le diacylglycérol (DAG)",
+                "Le phosphatidylinositol",
+                "L'acétylcholine libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'AMPc diffuse dans le cytoplasme et active la protéine kinase A (PKA) qui phosphoryle des enzymes cibles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quelle classe de récepteurs enzymatiques appartient le récepteur de l'insuline ?",
+              "options": [
+                "Les récepteurs à activité tyrosine kinase",
+                "Les récepteurs canaux chlorure",
+                "Les récepteurs couplés aux protéines Gi",
+                "Les intégrines à adhérence focale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fixation de l'insuline déclenche la dimérisation et l'autophosphorylation de résidus tyrosine sur la face intracellulaire du récepteur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où sont localisés les récepteurs des hormones stéroïdes lipophiles (ex: œstrogènes, testostérone, cortisol) ?",
+              "options": [
+                "Dans le cytoplasme ou le noyau de la cellule cible",
+                "Sur la face externe des thylakoïdes",
+                "Dans les pores de la membrane externe mitochondriale",
+                "À la surface libre des microvillosités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lipophiles, les hormones stéroïdes traversent la membrane plasmique par diffusion simple et se lient à des récepteurs nucléaires modulateurs de transcription."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le rôle biologique d'une cascade de phosphorylation intracellulaire déclenchée par un signal membranaire ?",
+              "options": [
+                "Amplifier fortement le signal initial et diversifier les réponses biochimiques",
+                "Détruire instantanément la molécule de ligand fixée",
+                "Inverser le potentiel de repos membranaire de la cellule",
+                "Neutraliser définitivement la respiration mitochondriale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une seule molécule de ligand liée en surface active de nombreuses enzymes intermédiaires, produisant des milliers de molécules de produit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle enzyme élimine les groupements phosphate portés par des protéines phosphorylées pour éteindre le signal ?",
+              "options": [
+                "Une protéine phosphatase",
+                "Une protéine kinase",
+                "Une ADN polymérase",
+                "Une lipase pancréatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équilibre antagoniste entre protéines kinases (phosphorylation) et protéines phosphatases (déphosphorylation) régule finement l'état d'activité cellulaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel second messager minéral libéré du réticulum endoplasmique active la calmoduline et de nombreuses kinases ?",
+              "options": [
+                "L'ion calcium (Ca2+)",
+                "L'ion sodium (Na+)",
+                "L'ion chlorure (Cl-)",
+                "L'ion potassium (K+)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une hausse transitoire de Ca2+ cytosolique active la calmoduline et déclenche exocytose, contraction musculaire ou activation métabolique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le mode de signalisation où le médiateur chimique agit sur des cellules voisines sans emprunter la circulation sanguine ?",
+              "options": [
+                "La communication paracrine",
+                "La communication endocrine",
+                "La communication synaptique à distance",
+                "La diffusion neuro-hormonale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La signalisation paracrine met en jeu des médiateurs locaux diffusant dans le liquide interstitiel vers les cellules adjacentes."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques structurales et fonctionnelles s'appliquent aux récepteurs couplés aux protéines G (RCPG) ?",
+              "options": [
+                "Une chaîne polypeptidique traversant sept fois la membrane plasmique sous forme d'hélices alpha",
+                "Une interaction avec une protéine G hétérotrimérique (sous-unités alpha, bêta, gamma)",
+                "L'activation d'effecteurs membranaires comme l'adénylate cyclase ou la phospholipase C",
+                "Une activité transcriptionnelle directe à l'intérieur du nucléole"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les RCPG sont hepta-hélicoïdaux, activent des protéines G et des enzymes productrices de seconds messagers, mais ne transcrivent pas d'ADN."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Métabolisme énergétique et respiration cellulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où se déroule la glycolyse, étape initiale de dégradation du glucose commune aux voies aérobie et anaérobie ?",
+              "options": [
+                "Dans le cytosol (hyaloplasme)",
+                "Dans la matrice mitochondriale",
+                "Sur les crêtes internes de la mitochondrie",
+                "Dans le stroma chloroplastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La glycolyse est une voie métabolique ancestrale entièrement cytosolique qui ne nécessite pas la présence de dioxygène."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le produit organique final de la glycolyse à partir d'une molécule de glucose à 6 carbones ?",
+              "options": [
+                "Deux molécules de pyruvate à 3 carbones",
+                "Deux molécules d'éthanol à 2 carbones",
+                "Six molécules de dioxyde de carbone gazeux",
+                "Une molécule d'oxaloacétate à 4 carbones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une molécule de glucose est clivée en deux trioses puis oxydée en deux molécules de pyruvate (acide pyruvique)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le bilan net de production d'ATP par mole de glucose lors de la seule glycolyse cytosolique ?",
+              "options": ["2 ATP", "4 ATP", "32 ATP", "36 ATP"],
+              "correctAnswers": [0],
+              "explanation": "La glycolyse consomme 2 molécules d'ATP lors de la phase d'investissement et en produit 4 par phosphorylation au niveau du substrat, soit un gain net de 2 ATP."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans quel compartiment cellulaire eucaryote se déroule le cycle de Krebs (cycle de l'acide citrique) ?",
+              "options": [
+                "Dans la matrice mitochondriale",
+                "Dans l'espace intermembranaire mitochondrial",
+                "Dans le cytosol péri-nucléaire",
+                "Sur la membrane externe mitochondriale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après entrée du pyruvate dans la mitochondrie et formation d'acétyl-CoA, le cycle de Krebs se déroule dans la matrice liquide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quels coenzymes réduits transporteurs d'électrons et de protons sont massivement formés lors du cycle de Krebs ?",
+              "options": [
+                "NADH,H+ et FADH2",
+                "NADP+ et FAD+",
+                "ATP et GTP exclusivement",
+                "Pyruvate et lactate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces coenzymes réduits cèdent ensuite leurs électrons à haute énergie aux complexes de la chaîne respiratoire mitochondriale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Où sont localisés les complexes enzymatiques I, II, III et IV de la chaîne respiratoire chez les eucaryotes ?",
+              "options": [
+                "Dans la membrane interne mitochondriale",
+                "Dans la membrane externe mitochondriale",
+                "Dans la membrane plasmique",
+                "Dans la lumière du réticulum endoplasmique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La membrane interne repliée en crêtes contient les cytochromes et transporteurs qui établissent un gradient de protons H+."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est l'accepteur terminal d'électrons et de protons dans la chaîne respiratoire mitochondriale aérobie ?",
+              "options": [
+                "Le dioxygène (O2), réduit en eau (H2O)",
+                "Le dioxyde de carbone (CO2)",
+                "Le pyruvate cytosolique",
+                "Le sulfate inorganique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le complexe IV (cytochrome c oxydase) transfère les électrons au dioxygène moléculaire qui réagit avec des protons pour former de l'eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle enzyme rotative utilise la force proton-motrice transmembranaire pour phosphoryler l'ADP en ATP ?",
+              "options": [
+                "L'ATP synthase",
+                "La pyruvate déshydrogénase",
+                "La phosphofructokinase",
+                "La lactate déshydrogénase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le flux spontané de protons retournant vers la matrice à travers le rotor de l'ATP synthase entraîne la synthèse mécanique d'ATP."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le rôle physiologique essentiel des fermentations anaérobies (lactique ou alcoolique) ?",
+              "options": [
+                "Réoxyder le NADH,H+ en NAD+ pour permettre à la glycolyse de continuer en absence d'O2",
+                "Produire une grande quantité supplémentaire d'ATP par la chaîne respiratoire",
+                "Éliminer le glucose intracellulaire toxique",
+                "Créer un gradient de protons au niveau de la membrane nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans oxygène pour réoxyder le NADH dans la mitochondrie, la fermentation permet de régénérer le NAD+ indispensable au maintien de la glycolyse."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels composés sont des produits terminaux directs de la respiration cellulaire complète d'une molécule de glucose ?",
+              "options": [
+                "Du dioxyde de carbone (CO2)",
+                "De l'eau (H2O)",
+                "De l'ATP (environ 30 à 32 molécules par glucose)",
+                "De l'éthanol en quantité équivalente au CO2"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'oxydation complète du glucose en aérobiose donne CO2, H2O et environ 30 à 32 ATP. L'éthanol n'est produit qu'en fermentation alcoolique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La photosynthèse et la conversion d'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est l'équation chimique globale équilibrée de la photosynthèse oxygénique ?",
+              "options": [
+                "6 CO2 + 6 H2O + lumière -> C6H12O6 + 6 O2",
+                "C6H12O6 + 6 O2 -> 6 CO2 + 6 H2O + énergie",
+                "6 CO2 + 6 O2 + lumière -> C6H12O6 + 6 H2O",
+                "C6H12O6 + 6 H2O -> 6 CH4 + 6 CO2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les végétaux chlorophylliens utilisent l'énergie photonique pour synthétiser du glucose à partir d'eau et de dioxyde de carbone, avec dégagement d'O2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se déroule la phase photochimique (dépendante de la lumière) de la photosynthèse ?",
+              "options": [
+                "Dans la membrane des thylakoïdes du chloroplaste",
+                "Dans le stroma chloroplastique soluble",
+                "Dans l'espace intermembranaire chloroplastique",
+                "Dans les vacuoles des cellules du parenchyme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pigments photosynthétiques insérés dans les membranes des thylakoïdes captent la lumière et amorcent les transferts d'électrons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle réaction fournit les électrons au photosystème II lors de la phase photochimique ?",
+              "options": [
+                "La photolyse de l'eau (oxydation de H2O en O2, protons et électrons)",
+                "La réduction directe du dioxyde de carbone atmosphérique",
+                "L'oxydation de l'amidon stocké dans le stroma",
+                "La dégradation des acides aminés membranaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le complexe d'oxydation de l'eau lié au photosystème II scinde l'eau : 2 H2O -> O2 + 4 H+ + 4 e-, libérant le dioxygène rejeté."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles molécules hautement énergétiques produites lors de la phase photochimique alimentent le cycle de Calvin ?",
+              "options": [
+                "L'ATP et le NADPH,H+",
+                "L'ADP et le NADP+ oxydé",
+                "Le pyruvate et l'acétyl-CoA",
+                "Le glucose et le saccharose libres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie lumineuse est convertie sous forme chimique en ATP (par photophosphorylation) et pouvoir réducteur NADPH,H+."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans quel compartiment du chloroplaste se déroule la fixation du carbone par le cycle de Calvin ?",
+              "options": [
+                "Dans le stroma",
+                "Dans la lumière intratétrathylakoïdienne",
+                "Entre les deux membranes de l'enveloppe",
+                "À l'intérieur des grains d'amidon insolubles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le stroma contient les enzymes solubles nécessaires à la fixation du CO2 et à la synthèse des sucres trioses."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle enzyme clé catalyse la fixation du CO2 sur le ribulose-1,5-bisphosphate au début du cycle de Calvin ?",
+              "options": [
+                "La Rubisco",
+                "L'ATP synthase chloroplastique",
+                "La chlorophylle a oxygénase",
+                "La pyruvate décarboxylase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Rubisco (Ribulose-1,5-bisphosphate carboxylase/oxygénase) est l'enzyme la plus abondante de la biosphère, clé de voûte de la fixation du carbone."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelles longueurs d'onde du spectre visible sont les plus fortement absorbées par les chlorophylles a et b ?",
+              "options": [
+                "Le bleu (400-450 nm) et le rouge (650-680 nm)",
+                "Le vert (500-550 nm) exclusivement",
+                "Les rayons ultraviolets C et X",
+                "Les rayons infrarouges lointains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chlorophylles absorbent principalement le bleu et le rouge et réfléchissent la lumière verte, ce qui confère leur couleur aux feuilles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel glucide triose phosphaté issu du cycle de Calvin sert de précurseur au glucose et à l'amidon ?",
+              "options": [
+                "Le 3-phosphoglycéraldéhyde (G3P)",
+                "L'acide oxaloacétique",
+                "Le pyruvate déshydraté",
+                "Le ribose-5-phosphate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le G3P (ou glycéraldéhyde-3-phosphate) sort du cycle de Calvin pour former du saccharose dans le cytosol ou de l'amidon dans le chloroplaste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sous quelle forme macromoléculaire les produits de la photosynthèse sont-ils stockés transitoirement dans le stroma le jour ?",
+              "options": [
+                "Sous forme de grains d'amidon",
+                "Sous forme de glycogène fibrillaire",
+                "Sous forme d'acide hyaluronique liquide",
+                "Sous forme de gouttelettes de triglycérides purs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amidon est accumulé sous forme insoluble pendant la photopériode diurne, puis dégradé la nuit en saccharose exporté vers la plante."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels facteurs environnementaux modulent l'intensité photosynthétique d'une plante verte ?",
+              "options": [
+                "L'éclairement lumineux (intensité et spectre)",
+                "La teneur atmosphérique en dioxyde de carbone (CO2)",
+                "La température du milieu influençant la cinétique de la Rubisco",
+                "La salinité des océans lointains"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Lumière, concentration en CO2 et température sont les trois facteurs limitants majeurs de l'intensité photosynthétique."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Communication nerveuse et transmission synaptique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la valeur typique du potentiel de repos transmembranaire d'un neurone non stimulé ?",
+              "options": [
+                "Environ -70 millivolts (mV)",
+                "Environ +30 millivolts (mV)",
+                "Exactement 0 millivolt (mV)",
+                "Environ -150 millivolts (mV)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le potentiel de repos négatif intérieur par rapport à l'extérieur est principalement maintenu par les canaux de fuite au potassium et la pompe Na+/K+."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle étape du potentiel d'action neuronal résulte de l'ouverture brutale des canaux Na+ voltage-dépendants ?",
+              "options": [
+                "La dépolarisation rapide",
+                "La repolarisation tardive",
+                "L'hyperpolarisation",
+                "La période réfractaire absolue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'entrée massive d'ions sodium selon leur gradient électrochimique inverse la polarité membranaire jusqu'à environ +30 mV."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel phénomène ionique permet la repolarisation de la membrane axonale après le pic du potentiel d'action ?",
+              "options": [
+                "L'inactivation des canaux Na+ et l'ouverture retardée des canaux K+ voltage-dépendants",
+                "L'inversion du sens de pompage de la pompe Na+/K+ ATPase",
+                "L'entrée massive d'ions chlorure par des pompes actives",
+                "La diffusion passive d'ATP hors du cytoplasme neuronal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sortie d'ions K+ compense la dépolarisation et rétablit la négativité intracellulaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment se propage un potentiel d'action le long d'un axone myélinisé ?",
+              "options": [
+                "De façon saltatoire d'un nœud de Ranvier au suivant",
+                "De proche en proche de manière très lente et continue",
+                "Par passage direct d'un courant électrique dans le liquide extracellulaire",
+                "Par onde mécanique de contraction de la gaine de myéline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La myéline isolante force la dépolarisation à sauter de nœud de Ranvier en nœud de Ranvier, atteignant plus de 100 m/s."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel ion entrant dans la terminaison présynaptique déclenche directement l'exocytose des vésicules de neurotransmetteur ?",
+              "options": [
+                "L'ion calcium (Ca2+)",
+                "L'ion fer (Fe2+)",
+                "L'ion chlore (Cl-)",
+                "L'ion magnésium (Mg2+)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arrivée du potentiel d'action ouvre des canaux Ca2+ voltage-dépendants ; le calcium active les protéines SNARE de fusion membranaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment les neurotransmetteurs franchissent-ils la fente synaptique vers la membrane postsynaptique ?",
+              "options": [
+                "Par diffusion simple dans le liquide interstitiel de la fente synaptique",
+                "Par transport actif vésiculaire à travers des ponts protéiques",
+                "Par transmission saltatoire dans une gaine de myéline synaptique",
+                "Par phagocytose postsynaptique directe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les neurotransmetteurs libérés diffusent en quelques fractions de milliseconde à travers l'étroite fente synaptique (environ 20 nm)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel effet produit la fixation d'un neurotransmetteur excitateur (comme le glutamate) sur son récepteur postsynaptique ?",
+              "options": [
+                "Une dépolarisation locale appelée potentiel postsynaptique excitateur (PPSE)",
+                "Une hyperpolarisation locale appelée PPSI",
+                "La destruction définitive de la synapse par les protéases",
+                "La phosphorylation immédiate des histones du noyau postsynaptique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ouverture de canaux ioniques perméables au Na+ entraîne une entrée de charges positives dépolarisant la membrane postsynaptique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le principal neurotransmetteur inhibiteur du cerveau chez les mammifères ?",
+              "options": [
+                "Le GABA (acide gamma-aminobutyrique)",
+                "Le glutamate",
+                "L'adrénaline",
+                "L'acétylcholine excitatrice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le GABA ouvre des canaux chlore (Cl-), induisant une entrée d'anions qui hyperpolarise le neurone et réduit son excitabilité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Par quels mécanismes l'action du neurotransmetteur dans la fente synaptique est-elle interrompue rapidement ?",
+              "options": [
+                "Par dégradation enzymatique ou recapture présynaptique et gliale",
+                "Par polymérisation spontanée en filaments insolubles",
+                "Par phagocytose complète de la fente par les hépatocytes",
+                "Par transformation chimique directe en glucose phosphorylé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour permettre la transmission de signaux successifs, des enzymes (ex: acétylcholinestérase) ou transporteurs éliminent le neurotransmetteur."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés fondamentales caractérisent le message nerveux le long de l'axone ?",
+              "options": [
+                "Le potentiel d'action obéit à la loi du « tout ou rien » dès le franchissement du seuil",
+                "L'amplitude du potentiel d'action ne décroît pas avec la distance le long de l'axone",
+                "L'intensité de la stimulation est codée en modulation de fréquence des potentiels d'action",
+                "L'amplitude du potentiel d'action augmente indéfiniment si la stimulation s'accroît"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le potentiel d'action a une amplitude invariable (tout ou rien). Le message est codé en fréquence de potentiels d'action."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Homéostasie et boucles de régulation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel concept physiologique désigne la capacité d'un organisme à stabiliser son milieu intérieur face aux variations de l'environnement ?",
+              "options": [
+                "L'homéostasie",
+                "L'hémostase",
+                "La sélection naturelle",
+                "L'allopathie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Défini par Claude Bernard puis Walter Cannon, l'homéostasie assure la constance relative des paramètres physico-chimiques internes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels sont les trois éléments clés constitutifs de tout système de régulation homéostatique ?",
+              "options": [
+                "Des capteurs (récepteurs), un centre intégrateur et des effecteurs",
+                "Un neurone sensitif, un os et un ligament",
+                "Une enzyme, un substrat et un inhibiteur",
+                "Une veine, une artère et un capillaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les capteurs mesurent le paramètre, le centre intégrateur compare à la consigne et commande les effecteurs correcteurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel type de rétrocontrôle corrige et inverse une déviation du paramètre pour le ramener vers la valeur de consigne ?",
+              "options": [
+                "Le rétrocontrôle négatif (ou rétroaction négative)",
+                "Le rétrocontrôle positif amplificateur",
+                "L'induction catalytique croisée",
+                "La résonance stochastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rétrocontrôle négatif stabilise le paramètre : toute hausse déclenche des mécanismes provoquant sa baisse, et inversement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement physiologique chez les mammifères fonctionne par rétroaction positive transitoire ?",
+              "options": [
+                "L'amplification des contractions utérines par l'ocytocine lors de l'accouchement",
+                "Le maintien de la glycémie après ingestion de féculents",
+                "La baisse du rythme cardiaque au repos",
+                "La régulation de la température corporelle lors d'une exposition au froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'étirement du col utérin stimule la libération d'ocytocine qui amplifie les contractions jusqu'à l'expulsion finale du fœtus."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle région de l'encéphale sert de centre intégrateur majeur de la thermorégulation et de l'équilibre hydrique ?",
+              "options": [
+                "L'hypothalamus",
+                "Le cervelet",
+                "Le lobe occipital",
+                "Le corps calleux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hypothalamus intègre les signaux thermiques centraux et périphériques pour commander les réponses végétatives et comportementales."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle réponse effectrice immédiate limite les pertes thermiques lors d'une exposition au froid ?",
+              "options": [
+                "La vasoconstriction cutanée périphérique",
+                "La vasodilatation cutanée massive",
+                "La sudation profuse",
+                "La baisse réflexe du métabolisme basal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fermeture des artérioles cutanées diminue le flux sanguin à la surface corporelle, réduisant les pertes de chaleur par rayonnement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel réflexe nerveux rapide régule la pression artérielle grâce à des mécanorécepteurs du sinus carotidien et de la crosse aortique ?",
+              "options": [
+                "Le baroréflexe",
+                "Le réflexe myotatique",
+                "Le réflexe photomoteur pupillaire",
+                "Le réflexe d'évitement cutané"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les barorécepteurs détectent l'étirement des parois artérielles et modulent l'activité parasympathique et sympathique sur le cœur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle hormone post-hypophysaire stimule la réabsorption d'eau par les canaux collecteurs du rein en cas de déshydratation ?",
+              "options": [
+                "L'hormone antidiurétique (ADH ou vasopressine)",
+                "L'insuline",
+                "La prolactine",
+                "L'hormone de croissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ADH provoque l'insertion d'aquaporines dans les cellules rénales, concentrant l'urine et épargnant l'eau corporelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle division du système nerveux autonome s'active lors d'un stress ou d'un danger pour préparer l'organisme à la fuite ou au combat ?",
+              "options": [
+                "Le système nerveux sympathique (orthosympathique)",
+                "Le système nerveux parasympathique",
+                "Le système entérique isolé",
+                "Le système sensoriel somatique pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système sympathique augmente la fréquence cardiaque, dilate les bronches et mobilise le glucose pour faire face à l'urgence."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels paramètres physiologiques font l'objet d'un contrôle homéostatique étroit dans l'organisme humain ?",
+              "options": [
+                "Le pH sanguin artériel (maintenu entre 7,35 et 7,45)",
+                "La température centrale interne (autour de 37 °C)",
+                "La pression osmotique du plasma (environ 290 à 300 mOsm/kg d'eau)",
+                "La longueur des membres osseux modifiée d'heure en heure"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "pH, température centrale et osmolarité plasmatique sont des constantes vitales étroitement régulées. La taille osseuse est fixe à l'âge adulte."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Vie et mort cellulaire : apoptose et renouvellement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle définition distingue l'apoptose de la nécrose tissulaire accidentelle ?",
+              "options": [
+                "L'apoptose est une mort cellulaire programmée et ordonnée, sans rupture précoce de membrane ni inflammation",
+                "L'apoptose est une explosion violente de la membrane libérant son contenu toxique dans le tissu",
+                "L'apoptose est une division mitotique asymétrique produisant des cellules anormales",
+                "L'apoptose est l'état de latence réversible d'une cellule privée de nutriments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'apoptose est un suicide cellulaire génétiquement contrôlé, formant des corps apoptotiques phagocytés sans déclencher d'inflammation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle famille de protéases à cystéine assure l'exécution du programme apoptotique en clivant des substrats cellulaires clés ?",
+              "options": [
+                "Les caspases",
+                "Les trypsines",
+                "Les élastases",
+                "Les pepsines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les caspases initiatrices puis exécutrices clivent les protéines structurales et activent des endonucléases fragmentant l'ADN."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel événement mitochondrial majeur déclenche la voie intrinsèque de l'apoptose dans la cellule ?",
+              "options": [
+                "La libération du cytochrome c dans le cytosol suite à la perméabilisation de la membrane externe",
+                "L'arrêt spontané de la glycolyse cytosolique",
+                "L'expulsion des ribosomes mitochondriaux hors de la cellule",
+                "La fusion irréversible des crêtes mitochondriales en une sphère rigide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cytochrome c libéré s'associe à la protéine Apaf-1 et à la procaspase 9 pour former l'apoptosome activateur de l'apoptose."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle protéine suppresseur de tumeur, appelée « gardien du génome », induit l'arrêt du cycle cellulaire ou l'apoptose en cas de dommage à l'ADN ?",
+              "options": [
+                "La protéine p53",
+                "La cytokératine 8",
+                "L'actine F",
+                "La tubuline bêta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "p53 bloque la réplication pour permettre la réparation de l'ADN ou déclenche la transcription de gènes pro-apoptotiques si les lésions sont irréparables."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel processus cellulaire permet la dégradation et le recyclage d'organites usés au sein des lysosomes ?",
+              "options": [
+                "L'autophagie",
+                "La pinocytose",
+                "La transcytose",
+                "La réplication dispersive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'autophagie enferme les composants défectueux dans un autophagosome fusionnant avec un lysosome pour recycler les briques moléculaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel signal phospholipidique exposé sur la face externe de la membrane des corps apoptotiques induit leur phagocytose propre ?",
+              "options": [
+                "L'externalisation de la phosphatidylsérine",
+                "L'accumulation de cholestérol estérifié",
+                "La polymérisation de glycocalyx résistant",
+                "La libération de cardiolipine dans le plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Normalement confinée au feuillet interne, la phosphatidylsérine bascule vers l'extérieur : ce signal 'eat-me' est reconnu par les macrophages."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'état d'arrêt irréversible du cycle cellulaire induit par le raccourcissement critique des télomères ?",
+              "options": [
+                "La sénescence cellulaire",
+                "La quiescence physiologique",
+                "L'anaphase mitotique",
+                "La dédifférenciation clonale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après un nombre limite de divisions (limite de Hayflick), les cellules entrent en sénescence et cessent définitivement de proliférer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel rôle morphogénétique indispensable l'apoptose joue-t-elle durant le développement embryonnaire humain ?",
+              "options": [
+                "La disparition des palmures interdigitales pour sculpter les doigts et orteils",
+                "La fabrication de la moelle épinière par division anarchique",
+                "La création de la paroi de cellulose des cellules musculaires",
+                "L'induction de la méiose précoce dans les ostéoblastes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mort par apoptose des cellules des espaces interdigitaux permet l'individualisation des doigts lors du développement de la main."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle modification nucléaire typique est observée au microscope au cours du processus d'apoptose ?",
+              "options": [
+                "La condensation de la chromatine et la fragmentation internucléosomique de l'ADN",
+                "Le gonflement extrême du nucléole sans condensation",
+                "La fusion de l'enveloppe nucléaire avec la membrane plasmique",
+                "L'apparition de chromosomes polytènes géants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des endonucléases coupent l'ADN entre les nucléosomes en fragments de 180 à 200 paires de bases, parallèlement à la pycnose nucléaire."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques distinguent l'apoptose physiologique de la nécrose pathologique ?",
+              "options": [
+                "L'apoptose préserve l'intégrité de la membrane plasmique jusqu'au bourgeonnement en corps apoptotiques",
+                "La nécrose entraîne un gonflement cellulaire précoce, la lyse membranaire et une réaction inflammatoire",
+                "L'apoptose est un processus actif requérant de l'énergie et orchestré par des enzymes cellulaires",
+                "La nécrose est indispensable au façonnage harmonieux des organes au cours de l'embryogenèse"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'apoptose est programmée, silencieuse et non inflammatoire. La nécrose est accidentelle, lytique et inflammatoire."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Intégration physiologique à l'effort",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel nucléotide triphosphate est la source d'énergie immédiatement disponible pour la contraction des fibres musculaires ?",
+              "options": [
+                "L'adénosine triphosphate (ATP)",
+                "L'adénosine monophosphate (AMP)",
+                "Le glucose phosphorylé",
+                "La créatine libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ATP stocké dans le cytoplasme des myocytes fournit l'énergie mécanique immédiate par hydrolyse par les têtes de myosine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle voie métabolique anaérobie alactique régénère l'ATP en quelques secondes au début d'un effort explosif intense ?",
+              "options": [
+                "Le transfert de phosphate depuis la phosphocréatine catalysé par la créatine kinase",
+                "La phosphorylation oxydative mitochondriale",
+                "La bêta-oxydation des acides gras à chaîne longue",
+                "La néoglucogenèse hépatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phosphocréatine fournit immédiatement son groupement phosphate à l'ADP pour régénérer l'ATP sans nécessiter d'O2 ni produire de lactate."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le débit maximal d'oxygène qu'un individu peut prélever, transporter et consommer lors d'un effort aérobie extrême ?",
+              "options": [
+                "La VO2max",
+                "La capacité vitale forcée",
+                "Le quotient respiratoire basal",
+                "Le débit d'éjection systolique résiduel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La VO2max (en mL/min/kg) reflète la puissance maximale aérobie et les capacités intégrées cardio-respiratoires et musculaires du sportif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment le débit cardiaque augmente-t-il lors du passage du repos à l'effort musculaire soutenu ?",
+              "options": [
+                "Par l'augmentation conjointe de la fréquence cardiaque et du volume d'éjection systolique",
+                "Par une chute du rythme cardiaque pour économiser l'oxygène",
+                "Par la réduction de la contractilité myocardique",
+                "Par l'arrêt réflexe de la circulation veineuse de retour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Débit cardiaque = Fréquence cardiaque x Volume d'éjection systolique. À l'effort, ces deux variables augmentent sous l'effet du système sympathique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment se réorganise la distribution régionale du débit sanguin pendant un exercice physique intense ?",
+              "options": [
+                "Une vasodilatation massive irrigue les muscles actifs tandis que les territoires digestifs et rénaux subissent une vasoconstriction",
+                "Le débit vers les organes digestifs est multiplié par cinq pour accélérer la digestion",
+                "Le débit vers le cerveau est totalement interrompu pour alimenter les quadriceps",
+                "La circulation coronarienne du cœur est fermée pour diminuer la pression artérielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les muscles squelettiques en action peuvent recevoir plus de 80 % du débit cardiaque total grâce à une redistribution circulatoire sélective."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle adaptation ventilatoire permet d'accroître l'apport en O2 et l'élimination du CO2 à l'exercice ?",
+              "options": [
+                "Une hausse simultanée de la fréquence respiratoire et du volume courant (hyperpnée)",
+                "Une réduction volontaire de la fréquence respiratoire pour piéger l'air",
+                "La fermeture partielle des alvéoles pulmonaires les plus profondes",
+                "L'inactivation du centre respiratoire bulbaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ventilation alvéolaire peut passer de 6 L/min au repos à plus de 120 L/min lors d'un effort physique maximal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quels signaux chimiques locaux générés par le muscle en contraction provoquent la vasodilatation des artérioles musculaires ?",
+              "options": [
+                "La baisse de PO2 et l'accumulation de CO2, d'ions H+, d'adénosine et de potassium",
+                "L'élévation massive de la concentration locale en glucose non consommé",
+                "La diminution de la température locale du muscle",
+                "L'inhibition de la libération de monoxyde d'azote (NO)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces métabolites agissent sur le muscle lisse vasculaire : c'est l'hyperhémie fonctionnelle adaptant l'apport d'oxygène aux besoins locaux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quels substrats énergétiques deviennent prépondérants lors d'un exercice d'endurance modéré et prolongé (ex: marathon) ?",
+              "options": [
+                "Les acides gras libres issus de la lipolyse oxydés dans les mitochondries",
+                "La phosphocréatine seule",
+                "L'acide lactique pur comme donneur d'électrons exclusif",
+                "Les protéines des ligaments articulaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après épuisement partiel du glycogène, l'oxydation aérobie des acides gras fournit l'ATP nécessaire pour maintenir l'effort prolongé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quels centres nerveux du tronc cérébral coordonnent l'ajustement cardio-vasculaire et respiratoire à l'effort ?",
+              "options": [
+                "Les centres bulbaires cardiovasculaires et respiratoires du bulbe rachidien",
+                "Le cortex visuel primaire occipital",
+                "Les hémisphères cérébelleux exclusivement",
+                "L'hippocampe temporal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bulbe rachidien reçoit les informations des propriocepteurs musculaires et des chémorécepteurs pour moduler l'activité autonome."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles adaptations cardiorespiratoires intégrées se manifestent lors d'un exercice physique soutenu ?",
+              "options": [
+                "Une élévation importante de la ventilation alvéolaire et de la consommation d'oxygène",
+                "Une augmentation du débit cardiaque pouvant dépasser 20 à 25 L/min chez l'athlète",
+                "Une vasodilatation locale majeure au niveau des muscles squelettiques en activité",
+                "Une baisse systématique de la pression artérielle systolique sous les valeurs de repos"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Débit ventilatoire, débit cardiaque et perfusion musculaire augmentent de concert. La pression artérielle systolique augmente légèrement."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

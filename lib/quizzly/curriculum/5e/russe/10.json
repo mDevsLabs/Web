@@ -1,0 +1,2388 @@
+{
+  "id": "5e-russe-10",
+  "year": "5e",
+  "subject": "russe",
+  "title": "Vers l'examen en russe",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Compréhension",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont au féminin ?",
+              "options": [
+                "стол (stol)",
+                "книга (kniga)",
+                "дом (dom)",
+                "школа (shkola)"
+              ],
+              "correctAnswers": [1, 3],
+              "explanation": "Книга et школа finissent en -а, marque du féminin en 5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « Это книга (Eto kniga) », que fait это (eto) ?",
+              "options": [
+                "Il interroge",
+                "Il présente : c'est",
+                "Il compte",
+                "Il salue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это sert à identifier : « c'est un livre »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) » veut dire :",
+              "options": ["demain", "hier", "aujourd'hui", "bientôt"],
+              "correctAnswers": [1],
+              "explanation": "Вчера est l'adverbe « hier »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Окно (Okno) » est de quel genre ?",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [2],
+              "explanation": "Les noms en -о comme окно sont neutres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) » correspond à :",
+              "options": ["hier", "demain", "maintenant", "jamais"],
+              "correctAnswers": [1],
+              "explanation": "Завтра signifie « demain »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Это не дом (Eto ne dom) » : ne (ne) sert à :",
+              "options": ["affirmer", "nier", "saluer", "demander l'heure"],
+              "correctAnswers": [1],
+              "explanation": "Не nie : « ce n'est pas une maison »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot est masculin ?",
+              "options": [
+                "мама (mama)",
+                "сестра (sestra)",
+                "учитель (uchitel')",
+                "ручка (ruchka)"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Учитель est masculin ; les autres sont féminins."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) было (bylo) жарко (zharko) » parle de :",
+              "options": ["demain", "hier", "chaque jour", "l'hiver seulement"],
+              "correctAnswers": [1],
+              "explanation": "Вчера situe le temps à hier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Это мой (Eto moy) друг (drug) » : друг est :",
+              "options": ["féminin", "neutre", "masculin", "verbe"],
+              "correctAnswers": [2],
+              "explanation": "Друг (ami) est masculin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) урок (urok) » : урок est :",
+              "options": ["féminin", "masculin", "neutre", "adverbe"],
+              "correctAnswers": [1],
+              "explanation": "Урок (cours) est masculin."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels noms sont neutres ?",
+              "options": [
+                "окно (okno)",
+                "молоко (moloko)",
+                "стул (stul)",
+                "кошка (koshka)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Окно et молоко finissent en -о ; стул est masculin, кошка féminin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Это письмо (Eto pis'mo) » : письмо est :",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [2],
+              "explanation": "Письмо se termine en -о, donc neutre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Сегодня (Segodnya) » veut dire :",
+              "options": ["hier", "demain", "aujourd'hui", "souvent"],
+              "correctAnswers": [2],
+              "explanation": "Сегодня signifie « aujourd'hui »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « Это вода (Eto voda) », вода est :",
+              "options": ["masculin", "féminin", "neutre", "invariable"],
+              "correctAnswers": [1],
+              "explanation": "Вода en -а est féminin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) я (ya) дома (doma) » : ya signifie :",
+              "options": ["tu", "je", "il", "nous"],
+              "correctAnswers": [1],
+              "explanation": "Я = « je »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) мы (my) в школе (v shkole) » : my signifie :",
+              "options": ["je", "tu", "nous", "vous"],
+              "correctAnswers": [2],
+              "explanation": "Мы = « nous »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot n'est pas un repère de temps ?",
+              "options": [
+                "вчера (vchera)",
+                "завтра (zavtra)",
+                "стол (stol)",
+                "сегодня (segodnya)"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Стол signifie « table », pas un jour."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Это карандаш (Eto karandash) » : genre ?",
+              "options": ["féminin", "neutre", "masculin", "pluriel"],
+              "correctAnswers": [2],
+              "explanation": "Карандаш est masculin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Это твоя (Eto tvoya) мама (mama) » : tvoya =",
+              "options": ["mon (masc.)", "ta (fém.)", "son (masc.)", "leur"],
+              "correctAnswers": [1],
+              "explanation": "Твоя s'accorde au féminin : « ta maman »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) не (ne) было (bylo) урока (uroka) » : ne nie :",
+              "options": [
+                "la présence du cours hier",
+                "le mot завтра",
+                "le genre neutre",
+                "le pronom я"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Не было урока = « il n'y a pas eu de cours » hier."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont masculins ?",
+              "options": [
+                "брат (brat)",
+                "дочь (doch')",
+                "стол (stol)",
+                "тётя (tyotya)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Брат et стол sont masculins ; дочь et тётя sont féminins."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Это яблоко (Eto yabloko) » : yabloko est :",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [2],
+              "explanation": "Яблокo en -о est neutre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ordre logique : hier → aujourd'hui → ?",
+              "options": [
+                "вчера (vchera)",
+                "завтра (zavtra)",
+                "дом (dom)",
+                "это (eto)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Après « aujourd'hui », on place « demain » (завтра)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Это не ручка (Eto ne ruchka) » signifie :",
+              "options": [
+                "C'est un stylo",
+                "Ce n'est pas un stylo",
+                "Où est le stylo ?",
+                "Donne le stylo"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не + nom nie l'identification."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) холодно (kholodno) » décrit :",
+              "options": [
+                "hier froid",
+                "demain froid",
+                "toujours froid",
+                "il fait chaud"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра indique demain ; холодно = froid."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Комната (Komnata) » est :",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [1],
+              "explanation": "Комната (pièce) est féminin en -а."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Это наш (Eto nash) класс (klass) » : klass est :",
+              "options": ["féminin", "neutre", "masculin", "adverbe"],
+              "correctAnswers": [2],
+              "explanation": "Класс est masculin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) ты (ty) читал (chital) » : ty =",
+              "options": ["je", "tu", "il", "on"],
+              "correctAnswers": [1],
+              "explanation": "Ты = « tu »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot est féminin ?",
+              "options": [
+                "дедушка (dedushka)",
+                "девочка (devochka)",
+                "дед (ded)",
+                "дядя (dya)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Девочка (fillette) est féminin ; les autres sont masculins."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Это здание (Eto zdanie) » : zdanie est :",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [2],
+              "explanation": "Les noms en -ие comme здание sont neutres."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adverbes indiquent un jour ?",
+              "options": [
+                "вчера (vchera)",
+                "завтра (zavtra)",
+                "книга (kniga)",
+                "очень (ochen')"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Вчера et завтра situent dans le temps ; книга et очень ne le font pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Это солнце (Eto solntse) » : solntse est :",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [2],
+              "explanation": "Солнце est neutre (terminaison -е)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) вечером (vecherom) » =",
+              "options": [
+                "demain matin",
+                "hier soir",
+                "aujourd'hui midi",
+                "jamais le soir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчера + вечером = hier le soir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Это не окно (Eto ne okno) » :",
+              "options": [
+                "C'est la fenêtre",
+                "Ce n'est pas la fenêtre",
+                "Ouvre la fenêtre",
+                "Ferme la porte"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не nie : ce n'est pas une fenêtre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Папа (Papa) » est :",
+              "options": ["féminin", "neutre", "masculin", "pluriel"],
+              "correctAnswers": [2],
+              "explanation": "Папa (papa) est masculin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) утром (utrom) » =",
+              "options": [
+                "hier matin",
+                "demain matin",
+                "ce soir",
+                "la nuit dernière"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра утром = demain matin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Это моя (Eto moya) сестра (sestra) » : moya =",
+              "options": ["mon (masc.)", "ma (fém.)", "mes", "ton"],
+              "correctAnswers": [1],
+              "explanation": "Моя s'accorde au féminin : « ma sœur »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Дверь (Dver') » est :",
+              "options": ["masculin", "féminin", "neutre", "invariable"],
+              "correctAnswers": [1],
+              "explanation": "Дверь (porte) est féminin (terminaison moue)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) он (on) писал (pisal) » : on =",
+              "options": ["elle", "il", "nous", "vous"],
+              "correctAnswers": [1],
+              "explanation": "Он = « il »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Это чай (Eto chay) » : chay est :",
+              "options": ["féminin", "neutre", "masculin", "pluriel"],
+              "correctAnswers": [2],
+              "explanation": "Чай (thé) est masculin."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent это (eto) correctement pour présenter ?",
+              "options": [
+                "Это стол (Eto stol)",
+                "Это Anna (Eto Anna)",
+                "Стол это (Stol eto)",
+                "Вчера это (Vchera eto)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Это en tête présente « c'est » ; les autres ordres sont incorrects en 5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Бабушка (Babushka) » est :",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Бабушка (grand-mère) est féminin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) воскресенье (voskresen'ye) » parle de :",
+              "options": [
+                "hier dimanche",
+                "demain / un dimanche à venir",
+                "chaque lundi",
+                "jamais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра situe l'événement à demain (ou le prochain dimanche selon contexte)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Это не молоко (Eto ne moloko) » :",
+              "options": [
+                "C'est du lait",
+                "Ce n'est pas du lait",
+                "Boire du lait",
+                "Du lait hier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не nie l'identification du lait."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) была (byla) погода (pogoda) » : pogoda est :",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [1],
+              "explanation": "Погода (météo) est féminin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Это ваш (Eto vash) учебник (uchebnik) » : uchebnik est :",
+              "options": ["féminin", "neutre", "masculin", "adverbe"],
+              "correctAnswers": [2],
+              "explanation": "Учебник (manuel) est masculin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Собака (Sobaka) » est :",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [1],
+              "explanation": "Собака (chienne/chien) est féminin en -а."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) не (ne) работал (rabotal) » implique :",
+              "options": [
+                "travail demain",
+                "pas de travail hier",
+                "travail aujourd'hui",
+                "travail toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчера + ne + verbe = négation hier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Это море (Eto more) » : more est :",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [2],
+              "explanation": "Море (mer) est neutre en -е."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) она (ona) дома (doma) » : ona =",
+              "options": ["il", "elle", "nous", "ils"],
+              "correctAnswers": [1],
+              "explanation": "Она = « elle »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels noms finissent en -а (souvent féminin) ?",
+              "options": [
+                "улица (ulitsa)",
+                "земля (zemlya)",
+                "стол (stol)",
+                "чай (chay)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Улица et земля finissent en -а ; стол et чай ne conviennent pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Это не завтра (Eto ne zavtra) » est :",
+              "options": [
+                "Une date affirmée",
+                "Une négation sur « demain »",
+                "Un salut",
+                "Un genre neutre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не zavtra nie que ce soit demain (phrase atypique mais lisible)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) шёл (shyol) дождь (dozhd') » : dozhd' est :",
+              "options": ["féminin", "neutre", "masculin", "pluriel"],
+              "correctAnswers": [2],
+              "explanation": "Дождь (pluie) est masculin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Это лампа (Eto lampa) » : lampa est :",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Лампа est féminin en -а."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) экзамен (ekzamen) » : ekzamen est :",
+              "options": ["féminin", "masculin", "neutre", "adverbe"],
+              "correctAnswers": [1],
+              "explanation": "Экзамен est masculin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Это их (Eto ikh) дом (dom) » : ikh =",
+              "options": ["mon", "ton", "leur", "notre"],
+              "correctAnswers": [2],
+              "explanation": "Их = « leur / leurs »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) мы (my) гуляли (gulyali) » : temps ?",
+              "options": ["futur", "passé (hier)", "présent", "impératif"],
+              "correctAnswers": [1],
+              "explanation": "Вчера place l'action à hier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Это время (Eto vremya) » : vremya est :",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [2],
+              "explanation": "Время (temps) est neutre en -я."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Кошка (Koshka) » est :",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Кошка (chatte) est féminin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) не (ne) школа (shkola) » suggère :",
+              "options": [
+                "cours demain",
+                "pas école demain",
+                "école hier",
+                "école toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не nie : demain ce n'est pas l'école (pas de cours)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont neutres en -о ?",
+              "options": [
+                "дерево (derevo)",
+                "утро (utro)",
+                "брат (brat)",
+                "ночь (noch')"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Дерево et утро finissent en -о ; брат est masc., ночь fém."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Это не вчера (Eto ne vchera) » nie :",
+              "options": [
+                "demain",
+                "le fait que ce soit hier",
+                "aujourd'hui",
+                "une fenêtre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не vchera = « ce n'est pas hier »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) ветер (veter) » : veter est :",
+              "options": ["féminin", "masculin", "neutre", "pluriel"],
+              "correctAnswers": [1],
+              "explanation": "Ветер (vent) est masculin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Это тетрадь (Eto tetrad') » : tetrad' est :",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Тетрадь (cahier) est féminin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) праздник (prazdnik) » : prazdnik est :",
+              "options": ["féminin", "masculin", "neutre", "adverbe"],
+              "correctAnswers": [1],
+              "explanation": "Праздник (fête) est masculin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Это село (Eto selo) » : selo est :",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [2],
+              "explanation": "Село (village) est neutre en -о."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) вы (vy) были (byli) » : vy =",
+              "options": ["tu", "vous", "ils", "je"],
+              "correctAnswers": [1],
+              "explanation": "Вы = « vous »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Это не сегодня (Eto ne segodnya) » :",
+              "options": [
+                "C'est aujourd'hui",
+                "Ce n'est pas aujourd'hui",
+                "Hier seulement",
+                "Demain matin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не segodnya nie « aujourd'hui »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Луна (Luna) » est :",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Луна (lune) est féminin en -а."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) тепло (teplo) » sans verbe :",
+              "options": [
+                "Il faisait chaud hier",
+                "Il fera / il fait chaud demain",
+                "Il neige",
+                "Fermez la fenêtre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра + adverbe météo = demain il fera chaud."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pronoms sujets sont corrects en russe ?",
+              "options": ["я (ya)", "ты (ty)", "это (eto)", "завтра (zavtra)"],
+              "correctAnswers": [0, 1],
+              "explanation": "Я et ты sont pronoms ; это et завтра ne sont pas des sujets personnels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Это небо (Eto nebo) » : nebo est :",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [2],
+              "explanation": "Небо (ciel) est neutre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) ночью (noch'yu) » =",
+              "options": ["demain nuit", "hier la nuit", "midi", "matinée"],
+              "correctAnswers": [1],
+              "explanation": "Вчера ночью = hier la nuit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Это не брат (Eto ne brat) » :",
+              "options": [
+                "C'est mon frère",
+                "Ce n'est pas mon frère",
+                "Où est le frère ?",
+                "Frère demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не nie l'identification « frère »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) дождь (dozhd') » évoque :",
+              "options": [
+                "pluie hier",
+                "pluie demain",
+                "soleil hier",
+                "neige toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра situe la pluie à demain."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Это озеро (Eto ozero) » : ozero est :",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [2],
+              "explanation": "Озеро (lac) est neutre en -о."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Портрет (Portret) » est :",
+              "options": ["féminin", "masculin", "neutre", "pluriel"],
+              "correctAnswers": [1],
+              "explanation": "Портрет est masculin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) они (oni) там (tam) » : oni =",
+              "options": ["nous", "vous", "ils/elles", "je"],
+              "correctAnswers": [2],
+              "explanation": "Они = « ils / elles »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Это её (Eto yeyo) сумка (sumka) » : yeyo =",
+              "options": ["son (à elle)", "mon", "notre", "leur"],
+              "correctAnswers": [0],
+              "explanation": "Её = « son / sa » (à elle)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) рано (rano) » =",
+              "options": ["tôt hier", "tôt demain", "tard hier", "jamais tôt"],
+              "correctAnswers": [1],
+              "explanation": "Завтра rano = demain tôt."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes contiennent не (ne) pour nier ?",
+              "options": [
+                "Это не стол (Eto ne stol)",
+                "Не завтра (Ne zavtra)",
+                "Это стол (Eto stol)",
+                "Вчера дома (Vchera doma)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux premières contiennent не ; les autres sont affirmatives sans ne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Это поле (Eto pole) » : pole est :",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [2],
+              "explanation": "Поле (champ) est neutre en -е."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) поздно ( pozdno) » =",
+              "options": ["tôt demain", "tard hier", "tôt hier", "demain midi"],
+              "correctAnswers": [1],
+              "explanation": "Вчера pozdno = hier tard."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Это не письмо (Eto ne pis'mo) » :",
+              "options": [
+                "C'est une lettre",
+                "Ce n'est pas une lettre",
+                "Écrire une lettre",
+                "Lettre demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не nie : ce n'est pas une lettre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) встреча (vstrecha) » : vstrecha est :",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Встреча (rencontre) est féminin en -а."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Это его (Eto yego) телефон (telefon) » : yego =",
+              "options": ["son (à lui)", "ma", "ta", "notre"],
+              "correctAnswers": [0],
+              "explanation": "Его = « son » (à lui)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Картина (Kartina) » est :",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [1],
+              "explanation": "Картина (tableau) est féminin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) снег (sneg) » : sneg est :",
+              "options": ["féminin", "masculin", "neutre", "adverbe"],
+              "correctAnswers": [1],
+              "explanation": "Снег (neige) est masculin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Это не она (Eto ne ona) » nie :",
+              "options": ["« c'est elle »", "demain", "hier", "neutre"],
+              "correctAnswers": [0],
+              "explanation": "Не ona = « ce n'est pas elle »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) каникулы (kanikuly) » parle de :",
+              "options": [
+                "vacances hier",
+                "vacances demain / à venir",
+                "école hier",
+                "table"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра situe les vacances au futur proche."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent la famille (féminin) ?",
+              "options": [
+                "мать (mat')",
+                "дочь (doch')",
+                "отец (otets)",
+                "дед (ded)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Мать et дочь sont féminins ; отец et дед masculins."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Это не время (Eto ne vremya) » :",
+              "options": [
+                "C'est l'heure",
+                "Ce n'est pas le moment / le temps",
+                "Demain",
+                "Hier soir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не vremya nie l'identification « temps »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) первый (pervyy) день (den') » : den' est :",
+              "options": ["féminin", "masculin", "neutre", "pluriel"],
+              "correctAnswers": [1],
+              "explanation": "День (jour) est masculin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Это зеркало (Eto zer kalo) » : zerkalo est :",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [2],
+              "explanation": "Зеркало (miroir) est neutre en -о."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) последний (posledniy) урок (urok) » : temps ?",
+              "options": [
+                "passé",
+                "futur (demain)",
+                "présent seulement",
+                "hier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра indique demain pour le dernier cours."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Это наша (Eto nasha) комната (komnata) » : nasha =",
+              "options": ["mon", "ma", "notre (fém.)", "leur"],
+              "correctAnswers": [2],
+              "explanation": "Наша = « notre » accord féminin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Вчера (Vchera) без (bez) дождя (dozhdya) » =",
+              "options": [
+                "avec pluie demain",
+                "sans pluie hier",
+                "pluie demain",
+                "neige"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Без dozhdya = sans pluie ; вчера = hier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Это не они (Eto ne oni) » :",
+              "options": [
+                "Ce sont eux",
+                "Ce ne sont pas eux",
+                "Demain",
+                "Frère"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не oni nie le pronom « ils »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Город (Gorod) » est :",
+              "options": ["féminin", "masculin", "neutre", "pluriel"],
+              "correctAnswers": [1],
+              "explanation": "Город (ville) est masculin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Завтра (Zavtra) снова (snova) школа (shkola) » suggère :",
+              "options": [
+                "pas d'école",
+                "école encore demain",
+                "école hier seulement",
+                "table neutre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Снова + завтра + школа = l'école reprend demain."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Expression",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses présentent correctement avec « Это (Eto) » ?",
+              "options": [
+                "Это моя книга (Eto moya kniga)",
+                "Это вчера (Eto vchera) seul",
+                "Это стол (Eto stol)",
+                "Вчера это (Vchera eto)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Это + nom ou Это + déterminant + nom ; « вчера » seul ou ordre inversé est incorrect."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour dire « C'est une maison », tu choisis :",
+              "options": [
+                "Это дом (Eto dom)",
+                "Дом это (Dom eto)",
+                "Вчера дом (Vchera dom)",
+                "Не это дом (Ne eto dom)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule standard est Это + nom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour dire « hier », tu écris :",
+              "options": [
+                "завтра (zavtra)",
+                "вчера (vchera)",
+                "сегодня (segodnya)",
+                "утро (utro)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчера = hier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour dire « demain », tu écris :",
+              "options": [
+                "вчера (vchera)",
+                "завтра (zavtra)",
+                "сейчас (seychas)",
+                "дом (dom)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра = demain."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ce n'est pas un stylo » :",
+              "options": [
+                "Это ручка (Eto ruchka)",
+                "Это не ручка (Eto ne ruchka)",
+                "Ручка это (Ruchka eto)",
+                "Завтра ручка (Zavtra ruchka)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не après Это nie l'identification."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Accorde : « Это … сестра (sestra) » avec « ma » :",
+              "options": ["мой (moy)", "моя (moya)", "моё (moyo)", "мои (moi)"],
+              "correctAnswers": [1],
+              "explanation": "Сестра est féminin → моя."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase courte : « Demain à l'école » :",
+              "options": [
+                "Вчера в школе (Vchera v shkole)",
+                "Завтра в школе (Zavtra v shkole)",
+                "Это школа (Eto shkola)",
+                "Не школа (Ne shkola)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра в школе = demain à l'école."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Это … друг (drug) » avec « mon » (masc.) :",
+              "options": [
+                "моя (moya)",
+                "мой (moy)",
+                "моё (moyo)",
+                "мамa (mama)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Друг masculin → мой."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Hier j'étais à la maison » commence par :",
+              "options": [
+                "Завтра (Zavtra)",
+                "Вчера (Vchera)",
+                "Это (Eto)",
+                "Не (Ne)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчера ouvre la phrase sur hier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Это … яблоко (yabloko) » avec « ce » neutre implicite :",
+              "options": [
+                "мой яблоко",
+                "Это яблоко (Eto yabloko)",
+                "Вчера яблоко",
+                "Яблоко это"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Présentation neutre : Это + яблоко."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels déterminants vont avec un nom féminin ?",
+              "options": [
+                "твоя (tvoya)",
+                "моя (moya)",
+                "мой (moy)",
+                "твой (tvoy)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Твоя et моя sont féminins ; мой et твой sont masculins."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réponse à « Что это? (Chto eto?) » pour une fenêtre :",
+              "options": [
+                "Это окно (Eto okno)",
+                "Окно вчера (Okno vchera)",
+                "Не завтра (Ne zavtra)",
+                "Завтра окно"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On répond Это + nom neutre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nier « c'est demain » (jeu de mots 5e) :",
+              "options": [
+                "Это завтра (Eto zavtra)",
+                "Это не завтра (Eto ne zavtra)",
+                "Завтра это",
+                "Вчера завтра"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не + adverbe nie l'adverbe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Notre classe » (fém. класс? masculin klass) :",
+              "options": [
+                "наша класс",
+                "наш класс (nash klass)",
+                "моя класс",
+                "Это класс"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Класс masculin → наш класс."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mini-phrase météo : « Demain froid » :",
+              "options": [
+                "Вчера холодно (Vchera kholodno)",
+                "Завтра холодно (Zavtra kholodno)",
+                "Это холодно",
+                "Не холодно"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра + adverbe impersonnel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Présenter « ta maman » :",
+              "options": [
+                "Это твой мама",
+                "Это твоя мама (Eto tvoya mama)",
+                "Твоя это",
+                "Вчера мама"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Мама féminin → твоя."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Hier il faisait chaud » :",
+              "options": [
+                "Завтра жарко",
+                "Вчера жарко (Vchera zharko)",
+                "Это жарко",
+                "Не жарко"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчера + жарко."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ce n'est pas le ciel » :",
+              "options": [
+                "Это небо (Eto nebo)",
+                "Это не небо (Eto ne nebo)",
+                "Небо вчера",
+                "Завтра небо"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Не devant nebo nie l'identification."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« C'est mon cahier » (tetrad' fém.) :",
+              "options": [
+                "Это мой тетрадь",
+                "Это моя тетрадь (Eto moya tetrad')",
+                "Это моё тетрадь",
+                "Вчера тетрадь"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Тетрадь → моя."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Saluer le temps : « Aujourd'hui » en tête :",
+              "options": ["Сегодня (Segodnya) …", "Завтра …", "Это …", "Не …"],
+              "correctAnswers": [0],
+              "explanation": "Сегодня = aujourd'hui en début de phrase."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases situent l'action à demain ?",
+              "options": [
+                "Завтра урок (Zavtra urok)",
+                "Завтра дома (Zavtra doma)",
+                "Вчера урок (Vchera urok)",
+                "Это урок (Eto urok)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Завтра en tête = demain ; вчера et это seuls ne le font pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Exprimer « C'est du thé » :",
+              "options": [
+                "Это чай (Eto chay)",
+                "Чай это",
+                "Не чай",
+                "Вчера чай"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Это чай présente le thé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Son livre » (à lui, kniga fém.) :",
+              "options": [
+                "его книга (yego kniga)",
+                "её книга",
+                "мой книга",
+                "Это книга"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Его + kniga = son livre (à lui)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Refuser l'identité « table » :",
+              "options": [
+                "Это стол (Eto stol)",
+                "Это не стол (Eto ne stol)",
+                "Стол завтра",
+                "Вчера стол"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не стол = ce n'est pas une table."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Hier au parc » (début) :",
+              "options": [
+                "Завтра в парке",
+                "Вчера в парке (Vchera v parke)",
+                "Это парк",
+                "Не парк"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчера в парке = hier au parc."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Neutre : « C'est du lait » :",
+              "options": [
+                "Это молоко (Eto moloko)",
+                "Это моя молоко",
+                "Молоко вчера",
+                "Не завтра"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Молокo neutre sans changement de déterminant ici."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ta sœur » en phrase :",
+              "options": [
+                "Это твой сестра",
+                "Это твоя сестра (Eto tvoya sestra)",
+                "Твоя сестра это",
+                "Завтра сестра"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Сестра → твоя."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Demain nous sommes à la maison » :",
+              "options": [
+                "Вчера мы дома",
+                "Завтра мы дома (Zavtra my doma)",
+                "Это мы дома",
+                "Не дома"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра my doma = demain nous à la maison."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Question « Qu'est-ce que c'est ? » :",
+              "options": [
+                "Кто это? (Kto eto?)",
+                "Что это? (Chto eto?)",
+                "Где завтра?",
+                "Не это?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Что это ? = qu'est-ce que c'est ?"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ce n'est pas hier » (révision) :",
+              "options": [
+                "Это вчера",
+                "Это не вчера (Eto ne vchera)",
+                "Вчера не",
+                "Завтра вчера"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не вчera nie « hier »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels groupes « Это + nom » sont grammaticalement ok en 5e ?",
+              "options": [
+                "Это папа (Eto papa)",
+                "Это письмо (Eto pis'mo)",
+                "Это в школе (Eto v shkole)",
+                "Папа это дом"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Это + nom masculin/neutre ok ; « в школе » est un lieu, pas une identification simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Répondre « C'est elle » :",
+              "options": [
+                "Это он (Eto on)",
+                "Это она (Eto ona)",
+                "Это они",
+                "Это не"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это она = c'est elle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Mon village » (selo neutre) :",
+              "options": [
+                "мой село",
+                "моё село (moyo selo)",
+                "моя село",
+                "Это село"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Село neutre → моё."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase : « Hier tu étais là » :",
+              "options": [
+                "Завтра ты там",
+                "Вчера ты там (Vchera ty tam)",
+                "Это ты там",
+                "Не ты там"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчера ty tam."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nier « c'est une école » :",
+              "options": [
+                "Это школа",
+                "Это не школа (Eto ne shkola)",
+                "Школа завтра",
+                "Вчера школа"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не шкola."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Demain examen » sans verbe :",
+              "options": [
+                "Вчера экзамен",
+                "Завтра экзамен (Zavtra ekzamen)",
+                "Это экзамен",
+                "Не экзамен"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра ekzamen = demain examen."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« C'est notre maison » :",
+              "options": [
+                "Это наш дом (Eto nash dom)",
+                "Это наша дом",
+                "Это моё дом",
+                "Дом вчера"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Дом masculin → наш."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Opposer hier et demain :",
+              "options": [
+                "вчера … сегодня … завтра (vchera … segodnya … zavtra)",
+                "стол … дом … книга",
+                "это … это … это",
+                "не … не … не"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement classique des adverbes de temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ce n'est pas du lait » :",
+              "options": [
+                "Это молоко",
+                "Это не молоко (Eto ne moloko)",
+                "Молоко это",
+                "Завтра молоко"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не moloko."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Présenter « leur chat » (кошка fém.) :",
+              "options": [
+                "Это их кошка (Eto ikh koshka)",
+                "Это их кот",
+                "Их это",
+                "Вчера кошка"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Их + koshka = leur chatte."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses utilisent вчера (vchera) ?",
+              "options": [
+                "Вчера дождь (Vchera dozhd')",
+                "Вчера я дома (Vchera ya doma)",
+                "Завтра дождь",
+                "Это дождь"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Seules les phrases commençant par вчера comptent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« C'est lui » :",
+              "options": ["Это она", "Это он (Eto on)", "Это мы", "Это не"],
+              "correctAnswers": [1],
+              "explanation": "Это он = c'est lui."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Accord : « Это … окно (okno) » « ton » neutre :",
+              "options": [
+                "твоё окно (tvoyo okno) dans Это твоё окно",
+                "твой окно",
+                "твоя окно",
+                "мой окно"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Окно neutre → твоё."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Demain il sera venteux » (simple) :",
+              "options": [
+                "Вчера ветер",
+                "Завтра ветер (Zavtra veter)",
+                "Это ветер",
+                "Не ветер"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра veter."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Refuser : « ce n'est pas une porte » :",
+              "options": [
+                "Это дверь",
+                "Это не дверь (Eto ne dver')",
+                "Дверь завтра",
+                "Вчера дверь"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не dver'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mini-dialogue : « Qu'est-ce que c'est ? — C'est un crayon » :",
+              "options": [
+                "— Это карандаш (Eto karandash)",
+                "— Завтра карандаш",
+                "— Не карандаш",
+                "— Карандаш вчера"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse type Это + nom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Hier soir » :",
+              "options": [
+                "Завтра вечером",
+                "Вчера вечером (Vchera vecherom)",
+                "Это вечер",
+                "Не вечер"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчера vecherom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ma grand-mère » :",
+              "options": [
+                "Это мой бабушка",
+                "Это моя бабушка (Eto moya babushka)",
+                "Это моё бабушка",
+                "Бабушка завтра"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Бабушка → моя."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ce ne sont pas eux » :",
+              "options": [
+                "Это они",
+                "Это не они (Eto ne oni)",
+                "Они вчера",
+                "Завтра они"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не oni."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Planifier : « Demain matin » :",
+              "options": [
+                "Вчера утром",
+                "Завтра утром (Zavtra utrom)",
+                "Это утро",
+                "Не утро"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра utrom."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes nient avec не après Это ?",
+              "options": [
+                "Это не дом (Eto ne dom)",
+                "Это не книга (Eto ne kniga)",
+                "Это дом (Eto dom)",
+                "Завтра дом (Zavtra dom)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Это не + nom nie ; les affirmatives sans ne ne comptent pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Exprimer « C'est la lune » :",
+              "options": [
+                "Это луна (Eto luna)",
+                "Луна это",
+                "Вчера луна",
+                "Не луна"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Это luna."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Son sac » (à elle, sumka) :",
+              "options": [
+                "его сумка",
+                "её сумка (yeyo sumka)",
+                "мой сумка",
+                "Это сумка"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Её sumka."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Hier neige » :",
+              "options": [
+                "Завтра снег",
+                "Вчера снег (Vchera sneg)",
+                "Это снег",
+                "Не снег"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчera sneg."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« C'est votre manuel » (uchebnik masc.) :",
+              "options": [
+                "Это ваш учебник (Eto vash uchebnik)",
+                "Это ваша учебник",
+                "Это ваше учебник",
+                "Учебник вчера"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Учебник → ваш."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Question « Qui est-ce ? » :",
+              "options": [
+                "Что это?",
+                "Кто это? (Kto eto?)",
+                "Где вчера?",
+                "Не это?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Кто это ? = qui est-ce ?"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Demain fête » :",
+              "options": [
+                "Вчера праздник",
+                "Завтра праздник (Zavtra prazdnik)",
+                "Это праздник",
+                "Не праздник"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра prazdnik."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ce n'est pas une fillette » :",
+              "options": [
+                "Это девочка",
+                "Это не девочка (Eto ne devochka)",
+                "Девочка завтра",
+                "Вчера девочка"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не devochka."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Mon père » :",
+              "options": [
+                "Это моя папа",
+                "Это мой папа (Eto moy papa)",
+                "Это моё папа",
+                "Папа завтра"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Папa masc. → мой."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Enchaîner « aujourd'hui puis demain » :",
+              "options": [
+                "Сегодня … завтра (Segodnya … zavtra)",
+                "Вчера … стол",
+                "Это … это",
+                "Не … дом"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Segodnya puis zavtra."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels déterminants conviennent au masculin ?",
+              "options": [
+                "твой друг (tvoy drug)",
+                "наш город (nash gorod)",
+                "твоя друг",
+                "наша город"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Твой/наш + nom masc. ; твоя/наша seraient faux ici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réponse : « C'est un chien » (собaka fém. mot générique chien) :",
+              "options": [
+                "Это собака (Eto sobaka)",
+                "Собака это",
+                "Завтра собака",
+                "Не собака"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Это sobaka."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hier pluie » :",
+              "options": [
+                "Завтра дождь",
+                "Вчера дождь (Vchera dozhd')",
+                "Это дождь",
+                "Не дождь"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчera dozhd'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« C'est notre pièce » (komnata) :",
+              "options": [
+                "Это наш комната",
+                "Это наша комната (Eto nasha komnata)",
+                "Это наше комната",
+                "Комната завтра"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Комната → наша."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ce n'est pas aujourd'hui » :",
+              "options": [
+                "Это сегодня",
+                "Это не сегодня (Eto ne segodnya)",
+                "Сегодня не",
+                "Завтра сегодня"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не segodnya."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Demain rencontre » :",
+              "options": [
+                "Вчера встреча",
+                "Завтра встреча (Zavtra vstrecha)",
+                "Это встреча",
+                "Не встреча"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра vstrecha."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Neutre : « C'est le temps / le moment » :",
+              "options": [
+                "Это время (Eto vremya)",
+                "Это мой время",
+                "Время это",
+                "Завтра время"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Это vremya."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ta fille » (doch') :",
+              "options": [
+                "Это твой дочь",
+                "Это твоя дочь (Eto tvoya doch')",
+                "Это твоё дочь",
+                "Дочь вчера"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Дочь → твоя."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Hier nous lisions » (marker) :",
+              "options": [
+                "Завтра мы читаем",
+                "Вчера мы … (Vchera my …)",
+                "Это мы",
+                "Не мы"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчera my … situe hier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ce n'est pas une lettre » :",
+              "options": [
+                "Это письмо",
+                "Это не письмо (Eto ne pis'mo)",
+                "Письмо завтра",
+                "Вчера письмо"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не pis'mo."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment « demain » ?",
+              "options": [
+                "Завтра тепло (Zavtra teplo)",
+                "Завтра каникулы (Zavtra kanikuly)",
+                "Вчера тепло",
+                "Это каникулы"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Завтра en tête = demain dans les deux cas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Présenter « le soleil » :",
+              "options": [
+                "Это солнце (Eto solntse)",
+                "Солнце вчера",
+                "Не солнце",
+                "Завтра солнце"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Это solntse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Mon frère » :",
+              "options": [
+                "Это моя брат",
+                "Это мой брат (Eto moy brat)",
+                "Это моё брат",
+                "Брат завтра"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Брат → мой."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Hier tard » :",
+              "options": [
+                "Завтра поздно",
+                "Вчера поздно (Vchera pozdno)",
+                "Это поздно",
+                "Не поздно"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчera pozdno."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« C'est une rue » (ulitsa) :",
+              "options": [
+                "Это улица (Eto ulitsa)",
+                "Улица это",
+                "Не улица",
+                "Вчера улица"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Это ulitsa."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ce n'est pas le ciel » (répétition) :",
+              "options": [
+                "Это небо",
+                "Это не небо (Eto ne nebo)",
+                "Небо завтра",
+                "Вчера небо"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не nebo."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Demain vacances » :",
+              "options": [
+                "Вчера каникулы",
+                "Завтра каникулы (Zavtra kanikuly)",
+                "Это каникулы",
+                "Не каникулы"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра kanikuly."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Votre tableau » (kartina fém.) :",
+              "options": [
+                "ваш картина",
+                "ваша картина (vasha kartina) dans Это ваша картина",
+                "ваше картина",
+                "Это ваш картина"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Картина → ваша."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Répondre « C'est nous » :",
+              "options": ["Это я", "Это мы (Eto my)", "Это ты", "Это не"],
+              "correctAnswers": [1],
+              "explanation": "Это my = c'est nous."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Plan : « Demain dernier jour » :",
+              "options": [
+                "Вчера последний день",
+                "Завтра последний день (Zavtra posledniy den')",
+                "Это день",
+                "Не день"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра posledniy den'."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels « моё / твоё » sont corrects ?",
+              "options": [
+                "моё яблоко (moyo yabloko)",
+                "твоё утро (tvoyo utro)",
+                "моё мама",
+                "твоё сестра"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Neutres яблоко et утро ; мама et сестра sont féminins."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« C'est une fillette » :",
+              "options": [
+                "Это девочка (Eto devochka)",
+                "Девочка это",
+                "Завтра девочка",
+                "Не девочка"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Это devochka."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hier sans pluie » :",
+              "options": [
+                "Завтра без дождя",
+                "Вчера без дождя (Vchera bez dozhdya)",
+                "Это дождь",
+                "Не дождь"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчera bez dozhdya."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ce n'est pas une chatte » :",
+              "options": [
+                "Это кошка",
+                "Это не кошка (Eto ne koshka)",
+                "Кошка завтра",
+                "Вчера кошка"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не koshka."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Demain école encore » :",
+              "options": [
+                "Вчера снова школа",
+                "Завтра снова школа (Zavtra snova shkola)",
+                "Это школа",
+                "Не школа"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра snova shkola."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« C'est le lac » :",
+              "options": [
+                "Это озеро (Eto ozero)",
+                "Озеро вчера",
+                "Не озеро",
+                "Завтра озеро"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Это ozero."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Leur maison » :",
+              "options": [
+                "Это их дом (Eto ikh dom)",
+                "Это их дома",
+                "Их это",
+                "Дом завтра"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Их dom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Hier premier jour » :",
+              "options": [
+                "Завтра первый день",
+                "Вчера первый день (Vchera pervyy den')",
+                "Это день",
+                "Не день"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчera pervyy den'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ce n'est pas elle » :",
+              "options": [
+                "Это она",
+                "Это не она (Eto ne ona)",
+                "Она завтра",
+                "Вчера она"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не ona."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Formule examen : « C'est … » + « manuel » :",
+              "options": [
+                "Это учебник (Eto uchebnik)",
+                "Учебник это",
+                "Завтра учебник",
+                "Не учебник"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Это uchebnik clôt la révision expression."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles mini-phrases de révision sont correctes ?",
+              "options": [
+                "Это не стол (Eto ne stol)",
+                "Завтра в школе (Zavtra v shkole)",
+                "Мой мама (Moy mama)",
+                "Твой сестра (Tvoy sestra)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Négation et demain ok ; мой мама et твой сестра fautifs en genre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bilan : « hier » s'écrit :",
+              "options": [
+                "завтра (zavtra)",
+                "вчера (vchera)",
+                "сегодня (segodnya)",
+                "это (eto)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчера = hier, point clé du chapitre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bilan : « demain » s'écrit :",
+              "options": [
+                "вчера (vchera)",
+                "завтра (zavtra)",
+                "дом (dom)",
+                "не (ne)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра = demain."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bilan : présenter un nom neutre :",
+              "options": [
+                "Это дерево (Eto derevo)",
+                "Дерево это",
+                "Вчера дерево",
+                "Не дерево"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Это + neutre derevo."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bilan : « ma maman » :",
+              "options": [
+                "Это мой мама",
+                "Это моя мама (Eto moya mama)",
+                "Это моё мама",
+                "Мама завтра"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Мама → моя."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bilan : nier une identification :",
+              "options": [
+                "Это друг",
+                "Это не друг (Eto ne drug)",
+                "Друг завтра",
+                "Вчера друг"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Это не drug."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bilan : phrase « Demain chaud » :",
+              "options": [
+                "Вчера тепло",
+                "Завтра тепло (Zavtra teplo)",
+                "Это тепло",
+                "Не тепло"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Завтра teplo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bilan : « C'est une porte » :",
+              "options": [
+                "Это дверь (Eto dver')",
+                "Дверь это",
+                "Не дверь",
+                "Завтра дверь"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Это dver'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bilan : « Hier à la maison » :",
+              "options": [
+                "Завтра дома",
+                "Вчера дома (Vchera doma)",
+                "Это дома",
+                "Не дома"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Вчera doma."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan final : « Qu'est-ce que c'est ? — … »",
+              "options": [
+                "Завтра (Zavtra)",
+                "Это книга (Eto kniga)",
+                "Не книга",
+                "Вчера книга"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Réponse type Это + nom pour clore l'examen blanc."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

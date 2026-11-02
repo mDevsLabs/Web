@@ -1,0 +1,2613 @@
+{
+  "id": "4e-physique-chimie-04",
+  "year": "4e",
+  "subject": "physique-chimie",
+  "order": 4,
+  "title": "La matière",
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Constituants",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les molécules et la matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une molécule à l'échelle microscopique ?",
+              "options": [
+                "Un assemblage d'atomes liés entre eux",
+                "Une particule chargée électriquement",
+                "Un mélange de plusieurs liquides",
+                "Un état de la matière visible à l'œil nu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une molécule est une entité chimique électriquement neutre formée d'au moins deux atomes unis par des liaisons chimiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur de la taille d'une petite molécule comme l'eau ?",
+              "options": [
+                "Environ 1 millimètre",
+                "Environ 1 micromètre",
+                "De l'ordre du nanomètre ou d'une fraction de nanomètre",
+                "De l'ordre du centimètre"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les molécules sont minuscules : le diamètre d'une molécule d'eau est d'environ 0,3 nanomètre (0,3 × 10⁻⁹ m)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "De quoi est constituée toute la matière qui nous entoure ?",
+              "options": [
+                "De lumière et d'ondes sonores",
+                "D'atomes ou d'assemblages d'atomes (molécules)",
+                "Uniquement de vide absolu",
+                "De cellules vivantes exclusivement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Toute la matière (vivante ou inerte, solide, liquide ou gazeuse) est composée d'atomes, seuls ou combinés en molécules."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les propositions suivantes, lesquelles désignent des molécules ?",
+              "options": [
+                "Le dioxygène (O₂)",
+                "L'eau (H₂O)",
+                "Le fer métallique pur (Fe)",
+                "L'atome de carbone isolé (C)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le dioxygène (O₂) et l'eau (H₂O) sont formés de plusieurs atomes liés : ce sont des molécules. Le fer et le carbone isolés sont des atomes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans quel état physique les molécules sont-elles ordonnées et très proches les unes des autres ?",
+              "options": [
+                "L'état solide",
+                "L'état liquide",
+                "L'état gazeux",
+                "L'état de plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état solide, les molécules sont fortement liées entre elles, immobiles les unes par rapport aux autres, compactes et ordonnées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un gaz, comment se déplacent les molécules ?",
+              "options": [
+                "Elles sont immobiles et figées",
+                "Elles glissent les unes sur les autres sans jamais s'éloigner",
+                "Elles se déplacent à grande vitesse en tous sens et sont très espacées",
+                "Elles forment un réseau géométrique rigide"
+              ],
+              "correctAnswers": [2],
+              "explanation": "À l'état gazeux, les molécules sont dispersées et désordonnées : elles bougent très vite en ligne droite et s'entrechoquent continuellement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que trouve-t-on entre deux molécules d'un gaz pur ?",
+              "options": [
+                "De l'air plus léger",
+                "Du vide",
+                "De la poussière microscopique",
+                "De la vapeur d'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Entre les molécules d'un gaz ou dans la matière à l'échelle microscopique, il n'y a aucune matière : il y a du vide."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on l'état liquide de « compact » ?",
+              "options": [
+                "Parce que les molécules sont très éloignées",
+                "Parce que les molécules sont pratiquement en contact les unes avec les autres",
+                "Parce que les molécules sont parfaitement alignées",
+                "Parce qu'un liquide ne peut jamais couler"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À l'état liquide, comme à l'état solide, les molécules se touchent presque : c'est un état compact, donc peu compressible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on l'organisation des molécules à l'état gazeux ?",
+              "options": [
+                "Compacte et ordonnée",
+                "Compacte et désordonnée",
+                "Dispersée et désordonnée",
+                "Dispersée et ordonnée"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le gaz est dispersé car les molécules sont très éloignées les unes des autres, et désordonné car elles bougent dans toutes les directions."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que se passe-t-il pour les molécules d'eau liquide quand de l'eau s'évapore ?",
+              "options": [
+                "Elles sont détruites par la chaleur",
+                "Elles se coupent en atomes isolés d'hydrogène et d'oxygène",
+                "Elles s'éloignent les unes des autres et passent dans l'air",
+                "Elles doublent de taille"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Lors de l'évaporation, les molécules d'eau H₂O restent intactes : elles se séparent simplement les unes des autres pour former un gaz."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les atomes, briques élémentaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un atome par rapport à une molécule ?",
+              "options": [
+                "La brique élémentaire constitutive des molécules",
+                "Un assemblage complexe de milliards de molécules",
+                "Une cellule biologique microscopique",
+                "Un gaz toxique produit lors des combustions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les atomes sont les constituants fondamentaux de la matière : en s'associant, ils forment les molécules."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de types d'atomes différents trouve-t-on environ dans la nature ?",
+              "options": [
+                "Exactement 4 (terre, air, eau, feu)",
+                "Environ 90 à une centaine",
+                "Plusieurs dizaines de millions",
+                "Exactement 12"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il existe environ 92 éléments chimiques naturels (et environ 118 connus au total avec les éléments artificiels créés en laboratoire)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel instrument moderne permet de visualiser ou de positionner des atomes individuels ?",
+              "options": [
+                "Une loupe binoculaire",
+                "Un microscope optique de laboratoire",
+                "Un microscope à effet tunnel ou à force atomique",
+                "Un télescope astronomique"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les microscopes à effet tunnel (STM) et à force atomique (AFM) permettent de sonder la surface de la matière à l'échelle atomique."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les entités suivantes, lesquelles représentent des atomes isolés ?",
+              "options": [
+                "L'atome de carbone (C)",
+                "L'atome d'hydrogène (H)",
+                "La molécule d'eau (H₂O)",
+                "Le dioxyde de carbone (CO₂)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "C et H sont des atomes uniques, alors que H₂O et CO₂ sont des molécules formées de plusieurs atomes liés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel chimiste français du XVIIIe siècle est célèbre pour la formule « Rien ne se perd, rien ne se crée, tout se transforme » ?",
+              "options": [
+                "Louis Pasteur",
+                "Antoine Laurent de Lavoisier",
+                "René Descartes",
+                "Blaise Pascal"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Lavoisier a démontré la conservation de la masse et des éléments chimiques lors des réactions et changements d'état."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans l'Antiquité grecque, quel philosophe a proposé pour la première fois que la matière était formée de grains insécables appelés « atomos » ?",
+              "options": ["Aristote", "Démocrite", "Platon", "Pythagore"],
+              "correctAnswers": [1],
+              "explanation": "Démocrite (Ve siècle av. J.-C.) a imaginé que la matière était constituée de particules indivisibles appelées atomes (du grec « atomos », insécable)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur du diamètre d'un atome ?",
+              "options": [
+                "Environ 10⁻¹⁰ mètre (0,1 nanomètre)",
+                "Environ 10⁻³ mètre (1 millimètre)",
+                "Environ 10⁻⁶ mètre (1 micromètre)",
+                "Environ 10⁻¹ mètre (10 centimètres)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diamètre d'un atome est de l'ordre de 10⁻¹⁰ mètre, soit un dixième de nanomètre ou un dixième de milliardième de mètre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si l'on agrandissait un atome jusqu'à la taille d'une pomme, quelle taille ferait la pomme à la même échelle ?",
+              "options": [
+                "La taille d'une maison",
+                "La taille de la planète Terre",
+                "La taille d'un terrain de football",
+                "La taille d'une automobile"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il y a environ le même rapport de taille entre un atome et une pomme qu'entre une pomme et la planète Terre !"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la table qui répertorie et classe tous les atomes connus selon leurs propriétés ?",
+              "options": [
+                "Le tableau périodique des éléments (ou tableau de Mendeleïev)",
+                "Le barème des mélanges purs",
+                "La liste internationale des molécules",
+                "Le registre de Dalton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tableau périodique des éléments, conçu initialement par Dimitri Mendeleïev en 1869, classe tous les atomes connus."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux molécules composées des mêmes atomes mais disposés différemment ont-elles les mêmes propriétés chimiques ?",
+              "options": [
+                "Oui, car la nature des atomes est la seule chose qui compte",
+                "Non, l'organisation spatiale des atomes modifie les propriétés de la molécule",
+                "Oui, car leur masse est strictement identique",
+                "C'est impossible d'agencer les mêmes atomes différemment"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La façon dont les atomes sont liés entre eux est déterminante : des molécules de même formule brute mais d'agencements différents ont des propriétés distinctes."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les symboles chimiques des principaux atomes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la règle internationale d'écriture du symbole d'un élément chimique ?",
+              "options": [
+                "Une première lettre en majuscule, éventuellement suivie d'une lettre minuscule",
+                "Deux lettres toujours en majuscules",
+                "Une seule lettre toujours écrite en minuscule",
+                "Un chiffre suivi d'une lettre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le symbole d'un atome commence toujours par une majuscule (ex : C, H). Si une deuxième lettre est nécessaire, elle est toujours en minuscule (ex : Cl, Fe)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le symbole chimique de l'atome de carbone ?",
+              "options": ["Ca", "C", "Co", "Cr"],
+              "correctAnswers": [1],
+              "explanation": "Le carbone est représenté par la lettre majuscule C. Ca est le calcium, Co le cobalt et Cr le chrome."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le symbole chimique de l'atome d'hydrogène ?",
+              "options": ["Hy", "He", "H", "Hg"],
+              "correctAnswers": [2],
+              "explanation": "L'hydrogène est représenté par la lettre majuscule H. He est l'hélium et Hg le mercure."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels sont les symboles chimiques respectifs de l'azote et de l'oxygène ?",
+              "options": [
+                "N pour l'azote (de Nitrogenium)",
+                "O pour l'oxygène",
+                "Az pour l'azote",
+                "Ox pour l'oxygène"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'azote a pour symbole N (du nom latin international Nitrogenium) et l'oxygène a pour symbole O."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi l'azote porte-t-il le symbole N et non A ?",
+              "options": [
+                "Parce que le symbole dérive de son nom latin et international « Nitrogenium »",
+                "C'est un choix aléatoire sans explication",
+                "Pour ne pas le confondre avec l'argent",
+                "Parce que la lettre N ressemble à la forme de la molécule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les symboles chimiques sont internationaux : l'azote s'appelle « nitrogen » en anglais et en latin, d'où la lettre N."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le symbole chimique de l'atome de chlore ?",
+              "options": ["C", "Ch", "Cl", "Cr"],
+              "correctAnswers": [2],
+              "explanation": "Le chlore s'écrit Cl (C majuscule suivi de l minuscule) pour le distinguer du carbone (C)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le symbole chimique de l'atome de fer ?",
+              "options": ["F", "Fe", "Fr", "Fo"],
+              "correctAnswers": [1],
+              "explanation": "Le fer a pour symbole Fe (du latin Ferrum). La lettre F seule désigne le fluor."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que représente le symbole « Cu » en chimie ?",
+              "options": ["Le carbone", "Le cuivre", "Le calcium", "Le curium"],
+              "correctAnswers": [1],
+              "explanation": "Cu représente l'atome de cuivre (du latin Cuprum)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment s'écrit correctement le symbole chimique du calcium ?",
+              "options": ["C", "Cal", "Ca", "Cl"],
+              "correctAnswers": [2],
+              "explanation": "Le calcium s'écrit Ca : un C majuscule suivi d'un a minuscule. Écrire CA serait incorrect car cela désignerait deux atomes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre les écritures « CO » et « Co » ?",
+              "options": [
+                "Ce sont deux écritures du même atome",
+                "CO est la molécule de monoxyde de carbone (C et O) alors que Co est l'atome de cobalt",
+                "CO est le cobalt et Co est le cuivre",
+                "CO est un mélange et Co est un corps pur gazeux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Deux majuscules (CO) indiquent deux atomes liés (carbone et oxygène). Une majuscule suivie d'une minuscule (Co) indique un seul atome (le cobalt)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les formules chimiques usuelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie l'indice « 2 » placé en bas à droite du H dans la formule H₂O ?",
+              "options": [
+                "Qu'il y a 2 atomes d'oxygène",
+                "Qu'il y a 2 atomes d'hydrogène dans la molécule",
+                "Qu'il y a 2 molécules d'eau au total",
+                "Que la molécule a une masse de 2 grammes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'indice placé en bas à droite d'un symbole indique le nombre d'atomes de cet élément dans la molécule."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien d'atomes au total composent une molécule d'eau (H₂O) ?",
+              "options": [
+                "2 atomes",
+                "3 atomes (2 d'hydrogène et 1 d'oxygène)",
+                "1 seul atome",
+                "4 atomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une molécule d'eau comporte 2 atomes d'hydrogène (H) et 1 atome d'oxygène (O), soit 3 atomes au total."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la formule chimique du dioxygène, gaz vital présent dans l'air ?",
+              "options": ["O", "O₂", "2 O", "CO₂"],
+              "correctAnswers": [1],
+              "explanation": "Le dioxygène est formé de 2 atomes d'oxygène liés ensemble : sa formule chimique s'écrit O₂."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi ces molécules, lesquelles contiennent au moins un atome de carbone ?",
+              "options": [
+                "Le dioxyde de carbone (CO₂)",
+                "Le méthane (CH₄)",
+                "Le dioxygène (O₂)",
+                "Le diazote (N₂)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "CO₂ et CH₄ comportent la lettre C dans leur formule chimique : ils contiennent donc du carbone."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la formule chimique du dioxyde de carbone ?",
+              "options": ["CO", "C₂O", "CO₂", "C₂O₂"],
+              "correctAnswers": [2],
+              "explanation": "Le dioxyde de carbone est constitué d'un atome de carbone et de deux atomes d'oxygène, d'où la formule CO₂."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "De quels atomes est constituée une molécule de méthane de formule CH₄ ?",
+              "options": [
+                "1 atome de chlore et 4 atomes d'hélium",
+                "1 atome de carbone et 4 atomes d'hydrogène",
+                "4 atomes de carbone et 1 atome d'hydrogène",
+                "1 atome de cuivre et 4 atomes d'eau"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La formule CH₄ indique 1 atome de carbone (C) lié à 4 atomes d'hydrogène (H)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la formule chimique du diazote, gaz le plus abondant dans l'atmosphère terrestre ?",
+              "options": ["N", "N₂", "2 N", "Az₂"],
+              "correctAnswers": [1],
+              "explanation": "Le diazote est constitué de deux atomes d'azote liés entre eux : sa formule est N₂."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que représente la notation « 2 H₂O » devant une formule chimique ?",
+              "options": [
+                "Deux molécules d'eau séparées",
+                "Une seule molécule géante d'eau",
+                "Une molécule d'eau oxygénée",
+                "Deux atomes d'hydrogène sans oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le grand chiffre placé devant une formule (coefficient) indique le nombre de molécules : 2 H₂O désigne 2 molécules d'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la formule chimique du dihydrogène ?",
+              "options": ["H", "H₂", "2 H", "He"],
+              "correctAnswers": [1],
+              "explanation": "Le dihydrogène est formé de 2 atomes d'hydrogène liés ensemble, ce qui s'écrit H₂."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien d'atomes d'oxygène compte une molécule de dioxyde de carbone (CO₂) ?",
+              "options": ["1 atome", "2 atomes", "3 atomes", "Aucun atome"],
+              "correctAnswers": [1],
+              "explanation": "Le préfixe « di- » signifie deux : le dioxyde de carbone contient 2 atomes d'oxygène pour 1 atome de carbone."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Modélisation moléculaire et couleurs conventionnelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Selon la convention internationale, quelle est la couleur de la sphère modélisant l'atome de carbone ?",
+              "options": ["Blanc", "Rouge", "Noir", "Bleu"],
+              "correctAnswers": [2],
+              "explanation": "L'atome de carbone est conventionnellement représenté par une sphère noire (rappelant le charbon ou le graphite)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle couleur conventionnelle est attribuée à la sphère représentant l'atome d'hydrogène ?",
+              "options": ["Blanc", "Noir", "Rouge", "Jaune"],
+              "correctAnswers": [0],
+              "explanation": "L'hydrogène, le plus petit et le plus léger des atomes, est conventionnellement représenté par une petite sphère blanche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle couleur conventionnelle est attribuée à la sphère représentant l'atome d'oxygène ?",
+              "options": ["Bleu", "Rouge", "Vert", "Gris"],
+              "correctAnswers": [1],
+              "explanation": "L'atome d'oxygène est représenté par une sphère rouge (évoquant souvent le sang ou le feu)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles associations couleur-atome sont exactes selon les modèles moléculaires conventionnels ?",
+              "options": [
+                "Carbone = sphère noire",
+                "Azote = sphère bleue",
+                "Hydrogène = sphère rouge",
+                "Oxygène = sphère blanche"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Carbone = noir et Azote = bleu. En revanche, l'hydrogène est blanc et l'oxygène est rouge."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle couleur représente conventionnellement l'atome d'azote dans les modèles moléculaires ?",
+              "options": ["Jaune", "Vert", "Bleu", "Marron"],
+              "correctAnswers": [2],
+              "explanation": "L'atome d'azote est modélisé par une sphère bleue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment est constitué le modèle moléculaire de l'eau (H₂O) ?",
+              "options": [
+                "Une sphère rouge centrale liée à deux sphères blanches",
+                "Deux sphères rouges liées à une sphère noire",
+                "Une sphère noire liée à deux sphères bleues",
+                "Trois sphères blanches alignées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une molécule d'eau comporte un atome d'oxygène (rouge) lié à deux atomes d'hydrogène (blancs), formant un angle d'environ 105°."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment est modélisée la molécule de dioxygène (O₂) ?",
+              "options": [
+                "Deux sphères blanches accolées",
+                "Deux sphères rouges accolées",
+                "Une sphère rouge et une sphère noire",
+                "Deux sphères bleues accolées"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La molécule de dioxygène est composée de deux atomes d'oxygène : elle est modélisée par deux sphères rouges unies."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle couleur est conventionnellement attribuée à l'atome de chlore ?",
+              "options": ["Vert", "Violet", "Orange", "Rose"],
+              "correctAnswers": [0],
+              "explanation": "Le chlore est représenté par une sphère verte (le gaz dichlore pur a d'ailleurs une teinte jaune-verdâtre)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment est modélisée la molécule de dioxyde de carbone (CO₂) ?",
+              "options": [
+                "Une sphère noire centrale liée à deux sphères rouges opposées (alignées)",
+                "Une sphère rouge centrale liée à deux sphères noires",
+                "Trois sphères noires en triangle",
+                "Une sphère bleue liée à deux sphères blanches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dioxyde de carbone est une molécule linéaire : un atome de carbone central (noir) entouré de deux atomes d'oxygène (rouges)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la géométrie spatiale du modèle de la molécule de méthane (CH₄) ?",
+              "options": [
+                "Un carré plat",
+                "Un tétraèdre régulier",
+                "Une ligne droite",
+                "Un cercle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dans le méthane, les 4 atomes d'hydrogène (blancs) pointent vers les sommets d'un tétraèdre autour du carbone central (noir)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La composition de l'air",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "L'air qui constitue notre atmosphère est-il un corps pur ou un mélange ?",
+              "options": [
+                "Un corps pur simple",
+                "Un mélange homogène de plusieurs gaz",
+                "Un corps pur composé",
+                "Un mélange hétérogène"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'air est un mélange homogène de plusieurs gaz différents, principalement le diazote et le dioxygène."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la proportion volumique approximative de diazote (N₂) dans l'air sec ?",
+              "options": [
+                "Environ 21 %",
+                "Environ 50 %",
+                "Environ 78 % (près de 4/5 en volume)",
+                "Moins de 1 %"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le diazote est le gaz majoritaire de l'air : il représente environ 78 % du volume de l'air sec (soit environ 4 volumes sur 5)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la proportion volumique approximative de dioxygène (O₂) dans l'air sec ?",
+              "options": [
+                "Environ 21 % (près de 1/5 en volume)",
+                "Environ 78 %",
+                "Environ 0,04 %",
+                "Près de 99 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dioxygène représente environ 21 % du volume de l'air sec (soit environ 1 volume sur 5)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les gaz suivants, lesquels sont naturellement présents dans l'air atmosphérique propre ?",
+              "options": [
+                "Le diazote",
+                "Le dioxygène",
+                "L'argon",
+                "Le dichlore pur concentré"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'air contient environ 78 % de diazote, 21 % de dioxygène, 0,9 % d'argon, ainsi que de la vapeur d'eau et du CO₂. Le dichlore n'y est pas présent naturellement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel constituant de l'air est indispensable à la respiration des êtres vivants et aux combustions ?",
+              "options": ["Le diazote", "Le dioxygène", "L'argon", "L'hélium"],
+              "correctAnswers": [1],
+              "explanation": "Le dioxygène est le comburant nécessaire pour entretenir les combustions et le gaz vital indispensable à notre respiration."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si l'on représentait un échantillon de 100 molécules d'air sec, combien compterait-on environ de molécules de diazote et de dioxygène ?",
+              "options": [
+                "50 de diazote et 50 de dioxygène",
+                "Environ 78 de diazote et 21 de dioxygène",
+                "10 de diazote et 90 de dioxygène",
+                "99 de dioxygène et 1 de diazote"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sur 100 molécules d'air sec, il y a environ 78 molécules de diazote (N₂), 21 molécules de dioxygène (O₂) et 1 molécule d'autres gaz (notamment argon)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel gaz rare (ou gaz noble) représente environ 0,93 % du volume de l'air ?",
+              "options": ["Le néon", "L'argon", "Le krypton", "Le radon"],
+              "correctAnswers": [1],
+              "explanation": "L'argon (Ar) est le troisième gaz le plus abondant dans l'atmosphère après le diazote et le dioxygène."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel rôle joue le diazote lors de la combustion d'une bougie dans l'air ?",
+              "options": [
+                "Il sert de combustible principal",
+                "Il dilue le dioxygène mais ne participe pas directement à la combustion",
+                "Il accélère violemment la réaction",
+                "Il étouffe instantanément la flamme dès l'allumage"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le diazote est un gaz inerte dans les conditions usuelles de combustion : il tempère la combustion en diluant le dioxygène."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle fraction simple résume couramment la proportion volumique de dioxygène dans l'air ?",
+              "options": [
+                "Environ 1/2",
+                "Environ 1/5",
+                "Environ 4/5",
+                "Environ 1/10"
+              ],
+              "correctAnswers": [1],
+              "explanation": "21 % est très proche de 20 %, soit 1/5 du volume total de l'air."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle fraction simple résume couramment la proportion volumique de diazote dans l'air ?",
+              "options": [
+                "Environ 1/5",
+                "Environ 2/3",
+                "Environ 4/5",
+                "Environ 9/10"
+              ],
+              "correctAnswers": [2],
+              "explanation": "78 % est très proche de 80 %, soit 4/5 du volume total de l'air."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Corps purs et mélanges au niveau moléculaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un corps pur à l'échelle moléculaire ?",
+              "options": [
+                "Une matière constituée d'une seule espèce chimique (un seul type de molécules ou d'atomes)",
+                "Une eau transparente sans saleté visible",
+                "Un mélange de plusieurs gaz inodores",
+                "Une solution qui ne conduit pas l'électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un corps pur ne contient qu'une seule sorte de molécules (ou un seul type d'atomes s'il s'agit d'un corps pur atomique)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un mélange à l'échelle microscopique ?",
+              "options": [
+                "Une matière formée de plusieurs espèces chimiques différentes (plusieurs types de molécules)",
+                "Une substance formée d'atomes rigoureusement identiques",
+                "Un gaz maintenu sous très haute pression",
+                "Un solide chauffé jusqu'à l'incandescence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un mélange contient au moins deux espèces chimiques distinctes, c'est-à-dire plusieurs sortes de molécules différentes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'eau distillée (ou eau pure) est-elle un mélange ou un corps pur ?",
+              "options": [
+                "Un mélange homogène",
+                "Un corps pur composé",
+                "Un mélange hétérogène",
+                "Une solution minérale complexe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'eau distillée ne contient que des molécules H₂O : c'est un corps pur (composé d'atomes d'hydrogène et d'oxygène)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les substances suivantes, lesquelles sont des mélanges ?",
+              "options": [
+                "L'air atmosphérique",
+                "L'eau minérale en bouteille",
+                "L'eau pure distillée",
+                "Le dioxygène pur médical"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'air (N₂, O₂, Ar...) et l'eau minérale (eau + sels minéraux dissous) sont des mélanges. L'eau distillée et le dioxygène pur sont des corps purs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi l'eau minérale limpide est-elle classée parmi les mélanges et non les corps purs ?",
+              "options": [
+                "Parce qu'elle contient des molécules d'eau et des minéraux dissous (ions)",
+                "Parce qu'elle contient des bulles de gaz visibles",
+                "Parce qu'elle change de couleur à la lumière",
+                "Parce qu'elle est toujours trouble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien qu'homogène et limpide à l'œil nu, l'eau minérale contient des molécules d'eau ainsi que des ions dissous (calcium, magnésium, etc.)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un corps pur dont les molécules sont formées d'un seul type d'atome (comme O₂ ou N₂) ?",
+              "options": [
+                "Un corps pur simple",
+                "Un corps pur composé",
+                "Un mélange homogène",
+                "Un alliage atomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un corps pur simple est constitué d'un seul élément chimique (ex : le dioxygène O₂ ou le diazote N₂)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un corps pur dont les molécules contiennent plusieurs types d'atomes différents (comme H₂O ou CO₂) ?",
+              "options": [
+                "Un corps pur simple",
+                "Un corps pur composé",
+                "Une émulsion liquide",
+                "Un mélange hétérogène"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un corps pur composé est constitué de molécules formées d'atomes d'éléments chimiques différents."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que peut-on affirmer sur les molécules présentes dans un verre d'eau pure ?",
+              "options": [
+                "Elles sont toutes rigoureusement identiques entre elles",
+                "Elles ont des masses et des formes très diverses",
+                "Certaines sont faites d'azote et d'autres de carbone",
+                "Leur formule chimique change continuellement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un corps pur, toutes les molécules sont absolument identiques : dans l'eau pure, ce sont toutes des molécules H₂O."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment se répartissent les molécules dans un mélange homogène à l'échelle microscopique ?",
+              "options": [
+                "Elles sont mélangées de manière uniforme et régulière",
+                "Elles se séparent en couches visibles distinctes",
+                "Elles fusionnent pour former une seule molécule géante",
+                "Elles s'immobilisent totalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un mélange homogène, les différentes espèces de molécules sont intimement et uniformément réparties."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une bonbonne de dioxygène pur médical contient :",
+              "options": [
+                "Un corps pur simple",
+                "Un mélange de gaz respiratoires",
+                "Un corps pur composé",
+                "De l'air comprimé ordinaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle ne contient qu'une seule espèce chimique (O₂), formée d'un unique élément (l'oxygène) : c'est un corps pur simple."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Masse et volume des gaz",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "L'air a-t-il une masse ?",
+              "options": [
+                "Non, les gaz n'ont aucune masse",
+                "Oui, comme toute matière, l'air possède une masse",
+                "Seulement lorsqu'il est transformé en liquide",
+                "Uniquement lorsqu'il y a du vent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'air est composé de molécules (N₂, O₂...) qui ont chacune une masse : l'air est pesant et possède donc une masse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la masse approximative d'un litre d'air dans les conditions usuelles (20 °C et pression atmosphérique normale) ?",
+              "options": [
+                "Environ 0,001 g",
+                "Environ 1,2 à 1,3 g",
+                "Environ 100 g",
+                "Environ 1 kg"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À 20 °C sous 1013 hPa, 1 litre d'air a une masse d'environ 1,2 g (ou 1,29 g à 0 °C)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment mesure-t-on expérimentalement la masse d'un litre d'air au collège ?",
+              "options": [
+                "En pesant un ballon gonflé, en recueillant 1 L d'air par déplacement d'eau, puis en repesant le ballon",
+                "En plaçant une balance sous une cloche à vide sans rien d'autre",
+                "En chauffant de l'eau jusqu'à ce qu'elle s'évapore",
+                "En mesurant le périmètre du ballon avec un mètre ruban"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode classique consiste à peser un ballon surégonflé, à en extraire 1 L d'air mesuré par déplacement d'eau dans une éprouvette, puis à repeser le ballon."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs physiques caractérisent une certaine quantité de gaz enfermé dans un récipient ?",
+              "options": [
+                "Sa masse (en g ou kg)",
+                "Son volume (en L ou m³)",
+                "Sa pression (en Pa ou hPa)",
+                "Sa transparence absolue"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un gaz est caractérisé par sa masse, son volume, sa pression et sa température. Sa transparence n'est pas une grandeur physique de mesure de quantité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la masse d'air contenue dans une pièce de 50 m³ (50 000 L) sachant que 1 L d'air pèse environ 1,2 g ?",
+              "options": [
+                "Environ 60 g",
+                "Environ 6 kg",
+                "Environ 60 kg",
+                "Environ 600 kg"
+              ],
+              "correctAnswers": [2],
+              "explanation": "50 000 L × 1,2 g/L = 60 000 g = 60 kg. L'air d'une chambre a une masse considérable !"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'on pousse le piston d'une seringue bouchée contenant de l'air ?",
+              "options": [
+                "Le volume de l'air diminue et sa pression augmente",
+                "Le volume augmente et sa masse diminue",
+                "La masse de l'air diminue de moitié",
+                "Le nombre de molécules d'air diminue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air est compressible : quand on pousse le piston, les molécules se rapprochent, le volume diminue et la pression augmente."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lorsqu'on comprime l'air enfermé dans une seringue bien fermée, que devient la masse de cet air ?",
+              "options": [
+                "Elle augmente car l'air devient plus dense",
+                "Elle diminue car l'air prend moins de place",
+                "Elle reste strictement constante",
+                "Elle devient nulle"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le système étant hermétique, aucune molécule n'entre ni ne sort : le nombre de molécules reste identique, donc la masse reste constante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi un gaz est-il facilement compressible alors qu'un liquide est pratiquement incompressible ?",
+              "options": [
+                "Parce que les molécules de gaz sont très espacées par du vide",
+                "Parce que les molécules de gaz sont déformables et molles",
+                "Parce que les molécules de liquide n'ont pas de masse",
+                "Parce que les molécules de gaz se détruisent sous la pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un gaz, il y a beaucoup de vide entre les molécules, on peut donc les rapprocher facilement. Dans un liquide, elles se touchent déjà."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le quotient de la masse d'un corps par son volume ?",
+              "options": [
+                "Le poids moléculaire",
+                "La masse volumique",
+                "La concentration",
+                "La viscosité"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La masse volumique (notée ρ) est le rapport de la masse m par le volume V occupé : ρ = m / V."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la masse volumique de l'eau liquide à température ordinaire ?",
+              "options": [
+                "Environ 1 g/L",
+                "Environ 1 000 g/L (soit 1 kg/L)",
+                "Environ 1,2 g/L",
+                "Environ 13,6 kg/L"
+              ],
+              "correctAnswers": [1],
+              "explanation": "1 litre d'eau liquide pèse 1 kg, ce qui correspond à une masse volumique de 1 kg/L (ou 1 000 g/L ou 1 g/cm³)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "La matière à l'échelle microscopique : les trois états",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles sont les propriétés des molécules à l'état solide à l'échelle microscopique ?",
+              "options": [
+                "Elles sont très éloignées et libres de tout mouvement",
+                "Elles sont en contact étroit, liées entre elles et occupent des positions fixes",
+                "Elles se déplacent à très grande vitesse en ligne droite",
+                "Elles n'existent pas à l'état solide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À l'état solide, les molécules sont fortement unies et forment un ensemble compact et ordonné."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles sont les propriétés des molécules à l'état liquide à l'échelle microscopique ?",
+              "options": [
+                "Elles sont en contact les unes avec les autres mais peuvent glisser et se déplacer",
+                "Elles sont rigoureusement immobiles et alignées",
+                "Elles sont séparées par de très grandes distances de vide",
+                "Elles sont figées dans un réseau cristallin indéformable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'état liquide est compact (les molécules se touchent) mais désordonné (les molécules se déplacent en glissant les unes sur les autres)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelles sont les caractéristiques des molécules à l'état gazeux ?",
+              "options": [
+                "Elles sont compactes et immobiles",
+                "Elles sont très éloignées, agitées et en mouvement désordonné continuel",
+                "Elles sont fortement soudées entre elles",
+                "Elles forment une structure géométrique plane"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'état gazeux est dispersé (molécules très espacées) et désordonné (mouvement rapide en tous sens)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les qualificatifs suivants, lesquels s'appliquent à l'état liquide ?",
+              "options": ["Compact", "Désordonné", "Dispersé", "Indéformable"],
+              "correctAnswers": [0, 1],
+              "explanation": "L'état liquide est qualifié de compact (les molécules sont en contact) et de désordonné (elles bougent sans structure fixe)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi un solide possède-t-il une forme propre à l'échelle macroscopique ?",
+              "options": [
+                "Parce que ses molécules sont liées et occupent des positions fixes les unes par rapport aux autres",
+                "Parce que ses molécules tournent à grande vitesse",
+                "Parce que le solide est rempli d'air comprimé",
+                "Parce que les molécules de solide sont molles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules du solide étant immobiles les unes par rapport aux autres et fortement liées, le solide conserve sa forme propre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi un gaz occupe-t-il tout le volume du récipient qui le contient ?",
+              "options": [
+                "Parce que ses molécules sont liées par des fils invisibles",
+                "Parce que les molécules sont libres et se déplacent en tous sens jusqu'aux parois",
+                "Parce que le gaz attire les parois du récipient",
+                "Parce que les molécules grossissent dans l'espace vide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les molécules gazeuses n'ont aucune liaison entre elles et sont en agitation perpétuelle : elles se diffusent pour remplir tout le volume disponible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi un liquide prend-il la forme du récipient dans lequel on le verse ?",
+              "options": [
+                "Parce que ses molécules peuvent glisser les unes sur les autres tout en restant en contact",
+                "Parce que ses molécules s'évaporent instantanément",
+                "Parce que ses molécules changent de masse",
+                "Parce qu'il n'a pas de volume mesurable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme les molécules du liquide ne sont pas rigidement fixées, elles s'écoulent et épousent la forme du récipient sous l'effet de la pesanteur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel état de la matière est qualifié de « compact et ordonné » ?",
+              "options": [
+                "L'état liquide",
+                "L'état solide",
+                "L'état gazeux",
+                "L'état de vapeur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'état solide (notamment cristallin) présente des molécules en contact et disposées de façon régulière : c'est l'état compact et ordonné."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel état de la matière est qualifié de « compact et désordonné » ?",
+              "options": [
+                "L'état liquide",
+                "L'état solide",
+                "L'état gazeux",
+                "L'état de plasma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'état liquide est compact (molécules jointives) mais désordonné (positions variables et agitées)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle forme prend la surface libre d'un liquide au repos dans un verre posé sur une table ?",
+              "options": [
+                "Une surface plane et horizontale",
+                "Une forme sphérique bombée",
+                "Une surface verticale inclinée",
+                "Une forme ondulée perpétuelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au repos, sous l'action de la gravité, la surface libre d'un liquide est plane et horizontale."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan et synthèse sur les constituants de la matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre un atome et une molécule ?",
+              "options": [
+                "L'atome est une particule élémentaire isolée, la molécule est un groupe d'atomes liés",
+                "La molécule est plus petite que l'atome",
+                "L'atome n'existe que dans les gaz et la molécule dans les solides",
+                "L'atome est vivant et la molécule inerte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atome est la brique élémentaire ; la molécule est formée d'au moins deux atomes réunis par des liaisons chimiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien d'atomes au total contient une molécule de butane de formule C₄H₁₀ ?",
+              "options": [
+                "4 atomes",
+                "10 atomes",
+                "14 atomes (4 de carbone et 10 d'hydrogène)",
+                "40 atomes"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La formule C₄H₁₀ indique 4 atomes de carbone et 10 atomes d'hydrogène, soit 4 + 10 = 14 atomes au total."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la formule chimique d'une molécule composée d'un atome d'azote et de trois atomes d'hydrogène ?",
+              "options": ["NH₃ (l'ammoniac)", "N₃H", "NO₃", "HNO"],
+              "correctAnswers": [0],
+              "explanation": "1 atome d'azote (N) et 3 atomes d'hydrogène (H₃) forment la molécule d'ammoniac NH₃."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes concernant l'air, lesquelles sont scientifiquement VRAIES ?",
+              "options": [
+                "C'est un mélange constitué principalement de diazote et de dioxygène",
+                "Un litre d'air a une masse d'environ 1,2 g dans les conditions ambiantes",
+                "L'air est un corps pur composé",
+                "L'air ne pèse rien car il s'envole vers le haut"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'air est un mélange gazeux (et non un corps pur) qui possède une masse d'environ 1,2 g par litre à température ambiante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel modèle moléculaire correspond exactement au diazote (N₂) ?",
+              "options": [
+                "Deux sphères bleues collées ensemble",
+                "Deux sphères rouges collées ensemble",
+                "Une sphère bleue et une sphère blanche",
+                "Deux sphères noires collées ensemble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'azote étant représenté par une sphère bleue, la molécule de diazote N₂ est représentée par deux sphères bleues unies."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que trouve-t-on dans l'espace situé entre les molécules d'un gaz pur ?",
+              "options": [
+                "Absolument rien : du vide",
+                "De l'air microscopique",
+                "De la vapeur d'eau",
+                "Une substance gélatineuse invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre les molécules d'un gaz pur, il n'y a aucune matière : c'est le vide absolu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans quel état physique la matière est-elle la plus facilement compressible ?",
+              "options": [
+                "À l'état solide",
+                "À l'état liquide",
+                "À l'état gazeux",
+                "Tous les états sont également compressibles"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le gaz est l'état le plus compressible car ses molécules sont très distantes les unes des autres."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si l'on extrait tout le dioxygène de l'air enfermé dans un flacon, que reste-t-il principalement ?",
+              "options": [
+                "Du vide total",
+                "Du diazote",
+                "Du dioxyde de carbone pur",
+                "De l'hydrogène pur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En retirant le dioxygène (~21 %), il reste principalement le diazote qui représentait environ 78 % du volume initial."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment s'écrit le symbole d'un élément chimique quand sa première lettre majuscule est déjà attribuée à un autre atome ?",
+              "options": [
+                "On lui attribue un chiffre romain",
+                "On ajoute une deuxième lettre écrite obligatoirement en minuscule",
+                "On écrit les deux lettres en majuscules",
+                "On invente un symbole sans rapport avec son nom"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le carbone étant noté C, le chlore est noté Cl et le calcium Ca : la seconde lettre est obligatoirement en minuscule."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi l'odeur d'un flacon de parfum ouvert dans une pièce finit-elle par se propager partout ?",
+              "options": [
+                "Les molécules odorantes se déplacent au hasard dans le vide entre les molécules d'air (phénomène de diffusion)",
+                "Le parfum détruit l'air et le remplace",
+                "La lumière transporte les molécules d'odeur",
+                "Les molécules de parfum grossissent jusqu'à remplir la pièce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce à l'agitation thermique, les molécules de parfum gazeuses diffusent dans l'air et se dispersent dans toute la pièce."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Changements d'état",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le vocabulaire des changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage de l'état solide à l'état liquide ?",
+              "options": [
+                "La solidification",
+                "La fusion",
+                "La liquéfaction",
+                "La vaporisation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La fusion est le passage de l'état solide à l'état liquide (ex : un glaçon qui fond)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage de l'état liquide à l'état solide ?",
+              "options": [
+                "La fusion",
+                "La condensation",
+                "La solidification",
+                "La sublimation"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La solidification est le passage de l'état liquide à l'état solide (ex : l'eau liquide qui gèle)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage de l'état liquide à l'état gazeux ?",
+              "options": [
+                "La vaporisation",
+                "La liquéfaction",
+                "La fusion",
+                "La dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vaporisation désigne le passage du liquide au gaz (par évaporation ou ébullition)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les termes suivants, lesquels désignent un passage vers l'état liquide ?",
+              "options": [
+                "La fusion (depuis l'état solide)",
+                "La liquéfaction (depuis l'état gazeux)",
+                "La solidification",
+                "La vaporisation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La fusion produit du liquide à partir de solide, et la liquéfaction (condensation liquide) produit du liquide à partir de gaz."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel terme désigne le passage direct de l'état solide à l'état gazeux sans passer par l'état liquide ?",
+              "options": [
+                "La sublimation",
+                "La vaporisation",
+                "La fusion",
+                "La dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sublimation est le passage direct de solide à gaz (par exemple la neige carbonique qui s'évapore sans fondre)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage direct de l'état gazeux à l'état solide ?",
+              "options": [
+                "La condensation solide (ou déposition)",
+                "La liquéfaction",
+                "La fusion",
+                "L'ébullition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passage direct de gaz à solide est la condensation solide (responsable de la formation du givre en hiver)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le passage de l'état gazeux à l'état liquide ?",
+              "options": [
+                "La liquéfaction (ou condensation liquide)",
+                "La vaporisation",
+                "La sublimation",
+                "La fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passage de l'état gazeux à l'état liquide est la liquéfaction (souvent appelée condensation liquide)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la différence entre la « fusion » et la « dissolution » ?",
+              "options": [
+                "La fusion est un changement d'état sous l'effet de la chaleur, la dissolution est la dispersion d'un soluté dans un solvant",
+                "Ce sont deux mots synonymes pour le même phénomène",
+                "La fusion nécessite obligatoirement de l'eau liquide",
+                "La dissolution transforme toujours un corps en gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un glaçon fond (fusion) sous l'effet de la chaleur ; un morceau de sucre se dissout (dissolution) lorsqu'on le mélange dans l'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lorsqu'une noisette de beurre se liquéfie dans une poêle chaude, quel changement d'état subit-elle ?",
+              "options": [
+                "Une vaporisation",
+                "Une fusion",
+                "Une solidification",
+                "Une dissolution"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le beurre passe de l'état solide à l'état liquide sous l'effet de la chaleur : c'est une fusion."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lorsque de la buée se forme sur un miroir froid de salle de bains, quel changement d'état a eu lieu ?",
+              "options": [
+                "Une liquéfaction",
+                "Une vaporisation",
+                "Une fusion",
+                "Une sublimation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vapeur d'eau gazeuse et chaude se refroidit au contact du miroir froid et devient liquide : c'est une liquéfaction."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Ébullition et évaporation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles sont les deux formes distinctes de vaporisation d'un liquide ?",
+              "options": [
+                "L'évaporation et l'ébullition",
+                "La fusion et la liquéfaction",
+                "La condensation et la sublimation",
+                "La dissolution et la décantation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vaporisation peut être lente et superficielle (évaporation) ou rapide et tumultueuse dans tout le liquide (ébullition)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quel endroit du liquide se produit l'évaporation ?",
+              "options": [
+                "Uniquement au fond du récipient",
+                "À la surface libre du liquide",
+                "Dans toute la masse avec apparition de bulles",
+                "Exclusivement le long des parois verticales"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'évaporation s'effectue uniquement à la surface de contact entre le liquide et l'air."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quelle température l'évaporation de l'eau liquide peut-elle se produire ?",
+              "options": [
+                "Uniquement à 100 °C",
+                "À n'importe quelle température comprise entre 0 °C et 100 °C",
+                "Uniquement au-dessus de 80 °C",
+                "Seulement sous une pression nulle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'évaporation a lieu à n'importe quelle température : une flaque d'eau s'évapore très bien même à 10 °C ou 20 °C."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques distinguent l'ébullition de l'évaporation ?",
+              "options": [
+                "L'ébullition a lieu dans tout le volume du liquide avec formation de bulles",
+                "L'ébullition se produit à une température fixe pour une pression donnée",
+                "L'évaporation ne produit pas de vapeur",
+                "L'ébullition ne dépend pas de la pression"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ébullition se caractérise par des bulles de gaz dans toute la masse du liquide et se déroule à une température fixe (100 °C pour l'eau à 1013 hPa)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "De quoi sont remplies les bulles qui montent dans une casserole d'eau pure qui bout à gros bouillons ?",
+              "options": [
+                "D'air ambiant dissous",
+                "De vapeur d'eau (eau à l'état gazeux)",
+                "De dioxygène pur",
+                "De vide absolu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pendant l'ébullition, l'eau liquide se vaporise au fond et forme des bulles de vapeur d'eau gazeuse qui montent crever en surface."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À quelle température l'eau pure bout-elle au niveau de la mer sous la pression normale (1013 hPa) ?",
+              "options": ["À 50 °C", "À 100 °C", "À 0 °C", "À 120 °C"],
+              "correctAnswers": [1],
+              "explanation": "Sous la pression normale de 1013 hPa au niveau de la mer, la température d'ébullition de l'eau pure est exactement de 100 °C."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En haute montagne, où la pression atmosphérique est plus faible, que devient la température d'ébullition de l'eau pure ?",
+              "options": [
+                "Elle augmente au-dessus de 100 °C",
+                "Elle diminue en dessous de 100 °C",
+                "Elle reste rigoureusement bloquée à 100 °C",
+                "L'eau ne peut plus jamais bouillir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Quand la pression diminue, la température d'ébullition baisse : au sommet du mont Blanc, l'eau bout à environ 85 °C."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quels facteurs météo favorisent un séchage très rapide du linge dehors ?",
+              "options": [
+                "Un air froid, saturé d'humidité et sans vent",
+                "Une température élevée, un air sec et du vent",
+                "L'obscurité totale et un brouillard dense",
+                "Le regroupement du linge en boule serrée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La chaleur apporte l'énergie nécessaire, le vent évacue la vapeur et l'air sec favorise le passage liquide-gaz."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La vapeur d'eau pure est-elle visible à l'œil nu ?",
+              "options": [
+                "Oui, c'est le panache blanc qui s'échappe de la casserole",
+                "Non, c'est un gaz totalement transparent et invisible",
+                "Oui, elle forme toujours un brouillard grisâtre",
+                "Oui, elle a une couleur bleutée caractéristique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La vapeur d'eau est un gaz invisible. Ce que l'on voit au-dessus d'une casserole est en réalité du brouillard de fines gouttelettes liquides."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la nature du nuage blanc que l'on observe au bec d'une bouilloire ?",
+              "options": [
+                "De la vapeur d'eau gazeuse",
+                "Du brouillard constitué de minuscules gouttelettes d'eau liquide en suspension",
+                "Du dioxyde de carbone chaud",
+                "De la fumée de combustion"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En sortant du bec, la vapeur d'eau invisible se refroidit brutalement au contact de l'air et se liquéfie en gouttelettes d'eau liquide visibles."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La conservation de la masse lors d'un changement d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que devient la masse d'un glaçon de 25 g lorsqu'il fond entièrement dans un récipient fermé ?",
+              "options": [
+                "Elle diminue car le liquide est moins rigide",
+                "Elle augmente à cause de la chaleur reçue",
+                "Elle reste exactement égale à 25 g",
+                "Elle devient nulle"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La masse se conserve lors d'un changement d'état : 25 g de glace donnent exactement 25 g d'eau liquide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi la masse se conserve-t-elle rigoureusement lors d'un changement d'état ?",
+              "options": [
+                "Parce que le nombre total et la nature des molécules ne changent pas",
+                "Parce que la température reste constante",
+                "Parce que le volume ne varie jamais",
+                "Parce que l'air ambiant compense les pertes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lors d'un changement d'état, aucune molécule n'est créée ni détruite : la masse globale reste donc parfaitement constante."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si l'on vaporise entièrement 80 g d'eau liquide dans un récipient hermétique étanche, quelle est la masse de la vapeur d'eau obtenue ?",
+              "options": [
+                "Moins de 10 g car la vapeur s'élève",
+                "Exactement 80 g",
+                "Plus de 100 g car la vapeur prend plus de place",
+                "Environ 40 g"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dans un système fermé où aucune matière ne s'échappe, la masse reste inchangée : 80 g de liquide donnent 80 g de gaz."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes sur la conservation de la masse, lesquelles sont VRAIES ?",
+              "options": [
+                "La masse se conserve lors de la solidification de l'eau",
+                "La masse se conserve lors de la vaporisation en système fermé",
+                "La masse diminue toujours quand un liquide devient solide",
+                "La masse d'un glaçon augmente de 10 % quand il fond"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quel que soit le changement d'état (fusion, solidification, vaporisation...), la masse totale se conserve toujours."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi doit-on obligatoirement fermer le récipient pour vérifier la conservation de la masse lors d'une vaporisation ?",
+              "options": [
+                "Pour empêcher le gaz formé de se disperser dans l'air ambiant",
+                "Pour faire monter la température plus vite",
+                "Pour éviter que la lumière ne casse les molécules",
+                "Pour que la balance électronique fonctionne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le récipient reste ouvert, les molécules de gaz s'échappent dans la pièce et la masse mesurée sur la balance semble diminuer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "On place une bouteille hermétique contenant 500 g d'eau au congélateur. Après prise en glace complète (parois essuyées), quelle masse indique la balance ?",
+              "options": ["550 g", "500 g", "450 g", "50 g"],
+              "correctAnswers": [1],
+              "explanation": "La solidification conserve la masse : la balance indiquera toujours 500 g."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi doit-on soigneusement essuyer les parois extérieures d'un récipient froid avant de le peser sur une balance ?",
+              "options": [
+                "Pour éliminer l'eau issue de la liquéfaction de la vapeur d'eau de l'air ambiant sur les parois",
+                "Pour ne pas refroidir le plateau de la balance",
+                "Pour modifier la couleur du verre",
+                "Pour supprimer le frottement de l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vapeur d'eau présente dans l'air de la pièce se condense en gouttelettes sur la paroi froide, ce qui fausserait la mesure en l'alourdissant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lors d'un changement d'état, qu'est-ce qui est modifié à l'échelle moléculaire ?",
+              "options": [
+                "L'agencement, les liaisons et l'agitation des molécules",
+                "La formule chimique des molécules",
+                "La masse individuelle de chaque atome",
+                "Le nombre de protons dans les atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les molécules restent identiques ; seule leur disposition géométrique et leur mobilité changent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "On solidifie 150 g d'huile liquide. Quelle sera la masse d'huile solide obtenue ?",
+              "options": ["150 g", "120 g", "180 g", "0 g"],
+              "correctAnswers": [0],
+              "explanation": "La loi de conservation de la masse s'applique à toutes les substances pures et mélanges : la masse reste de 150 g."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que devient la masse totale d'un mélange d'eau et de glace au fur et à mesure que les glaçons fondent dans un verre couvert ?",
+              "options": [
+                "Elle reste rigoureusement constante",
+                "Elle augmente progressivement",
+                "Elle diminue à chaque glaçon fondu",
+                "Elle varie selon la luminosité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse totale (eau liquide + glace) reste strictement constante tout au long de la fusion."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La variation de volume lors des changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que fait généralement le volume d'une substance lorsqu'elle passe de l'état liquide à l'état gazeux ?",
+              "options": [
+                "Il diminue fortement",
+                "Il augmente considérablement (de l'ordre de mille fois)",
+                "Il reste strictement identique",
+                "Il est divisé par deux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À l'état gazeux, les molécules s'écartent énormément les unes des autres : le volume augmente dans des proportions très importantes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle anomalie remarquable présente l'eau liquide lors de sa solidification en glace ?",
+              "options": [
+                "Son volume diminue fortement",
+                "Son volume augmente (la glace prend plus de place que l'eau liquide)",
+                "Son volume devient instantanément nul",
+                "Son volume reste rigoureusement le même"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'eau est l'un des rares corps dont le volume augmente lors de la solidification (d'environ 9 à 10 %)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi une bouteille en verre remplie à ras bord d'eau liquide éclate-t-elle si on l'oublie au congélateur ?",
+              "options": [
+                "Le verre rétrécit brutalement sous l'effet du froid",
+                "Le volume de l'eau augmente lors de sa transformation en glace",
+                "La glace produit un gaz explosif",
+                "La masse de l'eau devient trop lourde pour le verre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En gelant, l'eau augmente de volume et exerce une pression gigantesque sur les parois rigides de la bouteille jusqu'à la briser."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Concernant la congélation de l'eau pure, quelles affirmations sont scientifiquement VRAIES ?",
+              "options": [
+                "La masse se conserve parfaitement",
+                "Le volume occupé augmente",
+                "La masse volumique de la glace est inférieure à celle de l'eau liquide",
+                "La masse augmente de 10 %"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La masse reste constante, mais comme le volume augmente, la masse volumique de la glace diminue (ρ = m/V), ce qui fait flotter la glace."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi les glaçons flottent-ils à la surface de l'eau liquide ?",
+              "options": [
+                "Parce que la glace est plus dense que l'eau liquide",
+                "Parce que la masse volumique de la glace (0,92 g/cm³) est plus faible que celle de l'eau liquide (1,00 g/cm³)",
+                "Parce que la glace contient de l'air emprisonné qui tire vers le haut",
+                "Parce que l'eau liquide repousse le froid vers la surface"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La masse volumique de la glace étant inférieure à celle de l'eau liquide, la poussée d'Archimède fait flotter les glaçons."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que fait le volume de la très grande majorité des substances (comme la cire, l'huile ou les métaux) lors de leur solidification ?",
+              "options": [
+                "Il diminue (la substance se contracte)",
+                "Il augmente comme l'eau",
+                "Il est multiplié par dix",
+                "Il reste rigoureusement inchangé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour la quasi-totalité des corps (sauf l'eau), la solidification s'accompagne d'une diminution de volume (contraction)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel volume de vapeur d'eau obtient-on environ en vaporisant complètement 1 litre d'eau liquide sous pression normale ?",
+              "options": [
+                "Environ 1 litre",
+                "Environ 10 litres",
+                "Environ 1 600 à 1 700 litres",
+                "Environ 0,5 litre"
+              ],
+              "correctAnswers": [2],
+              "explanation": "1 L d'eau liquide produit environ 1 700 litres de vapeur d'eau à 100 °C sous 1013 hPa !"
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lorsqu'on laisse refroidir et se solidifier de la cire de bougie liquide, que remarque-t-on au centre de la cire ?",
+              "options": [
+                "Un creux au centre (témoignant d'une contraction de volume)",
+                "Une bosse qui dépasse du récipient",
+                "Une cavité remplie d'eau",
+                "Une surface parfaitement plane sans aucun changement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cire diminue de volume en se solidifiant, ce qui forme un creux caractéristique autour de la mèche."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la valeur approximative de la masse volumique de la glace d'eau pure à 0 °C ?",
+              "options": [
+                "Environ 0,92 g/cm³",
+                "Environ 1,00 g/cm³",
+                "Environ 1,50 g/cm³",
+                "Environ 0,10 g/cm³"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse volumique de la glace est de 0,92 g/cm³ (ou 920 kg/m³), contre 1,00 g/cm³ (1 000 kg/m³) pour l'eau liquide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la quasi-totalité d'un iceberg (environ 90 %) se trouve-t-elle immergée sous l'eau de mer ?",
+              "options": [
+                "Parce que la masse volumique de la glace (0,92 g/cm³) est seulement un peu inférieure à celle de l'eau de mer (1,03 g/cm³)",
+                "Parce que l'océan aspire la glace vers le fond",
+                "Parce que le sel détruit la partie supérieure de l'iceberg",
+                "Parce que les vents écrasent l'iceberg vers le bas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapport des masses volumiques (0,92 / 1,03 ≈ 0,89) fait qu'environ 89 à 90 % du volume de l'iceberg est sous l'eau."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les courbes de changement d'état d'un corps pur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que remarque-t-on sur la courbe de température en fonction du temps lors du changement d'état d'un corps pur sous pression constante ?",
+              "options": [
+                "La température continue de varier sans arrêt",
+                "La température reste constante : la courbe forme un palier horizontal",
+                "La température chute brusquement à zéro",
+                "La courbe forme une boucle fermée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pendant tout le changement d'état d'un corps pur sous pression constante, la température ne varie pas : c'est le palier de changement d'état."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sous la pression normale (1013 hPa), à quelle température se situe le palier de fusion de la glace d'eau pure ?",
+              "options": ["À -10 °C", "À 0 °C", "À 100 °C", "À 20 °C"],
+              "correctAnswers": [1],
+              "explanation": "La glace d'eau pure fond à la température fixe de 0 °C sous 1013 hPa."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sous la pression atmosphérique normale, à quelle température se situe le palier d'ébullition de l'eau pure ?",
+              "options": ["À 0 °C", "À 50 °C", "À 100 °C", "À 150 °C"],
+              "correctAnswers": [2],
+              "explanation": "L'ébullition de l'eau pure se produit à 100 °C sous la pression atmosphérique normale."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels états de la matière coexistent dans le récipient pendant le palier de fusion d'un corps pur ?",
+              "options": [
+                "L'état solide",
+                "L'état liquide",
+                "L'état gazeux exclusivement",
+                "L'état de plasma"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pendant la fusion, le solide se transforme progressivement en liquide : les deux états solide et liquide coexistent à température constante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pendant toute la durée de la solidification de l'eau pure, quelle température indique le thermomètre ?",
+              "options": [
+                "Elle reste constante à 0 °C",
+                "Elle descend en continu de 10 °C à -10 °C",
+                "Elle grimpe jusqu'à 100 °C",
+                "Elle oscille entre 5 °C et 15 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant qu'il reste de l'eau liquide en train de geler, la température reste bloquée à 0 °C."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que fait la température de l'eau une fois que le dernier morceau de glace a complètement fondu et que l'on continue de chauffer ?",
+              "options": [
+                "Elle se remet à augmenter",
+                "Elle reste définitivement bloquée à 0 °C",
+                "Elle retombe à -5 °C",
+                "Elle chute immédiatement à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fois la fusion achevée (plus de glace), l'énergie apportée sert à nouveau à chauffer l'eau liquide, dont la température grimpe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la température précise à laquelle un corps pur solide se transforme en liquide ?",
+              "options": [
+                "La température d'ébullition",
+                "La température de fusion",
+                "La température d'allumage",
+                "Le point critique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est la température de fusion (égale à la température de solidification pour un même corps pur sous une pression donnée)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un liquide inconnu entre en ébullition avec un palier parfaitement stable à 78 °C sous pression normale. Est-ce de l'eau pure ?",
+              "options": [
+                "Oui, car tous les liquides purs ont le même palier",
+                "Non, l'eau pure bout à 100 °C sous cette pression ; il pourrait s'agir d'éthanol",
+                "Oui, l'eau bout souvent à 78 °C en plaine",
+                "C'est impossible, aucun liquide ne peut bouillir à 78 °C"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La température de changement d'état est une caractéristique propre à chaque substance : l'éthanol pur bout à 78 °C, l'eau pure à 100 °C."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que permet d'identifier la mesure des températures de changement d'état d'un échantillon inconnu ?",
+              "options": [
+                "La couleur du récipient utilisé",
+                "L'espèce chimique qui constitue ce corps pur",
+                "L'âge exact de l'échantillon",
+                "Le volume initial du liquide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les températures de changement d'état sous pression donnée sont des caractéristiques physiques qui permettent d'identifier un corps pur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la température de l'eau pure qui bout reste-t-elle à 100 °C malgré la flamme allumée sous la casserole ?",
+              "options": [
+                "L'énergie thermique apportée sert à rompre les liaisons entre molécules pour les vaporiser et non à élever la température",
+                "Le thermomètre se bloque par sécurité",
+                "La vapeur d'eau refroidit continuellement le fond de la casserole",
+                "La flamme s'affaiblit automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie thermique reçue est entièrement consommée pour permettre le changement d'état (rupture des liaisons intermoléculaires)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les changements d'état d'un mélange",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que constate-t-on sur la courbe de changement d'état d'un mélange (comme l'eau salée) par rapport à celle d'un corps pur ?",
+              "options": [
+                "Il n'y a pas de palier horizontal de température : la température continue de varier",
+                "Le palier de température est deux fois plus long et horizontal",
+                "Le mélange ne peut jamais changer d'état",
+                "La température reste bloquée à 0 °C en continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à un corps pur, un mélange ne présente pas de palier horizontal à température constante lors d'un changement d'état."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quelle température commence à geler l'eau de mer (eau salée) sous pression atmosphérique normale ?",
+              "options": [
+                "À 0 °C exactement",
+                "En dessous de 0 °C (environ -2 °C)",
+                "À +4 °C",
+                "À -50 °C"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La présence de sel dissous abaisse la température de solidification de l'eau : l'eau de mer commence à geler vers -2 °C."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi répand-on du sel sur les routes verglacées en hiver ?",
+              "options": [
+                "Le mélange eau-sel a une température de solidification inférieure à 0 °C, ce qui fait fondre la glace",
+                "Le sel réchauffe la route jusqu'à 20 °C par réaction chimique",
+                "Le sel absorbe l'eau et la fait disparaître dans l'air",
+                "Le sel colore la route pour la rendre visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel abaisse le point de congélation de l'eau : la glace fond tant que la température extérieure ne descend pas en dessous de -5 °C à -10 °C."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les liquides suivants, lesquels ne présenteront PAS de palier de température horizontal lors de leur ébullition ?",
+              "options": [
+                "L'eau salée",
+                "L'eau sucrée",
+                "L'eau pure distillée",
+                "L'éthanol pur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'eau salée et l'eau sucrée sont des mélanges : leur température varie durant l'ébullition. L'eau distillée et l'éthanol pur ont des paliers fixes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lorsqu'on fait bouillir de l'eau salée, que fait la température d'ébullition au cours du temps à mesure que l'eau s'évapore ?",
+              "options": [
+                "Elle reste rigoureusement fixe à 100 °C",
+                "Elle augmente progressivement au-dessus de 100 °C car la concentration en sel augmente",
+                "Elle chute brutalement en dessous de 80 °C",
+                "Elle s'arrête à 0 °C"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Seule l'eau s'évapore, la solution devient donc de plus en plus concentrée en sel, ce qui fait progressivement monter la température d'ébullition."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lorsque de l'eau salée commence à geler, que sont les premiers cristaux solides qui apparaissent ?",
+              "options": [
+                "Des cristaux de glace d'eau presque pure, le sel restant dans le liquide non gelé",
+                "Des blocs de sel pur",
+                "Un bloc uniforme où l'eau et le sel sont figés ensemble",
+                "Des bulles de chlore solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En gelant, l'eau expulse la majorité du sel : la banquise est ainsi formée de glace d'eau douce presque pure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment vérifier au laboratoire si un liquide transparent est de l'eau pure ou de l'eau salée ?",
+              "options": [
+                "En enregistrant sa température lors de sa solidification ou de son ébullition pour vérifier la présence d'un palier",
+                "En mesurant sa hauteur dans une éprouvette",
+                "En observant le liquide à la loupe",
+                "En remuant vigoureusement le liquide avec une paille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si la température reste constante durant le changement d'état (palier net à 0 °C ou 100 °C), c'est de l'eau pure. Sinon, c'est un mélange."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle forme prend la courbe de refroidissement d'un mélange de deux liquides miscibles ?",
+              "options": [
+                "Une ligne horizontale parfaite",
+                "Une courbe dont la pente varie continuellement sans palier de température horizontal",
+                "Un demi-cercle",
+                "Une chute verticale instantanée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La courbe présente des changements de pente mais aucun palier horizontal de température n'est observé pour un mélange."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le nom chimique du sel généralement utilisé pour saler les routes verglacées en hiver ?",
+              "options": [
+                "Le chlorure de sodium (NaCl)",
+                "Le sulfate de cuivre",
+                "Le carbonate de calcium",
+                "Le bicarbonate de soude pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sel de déneigement est principalement du chlorure de sodium (NaCl), le même composé chimique que le sel de cuisine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si un liquide subit une fusion complète avec un palier parfaitement horizontal à 0 °C sous pression normale, on peut affirmer que :",
+              "options": [
+                "C'est de l'eau pure",
+                "C'est de l'eau très salée",
+                "C'est un mélange d'alcool et d'eau",
+                "L'expérience est fausse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La présence d'un palier horizontal à 0 °C est la signature expérimentale caractéristique de la fusion de l'eau pure."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Interprétation moléculaire des changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que deviennent les molécules d'une substance lors d'un changement d'état physique ?",
+              "options": [
+                "Elles sont détruites et remplacées par d'autres espèces",
+                "Elles restent intactes et identiques : seuls leur agencement et leur agitation changent",
+                "Elles se brisent en atomes isolés",
+                "Elles changent de formule chimique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un changement d'état est une transformation physique : les molécules ne sont pas modifiées, seule leur organisation change."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À l'échelle moléculaire, que se passe-t-il lors de la fusion d'un solide ?",
+              "options": [
+                "Les liaisons qui maintenaient les molécules ordonnées se relâchent, permettant aux molécules de glisser",
+                "Les molécules explosent sous l'effet de la chaleur",
+                "Les molécules s'éloignent à des kilomètres les unes des autres",
+                "Les molécules s'immobilisent totalement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agitation thermique affaiblit les liaisons solides : les molécules quittent leurs positions fixes et deviennent mobiles à l'état liquide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À l'échelle moléculaire, que se passe-t-il lors de la vaporisation d'un liquide ?",
+              "options": [
+                "Les molécules se rapprochent et forment un réseau rigide",
+                "Les molécules se séparent complètement et se dispersent à grande vitesse dans tout l'espace",
+                "Les molécules se dédoublent",
+                "Les atomes se séparent définitivement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sous l'effet de l'énergie thermique, les molécules se détachent les unes des autres et forment un gaz dispersé et désordonné."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Lors de la solidification d'un liquide, que peut-on affirmer à l'échelle moléculaire ?",
+              "options": [
+                "Les molécules perdent de leur mobilité",
+                "Les molécules se lient pour former une structure ordonnée et compacte",
+                "Le nombre total de molécules reste inchangé",
+                "Les molécules diminuent de masse"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "En se refroidissant, les molécules ralentissent, se figent dans un réseau solide lié, sans qu'aucune molécule ne disparaisse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi la vapeur d'eau occupe-t-elle un volume beaucoup plus grand que l'eau liquide de même masse ?",
+              "options": [
+                "Parce que les molécules d'eau grossissent",
+                "Parce que les molécules de gaz sont très espacées les unes des autres par du vide",
+                "Parce que la vapeur d'eau contient de l'air supplémentaire",
+                "Parce que le nombre de molécules est multiplié par mille"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les molécules conservent la même taille, mais elles sont des dizaines de fois plus éloignées les unes des autres dans le gaz."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lors de la liquéfaction de la vapeur d'eau sur une vitre froide, que font les molécules ?",
+              "options": [
+                "Elles ralentissent en se refroidissant, se rapprochent et entrent en contact pour reformer un liquide",
+                "Elles traversent le verre",
+                "Elles se transforment en poussière",
+                "Elles cessent toute vibration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cédant de l'énergie à la vitre froide, les molécules d'eau gazeuses ralentissent, s'attirent et reforment un liquide compact."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans quel état physique les molécules possèdent-elles la plus grande énergie d'agitation thermique ?",
+              "options": [
+                "L'état solide",
+                "L'état liquide",
+                "L'état gazeux",
+                "L'état congelé"
+              ],
+              "correctAnswers": [2],
+              "explanation": "À l'état gazeux, les molécules ont une énergie cinétique très élevée et se déplacent à des centaines de mètres par seconde."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans quel état physique les molécules possèdent-elles la plus faible énergie d'agitation ?",
+              "options": [
+                "L'état solide",
+                "L'état liquide",
+                "L'état gazeux",
+                "L'état de vapeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'état solide, les molécules ne font que vibrer faiblement autour de leurs positions d'équilibre fixes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment le modèle moléculaire explique-t-il la conservation de la masse lors de la fonte d'un glaçon ?",
+              "options": [
+                "Le nombre de molécules d'eau et la masse de chaque molécule restent rigoureusement identiques",
+                "L'air compense la perte de molécules de glace",
+                "Les molécules d'eau liquide deviennent plus lourdes",
+                "La balance réajuste la valeur automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque chaque molécule H₂O conserve sa masse et que le nombre de molécules est constant, la masse totale ne change pas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le mouvement perpétuel et désordonné des molécules dans la matière ?",
+              "options": [
+                "L'agitation thermique",
+                "La gravitation universelle",
+                "L'attraction magnétique",
+                "La réfraction de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agitation thermique est le mouvement désordonné incessant des molécules ou atomes, directement lié à la température."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Température et agitation thermique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la température d'un corps à l'échelle microscopique ?",
+              "options": [
+                "Une mesure directe de la masse des molécules",
+                "Une grandeur liée au degré d'agitation des molécules ou des atomes",
+                "Le nombre total d'atomes dans l'échantillon",
+                "La couleur émise par les atomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La température mesure l'énergie cinétique moyenne d'agitation des particules microscopiques constituant la matière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que font les molécules d'une substance lorsque sa température s'élève ?",
+              "options": [
+                "Elles ralentissent",
+                "Elles s'agitent et se déplacent de plus en plus vite",
+                "Elles s'immobilisent totalement",
+                "Elles diminuent de volume"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plus la température est haute, plus les molécules vibrent ou se déplacent rapidement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la température théorique la plus basse possible où toute agitation thermique cesse ?",
+              "options": [
+                "Le zéro absolu (-273,15 °C ou 0 K)",
+                "Le zéro Celsius (0 °C)",
+                "Le point de congélation usuel",
+                "Le point critique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le zéro absolu est la limite inférieure de température (0 Kelvin ou -273,15 °C) où les molécules sont au repos minimal."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les phénomènes suivants, lesquels sont directement favorisés par une hausse de l'agitation thermique ?",
+              "options": [
+                "L'augmentation de la pression d'un gaz enfermé dans un volume constant",
+                "La dilatation d'un liquide dans un tube thermométrique",
+                "La solidification spontanée de l'eau liquide",
+                "La diffusion plus rapide d'une goutte de colorant dans l'eau"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "L'agitation accrue augmente les chocs (pression), écarte légèrement les molécules (dilatation) et accélère le mélange (diffusion)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi une goutte de colorant alimentaire se disperse-t-elle beaucoup plus vite dans un verre d'eau chaude que dans un verre d'eau froide ?",
+              "options": [
+                "Les molécules d'eau chaude sont plus agitées et heurtent plus violemment les particules de colorant",
+                "Le colorant fond sous l'effet de l'eau chaude",
+                "L'eau chaude est plus dense que l'eau froide",
+                "L'eau chaude détruit les molécules de colorant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse des molécules d'eau étant plus élevée à haute température, les chocs dispersent le colorant bien plus rapidement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la pression à l'intérieur d'un pneu de voiture augmente-t-elle après un long trajet à vive allure sur l'autoroute ?",
+              "options": [
+                "Le frottement chauffe l'air intérieur : l'agitation des molécules augmente et elles heurtent plus violemment les parois",
+                "De nouvelles molécules d'air sont apparues spontanément dans le pneu",
+                "Le caoutchouc du pneu rétrécit au soleil",
+                "La vitesse de la voiture modifie la gravité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échauffement augmente la température de l'air enfermé ; les molécules plus agitées frappent la paroi plus fréquemment et plus fort."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle unité de température du Système International (SI) a pour référence le zéro absolu ?",
+              "options": [
+                "Le degré Celsius (°C)",
+                "Le Kelvin (K)",
+                "Le degré Fahrenheit (°F)",
+                "Le Joule (J)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le Kelvin (K) est l'unité légale de température thermodynamique du Système International."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle relation mathématique simple permet de convertir une température en degrés Celsius en Kelvins ?",
+              "options": [
+                "T(K) = T(°C) + 273,15",
+                "T(K) = T(°C) × 100",
+                "T(K) = T(°C) - 273,15",
+                "T(K) = T(°C) / 10"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0 °C correspond à 273,15 K. On ajoute donc 273,15 à la température en degrés Celsius pour l'obtenir en Kelvins."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que se passe-t-il pour les molécules d'un gaz lorsqu'on le refroidit ?",
+              "options": [
+                "Leur vitesse moyenne diminue et leur agitation thermique ralentit",
+                "Elles accélèrent fortement",
+                "Elles doublent de taille",
+                "Elles se mettent à émettre de la lumière rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le refroidissement correspond à une perte d'énergie cinétique microscopique : les molécules ralentissent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment fonctionne un thermomètre à liquide traditionnel ?",
+              "options": [
+                "Quand la température monte, l'agitation fait légèrement s'écarter les molécules du liquide qui se dilate et monte dans le tube",
+                "De nouvelles molécules de liquide apparaissent spontanément avec la chaleur",
+                "Le liquide s'évapore et pousse le réservoir",
+                "Le tube de verre se rétrécit sous la chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'augmentation de l'agitation thermique provoque une dilatation microscopique du liquide, qui se traduit par une montée visible dans le tube étroit."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Échanges d'énergie thermique lors des changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pour faire fondre un morceau de glace ou faire bouillir de l'eau, que doit-on lui fournir ?",
+              "options": [
+                "De l'énergie thermique (de la chaleur)",
+                "Du froid intense",
+                "De la lumière bleue uniquement",
+                "Une pression nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion et la vaporisation nécessitent un apport d'énergie thermique de l'extérieur pour rompre les liaisons entre molécules."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un changement d'état qui absorbe de l'énergie thermique du milieu extérieur ?",
+              "options": [
+                "Endothermique",
+                "Exothermique",
+                "Isothermique",
+                "Magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une transformation est endothermique lorsqu'elle absorbe de l'énergie thermique du milieu extérieur (ex : fusion, vaporisation)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un changement d'état qui libère de l'énergie thermique vers le milieu extérieur ?",
+              "options": [
+                "Exothermique",
+                "Endothermique",
+                "Athermique",
+                "Électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une transformation est exothermique lorsqu'elle cède ou dégage de l'énergie thermique vers le milieu environnant (ex : solidification, liquéfaction)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les changements d'état suivants, lesquels nécessitent un apport d'énergie thermique (transformations endothermiques) ?",
+              "options": [
+                "La fusion",
+                "La vaporisation",
+                "La solidification",
+                "La liquéfaction"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La fusion (solide vers liquide) et la vaporisation (liquide vers gaz) consomment de l'énergie thermique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi ressent-on une vive sensation de froid lorsqu'on sort mouillé de l'eau en plein vent d'été ?",
+              "options": [
+                "L'eau qui s'évapore sur notre peau absorbe de l'énergie thermique à notre corps pour se vaporiser",
+                "L'eau de la piscine se transforme en glace sur la peau",
+                "Le vent injecte du froid sous la peau",
+                "L'eau liquide détruit les cellules thermiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évaporation est endothermique : pour passer à l'état gazeux, l'eau liquide puise de l'énergie thermique dans notre corps, ce qui nous refroidit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lorsqu'un liquide se solidifie dans un congélateur, quel échange d'énergie thermique a lieu ?",
+              "options": [
+                "Le liquide absorbe de la chaleur venant du congélateur",
+                "Le liquide cède de l'énergie thermique au milieu extérieur",
+                "Aucun transfert d'énergie n'a lieu",
+                "L'énergie est totalement anéantie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La solidification est exothermique : le liquide doit évacuer son énergie thermique pour que ses molécules se figent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi les arboriculteurs arrosent-ils leurs vergers d'eau lors des nuits de gel printanier ?",
+              "options": [
+                "En gelant sur les bourgeons, l'eau libère de l'énergie thermique (solidification exothermique), maintenant les bourgeons à 0 °C",
+                "Pour alourdir les branches afin qu'elles touchent le sol chaud",
+                "Pour noyer les insectes qui piquent les fleurs",
+                "Pour que les fleurs absorbent plus de lumière de lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En gelant, l'eau cède de l'énergie thermique (chaleur latente de solidification), ce qui protège les bourgeons tant qu'il y a de l'eau en train de geler."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À quoi sert l'énergie thermique apportée par une flamme à de l'eau qui bout déjà à 100 °C ?",
+              "options": [
+                "À élever la température de l'eau liquide à 120 °C",
+                "À briser les liaisons intermoléculaires pour convertir le liquide en vapeur",
+                "Elle est immédiatement détruite sans effet",
+                "À transformer les atomes d'oxygène en hydrogène"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Durant le palier d'ébullition, toute l'énergie reçue sert à séparer les molécules d'eau pour les faire passer à l'état de gaz."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment la transpiration permet-elle au corps humain de réguler sa température lors d'un effort ?",
+              "options": [
+                "L'évaporation de la sueur liquide prélève de l'énergie thermique à la peau, ce qui évacue l'excès de chaleur",
+                "La sueur forme une couche protectrice étanche contre le soleil",
+                "La sueur attire l'air froid ambiant",
+                "La sueur ralentit la circulation sanguine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évaporation de la sueur est un puissant mécanisme de refroidissement endothermique utilisé par notre organisme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lors de la formation de pluie par liquéfaction de la vapeur d'eau en altitude, l'eau :",
+              "options": [
+                "Cède de l'énergie thermique à l'air environnant",
+                "Absorbe l'énergie thermique de toute l'atmosphère",
+                "Refroidit l'air environnant",
+                "Ne réalise aucun transfert thermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La liquéfaction est exothermique : la condensation de la vapeur d'eau libère de grandes quantités d'énergie dans l'atmosphère (moteur des orages)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse et applications du quotidien sur les changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel changement d'état est responsable de la buée qui se dépose sur les fenêtres d'une cuisine en hiver ?",
+              "options": [
+                "La liquéfaction de la vapeur d'eau de l'air chaud au contact de la vitre froide",
+                "La vaporisation de l'eau du verre",
+                "La fusion de la vitre",
+                "La sublimation de l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air chaud et humide contient de la vapeur d'eau invisible qui se liquéfie en microgouttelettes au contact de la vitre froide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans le cycle naturel de l'eau, quel changement d'état permet à l'eau liquide des océans de rejoindre l'atmosphère sous forme invisible ?",
+              "options": [
+                "L'évaporation (vaporisation)",
+                "La fusion",
+                "La solidification",
+                "La liquéfaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous l'action du soleil et du vent, l'eau de surface des océans s'évapore et monte dans l'atmosphère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment se forment les nuages dans le ciel ?",
+              "options": [
+                "Par liquéfaction de la vapeur d'eau en minuscules gouttelettes liquides sous l'effet du froid en altitude",
+                "Par accumulation de fumée industrielle",
+                "Par évaporation spontanée de l'air sec",
+                "Par création d'eau par les oiseaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En altitude, la vapeur d'eau invisible se refroidit et se liquéfie en milliards de microgouttelettes en suspension : c'est un nuage."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les phénomènes météorologiques suivants, lesquels résultent directement d'un changement d'état de l'eau ?",
+              "options": [
+                "La rosée matinale (liquéfaction de la vapeur d'eau)",
+                "Le givre sur l'herbe (condensation solide de la vapeur d'eau)",
+                "La grêle (solidification de gouttes d'eau)",
+                "Les éclairs d'orage"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La rosée, le givre et la grêle sont tous trois des changements d'état de l'eau. Les éclairs sont un phénomène électrique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi les aliments cuisent-ils beaucoup plus vite dans un autocuiseur (cocotte-minute) fermé hermétiquement ?",
+              "options": [
+                "La pression accrue élève la température d'ébullition de l'eau vers 115 °C à 120 °C",
+                "L'autocuiseur utilise des rayons micro-ondes",
+                "La vapeur d'eau détruit les aliments plus vite",
+                "La température de l'eau ne dépasse pas 80 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En augmentant la pression intérieure, l'eau bout à une température supérieure à 100 °C (vers 120 °C), ce qui accélère la cuisson."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'on tente de cuire des pommes de terre à l'eau bouillante au sommet de l'Everest (environ 8 848 m d'altitude) ?",
+              "options": [
+                "L'eau bout vers 70 °C à cause de la faible pression, ce qui rend la cuisson extrêmement longue voire impossible",
+                "L'eau bout à 150 °C et les aliments cuisent en dix secondes",
+                "L'eau se transforme immédiatement en glace dès qu'on allume le feu",
+                "L'eau ne peut jamais entrer en ébullition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression atmosphérique étant très basse, l'eau bout à environ 70 °C seulement, ce qui ne suffit pas à cuire correctement les aliments."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se forme le givre sur les vitres d'une voiture lors d'une nuit d'hiver très froide ?",
+              "options": [
+                "Par passage direct de la vapeur d'eau de l'air à l'état solide (condensation solide) au contact du pare-brise glacial",
+                "Par projection de pluie chaude qui gèle le matin",
+                "Par fuite de liquide de refroidissement",
+                "Par transformation chimique du verre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque la température du pare-brise est négative, la vapeur d'eau gazeuse de l'air se condense directement en cristaux solides de glace."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quels deux changements d'état successifs utilise-t-on lors d'une distillation pour séparer deux liquides de températures d'ébullition différentes ?",
+              "options": [
+                "La vaporisation suivie de la liquéfaction",
+                "La fusion suivie de la solidification",
+                "La sublimation suivie de la cristallisation",
+                "La dissolution suivie de la filtration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On chauffe pour vaporiser le constituant le plus volatil, puis on refroidit les vapeurs dans un réfrigérant pour les liquéfier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi un bâtonnet de carboglace (dioxyde de carbone solide à -78 °C) ne laisse-t-il aucune trace liquide en disparaissant à l'air libre ?",
+              "options": [
+                "Parce qu'il se sublime directement en gaz CO₂ sans jamais devenir liquide à pression ambiante",
+                "Parce que le liquide s'infiltre instantanément dans la table",
+                "Parce que le gaz est absorbé par la lumière",
+                "Parce que la carboglace n'est pas de la matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À pression atmosphérique, le dioxyde de carbone passe directement de solide à gaz : il se sublime sans passer par l'état liquide."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'illustre le cycle de l'eau sur Terre concernant la masse totale d'eau présente sur notre planète ?",
+              "options": [
+                "La masse totale d'eau reste constante : l'eau change continuellement d'état et de réservoir sans disparaître",
+                "La Terre perd la moitié de son eau dans l'espace chaque siècle",
+                "Des milliards de litres d'eau neuve sont créés chaque seconde au pôle Nord",
+                "La masse de l'eau terrestre diminue de moitié à chaque été"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau se recycle perpétuellement : à travers ses divers changements d'état (évaporation, liquéfaction, fusion, solidification), sa masse globale reste conservée."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

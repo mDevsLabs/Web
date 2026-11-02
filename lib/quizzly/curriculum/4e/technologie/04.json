@@ -1,0 +1,2743 @@
+{
+  "id": "4e-technologie-04",
+  "year": "4e",
+  "subject": "technologie",
+  "order": 4,
+  "title": "Besoin et cahier des charges",
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Usage",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Identifier et exprimer le besoin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un besoin en technologie ?",
+              "options": [
+                "Une nécessité ou un désir éprouvé par un utilisateur",
+                "Une obligation légale imposée par l'État",
+                "Le coût total des composants d'un objet",
+                "Une pièce mécanique essentielle au moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En technologie, un besoin correspond à une nécessité, un manque ou un désir ressenti par une personne ou un groupe d'utilisateurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel outil graphique est traditionnellement utilisé au collège pour énoncer le besoin fondamental d'un produit ?",
+              "options": [
+                "Le diagramme bête à cornes",
+                "Le diagramme de Gantt",
+                "L'organigramme de programmation",
+                "Le schéma cinématique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diagramme « bête à cornes » permet de formaliser le besoin en répondant à trois questions fondamentales."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans l'outil « bête à cornes », à quelle question répond la bulle située en haut à gauche ?",
+              "options": [
+                "À qui l'objet rend-il service ?",
+                "Dans quel but l'objet existe-t-il ?",
+                "Sur quoi l'objet agit-il ?",
+                "Combien coûte l'objet à fabriquer ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question « À qui le produit rend-il service ? » identifie clairement les utilisateurs ou bénéficiaires ciblés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur quoi agit une tondeuse à gazon selon l'analyse du besoin ?",
+              "options": [
+                "Sur la pelouse et l'herbe du jardin",
+                "Sur le compte en banque de l'utilisateur",
+                "Sur le réseau électrique uniquement",
+                "Sur les nuages et la météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tondeuse agit directement sur la matière d'œuvre, qui est ici l'herbe ou la pelouse du jardin."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les questions fondamentales posées par l'outil « bête à cornes » pour définir un besoin ?",
+              "options": [
+                "À qui le produit rend-il service ?",
+                "Sur quoi le produit agit-il ?",
+                "Dans quel but le produit existe-t-il ?",
+                "Quel est le code source du programme ?"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'outil bête à cornes pose trois questions clés : À qui rend-il service ? Sur quoi agit-il ? Dans quel but ?"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « valider le besoin » lors de la conception d'un objet ?",
+              "options": [
+                "Vérifier que le besoin existe réellement et qu'il est durable",
+                "Choisir la couleur définitive de l'emballage",
+                "Vendre immédiatement l'objet au grand public",
+                "Remplacer tous les composants électroniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valider le besoin consiste à s'assurer qu'il y a de véritables utilisateurs intéressés et que ce besoin ne va pas disparaître immédiatement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si un objet est conçu sans répondre à un besoin réel ?",
+              "options": [
+                "L'objet risque de ne pas trouver d'utilisateurs et d'être un échec commercial",
+                "L'objet devient automatiquement obligatoire dans tous les collèges",
+                "L'objet fonctionne plus rapidement sans besoin",
+                "L'objet n'a plus besoin d'énergie pour marcher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans besoin avéré, un objet technique ne trouve pas son public et ne sera ni acheté ni utilisé."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels exemples illustrent des besoins fondamentaux de l'être humain auxquels répondent des objets techniques ?",
+              "options": [
+                "Se déplacer rapidement et en sécurité",
+                "Communiquer à distance avec des proches",
+                "Conserver des aliments au frais",
+                "Multiplier par dix la vitesse de la lumière"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les transports, les télécommunications et l'électroménager répondent à des besoins humains concrets de mobilité, communication et alimentation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase formule correctement le but d'un casque de vélo ?",
+              "options": [
+                "Permettre au cycliste de protéger sa tête en cas de chute",
+                "Servir uniquement d'accessoire de mode lors des promenades",
+                "Augmenter la vitesse maximale du vélo de 50 km/h",
+                "Remplacer les freins du vélo en cas d'urgence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le but d'un casque de vélo est d'assurer la protection crânienne du cycliste en amortissant les chocs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que les besoins humains évoluent ?",
+              "options": [
+                "Parce que les modes de vie, les technologies et les préoccupations changent",
+                "Parce que les lois de la physique se modifient chaque année",
+                "Parce que les fabricants changent arbitrairement la gravité",
+                "Parce que la matière première disparaît tous les six mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évolution de la société, des technologies et des enjeux environnementaux fait naître de nouveaux besoins au fil des générations."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les profils d'utilisateurs et l'ergonomie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qui désigne-t-on par le terme « utilisateur » d'un objet technique ?",
+              "options": [
+                "La personne qui manipule ou bénéficie directement de l'objet",
+                "L'ingénieur qui a dessiné le plan 3D sur ordinateur",
+                "Le transporteur qui livre le colis au magasin",
+                "Le banquier qui a financé l'entreprise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'utilisateur est la personne finale qui se sert du produit pour accomplir une tâche ou satisfaire un besoin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'ergonomie d'un objet technique ?",
+              "options": [
+                "L'adaptation de l'objet aux caractéristiques physiques et cognitives de l'humain",
+                "Le calcul du prix de revient de chaque matière première",
+                "La résistance du matériau aux très hautes températures",
+                "La couleur extérieure de la coque de protection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ergonomie vise à concevoir des objets confortables, sûrs et faciles à utiliser pour le corps et l'esprit humain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi une paire de ciseaux pour écoliers gauchers a-t-elle des lames inversées ?",
+              "options": [
+                "Pour que la ligne de coupe reste visible et que l'effort soit naturel",
+                "Pour qu'elle coupe deux fois plus vite que les autres",
+                "Pour empêcher les droitiers de couper du carton",
+                "Pour réduire le coût de fabrication en usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ciseaux pour gauchers inversent les lames pour offrir une visibilité parfaite sur le tracé de découpe et une prise ergonomique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la démarche qui consiste à rendre un objet utilisable par le plus grand nombre, y compris en situation de handicap ?",
+              "options": [
+                "L'accessibilité universelle ou design inclusif",
+                "La production industrielle en série limitée",
+                "La commercialisation agressive",
+                "L'analyse financière prévisionnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accessibilité universelle cherche à éliminer les obstacles d'usage pour que tout le monde puisse utiliser l'objet sans difficulté."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments contribuent à la bonne ergonomie d'une souris d'ordinateur ?",
+              "options": [
+                "Une forme adaptée au creux de la paume de la main",
+                "Des boutons faciles d'accès sans tension musculaire excessive",
+                "Un revêtement agréable et antidérapant",
+                "Une coque en béton très lourd et rugueux"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La forme galbée, l'accès direct aux boutons et un matériau doux et adhérent réduisent la fatigue musculaire lors d'un usage prolongé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle tranche d'âge nécessite des objets avec des règles de préhension simples et des matériaux incassables non toxiques ?",
+              "options": [
+                "Les jeunes enfants en bas âge",
+                "Les pilotes d'avions de ligne",
+                "Les horlogers professionnels",
+                "Les chercheurs en astrophysique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tout-petits portent les objets à la bouche et ont une motricité fine en développement, d'où des exigences ergonomiques strictes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une interface d'application pour smartphone, que favorise une taille de texte réglable ?",
+              "options": [
+                "Le confort visuel et l'accessibilité pour les personnes malvoyantes",
+                "La vitesse de téléchargement des vidéos",
+                "La charge de la batterie de l'appareil",
+                "La solidité de l'écran en verre trempé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ajuster la taille des polices permet aux personnes ayant des difficultés de vision de lire aisément les informations."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels critères caractérisent les profils d'utilisateurs lors de la phase de conception d'un produit ?",
+              "options": [
+                "L'âge et la morphologie physique des usagers",
+                "Le niveau d'expertise ou de familiarité avec la technologie",
+                "Le contexte d'usage (professionnel, scolaire, loisirs)",
+                "La pointure exacte des chaussures de l'électricien"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les créateurs étudient l'âge, l'expérience technique et le contexte d'utilisation pour cibler au mieux les fonctionnalités."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel risque encourt un ouvrier qui utilise un outil mal équilibré et trop lourd au quotidien ?",
+              "options": [
+                "Développer des troubles musculosquelettiques (TMS)",
+                "Améliorer sa vision nocturne de façon spectaculaire",
+                "Augmenter spontanément la vitesse de sa machine",
+                "Éviter tout type de fatigue au travail"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un outil inadapté provoque des douleurs chroniques et des troubles musculosquelettiques (TMS) articulaires ou musculaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi teste-t-on des prototypes d'objets auprès d'un panel d'utilisateurs réels ?",
+              "options": [
+                "Pour identifier les difficultés d'usage et perfectionner le produit",
+                "Pour vendre immédiatement des objets non finalisés",
+                "Pour détruire tous les composants avant commercialisation",
+                "Pour remplacer définitivement le bureau d'études"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tests utilisateurs permettent de repérer les bugs ergonomiques ou incompréhensions avant de lancer la fabrication en série."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Fonction d'usage et fonction d'estime",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la définition exacte de la « fonction d'usage » d'un objet technique ?",
+              "options": [
+                "Le service pratique et concret rendu par l'objet à l'utilisateur",
+                "Le sentiment de fierté que procure la marque du produit",
+                "Le montant de la taxe sur la valeur ajoutée (TVA)",
+                "L'impact sonore des emballages lors du déballage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction d'usage répond à la question : « À quoi sert l'objet ? » de façon pratique, objective et mesurable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quelle question répond la fonction d'usage d'une montre ?",
+              "options": [
+                "Elle sert à donner l'heure avec précision",
+                "Elle plaît beaucoup grâce à ses dorures brillantes",
+                "Elle coûte exactement cinquante euros en boutique",
+                "Elle a été fabriquée en Suisse en 1980"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Donner l'heure est l'utilité concrète et fonctionnelle de la montre, c'est donc sa fonction d'usage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la « fonction d'estime » d'un objet technique ?",
+              "options": [
+                "L'attrait affectif, esthétique ou social que l'objet suscite chez l'usager",
+                "La puissance électrique consommée par le moteur en veille",
+                "Le nombre de vis nécessaires pour assembler le châssis",
+                "La vitesse maximale autorisée sur autoroute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction d'estime répond à la question : « Pourquoi cet objet me plaît-il ? » (beauté, prestige, couleur, mode)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lequel de ces critères relève typiquement de la fonction d'estime d'un scooter ?",
+              "options": [
+                "Sa couleur métallisée et son look sportif moderne",
+                "Sa capacité à rouler à 45 km/h sur la chaussée",
+                "La présence de freins à disque fonctionnels",
+                "Son réservoir de carburant de 5 litres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le design sportif et la peinture pailletée visent à séduire l'acheteur par leur style, ce qui relève de l'estime."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments font partie intégrante de la fonction d'estime d'un vêtement de sport ?",
+              "options": [
+                "Le logo et le prestige de la marque",
+                "La coupe tendance et l'harmonie des couleurs",
+                "Le toucher doux et agréable d'un tissu satiné",
+                "La résistance thermique absolue aux acides corrosifs"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La marque, le style visuel et l'aspect agréable au regard ou au toucher nourrissent le plaisir d'estime du consommateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux stylos à bille tracent des traits d'encre bleue identiques sur une feuille. Que peut-on affirmer ?",
+              "options": [
+                "Ils ont la même fonction d'usage principale",
+                "Ils ont obligatoirement le même prix d'achat en magasin",
+                "Ils ont nécessairement la même fonction d'estime",
+                "Ils ont été fabriqués dans la même usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous deux permettent d'écrire à l'encre bleue : leur fonction d'usage est strictement identique, même si l'un est en plastique et l'autre en or."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi un fabricant accorde-t-il une grande importance à la fonction d'estime lors de la conception ?",
+              "options": [
+                "Pour déclencher le coup de cœur de l'acheteur face à la concurrence",
+                "Pour empêcher les composants mécaniques de s'user trop vite",
+                "Pour se dispenser de concevoir un produit qui fonctionne",
+                "Pour supprimer les notices d'utilisation obligatoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Face à des produits aux performances techniques proches, l'esthétique et la marque orientent décisivement le choix du consommateur."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Parmi ces propositions, lesquelles relèvent de la fonction d'usage d'une lampe de bureau ?",
+              "options": [
+                "Éclairer la zone de travail de manière ciblée",
+                "Permettre de lire un document papier sans fatigue oculaire",
+                "Afficher une silhouette futuriste très élégante",
+                "Rendre jaloux ses collègues de travail"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'éclairage efficace du plan de travail et l'aide à la lecture constituent la fonction d'usage concrète de la lampe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La fonction d'estime est-elle universelle pour tous les êtres humains ?",
+              "options": [
+                "Non, elle est subjective et dépend des goûts, de l'âge et de la culture",
+                "Oui, tout le monde trouve les mêmes objets beaux sans exception",
+                "Oui, elle est fixée mathématiquement par une norme internationale",
+                "Non, elle n'existe que pour les téléphones portables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les goûts varient d'une personne à l'autre selon sa culture, sa sensibilité personnelle et son époque."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que risque un objet qui a une excellente fonction d'estime mais une mauvaise fonction d'usage ?",
+              "options": [
+                "D'être acheté pour son look mais vite abandonné car inefficace",
+                "De devenir l'outil le plus performant du monde entier",
+                "De ne jamais être vu dans aucune publicité commerciale",
+                "D'être transformé automatiquement en or pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un objet séduisant mais inutilisable ou décevant dans la pratique est vite délaissé par ses utilisateurs frustrés."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le besoin et son environnement (diagramme pieuvre)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le diagramme des interactions qui place l'objet au centre de son environnement ?",
+              "options": [
+                "Le diagramme pieuvre (ou graphe des interactions)",
+                "L'arbre des causes et des conséquences",
+                "La pyramide des âges de la population",
+                "Le tableau périodique des éléments chimiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diagramme pieuvre relie l'objet technique aux éléments du milieu extérieur qui gravitent autour de lui."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un diagramme pieuvre, que représentent les bulles périphériques qui entourent le produit ?",
+              "options": [
+                "Les éléments du milieu extérieur (utilisateurs, support, air, énergie...)",
+                "Les différentes usines de fabrication de l'objet",
+                "Les notes scolaires obtenues par les élèves en classe",
+                "Les pannes mécaniques possibles du moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les éléments du milieu extérieur (EME) sont toutes les entités physiques, humaines ou environnementales en contact avec le produit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que relie une « Fonction Principale » (FP) dans un diagramme pieuvre ?",
+              "options": [
+                "Deux éléments extérieurs en passant à travers l'objet technique",
+                "Un seul élément extérieur vers le centre de la Terre",
+                "Deux objets concurrents vendus dans un supermarché",
+                "Deux composants électroniques situés sur la même carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fonction principale matérialise une relation d'échange ou d'action entre deux éléments extérieurs via l'objet technique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment est représentée une fonction principale (FP) sur le diagramme des interactions ?",
+              "options": [
+                "Par un trait qui relie deux éléments extérieurs en traversant le produit",
+                "Par un cercle rouge complètement isolé sans aucune liaison",
+                "Par une flèche pointant uniquement vers la poubelle",
+                "Par un point d'interrogation en gras clignotant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ligne d'une FP part d'un premier élément extérieur, traverse le produit au centre et rejoint un second élément extérieur."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments extérieurs peuvent faire partie de l'environnement d'une trottinette électrique ?",
+              "options": [
+                "L'utilisateur qui pilote l'engin",
+                "Le sol ou la route sur lequel roulent les roues",
+                "Les intempéries comme la pluie ou la poussière",
+                "La planète Mars et ses tempêtes de sable"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le pilote, la chaussée et les conditions météo sont des éléments concrets du milieu environnant d'une trottinette."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la fonction principale d'un lecteur MP3 reliant l'utilisateur et les fichiers musicaux ?",
+              "options": [
+                "Permettre à l'utilisateur d'écouter ses morceaux de musique",
+                "Charger la batterie de la voiture électrique du voisin",
+                "Mesurer la température de la pièce en degrés Celsius",
+                "Nettoyer l'écran d'ordinateur de la poussière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La FP du lecteur audio est de restituer les fichiers sonores sous forme d'ondes audibles pour l'utilisateur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le diagramme pieuvre, que relie une « Fonction Contrainte » (FC) ?",
+              "options": [
+                "L'objet technique à un seul élément du milieu extérieur",
+                "Deux objets techniques totalement distincts sans utilisateur",
+                "Trois éléments extérieurs sans jamais toucher le produit",
+                "Les câbles électriques directement au disjoncteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fonction contrainte lie le produit à un élément extérieur unique (ex : s'adapter au sol, résister à l'humidité)."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Pourquoi réalise-t-on un diagramme des interactions au début d'un projet technologique ?",
+              "options": [
+                "Pour recenser sans oubli toutes les fonctions attendues du produit",
+                "Pour identifier les contraintes imposées par le milieu d'utilisation",
+                "Pour comprendre comment l'objet s'insère dans son environnement",
+                "Pour remplacer tous les tests réels en laboratoire"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le graphe des interactions permet de cadrer exhaustivement le rôle du produit et ses exigences vis-à-vis de son environnement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel verbe à l'infinitif utilise-t-on traditionnellement pour débuter l'énoncé d'une fonction ?",
+              "options": [
+                "Un verbe d'action précisant l'effet attendu (permettre, assurer, résister...)",
+                "Un verbe de couleur comme bleuir ou verdir",
+                "Uniquement le verbe « vendre » sans autre précision",
+                "Aucun verbe, seulement un adjectif qualificatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énoncé d'une fonction commence par un verbe d'action à l'infinitif exprimant le service rendu (ex: « Permettre à l'utilisateur de... »)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie le fait qu'une bulle du milieu extérieur ne soit reliée à aucune fonction ?",
+              "options": [
+                "Qu'elle est inutile et ne doit pas figurer dans l'analyse de cet objet",
+                "Que le produit est vendu deux fois plus cher sur le marché",
+                "Que l'objet ne peut fonctionner qu'en l'absence de gravité",
+                "Que le bureau d'études a terminé son travail avec succès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout élément extérieur pertinent doit être relié à au moins une fonction ; s'il n'interagit pas avec le produit, il est hors sujet."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les fonctions principales (FP)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien d'éléments du milieu extérieur une fonction principale (FP) met-elle généralement en relation ?",
+              "options": [
+                "Deux éléments extérieurs distincts",
+                "Un seul élément extérieur isolé",
+                "Dix éléments extérieurs obligatoirement",
+                "Aucun élément extérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La FP relie deux éléments extérieurs en créant une interaction utile entre eux par l'intermédiaire du produit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour un taille-crayon, quels éléments extérieurs sont mis en relation par la fonction principale FP1 ?",
+              "options": [
+                "L'écolier et le crayon en bois",
+                "La trousse et le cartable d'école",
+                "La poubelle et la règle graduée",
+                "Le tableau blanc et la craie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le taille-crayon permet à l'écolier de tailler la mine de son crayon de bois : ces deux éléments sont reliés par la FP1."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la formulation correcte de la FP1 d'une paire de lunettes de vue ?",
+              "options": [
+                "Permettre au porteur de voir net son environnement visuel",
+                "Résister à une immersion sous 200 mètres d'eau salée",
+                "Être rangée facilement dans une poche de pantalon",
+                "Coûter moins de dix euros en pharmacie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction principale est d'assurer la netteté de la vision de l'utilisateur face à son environnement visuel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un produit technique peut-il posséder plusieurs fonctions principales ?",
+              "options": [
+                "Oui, si l'objet offre plusieurs services majeurs distincts à l'usager",
+                "Non, la norme impose rigoureusement une seule FP par produit",
+                "Non, sinon l'objet devient immédiatement illégal à la vente",
+                "Oui, mais uniquement si c'est un véhicule spatial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un smartphone, par exemple, possède plusieurs FP : téléphoner, naviguer sur Internet, prendre des photos."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont des formulations valides de fonctions principales (FP) ?",
+              "options": [
+                "Permettre au cycliste d'éclairer la chaussée dans l'obscurité",
+                "Permettre au randonneur de transporter ses affaires sur son dos",
+                "Permettre au musicien d'amplifier le son de sa guitare",
+                "Rouge vif brillant avec des paillettes dorées"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Une fonction principale s'exprime par un verbe d'action reliant l'utilisateur à un élément extérieur pour rendre un service."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la fonction principale d'un pont routier reliant deux rives d'un fleuve ?",
+              "options": [
+                "Permettre aux véhicules de franchir l'obstacle naturel d'une rive à l'autre",
+                "Résister à la corrosion provoquée par l'eau du fleuve",
+                "Réduire le bruit provoqué par le passage des camions",
+                "Décorer le paysage pour les touristes de passage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pont a pour rôle premier de faire franchir le cours d'eau aux usagers de la route."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans l'expression d'une FP, pourquoi évite-t-on de mentionner une solution technique précise ?",
+              "options": [
+                "Pour laisser la liberté aux concepteurs d'inventer la meilleure solution",
+                "Parce que les ordinateurs ne savent pas lire les noms des pièces",
+                "Pour empêcher les concurrents d'apprendre la physique",
+                "Parce que les solutions techniques sont interdites en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exprimer le besoin sans figer la solution (ex: « éclairer » au lieu de « utiliser une ampoule LED ») préserve la créativité de l'ingénieur."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Pour un drone de prise de vue aérienne, quelles sont des fonctions principales majeures ?",
+              "options": [
+                "Permettre au télépilote de filmer des paysages vus du ciel",
+                "Permettre au secouriste d'observer une zone inaccessible au sol",
+                "S'adapter à la prise secteur de la maison pour recharger",
+                "Mesurer moins de 50 centimètres de largeur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les FP caractérisent la finalité de mission du drone (capturer des images aériennes pour un pilote ou secouriste). La recharge est une contrainte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si un objet ne remplit plus sa fonction principale lors d'un test, que dit-on ?",
+              "options": [
+                "Que l'objet est en panne ou non conforme au besoin attendu",
+                "Que l'objet a simplement changé de couleur avec élégance",
+                "Que le cahier des charges est devenu parfait instantanément",
+                "Que les lois de la physique ont été suspendues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'incapacité à satisfaire la FP traduit un dysfonctionnement majeur rendant le produit impropre à son usage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la fonction principale est-elle la raison d'être fondamentale d'un objet technique ?",
+              "options": [
+                "Parce que sans elle, l'objet ne répondrait à aucune utilité pratique recherchée",
+                "Parce qu'elle représente 100 % du poids total de la matière de l'objet",
+                "Parce qu'elle est rédigée en lettres capitales sur l'emballage",
+                "Parce qu'elle est toujours gratuite à fabriquer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un objet est créé pour rendre un service spécifique : la FP définit précisément ce service indispensable."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les fonctions contraintes liées à l'usage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une fonction contrainte (FC) dans l'analyse fonctionnelle d'un produit ?",
+              "options": [
+                "Une obligation ou limitation imposée à l'objet par son environnement",
+                "Le prix maximal payé par un magasin pour commander le produit",
+                "Le nombre de pages de la notice de montage du fabricant",
+                "L'avis personnel laissé par un internaute sur les réseaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fonction contrainte exprime une exigence d'adaptation, de sécurité ou de résistance face à un élément extérieur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la fonction contrainte d'une trottinette liée à l'élément extérieur « le sol » ?",
+              "options": [
+                "S'adapter aux irrégularités du terrain et adhérer à la chaussée",
+                "Changer la couleur du bitume sous le passage des roues",
+                "Empêcher la pluie de tomber sur la route goudronnée",
+                "Émettre de la musique forte pour alerter les piétons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trottinette doit obligatoirement rouler et adhérer sur la chaussée sans déraper : c'est une contrainte imposée par le sol."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la sécurité de l'utilisateur fait-elle toujours l'objet d'une fonction contrainte prioritaire ?",
+              "options": [
+                "Pour éviter tout risque de blessure, d'accident ou de danger pour la santé",
+                "Pour augmenter obligatoirement le poids de l'objet de 10 kg",
+                "Pour interdire l'utilisation de l'objet aux personnes adultes",
+                "Pour que l'objet soit livré uniquement par camion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La protection de l'usager est une contrainte absolue dictée par l'éthique et les lois de sécurité des biens de consommation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quel élément extérieur se rattache la fonction contrainte : « Résister à la pluie et à la corrosion » pour un cadenas de portail ?",
+              "options": [
+                "À l'environnement climatique et la météo",
+                "À la clé métallique servant à ouvrir le cadenas",
+                "Au livreur qui a apporté le colis chez le client",
+                "À la facture d'achat émise par le supermarché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pluie, l'humidité et l'air ambiant constituent les éléments climatiques qui imposent une résistance à la rouille."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propositions correspondent à des fonctions contraintes (FC) pour un sac à dos de collégien ?",
+              "options": [
+                "Être confortable et adapté au dos de l'élève",
+                "Résister aux déchirures et au poids des manuels scolaires",
+                "Être étanche pour protéger les cahiers des averses",
+                "Remplacer les devoirs de mathématiques automatiquement"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Confort dorsal, résistance mécanique et imperméabilité sont des contraintes directes imposées par l'usage et l'environnement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle fonction contrainte relie une souris sans fil à son utilisateur lors d'une utilisation prolongée ?",
+              "options": [
+                "Offrir une prise en main agréable sans provoquer de crampes",
+                "Émettre des bips sonores stridents toutes les cinq secondes",
+                "Chauffer la paume de la main jusqu'à 60 degrés Celsius",
+                "Changer de propriétaire automatiquement chaque matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ergonomie de prise en main est une contrainte indispensable pour préserver le confort de l'utilisateur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la contrainte qui impose à une montre connectée de fonctionner plusieurs jours sans recharge ?",
+              "options": [
+                "Une contrainte d'autonomie énergétique liée à la batterie",
+                "Une contrainte de couleur imposée par les peintres",
+                "Une contrainte d'impression papier liée à l'encre",
+                "Une contrainte de transport maritime international"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'autonomie de la batterie est une contrainte de fonctionnement essentielle pour l'usage quotidien nomade."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels éléments de l'environnement imposent des fonctions contraintes à un smartphone ?",
+              "options": [
+                "Le réseau électrique domestique (pour la recharge)",
+                "Les yeux et les doigts de l'utilisateur (ergonomie d'affichage et tactile)",
+                "Les poches de vêtements (encombrement et dimensions)",
+                "Le nombre d'habitants sur la planète Jupiter"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La recharge sur secteur, l'interface tactile et le gabarit adapté aux poches découlent d'éléments du milieu extérieur bien réels."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle fonction contrainte concerne le respect de la législation en vigueur sur les jouets d'enfants ?",
+              "options": [
+                "Respecter les normes européennes de sécurité (marquage CE)",
+                "Être peint obligatoirement en jaune fluo avec des rayures",
+                "Coûter obligatoirement plus de cent euros en caisse",
+                "Être fabriqué exclusivement avec des métaux très lourds"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conformité aux normes réglementaires en vigueur garantit qu'aucun risque toxique ou mécanique ne menace les enfants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on qu'une fonction contrainte limite les choix possibles des créateurs d'un objet ?",
+              "options": [
+                "Parce qu'elle dicte des exigences obligatoires que la solution technique doit satisfaire",
+                "Parce qu'elle empêche définitivement les ingénieurs de concevoir des objets",
+                "Parce qu'elle oblige à fabriquer tous les objets en bois sculpté",
+                "Parce qu'elle supprime tous les boutons de commande de l'appareil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contraintes délimitent le cadre technique dans lequel les ingénieurs doivent trouver des compromis viables."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Le cycle de vie et les scénarios d'usage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « cycle de vie » d'un objet technique ?",
+              "options": [
+                "L'ensemble des étapes depuis sa conception jusqu'à son recyclage ou sa fin de vie",
+                "Le nombre de jours pendant lesquels la batterie reste allumée",
+                "Le trajet effectué par le camion entre l'usine et le magasin",
+                "La période pendant laquelle l'objet reste sous garantie légale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle de vie s'étend de l'extraction des matières premières à la fin de vie (fabrication, transport, usage, recyclage)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quel ordre chronologique se succèdent les principales étapes du cycle de vie d'un objet ?",
+              "options": [
+                "Conception, fabrication, distribution, utilisation, fin de vie",
+                "Fin de vie, conception, emballage, distribution, recyclage",
+                "Utilisation, extraction des minerais, fabrication, vente",
+                "Vente, conception, extraction, utilisation, démontage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout commence par la conception, puis la production industrielle, la logistique de vente, l'utilisation et enfin le traitement en fin de vie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « scénario d'usage » en technologie ?",
+              "options": [
+                "La description pas à pas d'une situation dans laquelle l'utilisateur emploie l'objet",
+                "Le scénario de film publicitaire tourné pour la télévision",
+                "Le calcul mathématique du volume de la boîte en carton",
+                "Le nom du brevet déposé à l'Institut de la propriété industrielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le scénario d'usage décrit précisément les actions de l'utilisateur et les réactions de l'objet au cours d'une situation donnée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi étudie-t-on différents scénarios d'usage lors de la conception d'un aspirateur robot ?",
+              "options": [
+                "Pour programmer ses réactions face aux obstacles, tapis, vide ou décharge de batterie",
+                "Pour décider de la musique diffusée à la radio de l'usine",
+                "Pour augmenter le prix de vente chaque fois qu'il nettoie une pièce",
+                "Pour interdire l'aspiration des pièces de plus de 10 m²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les scénarios d'usage prévoient tous les cas de figure (rencontre d'un mur, escalier, retour à la base) pour programmer la machine."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles étapes appartiennent à l'utilisation normale d'un vélo en libre-service ?",
+              "options": [
+                "Déverrouiller le vélo via une application ou une borne",
+                "Effectuer le trajet souhaité en respectant le code de la route",
+                "Raccrocher le vélo dans une station d'accueil sécurisée",
+                "Démonter le pédalier pour le revendre en pièces détachées"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La prise en charge, le trajet et la restitution constituent le cycle d'usage standard du service de vélopartage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle étape du cycle de vie consomme le plus d'énergie pour une bouilloire électrique ?",
+              "options": [
+                "La phase d'utilisation quotidienne pour chauffer l'eau",
+                "La phase d'emballage dans le carton à l'usine",
+                "Le transport maritime depuis le port d'expédition",
+                "La conception du plan 3D sur l'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les appareils thermiques, l'énergie dépensée pour chauffer l'eau pendant des années dépasse largement l'énergie de fabrication."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le démontage et la valorisation des matières d'un objet usagé ?",
+              "options": [
+                "Le recyclage et la revalorisation en fin de vie",
+                "L'assemblage sur chaîne de production automatisée",
+                "L'éco-blanchiment publicitaire de la marque",
+                "Le surcoût d'assurance pour transport exceptionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le recyclage consiste à récupérer les métaux, plastiques et composants réutilisables d'un objet arrivé en fin de vie."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels scénarios critiques le concepteur d'un ascenseur doit-il impérativement anticiper ?",
+              "options": [
+                "Une coupure générale d'électricité pendant le déplacement de la cabine",
+                "L'appui sur le bouton d'appel d'urgence par un usager",
+                "Une surcharge de poids dépassant la capacité maximale autorisée",
+                "L'apparition soudaine d'un trou noir au fond de la cage"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Pannes de courant, boutons d'alerte et surcharges sont des scénarios d'urgence critiques que le système doit gérer en totale sécurité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle démarche environnementale prend en compte toutes les étapes du cycle de vie dès le début du projet ?",
+              "options": [
+                "L'écoconception (ou analyse du cycle de vie ACV)",
+                "La délocalisation de la production dans un pays lointain",
+                "L'obsolescence programmée des composants électroniques",
+                "La vente en gros sans contrôle de conformité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écoconception intègre l'impact environnemental dès la planche à dessin pour réduire les pollutions tout au long du cycle de vie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi est-il utile de concevoir des objets faciles à réparer ?",
+              "options": [
+                "Pour prolonger leur durée de vie et réduire les déchets électroniques",
+                "Pour obliger les familles à acheter un nouvel appareil tous les trimestres",
+                "Pour empêcher le recyclage des métaux précieux",
+                "Pour faire disparaître les outils de bricolage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réparabilité lutte contre le gaspillage en maintenant l'objet en service plus longtemps grâce au remplacement de pièces défectueuses."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "L'évolution des besoins dans le temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pourquoi les téléphones d'aujourd'hui ne ressemblent-ils plus au téléphone à manivelle inventé au XIXe siècle ?",
+              "options": [
+                "Parce que les besoins d'accès à l'information et les technologies ont considérablement évolué",
+                "Parce que les matériaux métalliques sont devenus interdits sur Terre",
+                "Parce que la voix humaine est devenue dix fois plus aiguë avec le temps",
+                "Parce que la communication à distance est devenue facultative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les progrès techniques (miniaturisation, Internet, écrans tactiles) et les nouveaux usages mobiles ont transformé le simple transmetteur de voix en mini-ordinateur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel besoin nouveau est apparu avec la diffusion massive des appareils numériques portables ?",
+              "options": [
+                "Le besoin de recharger facilement ses batteries en tout lieu",
+                "Le besoin de transporter une réserve de charbon pour le train",
+                "Le besoin d'écrire des télégrammes avec du papier carbone",
+                "Le besoin d'utiliser une boussole magnétique pour marcher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mobilité des smartphones et tablettes a créé le besoin universel de bornes de recharge, câbles USB et batteries externes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel moyen de transport individuel a connu un essor fulgurant en ville en réponse au besoin de mobilité douce et rapide ?",
+              "options": [
+                "La trottinette électrique et le vélo à assistance électrique",
+                "Le traîneau tiré par des rennes de forêt boréale",
+                "La calèche à deux chevaux avec cocher",
+                "La locomotive à vapeur de transport de minerai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mobilités électriques légères répondent au besoin citadin d'éviter les bouchons tout en limitant les émissions polluantes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le fait qu'un objet technique devienne démodé ou inadapté face aux nouveaux besoins et logiciels ?",
+              "options": [
+                "L'obsolescence (technologique ou d'usage)",
+                "La fermentation industrielle",
+                "La sédimentation géologique",
+                "La liquéfaction des métaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'obsolescence qualifie la perte d'utilité ou de valeur d'un produit face aux progrès techniques, logiciels ou aux normes récentes."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels facteurs poussent les besoins et les objets techniques à se transformer au fil des décennies ?",
+              "options": [
+                "Les découvertes scientifiques et innovations technologiques",
+                "Les exigences de protection de l'environnement et du climat",
+                "Les évolutions des modes de vie et habitudes de travail",
+                "Le déplacement des continents de quelques millimètres"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La technologie, l'écologie et les mutations sociologiques réinventent en permanence les attentes des utilisateurs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle évolution d'usage constate-t-on pour l'écoute de musique entre les années 1990 et aujourd'hui ?",
+              "options": [
+                "Le passage du support physique (disque CD) au streaming en ligne instantané",
+                "L'obligation de chanter soi-même sans aucun appareil musical",
+                "La disparition complète de tous les morceaux de musique enregistrés",
+                "L'utilisation exclusive de rouleaux de cire du XIXe siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le besoin d'écouter de la musique est resté le même, mais l'usage est passé de la possession d'un disque physique à l'accès dématérialisé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel besoin a motivé le remplacement progressif des ampoules à filament par des ampoules à LED ?",
+              "options": [
+                "Le besoin de réduire la consommation d'énergie et d'allonger la durée de vie",
+                "Le besoin d'augmenter la chaleur dans la pièce en hiver",
+                "Le besoin d'empêcher la lumière de se propager dans la maison",
+                "Le besoin de faire clignoter les pièces en permanence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les LED consomment environ 85 % d'électricité en moins et durent 15 à 25 fois plus longtemps que les ampoules à incandescence."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels objets actuels répondent au besoin de sécurité et de confort thermique dans la maison connectée ?",
+              "options": [
+                "Les thermostats connectés programmables à distance",
+                "Les détecteurs de fumée communicants avec alerte sur smartphone",
+                "Les caméras de surveillance avec reconnaissance intelligente",
+                "Les bougies en cire d'abeille sans électricité"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La domotique répond aux besoins modernes de gestion énergétique sur mesure et de tranquillité d'esprit à distance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi une entreprise doit-elle constamment analyser l'évolution des besoins de ses clients ?",
+              "options": [
+                "Pour adapter ses produits et éviter la faillite face à des concurrents plus modernes",
+                "Pour copier exactement les objets du siècle précédent sans changement",
+                "Pour licencier immédiatement tous ses chercheurs et ingénieurs",
+                "Pour interdire la vente de nouveaux appareils sur Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une entreprise qui n'anticipe pas les besoins émergents risque de voir ses produits désertés au profit d'innovations plus pertinentes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel rôle joue la prise de conscience écologique dans l'évolution récente des besoins d'emballages ?",
+              "options": [
+                "Elle pousse à préférer les emballages réutilisables, biosourcés ou recyclables",
+                "Elle oblige à emballer chaque fruit individuellement dans cinq couches de plastique",
+                "Elle interdit totalement la vente de produits alimentaires dans les magasins",
+                "Elle rend obligatoire l'emballage en plomb massif des bouteilles d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réduction des déchets plastiques est devenue une attente majeure des consommateurs et des réglementations actuelles."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Valider et reformuler le besoin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quel moment du projet technique doit-on valider le besoin ?",
+              "options": [
+                "Tout au début, avant d'engager des dépenses d'étude ou de fabrication",
+                "Uniquement après avoir vendu le premier million d'exemplaires",
+                "Juste avant de détruire le produit à la fin de sa vie",
+                "Pendant le transport des palettes dans le camion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valider le besoin dès le départ évite d'investir du temps et de l'argent dans un produit inutile ou voué à l'échec."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle question doit-on se poser pour vérifier la pérennité d'un besoin ?",
+              "options": [
+                "Le besoin risque-t-il de disparaître rapidement avec un effet de mode éphémère ?",
+                "Combien de vis en acier inoxydable composent le boîtier ?",
+                "Le carton de livraison possède-t-il une étiquette rouge ?",
+                "Quelle est la marque de l'ordinateur du dessinateur ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le besoin n'est qu'une mode passagère de quelques semaines, le projet risque de sortir trop tard sur le marché."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « reformuler le besoin » dans une démarche d'ingénierie ?",
+              "options": [
+                "L'exprimer de façon claire, synthétique et sans préjuger de la solution technique",
+                "Le traduire en latin ancien pour le déposer dans un coffre-fort",
+                "Remplacer tous les mots de la phrase par des symboles mathématiques inconnus",
+                "Demander au client d'acheter un autre produit déjà existant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reformuler le besoin permet de s'assurer de sa parfaite compréhension mutuelle entre le client et le concepteur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi utilise-t-on des enquêtes et des sondages lors de la validation du besoin ?",
+              "options": [
+                "Pour recueillir les avis, attentes et habitudes réels d'un échantillon d'utilisateurs",
+                "Pour déterminer la couleur des rideaux du bureau du directeur",
+                "Pour tester la solidité de la coque du produit avec un marteau",
+                "Pour choisir le menu de la cantine des techniciens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sondages apportent des données statistiques objectives sur les attentes et la volonté d'achat des futurs utilisateurs."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels risques encourt un projet dont le besoin a été mal analysé ou mal validé ?",
+              "options": [
+                "Concevoir un produit trop cher que personne ne veut acheter",
+                "Développer des fonctionnalités inutiles qui compliquent l'usage",
+                "Constater un rejet massif de l'objet par les utilisateurs lors de sa sortie",
+                "Devenir automatiquement le leader mondial sans aucun effort"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un mauvais cadrage conduit à des dépenses inutiles, des fonctions superflues et un rejet cuisant par les clients déçus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si une nouvelle loi interdit bientôt une technologie polluante, que doit-on conclure sur le besoin d'un tel produit ?",
+              "options": [
+                "Que ce besoin va disparaître ou devoir être satisfait par une alternative écologique",
+                "Que la loi n'a aucune importance pour les usines de fabrication",
+                "Que le besoin va être multiplié par mille immédiatement",
+                "Que le produit deviendra obligatoire dans toutes les écoles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évolution de la loi modifie la viabilité du besoin et oblige les ingénieurs à imaginer des solutions vertueuses conformes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le document qui exprime le besoin initial du demandeur avant l'étude technique ?",
+              "options": [
+                "L'expression du besoin client (ou cahier des charges initial)",
+                "Le bulletin de paie du chef de projet industriel",
+                "Le ticket de caisse de la station-service",
+                "Le contrat de location de l'entrepôt logistique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression du besoin initial formule les souhaits et objectifs du client que l'équipe d'ingénierie va ensuite analyser et structurer."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels critères permettent de confirmer qu'un besoin est légitime et prêt à être développé ?",
+              "options": [
+                "Il résout un problème avéré pour un nombre suffisant d'usagers",
+                "Sa réalisation est techniquement envisageable avec les technologies actuelles",
+                "Son modèle économique est viable (coût acceptable pour l'acheteur)",
+                "Il viole les traités internationaux de sécurité civile"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un projet doit être utile, techniquement faisable et économiquement équilibré pour mériter d'être lancé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que doit faire une équipe si l'étude de marché montre que le besoin ciblé n'existe pas du tout ?",
+              "options": [
+                "Abandonner ou réorienter le projet vers un besoin authentique identifié",
+                "Forcer quand même la fabrication de cent mille exemplaires",
+                "Dissimuler les résultats de l'étude à l'ensemble de l'équipe",
+                "Vendre l'objet deux fois plus cher pour compenser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arrêt lucide d'un projet non fondé permet d'économiser des ressources pour travailler sur des solutions porteuses."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase formulant le besoin doit-elle rester neutre vis-à-vis des solutions technologiques ?",
+              "options": [
+                "Pour ne pas brider l'innovation en éliminant d'emblée des pistes prometteuses",
+                "Pour que personne ne puisse fabriquer l'objet dans la vraie vie",
+                "Parce que les brevets interdisent de mentionner les inventions",
+                "Pour permettre de fabriquer l'objet uniquement à la main"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exprimer le « quoi faire » (le but) sans imposer le « comment faire » (la solution) laisse libre cours à la créativité technique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse de l'analyse d'usage et étude de cas",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans le cas d'un vélo à assistance électrique (VAE), quelle est la fonction principale FP1 ?",
+              "options": [
+                "Permettre à l'utilisateur de se déplacer avec une assistance motorisée au pédalage",
+                "Chauffer les mains du cycliste grâce à des poignées radiateur",
+                "Mesurer la pollution de l'air ambiant dans la ville",
+                "Diffuser des messages publicitaires sur les roues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La FP1 du VAE est d'assister l'effort de pédalage du cycliste pour faciliter ses déplacements sur tous types de parcours."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel élément extérieur impose au VAE de couper automatiquement l'assistance au-delà de 25 km/h en Europe ?",
+              "options": [
+                "La législation et réglementation routière européenne",
+                "La couleur de la peinture choisie par le client",
+                "La marque des pneus en caoutchouc synthétique",
+                "La distance entre la Terre et la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi européenne fixe à 25 km/h la limite de coupure moteur pour qu'un vélo électrique reste classé parmi les cycles sans immatriculation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur quoi agit un distributeur automatique de gel hydroalcoolique sans contact ?",
+              "options": [
+                "Sur les mains de l'utilisateur (en y déposant une dose de gel désinfectant)",
+                "Sur l'ampoule du couloir de l'établissement",
+                "Sur le ticket de bus de la semaine précédente",
+                "Sur la sonnerie de la fin des cours du collège"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le distributeur agit physiquement sur les mains de l'usager pour en éliminer les micro-organismes pathogènes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi le distributeur de gel moderne utilise-t-il un capteur infrarouge plutôt qu'un bouton poussoir ?",
+              "options": [
+                "Pour garantir l'hygiène en évitant tout contact physique entre les usagers",
+                "Pour augmenter le temps d'attente des élèves dans la file",
+                "Pour obliger les utilisateurs à porter des gants épais",
+                "Pour consommer toute l'énergie électrique du collège"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le déclenchement sans contact répond au besoin sanitaire fondamental d'éviter la transmission croisée de germes."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans l'étude d'une serre connectée de collège, quelles fonctions principales et d'usage retrouve-t-on ?",
+              "options": [
+                "Permettre aux élèves de cultiver des végétaux dans des conditions optimales",
+                "Maintenir automatiquement l'humidité et la température nécessaires aux plantes",
+                "Collecter des données pour les cours de sciences",
+                "Produire de l'électricité pour alimenter toute la commune"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La serre permet la pousse pédagogique des plantes, la régulation climatique interne et l'apprentissage par les mesures scientifiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle fonction contrainte relie un éclairage automatique d'escalier à son environnement direct ?",
+              "options": [
+                "Détecter la présence d'une personne dans l'obscurité pour allumer la lumière",
+                "Laisser la lumière allumée en plein jour à midi en permanence",
+                "Éteindre brutalement la lumière dès que quelqu'un pose le pied sur une marche",
+                "Diffuser de la vapeur d'eau bouillante le long des rampes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'automatisme doit capter la pénombre et la présence humaine afin d'éclairer le passage au moment opportun en sécurité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le cas d'une valise de voyage à roulettes, quelle fonction d'usage la distingue du sac classique ?",
+              "options": [
+                "Permettre de déplacer de lourds bagages sans devoir les porter à bout de bras",
+                "Empêcher qu'on puisse ranger des vêtements à l'intérieur",
+                "Rendre la valise invisible aux contrôles des aéroports",
+                "Obliger le voyageur à se déplacer uniquement en train"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les roulettes et la poignée télescopique soulagent l'effort en roulant au sol plutôt qu'en soulevant la masse."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels éléments de l'environnement d'un drone sauveteur en mer imposent des contraintes sévères ?",
+              "options": [
+                "L'eau salée et les embruns marins (corrosion et étanchéité)",
+                "Les rafales de vent côtier (stabilité en vol et puissance des moteurs)",
+                "La distance et le relief côtier (portée du signal radio de commande)",
+                "La température interne du noyau de la Terre"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'atmosphère corrosive, le vent violent et l'éloignement imposent une étanchéité, une motorisation robuste et un émetteur performant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel outil graphique résume l'ensemble de ces fonctions et contraintes d'usage avant de rédiger le CdCF ?",
+              "options": [
+                "Le diagramme pieuvre complété de sa liste de fonctions (FP et FC)",
+                "La facture proforma émise par le fournisseur de câbles",
+                "Le reçu de paiement de la carte bancaire de l'ingénieur",
+                "La photo de groupe des ouvriers de l'usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le graphe des interactions rassemble toutes les relations fonctionnelles et contraintes qui serviront de base au cahier des charges."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi l'analyse de l'usage est-elle la toute première étape indispensable de la conception ?",
+              "options": [
+                "Parce qu'un produit n'a de valeur que s'il répond parfaitement à une utilité humaine réelle",
+                "Parce que la loi interdit de concevoir des objets sans dessiner un animal sur papier",
+                "Pour retarder la fabrication des objets le plus longtemps possible",
+                "Parce que les ordinateurs refusent de s'allumer sans sondage d'opinion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Placer l'humain et son usage au centre de la démarche garantit la réussite technique, pratique et sociétale de l'objet créé."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Contraintes",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La notion de contrainte en technologie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une contrainte en technologie ?",
+              "options": [
+                "Une règle, obligation ou limitation imposée à la conception d'un objet technique",
+                "Un conseil facultatif que l'ingénieur peut ignorer sans conséquence",
+                "Une réduction de prix négociée lors des soldes d'été",
+                "La couleur préférée du client inscrite sur un post-it"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une contrainte est une condition obligatoire que le concepteur doit impérativement respecter pour que le produit soit valide."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi les contraintes s'imposent-elles au créateur d'un objet ?",
+              "options": [
+                "Parce qu'elles résultent des lois physiques, des normes, de l'environnement et du budget",
+                "Parce que les ordinateurs ne savent pas dessiner sans contraintes",
+                "Parce qu'un objet sans contrainte serait invisible à l'œil nu",
+                "Parce que les fabricants refusent d'utiliser des machines automatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le milieu de vie, les lois de la physique, la sécurité des usagers et les limites financières créent des frontières incontournables."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le concepteur peut-il ignorer une contrainte légale de sécurité pour faire des économies ?",
+              "options": [
+                "Non, le respect des règles de sécurité est une obligation légale stricte et impérative",
+                "Oui, s'il promet de baisser le prix de vente de cinquante pour cent",
+                "Oui, si le produit n'est vendu que sur Internet sans boutique physique",
+                "Oui, tant que le produit est livré dans un carton recyclé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contraintes de sécurité protègent la vie humaine ; leur non-respect constitue une infraction pénale grave."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de grandes familles de contraintes distingue-t-on couramment au collège ?",
+              "options": [
+                "Six à sept grandes familles (fonctionnement, environnement, sécurité, coût, ergonomie...)",
+                "Une seule famille car tous les objets ont les mêmes problèmes",
+                "Exactement cent familles classées par ordre alphabétique",
+                "Aucune, les contraintes sont toutes désordonnées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On regroupe les contraintes par domaines : environnementales, économiques, techniques, sécuritaires, ergonomiques, esthétiques et normatives."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont des grandes familles de contraintes universelles en conception d'objets techniques ?",
+              "options": [
+                "Les contraintes de sécurité et de santé des personnes",
+                "Les contraintes économiques (coût et budget)",
+                "Les contraintes environnementales et de développement durable",
+                "Les contraintes d'horoscope et de signes astrologiques"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Sécurité, budget et impact écologique sont des familles majeures incontournables de tout projet sérieux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle différence fondamentale existe-t-il entre un souhait du client et une contrainte ?",
+              "options": [
+                "Le souhait est une préférence négociable, tandis que la contrainte est une exigence obligatoire",
+                "Le souhait coûte toujours plus cher que la contrainte",
+                "La contrainte ne s'applique qu'aux objets en métal lourd",
+                "Il n'y a aucune différence, ce sont deux synonymes parfaits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un souhait exprime une attente idéale qu'on peut ajuster, alors qu'une contrainte fixe une condition absolue non négociable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lors des tests si un prototype ne respecte pas l'une des contraintes fixées ?",
+              "options": [
+                "Il est rejeté ou doit être modifié pour devenir conforme",
+                "Il est immédiatement commercialisé dans tous les pays",
+                "Il reçoit automatiquement une médaille d'innovation",
+                "Les ingénieurs reçoivent une prime d'encouragement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La non-conformité à une contrainte bloque la validation du produit jusqu'à ce qu'une correction technique soit trouvée."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles contraintes s'appliquent immédiatement à un casque audio pour collégiens ?",
+              "options": [
+                "Ne pas dépasser le seuil sonore maximal autorisé pour protéger l'audition",
+                "Être réglable pour s'adapter à différentes tailles de tête",
+                "Résister à des chutes répétées d'une hauteur d'un mètre sur le sol",
+                "Être obligatoirement branché sur une prise triphasée industrielle"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Protection auditive (norme sonore), ajustement morphologique (ergonomie) et robustesse aux chutes (mécanique) sont indispensables."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que les contraintes stimulent la créativité des ingénieurs ?",
+              "options": [
+                "Parce qu'elles les forcent à inventer des solutions ingénieuses et élégantes face aux obstacles",
+                "Parce qu'elles leur permettent de dormir pendant les heures de travail",
+                "Parce qu'elles suppriment tout besoin de réfléchir lors du dessin 3D",
+                "Parce qu'elles obligent à recopier d'anciens modèles sans changement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Surmonter des contraintes complexes pousse les ingénieurs à inventer de nouveaux matériaux et principes novateurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "À quel moment du projet les contraintes doivent-elles être identifiées et formalisées ?",
+              "options": [
+                "Dès la rédaction du Cahier des Charges Fonctionnel, avant toute conception détaillée",
+                "Après avoir fabriqué et expédié tous les produits aux magasins",
+                "Un an après la fermeture définitive de l'entreprise fabricante",
+                "Uniquement en cas d'accident grave chez un client"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contraintes doivent être recensées avant de concevoir pour orienter immédiatement les choix techniques dans la bonne voie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les contraintes environnementales et écoconception",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une contrainte environnementale en technologie ?",
+              "options": [
+                "Une obligation visant à limiter les impacts néfastes de l'objet sur la nature et le climat",
+                "Une interdiction de vendre des objets aux personnes habitant à la campagne",
+                "Une obligation de peindre tous les objets techniques en vert prairie",
+                "Une taxe supplémentaire prélevée sur chaque coup de marteau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contraintes écologiques imposent de préserver les ressources, limiter l'énergie consommée et réduire les pollutions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que préconise la démarche d'écoconception ?",
+              "options": [
+                "Intégrer la préservation de l'environnement dès le début et à chaque étape du cycle de vie",
+                "Remplacer les ingénieurs par des plantes d'intérieur dans les bureaux d'études",
+                "Interdire l'utilisation d'ordinateurs pour concevoir des plans d'objets",
+                "Fabriquer des objets prévus pour tomber en panne au bout de six mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écoconception prend en compte l'impact écologique dès la conception (matières recyclées, démontabilité, faible consommation)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle contrainte environnementale pousse à limiter l'utilisation de vis collées ou soudées indémontables ?",
+              "options": [
+                "La contrainte de facilité de démontage pour réparer et recycler les pièces",
+                "La contrainte de vitesse de vente dans les rayons des magasins",
+                "La contrainte de poids pour le transport en fusée spatiale",
+                "La contrainte d'éclairage des vitrines de centre commercial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des pièces clipsées ou vissées permettent un démontage aisé sans casse pour changer un composant ou trier les métaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'indicateur officiel obligatoire en France notant la facilité de réparation des appareils ?",
+              "options": [
+                "L'indice de réparabilité (noté de 0 à 10)",
+                "L'indice de vitesse maximale de rotation du tambour",
+                "L'indice de brillance de la carrosserie extérieure",
+                "L'indice de popularité sur les réseaux sociaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indice de réparabilité informe le consommateur sur la facilité de démontage, le prix et la disponibilité des pièces détachées."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels gestes de conception répondent directement à des contraintes environnementales ?",
+              "options": [
+                "Utiliser des plastiques recyclés ou des matières biosourcées",
+                "Réduire l'épaisseur et le volume superflu des emballages de transport",
+                "Programmer une mise en veille automatique pour réduire la consommation électrique",
+                "Utiliser des métaux rares non recyclables sans aucune justification"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Matières recyclées, emballages allégés et sobriété énergétique sont des actions directes d'écoconception vertueuse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle directive européenne (RoHS) interdit l'utilisation de métaux lourds toxiques dans l'électronique ?",
+              "options": [
+                "Une réglementation environnementale et sanitaire stricte de protection des écosystèmes",
+                "Un accord commercial pour augmenter les taxes d'importation",
+                "Une recommandation facultative pour les petits appareils de cuisine",
+                "Une loi sur le temps de travail des ouvriers dans les usines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La directive RoHS bannit les substances toxiques dangereuses pour l'environnement et la santé des ouvriers et recycleurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'empreinte carbone d'un objet technique ?",
+              "options": [
+                "La quantité totale de gaz à effet de serre (CO2 équivalent) émise tout au long de sa vie",
+                "La marque laissée par les pneus en caoutchouc sur le goudron de la route",
+                "Le nombre de mines de charbon en activité dans le pays de fabrication",
+                "La surface au sol occupée par le carton d'emballage dans l'entrepôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'empreinte carbone mesure les émissions de CO2 liées à l'extraction des matières, la fabrication, le transport et l'usage."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels choix favorisent une meilleure recyclabilité d'une coque de télécommande ?",
+              "options": [
+                "Choisir un plastique unique non mélangé et clairement identifié par un logo de tri",
+                "Éviter les colles chimiques permanentes et privilégier des clips mécaniques démontables",
+                "Bannir les peintures métallisées polluantes qui perturbent le tri optique",
+                "Mouler la coque dans un bloc de plomb scellé avec du goudron"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Mono-matériau, clips démontables et absence de peintures toxiques simplifient considérablement le recyclage mécanique du plastique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi l'écoconception privilégie-t-elle les circuits courts et les matières locales ?",
+              "options": [
+                "Pour diminuer la pollution et la consommation de carburant liées au transport des matériaux",
+                "Pour empêcher les habitants d'autres pays d'utiliser des objets modernes",
+                "Pour augmenter les coûts de douane de façon artificielle",
+                "Pour faire voyager les matières premières en bateau de luxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins les matériaux voyagent en avion ou camion, plus le bilan carbone global du produit reste faible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel avantage économique une entreprise retire-t-elle souvent de la réduction des emballages d'un produit ?",
+              "options": [
+                "Elle réduit ses dépenses de carton, de plastique et transporte plus de produits par camion",
+                "Elle paie plus cher chaque transporteur routier",
+                "Elle est obligée de fermer ses usines pendant deux ans",
+                "Elle ne peut plus vendre ses produits sur Internet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins d'emballage signifie moins d'achats de matières premières et une logistique optimisée : c'est économique et écologique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les contraintes économiques et financières",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « coût de revient » d'un produit ?",
+              "options": [
+                "L'ensemble des sommes dépensées pour concevoir, fabriquer et distribuer une unité du produit",
+                "Le prix final payé par le client au moment de passer en caisse",
+                "Le montant des bénéfices nets reversés aux actionnaires de l'entreprise",
+                "Le pourboire laissé au livreur qui dépose le colis devant la porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coût de revient regroupe tous les coûts réels engagés : matières premières, main-d'œuvre, amortissement des machines, transport."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le prix de vente d'un objet technique ?",
+              "options": [
+                "En ajoutant la marge bénéficiaire de l'entreprise et les taxes au coût de revient",
+                "En divisant le poids de l'objet par le nombre de salariés de l'usine",
+                "En tirant un nombre au hasard entre un et dix mille",
+                "En recopiant obligatoirement le prix du kilogramme de pain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prix de vente = Coût de revient + Marge commerciale de l'entreprise (+ taxes applicables comme la TVA)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle contrainte économique fixe le montant maximal que les clients cibles sont prêts à payer ?",
+              "options": [
+                "Le prix psychologique ou prix cible acceptable par le marché",
+                "Le tarif légal imposé par le ministère de l'Agriculture",
+                "La valeur en or massif du minerai extrait en Australie",
+                "Le montant d'une amende de stationnement impayée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prix cible est déterminé par des études de marché : au-delà, les consommateurs jugent le produit trop cher et n'achètent pas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la somme d'argent maximale allouée à l'équipe pour concevoir un nouvel objet ?",
+              "options": [
+                "Le budget de conception ou de recherche et développement (R&D)",
+                "L'argent de poche distribué aux stagiaires de troisième",
+                "Le capital d'emprunt d'un client particulier à sa banque",
+                "La prime de fin d'année du directeur commercial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le budget de R&D cadre les dépenses autorisées en matériel, prototypes, logiciels et salaires d'ingénierie."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments composent directement le coût de fabrication d'un objet technique en usine ?",
+              "options": [
+                "L'achat des matières premières et des composants électroniques",
+                "La rémunération des opérateurs et techniciens de fabrication",
+                "L'énergie consommée par les machines-outils de l'atelier",
+                "Le prix du café bu par les passants dans la rue voisine"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Matières, main-d'œuvre directe et énergie des machines sont les trois composantes du coût industriel de fabrication."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la fabrication en très grande série permet-elle de baisser le coût par unité produite ?",
+              "options": [
+                "Grâce aux économies d'échelle qui amortissent les moules et machines sur de nombreuses pièces",
+                "Parce que les ouvriers acceptent de travailler gratuitement lors des grandes séries",
+                "Parce que les lois de la physique disparaissent au-delà de dix mille pièces",
+                "Parce que la matière première devient gratuite en gros volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les investissements lourds (ex : un moule d'injection à 50 000 €) reviennent à 50 € par pièce sur 1 000 unités, mais seulement à 0,50 € sur 100 000 pièces."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si le coût de revient d'un objet dépasse le prix de vente accepté par les clients ?",
+              "options": [
+                "L'entreprise vend à perte et risque la faillite si elle ne modifie pas sa conception",
+                "L'entreprise réalise des bénéfices record immédiatement",
+                "Le produit reçoit automatiquement un label d'excellence écologique",
+                "L'État rembourse intégralement toutes les pertes de l'entreprise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vendre en dessous du coût de revient détruit la rentabilité financière de l'entreprise : il faut reconcevoir l'objet pour réduire ses coûts."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles astuces de conception permettent de réduire les coûts d'un produit sans dégrader sa sécurité ?",
+              "options": [
+                "Standardiser les pièces (utiliser les mêmes vis et écrous sur tout l'objet)",
+                "Choisir des formes simples à mouler ou usiner sans opérations manuelles superflues",
+                "Réduire le nombre total de pièces en fusionnant des fonctions dans une même pièce",
+                "Supprimer les fusibles et protections électriques obligatoires"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Standardisation, réduction du nombre de pièces et optimisation de l'usinage réduisent les coûts tout en préservant la qualité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la « durée d'amortissement » d'une machine de production ?",
+              "options": [
+                "Le temps ou le volume de production nécessaire pour rentabiliser l'achat de la machine",
+                "Le temps qu'il faut à la machine pour s'arrêter complètement après avoir appuyé sur pause",
+                "L'épaisseur de mousse posée sous la machine pour amortir les vibrations du sol",
+                "La durée de la garantie constructeur de la camionnette de livraison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amortissement étale le prix de la machine sur sa durée de service utile pour en intégrer une fraction dans chaque produit fabriqué."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi le Cahier des Charges Fonctionnel précise-t-il toujours un niveau de coût cible ?",
+              "options": [
+                "Pour que les choix de matériaux et de procédés respectent les limites financières du projet",
+                "Pour empêcher les ouvriers d'être payés à la fin du mois",
+                "Pour obliger les ingénieurs à n'utiliser que du plastique de mauvaise qualité",
+                "Pour faire fuir les investisseurs avant le début du projet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coût cible guide chaque arbitrage technique des concepteurs pour garantir la compétitivité du produit sur le marché."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les contraintes techniques et mécaniques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une contrainte technique de fonctionnement ?",
+              "options": [
+                "Une exigence physique liée aux matériaux, à l'énergie, aux efforts ou aux dimensions",
+                "Le choix du slogan publicitaire diffusé à la radio locale",
+                "Le jour de la semaine où l'objet est mis en vente dans les rayons",
+                "Le nom de famille du livreur qui transporte le matériel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les contraintes techniques concernent la résistance mécanique, la puissance, la température, la masse et l'encombrement physique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle contrainte technique impose à un pont suspendu de supporter le passage simultané de camions ?",
+              "options": [
+                "La contrainte de résistance mécanique à la charge et aux déformations",
+                "La contrainte d'isolation acoustique contre les bruits d'oiseaux",
+                "La contrainte de couleur imposée par les peintres du quartier",
+                "La contrainte de transparence pour laisser passer le soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pont doit supporter des charges statiques et dynamiques importantes sans rupture ni déformation plastique dangereuse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un drone d'exploration, pourquoi la masse totale fait-elle l'objet d'une contrainte très stricte ?",
+              "options": [
+                "Parce qu'une masse trop lourde réduit l'autonomie de vol et demande des moteurs surdimensionnés",
+                "Parce que les balances des magasins ne savent pas peser plus de cent grammes",
+                "Parce que la gravité n'agit que sur les objets de plus de deux kilogrammes",
+                "Parce que l'air rejette automatiquement tous les objets légers vers le sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus un aéronef est lourd, plus il consomme d'énergie pour sustenter son poids, ce qui réduit drastiquement sa durée de vol."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle grandeur physique exprime la contrainte d'encombrement maximal d'un four à micro-ondes encastrable ?",
+              "options": [
+                "Ses dimensions en millimètres (largeur, hauteur et profondeur)",
+                "La fréquence sonore émise par son horloge digitale en hertz",
+                "La pression atmosphérique mesurée au sommet de la cheminée",
+                "Le nombre de boutons tactiles présents sur la façade avant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'encombrement désigne les cotes extérieures géométriques (L × H × P) qui conditionnent l'intégration dans une niche de meuble."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles contraintes techniques s'appliquent couramment au choix des matériaux d'une casserole ?",
+              "options": [
+                "Résister à des températures élevées sans fondre ni se déformer",
+                "Conduire efficacement la chaleur depuis la plaque de cuisson jusqu'aux aliments",
+                "Être compatible avec le contact alimentaire sans dégager de substances toxiques",
+                "Être transparent comme du cristal pour voir la cuisson à travers le métal"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Tenue à la chaleur, conductivité thermique et innocuité alimentaire (qualité alimentaire) sont des impératifs techniques absolus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle contrainte mécanique subit une chaîne de vélo lorsqu'un cycliste appuie fort sur la pédale ?",
+              "options": [
+                "Un effort de traction le long de ses maillons métalliques",
+                "Un effort de compression qui cherche à écraser la chaîne sur elle-même",
+                "Un effort de torsion qui fait tourner les maillons comme une hélice",
+                "Une absence totale de force grâce aux roulements à billes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La traction tend à étirer les maillons de la chaîne lorsque la force musculaire tire sur les dents du plateau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi prévoit-on une contrainte de dissipation thermique pour le processeur d'un smartphone ?",
+              "options": [
+                "Pour évacuer la chaleur produite et éviter que l'appareil ne surchauffe ou ralentisse",
+                "Pour réchauffer les mains de l'utilisateur pendant les froides journées d'hiver",
+                "Pour faire cuire des aliments miniatures posés sur la coque arrière",
+                "Pour empêcher la batterie de se décharger la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les composants électroniques chauffent lorsqu'ils calculent : sans dissipation thermique, ils réduisent leurs performances ou s'endommagent."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Parmi ces exemples, lesquels constituent des contraintes techniques d'alimentation énergétique ?",
+              "options": [
+                "Fonctionner sous une tension continue de 5 Volts (port USB standard)",
+                "Consommer une puissance maximale inférieure à 10 Watts en plein régime",
+                "Disposer d'une batterie offrant au moins 8 heures d'autonomie en usage continu",
+                "Être disponible en trois coloris pastel dans le commerce"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Tension, puissance électrique et durée d'autonomie sont des grandeurs techniques régissant l'alimentation en énergie du système."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle propriété d'un matériau doit-on choisir pour fabriquer le manche d'un tournevis d'électricien ?",
+              "options": [
+                "Une excellente isolation électrique pour bloquer le passage du courant",
+                "Une conductivité électrique parfaite pour transmettre le courant dans le bras",
+                "Une transparence totale aux rayons X pour vérifier l'intérieur du métal",
+                "Une très faible résistance aux chocs pour qu'il casse facilement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les outils d'électricien disposent de manches isolants pour protéger l'opérateur contre tout risque d'électrocution."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie le terme « coefficient de sécurité » lors du dimensionnement d'une pièce mécanique ?",
+              "options": [
+                "Une marge de résistance supplémentaire pour garantir que la pièce supportera des efforts imprévus",
+                "Un pourcentage de réduction appliqué au salaire des techniciens de contrôle",
+                "Le nombre de serrures nécessaires pour fermer la porte de l'usine le soir",
+                "La probabilité que le produit soit volé pendant le transport en train"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ingénieurs multiplient les efforts calculés par un facteur de sécurité (ex : 1,5 ou 2) pour parer aux aléas et surcharges."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les contraintes de sécurité et normes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel symbole obligatoire sur un produit certifie sa conformité aux directives de l'Union Européenne ?",
+              "options": [
+                "Le marquage « CE » (Conformité Européenne)",
+                "Le drapeau de la ville où se trouve le siège social de la marque",
+                "Le symbole d'une tête de mort avec deux tibias croisés",
+                "Le logo de la première chaîne de télévision nationale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sigle « CE » garantit aux douanes et consommateurs que l'objet respecte les normes européennes de sécurité et de santé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel organisme national français publie les normes techniques officielles de sécurité et de qualité ?",
+              "options": [
+                "L'AFNOR (Association Française de Normalisation)",
+                "La SPA (Société Protectrice des Animaux)",
+                "La SNCF (Société Nationale des Chemins de Fer)",
+                "L'IGN (Institut National de l'Information Géographique)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'AFNOR édite les normes NF et coordonne la normalisation française en lien avec les instances européennes (CEN) et mondiales (ISO)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi les jouets pour enfants de moins de 3 ans ne doivent-ils comporter aucune petite pièce détachable ?",
+              "options": [
+                "Pour éliminer tout risque d'étouffement ou d'ingestion par le jeune enfant",
+                "Pour obliger les parents à ranger les jouets dans de grandes malles",
+                "Pour réduire le nombre de jouets vendus dans les magasins chaque année",
+                "Pour que les jouets flottent obligatoirement sur l'eau du bain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tout-petits portant spontanément les objets à la bouche, les pièces de moins de 3 cm représentent un danger mortel d'asphyxie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle contrainte de sécurité impose la présence d'un bouton d'arrêt d'urgence rouge sur une machine-outil ?",
+              "options": [
+                "Permettre de couper instantanément l'énergie motrice en cas d'accident ou de danger imminent",
+                "Permettre de changer la vitesse de la musique diffusée dans l'atelier",
+                "Servir d'interrupteur pour allumer la lumière du plafond le matin",
+                "Déclencher la sonnerie de la récréation pour tout l'établissement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bouton coup de poing d'arrêt d'urgence interrompt immédiatement l'alimentation des actionneurs pour protéger l'opérateur."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels risques pour l'utilisateur les normes de sécurité visent-elles à neutraliser dans les appareils électriques ?",
+              "options": [
+                "Le risque de choc électrique ou d'électrocution (isolation renforcée)",
+                "Le risque de départ de feu ou d'incendie (matériaux auto-extinguibles)",
+                "Le risque de brûlure cutanée par contact avec des surfaces trop chaudes",
+                "Le risque de recevoir une bonne note au contrôle de technologie"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Électrocution, incendie et brûlures thermiques sont les trois périls majeurs encadrés par les normes de sécurité électrique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que garantit l'indice de protection (IP) d'un boîtier électrique (par exemple IP67) ?",
+              "options": [
+                "Son niveau d'étanchéité contre la pénétration de corps solides et de liquides",
+                "Sa vitesse maximale de connexion aux bornes Wi-Fi de la maison",
+                "La puissance maximale en watts dégagée par les haut-parleurs internes",
+                "Le nombre d'années pendant lesquelles l'appareil reste sous garantie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indice IP comporte deux chiffres : le premier pour la poussière (0 à 6) et le second pour l'eau (0 à 9)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi une trottinette électrique doit-elle comporter des feux avant et arrière ainsi que des catadioptres ?",
+              "options": [
+                "Pour assurer la visibilité du conducteur et être vu des autres usagers la nuit",
+                "Pour éclairer les étoiles dans le ciel pendant les nuits d'été",
+                "Pour consommer plus rapidement la batterie de l'appareil en roulant",
+                "Pour faire ressembler la trottinette à un sapin de Noël décoré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éclairage et les éléments rétroréfléchissants sont des contraintes réglementaires de sécurité routière pour voir et être vu."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels tests de laboratoire sont imposés par les normes avant d'autoriser la vente d'un casque de vélo ?",
+              "options": [
+                "Un test d'absorption des chocs simulant un impact violent sur une enclume",
+                "Un test de résistance de la jugulaire à l'arrachement pour qu'il reste en place",
+                "Un test d'efficacité du système de maintien sur la tête lors des secousses",
+                "Un test de résistance du casque à l'explosion d'une bombe atomique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Absorption du choc crânien, résistance de la sangle jugulaire et maintien sur la tête sont les trois épreuves de la norme EN 1078."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la conséquence pour un fabricant qui vend délibérément un produit non conforme aux normes de sécurité ?",
+              "options": [
+                "Le retrait immédiat du produit du marché, de lourdes amendes et des poursuites pénales",
+                "L'attribution d'un prix d'honneur par la chambre de commerce internationale",
+                "L'obligation d'embaucher deux fois plus de publicitaires pour vanter le produit",
+                "L'autorisation exceptionnelle de vendre le produit sans payer d'impôts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mise en danger d'autrui entraîne le rappel obligatoire des produits défectueux et de sévères sanctions judiciaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi les normes internationales (comme les normes ISO) sont-elles si précieuses pour l'industrie ?",
+              "options": [
+                "Parce qu'elles harmonisent les règles techniques et permettent des objets sûrs et compatibles partout",
+                "Parce qu'elles interdisent à tous les pays du monde de construire de nouveaux objets",
+                "Parce qu'elles obligent tous les peuples à parler exactement la même langue",
+                "Parce qu'elles fixent le prix des fruits et légumes sur tous les marchés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'harmonisation internationale garantit la sécurité des usagers et l'interopérabilité des composants fabriqués sur différents continents."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les contraintes ergonomiques et esthétiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la préoccupation centrale des contraintes ergonomiques ?",
+              "options": [
+                "L'adaptation parfaite de l'objet aux caractéristiques physiques et gestuelles de l'humain",
+                "La diminution du coût de transport en conteneur maritime géant",
+                "Le choix de la typographie utilisée sur la facture de livraison",
+                "La vitesse de rotation de la terre autour du soleil en kilomètres par heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ergonomie veille à ce que l'utilisation soit simple, confortable, intuitive et sans danger pour la santé du corps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle contrainte ergonomique explique que les manches de raquette de tennis existent en plusieurs tailles ?",
+              "options": [
+                "L'adaptation à la taille de la main des différents joueurs pour une prise ferme et confortable",
+                "L'obligation de fabriquer des raquettes de couleurs différentes selon les jours",
+                "L'interdiction d'utiliser le même manche sur terre battue et sur gazon",
+                "Le désir d'augmenter le poids de la raquette de plusieurs kilogrammes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La taille du manche doit correspondre à la morphologie de la paume de la main pour éviter tendinites et crispations."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « design » d'un objet technique en technologie ?",
+              "options": [
+                "La recherche d'un équilibre harmonieux entre la forme esthétique, la fonction d'usage et l'ergonomie",
+                "Le simple fait de coller des autocollants brillants sur une boîte en carton",
+                "Le nom du logiciel utilisé pour taper le compte-rendu d'expérience",
+                "La signature de l'artiste peintre sur le tableau du musée municipal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le design industriel concilie l'aspect visuel séduisant, l'efficacité pratique et le confort d'utilisation au service de l'usager."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi les touches d'un clavier sont-elles légèrement incurvées et espacées de façon régulière ?",
+              "options": [
+                "Pour guider naturellement la pulpe des doigts et réduire les fautes de frappe involontaires",
+                "Pour empêcher la poussière d'entrer à l'intérieur du mécanisme de l'ordinateur",
+                "Pour que les touches ressemblent aux touches d'un piano à queue classique",
+                "Pour que le clavier puisse être nettoyé à grande eau sous le robinet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La forme concave des touches épouse le bout des doigts pour une frappe rapide, précise et confortable."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels critères relèvent des contraintes esthétiques lors de la conception d'un meuble de salon ?",
+              "options": [
+                "L'harmonie des teintes et des textures des surfaces visibles",
+                "Les proportions et l'élégance générale des lignes géométriques",
+                "La cohérence visuelle avec les styles de décoration contemporains",
+                "La capacité à résister au passage d'un char d'assaut blindé"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Couleurs, matières, proportions et style décoratif définissent l'identité esthétique recherchée pour séduire le client."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle contrainte ergonomique s'applique à l'écran tactile d'une borne de commande ?",
+              "options": [
+                "Être placé à une hauteur accessible aux personnes en fauteuil roulant et debout",
+                "Émettre une forte chaleur pour réchauffer les clients pendant la commande",
+                "Clignoter de mille feux à chaque pression pour éblouir l'utilisateur",
+                "Ne fonctionner que si l'utilisateur possède des mains de géant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accessibilité physique aux personnes à mobilité réduite (PMR) est une exigence ergonomique et légale majeure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une application mobile, comment appelle-t-on la facilité avec laquelle on comprend immédiatement les menus ?",
+              "options": [
+                "L'intuitivité ou ergonomie cognitive de l'interface",
+                "La bande passante du réseau 4G ou 5G",
+                "Le taux de rafraîchissement en hertz de l'écran",
+                "L'adresse IP du serveur d'hébergement web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une interface intuitive se comprend instantanément sans nécessiter la lecture fastidieuse d'une notice explicative."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles conséquences résultent d'une mauvaise prise en compte de l'ergonomie sur un poste de travail ?",
+              "options": [
+                "Des douleurs chroniques au dos, à la nuque et aux poignets (troubles musculosquelettiques)",
+                "Une fatigue oculaire importante due à un éclairage ou écran mal positionné",
+                "Une baisse de concentration et une hausse des erreurs de manipulation",
+                "Une guérison spontanée de toutes les maladies respiratoires"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Mauvaise posture, mauvaise luminosité et outils inadaptés engendrent TMS, fatigue nerveuse et maladresses."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi le choix des couleurs sur un tableau de bord obéit-il à des contraintes ergonomiques strictes ?",
+              "options": [
+                "Pour que les alertes de danger immédiat soient repérées instantanément (rouge pour le danger)",
+                "Pour donner l'illusion d'une boîte de nuit animée à l'intérieur de l'habitacle",
+                "Pour économiser l'encre des feutres du bureau d'études lors des réunions",
+                "Parce que les autres couleurs de lumière sont interdites sur la planète Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le code couleur normalisé (rouge = danger, orange = anomalie, vert/bleu = fonction active) assure une compréhension visuelle immédiate."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi l'esthétique d'un objet ne doit-elle pas être développée au détriment de sa fonction d'usage ?",
+              "options": [
+                "Parce qu'un objet magnifique mais impossible à manier ou inefficace finit toujours par décevoir",
+                "Parce que la loi punit de prison les créateurs d'objets jugés trop jolis",
+                "Parce que les matières esthétiques pèsent systématiquement cent fois plus lourd",
+                "Parce que les consommateurs refusent d'acheter des objets élégants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La célèbre devise du design « la forme suit la fonction » rappelle qu'un objet doit d'abord parfaitement fonctionner avant d'être séduisant."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Le Cahier des Charges Fonctionnel (CdCF)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le Cahier des Charges Fonctionnel (CdCF) ?",
+              "options": [
+                "Un document de référence contractuel formalisant l'ensemble des besoins, fonctions et contraintes",
+                "Le livre de comptabilité générale où sont inscrits tous les chèques de l'entreprise",
+                "La liste des numéros de téléphone de tous les fournisseurs de carton",
+                "Le mode d'emploi illustré que le client trouve dans la boîte après achat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CdCF est le document fondamental qui cadre les exigences du demandeur et engage le concepteur sur les résultats à atteindre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal du CdCF pour l'équipe qui conçoit un objet technique ?",
+              "options": [
+                "Guider les choix techniques des ingénieurs et servir de référentiel pour vérifier la conformité",
+                "Décorer la salle de réunion du bureau d'études avec un joli classeur relié",
+                "Remplacer tous les tests pratiques de fonctionnement en atelier",
+                "Fixer les horaires de pause café de chaque technicien de l'usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CdCF sert de boussole pendant toute la conception et de référentiel de contrôle lors de la recette du produit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que trouve-t-on traditionnellement à l'intérieur d'un Cahier des Charges Fonctionnel ?",
+              "options": [
+                "L'expression du besoin, la liste des fonctions (FP, FC), leurs critères et leurs niveaux d'exigence",
+                "Les photos de vacances des dessinateurs industriels du projet",
+                "Les recettes de cuisine préférées des ouvriers de la chaîne d'assemblage",
+                "Le cours de la bourse en direct des matières premières métalliques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CdCF détaille chaque fonction et contrainte en leur associant des critères mesurables et des valeurs cibles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qui rédige et valide le Cahier des Charges Fonctionnel ?",
+              "options": [
+                "Le demandeur (client ou chef de projet) en concertation étroite avec les concepteurs techniques",
+                "Le chauffeur du camion de livraison au moment où il décharge les cartons",
+                "Les douaniers de l'aéroport lors du contrôle des valises de voyage",
+                "Le maire de la commune où est implantée l'usine de montage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CdCF résulte du dialogue entre le commanditaire qui exprime ses attentes et l'équipe technique qui en évalue la faisabilité."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments fondamentaux composent la caractérisation de chaque fonction dans un CdCF ?",
+              "options": [
+                "Le critère d'appréciation (la grandeur observable ou mesurable)",
+                "Le niveau d'exigence (la valeur chiffrée ou la performance attendue)",
+                "La flexibilité tolérée (la marge d'écart acceptable)",
+                "Le prénom du premier ouvrier qui assemblera la pièce"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Chaque fonction se caractérise par : critère (quoi mesurer), niveau (combien atteindre) et flexibilité (tolérance admise)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que le CdCF est un document « contractuel » ?",
+              "options": [
+                "Parce qu'il engage légalement le concepteur à livrer un produit conforme aux exigences convenues",
+                "Parce qu'il est obligatoirement signé devant un notaire en costume d'époque",
+                "Parce qu'il interdit définitivement toute modification des lois du pays",
+                "Parce qu'il ne peut être rédigé qu'en un seul exemplaire manuscrit sur parchemin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cas de désaccord ou de litige sur le résultat final, le CdCF sert de contrat de référence pour attester de la bonne réalisation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le CdCF, comment formule-t-on les fonctions pour ne pas enfermer la recherche de solutions ?",
+              "options": [
+                "En termes de résultats et services à rendre, sans imposer une solution technologique préconçue",
+                "En dessinant tout de suite la forme exacte de la pièce en trois dimensions",
+                "En recopiant fidèlement la notice d'un produit concurrent déjà commercialisé",
+                "En mentionnant obligatoirement la marque des vis à acheter en magasin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CdCF décrit « ce que le produit doit faire » et non « comment il est fabriqué », stimulant ainsi l'innovation des ingénieurs."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quelles informations préliminaires figurent au début d'un CdCF pour poser le contexte du projet ?",
+              "options": [
+                "La présentation du demandeur et le contexte général du projet",
+                "La description du marché ciblé et des utilisateurs visés",
+                "Les objectifs généraux attendus et les limites géographiques du projet",
+                "L'arbre généalogique complet du fondateur de l'entreprise"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le préambule d'un CdCF contextualise le besoin : environnement, utilisateurs cibles, enjeux et finalité du produit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que risque un projet qui démarre sans aucun Cahier des Charges Fonctionnel formalisé ?",
+              "options": [
+                "Des malentendus permanents, des dérives de coûts, des retards majeurs et un produit final inadapté",
+                "De fabriquer automatiquement le meilleur objet technique de l'histoire",
+                "De doubler les bénéfices financiers de l'entreprise en un seul jour",
+                "De rendre tous les composants électroniques totalement indestructibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans CdCF, chaque intervenant interprète le besoin à sa manière, ce qui conduit inévitablement à l'échec et au dépassement des budgets."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que fait l'équipe de conception une fois que le CdCF est signé et approuvé par toutes les parties ?",
+              "options": [
+                "Elle lance la phase de recherche de solutions techniques (croquis, modélisations 3D, choix techniques)",
+                "Elle brûle le document dans la cour de l'usine pour préserver le secret industriel",
+                "Elle arrête définitivement de travailler car le travail d'ingénieur est terminé",
+                "Elle vend immédiatement le document aux clients dans les supermarchés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La validation du CdCF donne le feu vert officiel pour concevoir concrètement les solutions répondant aux fonctions énoncées."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Critères d'appréciation et niveaux d'exigence",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans un CdCF, qu'est-ce qu'un « critère d'appréciation » ?",
+              "options": [
+                "Une caractéristique observable ou une grandeur physique mesurable permettant d'évaluer une fonction",
+                "Le nom donné au responsable de la notation des élèves en classe",
+                "Une phrase poétique décrivant la beauté du coucher de soleil",
+                "Le prix de la peinture utilisée pour repeindre la salle de réunion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le critère précise sur quoi portera la vérification : masse, vitesse, autonomie, température, décibels, etc."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le « niveau d'exigence » associé à un critère d'appréciation ?",
+              "options": [
+                "La valeur chiffrée précise ou la performance attendue pour satisfaire la fonction",
+                "Le diplôme universitaire requis pour utiliser le produit une fois fabriqué",
+                "Le nombre d'heures de sommeil recommandées pour les techniciens du laboratoire",
+                "La hauteur maximale du bâtiment où sont installées les machines de l'usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le niveau quantifie l'exigence : par exemple « masse < 500 g » ou « autonomie > 10 heures »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour la fonction « Être facilement transportable », quel critère et quel niveau sont correctement définis ?",
+              "options": [
+                "Critère : Masse totale / Niveau : Inférieure à 1,5 kg",
+                "Critère : Couleur de l'objet / Niveau : Peint en rouge cerise brillant",
+                "Critère : Vitesse du vent / Niveau : 15 nœuds marins vers l'ouest",
+                "Critère : Âge du capitaine / Niveau : Exactement 45 ans révolus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse (en kilogrammes) est la grandeur physique pertinente pour qualifier la facilité de transport manuel d'un objet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi les critères qualitatifs (comme le confort) nécessitent-ils des méthodes d'évaluation spécifiques ?",
+              "options": [
+                "Parce qu'ils sont subjectifs et doivent être évalués par des tests utilisateurs ou grilles standardisées",
+                "Parce que les calculatrices refusent de faire des additions avec des mots doux",
+                "Parce que la loi interdit formellement d'évaluer la beauté des objets techniques",
+                "Parce que les objets confortables n'ont pas besoin de respecter le cahier des charges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand une grandeur ne se mesure pas avec un mètre ou un voltmètre, on recourt à des jurys d'utilisateurs ou des grilles standardisées."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels couples (critère d'appréciation / niveau d'exigence) sont techniquement rigoureux ?",
+              "options": [
+                "Critère : Autonomie de la batterie / Niveau : Au moins 12 heures en utilisation continue",
+                "Critère : Niveau sonore émis / Niveau : Inférieur à 45 décibels à 1 mètre de distance",
+                "Critère : Vitesse maximale de déplacement / Niveau : 25 km/h avec une tolérance de plus ou moins 1 km/h",
+                "Critère : Beauté de la boîte / Niveau : Extrêmement sympathique et rigolote"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les trois premiers couples reposent sur des grandeurs physiques universellement mesurables (heures, décibels, km/h)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la « tolérance » associée à un niveau d'exigence ?",
+              "options": [
+                "L'écart maximal admissible par rapport à la valeur cible (par exemple ± 2 millimètres)",
+                "La gentillesse dont fait preuve le professeur lors de la correction des copies",
+                "Le temps pendant lequel on accepte d'attendre un collègue en retard au déjeuner",
+                "L'autorisation accordée à l'objet de fonctionner sans électricité le dimanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En fabrication industrielle, la perfection absolue n'existe pas : la tolérance (ex : 100 mm ± 0,5 mm) définit l'intervalle de conformité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour la fonction de sécurité d'un casque de moto : « Protéger la tête des chocs », quel niveau est requis ?",
+              "options": [
+                "Répondre avec succès au test d'absorption de choc selon la norme européenne ECE 22.06",
+                "Avoir une coque peinte exclusivement en noir mat sans motif",
+                "Être fabriqué en carton ondulé ultra-léger de trois millimètres",
+                "Pouvoir être lavé en machine à laver à quatre-vingt-dix degrés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conformité à la norme officielle en vigueur est le niveau d'exigence absolu pour homologuer le casque."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels instruments de mesure utilise-t-on pour vérifier des niveaux d'exigence en laboratoire d'essais ?",
+              "options": [
+                "Un pied à coulisse ou micromètre (pour mesurer des dimensions au centième de millimètre)",
+                "Un sonomètre (pour mesurer le bruit acoustique généré en décibels)",
+                "Un wattmètre ou multimètre (pour mesurer la consommation électrique réelle)",
+                "Une longue-vue d'astronomie pour observer les cratères de la Lune"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Pied à coulisse, sonomètre et multimètre mesurent objectivement longueurs, intensités sonores et grandeurs électriques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la notation « F0 » pour la flexibilité d'un niveau d'exigence dans la méthode normalisée ?",
+              "options": [
+                "Flexibilité nulle : le niveau d'exigence est impératif et non négociable sous aucun prétexte",
+                "Flexibilité totale : la valeur indiquée n'est qu'un simple exemple fantaisiste",
+                "Fonction annulée : le niveau ne s'applique que si le produit est vendu à perte",
+                "Fonction gratuite : la pièce ne coûte rien à fabriquer pour l'atelier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« F0 » signifie flexibilité nulle (exigence stricte, souvent liée à la sécurité ou à une norme obligatoire)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi est-il risqué de définir un niveau d'exigence inutilement trop sévère dans un CdCF ?",
+              "options": [
+                "Parce que cela complexifie la fabrication, allonge les délais et fait exploser les coûts sans utilité",
+                "Parce que les ouvriers refusent catégoriquement de fabriquer des pièces bien faites",
+                "Parce que l'ordinateur de conception risque de s'enflammer sous l'effort de calcul",
+                "Parce que le client risque de recevoir dix exemplaires au lieu d'un seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exiger une tolérance au micron là où un millimètre suffit multiplie les coûts de production de manière totalement injustifiée."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Hiérarchisation et compromis de conception",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la « hiérarchisation des contraintes » dans un projet d'ingénierie ?",
+              "options": [
+                "Le classement des contraintes par ordre d'importance et de priorité pour guider les arbitrages",
+                "Le rangement alphabétique de tous les mots du dictionnaire technique",
+                "L'attribution d'un numéro d'immatriculation à chaque camion de l'usine",
+                "La liste des anniversaires de tous les collaborateurs du bureau d'études"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchiser permet de savoir quelles exigences doivent primer en cas de contradiction technique entre deux objectifs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si une contrainte de sécurité entre en conflit avec une contrainte esthétique, laquelle doit l'emporter ?",
+              "options": [
+                "La contrainte de sécurité prévaut toujours et sans la moindre hésitation sur l'esthétique",
+                "La contrainte esthétique car un bel objet est toujours plus rassurant pour les yeux",
+                "On tire à pile ou face pour décider de manière démocratique et équitable",
+                "On supprime les deux contraintes pour ne fâcher aucun ingénieur de l'équipe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La protection de la vie et de la santé humaine est la priorité absolue, devant l'apparence ou le style d'un produit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie faire un « compromis de conception » pour un objet technique ?",
+              "options": [
+                "Trouver l'équilibre optimal entre des exigences contradictoires (comme légèreté et solidité)",
+                "Refuser d'écouter les demandes du client pour concevoir ce dont on a envie",
+                "Choisir délibérément les plus mauvais composants pour faire des économies",
+                "Vendre le projet à une entreprise concurrente pour éviter les difficultés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Concevoir, c'est concilier des contraintes opposées : par exemple avoir un vélo à la fois robuste, léger et accessible en prix."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment résout-on le compromis classique entre la rigidité d'un cadre de vélo et sa légèreté ?",
+              "options": [
+                "En choisissant des matériaux à haute performance comme la fibre de carbone ou des alliages d'aluminium",
+                "En utilisant du plomb massif coulé dans des tubes très épais de dix centimètres",
+                "En gonflant les pneus avec de l'air très chaud pour faire voler le vélo",
+                "En supprimant la chaîne et les deux roues pour alléger l'ensemble"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les matériaux composites et les géométries optimisées apportent une excellente rigidité pour une masse minimale."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels couples d'exigences sont fréquemment en conflit lors de la conception d'un smartphone ?",
+              "options": [
+                "Vouloir une autonomie record de batterie tout en conservant un appareil très fin et léger",
+                "Vouloir un écran immense et immersif tout en gardant une taille compacte facile à tenir",
+                "Vouloir des performances de calcul extrêmes tout en maintenant un prix de vente modéré",
+                "Vouloir que le téléphone vole tout seul dans le ciel sans aucune consommation d'énergie"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Batterie/finesse, grand écran/compacité et puissance/prix sont des arbitrages permanents pour les bureaux d'études."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans l'échelle de flexibilité normalisée (F0 à F3), que signifie un niveau de flexibilité « F3 » ?",
+              "options": [
+                "Flexibilité très forte : le niveau d'exigence n'est qu'indicatif et peut être largement modifié",
+                "Flexibilité interdite : le niveau doit être respecté au nanomètre près sans écart",
+                "Fonction numéro trois : la pièce doit être fabriquée obligatoirement en trois exemplaires",
+                "Flexibilité thermique : la pièce résiste à une température de trois mille degrés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "F0 = nulle (impératif), F1 = faible, F2 = moyenne (négociable), F3 = forte (simple souhait indicatif)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qui doit trancher en dernier ressort si un compromis majeur remet en cause le budget ou les performances ?",
+              "options": [
+                "Le client commanditaire ou le comité de pilotage du projet après analyse des options",
+                "L'apprenti qui vient d'arriver depuis deux jours dans l'entreprise",
+                "Le concierge du bâtiment où se tiennent les réunions du projet",
+                "Le premier passant interrogé au hasard dans la rue devant l'usine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les modifications structurelles d'objectifs ou d'enveloppe budgétaire relèvent de la responsabilité du client ou de la direction."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels outils ou méthodes aident les concepteurs à comparer différentes solutions face aux contraintes ?",
+              "options": [
+                "Une matrice de décision ou tableau multicritères pondéré",
+                "Un tableau comparatif des avantages et inconvénients de chaque solution",
+                "Des simulations numériques sur logiciel de modélisation 3D",
+                "Une séance de voyance avec une boule de cristal magique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les matrices pondérées, les comparatifs et les simulations 3D fournissent des bases d'arbitrage rationnelles et scientifiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi un compromis réussi ne signifie-t-il pas que le produit est de mauvaise qualité ?",
+              "options": [
+                "Parce qu'il optimise au mieux toutes les performances dans le cadre du budget et de l'usage visé",
+                "Parce qu'un produit moyen est toujours plus solide qu'un produit d'excellence",
+                "Parce que les clients préfèrent acheter des objets qui ne marchent pas très bien",
+                "Parce que la perfection est interdite par les règlements du commerce international"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un bon compromis aboutit à un produit parfaitement calibré pour satisfaire le besoin réel de l'usager au juste prix."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi réexamine-t-on la hiérarchie des contraintes au cours de l'avancement du projet ?",
+              "options": [
+                "Pour s'assurer que les priorités restent respectées face aux imprévus techniques ou financiers",
+                "Pour changer de métier chaque semaine et éviter de s'ennuyer au travail",
+                "Pour annuler toutes les signatures du Cahier des Charges Fonctionnel",
+                "Pour forcer les usines à détruire leurs outils de fabrication"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ingénierie est itérative : en cas d'aléa ou de contrainte imprévue, il faut vérifier que le cap fixé au départ reste tenu."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Vérification et contrôle de conformité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « contrôle de conformité » d'un objet technique ?",
+              "options": [
+                "L'opération vérifiant que le produit réel respecte point par point le Cahier des Charges Fonctionnel",
+                "La pesée du camion de livraison au moment de sortir de l'autoroute",
+                "L'impression de dix mille affiches publicitaires dans un journal local",
+                "Le paiement des salaires de l'équipe de communication de l'entreprise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contrôle de conformité mesure et teste le produit fini pour s'assurer qu'il tient toutes les promesses écrites dans le CdCF."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel document sert de grille de vérification lors des tests de conformité finale ?",
+              "options": [
+                "Le Cahier des Charges Fonctionnel (CdCF) avec ses critères et niveaux d'exigence",
+                "Le menu de la cafétéria du laboratoire d'essai",
+                "Le catalogue des ventes aux enchères de voitures anciennes",
+                "L'annuaire téléphonique des habitants du quartier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CdCF est la référence absolue : chaque ligne du tableau (critère/niveau) fait l'objet d'un test ou d'une mesure de contrôle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur quoi porte un « test de résistance mécanique » réalisé sur un modèle de chaise d'écolier ?",
+              "options": [
+                "Sur sa capacité à supporter un poids élevé et des basculements répétés sans casser ni se déformer",
+                "Sur sa faculté à absorber l'encre des stylos à bille sans laisser de tache",
+                "Sur sa vitesse de glissement le long d'une rampe d'escalier cirée",
+                "Sur sa capacité à flotter sur l'eau de la piscine municipale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chaises de classe sont testées sur des bancs d'essais mécaniques appliquant des milliers de cycles d'effort simulant des années d'usage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la phase officielle où le client teste le prototype et valide le produit fini ?",
+              "options": [
+                "La recette du produit (ou validation finale de livraison)",
+                "La cuisson industrielle en four à haute température",
+                "L'inauguration festive avec feu d'artifice dans la cour",
+                "La liquidation judiciaire des biens de l'entreprise fabricante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La « recette » est l'acte juridique par lequel le client valide que le système livré est conforme au cahier des charges."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels types d'essais réalise-t-on en laboratoire pour valider la conformité d'un objet électronique ?",
+              "options": [
+                "Des essais thermiques (mesure de la température des composants en fonctionnement)",
+                "Des essais de compatibilité électromagnétique (CEM) pour éviter les interférences radio",
+                "Des essais de chute et d'endurance des boutons poussoirs et connecteurs",
+                "Des dégustations culinaires pour vérifier la saveur des circuits imprimés"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Échauffement thermique, compatibilité aux ondes électromagnétiques et résistance aux chocs font partie des tests clés de l'électronique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que rédige l'ingénieur de test à la fin de chaque campagne d'essais sur un prototype ?",
+              "options": [
+                "Un rapport d'essai (ou procès-verbal de contrôle) consignant tous les résultats mesurés",
+                "Un poème d'adieu dédié à la machine qui a été détruite pendant le test",
+                "Une lettre anonyme adressée aux journaux d'information générale",
+                "Un chèque de caution à l'ordre du propriétaire du laboratoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rapport d'essai consigne méthodiquement les protocoles suivis, les valeurs relevées et la conclusion de conformité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si un critère de sécurité n'atteint pas le niveau exigé lors des tests de qualification ?",
+              "options": [
+                "Le produit est déclaré non conforme et sa production en série est immédiatement bloquée",
+                "Le produit est expédié en toute discrétion pendant la nuit aux clients",
+                "Le testeur efface les résultats au blanco pour faire plaisir au directeur",
+                "Le laboratoire change la loi nationale pour adapter la norme au produit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une défaillance sécuritaire est rédhibitoire : le produit doit impérativement être retravaillé jusqu'à complète conformité."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels éléments expliquent un écart entre les performances calculées sur ordinateur et les tests réels ?",
+              "options": [
+                "Des imperfections de fabrication ou des tolérances de pièces cumulées",
+                "Des frottements mécaniques et échauffements réels sous-estimés lors de la modélisation",
+                "Des variations de conditions environnementales (température, humidité de l'air)",
+                "Une modification soudaine des règles de l'arithmétique dans la calculette"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les modèles numériques simplifient la réalité ; frottements, tolérances réelles et climat génèrent des écarts que seul le test réel révèle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi pratique-t-on des « contrôles qualité par échantillonnage » sur la chaîne de production ?",
+              "options": [
+                "Pour s'assurer en permanence que la qualité et la conformité restent stables au fil de la production",
+                "Pour faire plaisir aux ouvriers qui aiment mesurer des objets pendant leur journée",
+                "Pour détruire systématiquement la moitié des objets fabriqués dans l'usine",
+                "Pour revendre les pièces de rebut plus cher que les pièces parfaites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échantillonnage statistique vérifie en continu qu'aucune dérive de machine ne vienne altérer la conformité de la série."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la conformité au CdCF est-elle la clé de la confiance entre le fabricant et les utilisateurs ?",
+              "options": [
+                "Parce qu'elle prouve que le produit tient toutes ses promesses d'usage, de solidité, de sécurité et de prix",
+                "Parce qu'elle permet d'éviter d'imprimer une boîte en carton pour emballer l'objet",
+                "Parce qu'elle dispense l'utilisateur d'apprendre à utiliser l'appareil",
+                "Parce qu'elle garantit que l'objet sera vendu gratuitement dans tous les magasins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respecter scrupuleusement le CdCF assure aux usagers un objet fiable, performant, sans danger et parfaitement adapté à leur besoin initial."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

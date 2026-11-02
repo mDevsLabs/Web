@@ -180,7 +180,11 @@ function estHoteBackend(base: string): boolean {
 
 function configure(): CronConfig {
   const base = env("APP_URL")?.trim();
-  const secret = env("CRON_SECRET")?.trim();
+  const rawSecret = env("CRON_SECRET");
+  const secret = rawSecret
+    ?.trim()
+    .replace(/^["']+|["']+$/g, "")
+    .trim();
   const manquants = [
     ...(base ? [] : ["APP_URL"]),
     ...(secret ? [] : ["CRON_SECRET"]),
@@ -242,6 +246,7 @@ async function callTick(
   const headers: Record<string, string> = {
     accept: "application/json",
     authorization: `Bearer ${config.secret}`,
+    "x-cron-secret": config.secret,
   };
   if (tick.method === "POST") {
     headers["content-type"] = "application/json";

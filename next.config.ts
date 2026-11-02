@@ -204,7 +204,6 @@ const nextConfig: NextConfig = {
       }
     : {}),
   cacheComponents: true,
-  partialPrefetching: true,
   devIndicators: false,
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
@@ -408,6 +407,7 @@ const nextConfig: NextConfig = {
     "/site/news": ["./apps/site/docs/news/**"],
     "/site/news/[slug]": ["./apps/site/docs/news/**"],
   },
+  partialPrefetching: true,
   poweredByHeader: false,
   reactCompiler: true,
   /**

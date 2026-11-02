@@ -3,7 +3,7 @@
  *
  * Le tronc commun, de la 6e à la terminale, tient dans cette table : elle
  * fixe les dossiers, les titres de chapitres et l'ordre du parcours. Chaque
- * matière a trois chapitres. Les arts s'arrêtent après la 3e, la
+ * matière a dix chapitres. Les arts s'arrêtent après la 3e, la
  * philosophie n'existe qu'en terminale, et l'EMC est un chapitre
  * d'histoire-géographie — pas une matière à part. Les langues autres
  * que l'anglais et les spécialités du lycée complètent le tronc commun.
@@ -26,22 +26,253 @@ export type UnitSpec = {
   title: string;
 };
 
-export type ChapterFileName = "01" | "02" | "03";
+export const CHAPTER_FILES = [
+  "01",
+  "02",
+  "03",
+  "04",
+  "05",
+  "06",
+  "07",
+  "08",
+  "09",
+  "10",
+] as const;
+
+export type ChapterFileName = (typeof CHAPTER_FILES)[number];
+
+export type ChapterOrder = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 export type ChapterSpec = {
   file: ChapterFileName;
-  order: 1 | 2 | 3;
+  order: ChapterOrder;
   title: string;
   units: [UnitSpec, UnitSpec];
 };
 
 export type SubjectSpec = {
-  chapters: [ChapterSpec, ChapterSpec, ChapterSpec];
+  chapters: readonly ChapterSpec[];
   id: string;
   label: string;
 };
 
 const u = (id: "u1" | "u2", title: string): UnitSpec => ({ id, title });
+
+type Trio = readonly [string, string, string];
+
+/**
+ * Sept chapitres après les trois déjà nommés dans le programme.
+ * Le titre est commun aux années ; les questions, elles, restent
+ * propres au niveau demandé au rédacteur.
+ */
+const SUITES: Record<string, readonly Trio[]> = {
+  arts: [
+    ["La couleur et la lumière", "Mélanges et nuances", "Contrastes"],
+    [
+      "L'espace et le volume",
+      "Relief et profondeur",
+      "Installer dans l'espace",
+    ],
+    ["Le récit visuel", "Lire une image", "Raconter en images"],
+    ["Écouter et reconnaître", "Timbre et rythme", "Styles et époques"],
+    ["Créer une œuvre", "L'intention", "La réalisation"],
+    ["Présenter et commenter", "Décrire une œuvre", "Construire un regard"],
+    ["Arts et société", "L'œuvre et son public", "Synthèse artistique"],
+  ],
+  "enseignement-scientifique": [
+    [
+      "La matière et les rayonnements",
+      "Atomes et noyaux",
+      "Lumière et spectre",
+    ],
+    [
+      "Le Soleil, la Terre et le climat",
+      "Énergie reçue",
+      "Le climat terrestre",
+    ],
+    ["Le son, musique et audition", "Onde et fréquence", "Perception"],
+    ["La biodiversité", "Érosion du vivant", "Préserver"],
+    ["Une histoire du vivant", "Parentés", "Mécanismes de l'évolution"],
+    ["Science et société", "Controverse", "Décider avec des données"],
+    ["Relier les sciences", "Croiser deux thèmes", "Argumenter"],
+  ],
+  francais: [
+    [
+      "La langue au service du sens",
+      "Orthographe et accords",
+      "Réécrire une phrase",
+    ],
+    ["Lire et comprendre", "Idée principale", "Inférer"],
+    ["Prendre la parole", "Lire à voix haute", "Débattre"],
+    ["Écrire un texte construit", "Organiser ses idées", "Relire et corriger"],
+    ["Les genres littéraires", "Reconnaître un genre", "Comparer deux textes"],
+    ["Texte et image", "Document composite", "Argumenter"],
+    ["Bilan de français", "Synthèse", "Entraînement"],
+  ],
+  hggsp: [
+    ["Faire la guerre, faire la paix", "Un conflit", "Une paix"],
+    ["Histoire et mémoires", "Mémoires plurielles", "Usages du passé"],
+    ["L'enjeu de la connaissance", "Produire un savoir", "Faire circuler"],
+    ["Puissance et coopération", "États", "Organisations"],
+    ["Frontières", "Tracer", "Contester"],
+    ["Patrimoines et justice", "Mémoire", "Restitutions"],
+    ["Synthèse géopolitique", "Étude de cas", "Argumenter"],
+  ],
+  "histoire-geographie": [
+    ["Habiter et se déplacer", "Villes et campagnes", "Mobilités"],
+    ["Ressources et milieux", "Eau et alimentation", "Risques"],
+    ["Pouvoirs et sociétés", "Qui décide", "Inégalités"],
+    ["Guerres et paix", "Un conflit", "Une reconstruction"],
+    ["La France et l'Europe", "Territoires", "Institutions"],
+    ["Le monde aujourd'hui", "Mondialisation", "Enjeux contemporains"],
+    ["EMC et synthèse", "Droits et devoirs", "Révision"],
+  ],
+  hlp: [
+    ["Les pouvoirs de la parole", "Art de la parole", "Autorité du discours"],
+    ["Les représentations du monde", "Découvrir", "Imaginer"],
+    ["L'humain et ses limites", "Frontières", "Fables et mythes"],
+    ["La recherche de soi", "Éducation", "Sensibilité"],
+    ["L'humanité en question", "Techniques", "Limites"],
+    ["Savoirs et croyances", "Démontrer", "Interpréter"],
+    ["Synthèse humanités", "Relier des œuvres", "Argumenter"],
+  ],
+  mathematiques: [
+    ["Nombres et calculs", "Priorités et fractions", "Problèmes numériques"],
+    ["Proportionnalité et grandeurs", "Tableaux et échelles", "Unités"],
+    ["Géométrie et mesures", "Figures", "Périmètres, aires et volumes"],
+    ["Organisation de données", "Lire un graphique", "Interpréter"],
+    ["Algèbre", "Mettre en équation", "Résoudre"],
+    ["Fonctions et variations", "Lire une courbe", "Modéliser"],
+    ["Probabilités et synthèse", "Expériences aléatoires", "Révision"],
+  ],
+  nsi: [
+    ["Traitement de données en tables", "Sélection", "Agrégation"],
+    ["Interactions homme-machine", "Événements", "Interfaces"],
+    ["Listes, arbres et récursivité", "Parcours", "Récursivité"],
+    ["Graphes", "Représentation", "Plus court chemin"],
+    ["Bases de données", "Modèle relationnel", "Requêtes"],
+    ["Architectures et réseaux", "Processus", "Protocoles"],
+    ["Projet informatique", "Conception", "Tests"],
+  ],
+  philosophie: [
+    ["La liberté", "Déterminisme", "Responsabilité"],
+    ["Le devoir", "Morale", "Bonheur"],
+    ["La société", "Justice", "État"],
+    ["La technique", "Progrès", "Risques"],
+    ["L'art", "Création", "Jugement de goût"],
+    ["La science", "Vérité", "Limites de la connaissance"],
+    ["Dissertation", "Problématiser", "Argumenter"],
+  ],
+  "physique-chimie": [
+    ["La matière", "Constituants", "Changements d'état"],
+    ["Mélanges et solutions", "Dissolution", "Concentration"],
+    ["Transformations chimiques", "Réaction", "Bilan"],
+    ["L'électricité", "Circuit", "Intensité et tension"],
+    ["Mouvement et forces", "Décrire un mouvement", "Interactions"],
+    ["L'énergie", "Formes", "Conversions"],
+    ["Ondes, signaux et synthèse", "Lumière et son", "Révision"],
+  ],
+  "sciences-et-technologie": [
+    ["Le vivant et la santé", "Le corps humain", "Hygiène"],
+    ["Matière et énergie", "Transformations", "Sources d'énergie"],
+    ["La Terre et l'environnement", "Paysages", "Risques naturels"],
+    ["Objets techniques", "Fonction", "Matériaux"],
+    ["Information et signaux", "Capteurs", "Communication"],
+    ["L'environnement au quotidien", "Impacts", "Gestes"],
+    ["Démarche scientifique", "Observer", "Conclure"],
+  ],
+  ses: [
+    ["Marché et prix", "Offre et demande", "Équilibre"],
+    ["Monnaie et financement", "Rôles de la monnaie", "Crédit"],
+    ["Travail et emploi", "Organisation du travail", "Chômage"],
+    ["Inégalités et protection", "Revenus", "Protection sociale"],
+    ["Entreprise et production", "Coûts", "Innovation"],
+    ["État et politiques publiques", "Budget", "Régulation"],
+    ["Mondialisation et environnement", "Échanges", "Externalités"],
+  ],
+  snt: [
+    ["Internet", "Réseaux", "Le Web"],
+    ["Les données structurées", "Structurer", "Traiter"],
+    ["La photographie numérique", "Pixels", "Droits d'auteur"],
+    ["Localisation et cartes", "Géolocalisation", "Vie privée"],
+    ["Les objets connectés", "Capteurs", "Impacts"],
+    ["L'informatique embarquée", "Systèmes", "Sécurité"],
+    ["Usages numériques", "Esprit critique", "Synthèse"],
+  ],
+  svt: [
+    ["La cellule et l'organisme", "Organisation", "Fonctions"],
+    ["Reproduction et hérédité", "Transmission", "Diversité"],
+    ["Nutrition et énergie", "Aliments", "Respiration"],
+    ["Le corps et la santé", "Défenses", "Prévention"],
+    ["Écosystèmes", "Relations", "Équilibres"],
+    ["La planète", "Climat", "Risques"],
+    ["Évolution et synthèse", "Parentés", "Révision"],
+  ],
+  technologie: [
+    ["Besoin et cahier des charges", "Usage", "Contraintes"],
+    ["Matériaux et procédés", "Choix d'un matériau", "Fabrication"],
+    ["Énergie des objets", "Alimentation", "Rendement"],
+    ["Information et réseaux", "Structurer l'information", "Communiquer"],
+    ["Programmer un objet", "Algorithme", "Tester"],
+    ["Design et impacts", "Cycle de vie", "Éco-conception"],
+    ["Projet technique", "Prototype", "Bilan"],
+  ],
+};
+
+function avecDe(nom: string): string {
+  if (nom.startsWith("le ")) {
+    return `du ${nom.slice(3)}`;
+  }
+  return `de ${nom}`;
+}
+
+function avecEn(nom: string): string {
+  if (nom.startsWith("le ")) {
+    return `en ${nom.slice(3)}`;
+  }
+  return `en ${nom}`;
+}
+
+function suiteLangue(nom: string): readonly Trio[] {
+  return [
+    [`La grammaire ${avecDe(nom)}`, "Accords et articles", "Phrases simples"],
+    [`Le passé ${avecEn(nom)}`, "Raconter hier", "Marqueurs de temps"],
+    [
+      `L'avenir et les projets ${avecEn(nom)}`,
+      "Dire ce qu'on va faire",
+      "Invitations",
+    ],
+    [`Opinions et sentiments ${avecEn(nom)}`, "Donner son avis", "Nuancer"],
+    [`Voyage et ville ${avecEn(nom)}`, "Se déplacer", "Demander son chemin"],
+    [`Médias et actualité ${avecEn(nom)}`, "Lire un titre", "Commenter"],
+    [`Vers l'examen ${avecEn(nom)}`, "Compréhension", "Expression"],
+  ];
+}
+
+const NOMS_LANGUE: Record<string, string> = {
+  allemand: "l'allemand",
+  anglais: "l'anglais",
+  arabe: "l'arabe",
+  chinois: "le chinois",
+  coreen: "le coréen",
+  espagnol: "l'espagnol",
+  grec: "le grec ancien",
+  hebreu: "l'hébreu",
+  italien: "l'italien",
+  japonais: "le japonais",
+  latin: "le latin",
+  portugais: "le portugais",
+  russe: "le russe",
+  turc: "le turc",
+};
+
+function suiteDe(id: string, label: string): readonly Trio[] {
+  const propre = SUITES[id];
+  if (propre) {
+    return propre;
+  }
+  return suiteLangue(NOMS_LANGUE[id] ?? label.toLocaleLowerCase("fr"));
+}
 
 function matiere(
   id: string,
@@ -58,25 +289,28 @@ function matiere(
     string,
   ]
 ): SubjectSpec {
-  const fichiers = ["01", "02", "03"] as const;
-  const ordres = [1, 2, 3] as const;
-  const chapters = ordres.map((order, index) => {
-    const base = index * 3;
+  const debut: Trio[] = [
+    [morceaux[0], morceaux[1], morceaux[2]],
+    [morceaux[3], morceaux[4], morceaux[5]],
+    [morceaux[6], morceaux[7], morceaux[8]],
+  ];
+  const tous = [...debut, ...suiteDe(id, label)];
+  if (tous.length !== CHAPTER_FILES.length) {
+    throw new Error(`Quizzly : ${id} n'a pas dix chapitres.`);
+  }
+  const chapters = tous.map(([title, premiere, seconde], index) => {
+    const file = CHAPTER_FILES[index];
+    if (!file || !title || !premiere || !seconde) {
+      throw new Error(`Quizzly : chapitre incomplet pour ${id}.`);
+    }
     return {
-      file: fichiers[index],
-      order,
-      title: morceaux[base] ?? "",
-      units: [
-        u("u1", morceaux[base + 1] ?? ""),
-        u("u2", morceaux[base + 2] ?? ""),
-      ],
+      file,
+      order: (index + 1) as ChapterOrder,
+      title,
+      units: [u("u1", premiere), u("u2", seconde)] as [UnitSpec, UnitSpec],
     };
   });
-  return {
-    chapters: chapters as [ChapterSpec, ChapterSpec, ChapterSpec],
-    id,
-    label,
-  };
+  return { chapters, id, label };
 }
 
 function langue(id: string, label: string, nom: string): SubjectSpec {

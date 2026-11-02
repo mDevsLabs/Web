@@ -1,0 +1,1788 @@
+{
+  "id": "5e-physique-chimie-04",
+  "year": "5e",
+  "subject": "physique-chimie",
+  "title": "La matière",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Constituants",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mélanges ?",
+              "options": ["Eau robinet", "Sucre pur", "Air", "Cu pur"],
+              "correctAnswers": [0, 2],
+              "explanation": "Plusieurs substances."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Corps pur",
+              "options": ["plusieurs espèces", "1 espèce", "gaz", "métal"],
+              "correctAnswers": [1],
+              "explanation": "Une espèce."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Distillée",
+              "options": ["mélange", "pur", "gaz", "alliage"],
+              "correctAnswers": [1],
+              "explanation": "H₂O."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Eau mer",
+              "options": ["H₂O seul", "eau+sel", "métal", "N₂"],
+              "correctAnswers": [1],
+              "explanation": "Sel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Clou Fe",
+              "options": ["élément", "jus", "gaz", "sol"],
+              "correctAnswers": [0],
+              "explanation": "Fe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sable eau",
+              "options": ["homog", "hétéro", "pur", "atome"],
+              "correctAnswers": [1],
+              "explanation": "Visible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sucre eau",
+              "options": ["homog", "hétéro", "Fe", "air"],
+              "correctAnswers": [0],
+              "explanation": "Solution."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Constituants",
+              "options": ["composants", "couleurs", "notes", "fusion"],
+              "correctAnswers": [0],
+              "explanation": "Matière."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Distille salée",
+              "options": ["eau/sel", "or", "air sol", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Sépare."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Granite",
+              "options": ["mélange", "eau", "O₂", "atome"],
+              "correctAnswers": [0],
+              "explanation": "Minéraux."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Purs ?",
+              "options": ["Glace eau", "Jus", "O₂", "Granite"],
+              "correctAnswers": [0, 2],
+              "explanation": "Glace O₂."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "NaCl",
+              "options": ["composé", "sable", "gaz", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Sel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Air",
+              "options": ["pur", "mélange", "liquide", "solide"],
+              "correctAnswers": [1],
+              "explanation": "Gaz."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "N₂ air",
+              "options": ["1%", "21%", "78%", "100%"],
+              "correctAnswers": [2],
+              "explanation": "Majoritaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Respirer",
+              "options": ["Ar", "CO₂", "O₂", "He"],
+              "correctAnswers": [2],
+              "explanation": "O₂."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "H₂O",
+              "options": ["2H1O", "3Fe", "2N", "1at"],
+              "correctAnswers": [0],
+              "explanation": "Eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Atome",
+              "options": ["élément", "grain", "huile", "bulle"],
+              "correctAnswers": [0],
+              "explanation": "Petit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "O₂",
+              "options": ["2O", "eau", "sel", "N"],
+              "correctAnswers": [0],
+              "explanation": "Dioxygène."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Filtre",
+              "options": ["solide", "eau", "or", "fus"],
+              "correctAnswers": [0],
+              "explanation": "Terre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Décante",
+              "options": ["repos", "chauffe", "atome", "air"],
+              "correctAnswers": [0],
+              "explanation": "Dépôt."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans air",
+              "options": ["N₂", "Or", "O₂", "Hg"],
+              "correctAnswers": [0, 2],
+              "explanation": "Gaz air."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Robinet",
+              "options": ["mélange", "=distill", "métal", "0g"],
+              "correctAnswers": [0],
+              "explanation": "Chlore."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "CO₂",
+              "options": ["faible", "78%", "50%", "0"],
+              "correctAnswers": [0],
+              "explanation": "Minoritaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ballon air",
+              "options": ["mélange", "N pur", "sol", "eau"],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Verre eau",
+              "options": ["air volume", "pas air", "fus", "100"],
+              "correctAnswers": [0],
+              "explanation": "Expérience."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Argon",
+              "options": ["minoritaire", "principal", "sel", "eau"],
+              "correctAnswers": [0],
+              "explanation": "Air."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Molécule",
+              "options": ["atomes liés", "visible", "roche", "état"],
+              "correctAnswers": [0],
+              "explanation": "Liés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Glace liquide",
+              "options": ["même", "autre", "Fe", "gaz"],
+              "correctAnswers": [0],
+              "explanation": "H₂O."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Aimant",
+              "options": ["Fe", "dist", "air sol", "NaCl"],
+              "correctAnswers": [0],
+              "explanation": "Trie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Gazeuse",
+              "options": ["eau+CO₂", "O pur", "H seul", "granite"],
+              "correctAnswers": [0],
+              "explanation": "Dissous."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Atomes vrai",
+              "options": ["Petits", "Œil nu", "Éléments", "Huile=atome"],
+              "correctAnswers": [0, 2],
+              "explanation": "Micro."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Symbole O",
+              "options": ["O", "Ox", "W", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Oxygène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "H₂",
+              "options": ["H", "eau", "N", "Cu"],
+              "correctAnswers": [0],
+              "explanation": "Hydrogène."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "CO₂",
+              "options": ["CO", "CuZn", "Na", "N"],
+              "correctAnswers": [0],
+              "explanation": "Carbone."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Composé",
+              "options": ["atomes liés", "gaz", "liquide", "mélange"],
+              "correctAnswers": [0],
+              "explanation": "H₂O."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cu",
+              "options": ["cuivre", "C", "Cl", "eau"],
+              "correctAnswers": [0],
+              "explanation": "Métal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "N₂ O₂ air",
+              "options": ["purs mélange", "1at", "non", "=eau"],
+              "correctAnswers": [0],
+              "explanation": "Gaz."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Solide mod",
+              "options": ["serré", "espacé", "0", "liq"],
+              "correctAnswers": [0],
+              "explanation": "Réseau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Gaz mod",
+              "options": ["espacé", "serré", "fixe", "roche"],
+              "correctAnswers": [0],
+              "explanation": "Mobile."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Alcool70",
+              "options": ["mélange", "eau pur", "métal", "air liq"],
+              "correctAnswers": [0],
+              "explanation": "2 liq."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sépare",
+              "options": ["Filtre", "Atomes", "Décante", "N→or"],
+              "correctAnswers": [0, 2],
+              "explanation": "Physique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Distille",
+              "options": ["volatil", "sel", "granite", "O"],
+              "correctAnswers": [0],
+              "explanation": "Vapeur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Chromato",
+              "options": ["encres", "or", "O sol", "eau"],
+              "correctAnswers": [0],
+              "explanation": "Couleurs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Eau huile",
+              "options": ["hétéro", "homog", "pur", "gaz"],
+              "correctAnswers": [0],
+              "explanation": "2 phases."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sucre chaud",
+              "options": ["homog", "hétéro", "Fe", "N"],
+              "correctAnswers": [0],
+              "explanation": "Sol."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Évap salée",
+              "options": ["sel", "O", "Fe", "huile"],
+              "correctAnswers": [0],
+              "explanation": "Reste."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tamis",
+              "options": ["gros", "atome", "vap", "sol"],
+              "correctAnswers": [0],
+              "explanation": "Taille."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fe Al",
+              "options": ["aimant", "0C", "dist", "resp"],
+              "correctAnswers": [0],
+              "explanation": "Fe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Essence",
+              "options": ["mélange", "eau", "sol", "N pur"],
+              "correctAnswers": [0],
+              "explanation": "HC."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mer douce",
+              "options": ["dessaler", "filtre", "aimant", "+sel"],
+              "correctAnswers": [0],
+              "explanation": "Sel."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Élément sol",
+              "options": ["Zn", "Laiton", "Au", "Eau"],
+              "correctAnswers": [0, 2],
+              "explanation": "Zn Au."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Laiton",
+              "options": ["alliage", "élément", "gaz", "eau"],
+              "correctAnswers": [0],
+              "explanation": "CuZn."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Soufre",
+              "options": ["S", "air", "eau", "NaCl"],
+              "correctAnswers": [0],
+              "explanation": "Jaune."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Graphite",
+              "options": ["C", "N", "sel", "air"],
+              "correctAnswers": [0],
+              "explanation": "Carbone."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Glaçon",
+              "options": ["eau s", "granite", "O", "alliage"],
+              "correctAnswers": [0],
+              "explanation": "Solide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sel",
+              "options": ["NaCl", "Fe", "gaz", "huile"],
+              "correctAnswers": [0],
+              "explanation": "Cristaux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bois",
+              "options": ["mélange", "pur", "O", "métal"],
+              "correctAnswers": [0],
+              "explanation": "Org."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcaire",
+              "options": ["mélange", "atome", "air", "Hg"],
+              "correctAnswers": [0],
+              "explanation": "Roche."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Canette",
+              "options": ["Al", "soda", "gaz", "sel"],
+              "correctAnswers": [0],
+              "explanation": "Al."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "ρ",
+              "options": ["identifie", "atome", "vap N", "air sol"],
+              "correctAnswers": [0],
+              "explanation": "Propriété."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Liq 20C",
+              "options": ["Hg", "O₂", "Éthanol", "Granite"],
+              "correctAnswers": [0, 2],
+              "explanation": "Hg éthanol."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Eau ρ",
+              "options": ["1", "10", "0", "78"],
+              "correctAnswers": [0],
+              "explanation": "g/cm³."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Huile",
+              "options": ["flotte", "coule", "gaz", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Légère."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hg",
+              "options": ["métal liq", "eau", "gaz", "sel"],
+              "correctAnswers": [0],
+              "explanation": "Liquide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Propane",
+              "options": ["pur", "eau", "sol", "air"],
+              "correctAnswers": [0],
+              "explanation": "Gaz."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Seringue",
+              "options": ["comprime", "solide", "0", "→eau"],
+              "correctAnswers": [0],
+              "explanation": "Gaz."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vapeur tasse",
+              "options": ["eau g", "N", "Fe", "sel"],
+              "correctAnswers": [0],
+              "explanation": "Vap."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lait hom",
+              "options": ["uniforme", "2ph", "sans eau", "N"],
+              "correctAnswers": [0],
+              "explanation": "Ok."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bouteille gaz",
+              "options": ["pression", "granite", "eau", "sel"],
+              "correctAnswers": [0],
+              "explanation": "Stock."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vinaigre",
+              "options": ["mélange", "O", "Fe", "glace"],
+              "correctAnswers": [0],
+              "explanation": "Acide."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Prop 5e",
+              "options": ["Tf 0", "Couleur pur", "ρ", "Mél 0"],
+              "correctAnswers": [0, 2],
+              "explanation": "Tf ρ."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Fe aimant",
+              "options": ["magn", "0C", "gaz", "eau"],
+              "correctAnswers": [0],
+              "explanation": "Fe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bout eau",
+              "options": ["100", "0", "200", "-10"],
+              "correctAnswers": [0],
+              "explanation": "°C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pur fusion",
+              "options": ["plateau", "aléa", "50", "?"],
+              "correctAnswers": [0],
+              "explanation": "T fixe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "pH",
+              "options": ["acide", "masse", "N fus", "granite"],
+              "correctAnswers": [0],
+              "explanation": "Base."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Salée cond",
+              "options": ["ions", "dist", "air", "vide"],
+              "correctAnswers": [0],
+              "explanation": "Sel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dist cond",
+              "options": ["faible", "forte", "Fe", "gaz"],
+              "correctAnswers": [0],
+              "explanation": "Peu ions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mél fusion",
+              "options": ["pas 1 T", "1 T", "non", "0"],
+              "correctAnswers": [0],
+              "explanation": "Plage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cu Al",
+              "options": ["couleur", "=at", "gaz", "sel"],
+              "correctAnswers": [0],
+              "explanation": "Indice."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pluie",
+              "options": ["mélange", "dist", "Fe", "O liq"],
+              "correctAnswers": [0],
+              "explanation": "Poussière."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vocab",
+              "options": ["Pur", "Stœchio", "Mélange", "Atome seul"],
+              "correctAnswers": [0, 2],
+              "explanation": "5e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Espèce",
+              "options": ["substance", "bois", "nuage", "fus"],
+              "correctAnswers": [0],
+              "explanation": "Type."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sel diss",
+              "options": ["homog", "grains", "gaz", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Sol."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Eau",
+              "options": ["HO", "CuZn", "N", "Ar"],
+              "correctAnswers": [0],
+              "explanation": "Composé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Air",
+              "options": ["plusieurs", "0g", "liq", "CO2 100"],
+              "correctAnswers": [0],
+              "explanation": "Mélange."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "O₂ flacon",
+              "options": ["O₂", "H2O", "NaCl", "N seul"],
+              "correctAnswers": [0],
+              "explanation": "Pur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "H2O",
+              "options": ["2H1O", "2N", "air", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Formule."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vinaigrette",
+              "options": ["hétéro", "homog", "pur", "at"],
+              "correctAnswers": [0],
+              "explanation": "2 liq."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Air max",
+              "options": ["N2", "O2", "He", "O3"],
+              "correctAnswers": [0],
+              "explanation": "78%."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Acier",
+              "options": ["FeC", "eau", "O", "H2O"],
+              "correctAnswers": [0],
+              "explanation": "Alliage."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Résumé",
+              "options": [
+                "Air mél",
+                "Brillant pur",
+                "Eau H2O",
+                "Granite élément"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ok."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sable",
+              "options": ["filtre", "fus", "resp", "or"],
+              "correctAnswers": [0],
+              "explanation": "Filtre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sel micro",
+              "options": ["H2O+ions", "1", "vide", "air"],
+              "correctAnswers": [0],
+              "explanation": "Ions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "H atome",
+              "options": ["H", "O", "Fe", "Cl"],
+              "correctAnswers": [0],
+              "explanation": "H."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Salée",
+              "options": ["mélange", "pure", "gaz", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Sel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Chromato",
+              "options": ["sépare", "or", "air", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Encre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "O med",
+              "options": ["pur", "air", "lait", "granite"],
+              "correctAnswers": [0],
+              "explanation": "O₂."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Potable",
+              "options": ["traiter", "+sable", "N sol", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Usine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "CO2 bulle",
+              "options": ["dissous", "sol", "Fe", "N pur"],
+              "correctAnswers": [0],
+              "explanation": "Mélange."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dist mer",
+              "options": ["eau part", "sel part", "Fe", "O sol"],
+              "correctAnswers": [0],
+              "explanation": "Vap eau."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Changements d'état",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Depuis solide",
+              "options": ["Fusion", "Solidif", "Sublimation", "Condensation"],
+              "correctAnswers": [0, 2],
+              "explanation": "s→l s→g."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Fusion",
+              "options": ["s→l", "l→s", "g→l", "l→g"],
+              "correctAnswers": [0],
+              "explanation": "Glace."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Solidif",
+              "options": ["l→s", "s→l", "g→s", "l→g"],
+              "correctAnswers": [0],
+              "explanation": "Glace forme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Glaçon fond",
+              "options": ["fusion", "vap", "cond", "sol"],
+              "correctAnswers": [0],
+              "explanation": "s→l."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Congélateur",
+              "options": ["solidif", "fusion", "ébull", "N2"],
+              "correctAnswers": [0],
+              "explanation": "l→s."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tf eau",
+              "options": ["0", "100", "50", "-50"],
+              "correctAnswers": [0],
+              "explanation": "°C."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fusion T",
+              "options": ["plateau", "monte", "100", "?"],
+              "correctAnswers": [0],
+              "explanation": "Constant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Beurre froid",
+              "options": ["solidif", "fusion", "vap", "cond"],
+              "correctAnswers": [0],
+              "explanation": "l→s."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cire",
+              "options": ["fusion", "sol", "ébull", "N2"],
+              "correctAnswers": [0],
+              "explanation": "s→l."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Glace=eau",
+              "options": ["même", "autre", "Fe", "O"],
+              "correctAnswers": [0],
+              "explanation": "H2O."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "l→g",
+              "options": [
+                "Vaporisation",
+                "Condensation",
+                "Ébullition",
+                "Solidif"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Vap ébull."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Vaporisation",
+              "options": ["l→g", "g→l", "s→l", "l→s"],
+              "correctAnswers": [0],
+              "explanation": "Gaz."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Condensation",
+              "options": ["g→l", "l→g", "s→g", "s→l"],
+              "correctAnswers": [0],
+              "explanation": "Buée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Miroir",
+              "options": ["cond", "fus", "O2 sol", "sel"],
+              "correctAnswers": [0],
+              "explanation": "g→l."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ébullition",
+              "options": ["100", "0", "50", "200"],
+              "correctAnswers": [0],
+              "explanation": "Eau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "20C sec",
+              "options": ["évap", "ébull", "fus", "sol"],
+              "correctAnswers": [0],
+              "explanation": "Lent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ébull T",
+              "options": ["100 stable", "0", "200", "?"],
+              "correctAnswers": [0],
+              "explanation": "Plateau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "g→l nom",
+              "options": ["cond", "fus", "sol", "sub"],
+              "correctAnswers": [0],
+              "explanation": "Liquéfact."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Linge",
+              "options": ["évap", "fus", "N2", "air sol"],
+              "correctAnswers": [0],
+              "explanation": "Eau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nuage",
+              "options": ["gouttes", "O pur", "Fe", "fus"],
+              "correctAnswers": [0],
+              "explanation": "Cond."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Eau 1atm",
+              "options": ["Fus 0", "Ébull 100", "Fus 100", "Ébull 0"],
+              "correctAnswers": [0, 1],
+              "explanation": "0 100."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Glace fond T",
+              "options": ["0", "100", "200", "-20"],
+              "correctAnswers": [0],
+              "explanation": "Plateau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bout T",
+              "options": ["100", "0", "50", "↓"],
+              "correctAnswers": [0],
+              "explanation": "°C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "-18 eau",
+              "options": ["sol", "bouill", "gaz", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Glace."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "100C =",
+              "options": ["l→g", "s→l", "g→s", "sel"],
+              "correctAnswers": [0],
+              "explanation": "Ébull."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "0 glace+eau",
+              "options": ["équilibre", "ébull", "air liq", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "s/l."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chauffe 0 glace",
+              "options": ["fus T fix", "ébull", "cond", "N2"],
+              "correctAnswers": [0],
+              "explanation": "Latente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chauffe 100",
+              "options": ["vap T fix", "150", "sol", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Latente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Altitude",
+              "options": ["<100 bout", ">150", "0", "non"],
+              "correctAnswers": [0],
+              "explanation": "Pression."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Glaçon sort",
+              "options": ["→0", "-18", "100", "200"],
+              "correctAnswers": [0],
+              "explanation": "Fusion."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Évap/ébull",
+              "options": [
+                "Évap surface",
+                "Ébull bulles",
+                "Évap 100 seul",
+                "Ébull impossible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Différent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Flaque",
+              "options": ["évap", "ébull", "fus", "sol"],
+              "correctAnswers": [0],
+              "explanation": "Sec."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Casserole",
+              "options": ["ébull", "évap", "cond", "sol"],
+              "correctAnswers": [0],
+              "explanation": "Bulles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Évap froid",
+              "options": ["partent", "air sol", "fus", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Quali."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Parfum",
+              "options": ["vap", "fus Fe", "sol eau", "cond"],
+              "correctAnswers": [0],
+              "explanation": "Gaz."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ébull besoin",
+              "options": ["T ébull", "0", "vide", "sol gaz"],
+              "correctAnswers": [0],
+              "explanation": "Plateau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "40C",
+              "options": ["évap", "bout", "sol", "granite"],
+              "correctAnswers": [0],
+              "explanation": "<100."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Couvercle",
+              "options": ["retarde", "glace", "O cond", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Vapeur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Alcool",
+              "options": ["+vite", "jamais", "200", "sol"],
+              "correctAnswers": [0],
+              "explanation": "Volatil."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bulles",
+              "options": ["vapeur eau", "O", "sel", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "H2O."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Eau subit",
+              "options": ["Fusion", "Solidif", "Vaporisation", "Crée N2"],
+              "correctAnswers": [0, 2],
+              "explanation": "Fus vap."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Froid eau",
+              "options": ["solidif", "fusion", "cond", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "l→s."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Chauffe glace",
+              "options": ["fusion", "sol vap", "Fe", "N sol"],
+              "correctAnswers": [0],
+              "explanation": "s→l."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "g→s",
+              "options": ["déposition", "fusion", "ébull", "mél"],
+              "correctAnswers": [0],
+              "explanation": "Givre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Givre",
+              "options": ["déposition", "fus", "ébull", "sel"],
+              "correctAnswers": [0],
+              "explanation": "Vapeur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "s→l→g",
+              "options": ["chauffer", "refroidir", "Cu", "air pur"],
+              "correctAnswers": [0],
+              "explanation": "États."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Refroid vap",
+              "options": ["cond", "fus", "Fe", "sel"],
+              "correctAnswers": [0],
+              "explanation": "g→l."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Changement",
+              "options": ["physique", "nouvelle", "stœchio", "at"],
+              "correctAnswers": [0],
+              "explanation": "Même."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Air liq",
+              "options": ["froid+press", "fus eau", "sel", "granite"],
+              "correctAnswers": [0],
+              "explanation": "Indus."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Latente fus",
+              "options": ["T plateau", "T↑", "0", "100"],
+              "correctAnswers": [0],
+              "explanation": "Chaleur."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vie quotid",
+              "options": ["Glace fond", "Buée", "Roche→or", "Air→sel"],
+              "correctAnswers": [0, 1],
+              "explanation": "Fus cond."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Glace crème",
+              "options": ["fusion", "sol", "ébull", "N2"],
+              "correctAnswers": [0],
+              "explanation": "s→l."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lunettes",
+              "options": ["cond", "fus", "Fe", "air sol"],
+              "correctAnswers": [0],
+              "explanation": "Buée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fer coulé",
+              "options": ["fusion", "sol", "évap", "cond"],
+              "correctAnswers": [0],
+              "explanation": "Métal."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pluie gel",
+              "options": ["solidif", "fus", "ébull", "sub"],
+              "correctAnswers": [0],
+              "explanation": "l→s."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bouilloire",
+              "options": ["vap", "fus glace", "O sol", "sel"],
+              "correctAnswers": [0],
+              "explanation": "l→g."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Glace sèche",
+              "options": ["s→g", "l→g", "g→l", "l→s"],
+              "correctAnswers": [0],
+              "explanation": "CO2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cire dur",
+              "options": ["solidif", "fus", "ébull", "mél"],
+              "correctAnswers": [0],
+              "explanation": "l→s."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sel fond",
+              "options": ["fusion", "vap", "cond", "granite"],
+              "correctAnswers": [0],
+              "explanation": "s→l."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "H2O états",
+              "options": ["glace/eau/vap", "→Fe", "→or", "→Cu"],
+              "correctAnswers": [0],
+              "explanation": "Même."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Corps pur change",
+              "options": [
+                "T plateau",
+                "Bulles à T ébull",
+                "T monte sans fin en fusion",
+                "Couleur=nouvelle espèce"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plateau bulles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Thermo fusion",
+              "options": ["reste Tf", "monte", "100", "?"],
+              "correctAnswers": [0],
+              "explanation": "Plateau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Thermo ébull",
+              "options": ["reste 100", "0", "200", "↓"],
+              "correctAnswers": [0],
+              "explanation": "Eau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chaleur fusion",
+              "options": ["change état", "↑T seul", "disparaît", "sel"],
+              "correctAnswers": [0],
+              "explanation": "Latente."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Chaleur ébull",
+              "options": ["vaporise", "solidif", "Fe", "granite"],
+              "correctAnswers": [0],
+              "explanation": "l→g."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Paraffin bougie",
+              "options": ["Tf ~60", "0", "100", "200"],
+              "correctAnswers": [0],
+              "explanation": "Exemple."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Eau Tf",
+              "options": ["0", "100", "50", "-50"],
+              "correctAnswers": [0],
+              "explanation": "Glace."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Eau Te",
+              "options": ["100", "0", "50", "200"],
+              "correctAnswers": [0],
+              "explanation": "Ébull."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mélange glace sel",
+              "options": ["Tf abaissée", "0 strict", "100", "200"],
+              "correctAnswers": [0],
+              "explanation": "Point déprimé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mesure T",
+              "options": ["thermomètre", "balance", "règle", "pH"],
+              "correctAnswers": [0],
+              "explanation": "°C."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vaporisation types",
+              "options": [
+                "Évaporation",
+                "Ébullition",
+                "Condensation",
+                "Solidif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "2 l→g."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Surface séchage",
+              "options": ["évap", "ébull", "fus", "sol"],
+              "correctAnswers": [0],
+              "explanation": "Lent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Volume bulles",
+              "options": ["ébull", "évap", "cond", "sol"],
+              "correctAnswers": [0],
+              "explanation": "100°C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vitre froide",
+              "options": ["cond", "fus", "vap", "sub"],
+              "correctAnswers": [0],
+              "explanation": "g→l."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Eau salle bain",
+              "options": ["cond miroir", "fus", "Fe", "sel"],
+              "correctAnswers": [0],
+              "explanation": "Vapeur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pression baisse",
+              "options": ["ébull baisse", "100 fixe", "0", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Altitude."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cyclone eau",
+              "options": ["vap cond", "Fe", "N2", "granite"],
+              "correctAnswers": [0],
+              "explanation": "Nuages."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Congélateur",
+              "options": ["solidif", "fusion", "ébull", "cond air"],
+              "correctAnswers": [0],
+              "explanation": "l→s."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Micro-ondes eau",
+              "options": ["chauffe→vap", "solidif", "Fe", "sel"],
+              "correctAnswers": [0],
+              "explanation": "Agitation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fin ébullition",
+              "options": ["toute l'eau part", "Fe", "N sol", "sel"],
+              "correctAnswers": [0],
+              "explanation": "Vaporisée."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Inverse fusion",
+              "options": [
+                "Solidification",
+                "Fusion",
+                "Vaporisation",
+                "Condensation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "l↔s."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Inverse vap",
+              "options": ["cond", "fus", "sol", "sub"],
+              "correctAnswers": [0],
+              "explanation": "g→l."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Eau cycle",
+              "options": ["evap+cond", "→Fe", "→or", "stœchio"],
+              "correctAnswers": [0],
+              "explanation": "Nature."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Glace eau",
+              "options": ["solidif", "fus", "ébull", "cond"],
+              "correctAnswers": [0],
+              "explanation": "l→s."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vapeur eau",
+              "options": ["cond pluie", "fus", "Fe", "Cu"],
+              "correctAnswers": [0],
+              "explanation": "g→l."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "O₂ bouteille",
+              "options": [
+                "gaz pur",
+                "change état facile",
+                "mélange eau",
+                "sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps pur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Air liquéfié",
+              "options": ["sépare gaz", "fus eau", "granite", "stœchio"],
+              "correctAnswers": [0],
+              "explanation": "Froid."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "N2 liquide",
+              "options": ["très froid", "100C", "sel", "Fe fondu"],
+              "correctAnswers": [0],
+              "explanation": "Indus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Changement nom",
+              "options": [
+                "vocab précis",
+                "solide liquide gaz seul",
+                "stœchio",
+                "atome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "5e précise."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Même masse glace/eau",
+              "options": ["conservée", "double", "0", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Physique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Résumé u2",
+              "options": [
+                "Fusion 0C eau",
+                "Ébull 100C eau",
+                "Stœchio",
+                "Air=pur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Températures."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Glaçon→eau",
+              "options": ["fusion", "sol", "vap", "cond"],
+              "correctAnswers": [0],
+              "explanation": "s→l."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Eau→vapeur",
+              "options": ["vap", "sol", "fus glace", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "l→g."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vapeur→eau",
+              "options": ["cond", "fus", "sol", "sub"],
+              "correctAnswers": [0],
+              "explanation": "g→l."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Eau→glace",
+              "options": ["solidif", "fus", "ébull", "mél"],
+              "correctAnswers": [0],
+              "explanation": "l→s."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plateau",
+              "options": ["T constante", "T monte", "0", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "Pur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Évap 25C",
+              "options": ["possible", "impossible", "100 oblig", "Fe"],
+              "correctAnswers": [0],
+              "explanation": "<100."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ébull strict",
+              "options": ["100 plateau", "0", "50", "200"],
+              "correctAnswers": [0],
+              "explanation": "Eau pure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Buée",
+              "options": ["cond", "fus", "sub", "stœchio"],
+              "correctAnswers": [0],
+              "explanation": "g→l."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sub glace sèche",
+              "options": ["s→g", "l→g", "g→l", "l→s"],
+              "correctAnswers": [0],
+              "explanation": "CO2."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2718 @@
+{
+  "id": "1ere-svt-05",
+  "year": "1ere",
+  "subject": "svt",
+  "title": "Reproduction et hérédité",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Transmission",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La méiose et la production des gamètes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le rôle biologique fondamental de la méiose chez les organismes à reproduction sexuée ?",
+              "options": [
+                "Produire des cellules haploïdes à partir d'une cellule diploïde",
+                "Multiplier à l'identique les cellules somatiques diploïdes",
+                "Réparer les tissus lésés par mitoses successives",
+                "Fusionner deux noyaux pour former une cellule-œuf"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méiose réduit le nombre de chromosomes de moitié en produisant quatre cellules haploïdes à partir d'une cellule mère diploïde."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de divisions cellulaires successives composent la méiose ?",
+              "options": [
+                "Deux divisions précédées d'une seule réplication",
+                "Une seule division sans réplication préalable",
+                "Deux divisions précédées chacune d'une réplication",
+                "Quatre divisions cellulaires indépendantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méiose est constituée de deux divisions successives (méiose I et méiose II) après une unique phase de réplication de l'ADN."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de cellules filles sont issues d'une cellule mère entrant en méiose ?",
+              "options": [
+                "Quatre cellules filles haploïdes",
+                "Deux cellules filles diploïdes",
+                "Huit cellules filles génétiquement identiques",
+                "Une seule cellule volumineuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au terme des deux divisions de méiose, une cellule mère donne naissance à quatre cellules filles haploïdes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans quel type d'organes se déroule la méiose chez les animaux ?",
+              "options": [
+                "Dans les gonades (testicules et ovaires)",
+                "Dans la moelle osseuse hématopoïétique",
+                "Dans l'ensemble des cellules de l'épiderme",
+                "Dans les reins et le foie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méiose a lieu exclusivement dans les organes reproducteurs (gonades) pour former les gamètes."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques distinguent la méiose de la mitose ordinaire ?",
+              "options": [
+                "La méiose produit des cellules haploïdes génétiquement diversifiées",
+                "La méiose comporte deux divisions successives pour une seule réplication",
+                "La méiose conserve scrupuleusement la garniture diploïde 2n",
+                "La mitose génère obligatoirement quatre cellules filles"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La méiose divise le stock chromosomique par deux et génère de la diversité, contrairement à la mitose qui est une reproduction conforme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si une cellule mère diploïde possède 2n = 46 chromosomes, combien de chromosomes contient chaque gamète ?",
+              "options": [
+                "23 chromosomes",
+                "46 chromosomes",
+                "92 chromosomes",
+                "12 chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gamètes sont haploïdes (n) et possèdent donc la moitié du stock diploïde (n = 23 chez l'être humain)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de chromatides possède chaque chromosome au tout début de la première division de méiose ?",
+              "options": [
+                "Deux chromatides sœurs identiques",
+                "Une seule chromatide décondensée",
+                "Quatre chromatides indépendantes",
+                "Aucune chromatide visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la phase de réplication en interphase, chaque chromosome est constitué de deux chromatides sœurs réunies par le centromère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la première division de méiose par rapport au nombre de chromosomes ?",
+              "options": [
+                "Division réductionnelle",
+                "Division équationnelle",
+                "Division conservative",
+                "Division mitotique simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La première division fait passer la cellule de l'état diploïde (2n) à l'état haploïde (n) : elle est dite réductionnelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la deuxième division de méiose ?",
+              "options": [
+                "Division équationnelle",
+                "Division réductionnelle",
+                "Division de réplication",
+                "Division polyploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méiose II sépare les chromatides sœurs tout en conservant le nombre n de chromosomes : elle est qualifiée d'équationnelle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chez les végétaux à fleurs, quelle structure est directement issue de la méiose mâle ?",
+              "options": [
+                "Les microspores donnant les grains de pollen",
+                "Les graines mûres",
+                "Les pétales protecteurs",
+                "Les racines adventives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans les étamines, la méiose produit des microspores haploïdes qui évoluent en grains de pollen."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les étapes de la méiose I",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel événement capital survient lors de la prophase I de méiose entre chromosomes homologues ?",
+              "options": [
+                "L'appariement étroit formant des bivalents",
+                "La séparation précoce des chromatides sœurs",
+                "La réplication intégrale de l'ADN nucléaire",
+                "La désagrégation définitive des chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En prophase I, les chromosomes homologues s'apparient point par point pour former des bivalents ou tétrades."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-type les zones de contact et d'enjambement observées entre chromatides non-sœurs en prophase I ?",
+              "options": [
+                "Des chiasmas",
+                "Des centromères",
+                "Des kinétochores",
+                "Des télomères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chiasmas sont les figures cytologiques visibles au niveau desquelles s'effectuent les échanges de segments de chromatides."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment se disposent les paires de chromosomes homologues en métaphase I ?",
+              "options": [
+                "De part et d'autre du plan équatorial de la cellule",
+                "Les centromères alignés sur une seule file équatoriale",
+                "Dispersés aléatoirement aux pôles sans ordre",
+                "Agglutinés autour de l'enveloppe nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En métaphase I, chaque bivalent se positionne de part et d'autre de la plaque équatoriale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se passe-t-il précisément lors de l'anaphase I de méiose ?",
+              "options": [
+                "Séparation des chromosomes homologues sans clivage des centromères",
+                "Rupture des centromères et séparation des chromatides sœurs",
+                "Condensation maximale de l'ADN en fibres de chromatine",
+                "Formation immédiate de quatre noyaux fils"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anaphase I sépare les chromosomes homologues de chaque paire ; les deux chromatides sœurs restent associées."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels événements se produisent au cours de la première division méiotique (méiose I) ?",
+              "options": [
+                "L'appariement des chromosomes homologues en bivalents",
+                "La migration aléatoire des chromosomes homologues vers chaque pôle",
+                "La duplication des chromatides en métaphase I",
+                "La fission binaire spontanée de la mitochondrie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La méiose I se caractérise par l'appariement des homologues en prophase puis leur disjonction indépendante en anaphase."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À la télophase I, combien de lots de chromosomes possède la cellule en voie de division ?",
+              "options": [
+                "Deux lots haploïdes de chromosomes à deux chromatides",
+                "Deux lots diploïdes de chromosomes à une chromatide",
+                "Quatre lots haploïdes de chromosomes condensés",
+                "Un unique noyau fusionné géant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La télophase I aboutit à deux cellules filles contenant chacune n chromosomes dupliqués (à 2 chromatides)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle structure protéique assure la traction des chromosomes vers les pôles cellulaires ?",
+              "options": [
+                "Le fuseau méiotique constitué de microtubules",
+                "La membrane plasmique phospholipidique",
+                "Le réticulum endoplasmique granuleux",
+                "La paroi cellulosique pectique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fibres du fuseau méiotique s'attachent aux kinétochores et guident la migration des chromosomes vers les pôles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que la méiose I sépare les allèles d'un gène porté par des homologues ?",
+              "options": [
+                "Car chaque chromosome homologue porte l'un des allèles et migre vers un pôle opposé",
+                "Car les allèles sont détruits chimiquement par des enzymes",
+                "Car un des deux allèles est systématiquement perdu dans le cytosol",
+                "Car les allèles fusionnent en une molécule hybride"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La disjonction des chromosomes homologues sépare les deux allèles d'un individu hétérozygote dans deux cellules distinctes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Y a-t-il réplication de l'ADN dans l'intervalle entre la télophase I et la prophase II ?",
+              "options": [
+                "Non, il n'y a aucune réplication d'ADN entre les deux divisions",
+                "Oui, l'ADN double à nouveau son volume",
+                "Oui, mais uniquement pour les chromosomes sexuels",
+                "Seulement chez les espèces végétales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méiose II s'enchaîne sans nouvelle phase de synthèse d'ADN (sans réplication intermédiaire)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une cellule humaine en anaphase I, combien de chromosomes migrent vers chaque pôle ?",
+              "options": [
+                "23 chromosomes dupliqués",
+                "46 chromosomes simples",
+                "92 chromatides libres",
+                "46 paires de chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur les 23 paires initiales, 23 chromosomes à deux chromatides migrent vers chaque pôle cellulaire."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les étapes de la méiose II",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la principale particularité cytologique de la méiose II ?",
+              "options": [
+                "Elle sépare les chromatides sœurs de chaque chromosome",
+                "Elle réalise un nouvel appariement des paires d'homologues",
+                "Elle double la quantité d'ADN par chromatide",
+                "Elle élimine la moitié des cellules filles produites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méiose II est une division équationnelle qui sépare les deux chromatides sœurs de chaque chromosome haploïde."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En prophase II, quel est l'état des chromosomes dans chaque cellule ?",
+              "options": [
+                "n chromosomes formés chacun de deux chromatides",
+                "2n chromosomes formés d'une seule chromatide",
+                "2n chromosomes appariés en bivalents",
+                "Chromosomes décondensés et invisibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque cellule possède n chromosomes déjà dupliqués, condensés et bien distincts."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment les chromosomes s'organisent-ils en métaphase II ?",
+              "options": [
+                "Leurs centromères s'alignent sur le plan équatorial du fuseau",
+                "Ils forment à nouveau des tétrades d'homologues",
+                "Ils migrent spontanément vers les parois latérales",
+                "Ils restent regroupés au centre du nucléole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En métaphase II, les n chromosomes s'alignent individuellement par leur centromère sur la plaque équatoriale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement clé caractérise l'anaphase II de méiose ?",
+              "options": [
+                "La rupture des centromères et la migration des chromatides sœurs",
+                "L'échange de fragments d'ADN entre chromatides homologues",
+                "La décondensation totale des chromosomes en euchromatine",
+                "La disparition définitive des microtubules kinétochoriens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En anaphase II, le clivage des centromères libère les chromatides sœurs qui migrent chacune vers un pôle opposé."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont exactes concernant la télophase II de méiose ?",
+              "options": [
+                "Quatre cellules haploïdes distinctes sont formées",
+                "Chaque chromosome ne contient plus qu'une seule chromatide",
+                "Le caryotype de chaque cellule fille redevient 2n",
+                "L'enveloppe nucléaire ne se reforme jamais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La télophase II achève la méiose en formant 4 cellules haploïdes à n chromosomes simples (à 1 chromatide)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment évolue la quantité d'ADN par cellule au cours de l'anaphase II puis de la cytodiérèse II ?",
+              "options": [
+                "Elle passe de Q à Q/2 dans chaque cellule fille",
+                "Elle passe de 2Q à 4Q par synthèse active",
+                "Elle reste parfaitement constante à 2Q",
+                "Elle est totalement neutralisée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque cellule fille reçoit la moitié du matériel génétique présent au début de la méiose II, soit une quantité Q/2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les chromatides sœurs séparées en anaphase II sont-elles toujours génétiquement identiques ?",
+              "options": [
+                "Non, elles peuvent différer si un crossing-over a eu lieu en prophase I",
+                "Oui, elles sont toujours strictement rigoureusement identiques",
+                "Oui, car la réplication ne produit jamais de variation",
+                "Non, car les ribosomes modifient leur séquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si un crossing-over s'est produit en prophase I, les deux chromatides sœurs portent des allèles différents."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En quoi la méiose II ressemble-t-elle formellement à une mitose ordinaire ?",
+              "options": [
+                "Elle sépare les chromatides sœurs lors de l'anaphase",
+                "Elle conserve le nombre diploïde de chromosomes",
+                "Elle est précédée d'une étape de réplication de l'ADN",
+                "Elle donne naissance à deux cellules somatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme la mitose, la méiose II sépare les chromatides sœurs, mais elle s'exécute sur des cellules haploïdes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le devenir fonctionnel des quatre cellules haploïdes obtenues chez les mammifères mâles ?",
+              "options": [
+                "Elles se différencient en quatre spermatozoïdes fonctionnels",
+                "Trois d'entre elles dégénèrent en globules polaires",
+                "Elles fusionnent immédiatement deux à deux",
+                "Elles deviennent des cellules interstitielles de Leydig"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lors de la spermatogenèse, les quatre spermatides issues de la méiose subissent la spermiogenèse pour devenir 4 spermatozoïdes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chez la femme, que produit l'ovogenèse à partir d'une cellule mère en méiose ?",
+              "options": [
+                "Un ovocyte volumineux et des globules polaires non fonctionnels",
+                "Quatre ovocytes viables et de taille rigoureusement identique",
+                "Des cellules somatiques folliculaires haploïdes",
+                "Deux ovocytes et deux spermatozoïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cytodiérèse asymétrique produit un seul ovocyte fonctionnel riche en réserves et de petits globules polaires."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Diploïdie et cycle de reproduction sexuée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie l'état diploïde noté 2n pour une cellule eucaryote ?",
+              "options": [
+                "Chaque type de chromosome est présent en deux exemplaires homologues",
+                "La cellule possède deux noyaux distincts dans son cytoplasme",
+                "Chaque chromosome possède exactement deux molécules d'ARN",
+                "La cellule peut se diviser deux fois seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une cellule diploïde (2n) possède des paires de chromosomes homologues, l'un d'origine paternelle et l'autre maternelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment définit-on l'état haploïde noté n ?",
+              "options": [
+                "Chaque chromosome n'est présent qu'en un unique exemplaire",
+                "La cellule ne possède qu'une seule protéine membranaire",
+                "Le génome ne comporte qu'un seul gène codant",
+                "La cellule est incapable de survivre plus d'une minute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une cellule haploïde (n), chaque chromosome de l'espèce est représenté en un seul exemplaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels sont les deux processus biologiques fondamentaux alternant dans tout cycle sexué ?",
+              "options": [
+                "La méiose et la fécondation",
+                "La mitose et la nécrose cellulaire",
+                "La réplication et la traduction",
+                "La transcription et la mutation génique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle de développement sexué repose sur l'alternance d'une phase de réduction chromosomique (méiose) et de réunion (fécondation)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'effet combiné de la méiose et de la fécondation sur le caryotype d'une espèce ?",
+              "options": [
+                "Elles maintiennent stable le nombre de chromosomes de génération en génération",
+                "Elles augmentent continuellement le nombre de chromosomes au fil des siècles",
+                "Elles divisent par deux le nombre de gènes à chaque génération",
+                "Elles transforment progressivement les chromosomes en plasmides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méiose divise le stock par deux (2n -> n) et la fécondation le rétablit (n + n -> 2n), assurant la constance du caryotype."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques s'appliquent au cycle biologique des mammifères ?",
+              "options": [
+                "La phase diploïde y est largement prédominante dans le temps",
+                "La phase haploïde est réduite aux seuls gamètes",
+                "Les gamètes subissent de nombreuses mitoses avant de fusionner",
+                "La méiose donne directement naissance à un organisme adulte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Chez les mammifères, le cycle est diplophasique : l'organisme est diploïde et la phase haploïde est limitée aux gamètes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la phase du cycle où les cellules possèdent un stock 2n ?",
+              "options": [
+                "La diplophase",
+                "L'haplophase",
+                "L'interphase mitotique",
+                "La métaphase gamétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diplophase correspond à l'ensemble des étapes du cycle biologique où les cellules possèdent 2n chromosomes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chez l'Homme, combien de paires d'autosomes compte une cellule somatique diploïde ?",
+              "options": ["22 paires", "23 paires", "1 paire", "44 paires"],
+              "correctAnswers": [0],
+              "explanation": "Sur les 23 paires de chromosomes humains, 22 sont des autosomes (non sexuels) et 1 paire est constituée de gonosomes (sexuels)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le nom de la cellule diploïde inaugurale obtenue à la suite de la fécondation ?",
+              "options": [
+                "Le zygote ou cellule-œuf",
+                "Le gamétophyte mature",
+                "Le follicule ovarien",
+                "Le blastomère autonome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cellule-œuf issue de l'amphimixie (fusion des pronoyaux mâle et femelle) s'appelle le zygote."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chez un champignon ascomycète comme Sordaria, quelle phase du cycle est dominante ?",
+              "options": [
+                "L'haplophase (le mycélium est haploïde)",
+                "La diplophase (l'organisme est diploïde)",
+                "Une phase triploïde permanente",
+                "Une phase exclusivement acaryote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sordaria macrospora possède un cycle haplophasique : le zygote diploïde subit immédiatement la méiose."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment se nomment deux chromosomes d'une même paire portant les mêmes gènes aux mêmes locus ?",
+              "options": [
+                "Des chromosomes homologues",
+                "Des chromosomes analogues",
+                "Des chromatides non filiales",
+                "Des autosomes recombinés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chromosomes homologues possèdent la même taille, la même position du centromère et les mêmes gènes, bien que leurs allèles puissent différer."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "La fécondation et le rétablissement de la diploïdie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la caryogamie lors du processus de fécondation ?",
+              "options": [
+                "La fusion des pronoyaux mâle et femelle haploïdes",
+                "La pénétration initiale du spermatozoïde dans l'ovocyte",
+                "L'expulsion des granules corticaux ovocytaires",
+                "La lyse de la membrane du spermatozoïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La caryogamie (ou amphimixie) est l'union des deux noyaux gamétiques haploïdes rétablissant le génome diploïde."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien d'exemplaires de chaque allèle contient le zygote issu de la fécondation ?",
+              "options": [
+                "Deux exemplaires (un paternel et un maternel)",
+                "Un unique exemplaire dominant",
+                "Quatre exemplaires dupliqués",
+                "Trois exemplaires complémentaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque parent transmettant un gamète à n chromosomes, le zygote reçoit deux allèles pour chaque gène autosomique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mécanisme prévient la polyspermie (entrée de plusieurs spermatozoïdes) chez les mammifères ?",
+              "options": [
+                "La réaction corticale durcissant la zone pellucide",
+                "La libération d'acide chlorhydrique par l'ovocyte",
+                "La phagocytose immédiate des flagelles surnuméraires",
+                "La fermeture mécanique des trompes de Fallope"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'exocytose des granules corticaux modifie la zone pellucide, empêchant tout autre spermatozoïde de pénétrer."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle contribution cytoplasmique essentielle apporte l'ovocyte par rapport au spermatozoïde ?",
+              "options": [
+                "La quasi-totalité du cytoplasme et des mitochondries",
+                "L'ensemble des centrioles nécessaires aux mitoses",
+                "Uniquement l'ADN nucléaire sans aucun ribosome",
+                "Les flagelles de motilité cellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ovocyte fournit l'immense majorité du cytoplasme, des organites et notamment le génome mitochondrial."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles conséquences génétiques directes découlent de la fécondation ?",
+              "options": [
+                "La reconstitution du nombre diploïde de chromosomes (2n)",
+                "La création d'une combinaison allélique originale et unique",
+                "L'annulation immédiate des mutations génétiques parentales",
+                "Le clonage parfait d'un des deux parents"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La fécondation restaure la diploïdie et associe au hasard deux patrimoines génétiques, créant un individu unique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la rencontre des gamètes lors de la fécondation est-elle qualifiée d'aléatoire ?",
+              "options": [
+                "N'importe quel gamète mâle peut féconder n'importe quel gamète femelle mature",
+                "Le gamète choisit activement le génome le plus performant",
+                "La fécondation dépend exclusivement de signaux gravitationnels",
+                "Tous les gamètes possèdent des allèles rigoureusement identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fécondation réunit au hasard un gamète parmi des millions de combinaisons possibles produites par chaque parent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel gamète détermine le sexe chromosomique chez l'être humain ?",
+              "options": [
+                "Le spermatozoïde apportant un chromosome X ou Y",
+                "L'ovocyte apportant obligatoirement un chromosome Y",
+                "L'ovocyte par modulation de sa température interne",
+                "Les deux gamètes apportent simultanément un Y"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La femme ne produit que des ovocytes portant le chromosome X ; le spermatozoïde apporte soit X (fille) soit Y (garçon)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que provoque une fécondation anormale impliquant deux spermatozoïdes (dispermie) ?",
+              "options": [
+                "Un zygote triploïde (3n) non viable",
+                "Des vrais jumeaux parfaitement sains",
+                "Une mitose accélérée sans aucune anomalie",
+                "Un gamète haploïde géant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dispermie engendre une triploïdie à 69 chromosomes chez l'être humain, entraînant une létalité précoce."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment se nomme le tableau de croisement utilisé pour prédire les génotypes issus de la fécondation ?",
+              "options": [
+                "L'échiquier de croisement (ou grille de Punnett)",
+                "L'arbre phylogénétique de consanguinité",
+                "Le caryotype spectral différentiel",
+                "Le diagramme d'électrophorèse génotypique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échiquier de croisement permet de combiner les probabilités de chaque type de gamète pour déterminer les génotypes du zygote."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle étape métabolique déclenche la fusion du spermatozoïde avec la membrane ovocytaire ?",
+              "options": [
+                "L'activation métabolique de l'ovocyte et l'achèvement de la méiose II",
+                "La mise en dormance complète du cytoplasme ovocytaire",
+                "L'arrêt irréversible de la synthèse des protéines",
+                "La digestion immédiate du noyau paternel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fécondation relance le métabolisme ovocytaire et permet à l'ovocyte bloqué en métaphase II d'achever sa méiose."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Transmission des allèles et lois de Mendel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qui a formulé les premières lois statistiques de l'hérédité au XIXe siècle en croisant des pois ?",
+              "options": [
+                "Gregor Mendel",
+                "Charles Darwin",
+                "Thomas Morgan",
+                "Jean-Baptiste de Lamarck"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gregor Mendel a établi les bases de la génétique moderne en étudiant la transmission de caractères chez le pois."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une lignée pure pour un caractère donné en génétique mendélienne ?",
+              "options": [
+                "Une population d'individus homozygotes donnant une descendance identique à eux-mêmes",
+                "Un croisement systématique entre deux espèces distinctes",
+                "Une génération issue exclusivement de parents hétérozygotes",
+                "Un individu ayant subi une mutation spontanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une lignée pure est constituée d'individus homozygotes qui transmettent fidèlement le caractère à chaque génération."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que postule la première loi de Mendel (loi d'uniformité des hybrides de F1) ?",
+              "options": [
+                "Les descendants F1 issus de deux lignées pures différant par un caractère sont tous identiques",
+                "Les hybrides F1 présentent toujours un mélange de 50 % de chaque phénotype parental",
+                "Tous les descendants F1 sont systématiquement stériles",
+                "Les allèles parentaux mutent au moment de la fécondation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le croisement de deux lignées pures donne une première génération F1 homogène et uniforme phénotypiquement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment définit-on un allèle récessif par rapport à un allèle dominant ?",
+              "options": [
+                "Il ne s'exprime dans le phénotype qu'à l'état homozygote",
+                "Il s'exprime toujours dès qu'il est présent en un seul exemplaire",
+                "Il est détruit par la cellule dès la fécondation",
+                "Il modifie le nombre total de chromosomes de la cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un allèle récessif est masqué par l'allèle dominant chez l'hétérozygote et ne se manifeste qu'à l'état homozygote."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propositions caractérisent un individu hétérozygote pour un gène autosomique donné ?",
+              "options": [
+                "Il possède deux allèles différents sur la même paire de chromosomes homologues",
+                "Il produit deux types de gamètes génétiquement distincts pour ce locus",
+                "Il possède obligatoirement trois chromosomes portant ce gène",
+                "Il appartient obligatoirement à une lignée pure millénaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un hétérozygote porte deux allèles distincts pour un gène et produit 50 % de gamètes avec un allèle et 50 % avec l'autre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la définition rigoureuse du génotype d'un organisme ?",
+              "options": [
+                "La composition allélique précise de son patrimoine génétique",
+                "L'ensemble des caractéristiques morphologiques observables à l'œil nu",
+                "Le milieu de vie et l'alimentation de l'organisme",
+                "Le taux de protéines synthétisées dans le sérum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le génotype désigne l'ensemble des allèles possédés par un individu pour un ou plusieurs gènes donnés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la définition rigoureuse du phénotype ?",
+              "options": [
+                "L'ensemble des caractères observables résultant de l'expression des gènes",
+                "La séquence complète d'ADN nucléaire non codant",
+                "Le nombre exact de chromosomes visibles au microscope",
+                "La quantité totale d'ATP produite par la cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le phénotype représente les caractères observables d'un individu à différentes échelles (moléculaire, cellulaire, macroscopique)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que stipule la loi de ségrégation indépendante des allèles (deuxième loi de Mendel) ?",
+              "options": [
+                "Les deux allèles d'un même gène se séparent lors de la formation des gamètes",
+                "Les allèles restent soudés pendant toute la méiose",
+                "Les allèles maternels sont toujours éliminés",
+                "Les allèles fusionnent en une molécule hybride"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lors de la méiose (anaphase I), les deux allèles d'un couple ségrègent de sorte que chaque gamète n'en reçoit qu'un seul."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment note-t-on traditionnellement un phénotype en génétique classique ?",
+              "options": [
+                "Entre crochets, comme [A] ou [b]",
+                "Entre parenthèses ondulées {A/b}",
+                "Entre guillemets doubles \"A-B\"",
+                "En exposant numérique X^2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par convention internationale en génétique, le phénotype s'écrit entre crochets : [phénotype]."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quand deux allèles différents s'expriment simultanément chez l'hétérozygote, on parle de :",
+              "options": [
+                "Codominance",
+                "Dominance absolue",
+                "Épistasie récessive",
+                "Létalité précoce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En cas de codominance, les deux allèles s'expriment pleinement et simultanément (exemple : le groupe sanguin AB)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Monohybridisme et ségrégation des caractères",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'étudie-t-on spécifiquement dans un croisement de monohybridisme ?",
+              "options": [
+                "La transmission d'un seul couple de caractères alléliques",
+                "La transmission simultanée de dix gènes non liés",
+                "Le taux de mutation global du génome mitochondrial",
+                "La formation de nouveaux caryotypes polyploïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le monohybridisme est le suivi génétique de la transmission d'un unique caractère gouverné par un seul gène."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un croisement F1 x F1 en monohybridisme avec dominance complète, quel ratio phénotypique obtient-on en F2 ?",
+              "options": [
+                "3/4 phénotype dominant, 1/4 phénotype récessif (ratio 3:1)",
+                "1/2 phénotype dominant, 1/2 phénotype récessif (ratio 1:1)",
+                "9/16, 3/16, 3/16, 1/16",
+                "100 % de phénotype récessif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'autofécondation ou l'intercroisement d'individus F1 donne 75 % d'individus [dominant] et 25 % d'individus [récessif]."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rapport génotypique théorique en F2 lors d'un monohybridisme avec dominance ?",
+              "options": [
+                "1/4 homozygote dominant, 2/4 hétérozygotes, 1/4 homozygote récessif (1:2:1)",
+                "1/2 homozygote dominant et 1/2 homozygote récessif",
+                "3/4 hétérozygotes et 1/4 homozygotes",
+                "Tous hétérozygotes identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les génotypes obtenus sont dans les proportions 1/4 (A//A), 2/4 (A//a) et 1/4 (a//a)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un croisement-test (test-cross ou back-cross) en monohybridisme ?",
+              "options": [
+                "Le croisement d'un individu de phénotype dominant avec un homozygote récessif",
+                "Le croisement entre deux individus homozygotes dominants",
+                "L'insémination artificielle sans sélection génétique",
+                "Le croisement de deux mutants létaux homozygotes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test-cross confronte l'individu à tester à un parent récessif pour révéler la nature de ses gamètes."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels résultats confirment qu'un individu testé par test-cross en monohybridisme est hétérozygote ?",
+              "options": [
+                "L'obtention de deux phénotypes distincts dans la descendance",
+                "Une proportion statistique proche de 50 % [dominant] et 50 % [récessif]",
+                "L'obtention exclusive de 100 % d'individus au phénotype récessif",
+                "Une descendance stérile dépourvue de tout organe reproducteur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un parent hétérozygote produit deux types de gamètes en proportions égales (1/2 et 1/2), visibles directement dans le test-cross."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si le test-cross d'un individu [dominant] donne 100 % d'individus [dominant], quel est son génotype ?",
+              "options": [
+                "Homozygote dominant",
+                "Hétérozygote",
+                "Homozygote récessif",
+                "Hémizygote muté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne produisant qu'un seul type de gamète porteur de l'allèle dominant, l'individu est obligatoirement homozygote."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En cas de dominance incomplète (ex: fleurs de belle-de-nuit roses), quel est le phénotype des F1 ?",
+              "options": [
+                "Un phénotype intermédiaire entre les deux formes parentales",
+                "Le phénotype strict du parent mâle",
+                "Le phénotype strict du parent femelle",
+                "Une mosaïque de taches noires et blanches"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la dominance incomplète, l'hétérozygote présente un phénotype intermédiaire (rouge x blanc -> rose)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel ratio phénotypique obtient-on en F2 lors d'un monohybridisme sans dominance ?",
+              "options": [
+                "1/4 phénotype parental 1, 1/2 phénotype intermédiaire, 1/4 phénotype parental 2 (1:2:1)",
+                "3/4 dominant et 1/4 récessif",
+                "1/2 parental 1 et 1/2 parental 2",
+                "100 % d'individus intermédiaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme chaque génotype correspond à un phénotype distinct, le ratio phénotypique est 1:2:1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi le parent récessif est-il qualifié de 'révélateur' dans un test-cross ?",
+              "options": [
+                "Car son gamète apporte un allèle récessif qui ne masque pas l'allèle du gamète testé",
+                "Car il stimule chimiquement la division méiotique",
+                "Car il neutralise les mutations délétères du conjoint",
+                "Car il transmet systématiquement son phénotype dominant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gamète du testeur apportant un allèle récessif, le phénotype de chaque descendant reflète directement le génotype du gamète produit par l'individu testé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chez la drosophile, si l'allèle corps gris (e+) domine corps ébène (e), quel est le résultat d'un croisement e+//e x e//e ?",
+              "options": [
+                "50 % corps gris et 50 % corps ébène",
+                "75 % corps gris et 25 % corps ébène",
+                "100 % corps gris",
+                "100 % corps ébène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un test-cross classique donnant 1/2 [e+] et 1/2 [e]."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Dihybridisme et gènes indépendants",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que suit-on lors d'une étude génétique en dihybridisme ?",
+              "options": [
+                "La transmission simultanée de deux caractères gouvernés par deux gènes distincts",
+                "La duplication d'un gène unique au cours de l'interphase",
+                "Le comportement des chromosomes durant la mitose",
+                "L'expression de deux allèles d'un même locus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dihybridisme s'intéresse à deux gènes gouvernant deux caractères différents chez les mêmes individus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 'gènes génétiquement indépendants' ?",
+              "options": [
+                "Les deux gènes sont situés sur deux paires de chromosomes homologues distinctes",
+                "Les deux gènes sont placés côte à côte sur le même chromosome",
+                "Les gènes ne peuvent jamais être transcrits en ARN",
+                "Un gène inhibe définitivement la fonction de l'autre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux gènes sont indépendants lorsqu'ils sont situés sur des paires chromosomiques différentes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de types de gamètes différents produit un individu double hétérozygote (A//a, B//b) pour deux gènes indépendants ?",
+              "options": [
+                "Quatre types de gamètes équiprobables (25 % chacun)",
+                "Deux types de gamètes parentaux uniquement",
+                "Huit types de gamètes asymétriques",
+                "Un unique type de gamète universel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par brassage interchromosomique, le dihybride produit quatre types de gamètes en proportions égales (1/4 AB, 1/4 Ab, 1/4 aB, 1/4 ab)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel ratio phénotypique classique obtient-on en F2 lors du croisement de deux dihybrides F1 pour des gènes indépendants ?",
+              "options": [
+                "9/16, 3/16, 3/16, 1/16",
+                "3/4, 1/4",
+                "1/4, 1/4, 1/4, 1/4",
+                "9/16, 7/16"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La combinaison aléatoire des 4 gamètes donne 16 cases dans l'échiquier et la proportion mendélienne 9:3:3:1."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels résultats caractérisent un test-cross réalisé sur un dihybride pour deux gènes indépendants ?",
+              "options": [
+                "L'obtention de quatre phénotypes distincts dans la descendance",
+                "Des proportions phénotypiques égales (25 % pour chacun des 4 phénotypes)",
+                "Une proportion écrasante de phénotypes parentaux (plus de 90 %)",
+                "L'absence totale de tout individu recombinant"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le test-cross d'un dihybride pour 2 gènes indépendants donne 4 phénotypes équiprobables (ratio 1:1:1:1 ou 25 % chacun)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle loi de Mendel est directement illustrée par le comportement de deux gènes indépendants ?",
+              "options": [
+                "La troisième loi : assortiment indépendant des caractères",
+                "La première loi : uniformité absolue des hybrides",
+                "La loi de réversion épigénétique",
+                "La règle de non-disjonction gamétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ségrégation d'un couple d'allèles se fait de manière totalement indépendante de celle de l'autre couple."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que représentent les phénotypes dits 'recombinés' issus d'un croisement-test de dihybridisme ?",
+              "options": [
+                "Des combinaisons de caractères nouvelles, différentes de celles de chacun des parents de départ",
+                "Des individus ne possédant aucun des gènes de l'espèce",
+                "Des phénotypes identiques à l'un ou l'autre des parents de lignée pure",
+                "Des mutants artificiels crées par irradiation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les phénotypes recombinés associent un caractère hérité d'un parent et un caractère hérité de l'autre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un test-cross avec gènes indépendants, quel est le pourcentage total d'individus recombinés attendu ?",
+              "options": ["50 % (25 % + 25 %)", "10 %", "75 %", "0 %"],
+              "correctAnswers": [0],
+              "explanation": "Il y a 50 % de phénotypes parentaux (25 % + 25 %) et 50 % de phénotypes recombinés (25 % + 25 %)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de cases comporte l'échiquier de croisement lors de l'autofécondation d'un dihybride F1 ?",
+              "options": ["16 cases", "4 cases", "8 cases", "64 cases"],
+              "correctAnswers": [0],
+              "explanation": "Chaque parent produisant 4 types de gamètes, le tableau de croisement comporte 4 x 4 = 16 cases."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Parmi les 16 cases de l'échiquier F1 x F1, combien correspondent à des individus double homozygotes récessifs ?",
+              "options": [
+                "1 seule case (1/16)",
+                "3 cases (3/16)",
+                "9 cases (9/16)",
+                "4 cases (4/16)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule 1 combinaison sur 16 réunit les deux allèles récessifs de chaque gène (a//a b//b)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Gènes liés et recombinaison génétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le terme 'gènes liés' en génétique ?",
+              "options": [
+                "Ils sont localisés sur le même chromosome",
+                "Ils codent exactement la même séquence polypeptidique",
+                "Ils sont situés sur deux chromosomes non homologues",
+                "Ils proviennent toujours d'une infection virale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux gènes sont dits liés (ou synténiques) lorsqu'ils sont situés sur la même molécule d'ADN (même chromosome)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel chercheur a mis en évidence la liaison génétique en étudiant la drosophile au début du XXe siècle ?",
+              "options": [
+                "Thomas Hunt Morgan",
+                "Gregor Mendel",
+                "Louis Pasteur",
+                "Francis Crick"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Morgan et son équipe ont démontré que certains gènes sont physiquement liés sur les chromosomes de Drosophila melanogaster."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel résultat d'un test-cross indique sans ambiguïté une liaison génétique entre deux gènes ?",
+              "options": [
+                "La fréquence des phénotypes parentaux est nettement supérieure à celle des recombinés (> 50 %)",
+                "Les quatre phénotypes sont obtenus en proportions rigoureusement égales à 25 %",
+                "Aucun descendant ne survit à l'éclosion",
+                "Tous les descendants sont strictement homozygotes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque deux gènes sont liés, les allèles ont tendance à être transmis ensemble : parentaux > recombinés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Par quel mécanisme cytologique des individus recombinés apparaissent-ils lors de l'étude de gènes liés ?",
+              "options": [
+                "Par crossing-over (enjambement) entre chromatides homologues en prophase I",
+                "Par duplication spontanée du centrosome",
+                "Par perte accidentelle d'un autosome",
+                "Par fusion anormale de deux ovocytes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crossing-over brise la liaison entre deux allèles et crée de nouvelles associations chromatidiennes."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propositions sont correctes concernant la fréquence de recombinaison entre deux gènes liés ?",
+              "options": [
+                "Elle est proportionnelle à la distance physique séparant les deux gènes sur le chromosome",
+                "Elle s'exprime traditionnellement en centimorgans (cM)",
+                "Elle est systématiquement égale à 100 % pour tous les locus",
+                "Elle ne dépend aucunement de la position des gènes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plus deux gènes sont distants sur le chromosome, plus la probabilité d'un crossing-over entre eux est élevée (1 % de recombinaison = 1 cM)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À quoi correspond une fréquence de recombinaison de 1 % entre deux locus ?",
+              "options": [
+                "Une distance génétique de 1 centimorgan (cM)",
+                "Une mutation de 1 nucléotide par seconde",
+                "La présence de 100 gènes intercalaires",
+                "La destruction de 1 % des gamètes mâles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'unité de carte génétique, le centimorgan, a été définie par Sturtevant comme correspondant à 1 % de recombinaison."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la représentation ordonnée des gènes sur un chromosome avec leurs distances relatives ?",
+              "options": [
+                "Une carte génétique (ou carte factorielle)",
+                "Un arbre généalogique médical",
+                "Un caryotype spectral en bandes R",
+                "Un spectrogramme de masse protéique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La carte génétique ordonne les locus le long du chromosome d'après les taux de recombinaison observés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si deux gènes sur le même chromosome sont extrêmement éloignés l'un de l'autre ?",
+              "options": [
+                "La fréquence de recombinaison plafonne à 50 % et ils se comportent comme des gènes indépendants",
+                "La fréquence de recombinaison atteint 100 % obligatoirement",
+                "Les chromosomes se brisent et ne peuvent plus répliquer leur ADN",
+                "L'un des deux gènes est automatiquement inactivé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À grande distance, des crossing-overs multiples surviennent à chaque méiose, donnant un ratio de 50 % de recombinés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment note-t-on le génotype d'un double hétérozygote pour deux gènes liés en phase de couplage (cis) ?",
+              "options": [
+                "(A B // a b) - liés en couplage",
+                "(A // a ; B // b) - indépendants",
+                "(A b // a B) - liés en répulsion",
+                "[A, B] - notation de phénotype"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En phase cis (couplage), les deux allèles dominants sont situés sur le même chromosome homologue (A B // a b)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si un test-cross donne 40 % [AB], 40 % [ab], 10 % [Ab] et 10 % [aB], quelle est la distance entre les deux gènes ?",
+              "options": ["20 cM", "40 cM", "10 cM", "50 cM"],
+              "correctAnswers": [0],
+              "explanation": "Le pourcentage de recombinés est 10 % + 10 % = 20 %, ce qui correspond directement à une distance de 20 cM."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Hérédité liée aux chromosomes sexuels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les deux gonosomes (chromosomes sexuels) présents dans l'espèce humaine ?",
+              "options": [
+                "Les chromosomes X et Y",
+                "Les chromosomes Z et W",
+                "Les chromosomes 21 et 22",
+                "Les autosomes 1 et 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chez l'Homme et la majorité des mammifères, le système de détermination sexuelle chromosomique repose sur X et Y."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on le mâle humain d'hémizygote pour les gènes du chromosome X sans équivalent sur Y ?",
+              "options": [
+                "Parce qu'il ne possède qu'un seul exemplaire du chromosome X (XY)",
+                "Parce qu'il possède deux chromosomes X inactifs",
+                "Parce que son chromosome X a perdu ses télomères",
+                "Parce qu'il ne produit que des gamètes sans chromosomes sexuels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N'ayant qu'un chromosome X, l'homme ne possède qu'un seul allèle pour chaque gène de la région propre à X : il est hémizygote."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle conséquence a l'hémizygotie masculine sur l'expression des allèles récessifs portés par le chromosome X ?",
+              "options": [
+                "L'allèle récessif s'exprime systématiquement dans le phénotype chez l'homme",
+                "L'allèle récessif est neutralisé par le chromosome Y",
+                "L'homme ne peut jamais être atteint par une maladie récessive liée à l'X",
+                "L'allèle est automatiquement dupliqué sur un autosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En l'absence d'un second chromosome X porteur d'un allèle dominant, tout allèle porté par X se manifeste chez l'homme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Donnez un exemple classique de pathologie humaine récessive liée au chromosome X :",
+              "options": [
+                "Le daltonisme (ou la myopathie de Duchenne)",
+                "La mucoviscidose autosomique",
+                "La drépanocytose falciforme",
+                "La trisomie 21 par non-disjonction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le daltonisme et la myopathie de Duchenne sont dus à des allèles récessifs localisés sur le chromosome X."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont exactes concernant la transmission d'une tare récessive liée à l'X ?",
+              "options": [
+                "Elle touche beaucoup plus fréquemment les individus de sexe masculin",
+                "Un père atteint transmet son chromosome X muté à toutes ses filles",
+                "Un père atteint transmet obligatoirement son chromosome X à ses fils",
+                "Une mère saine ne peut jamais avoir de fils malade"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le père transmet son X à ses filles (qui deviennent conductrices) et son Y à ses fils (qui ne reçoivent pas son X)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À qui une femme porteuse saine (hétérozygote) d'un gène muté sur l'X peut-elle transmettre l'allèle délétère ?",
+              "options": [
+                "À 50 % de ses fils et 50 % de ses filles avec une probabilité égale",
+                "Exclusivement à ses filles",
+                "Exclusivement à ses fils",
+                "À aucun de ses descendants directs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mère transmet au hasard l'un de ses deux chromosomes X à chaque enfant (fille ou garçon) avec une probabilité de 1/2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel gène situé sur le chromosome Y enclenche la différenciation des gonades en testicules ?",
+              "options": [
+                "Le gène SRY",
+                "Le gène p53",
+                "Le gène CFTR",
+                "Le gène HBB"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gène SRY (Sex-determining Region of Y) code un facteur de transcription déclenchant le développement testiculaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chez les oiseaux, quel système de chromosomes sexuels détermine le sexe de l'individu ?",
+              "options": [
+                "Le système ZW (la femelle est hétérogamétique ZW, le mâle ZZ)",
+                "Le système XY identique aux mammifères",
+                "Le système X0 dépendant de la nutrition",
+                "L'absence totale de chromosomes sexuels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chez les oiseaux, les femelles portent des chromosomes hétérologues (ZW) et les mâles des chromosomes homologues (ZZ)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel phénomène épigénétique compense le dosage génique du chromosome X chez les mammifères femelles ?",
+              "options": [
+                "L'inactivation aléatoire d'un des deux chromosomes X (corpuscule de Barr)",
+                "La duplication du chromosome Y",
+                "La perte spontanée d'un chromosome X à la puberté",
+                "La tétraploïdisation des autosomes femelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans chaque cellule somatique femelle, un des deux chromosomes X est condensé et inactivé sous forme de corpuscule de Barr."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chez la drosophile, quel croisement réciproque révèle que le gène 'yeux blancs' (white) est lié à l'X ?",
+              "options": [
+                "Femelle aux yeux blancs croisée avec un mâle aux yeux rouges",
+                "Femelle aux yeux rouges de lignée pure croisée avec un mâle aux yeux rouges",
+                "Croisement entre deux drosophiles sauvages capturées",
+                "Croisement entre deux drosophiles dépourvues d'ailes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce croisement donne 100 % de mâles aux yeux blancs et 100 % de femelles aux yeux rouges, prouvant la liaison au chromosome X."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Diversité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le brassage interchromosomique en anaphase I",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quelle étape précise de la méiose a lieu le brassage interchromosomique ?",
+              "options": [
+                "En anaphase I",
+                "En prophase II",
+                "En télophase II",
+                "En métaphase mitotique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le brassage interchromosomique résulte de la séparation aléatoire des chromosomes homologues lors de l'anaphase I."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le mécanisme cytologique à l'origine du brassage interchromosomique ?",
+              "options": [
+                "L'orientation aléatoire et indépendante de chaque paire d'homologues vers les pôles",
+                "La cassure mécanique des télomères par des nucléases",
+                "L'échange réciproque de portions de chromatides non-sœurs",
+                "La fusion accidentelle de deux fuseaux méiotiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour chaque paire, la migration du chromosome d'origine paternelle ou maternelle vers un pôle est indépendante des autres paires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour une cellule possédant n paires de chromosomes, combien de combinaisons chromosomiques distinctes sont générées par ce brassage ?",
+              "options": [
+                "2^n combinaisons différentes",
+                "n^2 combinaisons",
+                "2 x n combinaisons",
+                "n! (factorielle n) combinaisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque paire ayant 2 orientations équiprobables, n paires indépendantes produisent 2^n assortiments différents de chromosomes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chez l'être humain (n = 23), combien de gamètes génétiquement différents le brassage interchromosomique seul peut-il engendrer ?",
+              "options": [
+                "2^23, soit plus de 8,3 millions de combinaisons",
+                "23^2, soit 529 combinaisons",
+                "46 combinaisons seulement",
+                "Environ 1 000 combinaisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2^23 donne environ 8 388 608 types de gamètes possibles par individu uniquement grâce au brassage interchromosomique."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles conditions sont nécessaires pour mettre en évidence un brassage interchromosomique lors d'un croisement ?",
+              "options": [
+                "Étudier au moins deux gènes situés sur des paires de chromosomes distinctes (gènes non liés)",
+                "Partir d'un individu double hétérozygote pour ces deux gènes",
+                "Utiliser des souches haploïdes incapables d'effectuer la méiose",
+                "Bloquer artificiellement les cellules en interphase"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le brassage interchromosomique s'observe entre deux gènes situés sur des chromosomes différents chez un individu hétérozygote."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelles sont les proportions de gamètes produites par un individu hétérozygote (A//a, B//b) pour deux gènes indépendants ?",
+              "options": [
+                "25 % AB, 25 % Ab, 25 % aB, 25 % ab (équiprobabilité)",
+                "40 % AB, 40 % ab, 10 % Ab, 10 % aB",
+                "50 % AB et 50 % ab sans aucun recombinant",
+                "75 % AB et 25 % ab"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équiprobabilité de migration des chromosomes conduit à 4 types de gamètes en proportions rigoureusement égales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le brassage interchromosomique crée-t-il de nouveaux allèles dans l'espèce ?",
+              "options": [
+                "Non, il brasse et recombine des allèles préexistants sans modifier leur séquence",
+                "Oui, il génère des mutations ponctuelles ciblées",
+                "Oui, il transforme systématiquement les allèles récessifs en allèles dominants",
+                "Non, il détruit la diversité allélique parentale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les brassages méiotiques ne créent pas de nouveaux allèles (rôle des mutations), ils créent de nouvelles combinaisons d'allèles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une espèce possède 2n = 4 chromosomes, combien de types de gamètes sont produits par le brassage interchromosomique ?",
+              "options": [
+                "4 types de gamètes (2^2)",
+                "2 types de gamètes",
+                "8 types de gamètes",
+                "16 types de gamètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ici n = 2 paires de chromosomes, donc le nombre de combinaisons est 2^2 = 4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lors d'un test-cross impliquant deux gènes indépendants, quel pourcentage total de phénotypes recombinés obtient-on ?",
+              "options": [
+                "50 % de la descendance",
+                "25 % de la descendance",
+                "75 % de la descendance",
+                "Moins de 5 % de la descendance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux phénotypes recombinés représentent chacun 25 % de la descendance, soit 50 % au total."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle métaphore illustre le mieux le tirage aléatoire des chromosomes en anaphase I ?",
+              "options": [
+                "Un jeu de pile ou face indépendant pour chaque paire de chromosomes",
+                "Un tapis roulant distribuant les pièces dans un ordre fixe",
+                "Une copie conforme par photocopieuse moléculaire",
+                "Une fusion complète de toutes les pièces en un seul bloc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque paire se sépare indépendamment des autres comme une série de lancers consécutifs d'une pièce de monnaie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Le brassage intrachromosomique et le crossing-over",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quelle étape de la méiose se déroule le brassage intrachromosomique ?",
+              "options": [
+                "En prophase I",
+                "En anaphase II",
+                "En métaphase I",
+                "En télophase I"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le brassage intrachromosomique se produit en prophase I lors de l'appariement étroit des chromosomes homologues."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel événement physique réalise concrètement le crossing-over (ou enjambement) ?",
+              "options": [
+                "Un échange réciproque de segments d'ADN entre deux chromatides non-sœurs homologues",
+                "La rupture définitive d'une chromatide sœur éliminée dans le cytoplasme",
+                "La duplication d'un centromère avant la division cellulaire",
+                "La synthèse d'un brin d'ARN messager sur le chromosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des cassures suivies de soudures croisées échangent des portions équivalentes entre chromatides non-sœurs de la même paire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle figure cytologique en forme de croix observe-t-on au microscope à l'endroit d'un crossing-over ?",
+              "options": [
+                "Un chiasma",
+                "Un fuseau mitotique",
+                "Un centrosome",
+                "Un codon stop"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chiasma est le point visible de contact et d'entrecroisement entre chromatides homologues."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le résultat allélique d'un crossing-over chez un individu hétérozygote pour deux gènes liés ?",
+              "options": [
+                "La formation de chromatides recombinées portant de nouvelles associations d'allèles",
+                "La destruction des allèles récessifs présents",
+                "La transformation d'un gène en pseudogène inactif",
+                "La création systématique d'un chromosome supplémentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crossing-over dissocie des allèles initialement portés par le même chromosome et crée des chromatides recombinées."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propositions sont vraies concernant les chromatides issues d'un bivalent ayant subi un simple crossing-over ?",
+              "options": [
+                "Deux chromatides restent intactes et conservent la combinaison parentale",
+                "Deux chromatides sont recombinées et portent une nouvelle association d'allèles",
+                "Toutes les quatre chromatides deviennent systématiquement identiques",
+                "Les quatre chromatides sont dégradées par le protéasome"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un crossing-over n'implique que deux chromatides non-sœurs sur les quatre du bivalent : 2 parentales et 2 recombinées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Chez un champignon ascomycète comme Sordaria, que prouve l'observation d'un asque à disposition 2_2_2_2 ou 2_4_2 des spores ?",
+              "options": [
+                "Qu'un crossing-over a eu lieu entre le centromère et le locus du gène de couleur des spores",
+                "Que la cellule a sauté l'étape de méiose I",
+                "Que le brassage interchromosomique a échoué",
+                "Que la spore est devenue polyploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chez Sordaria, les asques recombinés (non 4_4) témoignent d'une ségrégation post-réductionnelle due à un crossing-over."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la proportion de gamètes recombinés est-elle généralement inférieure à celle des gamètes parentaux pour deux gènes liés ?",
+              "options": [
+                "Parce que le crossing-over ne se produit pas systématiquement entre les deux locus à chaque méiose",
+                "Parce que les recombinés meurent systématiquement avant d'arriver à maturité",
+                "Parce que les enzymes de réparation empêchent tous les échanges génétiques",
+                "Parce que les gamètes recombinés ne portent aucun chromosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crossing-over est un événement aléatoire ; il ne survient dans l'intervalle entre deux gènes que dans une fraction des méioses."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "De quoi dépend principalement la fréquence d'apparition d'un crossing-over entre deux gènes donnés ?",
+              "options": [
+                "De la distance physique qui sépare les deux locus le long de l'ADN",
+                "De l'âge du père uniquement",
+                "De la couleur des yeux de l'organisme",
+                "Du nombre total d'ovules pondus par an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus deux gènes sont éloignés sur le chromosome, plus l'espace propice à un enjambement est grand, donc plus la fréquence augmente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chez la drosophile mâle (Drosophila melanogaster), quelle particularité méiotique remarquable observe-t-on ?",
+              "options": [
+                "L'absence totale de crossing-over (aucun brassage intrachromosomique)",
+                "L'absence totale de chromosomes sexuels",
+                "La production de six gamètes par cellule mère",
+                "L'impossibilité de séparer les homologues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chez le mâle de drosophile, la méiose est achiasmatique : aucun crossing-over n'a lieu (recombinaison nulle)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le brassage intrachromosomique précède-t-il chronologiquement le brassage interchromosomique au cours de la méiose ?",
+              "options": [
+                "Oui, car la prophase I a lieu avant l'anaphase I",
+                "Non, l'anaphase I a lieu avant la prophase I",
+                "Non, ils ont lieu strictement au même instant en télophase II",
+                "Cela dépend de l'espèce considérée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le brassage intrachromosomique en prophase I précède le brassage interchromosomique qui s'opère en anaphase I."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Évaluation des proportions phénotypiques lors d'un test-cross",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le principe d'un test-cross de dihybridisme pour déterminer la liaison entre deux gènes ?",
+              "options": [
+                "Croiser un individu double hétérozygote F1 avec un parent double homozygote récessif",
+                "Croiser deux individus homozygotes dominants issus de souches pures",
+                "Croiser deux mutants létaux hétérozygotes",
+                "Féconder artificiellement une cellule avec deux spermatozoïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le double récessif ne produisant qu'un seul type de gamète porteur des allèles récessifs, le phénotype des descendants révèle les gamètes F1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si les résultats d'un test-cross donnent 25 %, 25 %, 25 %, 25 % pour les 4 phénotypes, que conclut-on ?",
+              "options": [
+                "Les deux gènes sont indépendants (situés sur des chromosomes différents)",
+                "Les deux gènes sont étroitement liés sur le même chromosome",
+                "L'un des gènes est situé sur le chromosome Y exclusivement",
+                "Le croisement n'a pas fonctionné et doit être recommencé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des proportions égales (1:1:1:1) prouvent un brassage interchromosomique exclusif et l'indépendance génétique des deux gènes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si un test-cross donne 45 % [AB], 45 % [ab], 5 % [Ab] et 5 % [aB], quelle est la situation des deux gènes ?",
+              "options": [
+                "Les deux gènes sont liés et distants de 10 cM",
+                "Les deux gènes sont indépendants sur deux autosomes",
+                "Les deux gènes sont situés sur le chromosome X",
+                "Les deux gènes ont muté en létaux récessifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les phénotypes parentaux sont majoritaires (90 %) et les recombinés sont minoritaires (10 %), soit une distance de 10 cM."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le taux de recombinaison à partir des effectifs d'un test-cross ?",
+              "options": [
+                "(Nombre total de descendants recombinés / Nombre total de descendants) x 100",
+                "(Nombre de parentaux / Nombre de recombinés) x 100",
+                "(Nombre total de descendants x 2) / 100",
+                "La moyenne des individus homozygotes dominants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pourcentage de recombinaison est la fraction d'individus recombinés rapportée à l'effectif total analysé."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels phénotypes constituent les types recombinés dans un test-cross F1 x double récessif (parents de départ : AABB et aabb) ?",
+              "options": [
+                "Le phénotype recombinant [Ab] (A dominant, b récessif)",
+                "Le phénotype recombinant [aB] (a récessif, B dominant)",
+                "Le phénotype parental [AB] (deux dominants)",
+                "Le phénotype parental [ab] (deux récessifs)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les parents de souche pure étant [AB] et [ab], les combinaisons nouvelles apparues chez les descendants sont [Ab] et [aB]."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel test statistique permet de vérifier si les écarts aux proportions mendéliennes attendues sont dus au hasard ?",
+              "options": [
+                "Le test du Khi-deux (Chi-2)",
+                "Le test de compatibilité ABO",
+                "L'indice de réfraction génomique",
+                "Le quotient d'encéphalisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test du Chi-deux compare les effectifs observés aux effectifs théoriques pour valider ou rejeter une hypothèse génétique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si deux gènes sont liés mais que le test-cross donne 50 % de recombinés, quelle explication donne-t-on ?",
+              "options": [
+                "Les gènes sont tellement éloignés sur le chromosome que la recombinaison atteint sa valeur plafond",
+                "Le double récessif a transmis des allèles dominants inattendus",
+                "La méiose n'a comporté qu'une seule division",
+                "Le chromosome s'est circularisé comme chez une bactérie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque deux gènes liés sont très distants (> 50 cM), le taux de recombinaison plafonne à 50 %, simulant l'indépendance génétique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie une liaison génétique 'totale' ou absolue (0 % de recombinés) ?",
+              "options": [
+                "Aucun crossing-over ne survient jamais entre les deux gènes (très proches ou mâle de drosophile)",
+                "Les deux gènes sont situés sur deux espèces différentes",
+                "Tous les embryons issus du croisement sont morts",
+                "Les gènes ont disparu du chromosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une liaison absolue signifie qu'aucun crossing-over n'a lieu : on n'obtient que 100 % de phénotypes parentaux (50 % et 50 %)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une descendance de 1000 mouches d'un test-cross, on compte 480 [AB], 480 [ab], 20 [Ab] et 20 [aB]. Quelle est la distance en cM ?",
+              "options": ["4 cM", "40 cM", "2 cM", "0,4 cM"],
+              "correctAnswers": [0],
+              "explanation": "Il y a 20 + 20 = 40 recombinés sur 1000 individus, soit (40/1000) x 100 = 4 % = 4 cM."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi réalise-t-on le test-cross de préférence sur une femelle F1 plutôt que sur un mâle chez la drosophile ?",
+              "options": [
+                "Parce que le mâle de drosophile ne réalise aucun crossing-over",
+                "Parce que les mâles meurent avant l'accouplement",
+                "Parce que les femelles n'ont pas de chromosomes homologues",
+                "Parce que les œufs pondus par les mâles sont stériles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour mesurer un taux de recombinaison par crossing-over chez la drosophile, il faut utiliser la femelle car le mâle ne recombine pas."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "La diversité infinie des zygotes par fécondation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment la fécondation amplifie-t-elle la diversité génétique générée par la méiose ?",
+              "options": [
+                "En associant au hasard deux gamètes parmi des millions de combinaisons possibles",
+                "En augmentant le nombre de mutations ponctuelles dans chaque gamète",
+                "En divisant par deux le génome de la cellule-œuf",
+                "En sélectionnant uniquement les allèles récessifs parentaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fécondation réunit au hasard deux gamètes, multipliant entre elles les diversités alléliques de chaque parent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si chaque parent peut produire 2^23 gamètes par brassage interchromosomique seul, combien de zygotes différents un couple humain peut-il concevoir ?",
+              "options": [
+                "2^23 x 2^23 = 2^46 (plus de 70 000 milliards de combinaisons)",
+                "2 x 23 = 46 combinaisons",
+                "23^2 = 529 combinaisons",
+                "Environ 10 millions de combinaisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans compter les crossing-overs, la rencontre fortuite de deux gamètes offre plus de 7 x 10^13 génotypes distincts."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est l'impact des crossing-overs (brassage intrachromosomique) sur ce calcul théorique de diversité ?",
+              "options": [
+                "Il rend le nombre de combinaisons potentielles pratiquement infini",
+                "Il réduit considérablement le nombre de combinaisons possibles",
+                "Il annule totalement la diversité interchromosomique",
+                "Il stabilise le nombre de combinaisons à 46 exactement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nombre quasi illimité de points d'enjambements possibles le long des chromatides rend chaque gamète rigoureusement unique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qui explique que deux vrais jumeaux (monozygotes) possèdent le même patrimoine génétique ?",
+              "options": [
+                "Ils sont issus de la division précoce d'une unique cellule-œuf fécondée par un seul spermatozoïde",
+                "Ils résultent de la fécondation d'un ovule par deux spermatozoïdes identiques",
+                "Ils proviennent de deux ovules distincts fécondés le même jour",
+                "Ils ont échangé leurs chromosomes dans l'utérus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les jumeaux monozygotes partagent le même génome initial car ils dérivent d'un seul et même zygote divisé en deux embryons."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles propositions sont vraies à propos des faux jumeaux (dizygotes) ?",
+              "options": [
+                "Ils sont issus de deux ovocytes différents fécondés par deux spermatozoïdes distincts",
+                "Leur proximité génétique est la même que celle de deux frères ou sœurs nés d'accouchements différents",
+                "Ils partagent rigoureusement 100 % de leurs allèles",
+                "Ils sont obligatoirement du même sexe chromosomique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les jumeaux dizygotes proviennent de deux fécondations indépendantes simultanées : ils partagent environ 50 % de leurs allèles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que chaque individu issu de la reproduction sexuée est unique au monde ?",
+              "options": [
+                "Parce que la probabilité d'obtenir deux fois le même assortiment allélique par méiose et fécondation est quasi nulle",
+                "Parce que chaque individu appartient à une espèce distincte",
+                "Parce que les cellules somatiques mutent chaque seconde",
+                "Parce que la fécondation détruit les génomes ancestraux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'immensité combinatoire de la méiose et de la fécondation garantit l'unicité génétique de chaque individu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel système immunitaire humain présente un polymorphisme extrême garantissant l'unicité biologique de nos tissus ?",
+              "options": [
+                "Le complexe majeur d'histocompatibilité (système HLA)",
+                "L'hémoglobine sanguine",
+                "L'insuline pancréatique",
+                "Le collagène osseux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le complexe HLA est hautement polyallélique : chaque individu possède une combinaison de molécules HLA quasi unique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment la fécondation contribue-t-elle à la survie des espèces face aux changements environnementaux ?",
+              "options": [
+                "En générant une immense diversité d'individus dont certains seront mieux adaptés à de nouvelles conditions",
+                "En clonant indéfiniment les individus les plus robustes",
+                "En supprimant toutes les maladies génétiques existantes",
+                "En ralentissant le rythme des générations futures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diversité génétique issue de la reproduction sexuée fournit le substrat sur lequel agit la sélection naturelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une fratrie de 4 enfants hors vrais jumeaux, combien ont statistiquement un génome identique ?",
+              "options": [
+                "Zéro, la probabilité étant infime",
+                "Au moins deux d'entre eux",
+                "Les quatre obligatoirement",
+                "Exactement trois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La probabilité que deux frères ou sœurs non monozygotes reçoivent les mêmes combinaisons est négligeable (ordre de 1 sur des milliards)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel terme désigne la variabilité génétique globale existant au sein d'une espèce ?",
+              "options": [
+                "Le polymorphisme génétique",
+                "L'homogamie sélective",
+                "Le monomorphisme structurel",
+                "La polyploïdie clonale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le polymorphisme génétique est la coexistence de plusieurs allèles pour un même gène dans les populations naturelles."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les anomalies méiotiques et non-disjonctions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une non-disjonction chromosomique au cours de la méiose ?",
+              "options": [
+                "L'absence de séparation d'une paire d'homologues ou de chromatides sœurs migrant vers le même pôle",
+                "La destruction enzymatique d'un chromosome entier",
+                "La réplication excessive d'un gène en interphase",
+                "La division prématurée du cytoplasme cellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une non-disjonction est une anomalie de répartition où les chromosomes ou chromatides ne se séparent pas correctement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si une non-disjonction survient en anaphase I pour une paire de chromosomes, quels gamètes obtient-on ?",
+              "options": [
+                "Deux gamètes avec un chromosome en trop (n+1) et deux gamètes avec un chromosome en moins (n-1)",
+                "Quatre gamètes parfaitement normaux (n)",
+                "Quatre gamètes diploïdes (2n)",
+                "Un seul gamète géant tétraploïde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La non-séparation des homologues en méiose I affecte les 4 gamètes issus de la cellule mère : 50 % (n+1) et 50 % (n-1)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si une non-disjonction a lieu en anaphase II dans une seule des deux cellules filles, quelle est la descendance gamétique ?",
+              "options": [
+                "Deux gamètes normaux (n), un gamète (n+1) et un gamète (n-1)",
+                "Quatre gamètes anormaux (n+1)",
+                "Quatre gamètes anormaux (n-1)",
+                "Deux gamètes (n) et deux gamètes (2n)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La non-disjonction en méiose II n'affecte qu'une demi-méiose : 50 % des gamètes finaux sont normaux (n), 25 % sont (n+1) et 25 % (n-1)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle anomalie du nombre de chromosomes nomme-t-on une aneuploïdie ?",
+              "options": [
+                "Un gain ou une perte d'un ou plusieurs chromosomes sans toucher l'ensemble du lot",
+                "La duplication exacte du lot entier de chromosomes (ex: 3n, 4n)",
+                "Une mutation ponctuelle changeant un seul acide aminé",
+                "L'inversion d'un fragment de bras chromosomique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une aneuploïdie est une anomalie numérique partielle touchant un chromosome spécifique (ex: trisomie, monosomie)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles anomalies résultent directement de la fécondation d'un gamète anormal par un gamète normal à n chromosomes ?",
+              "options": [
+                "Une trisomie (2n + 1) si le gamète anormal était (n + 1)",
+                "Une monosomie (2n - 1) si le gamète anormal était (n - 1)",
+                "Une tétraploïdie (4n) systématique",
+                "Une inversion péricentrique homozygote"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La fécondation d'un gamète n+1 donne un zygote 2n+1 (trisomie) ; celle d'un gamète n-1 donne un zygote 2n-1 (monosomie)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel facteur maternel augmente significativement le risque de non-disjonction chromosomique lors de l'ovogenèse ?",
+              "options": [
+                "L'âge maternel avancé lors de la procréation",
+                "Le groupe sanguin rhésus négatif",
+                "La pratique régulière de la course à pied",
+                "Un régime alimentaire riche en glucides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'allongement de la durée de blocage des ovocytes en prophase I avec l'âge favorise la dégradation des cohésines chromosomiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la translocation robertsonienne en cytogénétique ?",
+              "options": [
+                "La fusion de deux chromosomes acrocentriques au niveau de leurs centromères",
+                "La perte définitive du chromosome Y",
+                "La duplication complète du bras long du chromosome X",
+                "L'incorporation d'ADN mitochondrial dans le noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une translocation robertsonienne réunit les bras longs de deux chromosomes acrocentriques (ex: chromosomes 14 et 21)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment un parent porteur d'une translocation robertsonienne équilibrée 14/21 peut-il transmettre une trisomie 21 ?",
+              "options": [
+                "En transmettant le chromosome transloqué 14/21 et un chromosome 21 normal dans le même gamète",
+                "En produisant des spermatozoïdes dépourvus de flagelle",
+                "En détruisant le chromosome 14 homologue",
+                "Par contamination virale lors de la fécondation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gamète recevant le chromosome remanié 14/21 ET le 21 libre apportera l'équivalent de deux chromosomes 21, créant une trisomie 21 au zygote."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel examen médical permet de dénombrer et d'analyser la morphologie des chromosomes d'un individu ?",
+              "options": [
+                "Le caryotype",
+                "L'électrocardiogramme",
+                "Le dosage de la glycémie",
+                "L'échographie Doppler pulsé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le caryotype classe les chromosomes métaphasiques par paires selon leur taille et la position de leur centromère."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que deviennent la grande majorité des embryons humains porteurs d'une aneuploïdie autosomique majeure ?",
+              "options": [
+                "Ils sont éliminés spontanément au cours des premières semaines (fausse couche précoce)",
+                "Ils survivent sans aucune séquelle physiologique",
+                "Ils développent obligatoirement des ailes fonctionnelles",
+                "Leur génome est automatiquement corrigé par la mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plupart des aneuploïdies autosomiques sont létales in utero et provoquent des fausses couches spontanées très précoces."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Trisomies, monosomies et caryotypes anormaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la formule chromosomique standard d'un individu atteint du syndrome de Down (trisomie 21) ?",
+              "options": [
+                "47, XX, +21 ou 47, XY, +21",
+                "45, X0",
+                "47, XXY",
+                "46, XX, -21"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trisomie 21 se caractérise par 47 chromosomes au total, avec un chromosome 21 surnuméraire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la seule monosomie viable connue dans l'espèce humaine ?",
+              "options": [
+                "Le syndrome de Turner (45, X0)",
+                "La monosomie 21 complète",
+                "La monosomie 1",
+                "Le syndrome de Klinefelter (47, XXY)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le syndrome de Turner (absence d'un second chromosome sexuel chez une femme) est la seule monosomie compatible avec la vie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle anomalie des gonosomes définit le syndrome de Klinefelter ?",
+              "options": [
+                "47, XXY (présence d'un chromosome X surnuméraire chez un individu de sexe masculin)",
+                "47, XYY",
+                "45, Y0",
+                "48, XXXX"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le syndrome de Klinefelter touche les hommes portant deux chromosomes X et un chromosome Y (caryotype 47, XXY)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi les trisomies touchant les grands autosomes (comme la paire 1) ne sont-elles jamais observées chez les nouveau-nés ?",
+              "options": [
+                "Elles entraînent un déséquilibre génique trop massif causant une létalité embryonnaire précoce",
+                "Les grands chromosomes ne subissent jamais de non-disjonction en méiose",
+                "Les spermatozoïdes porteurs d'un grand chromosome en trop perdent leur acrosome",
+                "Le système immunitaire détruit ces chromosomes dans les gonades"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les grands autosomes portent des milliers de gènes indispensables au développement ; un surdosage entraîne un arrêt immédiat de l'embryogenèse."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles trisomies autosomiques sont susceptibles d'aboutir à une naissance vivante chez l'Homme ?",
+              "options": [
+                "La trisomie 21 (syndrome de Down)",
+                "La trisomie 18 (syndrome d'Edwards) et la trisomie 13 (syndrome de Patau)",
+                "La trisomie 1 complète",
+                "La trisomie 19 intégrale"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Seules les trisomies 21, 18 et 13 permettent parfois d'atteindre le terme de la grossesse car ces chromosomes portent relativement peu de gènes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel examen prénatal non invasif (DPNI) permet de dépister la trisomie 21 dès la 10e semaine de grossesse ?",
+              "options": [
+                "L'analyse de l'ADN fœtal libre circulant dans le sang maternel",
+                "Une biopsie hépatique de la mère",
+                "Une radiographie pelvienne aux rayons X",
+                "Un scanner cérébral du fœtus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le DPNI séquence et quantifie les fragments d'ADN fœtal libérés par le placenta dans la circulation sanguine maternelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel acte médical invasif permet d'obtenir avec certitude le caryotype fœtal par ponction de liquide amniotique ?",
+              "options": [
+                "L'amniocentèse",
+                "L'échographie morphologique",
+                "Le toucher vaginal",
+                "Le frottis cervico-vaginal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amniocentèse prélève du liquide amniotique contenant des cellules fœtales desquamées mises en culture pour établir le caryotype."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une mosaïque chromosomique chez un individu atteint de trisomie 21 ?",
+              "options": [
+                "La coexistence dans l'organisme de cellules à 46 chromosomes et de cellules à 47 chromosomes",
+                "La présence de chromosomes colorés différemment dans le noyau",
+                "Une mutation touchant uniquement les cellules de la peau",
+                "L'alternance de cellules animales et de cellules végétales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trisomie en mosaïque résulte d'une non-disjonction mitotique post-zygotique : seules certaines lignées cellulaires sont trisomiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la monosomie du chromosome X (Turner) est-elle viable alors que la monosomie Y ne l'est pas ?",
+              "options": [
+                "Parce que le chromosome X porte des gènes vitaux absents du chromosome Y",
+                "Parce que le chromosome Y détruit les cellules sans chromosome X",
+                "Parce que le chromosome X est plus petit que le chromosome Y",
+                "Parce que les mitochondries remplacent le chromosome X"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chromosome X porte plus de 1000 gènes fondamentaux indispensables à la survie de toute cellule humaine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le phénotype sexuel d'une personne de caryotype 47, XXY ?",
+              "options": [
+                "Phénotype masculin (avec infertilité fréquente et grande taille)",
+                "Phénotype strictement féminin fertile",
+                "Absence totale de caractères sexuels",
+                "Hermaphrodisme fonctionnel bilatéral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La présence du chromosome Y (avec le gène SRY) induit la différenciation testiculaire et donc un sexe phénotypique masculin."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Crossing-over inégaux et duplication génique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel dérèglement cytologique est responsable d'un crossing-over inégal en prophase I ?",
+              "options": [
+                "Un mauvais alignement (décalage) des séquences répétées lors de l'appariement des chromatides homologues",
+                "Une rupture accidentelle de l'enveloppe nucléaire",
+                "La fusion de deux centromères métacentriques",
+                "La perte des microtubules kinétochoriens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des séquences d'ADN homologues répétées favorisent un appariement décalé entre chromatides, provoquant un échange asymétrique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le résultat génétique direct d'un crossing-over inégal pour les deux chromatides impliquées ?",
+              "options": [
+                "Une chromatide porte une duplication d'un gène, l'autre porte une délétion de ce gène",
+                "Deux chromatides identiques sans modification de longueur",
+                "La destruction irréversible des deux chromosomes",
+                "La transformation immédiate d'un gène en ARN ribosomal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échange asymétrique transfère une portion de segment génique sur une chromatide (duplication) aux dépens de l'autre (délétion)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la duplication génique est-elle considérée comme un moteur fondamental de l'évolution des génomes ?",
+              "options": [
+                "Elle fournit une copie supplémentaire du gène qui peut accumuler des mutations sans nuire à la fonction initiale",
+                "Elle empêche toute mutation ultérieure sur le chromosome",
+                "Elle divise par deux la taille totale du génome",
+                "Elle rend l'organisme totalement insensible aux radiations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La copie redondante est libérée de la pression de sélection : elle peut muter librement et acquérir une nouvelle fonction (néofonctionnalisation)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que peut devenir un gène dupliqué au cours des millions d'années d'évolution ?",
+              "options": [
+                "Une nouvelle fonction biologique, un pseudogène inactif, ou conserver la fonction d'origine",
+                "Se transformer obligatoirement en chromosome autonome",
+                "Migrer spontanément dans la cellule d'une autre espèce voisine",
+                "Disparaître sans laisser la moindre trace de nucléotides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le duplicat peut se diversifier (nouvelle fonction), devenir non fonctionnel (pseudogène) ou augmenter le niveau d'expression."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles molécules de l'organisme humain illustrent l'histoire évolutive d'une duplication génique suivie de mutations ?",
+              "options": [
+                "Les différentes globines (myoglobine, hémoglobines alpha et bêta)",
+                "Les pigments photorécepteurs de la rétine (opsines bleue, verte et rouge)",
+                "Le glucose et le fructose du cytosol",
+                "Les molécules d'eau et de dioxyde de carbone"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les globines et les opsines visuelles sont des exemples classiques de protéines codées par des familles multigéniques issues de duplications."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur la vision des couleurs chez les primates, que permet la duplication du gène de l'opsine sur le chromosome X ?",
+              "options": [
+                "L'acquisition d'une vision trichromatique (différenciation du rouge et du vert)",
+                "La vision nocturne par ultrasons",
+                "La perte totale de la perception des couleurs (achromatopsie)",
+                "La vision télescopique à longue distance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La duplication de l'opsine ancestrale sur l'X a donné les gènes des opsines rouge et verte, conférant la trichromatie aux primates de l'Ancien Monde."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on deux gènes issus d'un événement de duplication au sein d'un même génome ?",
+              "options": [
+                "Des gènes paralogues",
+                "Des gènes orthologues",
+                "Des allèles récessifs purs",
+                "Des transposons inverses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux gènes homologues résultant d'une duplication génique au sein d'une même espèce sont dits paralogues."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on deux gènes homologues présents chez deux espèces distinctes après un événement de spéciation ?",
+              "options": [
+                "Des gènes orthologues",
+                "Des gènes paralogues",
+                "Des gènes synthétiques",
+                "Des pseudogènes dégénérés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gènes orthologues dérivent d'un même gène ancestral chez le dernier ancêtre commun et se sont séparés lors de la spéciation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle anomalie visuelle fréquente chez l'homme résulte d'un crossing-over inégal entre les gènes des opsines rouge et verte ?",
+              "options": [
+                "Le daltonisme (deutéranopie ou protanopie)",
+                "La cataracte congénitale",
+                "La myopie axile progressive",
+                "Le glaucome à angle ouvert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un crossing-over inégal supprime ou fusionne les gènes des opsines sur l'X, altérant la distinction du rouge et du vert."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que démontre un alignement de séquences révélant plus de 60 % de similitude entre deux protéines d'un même organisme ?",
+              "options": [
+                "Leur homologie et leur parenté évolutive issue d'une duplication d'un gène ancestral",
+                "Une convergence accidentelle sans lien de parenté",
+                "Que l'une des deux protéines est d'origine bactérienne récente",
+                "Que le code génétique a été réécrit artificiellement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un fort pourcentage de similitude de séquence (> 20 à 30 %) prouve une origine commune par duplication d'un gène ancestral."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Familles multigéniques et évolution des génomes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une famille multigénique en biologie moléculaire ?",
+              "options": [
+                "Un ensemble de gènes apparentés dérivant d'un même gène ancestral par duplications et mutations successives",
+                "L'ensemble de tous les gènes situés sur le chromosome numéro 1",
+                "Un groupe d'individus partageant la même maladie génétique",
+                "Les gènes codant uniquement les enzymes de la photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une famille multigénique regroupe des gènes homologues partageant des séquences proches et une origine ancestrale commune."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels sont les trois événements génétiques successifs menant à la création d'une famille multigénique dispersée ?",
+              "options": [
+                "Duplication, transposition (translocation) et divergence par mutations",
+                "Transcription, traduction et dégradation par les lysosomes",
+                "Méiose, mitose et réplication semi-conservative",
+                "Délétion, inversion et perte de centromère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après duplication, une copie peut être transposée sur un autre chromosome puis diverger par accumulation de mutations."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un pseudogène au sein d'une famille multigénique ?",
+              "options": [
+                "Une copie génique ayant accumulé des mutations délétères la rendant non fonctionnelle (non transcrite ou non traduite)",
+                "Un gène artificiel synthétisé en laboratoire",
+                "Un gène protecteur contre les infections parasitaires",
+                "Un ARN messager sans queue poly-A"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pseudogènes sont des copies inactives de gènes, fossiles moléculaires résultant de mutations bloquant leur expression."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la famille des globines humaines, comment s'organise l'expression temporelle des différents gènes ?",
+              "options": [
+                "Différentes globines (embryonnaire, fœtale, adulte) sont exprimées successivement au cours du développement",
+                "Toutes les globines sont exprimées avec la même intensité à tous les âges",
+                "Les globines ne sont produites que chez le vieillard",
+                "Seule l'hémoglobine embryonnaire subsiste toute la vie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La divergence génique a permis d'adapter l'affinité pour l'oxygène à chaque stade du développement (globines fœtales à forte affinité)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels critères permettent d'établir que deux gènes appartiennent à la même famille multigénique ?",
+              "options": [
+                "Un degré élevé d'homologie de leurs séquences nucléotidiques et peptidiques (> 20 %)",
+                "Une organisation globale en exons et introns remarquablement similaire",
+                "La présence obligatoire d'au moins 50 chromosomes dans la cellule",
+                "Leur localisation exclusive dans le génome des mitochondries"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La ressemblance des séquences et la conservation de l'architecture intron/exon attestent d'une origine commune."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle famille multigénique joue un rôle capital dans la reconnaissance du soi immunologique et la présentation des antigènes ?",
+              "options": [
+                "Les gènes du complexe HLA (CMH)",
+                "Les gènes des histones H1",
+                "Les gènes de l'actine musculaire",
+                "Les gènes de l'insuline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gènes du CMH/HLA forment une vaste famille multigénique très polymorphe essentielle à l'immunité adaptative."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle famille de récepteurs membranaires compte plus de 400 gènes fonctionnels chez l'Homme et 1000 chez la souris ?",
+              "options": [
+                "Les récepteurs olfactifs",
+                "Les canaux sodiques voltage-dépendants",
+                "Les aquaporines rénales",
+                "Les récepteurs de l'hormone de croissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perception d'une multitude d'odeurs repose sur une immense famille multigénique de récepteurs olfactifs diversifiés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel outil informatique de bio-informatique permet de comparer deux séquences et de quantifier leur taux d'identité ?",
+              "options": [
+                "Un logiciel d'alignement de séquences (comme BLAST ou Clustal)",
+                "Un tableur de comptabilité analytique",
+                "Un logiciel de retouche photographique",
+                "Un simulateur de dynamique des fluides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les algorithmes d'alignement comme BLAST alignent les résidus pour calculer le pourcentage de similitude et construire des phylogénies."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que permet de construire la matrice des distances issue de la comparaison des séquences d'une famille multigénique ?",
+              "options": [
+                "Un arbre phylogénétique retraçant l'ordre chronologique des duplications",
+                "Un schéma du cycle de Krebs mitochondrial",
+                "La carte géographique des fossiles de dinosaures",
+                "Le profil d'absorption spectrale de la chlorophylle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arbre phylogénétique positionne les événements de duplication au cours du temps géologique selon l'accumulation des mutations."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi les gènes codant les ARN ribosomiques (ARNr) sont-ils répétés en centaines d'exemplaires identiques en tandem ?",
+              "options": [
+                "Pour permettre une production massive et rapide de ribosomes nécessaires à la cellule",
+                "Pour muter plus rapidement que les autres gènes",
+                "Pour stabiliser la structure lipidique des membranes",
+                "Pour empêcher la réplication de l'ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La multiplication en tandem des gènes d'ARNr permet un dosage génique élevé pour fabriquer des millions de ribosomes."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Polyploïdisation et diversification du vivant",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la polyploïdie chez un être vivant ?",
+              "options": [
+                "Le fait de posséder au moins trois lots complets de chromosomes (3n, 4n, 6n...)",
+                "La présence d'un seul chromosome surnuméraire",
+                "La perte accidentelle de tous les autosomes",
+                "L'incapacité absolue à effectuer la mitose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un organisme polyploïde possède plus de deux garnitures chromosomiques haploïdes complètes (ex: triploïde 3n, tétraploïde 4n)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre l'autopolyploïdie et l'allopolyploïdie ?",
+              "options": [
+                "L'autopolyploïdie dérive d'une seule espèce ; l'allopolyploïdie résulte d'une hybridation entre deux espèces différentes",
+                "L'autopolyploïdie ne touche que les animaux ; l'allopolyploïdie ne touche que les virus",
+                "L'autopolyploïdie est toujours mortelle dès la fécondation",
+                "L'allopolyploïdie ne modifie pas le nombre de chromosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'autopolyploïdie double le génome au sein d'une espèce ; l'allopolyploïdie associe les génomes de deux espèces après hybridation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quel règne biologique la polyploïdisation joue-t-elle un rôle évolutif particulièrement spectaculaire et fréquent ?",
+              "options": [
+                "Le règne végétal (angiospermes)",
+                "Les vertébrés supérieurs",
+                "Les oiseaux migrateurs",
+                "Les mammifères marins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une grande proportion des plantes à fleurs (blé, café, cotonnier...) sont polyploïdes, la polyploïdie étant un moteur de spéciation majeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi les organismes triploïdes (3n, comme la banane cultivée) sont-ils généralement stériles sans pépins ?",
+              "options": [
+                "Car la ségrégation de trois chromosomes homologues en anaphase I est chaotique et déséquilibrée",
+                "Car ils ne possèdent pas d'organes reproducteurs",
+                "Car leur ADN est détruit par la lumière solaire",
+                "Car ils ne réalisent que des méioses sans fuseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'impossibilité d'apparier régulièrement trois chromosomes homologues en bivalents engendre des gamètes aneuploïdes non viables."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes cytologiques peuvent être à l'origine d'une autopolyploïdisation (ex: formation d'un individu 4n) ?",
+              "options": [
+                "Une non-disjonction mitotique précoce dans le jeune zygote (absence de cytodiérèse)",
+                "La fusion de deux gamètes anormaux non réduits (diploïdes 2n)",
+                "Une infection bactérienne dans l'estomac",
+                "La dégradation totale de l'ADN chloroplastique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'absence de division cellulaire après duplication chromosomique ou la formation de gamètes 2n produit des polyploïdes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel effet morphologique macroscopique observe-t-on couramment chez les plantes polyploïdes (effet 'gigas') ?",
+              "options": [
+                "Une taille accrue des cellules, des fleurs, des feuilles et des fruits",
+                "Un nanisme sévère et une atrophie des racines",
+                "Une perte totale de la chlorophylle foliaire",
+                "La disparition des parois cellulaires cellulosiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'augmentation du volume nucléaire due à la démultiplication du génome s'accompagne d'une hypertrophie cellulaire (effet gigas)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment le blé tendre panifiable moderne (Triticum aestivum) s'est-il constitué au cours de son histoire évolutive ?",
+              "options": [
+                "Par hybridations successives de trois espèces sauvages diploïdes suivies de polyploïdisations (hexaploïde 6n = 42)",
+                "Par sélection exclusive de mutants nains sans aucune hybridation",
+                "Par clonage in vitro en laboratoire au Moyen Âge",
+                "Par incorporation de chromosomes de maïs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le blé panifiable est un allohexaploïde (6n = 42) combinant les génomes complets de trois graminées ancestrales (AABBDD)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment un hybride interspécifique stérile peut-il redevenir fertile par polyploïdisation (amphidiploïdie) ?",
+              "options": [
+                "Le doublement de son stock chromosomique fournit à chaque chromosome son partenaire homologue pour la méiose",
+                "En éliminant les chromosomes du parent paternel",
+                "En remplaçant ses histones par des protéines virales",
+                "Par exposition prolongée au froid polaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le doublement des chromosomes transforme l'hybride stérile en un allopolyploïde fertile capable d'un appariement méiotique parfait."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle molécule alcaloïde bloque la formation du fuseau méiotique et est utilisée pour induire la polyploïdie ?",
+              "options": [
+                "La colchicine",
+                "La pénicilline",
+                "La caféine",
+                "L'aspirine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La colchicine dépolymérise les microtubules du fuseau, empêchant la séparation des chromosomes et doublant la garniture génomique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la polyploïdisation est-elle considérée comme un mécanisme de spéciation instantanée ou sympatrique ?",
+              "options": [
+                "Le nouvel individu polyploïde est immédiatement isolé reproductiquement de ses parents diploïdes",
+                "L'organisme polyploïde change de couleur en quelques secondes",
+                "Les polyploïdes ne peuvent plus vivre sur la terre ferme",
+                "Les prédateurs refusent de consommer les plantes polyploïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le croisement entre un 4n et un 2n donne un stérile 3n : la barrière de reproduction est donc érigée dès la première génération."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Reproduction sexuée et biodiversité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les trois niveaux successifs de brassage génétique lors de la reproduction sexuée ?",
+              "options": [
+                "Brassage intrachromosomique, brassage interchromosomique et fécondation",
+                "Réplication, transcription et traduction ribosomique",
+                "Mitose somatique, cytodiérèse et apoptose cellulaire",
+                "Mutation ponctuelle, sélection naturelle et dérive génétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La reproduction sexuée diversifie le vivant par crossing-over en prophase I, disjonction indépendante en anaphase I et rencontre aléatoire des gamètes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la conséquence évolutive majeure de cette immense diversité génétique individuelle ?",
+              "options": [
+                "Elle permet aux populations de s'adapter aux modifications biotiques et abiotiques du milieu",
+                "Elle uniformise morphologiquement toutes les espèces vivantes",
+                "Elle supprime la prédation et la compétition pour les ressources",
+                "Elle accélère le vieillissement des organismes multicellulaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La variabilité allélique offre une réserve d'adaptabilité face aux épidémies, aux prédateurs et aux changements climatiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle hypothèse évolutive célèbre compare la reproduction sexuée à une course pour rester au même niveau face aux parasites ?",
+              "options": [
+                "L'hypothèse de la Reine Rouge (Van Valen)",
+                "La théorie neutraliste de Kimura",
+                "Le transformisme de Lamarck",
+                "L'hypothèse de Gaïa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hypothèse de la Reine Rouge postule que le sexe permet de recombiner en permanence les défenses immunitaires contre les parasites en coévolution."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel désavantage biologique intrinsèque de la reproduction sexuée nomme-t-on le 'coût du mâle' (John Maynard Smith) ?",
+              "options": [
+                "Seules les femelles produisent directement des descendants, contrairement à la parthénogenèse",
+                "Les mâles consomment deux fois plus d'oxygène que les femelles",
+                "Les spermatozoïdes nécessitent un coût énergétique infini",
+                "La méiose détruit 90 % des chromosomes paternels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une femelle parthénogénétique transmet 100 % de ses gènes à ses filles qui pondent toutes, alors qu'une femelle sexuée consacre la moitié de sa progéniture à des mâles."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels avantages compensent largement le coût de la reproduction sexuée chez la majorité des eucaryotes ?",
+              "options": [
+                "L'élimination plus efficace des mutations délétères par recombinaison génétique",
+                "La création continue de génotypes résistants aux pathogènes",
+                "La multiplication d'individus strictement clonaux sans aucune variation",
+                "La suppression complète du besoin d'alimenter les cellules en ATP"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La reproduction sexuée purge les génomes des mutations néfastes et recombine les allèles protecteurs contre les pathogènes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que provoque le phénomène de consanguinité répétée au sein d'une petite population isolée ?",
+              "options": [
+                "Une hausse de l'homozygotie augmentant l'expression d'allèles délétères récessifs",
+                "Une explosion du nombre de mutations bénéfiques dominantes",
+                "La disparition définitive de tous les chromosomes homologues",
+                "Une résistance universelle à toutes les maladies infectieuses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La consanguinité élève le coefficient d'homozygotie, révélant des tares génétiques récessives masquées chez les hétérozygotes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la vigueur supérieure souvent observée chez les hybrides issus de deux lignées consanguines distinctes ?",
+              "options": [
+                "L'hétérosis (ou vigueur hybride)",
+                "La dérive génétique accélérée",
+                "L'épigénétique répressive",
+                "La régression mendélienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hétérosis résulte de la restauration d'une forte hétérozygotie masquant les allèles récessifs défavorables de chaque lignée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel concept de la génétique des populations stipule que les fréquences alléliques restent stables en l'absence de forces évolutives ?",
+              "options": [
+                "L'équilibre de Hardy-Weinberg",
+                "Le principe d'exclusion compétitive de Gause",
+                "La règle de Bergmann",
+                "Le postulat de Koch"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le modèle de Hardy-Weinberg démontre la conservation des fréquences génotypiques dans une population panmictique idéale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle force évolutive aléatoire modifie les fréquences des allèles dans les populations de petit effectif ?",
+              "options": [
+                "La dérive génétique",
+                "La sélection directionnelle",
+                "L'homogamie géographique",
+                "La polyploïdisation forcée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dérive génétique est la fluctuation imprévisible des fréquences alléliques sous l'effet du seul échantillonnage aléatoire des gamètes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle conclusion générale s'impose sur le lien entre reproduction sexuée et arbre du vivant ?",
+              "options": [
+                "La reproduction sexuée est le principal moteur générant la diversité individuelle nécessaire à l'évolution biologique",
+                "La reproduction sexuée bloque l'apparition de toute nouvelle espèce",
+                "La reproduction sexuée ne concerne qu'un nombre dérisoire d'espèces",
+                "La reproduction sexuée tend à remplacer les cellules par des virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En combinant sans fin les allèles générés par les mutations, la reproduction sexuée alimente continuellement la dynamique de l'évolution du vivant."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

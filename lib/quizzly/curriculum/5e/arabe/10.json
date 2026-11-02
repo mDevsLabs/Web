@@ -1,0 +1,2458 @@
+{
+  "id": "5e-arabe-10",
+  "year": "5e",
+  "subject": "arabe",
+  "title": "Vers l'examen en l'arabe",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Compréhension",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "À l'école le matin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mini-dialogue : « السلام عليكم » — « وعليكم السلام ». Quelles réponses conviennent au salut ?",
+              "explanation": "Les deux formules échangent le salut de paix à l'école.",
+              "options": [
+                "Wa alaykum as-salām",
+                "Bonjour en français seulement",
+                "Ma'a salāma (au revoir)",
+                "Shukran (merci)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« أنا طالب في المدرسة » : que signifie طالب (tālib) ?",
+              "explanation": "Tālib désigne un élève ou un étudiant.",
+              "options": ["Professeur", "Élève", "Directeur", "Bibliothèque"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« هذه حقيبتي » : حقيبة (ḥaqība) veut dire…",
+              "explanation": "Al-ḥaqība est le cartable ou le sac d'école.",
+              "options": ["Cartable", "Classe", "Cour", "Cantine"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le professeur dit « افتحوا كتابكم ». Que doit faire la classe ?",
+              "explanation": "Iftaḥū signifie « ouvrez » ; kitāb est le livre.",
+              "options": [
+                "Fermer le cahier",
+                "Ouvrir le livre",
+                "Sortir dehors",
+                "Manger"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« أين القلم؟ » — « على المكتب ». Où est le stylo ?",
+              "explanation": "Alā al-maktab indique que le qalam est sur le bureau.",
+              "options": [
+                "Sous la chaise",
+                "Sur le bureau",
+                "Dans la cour",
+                "Chez moi"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« الدرس سهل » : que pense l'élève du cours ?",
+              "explanation": "Sahl signifie facile ; l'avis est positif.",
+              "options": [
+                "Le cours est difficile",
+                "Le cours est facile",
+                "Il n'aime pas l'école",
+                "Il est en retard"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« نحن في الصف الخامس » : quel niveau ?",
+              "explanation": "As-sāf al-khāmis correspond à la cinquième classe.",
+              "options": ["Sixième", "Cinquième", "Quatrième", "Seconde"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« أحب مادة اللغة العربية » : quel est son avis ?",
+              "explanation": "Uḥibb exprime un goût pour la matière arabe.",
+              "options": [
+                "Il déteste l'arabe",
+                "Il aime l'arabe",
+                "Il est absent",
+                "Il a faim"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« الساعة الثامنة » au début de journée : quelle heure ?",
+              "explanation": "Ath-thāminia est huit heures, début de cours.",
+              "options": ["Huit heures", "Midi", "Minuit", "Trois heures"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« شكراً يا أستاذ » après l'explication : que fait l'élève ?",
+              "explanation": "Shukran remercie l'enseignant (ustādh).",
+              "options": [
+                "Insulte le prof",
+                "Remercie",
+                "Part sans parler",
+                "Demande la cantine"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Hier à l'école (أمس)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« أمس ذهبت إلى المدرسة » : quels mots renvoient au passé d'hier ?",
+              "explanation": "Ams est hier et dhahabtu indique « je suis allé ».",
+              "options": [
+                "أمس (ams)",
+                "غدا (ghadan)",
+                "ذهبت (dhahabtu)",
+                "سأذهب (sa'adhhabu)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« درستُ الرياضيات أمس » : qu'a-t-il fait hier ?",
+              "explanation": "Darastu al-riyāḍiyāt : étude des maths au passé.",
+              "options": [
+                "Il jouera demain",
+                "Il a étudié les maths",
+                "Il dort maintenant",
+                "Il mange"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« قرأنا قصة قصيرة » au passé : activité en classe ?",
+              "explanation": "Qara'nā une histoire courte, lecture collective.",
+              "options": [
+                "Sport",
+                "Lecture d'une histoire",
+                "Examen demain",
+                "Vacances"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« لم أفهم السؤال » : quel est son avis sur la question ?",
+              "explanation": "Lam afham exprime qu'il n'a pas compris.",
+              "options": [
+                "Tout était clair",
+                "Il n'a pas compris",
+                "Il adore l'examen",
+                "C'était facile"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« كتبتُ الواجب في البيت » : où a-t-il écrit ?",
+              "explanation": "Fī al-bayt : le devoir a été fait à la maison.",
+              "options": [
+                "À la cantine",
+                "À la maison",
+                "Dans la cour",
+                "À la piscine"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« كان الطقس جميلاً » : météo d'hier ?",
+              "explanation": "Kāna jamīlan : le temps était beau.",
+              "options": [
+                "Pluie forte",
+                "Beau temps",
+                "Neige",
+                "Orage seulement"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« رسمتُ في حصة الفن » : quelle matière ?",
+              "explanation": "Ḥiṣṣat al-fann : cours d'arts plastiques.",
+              "options": [
+                "Arabe",
+                "Arts / dessin",
+                "Sport",
+                "Musique interdite"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« أكلتُ في المقصف » : lieu de la pause ?",
+              "explanation": "Al-maqṣaf est souvent la cantine scolaire.",
+              "options": ["Bibliothèque", "Cantine", "Toilettes", "Gymnase"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« سأعدُّ الدرس غداً » dit-il après : il parle de…",
+              "explanation": "Contraste : hier passé, demain il préparera (sa'u'addu).",
+              "options": [
+                "Hier seulement",
+                "Demain préparer le cours",
+                "Maintenant",
+                "Jamais"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« أمس كان الاختبار صعباً » : son avis sur l'épreuve ?",
+              "explanation": "Ṣa'ban : l'examen d'hier était difficile.",
+              "options": ["Très facile", "Difficile", "Annulé", "Absent"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Demain (غدا)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« غدا سأحضر الحفلة المدرسية » : quels indices parlent de demain ?",
+              "explanation": "Ghadan et sa'aḥḍaru situent l'action à venir.",
+              "options": [
+                "غدا (ghadan)",
+                "أمس (ams)",
+                "سأحضر (sa'aḥḍaru)",
+                "حضرت (ḥaḍartu)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« سنزور المكتبة غداً » : que fera la classe ?",
+              "explanation": "Sanazūr : visite future de la bibliothèque.",
+              "options": [
+                "Ils ont visité hier",
+                "Ils visiteront demain",
+                "Ils dorment",
+                "Ils partent en vacances"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« سأستيقظ مبكراً » pour l'école : intention ?",
+              "explanation": "Se lever tôt demain pour être à l'heure.",
+              "options": [
+                "Dormir tard",
+                "Se lever tôt",
+                "Manquer l'école",
+                "Ne pas étudier"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« غدا لدينا اختبار في العلوم » : quand est l'épreuve ?",
+              "explanation": "Ghadan + ikhtibār : examen de sciences demain.",
+              "options": [
+                "Aujourd'hui",
+                "Demain",
+                "La semaine dernière",
+                "Jamais"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« أعتقد أنني سأنجح » : quel type de phrase ?",
+              "explanation": "A'taqidu : avis personnel sur la réussite future.",
+              "options": [
+                "Ordre du prof",
+                "Opinion optimiste",
+                "Question grammaticale",
+                "Salut"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« سأحضّر حقيبتي الليلة » : pourquoi ce soir ?",
+              "explanation": "Préparer le cartable avant le lendemain scolaire.",
+              "options": [
+                "Pour demain",
+                "Pour hier",
+                "Pour l'été",
+                "Pour rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« غدا سألعب كرة القدم » après les cours : activité ?",
+              "explanation": "Football prévu demain, hors cours principal.",
+              "options": [
+                "Examen d'arabe",
+                "Foot demain",
+                "Lecture hier",
+                "Cantine fermée"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« لن أتأخر غداً » : promesse de l'élève ?",
+              "explanation": "Lan ata'akhkhar : il ne sera pas en retard.",
+              "options": [
+                "Il sera en retard",
+                "Il sera à l'heure",
+                "Il quittera l'école",
+                "Il ne viendra pas"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« سأسأل الأستاذ عن الدرس » : demain il va…",
+              "explanation": "Sa'as'alu : poser une question au professeur.",
+              "options": [
+                "Ignorer le cours",
+                "Demander une explication",
+                "Dormir en classe",
+                "Manger seul"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« أمس راجعتُ، غدا سأمتحن » : lien des deux jours ?",
+              "explanation": "Révision hier, examen prévu demain.",
+              "options": [
+                "Aucun lien",
+                "Révision puis examen",
+                "Vacances",
+                "Sport seulement"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Avis et préférences",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« أنا أحب القراءة » et « لا أحب الضوضاء » : quels mots expriment un avis ?",
+              "explanation": "Uḥibb et lā uḥibb marquent aime / n'aime pas.",
+              "options": [
+                "أحب (uḥibb)",
+                "لا أحب (lā uḥibb)",
+                "كتاب (kitāb)",
+                "مدرسة (madrasa)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« أظن أن هذا الدرس مفيد » : que pense-t-il ?",
+              "explanation": "Mufīd : le cours lui semble utile.",
+              "options": [
+                "Inutile",
+                "Utile",
+                "Ennuyeux seulement",
+                "Trop court"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« رأيي أن التعاون جيد » : sujet de l'avis ?",
+              "explanation": "At-ta'āwun : travailler ensemble est bien.",
+              "options": [
+                "La triche",
+                "La coopération",
+                "Le bruit",
+                "La punition"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« لا أحب أن أتأخر » : sentiment ?",
+              "explanation": "Il n'aime pas arriver en retard.",
+              "options": [
+                "Il aime le retard",
+                "Il déteste être en retard",
+                "Il adore dormir",
+                "Il quitte l'école"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dialogue : « هل تحب الرياضيات؟ » — « نعم، أحبها » : réponse ?",
+              "explanation": "Réponse affirmative avec uḥibbuhā.",
+              "options": [
+                "Non",
+                "Oui, il aime",
+                "Il ne sait pas",
+                "Peut-être demain"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« أجد اللغة العربية جميلة » : avis sur la langue ?",
+              "explanation": "Jamīla : il trouve l'arabe beau.",
+              "options": ["Laide", "Belle", "Difficile seulement", "Interdite"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« في رأيي، النوم مبكراً مهمة » : conseil ?",
+              "explanation": "Opinion : se coucher tôt est important.",
+              "options": [
+                "Veiller tard",
+                "Dormir tôt",
+                "Ne pas dormir",
+                "Manger tard"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« لا أظن أن الواجب صعب » : niveau du devoir ?",
+              "explanation": "Il pense que le devoir n'est pas difficile.",
+              "options": [
+                "Très difficile",
+                "Pas si difficile",
+                "Absent",
+                "Impossible"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« أحب العمل مع أصدقائي » : préférence en classe ?",
+              "explanation": "Travail avec les amis (aṣdiqā').",
+              "options": [
+                "Seul toujours",
+                "Avec des amis",
+                "Sans livre",
+                "Sans prof"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« أكره الخجل في المشاركة » : problème pour lui ?",
+              "explanation": "Il n'aime pas la timidité pour participer.",
+              "options": [
+                "Parler trop",
+                "Ne pas oser parler",
+                "Manger",
+                "Jouer"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Dialogue avec le professeur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« من فضلك، أعد الشرح » : quelles expressions sont polies ?",
+              "explanation": "Min fadlik et demande de répéter l'explication.",
+              "options": [
+                "من فضلك (min fadlik)",
+                "أعد الشرح (a'id ash-sharḥ)",
+                "اصمت (uṣmut)",
+                "اخرج (ukhruj)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« هل يمكن أن أسأل؟ » : que veut l'élève ?",
+              "explanation": "Demande la permission de poser une question.",
+              "options": ["Sortir", "Poser une question", "Dormir", "Manger"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le prof répond « تفضل » : sens ?",
+              "explanation": "Tafaḍḍal invite à parler ou avancer.",
+              "options": ["Va-t'en", "Je t'écoute / vas-y", "Non", "Fermé"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« لم أفهم، هل يمكن الإبطاء؟ » : demande ?",
+              "explanation": "Parler plus lentement pour comprendre.",
+              "options": [
+                "Plus vite",
+                "Plus lentement",
+                "Silence total",
+                "Changer de matière"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« أعتقد أن الجawab صحيح » : confiance ?",
+              "explanation": "Ṣaḥīḥ : il pense que sa réponse est correcte.",
+              "options": ["Fausse", "Correcte", "Absente", "Interdite"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« شكراً على المساعدة » après correction : politesse ?",
+              "explanation": "Remerciement pour l'aide du professeur.",
+              "options": ["Oui", "Non", "Insulte", "Ordre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« آسف، تأخرت » à l'entrée : excuse ?",
+              "explanation": "Āsif : il s'excuse pour le retard.",
+              "options": ["Il se vante", "Il s'excuse", "Il part", "Il rit"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« هل هذا صحيح يا أستاذ؟ » : type de phrase ?",
+              "explanation": "Vérification d'une réponse auprès du prof.",
+              "options": [
+                "Salut",
+                "Question de confirmation",
+                "Blague",
+                "Cantine"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« أرى أن القواعد واضحة اليوم » : avis sur la leçon ?",
+              "explanation": "Les règles lui semblent claires aujourd'hui.",
+              "options": ["Floues", "Claires", "Inutiles", "Absentes"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« سأحاول أكثر غداً » après une note moyenne : attitude ?",
+              "explanation": "Effort promis pour demain.",
+              "options": ["Abandon", "Effort futur", "Colère", "Silence"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Entre camarades",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« هل عندك قلم؟ » — « نعم، تفضل » : que se passe-t-il ?",
+              "explanation": "Demande de stylo et prêt poli entre élèves.",
+              "options": ["Prêt d'un stylo", "Combat", "Examen", "Cantine"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« أمس ساعدتُ زميلي » : action d'hier ?",
+              "explanation": "Il a aidé un camarade (zamīl).",
+              "options": [
+                "Il a triché",
+                "Il a aidé",
+                "Il a dormi",
+                "Il a crié"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« غدا نعمل مشروعاً معاً » : projet ?",
+              "explanation": "Travail commun prévu demain.",
+              "options": ["Seul", "En groupe demain", "Hier", "Jamais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« أحب أن نشارك الأفكار » : avis ?",
+              "explanation": "Partager les idées en classe lui plaît.",
+              "options": [
+                "Garder tout secret",
+                "Partager les idées",
+                "Ne pas parler",
+                "Quitter"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« لا أظن أن الغش جيد » : éthique ?",
+              "explanation": "Il condamne la triche (ghish).",
+              "options": [
+                "La triche est bien",
+                "La triche est mal",
+                "Il triche",
+                "Il ignore"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« هل فهمت الدرس؟ » — « نعم، شكراً » : compréhension ?",
+              "explanation": "Il a compris et remercie.",
+              "options": ["Non", "Oui", "Peut-être hier", "Demain"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« رأيي أن الصداقة مهمة في المدرسة » : valeur ?",
+              "explanation": "L'amitié compte pour lui à l'école.",
+              "options": [
+                "Inutile",
+                "Importante",
+                "Interdite",
+                "Rare seulement"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« أمس ضحكنا في الفسحة » : moment ?",
+              "explanation": "Récréation (fusta) hier, ambiance joyeuse.",
+              "options": [
+                "En cours silencieux",
+                "À la récré",
+                "La nuit",
+                "Demain examen"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« سأدعوك غداً للمكتبة » : invitation ?",
+              "explanation": "Invitation bibliothèque demain.",
+              "options": ["Hier", "Demain", "Jamais", "Cantine seule"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« أعتقد أن زميلي مجتهد » : compliment ?",
+              "explanation": "Mujtahid : il trouve son camarade travailleur.",
+              "options": ["Paresseux", "Travailleur", "Absent", "En colère"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Matières et emploi du temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« اليوم لدينا علوم ثم تاريخ » : quels mots nomment des matières ?",
+              "explanation": "Ulūm (sciences) et tārīkh (histoire).",
+              "options": [
+                "علوم (ulūm)",
+                "تاريخ (tārīkh)",
+                "غدا (ghadan)",
+                "أمس (ams)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« الحصة الأولى عربية » : première heure ?",
+              "explanation": "Cours d'arabe en première période.",
+              "options": ["Sport", "Arabe", "Musique", "Vacances"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« أمس كانت حصة الرياضة ممتعة » : avis sur le sport ?",
+              "explanation": "Mumti'a : séance agréable hier.",
+              "options": ["Ennuyeuse", "Agréable", "Annulée", "Inconnue"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« غدا لن تكون هناك حصة فن » : quoi demain ?",
+              "explanation": "Pas de cours d'arts demain.",
+              "options": [
+                "Plus de français",
+                "Pas de cours d'art",
+                "Double maths",
+                "Tout le jour libre"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« أحب الحصة الأخيرة لأنها قصيرة » : préférence ?",
+              "explanation": "Dernière période perçue comme courte.",
+              "options": [
+                "La première longue",
+                "La dernière courte",
+                "Aucune",
+                "Toutes égales"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ننتقل إلى الصف بعد الرنة » : signal ?",
+              "explanation": "Changement de classe après la sonnerie.",
+              "options": ["Cloche", "Neige", "Examen", "Vacances"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« أمس نسيتُ جدول الحصص » : problème ?",
+              "explanation": "Oubli de l'emploi du temps hier.",
+              "options": [
+                "Il savait tout",
+                "Il a oublié le planning",
+                "Il est prof",
+                "Il est en vacances"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« سأكتب المواعيد في دفتر غداً » : organisation ?",
+              "explanation": "Noter les horaires demain dans le cahier.",
+              "options": ["Chaos", "Organisation", "Abandon", "Triche"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« في رأيي، التوازن بين المواد مهم » : avis ?",
+              "explanation": "Équilibre entre les matières est important.",
+              "options": [
+                "Une seule matière",
+                "Équilibre",
+                "Rien étudier",
+                "Tout ignorer"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« الحصة طويلة لكن مفيدة » : deux idées ?",
+              "explanation": "Long mais utile : avis nuancé.",
+              "options": [
+                "Courte et inutile",
+                "Longue et utile",
+                "Annulée",
+                "Sans prof"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Maison et devoirs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« بعد المدرسة سأكمل الواجب » : quels mots parlent des devoirs ?",
+              "explanation": "Wājib (devoir) et sa'ukmil (je finirai).",
+              "options": [
+                "واجب (wājib)",
+                "سأكمل (sa'ukmil)",
+                "ملعب (mal'ab)",
+                "حفلة (ḥafla)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« أمس ساعدتني أمي في القراءة » : qui a aidé ?",
+              "explanation": "Sa mère (ummī) l'a aidé hier.",
+              "options": ["Le directeur", "Sa mère", "Un étranger", "Personne"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« غدا سأراجع قبل النوم » : habitude ?",
+              "explanation": "Révision prévue demain avant de dormir.",
+              "options": [
+                "Réviser la nuit avant sleep",
+                "Ne jamais réviser",
+                "Réviser en cours seulement",
+                "Oublier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« أجد الواجب طويلاً أحياناً » : avis ?",
+              "explanation": "Parfois le devoir lui semble long.",
+              "options": [
+                "Toujours court",
+                "Parfois long",
+                "Absent",
+                "Facile toujours"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« أحب أن أدرس في غرفتي الهادئة » : lieu préféré ?",
+              "explanation": "Chambre calme pour étudier.",
+              "options": [
+                "Rue bruyante",
+                "Chambre calme",
+                "Cour de récré",
+                "Cantine"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« لم أنهِ الواجب أمس » : situation d'hier ?",
+              "explanation": "Devoir non terminé hier.",
+              "options": [
+                "Tout fini",
+                "Non terminé",
+                "Pas de devoir",
+                "Examen réussi"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« سأنهيه غداً بعد المغرب » : quand demain ?",
+              "explanation": "Après le coucher du soleil (maghrib).",
+              "options": [
+                "Avant l'aube",
+                "Après maghrib",
+                "Jamais",
+                "En classe"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« أظن أن الترتيب يساعد » : conseil perso ?",
+              "explanation": "Être ordonné aide à travailler.",
+              "options": [
+                "Le désordre aide",
+                "L'ordre aide",
+                "Rien écrire",
+                "Tout jeter"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« شكراً لأبي على الطاولة الجديدة » : objet ?",
+              "explanation": "Nouvelle table pour étudier.",
+              "options": ["Vélo", "Table d'étude", "Téléphone seul", "Ballon"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« غدا لن أؤجل الواجب » : décision ?",
+              "explanation": "Il ne repoussera plus le devoir demain.",
+              "options": [
+                "Encore retard",
+                "Ne pas procrastiner",
+                "Abandonner",
+                "Tricher"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "École et vie quotidienne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« أستيقظ، أتناول الفطور، أذهب إلى المدرسة » : quelles actions du matin ?",
+              "explanation": "Réveil, petit-déjeuner et trajet scolaire.",
+              "options": [
+                "أستيقظ (astayqiẓ)",
+                "أتناول الفطور (atanaul al-fuṭūr)",
+                "أنام (anām)",
+                "ألعب فقط (al'ab faqaṭ)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« أمس تأخرتُ لأن الحافلة تأخرت » : cause ?",
+              "explanation": "Bus en retard ⇒ élève en retard.",
+              "options": [
+                "Il est parti tôt",
+                "Bus en retard",
+                "Pas d'école",
+                "Vacances"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« غدا سأذهب مشياً إذا كان الجو جميلاً » : transport ?",
+              "explanation": "Marche demain si beau temps.",
+              "options": ["Avion", "À pied si beau temps", "Bateau", "Jamais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« أحب الفطور قبل الدراسة » : avis ?",
+              "explanation": "Petit-déjeuner avant de travailler.",
+              "options": [
+                "Sans manger",
+                "Manger avant d'étudier",
+                "Dormir",
+                "Skip school"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« أرى أن النظافة مهمة في الفصل » : sujet ?",
+              "explanation": "Propreté de la classe (fi al-faṣl).",
+              "options": ["Bruit", "Propreté", "Triche", "Colère"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« أمس نظفنا السبورة » : tâche d'hier ?",
+              "explanation": "Nettoyage du tableau par la classe.",
+              "options": [
+                "Casser",
+                "Nettoyer le tableau",
+                "Peindre la rue",
+                "Examen"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« غدا سأحضر ماءً extra » : pourquoi ?",
+              "explanation": "Plus d'eau pour la journée chaude demain.",
+              "options": [
+                "Sport / chaleur",
+                "Neige",
+                "Examen oral seul",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« لا أحب الازدحام عند الباب » : gêne ?",
+              "explanation": "Foule à la porte le dérange.",
+              "options": [
+                "Aime la foule",
+                "N'aime pas la bousculade",
+                "Aime dormir",
+                "Aime la pluie"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« في رأيي، احترام القوانين ضروري » : valeur ?",
+              "explanation": "Respecter les règles est nécessaire.",
+              "options": [
+                "Ignorer règles",
+                "Respecter règles",
+                "Tricher",
+                "Crier"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« سأنام مبكراً الليلة للامتحان غداً » : préparation ?",
+              "explanation": "Coucher tôt ce soir pour l'examen de demain.",
+              "options": [
+                "Veiller toute la nuit",
+                "Dormir tôt ce soir",
+                "Ne pas venir",
+                "Jouer"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan compréhension examen",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Texte : « أمس درستُ، اليوم أفهم أكثر، غدا سأتدرب » : quels repères temporels ?",
+              "explanation": "Ams, al-yawm et ghadan structurent le récit.",
+              "options": ["أمس", "اليوم", "غدا", "أبداً (jamais seul)"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« أفهم السؤال الآن » : moment ?",
+              "explanation": "Al-ān : compréhension actuelle.",
+              "options": ["Hier", "Maintenant", "Demain matin", "Jamais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« أعتقد أنني مستعد » : sentiment avant examen ?",
+              "explanation": "Musta'id : il se sent prêt.",
+              "options": [
+                "Prêt",
+                "Totalement perdu",
+                "En vacances",
+                "En colère"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« سأقرأ التعليمات بعناية غداً » : stratégie ?",
+              "explanation": "Lire les consignes avec attention.",
+              "options": [
+                "Ignorer consignes",
+                "Lire consignes",
+                "Copier voisin",
+                "Partir"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« أمس أخطأتُ، لكنني تعلمتُ » : leçon ?",
+              "explanation": "Erreur hier mais apprentissage.",
+              "options": [
+                "Rien appris",
+                "Appris de l'erreur",
+                "Abandon",
+                "Triche"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« لا أحب التسرع في الإجابة » : avis ?",
+              "explanation": "Répondre trop vite lui déplaît.",
+              "options": [
+                "Aime se précipiter",
+                "Préfère réfléchir",
+                "Ne répond jamais",
+                "Dort"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« غدا سأراجع الكلمات الجديدة » : objectif ?",
+              "explanation": "Révision du vocabulaire neuf demain.",
+              "options": [
+                "Oublier mots",
+                "Revoir vocabulaire",
+                "Ne pas lire",
+                "Sport seul"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« في رأيي، الهدوء يساعد في الفهم » : condition ?",
+              "explanation": "Calme favorise la compréhension.",
+              "options": ["Bruit maximum", "Calme", "Course", "Bagarre"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« شكراً للمعلم على النصائح » : relation ?",
+              "explanation": "Gratitude envers les conseils du prof.",
+              "options": [
+                "Mépris",
+                "Remerciement",
+                "Silence hostile",
+                "Triche"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« سأحاول، وهذا هو الأهم » : attitude finale ?",
+              "explanation": "L'effort compte plus que la perfection immédiate.",
+              "options": [
+                "Ne rien tenter",
+                "Faire de son mieux",
+                "Quitter l'examen",
+                "Copier"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Expression",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Saluer et répondre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses conviennent à « السلام عليكم » à l'école ?",
+              "explanation": "Le salut arabe attend la formule de retour ou équivalent poli.",
+              "options": [
+                "وعليكم السلام",
+                "Wa alaykum as-salām",
+                "Ma'a salāma",
+                "Shukran pour un salut"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dire « Bonjour » poliment en arabe courant ?",
+              "explanation": "Sabāḥ al-khayr est une formule du matin.",
+              "options": [
+                "Sabāḥ al-khayr",
+                "Ma'a salāma",
+                "Na'am seul",
+                "Ukhruj"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse à « كيف حالك؟ » si tu vas bien :",
+              "explanation": "Al-ḥamdu lillāh exprime que tout va bien.",
+              "options": ["Al-ḥamdu lillāh", "Lā afham", "Ghadan", "Ams"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour dire « Je suis élève » :",
+              "explanation": "Ana tālib / tāliba selon le genre.",
+              "options": ["Ana tālib", "Ana madrasa", "Ana qalam", "Ana bab"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Remercier le professeur :",
+              "explanation": "Shukran ya ustādh est adapté.",
+              "options": ["Shukran ya ustādh", "Min fadlik", "Ghadan", "Ams"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Demander poliment « S'il vous plaît » :",
+              "explanation": "Min fadlik / min fadliki selon l'interlocuteur.",
+              "options": ["Min fadlik", "Uṣmut", "Sari'", "La"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dire « au revoir » en partant de l'école :",
+              "explanation": "Ma'a as-salāma est une formule de départ.",
+              "options": [
+                "Ma'a as-salāma",
+                "As-salāmu alaykum seul",
+                "Kitāb",
+                "Madrasa"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Présenter son avis « Je pense que… » :",
+              "explanation": "A'taqidu anna… introduit une opinion.",
+              "options": ["A'taqidu anna…", "Dhahabtu…", "Sa'adhhabu…", "Ams…"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dire « J'aime l'école » :",
+              "explanation": "Uḥibb al-madrasa exprime le goût.",
+              "options": ["Uḥibb al-madrasa", "Lā uḥibb", "Katabtu", "Nāmitu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Excuser un retard :",
+              "explanation": "Āsif, ta'akhkhartu : désolé, je suis en retard.",
+              "options": [
+                "Āsif, ta'akhkhartu",
+                "Shukran jazīlan pour retard",
+                "Ana musta'id",
+                "Ghadan faqaṭ"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Parler d'hier (أمس)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases parlent du passé d'hier ?",
+              "explanation": "Ams et verbes au passé comme dhahabtu.",
+              "options": [
+                "Ams dhahabtu ilā al-madrasa",
+                "Ghadan sa'adhhabu",
+                "Ams darastu",
+                "Sa'adrusu ghadan"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Hier j'ai lu » :",
+              "explanation": "Qara'tu ams ou ams qara'tu.",
+              "options": [
+                "Qara'tu ams",
+                "Sa'aqra'u ghadan",
+                "Ana aqra'u al-ān",
+                "Lā aqra'"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hier il a plu » (idée simple) :",
+              "explanation": "Ams kāna mataran ou matar ams.",
+              "options": [
+                "Ams kāna mataran",
+                "Ghadan matar",
+                "Lā matar abadan",
+                "Sa'umṭir al-ān"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je n'ai pas compris hier » :",
+              "explanation": "Ams lam afham.",
+              "options": [
+                "Ams lam afham",
+                "Ghadan afham",
+                "Ana afham dā'iman",
+                "Sa'afham"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Hier nous avons écrit » :",
+              "explanation": "Ams katabnā.",
+              "options": [
+                "Ams katabnā",
+                "Sa'naktubu",
+                "Katabtu ghadan",
+                "Lā katabnā"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Donner un avis : « Hier le cours était intéressant » :",
+              "explanation": "Ams kāna ad-dars mumtia'an.",
+              "options": [
+                "Ams kāna ad-dars mumtia'an",
+                "Ghadan ad-dars",
+                "Ad-dars lā",
+                "Sa'adhhab"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Hier j'ai aidé un ami » :",
+              "explanation": "Ams sa'adtُ ṣadīqan.",
+              "options": [
+                "Ams sa'adtُ ṣadīqan",
+                "Sa'usa'idu",
+                "Lā sa'ada",
+                "Ghadan faqaṭ"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Nier une action hier : « Je n'ai pas triché » :",
+              "explanation": "Lam ughish ams.",
+              "options": [
+                "Lam ughish ams",
+                "Ghishitu ams",
+                "Sa'ughish",
+                "Ughish al-ān"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Hier j'étais fatigué » :",
+              "explanation": "Kuntu mut'ab ams.",
+              "options": [
+                "Kuntu mut'ab ams",
+                "Sa'akūn mut'ab",
+                "Ana mut'ab al-ān seul",
+                "Ghadan mut'ab"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Contraste : « Hier j'ai révisé » :",
+              "explanation": "Murāja'a ams pour révision passée.",
+              "options": [
+                "Murāja'tu ams",
+                "Sa'urāji'u ghadan",
+                "Lā murāja'a",
+                "Sa'adhhab"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Parler de demain (غدا)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases parlent de demain ?",
+              "explanation": "Ghadan et futur sa'…",
+              "options": [
+                "Ghadan sa'adhhabu",
+                "Ams dhahabtu",
+                "Sa'adrusu ghadan",
+                "Qara'tu ams"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Demain j'irai à l'école » :",
+              "explanation": "Sa'adhhabu ilā al-madrasa ghadan.",
+              "options": [
+                "Sa'adhhabu ilā al-madrasa ghadan",
+                "Dhahabtu ams",
+                "Ana huna",
+                "Lā adhhab"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Demain nous aurons un examen » :",
+              "explanation": "Ghadan ladanā ikhtibār.",
+              "options": [
+                "Ghadan ladanā ikhtibār",
+                "Ams ikhtibār",
+                "Lā ikhtibār",
+                "Ikhtibār ams"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Opinion : « Je crois que demain sera facile » :",
+              "explanation": "A'taqidu anna ghadan sa-yakūn sahlā.",
+              "options": [
+                "A'taqidu anna ghadan sa-yakūn sahlā",
+                "Lam afham ams",
+                "Kuntu ta'ban",
+                "Ma'a salāma"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Demain je me lèverai tôt » :",
+              "explanation": "Sa'astayqiẓu bakīran ghadan.",
+              "options": [
+                "Sa'astayqiẓu bakīran ghadan",
+                "Nāmitu al-ān",
+                "Ams istayqaẓtu",
+                "Lā anām"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je ne serai pas en retard demain » :",
+              "explanation": "Lan ata'akhkhar ghadan.",
+              "options": [
+                "Lan ata'akhkhar ghadan",
+                "Ta'akhkhartu ams",
+                "Sa'ata'akhkhar",
+                "Ata'akhkhar al-ān"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Demain je poserai une question » :",
+              "explanation": "Sa'as'alu su'ālan ghadan.",
+              "options": [
+                "Sa'as'alu su'ālan ghadan",
+                "Sa'altu ams",
+                "Lā as'al",
+                "Jawabtu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Demain on travaillera en groupe » :",
+              "explanation": "Sa na'mal ma'an ghadan.",
+              "options": [
+                "Sa na'mal ma'an ghadan",
+                "A'malna ams",
+                "Lā 'amal",
+                "Faqaṭ al-ān"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Promesse : « Demain je ferai mieux » :",
+              "explanation": "Sa'af'al ahsan ghadan.",
+              "options": [
+                "Sa'af'al ahsan ghadan",
+                "Fa'altu sayyi'an ams",
+                "Lā af'al",
+                "Ghadan lā"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ce soir je prépare pour demain » :",
+              "explanation": "Al-layla u'addidu li-ghadin.",
+              "options": [
+                "Al-layla u'addidu li-ghadin",
+                "Ams u'addidu",
+                "Lā u'addid",
+                "Ghadan ams"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Donner son avis",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment un avis personnel ?",
+              "explanation": "A'taqidu et uḥibb introduisent opinion et préférence.",
+              "options": ["A'taqidu anna…", "Uḥibb…", "Kitāb", "Qalam"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je trouve que le cours est utile » :",
+              "explanation": "Ajidu anna ad-dars mufīd.",
+              "options": [
+                "Ajidu anna ad-dars mufīd",
+                "Dhahabtu",
+                "Sa'adhhab",
+                "Lā afham"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je n'aime pas le bruit » :",
+              "explanation": "Lā uḥibb al-ḍawḍā'.",
+              "options": [
+                "Lā uḥibb al-ḍawḍā'",
+                "Uḥibb al-ḍawḍā'",
+                "Shukran",
+                "Min fadlik"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« À mon avis, la lecture est importante » :",
+              "explanation": "Fī ra'yī, al-qirā'a muhemma.",
+              "options": [
+                "Fī ra'yī, al-qirā'a muhemma",
+                "Ghadan faqaṭ",
+                "Ams lā",
+                "Katabtu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Je pense que la réponse est correcte » :",
+              "explanation": "A'taqidu anna al-jawāb ṣaḥīḥ.",
+              "options": [
+                "A'taqidu anna al-jawāb ṣaḥīḥ",
+                "Jawāb khāṭi'",
+                "Lā jawāb",
+                "Ma'a salāma"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Oui, j'aime les maths » :",
+              "explanation": "Na'am, uḥibb ar-riyāḍiyāt.",
+              "options": [
+                "Na'am, uḥibb ar-riyāḍiyāt",
+                "Lā uḥibb",
+                "Ghadan",
+                "Ams"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Je crois que demain sera difficile » :",
+              "explanation": "A'taqidu anna ghadan sa-yakūn ṣa'ban.",
+              "options": [
+                "A'taqidu anna ghadan sa-yakūn ṣa'ban",
+                "Sahl al-ān",
+                "Ams sahl",
+                "Shukran"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Je préfère travailler calmement » :",
+              "explanation": "Afḍḍil al-'amal bi-hudū'.",
+              "options": [
+                "Afḍḍil al-'amal bi-hudū'",
+                "Afḍḍil al-ṣawt",
+                "Lā 'amal",
+                "Ughish"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Je n'aime pas être en retard » :",
+              "explanation": "Lā uḥibb an ata'akhkhar.",
+              "options": [
+                "Lā uḥibb an ata'akhkhar",
+                "Uḥibb at-ta'akhkhur",
+                "Sa'ata'akhkhar",
+                "Ams"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Je trouve l'arabe beau » :",
+              "explanation": "Ajidu al-lugha al-'arabiyya jamīla.",
+              "options": [
+                "Ajidu al-lugha al-'arabiyya jamīla",
+                "Ajiduha qabīha",
+                "Lā lugha",
+                "Ghadan"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "À l'école : demander et répondre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Demandes polies en classe :",
+              "explanation": "Hal yumkin… et min fadlik sont courantes.",
+              "options": [
+                "Hal yumkin an as'al?",
+                "Min fadlik",
+                "Ukhruj al-ān",
+                "Uṣmut dā'iman"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Où est le stylo ? » :",
+              "explanation": "Ayna al-qalam?",
+              "options": [
+                "Ayna al-qalam?",
+                "Mā ismuk?",
+                "Kayfa ḥāluk?",
+                "Ghadan"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Pouvez-vous répéter ? » :",
+              "explanation": "Hal yumkin an tu'īd?",
+              "options": [
+                "Hal yumkin an tu'īd?",
+                "Shukran",
+                "Ma'a salāma",
+                "Ana tālib"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je n'ai pas compris » :",
+              "explanation": "Lam afham.",
+              "options": [
+                "Lam afham",
+                "Fahimtu jami'an",
+                "Sa'afham ghadan faqaṭ",
+                "Katabtu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« C'est mon cartable » :",
+              "explanation": "Hadhihi ḥaqībatī.",
+              "options": [
+                "Hadhihi ḥaqībatī",
+                "Hadhā bab",
+                "Hadhā ustādh",
+                "Hadhihi madrasa"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ouvrez le livre » (impératif prof) tu entends :",
+              "explanation": "Iftaḥ al-kitāb / iftaḥū kitābakum.",
+              "options": ["Iftaḥ al-kitāb", "Ughliq", "Nam", "Kul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Répondre « Oui, j'ai fini » :",
+              "explanation": "Na'am, anhaytu.",
+              "options": ["Na'am, anhaytu", "Lā, lam anhay", "Ghadan", "Ams"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Quelle heure est-il ? » :",
+              "explanation": "Kam as-sā'a?",
+              "options": ["Kam as-sā'a?", "Ayna?", "Mā?", "Limādhā?"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Nous sommes en cinquième » :",
+              "explanation": "Naḥnu fī as-sāf al-khāmis.",
+              "options": [
+                "Naḥnu fī as-sāf al-khāmis",
+                "Naḥnu fī al-bayt",
+                "Sa'adhhab",
+                "Ams"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Merci pour l'aide » :",
+              "explanation": "Shukran 'alā al-musā'ada.",
+              "options": [
+                "Shukran 'alā al-musā'ada",
+                "Āsif",
+                "Min fadlik?",
+                "Lā shukr"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Mini-dialogues écrits",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Réponses possibles à « هل فهمت؟ » si tu as compris :",
+              "explanation": "Na'am, fahimtu ou équivalent affirmatif.",
+              "options": [
+                "Na'am, fahimtu",
+                "Lā, lam afham",
+                "Ghadan faqaṭ",
+                "Ma'a salāma"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Compléter : « ___، أين الحمام؟ » (politesse) :",
+              "explanation": "Min fadlik précède la demande.",
+              "options": ["Min fadlik", "Shukran", "Ghadan", "Ams"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ami : « هل عندك ماء؟ » — Tu as de l'eau :",
+              "explanation": "Na'am, 'indī mā'.",
+              "options": [
+                "Na'am, 'indī mā'",
+                "Lā, lā mā'",
+                "Sa'adhhab",
+                "Ughish"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Prof : « أجب على السؤال » — Tu commences :",
+              "explanation": "Al-jawāb huwa… ou réponse directe.",
+              "options": [
+                "Al-jawāb huwa…",
+                "Ma'a salāma",
+                "Ana nāmit",
+                "Ghadan"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« أمس لم أحضر » — excuse :",
+              "explanation": "Explique absence d'hier avec lam aḥḍur ams.",
+              "options": [
+                "Lam aḥḍur ams",
+                "Sa'aḥḍur ams",
+                "Aḥḍurtu",
+                "Ghadan aḥḍur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« غدا سأحضر باكراً » — promesse :",
+              "explanation": "Présence tôt demain.",
+              "options": [
+                "Sa'aḥḍur bakīran ghadan",
+                "Ta'akhkhartu",
+                "Lā adhhab",
+                "Ams faqaṭ"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Donner avis : « الدرس ___ » (facile) :",
+              "explanation": "Ad-dars sahl.",
+              "options": [
+                "Ad-dars sahl",
+                "Ad-dars bab",
+                "Ad-dars qalam",
+                "Ad-dars ghadan"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« ___ أحب المدرسة » (marqueur opinion) :",
+              "explanation": "Ana uḥibb al-madrasa.",
+              "options": [
+                "Ana uḥibb al-madrasa",
+                "Lā kitāb",
+                "Sa'adhhab",
+                "Ams dhahabtu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Refuser poliment bruit : « ___ أحب الضوضاء » :",
+              "explanation": "Lā uḥibb al-ḍawḍā'.",
+              "options": [
+                "Lā uḥibb al-ḍawḍā'",
+                "Uḥibb al-ḍawḍā'",
+                "Shukran",
+                "Min fadlik"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Clore un échange : « ___ » :",
+              "explanation": "Ma'a as-salāma ou shukran.",
+              "options": [
+                "Ma'a as-salāma",
+                "As-salāmu alaykum seul pour partir",
+                "Iftaḥ",
+                "Qara'tu"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Vocabulaire école + transcription",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des objets scolaires ?",
+              "explanation": "Kitāb (livre) et qalam (stylo).",
+              "options": ["Kitāb (livre)", "Qalam (stylo)", "Ghadan", "Ams"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Madrasa (مدرسة) signifie :",
+              "explanation": "École.",
+              "options": ["École", "Maison", "Rue", "Mer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ustādh (أستاذ) :",
+              "explanation": "Professeur / enseignant.",
+              "options": ["Professeur", "Élève", "Stylo", "Table"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ṣaf (صف) :",
+              "explanation": "Classe (niveau ou salle).",
+              "options": ["Classe", "Cuisine", "Jardin public", "Avion"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Wājib (واجب) :",
+              "explanation": "Devoir scolaire.",
+              "options": ["Devoir", "Jeux", "Vacances", "Salut"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ikhtibār (اختبار) :",
+              "explanation": "Examen / contrôle.",
+              "options": ["Examen", "Repas", "Sommeil", "Ballon"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Maktab (مكتب) :",
+              "explanation": "Bureau.",
+              "options": ["Bureau", "Porte", "Chaussure", "Nuage"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Murāja'a (مراجعة) :",
+              "explanation": "Révision.",
+              "options": ["Révision", "Triche", "Retard", "Colère"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Zamīl (زميل) :",
+              "explanation": "Camarade de classe.",
+              "options": ["Camarade", "Directeur", "Mère", "Arbre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ḥiṣṣa (حصة) :",
+              "explanation": "Période / heure de cours.",
+              "options": ["Heure de cours", "Vacances", "Nuit", "Route"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Phrases pour l'examen oral",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases utiles avant de répondre à l'examen :",
+              "explanation": "Demander de répéter ou confirmer qu'on a compris.",
+              "options": [
+                "Hal yumkin an tu'īd?",
+                "Fahimtu as-su'āl",
+                "Ughish",
+                "Ana ghadan faqaṭ"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je suis prêt » :",
+              "explanation": "Ana musta'id / musta'ida.",
+              "options": ["Ana musta'id", "Ana nāim", "Lā afham", "Ghadan"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Pouvez-vous parler plus lentement ? » :",
+              "explanation": "Hal yumkin al-i'bā' bi-buṭ'?",
+              "options": [
+                "Hal yumkin al-i'bā' bi-buṭ'?",
+                "Sari'an jiddan",
+                "Uṣmut",
+                "Shukran faqaṭ"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Voici ma réponse » :",
+              "explanation": "Hādhā jawābī.",
+              "options": ["Hādhā jawābī", "Hādhā bab", "Ma'a salāma", "Ams"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Je ne suis pas sûr » :",
+              "explanation": "Laysa 'indī yaqīn.",
+              "options": [
+                "Laysa 'indī yaqīn",
+                "Ana mut'akid 100%",
+                "Jawāb ṣaḥīḥ dā'iman",
+                "Lā as'al"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Hier j'ai révisé pour aujourd'hui » :",
+              "explanation": "Ams rāja'tu li-l-yawm.",
+              "options": [
+                "Ams rāja'tu li-l-yawm",
+                "Ghadan rāja'tu",
+                "Lā murāja'a",
+                "Sa'ughish"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Demain je continuerai à m'entraîner » :",
+              "explanation": "Ghadan sa'astamirr fi t-tadrīb.",
+              "options": [
+                "Ghadan sa'astamirr fi t-tadrīb",
+                "Ams only",
+                "Lā adrus",
+                "Nam"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Opinion : « Je pense avoir bien répondu » :",
+              "explanation": "A'taqidu annanī ajabtu jayyidan.",
+              "options": [
+                "A'taqidu annanī ajabtu jayyidan",
+                "Lā jawāb",
+                "Shukran",
+                "Min fadlik"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Merci, j'ai terminé » :",
+              "explanation": "Shukran, anhaytu.",
+              "options": ["Shukran, anhaytu", "Lam anhay", "Ukhruj", "Ghadan"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Puis-je poser une autre question ? » :",
+              "explanation": "Hal yumkin su'āl ākhar?",
+              "options": [
+                "Hal yumkin su'āl ākhar?",
+                "Lā as'al",
+                "Ma'a salāma",
+                "Kitāb"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Mélange temps et avis",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Repères temporels à utiliser en phrase :",
+              "explanation": "Ams (hier) et ghadan (demain) cadrent le récit scolaire.",
+              "options": ["Ams", "Ghadan", "Qalam", "Maktab"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase complète passé : « Hier j'ai étudié l'arabe » :",
+              "explanation": "Ams darastu al-lugha al-'arabiyya.",
+              "options": [
+                "Ams darastu al-lugha al-'arabiyya",
+                "Sa'adrusu ghadan",
+                "Lā adrus",
+                "Ana maktab"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase futur : « Demain je lirai » :",
+              "explanation": "Ghadan sa'aqra'u.",
+              "options": [
+                "Ghadan sa'aqra'u",
+                "Qara'tu ams",
+                "Lā aqra'",
+                "Shukran"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Avis : « Je trouve la révision utile » :",
+              "explanation": "Ajidu anna al-murāja'a mufīda.",
+              "options": [
+                "Ajidu anna al-murāja'a mufīda",
+                "Murāja'a lā",
+                "Ghadan bab",
+                "Ams qalam"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Aujourd'hui je comprends mieux » :",
+              "explanation": "Al-yawm afham ahsan.",
+              "options": [
+                "Al-yawm afham ahsan",
+                "Ams afham ahsan",
+                "Ghadan lā",
+                "Lā afham abadan"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je n'aime pas oublier mes affaires » :",
+              "explanation": "Lā uḥibb an ansā ḥuqūqī.",
+              "options": [
+                "Lā uḥibb an ansā ḥaqībatī",
+                "Uḥibb an ansā",
+                "Sa'ansā",
+                "Ghadan"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Demain je parlerai en arabe plus » :",
+              "explanation": "Ghadan sa'atakallamu al-'arabiyya akthar.",
+              "options": [
+                "Ghadan sa'atakallamu al-'arabiyya akthar",
+                "Ams only English",
+                "Lā atakallam",
+                "Ma'a salāma"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Hier le prof a expliqué » :",
+              "explanation": "Ams sharaha al-ustādh.",
+              "options": [
+                "Ams sharaha al-ustādh",
+                "Sa'yashraḥu ghadan",
+                "Lā sharḥ",
+                "Ana ustādh"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Je crois que l'effort compte » :",
+              "explanation": "A'taqidu anna al-juhūd muhim.",
+              "options": [
+                "A'taqidu anna al-juhūd muhim",
+                "Al-juhūd lā",
+                "Kitāb",
+                "Qalam"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Clôture positive : « Inchallah je réussirai demain » :",
+              "explanation": "In shā'a llāh, sa'anjah ghadan (niveau 5e simplifié).",
+              "options": [
+                "In shā'a llāh, sa'anjah ghadan",
+                "Lam anjah ams",
+                "Lā adrus",
+                "Ughish"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Expression finale examen",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formules polies pour l'examen :",
+              "explanation": "Min fadlik et shukran restent essentielles.",
+              "options": ["Min fadlik", "Shukran", "Ukhruj", "Uṣmut"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Se présenter : « Je m'appelle… » :",
+              "explanation": "Ismī…",
+              "options": ["Ismī…", "Ana madrasa", "Ghadan", "Ams"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« J'ai dix ans » (approximation 5e) :",
+              "explanation": "'Umri 'ashar sinīn (forme simple).",
+              "options": [
+                "'Umri 'ashar sinīn",
+                "Ana ustādh",
+                "Lā 'umr",
+                "Sa'adhhab"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je viens de France » (exemple pays) :",
+              "explanation": "Ana min Faransa.",
+              "options": [
+                "Ana min Faransa",
+                "Ana min qalam",
+                "Ghadan min",
+                "Ams min"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Avis : « J'aime apprendre l'arabe » :",
+              "explanation": "Uḥibb ta'allum al-'arabiyya.",
+              "options": [
+                "Uḥibb ta'allum al-'arabiyya",
+                "Lā uḥibb ta'allum",
+                "Sa'ata'allam ams faqaṭ",
+                "Ma'a salāma"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Hier j'ai fait une erreur, demain je corrigerai » :",
+              "explanation": "Ams akhṭa'tu, ghadan sa'uṣliḥu.",
+              "options": [
+                "Ams akhṭa'tu, ghadan sa'uṣliḥu",
+                "Ghadan akhṭa'tu ams",
+                "Lā akhṭi'",
+                "Sa'ughish"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Pouvez-vous m'aider ? » :",
+              "explanation": "Hal yumkin an tusā'idanī?",
+              "options": [
+                "Hal yumkin an tusā'idanī?",
+                "Lā musā'ada",
+                "Ana ustādh",
+                "Qalam"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Je pense que j'ai besoin de réviser » :",
+              "explanation": "A'taqidu annanī aḥtāju ilā murāja'a.",
+              "options": [
+                "A'taqidu annanī aḥtāju ilā murāja'a",
+                "Lā murāja'a",
+                "Ghadan lā",
+                "Shukran faqaṭ"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Bonne chance à tous demain » :",
+              "explanation": "Tuṣbiḥū 'alā khayr / ḥaẓẓ sa'īd ghadan (sens bonne chance).",
+              "options": [
+                "Ḥaẓẓ sa'īd li-l-jamī' ghadan",
+                "Ma'a salāma ams",
+                "Lā ghadan",
+                "Uṣmut"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase de fin : « Merci, au revoir » :",
+              "explanation": "Shukran, ma'a as-salāma.",
+              "options": [
+                "Shukran, ma'a as-salāma",
+                "Min fadlik seul",
+                "As-salāmu alaykum pour quitter sans merci",
+                "Iftaḥ al-bab"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

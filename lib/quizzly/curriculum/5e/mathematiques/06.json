@@ -1,0 +1,1938 @@
+{
+  "id": "5e-mathematiques-06",
+  "year": "5e",
+  "subject": "mathematiques",
+  "title": "Géométrie et mesures",
+  "order": 6,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Figures",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un triangle, quelles affirmations sont toujours vraies ?",
+              "options": [
+                "La somme des trois angles intérieurs vaut 180°",
+                "Tous les côtés ont la même longueur",
+                "Il possède exactement trois sommets",
+                "Tous les angles mesurent 60°"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Somme des angles = 180° ; trois sommets. Égalité des côtés ou 60° partout : cas particuliers seulement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Angles 55° et 65° dans un triangle. Le troisième angle vaut :",
+              "options": ["50°", "60°", "70°", "120°"],
+              "correctAnswers": [1],
+              "explanation": "180° − 55° − 65° = 60°."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Triangle rectangle : un angle vaut 35° (autre que le droit). Le troisième vaut :",
+              "options": ["35°", "55°", "90°", "145°"],
+              "correctAnswers": [1],
+              "explanation": "180° − 90° − 35° = 55°."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de côtés a un triangle ?",
+              "options": ["2", "3", "4", "6"],
+              "correctAnswers": [1],
+              "explanation": "Triangle : trois côtés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Triangle isocèle : angles de base 48°. Angle au sommet :",
+              "options": ["48°", "72°", "84°", "96°"],
+              "correctAnswers": [2],
+              "explanation": "180° − 48° − 48° = 84°."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Triangle équilatéral : chaque angle vaut :",
+              "options": ["45°", "60°", "90°", "120°"],
+              "correctAnswers": [1],
+              "explanation": "180° ÷ 3 = 60°."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Peut-on avoir un triangle 40°, 50° et 90° ?",
+              "options": [
+                "Non, somme trop petite",
+                "Oui, somme 180°",
+                "Non, il faut trois angles aigus",
+                "Oui seulement s'il est rectangle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "40 + 50 + 90 = 180° : triangle possible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Triangle : 90° et 38°. Troisième angle :",
+              "options": ["42°", "52°", "62°", "142°"],
+              "correctAnswers": [1],
+              "explanation": "180° − 90° − 38° = 52°."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Somme des angles d'un triangle :",
+              "options": ["90°", "180°", "270°", "360°"],
+              "correctAnswers": [1],
+              "explanation": "Propriété : somme = 180°."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Angles 72°, 58° et x°. x =",
+              "options": ["40°", "50°", "60°", "130°"],
+              "correctAnswers": [1],
+              "explanation": "x = 180° − 72° − 58° = 50°."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles figures ont au moins un angle droit ?",
+              "options": [
+                "Triangle rectangle",
+                "Triangle équilatéral",
+                "Carré",
+                "Cercle"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Triangle rectangle et carré ont un ou plusieurs angles de 90°."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Deux parallèles coupées par une sécante : angles correspondants 65° et 65°. Les droites sont :",
+              "options": [
+                "Perpendiculaires",
+                "Parallèles",
+                "Identiques",
+                "Impossibles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Correspondants égaux ⇒ parallèles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Droite qui coupe deux autres en deux points :",
+              "options": ["Médiatrice", "Sécante", "Bissectrice", "Hauteur"],
+              "correctAnswers": [1],
+              "explanation": "Sécante : coupe les deux droites."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "(d) // (d'). Angle alterne-interne 47°. Son homologue vaut :",
+              "options": ["43°", "47°", "90°", "133°"],
+              "correctAnswers": [1],
+              "explanation": "Alternes-internes entre parallèles : égaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Alternes-internes : 112° et …",
+              "options": ["68°", "112°", "180°", "224°"],
+              "correctAnswers": [1],
+              "explanation": "Mesures égales : 112°."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Angle correspondant 78°. Autre correspondant (même position) :",
+              "options": ["12°", "78°", "102°", "156°"],
+              "correctAnswers": [1],
+              "explanation": "Correspondants égaux entre parallèles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux parallèles distinctes se coupent :",
+              "options": ["Une fois", "Deux fois", "Jamais", "Trois fois"],
+              "correctAnswers": [2],
+              "explanation": "Parallèles : aucun point commun."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Angles correspondants : même …",
+              "options": [
+                "Somme 90°",
+                "Position par rapport aux parallèles et à la sécante",
+                "Côté du plan",
+                "Longueur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même « coin » aux deux intersections."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "(d) // (d'). Angle 125°. Correspondant associé :",
+              "options": ["55°", "65°", "125°", "235°"],
+              "correctAnswers": [2],
+              "explanation": "Correspondants : 125°."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le symbole // signifie :",
+              "options": ["Égal", "Parallèle", "Perpendiculaire", "Symétrique"],
+              "correctAnswers": [1],
+              "explanation": "Parallélisme."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai pour un parallélogramme ?",
+              "options": [
+                "Côtés opposés parallèles",
+                "Tous les angles droits",
+                "Côtés opposés de même longueur",
+                "Toujours quatre axes de symétrie"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Opposés parallèles et de même longueur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Parallélogramme : angle 70°. Angle consécutif :",
+              "options": ["70°", "90°", "110°", "180°"],
+              "correctAnswers": [2],
+              "explanation": "Consécutifs supplémentaires : 180° − 70° = 110°."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Angle A = 58°. Angle C opposé :",
+              "options": ["58°", "122°", "180°", "302°"],
+              "correctAnswers": [0],
+              "explanation": "Opposés égaux : 58°."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Losange : parallélogramme avec …",
+              "options": [
+                "Quatre angles droits",
+                "Quatre côtés égaux",
+                "Un seul côté",
+                "Deux côtés parallèles seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Quatre côtés congrus."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Paires de côtés parallèles dans un parallélogramme :",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [1],
+              "explanation": "Deux paires d'opposés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Angle B = 115°. Angle D :",
+              "options": ["65°", "115°", "180°", "230°"],
+              "correctAnswers": [1],
+              "explanation": "Opposés : 115°."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rectangle : parallélogramme avec …",
+              "options": [
+                "Côtés tous égaux",
+                "Quatre angles droits",
+                "Pas de parallèles",
+                "Trois côtés"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Quatre angles de 90°."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Angle 125°. Opposé :",
+              "options": ["55°", "125°", "180°", "305°"],
+              "correctAnswers": [1],
+              "explanation": "Opposés égaux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Diagonales d'un parallélogramme :",
+              "options": [
+                "Toujours égales",
+                "Se coupent en leur milieu",
+                "Perpendiculaires toujours",
+                "Parallèles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Elles se bisectent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Angle 54°. Consécutif :",
+              "options": ["54°", "126°", "136°", "180°"],
+              "correctAnswers": [1],
+              "explanation": "180° − 54° = 126°."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Figures avec au moins un axe de symétrie ?",
+              "options": [
+                "Segment (médiatrice)",
+                "Triangle scalène quelconque",
+                "Triangle isocèle",
+                "Parallélogramme oblique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Médiatrice du segment ; isocèle a un axe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Axes de symétrie d'un carré :",
+              "options": ["1", "2", "4", "8"],
+              "correctAnswers": [2],
+              "explanation": "Quatre axes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Symétrie axiale : miroir par rapport à …",
+              "options": [
+                "Un point",
+                "Une droite",
+                "Un cercle",
+                "Un segment seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Axe = droite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rectangle (non carré) : axes de symétrie",
+              "options": ["0", "1", "2", "4"],
+              "correctAnswers": [2],
+              "explanation": "Deux axes (milieux des côtés)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Points symétriques par rapport à (d) :",
+              "options": [
+                "Même côté de (d)",
+                "Équidistants de (d), de part et d'autre",
+                "Sur (d) seulement",
+                "Confondus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Distances égales à l'axe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Triangle équilatéral : axes",
+              "options": ["1", "2", "3", "6"],
+              "correctAnswers": [2],
+              "explanation": "Trois axes (hauteurs)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lettre « A » majuscule simple :",
+              "options": ["0 axe", "1 axe vertical", "2 axes", "Infinité"],
+              "correctAnswers": [1],
+              "explanation": "Un axe vertical usuel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "M' symétrique de M par (d) : [MM'] est …",
+              "options": [
+                "Parallèle à (d)",
+                "Perpendiculaire à (d)",
+                "Sur (d)",
+                "De longueur 0 toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Segment perpendiculaire à l'axe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cercle : axes de symétrie",
+              "options": ["1", "4", "Infinité (par le centre)", "0"],
+              "correctAnswers": [2],
+              "explanation": "Toute droite par le centre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Losange (non carré) : axes",
+              "options": ["0", "1", "2", "4"],
+              "correctAnswers": [2],
+              "explanation": "Deux diagonales."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Paires d'angles supplémentaires (somme 180°) ?",
+              "options": [
+                "70° et 110°",
+                "45° et 50°",
+                "125° et 55°",
+                "30° et 50°"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "70+110=180 ; 125+55=180."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Opposés par le sommet 63° et 63° :",
+              "options": [
+                "Supplémentaires",
+                "Complémentaires",
+                "Égaux",
+                "Inexistants"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Opposés par le sommet : égaux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complémentaires : somme",
+              "options": ["90°", "180°", "270°", "360°"],
+              "correctAnswers": [0],
+              "explanation": "x + y = 90°."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Supplément de 28° :",
+              "options": ["62°", "152°", "162°", "332°"],
+              "correctAnswers": [1],
+              "explanation": "180° − 28° = 152°."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complément de 41° :",
+              "options": ["49°", "139°", "149°", "319°"],
+              "correctAnswers": [0],
+              "explanation": "90° − 41° = 49°."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Angles adjacents sur une droite : 115° et x. x =",
+              "options": ["55°", "65°", "115°", "295°"],
+              "correctAnswers": [1],
+              "explanation": "180° − 115° = 65°."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Angle droit :",
+              "options": ["45°", "60°", "90°", "180°"],
+              "correctAnswers": [2],
+              "explanation": "90°."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Somme 89° + 46° + 45° =",
+              "options": ["170°", "180°", "190°", "360°"],
+              "correctAnswers": [1],
+              "explanation": "180° : triangle possible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Angle plat :",
+              "options": ["90°", "120°", "180°", "360°"],
+              "correctAnswers": [2],
+              "explanation": "180°."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Parallèles + sécante : aigu 37°. Correspondant aigu :",
+              "options": ["37°", "53°", "143°", "180°"],
+              "correctAnswers": [0],
+              "explanation": "Correspondants égaux."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quadrilatères ?",
+              "options": ["Trapèze", "Triangle", "Losange", "Pentagone"],
+              "correctAnswers": [0, 2],
+              "explanation": "Quatre côtés : trapèze, losange."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Trapèze : au moins …",
+              "options": [
+                "Quatre paires de parallèles",
+                "Une paire de côtés parallèles",
+                "Aucun côté",
+                "Cinq sommets"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un couple de parallèles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Somme angles quadrilatère :",
+              "options": ["180°", "270°", "360°", "540°"],
+              "correctAnswers": [2],
+              "explanation": "(4−2)×180° = 360°."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Angles 90°, 90°, 100°. Quatrième :",
+              "options": ["70°", "80°", "90°", "100°"],
+              "correctAnswers": [1],
+              "explanation": "360 − 280 = 80°."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Carré est aussi un …",
+              "options": ["Trapèze seul", "Losange", "Triangle", "Segment"],
+              "correctAnswers": [1],
+              "explanation": "Quatre côtés égaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Diagonales d'un quadrilatère :",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [1],
+              "explanation": "Deux diagonales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Angles d'un rectangle :",
+              "options": ["45°", "60°", "90°", "120°"],
+              "correctAnswers": [2],
+              "explanation": "Quatre angles droits."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pentagone : côtés",
+              "options": ["4", "5", "6", "8"],
+              "correctAnswers": [1],
+              "explanation": "Cinq côtés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Consécutifs 88° et a°. a =",
+              "options": ["88°", "92°", "102°", "272°"],
+              "correctAnswers": [1],
+              "explanation": "180° − 88° = 92°."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "M milieu de [AB], AM = 3,5 cm. AB =",
+              "options": ["3,5 cm", "5 cm", "7 cm", "10,5 cm"],
+              "correctAnswers": [2],
+              "explanation": "AB = 2 × 3,5 = 7 cm."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Triplets constructibles ?",
+              "options": ["3 ; 4 ; 5", "1 ; 2 ; 4", "5 ; 5 ; 5", "2 ; 3 ; 6"],
+              "correctAnswers": [0, 2],
+              "explanation": "Inégalité triangulaire : 3+4>5 et 5+5>5 ; 1+2<4 et 2+3<6."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "6, 8 et 15 cm :",
+              "options": [
+                "Constructible",
+                "Non : 6+8<15",
+                "Non : entiers",
+                "Constructible car 15 max"
+              ],
+              "correctAnswers": [1],
+              "explanation": "14 < 15."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "AB=5, BC=7. AC entre :",
+              "options": ["2 et 12", "5 et 7", "0 et 5", "7 et 14"],
+              "correctAnswers": [0],
+              "explanation": "|7−5| < AC < 12."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "4, 4, 4 dm : triangle …",
+              "options": [
+                "Scalène",
+                "Isocèle seulement",
+                "Équilatéral",
+                "Impossible"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Trois côtés égaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "9, 9, 5 cm :",
+              "options": ["Équilatéral", "Isocèle", "Rectangle", "Impossible"],
+              "correctAnswers": [1],
+              "explanation": "Deux côtés égaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Hauteur d'un triangle :",
+              "options": [
+                "Parallèle à la base",
+                "Perpendiculaire à la base, du sommet",
+                "Diagonale",
+                "Médiane seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Perpendiculaire à la base."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Triangle rectangle : cathetus 3 cm et 4 cm. Hypoténuse :",
+              "options": ["4 cm", "5 cm", "6 cm", "7 cm"],
+              "correctAnswers": [1],
+              "explanation": "Triangle rectangle 3-4-5 : hypoténuse 5 cm (côté opposé à l'angle droit)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Côtés 12 et 5 cm. Troisième entier minimal :",
+              "options": ["6 cm", "7 cm", "8 cm", "17 cm"],
+              "correctAnswers": [2],
+              "explanation": "> 12−5 = 7, donc 8."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Scalène :",
+              "options": [
+                "Trois longueurs différentes",
+                "Deux côtés égaux",
+                "Trois angles 60°",
+                "Un angle 180°"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de côtés égaux (en général trois distincts)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "10, 3, 6 cm :",
+              "options": ["Oui", "Non : 3+6<10", "Non : pair", "Oui : 10 max"],
+              "correctAnswers": [1],
+              "explanation": "9 < 10."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Instruments de géométrie ?",
+              "options": [
+                "Règle graduée",
+                "Compas",
+                "Rapporteur",
+                "Thermomètre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Règle, compas, rapporteur (pas thermomètre)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Compas : surtout …",
+              "options": ["Angles", "Cercles et arcs", "Aires", "Volumes"],
+              "correctAnswers": [1],
+              "explanation": "Tracé de cercles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mesurer un angle :",
+              "options": [
+                "Équerre seule",
+                "Rapporteur",
+                "Balance",
+                "Règle sans graduations"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Rapporteur en degrés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Équerre :",
+              "options": ["Cercle", "Angle droit", "60° seulement", "Volume"],
+              "correctAnswers": [1],
+              "explanation": "90°."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Médiatrice de [AB] :",
+              "options": [
+                "Parallèle à AB",
+                "Perpendiculaire à AB au milieu",
+                "Par A",
+                "Angle 45°"
+              ],
+              "correctAnswers": [1],
+              "explanation": "⊥ au milieu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Point sur médiatrice de [AB] :",
+              "options": [
+                "Plus près de A",
+                "Équidistant de A et B",
+                "Sur [AB]",
+                "Confondu avec A"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Équidistance."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Perpendiculaires : angle",
+              "options": ["45°", "60°", "90°", "180°"],
+              "correctAnswers": [2],
+              "explanation": "90°."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Symbole ⊥ :",
+              "options": ["Parallèle", "Perpendiculaire", "Égal", "Symétrie"],
+              "correctAnswers": [1],
+              "explanation": "Perpendicularité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bissectrice : construction avec …",
+              "options": [
+                "Compas et règle",
+                "Thermomètre",
+                "Calculatrice seule",
+                "Balance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compas + règle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Polygone régulier :",
+              "options": [
+                "Côtés inégaux",
+                "Côtés et angles tous égaux",
+                "Toujours 4 côtés",
+                "Sans angles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Régularité."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parallèles + sécante : vrai ?",
+              "options": [
+                "Correspondants égaux",
+                "Alternes-internes égaux",
+                "Tous les angles 90°",
+                "Somme de tous les angles 90°"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Correspondants et alternes-internes égaux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Alterne-interne 52° (parallèles) : homologue",
+              "options": ["52°", "128°", "180°", "38°"],
+              "correctAnswers": [0],
+              "explanation": "52°."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Angle obtus :",
+              "options": ["< 90°", "= 90°", "Entre 90° et 180°", "= 180°"],
+              "correctAnswers": [2],
+              "explanation": "90° < obtus < 180°."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Angle aigu :",
+              "options": [
+                "Entre 0° et 90°",
+                "= 90°",
+                "Entre 90° et 180°",
+                "180°"
+              ],
+              "correctAnswers": [0],
+              "explanation": "< 90°."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "100°, 40°, 40° : triangle …",
+              "options": ["Rectangle", "Isocèle", "Équilatéral", "Impossible"],
+              "correctAnswers": [1],
+              "explanation": "Somme 180°, deux angles égaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quadrilatère : 95°, 85°, 110°, x. x =",
+              "options": ["60°", "70°", "80°", "90°"],
+              "correctAnswers": [1],
+              "explanation": "360 − 290 = 70°."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux perpendiculaires à (d) sont …",
+              "options": [
+                "Perpendiculaires entre elles",
+                "Parallèles",
+                "Confondues toujours",
+                "Sécantes loin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Parallèles entre elles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux angles obtus dans un triangle :",
+              "options": [
+                "Impossible (somme > 180°)",
+                "Toujours possible",
+                "Donne un cercle",
+                "Donne des côtés nuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux obtus > 180°."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "135° est …",
+              "options": ["Aigu", "Droit", "Obtus", "Nul"],
+              "correctAnswers": [2],
+              "explanation": "Obtus."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Parallélogramme angle 102°. Opposé :",
+              "options": ["78°", "102°", "180°", "360°"],
+              "correctAnswers": [1],
+              "explanation": "102°."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Cercle : vrai ?",
+              "options": [
+                "Points à égale distance du centre",
+                "Diamètre = 2 × rayon",
+                "Trois sommets",
+                "Rayon = diamètre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "d = 2r ; équidistance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rayon 4 cm. Diamètre :",
+              "options": ["2 cm", "4 cm", "8 cm", "16 cm"],
+              "correctAnswers": [2],
+              "explanation": "d = 2 × 4 = 8 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Diamètre 10 cm. Rayon :",
+              "options": ["5 cm", "10 cm", "20 cm", "31,4 cm"],
+              "correctAnswers": [0],
+              "explanation": "r = 10 ÷ 2 = 5 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Demi-cercle : axe de symétrie …",
+              "options": ["Aucun", "Diamètre", "Tangent", "Rayon oblique"],
+              "correctAnswers": [1],
+              "explanation": "Axe le long du diamètre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Corde passant par le centre :",
+              "options": ["Rayon", "Diamètre", "Arc seul", "Tangente"],
+              "correctAnswers": [1],
+              "explanation": "Diamètre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Angle inscrit dans un demi-cercle (côté diamètre) :",
+              "options": ["Aigu quelconque", "Droit 90°", "Obtus", "180°"],
+              "correctAnswers": [1],
+              "explanation": "Propriété du demi-cercle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rayons par le centre :",
+              "options": ["1", "2", "4", "Infinité"],
+              "correctAnswers": [3],
+              "explanation": "Infinité de directions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Angle au centre 80° : arc intercepté",
+              "options": ["40°", "80°", "160°", "360°"],
+              "correctAnswers": [1],
+              "explanation": "80°."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Centre du cercle :",
+              "options": [
+                "Sur le cercle",
+                "Intérieur, distance r",
+                "Extérieur",
+                "Variable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Point intérieur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Rayon 6 cm. Plus grande corde (diamètre) :",
+              "options": ["6 cm", "12 cm", "18 cm", "36 cm"],
+              "correctAnswers": [1],
+              "explanation": "d = 12 cm."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Périmètres, aires et volumes",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formules d'aire ?",
+              "options": [
+                "Triangle : (base × hauteur) ÷ 2",
+                "Périmètre carré : 4 × côté",
+                "Parallélogramme : base × hauteur",
+                "Volume cube : arête³"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "A_triangle = (b×h)/2 ; A_para = b×h."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Base 8 cm, hauteur 5 cm. Aire triangle :",
+              "options": ["13 cm²", "20 cm²", "40 cm²", "80 cm²"],
+              "correctAnswers": [1],
+              "explanation": "(8×5)/2 = 20 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Base 12 m, hauteur 3 m. Aire :",
+              "options": ["15 m²", "18 m²", "36 m²", "72 m²"],
+              "correctAnswers": [1],
+              "explanation": "(12×3)/2 = 18 m²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aire 24 cm², base 8 cm. Hauteur :",
+              "options": ["3 cm", "6 cm", "12 cm", "16 cm"],
+              "correctAnswers": [1],
+              "explanation": "24=(8×h)/2 → h=6 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cathetus 6 et 8 cm (base et hauteur). Aire :",
+              "options": ["14 cm²", "24 cm²", "48 cm²", "96 cm²"],
+              "correctAnswers": [1],
+              "explanation": "(6×8)/2 = 24 cm²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Base 10 dm, hauteur 4 dm. Aire :",
+              "options": ["14 dm²", "20 dm²", "40 dm²", "80 dm²"],
+              "correctAnswers": [1],
+              "explanation": "(10×4)/2 = 20 dm²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Aire 45 cm², hauteur 6 cm. Base :",
+              "options": ["7,5 cm", "15 cm", "30 cm", "135 cm"],
+              "correctAnswers": [1],
+              "explanation": "45=(b×6)/2 → b=15 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Base 5,5 cm, hauteur 4 cm. Aire :",
+              "options": ["9,5 cm²", "11 cm²", "22 cm²", "44 cm²"],
+              "correctAnswers": [1],
+              "explanation": "(5,5×4)/2 = 11 cm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Même base et hauteur : triangle vs parallélogramme",
+              "options": ["Double", "Moitié", "Triple", "Égal"],
+              "correctAnswers": [1],
+              "explanation": "A_tri = (b×h)/2 = moitié du parallélogramme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Base 14 cm, hauteur 5 cm. Aire :",
+              "options": ["19 cm²", "35 cm²", "70 cm²", "140 cm²"],
+              "correctAnswers": [1],
+              "explanation": "(14×5)/2 = 35 cm²."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Périmètres ?",
+              "options": [
+                "Triangle 3+4+5 = 12 cm",
+                "Carré côté 7 → 28 cm",
+                "Rectangle aire 15 cm²",
+                "Triangle aire 12 cm²"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "P = somme des côtés ; carré P=4×7."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rectangle 9×4 cm. Périmètre :",
+              "options": ["13 cm", "26 cm", "36 cm", "72 cm"],
+              "correctAnswers": [1],
+              "explanation": "2×(9+4)=26 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Carré côté 6 dm. P :",
+              "options": ["12 dm", "24 dm", "36 dm", "72 dm"],
+              "correctAnswers": [1],
+              "explanation": "4×6=24 dm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Équilatéral côté 5 m. P :",
+              "options": ["10 m", "15 m", "20 m", "25 m"],
+              "correctAnswers": [1],
+              "explanation": "3×5=15 m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "P=30 cm, largeur 5 cm. Longueur :",
+              "options": ["10 cm", "15 cm", "20 cm", "25 cm"],
+              "correctAnswers": [0],
+              "explanation": "30=2(L+5) → L=10 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Hexagone régulier côté 3 cm. P :",
+              "options": ["9 cm", "12 cm", "18 cm", "36 cm"],
+              "correctAnswers": [2],
+              "explanation": "6×3=18 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Côtés 7, 8, 9 cm. P :",
+              "options": ["15 cm", "16 cm", "24 cm", "504 cm"],
+              "correctAnswers": [2],
+              "explanation": "7+8+9=24 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Carré P=44 mm. Côté :",
+              "options": ["11 mm", "22 mm", "44 mm", "176 mm"],
+              "correctAnswers": [0],
+              "explanation": "44/4=11 mm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Losange côté 4,5 cm. P :",
+              "options": ["9 cm", "13,5 cm", "18 cm", "20,25 cm"],
+              "correctAnswers": [2],
+              "explanation": "4×4,5=18 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Rectangle 12×7 cm. P :",
+              "options": ["19 cm", "38 cm", "84 cm", "168 cm"],
+              "correctAnswers": [1],
+              "explanation": "2×19=38 cm."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Aire parallélogramme ?",
+              "options": [
+                "A = base × hauteur",
+                "A = (b×h)/2",
+                "A = b × h avec h ⊥ b",
+                "A = somme des côtés"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "A = b×h, h perpendiculaire à b."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Base 9 cm, h 4 cm. Aire :",
+              "options": ["13 cm²", "18 cm²", "36 cm²", "72 cm²"],
+              "correctAnswers": [2],
+              "explanation": "9×4=36 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Aire 48 m², base 8 m. h :",
+              "options": ["4 m", "6 m", "8 m", "12 m"],
+              "correctAnswers": [1],
+              "explanation": "48/8=6 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rectangle 11×5 dm. Aire :",
+              "options": ["16 dm²", "32 dm²", "55 dm²", "110 dm²"],
+              "correctAnswers": [2],
+              "explanation": "11×5=55 dm²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Base 7,5 cm, h 6 cm. Aire :",
+              "options": ["13,5 cm²", "22,5 cm²", "45 cm²", "90 cm²"],
+              "correctAnswers": [2],
+              "explanation": "7,5×6=45 cm²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Carré côté 9 cm. Aire :",
+              "options": ["18 cm²", "36 cm²", "81 cm²", "324 cm²"],
+              "correctAnswers": [2],
+              "explanation": "9×9=81 cm²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Aire carré 64 cm². Côté :",
+              "options": ["6 cm", "8 cm", "16 cm", "32 cm"],
+              "correctAnswers": [1],
+              "explanation": "√64=8 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Base 12 cm, h 3,5 cm. Aire :",
+              "options": ["15,5 cm²", "42 cm²", "84 cm²", "126 cm²"],
+              "correctAnswers": [1],
+              "explanation": "12×3,5=42 cm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Aire 72 cm², largeur 6 cm. Longueur :",
+              "options": ["6 cm", "12 cm", "18 cm", "66 cm"],
+              "correctAnswers": [1],
+              "explanation": "72/6=12 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Base 10 cm, h 2 cm et 5 cm. Aires :",
+              "options": [
+                "20 et 50 cm²",
+                "10 et 25 cm²",
+                "12 et 15 cm²",
+                "40 et 100 cm²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "10×2=20 ; 10×5=50."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Unités d'aire ?",
+              "options": ["cm²", "m²", "cm", "km²"],
+              "correctAnswers": [0, 1],
+              "explanation": "Longueur au carré."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1 m² = … cm²",
+              "options": ["100", "1 000", "10 000", "1 000 000"],
+              "correctAnswers": [2],
+              "explanation": "100×100=10 000."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "2 m × 50 cm en m² :",
+              "options": ["0,5", "1", "100", "52"],
+              "correctAnswers": [1],
+              "explanation": "2×0,5=1 m²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3 dm² = … cm²",
+              "options": ["30", "300", "3 000", "0,03"],
+              "correctAnswers": [1],
+              "explanation": "3×100=300 cm²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Périmètre s'exprime en :",
+              "options": ["cm²", "m³", "cm ou m", "L"],
+              "correctAnswers": [2],
+              "explanation": "Unité de longueur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "5 000 cm² = … m²",
+              "options": ["0,05", "0,5", "5", "50"],
+              "correctAnswers": [1],
+              "explanation": "5 000/10 000=0,5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Volume en :",
+              "options": ["cm", "cm²", "cm³", "°"],
+              "correctAnswers": [2],
+              "explanation": "Longueur au cube."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1 dm³ = … cm³",
+              "options": ["10", "100", "1 000", "10 000"],
+              "correctAnswers": [2],
+              "explanation": "10³=1 000."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Triangle base 1 m, h 40 cm. Aire m² :",
+              "options": ["0,04", "0,2", "0,4", "2"],
+              "correctAnswers": [1],
+              "explanation": "(1×0,4)/2=0,2 m²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "2 km² = … m²",
+              "options": ["2 000", "200 000", "2 000 000", "20 000 000"],
+              "correctAnswers": [2],
+              "explanation": "2×1 000 000 m²."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "V = L×l×h ?",
+              "options": [
+                "Pavé droit",
+                "Cube",
+                "Sphère avec cette seule formule",
+                "Cercle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pavé et cube (cas L=l=h)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "4×3×2 cm. Volume :",
+              "options": ["9 cm³", "14 cm³", "24 cm³", "48 cm³"],
+              "correctAnswers": [2],
+              "explanation": "4×3×2=24 cm³."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cube arête 5 dm. V :",
+              "options": ["15 dm³", "25 dm³", "125 dm³", "625 dm³"],
+              "correctAnswers": [2],
+              "explanation": "5³=125 dm³."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "V=60 cm³, base 5×4 cm. Hauteur :",
+              "options": ["2 cm", "3 cm", "4 cm", "12 cm"],
+              "correctAnswers": [1],
+              "explanation": "60/20=3 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "10×2×0,5 m. V :",
+              "options": ["12,5 m³", "10 m³", "20 m³", "100 m³"],
+              "correctAnswers": [1],
+              "explanation": "10×2×0,5=10 m³."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cube V=27 cm³. Arête :",
+              "options": ["3 cm", "9 cm", "13,5 cm", "81 cm"],
+              "correctAnswers": [0],
+              "explanation": "∛27=3 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "6×6×1 cm. V :",
+              "options": ["13 cm³", "36 cm³", "72 cm³", "216 cm³"],
+              "correctAnswers": [1],
+              "explanation": "36 cm³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1 m³ = … dm³",
+              "options": ["10", "100", "1 000", "10 000"],
+              "correctAnswers": [2],
+              "explanation": "10³ dm³."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "2,5×4×2 dm. V :",
+              "options": ["8,5 dm³", "20 dm³", "40 dm³", "80 dm³"],
+              "correctAnswers": [1],
+              "explanation": "2,5×4×2=20 dm³."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cube V=125 cm³. Arête :",
+              "options": ["4 cm", "5 cm", "6 cm", "12 cm"],
+              "correctAnswers": [1],
+              "explanation": "∛125=5 cm."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Aire = (base×hauteur)/2 ?",
+              "options": [
+                "Triangle quelconque",
+                "Parallélogramme",
+                "Triangle rectangle",
+                "Segment"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Formule triangle ; rectangle inclus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Base 16 cm, h 3 cm. Aire :",
+              "options": ["19 cm²", "24 cm²", "48 cm²", "96 cm²"],
+              "correctAnswers": [1],
+              "explanation": "(16×3)/2=24 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Aire 30 cm², h 5 cm. Base :",
+              "options": ["6 cm", "12 cm", "15 cm", "150 cm"],
+              "correctAnswers": [1],
+              "explanation": "30=(b×5)/2 → b=12 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Parallélogramme 8×5 cm. Aire :",
+              "options": ["13 cm²", "26 cm²", "40 cm²", "80 cm²"],
+              "correctAnswers": [2],
+              "explanation": "8×5=40 cm²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Triangle et parallélogramme même b=6, h=7. Aires :",
+              "options": [
+                "21 et 42 cm²",
+                "42 et 21 cm²",
+                "21 et 21 cm²",
+                "42 et 84 cm²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tri=(6×7)/2=21 ; para=42."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Trapèze approximation 5e : bases 4 et 6 cm, h 3 cm. Aire (moyenne des bases × h) :",
+              "options": ["15 cm²", "18 cm²", "30 cm²", "45 cm²"],
+              "correctAnswers": [0],
+              "explanation": "A=((4+6)/2)×3=5×3=15 cm²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Carré aire 49 cm². Côté :",
+              "options": ["6 cm", "7 cm", "8 cm", "24,5 cm"],
+              "correctAnswers": [1],
+              "explanation": "√49=7 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rectangle 8×3 cm. Aire :",
+              "options": ["11 cm²", "22 cm²", "24 cm²", "48 cm²"],
+              "correctAnswers": [2],
+              "explanation": "8×3=24 cm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Base 9 cm, h 8 cm. Aire triangle :",
+              "options": ["17 cm²", "36 cm²", "72 cm²", "144 cm²"],
+              "correctAnswers": [1],
+              "explanation": "(9×8)/2=36 cm²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Aire 56 cm², base 14 cm. h triangle :",
+              "options": ["4 cm", "8 cm", "16 cm", "28 cm"],
+              "correctAnswers": [1],
+              "explanation": "56=(14×h)/2 → h=8 cm."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Conversions volume ?",
+              "options": [
+                "1 L = 1 dm³",
+                "1 m³ = 10 cm³",
+                "1 cm³ = 1 mL",
+                "1 dm³ = 1 000 cm³"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "1 L = 1 dm³ et 1 dm³ = 1 000 cm³. (1 cm³ = 1 mL est aussi vrai, mais 1 m³ = 10 cm³ est faux.)"
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pavé 3×4×5 cm. V :",
+              "options": ["12 cm³", "35 cm³", "60 cm³", "120 cm³"],
+              "correctAnswers": [2],
+              "explanation": "3×4×5=60 cm³."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "2 dm³ = … cm³",
+              "options": ["20", "200", "2 000", "20 000"],
+              "correctAnswers": [2],
+              "explanation": "2×1 000=2 000."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cube arête 2 cm. V :",
+              "options": ["4 cm³", "6 cm³", "8 cm³", "12 cm³"],
+              "correctAnswers": [2],
+              "explanation": "2³=8 cm³."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "V=100 cm³, base 10×2 cm. h :",
+              "options": ["5 cm", "10 cm", "20 cm", "50 cm"],
+              "correctAnswers": [0],
+              "explanation": "100/20=5 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 000 cm³ = … dm³",
+              "options": ["0,1", "1", "10", "100"],
+              "correctAnswers": [1],
+              "explanation": "1 000 cm³ = 1 dm³."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pavé 1,2 m × 0,5 m × 2 m. V :",
+              "options": ["0,6 m³", "1,2 m³", "2,4 m³", "3,7 m³"],
+              "correctAnswers": [1],
+              "explanation": "1,2×0,5×2=1,2 m³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cube arête 10 cm. V :",
+              "options": ["30 cm³", "100 cm³", "1 000 cm³", "10 000 cm³"],
+              "correctAnswers": [2],
+              "explanation": "10³=1 000 cm³."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "3 dm × 2 dm × 4 dm. V :",
+              "options": ["9 dm³", "12 dm³", "24 dm³", "48 dm³"],
+              "correctAnswers": [2],
+              "explanation": "3×2×4=24 dm³."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "V=64 cm³, cube. Arête :",
+              "options": ["3 cm", "4 cm", "8 cm", "16 cm"],
+              "correctAnswers": [1],
+              "explanation": "∛64=4 cm."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs sont des longueurs de contour ?",
+              "options": [
+                "Périmètre d'un carré",
+                "Circonférence d'un cercle",
+                "Aire d'un triangle",
+                "Volume d'un cube"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Périmètre et circonférence se mesurent en unités de longueur (cm, m). Aire en cm², volume en cm³."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Carré côté 10 cm. P :",
+              "options": ["20 cm", "40 cm", "100 cm", "400 cm"],
+              "correctAnswers": [1],
+              "explanation": "4×10=40 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Triangle 5, 12, 13 cm. P :",
+              "options": ["20 cm", "25 cm", "30 cm", "65 cm"],
+              "correctAnswers": [2],
+              "explanation": "5+12+13=30 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rectangle P=50 cm, L=15 cm. Largeur :",
+              "options": ["5 cm", "10 cm", "20 cm", "35 cm"],
+              "correctAnswers": [1],
+              "explanation": "50=2(15+l) → l=10 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Parallélogramme côtés 6 et 9 cm. P :",
+              "options": ["15 cm", "30 cm", "54 cm", "108 cm"],
+              "correctAnswers": [1],
+              "explanation": "2×(6+9)=30 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pentagone régulier côté 4 cm. P :",
+              "options": ["9 cm", "16 cm", "20 cm", "40 cm"],
+              "correctAnswers": [2],
+              "explanation": "5×4=20 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Carré P=36 m. Côté :",
+              "options": ["6 m", "9 m", "12 m", "18 m"],
+              "correctAnswers": [1],
+              "explanation": "36/4=9 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Équilatéral P=21 cm. Côté :",
+              "options": ["3 cm", "7 cm", "10,5 cm", "21 cm"],
+              "correctAnswers": [1],
+              "explanation": "21/3=7 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Rectangle 15×8 cm. P :",
+              "options": ["23 cm", "46 cm", "120 cm", "240 cm"],
+              "correctAnswers": [1],
+              "explanation": "2×23=46 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Losange P=32 cm. Côté :",
+              "options": ["4 cm", "8 cm", "16 cm", "32 cm"],
+              "correctAnswers": [1],
+              "explanation": "32/4=8 cm."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Aires en unités cohérentes ?",
+              "options": [
+                "Base cm et hauteur cm → cm²",
+                "Base m et hauteur m → m²",
+                "Base cm et hauteur m sans convertir",
+                "Périmètre en cm²"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Même unité de longueur pour b et h."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Triangle b=20 cm, h=5 cm. Aire :",
+              "options": ["25 cm²", "50 cm²", "100 cm²", "200 cm²"],
+              "correctAnswers": [1],
+              "explanation": "(20×5)/2=50 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Para b=11 m, h=2 m. Aire :",
+              "options": ["13 m²", "22 m²", "44 m²", "110 m²"],
+              "correctAnswers": [1],
+              "explanation": "11×2=22 m²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux triangles même aire 18 cm², bases 6 et 9 cm. Hauteurs :",
+              "options": ["3 et 2 cm", "6 et 4 cm", "9 et 6 cm", "18 et 18 cm"],
+              "correctAnswers": [1],
+              "explanation": "18=(6×h1)/2→h1=6 ; 18=(9×h2)/2→h2=4."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Carré P=48 dm. Aire :",
+              "options": ["12 dm²", "96 dm²", "144 dm²", "576 dm²"],
+              "correctAnswers": [2],
+              "explanation": "c=12 dm ; 12²=144 dm²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rectangle aire 40 cm², L=10 cm. P :",
+              "options": ["4 cm", "14 cm", "28 cm", "80 cm"],
+              "correctAnswers": [2],
+              "explanation": "l=4 ; P=2×14=28 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Base 7 cm, h 9 cm. Aire triangle :",
+              "options": ["16 cm²", "31,5 cm²", "63 cm²", "126 cm²"],
+              "correctAnswers": [1],
+              "explanation": "(7×9)/2=31,5 cm²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "800 cm² = … dm²",
+              "options": ["0,8", "8", "80", "800"],
+              "correctAnswers": [1],
+              "explanation": "800/100=8 dm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pavé aire base 12 cm² (face), hauteur 5 cm. V :",
+              "options": ["17 cm³", "60 cm³", "120 cm³", "600 cm³"],
+              "correctAnswers": [1],
+              "explanation": "V=12×5=60 cm³."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Triangle aire 27 cm², h 6 cm. Base :",
+              "options": ["4,5 cm", "9 cm", "18 cm", "81 cm"],
+              "correctAnswers": [1],
+              "explanation": "27=(b×6)/2 → b=9 cm."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Problèmes de mesure : vrai ?",
+              "options": [
+                "Aire triangle = (b×h)/2",
+                "Volume pavé = L×l×h",
+                "Périmètre triangle = b×h",
+                "Aire disque = côté × 4"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aire triangle : (b×h)/2. Volume pavé droit : V = L × l × h."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Plateau para 25 cm×12 cm (aire). Surface :",
+              "options": ["37 cm²", "74 cm²", "300 cm²", "600 cm²"],
+              "correctAnswers": [2],
+              "explanation": "25×12=300 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Toit triangle base 8 m, h 3 m. Aire :",
+              "options": ["11 m²", "12 m²", "24 m²", "48 m²"],
+              "correctAnswers": [1],
+              "explanation": "(8×3)/2=12 m²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Boîte 20×15×10 cm. V :",
+              "options": ["45 cm³", "300 cm³", "3 000 cm³", "30 000 cm³"],
+              "correctAnswers": [2],
+              "explanation": "20×15×10=3 000 cm³."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Clôture carré côté 25 m. Longueur clôture :",
+              "options": ["50 m", "100 m", "625 m", "2 500 m"],
+              "correctAnswers": [1],
+              "explanation": "P=4×25=100 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Terrain rect 40 m × 30 m. P :",
+              "options": ["70 m", "120 m", "140 m", "1 200 m"],
+              "correctAnswers": [2],
+              "explanation": "2×70=140 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Piscine 10×5×1,5 m. V :",
+              "options": ["16,5 m³", "50 m³", "75 m³", "150 m³"],
+              "correctAnswers": [2],
+              "explanation": "10×5×1,5=75 m³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Affiche carrée côté 80 cm. Aire :",
+              "options": ["160 cm²", "320 cm²", "6 400 cm²", "51 200 cm²"],
+              "correctAnswers": [2],
+              "explanation": "80²=6 400 cm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Triangle aire 48 dm², base 12 dm. h :",
+              "options": ["4 dm", "8 dm", "16 dm", "96 dm"],
+              "correctAnswers": [1],
+              "explanation": "48=(12×h)/2 → h=8 dm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Cube arête 3 cm. Aire d'une face puis volume (face 9 cm²) :",
+              "options": ["12 cm³", "18 cm³", "27 cm³", "81 cm³"],
+              "correctAnswers": [2],
+              "explanation": "Face=3×3=9 cm² ; V=9×3=27 cm³ ou 3³=27 cm³."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

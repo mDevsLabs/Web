@@ -13,6 +13,7 @@ import {
   progressionPasse,
   resumeQuizzly,
   soumettreQuiz,
+  traiterReponseQuestion,
 } from "@/lib/quizzly/queries";
 import { answerSchema, versQuizPublic } from "@/lib/quizzly/schema";
 import { matiereSuivie } from "@/lib/quizzly/subjects";
@@ -20,7 +21,9 @@ import { matiereSuivie } from "@/lib/quizzly/subjects";
 const corpsSchema = z.discriminatedUnion("phase", [
   z
     .object({
+      answers: z.array(answerSchema).max(10).optional(),
       phase: z.literal("reveal"),
+      preview: z.boolean().optional(),
       questionId: z.string().regex(/^q(?:[1-9]|10)$/),
       selectedIndexes: z.array(z.number().int().nonnegative().max(5)).max(4),
     })
@@ -140,9 +143,39 @@ export async function POST(request: Request, contexte: Contexte) {
           message: "Cette question n'existe pas.",
         });
       }
-      return Response.json(corrigerQuestion(question, corps.selectedIndexes), {
-        headers: { "Cache-Control": "private, no-store" },
+      const correction = corrigerQuestion(question, corps.selectedIndexes);
+      if (corps.preview) {
+        return Response.json(
+          {
+            ...correction,
+            gameOver: false,
+          },
+          {
+            headers: { "Cache-Control": "private, no-store" },
+          }
+        );
+      }
+      const reponse = await traiterReponseQuestion({
+        answers: corps.answers ?? [
+          {
+            questionId: corps.questionId,
+            selectedIndexes: corps.selectedIndexes,
+          },
+        ],
+        correct: correction.correct,
+        quiz,
+        userId: session.userId,
       });
+      return Response.json(
+        {
+          ...correction,
+          gameOver: reponse.gameOver,
+          hearts: reponse.hearts,
+        },
+        {
+          headers: { "Cache-Control": "private, no-store" },
+        }
+      );
     }
     const resultat = await soumettreQuiz(
       session.userId,

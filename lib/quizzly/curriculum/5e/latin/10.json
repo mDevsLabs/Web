@@ -1,0 +1,2158 @@
+{
+  "id": "5e-latin-10",
+  "year": "5e",
+  "subject": "latin",
+  "title": "Vers l'examen en latin",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Compréhension",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « Marcus pilam iacit », quelles réponses sont correctes ?",
+              "options": [
+                "Marcus est au nominatif (sujet).",
+                "pilam est à l'accusatif (complément d'objet).",
+                "Marcus est à l'accusatif.",
+                "pilam est au nominatif."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le sujet se met au nominatif et l'objet direct à l'accusatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie heri ?",
+              "options": ["aujourd'hui", "hier", "demain", "souvent"],
+              "correctAnswers": [1],
+              "explanation": "Heri est l'adverbe de temps qui signifie « hier »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie cras ?",
+              "options": ["hier", "demain", "maintenant", "toujours"],
+              "correctAnswers": [1],
+              "explanation": "Cras indique le jour suivant : « demain »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « Puella librum legit », qui lit ?",
+              "options": ["le livre", "la fille", "la maison", "le garçon"],
+              "correctAnswers": [1],
+              "explanation": "Puella, sujet au nominatif, désigne la fille qui lit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot est complément d'objet dans « Puer canem videt » ?",
+              "options": ["Puer", "canem", "videt", "est"],
+              "correctAnswers": [1],
+              "explanation": "Canem est à l'accusatif : c'est l'animal que le garçon voit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que veut dire « sum » ?",
+              "options": ["tu es", "il est", "je suis", "nous sommes"],
+              "correctAnswers": [2],
+              "explanation": "Sum est la première personne du singulier du verbe être."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduction de « Rosa est pulchra » :",
+              "options": [
+                "La rose est belle.",
+                "La rose voit le beau.",
+                "Le beau est une rose.",
+                "La rose était belle."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Est + adjectif au nominatif décrit la rose au présent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Cras ad villam ibimus », quand part-on ?",
+              "options": ["hier", "demain", "chaque jour", "maintenant"],
+              "correctAnswers": [1],
+              "explanation": "Cras ouvre la phrase et fixe l'action au lendemain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel cas pour le suet « magister » dans « Magister discipulos laudat » ?",
+              "options": ["nominatif", "accusatif", "vocatif", "ablatif"],
+              "correctAnswers": [0],
+              "explanation": "Le professeur qui loue est le sujet : nominatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Discipulos » dans la même phrase est :",
+              "options": [
+                "sujet",
+                "complément d'objet",
+                "adverbe",
+                "présent de sum"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Discipulos, accusatif pluriel, reçoit l'action de laudat."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Concernant « Ego sum discipulus », quelles propositions sont vraies ?",
+              "options": [
+                "Ego signifie « je ».",
+                "Sum signifie « je suis ».",
+                "Discipulus est à l'accusatif.",
+                "Sum signifie « tu es »."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ego + sum expriment « je suis » et discipulus décrit l'identité au nominatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie discipulus ?",
+              "options": ["le professeur", "l'élève", "la leçon", "la classe"],
+              "correctAnswers": [1],
+              "explanation": "Discipulus désigne l'élève, celui qui apprend."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Forme correcte : « Tu ___ Romanus. »",
+              "options": ["sum", "es", "est", "sunt"],
+              "correctAnswers": [1],
+              "explanation": "Avec tu, le verbe être se conjugue : es."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Heri puer ___ (être) laetus.",
+              "options": ["sum", "es", "fuit", "erat"],
+              "correctAnswers": [2],
+              "explanation": "Heri situe l'action dans le passé : on attend une forme passée de « être »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « Nauta navem parat », que prépare le marin ?",
+              "options": ["le port", "le navire", "la mer", "le vent"],
+              "correctAnswers": [1],
+              "explanation": "Navem, accusatif, est l'objet de parat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot est sujet dans « Canis aquam bibit » ?",
+              "options": ["aquam", "bibit", "canis", "est"],
+              "correctAnswers": [2],
+              "explanation": "Canis au nominatif est le chien qui boit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduction de « Heri sol non erat » :",
+              "options": [
+                "Demain le soleil brille.",
+                "Hier le soleil n'était pas (là).",
+                "Le soleil est chaud.",
+                "Hier nous sommes partis."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Heri + négation avec être au passé : hier le soleil n'était pas visible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cras amici ___ (venir) ad me.",
+              "options": ["venerunt", "venient", "veniunt", "venit"],
+              "correctAnswers": [1],
+              "explanation": "Cras oriente vers l'avenir proche : forme de futur ou futur proche selon le niveau 5e."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Aquam » est à l'accusatif car :",
+              "options": [
+                "c'est le sujet",
+                "c'est l'objet de bibit",
+                "c'est un adverbe",
+                "c'est heri"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'eau est ce que le chien boit : complément d'objet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sens de « parat » dans « Nauta navem parat » :",
+              "options": ["navigue", "prépare", "voit", "dort"],
+              "correctAnswers": [1],
+              "explanation": "Parat signifie « prépare » ou « arrange »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour « Cras Romam ibimus », quelles réponses conviennent ?",
+              "options": [
+                "Cras signifie « demain ».",
+                "Romam est probablement une destination (accusatif).",
+                "Ibimus exprime le passé.",
+                "Cras signifie « hier »."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Demain nous irons à Rome : cras + lieu en -am accusatif de direction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Romam indique :",
+              "options": [
+                "Rome (direction)",
+                "depuis Rome",
+                "avec Rome",
+                "Rome (sujet)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accusatif Romam marche souvent avec « aller vers » en 5e."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ibimus signifie :",
+              "options": [
+                "nous allons / nous irons",
+                "je vais",
+                "ils vont",
+                "tu vas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La terminaison -imus indique la première personne du pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « Mater filium amat », qui aime ?",
+              "options": ["le fils", "la mère", "l'amour", "la fille"],
+              "correctAnswers": [1],
+              "explanation": "Mater, nominatif, est le sujet du verbe amat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Filium est :",
+              "options": [
+                "nominatif singulier",
+                "accusatif singulier",
+                "nominatif pluriel",
+                "adverbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le fils est aimé : complément d'objet à l'accusatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie amat ?",
+              "options": ["aime", "mange", "parle", "attend"],
+              "correctAnswers": [0],
+              "explanation": "Amat est la troisième personne du singulier de « aimer »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Heri in agro ___ (être) multi pueri.",
+              "options": ["sunt", "erant", "est", "sum"],
+              "correctAnswers": [1],
+              "explanation": "Heri + pluriel demande l'imparfait ou passé de être : erant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Multi pueri signifie :",
+              "options": [
+                "un garçon",
+                "beaucoup de garçons",
+                "la fille",
+                "le champ"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Multi + pueri : plusieurs garçons au nominatif pluriel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "In agro signifie :",
+              "options": [
+                "dans le champ",
+                "vers le champ",
+                "sans champ",
+                "hier au champ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In + ablatif (agro) indique le lieu où : dans le champ."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel mot répond à « quand » dans « Heri in agro erant multi pueri » ?",
+              "options": ["in agro", "multi", "heri", "erant"],
+              "correctAnswers": [2],
+              "explanation": "Heri précise le moment : hier."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « Lucia panem coquit », quelles affirmations sont exactes ?",
+              "options": [
+                "Lucia est le sujet.",
+                "Panem est l'objet de coquit.",
+                "Panem est le sujet.",
+                "Coquit signifie « voit »."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lucia cuisine le pain : sujet nominatif et pain accusatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Panem signifie :",
+              "options": [
+                "le pain (objet)",
+                "les pains (sujets)",
+                "la cuisson",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Panem est l'accusatif de panis : le pain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Coquit signifie :",
+              "options": ["cuit", "lit", "court", "ouvre"],
+              "correctAnswers": [0],
+              "explanation": "Coquit = elle/il cuit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ego cras laboro » : quand travaille-t-on ?",
+              "options": ["hier", "demain", "maintenant", "jamais"],
+              "correctAnswers": [1],
+              "explanation": "Cras indique le jour suivant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Laboro signifie :",
+              "options": [
+                "je travaille",
+                "tu travailles",
+                "il travaille",
+                "nous travaillons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terminaison -o : première personne je travaille."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « Rex cives audit », qui écoute ?",
+              "options": ["les citoyens", "le roi", "la ville", "personne"],
+              "correctAnswers": [1],
+              "explanation": "Rex est le sujet nominatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cives est :",
+              "options": [
+                "accusatif pluriel (objet)",
+                "nominatif singulier",
+                "adverbe",
+                "sum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les citoyens sont écoutés : complément d'objet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Audit signifie :",
+              "options": ["écoute", "parle", "fuit", "donne"],
+              "correctAnswers": [0],
+              "explanation": "Audit = il/elle écoute."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduction : « Sum paratus »",
+              "options": [
+                "Je suis prêt.",
+                "Tu es prêt.",
+                "Il est prêt.",
+                "Nous sommes prêts."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sum + paratus : je suis prêt (masculin)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Paratus accordé avec sum (je) est :",
+              "options": [
+                "paratus (m.)",
+                "parata (f.)",
+                "parati (pl.)",
+                "paratum (n.)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec ego masculin, l'adjectif reste paratus."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrase « Servus dominum vocat » : choisis deux réponses vraies.",
+              "options": [
+                "Servus appelle.",
+                "Dominum est appelé (objet).",
+                "Dominum est le sujet.",
+                "Vocat signifie « voit »."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'esclave appelle son maître : sujet servus, objet dominum."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Servus signifie :",
+              "options": ["l'esclave", "le maître", "la voix", "la maison"],
+              "correctAnswers": [0],
+              "explanation": "Servus = l'esclave (sujet ici)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dominum signifie :",
+              "options": [
+                "le maître (objet)",
+                "les maîtres (sujets)",
+                "l'esclave",
+                "hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accusatif singulier de dominus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vocat signifie :",
+              "options": ["appelle", "frappe", "mange", "dort"],
+              "correctAnswers": [0],
+              "explanation": "Vocare → vocat : appeler."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Heri servus non laboravit » : a-t-il travaillé hier ?",
+              "options": ["oui", "non", "demain", "peut-être cras"],
+              "correctAnswers": [1],
+              "explanation": "Non + heri + verbe au passé : il n'a pas travaillé hier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « Puella stolam habet », que possède-t-elle ?",
+              "options": ["une robe", "un livre", "un chien", "un roi"],
+              "correctAnswers": [0],
+              "explanation": "Stolam, accusatif, désigne la robe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Habet signifie :",
+              "options": ["a / possède", "est", "va", "voit"],
+              "correctAnswers": [0],
+              "explanation": "Habet = elle/il a."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Stolam est :",
+              "options": ["accusatif", "nominatif", "vocatif", "cras"],
+              "correctAnswers": [0],
+              "explanation": "Objet de habet : accusatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Cras stolam emam » : que fera-t-elle demain ?",
+              "options": [
+                "acheter une robe",
+                "vendre une robe",
+                "coudre hier",
+                "dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Emam (futur) + stolam : j'achèterai une robe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Emam indique :",
+              "options": ["action future", "action passée", "sum", "heri"],
+              "correctAnswers": [0],
+              "explanation": "Forme future liée à cras dans l'idée de la phrase."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Pater filio pecuniam dat » : deux bonnes réponses.",
+              "options": [
+                "Pater donne.",
+                "Pecuniam est l'argent donné (objet).",
+                "Filio est toujours nominatif.",
+                "Dat signifie « prend »."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le père donne de l'argent ; pecuniam est l'objet direct."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pecuniam signifie :",
+              "options": ["l'argent (objet)", "le père", "le fils", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Accusatif de pecunia."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dat signifie :",
+              "options": ["donne", "demande", "court", "lit"],
+              "correctAnswers": [0],
+              "explanation": "Dat = il/elle donne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Filio (datif) indique ici :",
+              "options": [
+                "à / pour le fils",
+                "le fils sujet",
+                "contre le fils",
+                "hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 5e, on repère le complément au datif avec « donner à »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ego sum puer » : qui parle ?",
+              "options": ["je", "tu", "il", "nous"],
+              "correctAnswers": [0],
+              "explanation": "Ego = je."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Puer signifie :",
+              "options": ["garçon", "fille", "homme", "roi"],
+              "correctAnswers": [0],
+              "explanation": "Puer = le garçon."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Tu es magistra » : Tu es :",
+              "options": ["professeur (f.)", "élève (m.)", "roi", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Magistra = enseignante, féminin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Es est la forme de sum pour :",
+              "options": ["tu", "je", "il", "ils"],
+              "correctAnswers": [0],
+              "explanation": "Deuxième personne du singulier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Heri magistra nos ___ (appeler).",
+              "options": ["vocavit", "vocat", "vocamus", "vocas"],
+              "correctAnswers": [0],
+              "explanation": "Heri exige le passé : vocavit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nos signifie :",
+              "options": ["nous (objet)", "eux", "toi", "moi"],
+              "correctAnswers": [0],
+              "explanation": "Accusatif pluriel de la première personne : nous."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Canis felem sequitur » : deux réponses correctes.",
+              "options": [
+                "Canis poursuit.",
+                "Felem est la chatte (objet).",
+                "Felem est le chien.",
+                "Sequitur signifie « mange »."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le chien suit la chatte : sujet canis, objet felem."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sequitur signifie :",
+              "options": ["suit", "mord", "cache", "parle"],
+              "correctAnswers": [0],
+              "explanation": "Sequi → sequitur : suivre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Felem est accusatif de :",
+              "options": ["felis (chatte)", "canis", "feles sujet", "cras"],
+              "correctAnswers": [0],
+              "explanation": "Forme objet féminin felis → felem."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Cras feles canem timebit » : qui aura peur demain ?",
+              "options": ["le chien", "la chatte", "personne", "hier"],
+              "correctAnswers": [1],
+              "explanation": "Feles sujet + timebit : la chatte aura peur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Timebit est :",
+              "options": ["futur", "présent passé", "infinitif", "sum"],
+              "correctAnswers": [0],
+              "explanation": "Cras + timebit : peur au futur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Canem (objet) signifie :",
+              "options": [
+                "le chien",
+                "les chiens (sujet)",
+                "la peur",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accusatif singulier de canis."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Sunt multi libri in mensa » : où sont les livres ?",
+              "options": [
+                "sur la table",
+                "dans le jardin",
+                "hier",
+                "demain seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In mensa : sur / dans la table (lieu)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sunt signifie :",
+              "options": ["ils/elles sont", "je suis", "tu es", "il est"],
+              "correctAnswers": [0],
+              "explanation": "Troisième personne pluriel de sum."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Multi libri :",
+              "options": [
+                "beaucoup de livres",
+                "un livre",
+                "sans livre",
+                "heri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multi + nominatif pluriel libri."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "In mensa utilise mensa au :",
+              "options": [
+                "ablatif (lieu)",
+                "accusatif sujet",
+                "nominatif",
+                "vocatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In + ablatif pour le lieu où en 5e."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Agricola boves in agrum ducit » : deux vraies propositions.",
+              "options": [
+                "Agricola mène.",
+                "Boves sont les bœufs (objet).",
+                "In agrum indique la direction.",
+                "Ducit signifie « dort »."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le fermier mène les bœufs vers le champ : sujet + direction in agrum."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Boves signifie :",
+              "options": ["les bœufs", "le champ", "le fermier", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Accusatif pluriel de bos."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ducit signifie :",
+              "options": ["mène", "coupe", "voit", "est"],
+              "correctAnswers": [0],
+              "explanation": "Ducere → ducit : conduire, mener."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "In agrum indique :",
+              "options": [
+                "vers le champ",
+                "dans le champ (lieu fixe sans mouvement)",
+                "hier",
+                "avec le roi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accusatif après in pour le mouvement vers."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Heri boves in agro erant » : où étaient-ils hier ?",
+              "options": ["dans le champ", "à Rome", "demain", "nulle part"],
+              "correctAnswers": [0],
+              "explanation": "In agro (ablatif) : lieu où hier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Erant signifie :",
+              "options": ["ils étaient", "ils sont", "je suis", "tu es"],
+              "correctAnswers": [0],
+              "explanation": "Imparfait pluriel de sum."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Agricola est :",
+              "options": ["nominatif sujet", "accusatif", "adverbe", "cras"],
+              "correctAnswers": [0],
+              "explanation": "Le fermier est celui qui mène."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Cras agricola iterum laborabit » :",
+              "options": [
+                "demain il travaillera encore",
+                "hier il a reposé",
+                "je suis fermier",
+                "ils sont bœufs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cras + futur laborabit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Iterum signifie :",
+              "options": ["encore / de nouveau", "jamais", "hier", "sans"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de répétition."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Laborabit signifie :",
+              "options": ["travaillera", "mange", "dort", "appelle"],
+              "correctAnswers": [0],
+              "explanation": "Futur de laborare."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Révision : « Marcus et Sextus amici sunt ». Deux réponses justes.",
+              "options": [
+                "Amici sunt = ils sont amis.",
+                "Marcus et Sextus sont les sujets.",
+                "Sunt signifie « je suis ».",
+                "Amici est accusatif objet ici."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux garçons sujets + sunt + prédicat amici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Amici au nominatif ici signifie :",
+              "options": [
+                "amis (attribut)",
+                "les amis (objet)",
+                "hier",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après sum, amici décrit l'identité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Heri Marcus Romae erat » : Marcus était où hier ?",
+              "options": ["à Rome", "à Athènes", "demain", "dans le champ"],
+              "correctAnswers": [0],
+              "explanation": "Romae = locatif ou ablatif de lieu : à Rome."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Erat signifie :",
+              "options": [
+                "il/elle était",
+                "il/elle est",
+                "je suis",
+                "nous sommes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Imparfait de sum, 3e sing."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Cras Sextus ad ludum ibit » :",
+              "options": [
+                "Sextus ira à l'école demain",
+                "Sextus y est hier",
+                "sum",
+                "livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cras + ad ludum + ibit : mouvement futur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ad ludum signifie :",
+              "options": [
+                "vers l'école",
+                "sans école",
+                "de l'école",
+                "sous l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ad + accusatif : direction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ibit signifie :",
+              "options": ["ira", "allait", "va (nous)", "vais"],
+              "correctAnswers": [0],
+              "explanation": "Futur 3e sing. de ire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Pueri pilam vident », pilam est :",
+              "options": ["objet", "sujet", "heri", "sum"],
+              "correctAnswers": [0],
+              "explanation": "La balle est vue : accusatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vident signifie :",
+              "options": ["voient", "voit", "voyais", "verra"],
+              "correctAnswers": [0],
+              "explanation": "Présent 3e pluriel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pueri est :",
+              "options": [
+                "nominatif pluriel (sujet)",
+                "accusatif",
+                "un seul garçon",
+                "cras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les garçons voient : sujet pluriel."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Type examen : « Lucia cras cum amica ad forum ibit ». Deux bonnes réponses.",
+              "options": [
+                "Cras = demain.",
+                "Lucia est le sujet.",
+                "Forum est toujours nominatif sujet ici.",
+                "Ibit est au passé."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lucia ira demain au forum : sujet + cras + futur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cum amica signifie :",
+              "options": [
+                "avec l'amie",
+                "contre l'amie",
+                "sans amie",
+                "hier amie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cum + ablatif : accompagnement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ad forum indique :",
+              "options": [
+                "vers le forum",
+                "du forum",
+                "le forum sujet",
+                "heri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ad + accusatif direction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ego heri non eram in villa » :",
+              "options": [
+                "Je n'étais pas à la villa hier",
+                "Je serai demain",
+                "Tu es",
+                "Ils sont"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ego + heri + négation + eram."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "In villa (lieu) utilise villa au :",
+              "options": ["ablatif", "accusatif sujet", "nominatif", "vocatif"],
+              "correctAnswers": [0],
+              "explanation": "In + ablatif pour être dans un lieu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Nos sumus discipuli » signifie :",
+              "options": [
+                "Nous sommes élèves",
+                "Je suis élève",
+                "Vous êtes",
+                "Ils étaient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nos + sumus + discipuli pluriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sumus est :",
+              "options": ["nous sommes", "vous êtes", "ils sont", "je suis"],
+              "correctAnswers": [0],
+              "explanation": "1re personne pluriel de sum."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Discipuli décrit :",
+              "options": [
+                "des élèves (masculin plur.)",
+                "une élève",
+                "le prof",
+                "cras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prédicat nominatif pluriel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Magister nos heri laudavit » : quand a-t-il loué ?",
+              "options": ["hier", "demain", "maintenant", "cras"],
+              "correctAnswers": [0],
+              "explanation": "Heri fixe le passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Laudavit signifie :",
+              "options": ["a loué", "loue", "louera", "est"],
+              "correctAnswers": [0],
+              "explanation": "Parfait ou passé simple de laudare en lecture 5e."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Expression",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour traduire « Le garçon voit le chien », quelles formes conviennent ?",
+              "options": [
+                "Puer (sujet)",
+                "canem (objet)",
+                "canis (objet accusatif ici)",
+                "puerem (sujet)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sujet nominatif puer + objet accusatif canem."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Choisis la phrase correcte :",
+              "options": [
+                "Puer canem videt.",
+                "Puer canis videt.",
+                "Canem puer vident.",
+                "Puer canem vident."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet singulier + objet accusatif + verbe singulier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je suis élève » :",
+              "options": [
+                "Ego sum discipulus.",
+                "Tu es discipulus.",
+                "Ego es discipulus.",
+                "Sum ego discipulus false only - Ego sum discipulus."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ego + sum + discipulus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Tu ___ magister. »",
+              "options": ["es", "sum", "est", "sunt"],
+              "correctAnswers": [0],
+              "explanation": "Tu → es."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hier : « Heri ego ___ (sum) laetus. »",
+              "options": ["eram", "sum", "es", "sunt"],
+              "correctAnswers": [0],
+              "explanation": "Passé de être avec heri : eram."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Demain : « Cras nos ___ (sum) parati. »",
+              "options": ["erimus", "sumus", "eram", "est"],
+              "correctAnswers": [0],
+              "explanation": "Cras + futur de sum pour « nous serons »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Objet de « video » :",
+              "options": [
+                "accusatif",
+                "nominatif seulement",
+                "vocatif",
+                "heri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce qu'on voit se met à l'accusatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« La fille lit le livre » :",
+              "options": [
+                "Puella librum legit.",
+                "Puella liber legit.",
+                "Librum puella legunt.",
+                "Puella librum legunt."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puella sujet + librum objet + legit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Librum est l'accusatif de :",
+              "options": ["liber", "libri sujet", "legit", "cras"],
+              "correctAnswers": [0],
+              "explanation": "Liber → librum."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Legit avec puella signifie :",
+              "options": [
+                "elle lit",
+                "elles lisent",
+                "il lit (sans sujet)",
+                "sum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3e sing. accord avec puella."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux formes possibles pour « nous sommes » :",
+              "options": [
+                "sumus",
+                "sunt (ils sont, pas nous)",
+                "nos sumus (renforcement)",
+                "sum (je)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Sumus = nous sommes ; nos sumus est aussi correct avec pronom."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Il est Romain » :",
+              "options": [
+                "Is Romanus est.",
+                "Is Romanum est.",
+                "Romanus is est.",
+                "Is Romani est."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attribut nominatif Romanus avec sum/est."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Romanus est :",
+              "options": [
+                "nominatif (attribut)",
+                "accusatif objet",
+                "adverbe",
+                "heri"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prédicat du verbe être."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Demain je travaillerai » commence par :",
+              "options": [
+                "Cras ego…",
+                "Heri ego…",
+                "Ego cras… (les deux ordres possibles, cras doit être présent)",
+                "Sans cras"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Cras doit apparaître ; ego + futur laborabo."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Laborabo signifie :",
+              "options": [
+                "je travaillerai",
+                "je travaillais",
+                "travaille",
+                "sum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Futur 1re sing."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Le maître appelle l'élève » :",
+              "options": [
+                "Magister discipulum vocat.",
+                "Magister discipulus vocat.",
+                "Discipulum magister vocant.",
+                "Magister discipulum vocant."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magister sujet + discipulum accusatif + vocat."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Discipulum est :",
+              "options": [
+                "accusatif sing.",
+                "nominatif",
+                "pluriel sujet",
+                "cras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Élève appelé = objet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Choisis l'accusatif de rosa :",
+              "options": ["rosam", "rosa", "rosae", "rosas sujet"],
+              "correctAnswers": [0],
+              "explanation": "Rosa → rosam."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Marcus rosam dat Luciae » : rosam est :",
+              "options": ["objet direct", "sujet", "datif", "sum"],
+              "correctAnswers": [0],
+              "explanation": "Rose donnée = accusatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dat signifie :",
+              "options": ["donne", "reçoit", "est", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Présent 3e sing. dare."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour « hier il n'était pas », deux éléments essentiels :",
+              "options": ["heri", "non", "cras", "semper sans verbe"],
+              "correctAnswers": [0, 1],
+              "explanation": "Heri + non + forme passée de sum."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase correcte passé :",
+              "options": [
+                "Heri non erat.",
+                "Heri non est.",
+                "Cras non erat.",
+                "Heri non sum."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heri avec erat, pas est."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ils sont dans la maison » :",
+              "options": [
+                "In domo sunt.",
+                "In domum sunt.",
+                "Domus sunt in.",
+                "Sunt domo in cras."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieu où : in + ablatif domo."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vers la maison :",
+              "options": ["ad domum", "in domo", "ex domo seulement", "heri"],
+              "correctAnswers": [0],
+              "explanation": "Mouvement : ad + accusatif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Nous voyons la lune » :",
+              "options": [
+                "Lunam videmus.",
+                "Luna videmus.",
+                "Lunam videtis.",
+                "Lunae videmus."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lunam accusatif + videmus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Videmus signifie :",
+              "options": ["nous voyons", "vous voyez", "ils voient", "je vois"],
+              "correctAnswers": [0],
+              "explanation": "1re pluriel de videre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Choisis le nominatif pluriel de amicus :",
+              "options": ["amici", "amicos", "amicum", "amicae seulement f."],
+              "correctAnswers": [0],
+              "explanation": "Amici = les amis (sujets)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Les amis sont ici » :",
+              "options": [
+                "Amici hic sunt.",
+                "Amicos hic sunt.",
+                "Amici hic est.",
+                "Amici heri cras."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet pluriel + sunt."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Hic signifie :",
+              "options": ["ici", "là-bas", "hier", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de lieu proche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Cras amici ad me venient » : venient =",
+              "options": [
+                "ils viendront",
+                "ils viennent (présent)",
+                "je viens",
+                "hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cras + futur 3e plur."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Accusatif pluriel correct pour « les lettres » (litterae) :",
+              "options": [
+                "litteras",
+                "litteris",
+                "litterarum",
+                "litterae sujet"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Litteras = objet ; litterae = sujet nominatif pluriel (deux formes utiles à distinguer)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Il écrit les lettres » :",
+              "options": [
+                "Litteras scribit.",
+                "Litterae scribit.",
+                "Litteras scribunt.",
+                "Scribit litteris."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet litteras + scribit 3e sing."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Scribit signifie :",
+              "options": ["écrit", "lit", "parle", "est"],
+              "correctAnswers": [0],
+              "explanation": "Présent scribere."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ego sum, tu es, is est » : is est =",
+              "options": ["il est", "je suis", "tu es", "nous sommes"],
+              "correctAnswers": [0],
+              "explanation": "Is + est."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : « ___ sum discipula. »",
+              "options": ["Ego", "Tu", "Is", "Nos"],
+              "correctAnswers": [0],
+              "explanation": "Discipula féminin avec ego."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Discipula signifie :",
+              "options": ["élève (f.)", "professeur", "livre", "cras"],
+              "correctAnswers": [0],
+              "explanation": "Féminin de discipulus."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Heri tu ___ (sum) in schola. »",
+              "options": ["eras", "es", "erat", "sumus"],
+              "correctAnswers": [0],
+              "explanation": "Tu + heri → eras."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "In schola =",
+              "options": [
+                "à l'école (lieu)",
+                "vers l'école",
+                "sans école",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In + ablatif lieu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Cras eris paratus » : eris =",
+              "options": ["tu seras", "tu es", "il sera", "je serai"],
+              "correctAnswers": [0],
+              "explanation": "Futur 2e sing. sum."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Paratus avec tu (eris) :",
+              "options": ["paratus", "parata", "parati", "paratum"],
+              "correctAnswers": [0],
+              "explanation": "Masculin singulier attribut."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux bonnes traductions partielles de « Le chien mange la nourriture » :",
+              "options": [
+                "Canis cibum edit.",
+                "Cibum = nourriture (objet).",
+                "Canem edit cibus.",
+                "Heri cras edit."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Canis sujet + cibum accusatif + edit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cibum signifie :",
+              "options": ["nourriture (objet)", "chien", "mange", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Accusatif de cibus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Edit signifie :",
+              "options": ["mange", "boit", "court", "est"],
+              "correctAnswers": [0],
+              "explanation": "Présent edere."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase : « La mère prépare le dîner » (coquinam) :",
+              "options": [
+                "Mater coquinam parat.",
+                "Mater coquina parat.",
+                "Coquinam mater parant.",
+                "Mater coquinam parant."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mater + coquinam + parat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Sunt tres filii » : tres filii =",
+              "options": ["trois fils", "trois filles", "hier", "sum"],
+              "correctAnswers": [0],
+              "explanation": "Tres + nominatif pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Choisis « elles sont » :",
+              "options": ["sunt (f. contexte)", "sum", "es", "eram"],
+              "correctAnswers": [0],
+              "explanation": "Sunt 3e pluriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Demain nous irons » :",
+              "options": [
+                "Cras ibimus.",
+                "Heri ibimus.",
+                "Cras ibimus nos.",
+                "Ibimus cras heri."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cras + ibimus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ibimus =",
+              "options": [
+                "nous irons / allons",
+                "je vais",
+                "tu vas",
+                "ils étaient"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1re pluriel de ire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Accusatif de pater :",
+              "options": ["patrem", "pater", "patris", "patres sujet"],
+              "correctAnswers": [0],
+              "explanation": "Pater → patrem."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Puer patrem amat » : patrem est :",
+              "options": ["objet", "sujet", "adverbe", "cras"],
+              "correctAnswers": [0],
+              "explanation": "Le père est aimé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour « sum » au présent, deux formes correctes :",
+              "options": [
+                "sum (je)",
+                "es (tu)",
+                "eram (imparfait)",
+                "sunt (ils)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sum et es sont des présents de être."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Il voit la mer » (mare → mare acc.) :",
+              "options": [
+                "Mare videt.",
+                "Mari videt.",
+                "Marem vident.",
+                "Mare vident."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Neutre mare identique acc./nom. sing."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mare signifie :",
+              "options": ["mer", "mont", "mère", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Nom neutre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Tu n'es pas » :",
+              "options": [
+                "Tu non es.",
+                "Tu non est.",
+                "Tu non sum.",
+                "Non tu sunt."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non + tu + es."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ego et tu amici sumus » est incorrect ; mieux :",
+              "options": [
+                "Ego et tu amici estis (vous deux) ou restructurer",
+                "Sumus avec tu",
+                "Cras heri",
+                "Sunt ego"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ego+tu → plutôt estis ou deux phrases."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Estis signifie :",
+              "options": ["vous êtes", "nous sommes", "ils sont", "tu es"],
+              "correctAnswers": [0],
+              "explanation": "2e pluriel sum."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Heri multi homines in foro erant » : homines =",
+              "options": [
+                "hommes (sujet plur.)",
+                "homme objet",
+                "forum",
+                "cras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nominatif pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "In foro =",
+              "options": [
+                "sur/au forum (lieu)",
+                "vers forum",
+                "sans forum",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ablatif lieu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Choisis futur de « venio » (je viens) :",
+              "options": ["veniam", "veni", "venit", "sum"],
+              "correctAnswers": [0],
+              "explanation": "Futur 1re sing. venire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Cras veniam » signifie :",
+              "options": [
+                "Demain je viendrai",
+                "Hier je suis venu",
+                "Je viens",
+                "Tu viens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cras + veniam."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux mots adverbes de temps niveau 5e :",
+              "options": ["heri", "cras", "puer", "canem"],
+              "correctAnswers": [0, 1],
+              "explanation": "Heri et cras ne se conjuguent pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Place adverbe : « ___ ego laboro. » (demain)",
+              "options": ["Cras", "Heri", "In", "Ad"],
+              "correctAnswers": [0],
+              "explanation": "Cras en tête ou proche du verbe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« ___ non ivi. » (hier, je ne suis pas allé)",
+              "options": ["Heri", "Cras", "Sum", "Sunt"],
+              "correctAnswers": [0],
+              "explanation": "Heri pour le passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Accusatif de filia :",
+              "options": ["filiam", "filia", "filiae gen.", "filium"],
+              "correctAnswers": [0],
+              "explanation": "Filia → filiam."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Pater filiam vocat » :",
+              "options": [
+                "correct",
+                "filia vocat",
+                "pater vocat filia",
+                "vocat pater filiae"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objet filiam."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vocat =",
+              "options": ["appelle", "voit", "donne", "est"],
+              "correctAnswers": [0],
+              "explanation": "Présent vocare."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Nox est » signifie :",
+              "options": [
+                "C'est la nuit.",
+                "La nuit voit.",
+                "Demain nuit.",
+                "Nous sommes nuit."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nox sujet + est."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Nox est :",
+              "options": ["féminin sing.", "neutre", "pluriel", "accusatif"],
+              "correctAnswers": [0],
+              "explanation": "Nom féminin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Sol mane surgit » : mane =",
+              "options": ["le matin", "hier", "demain soir", "sum"],
+              "correctAnswers": [0],
+              "explanation": "Adverbe de temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Surgit signifie :",
+              "options": ["se lève", "couche", "mange", "appelle"],
+              "correctAnswers": [0],
+              "explanation": "Le soleil se lève."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Compléments d'objet direct possibles :",
+              "options": ["librum", "canem", "in domo (lieu)", "ego"],
+              "correctAnswers": [0, 1],
+              "explanation": "Librum et canem sont des accusatifs objet ; in domo est lieu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Les soldats portent les armes » (arma) :",
+              "options": [
+                "Milites arma portant.",
+                "Milites armis portant.",
+                "Arma milites portat.",
+                "Milites arma portat."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milites sujet + arma acc. + portant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Arma (acc. plur.) =",
+              "options": ["les armes", "le soldat", "hier", "sum"],
+              "correctAnswers": [0],
+              "explanation": "Neutre pluriel accusatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Portant =",
+              "options": ["ils portent", "il porte", "je porte", "tu portes"],
+              "correctAnswers": [0],
+              "explanation": "3e pluriel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ego cras Romam ibo » : ibo =",
+              "options": ["j'irai", "j'allais", "vais", "tu iras"],
+              "correctAnswers": [0],
+              "explanation": "Futur 1re sing. ire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Romam (direction) avec ibo :",
+              "options": ["vers Rome", "de Rome", "Rome sujet", "cras seul"],
+              "correctAnswers": [0],
+              "explanation": "Accusatif de direction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Is non est puer, sed vir est » : sed =",
+              "options": ["mais", "et", "ou", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Opposition."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vir est :",
+              "options": ["attribut nominatif", "objet", "adverbe", "pluriel"],
+              "correctAnswers": [0],
+              "explanation": "Prédicat après est."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Choisis « elle est » :",
+              "options": ["est (ea)", "es", "sum", "sunt"],
+              "correctAnswers": [0],
+              "explanation": "Ea est… → est."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Heri ea in horto erat » : erat avec ea =",
+              "options": ["elle était", "elle est", "ils étaient", "tu étais"],
+              "correctAnswers": [0],
+              "explanation": "3e sing. f. imparfait."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases courtes correctes :",
+              "options": [
+                "Puer currit.",
+                "Puella cantat.",
+                "Puer currit cras heri impossible seul",
+                "Sum currit."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sujet + verbe intransitif simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Currit signifie :",
+              "options": ["court", "chante", "mange", "est"],
+              "correctAnswers": [0],
+              "explanation": "Présent currere."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cantat signifie :",
+              "options": ["chante", "court", "lit", "donne"],
+              "correctAnswers": [0],
+              "explanation": "Présent cantare."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Cras puer currit » est ; en 5e on préfère :",
+              "options": [
+                "Cras puer curiet (futur)",
+                "Cras puer currit (présent proche accepté parfois)",
+                "Heri currit",
+                "Sum currit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cras invite au futur curiet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Curiet =",
+              "options": ["courra", "court", "courait", "cours"],
+              "correctAnswers": [0],
+              "explanation": "Futur de currere."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Nos legimus » =",
+              "options": ["nous lisons", "vous lisez", "ils lisent", "je lis"],
+              "correctAnswers": [0],
+              "explanation": "1re pluriel legere."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Objet avec legimus :",
+              "options": ["librum / libros", "liber sujet", "sum", "heri seul"],
+              "correctAnswers": [0],
+              "explanation": "Accusatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Tu legisti heri » : legisti =",
+              "options": ["tu as lu", "tu lis", "tu liras", "je lis"],
+              "correctAnswers": [0],
+              "explanation": "Passé 2e sing."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Heri en fin ou début :",
+              "options": [
+                "les deux possibles",
+                "interdit",
+                "remplace sum",
+                "accusatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adverbe mobile."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Cras legemus » =",
+              "options": [
+                "Demain nous lirons",
+                "Hier nous avons lu",
+                "Nous sommes",
+                "Ils liront"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Futur 1re plur."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Révision expression : deux phrases bien formées :",
+              "options": [
+                "Marcus pilam iacit.",
+                "Soror cibum parat.",
+                "Pilam Marcus iacit sunt.",
+                "Cras heri sum parat."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sujet + objet acc. + verbe ; cras/heri ne se cumulent pas avec sum ainsi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Iacit signifie :",
+              "options": ["lance", "mange", "voit", "est"],
+              "correctAnswers": [0],
+              "explanation": "Présent iacere."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Soror signifie :",
+              "options": ["sœur", "frère", "mère", "cras"],
+              "correctAnswers": [0],
+              "explanation": "Nom féminin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ego sum parata » (f.) :",
+              "options": [
+                "Je suis prête.",
+                "Tu es prêt.",
+                "Il est prêt.",
+                "Nous sommes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parata féminin avec ego."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Vos estis discipuli » : vos =",
+              "options": ["vous", "nous", "eux", "moi"],
+              "correctAnswers": [0],
+              "explanation": "Pronom 2e plur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Discipuli avec estis =",
+              "options": ["élèves (m. plur.)", "une élève", "prof", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Prédicat pluriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Heri vos non fuistis in schola » : fuistis =",
+              "options": [
+                "vous avez été / étiez (passé)",
+                "vous êtes",
+                "vous serez",
+                "sum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé 2e plur. être."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Cras omnes parati erimus » : omnes =",
+              "options": ["tous", "personne", "hier", "un"],
+              "correctAnswers": [0],
+              "explanation": "Pronom/adjectif pluriel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erimus =",
+              "options": [
+                "nous serons",
+                "nous sommes",
+                "ils seront",
+                "tu seras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Futur 1re plur. sum."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour clore : « Bonne chance à l'examen » en latin scolaire 5e :",
+              "options": [
+                "Fortuna bona!",
+                "Heri cras sum.",
+                "Pilam discipulus.",
+                "Canem sunt."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule courte d'encouragement adaptée au niveau."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

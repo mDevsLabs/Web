@@ -5,7 +5,6 @@ import {
   getEurostatData,
 } from "@/lib/plugins/eurostat";
 import { jsonToolbox } from "@/lib/plugins/json-toolbox";
-import { gradeQuiz } from "@/lib/plugins/quizzly";
 import { fetchPublicJson } from "@/lib/plugins/shared/public-api";
 import { compareWeather, getWeather } from "@/lib/plugins/weather";
 import { getWikidataEntities, getWikidataEntity } from "@/lib/plugins/wikidata";
@@ -418,80 +417,6 @@ describe("Boîte à outils JSON enrichie", () => {
       payload: "{}",
     });
     expect(String(noPaths.error)).toContain("paths");
-  });
-});
-
-describe("Correction d'un quiz (locale et déterministe)", () => {
-  const QUESTIONS = [
-    {
-      correctAnswers: [1],
-      explanation: "2 + 2 = 4",
-      id: "q1",
-      options: ["3", "4", "5"],
-      question: "Combien font 2 + 2 ?",
-      type: "single_choice" as const,
-    },
-    {
-      correctAnswers: [0, 2],
-      explanation: "Le carré a quatre côtés égaux",
-      id: "q2",
-      options: ["Carré", "Losange", "Cercle"],
-      question: "Quelles figures ont quatre côtés ?",
-      type: "multiple_choice" as const,
-    },
-    {
-      correctAnswers: [0],
-      explanation: "Capitale de la France",
-      id: "q3",
-      options: ["Paris", "Lyon"],
-      question: "Capitale de la France ?",
-      type: "single_choice" as const,
-    },
-  ];
-
-  it("note juste, tient compte des questions sans réponse et isole les rates", async () => {
-    const result = await runTool(gradeQuiz, {
-      answers: [
-        { questionId: "q1", selectedIndexes: [1] },
-        { questionId: "q2", selectedIndexes: [2, 0] },
-        { questionId: "q3", selectedIndexes: [1] },
-      ],
-      questions: QUESTIONS,
-    });
-
-    expect(result.totalCount).toBe(3);
-    expect(result.correctCount).toBe(2);
-    expect(result.incorrectCount).toBe(1);
-    expect(result.unansweredCount).toBe(0);
-    expect(result.scorePercent).toBe(66.7);
-    const results = result.results as Array<{
-      expectedIndexes: number[];
-      givenIndexes: number[];
-      status: string;
-    }>;
-    // q2 est juste malgré l'ordre des choix : la comparaison porte sur des
-    // ensembles triés, pas sur l'ordre de saisie.
-    expect(results[1]).toMatchObject({
-      expectedIndexes: [0, 2],
-      status: "correct",
-    });
-    expect(results[2]).toMatchObject({
-      givenIndexes: [1],
-      status: "incorrect",
-    });
-    expect(result.byType).toEqual([
-      { correct: 1, successRate: 50, total: 2, type: "single_choice" },
-      { correct: 1, successRate: 100, total: 1, type: "multiple_choice" },
-    ]);
-  });
-
-  it("compte « sans réponse » une question absente et signale les ids inconnus", async () => {
-    const result = await runTool(gradeQuiz, {
-      answers: [{ questionId: "inconnue", selectedIndexes: [0] }],
-      questions: QUESTIONS,
-    });
-    expect(result.unansweredCount).toBe(3);
-    expect(result.unknownQuestionIds).toEqual(["inconnue"]);
   });
 });
 

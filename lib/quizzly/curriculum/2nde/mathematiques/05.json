@@ -1,0 +1,2178 @@
+{
+  "id": "2nde-mathematiques-05",
+  "year": "2nde",
+  "subject": "mathematiques",
+  "title": "Proportionnalité et grandeurs",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Tableaux et échelles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Reconnaître une situation de proportionnalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques traduisent une situation de proportionnalité entre deux grandeurs x et y ?",
+              "options": [
+                "Les points de sa représentation graphique sont alignés avec l'origine",
+                "Le quotient y/x est constant pour tout x non nul",
+                "Quand on ajoute 5 à x, on ajoute toujours 5 à y",
+                "La droite représentative ne passe jamais par l'origine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux grandeurs sont proportionnelles si leur rapport y/x est constant et si leur graphique est une droite passant par l'origine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le périmètre d'un carré de côté c est donné par P = 4c. Est-ce une situation de proportionnalité ?",
+              "options": [
+                "Oui, car P est le produit de c par une constante non nulle",
+                "Non, car c'est une relation géométrique",
+                "Non, car le périmètre dépend aussi de l'aire",
+                "Oui, uniquement si le côté c est un nombre entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le périmètre est proportionnel à la longueur du côté avec pour coefficient 4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'aire d'un disque de rayon r vaut A = πr². L'aire est-elle proportionnelle au rayon r ?",
+              "options": [
+                "Non, car l'aire dépend du carré du rayon r",
+                "Oui, avec le coefficient de proportionnalité π",
+                "Oui, car le graphique passe par l'origine",
+                "Non, car π n'est pas un nombre rationnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A n'est pas proportionnelle à r car le quotient A/r = πr n'est pas constant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un véhicule roule à vitesse constante. La distance parcourue d et la durée t sont :",
+              "options": [
+                "Proportionnelles, car d = v × t avec v constant",
+                "Inversement proportionnelles",
+                "Non proportionnelles car le temps augmente",
+                "Proportionnelles uniquement sur autoroute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À vitesse constante v, d/t = v (constant), les deux grandeurs sont proportionnelles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un forfait téléphonique coûte 10 € d'abonnement fixe plus 0,05 € par Mo consommé. Ce coût est-il proportionnel au volume ?",
+              "options": [
+                "Non, en raison du coût fixe initial de 10 €",
+                "Oui, car chaque Mo coûte le même prix",
+                "Oui, car la fonction associée est affine",
+                "Non, car le prix par Mo est trop faible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction f(x) = 0,05x + 10 ne passe pas par l'origine : ce n'est pas une fonction linéaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Parmi ces graphiques, lequel représente une situation de proportionnalité ?",
+              "options": [
+                "Une droite passant par l'origine du repère",
+                "Une parabole dont le sommet est à l'origine",
+                "Une droite horizontale ne passant pas par l'origine",
+                "Une droite qui coupe l'axe des ordonnées en y = 3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un repère, la proportionnalité se traduit par une droite passant par l'origine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'âge d'un enfant et sa taille en centimètres sont-ils proportionnels au cours du temps ?",
+              "options": [
+                "Non, le rythme de croissance varie et s'arrête à l'âge adulte",
+                "Oui, car on grandit à chaque anniversaire",
+                "Oui, car la taille augmente avec l'âge",
+                "Non, uniquement avant l'âge de 3 ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La croissance humaine n'est pas linéaire et s'arrête à la fin de la puberté."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si pour x = 2 on a y = 6, et pour x = 5 on a y = 15, que vaut le rapport y/x ?",
+              "options": [
+                "3 dans les deux cas, ce qui est compatible avec la proportionnalité",
+                "2 dans le premier cas et 3 dans le second",
+                "4 dans les deux cas",
+                "15 dans le premier cas et 6 dans le second"
+              ],
+              "correctAnswers": [0],
+              "explanation": "6/2 = 3 et 15/5 = 3 : le rapport est constant et vaut 3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une boulangerie, 3 baguettes coûtent 3,60 € et 5 baguettes coûtent 6,00 €. Est-ce proportionnel ?",
+              "options": [
+                "Oui, car la baguette coûte 1,20 € dans les deux cas",
+                "Non, car 5 n'est pas un multiple de 3",
+                "Non, car le total dépasse 5 €",
+                "Oui, mais seulement si on achète un nombre pair de baguettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3,60/3 = 1,20 € et 6,00/5 = 1,20 € : le prix unitaire est constant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle formule traduit la proportionnalité entre une grandeur y et une grandeur x ?",
+              "options": [
+                "y = k × x où k est une constante réelle non nulle",
+                "y = k / x où k est une constante réelle",
+                "y = k + x où k est une constante réelle",
+                "y = x² + k où k est une constante réelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La proportionnalité s'écrit sous la forme d'une relation linéaire y = kx."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Coefficient de proportionnalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le tableau reliant x à y, si x = 4 donne y = 14, quelles affirmations sont exactes ?",
+              "options": [
+                "Le coefficient de proportionnalité permettant de passer de x à y est 3,5",
+                "Pour passer de y à x, on multiplie par 2/7",
+                "Le coefficient pour passer de x à y est 0,28",
+                "Le coefficient pour passer de y à x est 3,5"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "y/x = 14/4 = 3,5 = 7/2. Le passage inverse se fait par division par 3,5 ou multiplication par 2/7."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un robinet remplit 18 litres d'eau en 4 minutes. Quel est le coefficient en litres par minute ?",
+              "options": ["4,5 L/min", "4,0 L/min", "0,22 L/min", "72 L/min"],
+              "correctAnswers": [0],
+              "explanation": "18 / 4 = 4,5 litres par minute."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si le coefficient de proportionnalité reliant x à y est k = 2,5, quelle est la valeur de y pour x = 12 ?",
+              "options": ["30", "24", "14,5", "4,8"],
+              "correctAnswers": [0],
+              "explanation": "y = k × x = 2,5 × 12 = 30."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si le coefficient pour passer de la ligne 1 à la ligne 2 est k = 0,8, quelle est la valeur de la ligne 1 pour y = 20 ?",
+              "options": ["25", "16", "20,8", "19,2"],
+              "correctAnswers": [0],
+              "explanation": "x = y / k = 20 / 0,8 = 25."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans un tableau de proportionnalité, la première colonne contient (6 ; 9). Quel est le coefficient (ligne 2 / ligne 1) ?",
+              "options": ["1,5", "0,66", "3", "54"],
+              "correctAnswers": [0],
+              "explanation": "9 / 6 = 3/2 = 1,5."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si k est le coefficient pour passer de A à B, quel coefficient permet de passer de B à A ?",
+              "options": ["1/k", "-k", "k - 1", "1 - k"],
+              "correctAnswers": [0],
+              "explanation": "Si B = k × A alors A = (1/k) × B, à condition que k soit non nul."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un cycliste parcourt 15 km en 30 minutes à vitesse constante. Quel est son coefficient en km/h ?",
+              "options": ["30 km/h", "0,5 km/h", "45 km/h", "15 km/h"],
+              "correctAnswers": [0],
+              "explanation": "30 minutes = 0,5 heure. Vitesse = 15 / 0,5 = 30 km/h."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un tableau donne les couples (2 ; 5), (4 ; 10), (7 ; 17). Est-ce un tableau de proportionnalité ?",
+              "options": [
+                "Non, car 17/7 n'est pas égal à 2,5",
+                "Oui, car 10/4 = 5/2 = 2,5",
+                "Oui, car les valeurs augmentent régulièrement",
+                "Non, car 7 est un nombre premier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "5/2 = 2,5 et 10/4 = 2,5 mais 17/7 ≈ 2,43 ≠ 2,5. Le tableau n'est pas proportionnel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le coefficient de proportionnalité pour convertir des pouces en centimètres (1 pouce = 2,54 cm) ?",
+              "options": ["2,54", "0,39", "12", "25,4"],
+              "correctAnswers": [0],
+              "explanation": "Pour obtenir la longueur en cm, on multiplie la longueur en pouces par 2,54."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si la masse de 8 m de câble est de 3,6 kg, que pèse un mètre de ce câble ?",
+              "options": ["0,45 kg", "0,40 kg", "2,22 kg", "0,28 kg"],
+              "correctAnswers": [0],
+              "explanation": "3,6 / 8 = 0,45 kg/m."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Quatrième proportionnelle et produit en croix",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L'égalité a/b = c/d avec b ≠ 0 et d ≠ 0 est équivalente à quelles expressions ?",
+              "options": [
+                "a × d = b × c",
+                "a = (b × c) / d",
+                "a + d = b + c",
+                "a × c = b × d"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'égalité des produits en croix donne a × d = b × c, d'où a = (b × c) / d."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Résoudre pour x l'équation 3/7 = x/28 :",
+              "options": ["x = 12", "x = 9", "x = 14", "x = 21"],
+              "correctAnswers": [0],
+              "explanation": "x = (3 × 28) / 7 = 3 × 4 = 12."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si 5 kg de pommes coûtent 8,50 €, combien coûtent 12 kg au même tarif ?",
+              "options": ["20,40 €", "19,80 €", "21,20 €", "18,50 €"],
+              "correctAnswers": [0],
+              "explanation": "Prix = (12 × 8,50) / 5 = 102 / 5 = 20,40 €."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour fabriquer 6 gâteaux, il faut 450 g de farine. Combien en faut-il pour 10 gâteaux ?",
+              "options": ["750 g", "650 g", "700 g", "800 g"],
+              "correctAnswers": [0],
+              "explanation": "Farine = (10 × 450) / 6 = 4500 / 6 = 750 g."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans le tableau proportionnel [ [4, 9], [6, x] ], quelle est la valeur de x ?",
+              "options": ["13,5", "12", "15", "10,5"],
+              "correctAnswers": [0],
+              "explanation": "x = (6 × 9) / 4 = 54 / 4 = 13,5."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Résoudre 15/x = 5/8 pour x ≠ 0 :",
+              "options": ["x = 24", "x = 20", "x = 18", "x = 32"],
+              "correctAnswers": [0],
+              "explanation": "5 × x = 15 × 8 = 120, donc x = 120 / 5 = 24."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une pompe débite 240 L en 15 min. Combien de temps faut-il pour pomper 800 L ?",
+              "options": [
+                "50 minutes",
+                "45 minutes",
+                "1 heure et 10 minutes",
+                "40 minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps = (800 × 15) / 240 = 12000 / 240 = 50 minutes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si 3 ouvriers mettent 6 heures pour poser un carrelage, combien de temps mettraient 6 ouvriers (au même rythme) ?",
+              "options": [
+                "3 heures, car c'est une relation inversement proportionnelle",
+                "12 heures, car le nombre d'ouvriers a doublé",
+                "6 heures, car la surface ne change pas",
+                "4,5 heures par proportionnalité directe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux fois plus d'ouvriers mettront deux fois moins de temps : 6 / 2 = 3 h."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Trouver y dans la proportion 2,5 / 7 = 5 / y :",
+              "options": ["14", "12,5", "10", "17,5"],
+              "correctAnswers": [0],
+              "explanation": "y = (7 × 5) / 2,5 = 35 / 2,5 = 14."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la méthode du produit en croix fonctionne-t-elle pour résoudre a/b = c/d ?",
+              "options": [
+                "Car on multiplie les deux membres de l'égalité par le produit des dénominateurs b × d",
+                "Car c'est une règle empirique sans démonstration possible",
+                "Car on additionne les numérateurs et dénominateurs",
+                "Car la dérivée de la fonction est constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En multipliant chaque membre par bd, on simplifie les dénominateurs et on obtient ad = bc."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Tableaux de proportionnalité et propriétés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles opérations sur les colonnes d'un tableau de proportionnalité conservent la proportionnalité ?",
+              "options": [
+                "Multiplier une colonne par un nombre réel non nul",
+                "Additionner membre à membre deux colonnes du tableau",
+                "Ajouter 10 à tous les nombres d'une colonne",
+                "Élever au carré les valeurs d'une colonne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La linéarité de la proportionnalité permet la multiplication par un scalaire et l'addition de colonnes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un tableau proportionnel, si la colonne 1 vaut (2 ; 7) et la colonne 2 vaut (6 ; 21), comment passe-t-on de la colonne 1 à la 2 ?",
+              "options": [
+                "En multipliant chaque terme par 3",
+                "En ajoutant 4 à chaque terme",
+                "En multipliant le haut par 3 et le bas par 4",
+                "En élevant chaque terme au carré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 × 3 = 6 et 7 × 3 = 21 : multiplication de la colonne entière par 3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si la colonne 1 a pour valeurs (3 ; 5) et la colonne 2 a (4 ; 7), que vaut la colonne somme (colonne 1 + colonne 2) ?",
+              "options": ["(7 ; 12)", "(12 ; 35)", "(1 ; 2)", "(7 ; 10)"],
+              "correctAnswers": [0],
+              "explanation": "3 + 4 = 7 et 5 + 7 = 12, les composantes s'additionnent terme à terme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un tableau comporte les colonnes A(2 ; 6), B(5 ; 15) et C(7 ; y). En utilisant la linéarité, que vaut y ?",
+              "options": [
+                "21, car 6 + 15 = 21 pour 2 + 5 = 7",
+                "20, par approximation",
+                "24, car 7 × 3 + 3 = 24",
+                "18, car 6 × 3 = 18"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme 7 = 2 + 5, y = 6 + 15 = 21."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans un tableau, 4 donne 10. Que donne 16 par multiplication de colonne ?",
+              "options": [
+                "40, car 16 = 4 × 4 donc l'image est 10 × 4",
+                "26, car 10 + 16 = 26",
+                "36, car 10 + 4² = 36",
+                "64, car 16 × 4 = 64"
+              ],
+              "correctAnswers": [0],
+              "explanation": "16 = 4 × 4, donc l'image associée est 10 × 4 = 40."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peut-on soustraire deux colonnes d'un tableau de proportionnalité ?",
+              "options": [
+                "Oui, car la soustraction est une combinaison linéaire (addition de l'opposé)",
+                "Non, seules les additions sont permises",
+                "Non, cela détruit toujours la proportionnalité",
+                "Oui, seulement si le résultat est strictement positif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "f(x1 - x2) = f(x1) - f(x2) car f est linéaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment vérifie-t-on rapidement si un tableau 2x2 [[a, b], [c, d]] est proportionnel ?",
+              "options": [
+                "On vérifie si ad - bc = 0",
+                "On vérifie si a + d = b + c",
+                "On vérifie si ac = bd",
+                "On vérifie si a - b = c - d"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tableau est proportionnel si et seulement si ad = bc, soit ad - bc = 0 (déterminant nul)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si un tableau présente les couples (10 ; 15) et (14 ; 21), quel est le déterminant 10 × 21 - 15 × 14 ?",
+              "options": [
+                "0, le tableau est donc bien proportionnel",
+                "15, le tableau n'est pas proportionnel",
+                "-10, le tableau est presque proportionnel",
+                "210, le tableau est proportionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "10 × 21 = 210 et 15 × 14 = 210 ; 210 - 210 = 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une recette proportionnelle pour 4 personnes, il faut 200 g de sucre. Pour 6 personnes (4 + 2), il faut :",
+              "options": [
+                "300 g, car pour 2 personnes il faut 100 g et 200 + 100 = 300 g",
+                "250 g, par estimation moyenne",
+                "350 g, car on ajoute 150 g",
+                "400 g, en doublant la quantité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 2 personnes, il faut la moitié (100 g). Pour 6 personnes (4 + 2) : 200 + 100 = 300 g."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle propriété fondamentale des fonctions linéaires f(x) = kx justifie la linéarité par colonne ?",
+              "options": [
+                "f(u + v) = f(u) + f(v) et f(λu) = λf(u)",
+                "f(u × v) = f(u) × f(v)",
+                "f(u²) = (f(u))²",
+                "f(u + v) = f(u) × f(v)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces deux égalités caractérisent la linéarité d'une application."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Pourcentages et calculs simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles écritures représentent exactement 35 % ?",
+              "options": ["0,35", "35 / 100", "3,5", "7 / 20"],
+              "correctAnswers": [0, 1],
+              "explanation": "35 % = 35/100 = 0,35 = 7/20 (0 et 1 sont deux représentations évidentes de 35 %)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que vaut 20 % de 150 € ?",
+              "options": ["30 €", "25 €", "35 €", "20 €"],
+              "correctAnswers": [0],
+              "explanation": "0,20 × 150 = 30 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans une classe de 30 élèves, il y a 18 filles. Quelle est la proportion de filles en pourcentage ?",
+              "options": ["60 %", "54 %", "65 %", "50 %"],
+              "correctAnswers": [0],
+              "explanation": "18 / 30 = 0,60 = 60 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer 75 % de 80 kg :",
+              "options": ["60 kg", "55 kg", "65 kg", "70 kg"],
+              "correctAnswers": [0],
+              "explanation": "75 % = 3/4. (80 × 3) / 4 = 60 kg."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel pourcentage représente 15 par rapport à 60 ?",
+              "options": ["25 %", "20 %", "30 %", "15 %"],
+              "correctAnswers": [0],
+              "explanation": "15 / 60 = 1/4 = 0,25 = 25 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un article à 80 € subit une réduction de 15 %. Quel est le montant de la remise ?",
+              "options": ["12 €", "15 €", "10 €", "8 €"],
+              "correctAnswers": [0],
+              "explanation": "0,15 × 80 = 12 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si 40 % d'un nombre vaut 28, quel est ce nombre ?",
+              "options": ["70", "65", "60", "80"],
+              "correctAnswers": [0],
+              "explanation": "Nombre = 28 / 0,40 = 70."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien vaut 5 % de 240 litres ?",
+              "options": ["12 L", "24 L", "10 L", "15 L"],
+              "correctAnswers": [0],
+              "explanation": "0,05 × 240 = 12 L."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur 500 personnes interrogées, 350 sont satisfaites. Quel est le taux de satisfaction ?",
+              "options": ["70 %", "75 %", "65 %", "68 %"],
+              "correctAnswers": [0],
+              "explanation": "350 / 500 = 70 / 100 = 70 %."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que vaut 150 % d'une quantité initiale Q ?",
+              "options": [
+                "1,5 fois la quantité Q",
+                "0,15 fois la quantité Q",
+                "15 fois la quantité Q",
+                "150 fois la quantité Q"
+              ],
+              "correctAnswers": [0],
+              "explanation": "150 % = 150/100 = 1,5. Cela correspond à la quantité plus sa moitié."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Évolution en pourcentage et coefficient multiplicateur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules associent correctement une hausse ou une baisse en pourcentage t au coefficient multiplicateur CM ?",
+              "options": [
+                "Pour une hausse de t %, CM = 1 + t/100",
+                "Pour une baisse de t %, CM = 1 - t/100",
+                "Pour une hausse de t %, CM = t/100",
+                "Pour une baisse de t %, CM = -(1 + t/100)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Augmenter de t % revient à multiplier par 1 + t/100 ; diminuer de t % revient à multiplier par 1 - t/100."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le coefficient multiplicateur associé à une hausse de 25 % ?",
+              "options": ["1,25", "0,25", "1,75", "2,5"],
+              "correctAnswers": [0],
+              "explanation": "CM = 1 + 25/100 = 1,25."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le coefficient multiplicateur associé à une baisse de 15 % ?",
+              "options": ["0,85", "0,15", "1,15", "-0,15"],
+              "correctAnswers": [0],
+              "explanation": "CM = 1 - 15/100 = 0,85."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un article à 60 € augmente de 10 %. Quel est son nouveau prix ?",
+              "options": ["66 €", "70 €", "65 €", "60,10 €"],
+              "correctAnswers": [0],
+              "explanation": "60 × 1,10 = 66 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un prix passe de 80 € à 100 €. Quel est le taux d'évolution ?",
+              "options": ["+25 %", "+20 %", "+15 %", "+30 %"],
+              "correctAnswers": [0],
+              "explanation": "Taux = (100 - 80) / 80 = 20 / 80 = 0,25 = +25 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si le coefficient multiplicateur est CM = 0,72, à quelle évolution correspond-il ?",
+              "options": [
+                "Une baisse de 28 %",
+                "Une baisse de 72 %",
+                "Une hausse de 28 %",
+                "Une hausse de 72 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "t = CM - 1 = 0,72 - 1 = -0,28, soit une baisse de 28 %."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel coefficient multiplicateur correspond à un doublement d'une quantité ?",
+              "options": ["2", "1,5", "100", "200"],
+              "correctAnswers": [0],
+              "explanation": "Doubler signifie multiplier par 2 (ce qui correspond à une hausse de 100 % car 1 + 100/100 = 2)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un manteau à 120 € est soldé à -30 %. Quel est son prix final ?",
+              "options": ["84 €", "90 €", "78 €", "86 €"],
+              "correctAnswers": [0],
+              "explanation": "120 × (1 - 0,30) = 120 × 0,70 = 84 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un CM de 1,035 correspond à :",
+              "options": [
+                "Une augmentation de 3,5 %",
+                "Une augmentation de 35 %",
+                "Une augmentation de 0,35 %",
+                "Une baisse de 3,5 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1,035 - 1 = 0,035 = 3,5 %."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si une population est multipliée par 0,98 chaque année, de quel pourcentage diminue-t-elle chaque année ?",
+              "options": ["2 %", "98 %", "0,98 %", "0,2 %"],
+              "correctAnswers": [0],
+              "explanation": "1 - 0,98 = 0,02 = 2 % de baisse."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Évolutions successives et taux global",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lorsqu'une quantité subit deux évolutions successives de taux t1 et t2 avec coefficients CM1 et CM2, quelles affirmations sont vraies ?",
+              "options": [
+                "Le coefficient multiplicateur global est CM_global = CM1 × CM2",
+                "Le taux global n'est en général pas égal à t1 + t2",
+                "Le coefficient multiplicateur global est CM1 + CM2",
+                "Le taux global est toujours égal à t1 × t2"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les coefficients multiplicateurs se multiplient (CM_g = CM1 × CM2), tandis que les pourcentages ne s'additionnent pas directement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un prix augmente de 10 % puis encore de 10 %. Quelle est la hausse globale ?",
+              "options": ["+21 %", "+20 %", "+22 %", "+19 %"],
+              "correctAnswers": [0],
+              "explanation": "CM_global = 1,10 × 1,10 = 1,21, soit une hausse globale de 21 %."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une action subit une hausse de 20 % puis une baisse de 20 %. Quelle est l'évolution globale ?",
+              "options": [
+                "Une baisse de 4 %",
+                "Aucun changement (0 %)",
+                "Une hausse de 4 %",
+                "Une baisse de 2 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CM_global = 1,20 × 0,80 = 0,96 = 1 - 0,04, soit une baisse de 4 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un salaire augmente de 5 % la première année et de 8 % la deuxième année. Quel est le CM global ?",
+              "options": ["1,134", "1,130", "1,040", "1,400"],
+              "correctAnswers": [0],
+              "explanation": "CM = 1,05 × 1,08 = 1,134."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le taux global d'évolution correspondant à deux hausses de 5 % et 8 % ?",
+              "options": ["+13,4 %", "+13 %", "+14 %", "+12,8 %"],
+              "correctAnswers": [0],
+              "explanation": "CM = 1,134 donc le taux est 1,134 - 1 = 0,134 = +13,4 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une baisse de 50 % suivie d'une baisse de 50 % donne un CM global de :",
+              "options": ["0,25", "0,00", "0,50", "0,10"],
+              "correctAnswers": [0],
+              "explanation": "CM = 0,50 × 0,50 = 0,25 (une baisse globale de 75 %)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un objet subit trois hausses successives de 10 %. Quel est son CM global ?",
+              "options": ["1,331", "1,300", "1,330", "1,210"],
+              "correctAnswers": [0],
+              "explanation": "CM = 1,10³ = 1,331."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une grandeur augmente de 50 % puis diminue de 30 %, quelle est sa variation globale ?",
+              "options": ["+5 %", "+20 %", "-5 %", "+15 %"],
+              "correctAnswers": [0],
+              "explanation": "CM = 1,50 × 0,70 = 1,05, ce qui donne une hausse globale de 5 %."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une quantité diminue de 20 %, puis augmente de 25 %. Que devient la valeur finale ?",
+              "options": [
+                "Elle revient exactement à la valeur initiale",
+                "Elle est inférieure de 5 % à la valeur initiale",
+                "Elle est supérieure de 5 % à la valeur initiale",
+                "Elle est inférieure de 1 % à la valeur initiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CM = 0,80 × 1,25 = 1,00. La valeur finale est égale à la valeur de départ."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi ne peut-on pas simplement additionner les pourcentages d'évolutions successives ?",
+              "options": [
+                "Parce que la seconde évolution s'applique sur la nouvelle valeur et non sur la valeur initiale",
+                "Parce que les pourcentages sont toujours négatifs",
+                "Parce que l'ordre des pourcentages changerait le résultat",
+                "Parce que les lois mathématiques interdisent l'addition de fractions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La base de calcul change après la première évolution, d'où la composition multiplicative."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Évolution réciproque",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Soit CM le coefficient multiplicateur d'une évolution. Quelles relations définissent le coefficient réciproque CM' ?",
+              "options": [
+                "CM' = 1 / CM",
+                "CM × CM' = 1",
+                "CM' = 1 - CM",
+                "CM' = -CM"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'évolution réciproque compense l'évolution initiale : CM × CM' = 1, donc CM' = 1/CM."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Après une hausse de 25 %, quel coefficient permet de revenir à la valeur initiale ?",
+              "options": ["0,8", "0,75", "-0,25", "1,25"],
+              "correctAnswers": [0],
+              "explanation": "CM = 1,25. CM' = 1 / 1,25 = 0,8."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel taux d'évolution réciproque compense une hausse initiale de 25 % ?",
+              "options": [
+                "Une baisse de 20 %",
+                "Une baisse de 25 %",
+                "Une baisse de 15 %",
+                "Une hausse de 20 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CM' = 0,8, donc t' = 0,8 - 1 = -0,20 = -20 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Après une baisse de 20 %, quel taux d'évolution permet de revenir à la valeur initiale ?",
+              "options": ["+25 %", "+20 %", "+30 %", "+15 %"],
+              "correctAnswers": [0],
+              "explanation": "CM = 0,80. CM' = 1 / 0,80 = 1,25. Le taux réciproque est 1,25 - 1 = +25 %."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si une quantité est multipliée par 4, par quel nombre faut-il la multiplier pour revenir au point de départ ?",
+              "options": ["0,25", "-4", "0,75", "0,5"],
+              "correctAnswers": [0],
+              "explanation": "CM' = 1 / 4 = 0,25."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Après une baisse de 50 %, quel pourcentage de hausse faut-il appliquer pour rétablir la valeur de départ ?",
+              "options": ["+100 %", "+50 %", "+75 %", "+150 %"],
+              "correctAnswers": [0],
+              "explanation": "CM = 0,5. CM' = 1 / 0,5 = 2. Un CM de 2 correspond à une hausse de 100 %."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la formule du taux réciproque t' en fonction du taux initial t (t et t' en décimal) ?",
+              "options": [
+                "t' = -t / (1 + t)",
+                "t' = -t",
+                "t' = 1 / (1 + t)",
+                "t' = (1 - t) / t"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 + t' = 1 / (1 + t) ⇒ t' = 1/(1+t) - 1 = -t / (1 + t)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un prix augmente de 100 %. Quelle baisse en pourcentage compense cette augmentation ?",
+              "options": [
+                "Une baisse de 50 %",
+                "Une baisse de 100 %",
+                "Une baisse de 75 %",
+                "Une baisse de 25 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CM = 2. CM' = 1/2 = 0,5, soit une baisse de 50 %."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un commerçant augmente ses prix de 10 % puis applique une remise de 10 %. Les prix reviennent-ils à l'initial ?",
+              "options": [
+                "Non, ils sont inférieurs de 1 % à leur valeur de départ",
+                "Oui, car +10 % et -10 % s'annulent",
+                "Non, ils sont supérieurs de 1 % à leur valeur de départ",
+                "Oui, sauf pour les prix impairs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CM = 1,10 × 0,90 = 0,99, soit une perte de 1 % par rapport au départ."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour une hausse de 60 %, quelle est la valeur arrondie du taux réciproque ?",
+              "options": ["-37,5 %", "-40,0 %", "-60,0 %", "-30,0 %"],
+              "correctAnswers": [0],
+              "explanation": "CM = 1,60. CM' = 1 / 1,60 = 0,625. Taux réciproque = 0,625 - 1 = -0,375 = -37,5 %."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Échelles et agrandissement/réduction",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur une carte à l'échelle 1 : 50 000, quelles affirmations sont exactes ?",
+              "options": [
+                "1 cm sur la carte représente 50 000 cm dans la réalité",
+                "1 cm sur la carte représente 500 m dans la réalité",
+                "1 cm sur la carte représente 50 km dans la réalité",
+                "C'est une échelle d'agrandissement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 : 50 000 signifie 1 cm pour 50 000 cm = 500 m. C'est une réduction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la définition de l'échelle e d'un plan ?",
+              "options": [
+                "e = dimension sur le plan / dimension réelle (dans la même unité)",
+                "e = dimension réelle / dimension sur le plan",
+                "e = dimension sur le plan × dimension réelle",
+                "e = dimension réelle - dimension sur le plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échelle est le rapport de la dimension représentée sur la dimension réelle dans la même unité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur un plan à l'échelle 1 : 200, un mur mesure 3 cm. Quelle est sa longueur réelle ?",
+              "options": ["6 m", "60 m", "60 cm", "0,6 m"],
+              "correctAnswers": [0],
+              "explanation": "Longueur réelle = 3 × 200 = 600 cm = 6 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une distance réelle de 15 km est représentée par 6 cm sur une carte. Quelle est l'échelle ?",
+              "options": [
+                "1 : 250 000",
+                "1 : 25 000",
+                "1 : 2 500 000",
+                "1 : 90 000"
+              ],
+              "correctAnswers": [0],
+              "explanation": "15 km = 1 500 000 cm. Échelle = 6 / 1 500 000 = 1 / 250 000."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si les longueurs d'une figure sont multipliées par k = 3, par quel facteur son aire est-elle multipliée ?",
+              "options": ["9", "3", "6", "27"],
+              "correctAnswers": [0],
+              "explanation": "Dans un agrandissement de rapport k, les aires sont multipliées par k² = 3² = 9."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si les dimensions d'un solide sont multipliées par k = 2, par quel facteur son volume est-il multiplié ?",
+              "options": ["8", "4", "2", "6"],
+              "correctAnswers": [0],
+              "explanation": "Les volumes sont multipliés par k³ = 2³ = 8."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une maquette de voiture est construite à l'échelle 1 : 18. C'est :",
+              "options": [
+                "Une réduction de rapport 1/18",
+                "Un agrandissement de rapport 18",
+                "Une proportionnalité inverse",
+                "Une échelle de niveau 18"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échelle étant inférieure à 1, il s'agit d'une réduction de rapport k = 1/18."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une puce électronique de 2 mm est dessinée avec une longueur de 10 cm. Quelle est l'échelle ?",
+              "options": ["50 : 1", "20 : 1", "5 : 1", "1 : 50"],
+              "correctAnswers": [0],
+              "explanation": "10 cm = 100 mm. Échelle = 100 / 2 = 50, soit une échelle d'agrandissement 50 : 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un terrain rectangulaire a une aire de 400 m². Sur un plan à l'échelle 1 : 100, son aire est :",
+              "options": ["0,04 m² (soit 400 cm²)", "4 m²", "0,4 m²", "40 cm²"],
+              "correctAnswers": [0],
+              "explanation": "Aire sur plan = 400 × (1/100)² = 400 / 10 000 = 0,04 m² = 400 cm²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sur une carte au 1 : 25 000, un segment mesure 8 cm. Quelle est la distance réelle sur le terrain ?",
+              "options": ["2 km", "20 km", "200 m", "25 km"],
+              "correctAnswers": [0],
+              "explanation": "8 × 25 000 = 200 000 cm = 2 000 m = 2 km."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Problèmes de proportionnalité et synthèse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles situations de la vie courante relèvent d'une proportionnalité directe stricte ?",
+              "options": [
+                "Le coût du carburant à la pompe en fonction du volume en litres",
+                "La masse d'un métal homogène en fonction de son volume",
+                "La distance de freinage d'une voiture en fonction de sa vitesse",
+                "Le montant de l'impôt sur le revenu par tranches en fonction du revenu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le prix du carburant (à tarif fixe) et la masse (masse volumique constante) sont proportionnels. La distance de freinage est quadratique et l'impôt est progressif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour peindre une surface de 36 m², un artisan utilise 4,5 L de peinture. Combien lui en faut-il pour 60 m² ?",
+              "options": ["7,5 L", "8 L", "7 L", "9 L"],
+              "correctAnswers": [0],
+              "explanation": "(60 × 4,5) / 36 = 270 / 36 = 7,5 litres."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le prix d'un produit passe de 50 € à 65 €. Quel est le pourcentage d'augmentation ?",
+              "options": ["30 %", "15 %", "25 %", "35 %"],
+              "correctAnswers": [0],
+              "explanation": "(65 - 50) / 50 = 15 / 50 = 0,30 = 30 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Trois associés se partagent 12 000 € proportionnellement à leurs apports : 2, 3 et 5 parts. Que reçoit le premier ?",
+              "options": ["2 400 €", "3 600 €", "1 200 €", "2 000 €"],
+              "correctAnswers": [0],
+              "explanation": "Total des parts = 2 + 3 + 5 = 10 parts. Valeur d'une part = 1 200 €. Part 1 = 2 × 1 200 = 2 400 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une solution saline contient 12 g de sel pour 200 mL d'eau. Quelle masse de sel contient 750 mL de cette même solution ?",
+              "options": ["45 g", "36 g", "50 g", "42 g"],
+              "correctAnswers": [0],
+              "explanation": "(750 × 12) / 200 = 9000 / 200 = 45 g."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Après deux hausses consécutives de 20 % et 30 %, le coefficient multiplicateur global vaut :",
+              "options": ["1,56", "1,50", "1,60", "1,66"],
+              "correctAnswers": [0],
+              "explanation": "CM = 1,20 × 1,30 = 1,56."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un prix soldé à -40 % vaut 48 €. Quel était le prix initial avant les soldes ?",
+              "options": ["80 €", "67,20 €", "72 €", "96 €"],
+              "correctAnswers": [0],
+              "explanation": "Prix initial = 48 / (1 - 0,40) = 48 / 0,60 = 80 €."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une maquette de bâtiment à l'échelle 1 : 50 a un volume de 8 dm³. Quel est le volume réel du bâtiment ?",
+              "options": ["1 000 m³", "400 m³", "100 m³", "20 m³"],
+              "correctAnswers": [0],
+              "explanation": "Facteur volume = 50³ = 125 000. Volume réel = 8 × 125 000 dm³ = 1 000 000 dm³ = 1 000 m³."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si une grandeur baisse de 20 %, par combien doit-on la multiplier pour retrouver la valeur de départ ?",
+              "options": ["1,25", "1,20", "0,80", "1,50"],
+              "correctAnswers": [0],
+              "explanation": "CM = 0,80. CM' = 1 / 0,80 = 1,25."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle condition sur une fonction f garantit que f(x) est proportionnelle à x ?",
+              "options": [
+                "f est linéaire de la forme f(x) = ax",
+                "f est affine de la forme f(x) = ax + b avec b ≠ 0",
+                "f est strictement croissante",
+                "f s'annule en un point quelconque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les fonctions linéaires f(x) = ax modélisent une situation de proportionnalité."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Unités",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Unités du système international et préfixes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi les grandeurs suivantes, lesquelles ont pour unité de base du Système International (SI) celle indiquée ?",
+              "options": [
+                "La longueur a pour unité le mètre (m)",
+                "La masse a pour unité le kilogramme (kg)",
+                "Le temps a pour unité la minute (min)",
+                "La température a pour unité le degré Celsius (°C)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les 7 unités de base du SI comprennent le mètre pour la longueur et le kilogramme pour la masse (le temps est en seconde, la température en kelvin)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quel facteur multiplicatif correspond le préfixe 'kilo' (k) ?",
+              "options": [
+                "10³ (1 000)",
+                "10⁶ (1 000 000)",
+                "10² (100)",
+                "10⁻³ (0,001)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe kilo correspond à un facteur de 10³ = 1 000."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quel facteur correspond le préfixe 'milli' (m) ?",
+              "options": [
+                "10⁻³ (0,001)",
+                "10⁻⁶ (0,000001)",
+                "10⁻² (0,01)",
+                "10³ (1 000)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milli représente un millième, soit 10⁻³."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de watts représente 1 mégawatt (MW) ?",
+              "options": ["10⁶ W", "10³ W", "10⁹ W", "10¹² W"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe Méga (M) correspond à un million, soit 10⁶."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À quelle puissance de 10 correspond le préfixe 'micro' (µ) ?",
+              "options": ["10⁻⁶", "10⁻⁹", "10⁻³", "10⁻¹²"],
+              "correctAnswers": [0],
+              "explanation": "Micro (symbole µ) correspond à un millionième, soit 10⁻⁶."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel préfixe correspond au facteur 10⁹ (un milliard) ?",
+              "options": ["Giga (G)", "Méga (M)", "Téra (T)", "Kilo (k)"],
+              "correctAnswers": [0],
+              "explanation": "Giga correspond à un milliard, soit 10⁹."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de mètres mesure un nanomètre (nm) ?",
+              "options": ["10⁻⁹ m", "10⁻¹² m", "10⁻⁶ m", "10⁻³ m"],
+              "correctAnswers": [0],
+              "explanation": "Nano correspond à un milliardième, soit 10⁻⁹ m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À combien de grammes équivaut 1 hectogramme (hg) ?",
+              "options": ["100 g", "10 g", "1 000 g", "0,1 g"],
+              "correctAnswers": [0],
+              "explanation": "Hecto correspond à 10², soit 100 unités."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel préfixe correspond au facteur 10⁻¹² ?",
+              "options": ["Pico (p)", "Femto (f)", "Nano (n)", "Micro (µ)"],
+              "correctAnswers": [0],
+              "explanation": "Pico (p) correspond à 10⁻¹²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien y a-t-il d'octets dans un téraoctet (To) en notation décimale standard du SI ?",
+              "options": [
+                "10¹² octets",
+                "10⁹ octets",
+                "10¹⁵ octets",
+                "2⁴⁰ octets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe téra (T) correspond au facteur 10¹² (mille milliards)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Conversions de longueurs et distances",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi les égalités suivantes de conversion de longueurs, lesquelles sont exactes ?",
+              "options": [
+                "1 km = 1 000 m",
+                "1 m = 100 cm",
+                "1 dm = 10 m",
+                "1 mm = 0,1 m"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 km = 1 000 m et 1 m = 100 cm = 10 dm = 1 000 mm."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de mètres mesure une longueur de 3,45 km ?",
+              "options": ["3 450 m", "345 m", "34 500 m", "34,5 m"],
+              "correctAnswers": [0],
+              "explanation": "3,45 × 1 000 = 3 450 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Convertir 280 mm en centimètres :",
+              "options": ["28 cm", "2,8 cm", "2800 cm", "0,28 cm"],
+              "correctAnswers": [0],
+              "explanation": "1 cm = 10 mm donc 280 mm = 28 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de millimètres font 0,75 mètre ?",
+              "options": ["750 mm", "75 mm", "7 500 mm", "7,5 mm"],
+              "correctAnswers": [0],
+              "explanation": "0,75 × 1 000 = 750 mm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Convertir 45 decamètres (dam) en mètres :",
+              "options": ["450 m", "4,5 m", "45 m", "4 500 m"],
+              "correctAnswers": [0],
+              "explanation": "1 dam = 10 m donc 45 dam = 450 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un cheveu a une épaisseur de 70 µm. Quelle est cette valeur en mètres ?",
+              "options": [
+                "7 × 10⁻⁵ m",
+                "7 × 10⁻⁶ m",
+                "7 × 10⁻⁴ m",
+                "70 × 10⁻³ m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "70 µm = 70 × 10⁻⁶ m = 7 × 10⁻⁵ m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de kilomètres représentent 52 000 centimètres ?",
+              "options": ["0,52 km", "5,2 km", "52 km", "0,052 km"],
+              "correctAnswers": [0],
+              "explanation": "52 000 cm = 520 m = 0,52 km."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une sonde parcourt 1,5 × 10⁸ km. En écriture scientifique en mètres, cela vaut :",
+              "options": [
+                "1,5 × 10¹¹ m",
+                "1,5 × 10¹⁴ m",
+                "1,5 × 10⁸ m",
+                "15 × 10⁹ m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1,5 × 10⁸ km = 1,5 × 10⁸ × 10³ m = 1,5 × 10¹¹ m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Convertir 15,6 dm en mètres :",
+              "options": ["1,56 m", "156 m", "0,156 m", "15,6 m"],
+              "correctAnswers": [0],
+              "explanation": "1 dm = 0,1 m donc 15,6 dm = 1,56 m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un marathon fait 42,195 km. Combien cela fait-il en décamètres (dam) ?",
+              "options": [
+                "4 219,5 dam",
+                "421,95 dam",
+                "42 195 dam",
+                "42,195 dam"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 km = 100 dam donc 42,195 × 100 = 4 219,5 dam."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Conversions d'aires et de surfaces",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités entre unités d'aire sont exactes ?",
+              "options": [
+                "1 m² = 10 000 cm²",
+                "1 ha = 10 000 m²",
+                "1 m² = 100 cm²",
+                "1 km² = 1 000 m²"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 m² = (100 cm)² = 10 000 cm². L'hectare (ha) vaut 10 000 m² (1 hm²)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de centimètres carrés (cm²) y a-t-il dans 1 décimètre carré (dm²) ?",
+              "options": ["100 cm²", "10 cm²", "1 000 cm²", "10 000 cm²"],
+              "correctAnswers": [0],
+              "explanation": "1 dm = 10 cm, donc 1 dm² = 10² cm² = 100 cm²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de mètres carrés y a-t-il dans 1 kilomètre carré (km²) ?",
+              "options": [
+                "1 000 000 m² (10⁶ m²)",
+                "1 000 m²",
+                "10 000 m²",
+                "100 000 m²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 km = 1 000 m donc 1 km² = (1 000 m)² = 1 000 000 m²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un terrain mesure 2,5 hectares. Quelle est sa superficie en mètres carrés ?",
+              "options": ["25 000 m²", "2 500 m²", "250 000 m²", "250 m²"],
+              "correctAnswers": [0],
+              "explanation": "1 ha = 10 000 m², donc 2,5 × 10 000 = 25 000 m²."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À quoi correspond 1 are (a) en mètres carrés ?",
+              "options": ["100 m²", "10 m²", "1 000 m²", "1 ha"],
+              "correctAnswers": [0],
+              "explanation": "1 are = 1 dam² = 100 m²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Convertir 450 cm² en mètres carrés (m²) :",
+              "options": ["0,045 m²", "0,45 m²", "4,5 m²", "0,0045 m²"],
+              "correctAnswers": [0],
+              "explanation": "450 / 10 000 = 0,045 m²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de millimètres carrés (mm²) contient 1 mètre carré (m²) ?",
+              "options": [
+                "1 000 000 mm²",
+                "100 000 mm²",
+                "10 000 mm²",
+                "10 000 000 mm²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 m = 1 000 mm, donc 1 m² = (1 000)² mm² = 1 000 000 mm²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une forêt s'étend sur 18 km². Combien cela représente-t-il d'hectares ?",
+              "options": ["1 800 ha", "180 ha", "18 000 ha", "18 ha"],
+              "correctAnswers": [0],
+              "explanation": "1 km² = 100 ha, donc 18 × 100 = 1 800 ha."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Convertir 3,2 dm² en millimètres carrés (mm²) :",
+              "options": ["32 000 mm²", "3 200 mm²", "320 mm²", "320 000 mm²"],
+              "correctAnswers": [0],
+              "explanation": "1 dm² = 100 cm² = 10 000 mm², donc 3,2 × 10 000 = 32 000 mm²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi chaque colonne d'un tableau de conversion d'aires contient-elle deux sous-colonnes ?",
+              "options": [
+                "Parce que le rapport entre deux unités consécutives est 10² = 100",
+                "Pour distinguer les longueurs des largeurs",
+                "Parce que les surfaces ont deux dimensions indépendantes",
+                "Pour permettre les calculs en base hexadécimale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passer à l'unité de longueur inférieure multiplie par 10, donc pour l'aire on multiplie par 10² = 100."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Conversions de volumes et de capacités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles correspondances fondamentales entre volumes et capacités sont exactes ?",
+              "options": [
+                "1 dm³ = 1 litre (L)",
+                "1 m³ = 1 000 litres",
+                "1 cm³ = 1 litre",
+                "1 m³ = 100 litres"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 dm³ correspond exactement à 1 litre d'eau, d'où 1 m³ = 1 000 dm³ = 1 000 L."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de centilitres (cL) contient 1 litre ?",
+              "options": ["100 cL", "10 cL", "1 000 cL", "0,1 cL"],
+              "correctAnswers": [0],
+              "explanation": "Centi signifie centième : 1 L = 100 cL."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quoi équivaut 1 millilitre (mL) en volume métrique ?",
+              "options": ["1 cm³", "1 dm³", "1 mm³", "0,1 cm³"],
+              "correctAnswers": [0],
+              "explanation": "1 L = 1 dm³ = 1 000 cm³, et 1 L = 1 000 mL, donc 1 mL = 1 cm³."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de décimètres cubes (dm³) contient 1 mètre cube (m³) ?",
+              "options": ["1 000 dm³", "100 dm³", "10 000 dm³", "10 dm³"],
+              "correctAnswers": [0],
+              "explanation": "1 m = 10 dm, donc 1 m³ = 10³ dm³ = 1 000 dm³."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une piscine contient 45 m³ d'eau. Combien de litres cela représente-t-il ?",
+              "options": ["45 000 L", "4 500 L", "450 000 L", "450 L"],
+              "correctAnswers": [0],
+              "explanation": "45 m³ = 45 × 1 000 L = 45 000 L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Convertir 750 cm³ en litres :",
+              "options": ["0,75 L", "7,5 L", "0,075 L", "75 L"],
+              "correctAnswers": [0],
+              "explanation": "750 cm³ = 750 mL = 0,75 L."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de centimètres cubes (cm³) contient 1 mètre cube (m³) ?",
+              "options": [
+                "1 000 000 cm³ (10⁶ cm³)",
+                "10 000 cm³",
+                "100 000 cm³",
+                "100 000 000 cm³"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 m = 100 cm, donc 1 m³ = (100)³ cm³ = 1 000 000 cm³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une canette contient 33 cL. Quel est son volume en cm³ ?",
+              "options": ["330 cm³", "33 cm³", "3 300 cm³", "3,3 cm³"],
+              "correctAnswers": [0],
+              "explanation": "33 cL = 330 mL = 330 cm³."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Convertir 0,08 m³ en décilitres (dL) :",
+              "options": ["800 dL", "80 dL", "8 000 dL", "8 dL"],
+              "correctAnswers": [0],
+              "explanation": "0,08 m³ = 80 L = 800 dL."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi chaque unité de volume comprend-elle 3 chiffres dans un tableau de conversion ?",
+              "options": [
+                "Car 10³ = 1 000, le rapport entre deux unités de volume consécutives est 1 000",
+                "Pour permettre d'écrire les nombres jusqu'à 999 999",
+                "Parce qu'un solide a toujours trois faces visibles",
+                "C'est une convention arbitraire du calendrier républicain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passage à une unité linéaire 10 fois plus petite multiplie le volume par 10³ = 1 000, d'où 3 colonnes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Grandeurs quotients : vitesse, débit, masse volumique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi les grandeurs suivantes, lesquelles sont des grandeurs quotients ?",
+              "options": [
+                "La vitesse moyenne v = d / t",
+                "La masse volumique ρ = m / V",
+                "L'énergie électrique E = P × t",
+                "L'aire d'un rectangle A = L × l"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une grandeur quotient est obtenue en divisant deux grandeurs de natures différentes (comme distance/temps ou masse/volume)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unité légale du Système International pour la vitesse ?",
+              "options": [
+                "Le mètre par seconde (m/s ou m·s⁻¹)",
+                "Le kilomètre par heure (km/h)",
+                "Le nœud (kt)",
+                "Le centimètre par seconde (cm/s)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le SI, la distance est en mètres et le temps en secondes, soit m/s."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un mobile parcourt 150 km en 2 h 30 min. Quelle est sa vitesse moyenne ?",
+              "options": ["60 km/h", "65 km/h", "50 km/h", "58 km/h"],
+              "correctAnswers": [0],
+              "explanation": "2 h 30 min = 2,5 h. Vitesse = 150 / 2,5 = 60 km/h."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un robinet a un débit de 12 L/min. Combien de litres verse-t-il en 45 secondes ?",
+              "options": ["9 L", "8 L", "6 L", "10 L"],
+              "correctAnswers": [0],
+              "explanation": "45 s = 0,75 min. Volume = 12 × 0,75 = 9 L."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un bloc d'aluminium a un volume de 250 cm³ et une masse de 675 g. Quelle est sa masse volumique ?",
+              "options": ["2,7 g/cm³", "0,37 g/cm³", "2,5 g/cm³", "3,1 g/cm³"],
+              "correctAnswers": [0],
+              "explanation": "ρ = m / V = 675 / 250 = 2,7 g/cm³."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la masse volumique de l'eau liquide pure dans les conditions usuelles ?",
+              "options": [
+                "1 000 kg/m³ (soit 1 g/cm³ ou 1 kg/L)",
+                "100 kg/m³",
+                "10 000 kg/m³",
+                "0,1 kg/m³"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 litre d'eau liquide pèse 1 kg, ce qui correspond à 1 000 kg/m³."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un fleuve a un débit moyen de 600 m³/s. Quel volume d'eau s'écoule en 1 minute ?",
+              "options": ["36 000 m³", "6 000 m³", "60 000 m³", "10 000 m³"],
+              "correctAnswers": [0],
+              "explanation": "600 × 60 = 36 000 m³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La concentration massique d'une solution est Cm = m / V. Si on dissout 15 g de sucre dans 500 mL d'eau, Cm vaut :",
+              "options": ["30 g/L", "15 g/L", "7,5 g/L", "3 g/L"],
+              "correctAnswers": [0],
+              "explanation": "500 mL = 0,5 L. Cm = 15 / 0,5 = 30 g/L."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un véhicule roule à 90 km/h pendant 20 minutes. Quelle distance parcourt-il ?",
+              "options": ["30 km", "45 km", "18 km", "25 km"],
+              "correctAnswers": [0],
+              "explanation": "20 min = 1/3 h. Distance = 90 × (1/3) = 30 km."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si la masse volumique du fer est 7,8 g/cm³, quelle est la masse d'une bille en fer de 50 cm³ ?",
+              "options": ["390 g", "375 g", "400 g", "350 g"],
+              "correctAnswers": [0],
+              "explanation": "m = ρ × V = 7,8 × 50 = 390 g."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Grandeurs produits : énergie, travail, consommation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi les grandeurs suivantes, lesquelles sont des grandeurs produits ?",
+              "options": [
+                "L'énergie électrique E = P × t",
+                "Le moment d'une force M = F × d",
+                "La vitesse moyenne v = d / t",
+                "La fréquence f = 1 / T"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une grandeur produit résulte de la multiplication de deux grandeurs (Puissance × temps, Force × distance)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unité usuelle d'énergie facturée sur les factures d'électricité ?",
+              "options": [
+                "Le kilowattheure (kWh)",
+                "Le kilowatt par heure (kW/h)",
+                "Le kilowatt (kW)",
+                "L'ampère-heure (Ah)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie est le produit d'une puissance en kW par un temps en h, d'où le kWh."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de joules (J) représente 1 kilowattheure (1 kWh) ?",
+              "options": [
+                "3 600 000 J (3,6 × 10⁶ J)",
+                "1 000 J",
+                "3 600 J",
+                "60 000 J"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 kWh = 1 000 W × 3 600 s = 3 600 000 J = 3,6 MJ."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un appareil de 2 000 W fonctionne pendant 3 heures. Quelle énergie consomme-t-il ?",
+              "options": ["6 kWh", "6 000 kWh", "600 Wh", "0,66 kWh"],
+              "correctAnswers": [0],
+              "explanation": "E = P × t = 2 kW × 3 h = 6 kWh."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une batterie de smartphone a une capacité de 4 000 mAh sous 3,7 V. L'ampère-heure (Ah) est l'unité de :",
+              "options": [
+                "La charge électrique (Q = I × t)",
+                "La tension électrique",
+                "La résistance interne",
+                "La puissance instantanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 Ah = 1 A × 1 h = 3 600 Coulombs : c'est une quantité de charge électrique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de temps peut fonctionner une lampe de 50 W avec une énergie de 300 Wh ?",
+              "options": ["6 heures", "15 heures", "60 heures", "1,5 heure"],
+              "correctAnswers": [0],
+              "explanation": "t = E / P = 300 / 50 = 6 heures."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la notation 'kW/h' est-elle incorrecte pour désigner l'énergie consommée par un radiateur ?",
+              "options": [
+                "Car l'énergie est un produit puissance × temps et non un quotient",
+                "Car le kilowatt n'est pas une unité officielle",
+                "Car les heures doivent toujours être converties en secondes",
+                "Car le symbole de la division est réservé aux masses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "kW/h désignerait une variation de puissance par unité de temps, alors que l'énergie est une grandeur produit (kW·h)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un véhicule électrique consomme 16 kWh aux 100 km. Pour parcourir 350 km, l'énergie nécessaire est :",
+              "options": ["56 kWh", "50 kWh", "64 kWh", "48 kWh"],
+              "correctAnswers": [0],
+              "explanation": "(16 × 350) / 100 = 5 600 / 100 = 56 kWh."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une ampoule LED de 10 W reste allumée 24 h par jour pendant 30 jours. Quelle est sa consommation mensuelle ?",
+              "options": ["7,2 kWh", "72 kWh", "720 kWh", "0,72 kWh"],
+              "correctAnswers": [0],
+              "explanation": "E = 10 W × (24 × 30 h) = 10 × 720 = 7 200 Wh = 7,2 kWh."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'aire d'un terrain est-elle une grandeur produit ?",
+              "options": [
+                "Oui, car elle résulte du produit de deux longueurs (m × m = m²)",
+                "Non, car c'est une grandeur sans dimension",
+                "Non, c'est une grandeur quotient",
+                "Oui, seulement pour les disques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une surface est le produit de deux dimensions de longueur [L] × [L] = [L²]."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Conversions d'unités composées (km/h en m/s...)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour convertir une vitesse entre km/h et m/s, quelles règles sont rigoureusement vraies ?",
+              "options": [
+                "Pour passer de m/s à km/h, on multiplie par 3,6",
+                "Pour passer de km/h à m/s, on divise par 3,6",
+                "Pour passer de m/s à km/h, on divise par 3,6",
+                "1 m/s = 36 km/h"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 m/s = (1/1 000 km) / (1/3 600 h) = 3 600 / 1 000 km/h = 3,6 km/h."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Convertir 90 km/h en mètres par seconde (m/s) :",
+              "options": ["25 m/s", "32,4 m/s", "20 m/s", "30 m/s"],
+              "correctAnswers": [0],
+              "explanation": "90 / 3,6 = 25 m/s."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Convertir 10 m/s en kilomètres par heure (km/h) :",
+              "options": ["36 km/h", "28 km/h", "30 km/h", "40 km/h"],
+              "correctAnswers": [0],
+              "explanation": "10 × 3,6 = 36 km/h."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La vitesse maximale sur autoroute est 130 km/h. Quelle est sa valeur arrondie en m/s ?",
+              "options": ["36,1 m/s", "46,8 m/s", "32,5 m/s", "40,0 m/s"],
+              "correctAnswers": [0],
+              "explanation": "130 / 3,6 ≈ 36,11 m/s."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Convertir une masse volumique de 1 g/cm³ en kg/m³ :",
+              "options": [
+                "1 000 kg/m³",
+                "100 kg/m³",
+                "10 kg/m³",
+                "0,001 kg/m³"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 g = 10⁻³ kg et 1 cm³ = 10⁻⁶ m³, donc 10⁻³ / 10⁻⁶ = 1 000 kg/m³."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un débit de 18 m³/h correspond à combien de litres par seconde (L/s) ?",
+              "options": ["5 L/s", "0,5 L/s", "50 L/s", "3 L/s"],
+              "correctAnswers": [0],
+              "explanation": "18 m³ = 18 000 L, et 1 h = 3 600 s. Débit = 18 000 / 3 600 = 5 L/s."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un coureur sprinte à 12 m/s. Quelle est sa vitesse en km/h ?",
+              "options": ["43,2 km/h", "36,0 km/h", "40,0 km/h", "45,5 km/h"],
+              "correctAnswers": [0],
+              "explanation": "12 × 3,6 = 43,2 km/h."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Convertir un débit de 120 L/min en m³/h :",
+              "options": ["7,2 m³/h", "2 m³/h", "12 m³/h", "0,72 m³/h"],
+              "correctAnswers": [0],
+              "explanation": "120 L/min = 120 × 60 L/h = 7 200 L/h = 7,2 m³/h."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le son se propage dans l'air à environ 340 m/s. Quelle est cette vitesse en km/h ?",
+              "options": ["1 224 km/h", "1 000 km/h", "1 400 km/h", "980 km/h"],
+              "correctAnswers": [0],
+              "explanation": "340 × 3,6 = 1 224 km/h."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Convertir 2,5 kg/L en g/mL :",
+              "options": ["2,5 g/mL", "250 g/mL", "25 g/mL", "0,025 g/mL"],
+              "correctAnswers": [0],
+              "explanation": "2,5 kg = 2 500 g et 1 L = 1 000 mL, donc 2 500 / 1 000 = 2,5 g/mL."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Temps, durées et conversions décimales/sexagésimales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles correspondances de durées sont exactes ?",
+              "options": [
+                "1,5 heure = 1 h 30 min",
+                "0,25 heure = 15 minutes",
+                "1,2 heure = 1 h 20 min",
+                "2,4 heures = 2 h 40 min"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "0,5 h = 30 min et 0,25 h = 15 min. Attention : 0,2 h = 12 min et non 20 min !"
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de minutes durent 2,75 heures ?",
+              "options": [
+                "165 minutes",
+                "155 minutes",
+                "175 minutes",
+                "135 minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2,75 × 60 = 165 minutes (soit 2 h 45 min)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Convertir 138 minutes en heures et minutes :",
+              "options": [
+                "2 h 18 min",
+                "2 h 38 min",
+                "1 h 38 min",
+                "2 h 28 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "138 = 2 × 60 + 18, donc 2 h 18 min."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Convertir 3 h 12 min en heures décimales :",
+              "options": ["3,2 h", "3,12 h", "3,24 h", "3,15 h"],
+              "correctAnswers": [0],
+              "explanation": "12 / 60 = 0,2, donc 3 + 0,2 = 3,2 h."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de secondes contient une journée complète de 24 heures ?",
+              "options": ["86 400 s", "84 600 s", "1 440 s", "36 000 s"],
+              "correctAnswers": [0],
+              "explanation": "24 × 3 600 = 86 400 secondes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est l'écriture décimale de 45 minutes en fraction d'heure ?",
+              "options": ["0,75 h", "0,45 h", "0,50 h", "0,80 h"],
+              "correctAnswers": [0],
+              "explanation": "45 / 60 = 3/4 = 0,75 h."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un trajet dure 1 h 48 min. Quelle est cette durée en heures décimales ?",
+              "options": ["1,8 h", "1,48 h", "1,6 h", "1,75 h"],
+              "correctAnswers": [0],
+              "explanation": "48 / 60 = 0,8 h, donc 1 + 0,8 = 1,8 h."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un train part à 08h45 et arrive à 11h10. Quelle est la durée du trajet ?",
+              "options": [
+                "2 h 25 min",
+                "2 h 35 min",
+                "2 h 15 min",
+                "3 h 25 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De 08h45 à 09h00 : 15 min. De 09h00 à 11h10 : 2 h 10 min. Total = 2 h 25 min."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Convertir 0,4 heure en minutes :",
+              "options": [
+                "24 minutes",
+                "40 minutes",
+                "4 minutes",
+                "15 minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0,4 × 60 = 24 minutes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi le système horaire (heures, minutes, secondes) est-il qualifié de sexagésimal ?",
+              "options": [
+                "Parce qu'il utilise la base 60 pour subdiviser les unités de temps",
+                "Parce qu'il a été créé au XVIe siècle",
+                "Parce qu'un angle droit mesure 60 degrés",
+                "Parce que la Terre tourne en 60 heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terme sexagésimal vient du latin sexagesimus qui signifie 'soixantième' (base 60 héritée des Babyloniens)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Précision, incertitudes et chiffres significatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels nombres comportent exactement 3 chiffres significatifs ?",
+              "options": [
+                "0,0450",
+                "3,02",
+                "0,003",
+                "12 000 (sans précision contextuelle)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "0,0450 a 3 chiffres significatifs (4, 5, 0 final). 3,02 a 3 chiffres significatifs (3, 0, 2). 0,003 n'en a qu'un."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de chiffres significatifs possède le nombre 0,002 50 ?",
+              "options": ["3", "5", "2", "6"],
+              "correctAnswers": [0],
+              "explanation": "Les zéros à gauche ne comptent pas, les zéros à droite après la virgule comptent : 2, 5 et 0 font 3 chiffres significatifs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lors d'une multiplication, combien de chiffres significatifs doit comporter le résultat final ?",
+              "options": [
+                "Autant que la donnée qui en comporte le moins",
+                "Autant que la donnée qui en comporte le plus",
+                "Toujours 2 chiffres significatifs",
+                "La somme des chiffres significatifs des facteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La règle pour le produit/quotient est d'aligner la précision sur le terme le moins précis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une mesure vaut L = (12,4 ± 0,2) cm. Quel est l'encadrement de la longueur L ?",
+              "options": [
+                "12,2 cm ≤ L ≤ 12,6 cm",
+                "12,0 cm ≤ L ≤ 12,8 cm",
+                "12,2 cm < L < 12,4 cm",
+                "12,4 cm ≤ L ≤ 12,6 cm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "12,4 - 0,2 = 12,2 et 12,4 + 0,2 = 12,6 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est l'incertitude relative en pourcentage pour une mesure de 50 m avec une incertitude absolue de 1 m ?",
+              "options": ["2 %", "1 %", "0,02 %", "5 %"],
+              "correctAnswers": [0],
+              "explanation": "Incertitude relative = 1 / 50 = 0,02 = 2 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Écrire 4 560 000 en notation scientifique avec 3 chiffres significatifs :",
+              "options": [
+                "4,56 × 10⁶",
+                "4,560 × 10⁶",
+                "45,6 × 10⁵",
+                "4,6 × 10⁶"
+              ],
+              "correctAnswers": [0],
+              "explanation": "4,56 possède 3 chiffres significatifs et 4,56 × 10⁶ = 4 560 000."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On effectue le calcul 3,45 × 1,2. Le résultat brut de calculatrice est 4,14. Que doit-on écrire ?",
+              "options": [
+                "4,1 (car 1,2 ne compte que deux chiffres significatifs)",
+                "4,14",
+                "4",
+                "4,140"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1,2 a 2 chiffres significatifs, le résultat doit être arrondi à 2 chiffres significatifs : 4,1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la précision d'un instrument qui mesure au millimètre près ?",
+              "options": ["± 1 mm", "± 1 cm", "± 0,1 mm", "± 1 m"],
+              "correctAnswers": [0],
+              "explanation": "Mesurer au millimètre près signifie que l'incertitude de lecture est d'au moins 1 mm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la notation scientifique évite-t-elle l'ambiguïté sur les chiffres significatifs d'un nombre comme 2 000 ?",
+              "options": [
+                "Car on peut écrire 2 × 10³, 2,0 × 10³ ou 2,00 × 10³ selon la précision réelle",
+                "Car elle supprime les zéros",
+                "Car les puissances de 10 sont toujours exactes",
+                "Car elle interdit les nombres supérieurs à 1 000"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mantisse montre explicitement tous les chiffres significatifs connus."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel résultat respecte les règles d'arrondi pour la somme 12,34 + 1,2 ?",
+              "options": [
+                "13,5 (aligné sur une décimale)",
+                "13,54",
+                "14",
+                "13,540"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une addition, le résultat ne doit pas avoir plus de décimales que le terme qui en a le moins (ici une décimale pour 1,2)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Problèmes appliqués sur les grandeurs et unités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un réservoir cubique de 2 m d'arête est rempli d'eau pure (masse volumique 1 000 kg/m³). Quelles affirmations sont vraies ?",
+              "options": [
+                "Le volume du réservoir est de 8 m³",
+                "La masse totale de l'eau contenue est de 8 tonnes (8 000 kg)",
+                "La capacité du réservoir est de 800 litres",
+                "L'aire d'une face est de 8 m²"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Volume = 2³ = 8 m³ = 8 000 L. Masse = 8 × 1 000 kg = 8 000 kg = 8 tonnes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une voiture consomme 5,4 L aux 100 km. Avec un plein de 45 L, quelle distance maximale peut-elle parcourir ?",
+              "options": [
+                "Environ 833 km",
+                "Environ 750 km",
+                "Environ 900 km",
+                "Environ 680 km"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Distance = (45 × 100) / 5,4 = 4 500 / 5,4 ≈ 833,3 km."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un cycliste roule à 24 km/h pendant 45 minutes. Quelle distance a-t-il parcourue ?",
+              "options": ["18 km", "16 km", "12 km", "20 km"],
+              "correctAnswers": [0],
+              "explanation": "45 min = 0,75 h. Distance = 24 × 0,75 = 18 km."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un robinet qui fuit perd 1 goutte par seconde. Si 20 gouttes font 1 mL, quel volume en litres est perdu en 24 h ?",
+              "options": ["4,32 L", "8,64 L", "2,16 L", "12,5 L"],
+              "correctAnswers": [0],
+              "explanation": "86 400 s par jour = 86 400 gouttes. Volume = 86 400 / 20 = 4 320 mL = 4,32 L."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un terrain de football mesure 105 m sur 68 m. Quelle est son aire approximative en hectares ?",
+              "options": ["0,714 ha", "7,14 ha", "71,4 ha", "0,071 ha"],
+              "correctAnswers": [0],
+              "explanation": "Aire = 105 × 68 = 7 140 m². Comme 1 ha = 10 000 m², cela fait 0,714 ha."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une pompe vide une cave inondée contenant 36 m³ d'eau à un débit de 150 L/min. Combien de temps prend le pompage ?",
+              "options": [
+                "4 heures",
+                "2 heures 30 minutes",
+                "3 heures 45 minutes",
+                "6 heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "36 m³ = 36 000 L. Durée = 36 000 / 150 = 240 minutes = 4 heures."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un lingot d'or pur a un volume de 50 cm³. Sachant que l'or a une masse volumique de 19,3 g/cm³, quelle est sa masse ?",
+              "options": ["965 g", "850 g", "1 020 g", "920 g"],
+              "correctAnswers": [0],
+              "explanation": "m = ρ × V = 19,3 × 50 = 965 g."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un automobiliste effectue un aller de 60 km à 60 km/h et le retour à 30 km/h. Quelle est sa vitesse moyenne sur l'aller-retour ?",
+              "options": ["40 km/h", "45 km/h", "50 km/h", "35 km/h"],
+              "correctAnswers": [0],
+              "explanation": "Temps aller = 1 h. Temps retour = 2 h. Distance totale = 120 km. Vitesse = 120 / 3 = 40 km/h."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une imprimante 3D dépose un fil de polymère au débit de 15 mm³/s. Quel volume dépose-t-elle en 1 heure ?",
+              "options": ["54 cm³", "540 cm³", "5,4 cm³", "54 000 cm³"],
+              "correctAnswers": [0],
+              "explanation": "15 × 3 600 = 54 000 mm³. Comme 1 cm³ = 1 000 mm³, le volume est de 54 cm³."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est l'importance de vérifier l'homogénéité des unités dans une formule physique ou mathématique ?",
+              "options": [
+                "Elle permet de détecter des erreurs de calcul et garantit la cohérence dimensionnelle",
+                "Elle est uniquement exigée pour les concours d'ingénieurs",
+                "Elle permet de simplifier systématiquement toutes les constantes",
+                "Elle remplace la nécessité de mesurer précisément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'analyse dimensionnelle garantit que les deux membres d'une égalité ont bien la même nature physique."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

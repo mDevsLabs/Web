@@ -1,0 +1,1778 @@
+{
+  "id": "5e-mathematiques-10",
+  "year": "5e",
+  "subject": "mathematiques",
+  "title": "Probabilités et synthèse",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Expériences aléatoires",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un dé équilibré à six faces, quelles affirmations sont correctes ?",
+              "options": [
+                "L'expérience a six issues possibles.",
+                "La probabilité d'obtenir 7 est 1/6.",
+                "Obtenir 4 est une issue possible.",
+                "Obtenir pile est une issue du dé."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On lance un dé équilibré. Quelle est la probabilité d'obtenir 3 ?",
+              "options": ["1/6", "1/3", "3/6", "1/2"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien d'issues différentes obtient-on en lançant une pièce équilibrée une fois ?",
+              "options": ["1", "2", "3", "6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur un dé, a-t-on plus de chances d'obtenir un nombre pair ou d'obtenir 5 ?",
+              "options": [
+                "Obtenir 5",
+                "Un nombre pair",
+                "Les deux sont aussi probables",
+                "Impossible de comparer"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle fraction représente la probabilité d'obtenir pile avec une pièce équilibrée ?",
+              "options": ["1/6", "1/4", "1/2", "2/3"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "On note les issues d'un lancer de dé par le numéro de la face. Quelle liste est correcte ?",
+              "options": [
+                "1, 2, 3",
+                "1, 2, 3, 4, 5, 6",
+                "Pile, face",
+                "0, 1, 2, 3, 4, 5"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La probabilité d'obtenir un nombre strictement supérieur à 4 avec un dé équilibré vaut :",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une expérience est dite aléatoire lorsque :",
+              "options": [
+                "On connaît toujours le résultat à l'avance",
+                "Le résultat dépend du hasard",
+                "Il n'y a qu'une seule issue",
+                "On utilise toujours un dé"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur un dé équilibré, quelle issue a la probabilité 1/6 ?",
+              "options": [
+                "Obtenir un nombre pair",
+                "Obtenir un nombre impair",
+                "Obtenir 2",
+                "Obtenir un nombre inférieur à 6"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "On lance une pièce. La probabilité d'obtenir face est :",
+              "options": ["1/6", "1/3", "1/2", "1"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Avec une pièce équilibrée, quelles affirmations sont vraies ?",
+              "options": [
+                "Il y a deux issues : pile et face.",
+                "La probabilité de pile est 1/2.",
+                "On a plus de chances d'obtenir pile que face.",
+                "Obtenir pile et obtenir face sont deux issues distinctes."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un sac contient 3 boules rouges et 1 boule bleue (même taille). On tire une boule au hasard. Quelle couleur a le plus de chances ?",
+              "options": [
+                "Bleue",
+                "Rouge",
+                "Les deux pareil",
+                "On ne peut pas savoir"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "On lance un dé. Quelle est la probabilité d'obtenir 6 ?",
+              "options": ["1/2", "1/3", "1/6", "6/6"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Parmi les nombres 1 à 6 sur un dé, combien sont des issues « multiples de 3 » ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La probabilité d'obtenir un nombre impair avec un dé équilibré vaut :",
+              "options": ["1/6", "2/6", "3/6", "5/6"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "On lance un dé. L'événement « obtenir 8 » est :",
+              "options": [
+                "Certain",
+                "Impossible",
+                "Équiprobable à obtenir 1",
+                "Plus probable qu'obtenir 2"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une roue est partagée en 4 secteurs égaux numérotés 1, 2, 3, 4. La probabilité de s'arrêter sur 3 vaut :",
+              "options": ["1/2", "1/4", "1/3", "3/4"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur un dé, a-t-on plus de chances d'obtenir 1 ou d'obtenir un nombre supérieur à 4 ?",
+              "options": [
+                "Obtenir 1",
+                "Nombre supérieur à 4",
+                "Même chance",
+                "Obtenir 1 est impossible"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle expérience a exactement six issues équiprobables ?",
+              "options": [
+                "Lancer une pièce une fois",
+                "Lancer un dé à six faces une fois",
+                "Choisir pile ou face trois fois",
+                "Tirer une carte dans un jeu complet sans précision"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si tous les résultats d'une expérience ont la même probabilité, on dit qu'ils sont :",
+              "options": [
+                "Impossibles",
+                "Certains",
+                "Équiprobables",
+                "Dépendants"
+              ],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "On lance un dé équilibré. Quelles propositions sont exactes ?",
+              "options": [
+                "La probabilité d'obtenir 1 est 1/6.",
+                "Il y a trois nombres pairs possibles.",
+                "Obtenir 0 est une issue.",
+                "La probabilité d'obtenir un nombre pair est 3/6."
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On note P la probabilité d'obtenir pile. Avec une pièce équilibrée, P vaut :",
+              "options": ["1/6", "1/4", "1/2", "2"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un dé est lancé. Quelle issue n'est pas possible ?",
+              "options": ["5", "6", "7", "1"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une urne : 5 billes vertes et 2 billes jaunes. On tire une bille. Quelle couleur est la plus probable ?",
+              "options": ["Jaune", "Verte", "Égale pour les deux", "Aucune"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La probabilité d'obtenir un résultat strictement inférieur à 3 avec un dé vaut :",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien d'issues obtient-on en lançant une pièce deux fois (on s'intéresse à l'ordre : premier lancer, second lancer) ?",
+              "options": ["2", "3", "4", "6"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur un dé, la probabilité d'obtenir un nombre pair peut s'écrire :",
+              "options": ["1/6", "1/2", "2/3", "1/3"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une expérience consiste à tirer une carte rouge ou noire dans un paquet mélangé avec autant de rouges que de noires. La probabilité de rouge vaut :",
+              "options": ["1/4", "1/3", "1/2", "1/6"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le mot « issue » désigne :",
+              "options": [
+                "Un résultat possible de l'expérience",
+                "Toujours le résultat le plus probable",
+                "Un calcul avec des fractions",
+                "Une erreur de calcul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "On lance un dé. Quelle probabilité est la plus grande ?",
+              "options": [
+                "Obtenir 6",
+                "Obtenir un multiple de 2",
+                "Obtenir 1",
+                "Obtenir 5"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour comparer des chances sans calcul compliqué, quelles idées conviennent en 5e ?",
+              "options": [
+                "Compter le nombre d'issues favorables.",
+                "Comparer des fractions simples comme 1/6 et 1/2.",
+                "Utiliser une probabilité conditionnelle.",
+                "Regarder si une issue est impossible."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Boîte A : 8 bonbons chocolat, 2 vanille. Boîte B : 5 chocolat, 5 vanille. En tirant au hasard, où a-t-on plus de chances d'avoir chocolat ?",
+              "options": ["Boîte A", "Boîte B", "Pareil", "Impossible"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un dé équilibré : probabilité d'obtenir 1 ou 2 ?",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle fraction est la plus grande ?",
+              "options": ["1/6", "1/4", "1/2", "1/8"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Roue avec 6 secteurs identiques numérotés 1 à 6. Probabilité du secteur 5 ?",
+              "options": ["1/2", "1/3", "1/6", "5/6"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sac : 1 blanche, 3 noires. Probabilité de tirer une noire (fraction la plus simple) ?",
+              "options": ["1/4", "3/4", "1/3", "2/3"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lancer un dé : a-t-on plus de chances d'obtenir un nombre ≤ 3 ou d'obtenir 6 ?",
+              "options": [
+                "Obtenir 6",
+                "Nombre ≤ 3",
+                "Égal",
+                "Ni l'un ni l'autre"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pièce équilibrée : probabilité d'obtenir deux piles en lançant deux fois (issues PP, PF, FP, FF) ?",
+              "options": ["1/2", "1/3", "1/4", "1/6"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un événement certain a une probabilité de :",
+              "options": ["0", "1/6", "1/2", "1"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un événement impossible a une probabilité de :",
+              "options": ["0", "1/6", "1/2", "1"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités de probabilités sont correctes pour un dé équilibré ?",
+              "options": [
+                "P(obtenir 4) = 1/6",
+                "P(obtenir pair) = 1/2",
+                "P(obtenir 9) = 1/6",
+                "P(obtenir impair) = 3/6"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Écrire 3/6 comme probabilité d'un événement sur un dé, c'est la même chose que :",
+              "options": ["1/3", "1/2", "2/3", "3/4"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur 24 lancers d'un dé, le 6 sort 4 fois. Cette fréquence 4/24 correspond à quelle fraction simplifiée ?",
+              "options": ["1/4", "1/6", "1/8", "1/3"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pièce : P(face) en fraction irréductible ?",
+              "options": ["2/4", "1/2", "1/4", "1/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dé : probabilité d'obtenir un nombre strictement entre 2 et 5 (3 ou 4) ?",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle probabilité est représentée par la fraction 5/6 sur un dé ?",
+              "options": [
+                "Obtenir 5",
+                "Obtenir un nombre différent de 6",
+                "Obtenir 6",
+                "Obtenir 1"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Urne : 2 rouges, 2 bleues, 2 vertes. P(rouge) = ?",
+              "options": ["1/6", "1/3", "1/2", "2/3"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La somme des probabilités de toutes les issues d'une expérience vaut :",
+              "options": ["1/2", "1", "6", "0"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dé : P(nombre ≥ 5) = ?",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle fraction ne peut pas être la probabilité d'une issue d'un dé équilibré (une seule face) ?",
+              "options": ["1/6", "1/2", "1/3", "1/5"],
+              "correctAnswers": [3]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Concernant un lancer de pièce équilibrée, coche les bonnes réponses.",
+              "options": [
+                "P(pile) + P(face) = 1",
+                "P(pile) = 1/2",
+                "P(pile) = 2/3",
+                "Les issues sont pile et face"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On lance un dé. Événement « obtenir un nombre premier » : quelles issues conviennent ?",
+              "options": ["1, 4, 6", "2, 3, 5", "2, 4, 6", "1, 2, 3"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "P(obtenir un nombre premier) avec un dé équilibré vaut :",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Spinner à 8 cases égales. P( case 7 ) = ?",
+              "options": ["1/4", "1/6", "1/8", "7/8"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux pièces lancées : combien d'issues (PP, PF, FP, FF) ?",
+              "options": ["2", "3", "4", "8"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si une issue a probabilité 1, l'événement est :",
+              "options": [
+                "Impossible",
+                "Peu probable",
+                "Certain",
+                "Aléatoire seulement"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sac 4 oranges, 0 pommes. P(pomme) = ?",
+              "options": ["1/4", "0", "1/2", "4/4"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dé truqué interdit ici ; dé équilibré : chaque face a probabilité :",
+              "options": ["1/2", "1/3", "1/6", "6/6"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel graphique convient pour lister les issues d'un dé ?",
+              "options": [
+                "Un tableau avec les faces 1 à 6",
+                "Un triangle avec 180°",
+                "Une droite graduée seule",
+                "Un cercle sans parts"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "P( obtenir 2 ou 4 ou 6 ) sur un dé = ?",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Roue équilibrée en 5 parts égales (A, B, C, D, E). Quelles affirmations sont vraies ?",
+              "options": [
+                "P(A) = 1/5",
+                "P(B) = 1/5",
+                "P(C) = 1/2",
+                "Il y a 5 issues possibles"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On tire au sort un élève parmi 20 avec un tirage équitable. P(être tiré) pour un élève = ?",
+              "options": ["1/10", "1/20", "1/2", "20/20"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Boîte : 6 étiquettes « gagné », 4 « perdu ». P(gagné) en fraction simplifiée ?",
+              "options": ["3/5", "2/5", "6/10", "4/6"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lancer dé : plus probable d'obtenir ≤ 4 ou d'obtenir exactement 5 ?",
+              "options": ["Exactement 5", "≤ 4", "Pareil", "Impossible"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "P( pair ) sur dé ; P( impair ) sur dé. Que vaut P(pair) + P(impair) ?",
+              "options": ["1/6", "1/2", "1", "0"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Carte tirée dans {♥, ♦, ♠, ♣} avec une seule carte de chaque. P(♥) = ?",
+              "options": ["1/2", "1/3", "1/4", "1/6"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dé : probabilité de ne pas obtenir 1 ?",
+              "options": ["1/6", "4/6", "5/6", "6/6"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux dés non étudiés en détail ; une pièce : issue « au moins un pile » en deux lancers a combien de cas favorables sur 4 ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle situation est la plus équitable ?",
+              "options": [
+                "Pile ou face avec pièce non truquée",
+                "Dé à 6 avec une face collée",
+                "Urne avec 10 rouges et 0 bleues",
+                "Roue avec une part énorme"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fraction 4/6 pour « obtenir un nombre ≤ 4 » sur un dé : simplifiée ?",
+              "options": ["1/3", "2/3", "1/2", "4/6 seulement"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sac avec 1 rouge, 1 bleu, 1 vert (tirage équitable). Quelles propositions sont exactes ?",
+              "options": [
+                "Il y a 3 issues.",
+                "P(rouge) = 1/3",
+                "P(bleu) = 1/2",
+                "On a plus de chances de tirer rouge que vert"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dé lancé 1 fois : liste des issues impair ?",
+              "options": ["2, 4, 6", "1, 3, 5", "1, 2, 3", "3, 6, 9"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "P(1) + P(2) + P(3) + P(4) + P(5) + P(6) pour dé équilibré = ?",
+              "options": ["1/6", "3/6", "6/6", "0"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement a probabilité 1/6 sur un dé ?",
+              "options": ["Pair", "Supérieur à 4", "Égal à 3", "Inférieur à 6"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pièce lancée : fréquence pile 13/20 après 20 lancers. La probabilité théorique reste :",
+              "options": ["13/20", "1/2", "7/20", "1/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Roue 3 parts : rouge, rouge, bleu (parts égales). P(rouge) = ?",
+              "options": ["1/3", "2/3", "1/2", "1/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On compare 1/6 et 2/6. La plus grande est :",
+              "options": ["1/6", "2/6", "Égales", "Impossible"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dé : P( nombre > 3 ) = ?",
+              "options": ["2/6", "3/6", "4/6", "5/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Expérience : choisir un jour de week-end au hasard parmi {sam, dim}. Nombre d'issues ?",
+              "options": ["1", "2", "5", "7"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "P( samedi ) si jour tiré uniformément parmi les 7 jours de la semaine = ?",
+              "options": ["1/2", "1/7", "1/6", "2/7"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lancer deux pièces (ordre compte). Quelles affirmations sont correctes ?",
+              "options": [
+                "Une issue possible est PF.",
+                "Il y a 4 issues équiprobables si la pièce est équilibrée.",
+                "P(PP) = 1/2",
+                "P(PP) = 1/4"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dé : événement « multiple de 2 ». Combien d'issues ?",
+              "options": ["1", "2", "3", "4"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Urne 5 blanches, 1 noire. P(blanche) = ?",
+              "options": ["1/6", "5/6", "1/2", "5/5"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "On dit qu'un résultat est « aléatoire » quand on ne peut pas le prédire avec certitude : vrai ou faux ?",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Vrai seulement pour les pièces",
+                "Faux pour les dés"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dé : P( obtenir 1 ou 6 ) = ?",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle paire d'événements sur un dé a la même probabilité ?",
+              "options": [
+                "Obtenir 1 et obtenir pair",
+                "Obtenir 2 et obtenir 5",
+                "Obtenir 6 et obtenir ≤ 3",
+                "Obtenir pair et obtenir impair"
+              ],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Spinner 10 parts numérotées 1 à 10, parts égales. P(10) = ?",
+              "options": ["1/2", "1/10", "1/6", "10/10"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plus de chances : tirer rouge dans {R,R,R,B} ou dans {R,B} ?",
+              "options": [
+                "Dans {R,B}",
+                "Dans {R,R,R,B}",
+                "Pareil",
+                "Aucun rouge"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Probabilité exprimée en fraction : le numérateur compte souvent :",
+              "options": [
+                "Les issues favorables",
+                "Toujours 6",
+                "Les degrés d'un triangle",
+                "Les pourcentages uniquement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dé : P( strictement entre 1 et 6 ) pour un entier obtenu ?",
+              "options": ["0", "1/6", "4/6", "6/6"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bilan sur le hasard en 5e : quelles phrases sont justes ?",
+              "options": [
+                "Une probabilité s'écrit souvent comme une fraction.",
+                "1/6 est la probabilité d'une face d'un dé équilibré.",
+                "La probabilité conditionnelle est au programme de 5e.",
+                "Comparer des fractions aide à voir « plus de chances »."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dé + pièce (expériences séparées) : P(6) sur le dé vaut :",
+              "options": ["1/2", "1/6", "1/4", "6/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Issue la plus probable tirage {A,A,A,B,C} ?",
+              "options": ["B", "C", "A", "Toutes égales"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "P(impair) dé = 3/6 = ?",
+              "options": ["1/3", "1/2", "2/3", "3/4"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pièce : combien de résultats possibles un seul lancer ?",
+              "options": ["6", "2", "4", "1"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sac 2 rouges, 2 bleus : P(rouge) = ?",
+              "options": ["1/4", "1/2", "2/3", "3/4"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dé : événement impossible ?",
+              "options": [
+                "Obtenir 3",
+                "Obtenir 7",
+                "Obtenir pair",
+                "Obtenir ≤ 6"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Roue 6 parts égales : P( part 1 ou part 2 ) = ?",
+              "options": ["1/6", "2/6", "3/6", "4/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fréquence ≈ probabilité quand :",
+              "options": [
+                "On répète l'expérience un très grand nombre de fois",
+                "On ne lance qu'une fois",
+                "Le dé a 7 faces",
+                "On oublie de compter"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle fraction est une probabilité d'issue sur dé équilibré ?",
+              "options": ["1/6", "7/6", "0/6", "6/5"],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Révision",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Concernant les nombres relatifs, quelles affirmations sont correctes ?",
+              "options": [
+                "−3 est plus petit que 2.",
+                "0 est ni positif ni négatif.",
+                "−5 est plus grand que −2.",
+                "Sur une droite, −1 est à gauche de 1."
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : (−4) + 7 = ?",
+              "options": ["−11", "3", "−3", "11"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : 5 + (−8) = ?",
+              "options": ["13", "−3", "3", "−13"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel nombre est le plus grand ?",
+              "options": ["−6", "−1", "−4", "−9"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : (−2) + (−5) = ?",
+              "options": ["7", "−7", "3", "−3"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La température passe de −2 °C à 3 °C. Variation ?",
+              "options": ["−5 °C", "+5 °C", "+1 °C", "−1 °C"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 6 − (−1) = ?",
+              "options": ["5", "7", "−7", "−5"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur une droite graduée, l'opposé de 4 est :",
+              "options": ["4", "−4", "1/4", "0"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : (−9) + 9 = ?",
+              "options": ["18", "0", "−18", "9"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel nombre est plus petit que −3 ?",
+              "options": ["−2", "0", "−5", "1"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités avec des relatifs sont vraies ?",
+              "options": [
+                "−7 + 4 = −3",
+                "3 − (−2) = 5",
+                "−1 − 3 = 2",
+                "−6 + 2 = −4"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 0 − 5 = ?",
+              "options": ["5", "−5", "0", "−0"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un sous-marin est à −120 m, il monte de 45 m. Nouvelle profondeur ?",
+              "options": ["−165 m", "−75 m", "75 m", "165 m"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : (−3) − 4 = ?",
+              "options": ["1", "−7", "7", "−1"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Range du plus petit au plus grand : −2 ; 0 ; −5",
+              "options": [
+                "0 ; −2 ; −5",
+                "−5 ; −2 ; 0",
+                "−2 ; −5 ; 0",
+                "−5 ; 0 ; −2"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : 8 + (−3) + (−2) = ?",
+              "options": ["13", "3", "7", "−3"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle distance sépare −4 et 2 sur une droite ?",
+              "options": ["2", "4", "6", "8"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : (−10) + 6 = ?",
+              "options": ["−4", "4", "−16", "16"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le contraire de −8 est :",
+              "options": ["−8", "8", "1/8", "0"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : 4 − 9 = ?",
+              "options": ["13", "−5", "5", "−13"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Problèmes avec relatifs : quelles réponses sont cohérentes ?",
+              "options": [
+                "Gain de 5 puis perte de 8 donne −3.",
+                "−2 °C puis baisse de 3 °C donne −5 °C.",
+                "−2 °C puis baisse de 3 °C donne +1 °C.",
+                "Altitude −50 m puis +30 m donne −20 m."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : (−1) + (−1) + (−1) = ?",
+              "options": ["−3", "3", "−1", "0"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel nombre rend vrai : x + 5 = 2 ?",
+              "options": ["7", "−3", "3", "−7"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Compare : −0,5 et −1",
+              "options": ["−0,5 < −1", "−0,5 > −1", "Égaux", "Impossible"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : 12 − (−4) = ?",
+              "options": ["8", "16", "−16", "−8"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Somme de deux négatifs −3 et −6 :",
+              "options": ["9", "−9", "3", "−3"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle addition donne 0 ?",
+              "options": ["5 + 5", "−7 + 7", "−2 + 3", "4 + (−2)"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : (−15) + 8 + 2 = ?",
+              "options": ["−25", "−5", "5", "25"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Entre −10 et −8, quel entier est strictement entre les deux ?",
+              "options": ["−11", "−9", "−8", "−7"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : 3 − 10 = ?",
+              "options": ["7", "−7", "13", "−13"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Fractions : quelles égalités sont correctes ?",
+              "options": [
+                "1/2 = 2/4",
+                "1/3 + 1/3 = 2/3",
+                "1/2 + 1/2 = 2/4",
+                "3/6 = 1/2"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Simplifie 8/12 :",
+              "options": ["2/3", "4/6", "1/2", "3/4"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule 1/4 + 1/4 :",
+              "options": ["1/8", "2/4", "1/2", "2/8"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle fraction représente 3 parts sur 8 égales ?",
+              "options": ["3/8", "8/3", "3/5", "5/8"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Compare 2/5 et 1/2 :",
+              "options": ["2/5 > 1/2", "2/5 < 1/2", "Égales", "Impossible"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule 1/2 + 1/4 (même dénominateur d'abord) :",
+              "options": ["2/6", "3/4", "1/3", "2/4"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle fraction est plus grande ?",
+              "options": ["1/5", "1/3", "1/8", "1/10"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "5/10 simplifiée :",
+              "options": ["1/5", "1/2", "2/5", "5/2"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule 2/3 − 1/3 :",
+              "options": ["1/3", "3/3", "1/6", "2/6"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Partager 24 bonbons en parts égales entre 6 enfants : fraction par enfant ?",
+              "options": ["1/6", "6/24", "4/24", "1/4"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fractions sont égales à 1/2 ?",
+              "options": ["2/4", "3/6", "4/8", "2/3"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule 3/4 − 1/4 :",
+              "options": ["2/4", "1/2", "2/8", "1/4"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel nombre est 2/5 de 35 ?",
+              "options": ["7", "14", "10", "12"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Place 7/10 sur une droite entre 0 et 1 :",
+              "options": [
+                "Plus près de 0",
+                "Plus près de 1",
+                "Égal à 1",
+                "Hors de 0 et 1"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule 1/3 + 1/6 (dénominateur commun 6) :",
+              "options": ["2/9", "1/2", "2/6", "3/6"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une pizza coupée en 8, on mange 3 parts. Fraction restante ?",
+              "options": ["3/8", "5/8", "1/2", "3/5"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Simplifie 15/25 :",
+              "options": ["3/5", "5/3", "1/5", "3/25"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle fraction vaut 1 entier ?",
+              "options": ["4/4", "3/4", "2/3", "5/6"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule 1/5 + 2/5 :",
+              "options": ["3/10", "3/5", "2/25", "1/5"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comparer 4/5 et 3/5 :",
+              "options": ["4/5 < 3/5", "4/5 > 3/5", "Égales", "Impossible"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Calculs fractionnaires : lesquelles sont justes ?",
+              "options": [
+                "1/2 de 60 = 30",
+                "1/4 de 20 = 5",
+                "1/3 de 12 = 6",
+                "3/3 = 1"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule 2/3 + 2/3 :",
+              "options": ["4/3", "4/6", "2/6", "1/3"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la fraction irréductible de 6/9 ?",
+              "options": ["2/3", "3/2", "1/3", "6/9"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un gâteau : 1/8 + 3/8 = ?",
+              "options": ["4/16", "1/2", "4/8", "3/8"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est 1/2 de 18 ?",
+              "options": ["6", "9", "12", "8"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Range du plus petit au plus grand : 1/2 ; 1/4 ; 3/4",
+              "options": [
+                "3/4 ; 1/2 ; 1/4",
+                "1/4 ; 1/2 ; 3/4",
+                "1/2 ; 1/4 ; 3/4",
+                "1/4 ; 3/4 ; 1/2"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule 5/6 − 2/6 :",
+              "options": ["3/6", "1/2", "7/6", "3/12"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "10/15 simplifiée :",
+              "options": ["2/3", "3/2", "1/3", "5/15"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle fraction est inférieure à 1/2 ?",
+              "options": ["3/5", "2/5", "4/7", "5/9"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule 1/2 + 1/8 avec dénominateur 8 :",
+              "options": ["2/8", "5/8", "3/8", "6/8"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Triangles : quelles affirmations sont vraies ?",
+              "options": [
+                "La somme des angles d'un triangle vaut 180°.",
+                "Un triangle peut avoir deux angles de 90°.",
+                "Si deux angles mesurent 60° et 80°, le troisième vaut 40°.",
+                "Un triangle équilatéral a trois angles de 60°."
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un triangle, angles 65° et 55°. Le troisième angle vaut :",
+              "options": ["120°", "60°", "70°", "50°"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Triangle rectangle : un angle vaut 90°, un autre 35°. Le troisième ?",
+              "options": ["55°", "45°", "65°", "125°"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Somme 47° + 68° + 65° pour un triangle :",
+              "options": ["170°", "180°", "190°", "160°"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Triangle isocèle : angle au sommet 40°. Chaque angle à la base ?",
+              "options": ["40°", "70°", "80°", "140°"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peut-on construire un triangle avec angles 50°, 60°, 80° ?",
+              "options": [
+                "Oui",
+                "Non, la somme dépasse 180°",
+                "Non, la somme est trop petite",
+                "Impossible à dire"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un angle de triangle mesure 90°. Les deux autres somment à :",
+              "options": ["90°", "180°", "270°", "45°"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Triangle : 110° et 35°. Troisième angle ?",
+              "options": ["35°", "45°", "55°", "25°"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans tout triangle, la somme des angles intérieurs est :",
+              "options": ["360°", "180°", "90°", "Variable sans règle"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Angles 72° et 58°. Troisième angle ?",
+              "options": ["40°", "50°", "60°", "70°"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Géométrie et mesures : quelles réponses sont exactes ?",
+              "options": [
+                "180° − 90° − 25° = 65° pour un troisième angle.",
+                "Un triangle équilatéral : 60° + 60° + 60° = 180°.",
+                "Deux angles droits dans un triangle sont possibles.",
+                "40° + 100° + 40° = 180°."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Triangle : angles x, 50°, 70° avec x entier. x vaut :",
+              "options": ["50°", "60°", "70°", "80°"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un triangle a angles 30° et 30°. Le troisième vaut :",
+              "options": ["120°", "90°", "60°", "150°"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Somme 25° + 85° + ? = 180°. Angle manquant ?",
+              "options": ["60°", "70°", "80°", "90°"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Triangle rectangle isocèle : angles aiguës valent chacun :",
+              "options": ["30°", "45°", "60°", "90°"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "91° + 48° + 41° = ?",
+              "options": ["170°", "180°", "190°", "160°"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un angle vaut 38°, un autre 102°, le troisième vaut :",
+              "options": ["30°", "40°", "50°", "60°"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Triangle : 55°, 55°, ?",
+              "options": ["60°", "70°", "80°", "90°"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Peut-on avoir un triangle avec 60°, 60°, 70° ?",
+              "options": [
+                "Oui",
+                "Non, somme ≠ 180°",
+                "Oui seulement en 3D",
+                "Oui si rectangle"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Angles 44° et 66°. Troisième ?",
+              "options": ["60°", "70°", "80°", "90°"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pourcentages : quelles affirmations sont correctes ?",
+              "options": [
+                "50 % d'un nombre, c'est la moitié.",
+                "50 % de 80 vaut 40.",
+                "50 % vaut toujours 50.",
+                "100 % d'une quantité, c'est toute la quantité."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule 50 % de 120 :",
+              "options": ["50", "60", "70", "80"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "50 % de 46 vaut :",
+              "options": ["23", "24", "25", "26"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une robe à 60 € soldée à −50 %. Nouveau prix ?",
+              "options": ["30 €", "40 €", "50 €", "55 €"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "50 % de 200 m vaut :",
+              "options": ["50 m", "100 m", "150 m", "200 m"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle fraction correspond à 50 % ?",
+              "options": ["1/4", "1/2", "1/3", "2/3"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "50 % de 18 = ?",
+              "options": ["8", "9", "10", "12"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une classe de 28 élèves, 50 % sont des filles. Combien de filles ?",
+              "options": ["12", "14", "16", "18"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "25 % de 80 vaut 20. 50 % de 80 vaut :",
+              "options": ["30", "40", "50", "60"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "50 % de 0 vaut :",
+              "options": ["50", "0", "1", "Indéfini"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Synthèse 5e : quelles réponses sont justes ?",
+              "options": [
+                "(−3) + 8 = 5",
+                "1/2 + 1/4 = 3/4",
+                "Angles 90°, 45°, 55° forment un triangle.",
+                "50 % de 64 vaut 32."
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 7 − (−2) = ?",
+              "options": ["5", "9", "−9", "−5"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Simplifie 12/18 :",
+              "options": ["2/3", "3/2", "4/6", "6/9"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Triangle : 48° et 62°. Troisième angle ?",
+              "options": ["60°", "70°", "80°", "90°"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "50 % de 150 = ?",
+              "options": ["50", "65", "75", "85"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel calcul donne −1 ?",
+              "options": ["2 + 3", "3 − 4", "−2 − 2", "5 − 3"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule 3/5 + 1/5 :",
+              "options": ["4/10", "4/5", "2/5", "3/5"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un dé équilibré : probabilité 1/6 correspond à :",
+              "options": [
+                "Une face parmi six",
+                "La moitié",
+                "Impossible",
+                "Certain"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "50 % de 96 = ?",
+              "options": ["46", "48", "50", "52"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Somme des angles : 53° + 77° + 50° = ?",
+              "options": ["170°", "180°", "190°", "160°"],
+              "correctAnswers": [1]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

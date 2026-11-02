@@ -87,7 +87,7 @@ const uniteSchema = z.object({
 export const chapterSchema = z
   .object({
     id: z.string().min(1).max(80),
-    order: z.union([z.literal(1), z.literal(2), z.literal(3)]),
+    order: z.number().int().min(1).max(10),
     subject: z.string().regex(/^[a-z0-9-]+$/),
     title: z.string().min(1).max(160),
     units: z.tuple([uniteSchema, uniteSchema]),

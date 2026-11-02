@@ -209,14 +209,6 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     id: "qrCodeGenerator",
     label: "Générer QR Code",
   },
-  quizzly: {
-    description:
-      "Générateur de quiz interactifs sur mesure avec correction dynamique vert/rouge, explications détaillées et score final.",
-    icon: TrophyIcon as any,
-    id: "quizzly",
-    label: "Quizzly",
-    providedBy: "plugin",
-  },
   readUrl: {
     description:
       "Extrait et lit le contenu textuel propre d'une page Web ou d'une documentation technique à partir de son URL en ignorant les menus et éléments parasites.",

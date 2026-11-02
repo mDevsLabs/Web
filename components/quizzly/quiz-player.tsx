@@ -1,7 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { type ReactNode, useEffect, useState } from "react";
+import {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { ConfettisBonneReponse } from "@/components/quizzly/confetti";
 import {
   poseDuScore,
@@ -18,7 +24,9 @@ type Correction = {
   correct: boolean;
   expectedIndexes: number[];
   explanation: string;
+  gameOver?: boolean;
   givenIndexes: number[];
+  hearts?: number;
   questionId: string;
 };
 
@@ -83,6 +91,52 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
   const [envoi, setEnvoi] = useState(false);
   const [bilan, setBilan] = useState<Bilan | null>(null);
   const [revelation, setRevelation] = useState<Correction | null>(null);
+  const [gameOver, setGameOver] = useState(false);
+  const correctionsCacheRef = useRef<
+    Map<string, Correction | Promise<Correction>>
+  >(new Map());
+
+  const prechargerCorrection = useCallback(
+    (qId: string, selectionIndexes: number[]) => {
+      if (selectionIndexes.length === 0) return;
+      const cle = `${qId}:${selectionIndexes.slice().sort().join(",")}`;
+      if (correctionsCacheRef.current.has(cle)) return;
+
+      const promise = poster<Correction>(`/api/quizzly/quiz/${quizId}`, {
+        phase: "reveal",
+        preview: true,
+        questionId: qId,
+        selectedIndexes: selectionIndexes,
+      })
+        .then((res) => {
+          correctionsCacheRef.current.set(cle, res);
+          return res;
+        })
+        .catch(() => {
+          correctionsCacheRef.current.delete(cle);
+          return null;
+        });
+
+      correctionsCacheRef.current.set(cle, promise as Promise<Correction>);
+    },
+    [quizId]
+  );
+
+  useEffect(() => {
+    if (!quiz) return;
+    const qActuelle = quiz.questions[index];
+    if (qActuelle && qActuelle.type === "single_choice") {
+      for (let pos = 0; pos < qActuelle.options.length; pos++) {
+        prechargerCorrection(qActuelle.id, [pos]);
+      }
+    }
+    const qSuivante = quiz.questions[index + 1];
+    if (qSuivante && qSuivante.type === "single_choice") {
+      for (let pos = 0; pos < qSuivante.options.length; pos++) {
+        prechargerCorrection(qSuivante.id, [pos]);
+      }
+    }
+  }, [quiz, index, prechargerCorrection]);
 
   useEffect(() => {
     let ignore = false;
@@ -149,7 +203,7 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
     );
   }
 
-  if ((resume.data?.hearts ?? 0) <= 0 && !bilan) {
+  if (((resume.data?.hearts ?? 0) <= 0 && !revelation && !bilan) || gameOver) {
     return (
       <section className="mx-auto max-w-xl p-6">
         <Rangee pose="hearts">
@@ -159,9 +213,22 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
               Un cœur revient toutes les 30 minutes. La boutique peut aussi les
               recharger.
             </p>
-            <Link className="chip w-fit" href="/quizzly/boutique">
-              Ouvrir la boutique
-            </Link>
+            <div className="flex flex-wrap gap-2">
+              <Link className="chip w-fit" href="/quizzly/boutique">
+                Ouvrir la boutique
+              </Link>
+              <Link className="chip w-fit" href="/quizzly">
+                Retour au parcours
+              </Link>
+              {quiz ? (
+                <Link
+                  className="chip w-fit"
+                  href={`/quizzly/coach?quiz=${encodeURIComponent(quiz.id)}`}
+                >
+                  Débriefer avec le Coach
+                </Link>
+              ) : null}
+            </div>
           </div>
         </Rangee>
       </section>
@@ -220,9 +287,15 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
             })}
           </ul>
         ) : null}
-        <div className="flex flex-wrap gap-2">
-          <Link className="chip" href="/quizzly">
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            className="rounded-xl bg-black px-6 py-3 text-base font-bold text-white shadow-md transition-all hover:bg-black/90 dark:bg-white dark:text-black dark:hover:bg-white/90"
+            href="/quizzly"
+          >
             Parcours
+          </Link>
+          <Link className="chip" href="/quizzly/synthese">
+            Fiches de synthèse
           </Link>
           {bilan.nextQuizId ? (
             <Link
@@ -254,16 +327,18 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
     if (revelation) {
       return;
     }
-    setChoix((precedent) => {
-      const actuel = precedent[question.id] ?? [];
-      const suivant =
-        question.type === "single_choice"
-          ? [position]
-          : actuel.includes(position)
-            ? actuel.filter((valeur) => valeur !== position)
-            : [...actuel, position];
-      return { ...precedent, [question.id]: suivant };
-    });
+    const actuel = choix[question.id] ?? [];
+    const suivant =
+      question.type === "single_choice"
+        ? [position]
+        : actuel.includes(position)
+          ? actuel.filter((valeur) => valeur !== position)
+          : [...actuel, position];
+
+    setChoix((precedent) => ({ ...precedent, [question.id]: suivant }));
+    if (suivant.length > 0) {
+      prechargerCorrection(question.id, suivant);
+    }
   }
 
   async function continuer() {
@@ -274,15 +349,90 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
       if (selection.length === 0) {
         return;
       }
-      setEnvoi(true);
       setErreur(null);
+      const cle = `${question.id}:${selection.slice().sort().join(",")}`;
+      const precharge = correctionsCacheRef.current.get(cle);
+
+      const synchroniserReponse = async (reponseCorr: Correction) => {
+        setRevelation(reponseCorr);
+        if (!reponseCorr.correct) {
+          const toutesReponses = quiz.questions
+            .slice(0, index + 1)
+            .map((entree) => ({
+              questionId: entree.id,
+              selectedIndexes:
+                entree.id === question.id
+                  ? selection
+                  : (choix[entree.id] ?? []),
+            }));
+          try {
+            const commitRes = await poster<Correction>(
+              `/api/quizzly/quiz/${quizId}`,
+              {
+                answers: toutesReponses,
+                phase: "reveal",
+                questionId: question.id,
+                selectedIndexes: selection,
+              }
+            );
+            if (typeof commitRes.hearts === "number") {
+              await resume.mutate();
+            }
+            if (
+              commitRes.gameOver ||
+              (commitRes.hearts !== undefined && commitRes.hearts <= 0)
+            ) {
+              setRevelation((actuel) =>
+                actuel
+                  ? {
+                      ...actuel,
+                      gameOver: true,
+                      hearts: commitRes.hearts,
+                    }
+                  : actuel
+              );
+            }
+          } catch (e) {
+            console.error("Échec de synchronisation de la réponse", e);
+          }
+        }
+      };
+
+      if (precharge && !(precharge instanceof Promise)) {
+        await synchroniserReponse(precharge);
+        return;
+      }
+
+      setEnvoi(true);
       try {
-        const ligne = await poster<Correction>(`/api/quizzly/quiz/${quizId}`, {
-          phase: "reveal",
-          questionId: question.id,
-          selectedIndexes: selection,
-        });
-        setRevelation(ligne);
+        let ligne: Correction | null = null;
+        if (precharge instanceof Promise) {
+          ligne = await precharge;
+        }
+        if (ligne) {
+          await synchroniserReponse(ligne);
+          return;
+        }
+        const toutesReponses = quiz.questions
+          .slice(0, index + 1)
+          .map((entree) => ({
+            questionId: entree.id,
+            selectedIndexes:
+              entree.id === question.id ? selection : (choix[entree.id] ?? []),
+          }));
+        const directe = await poster<Correction>(
+          `/api/quizzly/quiz/${quizId}`,
+          {
+            answers: toutesReponses,
+            phase: "reveal",
+            questionId: question.id,
+            selectedIndexes: selection,
+          }
+        );
+        setRevelation(directe);
+        if (typeof directe.hearts === "number") {
+          await resume.mutate();
+        }
       } catch (raison) {
         setErreur(
           raison instanceof Error ? raison.message : "La correction a échoué."
@@ -290,6 +440,15 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
       } finally {
         setEnvoi(false);
       }
+      return;
+    }
+    if (
+      revelation.gameOver ||
+      (revelation.hearts !== undefined && revelation.hearts <= 0)
+    ) {
+      setGameOver(true);
+      setRevelation(null);
+      await resume.mutate();
       return;
     }
     if (!derniere) {
@@ -309,6 +468,9 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
         phase: "finish",
       });
       setBilan(recu);
+      if (recu.nextQuizId) {
+        void fetch(`/api/quizzly/quiz/${recu.nextQuizId}`);
+      }
       await resume.mutate();
     } catch (raison) {
       setErreur(
@@ -407,7 +569,11 @@ export function QuizPlayer({ quizId }: { quizId: string }) {
         }}
         type="button"
       >
-        {envoi ? "Correction…" : "Continuer"}
+        {envoi
+          ? "Correction…"
+          : revelation?.gameOver
+            ? "Terminer (plus de cœurs)"
+            : "Continuer"}
       </button>
     </section>
   );

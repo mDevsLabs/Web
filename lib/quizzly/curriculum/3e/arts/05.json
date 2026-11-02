@@ -1,0 +1,2733 @@
+{
+  "id": "3e-arts-05",
+  "year": "3e",
+  "subject": "arts",
+  "order": 5,
+  "title": "L'espace et le volume",
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Relief et profondeur",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : La perspective linéaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « point de fuite » en perspective linéaire ?",
+              "options": [
+                "Le point où convergent les lignes fuyantes",
+                "Le centre géométrique exact du tableau",
+                "L'endroit où se place le peintre",
+                "Le point le plus lumineux de l'œuvre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En perspective géométrique, le point de fuite est l'endroit situé sur la ligne d'horizon où convergent les lignes fuyantes parallèles de la réalité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quelle période historique la perspective linéaire géométrique a-t-elle été théorisée par Brunelleschi et Alberti ?",
+              "options": [
+                "À la Renaissance",
+                "Au Moyen Âge",
+                "À l'Antiquité grecque",
+                "Au XXe siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est au début de la Renaissance italienne (XVe siècle à Florence) que les règles mathématiques de la perspective linéaire ont été formalisées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que représente la « ligne d'horizon » dans un dessin en perspective ?",
+              "options": [
+                "La hauteur des yeux de l'observateur",
+                "Le bas de la feuille de dessin",
+                "La limite du cadre du tableau",
+                "Une ligne décorative imaginaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ligne d'horizon correspond toujours au niveau précis du regard de l'observateur (ou de la caméra), déterminant l'angle de vision de la scène."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les lignes obliques qui convergent vers le point de fuite ?",
+              "options": [
+                "Les lignes de fuite (ou fuyantes)",
+                "Les lignes directrices brisées",
+                "Les lignes de crête",
+                "Les contours géodésiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lignes de fuite (ou fuyantes) matérialisent les arêtes parallèles de l'espace réel fuyant vers le point de fuite sur le plan du tableau."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments géométriques sont indispensables pour construire une perspective centrale à un point de fuite ?",
+              "options": [
+                "Une ligne d'horizon",
+                "Au moins un point de fuite",
+                "Une palette de peinture à l'huile",
+                "Un compas d'architecte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La perspective centrale repose fondamentalement sur une ligne d'horizon et un point de fuite central vers lequel convergent les lignes orthogonales."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En perspective centrale, comment varie la taille perçue des objets identiques lorsqu'ils s'éloignent ?",
+              "options": [
+                "Leur taille diminue progressivement",
+                "Leur taille augmente progressivement",
+                "Leur taille reste parfaitement identique",
+                "Leur forme s'arrondit sans changer de taille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diminution apparente de la taille des objets au fur et à mesure qu'ils s'éloignent dans la profondeur est une règle essentielle de la perspective."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si la ligne d'horizon est placée très bas dans l'image, quelle sera la sensation produite ?",
+              "options": [
+                "Une vue en contre-plongée dominante",
+                "Une vue aérienne en plongée totale",
+                "Une absence complète d'espace",
+                "Une vision microscopique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une ligne d'horizon basse place le regard du spectateur en contre-plongée, ce qui donne aux sujets une impression de grandeur et de monumentalité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans la célèbre fresque « La Cène » de Léonard de Vinci, où se situe le point de fuite principal ?",
+              "options": [
+                "Sur le visage du Christ",
+                "Dans le coin supérieur gauche",
+                "Sur la table des apôtres",
+                "Sur la porte d'entrée peinte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Léonard de Vinci a placé le point de fuite exactement au niveau de la tête du Christ, guidant tout le regard de l'observateur vers le cœur spirituel de l'œuvre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie une perspective à deux points de fuite ?",
+              "options": [
+                "L'objet est vu d'angle avec deux directions de fuite",
+                "Le tableau contient deux horizons distincts",
+                "Deux artistes différents ont peint l'œuvre",
+                "Le dessin comporte un double miroir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsqu'un volume (comme un bâtiment) est vu par son arête d'angle, ses faces fuient vers deux points de fuite distincts sur la ligne d'horizon."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel outil optique historique permettait aux artistes de décalquer la réalité en perspective ?",
+              "options": [
+                "La camera obscura (chambre noire)",
+                "Le microscope électronique",
+                "Le stroboscope mécanique",
+                "Le rétroprojecteur diapositive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La camera obscura projetait l'image inversée du monde réel sur un papier ou une toile, aidant les peintres à restituer la perspective avec précision."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : La perspective atmosphérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qui a développé et théorisé le principe de la perspective atmosphérique à la Renaissance ?",
+              "options": [
+                "Léonard de Vinci",
+                "Pablo Picasso",
+                "Claude Monet",
+                "Marcel Duchamp"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Léonard de Vinci a analysé la manière dont l'atmosphère terrestre modifie la vision des lointains et en a formulé les règles picturales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment évoluent les couleurs des paysages à mesure qu'ils s'éloignent vers l'arrière-plan ?",
+              "options": [
+                "Elles deviennent plus bleutées et atténuées",
+                "Elles deviennent plus vives et chaudes",
+                "Elles virent systématiquement au noir pur",
+                "Elles deviennent fluorescentes et contrastées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'épaisseur de l'air diffuse la lumière bleue : les éléments lointains prennent donc des tonalités bleutées, pâles et moins saturées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la technique du « sfumato » inventée à la Renaissance ?",
+              "options": [
+                "Un estompage vaporeux des contours",
+                "Une superposition d'aplats géométriques",
+                "Une gravure sur plaque de cuivre",
+                "Un collage de textures variées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sfumato (de l'italien 'enfumé') consiste à noyer les contours dans des dégradés subtils et vaporeux sans lignes dures visibles."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi les éléments très lointains perdent-ils leurs détails et leur contraste ?",
+              "options": [
+                "À cause de l'épaisseur de l'air et de la poussière en suspension",
+                "Parce que l'artiste n'avait plus assez de peinture",
+                "En raison de la courbure de la feuille de papier",
+                "Pour cacher des erreurs techniques de dessin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couche d'air interposée entre l'œil et le paysage lointain filtre les contrastes et estompe les fins détails visuels."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels effets visuels caractérisent la perspective atmosphérique en peinture de paysage ?",
+              "options": [
+                "L'atténuation progressive des contrastes au loin",
+                "Le bleuissement et le blanchiment des plans lointains",
+                "Le renforcement de contours noirs épais au loin",
+                "L'agrandissement disproportionné des objets éloignés"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans la perspective atmosphérique, la perte de contraste et le virage vers des tons bleutés et clairs créent la sensation de grande distance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans quel célèbre tableau de Léonard de Vinci le sfumato donne-t-il une profondeur mystérieuse au fond ?",
+              "options": ["La Joconde", "Guernica", "Le Cri", "Les Nymphéas"],
+              "correctAnswers": [0],
+              "explanation": "Le paysage montagneux baigné de brume derrière Mona Lisa est l'un des exemples les plus aboutis de perspective atmosphérique et de sfumato."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle famille de couleurs donne naturellement une impression de recul spatial dans un tableau ?",
+              "options": [
+                "Les couleurs froides comme le bleu",
+                "Les couleurs chaudes comme le rouge",
+                "Les couleurs primaires pures et saturées",
+                "Les couleurs métallisées dorées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optiquement, les couleurs froides (bleus, gris bleutés) semblent s'éloigner vers le fond, tandis que les couleurs chaudes avancent vers l'œil."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment le peintre romantique Joseph Mallord William Turner utilisait-il l'atmosphère dans ses toiles ?",
+              "options": [
+                "Pour dissoudre les formes dans la brume, la vapeur et la lumière",
+                "Pour tracer des contours au cordeau d'une raideur extrême",
+                "Pour réaliser des fresques exclusivement monochromes grises",
+                "Pour supprimer toute sensation de profondeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Turner utilisait la fumée, les tempêtes et la buée pour fusionner l'espace et la lumière dans des tourbillons atmosphériques puissants."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle différence majeure existe-t-il entre perspective linéaire et perspective atmosphérique ?",
+              "options": [
+                "La première est géométrique, la seconde repose sur la lumière et la couleur",
+                "La première utilise des pinceaux, la seconde des ciseaux",
+                "La première est réservée à la sculpture, la seconde au dessin",
+                "Il n'y a aucune différence, ce sont deux termes identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perspective linéaire calcule mathématiquement la taille et la convergence des lignes, alors que l'atmosphérique traduit les effets de l'air et de la lumière."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel phénomène météorologique réel accentue fortement la perspective atmosphérique ?",
+              "options": [
+                "La brume matinale ou l'humidité dans l'air",
+                "Un soleil de plomb sans aucun nuage",
+                "Une nuit noire sans lune ni étoiles",
+                "Un vent sec balayant toute poussière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La présence de gouttelettes d'eau et de brume matinale voile les plans successifs et rend la gradation de la profondeur immédiatement visible."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Les plans et le cadrage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le plan le plus proche du spectateur dans une composition picturale ?",
+              "options": [
+                "Le premier plan",
+                "L'arrière-plan",
+                "Le plan moyen",
+                "La ligne de fuite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le premier plan est la zone d'une image située au plus près du point de vue du spectateur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le fait qu'un objet cache partiellement un autre objet situé derrière lui ?",
+              "options": [
+                "Le chevauchement (ou superposition)",
+                "La juxtaposition horizontale",
+                "L'anamorphose géométrique",
+                "Le repoussoir inversé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chevauchement est un indice perceptif fondamental : notre cerveau comprend immédiatement que l'objet masqué est situé en arrière."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « repoussoir » dans une composition paysagère classique ?",
+              "options": [
+                "Un élément sombre au premier plan guidant le regard vers le fond",
+                "Une signature masquée dans un recoin",
+                "Un vernis brillant appliqué sur le cadre",
+                "Une couche d'enduit blanc sur la toile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un repoussoir (comme un arbre sombre ou une arche au premier plan) accentue par contraste la profondeur et repousse les plans lointains vers l'arrière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'arrière-plan dans une œuvre bidimensionnelle ?",
+              "options": [
+                "L'espace situé le plus loin du spectateur",
+                "Le dos en bois du châssis de la toile",
+                "La zone située pile au centre géométrique",
+                "Le cadre doré qui entoure l'œuvre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arrière-plan (ou fond) constitue la partie de la composition la plus reculée, souvent constituée du ciel, de montagnes ou d'un mur de fond."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels procédés simples permettent de créer un étagement des plans et de la profondeur ?",
+              "options": [
+                "La diminution de taille des motifs lointains",
+                "La superposition des formes les unes devant les autres",
+                "L'utilisation d'une couleur unie sans aucune nuance",
+                "Le découpage physique de la toile en lanières"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Superposer des formes et réduire progressivement leur échelle sont les deux méthodes les plus intuitives pour créer de la profondeur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel cadrage focalise intensément l'attention sur un détail ou une expression humaine ?",
+              "options": [
+                "Le gros plan",
+                "Le plan d'ensemble panoramique",
+                "Le plan moyen général",
+                "Le plan de grand paysage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gros plan isole un visage ou un objet précis, coupant le décor pour privilégier l'intimité et l'intensité émotionnelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un cadrage où la scène est observée du haut vers le bas ?",
+              "options": [
+                "Une plongée",
+                "Une contre-plongée",
+                "Un travelling latéral",
+                "Un panorama circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vue en plongée situe le point de vue en hauteur au-dessus du sujet, donnant souvent une vision d'ensemble ou une sensation de vulnérabilité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel effet psychologique une vue en contre-plongée produit-elle souvent sur un personnage ?",
+              "options": [
+                "Une impression de puissance et de domination",
+                "Une impression de fragilité et d'écrasement",
+                "Une sensation de flou et de vertige",
+                "Une disparition visuelle du personnage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En observant le personnage depuis le bas, la contre-plongée grandit sa stature et renforce son autorité ou son héroïsme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que désigne la notion de « hors-champ » dans une image ?",
+              "options": [
+                "L'espace suggéré qui existe en dehors du cadre visible",
+                "Le verso cartonné d'une feuille de dessin",
+                "La galerie d'art où le tableau est accroché",
+                "Le reflet parasite de la lampe sur le tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le hors-champ est tout ce que le cadre ne montre pas directement, mais que l'esprit du spectateur imagine grâce aux indices visuels."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "À quoi sert la « règle des tiers » dans la composition d'une image ?",
+              "options": [
+                "À équilibrer et dynamiser la disposition des points forts",
+                "À découper obligatoirement la toile en trois morceaux",
+                "À calculer le tarif de vente chez un marchand d'art",
+                "À employer exactement trois pots de peinture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En divisant le cadre par deux lignes horizontales et deux verticales, les intersections constituent les points forts idéaux pour placer les éléments clés."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : L'ombre et la lumière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre une ombre propre et une ombre portée ?",
+              "options": [
+                "L'ombre propre est sur l'objet, l'ombre portée est projetée sur le sol ou une paroi",
+                "L'ombre propre est lumineuse, l'ombre portée est transparente",
+                "L'ombre propre se déplace toute seule, l'ombre portée reste fixe",
+                "Il n'y a aucune différence, ce sont deux termes parfaitement synonymes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ombre propre est la partie sombre de l'objet non éclairée par la lumière ; l'ombre portée est la silhouette d'ombre que l'objet projette sur son environnement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le contraste très marqué entre ombres denses et lumières vives ?",
+              "options": [
+                "Le clair-obscur",
+                "Le monochrome pastel",
+                "L'aplat décoratif",
+                "Le pointillisme pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le clair-obscur (chiaroscuro) est un procédé pictural qui modèle les volumes et théâtralise la scène par des contrastes violents de lumière et d'ombre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel peintre du début du XVIIe siècle est le maître emblématique du clair-obscur dramatique ?",
+              "options": [
+                "Le Caravage",
+                "Claude Monet",
+                "Henri Matisse",
+                "Andy Warhol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Caravage a révolutionné la peinture en plongeant ses scènes dans une pénombre opaque traversée par un faisceau de lumière crue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans le modelé d'un volume, qu'est-ce que la « zone de demi-teinte » ?",
+              "options": [
+                "La zone de transition progressive entre la lumière et l'ombre",
+                "L'éclat blanc le plus brillant sur la surface",
+                "Le cœur noir absolu de l'ombre portée",
+                "La signature du peintre au bas de la page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La demi-teinte fait le lien subtil entre la pleine lumière et l'ombre propre, épousant le galbe et la courbure du volume."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels paramètres changent directement lorsque la source lumineuse se déplace par rapport à un objet ?",
+              "options": [
+                "La forme, la direction et la longueur de l'ombre portée",
+                "L'emplacement des zones d'ombre propre sur l'objet",
+                "La composition chimique des atomes du matériau",
+                "Les dimensions réelles mesurées en centimètres de l'objet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'orientation de la lumière détermine l'orientation et l'étirement des ombres propres et portées sans modifier la taille réelle de l'objet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le « reflet » ou la lumière réfléchie visible dans l'ombre propre d'une sphère ?",
+              "options": [
+                "Une clarté diffuse renvoyée par le sol ou une surface voisine",
+                "Une erreur technique de dessin qu'il faut effacer",
+                "Le point de fuite central de la sphère",
+                "Une illusion créée par une transparence magique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière rebondit sur les surfaces environnantes et vient éclairer subtilement le dessous de l'objet dans sa zone d'ombre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le point de brillance maximale marquant le sommet de la lumière sur un objet ?",
+              "options": [
+                "Le rehaut ou point d'éclat lumineux",
+                "L'ombre zénithale",
+                "La nuance secondaire",
+                "Le glacis opaque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rehaut ou point spéculaire est l'endroit précis où le rayon lumineux se réfléchit directement vers les yeux du spectateur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel maître hollandais est réputé pour sa lumière dorée et chaleureuse qui sculpte les visages ?",
+              "options": [
+                "Rembrandt",
+                "Piet Mondrian",
+                "Jackson Pollock",
+                "Joan Miró"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rembrandt utilisait une lumière intime et vibrante émergeant de fonds sombres pour révéler la psychologie et la texture des visages."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que produit un éclairage direct et frontal sur un visage ou un objet ?",
+              "options": [
+                "Il écrase les volumes et fait disparaître la plupart des ombres",
+                "Il crée des ombres très allongées et théâtrales sur les côtés",
+                "Il inverse toutes les couleurs primaires",
+                "Il multiplie par dix la sensation de relief"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière frontale (comme celle d'un flash direct) supprime les ombres modélisatrices, aplatissant le relief visuel du sujet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi l'ombre est-elle indispensable pour suggérer le volume sur une feuille de papier plate ?",
+              "options": [
+                "Elle donne l'illusion de l'épaisseur et ancre l'objet dans l'espace",
+                "Elle sert à camoufler les traits de construction ratés",
+                "Elle permet de rigidifier le papier pour qu'il tienne debout",
+                "Elle remplace obligatoirement les pigments de couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans variations de lumière et d'ombre, une forme dessinée reste perçue comme une surface plane en deux dimensions."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Le bas-relief, haut-relief et ronde-bosse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une sculpture en « ronde-bosse » ?",
+              "options": [
+                "Une œuvre en 3D autour de laquelle le spectateur peut tourner",
+                "Un motif gravé en creux dans un mur de pierre",
+                "Une peinture à l'huile avec de gros empâtements",
+                "Un dessin composé exclusivement de cercles parfaits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ronde-bosse est une sculpture tridimensionnelle autonome, totalement détachable de son support et observable sous tous les angles à 360°."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se caractérise un « bas-relief » ?",
+              "options": [
+                "Les formes sculptées se détachent très faiblement d'un fond plat",
+                "L'œuvre est suspendue au plafond sans jamais toucher le sol",
+                "Les personnages sont entièrement détachés du mur support",
+                "La sculpture est enfouie à l'intérieur d'un trou dans le sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le bas-relief, la sculpture fait corps avec le fond et les formes ne présentent qu'une faible saillie par rapport au plan."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un « haut-relief », quel est le degré de détachement des formes par rapport au fond ?",
+              "options": [
+                "Les volumes sont fortement saillants, presque détachés du fond",
+                "Les formes sont à peine visibles et presque plates",
+                "Le relief est uniquement suggéré par une peinture en trompe-l'œil",
+                "Le fond en pierre a totalement disparu pour laisser place au vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le haut-relief, plus de la moitié du volume réel des figures émerge du fond, créant des ombres et des volumes très puissants."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur quel célèbre monument antique grec trouve-t-on les frises sculptées par Phidias ?",
+              "options": [
+                "Le Parthénon à Athènes",
+                "La tour Eiffel à Paris",
+                "Le Colisée de Rome",
+                "La pyramide de Khéops"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les frises du Parthénon à Athènes constituent un chef-d'œuvre antique de bas-relief illustrant la procession des Panathénées."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels critères distinguent fondamentalement une ronde-bosse d'un bas-relief mural ?",
+              "options": [
+                "La possibilité pour le spectateur de tourner complètement autour",
+                "L'absence d'un panneau ou mur de fond auquel la sculpture reste attachée",
+                "L'utilisation exclusive et obligatoire du marbre de Carrare",
+                "L'absence totale de matière tridimensionnelle réelle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La ronde-bosse se déploie librement dans l'espace sans dépendre d'un mur support, offrant une infinité de points de vue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le relief sculpté en creux sous la surface de la pierre (comme dans l'Égypte antique) ?",
+              "options": [
+                "Le relief dans le creux (ou intaille)",
+                "La ronde-bosse géante",
+                "Le haut-relief saillant",
+                "Le moulage en plâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le relief dans le creux (ou méplat) incise les contours sous la surface du mur, la lumière solaire créant une ombre nette dans l'incision."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel matériau traditionnel travaille-t-on par soustraction (en ôtant de la matière) ?",
+              "options": [
+                "Le bloc de pierre ou de marbre",
+                "L'argile humide pour poterie",
+                "La cire liquide chaude",
+                "La pâte à modeler synthétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La taille de la pierre ou du bois se fait par soustraction : le sculpteur retire progressivement des éclats de matière au burin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la technique sculpturale consistant à façonner et ajouter de la matière malléable ?",
+              "options": [
+                "Le modelage",
+                "La taille directe",
+                "L'eau-forte",
+                "La pyrogravure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le modelage utilise des matières souples (argile, cire, plastiline) que l'artiste ajoute, presse et déforme avec ses mains et des ébauchoirs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle œuvre monumentale ornée de bas et hauts-reliefs tourmentés Auguste Rodin a-t-il créée ?",
+              "options": [
+                "La Porte de l'Enfer",
+                "La Porte du Paradis",
+                "L'Arc de Triomphe",
+                "Le David de marbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inspirée de la Divine Comédie de Dante, La Porte de l'Enfer regorge de corps sculptés en relief émergeant tumultueusement du bronze."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel rôle essentiel la lumière naturelle joue-t-elle sur un relief sculpté ?",
+              "options": [
+                "Elle crée des ombres réelles révélant les volumes et les creux",
+                "Elle dissout instantanément la surface de la roche",
+                "Elle annule complètement toute impression de relief",
+                "Elle rend les personnages totalement illisibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un bas-relief prend vie grâce à la lumière rasante qui projette des ombres naturelles au niveau des arêtes sculptées."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : L'anamorphose et les illusions d'optique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une anamorphose en arts plastiques ?",
+              "options": [
+                "Une image déformée qui se reconstitue depuis un point de vue précis",
+                "Une statuette en céramique cuite",
+                "Une peinture exécutée uniquement les yeux fermés",
+                "Une photo imprimée en noir et blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anamorphose est une déformation géométrique d'une image qui ne redevient nette et lisible que si on la regarde sous un angle très précis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quel célèbre chef-d'œuvre de Hans Holbein (1533) observe-t-on une anamorphose de crâne ?",
+              "options": [
+                "Les Ambassadeurs",
+                "La Joconde",
+                "Le Radeau de la Méduse",
+                "La Naissance de Vénus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au bas du tableau Les Ambassadeurs, une étrange forme étirée se révèle être un crâne humain lorsqu'on regarde la toile de côté en biais."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel artiste contemporain est réputé pour ses anamorphoses peintes dans des espaces architecturaux ?",
+              "options": [
+                "Felice Varini",
+                "Claude Monet",
+                "Henri Matisse",
+                "Edgar Degas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Felice Varini peint des figures géométriques fragmentées sur les murs et plafonds, qui ne s'assemblent en une forme parfaite que depuis un point unique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une anamorphose « catoptrique » ?",
+              "options": [
+                "Une image déformée qui se redresse grâce à un miroir cylindrique ou conique",
+                "Une fresque peinte avec des pigments fluorescents",
+                "Un dessin au fusain réalisé avec une règle métallique",
+                "Une gravure sur un bloc de glace transparente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anamorphose catoptrique nécessite un miroir courbé (souvent un cylindre posé au centre du dessin) pour décrypter l'image distordue."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Que nécessite l'observation réussie d'une anamorphose peinte dans l'espace ?",
+              "options": [
+                "Le positionnement de l'œil en un point de vue unique",
+                "Un déplacement physique actif du spectateur dans la pièce",
+                "Le port de lunettes stéréoscopiques spéciales",
+                "Une obscurité totale dans la salle d'exposition"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'anamorphose exige que le spectateur se déplace dans l'espace pour trouver le point de vue focal exact où l'illusion opère."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mouvement artistique des années 1960 explore les illusions visuelles et cinétiques sur plan ?",
+              "options": [
+                "L'art optique (Op Art, avec Victor Vasarely)",
+                "Le romantisme historique",
+                "Le fauvisme aux couleurs pures",
+                "Le réalisme socialiste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Op Art (Optical Art), incarné par Victor Vasarely, crée des impressions de vibration, de volume et d'ondulation sur un support plat."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les œuvres de rue en 3D dessinées au sol à la craie simulant un gouffre ?",
+              "options": [
+                "Le street art anamorphique au sol",
+                "La mosaïque romaine",
+                "Le graffiti tag classique",
+                "L'enluminure médiévale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des artistes de rue tracent au sol des dessins étirés qui, vus d'un point précis, donnent l'illusion saisissante d'un gouffre ou d'un volume 3D."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la signification symbolique du crâne en anamorphose dans Les Ambassadeurs ?",
+              "options": [
+                "Une vanité rappelant la fragilité et la finitude de la vie humaine",
+                "Une déclaration de guerre entre l'Angleterre et la France",
+                "La signature d'une confrérie de marins corsaires",
+                "Un dessin inachevé masqué par un vernis d'époque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crâne rappelle aux diplomates que le pouvoir, la science et les richesses terrestres sont vains face à la mort inéluctable (vanité)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi l'anamorphose remet-elle en question la perspective classique ?",
+              "options": [
+                "Elle prouve que la perception de l'espace dépend du point de vue de l'observateur",
+                "Elle interdit rigoureusement l'emploi des couleurs chaudes",
+                "Elle ne peut être réalisée que sur des toiles circulaires",
+                "Elle force l'artiste à fermer définitivement un œil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle démontre de manière ludique que la vision de l'espace n'est pas une vérité absolue, mais une construction tributaire de notre position."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Parmi ces artistes urbains contemporains, qui est célèbre pour ses anamorphoses sur trottoir ?",
+              "options": [
+                "Julian Beever",
+                "Auguste Rodin",
+                "Eugène Delacroix",
+                "Gustave Courbet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Julian Beever est un artiste britannique renommé pour ses trompe-l'œil à la craie sur le pavé des villes du monde entier."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Les techniques graphiques du relief",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle technique de dessin consiste à juxtaposer des traits parallèles pour modeler l'ombre ?",
+              "options": [
+                "Les hachures",
+                "Le cerclage au feutre",
+                "L'aplat uniforme",
+                "Le pochoir adhésif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les hachures sont de fines lignes parallèles dont la densité permet de créer des valeurs d'ombres et de suggérer le volume."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment obtient-on une valeur d'ombre plus foncée avec la technique des hachures ?",
+              "options": [
+                "En croisant les hachures et en resserrant les traits",
+                "En espaçant largement les lignes les unes des autres",
+                "En gommant le centre de la feuille de dessin",
+                "En choisissant une feuille de papier plus épaisse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les hachures croisées (traits obliques superposés dans plusieurs directions) densifient l'encre ou le graphite pour créer des noirs intenses."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une « estompe » en dessin d'art ?",
+              "options": [
+                "Un rouleau de papier compact servant à fondre les valeurs de fusain ou crayon",
+                "Une gomme tranchante pour découper le papier",
+                "Un liquide fixateur odorant en vaporisateur",
+                "Un instrument de mesure pour tracer des cercles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'estompe permet de frotter et de dégrader la matière sèche (fusain, pierre noire, graphite) pour créer des transitions veloutées sans traces de traits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « lavis » en arts plastiques ?",
+              "options": [
+                "Une technique à l'encre ou aquarelle diluée à l'eau créant des nuances transparentes",
+                "Un décapant chimique servant à nettoyer les pinceaux",
+                "Une couche de vernis gras sur du bois verni",
+                "Un collage de coupures de journaux anciens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lavis consiste à étaler au pinceau de l'encre plus ou moins mouillée d'eau pour obtenir une infinité de nuances de gris transparents."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels médiums graphiques permettent d'obtenir facilement de riches dégradés de valeurs et de modelé ?",
+              "options": [
+                "Le fusain tendre",
+                "La mine de plomb (crayons graphite tendres B, 2B, 4B)",
+                "Le feutre indélébile à pointe large biseautée",
+                "Le ruban adhésif marron d'emballage"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le fusain et les crayons graphite gras se prêtent idéalement à l'estompage et au travail en dégradé pour modeler les volumes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « modeler par la valeur » en dessin ?",
+              "options": [
+                "Suggérer le relief en dosant les nuances du blanc au noir",
+                "Fabriquer un objet en argile ou en pâte à modeler",
+                "Tracer uniquement un contour au stylo à bille noir",
+                "Estimer la valeur financière d'un tableau ancien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La valeur désigne le degré de clarté ou d'obscurité d'un ton : faire varier les valeurs permet de simuler la 3D sur un plan 2D."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle technique graphique crée des ombres par une constellation de points plus ou moins serrés ?",
+              "options": [
+                "Le pointillé",
+                "Le frottage sur écorce",
+                "La linogravure à la gouge",
+                "Le collage de gommettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le pointillé, la proximité des points trompe l'œil qui perçoit une surface ombrée continue vue à distance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment Albrecht Dürer créait-il l'illusion de volume dans ses célèbres gravures sur bois ?",
+              "options": [
+                "Par des réseaux précis de hachures courbes épousant la forme",
+                "En collant des bouts de tissu brodés de fil d'or",
+                "En projetant des taches d'encre au hasard d'une brosse",
+                "En traçant des silhouettes plates sans ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dürer a perfectionné la gravure en courbant ses hachures pour qu'elles épousent le galbe des muscles, des drapés et des paysages."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que désigne un « rehaut de blanc » sur un dessin réalisé sur papier teinté (gris ou ocre) ?",
+              "options": [
+                "Une touche de blanc ajoutée à la craie ou gouache pour poser les lumières",
+                "Une couche de correction pour effacer une rature",
+                "Un scotch blanc masquant le cadre extérieur",
+                "Un vernis protecteur mat incolore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur papier teinté, le papier sert de demi-teinte, les ombres sont faites au noir et les éclats de lumière sont rehaussés au blanc."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi fait-on épouser aux hachures la courbure d'un cylindre ou d'une sphère ?",
+              "options": [
+                "Pour renforcer l'illusion de rotondité et de volume tridimensionnel",
+                "Pour terminer le travail deux fois plus vite",
+                "Pour appliquer une consigne de calligraphie médiévale",
+                "Pour masquer la texture rugueuse du papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les hachures galbées suivent les lignes de niveau du volume, guidant le cerveau vers une lecture immédiate de la troisième dimension."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Le trompe-l'œil dans l'histoire des arts",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le but premier d'un « trompe-l'œil » en peinture ?",
+              "options": [
+                "Créer l'illusion parfaite que l'objet représenté est réel et en 3D",
+                "Exprimer des émotions abstraites par des taches vives",
+                "Peindre le plus vite possible sans modèle",
+                "Dénoncer une injustice politique par la caricature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le trompe-l'œil pousse le réalisme à un degré tel que le spectateur croit voir un véritable volume matériel en trois dimensions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans l'Antiquité grecque, quel défi légendaire oppose les peintres Zeuxis et Parrhasios ?",
+              "options": [
+                "Des raisins peints si fidèlement que des oiseaux viennent les picorer",
+                "Une sculpture en bronze qui se mettait à marcher",
+                "Un labyrinthe de marbre où le roi s'est perdu",
+                "Un miroir magique qui reflétait l'avenir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pline l'Ancien raconte que Zeuxis peignit des raisins trompant les oiseaux, mais Parrhasios peignit un rideau qui trompa Zeuxis lui-même."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la « quadratura » dans les plafonds d'églises baroques ?",
+              "options": [
+                "Une peinture simulant une architecture fictive s'ouvrant vers le ciel",
+                "Une technique pour découper les toiles en quatre morceaux",
+                "Une sculpture composée de quatre blocs superposés",
+                "Une danse chorégraphiée pour quatre interprètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La quadratura peint en perspective des colonnades et des voûtes qui prolongent l'architecture réelle et donnent l'illusion d'un ciel ouvert."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel artiste jésuite baroque est le maître du plafond en trompe-l'œil de l'église Saint-Ignace à Rome ?",
+              "options": [
+                "Andrea Pozzo",
+                "Michel-Ange",
+                "Raphaël",
+                "Sandro Botticelli"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Andrea Pozzo a peint au plafond une fausse coupole et des voûtes vertigineuses semblant monter à l'infini dans le ciel."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels artifices picturaux rendent un trompe-l'œil particulièrement convaincant ?",
+              "options": [
+                "L'échelle réelle 1:1 des objets peints",
+                "L'imitation minutieuse des textures, des reflets et des ombres portées",
+                "L'emploi de couleurs fluorescentes très saturées et imaginaires",
+                "Des formes volontairement floues et sans aucun contour"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le trompe-l'œil exige de respecter la taille réelle des objets et de reproduire précisément les matières et les ombres portées projetées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « dessus-de-porte » en trompe-l'œil dans un palais classique ?",
+              "options": [
+                "Une peinture imitant un bas-relief en pierre ou des objets posés",
+                "Une sonnette dorée signalant les invités",
+                "Un rideau en velours pour retenir la chaleur",
+                "Une serrure secrète dissimulée dans le bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les dessus-de-porte peints en grisaille simulaient souvent des bas-reliefs de marbre ou des trophées semblant dépasser du chambranle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une peinture imitant le marbre ou la sculpture en tons de gris ?",
+              "options": [
+                "Une grisaille",
+                "Une aquarelle",
+                "Un pastel",
+                "Une gouache"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La grisaille est une peinture monochrome utilisant des nuances de gris pour imiter l'aspect de la pierre ou du bas-relief sculpté."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur quel support urbain moderne le trompe-l'œil est-il couramment réalisé de nos jours ?",
+              "options": [
+                "Sur les façades d'immeubles aveugles et les murs de béton urbains",
+                "Sur des cartes postales de vacances",
+                "Sur des écrans de smartphones éteints",
+                "Sur des boîtes d'allumettes en bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De nombreuses villes commandent de gigantesques fresques murales en trompe-l'œil pour habiller des pignons d'immeubles sans fenêtres."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que ressent le spectateur lorsqu'il s'approche et découvre le subterfuge du trompe-l'œil ?",
+              "options": [
+                "Une surprise admirative devant le jeu entre illusion et réalité",
+                "Une colère noire d'avoir été manipulé",
+                "Une perte définitive de la vue binoculaire",
+                "L'envie de détruire le mur immédiatement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le charme du trompe-l'œil réside dans ce moment de révélation où le regardeur réalise que l'espace 3D n'est en fait qu'une surface plate peinte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi le trompe-l'œil architectural perd-il son illusion si le spectateur se déplace latéralement ?",
+              "options": [
+                "Parce que la perspective a été calculée pour un point de vue unique et stationnaire",
+                "Parce que la peinture s'efface chimiquement au mouvement",
+                "Parce que les lampes du plafond s'éteignent automatiquement",
+                "Parce que le mur se met à vibrer mécaniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perspective artificielle est construite pour un point de vue fixe : dès qu'on s'en écarte, les fuyantes se déforment et rompent l'illusion."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : La perspective cavalière et axonométrique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la règle des lignes de fuite dans une « perspective cavalière » ?",
+              "options": [
+                "Elles restent strictement parallèles entre elles (aucun point de fuite)",
+                "Elles convergent toutes vers un point de fuite central",
+                "Elles sont dessinées sous forme de spirales infinies",
+                "Elles doivent obligatoirement être invisibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perspective cavalière est une projection parallèle : les fuyantes ne convergent jamais, ce qui facilite les mesures techniques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quel univers pratique la perspective axonométrique ou cavalière est-elle très utilisée ?",
+              "options": [
+                "Le dessin technique, l'architecture et les plans de montage",
+                "La poésie lyrique et le chant choral",
+                "La restauration de tapisseries anciennes",
+                "La fabrication de parfums d'ambiance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les architectes et designers s'en servent pour représenter clairement des objets et des bâtiments avec des mesures précises et constantes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment apparaît la face avant d'un cube représenté en perspective cavalière ?",
+              "options": [
+                "Elle conserve sa forme réelle carrée sans déformation (en vraie grandeur)",
+                "Elle est déformée en losange étroit",
+                "Elle rétrécit de moitié par rapport au fond",
+                "Elle disparaît totalement derrière une arête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En perspective cavalière, la face frontale est parallèle au plan du dessin : ses angles droits et ses proportions restent parfaitement exacts."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi applique-t-on un « coefficient de réduction » sur les fuyantes en dessin technique ?",
+              "options": [
+                "Pour compenser l'effet d'étirement et donner un aspect plus naturel au volume",
+                "Pour faire des économies d'encre lors de l'impression",
+                "Pour respecter une taxe imposée sur les plans",
+                "Pour raccourcir le temps de séchage du papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans coefficient de réduction (généralement 0,5 ou 0,7), la profondeur parallèle semble exagérément longue et disproportionnée à l'œil."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels angles d'inclinaison sont couramment choisis pour tracer les fuyantes en perspective cavalière ?",
+              "options": [
+                "Un angle de 45 degrés",
+                "Un angle de 30 degrés",
+                "Un angle plat de 180 degrés",
+                "Un angle nul de 0 degré"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On utilise couramment une équerre à 45° ou à 30°/60° pour tracer les droites parallèles fuyantes du volume."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la « perspective isométrique » ?",
+              "options": [
+                "Une axonométrie où les trois axes spatiaux forment des angles égaux de 120 degrés",
+                "Une peinture à l'huile sur toile carrée",
+                "Un dessin réalisé avec un compas à deux pointes",
+                "Une photographie prise sous l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En perspective isométrique, les trois directions de l'espace (largeur, hauteur, profondeur) sont inclinées à 120° les unes des autres."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans quel genre de jeux vidéo rétro la perspective isométrique est-elle très populaire ?",
+              "options": [
+                "Les jeux de gestion et de stratégie vus du dessus en diagonale",
+                "Les jeux de tir en réalité virtuelle à la première personne",
+                "Les simulations de vol en cockpit immersif",
+                "Les jeux d'aventure textuels sans images"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des jeux cultes comme SimCity ou les premiers jeux de stratégie ont adopté la vue isométrique pour afficher un monde 3D lisible sans moteur 3D complexe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la perspective cavalière ne correspond-elle pas fidèlement à notre vision naturelle ?",
+              "options": [
+                "Parce que dans la réalité, les objets lointains rétrécissent et les lignes convergent",
+                "Parce que l'œil humain ne peut voir que deux dimensions à la fois",
+                "Parce que la lumière courbe systématiquement les lignes droites",
+                "Parce que notre cerveau inverse le haut et le bas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notre système visuel perçoit toujours une convergence des parallèles au loin, ce que les projections axonométriques refusent pour garder des cotes mesurables."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mode de perspective employait-on traditionnellement dans les rouleaux peints chinois et japonais ?",
+              "options": [
+                "Une perspective parallèle ou cavalière à points de vue multiples",
+                "La perspective centrale avec un point de fuite unique",
+                "Le trompe-l'œil photographique à la chambre noire",
+                "Le photomontage imprimé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La peinture sur rouleau orientale utilise une perspective parallèle étagée, invitant le regard à une promenade continue sans point de fuite bloqué."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le grand avantage d'un plan de meuble en kit dessiné en perspective axonométrique ?",
+              "options": [
+                "Chaque pièce garde ses proportions et son emboîtement est parfaitement lisible",
+                "Il donne un style romantique et mystérieux au montage",
+                "Il évite d'avoir besoin de tournevis ou de clés",
+                "Il colore les planches de bois en différentes teintes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence de déformation fuyante permet de reconnaître chaque planche, sa face d'attache et son sens d'assemblage sans ambiguïté."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : La déconstruction de la perspective",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mouvement artistique du début du XXe siècle a délibérément brisé la perspective renaissante ?",
+              "options": [
+                "Le Cubisme (avec Picasso et Braque)",
+                "Le Classicisme de cour",
+                "Le Réalisme académique",
+                "Le Romantisme sombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vers 1907-1910, Pablo Picasso et Georges Braque ont abandonné le point de vue unique pour déconstruire géométriquement l'espace sur la toile."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment les artistes cubistes représentent-ils un objet ou un visage sur la toile ?",
+              "options": [
+                "En montrant simultanément plusieurs angles de vue différents sur un même plan",
+                "En photographiant le modèle sous un éclairage rasoir",
+                "En sculptant la toile dans un bloc de glace",
+                "En cachant la scène derrière un rideau noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cubisme synthétise la vision en montrant, par exemple, un profil et une face en même temps, faisant éclater l'espace conventionnel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel tableau de Pablo Picasso peint en 1907 marque une rupture radicale avec l'espace traditionnel ?",
+              "options": [
+                "Les Demoiselles d'Avignon",
+                "La Nuit étoilée",
+                "Le Déjeuner sur l'herbe",
+                "Impression, soleil levant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Demoiselles d'Avignon brise la perspective avec ses corps anguleux inspirés de l'art africain et ses plans brisés sans profondeur classique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « papier collé » inventé par Georges Braque et Pablo Picasso vers 1912 ?",
+              "options": [
+                "L'intégration de morceaux réels de papier peint ou journal sur la toile",
+                "Une affiche publicitaire collée sur un mur de rue",
+                "Une technique pour réparer une déchirure de toile",
+                "Un calque servant à copier un dessin au crayon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En collant de véritables morceaux de papier peint ou de partitions, ils confrontent l'espace illusionniste peint à des fragments d'objets réels."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels artistes pionniers sont considérés comme les pères fondateurs du Cubisme ?",
+              "options": [
+                "Pablo Picasso",
+                "Georges Braque",
+                "Jacques-Louis David",
+                "Nicolas Poussin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Picasso et Braque ont travaillé en étroite collaboration au Bateau-Lavoir à Paris pour forger les bases du cubisme analytique et synthétique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qui caractérise la phase du « Cubisme synthétique » ?",
+              "options": [
+                "La recomposition des formes par des aplats de couleur et des collages lisibles",
+                "Le découpage microscopique monochrome des toiles",
+                "L'utilisation exclusive de pigments plastiques modernes",
+                "Le retour à une imitation photographique de la réalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la complexité du cubisme analytique, le cubisme synthétique reconstruit des formes plus synthétiques, colorées et intègre le collage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment les peintres abstraits (comme Mondrian ou Malevitch) considèrent-ils la surface du tableau ?",
+              "options": [
+                "Comme un espace plat autonome refusant l'illusion de profondeur mimétique",
+                "Comme une fenêtre transparente ouverte sur la nature",
+                "Comme un miroir reflétant la pièce où se trouve le visiteur",
+                "Comme un trompe-l'œil destiné à faire croire à une statue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'abstraction affirme la réalité physique de la toile : celle-ci n'est plus une fenêtre vers un monde virtuel mais un plan autonome de formes et de couleurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel artiste d'avant-garde a peint le « Carré noir sur fond blanc » en 1915 ?",
+              "options": [
+                "Kazimir Malevitch (le Suprématisme)",
+                "Marc Chagall",
+                "Wassily Kandinsky",
+                "Ilia Répine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Malevitch a fondé le Suprématisme en peignant ce carré noir, réduisant la peinture à son degré zéro et abolissant toute perspective figurale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que rappelle la célèbre phrase de Maurice Denis : « Un tableau est essentiellement une surface plane recouverte de couleurs... » ?",
+              "options": [
+                "L'affirmation de la planéité du support contre l'illusion de la troisième dimension",
+                "Une recette de fabrication pour des peintures en bâtiment",
+                "Une critique des artistes qui ne savent pas peindre de visages",
+                "L'interdiction d'exposer des toiles avec un cadre doré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette citation de 1890 annonce la modernité : avant d'être un paysage ou un cheval, la peinture est une surface plane ornée de couleurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment l'artiste David Hockney réinvente-t-il la perspective dans ses « joiners » photographiques ?",
+              "options": [
+                "En assemblant une mosaïque de dizaines de photos prises sous des angles et moments variés",
+                "En peignant avec une immense loupe sur un écran géant",
+                "En brûlant ses négatifs noir et blanc dans une flamme",
+                "En prenant une seule photo panoramique floue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ses photomontages 'joiners' multiplient les points de vue et le temps d'observation, créant une vision cubiste et vivante de l'espace moderne."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Installer dans l'espace",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : La notion d'installation artistique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une « installation » en arts plastiques contemporains ?",
+              "options": [
+                "Une œuvre tridimensionnelle conçue pour un espace donné que le spectateur peut souvent parcourir",
+                "La pose d'un tableau sur un chevalet d'atelier",
+                "Le branchement électrique des spots lumineux d'un musée",
+                "Une toile peinte protégée par une vitre en plexiglas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'installation agence des éléments dans un lieu réel pour créer un environnement spécifique où le spectateur est invité à entrer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment évolue la posture du spectateur au sein d'une installation artistique ?",
+              "options": [
+                "Il devient souvent acteur, s'immergeant physiquement au cœur de l'œuvre",
+                "Il doit impérativement rester assis au fond d'une chaise",
+                "Il a l'interdiction d'entrer et regarde par un œilleton",
+                "Il perd toute liberté de ressentir une émotion personnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le visiteur n'est plus seulement un spectateur passif devant un cadre : il arpente l'espace, expérimentant l'œuvre avec tout son corps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels sens (en plus de la vue) une installation immersive peut-elle éveiller chez le visiteur ?",
+              "options": [
+                "L'ouïe, le toucher et parfois même l'odorat",
+                "Aucun autre sens, seul l'œil a le droit de fonctionner",
+                "Uniquement le sens de l'équilibre sans regarder",
+                "La transmission de pensée par télépathie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une installation sollicite souvent une expérience plurisensorielle grâce au son, aux matières tactiles, aux odeurs et à la lumière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qui différencie une installation d'une sculpture académique sur socle ?",
+              "options": [
+                "L'installation intègre l'ensemble de l'espace environnant et supprime souvent le socle",
+                "L'installation est obligatoirement façonnée en bronze antique",
+                "La sculpture sur socle ne peut jamais être présentée au public",
+                "L'installation ne doit pas durer plus de deux minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En abandonnant le socle traditionnel qui isolait la sculpture, l'installation investit la totalité du volume architectural et du sol au plafond."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques définissent couramment une installation artistique contemporaine ?",
+              "options": [
+                "La dimension spatiale et environnementale de l'expérience vécue",
+                "L'hybridation des matériaux (objets, sons, lumières, vidéos)",
+                "L'obligation d'utiliser de la peinture à l'huile sur lin",
+                "La stricte imitation de la statuaire grecque classique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'installation se définit par son inscription dans un volume spatial et son ouverture à tous les médiums modernes (matériaux bruts, son, vidéo)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle artiste japonaise est mondialement célèbre pour ses pièces immersives couvertes de miroirs et de pois ?",
+              "options": [
+                "Yayoi Kusama",
+                "Yoko Ono",
+                "Takashi Murakami",
+                "Hokusai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yayoi Kusama crée ses 'Infinity Mirror Rooms', des salles de miroirs où des lumières et des pois colorés se reflètent à l'infini."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une œuvre conçue pour n'exister que pendant une durée limitée avant démontage ?",
+              "options": [
+                "Une œuvre éphémère",
+                "Une œuvre pérenne",
+                "Une œuvre fossile",
+                "Une œuvre sérielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une œuvre éphémère n'a pas vocation à durer dans le temps : sa temporalité fugitive fait partie intégrante de son projet artistique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie le concept d'« immersion » dans une œuvre d'art contemporaine ?",
+              "options": [
+                "Le spectateur est littéralement enveloppé dans l'univers visuel et sonore de l'œuvre",
+                "L'œuvre est plongée dans un grand bassin d'eau de mer",
+                "La toile est recouverte d'un vernis étanche pour bateaux",
+                "Une sculpture flottante gonflée avec un gaz léger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'immersion abolit la distance entre l'œuvre et le spectateur, celui-ci faisant corps avec l'environnement artistique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans les années 1960, quel artiste pionnier a développé la notion d'« Environnement » ?",
+              "options": [
+                "Allan Kaprow",
+                "Paul Cézanne",
+                "Eugène Delacroix",
+                "Jacques-Louis David"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Allan Kaprow a créé les 'Environments', des œuvres d'art spatiales interactives préfigurant l'installation contemporaine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment conserve-t-on la mémoire d'une installation après son démontage ?",
+              "options": [
+                "Par la documentation photographique, vidéo, les plans et les témoignages",
+                "En demandant à chaque visiteur de réciter une poésie par cœur",
+                "L'installation disparaît sans laisser la moindre archive",
+                "En reconstruisant obligatoirement la salle chez chaque visiteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les croquis préparatoires, photos, captations vidéo et catalogues permettent de documenter et de transmettre l'existence d'installations disparues."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Le Land Art et l'espace naturel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le « Land Art » apparu à la fin des années 1960 aux États-Unis ?",
+              "options": [
+                "Une pratique artistique utilisant le paysage et la nature comme support et matériau",
+                "La culture de jardins potagers dans la cour des musées",
+                "La peinture de paysages ruraux sur de petites toiles à l'aquarelle",
+                "La vente aux enchères de terrains agricoles à des artistes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Land Art quitte les ateliers pour intervenir directement dans les grands espaces naturels en sculptant le sol et les éléments du paysage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels matériaux sont typiquement employés par les artistes du Land Art ?",
+              "options": [
+                "La terre, les pierres, le sable, les branchages et l'eau",
+                "La résine plastique et les câbles électroniques",
+                "Les bombes de peinture synthétique et le béton précontraint",
+                "Les métaux précieux dorés et les diamants bruts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les artistes privilégient les matériaux trouvés in situ dans le paysage naturel : rochers, terre, sable, feuilles, bois ou neige."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle œuvre géante en forme de spirale de basalte Robert Smithson a-t-il construite dans un lac en 1970 ?",
+              "options": [
+                "Spiral Jetty",
+                "The Lightning Field",
+                "The Gates",
+                "Double Negative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Spiral Jetty est une jetée de roches et de boue enroulée en spirale dans les eaux rougeâtres du Grand Lac Salé en Utah."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quoi consiste l'œuvre « The Lightning Field » de Walter De Maria au Nouveau-Mexique ?",
+              "options": [
+                "400 poteaux métalliques plantés dans le désert attirant la foudre lors des orages",
+                "Une tranchée remplie d'eau reflétant les rayons du soleil couchant",
+                "Une forêt d'arbres peints en jaune éclatant",
+                "Une immense fresque tracée avec de la poudre d'or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "The Lightning Field capte la puissance cosmique de la nature : ses poteaux en acier inoxydable interagissent spectaculairement avec les orages du désert."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quel couple d'artistes est célèbre pour ses emballages monumentaux de ponts, falaises et monuments ?",
+              "options": [
+                "Christo",
+                "Jeanne-Claude",
+                "Claude Monet",
+                "Paul Cézanne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Christo et Jeanne-Claude ont emballé des paysages et monuments (Pont-Neuf, Reichstag, côtes australiennes) avec d'immenses drapés de tissu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi les œuvres de Land Art sont-elles souvent vouées à l'éphémère ?",
+              "options": [
+                "Elles subissent l'érosion du vent, de la pluie, de la végétation et des marées",
+                "Les artistes les détruisent à la dynamite au bout d'une semaine",
+                "Les animaux de la forêt viennent manger tous les composants",
+                "Elles s'évaporent au soleil comme de l'eau tiède"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En confiant leurs créations à la nature, les artistes acceptent que le temps, le climat et les saisons transforment ou effacent leur œuvre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel artiste britannique façonne des sculptures délicates avec des pétales, de la glace ou des feuilles d'or ?",
+              "options": [
+                "Andy Goldsworthy",
+                "Damien Hirst",
+                "David Hockney",
+                "Francis Bacon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Andy Goldsworthy assemble patiemment des éléments naturels éphémères (feuilles colorées, stalactites, galets) et les immortalise par la photo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment le grand public découvre-t-il la plupart des œuvres de Land Art créées dans des déserts reculés ?",
+              "options": [
+                "Grâce aux photographies, films documentaires, plans et récits d'exposition",
+                "En empruntant une navette spatiale touristique gratuite",
+                "Par des retransmissions télévisées obligatoires en direct",
+                "En achetant des morceaux de roche par correspondance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les œuvres étant souvent situées dans des sites très isolés, la photographie et la vidéo deviennent le relais indispensable pour le public."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que cherchaient à contester les pionniers du Land Art en s'installant dans les déserts américains ?",
+              "options": [
+                "La marchandisation de l'art et l'espace confiné des galeries traditionnelles",
+                "L'existence des parcs nationaux protégés",
+                "L'usage de la couleur dans les peintures murales",
+                "La pratique de la randonnée pédestre en montagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils voulaient créer des œuvres indéplaçables et invendables, s'affranchissant du marché de l'art et des murs blancs des musées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'était l'œuvre « Running Fence » réalisée par Christo et Jeanne-Claude en 1976 ?",
+              "options": [
+                "Une clôture de tissu blanc de près de 40 km ondulant à travers les collines californiennes",
+                "Une course d'athlétisme organisée entre artistes peintres",
+                "Un mur de briques barrant l'accès à une plage privée",
+                "Un tunnel creusé sous les montagnes rocheuses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Running Fence serpentait sur 39,5 km à travers la campagne californienne avant de plonger dans l'océan Pacifique, révélant la beauté du relief."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : L'art urbain et l'espace public",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où l'art urbain (Street Art) se déploie-t-il par excellence ?",
+              "options": [
+                "Dans l'espace public accessible à tous (rues, façades, friches, ponts)",
+                "Dans les coffres-forts blindés des collectionneurs privés",
+                "Exclusivement dans les chapelles médiévales protégées",
+                "Sous terre au fond de grottes inaccessibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'art urbain prend la ville elle-même comme support d'expression direct, s'adressant à tous les passants sans filtre muséal."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle technique permet aux street artistes de reproduire rapidement une image à la bombe de peinture ?",
+              "options": [
+                "Le pochoir",
+                "La gravure sur bois",
+                "La mosaïque en marbre",
+                "Le pastel gras frotté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pochoir (matrice en carton ou plastique découpée) permet d'appliquer très vite de la peinture aérosol sur un mur de rue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel artiste urbain britannique anonyme est célèbre pour ses pochoirs engagés et satiriques ?",
+              "options": [
+                "Banksy",
+                "Andy Warhol",
+                "Jeff Koons",
+                "Jean Tinguely"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Banksy dissimule son identité et parsème les villes du monde d'œuvres poétiques, percutantes et engagées contre la guerre et le consumérisme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la culture graffiti, qu'est-ce qu'un « tag » ?",
+              "options": [
+                "La signature calligraphiée rapide et stylisée du nom de l'artiste",
+                "Une immense fresque colorée peinte sur cinq étages",
+                "Une amende envoyée par les services de propreté",
+                "Un panneau de signalisation officiel de la mairie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tag est la marque calligraphique primitive du graffeur, son pseudonyme tracé d'un geste fluide avec un marqueur ou une bombe."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels artistes new-yorkais des années 1980 ont débuté dans la rue ou le métro avant de conquérir les galeries ?",
+              "options": [
+                "Keith Haring",
+                "Jean-Michel Basquiat",
+                "Paul Gauguin",
+                "Eugène Delacroix"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Keith Haring (dessins à la craie dans le métro) et Basquiat (graffitis sous le pseudonyme SAMO) ont révolutionné l'art contemporain new-yorkais."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le « yarn bombing » (ou tricot urbain) ?",
+              "options": [
+                "L'habillage d'éléments urbains (arbres, bancs, statues) avec du tricot coloré",
+                "Le lancement de pelotes de laine enflammées sur des murs",
+                "La destruction au cutter d'affiches publicitaires dans les abribus",
+                "Le collage de gommettes fluorescentes sur les trottoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le yarn bombing adoucit et égaye le mobilier urbain en le recouvrant de mailles tricotées en laine multicolore."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel artiste français réalise d'immenses collages de portraits photographiques en noir et blanc dans les villes ?",
+              "options": [
+                "JR",
+                "Daniel Buren",
+                "Gérard Garouste",
+                "Pierre Soulages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "JR colle des portraits géants de personnes anonymes sur les façades, toits et murs du monde entier pour donner une visibilité aux oubliés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel dialogue l'art urbain entretient-il avec les citoyens qui circulent dans la ville ?",
+              "options": [
+                "Il interpelle leur quotidien, transforme leur regard et réenchante l'espace public",
+                "Il leur impose un silence absolu pendant leur marche",
+                "Il les oblige à faire des dons financiers aux artistes",
+                "Il remplace obligatoirement l'éclairage nocturne des rues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En surgissant au coin d'une rue ordinaire, l'art urbain crée la surprise, suscite le débat et transforme la relation des habitants à leur ville."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une fresque murale commandée officiellement par une collectivité ?",
+              "options": [
+                "Une commande publique d'art mural valorisant un quartier et son histoire",
+                "Une dégradation clandestine punie par la loi",
+                "Un affichage publicitaire commercial pour des sodas",
+                "Un panneau électoral temporaire en plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De nombreuses mairies financent des fresques monumentales confiées à des artistes reconnus pour embellir et dynamiser l'espace urbain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi les œuvres de street art non officielles sont-elles particulièrement vulnérables ?",
+              "options": [
+                "Elles risquent à tout moment d'être nettoyées, recouvertes ou abîmées par la météo",
+                "Elles s'effacent automatiquement dès que le soleil se couche",
+                "Les artistes utilisent exclusivement de l'eau tiède pour les peindre",
+                "La pierre de taille rejette chimiquement les pigments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le street art est soumis aux aléas du temps, aux intempéries, aux repeints municipaux et aux interventions d'autres graffeurs."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : La sculpture dans l'espace réel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment une sculpture monumentale transforme-t-elle l'espace environnant ?",
+              "options": [
+                "Elle modifie les échelles, rythme le paysage et dialogue avec l'architecture",
+                "Elle rend les bâtiments voisins invisibles aux yeux des passants",
+                "Elle interdit toute circulation piétonne dans un rayon de cinq kilomètres",
+                "Elle annule la force de gravitation terrestre à ses pieds"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une sculpture dans l'espace public ne s'ajoute pas simplement au lieu : elle le requalifie, créant de nouvelles perspectives et repères visuels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle fonction traditionnelle le « socle » remplissait-il sous une statue classique ?",
+              "options": [
+                "Surélever l'œuvre, la sacraliser et l'isoler du sol quotidien des passants",
+                "Cacher les moteurs mécaniques et batteries électriques",
+                "Ranger les outils et burins du sculpteur après la taille",
+                "Permettre de transporter facilement la statue dans un coffre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le socle mettait la statue à distance, signalant son statut d'œuvre sacrée ou héroïque séparée de l'espace profane de la rue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel sculpteur moderne a révolutionné la sculpture en intégrant le socle comme partie de l'œuvre ?",
+              "options": [
+                "Constantin Brancusi",
+                "Michel-Ange",
+                "Jean-Baptiste Carpeaux",
+                "Gian Lorenzo Bernini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brancusi sculptait lui-même ses socles en bois ou calcaire, abolissant la frontière entre la sculpture et son support d'ancrage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'« acier Corten », très utilisé par le sculpteur Richard Serra ?",
+              "options": [
+                "Un acier dont la rouille superficielle forme une patine protectrice autotoxique",
+                "Un métal transparent laissant passer les rayons solaires",
+                "Un alliage précieux d'or blanc et de titane poli",
+                "Une mousse synthétique peinte couleur rouille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'acier Corten s'oxyde au contact de l'air, développant une belle patine couleur terre cuite qui le protège durablement des intempéries."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels paramètres spatiaux sont essentiels lors de l'implantation d'une sculpture monumentale ?",
+              "options": [
+                "L'échelle de l'œuvre par rapport aux façades et arbres voisins",
+                "Les axes de circulation et les points de vue des piétons qui l'entourent",
+                "L'obligation d'appliquer une peinture dorée brillante",
+                "La gravure du portrait de l'architecte sur le socle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'artiste et l'urbaniste doivent penser la taille de l'œuvre en fonction du vide urbain et de la façon dont les gens se déplaceront autour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle sculpture monumentale en forme d'araignée d'acier Louise Bourgeois a-t-elle créée ?",
+              "options": [
+                "Maman",
+                "Le Dragon d'airain",
+                "La Tisseuse géante",
+                "L'Arachnée d'or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maman est une araignée haute de plus de 9 mètres sous laquelle le spectateur peut marcher, abritant un sac d'œufs en marbre sous son abdomen."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que symbolise l'araignée géante « Maman » dans la vie de Louise Bourgeois ?",
+              "options": [
+                "Un hommage affectueux à sa mère, intelligente et réparatrice de tapisseries",
+                "Une phobie panique et effrayante des insectes rampants",
+                "Une campagne publicitaire pour une marque de fil à coudre",
+                "La crainte d'un cataclysme planétaire géant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour Louise Bourgeois, l'araignée est une figure bienveillante et protectrice rappelant sa mère restauratrice de tapisseries anciennes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment les sculptures en bronze d'Alberto Giacometti occupent-elles l'espace ?",
+              "options": [
+                "Des silhouettes humaines filiformes, minces et étirées à l'extrême",
+                "Des corps ventrus et massifs occupant tout le sol",
+                "Des structures géométriques cubiques en miroir",
+                "Des miniatures invisibles enfermées dans des boîtes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Giacometti rongeait la matière pour ne garder qu'une présence humaine vibrante, mince comme un fil fendant l'espace environnant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel rôle le « vide » joue-t-il dans les sculptures modernes d'Henry Moore ?",
+              "options": [
+                "Il laisse pénétrer le paysage et la lumière au cœur même de la forme sculptée",
+                "Il sert uniquement à économiser du métal pour réduire les coûts",
+                "Il sert d'abri pour les petits oiseaux en hiver",
+                "Il rend l'œuvre plus facile à casser pour le recyclage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Henry Moore perce ses sculptures monumentales d'ouvertures fluides : le vide devient une matière sculpturale à part entière révélant le paysage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel artiste contemporain conçoit des sculptures monumentales en inox poli imitant des ballons gonflables ?",
+              "options": [
+                "Jeff Koons",
+                "Auguste Rodin",
+                "Camille Claudel",
+                "Edgar Degas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jeff Koons crée des œuvres comme Balloon Dog en acier inoxydable poli miroir, reflétant et déformant tout l'espace et les spectateurs autour."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : L'œuvre in situ et la relation au lieu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie la locution latine « in situ » dans le domaine des arts plastiques ?",
+              "options": [
+                "« Sur place » : créée spécifiquement pour et en fonction d'un lieu précis",
+                "« Sans couleur » : une création obligatoirement monochrome",
+                "« Sans autorisation » : une œuvre illégale peinte la nuit",
+                "« À l'atelier » : un tableau peint sur chevalet d'intérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une œuvre in situ est pensée en lien direct avec l'architecture, la topographie et la lumière d'un endroit précis où elle est installée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'on déplace une œuvre conçue strictement « in situ » dans un autre bâtiment ?",
+              "options": [
+                "Elle perd son sens, son dialogue spatial et sa raison d'être première",
+                "Elle prend instantanément deux fois plus de valeur marchande",
+                "Elle change toute seule de couleur et de matière",
+                "Elle se transforme automatiquement en peinture sur toile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Étant indissociable du contexte pour lequel elle a été imaginée, extraire l'œuvre in situ de son lieu détruit la signification voulue par l'artiste."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle célèbre œuvre in situ Daniel Buren a-t-il installée dans la cour du Palais-Royal à Paris ?",
+              "options": [
+                "Les Deux Plateaux (les Colonnes de Buren)",
+                "La Pyramide inversée",
+                "L'Arche monumentale",
+                "Le Mur des Je t'aime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Deux Plateaux (1986) alignent 260 colonnes de marbre rayées blanc et noir de hauteurs inégales dans la cour d'honneur du Palais-Royal."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel motif récurrent sert d'« outil visuel » à Daniel Buren depuis les années 1960 ?",
+              "options": [
+                "Des bandes verticales alternées blanches et colorées de 8,7 cm de large",
+                "Des cercles concentriques rouge vif",
+                "Des petits pois noirs sur fond jaune canari",
+                "Des étoiles dorées à cinq pointes identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Daniel Buren utilise toujours ses bandes rayées de 8,7 cm pour attirer le regard sur le lieu lui-même plutôt que sur un tableau autonome."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels paramètres du site un artiste in situ analyse-t-il avant d'élaborer son projet ?",
+              "options": [
+                "L'architecture, les matériaux, les volumes et la circulation de la lumière",
+                "L'histoire, la mémoire patrimoniale et la destination sociale du lieu",
+                "La météo prévue dans dix ans par les satellites météo",
+                "Le signe astrologique du propriétaire des murs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'artiste prend en compte tant les propriétés physiques et spatiales du site que sa charge historique, sociale et humaine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment Olafur Eliasson a-t-il investi l'immense Turbine Hall de la Tate Modern dans « The Weather Project » ?",
+              "options": [
+                "En créant un soleil géant artificiel baigné de brume dorée sous un plafond miroir",
+                "En faisant couler une rivière glacée d'un kilomètre",
+                "En installant des rails de train transportant les visiteurs",
+                "En plantant une forêt de séquoias centenaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Olafur Eliasson a utilisé le volume gigantesque de cette ancienne usine pour recréer une aube céleste où les visiteurs s'allongeaient au sol."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « réactiver la perception d'un lieu patrimonial » à travers une intervention contemporaine ?",
+              "options": [
+                "Faire redécouvrir l'espace architectural aux gens en créant un contraste visuel nouveau",
+                "Démolir l'édifice historique pour construire un parking moderne",
+                "Repeindre tout le bâtiment en blanc pour masquer les détails",
+                "Fermer définitivement le monument aux touristes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intervention contemporaine offre un nouveau regard sur le patrimoine ancien, réveillant l'attention des visiteurs souvent blasés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle intervention in situ l'artiste JR a-t-il réalisée sur la Pyramide du Louvre en 2016 ?",
+              "options": [
+                "Un collage photographique en trompe-l'œil faisant disparaître la pyramide dans le palais",
+                "La coloration de toutes les vitres en rouge rubis",
+                "L'emballage de la pyramide dans du carton recyclé marron",
+                "Le remplacement des vitres par des miroirs déformants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En collant une immense photo de la façade du Louvre sur la pyramide, JR a créé une anamorphose qui effaçait la verrière moderne depuis un point précis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que le lieu et l'œuvre in situ se révèlent mutuellement ?",
+              "options": [
+                "Parce que l'œuvre révèle les qualités de l'espace, et l'espace donne son sens à l'œuvre",
+                "Parce que le bâtiment s'effondre obligatoirement si on touche à l'œuvre",
+                "Parce que l'artiste doit vivre dans le monument toute sa vie",
+                "Parce que le sol doit obligatoirement être creusé pour les fondations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il y a une relation de symbiose : l'œuvre n'existerait pas sans ce lieu, et le lieu est transformé et sublimé par la présence de l'œuvre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel était l'objectif de Christo et Jeanne-Claude en emballant le Pont-Neuf à Paris en 1985 ?",
+              "options": [
+                "Révéler les lignes et les arches du plus vieux pont de Paris en les recouvrant d'une seconde peau",
+                "Interdire la navigation des bateaux-mouches sur la Seine",
+                "Protéger les pierres du pont contre le gel hivernal",
+                "Construire une passerelle autoroutière temporaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En drapant le pont d'une toile dorée, ils ont incité les Parisiens à redécouvrir la silhouette sculpturale d'un pont devenu banal à force d'habitude."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : La scénographie, la lumière et le son",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la « scénographie » d'une exposition d'art ?",
+              "options": [
+                "L'art d'aménager, mettre en scène et orchestrer l'espace et les œuvres",
+                "L'impression des affiches publicitaires dans le métro",
+                "La vente des catalogues à la boutique du musée",
+                "La réparation des cadres en bois abîmés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La scénographie conçoit le parcours du visiteur, la disposition des cloisons, les éclairages et la relation entre les œuvres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment l'éclairage artificiel peut-il modifier la perception d'une sculpture en salle ?",
+              "options": [
+                "En sculptant ses volumes par des ombres portées ou en révélant ses textures",
+                "En changeant son poids physique en kilogrammes",
+                "En transformant la composition moléculaire du bronze",
+                "En rendant la sculpture totalement transparente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un éclairage zénithal, rasant ou tamisé modèle complètement le relief, accentuant la dramaturgie ou la douceur de l'œuvre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une « installation sonore » en art contemporain ?",
+              "options": [
+                "Une œuvre où le son est le matériau plastique sculptant l'espace et l'écoute",
+                "Un concert de musique pop au milieu des vitrines",
+                "La sonnerie d'alarme antivol du musée",
+                "Un audioguide décrivant la vie des artistes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'artiste sonore agence des haut-parleurs et diffuse des fréquences, voix ou ambiances spatialisées pour faire du son une architecture invisible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le « white cube » (cube blanc) en muséographie moderne ?",
+              "options": [
+                "L'espace d'exposition épuré aux murs blancs isolant l'œuvre des bruits du monde",
+                "Une sculpture géante en sucre cristallisé",
+                "Une caisse de transport étanche pour tableaux fragiles",
+                "Une petite salle de repos réservée aux conservateurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le white cube propose un espace neutre, abstrait et sans fenêtre pour que rien ne vienne perturber la contemplation pure des œuvres d'art."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments sensoriels la scénographie contemporaine orchestre-t-elle pour immerger le public ?",
+              "options": [
+                "L'intensité lumineuse (projecteurs ciblés, pénombre, contrastes)",
+                "Les environnements sonores et acoustiques spatialisés",
+                "L'obligation de porter des chaussures de plomb",
+                "La diffusion de gaz soporifique dans les salles"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ambiance lumineuse et le design sonore sont deux leviers majeurs pour créer une atmosphère immersive et émotionnelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel artiste américain a bâti toute son œuvre sculpturale à partir de tubes fluorescents colorés (néons) ?",
+              "options": [
+                "Dan Flavin",
+                "Donald Judd",
+                "Jackson Pollock",
+                "Mark Rothko"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dan Flavin disposait des tubes de néon industriels dans les angles et sur les murs des pièces, colorant tout l'espace ambiant de lumière pure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment James Turrell travaille-t-il la lumière dans ses espaces artistiques (comme les Skyspaces) ?",
+              "options": [
+                "Comme une matière palpable et envoûtante modifiant la perception du ciel et des volumes",
+                "Pour faire cuire des aliments pour les visiteurs",
+                "Pour diffuser des spots publicitaires commerciaux",
+                "Pour faire pousser des champignons dans le noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "James Turrell sculpte la lumière naturelle et artificielle : ses ouvertures zénithales font paraître le ciel comme une surface colorée solide."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que permet le silence dans une scénographie d'exposition bien pensée ?",
+              "options": [
+                "Il invite au recueillement, à la concentration et à l'attention aux volumes",
+                "Il indique une panne de l'électricité générale du musée",
+                "Il oblige les visiteurs à retenir leur souffle",
+                "Il prouve que l'exposition n'intéresse personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le silence crée une respiration propice à la contemplation contemplative des formes, des ombres et de l'espace."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la déambulation physique prévue pour le public dans une exposition ?",
+              "options": [
+                "Le cheminement (ou parcours muséographique)",
+                "Le labyrinthe piégé à péage",
+                "La marche forcée chronométrée",
+                "La sortie d'évacuation de sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le parcours organise le rythme de la visite, ménageant des temps forts, des surprises spatiales et des transitions thématiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Personnes » au Grand Palais (2010), comment Christian Boltanski a-t-il marqué l'espace monumental ?",
+              "options": [
+                "Avec une montagne géante de vêtements usagés, une pince mécanique et des battements de cœur",
+                "Avec une exposition de voitures de collection peintes en blanc",
+                "Avec un terrain de football aux lignes tracées à la craie",
+                "Avec un feu d'artifice tiré sous la verrière du dôme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boltanski a habité la nef glaciale avec des tas de vêtements évoquant la mémoire des disparus, rythmés par le bruit sourd d'un cœur qui bat."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Les mobiles et la sculpture cinétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qui est l'inventeur des célèbres « mobiles », ces sculptures légères suspendues en équilibre ?",
+              "options": [
+                "Alexander Calder",
+                "Pablo Picasso",
+                "Auguste Rodin",
+                "Henri Matisse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alexander Calder a révolutionné la sculpture en créant des constructions aériennes en fil de fer et plaques de tôle mobiles dans l'air."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel artiste d'avant-garde a baptisé du mot « mobiles » les œuvres suspendues de Calder en 1931 ?",
+              "options": [
+                "Marcel Duchamp",
+                "Salvador Dalí",
+                "Guillaume Apollinaire",
+                "André Breton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est Marcel Duchamp qui a proposé à Calder le terme de 'mobile', soulignant le double sens du mouvement et du motif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Par quelle force les mobiles suspendus de Calder sont-ils mis en mouvement ?",
+              "options": [
+                "Par les courants d'air naturels et le passage des visiteurs",
+                "Par de puissants moteurs à explosion à carburant",
+                "Par un système d'aimants nucléaires sous le plancher",
+                "Par des ressorts mécaniques remontés à la clé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calder refusait les moteurs : ce sont les flux d'air imperceptibles et les déplacements d'air dans la pièce qui animent ses pièces avec grâce."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on, par contraste avec les mobiles, les grandes sculptures fixes en tôle de Calder ?",
+              "options": [
+                "Les stabiles",
+                "Les menhirs",
+                "Les totems",
+                "Les gisants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jean Arp a suggéré le nom de 'stabiles' pour désigner les imposantes sculptures métalliques fixes ancrées fermement au sol."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels principes fondamentaux caractérisent l'art cinétique apparu au XXe siècle ?",
+              "options": [
+                "L'introduction du mouvement réel ou virtuel au cœur de l'œuvre",
+                "La prise en compte de la durée temporelle dans l'expérience spatiale",
+                "L'utilisation exclusive de toiles peintes à l'aquarelle",
+                "L'imitation rigide des statues de l'Égypte antique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'art cinétique place le mouvement (mécanique, optique ou naturel) et le temps au centre de sa réflexion plastique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel sculpteur suisse a créé des sculptures-machines grinçantes faites de bric et de broc ?",
+              "options": [
+                "Jean Tinguely",
+                "Alberto Giacometti",
+                "Paul Klee",
+                "Le Corbusier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jean Tinguely assemblait roues dentées, courroies et ferrailles de récupération pour concevoir des machines cinétiques ironiques et poétiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle fontaine cinétique et joyeuse Jean Tinguely et Niki de Saint Phalle ont-ils conçue à Paris ?",
+              "options": [
+                "La Fontaine Stravinsky",
+                "La Fontaine des Innocents",
+                "La Fontaine Saint-Michel",
+                "La Fontaine Médicis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Fontaine Stravinsky mêle les sculptures motorisées noires de Tinguely et les silhouettes colorées en résine de Niki de Saint Phalle au son de l'eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment le mouvement perpétuel d'un mobile modifie-t-il l'espace ?",
+              "options": [
+                "Il redessine sans cesse le vide environnant par des trajectoires imprévisibles",
+                "Il refroidit la pièce comme un ventilateur industriel",
+                "Il empêche toute onde lumineuse d'entrer dans la salle",
+                "Il fait trembler le sol au point de fendre le béton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En tournant doucement, les formes de tôle découpent le vide, créant une composition spatiale en perpétuelle réinvention."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle dimension supplémentaire l'art cinétique introduit-il dans la sculpture ?",
+              "options": [
+                "La quatrième dimension : le temps",
+                "La cinquième dimension : le goût",
+                "L'apesanteur absolue sous vide",
+                "La dissolution chimique spontanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En faisant bouger l'œuvre, l'artiste intègre le temps : l'œuvre ne se résume plus à un état statique figé, mais à un déroulement temporel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi les sculptures mobiles et cinétiques captivent-elles naturellement le regard ?",
+              "options": [
+                "Parce que l'œil humain est biologiquement attiré par tout changement et mouvement dans l'espace",
+                "Parce qu'elles distribuent des cadeaux aux enfants",
+                "Parce qu'elles sont toutes dorées à l'or fin",
+                "Parce qu'elles fonctionnent sans respecter les lois de la physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Notre regard suit instinctivement les métamorphoses et les jeux d'équilibre des formes animées en direct sous nos yeux."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : L'art conceptuel et les dispositifs participatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans l'art conceptuel des années 1960-1970, quel élément est considéré comme le plus important ?",
+              "options": [
+                "L'idée, le concept et la démarche intellectuelle",
+                "La préciosité des matériaux de fabrication",
+                "La virtuosité manuelle académique de l'artiste",
+                "Le poids en kilogrammes de l'objet fini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les artistes conceptuels, la matérialité de l'objet est secondaire par rapport à l'idée ou au protocole qui lui donne naissance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle œuvre majeure de Joseph Kosuth (1965) juxtapose une chaise réelle, sa photo et sa définition de dictionnaire ?",
+              "options": [
+                "One and Three Chairs",
+                "La Chaise de Van Gogh",
+                "Ceci n'est pas une chaise",
+                "La Fontaine blanche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "One and Three Chairs interroge la nature de la représentation : quel est le véritable objet entre l'objet réel, l'image et le concept écrit ?"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « dispositif participatif » dans l'art contemporain ?",
+              "options": [
+                "Une installation qui n'existe pleinement que par l'action ou l'engagement du spectateur",
+                "Un système de vote payant pour élire le tableau du mois",
+                "Une conférence théorique donnée par un professeur d'art",
+                "Une réunion de vente aux enchères caritative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'œuvre n'est pas fermée : elle propose un protocole dans lequel le spectateur intervient pour transformer ou activer l'espace."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans les célèbres tas de bonbons de Félix González-Torres, qu'est invité à faire le spectateur ?",
+              "options": [
+                "Prendre un bonbon et le manger, participant à la diminution physique de l'œuvre",
+                "Contempler sans jamais franchir une barrière de sécurité rouge",
+                "Recouvrir les bonbons avec un drap de soie blanche",
+                "Compter à voix haute le nombre exact de bonbons emballés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En dégustant un bonbon, le visiteur ingère une part de l'œuvre, devenant complice d'un rituel de partage et d'hommage intime."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels rôles le visiteur peut-il endosser dans une installation participative ?",
+              "options": [
+                "Co-créateur qui modifie la disposition spatiale ou la matière de l'œuvre",
+                "Déclencheur dont la présence ou le geste active le dispositif artistique",
+                "Responsable légal devant rembourser les assurances du musée",
+                "Critique d'art professionnel obligé de rédiger un mémoire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'œuvre participative brise la passivité du public en l'invitant à interagir, à toucher, à déplacer ou à nourrir le processus créatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que métaphorise l'érosion progressive du tas de bonbons pesant le poids d'un corps humain chez González-Torres ?",
+              "options": [
+                "La maladie, l'affaiblissement du corps de son compagnon décédé et la mémoire partagée",
+                "Une critique des excès de consommation de sucre chez les enfants",
+                "La rentabilité d'une marque industrielle de confiserie",
+                "Une formule de mathématiques sur les probabilités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tas de bonbons (au poids exact de son compagnon emporté par le sida) évoque la disparition physique du corps tout en offrant sa douceur en partage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment l'artiste Sol LeWitt concevait-il ses célèbres « Wall Drawings » (dessins muraux) ?",
+              "options": [
+                "Sous la forme d'un protocole écrit d'instructions exécuté par d'autres sur le mur",
+                "En dessinant lui-même chaque nuit en cachette sans patron",
+                "En gravant les murs au marteau et au burin de chantier",
+                "En projetant des diapositives sans jamais rien dessiner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sol LeWitt écrivait des règles géométriques très précises : n'importe quelle équipe peut exécuter le dessin en suivant fidèlement sa partition."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une équipe d'assistants trace le Wall Drawing de Sol LeWitt, de qui l'œuvre est-elle officiellement ?",
+              "options": [
+                "De Sol LeWitt, car l'essence de l'œuvre réside dans la partition conceptuelle",
+                "Uniquement des personnes qui ont tenu les feutres et les règles",
+                "Du fabriquant de la peinture murale acrylique",
+                "Du directeur de l'établissement qui prête le mur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De même qu'une symphonie reste l'œuvre du compositeur même jouée par un orchestre, l'œuvre conceptuelle appartient à son concepteur d'idée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'« esthétique relationnelle » théorisée par Nicolas Bourriaud ?",
+              "options": [
+                "Un art qui prend pour support et enjeu premier les relations humaines et le lien social",
+                "Une méthode pour calculer la beauté mathématique d'une toile",
+                "L'art d'aménager les meubles dans les appartements modernes",
+                "Une stratégie de marketing pour vendre des peintures en ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'esthétique relationnelle valorise la convivialité, les échanges et les rencontres directes créés par l'artiste entre les visiteurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que faisait Rirkrit Tiravanija au cœur des galeries pour instaurer cette relation vivante ?",
+              "options": [
+                "Il installait une cuisine et servait gratuitement des repas chauds (du curry thaï) aux visiteurs",
+                "Il organisait des combats de catch chronométrés",
+                "Il distribuait des billets de loterie caritative",
+                "Il peignait des aquarelles de paysage sur commande en dix secondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En invitant les gens à s'attabler ensemble pour manger un repas chaud, Tiravanija transformait la galerie en un espace de convivialité et d'échange."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Le corps et la performance dans l'espace",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une « performance » dans les arts plastiques ?",
+              "options": [
+                "Une action artistique éphémère exécutée en direct devant un public par l'artiste",
+                "Un record du monde de rapidité pour peindre une toile",
+                "Une épreuve sportive opposant deux peintres rivaux",
+                "Un examen théorique passé devant des critiques d'art"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La performance est un acte vivant et non reproductible à l'identique, où l'artiste engage son corps dans un espace et un temps donnés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment le corps de l'artiste est-il appréhendé dans le « Body Art » (art corporel) ?",
+              "options": [
+                "Comme le matériau, l'outil et le support d'expression premier",
+                "Comme une enveloppe honteuse qu'il faut dissimuler",
+                "Comme un simple porte-manteau pour présenter des vêtements",
+                "Comme un accessoire mécanique sans aucune émotion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans le Body Art, le corps n'est plus un modèle que l'on copie sur une toile : il devient la matière vivante même de l'œuvre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle artiste serbe est mondialement reconnue comme une figure pionnière de l'art de la performance ?",
+              "options": [
+                "Marina Abramović",
+                "Cindy Sherman",
+                "ORLAN",
+                "Niki de Saint Phalle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Depuis les années 1970, Marina Abramović explore les limites physiques et mentales de son corps et la relation d'énergie avec le public."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quoi consistait la performance historique de Marina Abramović « The Artist is Present » au MoMA (2010) ?",
+              "options": [
+                "Elle est restée assise silencieuse face aux visiteurs qui se succédaient en face d'elle",
+                "Elle a peint un immense tableau à l'huile sans s'arrêter de chanter",
+                "Elle a couru autour du musée pendant trois jours sans dormir",
+                "Elle a sculpté un bloc de marbre avec une cuillère en argent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pendant près de trois mois et plus de 700 heures, elle a offert son regard silencieux et intense à chaque visiteur venu s'asseoir en face d'elle."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels paramètres fondamentaux constituent l'essence d'une performance artistique ?",
+              "options": [
+                "Le corps de l'artiste engagé dans une temporalité et un lieu précis",
+                "La présence du public témoin ou complice de l'action",
+                "L'obligation de fabriquer une sculpture en bronze à la fin",
+                "L'encadrement sous verre blindé de l'espace d'action"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La performance se structure autour de quatre éléments indissociables : le temps, l'espace, le corps de l'artiste et la présence du public."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « happening », développé à la fin des années 1950 par Allan Kaprow ?",
+              "options": [
+                "Un événement artistique spontané et participatif mêlant art et quotidien",
+                "Une pièce de théâtre répétée par cœur pendant six mois",
+                "Un cours magistral à l'école des Beaux-Arts",
+                "Une vente aux enchères publique d'œuvres encadrées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le happening invite les participants à accomplir des actions simples et surprenantes dans la vie réelle, sans répétition théâtrale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment Yves Klein utilisait-il le corps de ses modèles dans ses « Anthropométries » (1960) ?",
+              "options": [
+                "Comme des « pinceaux vivants » enduits de peinture bleue s'imprimant sur de grands papiers",
+                "Comme des statues figées en marbre blanc",
+                "Comme des funambules suspendues à des cordes d'acier",
+                "Comme des musiciennes jouant de la harpe sans partition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yves Klein dirigeait des modèles nues qui s'enduisaient de bleu avant d'appliquer leur corps sur des toiles, capturant l'énergie corporelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel bleu outremer éclatant et mat Yves Klein a-t-il breveté pour ses œuvres ?",
+              "options": [
+                "L'IKB (International Klein Blue)",
+                "Le Bleu cyan d'imprimerie",
+                "Le Bleu de cobalt royal",
+                "Le Bleu indigo végétal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yves Klein a mis au point une formule chimique liant le pigment bleu outremer pur à une résine synthétique préservant son éclat poudré."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment les performances éphémères parviennent-elles jusqu'à nous aujourd'hui ?",
+              "options": [
+                "Par la vidéo, la photographie documentaire, les témoignages et les traces matérielles",
+                "En étant automatiquement rejouées par des clones",
+                "En interdisant toute publication de livres sur le sujet",
+                "En érigeant une stèle en granit sur chaque lieu de performance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les archives audiovisuelles, récits et objets résiduels (reliques de l'action) permettent de préserver et transmettre la mémoire de la performance."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la relation entre l'artiste et le spectateur est-elle si intense lors d'une performance ?",
+              "options": [
+                "Parce que l'action se déroule en direct sans filet, ouvrant à l'imprévu et à la vulnérabilité",
+                "Parce que la salle d'exposition est surchauffée",
+                "Parce que les spectateurs risquent une punition s'ils parlent",
+                "Parce que l'artiste menace de détruire le musée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence de distance matérielle crée une tension partagée : le spectateur sait que l'événement a lieu ici et maintenant, dans une vérité directe."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : L'espace virtuel et les installations numériques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une installation numérique interactive contemporaine ?",
+              "options": [
+                "Une œuvre technologique réagissant en direct aux mouvements, gestes ou sons du public",
+                "Une borne automatique pour acheter des tickets d'entrée",
+                "Un écran de télévision diffusant les informations en continu",
+                "Un ordinateur éteint posé sur une table d'atelier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce à des capteurs et des programmes informatiques, l'œuvre modifie ses projections ou sons en fonction des actions du spectateur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel collectif artistique interdisciplinaire japonais conçoit d'immenses musées numériques immersifs (Tokyo, Paris) ?",
+              "options": ["teamLab", "Fluxus", "Bauhaus", "Dada"],
+              "correctAnswers": [0],
+              "explanation": "teamLab réunit artistes, programmeurs et ingénieurs pour créer des environnements lumineux où les visiteurs traversent des cascades et des floraisons virtuelles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le « vidéo-mapping » (projection monumentale) ?",
+              "options": [
+                "La projection de vidéos ajustées aux reliefs et détails architecturaux d'un bâtiment réel",
+                "Une carte routière affichée sur un écran de guidage GPS",
+                "Une peinture à l'huile représentant une caméra numérique",
+                "L'impression d'une photo d'architecture sur une bâche plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mapping vidéo projette de la lumière animée calculée selon la structure d'un monument pour donner l'impression qu'il s'anime ou se déforme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment la Réalité Virtuelle (VR) transforme-t-elle l'immersion spatiale de l'utilisateur ?",
+              "options": [
+                "Elle plonge l'observateur dans un environnement numérique interactif à 360 degrés",
+                "Elle agrandit simplement l'écran d'un ordinateur de bureau",
+                "Elle supprime la perception des couleurs chaudes",
+                "Elle transforme les murs d'une pièce en vitres transparentes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Muni d'un casque VR, le spectateur quitte le monde physique pour pénétrer dans un espace virtuel où son regard oriente la vision en temps réel."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels capteurs technologiques permettent de rendre une installation artistique interactive ?",
+              "options": [
+                "Les caméras à détection de mouvement ou de chaleur (infrarouge)",
+                "Les capteurs de pression, de contact au sol ou microphones sonores",
+                "Les règles d'écolier en plastique souple transparent",
+                "Les pots d'eau en verre pour nettoyer les pinceaux"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les caméras, cellules photoélectriques et capteurs sensoriels traduisent les mouvements du corps en données numériques pour le logiciel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la « Réalité Augmentée » (AR) dans un projet artistique ?",
+              "options": [
+                "La superposition d'éléments virtuels en 3D sur le monde physique réel à travers un écran",
+                "Une peinture réalisée avec deux pinceaux simultanément",
+                "Une galerie d'art agrandie par des travaux d'architecte",
+                "Un projecteur qui augmente la facture d'électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À travers un smartphone ou des lunettes AR, des sculptures ou animations virtuelles viennent s'ancrer dans l'espace physique visible."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans les expositions de teamLab, comment les images projetées réagissent-elles lorsqu'un visiteur touche un mur ?",
+              "options": [
+                "Les motifs numériques (fleurs, vagues) s'écartent, se dispersent ou fleurissent",
+                "Une sonnerie d'alarme retentit pour faire sortir le visiteur",
+                "Tous les projecteurs s'éteignent immédiatement",
+                "Le mur projette de la vraie peinture liquide sur la main"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contact de la main est détecté par le système, qui génère en temps réel des pétales qui s'envolent ou des flux qui se détournent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel artiste pionnier de l'art vidéo empilait des dizaines de téléviseurs cathodiques dès les années 1960 ?",
+              "options": [
+                "Nam June Paik",
+                "Bill Viola",
+                "Andy Warhol",
+                "Marcel Duchamp"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nam June Paik, pionnier de l'art vidéo, fabriquait des robots et des sculptures spatiales spectaculaires composées de moniteurs de télévision."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment l'artiste Bill Viola utilise-t-il le ralenti extrême dans ses installations vidéo ?",
+              "options": [
+                "Pour étirer le temps et conférer une dimension spirituelle et méditative aux émotions",
+                "Pour compenser un manque d'images enregistrées lors du tournage",
+                "Pour faire durer la vidéo jusqu'à la fermeture du musée",
+                "Pour inciter les spectateurs à s'endormir dans la salle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En ralentissant le mouvement jusqu'à l'extrême, Bill Viola magnifie chaque micro-mouvement, goutte d'eau ou battement de paupière dans l'espace sombre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi l'art numérique contemporain remet-il en question la matérialité traditionnelle de l'œuvre d'art ?",
+              "options": [
+                "L'œuvre est faite de flux lumineux, de données et de code sans objet matériel permanent",
+                "Les ordinateurs pèsent plus lourd que des blocs de granit de Carrare",
+                "Les puces électroniques se dégradent en quelques secondes à l'air libre",
+                "Le public n'a pas le droit d'ouvrir les yeux devant les écrans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'œuvre numérique est dématérialisée : elle existe sous forme d'algorithmes et de lumière projetée, renouvelant profondément la notion de volume et d'espace."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

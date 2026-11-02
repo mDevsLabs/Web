@@ -367,7 +367,7 @@ describe("Icônes uniques", () => {
       "open-food-facts",
       "open-library",
       "openalex",
-      "quizzly",
+      "sentry",
       "tvmaze",
       "vercel",
       "weather",

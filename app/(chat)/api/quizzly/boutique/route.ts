@@ -2,14 +2,32 @@ import { z } from "zod";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { requireUser } from "@/lib/auth/require-user";
 import { origineConfiance } from "@/lib/quizzly/http";
-import { acheterArticle, resumeQuizzly } from "@/lib/quizzly/queries";
-import { SHOP_ITEMS } from "@/lib/quizzly/shop";
+import {
+  acheterArticle,
+  ajouterArticleBoutique,
+  resumeQuizzly,
+} from "@/lib/quizzly/queries";
+import { listerArticlesBoutique, type ShopKind } from "@/lib/quizzly/shop";
 
-const corpsSchema = z
+const corpsAchatSchema = z
   .object({
+    action: z.literal("buy").optional(),
     itemId: z.string().min(1).max(40),
   })
   .strict();
+
+const corpsAjoutSchema = z
+  .object({
+    action: z.literal("add-item"),
+    description: z.string().min(3).max(300),
+    id: z.string().min(2).max(40).optional(),
+    kind: z.enum(["boost", "daily", "frame", "freeze", "hearts", "shield"]),
+    label: z.string().min(2).max(60),
+    price: z.number().int().min(0).max(50_000),
+  })
+  .strict();
+
+const corpsSchema = z.union([corpsAchatSchema, corpsAjoutSchema]);
 
 export async function GET() {
   const session = await requireUser();
@@ -22,8 +40,9 @@ export async function GET() {
       {
         dailyGiftClaimed: resume.dailyGiftClaimed,
         gems: resume.gems,
+        giftsReceived: resume.giftsReceived || [],
         hearts: resume.hearts,
-        items: SHOP_ITEMS,
+        items: listerArticlesBoutique(),
         leagueShieldWeek: resume.leagueShieldWeek,
         ownedFrames: resume.ownedFrames,
         streakFreezes: resume.streakFreezes,
@@ -56,7 +75,21 @@ export async function POST(request: Request) {
     });
   }
   try {
-    const achat = await acheterArticle(session.userId, parsed.data.itemId);
+    if ("action" in parsed.data && parsed.data.action === "add-item") {
+      const res = await ajouterArticleBoutique({
+        description: parsed.data.description,
+        id: parsed.data.id,
+        kind: parsed.data.kind as ShopKind,
+        label: parsed.data.label,
+        price: parsed.data.price,
+      });
+      return Response.json(res, {
+        headers: { "Cache-Control": "private, no-store" },
+      });
+    }
+
+    const itemId = "itemId" in parsed.data ? parsed.data.itemId : "";
+    const achat = await acheterArticle(session.userId, itemId);
     if (!achat.ok) {
       return errorResponse("invalid_request", { message: achat.message });
     }

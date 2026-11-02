@@ -1,0 +1,2688 @@
+{
+  "id": "5e-physique-chimie-10",
+  "year": "5e",
+  "subject": "physique-chimie",
+  "title": "Ondes, signaux et synthèse",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lumière et son",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Sources de lumière",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels objets sont des sources primaires de lumière ?",
+              "options": [
+                "Le Soleil",
+                "La Lune",
+                "Une lampe allumée",
+                "Un miroir"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le Soleil et une lampe produisent leur propre lumière, contrairement à la Lune qui la réfléchit."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "La lumière du Soleil met environ combien de minutes pour nous parvenir ?",
+              "options": ["8 minutes", "1 seconde", "1 heure", "1 jour"],
+              "correctAnswers": [0],
+              "explanation": "La lumière met environ huit minutes pour voyager du Soleil jusqu'à la Terre."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Un objet qui ne produit pas de lumière est appelé :",
+              "options": [
+                "Objet lumineux",
+                "Source primaire",
+                "Objet éclairé",
+                "Source secondaire uniquement"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Un objet éclairé reçoit la lumière d'une source et la renvoie vers nos yeux."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Pourquoi voyons-nous la Lune la nuit ?",
+              "options": [
+                "Elle produit sa propre lumière",
+                "Elle réfléchit la lumière du Soleil",
+                "Elle brûle comme une étoile",
+                "Elle émet de la chaleur visible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La Lune n'est pas une source de lumière : elle renvoie la lumière reçue du Soleil."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Une étoile vue dans le ciel nocturne est :",
+              "options": [
+                "Un objet éclairé seulement",
+                "Une source de lumière",
+                "Un miroir géant",
+                "Toujours une planète"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les étoiles produisent elles-mêmes de la lumière."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Une LED allumée est :",
+              "options": [
+                "Une source de lumière",
+                "Un isolant",
+                "Un filtre sonore",
+                "Une ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La LED transforme l'électricité en lumière visible."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Sans source de lumière, un objet non lumineux :",
+              "options": [
+                "Reste invisible à l'œil",
+                "Brille tout seul",
+                "Devient conducteur",
+                "Émet un écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut de la lumière renvoyée pour voir l'objet."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Le feu d'une bougie produit :",
+              "options": [
+                "Lumière et chaleur",
+                "Uniquement du son",
+                "Uniquement du sel",
+                "Un circuit ouvert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La combustion libère de l'énergie lumineuse et thermique."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Un écran allumé est :",
+              "options": [
+                "Une source de lumière",
+                "Un mélange hétérogène",
+                "Un isolant",
+                "Un filtre papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pixels émettent de la lumière pour former l'image."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "La lumière sert surtout à :",
+              "options": ["Voir", "Entendre", "Filtrer", "Dissoudre"],
+              "correctAnswers": [0],
+              "explanation": "La vision repose sur la lumière entrante dans l'œil."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Propagation de la lumière",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Où la lumière se propage en ligne droite ?",
+              "options": [
+                "L'air",
+                "L'eau claire",
+                "Un mur opaque",
+                "Le métal massif"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans un milieu transparent homogène, les rayons restent rectilignes."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Un faisceau laser montre :",
+              "options": [
+                "Des rayons rectilignes",
+                "Des rayons circulaires",
+                "Aucune lumière",
+                "Un court-circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le laser illustre une propagation en ligne droite."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Un opaque devant une source forme :",
+              "options": ["Une ombre", "Une solution", "Un écho", "Une pile"],
+              "correctAnswers": [0],
+              "explanation": "Les rayons bloqués laissent une zone sombre."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "La lumière traverse l'espace entre Soleil et Terre :",
+              "options": [
+                "Oui",
+                "Non",
+                "Uniquement dans l'eau",
+                "Uniquement dans le cuivre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière se propage dans le vide."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Le modèle du rayon sert à :",
+              "options": [
+                "Tracer le trajet lumineux",
+                "Mesurer une masse",
+                "Filtrer du sable",
+                "Fermer un circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On prévoit ombres et réflexions avec des rayons droits."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Deux torches dans une pièce :",
+              "options": [
+                "Leurs faisceaux peuvent coexister",
+                "S'annulent toujours",
+                "Devient du son",
+                "Dissout le sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les faisceaux lumineux se croisent sans se gêner."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Le verre transparent :",
+              "options": [
+                "Laisse passer la lumière",
+                "Bloque toute lumière",
+                "Est toujours opaque",
+                "Produit un tonnerre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il transmet les rayons avec peu d'absorption."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Voir une flamme de côté montre que la lumière :",
+              "options": [
+                "Va jusqu'à l'œil en ligne droite",
+                "Tourne en rond",
+                "Devient du courant",
+                "Forme un mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des rayons partent de la flamme vers l'observateur."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Un projecteur éclaire l'écran car :",
+              "options": [
+                "La lumière se propage rectilignement",
+                "Le son est amplifié",
+                "Le sel dissout",
+                "La pile chauffe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le faisceau traverse l'air jusqu'à la surface."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Dans un milieu homogène, la lumière :",
+              "options": [
+                "Ne devie pas sans obstacle",
+                "S'arrête net",
+                "Devient grave",
+                "Conducte le courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans changement de milieu, le trajet reste droit."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Ombres et éclipses",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Avec une source étendue, on observe :",
+              "options": [
+                "Ombre",
+                "Pénombre",
+                "Sel cristallisé",
+                "Court-circuit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ombre sans lumière directe, pénombre partiellement éclairée."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "L'ombre d'une main devant une lampe vient :",
+              "options": [
+                "Du blocage des rayons",
+                "De la dissolution",
+                "D'un moteur",
+                "D'un filtre sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opaque intercepte la lumière."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Rapprocher l'objet de la source :",
+              "options": [
+                "Agrandit l'ombre",
+                "La supprime",
+                "Crée une solution",
+                "Allume une LED"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayons divergent davantage."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Éclipse de Lune :",
+              "options": [
+                "Ombre de la Terre sur la Lune",
+                "Lune lumineuse seule",
+                "Fil coupé",
+                "Sel dans l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Terre intercepte la lumière solaire."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Objet transparent :",
+              "options": [
+                "Ombre faible ou absente",
+                "Ombre noire nette",
+                "Toujours un écho",
+                "Toujours un mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière traverse largement l'objet."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Pénombre signifie :",
+              "options": [
+                "Zone partiellement éclairée",
+                "Absence totale de lumière",
+                "Circuit fermé",
+                "Vitesse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une partie de la source est encore visible."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Écran derrière l'objet sert à :",
+              "options": [
+                "Voir l'ombre",
+                "Mesurer le son",
+                "Dissoudre",
+                "Conduire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La surface révèle la zone non éclairée."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Source ponctuelle idéale :",
+              "options": [
+                "Ombre nette",
+                "Ombre floue",
+                "Pas d'ombre",
+                "Solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bords de l'ombre sont précis."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Éloigner l'écran de l'objet peut :",
+              "options": [
+                "Changer la taille de l'ombre",
+                "Couper le courant",
+                "Filtrer le sel",
+                "Supprimer le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La projection dépend des distances."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Opaque devant le Soleil :",
+              "options": ["Ombre au sol", "Écho", "Mélange", "Fusible"],
+              "correctAnswers": [0],
+              "explanation": "Les rayons solaires sont bloqués."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Réflexion de la lumière",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles surfaces réfléchissent bien la lumière ?",
+              "options": [
+                "Miroir plan",
+                "Surface polie",
+                "Ouate noire",
+                "Charbon mat"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Surfaces lisses renvoient les rayons régulièrement."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Image dans un miroir plan :",
+              "options": [
+                "Symétrique",
+                "Toujours invisible",
+                "Toujours sonore",
+                "Toujours salée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion spéculaire symétrique."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Objet blanc :",
+              "options": [
+                "Renvoie beaucoup de lumière",
+                "Absorbe tout",
+                "Est une pile",
+                "Est un filtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il diffuse une grande part de la lumière."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Objet noir mat :",
+              "options": [
+                "Absorbe beaucoup de lumière",
+                "Brille seul",
+                "Conduit toujours",
+                "Produit un écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de lumière est renvoyée."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Se voir dans un miroir nécessite :",
+              "options": [
+                "Lumière renvoyée vers l'œil",
+                "Sel dissous",
+                "Circuit ouvert",
+                "Vide sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière diffusée par vous revient après réflexion."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Mur rugueux :",
+              "options": [
+                "Réflexion diffuse",
+                "Miroir parfait",
+                "Court-circuit",
+                "Solution saturée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière part dans plusieurs directions."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Rétroviseur utilise :",
+              "options": [
+                "Réflexion lumineuse",
+                "Filtration",
+                "Dissolution",
+                "Vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le miroir renvoie l'image arrière."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Lune brillante car :",
+              "options": [
+                "Réfléchit le Soleil",
+                "Brûle du gaz",
+                "Est une pile",
+                "Est un fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle diffuse la lumière solaire."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Miroir plan : angle réflexion et incidence :",
+              "options": ["Égaux", "Nuls", "Sans lien", "Toujours 90°"],
+              "correctAnswers": [0],
+              "explanation": "Loi de réflexion vue en 5e."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Réflexion régulière :",
+              "options": [
+                "Direction prévisible",
+                "Pas de lumière",
+                "Son aigu",
+                "Sel solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayons parallèles restent parallèles après réflexion."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Couleurs et lumière blanche",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "La lumière blanche contient :",
+              "options": ["Rouge", "Vert", "Ombre", "Sel"],
+              "correctAnswers": [0, 1],
+              "explanation": "Le blanc mélange les couleurs du spectre visible."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Prisme :",
+              "options": [
+                "Sépare les couleurs",
+                "Filtre le sable",
+                "Ferme un circuit",
+                "Mesure le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque couleur est déviée différemment."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Objet rouge :",
+              "options": [
+                "Renvoie surtout le rouge",
+                "Absorbe le rouge",
+                "Est un isolant",
+                "Est un mélange d'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur apparente = lumière réfléchie."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Filtre bleu :",
+              "options": [
+                "Laisse surtout le bleu",
+                "Laisse le rouge seul",
+                "Coupe le courant",
+                "Crée une ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il transmet sa teinte."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Arc-en-ciel montre :",
+              "options": ["Lumière composée", "Sel pur", "Fil nu", "Pile vide"],
+              "correctAnswers": [0],
+              "explanation": "Les gouttes dispersent la lumière."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Objet vert renvoie :",
+              "options": ["Surtout du vert", "Rien", "Du courant", "Un écho"],
+              "correctAnswers": [0],
+              "explanation": "Il réfléchit cette composante colorée."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Dans le noir, couleur d'un t-shirt :",
+              "options": [
+                "Non visible",
+                "Toujours vive",
+                "Toujours bleue",
+                "Conductrice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans lumière, pas de couleur perçue."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Mélange additif de lumières :",
+              "options": [
+                "Peut donner du blanc",
+                "Donne toujours du sel",
+                "Ouvre le circuit",
+                "Crée une ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Superposition des couleurs lumineuses."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "LED blanche :",
+              "options": [
+                "Source de lumière blanche",
+                "Miroir",
+                "Isolant seul",
+                "Filtre papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Émission d'un spectre large."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Couleur perçue dépend :",
+              "options": [
+                "Lumière reçue et renvoyée",
+                "Masse seule",
+                "Vitesse du son",
+                "Tension seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interaction lumière-matière."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Production du son",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Actions qui produisent un son :",
+              "options": [
+                "Frapper une table",
+                "Pincer une corde",
+                "Regarder sans toucher",
+                "Lire silencieusement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vibrations mécaniques entraînent l'air."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Son produit par :",
+              "options": ["Vibrations", "Lumière seule", "Sel seul", "Ombre"],
+              "correctAnswers": [0],
+              "explanation": "Source sonore = objet qui vibre."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Corde pincée :",
+              "options": [
+                "Vibre et sonne",
+                "Devient miroir",
+                "Dissout",
+                "Coupe le courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vibration transmise à l'air."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Haut-parleur :",
+              "options": [
+                "Membrane vibrante",
+                "Fil isolant",
+                "Prisme",
+                "Filtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La membrane pousse l'air."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Vibration rapide :",
+              "options": ["Son aigu", "Son grave", "Silence", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": "Fréquence élevée = hauteur aiguë."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Diapason frappé :",
+              "options": [
+                "Émet un son",
+                "Forme une ombre",
+                "Ferme un circuit",
+                "Filtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Branches qui oscillent."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Voix :",
+              "options": ["Cordes vocales", "Cheveux", "Sel", "Pile"],
+              "correctAnswers": [0],
+              "explanation": "Vibrations dans le larynx."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Tambour :",
+              "options": ["Peau qui vibre", "Miroir", "Solution", "Fil nu"],
+              "correctAnswers": [0],
+              "explanation": "Membrane frappée."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Sans vibration :",
+              "options": [
+                "Pas de son",
+                "Son fort",
+                "Arc-en-ciel",
+                "Court-circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agitation mécanique nécessaire."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Sentir une enceinte :",
+              "options": ["Vibrations au toucher", "Ombre", "Sel", "Fil"],
+              "correctAnswers": [0],
+              "explanation": "Paroi en mouvement rapide."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Propagation du son",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Milieu où le son se propage :",
+              "options": ["Air", "Eau", "Vide", "Sans matière"],
+              "correctAnswers": [0, 1],
+              "explanation": "Il faut un matériau ; pas dans le vide."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Son dans le vide :",
+              "options": [
+                "Ne se propage pas",
+                "Très fort",
+                "Devient lumière",
+                "Dissout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de particules pour transmettre."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Écho :",
+              "options": ["Son réfléchi", "Ombre", "Sel", "Pile"],
+              "correctAnswers": [0],
+              "explanation": "Rebond sur un obstacle."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Tonnerre après éclair :",
+              "options": [
+                "Son plus lent que lumière",
+                "Son plus rapide",
+                "Pas de lumière",
+                "Fil coupé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière arrive en premier."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Son sous l'eau :",
+              "options": [
+                "Se propage",
+                "Impossible",
+                "Devient sel",
+                "Devient miroir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau transmet les vibrations."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Cloche sous vide :",
+              "options": [
+                "On n'entend plus",
+                "Plus fort",
+                "Ombre nette",
+                "Circuit fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Absence de milieu."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Solides :",
+              "options": [
+                "Conduisent bien le son",
+                "Bloquent toujours",
+                "Sont des piles",
+                "Sont des filtres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Particules serrées transmettent."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Oreille au mur :",
+              "options": [
+                "Son conduit dans le mur",
+                "Lumière seule",
+                "Sel",
+                "Fusible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vibrations dans la matière."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "S'éloigner de la source :",
+              "options": [
+                "Son plus faible",
+                "Son plus fort",
+                "Ombre",
+                "Dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie répartie sur l'espace."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Sonar :",
+              "options": [
+                "Échos sous l'eau",
+                "Filtration",
+                "Prisme",
+                "Interrupteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure par réflexion sonore."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Volume et hauteur",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Réglages d'une enceinte :",
+              "options": ["Volume", "Graves/aigus", "Couleur du fil", "Ombre"],
+              "correctAnswers": [0, 1],
+              "explanation": "Intensité et tonalité changent l'écoute."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Son fort :",
+              "options": ["Grande intensité", "Ombre", "Sel", "Isolant"],
+              "correctAnswers": [0],
+              "explanation": "Amplitude perçue élevée."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Son aigu :",
+              "options": [
+                "Fréquence élevée",
+                "Fréquence nulle",
+                "Lumière",
+                "Mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vibrations rapides."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Son grave :",
+              "options": [
+                "Vibration lente",
+                "Vibration ultra rapide",
+                "Vide",
+                "Prisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Basse fréquence."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Baisser le volume :",
+              "options": [
+                "Diminue l'intensité",
+                "Change la couleur",
+                "Ferme le circuit",
+                "Filtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins d'amplitude à l'oreille."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Notes différentes :",
+              "options": [
+                "Hauteurs différentes",
+                "Même ombre",
+                "Même sel",
+                "Même fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fréquences distinctes."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Cri vs grommellement :",
+              "options": [
+                "Cri plus aigu",
+                "Cri plus grave",
+                "Pas de vibration",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cordes vocales plus tendues."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Timbre :",
+              "options": [
+                "Distingue les instruments",
+                "Mesure vitesse",
+                "Filtre sable",
+                "Ouvre circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Harmoniques différentes."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Son trop fort :",
+              "options": [
+                "Nuit à l'ouïe",
+                "Crée éclipse",
+                "Dissout cuivre",
+                "Isolant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque pour l'oreille."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Casque antibruit :",
+              "options": [
+                "Réduit l'intensité",
+                "Accélère lumière",
+                "Sel",
+                "Pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atténue les sons extérieurs."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Lumière et son comparés",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Signaux du quotidien :",
+              "options": [
+                "Lumière du jour",
+                "Musique",
+                "Fil isolé seul",
+                "Ombre sans source"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vision et ouïe utilisent des signaux différents."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Son vs lumière dans le vide :",
+              "options": [
+                "Seul la lumière passe",
+                "Les deux passent",
+                "Aucun",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le son exige un milieu matériel."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Éclair :",
+              "options": [
+                "Lumière et tonnerre",
+                "Ombre seule",
+                "Filtration",
+                "Pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décharge lumineuse et bruit."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Yeux captent :",
+              "options": ["Lumière", "Son", "Courant", "Sel"],
+              "correctAnswers": [0],
+              "explanation": "Organe de la vision."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Oreilles captent :",
+              "options": [
+                "Vibrations sonores",
+                "Rayons seuls",
+                "Ombres",
+                "Mélanges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Organe de l'ouïe."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Feu tricolore :",
+              "options": [
+                "Signal lumineux",
+                "Signal sonore seul",
+                "Filtre",
+                "Dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleurs visibles."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Sirène :",
+              "options": ["Signal sonore", "Ombre", "Sel", "Miroir"],
+              "correctAnswers": [0],
+              "explanation": "Alerte auditive."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Lumière plus rapide que le son :",
+              "options": ["Vrai", "Faux", "Égale", "Son instantané"],
+              "correctAnswers": [0],
+              "explanation": "Éclair avant tonnerre."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Miroir renvoie :",
+              "options": ["Lumière", "Son toujours", "Sel", "Courant seul"],
+              "correctAnswers": [0],
+              "explanation": "Réflexion optique."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Un signal transporte :",
+              "options": [
+                "Une information",
+                "Toujours du sel",
+                "Toujours une ombre",
+                "Toujours un fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière ou son peuvent informer."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan lumière et son",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Phénomènes du chapitre :",
+              "options": [
+                "Ombre",
+                "Écho",
+                "Dissolution seule",
+                "Court-circuit seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ombre = lumière ; écho = son."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Voir un objet :",
+              "options": [
+                "Rayons vers l'œil",
+                "Circuit ouvert",
+                "Sel",
+                "Fil isolant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière diffusée ou réfléchie."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Entendre :",
+              "options": [
+                "Milieu + vibrations",
+                "Vide seul",
+                "Miroir seul",
+                "Sel seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Propagation jusqu'à l'oreille."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Lampe éteinte :",
+              "options": [
+                "Plus de lumière",
+                "Plus de masse",
+                "Plus d'ombre sans source",
+                "Plus de sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fin d'émission lumineuse."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Diapason arrêté :",
+              "options": [
+                "Plus de son",
+                "Plus de couleur",
+                "Plus de fil",
+                "Plus de mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de vibration."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Réflexion lumière :",
+              "options": ["Image miroir", "Filtration", "Vitesse", "Sel"],
+              "correctAnswers": [0],
+              "explanation": "Rayons renvoyés."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Réflexion son :",
+              "options": ["Écho", "Prisme", "Pile", "Solution"],
+              "correctAnswers": [0],
+              "explanation": "Son renvoyé."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Source ponctuelle + opaque :",
+              "options": [
+                "Étude des ombres",
+                "Étude circuits",
+                "Vitesse",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montage classique."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Diapason + micro :",
+              "options": [
+                "Étude du son",
+                "Lumière seule",
+                "Mélange",
+                "Pile seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visualiser vibrations."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Lumière et son :",
+              "options": [
+                "Signaux pour nos sens",
+                "Mélanges chimiques",
+                "Fils seuls",
+                "Filtres seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vue et ouïe."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Révision",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Mélanges et pureté",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Exemples de mélanges :",
+              "options": ["Air", "Eau salée", "Fer pur", "Diamant"],
+              "correctAnswers": [0, 1],
+              "explanation": "Plusieurs constituants coexistent."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Corps pur :",
+              "options": [
+                "Une espèce chimique",
+                "Deux liquides",
+                "Un fil",
+                "Une ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un seul constituant."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Eau distillée :",
+              "options": [
+                "Corps pur",
+                "Mélange de sels",
+                "Métal",
+                "Source sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Essentiellement H2O."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Lait :",
+              "options": ["Mélange", "Métal pur", "Gaz pur unique", "Isolant"],
+              "correctAnswers": [0],
+              "explanation": "Eau, protéines, lipides…"
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Granité :",
+              "options": [
+                "Hétérogène",
+                "Homogène invisible",
+                "Circuit",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phases ou grains visibles."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Eau et huile :",
+              "options": [
+                "Hétérogène",
+                "Corps pur",
+                "Conducteur",
+                "Source lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux phases."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Air :",
+              "options": [
+                "Mélange de gaz",
+                "Oxygène pur seul",
+                "Solide",
+                "Lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Azote, oxygène, etc."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Sel dans l'eau :",
+              "options": ["Solution", "Fil", "Ombre", "Écho"],
+              "correctAnswers": [0],
+              "explanation": "Mélange homogène."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Décantation sable-eau :",
+              "options": [
+                "Différence de densité",
+                "Vitesse lumière",
+                "Volume son",
+                "Couleur fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sable se dépose."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Mélange homogène :",
+              "options": [
+                "Même aspect partout",
+                "Morceaux visibles",
+                "Circuit ouvert",
+                "Ombre nette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Constituants non visibles à l'œil."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Solutions et séparation",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Méthodes de séparation :",
+              "options": [
+                "Filtration",
+                "Décantation",
+                "Miroir",
+                "Lampe éteinte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Techniques selon le mélange."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Filtration eau boueuse :",
+              "options": [
+                "Retient les solides",
+                "Retient l'eau",
+                "Crée lumière",
+                "Crée écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Solides bloqués."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Sel dissous et filtre :",
+              "options": [
+                "Passe à travers",
+                "Bloqué comme sable",
+                "Devient fil",
+                "Bloque lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ions trop petits."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Récupérer sel par évaporation :",
+              "options": [
+                "Eau s'évapore",
+                "Ajouter huile",
+                "Fermer interrupteur",
+                "Crier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sel solide reste."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Entonnoir + filtre :",
+              "options": ["Filtration", "Vitesse", "Ombre", "Son"],
+              "correctAnswers": [0],
+              "explanation": "Montage type."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Distillation eau salée :",
+              "options": ["Eau presque pure", "Cuivre", "Pile", "Miroir"],
+              "correctAnswers": [0],
+              "explanation": "Vapeur condensée sans sel."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Eau-huile aussi par :",
+              "options": ["Décantation", "Court-circuit", "Écho", "Laser"],
+              "correctAnswers": [0],
+              "explanation": "Huile flotte."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Sable retenu par :",
+              "options": ["Filtre adapté", "Isolant seul", "Lampe", "Diapason"],
+              "correctAnswers": [0],
+              "explanation": "Grains > pores."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Solution salée :",
+              "options": [
+                "Homogène",
+                "Hétérogène visible",
+                "Fil métallique",
+                "Source primaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sel invisible dissous."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Choix méthode dépend :",
+              "options": [
+                "Propriétés du mélange",
+                "Couleur yeux",
+                "Bruit salle",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taille, densité, ébullition…"
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Circuit électrique simple",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Circuit simple comprend :",
+              "options": ["Pile", "Ampoule", "Miroir", "Ombre"],
+              "correctAnswers": [0, 1],
+              "explanation": "Générateur et récepteur."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Circuit fermé :",
+              "options": [
+                "Courant circule",
+                "Son dans vide",
+                "Ombre",
+                "Dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle complète."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Interrupteur ouvert :",
+              "options": [
+                "Coupe le circuit",
+                "Accélère lumière",
+                "Dissout sel",
+                "Écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant arrêté."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Pile :",
+              "options": [
+                "Générateur",
+                "Miroir",
+                "Filtre",
+                "Haut-parleur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fournit énergie électrique."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Fils de connexion :",
+              "options": ["Conducteurs", "Isolants", "Transparents", "Sonores"],
+              "correctAnswers": [0],
+              "explanation": "Cuivre conducteur."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Fil détaché :",
+              "options": [
+                "Ampoule s'éteint",
+                "Brille plus",
+                "Source sonore",
+                "Solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Circuit ouvert."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Schéma circuit :",
+              "options": [
+                "Symboles normalisés",
+                "Rayons seuls",
+                "Ombres",
+                "Fréquences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pictogrammes pile, lampe…"
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Pile à l'envers sur LED :",
+              "options": [
+                "Peut ne pas allumer",
+                "Éclipse",
+                "Filtrer air",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Polarité importante."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Court-circuit dangereux :",
+              "options": [
+                "Bornes reliées sans récepteur",
+                "Miroir",
+                "Écho",
+                "Sucre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant très fort."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Pile usée :",
+              "options": [
+                "Lampe faible ou éteinte",
+                "Ombre grande",
+                "Son aigu",
+                "Mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tension diminuée."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Composants et sécurité",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Protège ou commande :",
+              "options": ["Interrupteur", "Fusible", "Miroir", "Prisme"],
+              "correctAnswers": [0, 1],
+              "explanation": "Ouverture/fermeture et protection."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Ampoule transforme en :",
+              "options": [
+                "Lumière et chaleur",
+                "Sel",
+                "Ombre seule",
+                "Son seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récepteur lumineux."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Moteur transforme en :",
+              "options": ["Mouvement", "Ombre", "Sel", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Énergie mécanique."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Fil dénudé sous tension :",
+              "options": [
+                "Risque d'électrocution",
+                "Lumière disparaît",
+                "Sel cristallise",
+                "Son s'arrête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps conducteur."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Eau sur prise :",
+              "options": ["Dangereux", "Sans effet", "Filtre", "Miroir"],
+              "correctAnswers": [0],
+              "explanation": "Conduction accrue."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "LED :",
+              "options": [
+                "Courant dans un sens",
+                "Produit sel",
+                "Ombre",
+                "Vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diode polarisée."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Trop d'ampoules, petite pile :",
+              "options": [
+                "S'éteignent ou faiblissent",
+                "Plus brillantes",
+                "Arc-en-ciel",
+                "Dissout cuivre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant insuffisant."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Symbole pile long-bref :",
+              "options": ["Polarité", "Ombre", "Son", "Filtration"],
+              "correctAnswers": [0],
+              "explanation": "Pôle + conventionnel."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Récepteur :",
+              "options": [
+                "Utilise l'énergie électrique",
+                "Produit pile",
+                "Miroir",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lampe, moteur…"
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Avant modifier montage :",
+              "options": [
+                "Couper alimentation",
+                "Crier",
+                "Seconde lampe",
+                "Verser eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Conducteurs et isolants",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Bons conducteurs :",
+              "options": ["Cuivre", "Aluminium", "Plastique", "Bois sec isolé"],
+              "correctAnswers": [0, 1],
+              "explanation": "Métaux conducteurs."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Gaine plastique fil :",
+              "options": [
+                "Isolant",
+                "Conducteur",
+                "Source lumière",
+                "Mélange air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Pile vs prise secteur mains sèches :",
+              "options": [
+                "Pile moins dangereuse",
+                "Identique",
+                "Filtre",
+                "Source son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Basse tension vs 230 V."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Eau salée :",
+              "options": [
+                "Conduit mieux que eau pure",
+                "Pas du tout",
+                "Lumière seule",
+                "Son seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ions porteurs."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Graphite crayon :",
+              "options": [
+                "Faible conducteur",
+                "Ombre seule",
+                "Dissout fer",
+                "Écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carbone conducteur."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Verre :",
+              "options": ["Isolant", "Comme cuivre", "Pile", "Prisme sonore"],
+              "correctAnswers": [0],
+              "explanation": "Pas de courant."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Test pile + lampe + matériau :",
+              "options": [
+                "Conducteur ou isolant",
+                "Transparent seulement",
+                "Aigu/grave",
+                "Pur/mélangé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lampe s'allume si conducteur."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Fils logement :",
+              "options": ["Cuivre isolé", "Verre nu", "Air pur", "Sel"],
+              "correctAnswers": [0],
+              "explanation": "Standard installation."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Isolant sert à :",
+              "options": [
+                "Protéger contacts",
+                "Amplifier son",
+                "Créer solution",
+                "Mesurer ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bloque courant indésirable."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Fer métallique nu :",
+              "options": ["Conducteur", "Isolant", "Lumineux", "Sonore"],
+              "correctAnswers": [0],
+              "explanation": "Métal conducteur."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Mouvement et vitesse",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Grandeur liée au mouvement :",
+              "options": ["Distance", "Durée", "Couleur fil", "Ombre"],
+              "correctAnswers": [0, 1],
+              "explanation": "Distance et temps servent à la vitesse."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Vélo qui avance :",
+              "options": [
+                "Est en mouvement",
+                "Immobile",
+                "Source lumière",
+                "Corps pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Position change par rapport au sol."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Référentiel pour dire qu'un train bouge :",
+              "options": ["Le quai", "Le son seul", "Le sel", "Le miroir"],
+              "correctAnswers": [0],
+              "explanation": "Mouvement est relatif à un repère."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Trajet de 100 m parcouru :",
+              "options": [
+                "Distance 100 m",
+                "Durée 100 s",
+                "Vitesse 100 m",
+                "Masse 100 g"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Longueur du parcours."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Chronomètre mesure :",
+              "options": ["Une durée", "Une masse", "Une ombre", "Un mélange"],
+              "correctAnswers": [0],
+              "explanation": "Temps écoulé."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Plus vite sur même distance :",
+              "options": [
+                "Durée plus courte",
+                "Durée plus longue",
+                "Pas de mouvement",
+                "Circuit ouvert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vitesse plus grande = moins de temps."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Unité distance en SI :",
+              "options": ["Mètre", "Seconde", "Ampère", "Litre"],
+              "correctAnswers": [0],
+              "explanation": "Le mètre mesure les longueurs."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Unité durée en SI :",
+              "options": ["Seconde", "Mètre", "Volt", "Gramme"],
+              "correctAnswers": [0],
+              "explanation": "La seconde mesure le temps."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Trajet rectiligne :",
+              "options": [
+                "Ligne droite",
+                "Cercle obligatoire",
+                "Ombre",
+                "Filtration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chemin sans courbe."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Passager immobile dans train en marche :",
+              "options": [
+                "Immobile dans le train",
+                "Immobile pour tout",
+                "Sans masse",
+                "Sans lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement dépend du référentiel."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Calculer une vitesse",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Formule vitesse moyenne (v, d, t) :",
+              "options": ["v = d / t", "d = v × t", "t = d × v", "v = d × t"],
+              "correctAnswers": [0, 1],
+              "explanation": "v = d/t et d = v×t sont équivalents."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "100 m en 20 s : vitesse ?",
+              "options": ["5 m/s", "2000 m/s", "0,2 m/s", "5 m"],
+              "correctAnswers": [0],
+              "explanation": "100 ÷ 20 = 5 m/s."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Unité vitesse SI :",
+              "options": ["m/s", "m/s²", "kg", "A"],
+              "correctAnswers": [0],
+              "explanation": "Mètres par seconde."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "10 m/s pendant 5 s : distance ?",
+              "options": ["50 m", "2 m", "15 m", "0,5 m"],
+              "correctAnswers": [0],
+              "explanation": "d = v × t = 50 m."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Vitesse double, même distance :",
+              "options": [
+                "Temps divisé par 2",
+                "Temps double",
+                "Distance double",
+                "Pas de changement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "t = d/v diminue si v augmente."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "km/h converti en m/s on :",
+              "options": [
+                "Divise environ par 3,6",
+                "Multiplie par 1000 seul",
+                "Ajoute une pile",
+                "Filtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 km/h ≈ 0,278 m/s."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Graphique d-t (distance-temps) droit :",
+              "options": [
+                "Vitesse constante",
+                "Arrêt total",
+                "Court-circuit",
+                "Dissolution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente constante = v constante."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Vitesse nulle :",
+              "options": [
+                "Objet immobile",
+                "Objet très loin",
+                "Toujours son aigu",
+                "Toujours lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de changement de position."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "360 m en 2 min (120 s) :",
+              "options": ["3 m/s", "720 m/s", "180 m/s", "0,33 m/s"],
+              "correctAnswers": [0],
+              "explanation": "360/120 = 3 m/s."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Vitesse moyenne sur trajet :",
+              "options": [
+                "Distance totale / durée totale",
+                "Somme des vitesses",
+                "Produit d×t",
+                "Ombre / temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Définition en 5e."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Révision mélanges",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Mélanges hétérogènes :",
+              "options": ["Eau + huile", "Granité", "Air", "Eau sucrée"],
+              "correctAnswers": [0, 1],
+              "explanation": "Phases ou grains visibles ; air et eau sucrée sont homogènes."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Sucrer du thé :",
+              "options": [
+                "Crée une solution",
+                "Crée un fil",
+                "Crée une ombre",
+                "Ferme un circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sucre dissous homogène."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Séparer feraille du sable (aimant) :",
+              "options": ["Propriété magnétique", "Vitesse", "Lumière", "Son"],
+              "correctAnswers": [0],
+              "explanation": "Le fer est attiré."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Eau gazeuse :",
+              "options": [
+                "Mélange eau + CO2 dissous",
+                "Corps pur",
+                "Fil cuivre",
+                "Source sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaz dissous dans l'eau."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Lait de chaux dans l'eau :",
+              "options": [
+                "Peut être trouble",
+                "Toujours transparent pur",
+                "Toujours métal",
+                "Toujours pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélange peut être hétérogène."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Constituants d'un mélange :",
+              "options": [
+                "Peuvent être séparés",
+                "Fusionnent en atome unique",
+                "Devient toujours lumière",
+                "Devient toujours son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de réaction chimique obligatoire."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Eau + sel après dissolution :",
+              "options": [
+                "Homogène",
+                "Toujours deux liquides visibles",
+                "Circuit",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sel invisible."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Tamis pour gros gravier :",
+              "options": [
+                "Séparation par taille",
+                "Mesure vitesse",
+                "Réflexion lumière",
+                "Écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme filtration grossière."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Distillation sépare par :",
+              "options": [
+                "Différence d'ébullition",
+                "Couleur yeux",
+                "Hauteur son",
+                "Ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vapeur d'un constituant."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Identifier mélange ou corps pur :",
+              "options": [
+                "Analyse composition",
+                "Regarder ombre",
+                "Écouter écho",
+                "Allumer seul fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un ou plusieurs constituants."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Révision électricité",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Éléments d'un circuit lumineux :",
+              "options": [
+                "Générateur",
+                "Récepteur",
+                "Prisme seul",
+                "Diapason seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pile et lampe typiques."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Lampe branchée mais fil coupé :",
+              "options": ["Reste éteinte", "Brille", "Dissout", "Écho"],
+              "correctAnswers": [0],
+              "explanation": "Circuit ouvert."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Deux piles en série même sens :",
+              "options": [
+                "Peut augmenter tension",
+                "Supprime courant",
+                "Crée ombre",
+                "Filtre sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montage série additionne tensions."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Interrupteur fermé :",
+              "options": [
+                "Laisse passer le courant",
+                "Coupe toujours",
+                "Produit sel",
+                "Produit lumière seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contact établi."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Fil électrique intérieur :",
+              "options": ["Cuivre", "Verre", "Air pur", "Eau distillée seule"],
+              "correctAnswers": [0],
+              "explanation": "Conducteur métallique."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Boîtier plastique prise :",
+              "options": [
+                "Isolant",
+                "Conducteur",
+                "Source lumière",
+                "Mélange hétérogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection isolante."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Ampoule grillée (fil coupé dedans) :",
+              "options": [
+                "Circuit ouvert",
+                "Court-circuit",
+                "Solution",
+                "Écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant ne passe plus."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Sens conventionnel du courant :",
+              "options": [
+                "Du + vers - de la pile",
+                "Du - vers + toujours dans le fil",
+                "Sans direction",
+                "Comme le son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention historique en 5e."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Ne pas mélanger eau et montage sous tension :",
+              "options": [
+                "Règle de sécurité",
+                "Pour voir ombre",
+                "Pour entendre écho",
+                "Pour dissoudre fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque de conduction."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Schéma vs montage réel :",
+              "options": [
+                "Schéma simplifie",
+                "Identiques physiquement",
+                "Schéma est un mélange",
+                "Montage est une ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Représentation symbolique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision générale",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Thèmes du module en révision :",
+              "options": [
+                "Lumière et son",
+                "Mélanges et circuits",
+                "Relativité restreinte",
+                "Ondes radio lycée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Programme 5e : signaux, mélanges, électricité, vitesse."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Ombre et lumière :",
+              "options": [
+                "Rayons bloqués",
+                "Sel dissous",
+                "Courant alternatif",
+                "Vitesse son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Propagation rectiligne."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Écho et son :",
+              "options": [
+                "Réflexion sonore",
+                "Réfraction lumière",
+                "Filtration",
+                "Fusible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son renvoyé."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Filtration :",
+              "options": [
+                "Sépare solide et liquide",
+                "Mesure vitesse",
+                "Produit lumière",
+                "Produit éclipse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode sur mélange."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Circuit fermé avec pile et lampe :",
+              "options": [
+                "Lampe peut s'allumer",
+                "Toujours éteinte",
+                "Toujours ombre",
+                "Toujours écho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Courant circule si tout connecté."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "v = d/t, d = 30 m, t = 10 s :",
+              "options": ["3 m/s", "300 m/s", "0,33 m/s", "3 m"],
+              "correctAnswers": [0],
+              "explanation": "30/10 = 3 m/s."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Plastique règle :",
+              "options": [
+                "Isolant",
+                "Conducteur comme cuivre",
+                "Source lumière",
+                "Solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matériau isolant courant."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Lumière blanche et prisme :",
+              "options": [
+                "Spectre coloré",
+                "Sel solide",
+                "Court-circuit",
+                "Vitesse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décomposition des couleurs."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Son dans l'air vs vide :",
+              "options": [
+                "Air oui, vide non",
+                "Vide oui",
+                "Les deux non",
+                "Les deux oui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milieu matériel requis."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Objectif du chapitre « Ondes, signaux et synthèse » :",
+              "options": [
+                "Relier signaux et révisions PC",
+                "Étudier uniquement le lycée",
+                "Ignorer l'électricité",
+                "Ignorer les mélanges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilan lumière, son et notions du cycle."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

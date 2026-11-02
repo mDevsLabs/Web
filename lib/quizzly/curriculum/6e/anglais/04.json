@@ -1,0 +1,2123 @@
+{
+  "id": "6e-anglais-04",
+  "year": "6e",
+  "subject": "anglais",
+  "title": "La grammaire de l'anglais",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "a ou an ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels articles indéfinis sont corrects devant un mot qui commence par un son voyelle ?",
+              "options": ["an apple", "a apple", "an umbrella", "a hour"],
+              "correctAnswers": [0, 2],
+              "explanation": "On écrit « an » devant un son voyelle : an apple, an umbrella. « a hour » est faux car « hour » se prononce avec un h muet (son voyelle)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : I have ___ dog.",
+              "options": ["a", "an", "the", "—"],
+              "correctAnswers": [0],
+              "explanation": "« dog » commence par une consonne : on utilise l'article indéfini « a »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : She is ___ English teacher.",
+              "options": ["a", "an", "the", "some"],
+              "correctAnswers": [1],
+              "explanation": "« English » commence par un son voyelle (e) : on écrit « an »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "He has a orange.",
+                "He has an orange.",
+                "He has the orange.",
+                "He have an orange."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« orange » commence par une voyelle : « an orange ». Le verbe avec « he » est « has »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : It is ___ egg.",
+              "options": ["a", "an", "the", "two"],
+              "correctAnswers": [1],
+              "explanation": "« egg » commence par le son « e » : on utilise « an »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : We see ___ cat in the garden.",
+              "options": ["an", "a", "the", "are"],
+              "correctAnswers": [1],
+              "explanation": "« cat » commence par une consonne : « a cat » pour parler d'un chat non précis."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle option utilise bien « an » ?",
+              "options": ["an book", "an idea", "an table", "an pen"],
+              "correctAnswers": [1],
+              "explanation": "« idea » commence par un son voyelle. book, table et pen prennent « a »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : My brother is ___ artist.",
+              "options": ["a", "an", "the", "is"],
+              "correctAnswers": [1],
+              "explanation": "« artist » se prononce avec un son voyelle au début : « an artist »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : They have ___ big house.",
+              "options": ["an", "a", "the", "are"],
+              "correctAnswers": [1],
+              "explanation": "« big » commence par une consonne (b) : « a big house »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : This is ___ interesting game.",
+              "options": ["a", "an", "the", "have"],
+              "correctAnswers": [1],
+              "explanation": "« interesting » commence par un « i » voyelle : « an interesting game »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "L'article the",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans quelles phrases « the » est-il bien employé pour parler de quelque chose de déjà connu ou unique ?",
+              "options": [
+                "The sun is hot.",
+                "I have a the book.",
+                "The cat is on the table.",
+                "She is a the student."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« The sun » est unique. « The cat » et « the table » désignent des éléments précis dans la situation. On ne met jamais « a the »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : ___ moon is bright tonight.",
+              "options": ["A", "An", "The", "—"],
+              "correctAnswers": [2],
+              "explanation": "La Lune est unique : on utilise l'article défini « the »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : Open ___ door, please.",
+              "options": ["a", "an", "the", "are"],
+              "correctAnswers": [2],
+              "explanation": "On parle d'une porte précise (celle du lieu) : « the door »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "I like the music.",
+                "I like a the music.",
+                "I like an music.",
+                "I like music the."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« The music » peut désigner la musique en général ou un morceau précis ; la phrase est grammaticalement correcte."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : ___ books are on my desk.",
+              "options": ["A", "An", "The", "Is"],
+              "correctAnswers": [2],
+              "explanation": "« The books » = ces livres-là, déjà identifiés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : She plays ___ piano every day.",
+              "options": ["a", "an", "the", "have"],
+              "correctAnswers": [2],
+              "explanation": "En anglais scolaire, on apprend souvent « play the piano » pour l'instrument."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "The teacher is nice.",
+                "The students are here.",
+                "I see the a bird.",
+                "The bird is blue."
+              ],
+              "correctAnswers": [2],
+              "explanation": "On ne combine pas « the » et « a » : « the a bird » est impossible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : ___ United Kingdom is in Europe.",
+              "options": ["A", "An", "The", "Are"],
+              "correctAnswers": [2],
+              "explanation": "Les noms de certains pays (avec Kingdom, States…) prennent « the » : the United Kingdom."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : Look at ___ blackboard.",
+              "options": ["a", "an", "the", "is"],
+              "correctAnswers": [2],
+              "explanation": "Le tableau du cours est précis : « the blackboard »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : ___ children are in the playground.",
+              "options": ["A", "An", "The", "Has"],
+              "correctAnswers": [2],
+              "explanation": "« The children » = les enfants dont on parle (de cette école, de ce moment)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Pluriel en -s",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont au pluriel régulier (on ajoute -s) ?",
+              "options": ["books", "book", "cats", "cat"],
+              "correctAnswers": [0, 2],
+              "explanation": "« books » et « cats » sont des pluriels réguliers. « book » et « cat » sont singuliers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « pen » ?",
+              "options": ["pen", "pens", "penes", "penss"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel régulier : pen → pens."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : Two ___ are on the table.",
+              "options": ["chair", "chairs", "chaires", "chairss"],
+              "correctAnswers": [1],
+              "explanation": "Avec « two », le nom est pluriel : chairs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « friend » ?",
+              "options": ["friend", "friends", "friendes", "friens"],
+              "correctAnswers": [1],
+              "explanation": "On ajoute -s : friends."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : The ___ are happy.",
+              "options": ["girl", "girls", "girlss", "girles"],
+              "correctAnswers": [1],
+              "explanation": "Le verbe « are » indique un sujet pluriel : girls."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « bag » ?",
+              "options": ["bag", "bags", "bagss", "bages"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel régulier : bags."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : My ___ live in London.",
+              "options": ["parent", "parents", "parentes", "parentss"],
+              "correctAnswers": [1],
+              "explanation": "« live » sans -s correspond à un sujet pluriel : parents."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « school » ?",
+              "options": ["school", "schools", "schooles", "schoolss"],
+              "correctAnswers": [1],
+              "explanation": "school → schools."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : Three ___ play football.",
+              "options": ["boy", "boys", "boyes", "boyss"],
+              "correctAnswers": [1],
+              "explanation": "Après un nombre, le nom prend -s : boys."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « flower » ?",
+              "options": ["flower", "flowers", "floweres", "flowerss"],
+              "correctAnswers": [1],
+              "explanation": "flower → flowers (pluriel régulier)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Pluriel en -es",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pluriels sont corrects pour des mots qui finissent par -s, -ss, -x, -ch ou -sh ?",
+              "options": ["boxes", "boxs", "watches", "watchs"],
+              "correctAnswers": [0, 2],
+              "explanation": "box → boxes, watch → watches. On ajoute -es, pas seulement -s."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « bus » ?",
+              "options": ["bus", "buss", "buses", "busess"],
+              "correctAnswers": [2],
+              "explanation": "bus → buses (on ajoute -es)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « box » ?",
+              "options": ["boxs", "boxes", "box", "boxxes"],
+              "correctAnswers": [1],
+              "explanation": "Les mots en -x prennent -es : boxes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : The ___ are in the kitchen.",
+              "options": ["dish", "dishs", "dishes", "dishe"],
+              "correctAnswers": [2],
+              "explanation": "dish → dishes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « class » ?",
+              "options": ["classs", "classes", "class", "clases"],
+              "correctAnswers": [1],
+              "explanation": "class → classes (double s + es)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « fox » ?",
+              "options": ["foxs", "foxes", "fox", "foxxes"],
+              "correctAnswers": [1],
+              "explanation": "fox → foxes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : Two ___ tick every second.",
+              "options": ["watch", "watchs", "watches", "watchies"],
+              "correctAnswers": [2],
+              "explanation": "watch → watches."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « brush » ?",
+              "options": ["brushs", "brushes", "brush", "brushies"],
+              "correctAnswers": [1],
+              "explanation": "brush → brushes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « kiss » ?",
+              "options": ["kisss", "kisses", "kiss", "kissesss"],
+              "correctAnswers": [1],
+              "explanation": "kiss → kisses."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : The ___ are on the shelf.",
+              "options": ["glass", "glasss", "glasses", "glassies"],
+              "correctAnswers": [2],
+              "explanation": "glass (verre) → glasses au pluriel."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Pluriels irréguliers simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pluriels irréguliers sont corrects en 6e ?",
+              "options": ["children", "childs", "men", "mans"],
+              "correctAnswers": [0, 2],
+              "explanation": "child → children, man → men. « childs » et « mans » n'existent pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « child » ?",
+              "options": ["childs", "children", "childes", "child"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel irrégulier : children."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « man » ?",
+              "options": ["mans", "men", "manes", "menes"],
+              "correctAnswers": [1],
+              "explanation": "man → men."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « woman » ?",
+              "options": ["womans", "women", "womanes", "womens"],
+              "correctAnswers": [1],
+              "explanation": "woman → women (prononciation différente)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « foot » ?",
+              "options": ["foots", "feet", "feets", "foot"],
+              "correctAnswers": [1],
+              "explanation": "foot → feet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « tooth » ?",
+              "options": ["tooths", "teeth", "tooth", "teeths"],
+              "correctAnswers": [1],
+              "explanation": "tooth → teeth."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : The ___ are in the park.",
+              "options": ["child", "children", "childs", "childrens"],
+              "correctAnswers": [1],
+              "explanation": "Sujet pluriel avec « are » : children."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « mouse » (souris) ?",
+              "options": ["mouses", "mice", "mouse", "mices"],
+              "correctAnswers": [1],
+              "explanation": "mouse → mice."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « person » (souvent appris comme « people ») ?",
+              "options": ["persons", "people", "peoples", "persones"],
+              "correctAnswers": [1],
+              "explanation": "En classe, on apprend surtout people comme pluriel courant de person."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : My ___ hurt after the walk.",
+              "options": ["foot", "feet", "foots", "feets"],
+              "correctAnswers": [1],
+              "explanation": "Plus d'un pied : feet. « My feet hurt »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Singulier et pluriel avec there is / there are",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement there is / there are ?",
+              "options": [
+                "There is a cat.",
+                "There are two cats.",
+                "There is two cats.",
+                "There are a cat."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "There is + singulier (a cat). There are + pluriel (two cats). Les mélanges is/are avec le mauvais nombre sont faux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : ___ a book on the desk.",
+              "options": ["There is", "There are", "There am", "There have"],
+              "correctAnswers": [0],
+              "explanation": "Un seul livre : There is."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : ___ three pens in my bag.",
+              "options": ["There is", "There are", "There be", "There has"],
+              "correctAnswers": [1],
+              "explanation": "« Three pens » est pluriel : There are."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "There is many students.",
+                "There are many students.",
+                "There are a student.",
+                "There is students."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Many students = pluriel → There are."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : ___ an apple in the fridge.",
+              "options": ["There are", "There is", "There am", "There have"],
+              "correctAnswers": [1],
+              "explanation": "Une pomme : There is an apple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : ___ five chairs in the room.",
+              "options": ["There is", "There are", "There has", "There be"],
+              "correctAnswers": [1],
+              "explanation": "Five chairs = pluriel : There are."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "There is one dog.",
+                "There are dogs.",
+                "There is dogs.",
+                "There are two dogs."
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Dogs » est pluriel : on ne peut pas dire « There is dogs »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : ___ a teacher in the classroom.",
+              "options": ["There are", "There is", "There am", "There have"],
+              "correctAnswers": [1],
+              "explanation": "Un professeur : singulier → There is."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : ___ some cookies on the plate.",
+              "options": ["There is", "There are", "There has", "There am"],
+              "correctAnswers": [1],
+              "explanation": "Cookies est pluriel : There are."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : ___ no milk in the bottle.",
+              "options": ["There are", "There is", "There have", "There am"],
+              "correctAnswers": [1],
+              "explanation": "« Milk » est indénombrable au singulier : There is no milk."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Accord sujet-verbe au présent (3e personne)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales vont avec he / she / it ?",
+              "options": [
+                "He likes pizza.",
+                "He like pizza.",
+                "She has a cat.",
+                "She have a cat."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Avec he/she/it, le verbe prend souvent -s (likes) ou une forme irrégulière (has). « like » et « have » seuls sont incorrects."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : She ___ to school every day.",
+              "options": ["go", "goes", "going", "goe"],
+              "correctAnswers": [1],
+              "explanation": "She → verbe avec -s : goes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : He ___ English.",
+              "options": ["speak", "speaks", "speaking", "speakses"],
+              "correctAnswers": [1],
+              "explanation": "He speaks (3e personne singulier)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : The cat ___ on the sofa.",
+              "options": ["sleep", "sleeps", "sleeping", "sleepses"],
+              "correctAnswers": [1],
+              "explanation": "The cat = it → sleeps."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "My brother play tennis.",
+                "My brother plays tennis.",
+                "My brother playing tennis.",
+                "My brother playes tennis."
+              ],
+              "correctAnswers": [1],
+              "explanation": "My brother = he → plays."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : It ___ a lot in winter.",
+              "options": ["rain", "rains", "raining", "raines"],
+              "correctAnswers": [1],
+              "explanation": "It rains (il pleut)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : Emma ___ her homework.",
+              "options": ["do", "does", "doing", "doies"],
+              "correctAnswers": [1],
+              "explanation": "Emma = she → does (irrégulier de do)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "Tom watches TV.",
+                "The dog barks.",
+                "Maria watch films.",
+                "The bus stops here."
+              ],
+              "correctAnswers": [2],
+              "explanation": "Maria = she → watches, pas watch."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : This shop ___ at nine.",
+              "options": ["open", "opens", "opening", "openes"],
+              "correctAnswers": [1],
+              "explanation": "This shop = it → opens."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : My mother ___ dinner.",
+              "options": ["cook", "cooks", "cooking", "cookes"],
+              "correctAnswers": [1],
+              "explanation": "My mother = she → cooks."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "this / that / these / those",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels déterminants sont au pluriel ?",
+              "options": ["these", "this", "those", "that"],
+              "correctAnswers": [0, 2],
+              "explanation": "these et those = pluriel (proche / loin). this et that = singulier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : ___ is my pencil (ici, près de moi).",
+              "options": ["These", "This", "Those", "They"],
+              "correctAnswers": [1],
+              "explanation": "Un objet proche, singulier : This."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : ___ are my friends (ici).",
+              "options": ["This", "That", "These", "It"],
+              "correctAnswers": [2],
+              "explanation": "Pluriel proche : These."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : ___ is a big tree (là-bas).",
+              "options": ["This", "That", "These", "Those are"],
+              "correctAnswers": [1],
+              "explanation": "Singulier éloigné : That."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : ___ shoes are nice (là-bas, plusieurs).",
+              "options": ["This", "That", "These", "Those"],
+              "correctAnswers": [3],
+              "explanation": "Pluriel éloigné : Those shoes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "This books are new.",
+                "These book is new.",
+                "These books are new.",
+                "That books are new."
+              ],
+              "correctAnswers": [2],
+              "explanation": "These + pluriel books + are."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : ___ cat is black (celui-ci).",
+              "options": ["These", "This", "Those", "They"],
+              "correctAnswers": [1],
+              "explanation": "Un chat proche : This cat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : ___ apples are red (ceux-ci).",
+              "options": ["This", "That", "These", "It"],
+              "correctAnswers": [2],
+              "explanation": "Plusieurs pommes proches : These apples."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "That car is fast.",
+                "Those cars are fast.",
+                "That cars are fast.",
+                "This car is fast."
+              ],
+              "correctAnswers": [2],
+              "explanation": "That = singulier, on ne dit pas « That cars »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : ___ is my house (au loin).",
+              "options": ["This", "That", "These", "Those"],
+              "correctAnswers": [1],
+              "explanation": "Maison éloignée, singulier : That is my house."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Adjectifs et noms",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans quelles phrases l'adjectif est-il bien placé (avant le nom en anglais) ?",
+              "options": [
+                "a red car",
+                "a car red",
+                "an old house",
+                "a house old"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "En anglais, l'adjectif se place avant le nom : a red car, an old house."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "a blue sky",
+                "a sky blue",
+                "blue a sky",
+                "sky a blue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre : article + adjectif + nom → a blue sky."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : a ___ day (ensoleillé)",
+              "options": ["sun", "sunny", "sunnes", "sunning"],
+              "correctAnswers": [1],
+              "explanation": "Adjectif : sunny day."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : an ___ story (intéressante)",
+              "options": [
+                "interest",
+                "interesting",
+                "interested",
+                "interestingly"
+              ],
+              "correctAnswers": [1],
+              "explanation": "interesting décrit la story : an interesting story."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "a small dog",
+                "a dog small",
+                "a young girl",
+                "a tall boy"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On ne dit pas « a dog small » en anglais standard."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : two ___ bags (gros)",
+              "options": ["big", "bigs", "biges", "bigger"],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif big ne prend pas de -s : two big bags."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : the ___ teacher (gentil)",
+              "options": ["nice", "nices", "nicely", "nicing"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif invariable : nice teacher."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "happy children",
+                "children happy",
+                "happys children",
+                "childrens happy"
+              ],
+              "correctAnswers": [0],
+              "explanation": "happy children (adjectif avant le nom pluriel)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : a ___ room (propre)",
+              "options": ["clean", "cleans", "cleanly", "cleaning"],
+              "correctAnswers": [0],
+              "explanation": "a clean room."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : three ___ books (nouveaux)",
+              "options": ["new", "news", "newes", "newly"],
+              "correctAnswers": [0],
+              "explanation": "new ne change pas au pluriel : three new books."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision articles et accords",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont entièrement correctes pour une 6e ?",
+              "options": [
+                "An elephant is big.",
+                "A elephant is big.",
+                "The students are ready.",
+                "The student are ready."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "an elephant (voyelle) ; The students are (accord pluriel). Les autres ont une erreur d'article ou d'accord."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : ___ honest boy (h muet)",
+              "options": ["A", "An", "The", "—"],
+              "correctAnswers": [1],
+              "explanation": "« honest » se prononce avec un h muet : an honest boy."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : ___ dogs are friendly.",
+              "options": ["A", "An", "The", "Is"],
+              "correctAnswers": [2],
+              "explanation": "Chiens déjà évoqués ou précis : The dogs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « baby » ?",
+              "options": ["babys", "babies", "babyes", "baby"],
+              "correctAnswers": [1],
+              "explanation": "Consonne + y → -ies : babies."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : There ___ a spider on the wall.",
+              "options": ["are", "is", "am", "be"],
+              "correctAnswers": [1],
+              "explanation": "A spider = singulier : There is."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : My sister ___ two rabbits.",
+              "options": ["have", "has", "having", "haves"],
+              "correctAnswers": [1],
+              "explanation": "My sister = she → has."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : ___ those your keys ?",
+              "options": ["Is", "Are", "Am", "Be"],
+              "correctAnswers": [1],
+              "explanation": "Those keys = pluriel → Are those your keys?"
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "I have a umbrella.",
+                "I have an umbrella.",
+                "I have the umbrella.",
+                "I has an umbrella."
+              ],
+              "correctAnswers": [1],
+              "explanation": "I have + an umbrella (voyelle). « has » est pour he/she/it."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : Five ___ sit on the bench.",
+              "options": ["woman", "women", "womans", "womens"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel irrégulier : women."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : It is ___ European country.",
+              "options": ["a", "an", "the", "—"],
+              "correctAnswers": [0],
+              "explanation": "« European » se prononce avec un son « y » consonne au début : a European country."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Le verbe be : am, is, are",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes de « be » sont correctes au présent ?",
+              "options": [
+                "I am happy.",
+                "I is happy.",
+                "They are happy.",
+                "They is happy."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "I am et They are. « is » va avec he/she/it ; pas avec I ou they."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : She ___ my best friend.",
+              "options": ["am", "is", "are", "be"],
+              "correctAnswers": [1],
+              "explanation": "She → is."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : We ___ in class.",
+              "options": ["am", "is", "are", "be"],
+              "correctAnswers": [2],
+              "explanation": "We → are."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : I ___ twelve years old.",
+              "options": ["am", "is", "are", "be"],
+              "correctAnswers": [0],
+              "explanation": "I → am."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : The books ___ on the table.",
+              "options": ["am", "is", "are", "be"],
+              "correctAnswers": [2],
+              "explanation": "The books = pluriel → are."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : He ___ a good student.",
+              "options": ["am", "is", "are", "be"],
+              "correctAnswers": [1],
+              "explanation": "He → is."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "You are nice.",
+                "It is cold.",
+                "They are late.",
+                "They is late."
+              ],
+              "correctAnswers": [3],
+              "explanation": "They → are, jamais « They is »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : My parents ___ at home.",
+              "options": ["am", "is", "are", "be"],
+              "correctAnswers": [2],
+              "explanation": "My parents = pluriel → are."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : It ___ a sunny day.",
+              "options": ["am", "is", "are", "be"],
+              "correctAnswers": [1],
+              "explanation": "It (météo, jour) → is."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : You ___ my teacher.",
+              "options": ["am", "is", "are", "be"],
+              "correctAnswers": [2],
+              "explanation": "You → are (singulier ou pluriel)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Phrases affirmatives avec be",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases affirmatives courtes sont correctes ?",
+              "options": [
+                "I am from France.",
+                "I from France.",
+                "She is tired.",
+                "She tired."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Il faut le verbe be : I am, She is. Sans be, la phrase est incorrecte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "They are students.",
+                "They students.",
+                "They is students.",
+                "They am students."
+              ],
+              "correctAnswers": [0],
+              "explanation": "They are students."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduis : « Il est grand. »",
+              "options": [
+                "He tall.",
+                "He is tall.",
+                "He are tall.",
+                "He am tall."
+              ],
+              "correctAnswers": [1],
+              "explanation": "He is tall."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "We happy.",
+                "We are happy.",
+                "We is happy.",
+                "We am happy."
+              ],
+              "correctAnswers": [1],
+              "explanation": "We are happy."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : The cat ___ on the bed.",
+              "options": ["am", "is", "are", "have"],
+              "correctAnswers": [1],
+              "explanation": "The cat is on the bed."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Traduis : « Nous sommes prêts. »",
+              "options": [
+                "We is ready.",
+                "We are ready.",
+                "We am ready.",
+                "We ready."
+              ],
+              "correctAnswers": [1],
+              "explanation": "We are ready."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "I am fine.",
+                "You are welcome.",
+                "He are fine.",
+                "She is fine."
+              ],
+              "correctAnswers": [2],
+              "explanation": "He → is, pas are."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : My name ___ Lucy.",
+              "options": ["am", "is", "are", "have"],
+              "correctAnswers": [1],
+              "explanation": "My name is Lucy (singulier)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduis : « Tu es sympa. » (you singulier)",
+              "options": [
+                "You is kind.",
+                "You are kind.",
+                "You am kind.",
+                "You kind."
+              ],
+              "correctAnswers": [1],
+              "explanation": "You are kind."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : The windows ___ open.",
+              "options": ["am", "is", "are", "has"],
+              "correctAnswers": [2],
+              "explanation": "The windows = pluriel → are open."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Le verbe have : have et has",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases avec have/has sont correctes ?",
+              "options": [
+                "I have a bike.",
+                "I has a bike.",
+                "She has a dog.",
+                "She have a dog."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "I/You/We/They → have. He/She/It → has."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : He ___ a new phone.",
+              "options": ["have", "has", "having", "haves"],
+              "correctAnswers": [1],
+              "explanation": "He → has."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : They ___ two cats.",
+              "options": ["has", "have", "having", "haves"],
+              "correctAnswers": [1],
+              "explanation": "They → have."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : My brother ___ blue eyes.",
+              "options": ["have", "has", "having", "haves"],
+              "correctAnswers": [1],
+              "explanation": "My brother = he → has."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : We ___ lunch at school.",
+              "options": ["has", "have", "having", "haves"],
+              "correctAnswers": [1],
+              "explanation": "We → have."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "I have a sister.",
+                "It has four legs.",
+                "She have a book.",
+                "You have time."
+              ],
+              "correctAnswers": [2],
+              "explanation": "She → has, pas have."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : The dog ___ a long tail.",
+              "options": ["have", "has", "having", "haves"],
+              "correctAnswers": [1],
+              "explanation": "The dog = it → has."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : You ___ a nice bag.",
+              "options": ["has", "have", "having", "haves"],
+              "correctAnswers": [1],
+              "explanation": "You → have."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : Emma ___ long hair.",
+              "options": ["have", "has", "having", "haves"],
+              "correctAnswers": [1],
+              "explanation": "Emma = she → has."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : I ___ a question.",
+              "options": ["has", "have", "having", "haves"],
+              "correctAnswers": [1],
+              "explanation": "I → have."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Phrases affirmatives avec have",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases courtes avec « have » sont bien formées ?",
+              "options": [
+                "We have English on Monday.",
+                "We English on Monday.",
+                "Tom has a guitar.",
+                "Tom have a guitar."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "We have et Tom has. Il manque le verbe dans la 2e ; Tom ne prend pas have."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduis : « J'ai un frère. »",
+              "options": [
+                "I has a brother.",
+                "I have a brother.",
+                "I having a brother.",
+                "I haves a brother."
+              ],
+              "correctAnswers": [1],
+              "explanation": "I have a brother."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "She have a pet.",
+                "She has a pet.",
+                "She having a pet.",
+                "She haves a pet."
+              ],
+              "correctAnswers": [1],
+              "explanation": "She has a pet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Traduis : « Ils ont des devoirs. »",
+              "options": [
+                "They has homework.",
+                "They have homework.",
+                "They having homework.",
+                "They haves homework."
+              ],
+              "correctAnswers": [1],
+              "explanation": "They have homework."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : My friends ___ a big garden.",
+              "options": ["has", "have", "having", "is"],
+              "correctAnswers": [1],
+              "explanation": "My friends = they → have."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "You have a ticket.",
+                "He has a ticket.",
+                "It have a name.",
+                "We have a break."
+              ],
+              "correctAnswers": [2],
+              "explanation": "It → has."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduis : « Elle a les cheveux blonds. »",
+              "options": [
+                "She have blonde hair.",
+                "She has blonde hair.",
+                "She is blonde hair.",
+                "She has blondes hair."
+              ],
+              "correctAnswers": [1],
+              "explanation": "She has blonde hair (hair est souvent singulier)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : The children ___ fun at the party.",
+              "options": ["has", "have", "is", "are have"],
+              "correctAnswers": [1],
+              "explanation": "The children = they → have fun."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "I have two sisters.",
+                "I has two sisters.",
+                "I have two sister.",
+                "I am have two sisters."
+              ],
+              "correctAnswers": [0],
+              "explanation": "I have + pluriel sisters."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : This phone ___ a good camera.",
+              "options": ["have", "has", "is", "are"],
+              "correctAnswers": [1],
+              "explanation": "This phone = it → has."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Sujet + verbe + complément",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases suivent l'ordre sujet + verbe + complément ?",
+              "options": [
+                "Birds sing songs.",
+                "Sing birds songs.",
+                "I like music.",
+                "Like I music."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "En anglais affirmatif simple : sujet puis verbe puis complément. Birds sing… / I like…"
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "Play I football.",
+                "I play football.",
+                "Football play I.",
+                "I football play."
+              ],
+              "correctAnswers": [1],
+              "explanation": "I play football."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "She reads books.",
+                "Reads she books.",
+                "She books reads.",
+                "Books she reads."
+              ],
+              "correctAnswers": [0],
+              "explanation": "She reads books."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Traduis : « Nous mangeons des pommes. »",
+              "options": [
+                "We eat apples.",
+                "We eats apples.",
+                "Eat we apples.",
+                "We eating apples."
+              ],
+              "correctAnswers": [0],
+              "explanation": "We eat apples (we → verbe sans -s)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "They live in Paris.",
+                "He lives in Paris.",
+                "He live in Paris.",
+                "I live in Paris."
+              ],
+              "correctAnswers": [2],
+              "explanation": "He → lives, pas live."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : My cat ___ milk.",
+              "options": ["like", "likes", "liking", "likees"],
+              "correctAnswers": [1],
+              "explanation": "My cat = it → likes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "You study English.",
+                "You studies English.",
+                "Study you English.",
+                "You studyings English."
+              ],
+              "correctAnswers": [0],
+              "explanation": "You study (pas de -s avec you)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduis : « Il regarde la télé. »",
+              "options": [
+                "He watch TV.",
+                "He watches TV.",
+                "He watching TV.",
+                "Watch he TV."
+              ],
+              "correctAnswers": [1],
+              "explanation": "He watches TV."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : The girls ___ volleyball.",
+              "options": ["play", "plays", "playing", "playes"],
+              "correctAnswers": [0],
+              "explanation": "The girls = pluriel → play."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "I love my family.",
+                "I loves my family.",
+                "Love I my family.",
+                "I loving my family."
+              ],
+              "correctAnswers": [0],
+              "explanation": "I love my family."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Pronoms sujets I, you, he, she, it, we, they",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels pronoms remplacent correctement un nom singulier masculin ou un garçon ?",
+              "options": [
+                "he",
+                "she",
+                "Tom is late. He is late.",
+                "Tom is late. She is late."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Tom = he. « She » serait incorrect pour Tom."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Remplace « Maria » : ___ is kind.",
+              "options": ["He", "She", "It", "They"],
+              "correctAnswers": [1],
+              "explanation": "Maria → She."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Remplace « the book » : ___ is on the desk.",
+              "options": ["He", "She", "It", "They"],
+              "correctAnswers": [2],
+              "explanation": "Objet ou animal neutre → It."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Remplace « my friends and I » : ___ are happy.",
+              "options": ["I", "We", "They", "You"],
+              "correctAnswers": [1],
+              "explanation": "My friends and I = We."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Remplace « the students » : ___ are in the library.",
+              "options": ["He", "She", "It", "They"],
+              "correctAnswers": [3],
+              "explanation": "The students = pluriel → They."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : ___ speak French. (je)",
+              "options": ["I", "You", "He", "She"],
+              "correctAnswers": [0],
+              "explanation": "Je → I."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : ___ are my classmates. (vous / you pluriel en classe)",
+              "options": ["I", "You", "He", "It"],
+              "correctAnswers": [1],
+              "explanation": "You peut désigner plusieurs personnes : You are my classmates."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Remplace « Paul » : ___ has a bike.",
+              "options": ["She", "He", "It", "They"],
+              "correctAnswers": [1],
+              "explanation": "Paul → He."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "They are twins.",
+                "It is raining.",
+                "She are my mom.",
+                "We are friends."
+              ],
+              "correctAnswers": [2],
+              "explanation": "She → is, pas are."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Remplace « my sister and me » : ___ love pizza.",
+              "options": ["I", "We", "They", "She"],
+              "correctAnswers": [1],
+              "explanation": "My sister and me = We (nous)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Phrases avec and",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases avec « and » sont correctes ?",
+              "options": [
+                "Tom and Anna are friends.",
+                "Tom and Anna is friends.",
+                "I have a pen and a ruler.",
+                "I have a pen and ruler a."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Tom and Anna = pluriel → are. Liste : a pen and a ruler. L'ordre des mots de la dernière option est faux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : Bread ___ butter are on the table.",
+              "options": ["or", "and", "but", "so"],
+              "correctAnswers": [1],
+              "explanation": "On relie deux choses avec and (ici sujet composé pluriel)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "My dad and my mom is here.",
+                "My dad and my mom are here.",
+                "My dad and my mom am here.",
+                "My dad and my mom be here."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Deux personnes = sujet pluriel → are."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Traduis : « J'aime le chocolat et la vanille. »",
+              "options": [
+                "I like chocolate and vanilla.",
+                "I likes chocolate and vanilla.",
+                "I like chocolate or vanilla.",
+                "Like I chocolate and vanilla."
+              ],
+              "correctAnswers": [0],
+              "explanation": "I like chocolate and vanilla."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : She has a cat ___ a dog.",
+              "options": ["or", "and", "but", "because"],
+              "correctAnswers": [1],
+              "explanation": "Les deux animaux : cat and dog."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "You and I are late.",
+                "You and I is late.",
+                "You and I am late.",
+                "You and I are late."
+              ],
+              "correctAnswers": [1],
+              "explanation": "You and I = we → are, pas is."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : The teacher ___ the students are in the hall.",
+              "options": ["or", "and", "but", "so"],
+              "correctAnswers": [1],
+              "explanation": "teacher and students = pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduis : « Il lit des BD et des magazines. »",
+              "options": [
+                "He reads comics and magazines.",
+                "He read comics and magazines.",
+                "He reads comics or magazines.",
+                "He reading comics and magazines."
+              ],
+              "correctAnswers": [0],
+              "explanation": "He reads comics and magazines."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : Monday ___ Tuesday are school days.",
+              "options": ["or", "and", "but", "if"],
+              "correctAnswers": [1],
+              "explanation": "Deux jours réunis : Monday and Tuesday."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "A lion and a tiger is in the zoo.",
+                "A lion and a tiger are in the zoo.",
+                "A lion and a tiger am in the zoo.",
+                "A lion and a tiger be in the zoo."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Deux sujets avec and → verbe pluriel are."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Mélange be et have",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases mélangent correctement be et have ?",
+              "options": [
+                "I am tired and I have homework.",
+                "I am tired and I has homework.",
+                "She is happy and she has a gift.",
+                "She is happy and she have a gift."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "I → am et have ; She → is et has."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : He ___ hungry and he ___ a sandwich.",
+              "options": ["is / have", "is / has", "are / has", "is / having"],
+              "correctAnswers": [1],
+              "explanation": "He is hungry ; he has a sandwich."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : We ___ ready and we ___ our bags.",
+              "options": ["is / have", "are / have", "are / has", "am / have"],
+              "correctAnswers": [1],
+              "explanation": "We are ready ; we have our bags."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "They are students and they has books.",
+                "They are students and they have books.",
+                "They is students and they have books.",
+                "They are students and they having books."
+              ],
+              "correctAnswers": [1],
+              "explanation": "They are et they have."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : It ___ cold and it ___ snow.",
+              "options": ["is / has", "are / has", "is / have", "is / having"],
+              "correctAnswers": [0],
+              "explanation": "It is cold ; it has snow (météo simple en 6e)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "I am ten and I have a bike.",
+                "You are kind and you have time.",
+                "She is tall and she have a cat.",
+                "He is strong and he has a ball."
+              ],
+              "correctAnswers": [2],
+              "explanation": "She → has, pas have."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : The boys ___ happy and they ___ new games.",
+              "options": ["is / have", "are / have", "are / has", "am / have"],
+              "correctAnswers": [1],
+              "explanation": "The boys are ; they have."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduis : « Je suis en sixième et j'ai deux cours d'anglais. »",
+              "options": [
+                "I am in Year 7 and I has two English lessons.",
+                "I am in Year 7 and I have two English lessons.",
+                "I is in Year 7 and I have two English lessons.",
+                "I am in Year 7 and I having two English lessons."
+              ],
+              "correctAnswers": [1],
+              "explanation": "I am … and I have …"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : My mother ___ a doctor and she ___ a car.",
+              "options": ["is / have", "is / has", "are / has", "is / having"],
+              "correctAnswers": [1],
+              "explanation": "She is a doctor ; she has a car."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "You are my friend and you has my number.",
+                "You are my friend and you have my number.",
+                "You is my friend and you have my number.",
+                "You are my friend and you having my number."
+              ],
+              "correctAnswers": [1],
+              "explanation": "You are et you have."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Phrases sur la classe et la famille",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent correctement la classe ou la famille ?",
+              "options": [
+                "My classroom is big.",
+                "My classroom are big.",
+                "I have two cousins.",
+                "I has two cousins."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "My classroom is (singulier) ; I have (pas has)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduis : « Mon père est infirmier. »",
+              "options": [
+                "My father are a nurse.",
+                "My father is a nurse.",
+                "My father am a nurse.",
+                "My father is nurse."
+              ],
+              "correctAnswers": [1],
+              "explanation": "My father is a nurse (article a devant le métier)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : Our teacher ___ strict but nice.",
+              "options": ["am", "is", "are", "have"],
+              "correctAnswers": [1],
+              "explanation": "Our teacher = he/she → is."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Traduis : « Mes grands-parents ont une maison. »",
+              "options": [
+                "My grandparents has a house.",
+                "My grandparents have a house.",
+                "My grandparents is a house.",
+                "My grandparent have a house."
+              ],
+              "correctAnswers": [1],
+              "explanation": "My grandparents = they → have."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complète : The lesson ___ at eight o'clock.",
+              "options": ["am", "is", "are", "have"],
+              "correctAnswers": [1],
+              "explanation": "The lesson starts/is at eight → is (horaire simple)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "My sister have a doll.",
+                "My sister has a doll.",
+                "My sister is a doll.",
+                "My sister are a doll."
+              ],
+              "correctAnswers": [1],
+              "explanation": "My sister has a doll."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduis : « Nous sommes en cours d'anglais. »",
+              "options": [
+                "We is in English class.",
+                "We are in English class.",
+                "We am in English class.",
+                "We be in English class."
+              ],
+              "correctAnswers": [1],
+              "explanation": "We are in English class."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : My family ___ dinner together.",
+              "options": ["have", "has", "is", "are"],
+              "correctAnswers": [1],
+              "explanation": "My family = groupe singulier courant → has dinner."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "I have a pencil case.",
+                "The desk is clean.",
+                "The desks is clean.",
+                "She has a ruler."
+              ],
+              "correctAnswers": [2],
+              "explanation": "The desks = pluriel → are clean, pas is."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduis : « Son frère est petit. »",
+              "options": [
+                "Her brother are small.",
+                "Her brother is small.",
+                "Her brother am small.",
+                "Her brother have small."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Her brother is small."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision phrases simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases simples au présent sont entièrement correctes ?",
+              "options": [
+                "They have a garden.",
+                "They has a garden.",
+                "I am a pupil.",
+                "I is a pupil."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "They have et I am. Les formes has et is ne vont pas avec they et I."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : ___ name is Paul. I ___ eleven.",
+              "options": ["My / am", "My / is", "I / am", "Me / am"],
+              "correctAnswers": [0],
+              "explanation": "My name is Paul ; I am eleven (deux phrases : My name is… / I am… — ici première partie My, seconde I am)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "She are my cousin.",
+                "She is my cousin.",
+                "She am my cousin.",
+                "She be my cousin."
+              ],
+              "correctAnswers": [1],
+              "explanation": "She is my cousin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : The birds ___ in the tree and they ___ worms.",
+              "options": ["is / eat", "are / eat", "are / eats", "is / eats"],
+              "correctAnswers": [1],
+              "explanation": "The birds are ; they eat (pluriel)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduis : « Tu as un beau cartable. »",
+              "options": [
+                "You has a nice schoolbag.",
+                "You have a nice schoolbag.",
+                "You are a nice schoolbag.",
+                "You having a nice schoolbag."
+              ],
+              "correctAnswers": [1],
+              "explanation": "You have a nice schoolbag."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : There ___ a boy and there ___ two girls.",
+              "options": ["is / are", "are / is", "is / is", "are / are"],
+              "correctAnswers": [0],
+              "explanation": "There is a boy ; There are two girls."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est incorrecte ?",
+              "options": [
+                "We are from Spain.",
+                "He has a sister.",
+                "It are a good film.",
+                "They like sports."
+              ],
+              "correctAnswers": [2],
+              "explanation": "It → is, pas are."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : Anna and I ___ classmates. We ___ the same class.",
+              "options": [
+                "is / are in",
+                "are / are in",
+                "are / is in",
+                "am / are in"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Anna and I are classmates ; We are in the same class."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduis : « Le chat a faim. »",
+              "options": [
+                "The cat is hungry.",
+                "The cat are hungry.",
+                "The cat have hungry.",
+                "The cat has hungry."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avoir faim se dit « be hungry » : The cat is hungry."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : My friends ___ soccer after school and I ___ with them.",
+              "options": [
+                "play / play",
+                "plays / play",
+                "play / plays",
+                "playing / play"
+              ],
+              "correctAnswers": [0],
+              "explanation": "My friends play ; I play (pas de -s avec I et they/we)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -29,7 +29,6 @@ import {
 import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
 import { jsonToolbox } from "@/lib/plugins/json-toolbox";
 import { getFoodProduct } from "@/lib/plugins/open-food-facts";
-import { quizQuestionSchema, quizzly } from "@/lib/plugins/quizzly";
 import {
   createPluginTools,
   getPluginDefinition,
@@ -112,7 +111,6 @@ describe("Catalogue de plugins", () => {
       "open-library",
       "openalex",
       "posthog",
-      "quizzly",
       "resend",
       "sentry",
       "sonarcloud",
@@ -191,7 +189,6 @@ describe("Catalogue de plugins", () => {
 
   it("marque comme « plugin uniquement » les outils fournis par un plugin", () => {
     expect(PLUGIN_ONLY_TOOL_IDS).toContain("getWeather");
-    expect(PLUGIN_ONLY_TOOL_IDS).toContain("quizzly");
     expect(isPluginOnlyToolId("getWeather")).toBe(true);
     expect(isPluginOnlyToolId("webSearch")).toBe(false);
     expect(isPluginOnlyToolId("mcp_github_list")).toBe(false);
@@ -941,33 +938,12 @@ describe("Connecteurs publics des plugins", () => {
       ["google-maps"]
     );
     const result = await runTool(tools.mapsGeocode, { query: "Paris" });
-    expect(calls[0]).toContain("https://maps.googleapis.com/maps/api/geocode/json");
+    expect(calls[0]).toContain(
+      "https://maps.googleapis.com/maps/api/geocode/json"
+    );
     expect(calls[0]).toContain("key=cle-du-compte");
     expect(calls[0]).not.toContain("/cle-du-compte");
     expect(result).toMatchObject({ total: 1 });
-  });
-
-  it("valide les indices et les longueurs du quiz", () => {
-    expect(
-      quizQuestionSchema.safeParse({
-        correctAnswers: [-1, 1, 1],
-        explanation: "explication",
-        id: "q1",
-        options: ["a", "b"],
-        question: "Question",
-        type: "single_choice",
-      }).success
-    ).toBe(false);
-    expect(
-      quizQuestionSchema.safeParse({
-        correctAnswers: [0],
-        explanation: "explication",
-        id: "q2",
-        options: ["a", "b"],
-        question: "Question",
-        type: "single_choice",
-      }).success
-    ).toBe(true);
   });
 
   it("refuse une date grégorienne impossible", async () => {

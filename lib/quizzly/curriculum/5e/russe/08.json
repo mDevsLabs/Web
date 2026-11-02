@@ -1,0 +1,2083 @@
+{
+  "id": "5e-russe-08",
+  "year": "5e",
+  "subject": "russe",
+  "title": "Voyage et ville en russe",
+  "order": 8,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Se déplacer",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent un moyen de transport en ville ?",
+              "options": [
+                "метро (metro)",
+                "музей (muzey)",
+                "автобус (avtobus)",
+                "улица (ulitsa)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le métro et l'autobus servent à se déplacer ; le musée et la rue sont des lieux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « метро (metro) » ?",
+              "options": ["Le métro", "Le musée", "La rue", "La gare"],
+              "correctAnswers": [0],
+              "explanation": "« Metro » est le métro, un transport souterrain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « rue » en russe ?",
+              "options": [
+                "улица (ulitsa)",
+                "музей (muzey)",
+                "метро (metro)",
+                "где (gde)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ulitsa » veut dire rue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Музей (muzey) » désigne :",
+              "options": ["Un musée", "Une station", "Un bus", "Une direction"],
+              "correctAnswers": [0],
+              "explanation": "« Muzey » est le mot pour musée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Je vais au musée à pied. Quel mot russe pour « à pied » ?",
+              "options": [
+                "пешком (peshkom)",
+                "направо (napravo)",
+                "налево (nalevo)",
+                "где (gde)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Peshkom » signifie à pied."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Я иду (ya idu) » veut dire :",
+              "options": ["Je vais / je marche", "Où est", "À droite", "Arrêt"],
+              "correctAnswers": [0],
+              "explanation": "« Ya idu » exprime le déplacement à pied ou en général."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour dire « je prends le métro », on dit souvent :",
+              "options": [
+                "я еду на метро (ya yedu na metro)",
+                "где музей (gde muzey)",
+                "налево (nalevo)",
+                "улица (ulitsa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ya yedu na metro » indique qu'on voyage en métro."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Вокзал (vokzal) » est :",
+              "options": ["La gare", "Le métro", "La rue", "Le musée"],
+              "correctAnswers": [0],
+              "explanation": "« Vokzal » désigne la gare."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Остановка (ostanovka) » signifie :",
+              "options": [
+                "L'arrêt (bus, tram)",
+                "Le ticket",
+                "La carte",
+                "La sortie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ostanovka » est l'arrêt de transport."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Билет (bilet) » veut dire :",
+              "options": ["Le ticket", "La rue", "À droite", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Bilet » est le billet ou ticket."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des lieux où l'on peut aller en ville ?",
+              "options": [
+                "музей (muzey)",
+                "метро (metro) comme station",
+                "улица (ulitsa)",
+                "налево (nalevo)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Musée et rue sont des destinations ; « nalévo » indique une direction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Поезд (poyezd) » désigne :",
+              "options": ["Le train", "Le bus", "La rue", "Le musée"],
+              "correctAnswers": [0],
+              "explanation": "« Poyezd » est le train."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « bus » ?",
+              "options": [
+                "автобус (avtobus)",
+                "метро (metro)",
+                "музей (muzey)",
+                "где (gde)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Avtobus » signifie bus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Станция метро (stantsiya metro) » :",
+              "options": [
+                "Station de métro",
+                "Musée",
+                "Rue principale",
+                "Gare routière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le nom d'une station de métro."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Я еду (ya yedu) » exprime :",
+              "options": [
+                "Je vais (en véhicule)",
+                "Je suis ici",
+                "Tournez à droite",
+                "Où est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ya yedu » indique un déplacement en transport."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Такси (taksi) » veut dire :",
+              "options": ["Taxi", "Métro", "Musée", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "« Taksi » est emprunté au mot taxi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour « centre-ville », on entend souvent :",
+              "options": [
+                "центр города (tsentr goroda)",
+                "налево (nalevo)",
+                "где (gde)",
+                "билет (bilet)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Tsentr goroda » signifie centre de la ville."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Парк (park) » est :",
+              "options": ["Le parc", "Le métro", "La gare", "La direction"],
+              "correctAnswers": [0],
+              "explanation": "« Park » désigne un parc."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Машина (mashina) » peut signifier :",
+              "options": ["La voiture", "Le train", "Le musée", "La rue"],
+              "correctAnswers": [0],
+              "explanation": "« Mashina » veut dire voiture."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Трамвай (tramvay) » :",
+              "options": ["Le tramway", "Le bus", "Le métro", "Le ticket"],
+              "correctAnswers": [0],
+              "explanation": "« Tramvay » est le tramway."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots russes correspondent à des noms de lieux urbains ?",
+              "options": [
+                "улица (ulitsa)",
+                "направо (napravo)",
+                "музей (muzey)",
+                "где (gde)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Rue et musée sont des noms ; « napravo » et « gde » ne nomment pas un lieu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Площадь (ploshchad) » signifie :",
+              "options": [
+                "La place (publique)",
+                "La rue",
+                "Le métro",
+                "Le ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ploshchad » est une place en ville."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Мост (most) » veut dire :",
+              "options": ["Le pont", "Le musée", "L'arrêt", "La gare"],
+              "correctAnswers": [0],
+              "explanation": "« Most » désigne un pont."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Je descends du bus : « Я выхожу (ya vykhozhu) » signifie :",
+              "options": [
+                "Je sors / je descends",
+                "J'entre",
+                "Je vais",
+                "Où est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ya vykhozhu » exprime la sortie du véhicule."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Вход (vkhod) » :",
+              "options": ["L'entrée", "La sortie", "La rue", "Le métro"],
+              "correctAnswers": [0],
+              "explanation": "« Vkhod » signifie entrée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Выход (vykhod) » :",
+              "options": ["La sortie", "L'entrée", "Le musée", "Le bus"],
+              "correctAnswers": [0],
+              "explanation": "« Vykhod » est la sortie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Касса (kassa) » désigne souvent :",
+              "options": ["Le guichet / la caisse", "La rue", "À gauche", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Kassa » est le guichet pour acheter un billet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Перрон (perron) » se trouve à :",
+              "options": ["La gare", "Le musée", "La rue", "Le parc"],
+              "correctAnswers": [0],
+              "explanation": "Le quai de gare se dit « perron » en russe emprunté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Экскурсия (ekskursiya) » :",
+              "options": [
+                "La visite guidée",
+                "Le métro",
+                "La direction",
+                "Le ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ekskursiya » est une excursion ou visite."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Карта (karta) » peut être :",
+              "options": [
+                "La carte (plan ou carte bancaire)",
+                "Le bus",
+                "La rue",
+                "À droite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Karta » signifie carte ou plan."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes concernent le voyage en transport collectif ?",
+              "options": [
+                "метро (metro)",
+                "билет (bilet)",
+                "музей (muzey) comme bâtiment",
+                "налево (nalevo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Métro et billet vont avec le transport ; musée est une destination, nalévo une indication."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Расписание (raspisaniye) » :",
+              "options": ["L'horaire", "La rue", "Le musée", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Raspisaniye » sont les horaires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« По метро (po metro) » signifie :",
+              "options": [
+                "En métro / par le métro",
+                "À droite",
+                "Où est",
+                "Rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Po metro » indique le moyen de transport."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« На автобусе (na avtobuse) » :",
+              "options": ["En bus", "À pied", "Au musée", "À gauche"],
+              "correctAnswers": [0],
+              "explanation": "« Na avtobuse » = en bus."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Далеко (daleko) » veut dire :",
+              "options": ["Loin", "Près", "Ici", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "« Daleko » signifie loin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Близко (blizko) » :",
+              "options": ["Près", "Loin", "Droite", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "« Blizko » veut dire près."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Скоро (skoro) » :",
+              "options": ["Bientôt", "Loin", "Rue", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "« Skoro » signifie bientôt."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Сейчас (seychas) » :",
+              "options": ["Maintenant", "Demain", "À droite", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "« Seychas » = maintenant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Завтра (zavtra) » :",
+              "options": ["Demain", "Aujourd'hui", "Bus", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "« Zavtra » signifie demain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Сегодня (segodnya) » :",
+              "options": ["Aujourd'hui", "Demain", "Rue", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "« Segodnya » = aujourd'hui."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots permettent de parler d'un déplacement vers un lieu ?",
+              "options": [
+                "я иду (ya idu)",
+                "где (gde) seul",
+                "я еду (ya yedu)",
+                "налево (nalevo) seul"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Ya idu » et « ya yedu » décrivent un déplacement ; « gde » interroge, « nalévo » oriente."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Аэропорт (aeroport) » :",
+              "options": ["L'aéroport", "Le métro", "La rue", "Le musée"],
+              "correctAnswers": [0],
+              "explanation": "« Aeroport » est l'aéroport."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Порт (port) » :",
+              "options": ["Le port", "Le parc", "Le bus", "La gare"],
+              "correctAnswers": [0],
+              "explanation": "« Port » désigne le port."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Корабль (korabl) » :",
+              "options": ["Le bateau", "Le train", "La rue", "Le ticket"],
+              "correctAnswers": [0],
+              "explanation": "« Korabl » signifie bateau ou navire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Самолёт (samolet) » :",
+              "options": ["L'avion", "Le métro", "Le musée", "À droite"],
+              "correctAnswers": [0],
+              "explanation": "« Samolet » est l'avion."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Паспорт (pasport) » :",
+              "options": ["Le passeport", "Le billet", "La rue", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Pasport » = passeport."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Чемодан (chemodan) » :",
+              "options": ["La valise", "Le bus", "Le métro", "Le musée"],
+              "correctAnswers": [0],
+              "explanation": "« Chemodan » signifie valise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Путешествие (puteshestviye) » :",
+              "options": ["Le voyage", "La rue", "À gauche", "L'arrêt"],
+              "correctAnswers": [0],
+              "explanation": "« Puteshestviye » veut dire voyage."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Туризм (turizm) » :",
+              "options": ["Le tourisme", "Le ticket", "Le métro", "La gare"],
+              "correctAnswers": [0],
+              "explanation": "« Turizm » désigne le tourisme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Отель (otel) » :",
+              "options": ["L'hôtel", "Le musée", "La rue", "Le bus"],
+              "correctAnswers": [0],
+              "explanation": "« Otel » est l'hôtel."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont liés au métro ?",
+              "options": [
+                "метро (metro)",
+                "станция (stantsiya)",
+                "музей (muzey)",
+                "улица (ulitsa) comme nom de rue"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Métro et station vont ensemble ; musée et rue sont d'autres lieux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Линия метро (liniya metro) » :",
+              "options": [
+                "La ligne de métro",
+                "Le bus",
+                "Le musée",
+                "À droite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une ligne du réseau de métro."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Пересадка (peresadka) » :",
+              "options": ["La correspondance", "Le ticket", "La rue", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Peresadka » = changement de ligne ou correspondance."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Эскалатор (eskaletor) » :",
+              "options": ["L'escalator", "Le train", "Le musée", "La place"],
+              "correctAnswers": [0],
+              "explanation": "« Eskaletor » est l'escalator."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Вагон (vagon) » désigne :",
+              "options": [
+                "La voiture (de train ou métro)",
+                "La rue",
+                "Le musée",
+                "À gauche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Vagon » est une voiture de rail."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Платформа (platforma) » :",
+              "options": ["Le quai", "Le bus", "La gare routière", "Le ticket"],
+              "correctAnswers": [0],
+              "explanation": "« Platforma » est le quai en gare ou métro."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Конечная (konechnaya) » :",
+              "options": ["Terminus", "Entrée", "Rue", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "« Konechnaya » = station terminus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Маршрут (marshrut) » :",
+              "options": [
+                "L'itinéraire / la ligne",
+                "Où",
+                "À droite",
+                "Billet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Marshrut » est le parcours d'une ligne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Очередь (ochered) » :",
+              "options": [
+                "La file d'attente",
+                "Le métro",
+                "La rue",
+                "Le musée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ochered » signifie file d'attente."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Время в пути (vremya v puti) » :",
+              "options": [
+                "Le temps de trajet",
+                "La sortie",
+                "Le bus",
+                "À gauche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression pour la durée du déplacement."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des véhicules ou moyens de locomotion ?",
+              "options": [
+                "автобус (avtobus)",
+                "поезд (poyezd)",
+                "улица (ulitsa)",
+                "где (gde)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Bus et train sont des véhicules ; rue est un lieu, « gde » est un mot interrogatif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Велосипед (velosiped) » :",
+              "options": ["Le vélo", "Le métro", "Le musée", "La rue"],
+              "correctAnswers": [0],
+              "explanation": "« Velosiped » = vélo."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« На велосипеде (na velosipede) » :",
+              "options": ["À vélo", "En bus", "À pied", "Au musée"],
+              "correctAnswers": [0],
+              "explanation": "Indique le moyen de transport vélo."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Мотоцикл (mototsikl) » :",
+              "options": ["La moto", "Le train", "La rue", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Mototsikl » signifie moto."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Пеший (peshiy) » décrit :",
+              "options": ["Piéton", "Conducteur", "Musée", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "« Peshiy » = piéton."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Переход (perekhod) » peut être :",
+              "options": [
+                "Passage piéton / couloir",
+                "Musée",
+                "Ticket",
+                "À droite seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Perekhod » = passage ou couloir de correspondance."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Светофор (svetofor) » :",
+              "options": ["Feux tricolores", "Bus", "Rue", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "« Svetofor » = feu de circulation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Тротуар (trotuar) » :",
+              "options": ["Le trottoir", "Le métro", "Le musée", "Le billet"],
+              "correctAnswers": [0],
+              "explanation": "« Trotuar » est le trottoir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Дорога (doroga) » :",
+              "options": ["La route", "La place", "Où", "À gauche"],
+              "correctAnswers": [0],
+              "explanation": "« Doroga » signifie route."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Шоссе (shosse) » :",
+              "options": ["Route / autoroute", "Musée", "Métro", "Arrêt"],
+              "correctAnswers": [0],
+              "explanation": "« Shosse » désigne une grande route."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots conviennent pour dire qu'on visite un lieu culturel ?",
+              "options": [
+                "музей (muzey)",
+                "экскурсия (ekskursiya)",
+                "метро (metro) comme véhicule",
+                "налево (nalevo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Musée et excursion parlent de visite ; métro est un transport, nalévo une direction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Театр (teatr) » :",
+              "options": ["Le théâtre", "Le bus", "La rue", "Le ticket"],
+              "correctAnswers": [0],
+              "explanation": "« Teatr » = théâtre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Кино (kino) » :",
+              "options": ["Le cinéma", "Le métro", "Où", "À droite"],
+              "correctAnswers": [0],
+              "explanation": "« Kino » signifie cinéma."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Библиотека (biblioteka) » :",
+              "options": [
+                "La bibliothèque",
+                "La gare",
+                "Le musée de transport",
+                "La rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Biblioteka » est la bibliothèque."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Зоопарк (zoopark) » :",
+              "options": ["Le zoo", "Le métro", "Le bus", "À gauche"],
+              "correctAnswers": [0],
+              "explanation": "« Zoopark » = parc zoologique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Стадион (stadion) » :",
+              "options": ["Le stade", "Le musée", "La valise", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Stadion » désigne le stade."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Магазин (magazin) » :",
+              "options": [
+                "Le magasin",
+                "Le train",
+                "La rue comme mot",
+                "Le ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Magazin » = magasin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ресторан (restoran) » :",
+              "options": ["Le restaurant", "Le métro", "Le musée", "À droite"],
+              "correctAnswers": [0],
+              "explanation": "« Restoran » est le restaurant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Кафе (kafe) » :",
+              "options": ["Le café", "Le bus", "La gare", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Kafe » = café (lieu)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Открыто (otkryto) » sur une porte :",
+              "options": ["Ouvert", "Fermé", "Rue", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "« Otkryto » indique que c'est ouvert."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots expriment une idée de lieu dans la ville ?",
+              "options": [
+                "улица (ulitsa)",
+                "площадь (ploshchad)",
+                "направо (napravo)",
+                "где (gde)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rue et place nomment des lieux ; napravo et gde orientent ou interrogent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Район (rayon) » :",
+              "options": ["Le quartier", "Le ticket", "Le métro", "À gauche"],
+              "correctAnswers": [0],
+              "explanation": "« Rayon » = quartier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Город (gorod) » :",
+              "options": ["La ville", "Le village", "Le bus", "Le musée"],
+              "correctAnswers": [0],
+              "explanation": "« Gorod » signifie ville."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Деревня (derevnya) » :",
+              "options": ["Le village", "La ville", "La rue", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Derevnya » = village."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Страна (strana) » :",
+              "options": ["Le pays", "La rue", "Le métro", "À droite"],
+              "correctAnswers": [0],
+              "explanation": "« Strana » veut dire pays."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Столица (stolitsa) » :",
+              "options": ["La capitale", "Le musée", "Le bus", "Le ticket"],
+              "correctAnswers": [0],
+              "explanation": "« Stolitsa » = capitale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Карта города (karta goroda) » :",
+              "options": [
+                "Plan de la ville",
+                "Billet de métro",
+                "Rue",
+                "À gauche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le plan urbain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Адрес (adres) » :",
+              "options": ["L'adresse", "La direction", "Le train", "Le zoo"],
+              "correctAnswers": [0],
+              "explanation": "« Adres » signifie adresse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Номер дома (nomer doma) » :",
+              "options": ["Numéro de maison", "Ligne de métro", "Musée", "Où"],
+              "correctAnswers": [0],
+              "explanation": "Numéro du bâtiment dans la rue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Дом (dom) » :",
+              "options": [
+                "La maison / immeuble",
+                "Le bus",
+                "À droite",
+                "Le ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Dom » = maison ou bâtiment."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont utiles pour acheter et utiliser un transport ?",
+              "options": [
+                "билет (bilet)",
+                "касса (kassa)",
+                "музей (muzey)",
+                "где (gde)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Billet et guichet servent à voyager ; musée est une destination, « gde » une question."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Одна поездка (odna poyezdka) » :",
+              "options": [
+                "Un trajet / un voyage",
+                "Une rue",
+                "Un musée",
+                "À gauche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression pour un déplacement unique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Проездной (proyezdnoj) » :",
+              "options": [
+                "Abonnement / pass transport",
+                "Ticket café",
+                "Rue",
+                "Où"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pass ou titre de transport réutilisable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Стоимость (stoimost) » :",
+              "options": ["Le prix", "Le métro", "Le musée", "À droite"],
+              "correctAnswers": [0],
+              "explanation": "« Stoimost » = coût ou prix."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Бесплатно (besplatno) » :",
+              "options": ["Gratuit", "Cher", "Loin", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "« Besplatno » signifie gratuit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Платно (platno) » :",
+              "options": ["Payant", "Gratuit", "Bus", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "« Platno » = payant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Конductor (konduktor) » ou contrôleur : « контролёр (kontrolyor) » vérifie :",
+              "options": ["Le billet", "La rue", "Le musée", "Où"],
+              "correctAnswers": [0],
+              "explanation": "Le contrôleur demande le ticket."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Опоздание (opozdaniye) » :",
+              "options": ["Le retard", "L'horaire", "À droite", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "« Opozdaniye » = retard."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Прибытие (pribytiye) » :",
+              "options": ["L'arrivée", "Le départ", "La rue", "Le bus"],
+              "correctAnswers": [0],
+              "explanation": "« Pribytiye » signifie arrivée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Отправление (otpravleniye) » :",
+              "options": ["Le départ", "L'arrivée", "Musée", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "« Otpravleniye » = départ."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Demander son chemin",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots servent à demander ou indiquer une direction ?",
+              "options": [
+                "где (gde)",
+                "направо (napravo)",
+                "музей (muzey)",
+                "метро (metro)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Gde » demande un lieu, « napravo » indique la droite ; musée et métro nomment des places."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Где (gde) » veut dire :",
+              "options": ["Où", "Quand", "Pourquoi", "Comment"],
+              "correctAnswers": [0],
+              "explanation": "« Gde » est le mot interrogatif où."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Направо (napravo) » :",
+              "options": ["À droite", "À gauche", "Tout droit", "Ici"],
+              "correctAnswers": [0],
+              "explanation": "« Napravo » indique la direction droite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Налево (nalevo) » :",
+              "options": ["À gauche", "À droite", "Loin", "Près"],
+              "correctAnswers": [0],
+              "explanation": "« Nalevo » = à gauche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Прямо (pryamo) » :",
+              "options": ["Tout droit", "À droite", "Où", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "« Pryamo » signifie tout droit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Где метро? (gde metro?) » :",
+              "options": [
+                "Où est le métro ?",
+                "Le métro est loin",
+                "À droite",
+                "Rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question pour localiser une station."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Где музей? (gde muzey?) » :",
+              "options": [
+                "Où est le musée ?",
+                "Le musée est fermé",
+                "À gauche",
+                "Ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On demande l'emplacement du musée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Здесь (zdes) » :",
+              "options": ["Ici", "Là-bas", "À droite", "Loin"],
+              "correctAnswers": [0],
+              "explanation": "« Zdes » = ici."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Там (tam) » :",
+              "options": ["Là-bas", "Ici", "Rue", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "« Tam » signifie là-bas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Рядом (ryadom) » :",
+              "options": ["À côté / près", "Loin", "À gauche", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Ryadom » veut dire à proximité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses indiquent un côté pour tourner ?",
+              "options": [
+                "направо (napravo)",
+                "налево (nalevo)",
+                "улица (ulitsa)",
+                "где (gde)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Napravo et nalevo orientent ; ulitsa nomme une rue, gde pose une question."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Поверните направо (povernite napravo) » :",
+              "options": [
+                "Tournez à droite",
+                "Tournez à gauche",
+                "Tout droit",
+                "Où est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule polie d'instruction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Поверните налево (povernite nalevo) » :",
+              "options": ["Tournez à gauche", "À droite", "Ici", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "Indication pour tourner à gauche."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Идите прямо (idite pryamo) » :",
+              "options": ["Allez tout droit", "À droite", "Où", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "On demande de continuer sans tourner."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Где улица …? (gde ulitsa …?) » :",
+              "options": [
+                "Où est la rue … ?",
+                "La rue est longue",
+                "À gauche",
+                "Ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question pour trouver une rue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Далеко ли? (daleko li?) » :",
+              "options": [
+                "Est-ce loin ?",
+                "Est-ce près ?",
+                "À droite ?",
+                "Musée ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On demande la distance."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Близко ли? (blizko li?) » :",
+              "options": ["Est-ce près ?", "Est-ce loin ?", "Où", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Question sur la proximité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Как пройти (kak proyti) » :",
+              "options": [
+                "Comment aller (à pied) ?",
+                "Où est",
+                "À droite",
+                "Métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demande d'itinéraire piéton."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Как добраться (kak dobratsya) » :",
+              "options": ["Comment s'y rendre ?", "Rue", "Musée", "À gauche"],
+              "correctAnswers": [0],
+              "explanation": "Question générale pour rejoindre un lieu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Извините (izvinite) » sert à :",
+              "options": [
+                "Excuser / attirer l'attention poliment",
+                "Dire merci",
+                "À droite",
+                "Où"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mot de politesse avant de demander."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots aident à situer un lieu par rapport à un autre ?",
+              "options": [
+                "рядом (ryadom)",
+                "напротив (naprotiv)",
+                "налево (nalevo) seul sans tourner",
+                "где (gde) seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ryadom et naprotiv situent ; nalevo et gde sont direction ou question."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Напротив (naprotiv) » :",
+              "options": ["En face", "Derrière", "À droite", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Naprotiv » = en face de."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« За (za) » avec un bâtiment :",
+              "options": ["Derrière", "Devant", "Rue", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "« Za » indique souvent derrière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Перед (pered) » :",
+              "options": ["Devant", "Derrière", "À gauche", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "« Pered » signifie devant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Между (mezhdu) » :",
+              "options": ["Entre", "Sous", "Où", "À droite"],
+              "correctAnswers": [0],
+              "explanation": "« Mezhdu » = entre deux choses."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« У (u) » devant un lieu :",
+              "options": ["Près de / chez", "Loin", "Rue", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "Préposition simple de proximité en 5e."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Где находится …? (gde nakhoditsya …?) » :",
+              "options": [
+                "Où se trouve … ?",
+                "Comment allez-vous",
+                "À gauche",
+                "Métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule pour localiser un bâtiment."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Это далеко (eto daleko) » :",
+              "options": ["C'est loin", "C'est près", "À droite", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Réponse sur la distance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Это близко (eto blizko) » :",
+              "options": ["C'est près", "C'est loin", "Musée", "Où"],
+              "correctAnswers": [0],
+              "explanation": "Indique que le lieu est proche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Первый поворот (pervyy povorot) » :",
+              "options": [
+                "Le premier tournant",
+                "La dernière rue",
+                "Métro",
+                "Ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère dans les directions."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions cherchent un lieu en ville ?",
+              "options": [
+                "Где метро? (gde metro?)",
+                "Где музей? (gde muzey?)",
+                "Направо (napravo)",
+                "Налево (nalevo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux phrases avec « gde » demandent un emplacement ; napravo et nalevo répondent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Скажите, пожалуйста (skazhite, pozhaluysta) » :",
+              "options": [
+                "Dites-moi s'il vous plaît",
+                "Merci",
+                "À droite",
+                "Rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intro polie pour demander son chemin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Я ищу (ya ischu) » :",
+              "options": ["Je cherche", "Je vais", "Où", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "« Ya ischu » = je cherche."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Вы знаете (vy znayete) » :",
+              "options": ["Vous savez", "Vous allez", "À gauche", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "Pour demander si la personne connaît le lieu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Спасибо (spasibo) » :",
+              "options": ["Merci", "Pardon", "Où", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Remerciement après une indication."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Пожалуйста ( pozhaluysta) » après une aide :",
+              "options": [
+                "De rien / s'il vous plaît",
+                "À droite",
+                "Musée",
+                "Loin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Pozhaluysta » peut répondre à merci."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Не знаю (ne znayu) » :",
+              "options": ["Je ne sais pas", "Je sais", "Rue", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "Réponse négative utile à reconnaître."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Вон там (von tam) » :",
+              "options": ["Là-bas (regardez)", "Ici", "À gauche", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "On montre un endroit au loin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Вот (vot) » en montrant :",
+              "options": ["Voici", "Loin", "Où", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "« Vot » = voici."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Минута пешком (minuta peshkom) » :",
+              "options": [
+                "Une minute à pied",
+                "Une heure en bus",
+                "À droite",
+                "Métro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indication de temps de marche."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots indiquent de continuer sans tourner ou de tourner ?",
+              "options": [
+                "прямо (pryamo)",
+                "направо (napravo)",
+                "где (gde)",
+                "улица (ulitsa)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pryamo et napravo guident ; gde interroge, ulitsa nomme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Второй поворот налево (vtoroy povorot nalevo) » :",
+              "options": [
+                "Deuxième tournant à gauche",
+                "Tout droit",
+                "Où est le musée",
+                "Rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère numéroté à gauche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« До светофора (do svetofora) » :",
+              "options": [
+                "Jusqu'aux feux",
+                "Après le musée",
+                "Métro",
+                "Ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Do » = jusqu'à (niveau 5e)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« После (posle) » :",
+              "options": ["Après", "Avant", "À droite", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Posle » indique ce qui vient ensuite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Перед (pered) светофором » :",
+              "options": ["Avant les feux", "Derrière", "Rue", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "Ordre dans l'itinéraire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Угол (ugol) » :",
+              "options": ["Le coin (de rue)", "Le métro", "À gauche", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "« Ugol » = angle de rue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« На углу (na uglu) » :",
+              "options": ["Au coin de la rue", "Au musée", "Loin", "Où"],
+              "correctAnswers": [0],
+              "explanation": "Lieu fréquent dans les directions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Перекрёсток (perekrestok) » :",
+              "options": ["Le carrefour", "Le bus", "À droite", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "« Perekrestok » = intersection."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Мост через (most cherez) » :",
+              "options": ["Pont qui traverse", "Rue sans pont", "Musée", "Gde"],
+              "correctAnswers": [0],
+              "explanation": "Repère avec un pont."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Обойдите (oboydite) » :",
+              "options": ["Contournez", "Traversez direct", "Ticket", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "Verbe d'itinéraire simple."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes sont des repères pour « Где …? »",
+              "options": [
+                "станция метро (stantsiya metro)",
+                "музей (muzey)",
+                "налево (nalevo)",
+                "направо (napravo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Station et musée sont des destinations ; nalévo et napravo orientent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Где остановка? (gde ostanovka?) » :",
+              "options": [
+                "Où est l'arrêt ?",
+                "L'arrêt est ici",
+                "À droite",
+                "Rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question pour un arrêt de bus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Где вокзал? (gde vokzal?) » :",
+              "options": [
+                "Où est la gare ?",
+                "Le train part",
+                "Musée",
+                "Ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Localiser la gare."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Где отель? (gde otel?) » :",
+              "options": ["Où est l'hôtel ?", "Hôtel cher", "Nalevo", "Metro"],
+              "correctAnswers": [0],
+              "explanation": "Chercher un hébergement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Где парк? (gde park?) » :",
+              "options": ["Où est le parc ?", "Parc fermé", "Rue", "À droite"],
+              "correctAnswers": [0],
+              "explanation": "Question pour un parc."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Где касса? (gde kassa?) » :",
+              "options": [
+                "Où est le guichet ?",
+                "Billet gratuit",
+                "Musée",
+                "Loin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour acheter un ticket."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Где вход? (gde vkhod?) » :",
+              "options": ["Où est l'entrée ?", "Sortie", "Napravо", "Ulitsa"],
+              "correctAnswers": [0],
+              "explanation": "Trouver la porte d'entrée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Где выход? (gde vykhod?) » :",
+              "options": ["Où est la sortie ?", "Entrée", "Métro", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Utile en métro ou bâtiment."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Где туалет? (gde tualet?) » :",
+              "options": [
+                "Où sont les toilettes ?",
+                "Musée",
+                "À gauche seul",
+                "Ticket"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question pratique en voyage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Где аптека? (gde apteka?) » :",
+              "options": ["Où est la pharmacie ?", "Hôtel", "Metro", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Repère de santé en ville."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots russes signifient une direction horizontale simple ?",
+              "options": [
+                "направо (napravo)",
+                "налево (nalevo)",
+                "метро (metro)",
+                "музей (muzey)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Droite et gauche orientent ; métro et musée sont des lieux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Слева (sleva) » :",
+              "options": ["À gauche (situation)", "À droite", "Où", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "« Sleva » = sur la gauche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Справа (sprava) » :",
+              "options": ["À droite (situation)", "À gauche", "Musée", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "« Sprava » = sur la droite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Сверху (sverkhu) » :",
+              "options": ["En haut", "En bas", "Gde", "Nalevo"],
+              "correctAnswers": [0],
+              "explanation": "Indication verticale simple."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Снизу (snizu) » :",
+              "options": ["En bas", "En haut", "Rue", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "« Snizu » = en bas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Вверх (vverkh) » :",
+              "options": ["Vers le haut", "Vers le bas", "Musée", "Où"],
+              "correctAnswers": [0],
+              "explanation": "Direction vers le haut."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Вниз (vniz) » :",
+              "options": ["Vers le bas", "Vers le haut", "Metro", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Par exemple escalier qui descend."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Наверх (nawerkh) » en parlant d'étage :",
+              "options": [
+                "À l'étage supérieur",
+                "Au rez-de-chaussée",
+                "À droite",
+                "Gde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indication dans un bâtiment."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Внизу (vnizu) » :",
+              "options": ["En bas / au rez", "En haut", "Musée", "Nalevo"],
+              "correctAnswers": [0],
+              "explanation": "Situation au niveau inférieur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Этаж (etazh) » :",
+              "options": ["L'étage", "La rue", "Le bus", "Où"],
+              "correctAnswers": [0],
+              "explanation": "« Etazh » = étage d'un immeuble."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions combinent « где » avec un lieu du chapitre ?",
+              "options": [
+                "где метро (gde metro)",
+                "где музей (gde muzey)",
+                "направо (napravo)",
+                "налево (nalevo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux questions avec « gde » ; napravo et nalevo sont des réponses."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« На этой улице (na etoy ulitse) » :",
+              "options": ["Dans cette rue", "À droite", "Loin", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "Précise la rue actuelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« В конце улицы (v kontse ulitsy) » :",
+              "options": ["Au bout de la rue", "Au coin", "Musée", "Gde"],
+              "correctAnswers": [0],
+              "explanation": "Repère en bout de rue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Через дорогу (cherez dorogu) » :",
+              "options": [
+                "De l'autre côté de la route",
+                "Sous le métro",
+                "Nalevo",
+                "Metro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indique de traverser."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Перейдите (pereydite) » :",
+              "options": ["Traversez", "Tournez", "Rue", "Où"],
+              "correctAnswers": [0],
+              "explanation": "Impératif poli pour traverser."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Осторожно (ostorozhno) » :",
+              "options": ["Attention", "Merci", "À droite", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "Avertissement fréquent dans la rue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Подземный переход (podzemniy perekhod) » :",
+              "options": ["Passage souterrain", "Musée", "Rue", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "Pour traverser sans danger."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Вы здесь (vy zdes) » sur une carte :",
+              "options": ["Vous êtes ici", "Vous êtes loin", "Napravо", "Gde"],
+              "correctAnswers": [0],
+              "explanation": "Marque la position actuelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Пункт назначения (punkt naznacheniya) » :",
+              "options": ["Destination", "Départ", "Metro", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Lieu où l'on veut aller."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Туда (tuda) » :",
+              "options": ["Là-bas (vers là)", "Ici", "Musée", "Nalevo"],
+              "correctAnswers": [0],
+              "explanation": "« Tuda » = vers cet endroit."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots aident à répondre à « Как пройти …? »",
+              "options": [
+                "прямо (pryamo)",
+                "налево (nalevo)",
+                "где (gde) seul",
+                "улица (ulitsa) seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tout droit et à gauche guident ; gde questionne, ulitsa nomme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Пять минут (pyat minut) » :",
+              "options": ["Cinq minutes", "Cinq rues", "Musée", "Où"],
+              "correctAnswers": [0],
+              "explanation": "Durée du trajet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Десять минут (desyat minut) » :",
+              "options": ["Dix minutes", "Dix mètres", "Metro", "Nalevo"],
+              "correctAnswers": [0],
+              "explanation": "Estimation de temps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Квартал (kvartal) » :",
+              "options": ["Pâté de maison / bloc", "Ticket", "Rue", "Gde"],
+              "correctAnswers": [0],
+              "explanation": "Unité urbaine entre rues."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« За углом (za uglom) » :",
+              "options": [
+                "Derrière le coin / juste après le coin",
+                "Loin",
+                "Musée",
+                "Metro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Expression très courante."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Напротив метро (naprotiv metro) » :",
+              "options": [
+                "En face du métro",
+                "Dans le métro",
+                "À droite",
+                "Rue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Situe par rapport à la station."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Рядом с музеем (ryadom s muzeyem) » :",
+              "options": ["Près du musée", "Loin du musée", "Gde", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "Proximité du musée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Я не понимаю (ya ne ponimayu) » :",
+              "options": [
+                "Je ne comprends pas",
+                "Je comprends",
+                "Napravо",
+                "Ulitsa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase utile si l'indication est compliquée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Можно ещё раз (mozhno yeshchyo raz) » :",
+              "options": [
+                "Encore une fois s'il vous plaît",
+                "Merci",
+                "À gauche",
+                "Metro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Demander de répéter l'itinéraire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Я понял (ya ponyal) » (masculin) :",
+              "options": ["J'ai compris", "Je ne sais pas", "Musée", "Rue"],
+              "correctAnswers": [0],
+              "explanation": "Confirme qu'on a saisi la direction."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments forment une mini-dialogue pour se repérer ?",
+              "options": [
+                "Извините, где метро? (izvinite, gde metro?)",
+                "Направo, потом налевo (napravo, potom nalevo)",
+                "улица (ulitsa) seul",
+                "билет (bilet)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Question polie et enchaînement de directions ; ulitsa et billet ne suffisent pas seuls."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Потом (potom) » dans un itinéraire :",
+              "options": ["Ensuite", "Avant", "Où", "Musée"],
+              "correctAnswers": [0],
+              "explanation": "« Potom » enchaîne les étapes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Сначала (snachala) » :",
+              "options": ["D'abord", "Enfin", "Rue", "Métro"],
+              "correctAnswers": [0],
+              "explanation": "Première étape de la direction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Наконец (nakonets) » :",
+              "options": ["Enfin", "D'abord", "À droite", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "Dernière partie de l'itinéraire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Вы пройдёте (vy proydyote) » :",
+              "options": [
+                "Vous passerez / vous marcherez",
+                "Vous cherchez",
+                "Gde",
+                "Musée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Futur de guidance piétonne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Увидите (uvidite) » :",
+              "options": ["Vous verrez", "Vous entendrez", "Nalevo", "Metro"],
+              "correctAnswers": [0],
+              "explanation": "« Vous verrez » un repère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Большой (bolshoy) » devant « музей » :",
+              "options": ["Grand", "Petit", "Rue", "Où"],
+              "correctAnswers": [0],
+              "explanation": "Adjectif simple pour décrire le musée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Красная площадь (krasnaya ploshchad) » est un repère à :",
+              "options": ["Moscou", "Paris", "Bus", "Ticket"],
+              "correctAnswers": [0],
+              "explanation": "Place célèbre pour exemple culturel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Карта на телефоне (karta na telefone) » :",
+              "options": [
+                "Carte sur le téléphone",
+                "Billet papier",
+                "Nalevo",
+                "Gde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outil moderne pour se repérer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Мы на месте (my na meste) » :",
+              "options": [
+                "Nous sommes arrivés",
+                "Nous partons",
+                "Rue",
+                "Metro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On a atteint la destination."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

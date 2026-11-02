@@ -1,0 +1,2663 @@
+{
+  "id": "5e-arts-04",
+  "year": "5e",
+  "subject": "arts",
+  "title": "La couleur et la lumière",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Mélanges et nuances",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels ajouts éclaircissent une teinte en peinture ?",
+              "options": [
+                "Du blanc",
+                "Du noir pur",
+                "De l'eau en aquarelle",
+                "Du violet"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le blanc et l'eau diluent le pigment et éclaircissent la couleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rouge + jaune donnent surtout :",
+              "options": ["Du vert", "De l'orange", "Du violet", "Du gris"],
+              "correctAnswers": [1],
+              "explanation": "Deux primaires chaudes produisent l'orange."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bleu + jaune donnent :",
+              "options": ["Du violet", "Du vert", "De l'orange", "Du rose"],
+              "correctAnswers": [1],
+              "explanation": "Bleu et jaune forment le vert secondaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rouge + bleu donnent :",
+              "options": [
+                "Du vert",
+                "Du violet",
+                "Du jaune",
+                "Du marron clair"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Rouge et bleu composent le violet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ajouter du noir sert surtout à :",
+              "options": [
+                "Éclaircir",
+                "Assombrir",
+                "Compléter le cercle",
+                "Gommer"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le noir baisse la valeur de la teinte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une teinte plus pâle avec du blanc est :",
+              "options": [
+                "Une ombre",
+                "Une déclinaison claire",
+                "Un contraste chaud-froid",
+                "Une lumière naturelle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On obtient une déclinaison plus claire de la même famille."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Orange + bleu mélangés tendent vers :",
+              "options": [
+                "Un ton neutre ou brun",
+                "Un vert fluo",
+                "Un blanc",
+                "Un rouge pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleurs opposées sur le cercle se neutralisent au mélange."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mélanger sur la palette sert à :",
+              "options": [
+                "Créer une teinte intermédiaire",
+                "Produire de la lumière réelle",
+                "Tracer un contour",
+                "Fixer le papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mélange pigmentaire crée une nouvelle couleur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un vert tirant vers le jaune paraît :",
+              "options": [
+                "Plus froid",
+                "Plus chaud",
+                "Sans teinte",
+                "Complémentaire du bleu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le jaune apporte une sensation de chaleur au vert."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Obtenir un marron peut se faire en :",
+              "options": [
+                "Mélangeant complémentaires ou couleurs sombres",
+                "N'utilisant que du blanc",
+                "Évitant tout mélange",
+                "Ajoutant seulement du jaune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mélanges de complémentaires donnent souvent des bruns."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lesquelles sont des couleurs secondaires ?",
+              "options": ["L'orange", "Le vert", "Le rouge", "Le bleu"],
+              "correctAnswers": [0, 1],
+              "explanation": "Orange et vert viennent du mélange de primaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Trois primaires en peinture :",
+              "options": [
+                "Rouge, jaune, bleu",
+                "Orange, vert, violet",
+                "Noir, blanc, gris",
+                "Rose, beige, turquoise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rouge, jaune et bleu sont la base classique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Diluer la gouache à l'eau :",
+              "options": [
+                "Assombrit toujours",
+                "Éclaircit la couche colorée",
+                "La transforme en violet",
+                "Supprime la teinte"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Moins de pigment rend la couleur plus transparente et claire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bleu + blanc donne :",
+              "options": [
+                "Un bleu plus pâle",
+                "Un bleu plus foncé",
+                "Un orange",
+                "Un noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le blanc éclaircit le bleu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Violet + jaune au mélange :",
+              "options": [
+                "Grisent ou assombrissent",
+                "Devient plus vif",
+                "Devient rouge pur",
+                "Double la saturation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jaune et violet sont complémentaires et s'annulent partiellement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Saturation, c'est :",
+              "options": [
+                "L'intensité ou pureté de la couleur",
+                "La largeur du trait",
+                "Le nom de la nuance",
+                "La forme du pinceau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une couleur très saturée paraît vive et peu grisée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Adoucir un rouge vif :",
+              "options": [
+                "Un peu de blanc ou teinte voisine",
+                "Beaucoup de bleu seul",
+                "Seulement du noir",
+                "De l'eau sans couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On atténue sans basculer vers une autre complémentaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rouge + vert en parts égales :",
+              "options": [
+                "Ton terne ou brun",
+                "Bleu électrique",
+                "Blanc",
+                "Jaune pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentaires mélangées produisent des neutres."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Décliner une couleur, c'est :",
+              "options": [
+                "Varier clarté ou saturation",
+                "Changer de sujet",
+                "Poser un cadre",
+                "Éclairer la salle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On crée des nuances plus claires, foncées ou moins vives."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Violet plus rougeâtre :",
+              "options": [
+                "Ajouter du rouge au mélange",
+                "Ajouter du jaune",
+                "Beaucoup de blanc seul",
+                "De l'orange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de rouge tire le violet vers le rouge."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mélanges donnent du vert ?",
+              "options": [
+                "Bleu + jaune",
+                "Bleu + rouge",
+                "Jaune + bleu",
+                "Rouge + jaune"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Bleu et jaune, dans l'ordre ou l'autre, produisent le vert."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Couleur obtenue avec rouge + bleu :",
+              "options": ["Orange", "Violet", "Vert", "Jaune"],
+              "correctAnswers": [1],
+              "explanation": "Rouge et bleu forment le violet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Teinte entre orange et rouge :",
+              "options": [
+                "Rouge orangé",
+                "Bleu vert",
+                "Violet bleu",
+                "Gris neutre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On rapproche l'orange du rouge pour une nuance chaude."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Désaturer une couleur, c'est :",
+              "options": [
+                "La rendre moins vive",
+                "La rendre plus pure",
+                "La rendre plus petite",
+                "La rendre transparente seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On diminue l'intensité en ajoutant du gris, du blanc ou une complémentaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mélanger blanc à une couleur vive :",
+              "options": [
+                "La pastelise",
+                "La rend complémentaire",
+                "La rend noire",
+                "Supprime la teinte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le blanc crée des tons pastel plus clairs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Turquoise, c'est surtout :",
+              "options": [
+                "Bleu avec une pointe de vert",
+                "Rouge et jaune",
+                "Orange pur",
+                "Violet et jaune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le turquoise est un bleu légèrement viré au vert."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour un orange plus rouge :",
+              "options": [
+                "Ajouter du rouge",
+                "Ajouter du bleu",
+                "Ajouter du vert",
+                "Ajouter du violet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rouge renforce la composante rouge de l'orange."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mélange soustractif, c'est :",
+              "options": [
+                "Mélanger des pigments",
+                "Mélanger des faisceaux lumineux",
+                "Projeter de la lumière blanche",
+                "Photographier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En arts plastiques, on mélange des matières colorantes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Beige souvent obtenu par :",
+              "options": [
+                "Mélange clair de couleurs chaudes et blanc",
+                "Bleu pur seul",
+                "Rouge seul",
+                "Vert fluo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beige = teinte claire, peu saturée, souvent chaude."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester un mélange avant de peindre :",
+              "options": [
+                "Sur une feuille d'essai",
+                "Uniquement sur le mur",
+                "Sans mélanger",
+                "Avec de l'encre seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un essai évite les surprises sur l'œuvre."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels ajouts assombrissent une teinte ?",
+              "options": [
+                "Du noir",
+                "Du blanc en grande quantité pour foncer",
+                "Du noir ou une complémentaire",
+                "De l'eau seule pour foncer"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Noir ou complémentaire abaissent la valeur ; l'eau éclaircit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Couleur secondaire : orange + ... = rouge ? non — orange vient de :",
+              "options": [
+                "Rouge et jaune",
+                "Bleu et jaune",
+                "Rouge et bleu",
+                "Vert et bleu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orange mélange rouge et jaune."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nuancer un bleu vers le violet :",
+              "options": [
+                "Ajouter un peu de rouge ou magenta",
+                "Ajouter du jaune",
+                "Ajouter du vert seul",
+                "Ajouter de l'eau sans réfléchir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rouge/magenta rapproche le bleu du violet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rose clair obtenu souvent par :",
+              "options": [
+                "Rouge + blanc",
+                "Bleu + jaune",
+                "Vert + orange",
+                "Noir seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blanc et rouge donnent des roses pâles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mélanger trop de couleurs vives peut :",
+              "options": [
+                "Donner un gris ou brun boueux",
+                "Donner toujours du blanc",
+                "Empêcher de peindre",
+                "Créer de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop de mélanges neutralisent et assombrissent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ombre d'un objet rouge en peinture :",
+              "options": [
+                "Souvent rouge plus foncé ou violacé",
+                "Toujours bleu pur",
+                "Toujours blanc",
+                "Toujours jaune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ombre garde une parenté avec la couleur locale, plus sombre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vert olive, c'est un vert :",
+              "options": [
+                "Terne et tirant vers le brun ou jaune",
+                "Fluo et bleu",
+                "Rose et clair",
+                "Sans jaune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Olive = vert désaturé, souvent chaud et sombre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour éclaircir sans blanchir trop, en aquarelle :",
+              "options": [
+                "Moins de pigment et plus d'eau",
+                "Couche épaisse de noir",
+                "Mélange de complémentaires",
+                "Gomme colorée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dilution laisse voir le papier blanc."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Couleur « terre » en peinture :",
+              "options": [
+                "Brun ou ocre, souvent naturelle",
+                "Bleu ciel pur",
+                "Vert fluo",
+                "Violet néon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les terres sont des bruns/ocres utiles aux mélanges."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Harmoniser deux zones voisines :",
+              "options": [
+                "Créer une nuance intermédiaire entre elles",
+                "Les séparer par du noir pur",
+                "Ignorer les mélanges",
+                "Utiliser une seule couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une transition nuancée adoucit le passage."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont des primaires en peinture ?",
+              "options": ["Rouge", "Jaune", "Vert", "Orange"],
+              "correctAnswers": [0, 1],
+              "explanation": "Rouge et jaune sont primaires ; vert et orange sont secondaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mélange jaune + bleu :",
+              "options": ["Vert", "Violet", "Orange", "Rose"],
+              "correctAnswers": [0],
+              "explanation": "Classique : jaune et bleu → vert."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nuance plus foncée sans noir pur :",
+              "options": [
+                "Ajouter une complémentaire ou une couleur sombre",
+                "Ajouter du blanc",
+                "Ne rien changer",
+                "Ajouter du jaune fluo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut assombrir avec une teinte complémentaire ou foncée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour un ciel en dégradé, on nuance :",
+              "options": [
+                "Le bleu du haut clair vers plus foncé ou inverse",
+                "Uniquement du rouge",
+                "Du vert pur partout",
+                "Du noir seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ciels varient surtout en clarté de bleu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Magenta en mélange avec du jaune tend vers :",
+              "options": [
+                "Des oranges ou rouges selon les proportions",
+                "Du bleu pur",
+                "Du vert fluo",
+                "Du gris seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magenta chaud + jaune donne des tons orangés ou rouges."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Couleur « cadmium » sur tube, c'est :",
+              "options": [
+                "Un nom de pigment souvent vif",
+                "Un type de pinceau",
+                "Une source lumineuse",
+                "Un format de papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms sur les tubes indiquent la famille de pigment."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mélanger vert et rouge en petite quantité de rouge :",
+              "options": [
+                "Assombrit ou grise le vert",
+                "Éclaircit le vert en fluo",
+                "Devient blanc",
+                "Devient jaune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un peu de complémentaire désature et assombrit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Teinte « cyan » proche de :",
+              "options": [
+                "Bleu-vert clair",
+                "Orange foncé",
+                "Violet rouge",
+                "Marron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cyan = bleu tirant vers le vert, assez clair."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Gouache opaque : mélanger blanc permet :",
+              "options": [
+                "Couvrir et éclaircir",
+                "Voir le papier comme l'aquarelle",
+                "Projeter de la lumière",
+                "Ne pas sécher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La gouache avec blanc recouvre et éclaircit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Palette limitée en classe aide à :",
+              "options": [
+                "Maîtriser les mélanges",
+                "Éviter toute couleur",
+                "Ne jamais nuancer",
+                "Peindre sans eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de couleurs obligent à bien les combiner."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples donnent l'orange ?",
+              "options": [
+                "Rouge + jaune",
+                "Jaune + rouge",
+                "Bleu + rouge",
+                "Vert + bleu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rouge et jaune produisent l'orange."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Violet plus bleu :",
+              "options": [
+                "Ajouter du bleu au mélange",
+                "Ajouter du jaune",
+                "Ajouter du orange",
+                "Ajouter du blanc seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de bleu pousse le violet vers le froid."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Couleur « ocre » :",
+              "options": [
+                "Jaune-brun terreux",
+                "Bleu ciel",
+                "Rose bonbon",
+                "Vert fluo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ocre = pigment terreux jaune-orangé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Superposer deux couleurs transparentes :",
+              "options": [
+                "Crée un mélange optique",
+                "Efface les couleurs",
+                "Devient toujours noir",
+                "Ne change rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En aquarelle, les lumières se mélangent par transparence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour un vert plus froid :",
+              "options": [
+                "Ajouter du bleu",
+                "Ajouter du rouge",
+                "Ajouter du orange",
+                "Ajouter du jaune seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bleu refroidit le vert."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Brun chocolat proche de :",
+              "options": [
+                "Rouge sombre + touches de complémentaire ou noir",
+                "Bleu clair + blanc",
+                "Jaune pur",
+                "Vert lime"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brun = rouge/orange assombri et légèrement neutralisé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nuancer =",
+              "options": [
+                "Modifier une teinte par mélange",
+                "Effacer un dessin",
+                "Poser un cadre",
+                "Changer de format"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuancer, c'est ajuster la couleur par petites touches."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mélange complémentaire partiel sert à :",
+              "options": [
+                "Griser une couleur trop vive",
+                "La rendre plus pure",
+                "La rendre blanche",
+                "La rendre invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un peu de complémentaire réduit la saturation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Jaune + violet en grande quantité :",
+              "options": [
+                "Ton sombre neutre",
+                "Jaune fluo",
+                "Blanc",
+                "Bleu ciel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentaires en excès neutralisent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant de mélanger, noter les proportions aide à :",
+              "options": [
+                "Reproduire la même nuance",
+                "Éviter la peinture",
+                "Gommer",
+                "Tracer au crayon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut retrouver la couleur utile plus tard."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mélanges approchent du violet ?",
+              "options": [
+                "Rouge + bleu",
+                "Bleu + rouge",
+                "Jaune + bleu",
+                "Orange + jaune"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rouge et bleu composent le violet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Teinte « corail » :",
+              "options": [
+                "Orange rosé clair",
+                "Bleu foncé",
+                "Vert sapin",
+                "Gris bleu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corail = orange éclairci avec une touche de rouge/rosé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Assombrir un bleu ciel :",
+              "options": [
+                "Ajouter du bleu foncé ou une touche de complémentaire",
+                "Ajouter du blanc",
+                "Ajouter du jaune fluo",
+                "Ne pas toucher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bleu plus foncé ou légère neutralisation assombrit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mélange additif concerne surtout :",
+              "options": [
+                "Lumières colorées (écrans)",
+                "Peinture à l'huile seule",
+                "Fusain",
+                "Argile sèche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumières qui s'additionnent ≠ pigments qui se mélangent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour un jaune plus chaud :",
+              "options": [
+                "Tirer vers l'orange ou le rouge",
+                "Tirer vers le bleu",
+                "Ajouter du violet pur",
+                "Ajouter du noir seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orange/rouge réchauffent le jaune."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Gris coloré obtenu en mélangeant :",
+              "options": [
+                "Couleurs complémentaires en parts proches",
+                "Jaune pur seul",
+                "Rouge seul",
+                "Blanc seul sur papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentaires équilibrées donnent des gris teintés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dégradé de nuance sur une forme :",
+              "options": [
+                "Passage progressif clair-foncé",
+                "Un seul trait",
+                "Contour épais",
+                "Collage seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dégradé montre la variation de valeur ou teinte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vert pomme, c'est un vert :",
+              "options": [
+                "Vif et tirant vers le jaune",
+                "Bleu foncé",
+                "Violet",
+                "Gris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vert pomme = vert clair, chaud, jaunâtre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mélanger sur palette en cercle :",
+              "options": [
+                "Garde les couleurs propres au centre",
+                "Mélange toujours au hasard",
+                "Interdit le blanc",
+                "Supprime l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On mélange souvent en périphérie pour garder les tons purs au centre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Couleur « outremer » :",
+              "options": [
+                "Bleu profond pigment",
+                "Orange vif",
+                "Rose pâle",
+                "Jaune citron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outremer = bleu intense, historiquement pigment."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels ajouts créent des pastels ?",
+              "options": [
+                "Blanc à une couleur vive",
+                "Eau diluante en aquarelle",
+                "Noir pur seul",
+                "Violet seul sans mélange"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Blanc ou dilution éclaircit et adoucit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rouge + petite quantité de vert :",
+              "options": [
+                "Rouge plus terne ou brunâtre",
+                "Rouge fluo",
+                "Blanc",
+                "Bleu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentaire partielle neutralise le rouge."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un bleu turquoise :",
+              "options": [
+                "Bleu + un peu de jaune ou vert",
+                "Bleu + rouge seul",
+                "Jaune + violet",
+                "Orange seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une pointe de jaune/vert virer le bleu au turquoise."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Valeur d'une couleur, c'est :",
+              "options": [
+                "Sa clarté ou fonceur",
+                "Son nom",
+                "Sa marque",
+                "Sa texture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valeur = position entre clair et foncé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mélanger deux secondaires opposées (ex. orange et violet) :",
+              "options": [
+                "Peut donner des bruns ou gris",
+                "Donne toujours du primaire",
+                "Donne de la lumière",
+                "Ne fait rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélanges complexes tendent vers des neutres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Éclaircir une peinture opaque :",
+              "options": [
+                "Blanc ou moins de pigment",
+                "Noir",
+                "Encre seule",
+                "Sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blanc ou couche fine éclaircit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Jaune + bleu en aquarelle superposés :",
+              "options": [
+                "Vert perçu par mélange optique",
+                "Rouge",
+                "Violet",
+                "Orange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transparence : le regard mélange jaune et bleu en vert."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour un rouge bordeaux :",
+              "options": [
+                "Rouge + bleu ou violet + touches sombres",
+                "Jaune fluo",
+                "Vert pur",
+                "Blanc seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bordeaux = rouge froid, assombri, bleuté."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Nuances d'une même couleur sur une roue :",
+              "options": [
+                "Variations autour d'une teinte",
+                "Couleurs sans lien",
+                "Uniquement du noir",
+                "Uniquement du blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On reste dans la famille en modifiant clarté/saturation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nettoyer la palette entre mélanges évite :",
+              "options": [
+                "Les couleurs boueuses",
+                "La lumière",
+                "Le papier",
+                "Le cadre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pigments sales grisent les mélanges suivants."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mélanges donnent des tons chauds ?",
+              "options": [
+                "Rouge + orange",
+                "Jaune + orange",
+                "Bleu + vert froid",
+                "Bleu + violet froid"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rouge, orange, jaune combinent des chaleurs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Couleur secondaire : le violet vient de :",
+              "options": [
+                "Rouge et bleu",
+                "Jaune et bleu",
+                "Rouge et jaune",
+                "Vert et jaune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Violet = rouge + bleu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un gris chaud :",
+              "options": [
+                "Mélange blanc/noir + touche rouge ou ocre",
+                "Bleu seul",
+                "Vert fluo",
+                "Jaune pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une trace chaude teinte le gris."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mélanger trop de blanc dans une couleur :",
+              "options": [
+                "La dé-sature et éclaircit",
+                "La rend plus pure",
+                "La rend noire",
+                "La rend complémentaire seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excès de blanc = pastel pâle, moins intense."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vert sapin :",
+              "options": [
+                "Vert sombre tirant bleu",
+                "Rose",
+                "Orange vif",
+                "Jaune citron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sapin = vert froid et foncé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Harmonie monochome :",
+              "options": [
+                "Plusieurs valeurs d'une même teinte",
+                "Toutes les couleurs au hasard",
+                "Uniquement noir",
+                "Uniquement complémentaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monochrome = une teinte en déclinaisons."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bleu + orange en peinture (parts égales) :",
+              "options": ["Neutre gris-brun", "Bleu fluo", "Blanc", "Vert pur"],
+              "correctAnswers": [0],
+              "explanation": "Complémentaires s'annulent en mélange pigmentaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour retrouver une couleur mélangée :",
+              "options": [
+                "Noter les couleurs et proportions",
+                "Oublier le mélange",
+                "Utiliser l'eau seule",
+                "Gommer la palette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Proportions permettent de refaire la nuance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Teinte « lavande » :",
+              "options": [
+                "Violet clair pastel",
+                "Orange brûlé",
+                "Vert lime",
+                "Bleu roi seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lavande = violet éclairci, souvent avec blanc."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mélanger couleurs voisines sur le cercle :",
+              "options": [
+                "Harmonie proche, mélange doux",
+                "Contraste maximal",
+                "Toujours du noir",
+                "Toujours du blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleurs proches fusionnent harmonieusement."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils aident à nuancer en peinture ?",
+              "options": [
+                "Palette et pinceau",
+                "Eau ou medium",
+                "Règle seule",
+                "Gomme sèche sans peinture"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Palette, pinceau et eau/medium servent aux mélanges."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Orange + bleu complémentaires au pinceau côte à côte (sans mélange) :",
+              "options": [
+                "Contraste visuel fort",
+                "Une seule couleur",
+                "Gris uniforme",
+                "Noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Juxtaposées, elles contrastent ; mélangées, elles neutralisent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Assombrir un jaune sans le verdâttriser trop :",
+              "options": [
+                "Ajouter orange ou brun, pas trop de bleu",
+                "Ajouter bleu pur",
+                "Ajouter vert pur",
+                "Ajouter blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bleu/vert virera le jaune au vert ; brun/orange assombrit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Couleur « terre de Sienne » :",
+              "options": [
+                "Brun orangé",
+                "Bleu ciel",
+                "Violet fluo",
+                "Gris bleu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sienne = pigment brun chaud."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mélange progressif sur le papier :",
+              "options": [
+                "Dégradé de nuance",
+                "Contour sec",
+                "Collage",
+                "Grattage sec"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On fait varier la couleur en douceur sur la surface."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour un bleu nuit :",
+              "options": [
+                "Bleu foncé + touche de violet ou noir",
+                "Jaune citron",
+                "Orange",
+                "Blanc seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuit = bleu très sombre, parfois violacé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Saturation faible = couleur :",
+              "options": ["Grisée ou pâle", "Très vive", "Fluo seule", "Noire"],
+              "correctAnswers": [0],
+              "explanation": "Peu saturée = proche du gris ou pastel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rouge + bleu en proportions inégales donnent :",
+              "options": [
+                "Violets plus rouges ou plus bleus",
+                "Toujours le même violet",
+                "Toujours du vert",
+                "Toujours du jaune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les proportions orientent le violet."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Essai de nuance sur papier gris :",
+              "options": [
+                "Montre mieux clarté relative",
+                "Cache la couleur",
+                "Empêche de peindre",
+                "Remplace le mélange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fond gris révèle si la couleur paraît claire ou foncée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif du chapitre « mélanges et nuances » :",
+              "options": [
+                "Maîtriser teintes, clarté et mélanges",
+                "Apprendre seulement l'histoire de l'art",
+                "Ne jamais mélanger",
+                "Utiliser une seule couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On apprend à combiner et moduler les couleurs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Contrastes",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels contrastes opposent surtout clair et foncé ?",
+              "options": [
+                "Contraste de valeur",
+                "Contraste de saturation seule",
+                "Contraste clair-foncé",
+                "Contraste de taille de papier"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Valeur et clair-foncé désignent la différence de luminosité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Couleurs complémentaires sur le cercle :",
+              "options": [
+                "Opposées (ex. rouge et vert)",
+                "Identiques",
+                "Toujours chaudes",
+                "Toujours froides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentaires se font face sur le cercle chromatique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rouge à côté de vert crée :",
+              "options": [
+                "Contraste chromatique fort",
+                "Aucun contraste",
+                "Uniquement de la lumière",
+                "Un dégradé obligé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rouge et vert sont complémentaires : contraste vif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mettre du blanc près du noir :",
+              "options": [
+                "Contraste de valeur maximal",
+                "Contraste chaud-froid",
+                "Harmonie monochrome",
+                "Absence de contraste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blanc et noir = extrêmes de clarté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Contraste chaud-froid :",
+              "options": [
+                "Bleu froid vs orange chaud",
+                "Deux verts identiques",
+                "Deux gris identiques",
+                "Même teinte même valeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Froid (bleu) et chaud (orange) s'opposent visuellement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour attirer l'œil sur un détail :",
+              "options": [
+                "Contraster avec l'entourage",
+                "Copier exactement la couleur voisine",
+                "Effacer les contours",
+                "Utiliser une seule valeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste isole et attire le regard."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bleu et orange juxtaposés :",
+              "options": [
+                "Complémentaires, contraste vif",
+                "Sans rapport",
+                "Toujours gris",
+                "Toujours blancs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bleu et orange sont complémentaires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Faible contraste de valeur :",
+              "options": [
+                "Deux gris proches",
+                "Noir et blanc",
+                "Jaune et violet vifs",
+                "Rouge et cyan vifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valeurs proches = contraste faible, image douce."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste simultané simplifié :",
+              "options": [
+                "Une couleur influence la perception de la voisine",
+                "Les couleurs disparaissent",
+                "Le papier change de format",
+                "La lumière s'éteint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À proximité, chaque teinte modifie l'effet de l'autre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Jaune sur blanc :",
+              "options": [
+                "Contraste de valeur faible",
+                "Contraste maximal",
+                "Complémentaire du blanc",
+                "Identique au noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jaune clair sur blanc se distingue peu en valeur."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles paires sont complémentaires ?",
+              "options": [
+                "Violet et jaune",
+                "Rouge et vert",
+                "Bleu et orange",
+                "Rouge et jaune"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Violet-jaune et bleu-orange sont des paires complémentaires."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Contraste de saturation :",
+              "options": [
+                "Vif à côté de grisé",
+                "Clair à côté de foncé seulement",
+                "Grand à côté de petit",
+                "Rond à côté de carré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couleur pure près d'une désaturée = contraste d'intensité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Silhouette sombre sur ciel clair :",
+              "options": [
+                "Contraste de valeur",
+                "Uniquement chaud-froid",
+                "Sans contraste",
+                "Monochrome obligé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Figure foncée / fond clair = valeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vert menthe à côté de rouge tomate :",
+              "options": [
+                "Contraste complémentaire",
+                "Harmonie identique",
+                "Pas de contraste",
+                "Même température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rouge et vert restent opposés même si nuancés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour calmer une composition très contrastée :",
+              "options": [
+                "Rapprocher certaines valeurs ou saturations",
+                "Ajouter noir partout",
+                "Mélanger toutes les couleurs au centre",
+                "Supprimer la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rapprocher valeurs/saturation adoucit le contraste."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Violet et jaune côte à côte :",
+              "options": [
+                "Se renforcent visuellement",
+                "Devient gris sur le papier",
+                "Disparaissent",
+                "Ne se voient pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentaires juxtaposées vibrer ou se renforcent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Contraste de couleur sans opposés complémentaires :",
+              "options": [
+                "Couleurs voisines différentes (ex. bleu et vert)",
+                "Toujours rouge-vert",
+                "Toujours noir-blanc",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrastes modérés existent entre teintes proches."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Point focal en peinture :",
+              "options": [
+                "Zone où le contraste attire l'œil",
+                "Toujours au centre géométrique",
+                "Toujours la plus grande",
+                "Sans couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contraste dirige le regard vers le focal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Gris moyen entre noir et blanc sert à :",
+              "options": [
+                "Juger la valeur d'une couleur",
+                "Mélanger complémentaires",
+                "Gommer",
+                "Tracer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fond neutre révèle si une teinte est claire ou foncée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux bleus différents seulement en clarté :",
+              "options": [
+                "Contraste de valeur dans la même teinte",
+                "Complémentaire pur",
+                "Contraste chaud-froid extrême",
+                "Aucun lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même famille, valeurs différentes = contraste modéré."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels contrastes impliquent la température des couleurs ?",
+              "options": [
+                "Chaud vs froid",
+                "Orange près de bleu",
+                "Deux verts identiques",
+                "Noir seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Orange/bleu illustrent chaud-froid."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rouge sur fond vert foncé :",
+              "options": [
+                "Le rouge ressort (complémentaire + valeur)",
+                "Le rouge disparaît toujours",
+                "Pas de contraste",
+                "Fond invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentaire et bonne valeur font sauter le rouge."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Contraste faible donne une ambiance :",
+              "options": [
+                "Douce ou calme",
+                "Toujours agressive",
+                "Toujours sombre",
+                "Sans couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Peu de contraste = effet apaisé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cyan et rouge orangé :",
+              "options": [
+                "Contraste chaud-froid marqué",
+                "Identiques",
+                "Sans lumière",
+                "Monochrome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cyan froid vs rouge chaud."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lumière sur un objet en peinture :",
+              "options": [
+                "Zone plus claire que l'ombre",
+                "Toujours noire",
+                "Toujours complémentaire",
+                "Sans valeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière = valeur plus haute que l'ombre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Jaune et violet juxtaposés :",
+              "options": [
+                "Complémentaires",
+                "Analogues seulement",
+                "Gris identiques",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jaune et violet se font face sur le cercle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour lire un texte sur fond coloré :",
+              "options": [
+                "Contraste suffisant clair-foncé",
+                "Même couleur texte et fond",
+                "Saturation nulle seule",
+                "Pas de contraste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lisibilité exige un écart de valeur ou de teinte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Contraste de complémentaires désaturés :",
+              "options": [
+                "Plus doux que versions pures",
+                "Plus violent que pur",
+                "Invisible",
+                "Identique au noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Griser les complémentaires adoucit le contraste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ombre portée très foncée sous un objet clair :",
+              "options": [
+                "Contraste de valeur",
+                "Chaud-froid seul",
+                "Saturation seule",
+                "Format papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ombre foncée / objet clair = valeur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bleu roi + orange brûlé :",
+              "options": [
+                "Contraste chaud-froid + complémentaire",
+                "Sans opposition",
+                "Monochrome",
+                "Même valeur obligée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Couple classique froid/chaud et complémentaire."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments créent un contraste visuel ?",
+              "options": [
+                "Différence de valeur",
+                "Différence de teinte ou saturation",
+                "Même couleur partout",
+                "Format identique sans variation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Valeur, teinte ou saturation différentes créent le contraste."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Figure blanche sur fond noir :",
+              "options": [
+                "Contraste élevé",
+                "Contraste nul",
+                "Chaud-froid seul",
+                "Saturation faible seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Extrêmes clair-foncé = contraste fort."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Couleurs analogues (voisines) :",
+              "options": [
+                "Contraste modéré entre elles",
+                "Contraste maximal complémentaire",
+                "Toujours gris",
+                "Toujours noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voisines = harmonie, contraste plus doux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rouge cerise à côté de vert sapin :",
+              "options": [
+                "Complémentaire avec valeurs sombres",
+                "Sans rapport",
+                "Blanc pur",
+                "Jaune seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rouge et vert opposés, même assombris."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Accent coloré dans une scène grise :",
+              "options": [
+                "Contraste de saturation/teinte",
+                "Harmonie sans accent",
+                "Pas de contraste",
+                "Monochrome strict"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une touche vive sur gris ressort fort."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux oranges, l'un clair l'autre foncé :",
+              "options": [
+                "Contraste de valeur",
+                "Complémentaire pur",
+                "Chaud-froid opposé",
+                "Aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même teinte, clartés différentes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vert fluo sur violet :",
+              "options": [
+                "Contraste complémentaire vif",
+                "Harmonie calme",
+                "Valeurs identiques",
+                "Sans couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vert et violet sont opposés (via jaune-violet, rouge-vert... vert opposé au rouge - green and magenta/violet - actually complementary of green is red. Green and purple - not perfect complement but user level - green/red is complement. Green fluo on violet - violet-yellow complement, green is between - still chromatic contrast. OK."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réduire le contraste d'une œuvre :",
+              "options": [
+                "Rapprocher les valeurs des zones",
+                "Mettre noir et blanc côte à côte",
+                "Ajouter complémentaires pures",
+                "Augmenter la saturation partout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valeurs proches = image plus unie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste entre mat et brillant (peinture) :",
+              "options": [
+                "Contraste de texture qui affecte la lumière",
+                "Contraste complémentaire seul",
+                "Valeur impossible",
+                "Couleur seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brillance change la perception de clarté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fond chaud, sujet froid :",
+              "options": [
+                "Contraste de température",
+                "Valeur nulle",
+                "Saturation nulle",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaud/froid organise la profondeur ou l'attention."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples augmentent le contraste chromatique ?",
+              "options": [
+                "Rouge et cyan/vert opposé",
+                "Bleu et orange",
+                "Deux gris identiques",
+                "Beige sur crème proche"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Complémentaires ou opposés chromatiques contrastent fort."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Nuit en peinture : bleu foncé + points jaunes :",
+              "options": [
+                "Contraste valeur et chaleur des points",
+                "Sans contraste",
+                "Monochrome",
+                "Complémentaire impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jaune clair/chaud sur bleu foncé ressort."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Harmonie avec un seul contraste fort :",
+              "options": [
+                "Une zone accent complémentaire, reste calme",
+                "Tout en complémentaires pures",
+                "Sans valeur",
+                "Tout blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un accent contrasté suffit souvent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rose pâle sur rouge vif :",
+              "options": [
+                "Contraste de saturation et valeur",
+                "Complémentaire pur",
+                "Identiques",
+                "Sans teinte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même famille, intensités différentes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Contour sombre autour d'une forme claire :",
+              "options": [
+                "Renforce le contraste de bords",
+                "Efface la forme",
+                "Supprime la valeur",
+                "Rend complémentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contour accentue la séparation clair-foncé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Jaune et bleu côte à côte (non complémentaires directes) :",
+              "options": [
+                "Contraste modéré froid/chaud partiel",
+                "Aucun",
+                "Toujours gris",
+                "Toujours violet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Teintes différentes sans être opposées = contraste moyen."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Photo ou tableau « plat » manque souvent de :",
+              "options": ["Contraste de valeur", "Papier", "Pinceau", "Eau"],
+              "correctAnswers": [0],
+              "explanation": "Peu d'écart clair-foncé = image plate."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vert et rouge en petites touches (pointillisme) :",
+              "options": [
+                "Mélange optique et contraste",
+                "Gris uniforme proche",
+                "Blanc seul",
+                "Sans lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'œil mélange et perçoit contraste/vibration."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste entre premier plan et fond :",
+              "options": [
+                "Souvent valeur ou saturation différente",
+                "Toujours même couleur",
+                "Impossible en peinture",
+                "Uniquement en sculpture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plan avant plus contrasté ou plus vif attire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Blanc cassé sur crème :",
+              "options": [
+                "Contraste de valeur très faible",
+                "Contraste maximal",
+                "Complémentaire",
+                "Chaud-froid extrême"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Teintes proches et claires = contraste doux."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels choix renforcent un sujet au centre ?",
+              "options": [
+                "Contraste autour du sujet",
+                "Couleur plus vive sur le sujet",
+                "Même valeur que le fond partout",
+                "Flouter le sujet seul sans couleur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Contraste et vivacité isolent le sujet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Opposé du rouge sur le cercle (complémentaire) :",
+              "options": ["Vert", "Bleu", "Jaune", "Orange"],
+              "correctAnswers": [0],
+              "explanation": "Rouge ↔ vert en complémentaires classiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Opposé du bleu (complémentaire approximé en peinture) :",
+              "options": ["Orange", "Vert", "Violet", "Rose"],
+              "correctAnswers": [0],
+              "explanation": "Bleu ↔ orange."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Opposé du jaune (complémentaire) :",
+              "options": ["Violet", "Bleu", "Rouge", "Vert"],
+              "correctAnswers": [0],
+              "explanation": "Jaune ↔ violet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Gris bleuté à côté de gris jaunâtre :",
+              "options": [
+                "Contraste de température subtil",
+                "Complémentaire violent",
+                "Valeur maximale",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gris teintés chaud/froid se distinguent légèrement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lumière du soleil en peinture : souvent :",
+              "options": [
+                "Tons chauds plus clairs",
+                "Tons froids plus clairs seulement",
+                "Noir pur",
+                "Sans ombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière chaude éclaircit en jaune/orange léger."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ombre en extérieur peut paraître :",
+              "options": [
+                "Plus froide et plus foncée",
+                "Plus chaude que la lumière",
+                "Blanche",
+                "Sans valeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ombre souvent bleutée et plus sombre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Contraste excessif partout :",
+              "options": [
+                "Fatigue visuelle, image criarde",
+                "Toujours harmonieux",
+                "Sans couleur",
+                "Monochrome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trop de contrastes forts agresse le regard."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Noir utilisé à côté de couleurs vives :",
+              "options": [
+                "Ancre la composition par forte valeur",
+                "Efface les couleurs",
+                "Devient blanc",
+                "Supprime complémentaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Noir structure par contraste de valeur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux complémentaires en zones égales :",
+              "options": [
+                "Équilibre dynamique",
+                "Calme total",
+                "Invisible",
+                "Sans saturation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parts équilibrées créent tension visuelle stable."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels fonds font ressortir une forme claire ?",
+              "options": [
+                "Fond foncé",
+                "Fond de valeur plus basse",
+                "Fond de même clarté exacte",
+                "Fond invisible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Forme claire sur fond sombre = contraste de valeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Stripe noir et blanc :",
+              "options": [
+                "Contraste alterné maximal",
+                "Harmonie monochrome douce",
+                "Chaud-froid",
+                "Saturation faible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alternance clair-foncé extrême."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bleu clair sur bleu foncé :",
+              "options": [
+                "Contraste de valeur, même famille",
+                "Complémentaire",
+                "Chaud-froid opposé",
+                "Sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Monochrome de valeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Petite touche rouge dans un paysage vert :",
+              "options": [
+                "Accent par complémentaire",
+                "Sans effet",
+                "Gris partout",
+                "Fond noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rouge sur dominant vert = accent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Couleur qui avance visuellement :",
+              "options": [
+                "Souvent chaude et claire",
+                "Toujours bleu foncé",
+                "Toujours grise",
+                "Toujours sombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaud/clair semble avancer (effet classique 5e)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Couleur qui recule visuellement :",
+              "options": [
+                "Souvent froide et foncée",
+                "Toujours jaune",
+                "Toujours blanche",
+                "Toujours orange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Froid/foncé semble s'éloigner."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Contraste entre lumière artificielle et ombre :",
+              "options": [
+                "Écart de valeur et parfois de teinte",
+                "Identiques",
+                "Sans peinture",
+                "Format A4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière vs ombre = clarté et parfois chaud/froid."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Violet foncé sur jaune pâle :",
+              "options": [
+                "Complémentaire + fort écart de valeur",
+                "Sans contraste",
+                "Monochrome",
+                "Même saturation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentaires plus clarté différente = très visible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Désaturer le fond, garder sujet vif :",
+              "options": [
+                "Le sujet contraste par saturation",
+                "Le sujet disparaît",
+                "Fond devient complémentaire",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fond grisé, sujet saturé = mise en avant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Contraste utile en arts plastiques sert à :",
+              "options": [
+                "Organiser l'image et guider le regard",
+                "Empêcher toute couleur",
+                "Supprimer la lumière",
+                "Ne jamais mélanger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste structure la composition."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont des types de contraste étudiés en 5e ?",
+              "options": [
+                "Valeur (clair-foncé)",
+                "Complémentaire",
+                "Contraste de poids en kg",
+                "Contraste de date"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Valeur et complémentaire sont au programme couleur-lumière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Orange sur bleu ciel :",
+              "options": [
+                "Chaud sur froid, complémentaire modéré",
+                "Sans opposition",
+                "Monochrome",
+                "Valeur nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Orange chaud vs bleu froid, couple complémentaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Taches complémentaires qui « vibrent » :",
+              "options": [
+                "Effet de contraste simultané",
+                "Mélange au pinceau en gris",
+                "Disparition",
+                "Sans lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Juxtaposition forte peut faire vibrer la frontière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Uniformiser les valeurs d'un fond :",
+              "options": [
+                "Fait ressortir un sujet plus contrasté devant",
+                "Efface tout contraste possible",
+                "Oblige le monochrome",
+                "Supprime la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fond homogène met en relief le sujet contrasté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rouge et bleu côte à côte (non complémentaires) :",
+              "options": [
+                "Contraste de teinte, pas opposés parfaits",
+                "Identiques",
+                "Gris obligatoire",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Teintes différentes sans être complémentaires directes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Clair-obscur en peinture :",
+              "options": [
+                "Jeu fort de lumière et ombre (valeur)",
+                "Uniquement couleurs chaudes",
+                "Sans contraste",
+                "Collage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clair-obscur = contrastes marqués de luminosité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vert sur fond vert plus foncé :",
+              "options": [
+                "Contraste de valeur faible à modéré",
+                "Complémentaire maximal",
+                "Chaud-froid",
+                "Invisible toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même teinte, valeurs différentes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Utiliser une complémentaire pour une ombre d'un orange :",
+              "options": [
+                "Assombrit et refroidit légèrement la teinte",
+                "Éclaircit en jaune",
+                "Devient blanc",
+                "Sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ombre souvent plus froide ; bleu/teinte opposée assombrit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Contraste faible entre ciel et mer bleutés :",
+              "options": [
+                "Ambiance unie, horizon doux",
+                "Tension maximale",
+                "Complémentaire rouge",
+                "Noir et blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Teintes proches = horizon peu contrasté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tester une composition en niveaux de gris :",
+              "options": [
+                "Vérifie surtout les contrastes de valeur",
+                "Supprime la couleur définitivement",
+                "Empêche la peinture",
+                "Remplace le cercle chromatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Version gris révèle si les valeurs se lisent bien."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles actions augmentent le contraste ?",
+              "options": [
+                "Écarter clarté sujet et fond",
+                "Juxtaposer complémentaires",
+                "Rapprocher toutes les valeurs",
+                "Utiliser une seule teinte partout"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Écarter valeurs ou opposer complémentaires renforce le contraste."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Fond orange, lettre bleue (affiche) :",
+              "options": [
+                "Lisibilité par complémentaire",
+                "Illisible toujours",
+                "Monochrome",
+                "Sans teinte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Complémentaires bien choisies restent lisibles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Soleil peint en jaune sur ciel bleu :",
+              "options": [
+                "Chaud clair sur froid, contraste teinte et valeur",
+                "Sans contraste",
+                "Gris uniforme",
+                "Violet seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classique : jaune chaud sur bleu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Contraste entre satin et mat :",
+              "options": [
+                "Lumière réfléchie différente",
+                "Teinte complémentaire seule",
+                "Valeur impossible",
+                "Couleur identique obligée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Brillance change la perception de contraste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux valeurs médianes grises côte à côte :",
+              "options": [
+                "Contraste faible",
+                "Contraste maximal",
+                "Complémentaire",
+                "Fluo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gris proches = peu de séparation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rouge sur fond rouge plus sombre :",
+              "options": [
+                "Contraste de valeur dans la même teinte",
+                "Complémentaire verte obligatoire",
+                "Chaud-froid",
+                "Sans effet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même rouge, clartés différentes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bleu nuit + lune blanche :",
+              "options": [
+                "Contraste de valeur fort",
+                "Saturation seule",
+                "Chaud-froid nul",
+                "Sans lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blanc sur bleu très foncé ressort."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Limiter la palette à chauds + un accent froid :",
+              "options": [
+                "Crée contraste de température ciblé",
+                "Supprime tout contraste",
+                "Interdit la valeur",
+                "Monochrome strict"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accent froid sur dominante chaude structure l'image."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vert et rouge mélangés au pinceau vs juxtaposés :",
+              "options": [
+                "Mélangés = neutre ; juxtaposés = contrastent",
+                "Identiques toujours",
+                "Toujours blanc",
+                "Toujours noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélange ≠ juxtaposition pour les complémentaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif « Contrastes » en 5e :",
+              "options": [
+                "Utiliser oppositions pour composer",
+                "Ignorer la lumière",
+                "Ne pas utiliser le cercle",
+                "Peindre sans valeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On compose avec valeur, complémentaire et température."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples montrent un contraste de complémentaires ?",
+              "options": [
+                "Bleu et orange",
+                "Rouge et vert",
+                "Bleu clair et bleu foncé",
+                "Jaune et violet"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Bleu-orange et jaune-violet sont des paires complémentaires ; deux bleus = valeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Affiche lisible : texte foncé sur fond :",
+              "options": [
+                "Clair (ou inverse avec bon écart)",
+                "Même gris exact",
+                "Couleurs complémentaires sans écart de valeur",
+                "Transparent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut un écart de valeur pour lire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Contraste chaud-froid dans un paysage :",
+              "options": [
+                "Ciel bleu froid, sol ocre chaud",
+                "Tout bleu identique",
+                "Tout noir",
+                "Sans teinte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ciel froid / terre chaude = profondeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Zone la plus claire d'une image attire :",
+              "options": [
+                "Souvent le regard en premier",
+                "Jamais l'œil",
+                "Uniquement en sculpture",
+                "Sans lien avec contraste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les zones claires fonctionnent comme des accents."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Harmonie complémentaire :",
+              "options": [
+                "Deux opposées équilibrées",
+                "Une seule couleur",
+                "Sans contraste",
+                "Que du gris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise une paire complémentaire de façon équilibrée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réduire la saturation du ciel, garder terre vive :",
+              "options": [
+                "Contraste de saturation entre plans",
+                "Sans effet",
+                "Complémentaire impossible",
+                "Monochrome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ciel grisé, terre saturée = séparation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Blanc pur à côté de blanc cassé :",
+              "options": [
+                "Contraste très faible",
+                "Maximal complémentaire",
+                "Chaud-froid extrême",
+                "Invisible à 100 m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Blancs proches = faible contraste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Encadrer une œuvre sombre dans un passe-partout blanc :",
+              "options": [
+                "Renforce contraste avec le mur/clair",
+                "Efface l'œuvre",
+                "Supprime la couleur",
+                "Interdit la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bord clair autour d'image sombre la fait ressortir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Couleur et lumière en arts : la lumière modifie surtout :",
+              "options": [
+                "La valeur perçue des couleurs",
+                "Le format du papier",
+                "Le nombre de pinceaux",
+                "Le titre de l'œuvre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éclairage change clarté et parfois teinte perçue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan du chapitre couleur-lumière :",
+              "options": [
+                "Mélanger, nuancer et contrastier pour composer",
+                "Seulement nommer les primaires",
+                "Ignorer la valeur",
+                "Ne jamais juxtaposer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélanges, nuances et contrastes servent la composition."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

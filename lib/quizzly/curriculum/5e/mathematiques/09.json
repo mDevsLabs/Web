@@ -1,0 +1,1758 @@
+{
+  "id": "5e-mathematiques-09",
+  "year": "5e",
+  "subject": "mathematiques",
+  "title": "Fonctions et variations",
+  "order": 9,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire une courbe",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une courbe représente la température (en °C) dans une salle de 8 h à 12 h. Entre 8 h et 10 h, la courbe monte de 18 °C à 22 °C. Quelles affirmations sont exactes ?",
+              "options": [
+                "La température augmente entre 8 h et 10 h.",
+                "La température diminue entre 8 h et 10 h.",
+                "À 10 h, la température vaut 22 °C.",
+                "À 8 h, la température vaut 24 °C."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur un graphique distance–temps, le point A est à t = 2 min et d = 400 m. Quelle distance a été parcourue à l’instant 2 min ?",
+              "options": ["200 m", "400 m", "600 m", "800 m"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "De 14 h à 16 h, une courbe d’eau dans une cuve reste horizontale à 30 L. Que se passe-t-il pour le volume entre 14 h et 16 h ?",
+              "options": [
+                "Le volume augmente.",
+                "Le volume diminue.",
+                "Le volume reste constant.",
+                "On ne peut pas savoir."
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une courbe de hauteur d’une plante (en cm) vaut 12 cm le 1er mai et 18 cm le 15 mai. La plante a-t-elle grandi ?",
+              "options": [
+                "Non, la hauteur a baissé.",
+                "Oui, la hauteur a augmenté.",
+                "Non, la hauteur est restée la même.",
+                "Oui, de 30 cm."
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À 9 h, une courbe indique 35 visiteurs ; à 11 h, 50 visiteurs. Entre 9 h et 11 h, le nombre de visiteurs…",
+              "options": ["diminue", "augmente", "reste à 35", "reste à 50"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le maximum d’une courbe de température sur la journée est atteint à 15 h avec 28 °C. Quelle est la température maximale lue ?",
+              "options": ["15 °C", "28 °C", "15 h", "Impossible à lire"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Entre les instants 3 s et 7 s, une courbe descend de 10 m à 4 m. La grandeur représentée…",
+              "options": ["augmente", "diminue", "est nulle", "double"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur un graphique, l’instant t = 0 correspond à 0 km et t = 5 h à 250 km. Quelle distance à t = 5 h ?",
+              "options": ["0 km", "50 km", "250 km", "500 km"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une courbe est stable (plate) de 10 h à 11 h à la valeur 60. Quelle valeur lire à 10 h 30 ?",
+              "options": ["10", "11", "60", "70"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "De 8 h à 9 h la courbe monte, de 9 h à 10 h elle descend. Entre 9 h et 10 h, la grandeur…",
+              "options": [
+                "augmente",
+                "diminue",
+                "reste constante",
+                "disparaît"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Graphique : nombre de pages lues (en pages) en fonction du jour. Lundi 20, mardi 35, mercredi 35. Quelles lectures sont exactes ?",
+              "options": [
+                "Mardi, le nombre de pages vaut 35.",
+                "Entre lundi et mardi, le nombre augmente.",
+                "Mercredi, le nombre vaut 20.",
+                "Entre mardi et mercredi, le nombre reste à 35."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À 12 min, une courbe de distance indique 3 km. Quelle distance à 12 min ?",
+              "options": ["1 km", "2 km", "3 km", "12 km"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une courbe monte de 5 °C à 9 °C entre 6 h et 8 h. Variation de température ?",
+              "options": ["−4 °C", "+4 °C", "0 °C", "+9 °C"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le minimum d’une courbe vaut 2 L à 4 h. Quelle est la plus petite valeur lue du volume ?",
+              "options": ["4 L", "2 L", "4 h", "0 L"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Entre 13 h et 14 h, courbe horizontale à 90 battements/min. Le rythme cardiaque…",
+              "options": ["augmente", "diminue", "reste à 90", "passe à 13"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Courbe : à t = 1 h, altitude 100 m ; à t = 3 h, altitude 100 m. Entre 1 h et 3 h, l’altitude…",
+              "options": ["monte", "descend", "ne change pas", "double"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À l’instant 0 s, une courbe vaut 0 ; à 4 s, elle vaut 12. La courbe monte-t-elle entre 0 s et 4 s ?",
+              "options": ["Non", "Oui", "Elle est plate", "Elle disparaît"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Graphique prix cumulé (€) : à 2 articles, 6 € ; à 4 articles, 12 €. Prix pour 4 articles ?",
+              "options": ["4 €", "6 €", "12 €", "18 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "De 17 h à 18 h, une courbe descend de 800 à 650 visiteurs. Le nombre de visiteurs…",
+              "options": [
+                "augmente de 150",
+                "diminue de 150",
+                "reste 800",
+                "devient 0"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "À 5 jours, une courbe de masse indique 2,5 kg. Quelle masse lire à 5 jours ?",
+              "options": ["2 kg", "2,5 kg", "5 kg", "7,5 kg"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Courbe du niveau d’essence (L) : 8 h → 40 L ; 10 h → 25 L. Quelles affirmations sont vraies ?",
+              "options": [
+                "Entre 8 h et 10 h, le niveau diminue.",
+                "À 10 h, le niveau vaut 25 L.",
+                "À 8 h, le niveau vaut 25 L.",
+                "Entre 8 h et 10 h, le niveau augmente."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur un graphique temps (min) – distance (m), le point (3 ; 150) signifie…",
+              "options": [
+                "150 min pour 3 m",
+                "3 min et 150 m parcourus",
+                "3 m en 150 min",
+                "distance 3 m à 150 min"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une courbe atteint son plus haut point : 32 °C à 14 h. Température à 14 h ?",
+              "options": [
+                "14 °C",
+                "32 °C",
+                "46 °C",
+                "On ne lit pas la température"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Entre 10 h et 12 h, courbe qui monte de 50 à 80 clients. Évolution ?",
+              "options": ["baisse", "hausse", "stable", "négative"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À jour 7, une courbe de taille vaut 140 cm. Quelle taille au jour 7 ?",
+              "options": ["7 cm", "70 cm", "140 cm", "147 cm"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "De 0 h à 2 h, une courbe reste à 0 mm de pluie. Précipitations entre 0 h et 2 h ?",
+              "options": [
+                "augmentent",
+                "diminuent",
+                "restent nulles",
+                "deviennent 2 mm"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Courbe : 9 h → 15 °C ; 11 h → 21 °C. Température à 11 h ?",
+              "options": ["9 °C", "15 °C", "21 °C", "36 °C"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Segment descendant sur une courbe entre A et B signifie que la grandeur…",
+              "options": [
+                "augmente",
+                "diminue",
+                "est constante",
+                "est toujours nulle"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À t = 10 s, une courbe de vitesse (km/h) indique 60. Quelle vitesse à 10 s ?",
+              "options": ["10 km/h", "50 km/h", "60 km/h", "600 km/h"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une courbe monte puis redescend au même niveau initial. Si elle finit à la même valeur qu’au début, la valeur finale est…",
+              "options": [
+                "toujours plus grande que le début",
+                "égale au début si la courbe revient au point de départ",
+                "toujours nulle",
+                "impossible à comparer"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Graphique : stock en magasin. Jeudi 120 unités, vendredi 120, samedi 95. Quelles lectures sont correctes ?",
+              "options": [
+                "Vendredi, le stock vaut 120.",
+                "Samedi, le stock vaut 95.",
+                "Entre jeudi et vendredi, le stock diminue.",
+                "Entre vendredi et samedi, le stock diminue."
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Courbe distance–temps : à 1 h, 80 km ; à 3 h, 240 km. Distance à 3 h ?",
+              "options": ["80 km", "160 km", "240 km", "320 km"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Partie de courbe horizontale signifie que la grandeur mesurée…",
+              "options": [
+                "varie beaucoup",
+                "ne change pas",
+                "devient négative",
+                "double à chaque instant"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Entre 16 h et 17 h, une courbe monte de 4 °C à 7 °C. À 17 h, température ?",
+              "options": ["4 °C", "5 °C", "7 °C", "11 °C"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Minimum de courbe : 5 m à 2 s. Plus petite valeur de la grandeur ?",
+              "options": ["2 m", "5 m", "7 m", "2 s"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À 4 semaines, une courbe de masse du lapin vaut 1,2 kg. Masse à 4 semaines ?",
+              "options": ["0,4 kg", "1,2 kg", "4 kg", "5,2 kg"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Courbe qui monte de gauche à droite entre deux instants : la grandeur…",
+              "options": ["diminue", "augmente", "reste fixe", "s’annule"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À 20 min, une courbe indique 45 L d’eau dans une baignoire. Volume à 20 min ?",
+              "options": ["20 L", "25 L", "45 L", "65 L"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "De 7 h à 9 h, courbe descend de 100 % à 70 % de batterie. Niveau de batterie…",
+              "options": [
+                "augmente",
+                "diminue",
+                "reste 100 %",
+                "devient 170 %"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lecture à l’abscisse 6 : ordonnée 18 sur un graphique. Quelle valeur pour x = 6 ?",
+              "options": ["6", "12", "18", "24"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Courbe de fréquentation : 10 h → 200 personnes ; 12 h → 350 personnes. Quelles affirmations sont exactes ?",
+              "options": [
+                "À 12 h, il y a 350 personnes.",
+                "Entre 10 h et 12 h, la fréquentation augmente.",
+                "À 10 h, il y a 350 personnes.",
+                "Entre 10 h et 12 h, la fréquentation diminue."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Graphique : à 0 min, 0 m ; à 5 min, 500 m. Distance à 5 min ?",
+              "options": ["5 m", "100 m", "500 m", "505 m"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Courbe plate à 25 entre 14 h et 15 h. Valeur à 14 h 30 ?",
+              "options": ["14", "15", "25", "30"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Segment montant : la grandeur représentée en ordonnée…",
+              "options": [
+                "baisse",
+                "monte",
+                "est constante",
+                "devient l’abscisse"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À 3 h, température lue 19 °C ; à 6 h, 19 °C. Entre 3 h et 6 h, température ?",
+              "options": ["augmente", "diminue", "stable à 19 °C", "nulle"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Maximum 45 unités à 8 h. Quelle valeur maximale ?",
+              "options": ["8 unités", "37 unités", "45 unités", "53 unités"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Courbe descend de 30 à 10 entre t = 1 et t = 4. À t = 4, valeur ?",
+              "options": ["30", "20", "10", "4"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lecture graphique : jour 10 → 55 cm de plante. Hauteur jour 10 ?",
+              "options": ["10 cm", "45 cm", "55 cm", "65 cm"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "De 18 h à 20 h, courbe monte de 12 à 20 °C. Variation ?",
+              "options": ["−8 °C", "+8 °C", "0 °C", "+32 °C"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Point (2 ; 8) sur un graphique temps–quantité. Quantité à temps 2 ?",
+              "options": ["2", "4", "8", "16"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Niveau de rivière (cm) : lundi 120, mardi 120, mercredi 145. Quelles lectures sont vraies ?",
+              "options": [
+                "Mardi, le niveau est 120 cm.",
+                "Mercredi, le niveau est 145 cm.",
+                "Entre lundi et mardi, le niveau augmente.",
+                "Entre mardi et mercredi, le niveau augmente."
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À 8 s, courbe de position : 16 m. Position à 8 s ?",
+              "options": ["8 m", "16 m", "24 m", "128 m"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Courbe strictement descendante entre deux dates : la grandeur…",
+              "options": [
+                "augmente",
+                "diminue",
+                "reste identique",
+                "devient le temps"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lecture : à 1 h, 0 client ; à 2 h, 15 clients. Clients à 2 h ?",
+              "options": ["0", "1", "15", "17"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plateau à 300 entre 11 h et 12 h. Valeur à 11 h 45 ?",
+              "options": ["11", "12", "300", "345"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Courbe monte de 2 à 11 entre 0 et 5 jours. Valeur au jour 5 ?",
+              "options": ["2", "5", "11", "13"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Minimum 3 °C à 6 h. Température minimale lue ?",
+              "options": ["3 °C", "6 °C", "9 °C", "18 °C"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Entre 4 h et 6 h, courbe horizontale à 50 km. Distance parcourue augmente-t-elle sur ce intervalle si la courbe est plate à 50 km ?",
+              "options": [
+                "Oui, elle augmente",
+                "Non, la distance lue reste 50 km",
+                "Elle double",
+                "Elle revient à 0"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À t = 15 min, 9 km sur le graphique. Distance à 15 min ?",
+              "options": ["6 km", "9 km", "15 km", "24 km"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Courbe : 13 h → 24 °C ; 15 h → 20 °C. Entre 13 h et 15 h, température…",
+              "options": ["augmente", "diminue", "reste 24 °C", "reste 20 °C"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Graphique épargne (€) : janvier 50, février 80, mars 80. Affirmations exactes ?",
+              "options": [
+                "En février, l’épargne vaut 80 €.",
+                "Entre janvier et février, l’épargne augmente.",
+                "En mars, l’épargne vaut 50 €.",
+                "Entre février et mars, l’épargne reste à 80 €."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Courbe eau (L) : 0 min → 0 L ; 10 min → 40 L. Volume à 10 min ?",
+              "options": ["10 L", "30 L", "40 L", "50 L"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sommet de courbe à 500 visiteurs à 19 h. Visiteurs à 19 h ?",
+              "options": ["19", "481", "500", "519"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Descente de 90 à 60 entre 8 h et 9 h. À 9 h, valeur ?",
+              "options": ["90", "75", "60", "30"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lecture abscisse 4, ordonnée 32. Valeur pour 4 ?",
+              "options": ["4", "28", "32", "36"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Courbe montante : de 7 à 13 entre 2 et 5. Valeur à 5 ?",
+              "options": ["7", "10", "13", "18"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Stable à 0 entre 22 h et 23 h pour un compteur de vélo. Compteur…",
+              "options": ["augmente", "diminue", "reste à 0", "affiche 23"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À 6 mois, masse 9 kg sur la courbe. Masse à 6 mois ?",
+              "options": ["3 kg", "6 kg", "9 kg", "15 kg"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Entre A (10) et B (10), segment horizontal. Variation ?",
+              "options": ["+10", "−10", "0", "20"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Courbe : 5 h → 11 °C ; 7 h → 17 °C. Température à 7 h ?",
+              "options": ["5 °C", "11 °C", "17 °C", "28 °C"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Production (unités) : 9 h → 40 ; 11 h → 40 ; 13 h → 55. Lectures exactes ?",
+              "options": [
+                "À 11 h, production 40 unités.",
+                "À 13 h, production 55 unités.",
+                "Entre 9 h et 11 h, production augmente.",
+                "Entre 11 h et 13 h, production augmente."
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Graphique : 25 min → 1 000 pas. Pas à 25 min ?",
+              "options": ["25", "975", "1 000", "1 025"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Montée de 15 à 27 entre lundi et mercredi. Valeur mercredi ?",
+              "options": ["15", "21", "27", "42"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Creux (minimum) à 8 unités. Plus petite valeur ?",
+              "options": ["0", "8", "16", "Inconnue"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Point (5 ; 25) sur courbe temps–pages. Pages à 5 h ?",
+              "options": ["5", "20", "25", "30"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "De 12 h à 14 h, courbe descend de 38 à 30 °C. Évolution ?",
+              "options": ["hausse", "baisse", "stable", "indéfinie"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À jour 2, 6 cm ; jour 2 valeur lue sur courbe croissante jusqu’à 14 cm jour 8. Taille jour 2 ?",
+              "options": ["2 cm", "6 cm", "8 cm", "14 cm"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Horizontale à 75 de 3 h à 4 h. Valeur à 3 h 30 ?",
+              "options": ["3", "4", "75", "79"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Courbe : 0 s → 0 m ; 12 s → 36 m. Distance à 12 s ?",
+              "options": ["12 m", "24 m", "36 m", "48 m"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Segment montant indique que, quand le temps avance, la grandeur…",
+              "options": [
+                "diminue",
+                "augmente",
+                "disparaît",
+                "devient le temps"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Température piscine (°C) : 8 h 26 ; 10 h 28 ; 12 h 28. Quelles affirmations sont correctes ?",
+              "options": [
+                "À 10 h, température 28 °C.",
+                "Entre 8 h et 10 h, température augmente.",
+                "À 12 h, température 26 °C.",
+                "Entre 10 h et 12 h, température reste 28 °C."
+              ],
+              "correctAnswers": [1, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À 7 km sur l’axe des distances, courbe indique 14 min. Temps lu pour 7 km ?",
+              "options": ["7 min", "14 min", "21 min", "98 min"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Courbe baisse de 200 à 120 entre t = 0 et t = 4. Valeur à t = 4 ?",
+              "options": ["200", "160", "120", "80"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Maximum 62 à 16 h. Valeur max ?",
+              "options": ["16", "46", "62", "78"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lecture : semaine 3 → 42 € d’argent de poche cumulés. Montant semaine 3 ?",
+              "options": ["3 €", "39 €", "42 €", "45 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Entre 1 h et 2 h, courbe monte de 4 à 9. À 2 h ?",
+              "options": ["4", "6", "9", "13"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plateau signifie que la courbe…",
+              "options": [
+                "monte vite",
+                "ne varie pas sur l’intervalle",
+                "descend toujours",
+                "change d’unité"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "À 4 jours, 22 °C sur courbe météo simplifiée. Température jour 4 ?",
+              "options": ["4 °C", "18 °C", "22 °C", "26 °C"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "De 20 h à 22 h, stable à 14 °C. Température à 21 h ?",
+              "options": ["20 °C", "14 °C", "22 °C", "36 °C"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Courbe ascendante de 0 à 24 : à l’instant final, valeur ?",
+              "options": ["0", "12", "24", "48"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Hauteur de marée (m) : 6 h 2 ; 9 h 5 ; 12 h 5. Lectures exactes ?",
+              "options": [
+                "À 9 h, hauteur 5 m.",
+                "Entre 6 h et 9 h, hauteur augmente.",
+                "À 6 h, hauteur 5 m.",
+                "Entre 9 h et 12 h, hauteur reste 5 m."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Graphique : 30 s → 90 m. Distance à 30 s ?",
+              "options": ["30 m", "60 m", "90 m", "120 m"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Descend de 48 à 33 entre 5 h et 7 h. Variation ?",
+              "options": ["+15", "−15", "0", "+81"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Minimum 1,5 L à 3 h. Volume minimal ?",
+              "options": ["1 L", "1,5 L", "3 L", "4,5 L"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À t = 8, courbe vaut 64. Valeur à 8 ?",
+              "options": ["8", "56", "64", "72"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Montée constante visuelle de 10 à 40 entre 0 et 6. Valeur à 6 ?",
+              "options": ["10", "25", "40", "46"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Courbe horizontale : la grandeur…",
+              "options": [
+                "augmente",
+                "diminue",
+                "reste la même",
+                "devient négative obligatoirement"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lecture 11 h → 900 visiteurs. Visiteurs à 11 h ?",
+              "options": ["11", "889", "900", "911"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Entre 14 h et 16 h, monte de 3 à 11. Évolution ?",
+              "options": [
+                "diminution",
+                "augmentation",
+                "stabilité",
+                "annulation"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Point final de courbe à 50 après montée depuis 20. Valeur finale ?",
+              "options": ["20", "30", "50", "70"],
+              "correctAnswers": [2]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Modéliser",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau proportionnel : nombre de stylos 1 → 2 € ; 2 → 4 € ; 3 → 6 €. Quelles affirmations sont vraies ?",
+              "options": [
+                "Le prix est proportionnel au nombre de stylos.",
+                "3 stylos coûtent 6 €.",
+                "4 stylos coûteraient 8 €.",
+                "1 stylo coûte 4 €."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Recette : 2 personnes → 300 g de pâtes ; 4 personnes → 600 g. Combien pour 4 personnes ?",
+              "options": ["300 g", "450 g", "600 g", "900 g"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tableau distance (km) / temps (h) à vitesse constante : 1 h → 60 km. Distance en 3 h ?",
+              "options": ["60 km", "120 km", "180 km", "240 km"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1 kg de pommes 2,50 €. Prix de 4 kg (situation proportionnelle) ?",
+              "options": ["5 €", "7,50 €", "10 €", "12,50 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau : 5 photos → 10 min ; 10 photos → 20 min. Temps pour 15 photos ?",
+              "options": ["25 min", "30 min", "35 min", "40 min"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un tableau proportionnel, le rapport entre les deux lignes est…",
+              "options": [
+                "toujours différent",
+                "toujours le même",
+                "toujours 0",
+                "impossible à définir"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "3 cahiers 7,50 €. Prix d’un cahier ?",
+              "options": ["2 €", "2,50 €", "3 €", "3,50 €"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau litres / bouteilles : 2 L → 4 bouteilles ; 5 L → 10 bouteilles. Bouteilles pour 5 L ?",
+              "options": ["5", "8", "10", "15"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Graphique proportionnel passe par (0 ; 0) et (2 ; 6). Valeur pour 4 unités ?",
+              "options": ["6", "8", "12", "18"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "8 bracelets identiques 24 €. Prix de 5 bracelets ?",
+              "options": ["10 €", "12 €", "15 €", "20 €"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau : heures 1 | 2 | 3 — pages 8 | 16 | 24. Quelles lectures sont exactes ?",
+              "options": [
+                "En 3 h, 24 pages sont lues.",
+                "La situation est proportionnelle.",
+                "En 2 h, 8 pages sont lues.",
+                "En 1 h, 16 pages sont lues."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cartes : 4 cartes → 1,20 € ; 10 cartes → 3 €. Prix de 10 cartes ?",
+              "options": ["1,20 €", "2,40 €", "3 €", "4 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Vitesse constante : 45 km en 1 h. Distance en 2 h ?",
+              "options": ["45 km", "67,5 km", "90 km", "135 km"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tableau non proportionnel : 1 → 5 ; 2 → 7. Pourquoi ce n’est pas proportionnel ?",
+              "options": [
+                "Les nombres sont pairs",
+                "Le double de 1 ne donne pas le double de 5",
+                "Il y a deux lignes",
+                "5 est plus grand que 1"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "6 mètres de tissu 18 €. Prix pour 2 mètres ?",
+              "options": ["3 €", "6 €", "9 €", "12 €"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tableau proportionnel : 7 → 21 ; 9 → ? (même rapport)",
+              "options": ["24", "27", "28", "30"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Graphique linéaire passant par l’origine : 3 sur l’axe x correspond à 12 sur y. Valeur pour x = 5 ?",
+              "options": ["15", "17", "20", "25"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "12 bonbons partagés en 3 sacs identiques. Bonbons par sac ?",
+              "options": ["3", "4", "6", "9"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tableau eau (L) / verres : 1 → 4 ; 3 → 12. Verres pour 3 L ?",
+              "options": ["4", "8", "12", "16"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "5 workers peignent 20 m² en même temps (proportionnel au nombre). Surface pour 8 workers ?",
+              "options": ["25 m²", "28 m²", "32 m²", "40 m²"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Modèle : 1 ticket bus 1,50 €, tableau proportionnel. Affirmations vraies ?",
+              "options": [
+                "2 tickets coûtent 3 €.",
+                "4 tickets coûtent 6 €.",
+                "3 tickets coûtent 4,50 €.",
+                "0 ticket coûte 1,50 €."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tableau : 2 → 14 ; 5 → 35. Valeur pour 5 ?",
+              "options": ["14", "28", "35", "70"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une situation proportionnelle a toujours…",
+              "options": [
+                "un tableau qui double à chaque fois au hasard",
+                "un coefficient multiplicateur constant",
+                "une courbe en escalier",
+                "des valeurs négatives obligatoires"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "4 L de jus 6 €. Coût de 10 L ?",
+              "options": ["12 €", "14 €", "15 €", "16 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau temps (min) / copies : 3 → 15 ; 6 → 30. Copies en 9 min ?",
+              "options": ["35", "40", "45", "50"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Graphique proportionnel : point (4 ; 10). Valeur pour 8 ?",
+              "options": ["10", "15", "20", "40"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "9 croissants 13,50 €. Prix unitaire ?",
+              "options": ["1 €", "1,20 €", "1,50 €", "2 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau : 1 h → 25 km ; 4 h → 100 km. Distance 4 h ?",
+              "options": ["25 km", "50 km", "75 km", "100 km"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Modéliser une recette x2 : ingrédient 120 g pour 4 parts → pour 8 parts ?",
+              "options": ["120 g", "180 g", "240 g", "480 g"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tableau proportionnel 0 → 0 ; 5 → 20. Valeur pour 10 ?",
+              "options": ["25", "30", "40", "50"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Location vélo : 1 h 4 € ; 2 h 8 € ; 3 h 12 €. Quelles affirmations sont exactes ?",
+              "options": [
+                "Le prix est proportionnel à la durée.",
+                "3 h coûtent 12 €.",
+                "2 h coûtent 12 €.",
+                "1 h coûte 8 €."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tableau : pièces 10 → masse 25 g. Masse pour 10 pièces ?",
+              "options": ["2,5 g", "15 g", "25 g", "250 g"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "15 photos en 5 min (rythme constant). Photos en 10 min ?",
+              "options": ["20", "25", "30", "35"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tableau : 2 → 6 ; 3 → 9 ; 7 → ?",
+              "options": ["18", "21", "24", "27"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Situation : plus d’articles, plus de prix, rapport prix/quantité constant. C’est…",
+              "options": [
+                "aléatoire",
+                "proportionnelle",
+                "impossible",
+                "toujours décroissante"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "7 kg à 3,50 €/kg (prix proportionnel à la masse). Prix total 7 kg ?",
+              "options": ["3,50 €", "10,50 €", "24,50 €", "28 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Graphique passe par (0 ; 0) et (5 ; 15). Ordonnée pour abscisse 10 ?",
+              "options": ["20", "25", "30", "35"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau : 4 → 32 ; 6 → 48. Valeur manquante pour 6 ?",
+              "options": ["32", "40", "48", "56"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "20 km en 25 min à vitesse constante. Distance en 50 min ?",
+              "options": ["30 km", "35 km", "40 km", "45 km"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "3 boîtes 12 €. Prix de 7 boîtes ?",
+              "options": ["21 €", "24 €", "28 €", "36 €"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau proportionnel notes / autocollants : 4 → 12 ; 6 → 18. Lectures exactes ?",
+              "options": [
+                "Pour 6 notes, 18 autocollants.",
+                "Le rapport est 3 autocollants par note.",
+                "Pour 4 notes, 8 autocollants.",
+                "Pour 1 note, 3 autocollants."
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1,5 L d’eau 0,90 €. Prix 5 L ?",
+              "options": ["2 €", "2,50 €", "3 €", "4,50 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tableau : 8 → 56 ; 10 → 70. Valeur pour 10 ?",
+              "options": ["56", "63", "70", "80"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel tableau est proportionnel ?",
+              "options": [
+                "1→2 ; 2→4 ; 3→6",
+                "1→2 ; 2→3 ; 3→4",
+                "1→1 ; 2→3 ; 3→5",
+                "1→0 ; 2→5 ; 3→10"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Modèle de conversion : 1 € = 100 centimes. 3,50 € en centimes ?",
+              "options": ["35", "350", "3 500", "35 000"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "12 élèves consomment 24 L (proportionnel). Volume pour 6 élèves ?",
+              "options": ["6 L", "12 L", "18 L", "24 L"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Graphique proportionnel : (2 ; 5) et (6 ; 15). y pour x = 10 ?",
+              "options": ["20", "22", "25", "30"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau distance : 3 km → 12 min ; 5 km → 20 min. Temps 5 km ?",
+              "options": ["12 min", "16 min", "20 min", "24 min"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "5 packs 35 €. Prix d’un pack ?",
+              "options": ["5 €", "6 €", "7 €", "8 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tableau : 0 → 0 ; 4 → 28 ; 9 → ?",
+              "options": ["56", "63", "72", "81"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Impression : 2 pages 0,40 € ; 5 pages 1 €. Affirmations vraies ?",
+              "options": [
+                "Le coût est proportionnel au nombre de pages.",
+                "5 pages coûtent 1 €.",
+                "1 page coûte 0,40 €.",
+                "10 pages coûteraient 2 €."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tableau : 6 → 54 ; 8 → 72. Valeur pour 8 ?",
+              "options": ["54", "63", "72", "81"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Vitesse 80 km/h constante. Distance en 0,5 h ?",
+              "options": ["20 km", "40 km", "80 km", "160 km"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tableau non prop. : 1→3 ; 2→4. La valeur pour 2 devrait être … pour être proportionnel à 1→3.",
+              "options": ["4", "5", "6", "9"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "14 oranges 7 €. Prix 6 oranges ?",
+              "options": ["2 €", "3 €", "4 €", "5 €"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Modèle graphique proportionnel par l’origine : 1 unité → 7 unités en ordonnée. Pour 6 unités ?",
+              "options": ["13", "36", "42", "49"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tableau : minutes 5→25 ; 12→60. Valeur pour 12 ?",
+              "options": ["48", "55", "60", "72"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "100 cm de fil 2 €. Prix 250 cm ?",
+              "options": ["4 €", "5 €", "6 €", "7 €"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tableau proportionnel : triple de l’entrée triple la sortie. Entrée 11, sortie ? si 1→4.",
+              "options": ["15", "33", "44", "55"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "4 machines 28 pièces/h (proportionnel). Pièces/h pour 7 machines ?",
+              "options": ["42", "49", "56", "63"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau : kg 2→5 € ; 5→12,50 € ; 8→20 €. Quelles affirmations sont exactes ?",
+              "options": [
+                "Le prix est proportionnel à la masse.",
+                "8 kg coûtent 20 €.",
+                "2 kg coûtent 10 €.",
+                "Le kilo coûte 2,50 €."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tableau : 3 → 21 ; 9 → 63. Valeur pour 9 ?",
+              "options": ["21", "42", "63", "84"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un modèle proportionnel, si on multiplie x par 2, y …",
+              "options": [
+                "reste identique",
+                "est multiplié par 2",
+                "est divisé par 2",
+                "augmente de 2 unités seulement"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "10 tickets 25 €. Coût 4 tickets ?",
+              "options": ["8 €", "10 €", "12 €", "15 €"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Graphique (0,0)-(3,18)-(6,36). y pour x=6 ?",
+              "options": ["18", "24", "30", "36"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tableau temps / km : 2 h → 70 km ; 5 h → 175 km. Distance 5 h ?",
+              "options": ["70 km", "140 km", "175 km", "245 km"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "16 stylos 12 €. Prix 20 stylos ?",
+              "options": ["13,50 €", "14 €", "15 €", "16 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau : 1 → 9 ; 4 → 36 ; 7 → ?",
+              "options": ["54", "63", "72", "81"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Modèle : 250 mL sirop pour 1 L d’eau. Sirop pour 4 L ?",
+              "options": ["250 mL", "500 mL", "750 mL", "1 000 mL"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tableau proportionnel : 5 → 45 ; 11 → ?",
+              "options": ["90", "99", "110", "121"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Consommation : 1 jour 12 kWh ; 3 jours 36 kWh. Affirmations correctes ?",
+              "options": [
+                "La consommation est proportionnelle au nombre de jours.",
+                "3 jours consomment 36 kWh.",
+                "2 jours consomment 12 kWh.",
+                "1 jour consomme 36 kWh."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tableau : 7 → 49 ; 10 → 70. Valeur 10 ?",
+              "options": ["49", "56", "70", "77"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Prix proportionnel : 6 articles 15 €. Prix 2 articles ?",
+              "options": ["3 €", "5 €", "6 €", "10 €"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle situation se modélise par un tableau proportionnel ?",
+              "options": [
+                "Taxe fixe 2 € plus 1 € par km",
+                "1,20 € par km parcouru sans frais fixes",
+                "Réduction après 10 articles",
+                "Prix qui baisse avec la quantité"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau : 4 → 16 ; 9 → 36 ; 12 → ?",
+              "options": ["44", "48", "52", "56"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Graphique proportionnel : (5 ; 8). Ordonnée pour 15 ?",
+              "options": ["16", "20", "24", "28"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "18 km en 24 min (vitesse constante). Distance en 12 min ?",
+              "options": ["6 km", "9 km", "12 km", "15 km"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau : 0→0 ; 6→42 ; 13→?",
+              "options": ["84", "91", "98", "105"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "2,4 kg 7,20 €. Prix 1 kg ?",
+              "options": ["2 €", "2,50 €", "3 €", "3,50 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Modèle : 3 personnes 9 sandwiches. Sandwiches pour 5 personnes ?",
+              "options": ["12", "13", "15", "18"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau distance (m) / pas : 100 → 130 ; 200 → 260. Lectures exactes ?",
+              "options": [
+                "La situation est proportionnelle.",
+                "200 m correspondent à 260 pas.",
+                "100 m correspondent à 260 pas.",
+                "130 pas correspondent à 100 m."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tableau : 5 → 40 ; 11 → 88. Valeur pour 11 ?",
+              "options": ["40", "77", "88", "99"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un graphique de proportionnalité passe toujours par…",
+              "options": [
+                "(1 ; 1) seulement",
+                "(0 ; 0)",
+                "(10 ; 10)",
+                "aucun point particulier"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "7 livres 31,50 €. Prix 4 livres ?",
+              "options": ["16 €", "17 €", "18 €", "19 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau : 2 h → 50 km ; 6 h → 150 km. Distance 6 h ?",
+              "options": ["50 km", "100 km", "150 km", "200 km"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Graphique : 4→28, même rapport. 4→28 ; 9→?",
+              "options": ["56", "63", "72", "81"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tableau proportionnel : quotient constant 5. Entrée 14, sortie ?",
+              "options": ["19", "60", "70", "75"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "25 cl 0,75 €. Prix 1 L (10 dl) ?",
+              "options": ["2 €", "2,50 €", "3 €", "7,50 €"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Modèle recette : 200 g farine pour 8 crêpes. Farine pour 12 crêpes ?",
+              "options": ["250 g", "300 g", "350 g", "400 g"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tableau : 1→11 ; 8→88 ; 15→?",
+              "options": ["154", "165", "176", "187"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Fournitures : 6 cahiers 9 € ; 10 cahiers 15 €. Affirmations exactes ?",
+              "options": [
+                "Le prix est proportionnel au nombre de cahiers.",
+                "10 cahiers coûtent 15 €.",
+                "6 cahiers coûtent 15 €.",
+                "Un cahier coûte 1,50 €."
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tableau : 12 → 96 ; 15 → 120. Valeur pour 15 ?",
+              "options": ["96", "108", "120", "135"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Situation proportionnelle : doublement de la quantité…",
+              "options": [
+                "double le prix",
+                "ajoute 2 €",
+                "ne change rien",
+                "divise le prix par 2"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tableau : 3→18 ; 5→30 ; 9→?",
+              "options": ["45", "54", "63", "72"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Graphique proportionnel (0,0) et (7,21). y pour x=3 ?",
+              "options": ["6", "9", "12", "15"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "40 km en 32 min constant. Distance en 16 min ?",
+              "options": ["15 km", "20 km", "25 km", "30 km"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "21 roses 42 €. Prix 13 roses ?",
+              "options": ["24 €", "26 €", "28 €", "30 €"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau : 0→0 ; 2→14 ; 6→42 ; 20→?",
+              "options": ["120", "130", "140", "150"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Modéliser avec un tableau : 1 bus transporte 52 élèves. Élèves pour 4 bus identiques ?",
+              "options": ["104", "156", "208", "260"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tableau proportionnel rapport 8. Entrée 25, sortie ?",
+              "options": ["180", "200", "220", "240"],
+              "correctAnswers": [1]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

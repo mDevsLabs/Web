@@ -1,0 +1,2543 @@
+{
+  "id": "5e-arabe-04",
+  "year": "5e",
+  "subject": "arabe",
+  "title": "La grammaire de l'arabe",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "L'article ال",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots ont l'article ال (al-) ?",
+              "explanation": "ال se place au début pour former le nom défini.",
+              "options": [
+                "الكتاب (al-kitāb)",
+                "كتاب (kitāb)",
+                "المدرسة (al-madrasa)",
+                "قلم (qalam)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "الكتاب (al-kitāb) signifie :",
+              "explanation": "Avec ال, le nom est défini : le livre.",
+              "options": ["Le livre", "Un livre", "Maison", "Stylo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Le stylo » :",
+              "explanation": "On dit القلم (al-qalam).",
+              "options": [
+                "القلم (al-qalam)",
+                "قلم (qalam)",
+                "قلمة (qalama)",
+                "القلمة (al-qalama)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nom féminin :",
+              "explanation": "طالبة (ṭāliba) est la forme féminine.",
+              "options": [
+                "طالبة (ṭāliba)",
+                "طالب (ṭālib)",
+                "ولد (walad)",
+                "معلم (muʿallim)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nom masculin :",
+              "explanation": "طالب (ṭālib) est masculin.",
+              "options": [
+                "طالب (ṭālib)",
+                "طالبة (ṭāliba)",
+                "بنت (bint)",
+                "أخت (ukht)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'école (définie) :",
+              "explanation": "المدرسة = l'école.",
+              "options": [
+                "المدرسة (al-madrasa)",
+                "مدرسة (madrasa)",
+                "المدرس (al-mudarris)",
+                "مدير (mudīr)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "kitāb sans ال, c'est plutôt :",
+              "explanation": "Sans article, le nom est indéfini.",
+              "options": ["Un livre", "Le livre", "Les livres", "Mon livre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "walad dans الولد (al-walad) :",
+              "explanation": "Walad = garçon / enfant (m).",
+              "options": ["Garçon", "Fille", "Père", "Maison"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La fille (définie) :",
+              "explanation": "البنت (al-bint).",
+              "options": [
+                "البنت (al-bint)",
+                "بنت (bint)",
+                "الولد (al-walad)",
+                "بنتان (bintān)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "ال se place :",
+              "explanation": "L'article arabe est un préfixe.",
+              "options": [
+                "Au début du nom",
+                "À la fin",
+                "Deux fois",
+                "Jamais sur un nom"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Masculin et féminin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Noms féminins :",
+              "explanation": "مدرسة et طالبة sont des formes féminines courantes.",
+              "options": [
+                "مدرسة (madrasa)",
+                "طالب (ṭālib)",
+                "طالبة (ṭāliba)",
+                "ولد (walad)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "طالب / طالبة :",
+              "explanation": "Même racine, deux genres.",
+              "options": [
+                "Masculin et féminin",
+                "Deux verbes",
+                "Articles",
+                "Pronoms"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ṭāliba =",
+              "explanation": "Étudiante au féminin.",
+              "options": ["Étudiante", "Étudiant", "Prof", "Classe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Masculin :",
+              "explanation": "معلم = enseignant (m).",
+              "options": [
+                "معلم (muʿallim)",
+                "معلمة (muʿallima)",
+                "أخت (ukht)",
+                "بنت (bint)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "muʿallima =",
+              "explanation": "Enseignante au féminin.",
+              "options": ["Enseignante", "Enseignant", "Élève", "Directeur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ukht =",
+              "explanation": "Nom féminin : sœur.",
+              "options": ["Sœur", "Frère", "Mère", "Tante"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "akh =",
+              "explanation": "Nom masculin : frère.",
+              "options": ["Frère", "Sœur", "Oncle", "Cousin"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Féminin de ṭālib :",
+              "explanation": "طالبة avec ة.",
+              "options": [
+                "طالبة (ṭāliba)",
+                "طالب (ṭālib)",
+                "الطالب (al-ṭālib)",
+                "طالبون (ṭālibūn)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "bint =",
+              "explanation": "Fille, nom féminin.",
+              "options": ["Fille", "Garçon", "Mère", "Sœur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le féminin se voit souvent avec :",
+              "explanation": "La ta marbuta ة est un repère en 5e.",
+              "options": [
+                "ة (ta marbuta)",
+                "ال seulement",
+                "Un chiffre",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "ال et le féminin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Avec ال, noms féminins définis :",
+              "explanation": "ال s'accole au nom féminin comme au masculin.",
+              "options": [
+                "الطالبة (al-ṭāliba)",
+                "طالبة (ṭāliba)",
+                "المعلمة (al-muʿallima)",
+                "معلم (muʿallim)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'étudiante (définie) :",
+              "explanation": "الطالبة = l'étudiante.",
+              "options": [
+                "الطالبة (al-ṭāliba)",
+                "طالبة (ṭāliba)",
+                "الطالب (al-ṭālib)",
+                "طالب (ṭālib)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'enseignante :",
+              "explanation": "المعلمة avec ال.",
+              "options": [
+                "المعلمة (al-muʿallima)",
+                "معلمة (muʿallima)",
+                "المعلم (al-muʿallim)",
+                "معلم (muʿallim)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "madrasa seule =",
+              "explanation": "Indéfini : une école.",
+              "options": ["Une école", "L'école", "Les écoles", "Mon école"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "al-madrasa =",
+              "explanation": "École définie.",
+              "options": ["L'école", "Une école", "Classe", "Cour"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "الأخت (al-ukht) =",
+              "explanation": "La sœur, avec article.",
+              "options": ["La sœur", "Un frère", "La mère", "Une fille"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans ال, ukht =",
+              "explanation": "Une sœur (indéfini).",
+              "options": ["Une sœur", "La sœur", "Frère", "Amie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le genre de madrasa :",
+              "explanation": "École est féminin en arabe courant.",
+              "options": ["Féminin", "Masculin", "Neutre", "Verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ال + ṭāliba donne :",
+              "explanation": "Préfixe ال au féminin.",
+              "options": ["al-ṭāliba", "ṭālibat al", "alṭālib", "ṭāliba al"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'article ne change pas le genre :",
+              "explanation": "ال marque le défini, pas le masculin/féminin.",
+              "options": [
+                "Vrai",
+                "Faux",
+                "Il crée le féminin",
+                "Il supprime ة"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Accord simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Paires masculin / féminin correctes :",
+              "explanation": "Même mot de base avec forme m ou f.",
+              "options": [
+                "طالب / طالبة",
+                "معلم / معلمة",
+                "كتاب / قلم",
+                "ولد / بنت"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour « une étudiante » sans ال :",
+              "explanation": "Ṭāliba suffit.",
+              "options": [
+                "طالبة (ṭāliba)",
+                "الطالبة (al-ṭāliba)",
+                "طالب (ṭālib)",
+                "طالبون (ṭālibūn)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Un enseignant » :",
+              "explanation": "Muʿallim sans article.",
+              "options": [
+                "معلم (muʿallim)",
+                "المعلم (al-muʿallim)",
+                "معلمة (muʿallima)",
+                "المعلمة (al-muʿallima)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Accord en 5e : nom et adjectif doivent :",
+              "explanation": "Même genre dans les phrases simples.",
+              "options": [
+                "Avoir le même genre",
+                "Être toujours masculins",
+                "Ignorer ال",
+                "Être identiques"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "كبير (kabīr) = grand (m) ; grande (f) :",
+              "explanation": "En 5e : كبيرة (kabīra) au féminin.",
+              "options": [
+                "كبيرة (kabīra)",
+                "كبير (kabīr)",
+                "كبار (kibār)",
+                "الكبير (al-kabīr)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "صغير (ṣaghīr) m ; petite :",
+              "explanation": "صغيرة (ṣaghīra) au féminin.",
+              "options": [
+                "صغيرة (ṣaghīra)",
+                "صغير (ṣaghīr)",
+                "صغار (ṣighār)",
+                "الصغير (al-ṣaghīr)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "طالب كبير =",
+              "explanation": "Adjectif masculin avec nom masculin.",
+              "options": [
+                "Un grand étudiant (m)",
+                "Une grande étudiante",
+                "Un petit livre",
+                "La grande école"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "طالبة صغيرة =",
+              "explanation": "Accord féminin : ṭāliba + ṣaghīra.",
+              "options": [
+                "Une petite étudiante",
+                "Un petit étudiant",
+                "Grand prof",
+                "Petite maison"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "جديد (jadīd) avec كتاب :",
+              "explanation": "Livre est m : jadīd reste m.",
+              "options": [
+                "كتاب جديد (kitāb jadīd)",
+                "كتاب جديدة",
+                "جديدة كتاب",
+                "الجديد كتاب"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'accord adjectif en phrase simple concerne surtout :",
+              "explanation": "Masculin avec masculin, féminin avec féminin.",
+              "options": [
+                "Le genre",
+                "La couleur seule",
+                "Les cas classiques",
+                "L'ordre inverse"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Défini et indéfini",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Noms indéfinis (sans ال) :",
+              "explanation": "Sans al-, on lit souvent « un/une ».",
+              "options": [
+                "قلم (qalam)",
+                "القلم (al-qalam)",
+                "بيت (bayt)",
+                "البيت (al-bayt)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Défini =",
+              "explanation": "Présence de ال.",
+              "options": ["Avec ال", "Sans nom", "Verbe seul", "Pronom seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Indéfini typique :",
+              "explanation": "Nom nu sans ال.",
+              "options": [
+                "Nom sans ال",
+                "Nom avec ال deux fois",
+                "Question",
+                "Négation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« La maison » :",
+              "explanation": "البيت (al-bayt).",
+              "options": [
+                "البيت (al-bayt)",
+                "بيت (bayt)",
+                "بيوت (buyūt)",
+                "بيتان (baytān)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Une maison » :",
+              "explanation": "بيت (bayt).",
+              "options": [
+                "بيت (bayt)",
+                "البيت (al-bayt)",
+                "البيوت (al-buyūt)",
+                "بيتي (baytī)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Le professeur » :",
+              "explanation": "المعلم (al-muʿallim).",
+              "options": [
+                "المعلم (al-muʿallim)",
+                "معلم (muʿallim)",
+                "معلمة (muʿallima)",
+                "معلمون (muʿallimūn)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Une fille » :",
+              "explanation": "بنت (bint).",
+              "options": [
+                "بنت (bint)",
+                "البنت (al-bint)",
+                "الولد (al-walad)",
+                "بنات (banāt)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "الولد =",
+              "explanation": "Le garçon (défini).",
+              "options": ["Le garçon", "Un garçon", "La fille", "Des garçons"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En français, al-kitāb se traduit souvent par :",
+              "explanation": "Article défini arabe ≈ le/la.",
+              "options": ["Le livre", "Un livre", "Des livres", "Mon livre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour passer de indéfini à défini en 5e, on :",
+              "explanation": "On ajoute ال au début.",
+              "options": [
+                "Ajoute ال",
+                "Enlève ة",
+                "Met un verbe",
+                "Double le nom"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Noms de la classe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Noms masculins de classe :",
+              "explanation": "Livre et stylo sont masculins ici.",
+              "options": [
+                "كتاب (kitāb)",
+                "قلم (qalam)",
+                "مدرسة (madrasa)",
+                "طالبة (ṭāliba)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Le cahier » (défini) :",
+              "explanation": "الدفتر (ad-dafatar) avec ال.",
+              "options": [
+                "الدفتر (ad-dafatar)",
+                "دفتر (dafatar)",
+                "دفترة (dafatra)",
+                "الدفترة (ad-dafatra)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Un tableau » :",
+              "explanation": "سبورة (sabbūra) sans article.",
+              "options": [
+                "سبورة (sabbūra)",
+                "السبورة (as-sabbūra)",
+                "سبور (sabbūr)",
+                "السبور (as-sabbūr)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "السبورة (as-sabbūra) =",
+              "explanation": "Le tableau (défini).",
+              "options": ["Le tableau", "Un tableau", "La gomme", "Le stylo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Genre de qalam :",
+              "explanation": "Stylo : masculin en vocabulaire scolaire.",
+              "options": ["Masculin", "Féminin", "Les deux", "Verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« La règle » (définie) :",
+              "explanation": "المسطرة (al-musṭara).",
+              "options": [
+                "المسطرة (al-musṭara)",
+                "مسطرة (musṭara)",
+                "مسطر (musṭar)",
+                "القلم (al-qalam)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "musṭara sans ال =",
+              "explanation": "Une règle.",
+              "options": ["Une règle", "La règle", "Un stylo", "La porte"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Le sac » :",
+              "explanation": "الحقيبة (al-ḥaqība) — féminin.",
+              "options": [
+                "الحقيبة (al-ḥaqība)",
+                "حقيبة (ḥaqība)",
+                "حقيب (ḥaqīb)",
+                "الحقيب (al-ḥaqīb)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ḥaqība =",
+              "explanation": "Sac (f), souvent indéfini sans ال.",
+              "options": ["Un sac", "Le sac", "Stylo", "Table"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour désigner l'objet connu en classe, on préfère :",
+              "explanation": "ال + nom = celui dont on parle.",
+              "options": [
+                "Nom avec ال",
+                "Nom seul toujours",
+                "Verbe seul",
+                "Pronom seul"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Famille et personnes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Noms féminins de parenté :",
+              "explanation": "أم et بنت sont féminins.",
+              "options": [
+                "أم (umm) — mère",
+                "أب (ab) — père",
+                "بنت (bint) — fille",
+                "أخ (akh) — frère"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "أب (ab) =",
+              "explanation": "Père, masculin.",
+              "options": ["Père", "Mère", "Frère", "Fille"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "أم (umm) =",
+              "explanation": "Mère, féminin.",
+              "options": ["Mère", "Père", "Sœur", "Garçon"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Le père » :",
+              "explanation": "الأب (al-ab).",
+              "options": [
+                "الأب (al-ab)",
+                "أب (ab)",
+                "الأم (al-umm)",
+                "أم (umm)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« La mère » :",
+              "explanation": "الأم (al-umm).",
+              "options": [
+                "الأم (al-umm)",
+                "أم (umm)",
+                "الأب (al-ab)",
+                "أب (ab)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Frère (nom simple) :",
+              "explanation": "أخ (akh).",
+              "options": ["أخ (akh)", "أخت (ukht)", "أب (ab)", "بنت (bint)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sœur (nom) :",
+              "explanation": "أخت (ukht).",
+              "options": ["أخت (ukht)", "أخ (akh)", "أم (umm)", "ولد (walad)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "walad / bint :",
+              "explanation": "Garçon et fille, genres différents.",
+              "options": [
+                "Garçon et fille",
+                "Deux sœurs",
+                "Deux pères",
+                "Verbes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "الأم (al-umm) est :",
+              "explanation": "Définie et féminine.",
+              "options": ["La mère", "Un père", "Une sœur", "Un garçon"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour accorder un adjectif avec umm, on prend :",
+              "explanation": "Forme féminine de l'adjectif.",
+              "options": [
+                "La forme féminine",
+                "Toujours masculin",
+                "Pas d'accord",
+                "L'article seul"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Couleurs et accords",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Adjectifs féminins :",
+              "explanation": "Formes adaptées au féminin.",
+              "options": [
+                "بيضاء (bayḍāʾ)",
+                "أبيض (abyaḍ)",
+                "حمراء (ḥamrāʾ)",
+                "أحمر (aḥmar)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "abyaḍ =",
+              "explanation": "Blanc (masculin).",
+              "options": ["Blanc (m)", "Blanche (f)", "Rouge", "Vert"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "bayḍāʾ =",
+              "explanation": "Blanche (féminin).",
+              "options": ["Blanche (f)", "Blanc (m)", "Noir", "Bleu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Avec طالبة, « blanche » :",
+              "explanation": "طالبة بيضاء (ṭāliba bayḍāʾ).",
+              "options": [
+                "طالبة بيضاء",
+                "طالب أبيض",
+                "كتاب أبيض",
+                "مدرسة حمراء"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Avec طالب, « blanc » :",
+              "explanation": "طالب أبيض (ṭālib abyad).",
+              "options": ["طالب أبيض", "طالبة بيضاء", "بنت حمراء", "ولد خضر"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "aḥmar =",
+              "explanation": "Rouge (m).",
+              "options": ["Rouge (m)", "Rouge (f)", "Vert", "Jaune"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ḥamrāʾ =",
+              "explanation": "Rouge (f).",
+              "options": ["Rouge (f)", "Rouge (m)", "Bleu", "Gris"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Un livre rouge » :",
+              "explanation": "كتاب أحمر (kitāb aḥmar).",
+              "options": [
+                "كتاب أحمر (kitāb aḥmar)",
+                "كتاب حمراء",
+                "كتاب أبيض",
+                "طالبة حمراء"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Une école verte » (f) :",
+              "explanation": "مدرسة خضراء (madrasa khaḍrāʾ).",
+              "options": [
+                "مدرسة خضراء (madrasa khaḍrāʾ)",
+                "مدرسة أخضر",
+                "ولد أخضر",
+                "كتاب أخضر"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'adjectif de couleur suit le nom et :",
+              "explanation": "Il s'accorde en genre avec le nom.",
+              "options": [
+                "S'accorde en genre",
+                "Reste toujours masculin",
+                "Va avant ال",
+                "Ne change jamais"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Révision articles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formes définies correctes :",
+              "explanation": "ال + nom au début.",
+              "options": [
+                "الطالب (al-ṭālib)",
+                "طالب (ṭālib)",
+                "الكتاب (al-kitāb)",
+                "كتاب (kitāb)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Indéfini :",
+              "explanation": "Sans ال.",
+              "options": [
+                "مدرسة (madrasa)",
+                "المدرسة (al-madrasa)",
+                "المدرس (al-mudarris)",
+                "الطالبة (al-ṭāliba)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Défini féminin :",
+              "explanation": "الطالبة.",
+              "options": [
+                "الطالبة (al-ṭāliba)",
+                "طالبة (ṭāliba)",
+                "طالب (ṭālib)",
+                "معلم (muʿallim)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Masculin + ال :",
+              "explanation": "الولد.",
+              "options": [
+                "الولد (al-walad)",
+                "ولد (walad)",
+                "الولدة (al-walada)",
+                "ولدة (walada)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Accord : معلمة صغيرة =",
+              "explanation": "Féminin + féminin.",
+              "options": [
+                "Une petite enseignante",
+                "Un petit enseignant",
+                "Grand livre",
+                "Petit garçon"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Accord : معلم كبير =",
+              "explanation": "Masculin + masculin.",
+              "options": [
+                "Un grand enseignant",
+                "Une grande enseignante",
+                "Petite fille",
+                "Grande école"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rôle de ال :",
+              "explanation": "Marquer le défini.",
+              "options": ["Défini", "Pluriel seul", "Passé", "Futur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ṭālib sans ال :",
+              "explanation": "Un étudiant.",
+              "options": [
+                "Un étudiant",
+                "L'étudiant",
+                "L'étudiante",
+                "Les étudiants"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "al-ṭālib :",
+              "explanation": "L'étudiant (m).",
+              "options": [
+                "L'étudiant (m)",
+                "Une étudiante",
+                "Un livre",
+                "La plume"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 5e, article + accord servent surtout à :",
+              "explanation": "Nommer et décrire simplement.",
+              "options": [
+                "Nommer et décrire simplement",
+                "Conjuguer au passé",
+                "Analyser les cas",
+                "Traduire en latin"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse accords",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bonnes affirmations (5e) :",
+              "explanation": "ال = défini ; ة aide au féminin.",
+              "options": [
+                "ال marque le défini",
+                "ة peut marquer le féminin",
+                "ال change toujours le genre",
+                "Tous les noms finissent par ة"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "طالبة + adjectif :",
+              "explanation": "Forme féminine de l'adjectif.",
+              "options": [
+                "Forme féminine",
+                "Masculin obligatoire",
+                "Pas d'adjectif",
+                "Verbe seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le livre défini :",
+              "explanation": "الكتاب.",
+              "options": [
+                "الكتاب (al-kitāb)",
+                "كتاب (kitāb)",
+                "كتابة (kitāba)",
+                "الكتابة (al-kitāba)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une plume :",
+              "explanation": "قلم (qalam).",
+              "options": [
+                "قلم (qalam)",
+                "القلم (al-qalam)",
+                "قلمة (qalama)",
+                "القلمة (al-qalama)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Enseignante :",
+              "explanation": "معلمة.",
+              "options": [
+                "معلمة (muʿallima)",
+                "معلم (muʿallim)",
+                "معلمون (muʿallimūn)",
+                "المعلم (al-muʿallim)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Étudiant (m) :",
+              "explanation": "طالب.",
+              "options": [
+                "طالب (ṭālib)",
+                "طالبة (ṭāliba)",
+                "الطالبة (al-ṭāliba)",
+                "طالبات (ṭālibāt)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La fille définie :",
+              "explanation": "البنت.",
+              "options": [
+                "البنت (al-bint)",
+                "بنت (bint)",
+                "الولد (al-walad)",
+                "بنتان (bintān)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'école définie :",
+              "explanation": "المدرسة.",
+              "options": [
+                "المدرسة (al-madrasa)",
+                "مدرسة (madrasa)",
+                "مدرس (mudarris)",
+                "المعلم (al-muʿallim)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En 5e on apprend surtout :",
+              "explanation": "Genre, ال et phrases courtes.",
+              "options": [
+                "Genre, ال, phrases simples",
+                "Les trois cas",
+                "Le dual",
+                "Poésie classique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La transcription sert à :",
+              "explanation": "Prononcer le mot arabe.",
+              "options": [
+                "Prononcer le mot",
+                "Changer le genre",
+                "Remplacer ال",
+                "Éviter le français"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Pronom أنا",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases correctes avec أنا (anā) :",
+              "explanation": "أنا introduit le locuteur avec nom ou adjectif accordé.",
+              "options": [
+                "أنا طالب (anā ṭālib)",
+                "أنت طالب (anta ṭālib)",
+                "أنا طالبة (anā ṭāliba)",
+                "هو طالب (huwa ṭālib)"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je » en arabe :",
+              "explanation": "أنا (anā).",
+              "options": [
+                "أنا (anā)",
+                "أنت (anta)",
+                "هو (huwa)",
+                "نحن (naḥnu)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "أنا طالب (anā ṭālib) =",
+              "explanation": "Je suis étudiant (m).",
+              "options": [
+                "Je suis étudiant (m)",
+                "Tu es étudiant",
+                "Je suis étudiante",
+                "Il est prof"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "أنا طالبة (anā ṭāliba) =",
+              "explanation": "Je suis étudiante (f).",
+              "options": [
+                "Je suis étudiante",
+                "Je suis étudiant (m)",
+                "Tu es fille",
+                "Nous sommes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans une phrase simple, أنا :",
+              "explanation": "Sujet au début, puis nom ou adjectif.",
+              "options": [
+                "Commence la phrase (sujet)",
+                "Est toujours à la fin",
+                "Suit ال seulement",
+                "Remplace tout verbe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "أنا سعيد (anā saʿīd) =",
+              "explanation": "Je suis content (m).",
+              "options": [
+                "Je suis content (m)",
+                "Je suis contente (f)",
+                "Tu es content",
+                "Il est triste"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "أنا سعيدة (anā saʿīda) =",
+              "explanation": "Je suis contente (f).",
+              "options": [
+                "Je suis contente (f)",
+                "Je suis content (m)",
+                "Tu es contente",
+                "Elle est prof"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "أنا معلم (anā muʿallim) =",
+              "explanation": "Je suis enseignant.",
+              "options": [
+                "Je suis enseignant",
+                "Je suis enseignante",
+                "Tu es enseignant",
+                "Il est élève"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "أنا معلمة (anā muʿallima) =",
+              "explanation": "Je suis enseignante.",
+              "options": [
+                "Je suis enseignante",
+                "Je suis enseignant",
+                "Tu es prof",
+                "Il est directeur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "أنا indique :",
+              "explanation": "La personne qui parle.",
+              "options": [
+                "Le locuteur",
+                "L'interlocuteur",
+                "Un objet",
+                "L'article"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Pronom أنت",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formes de « tu » en arabe (5e) :",
+              "explanation": "Anta pour un garçon/homme, anti pour une fille/femme.",
+              "options": [
+                "أنت (anta) — tu (m)",
+                "أنت (anti) — tu (f)",
+                "أنا (anā)",
+                "هو (huwa)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "anta (أنت) s'adresse à :",
+              "explanation": "Interlocuteur masculin.",
+              "options": [
+                "Un garçon / homme",
+                "Une fille / femme",
+                "Groupe",
+                "Soi-même"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "anti (أنت) s'adresse à :",
+              "explanation": "Interlocutrice féminine.",
+              "options": [
+                "Une fille / femme",
+                "Un garçon",
+                "Trois personnes",
+                "Personne"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "أنت طالب (anta ṭālib) =",
+              "explanation": "Tu es étudiant (m).",
+              "options": [
+                "Tu es étudiant (m)",
+                "Je suis étudiant",
+                "Tu es étudiante",
+                "Il est étudiant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "أنت طالبة (anti ṭāliba) =",
+              "explanation": "Tu es étudiante (f).",
+              "options": [
+                "Tu es étudiante",
+                "Tu es étudiant (m)",
+                "Je suis étudiante",
+                "Elle est étudiante"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "أنت سعيد (anta saʿīd) =",
+              "explanation": "Tu es content (m).",
+              "options": [
+                "Tu es content (m)",
+                "Tu es contente (f)",
+                "Je suis content",
+                "Il est content"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "أنت سعيدة (anti saʿīda) =",
+              "explanation": "Tu es contente (f).",
+              "options": [
+                "Tu es contente (f)",
+                "Tu es content (m)",
+                "Je suis contente",
+                "Nous sommes contentes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour parler à une camarade fille, on choisit :",
+              "explanation": "Forme féminine anti + adjectif/nom f.",
+              "options": ["anti (أنت f)", "anta (أنت m)", "anā", "huwa"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "أنت معلم (anta muʿallim) =",
+              "explanation": "Tu es enseignant (on s'adresse à un homme).",
+              "options": [
+                "Tu es enseignant",
+                "Tu es enseignante",
+                "Je suis enseignant",
+                "Il est élève"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "أنت remplace :",
+              "explanation": "Le nom de la personne à qui l'on parle.",
+              "options": ["L'interlocuteur", "Le locuteur", "Le livre", "ال"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Phrases avec أنا",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases nominales correctes (je) :",
+              "explanation": "Anā + nom ou adjectif au bon genre.",
+              "options": [
+                "أنا طالب (anā ṭālib)",
+                "أنا طالبة (anā ṭāliba)",
+                "أنا طالب (anā ṭāliba)",
+                "أنت طالب (anta ṭālib)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "أنا في البيت (anā fī al-bayt) =",
+              "explanation": "Je suis dans la maison (phrase simple avec préposition en 5e).",
+              "options": [
+                "Je suis à la maison",
+                "Tu es à la maison",
+                "Il est à l'école",
+                "Je suis prof"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "أنا من فرنسا (anā min Faransā) =",
+              "explanation": "Je suis de France / je viens de France.",
+              "options": [
+                "Je suis de France",
+                "Tu es de France",
+                "Il est marocain",
+                "Je suis à Paris"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Accord : je suis contente :",
+              "explanation": "Anā saʿīda au féminin.",
+              "options": [
+                "أنا سعيدة (anā saʿīda)",
+                "أنا سعيد (anā saʿīd)",
+                "أنت سعيدة (anti saʿīda)",
+                "هو سعيد (huwa saʿīd)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "أنا طالب جديد (anā ṭālib jadīd) =",
+              "explanation": "Je suis un nouvel étudiant (m).",
+              "options": [
+                "Je suis un nouvel étudiant",
+                "Je suis une nouvelle étudiante",
+                "Tu es nouvel",
+                "Il est ancien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "أنا طالبة مجتهدة (anā ṭāliba mujtahida) =",
+              "explanation": "Je suis une étudiante appliquée.",
+              "options": [
+                "Je suis une étudiante appliquée",
+                "Je suis un étudiant paresseux",
+                "Tu es appliquée",
+                "Il est prof"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase simple =",
+              "explanation": "Peu de mots : sujet + prédicat.",
+              "options": [
+                "Sujet + prédicat",
+                "Cas complexe",
+                "Poème",
+                "Liste de verbes seuls"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "أنا لست طالبا (anā lastu ṭāliban) — sens approché en 5e :",
+              "explanation": "Je ne suis pas étudiant (négation simple avec lastu).",
+              "options": [
+                "Je ne suis pas étudiant",
+                "Je suis étudiant",
+                "Tu n'es pas étudiant",
+                "Oui je suis"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "أنا أحب المدرسة (anā uḥibbu al-madrasa) =",
+              "explanation": "J'aime l'école (phrase simple courante).",
+              "options": [
+                "J'aime l'école",
+                "Tu aimes l'école",
+                "Je déteste l'école",
+                "Il aime le livre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après أنا, l'adjectif s'accorde avec :",
+              "explanation": "Le locuteur (m ou f).",
+              "options": [
+                "Le genre du locuteur",
+                "Toujours masculin",
+                "L'article seul",
+                "Le verbe anglais"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Phrases avec أنت",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases correctes avec « tu » :",
+              "explanation": "Anta + m ; anti + f.",
+              "options": [
+                "أنت طالب (anta ṭālib)",
+                "أنت طالبة (anti ṭāliba)",
+                "أنا طالب (anā ṭālib)",
+                "أنت طالبة (anta ṭāliba)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "أنت كريم (anta karīm) =",
+              "explanation": "Tu es généreux (m).",
+              "options": [
+                "Tu es généreux (m)",
+                "Tu es généreuse (f)",
+                "Je suis généreux",
+                "Il est généreux"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "أنت كريمة (anti karīma) =",
+              "explanation": "Tu es généreuse (f).",
+              "options": [
+                "Tu es généreuse (f)",
+                "Tu es généreux (m)",
+                "Je suis généreuse",
+                "Elle est généreuse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "أنت في الصف (anta fī aṣ-ṣaff) =",
+              "explanation": "Tu es en classe.",
+              "options": [
+                "Tu es en classe",
+                "Je suis en classe",
+                "Il est dehors",
+                "Tu es prof"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "أنت من المغرب (anta min al-Maghrib) =",
+              "explanation": "Tu es du Maroc / tu viens du Maroc.",
+              "options": [
+                "Tu es du Maroc",
+                "Je suis du Maroc",
+                "Il est de France",
+                "Tu es à Rabat"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Erreur fréquente : anta +",
+              "explanation": "Anta ne s'accorde pas avec ṭāliba.",
+              "options": [
+                "طالبة (ṭāliba) — incorrect pour anta",
+                "طالب (ṭālib) — correct",
+                "anti + طالبة — correct",
+                "anā + طالب — autre personne"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "أنت تحب الكتاب (anta tuḥibbu al-kitāb) =",
+              "explanation": "Tu aimes le livre.",
+              "options": [
+                "Tu aimes le livre",
+                "Je aime le livre",
+                "Tu détestes le livre",
+                "Il lit le livre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour saluer « tu » :",
+              "explanation": "مرحبا أنت (marḥaban) ou contexte de cours — phrase courte.",
+              "options": [
+                "On utilise أنت dans une phrase courte",
+                "On supprime le pronom toujours",
+                "On met ال avant أنت",
+                "On inverse tout"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "أنت طالب مجتهد (anta ṭālib mujtahid) =",
+              "explanation": "Tu es un étudiant appliqué (m).",
+              "options": [
+                "Tu es un étudiant appliqué",
+                "Tu es une étudiante appliquée",
+                "Je suis appliqué",
+                "Il est paresseux"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir anti ou anta dépend :",
+              "explanation": "Du genre de la personne adressée.",
+              "options": [
+                "Du genre de l'interlocuteur",
+                "De l'heure",
+                "De la couleur du livre",
+                "Du nombre de syllabes"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Ordre des mots",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ordre naturel en phrase simple (5e) :",
+              "explanation": "Sujet (pronom ou nom) puis prédicat.",
+              "options": [
+                "أنا + nom/adjectif",
+                "أنت + nom/adjectif",
+                "nom + أنا au hasard",
+                "verbe français seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "الطالب مجتهد (aṭ-ṭālib mujtahid) =",
+              "explanation": "L'étudiant est appliqué (nom + adjectif).",
+              "options": [
+                "L'étudiant est appliqué",
+                "Je suis appliqué",
+                "Tu es appliqué",
+                "Une étudiante appliquée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "الطالبة مجتهدة (aṭ-ṭāliba mujtahida) =",
+              "explanation": "Accord féminin sur l'adjectif.",
+              "options": [
+                "L'étudiante est appliquée",
+                "L'étudiant est appliqué",
+                "Tu es appliquée",
+                "Le livre est neuf"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En phrase nominale simple, l'adjectif suit :",
+              "explanation": "Il vient après le nom qu'il qualifie.",
+              "options": [
+                "Le nom",
+                "Toujours أنا",
+                "Toujours ال",
+                "Le verbe en français"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "كتاب جديد (kitāb jadīd) dans une phrase =",
+              "explanation": "Un livre neuf / le livre est neuf selon le contexte.",
+              "options": [
+                "Livre + adjectif accordé (m)",
+                "Livre féminin",
+                "Verbe seul",
+                "Question"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "مدرسة كبيرة (madrasa kabīra) =",
+              "explanation": "Grande école / école grande (f + f).",
+              "options": [
+                "École grande (accord f)",
+                "École petit",
+                "Garçon grand",
+                "Stylo neuf"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pronom sujet + adjectif :",
+              "explanation": "أنا سعيد / anti saʿīda.",
+              "options": [
+                "Pronom puis adjectif accordé",
+                "Adjectif puis pronom inversé",
+                "Pas de pronom",
+                "Article seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "ال + nom + adjectif : l'adjectif :",
+              "explanation": "S'accorde avec le nom (genre).",
+              "options": [
+                "S'accorde avec le nom",
+                "Est toujours au masculin",
+                "Remplace ال",
+                "Va avant le pronom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase : أنا + ال + nom :",
+              "explanation": "On peut dire أنا الطالب (je suis l'étudiant) en style simple.",
+              "options": [
+                "Possible en phrase simple",
+                "Interdit en 5e",
+                "Uniquement en anglais",
+                "Sans transcription"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 5e, l'ordre des mots sert surtout à :",
+              "explanation": "Dire qui fait quoi ou qui est comment.",
+              "options": [
+                "Exprimer une idée claire",
+                "Apprendre les cas",
+                "Conjuguer le passé",
+                "Lire de droite à gauche seulement"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Phrases et ال",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases avec nom défini :",
+              "explanation": "ال marque le nom défini dans la phrase.",
+              "options": [
+                "أنا في المدرسة (anā fī al-madrasa)",
+                "الكتاب جديد (al-kitāb jadīd)",
+                "كتاب جديد (kitāb jadīd) — indéfini",
+                "أنت طالب (anta ṭālib)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "أنا أقرأ الكتاب (anā aqraʾu al-kitāb) ≈",
+              "explanation": "Je lis le livre (phrase simple scolaire).",
+              "options": [
+                "Je lis le livre",
+                "Tu lis le livre",
+                "Je lis un livre",
+                "Il ferme le livre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "المدرسة كبيرة (al-madrasa kabīra) =",
+              "explanation": "L'école est grande.",
+              "options": [
+                "L'école est grande",
+                "Une école grande",
+                "Tu es grand",
+                "Le stylo est grand"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "المعلم لطيف (al-muʿallim laṭīf) =",
+              "explanation": "Le professeur est gentil.",
+              "options": [
+                "Le professeur est gentil",
+                "Une prof gentille",
+                "Je suis gentil",
+                "Le livre est gentil"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "المعلمة لطيفة (al-muʿallima laṭīfa) =",
+              "explanation": "Accord féminin sur l'adjectif.",
+              "options": [
+                "La professeure est gentille",
+                "Le professeur est gentil",
+                "Tu es gentille",
+                "Il est strict"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "أنت في المدرسة (anta fī al-madrasa) =",
+              "explanation": "Tu es à l'école.",
+              "options": [
+                "Tu es à l'école",
+                "Je suis à l'école",
+                "Il est à la maison",
+                "L'école est fermée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "القلم على الطاولة (al-qalam ʿalā aṭ-ṭāwila) ≈",
+              "explanation": "Le stylo est sur la table (phrase descriptive).",
+              "options": [
+                "Le stylo est sur la table",
+                "Un stylo neuf",
+                "Je prends le stylo",
+                "Tu perds le stylo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sans ال dans « je lis un livre » :",
+              "explanation": "Kitāb indéfini sans al-.",
+              "options": [
+                "أقرأ كتابا (aqraʾu kitāban) — sens approché",
+                "أقرأ الكتاب",
+                "الكتاب أقرأ",
+                "كتاب أنا"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "ال + nom dans la phrase indique :",
+              "explanation": "Souvent quelque chose de connu ou spécifique.",
+              "options": [
+                "Nom défini / connu",
+                "Toujours pluriel",
+                "Négation",
+                "Futur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combinaison pronom + ال + nom :",
+              "explanation": "Ex. je suis l'élève : أنا الطالب.",
+              "options": [
+                "Phrase simple possible",
+                "Interdit",
+                "Cas classique",
+                "Pluriel obligatoire"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Questions simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mots interrogatifs de base :",
+              "explanation": "Mā = quoi ; man = qui — niveau 5e.",
+              "options": [
+                "ما (mā) — quoi ?",
+                "من (man) — qui ?",
+                "ال (al-)",
+                "ة (ta marbuta)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ما اسمك؟ (mā ismuk?) =",
+              "explanation": "Comment tu t'appelles ? (litt. quoi ton nom ?).",
+              "options": [
+                "Comment tu t'appelles ?",
+                "Où habites-tu ?",
+                "Quelle heure ?",
+                "Au revoir"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "من أنت؟ (man anta?) =",
+              "explanation": "Qui es-tu ?",
+              "options": [
+                "Qui es-tu ?",
+                "Qu'est-ce que c'est ?",
+                "Où es-tu ?",
+                "Merci"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "أين (ayna) sert à :",
+              "explanation": "Demander le lieu : où ?",
+              "options": ["Où ?", "Qui ?", "Quoi ?", "Quand ?"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "أين المدرسة؟ (ayna al-madrasa?) =",
+              "explanation": "Où est l'école ?",
+              "options": [
+                "Où est l'école ?",
+                "Quelle est l'école ?",
+                "Je suis à l'école",
+                "L'école est grande"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "هل (hal) en début de phrase :",
+              "explanation": "Introduit une question oui/non.",
+              "options": [
+                "Question oui/non",
+                "Exclamation",
+                "Négation seule",
+                "Article"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "هل أنت طالب؟ (hal anta ṭālib?) =",
+              "explanation": "Es-tu étudiant ?",
+              "options": [
+                "Es-tu étudiant ?",
+                "Je suis étudiant",
+                "Il est étudiant",
+                "Qui es-tu ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réponse courte positive :",
+              "explanation": "نعم (naʿam) = oui.",
+              "options": ["نعم (naʿam)", "لا (lā)", "ما (mā)", "من (man)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réponse courte négative :",
+              "explanation": "لا (lā) = non.",
+              "options": ["لا (lā)", "نعم (naʿam)", "أنا (anā)", "ال (al-)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une question simple se reconnaît par :",
+              "explanation": "Mot interrogatif ou hal + phrase courte.",
+              "options": [
+                "Mot interrogatif ou hal",
+                "Uniquement ال",
+                "Absence de pronom",
+                "Trois adjectifs"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Négation avec لا",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "لا (lā) peut exprimer :",
+              "explanation": "Non comme réponse ; parfois négation devant un nom/adjectif en cours simple.",
+              "options": [
+                "Non (réponse)",
+                "Négation simple devant un mot",
+                "Article défini",
+                "Pronom je"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "لا، أنا لست طالبا (lā, anā lastu ṭāliban) ≈",
+              "explanation": "Non, je ne suis pas étudiant.",
+              "options": [
+                "Non, je ne suis pas étudiant",
+                "Oui je suis étudiant",
+                "Tu n'es pas étudiant",
+                "Il est étudiant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ليس (laysa) — sens approché en 5e :",
+              "explanation": "Nier une phrase nominale : « n'est pas ».",
+              "options": ["N'est pas", "Est", "A", "Va"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "الكتاب ليس جديدا (al-kitāb laysa jadīdan) ≈",
+              "explanation": "Le livre n'est pas neuf.",
+              "options": [
+                "Le livre n'est pas neuf",
+                "Le livre est neuf",
+                "Un livre neuf",
+                "Je n'aime pas le livre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "لا قبل un nom — sens courant en classe :",
+              "explanation": "Parfois « pas de » ou négation selon le modèle vu.",
+              "options": [
+                "Négation / absence selon le modèle",
+                "Toujours « le »",
+                "Toujours « je »",
+                "Pluriel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Répondre « non » à hal anta ṭālib? :",
+              "explanation": "لا (lā).",
+              "options": ["لا (lā)", "نعم (naʿam)", "أنا (anā)", "ما (mā)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "أنا لست سعيدة (anā lastu saʿīda) =",
+              "explanation": "Je ne suis pas contente (f).",
+              "options": [
+                "Je ne suis pas contente",
+                "Je suis contente",
+                "Tu n'es pas contente",
+                "Il est content"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Négation en phrase simple reste :",
+              "explanation": "Sans cas complexes du classique.",
+              "options": [
+                "Courte et claire",
+                "Réservée au passé",
+                "Impossible avec أنا",
+                "Sans mot arabe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "lastu s'utilise avec :",
+              "explanation": "Anā lastu… = je ne suis pas…",
+              "options": [
+                "أنا (je)",
+                "أنت seulement",
+                "ال seulement",
+                "Hors phrase"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "لا comme « non » ≠ لا comme négation :",
+              "explanation": "Même mot, sens selon le contexte de la phrase.",
+              "options": [
+                "Le contexte tranche",
+                "Deux mots différents",
+                "Toujours article",
+                "Toujours verbe"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Phrases à l'école",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases utiles en classe :",
+              "explanation": "Présentation et lieu scolaire.",
+              "options": [
+                "أنا طالب (anā ṭālib)",
+                "أنا في الصف (anā fī aṣ-ṣaff)",
+                "هو في القمر",
+                "ال + seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "السلام عليكم (as-salāmu ʿalaykum) =",
+              "explanation": "Formule de paix / salut courant.",
+              "options": ["Salut / paix sur vous", "Au revoir", "Merci", "Non"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "شكرا (shukran) =",
+              "explanation": "Merci.",
+              "options": ["Merci", "Bonjour", "Pardon", "Oui"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "أنا أكتب (anā aktub) ≈",
+              "explanation": "J'écris (phrase simple au présent).",
+              "options": ["J'écris", "Tu écris", "Il lit", "Je dors"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "أنت تكتب (anta taktub) ≈",
+              "explanation": "Tu écris (m).",
+              "options": ["Tu écris", "J'écris", "Elle écrit", "Nous écrivons"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "المعلم في الفصل (al-muʿallim fī al-faṣl) =",
+              "explanation": "Le professeur est en classe.",
+              "options": [
+                "Le prof est en classe",
+                "Tu es en classe",
+                "Je suis prof",
+                "La classe est grande"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "أنا أحب اللغة العربية (anā uḥibbu al-lugha al-ʿarabiyya) ≈",
+              "explanation": "J'aime la langue arabe.",
+              "options": [
+                "J'aime la langue arabe",
+                "Tu parles français",
+                "Il déteste l'arabe",
+                "La langue est difficile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "الواجب سهل (al-wājib sahl) =",
+              "explanation": "Le devoir est facile.",
+              "options": [
+                "Le devoir est facile",
+                "Le devoir est difficile",
+                "Je suis facile",
+                "Tu es difficile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "أنا مستعد (anā mustaʿidd) / مستعدة (mustaʿidda) =",
+              "explanation": "Je suis prêt(e) — accord m/f.",
+              "options": [
+                "Je suis prêt / prête",
+                "Tu es prêt",
+                "Il est en retard",
+                "Nous partons"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase simple à l'école combine :",
+              "explanation": "Pronoms, noms scolaires, ال, verbes basiques.",
+              "options": [
+                "Pronoms, noms, ال, verbes simples",
+                "Cas du nom",
+                "Poésie",
+                "Uniquement chiffres"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse phrases",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Repères phrase simple 5e :",
+              "explanation": "أنا/أنت, accord, ال, pas de cas classiques.",
+              "options": [
+                "أنا et أنت (m/f)",
+                "Accord nom-adjectif",
+                "Cas nominatif/accusatif classiques",
+                "Phrases courtes"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je suis étudiante :",
+              "explanation": "Anā ṭāliba.",
+              "options": [
+                "أنا طالبة (anā ṭāliba)",
+                "أنت طالبة (anti ṭāliba)",
+                "أنا طالب (anā ṭālib)",
+                "هو طالب (huwa ṭālib)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tu es étudiant (m) :",
+              "explanation": "Anta ṭālib.",
+              "options": [
+                "أنت طالب (anta ṭālib)",
+                "أنا طالب (anā ṭālib)",
+                "أنت طالبة (anti ṭāliba)",
+                "هي طالبة (hiya ṭāliba)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'étudiant est grand :",
+              "explanation": "Aṭ-ṭālib kabīr.",
+              "options": [
+                "الطالب كبير (aṭ-ṭālib kabīr)",
+                "الطالبة كبيرة",
+                "أنا كبير",
+                "كتاب كبير"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Es-tu étudiant ?",
+              "explanation": "Hal anta ṭālib?",
+              "options": [
+                "هل أنت طالب؟ (hal anta ṭālib?)",
+                "من أنت؟ (man anta?)",
+                "ما اسمك؟",
+                "شكرا"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Non :",
+              "explanation": "Lā.",
+              "options": ["لا (lā)", "نعم (naʿam)", "أنا (anā)", "ما (mā)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Je suis à l'école :",
+              "explanation": "Anā fī al-madrasa.",
+              "options": [
+                "أنا في المدرسة (anā fī al-madrasa)",
+                "أنت في المدرسة",
+                "أنا في البيت",
+                "المدرسة في أنا"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le livre est nouveau :",
+              "explanation": "Al-kitāb jadīd.",
+              "options": [
+                "الكتاب جديد (al-kitāb jadīd)",
+                "كتاب جديد",
+                "أنا جديد",
+                "قلم جديد"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En 5e, une phrase simple évite :",
+              "explanation": "Les cas grammaticaux de l'arabe classique.",
+              "options": [
+                "Les cas classiques avancés",
+                "Les pronoms",
+                "ال",
+                "Transcription"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif du chapitre « Phrases simples » :",
+              "explanation": "Se présenter et dire des phrases courtes correctes.",
+              "options": [
+                "Se présenter et parler en phrases courtes",
+                "Maîtriser la rhétorique",
+                "Conjuguer tout le passé",
+                "Analyser un poème"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

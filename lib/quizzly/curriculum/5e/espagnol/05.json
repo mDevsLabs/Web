@@ -1,0 +1,2248 @@
+{
+  "id": "5e-espagnol-05",
+  "year": "5e",
+  "subject": "espagnol",
+  "title": "Le passé en l'espagnol",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases correctes avec ayer au passé :",
+              "options": [
+                "Ayer fui al parque.",
+                "Ayer voy al parque.",
+                "Ayer comí pizza.",
+                "Ayer como pizza."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ayer exige le prétérit : fui, comí."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Hier :",
+              "options": ["hoy", "ayer", "mañana", "ahora"],
+              "correctAnswers": [1],
+              "explanation": "Ayer = hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Jugué est :",
+              "options": ["présent", "prétérit", "futur", "infinitif"],
+              "correctAnswers": [1],
+              "explanation": "Passé de jugar."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ayer vi una película :",
+              "options": [
+                "Demain film",
+                "Hier film vu",
+                "Présent film",
+                "Hier mangé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Vi = passé de ver."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Yo allé :",
+              "options": ["voy", "fui", "fue", "iba"],
+              "correctAnswers": [1],
+              "explanation": "Fui = yo de ir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ayer comí helado :",
+              "options": ["glace hier", "glace demain", "boisson", "école"],
+              "correctAnswers": [0],
+              "explanation": "Comí = mangé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Correct :",
+              "options": [
+                "Ayer fui a la escuela.",
+                "Ayer voy escuela.",
+                "Ayer ir.",
+                "Ayer fui escuela."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fui a la escuela."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "No jugué : no =",
+              "options": ["?", "négation", "futur", "pluriel"],
+              "correctAnswers": [1],
+              "explanation": "No nie le verbe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comí : verbe",
+              "options": ["comer", "jugar", "ver", "ir"],
+              "correctAnswers": [0],
+              "explanation": "Prétérit de comer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Hier achevé :",
+              "options": ["présent", "prétérit", "infinitif", "sans verbe"],
+              "correctAnswers": [1],
+              "explanation": "Prétérit pour passé fini."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Passé de ir :",
+              "options": ["fui", "fuiste", "voy", "van"],
+              "correctAnswers": [0, 1],
+              "explanation": "Fui, fuiste passés ; voy, van présents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tú ayer ir :",
+              "options": ["fui", "fuiste", "fue", "fuimos"],
+              "correctAnswers": [1],
+              "explanation": "Tú → fuiste."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ella ir ayer :",
+              "options": ["fui", "fuiste", "fue", "fueron"],
+              "correctAnswers": [2],
+              "explanation": "Ella → fue."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Madrid hier :",
+              "options": [
+                "Ayer fui a Madrid.",
+                "Ayer voy.",
+                "Ayer ir.",
+                "Ayer fui Madrid."
+              ],
+              "correctAnswers": [0],
+              "explanation": "A + ville."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nosotros :",
+              "options": ["fui", "fuiste", "fuimos", "fueron"],
+              "correctAnswers": [2],
+              "explanation": "Fuimos = nous."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ellos playa :",
+              "options": ["fui", "fue", "fuimos", "fueron"],
+              "correctAnswers": [3],
+              "explanation": "Ellos → fueron."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De compras :",
+              "options": ["courses", "école", "dormir", "nager seul"],
+              "correctAnswers": [0],
+              "explanation": "Faire les courses."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fui = pronom",
+              "options": ["tú", "yo", "ellos", "ella"],
+              "correctAnswers": [1],
+              "explanation": "Yo fui."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "¿Adónde fuiste ayer?",
+              "options": ["demain", "hier où (tú)", "maintenant", "origine"],
+              "correctAnswers": [1],
+              "explanation": "Fuiste ayer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ir passé :",
+              "options": [
+                "régulier",
+                "irrégulier",
+                "= presente",
+                "infinitif seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Prétérit irrégulier."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comer passé yo/tú :",
+              "options": ["comí", "comiste", "como", "comen"],
+              "correctAnswers": [0, 1],
+              "explanation": "Comí, comiste ; como présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Yo ayer :",
+              "options": ["como", "comí", "comió", "comer"],
+              "correctAnswers": [1],
+              "explanation": "Comí."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ella :",
+              "options": ["comí", "comiste", "comió", "comimos"],
+              "correctAnswers": [2],
+              "explanation": "Comió."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Accent sur comí car",
+              "options": ["futur", "yo -er passé", "pluriel", "question"],
+              "correctAnswers": [1],
+              "explanation": "Terminaison -í."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nosotros restaurante :",
+              "options": ["comí", "comiste", "comimos", "comieron"],
+              "correctAnswers": [2],
+              "explanation": "Comimos."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "No comí ayer",
+              "options": ["mangé", "pas mangé", "mange", "ils mangent"],
+              "correctAnswers": [1],
+              "explanation": "Négation passée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Yo comer passé",
+              "options": ["como", "comí", "comía", "comeré"],
+              "correctAnswers": [1],
+              "explanation": "Comí."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ellos pizza",
+              "options": ["comí", "comió", "comimos", "comieron"],
+              "correctAnswers": [3],
+              "explanation": "Comieron."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "¿Qué comiste ayer?",
+              "options": ["présent", "mangé hier", "futur", "lieu"],
+              "correctAnswers": [1],
+              "explanation": "Comiste ayer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "-er yo passé",
+              "options": ["-o", "-í", "-ando", "infinitif"],
+              "correctAnswers": [1],
+              "explanation": "Comí en -í."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Jugar passé :",
+              "options": ["jugué", "jugaste", "juego", "jugáis presente"],
+              "correctAnswers": [0, 1],
+              "explanation": "Jugué, jugaste passés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Yo tenis",
+              "options": ["juego", "jugué", "jugó", "jugar"],
+              "correctAnswers": [1],
+              "explanation": "Jugué."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "U dans jugué",
+              "options": ["-ar pur", "son [g]", "futur", "inutile"],
+              "correctAnswers": [1],
+              "explanation": "u après g."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tú videojuegos",
+              "options": ["jugué", "jugaste", "jugó", "jugaron"],
+              "correctAnswers": [1],
+              "explanation": "Jugaste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Foot hier",
+              "options": [
+                "Ayer jugué al fútbol.",
+                "Ayer juego.",
+                "Ayer jugar.",
+                "Ayer jugó yo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jugué al fútbol."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ellos parque",
+              "options": ["jugué", "jugaste", "jugaron", "jugamos"],
+              "correctAnswers": [2],
+              "explanation": "Jugaron."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "No jugué",
+              "options": ["joué", "pas joué", "joue", "ils jouent"],
+              "correctAnswers": [1],
+              "explanation": "No jugué."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Jugar passé yo",
+              "options": ["sin u", "jugué", "jego", "presente"],
+              "correctAnswers": [1],
+              "explanation": "Forme jugué."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "¿Jugaste ayer?",
+              "options": ["présent", "as-tu joué", "futur", "où"],
+              "correctAnswers": [1],
+              "explanation": "Jugaste ayer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Al =",
+              "options": ["à la", "a+el", "de", "sans"],
+              "correctAnswers": [1],
+              "explanation": "Al = au sport."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ver passé :",
+              "options": ["vi", "vio", "veo", "ven"],
+              "correctAnswers": [0, 1],
+              "explanation": "Vi, vio passés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Yo amigo",
+              "options": ["veo", "vi", "vió", "ver"],
+              "correctAnswers": [1],
+              "explanation": "Vi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ella gato",
+              "options": ["vi", "viste", "vio", "vimos"],
+              "correctAnswers": [2],
+              "explanation": "Vio."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Yo ver passé",
+              "options": ["veo", "vi", "veía", "veré"],
+              "correctAnswers": [1],
+              "explanation": "Vi irrégulier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nosotros serie",
+              "options": ["vi", "viste", "vimos", "vieron"],
+              "correctAnswers": [2],
+              "explanation": "Vimos."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vi la tele",
+              "options": ["TV hier", "TV demain", "mange", "dors"],
+              "correctAnswers": [0],
+              "explanation": "Vi = vu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tú partido",
+              "options": ["vi", "viste", "vio", "vieron"],
+              "correctAnswers": [1],
+              "explanation": "Viste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "No vi nada",
+              "options": ["tout vu", "rien vu", "tout vois", "demain"],
+              "correctAnswers": [1],
+              "explanation": "Nada nie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ellos museo",
+              "options": ["vi", "vio", "vimos", "vieron"],
+              "correctAnswers": [3],
+              "explanation": "Vieron."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ver passé",
+              "options": ["régulier", "irrégulier", "absent", "présent seul"],
+              "correctAnswers": [1],
+              "explanation": "Vi, viste…"
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases d'hier correctes :",
+              "options": [
+                "Ayer fui y comí.",
+                "Ayer fui y como.",
+                "Ayer vi y jugué.",
+                "Ayer vi y juego."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Deux verbes au prétérit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ayer ___ y ___ (ir, comer yo)",
+              "options": ["voy, como", "fui, comí", "fue, comió", "ir, comer"],
+              "correctAnswers": [1],
+              "explanation": "Fui et comí."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ordre logique :",
+              "options": [
+                "Ayer jugué y vi TV.",
+                "Ayer juego y vi.",
+                "Ayer jugar y ver.",
+                "Ayer jugué y veo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux au passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "¿Qué hiciste ayer? attend",
+              "options": ["présent", "passé", "infinitif seul", "nom seul"],
+              "correctAnswers": [1],
+              "explanation": "Hiciste = passé de hacer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réponse : Ayer ___ al parque y ___ fútbol.",
+              "options": [
+                "fui, jugué",
+                "voy, juego",
+                "fue, jugó",
+                "fuimos, jugamos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yo : fui, jugué."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ayer ella ___ y ___",
+              "options": [
+                "fui, comí",
+                "fue, comió",
+                "fuiste, comiste",
+                "fueron, comieron"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ella : fue, comió."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Marqueur temps avec prétérit :",
+              "options": [
+                "siempre + présent",
+                "ayer + passé",
+                "mañana + passé",
+                "ahora + passé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ayer coïncide avec prétérit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pas hier :",
+              "options": [
+                "Ayer fui.",
+                "Hoy fui ayer.",
+                "Ayer comí.",
+                "Ayer vi."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Hoy = aujourd'hui, incohérent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mini-récit :",
+              "options": [
+                "Ayer fui, comí y vi amigos.",
+                "Ayer voy, como y veo.",
+                "Mañana fui.",
+                "Ayer ir comer ver."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois prétérits."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "But du chapitre",
+              "options": [
+                "futur",
+                "raconter hier",
+                "subjonctif",
+                "présent seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Passé avec ayer."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Négations passées correctes :",
+              "options": [
+                "No fui ayer.",
+                "No voy ayer.",
+                "No comí ayer.",
+                "No como ayer."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "No + prétérit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je ne suis pas allé hier",
+              "options": [
+                "No fui ayer.",
+                "No voy ayer.",
+                "No fui mañana.",
+                "No fue ayer yo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "No fui ayer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Je n'ai pas mangé",
+              "options": ["No comí.", "No como.", "No comer.", "No comió yo."],
+              "correctAnswers": [0],
+              "explanation": "No comí."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "No jugué ayer =",
+              "options": [
+                "j'ai joué",
+                "pas joué hier",
+                "je joue",
+                "ils ont joué"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Négation hier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "No vi la película",
+              "options": ["pas vu film", "vu film", "vois film", "ver film"],
+              "correctAnswers": [0],
+              "explanation": "No vi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Place de no",
+              "options": [
+                "après verbe",
+                "avant verbe",
+                "fin phrase seule",
+                "entre sujet et nom"
+              ],
+              "correctAnswers": [1],
+              "explanation": "No avant le verbe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "¿No fuiste ayer?",
+              "options": [
+                "Tu es allé ?",
+                "Tu n'es pas allé hier ?",
+                "Demain ?",
+                "Tu manges ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Question négative passée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sí, ___ ayer (ir tú)",
+              "options": ["fui", "fuiste", "fue", "voy"],
+              "correctAnswers": [1],
+              "explanation": "Réponse : fuiste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "No, no ___ ayer (comer yo)",
+              "options": ["como", "comí", "comió", "comer"],
+              "correctAnswers": [1],
+              "explanation": "No comí."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nada avec passé",
+              "options": [
+                "No vi nada.",
+                "No vi todo ayer mal.",
+                "No nada vi.",
+                "Nada no vi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "No vi nada correct."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Questions sur hier correctes :",
+              "options": [
+                "¿Fuiste ayer?",
+                "¿Vas ayer?",
+                "¿Comiste ayer?",
+                "¿Comes ayer?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Prétérit + ayer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "¿___ ayer al colegio? (ir tú)",
+              "options": ["Vas", "Fuiste", "Fui", "Van"],
+              "correctAnswers": [1],
+              "explanation": "Fuiste."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "¿Qué ___ ayer? (comer tú)",
+              "options": ["comes", "comiste", "comí", "comer"],
+              "correctAnswers": [1],
+              "explanation": "Comiste."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "¿___ ayer? (jugar tú)",
+              "options": ["Juegas", "Jugaste", "Jugué", "Jugar"],
+              "correctAnswers": [1],
+              "explanation": "Jugaste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "¿___ la tele ayer? (ver tú)",
+              "options": ["Ves", "Viste", "Vi", "Ver"],
+              "correctAnswers": [1],
+              "explanation": "Viste."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponse courte oui ir",
+              "options": ["Sí, fui.", "Sí, voy.", "Sí, fue.", "Sí, ir."],
+              "correctAnswers": [0],
+              "explanation": "Sí, fui."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "¿Adónde fuiste?",
+              "options": ["Où (passé dir.)", "Quand", "Pourquoi", "Combien"],
+              "correctAnswers": [0],
+              "explanation": "Adónde = direction."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "¿Con quién jugaste?",
+              "options": ["Avec qui as-tu joué", "Où", "Quoi manger", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Con quién + jugaste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Intonation question",
+              "options": ["¿ … ?", "! seul", "… sans verbe", "anglais seul"],
+              "correctAnswers": [0],
+              "explanation": "¿ ? en espagnol."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "¿Viste el partido ayer?",
+              "options": ["As-tu vu le match hier", "Vois-tu", "Demain", "Où"],
+              "correctAnswers": [0],
+              "explanation": "Viste ayer."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Activités passées :",
+              "options": [
+                "Ayer jugué al baloncesto.",
+                "Ayer juego baloncesto.",
+                "Ayer vi un partido.",
+                "Ayer veo partido."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Jugué et vi passés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Parque : Ayer ___",
+              "options": ["fui", "voy", "fue", "ir"],
+              "correctAnswers": [0],
+              "explanation": "Fui al parque."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Piscine nager hier",
+              "options": [
+                "Ayer fui a la piscina.",
+                "Ayer nado piscina.",
+                "Ayer fui piscina sin a.",
+                "Mañana fui."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fui a la piscina."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Devoirs : Ayer ___ mucho",
+              "options": ["estudié", "estudio", "estudiar", "estudia"],
+              "correctAnswers": [0],
+              "explanation": "Estudié passé (5e)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Musique : Ayer ___",
+              "options": ["escuché", "escucho", "escuchar", "oye"],
+              "correctAnswers": [0],
+              "explanation": "Escuché = écouté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dormir hier",
+              "options": [
+                "Ayer dormí bien.",
+                "Ayer duermo.",
+                "Ayer dormir.",
+                "Ayer duermes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dormí passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Amigos : Ayer ___ con María",
+              "options": ["hablé", "hablo", "hablar", "habla"],
+              "correctAnswers": [0],
+              "explanation": "Hablé = parlé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cine : Ayer ___ una película",
+              "options": ["vi", "veo", "ver", "vió yo"],
+              "correctAnswers": [0],
+              "explanation": "Vi película."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sport + voir",
+              "options": [
+                "Jugué y vi.",
+                "Juego y vi.",
+                "Jugué y veo.",
+                "Jugar y vi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux passés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Vocabulaire jour passé",
+              "options": ["mañana", "ayer", "hoy", "ahora"],
+              "correctAnswers": [1],
+              "explanation": "Ayer ancre le récit."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bons récits d'hier :",
+              "options": [
+                "Ayer fui, comí y jugué.",
+                "Ayer voy, como y juego.",
+                "Ayer vi a mis amigos.",
+                "Ayer veo amigos."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Prétérit partout."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase modèle",
+              "options": [
+                "Ayer fui al parque, comí un bocadillo y jugué.",
+                "Ayer ir parque.",
+                "Mañana fui.",
+                "Ayer fui y como."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Verbe clé déplacement",
+              "options": ["comí", "fui", "jugué", "vi"],
+              "correctAnswers": [1],
+              "explanation": "Fui = aller."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Verbe clé nourriture",
+              "options": ["fui", "comí", "vi", "jugué"],
+              "correctAnswers": [1],
+              "explanation": "Comí = manger."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Verbe clé loisir ballon",
+              "options": ["ver", "jugar→jugué", "ir→fui", "comer"],
+              "correctAnswers": [1],
+              "explanation": "Jugué."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Verbe clé regarder",
+              "options": ["vi", "fui", "comí", "jugué"],
+              "correctAnswers": [0],
+              "explanation": "Vi = voir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Erreur fréquente",
+              "options": [
+                "présent avec ayer",
+                "prétérit avec ayer",
+                "marqueur ayer",
+                "négation no"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pas mélanger présent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Titre unité u1",
+              "options": ["Marqueurs", "Raconter hier", "Futur", "Couleurs"],
+              "correctAnswers": [1],
+              "explanation": "Raconter hier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Après ayer on évite",
+              "options": ["voy, como, veo", "fui, comí, vi", "jugué", "fuiste"],
+              "correctAnswers": [0],
+              "explanation": "Présent incompatible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Checklist récit",
+              "options": [
+                "ayer + prétérit",
+                "mañana + passé",
+                "sans verbe",
+                "infinitif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ayer + prétérit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Marqueurs de passé récent :",
+              "options": [
+                "el sábado pasado",
+                "el sábado que viene",
+                "ayer",
+                "mañana"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "El sábado pasado et ayer situent le passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "El sábado pasado signifie",
+              "options": [
+                "samedi prochain",
+                "samedi dernier",
+                "dimanche dernier",
+                "aujourd'hui"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pasado = dernier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Avec el sábado pasado on utilise",
+              "options": [
+                "présent",
+                "prétérit",
+                "futur proche seul",
+                "infinitif sans sujet"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Marqueur passé → prétérit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "El sábado pasado ___ al cine (ir yo)",
+              "options": ["voy", "fui", "voy a", "iré"],
+              "correctAnswers": [1],
+              "explanation": "Fui au passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduction : Samedi dernier j'ai mangé",
+              "options": [
+                "El sábado pasado comí.",
+                "El sábado pasado como.",
+                "El sábado que viene comí.",
+                "Ayer sábado como."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pasado + comí."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que viene =",
+              "options": ["dernier", "prochain", "hier", "maintenant"],
+              "correctAnswers": [1],
+              "explanation": "Opposé de pasado."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "El sábado pasado jugué",
+              "options": [
+                "Samedi dernier j'ai joué",
+                "Samedi prochain je joue",
+                "Hier seulement",
+                "Demain j'ai joué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jugué passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur : El sábado pasado veo",
+              "options": [
+                "présent incompatible",
+                "prétérit",
+                "marqueur bon",
+                "négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Veo = présent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "El sábado pasado vi",
+              "options": [
+                "Samedi dernier vu",
+                "Samedi prochain",
+                "Présent",
+                "Futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vi + marqueur passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pasado dans une date =",
+              "options": ["passé", "futur", "présent", "question"],
+              "correctAnswers": [0],
+              "explanation": "Indique un moment passé."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Expressions passées :",
+              "options": [
+                "anoche",
+                "esta noche futur",
+                "el domingo pasado",
+                "el lunes que viene"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Anoche et el domingo pasado = passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Anoche =",
+              "options": ["ce soir", "hier soir", "demain soir", "midi"],
+              "correctAnswers": [1],
+              "explanation": "Noche + a = hier soir."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Anoche ___ (dormir yo)",
+              "options": ["duermo", "dormí", "dormir", "duermes"],
+              "correctAnswers": [1],
+              "explanation": "Dormí hier soir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "El domingo pasado",
+              "options": [
+                "dimanche dernier",
+                "dimanche prochain",
+                "samedi",
+                "lundi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domingo = dimanche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "El domingo pasado fui",
+              "options": [
+                "Dimanche dernier allé",
+                "Dimanche prochain",
+                "Anoche",
+                "Hoy"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fui passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Anoche comí",
+              "options": ["Hier soir mangé", "Ce soir", "Demain", "Matin"],
+              "correctAnswers": [0],
+              "explanation": "Comí + anoche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Anoche vs hoy noche",
+              "options": [
+                "anoche passé",
+                "anoche futur",
+                "hoy noche passé",
+                "iguales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anoche est passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "El domingo pasado vi TV",
+              "options": ["Dimanche dernier TV", "Lundi", "Présent", "Futur"],
+              "correctAnswers": [0],
+              "explanation": "Vi passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Marqueur + verbe : règle",
+              "options": [
+                "passé → prétérit",
+                "passé → présent",
+                "futur → prétérit",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Anoche no ___",
+              "options": ["dormí mal no", "duermo", "dormir", "dormí bien ok"],
+              "correctAnswers": [1],
+              "explanation": "Duermo incohérent avec anoche."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases avec marqueur passé OK :",
+              "options": [
+                "La semana pasada fui.",
+                "La semana pasada voy.",
+                "Hace dos días comí.",
+                "Hace dos días como."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Prétérit avec marqueurs passés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La semana pasada",
+              "options": [
+                "semaine dernière",
+                "semaine prochaine",
+                "aujourd'hui",
+                "heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semana pasada = passée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Hace dos días",
+              "options": [
+                "il y a deux jours",
+                "dans deux jours",
+                "hier",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hace = il y a."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hace dos días ___ (ver yo)",
+              "options": ["veo", "vi", "ver", "vió"],
+              "correctAnswers": [1],
+              "explanation": "Vi avec hace."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La semana pasada jugué",
+              "options": [
+                "Semaine dernière joué",
+                "Semaine prochaine",
+                "Anoche seul",
+                "Hoy"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jugué passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Hace dos días fui",
+              "options": [
+                "Il y a 2 jours allé",
+                "Dans 2 jours",
+                "Aujourd'hui",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hace + passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pasada vs que viene",
+              "options": [
+                "passée / prochaine",
+                "futur / passé",
+                "identiques",
+                "verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pasada = dernier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur semana pasada",
+              "options": [
+                "La semana pasada como",
+                "La semana pasada comí",
+                "La semana pasada fui",
+                "La semana pasada vi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Como présent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Hace + nombre + jours",
+              "options": [
+                "il y a X jours",
+                "dans X jours",
+                "X heures",
+                "toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure hace dos días."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Unité u2 thème",
+              "options": [
+                "Marqueurs de temps",
+                "Subjonctif",
+                "Couleurs",
+                "Présent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueurs de temps."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Ayer et sábado pasado :",
+              "options": [
+                "Ayer comí.",
+                "Mañana comí.",
+                "El sábado pasado fui.",
+                "El sábado pasado voy."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Marqueurs passés + prétérit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comparer ayer / sábado pasado",
+              "options": [
+                "deux passés",
+                "deux futurs",
+                "présent",
+                "subjonctif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux situent le passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "El sábado pasado ___ ; ayer ___",
+              "options": [
+                "fui / comí",
+                "voy / como",
+                "ir / comer",
+                "fui / como"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux prétérits."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plus précis : match samedi",
+              "options": ["el sábado pasado", "ayer seul", "hoy", "mañana"],
+              "correctAnswers": [0],
+              "explanation": "Jour nommé + pasado."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ayer moins précis que",
+              "options": [
+                "el lunes pasado nommé",
+                "el sábado pasado aussi nommé",
+                "les deux précis",
+                "futur"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Ayer = veille ; sábado = jour cité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase : ___ vi ; ___ jugué.",
+              "options": [
+                "Ayer / el sábado pasado",
+                "Mañana / hoy",
+                "Hoy / mañana",
+                "Que viene / que viene"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux marqueurs passés possibles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ordre phrase espagnol",
+              "options": [
+                "Marqueur + sujet + verbe",
+                "Verbe seul",
+                "Marqueur fin seule",
+                "Anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur en tête souvent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "El sábado pasado no ___",
+              "options": ["jugué", "juego", "jugaste", "jugaron"],
+              "correctAnswers": [1],
+              "explanation": "Juego présent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ayer no ___",
+              "options": ["fui", "voy", "fuiste", "fueron"],
+              "correctAnswers": [1],
+              "explanation": "Voy incohérent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir marqueur : foot samedi dernier",
+              "options": [
+                "El sábado pasado jugué.",
+                "Ayer jugué sans précision samedi.",
+                "Mañana jugué.",
+                "Hoy jugué ayer."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sábado pasado explicite."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Futur à éviter avec passé :",
+              "options": [
+                "El sábado pasado fui.",
+                "El sábado que viene fui.",
+                "Ayer vi.",
+                "Mañana vi."
+              ],
+              "correctAnswers": [1, 3],
+              "explanation": "Que viene et mañana ≠ passé vécu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mañana + prétérit",
+              "options": ["incorrect", "toujours bon", "subjonctif", "hace"],
+              "correctAnswers": [0],
+              "explanation": "Mañana = futur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "El lunes que viene",
+              "options": ["lundi prochain", "lundi dernier", "hier", "anoche"],
+              "correctAnswers": [0],
+              "explanation": "Que viene = prochain."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Opposé pasado",
+              "options": ["que viene", "pasado", "anoche", "ayer"],
+              "correctAnswers": [0],
+              "explanation": "Prochain vs dernier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bon couple",
+              "options": [
+                "El domingo pasado comí.",
+                "El domingo que viene comí.",
+                "Ayer iré.",
+                "Mañana fui."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pasado + prétérit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Hoy + passé action finie",
+              "options": [
+                "souvent hoy + passé si fini aujourd'hui",
+                "hoy + futur seul",
+                "sans verbe",
+                "subjonctif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hoy peut avec passé (5e simple)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ahora + prétérit hier",
+              "options": [
+                "incohérent pour hier",
+                "toujours",
+                "marqueur passé",
+                "futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ahora = maintenant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "El sábado pasado vs que viene",
+              "options": [
+                "dernier / prochain",
+                "prochain / dernier",
+                "hier / anoche",
+                "égaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pasado/que viene."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduire lundi prochain j'irai",
+              "options": [
+                "El lunes que viene iré.",
+                "El lunes pasado iré.",
+                "El lunes pasado fui.",
+                "Ayer iré lunes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Futur iré (repère, pas focus 5e)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Focus chapitre 5e",
+              "options": [
+                "marqueurs passé + prétérit",
+                "subjonctif",
+                "imparfait seul",
+                "conditionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau 5e passé simple."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Récits avec marqueurs :",
+              "options": [
+                "Anoche vi una estrella.",
+                "Anoche veo estrella.",
+                "El sábado pasado fui al mar.",
+                "El sábado pasado voy al mar."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Prétérit avec anoche/sábado pasado."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Anoche + vi",
+              "options": ["Hier soir vu", "Ce soir", "Demain", "Présent"],
+              "correctAnswers": [0],
+              "explanation": "Anoche passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "El sábado pasado + fui al mar",
+              "options": [
+                "Samedi dernier mer",
+                "Prochain samedi",
+                "Ayer obligé",
+                "Futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fui al mar."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Enchaîner marqueurs",
+              "options": [
+                "Ayer comí ; anoche dormí.",
+                "Mañana comí.",
+                "Hoy fui ayer.",
+                "Pasado que viene."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux moments passés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La semana pasada + vimos",
+              "options": [
+                "Semaine dernière nous avons vu",
+                "Futur",
+                "Présent",
+                "Infinitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vimos passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Hace dos días + jugaste",
+              "options": [
+                "Il y a 2 jours tu as joué",
+                "Dans 2 jours",
+                "Hier soir",
+                "Lundi prochain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hace + passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Question : ¿Qué hiciste el sábado pasado?",
+              "options": ["Passé attendu", "Présent", "Futur", "Sans verbe"],
+              "correctAnswers": [0],
+              "explanation": "Sábado pasado + hiciste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réponse modèle",
+              "options": [
+                "El sábado pasado jugué y comí.",
+                "El sábado pasado juego.",
+                "El sábado que viene jugué.",
+                "Jugué mañana."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur + prétérits."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Piscina samedi dernier",
+              "options": [
+                "El sábado pasado fui a la piscina.",
+                "El sábado pasado nado.",
+                "Anoche sábado.",
+                "Que viene fui."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fui passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "But marqueurs",
+              "options": [
+                "situer l'action passée",
+                "exprimer futur seul",
+                "subjonctif",
+                "présent continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Localiser dans le temps."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Questions temps passé :",
+              "options": [
+                "¿Qué hiciste ayer?",
+                "¿Qué haces ayer?",
+                "¿Adónde fuiste el sábado pasado?",
+                "¿Adónde vas el sábado pasado?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Prétérit dans la question."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "¿Qué ___ el domingo pasado?",
+              "options": ["haces", "hiciste", "hacer", "hizo yo"],
+              "correctAnswers": [1],
+              "explanation": "Hiciste passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "¿___ anoche? (comer tú)",
+              "options": ["Comes", "Comiste", "Comí", "Comer"],
+              "correctAnswers": [1],
+              "explanation": "Anoche + comiste."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "¿___ la semana pasada? (ir vosotros)",
+              "options": ["Vais", "Fuisteis", "Fui", "Ir"],
+              "correctAnswers": [1],
+              "explanation": "Fuisteis passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cuándo vs marqueur",
+              "options": [
+                "marqueur précise le jour",
+                "cuándo remplace verbe",
+                "identiques",
+                "futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "El sábado pasado répond à cuándo."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Répondre : ¿Cuándo jugaste?",
+              "options": [
+                "El sábado pasado.",
+                "Mañana.",
+                "Que viene.",
+                "Ahora."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "¿Viste anoche la luna?",
+              "options": ["Hier soir lune", "Demain", "Présent", "Où"],
+              "correctAnswers": [0],
+              "explanation": "Anoche + viste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "¿Fuiste el sábado pasado?",
+              "options": [
+                "Allé samedi dernier ?",
+                "Aller samedi prochain",
+                "Manger",
+                "Dormir futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fuiste + pasado."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Intonation + marqueur",
+              "options": [
+                "¿ … el sábado pasado?",
+                "! pasado",
+                "sans ¿",
+                "anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question espagnole."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Hiciste vient de",
+              "options": ["hacer", "ir", "ver", "jugar"],
+              "correctAnswers": [0],
+              "explanation": "Faire au passé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Négation + marqueur passé :",
+              "options": [
+                "El sábado pasado no fui.",
+                "El sábado pasado no voy.",
+                "Anoche no comí.",
+                "Anoche no como."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "No + prétérit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Anoche no ___",
+              "options": ["dormí", "duermo", "dormir", "duermes"],
+              "correctAnswers": [1],
+              "explanation": "Duermo faux ; dormí bon."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Correct négation",
+              "options": [
+                "Anoche no dormí.",
+                "Anoche no duermo.",
+                "Anoche no dormir.",
+                "No anoche dormí mal ordre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anoche no dormí."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "El sábado pasado no jugué",
+              "options": [
+                "Samedi dernier pas joué",
+                "Samedi prochain",
+                "Présent",
+                "Futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "No jugué."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La semana pasada no ___",
+              "options": ["vi", "veo", "ver", "vió"],
+              "correctAnswers": [1],
+              "explanation": "Veo incohérent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Hace dos días no ___",
+              "options": ["comí", "como", "comer", "comió yo"],
+              "correctAnswers": [1],
+              "explanation": "Como présent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "No fui el domingo pasado",
+              "options": [
+                "Pas allé dimanche dernier",
+                "Allé dimanche",
+                "Futur",
+                "Présent positif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation passée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "No vi nada anoche",
+              "options": ["Rien vu hier soir", "Tout vu", "Présent", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "No vi nada."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Place marqueur avec no",
+              "options": [
+                "Marqueur puis no verbe",
+                "No marqueur verbe mélange ok",
+                "Verbe sans marqueur obligé",
+                "subjonctif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "El sábado pasado no fui."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "¿No comiste ayer?",
+              "options": [
+                "N'as-tu pas mangé hier",
+                "Manges-tu",
+                "Demain",
+                "Où"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ayer + comiste."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Synonymes passé proche :",
+              "options": [
+                "ayer",
+                "hoy",
+                "anoche",
+                "mañana por la mañana passé"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Ayer et anoche = passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Timeline : avant hoy",
+              "options": [
+                "ayer, anoche, sábado pasado",
+                "mañana",
+                "que viene",
+                "siempre futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueurs avant aujourd'hui."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plus lointain que ayer (5e)",
+              "options": ["el sábado pasado", "hoy", "ahora", "mañana"],
+              "correctAnswers": [0],
+              "explanation": "Jour nommé dernier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hace dos días vs ayer",
+              "options": [
+                "deux jours avant",
+                "même jour",
+                "futur",
+                "semaine prochaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hace dos días plus ancien."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase semaine",
+              "options": [
+                "La semana pasada fui, comí y vi.",
+                "La semana pasada voy.",
+                "La semana que viene fui.",
+                "Semana sin verbo."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois prétérits."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Anoche + ayer ensemble",
+              "options": [
+                "deux repères passés possibles",
+                "interdit",
+                "futur",
+                "présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Actions différentes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "El sábado pasado + anoche ordre",
+              "options": [
+                "samedi puis nuit dimanche→samedi",
+                "futur",
+                "hoy",
+                "sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récit chronologique possible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Verbes cible chapitre",
+              "options": [
+                "fui comí jugué vi",
+                "subjonctif",
+                "futur seul",
+                "infinitif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quatre verbes 5e."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduire il y a deux jours j'ai vu",
+              "options": [
+                "Hace dos días vi.",
+                "Hace dos días veo.",
+                "Hace dos días ver.",
+                "Dos días vi hace mal."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hace dos días vi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir marqueur nuit",
+              "options": [
+                "anoche",
+                "el sábado pasado",
+                "la semana pasada",
+                "hace dos días"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anoche = nuit passée."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bilan marqueurs + verbes :",
+              "options": [
+                "El sábado pasado jugué.",
+                "El sábado pasado juego.",
+                "Ayer fui y comí.",
+                "Ayer voy y como."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Pasado/ayer + prétérit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Paragraphe modèle",
+              "options": [
+                "El sábado pasado fui al parque. Ayer comí pizza y vi un partido.",
+                "Mañana fui ayer.",
+                "Hoy sábado pasado voy.",
+                "Subjuntivo ayer."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux marqueurs passés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Liste marqueurs 5e",
+              "options": [
+                "ayer, el sábado pasado, anoche",
+                "subjonctif",
+                "imparfait seul",
+                "conditionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau demandé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Liste verbes 5e",
+              "options": [
+                "fui, comí, jugué, vi",
+                "ser subj",
+                "hablar futur seul",
+                "sans conjuguer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quatre prétérits."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Erreur type",
+              "options": [
+                "marqueur passé + présent",
+                "marqueur passé + prétérit",
+                "no avant verbe",
+                "¿ question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Incohérence temps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Titre chapitre",
+              "options": [
+                "Le passé en espagnol",
+                "Subjonctif",
+                "Couleurs",
+                "Présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre du chapitre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pasado après jour",
+              "options": ["dernier", "prochain", "maintenant", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "El sábado pasado."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ayer position",
+              "options": [
+                "début phrase souvent",
+                "après verbe seul obligé",
+                "interdit",
+                "subjonctif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ayer fui…"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Objectif u2",
+              "options": [
+                "marqueurs de temps passé",
+                "futur seul",
+                "présent seul",
+                "pronoms seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueurs de temps."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Check final",
+              "options": [
+                "marqueur passé + prétérit",
+                "subjonctif",
+                "6e imparfait focus",
+                "sans explanation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle du chapitre."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

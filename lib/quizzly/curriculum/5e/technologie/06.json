@@ -1,0 +1,2678 @@
+{
+  "id": "5e-technologie-06",
+  "year": "5e",
+  "subject": "technologie",
+  "title": "Énergie des objets",
+  "order": 6,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Alimentation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objets peuvent être alimentés par une pile ?",
+              "options": [
+                "Une lampe de poche",
+                "Un réfrigérateur domestique",
+                "Une télécommande",
+                "Un four électrique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Une pile convient aux petits appareils peu gourmands, pas aux gros appareils du secteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une pile transforme l'énergie chimique en…",
+              "options": [
+                "énergie mécanique seulement",
+                "énergie électrique",
+                "énergie lumineuse directement",
+                "énergie sonore"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dans une pile, une réaction chimique produit un courant électrique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le symbole + sur une pile indique…",
+              "options": [
+                "le pôle négatif",
+                "le pôle positif",
+                "la masse",
+                "le neutre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le signe plus marque le pôle par où le courant sort conventionnellement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quand une pile est usée, c'est surtout parce que…",
+              "options": [
+                "sa couleur a changé",
+                "ses réactifs chimiques sont épuisés",
+                "elle a pris de l'eau",
+                "elle est devenue plus lourde"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La pile ne peut plus fournir de courant quand la réaction chimique est terminée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans une lampe de poche, la pile alimente…",
+              "options": [
+                "un moteur",
+                "une ampoule ou une LED",
+                "un haut-parleur",
+                "un écran tactile"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La pile fait circuler le courant dans la source lumineuse de la lampe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Brancher une pile à l'envers dans un appareil peut…",
+              "options": [
+                "améliorer l'autonomie",
+                "empêcher le fonctionnement ou endommager l'appareil",
+                "augmenter la luminosité sans limite",
+                "recharger la pile"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le sens du courant doit respecter le sens prévu par le constructeur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une pile bouton se trouve souvent dans…",
+              "options": [
+                "un lave-linge",
+                "une montre",
+                "un radiateur",
+                "un aspirateur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les piles boutons sont compactes et adaptées aux petits objets portables."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le courant produit par une pile est en général…",
+              "options": [
+                "très fort comme une prise murale",
+                "faible et adapté aux petits circuits",
+                "identique au secteur",
+                "toujours alternatif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les piles délivrent un courant continu de faible intensité pour de petits usages."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour remplacer une pile, on vérifie surtout…",
+              "options": [
+                "sa couleur",
+                "son format et sa tension indiqués",
+                "son poids uniquement",
+                "sa marque de vêtement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il faut respecter le type (AA, AAA…) et la tension (1,5 V, 9 V…) prévus."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une pile usagée doit être…",
+              "options": [
+                "jetée n'importe où",
+                "déposée en point de collecte adapté",
+                "brûlée",
+                "mélée aux déchets alimentaires"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les piles contiennent des substances à ne pas disperser dans l'environnement."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels appareils sont alimentés par le secteur (prise murale) ?",
+              "options": [
+                "Un sèche-cheveux",
+                "Une calculatrice solaire de poche",
+                "Un mixeur de cuisine",
+                "Un stylo bille"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le secteur alimente les appareils qui demandent beaucoup d'énergie en continu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le secteur en France fournit une tension de…",
+              "options": ["1,5 V", "9 V", "230 V", "4000 V"],
+              "correctAnswers": [2],
+              "explanation": "La tension domestique standard en France est environ 230 volts."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le courant du secteur est…",
+              "options": [
+                "toujours continu",
+                "alternatif",
+                "absent dans les murs",
+                "produit par des piles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le réseau EDF délivre un courant alternatif qui change de sens périodiquement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La prise murale sert à…",
+              "options": [
+                "stocker de l'eau",
+                "relier l'appareil au réseau électrique",
+                "mesurer la température",
+                "couper le gaz"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La prise est l'interface entre l'appareil et l'installation électrique du logement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un câble d'alimentation secteur relie…",
+              "options": [
+                "deux piles entre elles",
+                "l'appareil à la prise",
+                "une ampoule à une pile",
+                "un moteur à une roue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le cordon transporte le courant de la prise vers l'appareil."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi un réfrigérateur n'utilise-t-il pas une pile ?",
+              "options": [
+                "Il n'a pas besoin d'électricité",
+                "Il consomme trop d'énergie pour une pile",
+                "Les piles le rendraient plus froid",
+                "Les piles sont interdites en cuisine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un gros appareil qui fonctionne en permanence nécessite le secteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'interrupteur sur une prise ou un circuit sert à…",
+              "options": [
+                "augmenter la tension du secteur",
+                "couper ou laisser passer le courant",
+                "transformer le courant en lumière",
+                "recharger les piles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'interrupteur ouvre ou ferme le circuit pour arrêter ou autoriser le courant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Toucher une prise secteur avec les doigts mouillés est…",
+              "options": [
+                "sans danger",
+                "dangereux",
+                "obligatoire pour tester",
+                "recommandé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'eau conductrice augmente fortement le risque d'électrocution."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un transformateur sur un chargeur de téléphone sert à…",
+              "options": [
+                "augmenter la tension du secteur à 1000 V",
+                "abaisser la tension secteur pour l'appareil",
+                "produire du courant alternatif",
+                "remplacer la pile du téléphone"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le téléphone n'utilise pas directement les 230 V du réseau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le symbole « prise murale » sur un appareil signifie…",
+              "options": [
+                "qu'il fonctionne avec une pile",
+                "qu'il doit être branché au secteur",
+                "qu'il ne consomme rien",
+                "qu'il est étanche"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ce pictogramme indique une alimentation par le réseau électrique."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations comparent correctement pile et secteur ?",
+              "options": [
+                "La pile est portable, le secteur est fixe au bâtiment",
+                "Les deux fournissent toujours la même tension",
+                "Le secteur convient aux gros consommateurs",
+                "Une pile alimente facilement un four électrique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La pile est mobile et limitée ; le secteur alimente les appareils puissants du logement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un appareil « hybride » peut parfois…",
+              "options": [
+                "fonctionner sur pile ou sur secteur selon le mode",
+                "ne jamais utiliser d'électricité",
+                "utiliser l'eau à la place du courant",
+                "recharger le réseau EDF"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains objets acceptent les deux alimentations, par exemple en nomade ou sur prise."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La télécommande d'une TV utilise en général…",
+              "options": [
+                "le secteur 230 V",
+                "des piles",
+                "le gaz",
+                "un câble réseau Ethernet"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La télécommande est légère et consomme très peu : des piles suffisent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un ordinateur portable branché sur prise est alimenté par…",
+              "options": [
+                "uniquement sa batterie interne",
+                "le secteur via son chargeur",
+                "des piles AA",
+                "un dynamo"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Branché, il reçoit le courant du secteur adapté par le chargeur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi emporter des piles en camping pour une lampe ?",
+              "options": [
+                "Il n'y a pas de prise secteur disponible",
+                "Le secteur est trop faible",
+                "Les piles éclairent sans électricité",
+                "La lumière du secteur est interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loin d'une installation électrique, la pile rend l'objet autonome."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une console de jeu fixe à la TV est branchée…",
+              "options": [
+                "sur piles uniquement",
+                "sur le secteur",
+                "sur une manivelle",
+                "sur une bouteille de gaz"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Elle consomme beaucoup d'énergie et reste près d'une prise."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La batterie d'un téléphone est comparable à…",
+              "options": [
+                "une mini pile rechargeable",
+                "un câble secteur",
+                "un transformateur de quartier",
+                "un compteur Linky"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La batterie stocke de l'énergie chimique convertible en électricité, comme une pile."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Choisir pile plutôt que secteur pour un jouet signifie surtout…",
+              "options": [
+                "liberté de déplacement et simplicité",
+                "plus de puissance que le four",
+                "tension identique au réseau",
+                "absence de tout circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pile permet de jouer sans fil ni prise proche."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un appareil marqué « alimentation 230 V » ne doit pas être branché…",
+              "options": [
+                "sur une prise murale française",
+                "directement sur une pile 1,5 V",
+                "via un chargeur adapté",
+                "sur une multiprise protégée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une pile ne fournit ni la tension ni la puissance attendues par l'appareil."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le compteur électrique du logement mesure l'énergie prise…",
+              "options": [
+                "aux piles",
+                "au secteur",
+                "au vent uniquement",
+                "aux lampes de poche"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est la consommation du réseau domestique qui est facturée."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments font partie d'un circuit d'alimentation simple ?",
+              "options": [
+                "Une source (pile ou secteur adapté)",
+                "Un conducteur (fil)",
+                "Un isolant qui laisse passer le courant",
+                "Un récepteur (lampe, moteur…)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Source, fils conducteurs et récepteur forment la boucle ; l'isolant bloque le courant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un schéma, le fil électrique est représenté par…",
+              "options": [
+                "une ligne continue entre composants",
+                "un nuage",
+                "une vague",
+                "un triangle seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fils relient les symboles des composants dans le circuit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un interrupteur ouvert signifie que…",
+              "options": [
+                "le courant peut circuler",
+                "le circuit est coupé",
+                "la pile est chargée",
+                "la lampe brille plus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ouvert, l'interrupteur interrompt le chemin du courant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La lampe dans un circuit est un…",
+              "options": [
+                "récepteur d'énergie électrique",
+                "producteur de courant",
+                "isolateur",
+                "compteur Linky"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle transforme l'électricité reçue en lumière (et un peu de chaleur)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si un fil est sectionné, la lampe…",
+              "options": [
+                "brille plus fort",
+                "ne s'allume plus",
+                "devient une pile",
+                "recharge le secteur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sans boucle fermée, le courant ne circule plus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le court-circuit, c'est quand…",
+              "options": [
+                "le courant prend un chemin très résistant",
+                "le courant passe par un chemin quasi sans résistance",
+                "il n'y a pas de source",
+                "la pile est neuve"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le courant contourne le récepteur par un trajet dangereux et très conducteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un fusible protège en…",
+              "options": [
+                "augmentant la tension",
+                "coupant le circuit si le courant est trop fort",
+                "produisant de la lumière",
+                "rechargeant la pile"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il fond et ouvre le circuit pour limiter les surintensités."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le cuivre dans un fil est…",
+              "options": [
+                "conducteur",
+                "isolant",
+                "source d'énergie",
+                "toujours froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les métaux comme le cuivre laissent passer les électrons facilement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le plastique autour d'un fil est…",
+              "options": ["conducteur", "isolant", "une pile", "un moteur"],
+              "correctAnswers": [1],
+              "explanation": "La gaine plastique empêche le contact accidentel avec le conducteur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour qu'une lampe s'allume, il faut…",
+              "options": [
+                "un circuit fermé avec une source",
+                "deux sources opposées sans fil",
+                "aucun récepteur",
+                "un fil coupé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le courant doit circuler de la source à la lampe et revenir."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gestes améliorent la sécurité avec l'électricité ?",
+              "options": [
+                "Se sécher les mains avant de brancher",
+                "Tirer sur le cordon pour débrancher",
+                "Utiliser une multiprise adaptée",
+                "Enfoncer un objet métallique dans une prise"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Mains sèches et matériel conforme réduisent les risques ; jamais d'objet dans une prise."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une prise avec terre sert surtout à…",
+              "options": [
+                "augmenter la facture",
+                "évacuer un courant de fuite vers la terre",
+                "éteindre la lumière",
+                "recharger les piles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La borne terre limite le risque d'électrocution en cas de défaut."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un disjoncteur différentiel déclenche si…",
+              "options": [
+                "la lumière est trop faible",
+                "un courant fuit hors du circuit normal",
+                "la pile est pleine",
+                "le vent souffle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il compare les courants entrant et sortant et coupe en cas de fuite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Près de l'eau (baignoire), on évite…",
+              "options": [
+                "d'utiliser des appareils électriques branchés",
+                "de sécher le sol",
+                "de fermer la porte",
+                "de ventiler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau et l'électricité ensemble augmentent le risque d'accident grave."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un câble secteur abîmé doit être…",
+              "options": [
+                "isolé avec du scotch et laissé en service",
+                "remplacé ou réparé par un professionnel",
+                "plongé dans l'eau",
+                "coupé au hasard"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une gaine endommagée peut provoquer contact ou court-circuit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La surcharge d'une multiprise signifie…",
+              "options": [
+                "trop d'appareils puissants branchés ensemble",
+                "pas assez de prises",
+                "trop de piles",
+                "aucun appareil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La somme des consommations peut dépasser la capacité du cordon ou du disjoncteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Avant de réparer un appareil branché, on…",
+              "options": [
+                "l'allume plus fort",
+                "le débranche",
+                "mouille les composants",
+                "touche les bornes nu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Couper l'alimentation évite le choc électrique pendant l'intervention."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les pictogrammes de danger électrique indiquent…",
+              "options": [
+                "un risque de blessure ou d'incendie",
+                "une promotion",
+                "un jeu",
+                "une pile gratuite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils alertent sur la tension ou l'énergie pouvant nuire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une pile qui chauffe anormalement dans un appareil…",
+              "options": [
+                "doit être retirée et l'usage arrêté",
+                "doit être serrée plus fort",
+                "est toujours normale",
+                "recharge le secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La surchauffe peut signaler un court-circuit ou une pile défectueuse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En technologie, on manipule des circuits basse tension avec piles pour…",
+              "options": [
+                "limiter le danger pendant les expériences",
+                "reproduire le secteur 230 V",
+                "éviter d'apprendre",
+                "remplacer toute prudence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les montages scolaires à pile restent plus sûrs pour débuter."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles piles sont des formats courants ?",
+              "options": [
+                "AA (LR6)",
+                "AAA (LR03)",
+                "Format réfrigérateur",
+                "Pile bouton CR2032"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "AA et AAA sont très répandus ; la CR2032 est une pile bouton, pas un format géant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une pile alcaline AA fournit environ…",
+              "options": ["1,5 V", "230 V", "12 kV", "0 V"],
+              "correctAnswers": [0],
+              "explanation": "Une pile cylindrique classique délivre environ 1,5 volt."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mettre deux piles 1,5 V en série dans le bon sens donne environ…",
+              "options": ["1,5 V", "3 V", "230 V", "0 V"],
+              "correctAnswers": [1],
+              "explanation": "Les tensions s'additionnent quand les piles sont en série."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une pile 9 V a une forme often…",
+              "options": [
+                "rectangulaire avec snap",
+                "rond comme une assiette",
+                "carrée géante",
+                "invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pile 6LR61 est le bloc rectangulaire à connecteurs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une pile rechargeable (accu) diffère d'une pile jetable car…",
+              "options": [
+                "on peut la recharger plusieurs fois",
+                "elle ne produit jamais de courant",
+                "elle vaut 230 V",
+                "elle ne contient pas de chimie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accumulateur accepte une recharge électrique inverse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le chargeur d'accus branche au secteur sert à…",
+              "options": [
+                "remettre de l'énergie dans la batterie",
+                "vider la pile",
+                "augmenter la tension du réseau",
+                "allumer la prise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chargeur convertit l'énergie secteur en recharge chimique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur une pile, la date ou la mention « expiration » indique…",
+              "options": [
+                "jusqu'à quand elle est conseillée en stockage",
+                "la couleur du fil",
+                "le prix",
+                "la marque du téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une pile vieillit même inactive ; au-delà, les performances baissent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ne pas mélanger piles neuves et usées dans un même appareil permet…",
+              "options": [
+                "d'éviter fuites et mauvais fonctionnement",
+                "d'augmenter la tension à 230 V",
+                "de recharger les usées",
+                "de supprimer la consommation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les piles faibles forcent les neuves à sur-débiter, ce qui est nocif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une pile au lithium bouton alimente souvent…",
+              "options": [
+                "une carte-mère d'ordinateur (horloge)",
+                "un four",
+                "un ascenseur",
+                "un réseau EDF"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle conserve des réglages avec très faible consommation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le symbole de recyclage sur une pile rappelle…",
+              "options": [
+                "de la déposer au bon collecteur",
+                "de la jeter dans la nature",
+                "de la manger",
+                "de la brûler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tri permet de récupérer les métaux et limiter la pollution."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objets nomades utilisent typiquement une batterie ou des piles ?",
+              "options": [
+                "Un smartphone",
+                "Un sèche-linge fixe",
+                "Une enceinte Bluetooth portable",
+                "Une plaque de cuisson"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les appareils portables embarquent une source d'énergie stockée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La batterie d'un téléphone se recharge en branchant…",
+              "options": [
+                "le chargeur sur le secteur",
+                "le téléphone directement sur 230 V sans adaptateur",
+                "des piles AA dans l'écran",
+                "un câble HDMI seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chargeur abaisse et adapte la tension du secteur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'autonomie d'un appareil sur batterie dépend surtout de…",
+              "options": [
+                "sa consommation et la capacité de la batterie",
+                "sa couleur",
+                "sa forme",
+                "le jour de la semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus l'appareil consomme, plus vite la réserve d'énergie s'épuise."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Éteindre le Wi-Fi sur mobile peut…",
+              "options": [
+                "prolonger un peu l'autonomie",
+                "recharger la batterie instantanément",
+                "augmenter la tension secteur",
+                "remplacer la batterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de fonctions actives signifie moins de consommation électrique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une power bank est…",
+              "options": [
+                "une batterie externe pour recharger un téléphone",
+                "un transformateur de quartier",
+                "une pile nucléaire",
+                "un compteur gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle stocke de l'énergie pour la redonner à un autre appareil USB."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un vélo avec dynamo produit de l'électricité grâce à…",
+              "options": [
+                "le mouvement de la roue",
+                "le soleil dans la poche",
+                "une pile 9 V interne permanente",
+                "le secteur 230 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dynamo transforme l'énergie mécanique de rotation en courant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une montre solaire recharge sa batterie avec…",
+              "options": [
+                "la lumière",
+                "l'eau du robinet",
+                "le vent du frigo",
+                "le gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des cellules photovoltaïques convertissent la lumière en électricité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Brancher un casque filaire sur un téléphone utilise l'énergie…",
+              "options": [
+                "de la batterie du téléphone",
+                "du secteur direct",
+                "d'une pile dans le casque obligatoire",
+                "du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le téléphone alimente le petit haut-parleur du casque."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un ordinateur portable sur batterie sans prise finira par…",
+              "options": [
+                "s'éteindre quand la batterie est vide",
+                "augmenter la tension à 230 V",
+                "recharger le réseau",
+                "ne jamais s'arrêter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans source externe, la réserve stockée s'épuise."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisir un chargeur certifié pour son appareil sert à…",
+              "options": [
+                "respecter la tension et le courant de charge sûrs",
+                "augmenter le réseau à 400 V",
+                "éviter toute électricité",
+                "remplacer la batterie par une pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un chargeur adapté limite surchauffe et dégradation de la batterie."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles conversions d'énergie se produisent dans des objets alimentés ?",
+              "options": [
+                "Électrique → lumière (lampe)",
+                "Électrique → mouvement (moteur)",
+                "Électrique → rien du tout",
+                "Électrique → chaleur (parfois en plus)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les récepteurs transforment l'électricité en effets utiles, parfois avec de la chaleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un moteur électrique transforme l'énergie électrique en…",
+              "options": [
+                "énergie mécanique (mouvement)",
+                "énergie chimique stockée",
+                "énergie sonore seule",
+                "énergie nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rotor tourne grâce au courant dans des bobines et un aimant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un haut-parleur transforme l'électricité en…",
+              "options": ["son", "lumière pure", "eau", "glace"],
+              "correctAnswers": [0],
+              "explanation": "La membrane vibre pour produire des ondes sonores."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une résistance chauffante transforme surtout l'électricité en…",
+              "options": [
+                "chaleur",
+                "mouvement",
+                "lumière stroboscopique",
+                "vent froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fil chauffe par effet Joule quand le courant passe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une LED bien alimentée produit surtout…",
+              "options": [
+                "de la lumière",
+                "du mouvement",
+                "du froid",
+                "du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diode électroluminescente est conçue pour émettre de la lumière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'énergie électrique consommée se mesure souvent en…",
+              "options": [
+                "watt-heure (Wh) ou kilowatt-heure (kWh)",
+                "litres",
+                "mètres",
+                "degrés seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le kWh est l'unité courante de facturation de l'énergie électrique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La puissance (en watts) indique…",
+              "options": [
+                "la vitesse à laquelle l'appareil consomme de l'énergie",
+                "la couleur de la prise",
+                "le poids de la pile",
+                "la longueur du fil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus les watts sont élevés, plus l'appareil demande d'énergie par seconde."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un grille-pain consomme plus qu'une lampe LED car…",
+              "options": [
+                "sa puissance est plus élevée",
+                "il n'utilise pas d'électricité",
+                "il fonctionne sans secteur",
+                "il produit seulement de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chauffer rapidement des résistances demande beaucoup de watts."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Éteindre une lumière inutile permet…",
+              "options": [
+                "d'économiser de l'énergie électrique",
+                "d'augmenter la tension du secteur",
+                "de recharger les piles du voisin",
+                "de produire du gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de temps allumé signifie moins de kWh consommés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'étiquette énergie sur un appareil informe sur…",
+              "options": [
+                "sa consommation relative",
+                "sa couleur de fil",
+                "le nombre de piles incluses",
+                "la marque du câble HDMI"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle aide à comparer l'efficience énergétique entre modèles."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sources fournissent de l'énergie électrique aux objets ?",
+              "options": [
+                "Pile ou batterie",
+                "Réseau secteur",
+                "Roue à aubes seule sans générateur",
+                "Panneau solaire avec conversion"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Piles, batteries, secteur et panneaux (via conversion) alimentent nos appareils."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'énergie électrique est un mode de transport de l'énergie…",
+              "options": [
+                "facile à envoyer dans des fils",
+                "impossible à stocker dans une batterie",
+                "réservé aux voitures",
+                "sans lien avec la chaleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le courant dans les conducteurs transporte l'énergie jusqu'aux récepteurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une centrale produit de l'électricité qu'on reçoit à la maison via…",
+              "options": [
+                "le réseau (lignes et transformateurs)",
+                "une pile géante dans la chambre",
+                "un seul fil de jouet",
+                "un stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réseau national distribue l'énergie jusqu'aux compteurs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le compteur Linky mesure…",
+              "options": [
+                "l'énergie consommée sur le secteur",
+                "la vitesse du vent",
+                "le poids des piles",
+                "la température de la mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il enregistre les kilowattheures utilisés dans le logement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Baisser le chauffage électrique d'une pièce…",
+              "options": [
+                "réduit la consommation",
+                "augmente la tension à 400 V",
+                "recharge le téléphone",
+                "produit plus de lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de chauffage demandé signifie moins d'énergie prise au réseau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'électricité « verte » désigne souvent…",
+              "options": [
+                "une production avec moins de CO₂ (éolien, solaire…)",
+                "une couleur de fil",
+                "une pile magique",
+                "une tension plus dangereuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On parle de mix énergétique avec davantage de renouvelables."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un panneau solaire sur un toit transforme la lumière en…",
+              "options": [
+                "électricité",
+                "piles jetables",
+                "gaz naturel",
+                "pétrole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet photovoltaïque produit un courant continu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une éolienne produit de l'électricité à partir de…",
+              "options": [
+                "l'énergie du vent",
+                "l'énergie d'une pile interne fixe",
+                "uniquement de la chaleur",
+                "de l'eau du robinet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vent fait tourner un générateur électrique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Garder un chargeur branché sans appareil peut…",
+              "options": [
+                "consommer un peu d'énergie quand même",
+                "recharger le réseau",
+                "baisser la facture à zéro",
+                "refroidir la maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le standby du transformateur dissipe encore un peu de watts."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comprendre l'alimentation d'un objet aide à…",
+              "options": [
+                "bien l'utiliser et économiser l'énergie",
+                "augmenter le danger volontairement",
+                "ignorer les consignes",
+                "confondre pile et eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Savoir d'où vient l'énergie guide les bons gestes au quotidien."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour alimenter un petit ventilateur USB de bureau, quelles solutions sont adaptées ?",
+              "options": [
+                "Port USB d'un ordinateur branché secteur",
+                "Pile 9 V avec adaptateur USB correct",
+                "Prise murale 230 V sans adaptateur",
+                "Bloc secteur USB (chargeur)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "L'USB fournit le 5 V attendu ; le secteur seul ou une pile mal adaptée ne convient pas directement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lire la plaque signalétique d'un appareil permet de connaître…",
+              "options": [
+                "tension et puissance d'alimentation",
+                "sa couleur préférée",
+                "le nombre de vis",
+                "l'âge du propriétaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le constructeur y indique les conditions électriques sûres."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un adaptateur « 100-240 V » peut être utilisé…",
+              "options": [
+                "dans plusieurs pays avec prises adaptées",
+                "seulement sous l'eau",
+                "sans jamais produire de chaleur",
+                "uniquement avec des piles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il accepte une large plage de tension secteur mondiale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si un appareil dit « 12 V DC », il faut…",
+              "options": [
+                "une source de 12 V en courant continu",
+                "le brancher directement sur 230 V alternatif",
+                "aucune alimentation",
+                "uniquement du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DC signifie courant continu à la tension indiquée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une multiprise avec interrupteur permet…",
+              "options": [
+                "couper plusieurs appareils d'un geste",
+                "augmenter la tension à 500 V",
+                "recharger les piles automatiquement",
+                "transformer l'eau en courant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On coupe l'alimentation commune sans débrancher chaque fiche."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Choisir des piles rechargeables pour un jouet consommateur…",
+              "options": [
+                "limite les déchets de piles jetables",
+                "augmente la tension du secteur",
+                "supprime toute consommation",
+                "interdit le jeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les accu se réutilisent après charge au secteur via un chargeur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un objet « autonome sur batterie » signifie…",
+              "options": [
+                "qu'il peut fonctionner sans fil secteur un moment",
+                "qu'il ne consomme jamais d'énergie",
+                "qu'il alimente la ville",
+                "qu'il n'a pas de circuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La batterie embarquée remplace temporairement la prise."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Avant un projet techno à pile, on vérifie…",
+              "options": [
+                "polarité, tension et schéma",
+                "uniquement la couleur du boîtier",
+                "le nom de l'école",
+                "la météo du mois prochain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un montage correct respecte le sens et la valeur de la source."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Brancher trop d'appareils puissants sur une même multiprise peut…",
+              "options": [
+                "faire disjoncter ou chauffer le cordon",
+                "augmenter l'autonomie des piles",
+                "refroidir le réseau",
+                "éteindre le soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La surcharge dépasse la capacité du câble ou du disjoncteur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La bonne alimentation pour un objet, c'est celle…",
+              "options": [
+                "indiquée par le fabricant",
+                "la plus forte disponible toujours",
+                "absente",
+                "choisie au hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Respecter les specs garantit fonctionnement et sécurité."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Rendement",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quand une lampe à incandescence brille, quelles formes d'énergie apparaissent ?",
+              "options": [
+                "Lumière",
+                "Chaleur",
+                "Énergie mécanique de rotation",
+                "Énergie sonore forte"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le filament chauffe beaucoup et émet de la lumière, d'où des pertes thermiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le rendement d'un objet indique…",
+              "options": [
+                "la part d'énergie utile par rapport à l'énergie consommée",
+                "sa couleur",
+                "son poids",
+                "sa marque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un bon rendement signifie peu d'énergie gaspillée pour l'effet voulu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si une lampe consomme 100 unités d'énergie et en donne 5 en lumière utile, le reste est surtout…",
+              "options": [
+                "perdu en chaleur",
+                "converti en mouvement",
+                "stocké dans la pile",
+                "renvoyé au réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une ampoule ancienne transforme l'essentiel de l'électricité en chaleur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Toucher une ampoule allumée depuis longtemps, c'est sentir…",
+              "options": [
+                "de la chaleur",
+                "du froid extrême",
+                "du vent",
+                "de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaleur prouve qu'une partie de l'énergie n'est pas de la lumière utile."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'énergie « perdue » en chaleur n'est pas détruite, elle…",
+              "options": [
+                "réchauffe l'air ou l'objet",
+                "disparaît totalement",
+                "devient lumière parfaite",
+                "recharge le secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie se transforme ; ici elle part en chaleur non désirée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Améliorer le rendement, c'est…",
+              "options": [
+                "obtenir plus d'effet utile pour la même énergie",
+                "consommer plus sans raison",
+                "augmenter seulement la chaleur",
+                "éteindre l'appareil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On vise le même service avec moins de gaspillage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une LED consomme moins qu'une ampoule à filament pour la même lumière car…",
+              "options": [
+                "son rendement lumineux est meilleur",
+                "elle ne produit jamais de chaleur",
+                "elle n'utilise pas d'électricité",
+                "elle est plus lourde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La LED convertit davantage l'électricité en lumière visible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un moteur qui chauffe en tournant montre…",
+              "options": [
+                "une perte d'énergie en chaleur",
+                "un rendement parfait",
+                "absence de frottements",
+                "qu'il ne consomme rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les frottements et le courant dissipent une partie en chaleur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'énergie utile d'un radiateur électrique, c'est surtout…",
+              "options": [
+                "la chaleur dégagée",
+                "la lumière",
+                "le son",
+                "le mouvement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ici la chaleur est l'effet recherché, donc « utile »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour une lampe de bureau, l'énergie utile est…",
+              "options": [
+                "la lumière reçue sur le cahier",
+                "la chaleur au plafond",
+                "le bruit",
+                "le vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On veut éclairer, pas chauffer la pièce inutilement."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations décrivent une ampoule à incandescence ?",
+              "options": [
+                "Le filament devient très chaud",
+                "Elle produit de la lumière",
+                "Elle ne chauffe jamais",
+                "Elle a un rendement lumineux faible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le filament incandescent émet lumière et chaleur ; une grande part est thermique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le filament est en général en…",
+              "options": ["tungstène", "bois", "papier", "glace"],
+              "correctAnswers": [0],
+              "explanation": "Le tungstène supporte des températures très élevées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans une ampoule classique, l'électricité fait surtout…",
+              "options": [
+                "chauffer le filament",
+                "tourner une roue",
+                "geler l'air",
+                "produire du froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la haute température du filament qui émet la lumière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une ampoule qui « gaspille » transforme beaucoup d'électricité en…",
+              "options": ["chaleur", "mouvement utile", "eau", "son musical"],
+              "correctAnswers": [0],
+              "explanation": "La chaleur non utile pour l'éclairage constitue la perte principale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Remplacer une incandescence par une LED pour lire…",
+              "options": [
+                "économise de l'énergie pour la même luminosité",
+                "augmente la chaleur dans la lampe",
+                "supprime toute lumière",
+                "oblige à utiliser des piles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La LED atteint la même clarté avec moins de watts."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Laisser une vieille ampoule allumée inutilement…",
+              "options": [
+                "consomme de l'énergie dont une part part en chaleur",
+                "refroidit la pièce",
+                "recharge les piles",
+                "baisse la facture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute l'électricité consommée se transforme en lumière et chaleur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le verre de l'ampoule protège surtout…",
+              "options": [
+                "le filament de l'air",
+                "le réseau EDF",
+                "la prise murale",
+                "la pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans ampoule étanche, le filament brûlerait rapidement dans l'oxygène."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une lampe torche à ampoule ancienne s'épuise vite car…",
+              "options": [
+                "beaucoup d'énergie part en chaleur",
+                "elle ne consomme rien",
+                "la pile grossit",
+                "le filament produit du froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pile doit fournir lumière et chaleur, ce qui use la réserve."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer deux ampoules au même éclairage, on regarde…",
+              "options": [
+                "leurs puissances en watts",
+                "leur couleur de boîte seulement",
+                "leur odeur",
+                "leur forme de vis uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de watts pour même lumière signifie meilleur rendement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'expression « rendement faible » pour une lampe signifie…",
+              "options": [
+                "peu de lumière utile pour beaucoup d'électricité",
+                "aucune chaleur produite",
+                "consommation nulle",
+                "lumière infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une grande part de l'énergie sert à chauffer au lieu d'éclairer."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un objet technique, l'énergie peut être…",
+              "options": [
+                "Utile (effet recherché)",
+                "Perdue (souvent en chaleur)",
+                "Toujours 100 % utile",
+                "Transformée en plusieurs formes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une part sert au but de l'objet, le reste se dissipe souvent en chaleur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour un ventilateur, l'énergie utile est…",
+              "options": [
+                "l'énergie du vent produit",
+                "la chaleur du moteur",
+                "la lumière",
+                "le son seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On veut déplacer l'air ; la chaleur du moteur est une perte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un grille-pain, la chaleur sur le pain est…",
+              "options": [
+                "utile",
+                "toujours une perte",
+                "inutile dans tous les cas",
+                "identique au vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chauffer le pain est précisément le rôle de l'appareil."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le bruit d'un moteur correspond à une petite part d'énergie…",
+              "options": [
+                "non utile pour le mouvement",
+                "utile principale",
+                "stockée dans la pile",
+                "renvoyée au secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les vibrations sonores dissipent une fraction de l'énergie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réduire les frottements dans un mécanisme permet souvent…",
+              "options": [
+                "d'améliorer le rendement",
+                "d'augmenter la chaleur perdue",
+                "de consommer plus",
+                "d'arrêter le mouvement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de frottements, moins de pertes mécaniques et thermiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une voiture électrique de jouet qui chauffe au sol perd de l'énergie en…",
+              "options": [
+                "chaleur au niveau des frottements",
+                "lumière stroboscopique obligatoire",
+                "production d'eau",
+                "augmentation du réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Roues et engrenages frottent et réchauffent les matériaux."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'énergie consommée d'un objet est la somme…",
+              "options": [
+                "énergie utile + énergie perdue (ou dissipée)",
+                "uniquement de l'énergie utile",
+                "de rien",
+                "de lumière seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute l'énergie reçue se répartit entre effet voulu et pertes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Isoler une tasse de café chaud limite…",
+              "options": [
+                "les pertes de chaleur vers l'air",
+                "la consommation électrique du réseau",
+                "la lumière de la lampe",
+                "le son du moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de chaleur qui s'échappe, plus de boisson chaude utile."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un rendement « élevé » en 5e signifie surtout…",
+              "options": [
+                "beaucoup d'effet utile, peu de gaspillage",
+                "zéro perte impossible en pratique",
+                "consommation infinie",
+                "aucune chaleur jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On retient l'idée qualitative : plus utile pour la même énergie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Observer une machine qui vibre beaucoup suggère…",
+              "options": [
+                "des pertes d'énergie mécanique",
+                "un rendement parfait",
+                "absence de mouvement",
+                "recharge de pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les vibrations indiquent de l'énergie mal convertie en mouvement utile."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comparer LED et ampoule à filament, quelles phrases sont vraies ?",
+              "options": [
+                "La LED consomme moins pour éclairer pareil",
+                "L'incandescence chauffe davantage le luminaire",
+                "La LED ne produit jamais aucune chaleur",
+                "Les deux transforment l'électricité"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux consomment de l'électricité ; la LED gaspille moins en chaleur pour éclairer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une LED reste froide au toucher comparée à une incandescence car…",
+              "options": [
+                "elle dissipe moins de chaleur pour la même lumière",
+                "elle n'utilise pas de courant",
+                "elle est en glace",
+                "elle est branchée sur le gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Son rendement lumineux est nettement supérieur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La durée de vie d'une LED est souvent plus longue car…",
+              "options": [
+                "elle chauffe moins le composant actif",
+                "elle brûle un filament",
+                "elle consomme 1000 fois plus",
+                "elle nécessite de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de stress thermique prolonge le fonctionnement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le rendement énergétique d'une lampe concerne surtout…",
+              "options": [
+                "le rapport lumière obtenue / électricité consommée",
+                "sa couleur de verre",
+                "son emballage",
+                "la marque du plafonnier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On compare l'éclairage utile à l'énergie payée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur l'étiquette, « équivalent 60 W » pour une LED signifie…",
+              "options": [
+                "elle remplace une ancienne 60 W tout en consommant moins",
+                "qu'elle consomme toujours 60 W",
+                "qu'elle ne produit pas de lumière",
+                "qu'elle utilise des piles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une indication de luminosité comparable, pas la consommation réelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Choisir une LED en classe A d'efficacité sert à…",
+              "options": [
+                "limiter la consommation pour éclairer",
+                "augmenter la chaleur perdue",
+                "éteindre le réseau",
+                "interdire la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les classes énergétiques favorisent les produits plus efficaces."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une lampe halogène chauffe aussi beaucoup car…",
+              "options": [
+                "elle fonctionne comme une incandescence améliorée",
+                "elle ne produit que du froid",
+                "elle n'a pas de filament",
+                "elle est une pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le principe filament chaud reste, avec rendement lumineux modéré."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une salle de classe, passer aux LED permet…",
+              "options": [
+                "réduire la facture et la chaleur estivale",
+                "augmenter la consommation",
+                "supprimer toute lumière",
+                "chauffer plus en été"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de watts et moins de chaleur dégagée dans la pièce."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une lampe qui consomme 10 W et éclaire bien a un rendement…",
+              "options": [
+                "meilleur qu'une 60 W incandescente équivalente",
+                "nul",
+                "identique à une bougie seule",
+                "sans lien avec l'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même service lumineux avec moins d'énergie, c'est un meilleur rendement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Éteindre les lumières en partant…",
+              "options": [
+                "évite de gaspiller de l'énergie",
+                "augmente le rendement de la prise",
+                "recharge les LED",
+                "refroidit le secteur à 0 V"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aucune conversion inutile si personne n'a besoin de lumière."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quand un moteur électrique tourne, quelles pertes courantes observe-t-on ?",
+              "options": [
+                "Chaleur dans les bobines",
+                "Bruit et vibrations",
+                "Augmentation de la gravité",
+                "Frottements mécaniques"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Courant, frottements et vibrations dissipent de l'énergie hors du mouvement utile."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lubrifier une chaîne de vélo réduit…",
+              "options": [
+                "les pertes par frottement",
+                "la lumière de la lampe",
+                "la tension du secteur",
+                "le poids de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de frottement, moins de chaleur perdue et pedaling plus facile."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un moteur trop petit pour la charge…",
+              "options": [
+                "chauffe et peut caler",
+                "tourne sans consommer",
+                "a un rendement parfait",
+                "produit de la glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il tire trop de courant et dissipe de la chaleur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'énergie mécanique utile d'un ascenseur est…",
+              "options": [
+                "monter la cabine",
+                "chauffer le moteur",
+                "éclairer la ville",
+                "sonner la cloche seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déplacer la charge est l'effet recherché."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Freiner une voiture de jouet avec les freins produit…",
+              "options": [
+                "de la chaleur aux freins",
+                "plus de mouvement utile",
+                "de l'électricité infinie",
+                "du froid absolu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie cinétique se transforme surtout en chaleur par frottement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un ventilateur mal huilé consomme plus car…",
+              "options": [
+                "il combat plus de frottements",
+                "il ne produit plus de vent",
+                "il devient une pile",
+                "il baisse la tension secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moteur fournit de l'énergie perdue en chaleur au lieu du flux d'air."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour un mixeur, l'énergie utile est…",
+              "options": [
+                "remuer les aliments",
+                "chauffer la pièce",
+                "produire de la lumière",
+                "charger le téléphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rotation des lames sert à mixer, pas à éclairer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réduire le temps de fonctionnement d'un moteur…",
+              "options": [
+                "réduit l'énergie totale consommée",
+                "augmente le rendement à plus de 100 %",
+                "supprime les pertes",
+                "refroidit le soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de minutes actives, moins de kWh, même si le rendement instantané est identique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un courroie qui patine dans une machine…",
+              "options": [
+                "dissipe de l'énergie en chaleur et usure",
+                "améliore le rendement",
+                "ne consomme rien",
+                "recharge la pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glissement transforme l'énergie en chaleur au lieu du mouvement voulu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Entretenir un mécanisme permet souvent…",
+              "options": [
+                "de garder un bon rendement",
+                "d'augmenter les frottements",
+                "de gaspiller plus",
+                "d'arrêter la conversion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un entretien limite les pertes anormales."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles situations montrent un mauvais rendement énergétique ?",
+              "options": [
+                "Ampoule qui brûle les doigts sans éclairer fort",
+                "Moteur très chaud pour peu de mouvement",
+                "LED qui éclaire bien pour peu de watts",
+                "Chauffe-eau qui chauffe l'eau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Beaucoup de chaleur pour peu d'effet utile signale un gaspillage ; la LED efficace est un contre-exemple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Exprimer le rendement en pourcentage en 5e, c'est dire…",
+              "options": [
+                "quelle part de l'énergie reçue sert à l'effet utile",
+                "la couleur de l'appareil",
+                "le prix de l'électricité",
+                "le numéro de la prise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On compare qualitativement utile et total sans calculs compliqués de lycée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un rendement ne peut pas dépasser 100 % car…",
+              "options": [
+                "on ne crée pas d'énergie à partir de rien",
+                "le secteur interdit",
+                "les piles sont rondes",
+                "la lumière est jaune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie utile ne peut pas excéder l'énergie consommée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si sur 100 J consommés, 25 J servent à éclairer, le reste va surtout…",
+              "options": [
+                "en chaleur",
+                "en mouvement infini",
+                "dans le réseau",
+                "en eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une lampe classique, la majorité non lumineuse devient chaleur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Améliorer l'isolation d'un logement améliore le rendement du chauffage car…",
+              "options": [
+                "moins de chaleur utile s'échappe dehors",
+                "on augmente la tension",
+                "on éteint le soleil",
+                "on remplace les piles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus de chaleur reste dans la pièce pour le même kWh."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un appareil « basse consommation » est conçu pour…",
+              "options": [
+                "un rendement ou usage plus économe",
+                "consommer le maximum",
+                "produire plus de chaleur perdue",
+                "ignorer l'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le constructeur limite les pertes et la puissance nécessaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La veille lumineuse d'un téléviseur consomme…",
+              "options": [
+                "une petite énergie continue",
+                "aucune énergie",
+                "toute la maison",
+                "uniquement des piles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même éteint, une part du circuit reste alimentée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Couper complètement une multiprise TV évite…",
+              "options": [
+                "la consommation de veille",
+                "toute utilisation future",
+                "la lumière du soleil",
+                "le rendement des LED"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On supprime le standby qui gaspille de l'énergie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le rendement global d'une chaîne pile → lampe inclut…",
+              "options": [
+                "pertes dans la pile, les fils et la lampe",
+                "uniquement la couleur",
+                "seulement le vent",
+                "rien du tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque étape transforme l'énergie avec des pertes possibles."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En techno, mesurer température d'une lampe allumée sert à…",
+              "options": [
+                "illustrer les pertes en chaleur",
+                "calculer le PIB",
+                "recharger le secteur",
+                "mesurer la vitesse du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température élevée montre l'énergie non convertie en lumière."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gestes améliorent le rendement énergétique à la maison ?",
+              "options": [
+                "Choisir des appareils efficaces",
+                "Éteindre les lumières inutiles",
+                "Laisser tout allumé H24",
+                "Entretenir les machines"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Matériel efficace, extinction et entretien limitent le gaspillage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Remplacer vieux réfrigérateur par un récent classe A…",
+              "options": [
+                "réduit la consommation pour le même froid",
+                "augmente la chaleur voulue dans le frigo",
+                "supprime l'électricité",
+                "oblige à utiliser des piles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meilleur rendement frigorifique pour la même fonction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cuire avec un couvercle sur la casserole…",
+              "options": [
+                "limite la perte de chaleur",
+                "augmente la facture d'électricité du frigo",
+                "éteint le feu",
+                "produit de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de chaleur s'échappe, la cuisson est plus efficace."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Descendre le chauffage d'un degré…",
+              "options": [
+                "économise de l'énergie",
+                "améliore le rendement à plus de 100 %",
+                "recharge les piles",
+                "augmente la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de chaleur demandée, moins de kWh consommés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Utiliser la lumière du jour près d'une fenêtre…",
+              "options": [
+                "reporte l'allumage des lampes",
+                "consomme plus d'électricité",
+                "refroidit le soleil",
+                "bloque le rendement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éclairage naturel remplace partiellement l'électricité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un lave-linge chargé correctement…",
+              "options": [
+                "utilise mieux l'énergie par lessive",
+                "consomme toujours zéro",
+                "chauffe le réseau",
+                "remplace la pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de cycles pour la même quantité de linge, moins de gaspillage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Programmer une box internet la nuit si possible…",
+              "options": [
+                "peut limiter certaines consommations",
+                "augmente la tension à 1000 V",
+                "refroidit les fils",
+                "supprime le rendement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire fonctions inutiles diminue le total d'énergie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le mode « éco » sur un appareil vise…",
+              "options": [
+                "à réduire consommation pour un service proche",
+                "à augmenter la chaleur perdue",
+                "à couper la sécurité",
+                "à interdire l'usage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fabricant limite puissance ou durée pour économiser."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sensibiliser au rendement à l'école aide à…",
+              "options": [
+                "comprendre l'impact des habitudes",
+                "augmenter le gaspillage",
+                "ignorer la technologie",
+                "confondre pile et prise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les élèves relient gestes quotidiens et énergie consommée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un bon citoyen économe…",
+              "options": [
+                "utilise l'énergie utile sans la gaspiller",
+                "laisse les fenêtres ouvertes en hiver avec chauffage max",
+                "allume toutes les lampes de jour",
+                "jette les piles dans la nature"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Limiter les usages inutiles préserve ressources et facture."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels transferts d'énergie rencontre-t-on dans des objets courants ?",
+              "options": [
+                "Électrique → lumière",
+                "Électrique → chaleur",
+                "Chimique → électrique (pile)",
+                "Mécanique → électrique (dynamo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lampes et radiateurs transforment l'électricité ; piles et dynamos illustrent d'autres conversions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une pile délivre de l'énergie électrique à partir de…",
+              "options": [
+                "énergie chimique",
+                "énergie nucléaire du filament",
+                "énergie du vent seul",
+                "énergie lumineuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réaction interne libère des électrons dans le circuit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un panneau solaire transforme la lumière en…",
+              "options": ["électricité", "piles jetables", "pétrole", "glace"],
+              "correctAnswers": [0],
+              "explanation": "Le photovoltaïque produit un courant continu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une ampoule transforme l'électricité surtout en…",
+              "options": ["lumière et chaleur", "mouvement", "son pur", "eau"],
+              "correctAnswers": [0],
+              "explanation": "C'est le principe du filament ou du composant LED."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un sèche-cheveux transforme l'électricité en…",
+              "options": [
+                "chaleur et vent",
+                "lumière seule",
+                "mouvement de voiture",
+                "énergie chimique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résistance chauffante plus moteur de ventilateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La chaîne énergétique d'une lampe sur pile est…",
+              "options": [
+                "chimique → électrique → lumière (+ chaleur)",
+                "électrique → chimique → vent",
+                "lumière → électricité → pile",
+                "aucune conversion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pile fournit le courant qui alimente la lampe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Perdre de l'énergie en chaleur dans une lampe, c'est…",
+              "options": [
+                "un transfert vers une forme moins utile ici",
+                "une destruction totale de l'énergie",
+                "un gain de lumière",
+                "un rechargement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie change de forme sans disparaître."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un convertisseur dans un chargeur change…",
+              "options": [
+                "tension et forme du courant adaptées",
+                "la couleur de la prise",
+                "le poids de la pile",
+                "la vitesse du vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le secteur alternatif haute tension devient courant adapté à la batterie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Schématiser flèches d'énergie sur un objet aide à…",
+              "options": [
+                "repérer entrées, sorties utiles et pertes",
+                "augmenter la tension secteur",
+                "remplacer les mesures",
+                "supprimer la sécurité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On visualise où l'énergie entre et où elle part."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'énergie totale fournie par une pile finit par…",
+              "options": [
+                "se répartir en effets utiles et dissipés",
+                "disparaître",
+                "devenir uniquement lumière",
+                "retourner intacte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand la pile est vide, l'énergie chimique a été convertie ailleurs."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels outils ou observations utilisent les élèves en 5e pour parler de rendement ?",
+              "options": [
+                "Thermomètre sur une lampe",
+                "Comparaison de température LED / incandescence",
+                "Calcul intégrale de lycée",
+                "Observation de la luminosité"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "On mesure chaleur et compare visuellement la lumière, sans mathématiques avancées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Allumer deux lampes différentes côte à côte permet de…",
+              "options": [
+                "comparer luminosité et chauffe",
+                "mesurer la vitesse du son",
+                "recharger les piles",
+                "augmenter le secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'observation directe illustre l'efficacité relative."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Noter la température d'une ampoule après 5 minutes montre…",
+              "options": [
+                "qu'elle perd beaucoup d'énergie en chaleur",
+                "qu'elle ne consomme rien",
+                "qu'elle produit du froid",
+                "qu'elle est une pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une forte température indique une part non lumineuse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Compter le nombre de piles usées en une semaine sur un jouet…",
+              "options": [
+                "montre une consommation élevée",
+                "prouve un rendement infini",
+                "supprime les pertes",
+                "refroidit le moteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changer souvent les piles signale un appareil gourmand ou peu efficace."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lire la puissance en watts sur une ampoule indique…",
+              "options": [
+                "sa consommation instantanée",
+                "sa couleur",
+                "son parfum",
+                "sa date de naissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus le watt est élevé, plus elle prend d'énergie au même instant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux ampoules de même luminosité, l'une 10 W l'autre 60 W : la 10 W a…",
+              "options": [
+                "un meilleur rendement lumineux",
+                "un rendement nul",
+                "plus de chaleur perdue",
+                "aucune lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même lumière avec moins de watts, c'est plus efficace."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chronométrer combien de temps une pile alimente une lampe…",
+              "options": [
+                "compare l'autonomie selon le type d'ampoule",
+                "mesure la tension du secteur",
+                "calcule la vitesse de la lumière",
+                "recharge la pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une lampe efficace use moins la pile pour la même durée d'éclairage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Classer des appareils du plus au moins efficace est un exercice…",
+              "options": [
+                "qualitatif de techno 5e",
+                "réservé aux études supérieures seulement",
+                "sans lien avec l'énergie",
+                "interdit en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On compare sans formules compliquées de terminale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Photographier une lampe thermique avec caméra infrarouge montre…",
+              "options": [
+                "les zones chaudes donc les pertes",
+                "la couleur du fil",
+                "le prix du kWh",
+                "le numéro de série"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'infrarouge visualise la chaleur émise par l'objet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Interpréter « cette lampe chauffe mais éclaire peu » signifie…",
+              "options": [
+                "rendement lumineux faible",
+                "rendement parfait",
+                "consommation nulle",
+                "pile rechargée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet utile recherché (lumière) est minoritaire."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour améliorer le rendement d'un objet d'éclairage, on peut…",
+              "options": [
+                "Choisir une source plus efficace (LED)",
+                "Adapter la puissance au besoin",
+                "Toujours prendre la plus grosse ampoule",
+                "Éviter les ampoules qui chauffent excessi­vement sans éclairer"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Technologie adaptée et puissance suffisante (pas excessive) limitent le gaspillage."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un luminaire bien conçu évite de…",
+              "options": [
+                "piéger la chaleur qui abîme l'ampoule",
+                "produire de la lumière",
+                "utiliser d'électricité",
+                "brancher au secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ventilation du luminaire prolonge la vie et la sécurité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dimmer (variateur) sur halogène ancienne peut…",
+              "options": [
+                "réduire la lumière et un peu la consommation",
+                "augmenter le rendement au-delà de 100 %",
+                "recharger la pile",
+                "geler le filament"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Baisser la puissance diminue l'éclairage et l'énergie prise."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nettoyer poussière sur ampoule ou réflecteur…",
+              "options": [
+                "améliore la lumière utile diffusée",
+                "augmente la consommation obligatoire",
+                "refroidit le soleil",
+                "coupe le secteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins d'obstruction, meilleure utilisation de la lumière produite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Remplacer un néon clignotant par un modèle efficace…",
+              "options": [
+                "réduit pertes et consommation",
+                "supprime toute lumière",
+                "oblige à utiliser des piles",
+                "chauffe plus sans éclairer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les technologies récentes convertissent mieux l'électricité en lumière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Concevoir un objet techno avec moteur léger et peu de frottements…",
+              "options": [
+                "vise un meilleur rendement",
+                "augmente les pertes",
+                "interdit le mouvement",
+                "remplace la pile par l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moins de pertes mécaniques, plus de mouvement utile."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Utiliser capteur de présence pour la lumière…",
+              "options": [
+                "évite de laisser la lampe allumée vide",
+                "recharge automatiquement le secteur",
+                "supprime le rendement",
+                "oblige à chauffer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lampe ne consomme que quand quelqu'un est là."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Expliquer le rendement à un camarade, c'est lui dire…",
+              "options": [
+                "combien d'énergie sert vraiment au but de l'objet",
+                "de confondre watts et litres",
+                "d'ignorer la chaleur",
+                "de jeter les piles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'idée clé est la part utile versus gaspillée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un objet bien choisi pour sa fonction…",
+              "options": [
+                "limite le gaspillage d'énergie",
+                "consomme toujours le maximum",
+                "refroidit la maison en hiver sans chauffage",
+                "remplace la sécurité électrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adapter l'appareil au besoin évite surconsommation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En résumé, le rendement en technologie 5e concerne…",
+              "options": [
+                "l'utilisation utile de l'énergie dans les objets",
+                "uniquement les mathématiques du lycée",
+                "la couleur des fils",
+                "le tri des déchets alimentaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On comprend pourquoi certains objets chauffent ou consomment plus pour le même service."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

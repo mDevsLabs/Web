@@ -1,0 +1,2493 @@
+{
+  "id": "6e-sciences-et-technologie-05",
+  "year": "6e",
+  "subject": "sciences-et-technologie",
+  "title": "Matière et énergie",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Transformations",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Les trois états",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "À température ambiante, quels exemples sont des solides ?",
+              "options": [
+                "Clé en métal",
+                "Air dans la pièce",
+                "Crayon en bois",
+                "Eau en bouteille"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Métal et bois : solides."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un liquide prend la forme :",
+              "options": [
+                "Du récipient",
+                "D un cube fixe",
+                "De toute la pièce sans récipient",
+                "D une sphère en l air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il épouse le récipient."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un gaz occupe :",
+              "options": [
+                "Tout le volume disponible",
+                "Un volume fixe cubique",
+                "Le fond seulement",
+                "Aucune place"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il se répand."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La glace est :",
+              "options": ["Eau solide", "Eau gazeuse", "Liquide", "Air"],
+              "correctAnswers": [0],
+              "explanation": "État solide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "On comprime facilement :",
+              "options": [
+                "L air dans une seringue",
+                "Une pierre",
+                "Eau bouteille pleine",
+                "Du bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaz compressible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vapeur au-dessus d une casserole :",
+              "options": ["Eau gaz", "Solide", "Sel", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": "Chauffe : gaz."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Miel qui coule :",
+              "options": ["Liquide visqueux", "Gaz", "Solide", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Coule : liquide."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Grains de sel :",
+              "options": ["Solide", "Liquide", "Gaz", "Énergie"],
+              "correctAnswers": [0],
+              "explanation": "Forme propre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour classer un état on observe :",
+              "options": [
+                "Forme et couler ou comprimer",
+                "Couleur",
+                "Prix",
+                "Âge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Critères d état."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L air respiré est :",
+              "options": ["Mélange de gaz", "Liquide", "Solide", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs gaz."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Solide et liquide",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un solide :",
+              "options": [
+                "A une forme propre",
+                "Coule comme l eau",
+                "Occupe un volume",
+                "Remplit une pièce sans récipient"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Forme et volume."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Huile dans un bol :",
+              "options": [
+                "Prend la forme du bol",
+                "Reste sphérique",
+                "Devient gaz",
+                "Disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liquide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Craie cassée :",
+              "options": [
+                "Reste solide",
+                "Devient liquide",
+                "Disparaît",
+                "Devient gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "État inchangé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Volume d un liquide mesuré avec :",
+              "options": [
+                "Éprouvette graduée",
+                "Thermomètre seul",
+                "Règle sur pierre",
+                "Chronomètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Graduations mL."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Eau du robinet :",
+              "options": ["Liquide", "Solide", "Gaz pur", "Sans masse"],
+              "correctAnswers": [0],
+              "explanation": "Coule."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Solide et liquide ont :",
+              "options": [
+                "Masse et volume",
+                "Toujours même forme",
+                "Volume nul",
+                "Pas de matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Matière."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sucre dissous dans l eau :",
+              "options": [
+                "Sucre encore présent",
+                "Sucre absent",
+                "Sucre en gaz",
+                "Sucre en métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mélange."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Beurre froid au frigo :",
+              "options": ["Dur donc solide", "Gaz", "Coule vite", "Lumière"],
+              "correctAnswers": [0],
+              "explanation": "Froid."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Solide vers liquide même substance :",
+              "options": ["Fusion", "Solidification", "Filtration", "Découpe"],
+              "correctAnswers": [0],
+              "explanation": "Fonte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bouteille couchée l eau :",
+              "options": [
+                "Va vers le bas",
+                "Reste cube",
+                "Devient solide",
+                "Monte seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coule."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Le gaz",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Propriétés d un gaz :",
+              "options": [
+                "Compressible",
+                "Forme rigide fixe",
+                "Remplit l espace",
+                "Sans masse"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Compressible et expansif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Air dans un ballon :",
+              "options": ["Pression sur paroi", "Liquide", "Solide", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Gaz sous pression."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bulles dans soda ouvert :",
+              "options": ["Gaz CO2", "Liquide pur", "Métal", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Gaz libéré."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Enfermer un gaz il faut :",
+              "options": ["Récipient fermé", "Rien", "Tamis", "Eau seule"],
+              "correctAnswers": [0],
+              "explanation": "Sinon dispersion."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Brouillard chaud visible contient :",
+              "options": ["Gouttelettes eau", "Sel", "Métal", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Condensation fine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Parfum dans une pièce montre :",
+              "options": [
+                "Gaz qui se déplace",
+                "Pas de masse",
+                "Air non matière",
+                "Liquide seul bouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diffusion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Seringue air bouchon fermé :",
+              "options": [
+                "Volume réduit",
+                "Air en pierre",
+                "Masse nulle",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compression."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Hélium ballon monte car :",
+              "options": [
+                "Moins dense que air",
+                "Solide léger",
+                "Liquide lourd",
+                "Sans matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Densité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Respirer c est :",
+              "options": [
+                "Échanger l air gaz",
+                "Avaler liquide",
+                "Air solide",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inspirer expirer."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Eau à l état gaz :",
+              "options": ["Vapeur d eau", "Glace", "Neige", "Huile"],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Fusion et solidification",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Changements d état corrects pour l eau :",
+              "options": [
+                "Glace vers eau fusion",
+                "Eau vers glace solidification",
+                "Eau vers glace fusion",
+                "Glace vers eau solidification"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fusion et solidification."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Glace qui fond la chaleur sert à :",
+              "options": [
+                "Changer l état",
+                "Disparaître masse",
+                "Faire du sel",
+                "Créer vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Changement d état."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Eau au congélateur devient :",
+              "options": ["Glace", "Liquide chaud", "Gaz direct", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Solidification."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Métal liquide refroidi :",
+              "options": ["Solidification", "Fusion", "Dissolution", "Air"],
+              "correctAnswers": [0],
+              "explanation": "Durcit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cire qui coule à la chaleur :",
+              "options": [
+                "Fusion",
+                "Solidification",
+                "Filtration",
+                "Décantation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Solide vers liquide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Neige qui fond :",
+              "options": [
+                "Fusion",
+                "Solidification",
+                "Combustion",
+                "Filtration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fonte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Faire des glaçons :",
+              "options": ["Solidification", "Fusion", "Découpe", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Eau vers glace."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Changement d état l eau reste :",
+              "options": ["De l eau", "Du sel", "Du métal", "Autre substance"],
+              "correctAnswers": [0],
+              "explanation": "Même substance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chocolat fondu puis froid :",
+              "options": [
+                "Fusion puis solidification",
+                "Inverse seul",
+                "Aucun",
+                "Disparition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aller retour."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Flaque qui gèle :",
+              "options": [
+                "Solidification",
+                "Fusion",
+                "Évaporation totale",
+                "Feu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Glace."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Au quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Changements d état de l eau :",
+              "options": [
+                "Glace fond",
+                "Eau bout",
+                "Couper feuille",
+                "Eau plus sable"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fonte et vaporisation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Gouttes vitre froide :",
+              "options": ["Condensation", "Fusion verre", "Air solide", "Sel"],
+              "correctAnswers": [0],
+              "explanation": "Gaz vers liquide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Linge au soleil l eau :",
+              "options": [
+                "S évapore",
+                "Devient pierre",
+                "Devient glace",
+                "Disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évaporation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Bonbon à la langue :",
+              "options": ["Fusion", "Solidification", "Métal", "Filtration"],
+              "correctAnswers": [0],
+              "explanation": "Fond."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Givre sur voiture :",
+              "options": ["Eau solide", "Liquide chaud", "Gaz", "Métal"],
+              "correctAnswers": [0],
+              "explanation": "Givre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Eau qui bout produit :",
+              "options": ["Vapeur", "Glace", "Roche", "Sel"],
+              "correctAnswers": [0],
+              "explanation": "Ébullition."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Eau moule congélateur :",
+              "options": [
+                "Liquide vers solide",
+                "Solide vers liquide",
+                "Vers métal",
+                "Gaz vers solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Glace."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Beurre poêle chaude :",
+              "options": [
+                "Fusion",
+                "Solidification",
+                "Invisible",
+                "Feu obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fond."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Buée miroir après douche :",
+              "options": [
+                "Condensation",
+                "Fusion miroir",
+                "Gaz vers solide",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gouttes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Glace eau vapeur c est :",
+              "options": [
+                "Même substance états différents",
+                "Substances sans lien",
+                "Énergie seule",
+                "Pas eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois états."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Eau et température",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Augmente température de l eau :",
+              "options": [
+                "Chauffer plaque",
+                "Soleil sur récipient",
+                "Congélateur",
+                "Bac de glace"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Apport énergie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Thermomètre dans eau mesure :",
+              "options": ["Température", "Couleur", "Goût", "Prix"],
+              "correctAnswers": [0],
+              "explanation": "Instrument T."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Eau bout forme surtout :",
+              "options": ["Vapeur", "Glace", "Sel", "Métal"],
+              "correctAnswers": [0],
+              "explanation": "Gaz."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "0 °C eau pure correspond à :",
+              "options": [
+                "Glace et eau en équilibre",
+                "Ébullition",
+                "Disparition",
+                "Roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point fusion."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Eau chaude au froid peut :",
+              "options": [
+                "Geler",
+                "Devenir gaz instantané",
+                "Masse nulle",
+                "Huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Refroidir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Chauffer glace d abord :",
+              "options": ["Elle fond", "Métal", "Disparaît", "Comme gaz"],
+              "correctAnswers": [0],
+              "explanation": "Fusion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Feu ou soleil sert à :",
+              "options": [
+                "Chauffer ou changer état",
+                "Vide",
+                "Masse nulle",
+                "Or"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thermique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Eau bouteille ambiante :",
+              "options": ["Liquide", "Solide", "Gaz pur", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "Courant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Glace fond printemps :",
+              "options": ["Fusion", "Solidification", "Sel", "Pierre"],
+              "correctAnswers": [0],
+              "explanation": "Fonte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après chauffe on observe :",
+              "options": [
+                "Température plus haute",
+                "Masse nulle",
+                "Nouvelle substance",
+                "Volume nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chauffe."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Conservation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Changement d état eau :",
+              "options": [
+                "Masse conservée sans fuite",
+                "Substance reste eau",
+                "Masse disparaît",
+                "Autre substance"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Conservation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "100 g glace fondue environ :",
+              "options": ["100 g eau", "50 g", "0 g", "200 g sel"],
+              "correctAnswers": [0],
+              "explanation": "Masse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sel dissous masse totale :",
+              "options": ["Conservée", "Nulle", "Double", "Perdue"],
+              "correctAnswers": [0],
+              "explanation": "Sel présent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Feuille découpée masse totale :",
+              "options": ["Égale feuille entière", "Nulle", "Double", "Triple"],
+              "correctAnswers": [0],
+              "explanation": "Découpe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Eau évaporée flaque :",
+              "options": [
+                "Vapeur dans air",
+                "N existe plus",
+                "Lumière",
+                "Roche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaz."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Glace fondue sans fuite masse :",
+              "options": ["Inchangée", "Nulle", "Divisée par deux", "Triplée"],
+              "correctAnswers": [0],
+              "explanation": "Fusion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Eau sable décanté :",
+              "options": [
+                "Sable et eau restent",
+                "Sable liquide",
+                "Eau métal",
+                "Disparition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séparation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Verre cassé masse morceaux :",
+              "options": ["Égale verre entier", "Nulle", "Liquide", "Gaz"],
+              "correctAnswers": [0],
+              "explanation": "Cassure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fondre puis regeler sans fuite :",
+              "options": ["Masse conservée", "Nulle", "Double", "Perdue"],
+              "correctAnswers": [0],
+              "explanation": "États."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Changement d état :",
+              "options": [
+                "Ne détruit pas matière",
+                "Détruit tout",
+                "Vide",
+                "Sans volume"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Physique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Mélanges",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exemples de mélanges :",
+              "options": [
+                "Air",
+                "Eau plus sel",
+                "Fer pur seul",
+                "Eau pure seule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Air et eau salée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Filtration eau sable :",
+              "options": [
+                "Sable retenu eau passe",
+                "Sable gaz",
+                "Eau gone",
+                "Sable dissous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Décantation :",
+              "options": [
+                "Sable au fond",
+                "Sable évapore",
+                "Eau solide",
+                "Masse nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dépôt."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sirop sucre eau :",
+              "options": ["Mélange homogène", "Gaz", "Solide", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Dissous."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Eau boueuse :",
+              "options": ["Mélange hétérogène", "Pure", "Énergie", "Plasma"],
+              "correctAnswers": [0],
+              "explanation": "Particules visibles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vis fer plastique séparer :",
+              "options": ["Aimant pour fer", "Thermomètre", "Glace", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Magnétisme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Eau huile au repos :",
+              "options": [
+                "Deux couches",
+                "Un liquide",
+                "Solide",
+                "Disparition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non miscibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sucre eau chaude :",
+              "options": ["Dissolution", "Masse détruite", "Métal", "Vide"],
+              "correctAnswers": [0],
+              "explanation": "Mélange."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L air est :",
+              "options": ["Mélange de gaz", "Liquide", "Solide", "Une pure"],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs gaz."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Filtrer eau trouble :",
+              "options": [
+                "Retire solides",
+                "Vers gaz",
+                "Masse nulle",
+                "Vers métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filtration."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Observer",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Outils pour observer transformation :",
+              "options": [
+                "Thermomètre",
+                "Balance",
+                "Télécommande seule",
+                "Chrono sans protocole"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mesures."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Masse avant après fusion sans fuite :",
+              "options": ["Constante", "Nulle", "Double", "Perdue"],
+              "correctAnswers": [0],
+              "explanation": "Conservation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Buée assiette froide :",
+              "options": ["Condensation", "Fusion verre", "Air solide", "Feu"],
+              "correctAnswers": [0],
+              "explanation": "Gaz vers liquide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Glace eau vapeur tableau :",
+              "options": ["Solide liquide gaz", "Métaux", "Animaux", "Prises"],
+              "correctAnswers": [0],
+              "explanation": "États eau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Transformation physique en 6e :",
+              "options": [
+                "État ou forme sans nouvelle substance",
+                "Explosion",
+                "Flammes",
+                "Disparition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Physique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Chauffer eau en classe :",
+              "options": [
+                "Consignes sécurité",
+                "Toucher plaque",
+                "Eau sur soi",
+                "Cacher thermo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chaleur vent séchage :",
+              "options": [
+                "Évaporation plus rapide",
+                "Solidification",
+                "Fusion tissu",
+                "Disparition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sèche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Même masse eau vers glace volume glace :",
+              "options": ["Souvent plus grand", "Nul", "Moitié", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "Glace moins dense."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bulles eau bout :",
+              "options": ["Vapeur", "Solide", "Liquide gone", "Métal"],
+              "correctAnswers": [0],
+              "explanation": "Gaz."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Rédiger expérience :",
+              "options": [
+                "Matériel étapes observations",
+                "Opinion",
+                "Sans protocole",
+                "Dessin seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protocole."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan matière",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Couples état substance corrects :",
+              "options": [
+                "Glace solide",
+                "Vapeur gaz",
+                "Eau liquide gaz",
+                "Air ambiant liquide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Glace et vapeur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Solidification :",
+              "options": [
+                "Liquide vers solide",
+                "Solide vers liquide",
+                "Liquide vers gaz",
+                "Gaz vers liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Geler."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fusion :",
+              "options": [
+                "Solide vers liquide",
+                "Liquide vers solide",
+                "Gaz vers liquide",
+                "Liquide vers gaz seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fondre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Condensation exemple :",
+              "options": [
+                "Buée vitre froide",
+                "Glace congélo",
+                "Sel eau",
+                "Bois cassé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaz vers liquide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Évaporation :",
+              "options": [
+                "Liquide vers gaz surface",
+                "Solide vers liquide",
+                "Gaz vers solide",
+                "Aimant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécher."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Changements d état matière :",
+              "options": [
+                "Conservée",
+                "Disparaît",
+                "Lumière seule",
+                "Immesurable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Masse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Solide liquide gaz ont :",
+              "options": ["Une masse", "Forme identique", "Volume nul", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Matière."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Après fonte chauffer eau :",
+              "options": [
+                "Température monte",
+                "Moins 50 degrés",
+                "Masse nulle",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chauffe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Séparer mélange 6e :",
+              "options": [
+                "Filtre décante aimant",
+                "Brûler",
+                "Impossible",
+                "Fusion obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Physique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L eau peut être :",
+              "options": [
+                "Solide liquide gaz",
+                "Liquide seul",
+                "Solide seul",
+                "Jamais gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Trois états."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Sources d'énergie",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "L énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "L énergie permet :",
+              "options": [
+                "Produire lumière",
+                "Refroidir sans apport",
+                "Faire bouger",
+                "Supprimer matière"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Lumière et mouvement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lampe allumée transforme électricité en :",
+              "options": [
+                "Lumière et chaleur",
+                "Roche",
+                "Glace",
+                "Vent sans source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversion."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Manger apporte au corps :",
+              "options": [
+                "Énergie",
+                "Air seul",
+                "Électricité directe",
+                "Métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aliments."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le Soleil apporte :",
+              "options": [
+                "Lumière et chaleur",
+                "Glace",
+                "Roche liquide",
+                "Prise directe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rayonnement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vélo pédaler :",
+              "options": [
+                "Muscles vers mouvement",
+                "Vide",
+                "Lune",
+                "Sans conversion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Éteindre lumière en partant :",
+              "options": [
+                "Économise énergie",
+                "Augmente conso",
+                "Gèle air",
+                "Crée électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Usage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Batterie téléphone :",
+              "options": ["Chimique vers électrique", "Glace", "Vent", "Rien"],
+              "correctAnswers": [0],
+              "explanation": "Stockage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Éolienne :",
+              "options": [
+                "Vent vers électricité",
+                "Lumière seule",
+                "Zéro",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Moteur électrique sans alimentation :",
+              "options": [
+                "Ne tourne pas",
+                "Tourne éternel",
+                "Crée matière",
+                "Gèle eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Besoin électricité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Radiateur électrique :",
+              "options": ["Électricité vers chaleur", "Glace", "Sel", "Vent"],
+              "correctAnswers": [0],
+              "explanation": "Chauffe."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Le Soleil",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le Soleil apporte :",
+              "options": [
+                "Lumière",
+                "Chaleur",
+                "Électricité prise sans appareil",
+                "Glace"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Rayonnement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Panneau photovoltaïque :",
+              "options": ["Lumière vers électricité", "Roche", "Sel", "Glace"],
+              "correctAnswers": [0],
+              "explanation": "PV."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Linge au soleil :",
+              "options": [
+                "Chaleur vers évaporation",
+                "Gaz ville",
+                "Fil",
+                "Métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sèche."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Soleil source :",
+              "options": [
+                "Renouvelable",
+                "Épuisé en heures",
+                "Inexistant",
+                "Nuit seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flux continu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plantes utilisent :",
+              "options": [
+                "Lumière du Soleil",
+                "Prise murale",
+                "Glace",
+                "Métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissance."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lire à la lumière du jour :",
+              "options": [
+                "Économise lampes",
+                "Augmente facture",
+                "Gèle pièce",
+                "Invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Naturel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Capteur solaire thermique :",
+              "options": [
+                "Chauffe eau",
+                "Sel",
+                "Refroidit sans énergie",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau chaude."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La nuit éclairage intérieur :",
+              "options": [
+                "Électricité ou batterie",
+                "Soleil direct",
+                "Glace",
+                "Impossible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lampes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ombres courtes midi été :",
+              "options": ["Soleil haut", "Pas de Soleil", "Nuit", "Glace"],
+              "correctAnswers": [0],
+              "explanation": "Position."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Soleil fort sur peau :",
+              "options": [
+                "Se protéger",
+                "Brancher prise",
+                "Glace seule",
+                "Couper réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Électricité maison",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Électricité maison sert à :",
+              "options": [
+                "Lampes",
+                "Chauffer ou cuire",
+                "Remplacer nourriture",
+                "Vent sans rien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Usages courants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Prise murale fournit :",
+              "options": [
+                "Énergie électrique",
+                "Eau robinet",
+                "Gaz invisible",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fil électrique :",
+              "options": [
+                "Relie appareil à source",
+                "Soleil direct",
+                "Glace",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transport."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Compteur électrique :",
+              "options": [
+                "Mesure consommation",
+                "Masse air",
+                "Couleur murs",
+                "Personnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "kWh."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Court-circuit dangereux :",
+              "options": [
+                "Chauffe étincelles disjoncteur",
+                "Sans danger",
+                "Refroidit",
+                "Produit eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risque."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mains mouillées prise :",
+              "options": [
+                "Danger électrocution",
+                "Plus énergie",
+                "Vent",
+                "Charge Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eau et électricité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réfrigérateur branché :",
+              "options": [
+                "Consomme électricité",
+                "Rien",
+                "Gaz ville",
+                "Soleil direct"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appareil."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Éteindre veille TV :",
+              "options": [
+                "Réduit consommation",
+                "Double facture",
+                "Gèle air",
+                "Charge Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Veille."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ampoule LED vs incandescente :",
+              "options": [
+                "LED consomme moins",
+                "LED toujours plus",
+                "Rien",
+                "Eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Efficace."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Disjoncteur :",
+              "options": [
+                "Coupe surintensité",
+                "Augmente courant",
+                "Température extérieure",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Protection."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Aliments",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Aliments apportent au corps :",
+              "options": [
+                "Énergie pour vivre",
+                "Matière pour grandir",
+                "Électricité muscles",
+                "Rien utile"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Énergie et matière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Petit déjeuner :",
+              "options": [
+                "Recharge énergie",
+                "Gèle corps",
+                "Produit électricité",
+                "Remplace eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repas."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Courir utilise énergie :",
+              "options": [
+                "Des aliments",
+                "Réseau jambes",
+                "Lune",
+                "Sans source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Muscles repas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pain pâtes fruits contiennent :",
+              "options": [
+                "Glucides énergie",
+                "Fil électrique",
+                "Gaz ville",
+                "Métal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Source énergétique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans manger assez :",
+              "options": [
+                "Fatigue",
+                "Énergie infinie",
+                "Trop électricité",
+                "Glace sang"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manque apport."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Herbivore obtient énergie :",
+              "options": ["Plantes mangées", "Soleil peau", "Prises", "Glace"],
+              "correctAnswers": [0],
+              "explanation": "Chaîne alimentaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cuisson aliments demande :",
+              "options": [
+                "Énergie gaz ou électricité",
+                "Aucune",
+                "Vent seul",
+                "Lumière stoppée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaleur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Frigo pour aliments :",
+              "options": [
+                "Ralentit altération",
+                "Crée électricité",
+                "Métal",
+                "Disparition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Froid."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Eau vs aliments pour énergie :",
+              "options": [
+                "Eau hydrate calories via aliments",
+                "Eau remplace repas",
+                "Eau est électricité",
+                "Eau est gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calories aliments."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Soleil plante lapin montre :",
+              "options": [
+                "Transfert énergie",
+                "Matière from nothing",
+                "Fil électrique",
+                "Fusion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alimentation."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Économies",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Économiser énergie maison :",
+              "options": [
+                "Éteindre lumières inutiles",
+                "Baisser chauffage en partant",
+                "Tout laisser allumé",
+                "Fenêtres ouvertes hiver chauffé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Gestes simples."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Fenêtres fermées hiver chauffé :",
+              "options": [
+                "Limite pertes chaleur",
+                "Augmente sans limite",
+                "Refroidit mieux",
+                "Produit électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Isolation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mode éco lave-linge :",
+              "options": [
+                "Réduit eau et électricité",
+                "Double énergie",
+                "Empêche laver",
+                "Gèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programme éco."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Marche vélo trajet court :",
+              "options": [
+                "Économise carburant voiture",
+                "Consomme plus",
+                "Crée électricité",
+                "Immobile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transport actif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Isoler combles :",
+              "options": [
+                "Garde chaleur",
+                "Refroidit magiquement",
+                "Supprime tout besoin",
+                "Glace maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Thermique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Facture électricité :",
+              "options": [
+                "Montre consommation",
+                "Masse air",
+                "Change Soleil",
+                "Crée vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suivi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chargeur inutilisé débranché :",
+              "options": [
+                "Évite veille",
+                "Augmente facture",
+                "Inutile toujours",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standby."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lumière du jour :",
+              "options": [
+                "Diminue lampes",
+                "Augmente lampes",
+                "Gèle",
+                "Remplace eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gratuit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Regrouper courses voiture :",
+              "options": [
+                "Moins trajets",
+                "Plus carburant",
+                "Aucun effet",
+                "Électricité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kilomètres."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Économiser énergie c est :",
+              "options": [
+                "Limiter gaspillage",
+                "Ampoules dehors",
+                "Portes froid",
+                "Chauffer dehors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaspillage."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Chaîne énergétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Conversions d énergie correctes :",
+              "options": [
+                "Ampoule électrique vers lumière",
+                "Panneau lumière vers électrique",
+                "Rien ne se transforme",
+                "Glace vers lumière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Exemples réels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réseau vers lampe transporte :",
+              "options": ["Électricité", "Glace", "Roche", "Sel"],
+              "correctAnswers": [0],
+              "explanation": "Réseau domestique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dynamo vélo :",
+              "options": [
+                "Mouvement vers électricité",
+                "Électricité vers mouvement seul",
+                "Glace",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Générateur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ventilateur électrique :",
+              "options": [
+                "Électricité vers mouvement air",
+                "Mouvement vers électricité seul",
+                "Sel",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moteur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pile lampe poche :",
+              "options": [
+                "Chimique électrique lumière",
+                "Lumière glace",
+                "Vide",
+                "Soleil sans pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne pile ampoule."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Résistance chauffe eau :",
+              "options": [
+                "Électrique vers chaleur",
+                "Chaleur vers électrique seule",
+                "Glace",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chauffe eau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une chaîne l énergie :",
+              "options": [
+                "Se transforme",
+                "Disparaît totalement",
+                "Devient glace",
+                "Ne se transfère jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Conversions."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Soleil plante herbivore :",
+              "options": [
+                "Transfert par alimentation",
+                "Prise murale",
+                "Métal",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaîne alimentaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Appareil éteint débranché :",
+              "options": [
+                "Ne consomme plus",
+                "Comme allumé",
+                "Crée électricité",
+                "Gèle réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas de courant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étiquette énergie appareil :",
+              "options": [
+                "Compare consommation",
+                "Change Soleil",
+                "Masse air",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix éclairé."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Renouvelables",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sources renouvelables sans nucléaire :",
+              "options": ["Soleil", "Vent", "Charbon seul", "Pétrole seul"],
+              "correctAnswers": [0, 1],
+              "explanation": "Soleil et vent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Éolienne utilise énergie :",
+              "options": ["Du vent", "De la glace", "Du sel", "De la Lune"],
+              "correctAnswers": [0],
+              "explanation": "Air en mouvement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Barrage hydroélectrique simplifié :",
+              "options": [
+                "Eau mouvement vers électricité",
+                "Électricité vers glace",
+                "Vent vers sel",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hydro."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Moulin à vent historique :",
+              "options": [
+                "Vent vers mouvement meules",
+                "Réseau électrique",
+                "Gaz",
+                "Métal fondu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mécanique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Marée idée énergie liée à :",
+              "options": ["Mouvement de l eau", "Glace seule", "Fil TV", "Sel"],
+              "correctAnswers": [0],
+              "explanation": "Eau monte descend."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Charbon pétrole fossiles :",
+              "options": [
+                "S épuisent à échelle humaine",
+                "Se renouvellent en minutes",
+                "Sont du vent",
+                "Sont Soleil direct"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ressources limitées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Solaire plus éolien maison :",
+              "options": [
+                "Diversifie renouvelable",
+                "Supprime tout besoin nuit",
+                "Crée glace",
+                "Remplace eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mix sources."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vagues idée :",
+              "options": [
+                "Mouvement eau vers énergie",
+                "Glace lumière",
+                "Prise seule",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie mer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Vélo plutôt que voiture court :",
+              "options": [
+                "Moins énergie fossile",
+                "Plus pétrole",
+                "Crée électricité",
+                "Gèle route"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Transport."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Soleil vent eau hydro :",
+              "options": [
+                "Alternatives au fossile",
+                "Identiques charbon",
+                "Sans intérêt",
+                "Créent vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renouvelable."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Appareils",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Appareils qui consomment électricité en marche :",
+              "options": ["Réfrigérateur", "Lampe", "Livre papier", "Pierre"],
+              "correctAnswers": [0, 1],
+              "explanation": "Branchés sur réseau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Four micro-ondes transforme :",
+              "options": [
+                "Électricité en chaleur",
+                "Glace",
+                "Vent seul",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cuisson."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Télévision branchée :",
+              "options": [
+                "Électricité image son",
+                "Muscules",
+                "Soleil direct",
+                "Eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écran."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aspirateur :",
+              "options": [
+                "Électricité mouvement air",
+                "Glace",
+                "Rien",
+                "Métal fondu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moteur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Interrupteur sert à :",
+              "options": [
+                "Ouvrir fermer circuit",
+                "Créer énergie",
+                "Geler",
+                "Salé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commande."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sèche-linge :",
+              "options": [
+                "Électricité chaleur mouvement",
+                "Pluie",
+                "Glace",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sèche linge."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ordinateur portable branché :",
+              "options": [
+                "Électricité réseau ou batterie",
+                "Soleil seul",
+                "Glace",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alimentation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Veille d un appareil :",
+              "options": [
+                "Petite consommation",
+                "Zéro toujours",
+                "Double réseau",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standby."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Multiprise plusieurs appareils :",
+              "options": [
+                "Partage une prise",
+                "Crée énergie infinie",
+                "Gèle",
+                "Eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Branchement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Étiquette basse consommation :",
+              "options": [
+                "Moins énergie à l usage",
+                "Plus toujours",
+                "Glace",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Classe énergie."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Mouvement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles énergies peuvent produire un mouvement ?",
+              "options": [
+                "Aliments pour les muscles",
+                "Électricité pour un moteur",
+                "Pierre immobile",
+                "Vide"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Corps ou moteur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Voiture motorisée utilise surtout énergie :",
+              "options": ["Du carburant", "De la glace", "Du sel", "Du vide"],
+              "correctAnswers": [0],
+              "explanation": "Énergie fossile."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Train électrique roule grâce à :",
+              "options": [
+                "Électricité du réseau",
+                "Soleil direct sans ligne",
+                "Glace rails",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alimentation électrique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Frapper un ballon avec le pied :",
+              "options": [
+                "Énergie muscles depuis aliments",
+                "Électricité prise",
+                "Glace",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mouvement corporel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ventilateur branché :",
+              "options": [
+                "Électricité vers mouvement",
+                "Mouvement vers électricité seul",
+                "Glace",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moteur électrique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Monter escaliers plutôt qu ascenseur :",
+              "options": [
+                "Énergie du corps",
+                "Énergie réseau ascenseur seule",
+                "Aucune énergie",
+                "Glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Muscles alimentés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Roue moulin eau :",
+              "options": [
+                "Mouvement eau vers mécanique",
+                "Glace",
+                "Prise murale",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie de l eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Voiture sans carburant ni électricité :",
+              "options": [
+                "Ne roule pas seule",
+                "Roule éternellement",
+                "Crée matière",
+                "Gèle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Besoin source."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Voiture jouet à piles :",
+              "options": [
+                "Énergie stockée pile vers mouvement",
+                "Soleil direct sans panneau",
+                "Glace",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Batterie jouet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans transfert d énergie un objet lourd :",
+              "options": [
+                "Reste immobile",
+                "Bouge seul",
+                "Disparaît",
+                "Devient gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Énergie nécessaire."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Bilan énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sources d énergie étudiées en 6e :",
+              "options": [
+                "Soleil",
+                "Aliments",
+                "Uniquement nucléaire",
+                "Uniquement réactions chimiques formelles"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Soleil et repas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Prise murale à la maison :",
+              "options": [
+                "Électricité du réseau",
+                "Eau robinet",
+                "Glace",
+                "Vent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réseau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fusion glace avec chauffe :",
+              "options": [
+                "Besoin énergie thermique",
+                "Sans énergie",
+                "Disparition matière",
+                "Sel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaleur fond glace."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Solidification eau au froid :",
+              "options": [
+                "Retire énergie thermique",
+                "Ajoute lumière",
+                "Crée électricité",
+                "Vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Refroidir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Éteindre appareils inutiles :",
+              "options": [
+                "Économise énergie et ressources",
+                "Augmente toujours facture",
+                "Gèle maison",
+                "Crée Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaspillage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Panneau solaire sur toit :",
+              "options": [
+                "Utilise lumière Soleil",
+                "Utilise glace",
+                "Utilise nucléaire",
+                "Sans source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renouvelable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Petit déjeuner avant sport :",
+              "options": [
+                "Apporte énergie au corps",
+                "Remplace eau seule",
+                "Produit électricité",
+                "Gèle muscles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aliments."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Trois états matière rappel :",
+              "options": [
+                "Solide liquide gaz",
+                "Uniquement liquide",
+                "Uniquement solide",
+                "Jamais gaz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "États."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chaîne Soleil plante animal :",
+              "options": [
+                "Transfert énergie",
+                "Crée matière from nothing",
+                "Fil TV",
+                "Combustion formelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alimentation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Matière et énergie chapitre lie :",
+              "options": [
+                "États changements et sources",
+                "Nucléaire seul",
+                "Réactions chimiques équations",
+                "Uniquement métaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Programme 6e."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

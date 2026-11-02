@@ -1,0 +1,2138 @@
+{
+  "id": "6e-arabe-04",
+  "year": "6e",
+  "subject": "arabe",
+  "title": "La grammaire de l'arabe",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Découvrir ال",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions décrivent bien ال (al-) ?",
+              "options": [
+                "C'est l'article défini, comme « le / la »",
+                "Il se place après le nom",
+                "Il se place devant le nom",
+                "Il remplace toujours أنا"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "ال se lit al- et se place devant le nom pour dire « le » ou « la »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment lit-on ال seul, en transcription ?",
+              "options": ["anā", "al", "anta", "ṭālib"],
+              "correctAnswers": [1],
+              "explanation": "ال se prononce al (article défini)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le livre : ___ كتاب. Quel mot manque au début ?",
+              "options": ["أنا", "ال", "أنت", "طالب"],
+              "correctAnswers": [1],
+              "explanation": "On dit ال كتاب al-kitāb (« le livre »)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "طالب ṭālib désigne :",
+              "options": [
+                "Une fille élève",
+                "Un garçon élève",
+                "L'article défini",
+                "Le pronom « je »"
+              ],
+              "correctAnswers": [1],
+              "explanation": "طالب est masculin : un élève (garçon)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "طالبة ṭāliba désigne :",
+              "options": [
+                "Un garçon élève",
+                "Une fille élève",
+                "Deux élèves",
+                "Un professeur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "طالبة est le féminin de طالب (souvent avec ة à la fin)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour « la fille élève », on dit le plus souvent :",
+              "options": ["ال طالب", "طالب", "ال طالبة", "أنا طالب"],
+              "correctAnswers": [2],
+              "explanation": "Avec ال : ال طالبة al-ṭāliba."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le mot تلميذ talamīdh est :",
+              "options": ["Féminin", "Masculin", "Un verbe", "Un article"],
+              "correctAnswers": [1],
+              "explanation": "تلميذ = élève (masculin), comme طالب."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le féminin de تلميذ est :",
+              "options": ["تلميذة talamīdhat", "ال تلميذ", "أنت", "كتاب"],
+              "correctAnswers": [0],
+              "explanation": "On ajoute souvent ة : تلميذة talamīdhat."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans ال باب al-bāb, باب signifie :",
+              "options": ["La porte", "Le livre", "Je", "Tu"],
+              "correctAnswers": [0],
+              "explanation": "باب bāb = porte ; ال باب = la porte."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans article, « livre » se dit :",
+              "options": ["ال كتاب", "كتاب kitāb", "أنا كتاب", "كتابة"],
+              "correctAnswers": [1],
+              "explanation": "كتاب kitāb suffit pour « livre » ; ال précise « le livre »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "ال et noms courants",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots peuvent suivre ال pour former « le/la … » ?",
+              "options": ["كتاب kitāb", "باب bāb", "أنا anā", "مدرسة madrasa"],
+              "correctAnswers": [0, 3],
+              "explanation": "ال se place devant un nom comme كتاب ou مدرسة, pas devant أنا."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« La maison » : ال ___",
+              "options": ["أنا", "بيت bayt", "أنت", "طالب"],
+              "correctAnswers": [1],
+              "explanation": "بيت bayt = maison → ال بيت al-bayt."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« L'école » :",
+              "options": [
+                "ال مدرسة al-madrasa",
+                "مدرسة sans ال",
+                "أنا مدرسة",
+                "ال أنا"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مدرسة madrasa + ال = l'école."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La terminaison ة indique souvent :",
+              "options": [
+                "Le masculin",
+                "Le pluriel",
+                "Le féminin",
+                "L'article"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Beaucoup de féminins se terminent par ة (ta marbuta)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "مدرسة madrasa est :",
+              "options": ["Masculin", "Féminin", "Un pronom", "Un verbe"],
+              "correctAnswers": [1],
+              "explanation": "مدرسة = école, mot féminin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Le professeur » (homme) : ال ___",
+              "options": ["معلمة", "معلم mu'allim", "طالبة", "أنت"],
+              "correctAnswers": [1],
+              "explanation": "معلم mu'allim = enseignant (masculin)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« L'enseignante » : ال ___",
+              "options": ["معلم", "معلمة mu'allima", "كتاب", "باب"],
+              "correctAnswers": [1],
+              "explanation": "معلمة mu'allima = enseignante (féminin)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "طالب et طالبة ont le même sens général :",
+              "options": ["Porte", "Élève", "Maison", "Livre"],
+              "correctAnswers": [1],
+              "explanation": "Ils désignent tous deux « élève », avec un genre différent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Où place-t-on ال dans « le livre » ?",
+              "options": [
+                "Après كتاب",
+                "Au milieu",
+                "Avant كتاب",
+                "Nulle part"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Ordre : ال puis le nom."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Transcription de ال طالب :",
+              "options": ["anā ṭālib", "al-ṭālib", "anti ṭāliba", "kitāb"],
+              "correctAnswers": [1],
+              "explanation": "ال + طالب → al-ṭālib (l'élève garçon)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Masculin et féminin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont au masculin ?",
+              "options": [
+                "طالب ṭālib",
+                "طالبة ṭāliba",
+                "تلميذ talamīdh",
+                "تلميذة talamīdhat"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "طالب et تلميذ sont masculins ; les formes en ة sont féminines."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une fille dit « je suis élève » avec :",
+              "options": ["أنا طالب", "أنا طالبة", "ال طالب", "أنت طالب"],
+              "correctAnswers": [1],
+              "explanation": "Elle accorde : أنا طالبة anā ṭāliba."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un garçon dit :",
+              "options": ["أنا طالبة", "أنا طالب", "أنا معلمة", "ال طالبة"],
+              "correctAnswers": [1],
+              "explanation": "أنا طالب anā ṭālib pour un garçon."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le féminin de معلم mu'allim est :",
+              "options": ["معلمة mu'allima", "معلمون", "ال معلم", "كتاب"],
+              "correctAnswers": [0],
+              "explanation": "معلمة = enseignante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Élève » au féminin :",
+              "options": ["طالب", "طالبة", "تلميذ", "باب"],
+              "correctAnswers": [1],
+              "explanation": "طالبة = élève (fille)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "تلميذة s'accorde avec :",
+              "options": [
+                "Un garçon",
+                "Une fille",
+                "L'article seul",
+                "Le verbe anglais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "تلميذة est la forme féminine de تلميذ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans la paire كتاب / كتابة, كتابة kitābat signifie souvent :",
+              "options": [
+                "Livre (objet)",
+                "Écriture / lettre (féminin)",
+                "Je",
+                "Porte"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Même racine ; كتابة est un nom féminin lié à l'écrit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour parler d'une école, on utilise :",
+              "options": [
+                "مدرس (masculin seul)",
+                "مدرسة madrasa",
+                "طالب",
+                "أنا"
+              ],
+              "correctAnswers": [1],
+              "explanation": "مدرسة = école (féminin)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Accord simple : « l'élève (fille) »",
+              "options": ["ال طالب", "ال طالبة", "طالب فقط", "أنت طالب"],
+              "correctAnswers": [1],
+              "explanation": "Genre féminin → طالبة avec ال."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La ة en fin de mot indique en général :",
+              "options": [
+                "Masculin",
+                "Féminin",
+                "Deux articles",
+                "Le pluriel obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En 6e, retiens : ة = souvent féminin."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Accorder avec ال",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement ال + nom ?",
+              "options": ["ال كتاب", "ال مدرسة", "ال أنا", "ال باب"],
+              "correctAnswers": [0, 3],
+              "explanation": "ال précède un nom (كتاب, باب, مدرسة). أنا est un pronom, pas un nom ici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« La porte » s'écrit :",
+              "options": ["باب ال", "ال باب", "أنا باب", "باب أنت"],
+              "correctAnswers": [1],
+              "explanation": "ال باب al-bāb."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Le livre » :",
+              "options": ["كتاب ال", "ال كتاب", "أنا كتاب", "كتابة ال"],
+              "correctAnswers": [1],
+              "explanation": "ال كتاب al-kitāb."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si le nom est féminin (مدرسة), ال reste :",
+              "options": [
+                "Identique (ال)",
+                "Remplacé par أنا",
+                "Supprimé toujours",
+                "Après le nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article ال ne change pas de forme ici."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "ال طالبة al-ṭāliba signifie :",
+              "options": [
+                "L'élève (garçon)",
+                "L'élève (fille)",
+                "Je suis élève",
+                "Tu es élève"
+              ],
+              "correctAnswers": [1],
+              "explanation": "طالبة = élève au féminin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ال تلميذ al-talamīdh signifie :",
+              "options": [
+                "L'élève (garçon)",
+                "La fille",
+                "La maison",
+                "Sans article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "تلميذ masculin avec ال."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On ne dit pas « ال أنا » car :",
+              "options": [
+                "أنا est un pronom personnel",
+                "أنا est féminin",
+                "ال est interdit",
+                "Le livre manque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ال accompagne surtout les noms, pas le pronom « je »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« L'école » : ال ___",
+              "options": ["معلم", "مدرسة", "طالب", "كتاب"],
+              "correctAnswers": [1],
+              "explanation": "مدرسة = école."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Transcription de ال معلمة :",
+              "options": [
+                "al-mu'allima",
+                "anā mu'allim",
+                "anti mu'allim",
+                "al-kitāb"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ال + معلمة → al-mu'allima (l'enseignante)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour « la maison » :",
+              "options": ["ال بيت", "بيت أنا", "أنت بيت", "ال أنا"],
+              "correctAnswers": [0],
+              "explanation": "ال بيت al-bayt."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Paires d'accord",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles paires masculin / féminin sont correctes ?",
+              "options": [
+                "طالب / طالبة",
+                "تلميذ / تلميذة",
+                "أنا / ال",
+                "كتاب / مدرسة"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "طالب–طالبة et تلميذ–تلميذة sont des paires de genre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Garçon = ___ ; fille = طالبة.",
+              "options": ["طالب", "طالبة", "مدرسة", "ال"],
+              "correctAnswers": [0],
+              "explanation": "طالب (m) / طالبة (f)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "تلميذ (m) → féminin :",
+              "options": ["تلميذة", "طالب", "معلم", "باب"],
+              "correctAnswers": [0],
+              "explanation": "تلميذة talamīdhat."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "معلم (m) → féminin :",
+              "options": ["معلمة", "طالبة", "كتاب", "ال معلم"],
+              "correctAnswers": [0],
+              "explanation": "معلمة mu'allima."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une phrase avec accord : « l'élève fille »",
+              "options": ["ال طالب", "ال طالبة", "طالب ال", "أنا معلم"],
+              "correctAnswers": [1],
+              "explanation": "Genre féminin + ال."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« L'élève garçon » :",
+              "options": ["ال طالبة", "ال طالب", "ال تلميذة", "أنت طالبة"],
+              "correctAnswers": [1],
+              "explanation": "طالب = masculin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le mot qui n'est pas une paire de genre avec les autres :",
+              "options": [
+                "طالب/طالبة",
+                "تلميذ/تلميذة",
+                "كتاب/مدرسة",
+                "معلم/معلمة"
+              ],
+              "correctAnswers": [2],
+              "explanation": "كتاب et مدرسة ne forment pas une paire m/f du même mot."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fille élève en arabe :",
+              "options": ["طالب", "طالبة ṭāliba", "تلميذ seul", "ال فقط"],
+              "correctAnswers": [1],
+              "explanation": "طالبة = élève (fille)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Garçon élève :",
+              "options": ["طالبة", "طالب ṭālib", "معلمة", "مدرسة"],
+              "correctAnswers": [1],
+              "explanation": "طالب = élève (garçon)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Accord : أنا + féminin donne par ex. :",
+              "options": ["أنا طالب", "أنا طالبة", "ال طالب", "أنت طالب"],
+              "correctAnswers": [1],
+              "explanation": "Le locuteur fille dit أنا طالبة."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "تلميذ et تلميذة",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que signifient تلميذ et تلميذة ?",
+              "options": [
+                "تلميذ = élève (garçon)",
+                "تلميذة = élève (fille)",
+                "Livre / porte",
+                "Le / la (article seul)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "تلميذ = élève m ; تلميذة = élève f."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Transcription de تلميذ :",
+              "options": ["talamīdh", "ṭāliba", "al-kitāb", "anā"],
+              "correctAnswers": [0],
+              "explanation": "تلميذ se lit talamīdh."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« L'élève (garçon) » avec تلميذ :",
+              "options": ["ال تلميذ", "تلميذة ال", "أنا أنت", "ال أنا"],
+              "correctAnswers": [0],
+              "explanation": "ال تلميذ al-talamīdh."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« L'élève (fille) » :",
+              "options": ["ال تلميذ", "ال تلميذة", "طالب فقط", "باب"],
+              "correctAnswers": [1],
+              "explanation": "ال تلميذة al-talamīdhat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "تلميذ est :",
+              "options": ["Féminin", "Masculin", "Article", "Pronom « tu »"],
+              "correctAnswers": [1],
+              "explanation": "Forme masculine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "On reconnaît le féminin تلميذة grâce à :",
+              "options": [
+                "La lettre ة en fin",
+                "Le mot ال seul",
+                "أنا devant",
+                "L'absence de voyelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terminaison ة (ta marbuta)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Synonyme scolaire proche de تلميذ (m) :",
+              "options": ["طالب", "مدرسة", "كتاب", "بيت"],
+              "correctAnswers": [0],
+              "explanation": "طالب et تلميذ désignent un élève."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase : « je suis élève » (garçon) avec تلميذ :",
+              "options": ["أنا تلميذة", "أنا تلميذ", "أنت تلميذ", "ال تلميذة"],
+              "correctAnswers": [1],
+              "explanation": "أنا تلميذ anā talamīdh."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase : « je suis élève » (fille) :",
+              "options": ["أنا تلميذ", "أنا تلميذة", "أنا طالب", "ال تلميذ"],
+              "correctAnswers": [1],
+              "explanation": "أنا تلميذة anā talamīdhat."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Différence طالب / تلميذ en 6e :",
+              "options": [
+                "Deux mots pour « élève », usages proches",
+                "Deux articles",
+                "Deux pronoms",
+                "Deux verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux peuvent dire « élève » ; retiens les genres."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Noms avec et sans ال",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sans ال, le mot peut quand même signifier :",
+              "options": [
+                "كتاب = livre",
+                "مدرسة = école",
+                "ال = je",
+                "أنا = le livre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un nom seul peut être « livre », « école » ; ال précise « le/la »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "كتاب seul =",
+              "options": [
+                "Le livre (obligatoire)",
+                "Livre (en général ou sans « le »)",
+                "Je",
+                "Tu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "كتاب kitāb = livre ; ال كتاب = le livre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ال كتاب ajoute :",
+              "options": [
+                "Le sens « le »",
+                "Le pronom je",
+                "Le féminin",
+                "Le pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Article défini."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "مدرسة sans ال peut signifier :",
+              "options": [
+                "École",
+                "École + « la » obligatoire",
+                "Pronom",
+                "Verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« école » ; avec ال → l'école."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle forme est « la maison » ?",
+              "options": ["بيت", "ال بيت", "أنا بيت", "بيتة"],
+              "correctAnswers": [1],
+              "explanation": "ال بيت al-bayt."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme est « maison » (nom seul) ?",
+              "options": ["ال بيت", "بيت bayt", "ال أنا", "أنت بيت"],
+              "correctAnswers": [1],
+              "explanation": "بيت = maison."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ال ne remplace pas :",
+              "options": [
+                "Un nom",
+                "Un adjectif-nom simple en 6e",
+                "Le pronom أنا",
+                "Le nom كتاب"
+              ],
+              "correctAnswers": [2],
+              "explanation": "أنا est déjà « je », on ne dit pas ال أنا."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ordre correct :",
+              "options": [
+                "Nom puis ال",
+                "ال puis nom",
+                "Pronom puis ال puis verbe conjugué complexe",
+                "Verbe seul"
+              ],
+              "correctAnswers": [1],
+              "explanation": "ال + nom."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Le professeur (homme) » :",
+              "options": [
+                "معلم",
+                "ال معلم",
+                "أنا معلم",
+                "Les deux premières selon le contexte"
+              ],
+              "correctAnswers": [3],
+              "explanation": "معلم = professeur ; ال معلم = le professeur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 6e, retiens : ال =",
+              "options": [
+                "Article « le/la »",
+                "Pronom « tu »",
+                "Terminaison féminine",
+                "Pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Article défini al-."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Révision articles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots commencent une expression avec « le/la » grâce à ال ?",
+              "options": ["ال مدرسة", "ال طالب", "أنا مدرسة", "ال باب"],
+              "correctAnswers": [0, 3],
+              "explanation": "ال + مدرسة / باب / طالب ; « أنا مدرسة » n'utilise pas ال ainsi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Transcription de ال :",
+              "options": ["al", "anā", "anti", "mu'allim"],
+              "correctAnswers": [0],
+              "explanation": "ال → al."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Féminin de طالب :",
+              "options": ["طالبة", "طالبون", "ال طالب", "تلميذ"],
+              "correctAnswers": [0],
+              "explanation": "طالبة."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Masculin « élève » (autre mot) :",
+              "options": ["تلميذ", "تلميذة", "مدرسة", "كتابة"],
+              "correctAnswers": [0],
+              "explanation": "تلميذ."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« L'enseignante » :",
+              "options": ["ال معلم", "ال معلمة", "معلم", "أنا معلمة"],
+              "correctAnswers": [1],
+              "explanation": "معلمة féminin + ال."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le nom féminin dans la liste :",
+              "options": ["باب", "كتاب", "مدرسة", "معلم"],
+              "correctAnswers": [2],
+              "explanation": "مدرسة = école (f)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Porte » :",
+              "options": ["باب bāb", "بيت", "طالب", "ال"],
+              "correctAnswers": [0],
+              "explanation": "باب = porte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Accord fille + élève :",
+              "options": ["طالب", "طالبة", "تلميذ", "معلم"],
+              "correctAnswers": [1],
+              "explanation": "Forme féminine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Accord garçon + élève (تلميذ) :",
+              "options": ["تلميذة", "تلميذ", "طالبة", "معلمة"],
+              "correctAnswers": [1],
+              "explanation": "تلميذ masculin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'article défini arabe s'écrit :",
+              "options": ["ال", "أنا", "أنت", "ة"],
+              "correctAnswers": [0],
+              "explanation": "ال = al-."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Genre et ال ensemble",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont féminines ?",
+              "options": ["طالبة", "تلميذة", "طالب", "تلميذ"],
+              "correctAnswers": [0, 1],
+              "explanation": "Terminaison ة ou forme féminine habituelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ال طالب convient pour :",
+              "options": [
+                "Un élève garçon défini",
+                "Une fille",
+                "Le pronom je",
+                "Sans nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "طالب masculin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "ال طالبة convient pour :",
+              "options": [
+                "Une élève fille définie",
+                "Un garçon",
+                "Un livre",
+                "« Tu »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "طالبة féminin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pronom « je » :",
+              "options": ["أنا anā", "أنت anta", "ال", "طالب"],
+              "correctAnswers": [0],
+              "explanation": "أنا = je."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pronom « tu » (garçon) :",
+              "options": ["أنا", "أنت anta", "طالبة", "ال"],
+              "correctAnswers": [1],
+              "explanation": "أنت anta."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "On accorde « élève » avec une fille :",
+              "options": ["طالب", "طالبة ou تلميذة", "باب", "كتاب seul"],
+              "correctAnswers": [1],
+              "explanation": "Formes féminines."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Le livre » transcription :",
+              "options": ["al-kitāb", "anā kitāb", "anti kitāb", "al-bayt"],
+              "correctAnswers": [0],
+              "explanation": "ال كتاب."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« La maison » transcription :",
+              "options": ["al-bayt", "al-madrasa", "ṭāliba", "talamīdh"],
+              "correctAnswers": [0],
+              "explanation": "ال بيت."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En français, ال correspond à :",
+              "options": ["Le ou la", "Je", "Tu uniquement", "Un verbe"],
+              "correctAnswers": [0],
+              "explanation": "Article défini."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La terminaison ة aide à repérer :",
+              "options": [
+                "Le féminin",
+                "Le masculin toujours",
+                "L'article",
+                "Le pronom أنا"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indice de féminin en 6e."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan accords et articles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai pour ce chapitre ?",
+              "options": [
+                "ال = article le/la",
+                "طالب m / طالبة f",
+                "On étudie les cas du arabe classique",
+                "أنا = je"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Pas de cas ici ; retiens ال, accords simples, أنا."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je (pronom) :",
+              "options": ["أنا", "ال", "طالب", "مدرسة"],
+              "correctAnswers": [0],
+              "explanation": "أنا anā."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Article :",
+              "options": ["ال", "ة", "باب", "kitāb"],
+              "correctAnswers": [0],
+              "explanation": "ال."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Élève garçon :",
+              "options": ["طالب", "طالبة", "معلمة", "مدرسة"],
+              "correctAnswers": [0],
+              "explanation": "طالب."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Élève fille :",
+              "options": ["طالب", "طالبة", "معلم", "باب"],
+              "correctAnswers": [1],
+              "explanation": "طالبة."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Élève (autre mot, m) :",
+              "options": ["تلميذ", "تلميذة", "كتاب", "ال seul"],
+              "correctAnswers": [0],
+              "explanation": "تلميذ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le livre :",
+              "options": ["ال كتاب", "أنا كتاب", "كتاب أنت", "ال أنا"],
+              "correctAnswers": [0],
+              "explanation": "ال + nom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'école :",
+              "options": ["ال مدرسة", "مدرسة أنا", "أنت مدرسة", "ال طالب"],
+              "correctAnswers": [0],
+              "explanation": "ال مدرسة."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Accord : garçon →",
+              "options": ["طالب / تلميذ", "طالبة", "تلميذة", "معلمة seule"],
+              "correctAnswers": [0],
+              "explanation": "Formes masculines."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ce chapitre évite :",
+              "options": [
+                "Les cas grammaticaux arabes",
+                "Les pronoms simples",
+                "ال",
+                "Masculin/féminin simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau 6e : pas de cas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le pronom أنا",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "أنا anā peut introduire :",
+              "options": [
+                "Une phrase « je suis … »",
+                "Le mot « je »",
+                "Uniquement ال",
+                "Uniquement les verbes anglais"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "أنا = je ; on peut dire أنا طالب, etc."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Signification de أنا :",
+              "options": ["Je", "Tu", "Le", "La"],
+              "correctAnswers": [0],
+              "explanation": "Pronom personnel « je »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Transcription de أنا :",
+              "options": ["anā", "anta", "al", "ṭālib"],
+              "correctAnswers": [0],
+              "explanation": "أنا → anā."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je suis élève » (garçon) :",
+              "options": ["أنا طالب", "أنا طالبة", "أنت طالب", "ال طالب"],
+              "correctAnswers": [0],
+              "explanation": "أنا طالب anā ṭālib."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Je suis élève » (fille) :",
+              "options": ["أنا طالب", "أنا طالبة", "أنت طالبة", "ال طالبة"],
+              "correctAnswers": [1],
+              "explanation": "Accord féminin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je suis élève » avec تلميذ :",
+              "options": ["أنا تلميذ", "أنا تلميذة", "أنت تلميذ", "ال تلميذ"],
+              "correctAnswers": [0],
+              "explanation": "أنا تلميذ anā talamīdh."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans أنا تلميذ, تلميذ est :",
+              "options": ["Masculin", "Féminin", "Article", "« Tu »"],
+              "correctAnswers": [0],
+              "explanation": "Locuteur garçon."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase correcte pour une fille :",
+              "options": ["أنا تلميذ", "أنا تلميذة", "أنا طالب", "أنت تلميذة"],
+              "correctAnswers": [1],
+              "explanation": "أنا تلميذة."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "On place أنا :",
+              "options": [
+                "Au début de la phrase simple",
+                "Après ال seulement",
+                "Jamais avec un nom",
+                "Après le verbe français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre simple : أنا + nom."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "أنا ne signifie pas :",
+              "options": [
+                "Je",
+                "Tu",
+                "Moi « je » en arabe",
+                "Pronom 1re personne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Tu » = أنت."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Le pronom أنت",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "أنت anta sert à :",
+              "options": [
+                "Parler à un garçon : « tu »",
+                "Remplacer أنا",
+                "Dire « je suis »",
+                "Être l'article ال"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "أنت = tu (masculin) ; différent de أنا je."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Transcription de أنت (tu, garçon) :",
+              "options": ["anta", "anā", "anti", "al"],
+              "correctAnswers": [0],
+              "explanation": "أنت → anta."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tu es élève » (garçon) :",
+              "options": ["أنت طالب", "أنا طالب", "أنت طالبة", "ال طالب"],
+              "correctAnswers": [0],
+              "explanation": "أنت طالب anta ṭālib."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour « tu » féminin, on apprend souvent :",
+              "options": [
+                "أنتِ anti",
+                "أنا anti",
+                "ال anti",
+                "anti seul sans lettre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أنتِ anti = tu (fille)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Tu es élève » (fille) :",
+              "options": ["أنتِ طالبة", "أنت طالب", "أنا طالبة", "ال طالبة"],
+              "correctAnswers": [0],
+              "explanation": "Accord : anti + طالبة."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Différence أنا / أنت :",
+              "options": [
+                "Je / tu",
+                "Le / la",
+                "Livre / porte",
+                "Masculin / féminin du même pronom je"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux pronoms personnels."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "أنت تلميذ signifie :",
+              "options": [
+                "Tu es élève (garçon)",
+                "Je suis élève",
+                "Le élève",
+                "La porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أنت + تلميذ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase s'adresse à l'interlocuteur ?",
+              "options": ["أنت طالب", "أنا طالب", "ال طالب", "كتاب"],
+              "correctAnswers": [0],
+              "explanation": "« Tu es élève »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "أنا طالب parle de :",
+              "options": ["Moi", "Toi", "Le livre", "L'école seule"],
+              "correctAnswers": [0],
+              "explanation": "Le locuteur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En phrase simple, après أنت on met :",
+              "options": [
+                "Un nom (élève, etc.)",
+                "Seulement ال",
+                "Rien",
+                "Un cas grammatical"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أنت + nom : structure nominale simple."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "أنا تلميذ",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans أنا تلميذ anā talamīdh :",
+              "options": [
+                "أنا = je",
+                "تلميذ = élève (m)",
+                "تلميذ = article",
+                "La phrase signifie « je suis élève »"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Structure pronom + nom, pas de verbe « être » comme en français."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduction approximative de أنا تلميذ :",
+              "options": [
+                "Je suis élève",
+                "Tu es élève",
+                "Le élève",
+                "La porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase modèle du chapitre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Version féminine :",
+              "options": ["أنا تلميذة", "أنا تلميذ", "أنت تلميذ", "ال تلميذ"],
+              "correctAnswers": [0],
+              "explanation": "أنا تلميذة."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Version avec طالب :",
+              "options": [
+                "أنا طالب",
+                "أنا طالبة (si fille)",
+                "Les deux selon le locuteur",
+                "أنت طالب seulement"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Garçon : طالب ; fille : طالبة."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le verbe « être » en français :",
+              "options": [
+                "Souvent omis en arabe simple ici",
+                "Toujours écrit ama",
+                "Remplacé par ال",
+                "Interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux mots suffisent : pronom + nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ordre des mots :",
+              "options": [
+                "أنا puis nom",
+                "Nom puis أنا seulement",
+                "ال entre أنا et nom obligatoire",
+                "Verbe conjugué d'abord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أنا + تلميذ / طالب / …"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "أنا تلميذ — genre du locuteur :",
+              "options": [
+                "Masculin",
+                "Féminin",
+                "Neutre arabe 6e = masculin ici",
+                "Article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "تلميذ = forme m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour dire « je suis professeur » (homme) on pourrait dire :",
+              "options": ["أنا معلم", "أنا معلمة", "أنت معلم", "ال معلم seul"],
+              "correctAnswers": [0],
+              "explanation": "أنا معلم anā mu'allim."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase identique en sens à أنا تلميذ (garçon) :",
+              "options": [
+                "أنا طالب (garçon)",
+                "أنا طالبة",
+                "أنت تلميذ",
+                "ال تلميذ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux noms pour « élève »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Transcription complète أنا تلميذ :",
+              "options": [
+                "anā talamīdh",
+                "anta talamīdh",
+                "al-talamīdh",
+                "anā ṭāliba"
+              ],
+              "correctAnswers": [0],
+              "explanation": "anā + talamīdh."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Phrases je / tu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases correctes niveau 6e :",
+              "options": [
+                "أنا طالب",
+                "أنت طالب",
+                "أنا ال",
+                "طالبة أنا (ordre inversé enseigné)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On apprend أنا/أنت + nom ; pas أنا ال."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je suis élève » :",
+              "options": [
+                "أنا طالب ou أنا تلميذ",
+                "أنت طالب",
+                "ال طالب seul",
+                "باب"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pronom je + nom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tu es élève » (garçon) :",
+              "options": ["أنت طالب", "أنا طالب", "أنتِ طالبة", "مدرسة"],
+              "correctAnswers": [0],
+              "explanation": "أنت anta."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fille : « je suis élève »",
+              "options": ["أنا طالبة", "أنا طالب", "أنت طالب", "ال طالب"],
+              "correctAnswers": [0],
+              "explanation": "Accord féminin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fille : « tu es élève »",
+              "options": ["أنتِ طالبة", "أنت طالب", "أنا طالبة", "ال طالبة"],
+              "correctAnswers": [0],
+              "explanation": "anti + طالبة."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qui parle dans أنا معلم ?",
+              "options": [
+                "Le locuteur",
+                "L'interlocuteur",
+                "Le livre",
+                "L'article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أنا = je."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qui parle dans أنت تلميذ ?",
+              "options": ["On s'adresse à « tu »", "Je", "ال", "La maison"],
+              "correctAnswers": [0],
+              "explanation": "أنت = tu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur d'accord :",
+              "options": [
+                "أنا طالبة (fille)",
+                "أنا طالب (garçon)",
+                "أنا طالب (fille)",
+                "أنا تلميذة (fille)"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Une fille évite طالب après أنا."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erreur d'accord :",
+              "options": [
+                "أنت طالب (garçon)",
+                "أنتِ طالبة",
+                "أنت طالبة (à un garçon)",
+                "أنت تلميذ"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Garçon : anta + forme m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Structure type :",
+              "options": [
+                "Pronom + nom",
+                "Nom + pronom + cas",
+                "Article + pronom seul",
+                "Verbe + sujet obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase nominale simple."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Lire des phrases courtes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que signifient ces segments ?",
+              "options": [
+                "أنا = je",
+                "أنت = tu (m)",
+                "ال = nom propre",
+                "طالب = élève (m)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "ال n'est pas un prénom ; أنت = tu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "أنا طالبة — le locuteur est :",
+              "options": ["Une fille", "Un garçon", "Un livre", "L'école"],
+              "correctAnswers": [0],
+              "explanation": "Forme féminine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "أنت تلميذ — on dit à :",
+              "options": [
+                "Un garçon « tu es élève »",
+                "Je suis élève",
+                "Le professeur femme",
+                "La porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أنت + تلميذ."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ال كتاب — sens :",
+              "options": ["Le livre", "Je livre", "Tu livres", "École"],
+              "correctAnswers": [0],
+              "explanation": "Article + nom."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "أنا تلميذ — sens :",
+              "options": [
+                "Je suis élève",
+                "Tu es élève",
+                "Le élève",
+                "Sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase modèle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de mots dans أنا طالب ?",
+              "options": ["Deux", "Trois", "Un", "Quatre"],
+              "correctAnswers": [0],
+              "explanation": "أنا + طالب."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "أنتِ طالبة anti ṭāliba s'adresse à :",
+              "options": ["Une fille", "Un garçon", "Un objet", "L'article"],
+              "correctAnswers": [0],
+              "explanation": "أنتِ = tu féminin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase avec « je » et « professeur homme » :",
+              "options": ["أنا معلم", "أنت معلم", "أنا معلمة", "ال معلم seul"],
+              "correctAnswers": [0],
+              "explanation": "أنا معلم."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase avec « tu » et « professeur homme » :",
+              "options": ["أنت معلم", "أنا معلم", "أنت معلمة", "طالبة"],
+              "correctAnswers": [0],
+              "explanation": "أنت معلم."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La phrase la plus courte « je suis élève » (m) :",
+              "options": ["أنا تلميذ", "ال مدرسة", "كتاب", "أنت تلميذ"],
+              "correctAnswers": [0],
+              "explanation": "Deux mots."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Accord dans la phrase",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Accords corrects après أنا :",
+              "options": [
+                "أنا طالب (garçon)",
+                "أنا طالبة (fille)",
+                "أنا طالب (fille)",
+                "أنا تلميذة (fille)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Fille : formes f ; garçon : formes m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Garçon : choisis la phrase :",
+              "options": ["أنا طالب", "أنا طالبة", "أنا معلمة", "أنت طالبة"],
+              "correctAnswers": [0],
+              "explanation": "Accord masculin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fille : choisis la phrase :",
+              "options": ["أنا طالب", "أنا طالبة", "أنت طالب", "ال طالب"],
+              "correctAnswers": [1],
+              "explanation": "Accord féminin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Garçon interlocuteur :",
+              "options": ["أنت طالب", "أنتِ طالبة", "أنا طالبة", "أنا معلمة"],
+              "correctAnswers": [0],
+              "explanation": "anta + masculin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fille interlocutrice :",
+              "options": [
+                "أنتِ طالبة",
+                "أنت طالب",
+                "أنا طالب",
+                "ال طالبة seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "anti + féminin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "أنا معلمة — le locuteur est :",
+              "options": [
+                "Une femme enseignante",
+                "Un homme",
+                "Un élève garçon",
+                "Un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "معلمة féminin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "أنا معلم — le locuteur est :",
+              "options": [
+                "Un homme enseignant",
+                "Une fille élève",
+                "La porte",
+                "L'article"
+              ],
+              "correctAnswers": [0],
+              "explanation": "معلم masculin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mauvais accord :",
+              "options": [
+                "أنا تلميذ (garçon)",
+                "أنا تلميذة (fille)",
+                "أنا تلميذ (fille)",
+                "أنا تلميذة (fille)"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Fille → تلميذة."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bon accord :",
+              "options": [
+                "أنت تلميذ (à un garçon)",
+                "أنت تلميذة (à un garçon)",
+                "أنا anta",
+                "ال أنا"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tu masculin + تلميذ."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le pronom fixe qui parle :",
+              "options": ["أنا", "Le nom seul", "ال seul", "La transcription"],
+              "correctAnswers": [0],
+              "explanation": "Je = أنا."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Mélanger pronoms et noms",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels groupes forment une mini-phrase ?",
+              "options": [
+                "أنا + كتاب (je livre — bizarre en sens)",
+                "أنا + طالب",
+                "أنت + تلميذ",
+                "ال + أنا"
+              ],
+              "correctAnswers": [1, 2],
+              "explanation": "Pronom + nom métier ; « je livre » n'est pas la leçon ; pas ال + أنا."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sens le plus logique :",
+              "options": ["أنا طالب", "أنا باب", "أنا ال", "باب أنا"],
+              "correctAnswers": [0],
+              "explanation": "Je suis élève."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sens logique :",
+              "options": ["أنت معلم", "أنت كتاب", "ال أنت", "كتاب anta seul"],
+              "correctAnswers": [0],
+              "explanation": "Tu es professeur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nom de métier / rôle après pronom :",
+              "options": [
+                "طالب, معلم, تلميذ",
+                "Seulement ال",
+                "Seulement ة",
+                "Aucun nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire du chapitre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "أنا + مدرسة (seul) sonne :",
+              "options": [
+                "Peu naturel (« je suis école »)",
+                "Comme « je suis élève »",
+                "Article",
+                "Pronom tu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On préfère rôles personnes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase modèle du titre u2 :",
+              "options": ["أنا تلميذ", "ال تلميذ", "أنت ال", "مدرسة ال"],
+              "correctAnswers": [0],
+              "explanation": "Je suis élève."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Transcription « tu es élève » (m) :",
+              "options": [
+                "anta talamīdh",
+                "anā talamīdh",
+                "al-talamīdh",
+                "anti ṭāliba"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أنت تلميذ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Transcription « je suis élève » (f) :",
+              "options": [
+                "anā talamīdhat ou anā ṭāliba",
+                "anta ṭālib",
+                "al-kitāb",
+                "al-bayt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أنا تلميذة / طالبة."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Différence phrase / nom avec ال :",
+              "options": [
+                "أنا طالب = phrase ; ال طالب = « l'élève »",
+                "Identiques toujours",
+                "Aucune",
+                "Cas grammatical"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pronom vs article défini."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 6e, une phrase simple a souvent :",
+              "options": [
+                "2 mots (pronom + nom)",
+                "10 mots",
+                "Un cas par mot",
+                "Un verbe conjugué complexe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure courte."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Traduire en arabe simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Je suis élève » (garçon) — bonnes réponses :",
+              "options": ["أنا طالب", "أنا تلميذ", "أنا طالبة", "أنت طالب"],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux mots masculins possibles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je suis élève » (fille) :",
+              "options": ["أنا طالبة", "أنا طالب", "أنت طالبة", "ال طالب"],
+              "correctAnswers": [0],
+              "explanation": "Accord f."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tu es élève » (garçon) :",
+              "options": ["أنت طالب", "أنا طالب", "أنتِ طالبة", "ال تلميذ"],
+              "correctAnswers": [0],
+              "explanation": "أنت + m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Tu es élève » (fille) :",
+              "options": ["أنتِ طالبة", "أنت طالب", "أنا تلميذ", "كتاب"],
+              "correctAnswers": [0],
+              "explanation": "anti + f."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Le livre » :",
+              "options": ["ال كتاب", "أنا كتاب", "كتاب أنت", "أنا ال"],
+              "correctAnswers": [0],
+              "explanation": "Article + nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je » en arabe :",
+              "options": ["أنا", "أنت", "ال", "طالب"],
+              "correctAnswers": [0],
+              "explanation": "anā."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Tu » (garçon) :",
+              "options": ["أنت", "أنا", "طالبة", "مدرسة"],
+              "correctAnswers": [0],
+              "explanation": "anta."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Je suis professeur (homme) :",
+              "options": ["أنا معلم", "أنا معلمة", "أنت معلمة", "ال معلم"],
+              "correctAnswers": [0],
+              "explanation": "أنا معلم."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Je suis professeure :",
+              "options": ["أنا معلمة", "أنا معلم", "أنت معلم", "طالب"],
+              "correctAnswers": [0],
+              "explanation": "أنا معلمة."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase avec تلميذ et « je » :",
+              "options": ["أنا تلميذ", "أنت تلميذة", "ال تلميذة", "أنا ال"],
+              "correctAnswers": [0],
+              "explanation": "Modèle du chapitre."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Comprendre le sens",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vrai ?",
+              "options": [
+                "أنا تلميذ ≈ je suis élève (m)",
+                "أنت anta = tu (m)",
+                "ال = pronom je",
+                "Pas de verbe « être » dans ces modèles simples"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "ال n'est pas « je » ; structure nominale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "أنا طالب anā ṭālib :",
+              "options": [
+                "Je suis élève (garçon)",
+                "Tu es élève",
+                "Le livre",
+                "La maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Traduction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "أنتِ طالبة :",
+              "options": [
+                "Tu es élève (fille)",
+                "Je suis élève (fille)",
+                "L'élève",
+                "Le professeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deuxième personne f."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ال مدرسة :",
+              "options": ["L'école", "Je suis école", "Tu es école", "Élève"],
+              "correctAnswers": [0],
+              "explanation": "Nom + article."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans pronom, « élève garçon » seul :",
+              "options": ["طالب", "أنا طالب", "أنت طالب", "ال أنا"],
+              "correctAnswers": [0],
+              "explanation": "Mot seul."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour présenter : « Je suis … » on commence par :",
+              "options": ["أنا", "ال", "ة", "Verbe français"],
+              "correctAnswers": [0],
+              "explanation": "Pronom je."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour interroger visuellement « tu es … ? » en structure apprise :",
+              "options": ["أنت … ?", "أنا … ?", "ال … ?", "Cas nominatif"],
+              "correctAnswers": [0],
+              "explanation": "أنت + nom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le chapitre insiste sur :",
+              "options": [
+                "Phrases courtes je/tu + nom",
+                "Cas et i'rab",
+                "Conjugaison passée",
+                "Pluriel complexe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau 6e débutant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Transcription أنا :",
+              "options": ["anā", "anta", "al", "bayt"],
+              "correctAnswers": [0],
+              "explanation": "Je."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Transcription أنت (m) :",
+              "options": ["anta", "anā", "anti", "ṭālib"],
+              "correctAnswers": [0],
+              "explanation": "Tu garçon."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan phrases simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "À retenir :",
+              "options": [
+                "أنا anā = je",
+                "أنت anta = tu (m)",
+                "أنا تلميذ = phrase type",
+                "On utilise les cas en 6e"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Pas de cas ; pronoms + phrase nominale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Phrase type u2 :",
+              "options": ["أنا تلميذ", "ال ال", "أنت ال", "Cas رفع"],
+              "correctAnswers": [0],
+              "explanation": "Je suis élève."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pronom « je » :",
+              "options": ["أنا", "أنت", "ال", "طالبة"],
+              "correctAnswers": [0],
+              "explanation": "أنا."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Accord fille « je suis élève » :",
+              "options": ["أنا طالبة", "أنا طالب", "أنت طالب", "ال طالب"],
+              "correctAnswers": [0],
+              "explanation": "Féminin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Garçon « tu es élève » :",
+              "options": ["أنت تلميذ", "أنتِ تلميذة", "أنا تلميذ", "ال تلميذ"],
+              "correctAnswers": [0],
+              "explanation": "أنت + m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Structure :",
+              "options": [
+                "Pronom + nom",
+                "Nom + article + pronom + cas",
+                "Verbe seul",
+                "Pluriel obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simple."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ال dans « le livre » :",
+              "options": ["ال كتاب", "أنا كتاب", "أنت كتاب", "طالب كتاب"],
+              "correctAnswers": [0],
+              "explanation": "Article."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Masculin « élève » :",
+              "options": ["طالب ou تلميذ", "طالبة", "معلمة", "مدرسة"],
+              "correctAnswers": [0],
+              "explanation": "Deux lexiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Féminin « élève » :",
+              "options": ["طالبة ou تلميذة", "طالب", "معلم", "باب"],
+              "correctAnswers": [0],
+              "explanation": "Accord."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ce chapitre prépare surtout :",
+              "options": [
+                "Se présenter (je/tu + métier)",
+                "Analyser i'rab",
+                "Conjuguer au passé",
+                "Lire un roman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrases simples."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

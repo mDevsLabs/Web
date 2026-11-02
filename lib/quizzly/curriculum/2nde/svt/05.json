@@ -1,0 +1,2728 @@
+{
+  "id": "2nde-svt-05",
+  "year": "2nde",
+  "subject": "svt",
+  "title": "Reproduction et hérédité",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Transmission",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Mitose et cycle cellulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le cycle cellulaire d'une cellule eucaryote ?",
+              "options": [
+                "L'ensemble des étapes allant d'une division cellulaire à la fin de la suivante",
+                "Le mécanisme exclusif de fabrication des spermatozoïdes et des ovocytes",
+                "La période de mort cellulaire programmée au sein d'un tissu",
+                "La dégradation spontanée de la membrane plasmique d'une cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cycle cellulaire correspond à la succession d'une interphase et d'une division cellulaire (mitose), produisant deux cellules filles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle phase précède immédiatement l'entrée en mitose ?",
+              "options": [
+                "La phase G1",
+                "La phase G2",
+                "La phase S",
+                "La cytokinèse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'interphase comprend les phases G1, S puis G2. La phase G2 précède immédiatement l'entrée de la cellule en mitose."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pendant quelle phase de l'interphase l'ADN cellulaire est-il répliqué ?",
+              "options": [
+                "En phase G1",
+                "En prophase",
+                "En phase S",
+                "En télophase"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La synthèse (phase S) est la période de l'interphase où s'effectue la réplication de l'ADN, doublant la quantité de matériel génétique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le rôle biologique majeur de la mitose chez un organisme pluricellulaire ?",
+              "options": [
+                "Assurer la croissance des tissus et le renouvellement des cellules mortes",
+                "Créer de nouvelles combinaisons d'allèles inexistantes chez les parents",
+                "Réduire de moitié le nombre de chromosomes dans chaque cellule",
+                "Détruire les cellules immunitaires devenues obsolètes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mitose permet une reproduction conforme assurant la croissance tissulaire, la cicatrisation et le renouvellement cellulaire."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phases font partie intégrante de l'interphase ?",
+              "options": [
+                "La phase G1",
+                "La métaphase",
+                "La phase S",
+                "La phase G2"
+              ],
+              "correctAnswers": [0, 2, 3],
+              "explanation": "L'interphase est constituée des trois phases successives G1, S et G2. La métaphase appartient à la mitose."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de cellules filles sont produites à l'issue d'une mitose ?",
+              "options": [
+                "Une cellule polyploïde géante",
+                "Deux cellules filles génétiquement identiques à la cellule mère",
+                "Quatre cellules haploïdes différentes",
+                "Trois cellules embryonnaires distinctes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La mitose produit deux cellules filles possédant le même caryotype et la même information génétique que la cellule mère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sous quelle forme se trouve le matériel génétique pendant la phase G1 ?",
+              "options": [
+                "En chromosomes métaphasiques ultra-condensés",
+                "En tétrades de chromatides appariées",
+                "En anneaux d'ADN plasmidique circulaire",
+                "En chromatine décondensée sous forme de filaments diffus"
+              ],
+              "correctAnswers": [3],
+              "explanation": "En phase G1, l'ADN est décondensé sous forme de chromatine diffuse, ce qui rend les gènes accessibles à l'expression génétique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le rôle du point de contrôle situé à la transition G1/S ?",
+              "options": [
+                "Vérifier l'intégrité de l'ADN avant d'engager la réplication",
+                "Aligner les chromosomes sur la plaque équatoriale",
+                "Séparer mécaniquement le cytoplasme en deux compartiments",
+                "Former les enveloppes nucléaires autour des télomères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le point de contrôle G1/S vérifie la taille cellulaire et l'absence de dommages sur l'ADN avant d'autoriser la réplication."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si une cellule mère humaine (2n = 46) subit une mitose, combien de chromosomes contient chaque cellule fille ?",
+              "options": [
+                "23 chromosomes",
+                "92 chromosomes",
+                "46 chromosomes",
+                "12 chromosomes"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La mitose maintient le nombre de chromosomes : une cellule humaine diploïde à 46 chromosomes donne deux cellules à 46 chromosomes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la cytodiérèse (ou cytokinèse) ?",
+              "options": [
+                "La condensation des brins de chromatine",
+                "La division du cytoplasme aboutissant à deux cellules filles séparées",
+                "L'accrochage des microtubules aux centromères",
+                "La duplication des molécules d'ADN"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La cytodiérèse est l'étape terminale qui clive le cytoplasme pour individualiser les deux cellules filles."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les étapes de la mitose",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'ordre chronologique exact des quatre phases de la mitose ?",
+              "options": [
+                "Prophase, métaphase, anaphase, télophase",
+                "Métaphase, prophase, télophase, anaphase",
+                "Télophase, anaphase, prophase, métaphase",
+                "Prophase, anaphase, métaphase, télophase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mitose se déroule toujours selon la séquence ordonnée : prophase, métaphase, anaphase puis télophase."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel événement caractéristique se déroule au cours de la prophase ?",
+              "options": [
+                "L'alignement des centromères sur le plan équatorial",
+                "La condensation de la chromatine et la rupture de l'enveloppe nucléaire",
+                "La séparation brutale des chromatides sœurs",
+                "La formation définitive de la paroi végétale chez les plantes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En prophase, la chromatine s'enroule pour former des chromosomes bien individualisés et l'enveloppe nucléaire se désagrège."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où sont situés les chromosomes lors de la métaphase ?",
+              "options": [
+                "Regroupés au fond de chaque pôle cellulaire",
+                "Dissous dans le cytoplasme sous forme de nucléotides",
+                "Alignés par leur centromère sur le plan équatorial de la cellule",
+                "Accrochés à la membrane plasmique externe"
+              ],
+              "correctAnswers": [2],
+              "explanation": "En métaphase, les chromosomes à deux chromatides s'alignent au centre de la cellule, formant la plaque équatoriale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement mécanique majeur caractérise l'anaphase ?",
+              "options": [
+                "La séparation des chromatides sœurs qui migrent vers les pôles opposés",
+                "La duplication des molécules d'ADN dans le noyau",
+                "La reformation de l'enveloppe nucléaire autour des télomères",
+                "L'appariement des chromosomes homologues en bivalents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anaphase se caractérise par la rupture des centromères et la migration de chaque chromatide sœur vers un pôle opposé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lors de la télophase ?",
+              "options": [
+                "Les chromosomes se condensent au maximum",
+                "Les chromatides sœurs fusionnent entre elles",
+                "Les chromosomes quittent la cellule par exocytose",
+                "Les enveloppes nucléaires se reforment et les chromosomes se décondensent"
+              ],
+              "correctAnswers": [3],
+              "explanation": "En télophase, une nouvelle enveloppe nucléaire entoure chaque lot de chromosomes, qui reprennent leur aspect diffus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle structure filamenteuse permet le déplacement ordonné des chromosomes pendant la mitose ?",
+              "options": [
+                "Les filaments d'actine musculaire",
+                "Le fuseau mitotique constitué de microtubules",
+                "Les flagelles cellulaires externes",
+                "Les replis de l'appareil de Golgi"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le fuseau mitotique s'accroche aux kinétochores des centromères pour guider et tracter les chromosomes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À quelle étape de la mitose les chromosomes sont-ils les plus condensés et visibles ?",
+              "options": [
+                "En prophase précoce",
+                "En télophase",
+                "En métaphase",
+                "En interphase G1"
+              ],
+              "correctAnswers": [2],
+              "explanation": "C'est en métaphase que la condensation est maximale, permettant l'observation et la photographie pour les caryotypes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Par quelle zone précise deux chromatides sœurs restent-elles unies avant l'anaphase ?",
+              "options": [
+                "Le centromère",
+                "Le télomère terminal",
+                "Le ribosome nucléolaire",
+                "Le pore nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le centromère est la région d'ADN condensé qui maintient assemblées les deux chromatides sœurs d'un chromosome."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de chromatides possède un chromosome qui vient de migrer à un pôle en anaphase ?",
+              "options": [
+                "Deux chromatides identiques",
+                "Une seule chromatide",
+                "Quatre chromatides assemblées",
+                "Aucune, l'ADN est totalement dégradé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Après clivage du centromère en anaphase, chaque chromatide devient un chromosome fils constitué d'une seule chromatide."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi ces événements, lesquels ont lieu spécifiquement pendant la télophase ?",
+              "options": [
+                "La décondensation progressive des chromosomes",
+                "La réplication des brins d'ADN matriciels",
+                "La reconstitution de deux enveloppes nucléaires",
+                "La traction des kinétochores par le fuseau métaphasique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La télophase reconstitue deux noyaux : l'enveloppe nucléaire réapparaît et les chromosomes se décondensent en chromatine."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La réplication de l'ADN",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pourquoi la réplication de l'ADN est-elle qualifiée de semi-conservative ?",
+              "options": [
+                "Chaque nouvelle molécule conserve un brin parental et intègre un brin néoformé",
+                "Une seule des deux cellules filles reçoit l'intégralité de l'ADN d'origine",
+                "Seule la moitié des gènes du génome est recopiée à chaque cycle",
+                "L'ADN est entièrement détruit puis reconstruit à partir de protéines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque brin de la molécule parentale sert de matrice pour synthétiser un nouveau brin complémentaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle enzyme clé réalise la polymérisation des nucléotides lors de la réplication ?",
+              "options": [
+                "L'ARN polymérase transcriptionnelle",
+                "L'ADN polymérase",
+                "L'amylase salivaire",
+                "L'hélicase mitochondriale seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'ADN polymérase incorpore les désoxyribonucléotides libres en respectant la complémentarité des bases."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la règle de complémentarité des bases azotées dans la double hélice d'ADN ?",
+              "options": [
+                "Adénine avec Guanine, et Thymine avec Cytosine",
+                "Adénine avec Uracile, et Cytosine avec Thymine",
+                "Adénine avec Thymine, et Guanine avec Cytosine",
+                "Adénine avec Cytosine, et Thymine avec Guanine"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Dans l'ADN, l'adénine (A) forme deux liaisons hydrogène avec la thymine (T), et la guanine (G) en forme trois avec la cytosine (C)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quel moment précis du cycle cellulaire la réplication s'accomplit-elle ?",
+              "options": [
+                "Pendant la phase S de l'interphase",
+                "Pendant la métaphase de la mitose",
+                "Pendant la phase G1 de repos",
+                "Au moment de la cytodiérèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réplication a lieu exclusivement au cours de la phase S (synthèse) de l'interphase."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment varie la quantité d'ADN présente dans une cellule au cours de la phase S ?",
+              "options": [
+                "Elle reste constante à la valeur Q",
+                "Elle est divisée par deux",
+                "Elle diminue progressivement jusqu'à zéro",
+                "Elle double, passant d'une quantité initiale Q à 2Q"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Durant la phase S, la réplication fait passer la quantité d'ADN de Q (chromosomes à 1 chromatide) à 2Q (chromosomes à 2 chromatides)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle expérience historique a confirmé le modèle semi-conservatif en utilisant des isotopes d'azote ?",
+              "options": [
+                "L'expérience de Griffith sur les pneumocoques",
+                "L'expérience de Meselson et Stahl en 1958",
+                "L'expérience de Hershey et Chase sur les bactériophages",
+                "L'expérience de Mendel sur les petits pois"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Meselson et Stahl ont cultivé des bactéries sur de l'azote 15 puis 14 pour démontrer la réplication semi-conservative."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les structures visibles en microscopie où les deux brins d'ADN s'écartent pour être répliqués ?",
+              "options": [
+                "Des anneaux de constriction",
+                "Des bivalents méiotiques",
+                "Des yeux de réplication",
+                "Des corpuscules de Barr"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les yeux de réplication sont formés par l'ouverture locale de la double hélice et progressent dans les deux directions opposées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est l'orientation spatiale des deux brins formant la molécule d'ADN ?",
+              "options": [
+                "Ils sont antiparallèles et complémentaires",
+                "Ils sont strictement parallèles et identiques",
+                "Ils sont perpendiculaires et non complémentaires",
+                "Ils sont circulaires et sans aucune polarité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux brins d'ADN courent dans des directions opposées (5' vers 3' et 3' vers 5') : ils sont dits antiparallèles."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Quelles propositions caractérisent fidèlement l'ADN polymérase ?",
+              "options": [
+                "Elle synthétise de l'ARN messager à partir d'acides aminés",
+                "Elle associe des nucléotides par complémentarité avec le brin matrice",
+                "Elle est incapable de corriger la moindre erreur d'appariement",
+                "Elle opère de manière bidirectionnelle au niveau des yeux de réplication"
+              ],
+              "correctAnswers": [1, 3],
+              "explanation": "L'ADN polymérase polymérise l'ADN en respectant la complémentarité des bases et opère au sein des yeux de réplication."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la conséquence structurale de la réplication sur un chromosome ?",
+              "options": [
+                "Il perd son centromère et ses télomères",
+                "Il change immédiatement de taille et de numéro de paire",
+                "Il passe d'un état à une chromatide à un état à deux chromatides sœurs identiques",
+                "Il fusionne avec un chromosome non homologue"
+              ],
+              "correctAnswers": [2],
+              "explanation": "À l'issue de la phase S, chaque chromosome est constitué de deux chromatides sœurs rigoureusement identiques reliées au centromère."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Organisation des chromosomes et chromatine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "De quoi est constituée la chromatine dans le noyau des cellules eucaryotes ?",
+              "options": [
+                "D'ADN étroitement associé à des protéines appelées histones",
+                "D'ARN ribosomique associé à des phospholipides membranaires",
+                "Uniquement de chaînes d'acides aminés sans acide nucléique",
+                "De cholestérol cristallisé entouré de glycogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chromatine est le complexe nucléo-protéique formé par l'ADN linéaire enroulé autour de protéines basiques, les histones."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un nucléosome ?",
+              "options": [
+                "Un pore situé sur la membrane externe de la cellule",
+                "Un octamère d'histones autour duquel s'enroule un segment d'ADN",
+                "Une organite responsable de la photosynthèse cellulaire",
+                "L'extrémité distale d'un chromosome métaphasique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le nucléosome constitue l'unité fondamentale de compactage de la chromatine, ressemblant à une perle sur un collier d'ADN."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on les extrémités protectrices des chromosomes eucaryotes ?",
+              "options": [
+                "Les centromères",
+                "Les kinétochores",
+                "Les télomères",
+                "Les plasmides"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les télomères sont des séquences répétitives non codantes situées au bout des chromosomes, protégeant l'ADN de la dégradation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle différence moléculaire distingue un chromosome à 1 chromatide d'un chromosome à 2 chromatides ?",
+              "options": [
+                "Le chromosome à 2 chromatides contient deux molécules d'ADN identiques",
+                "Le chromosome à 1 chromatide ne contient aucun nucléotide d'adénine",
+                "Le chromosome à 2 chromatides possède deux caryotypes différents",
+                "Le chromosome à 1 chromatide est toujours haploïde et non cellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque chromatide correspond à une double hélice d'ADN complète ; un chromosome à deux chromatides en contient donc deux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À quel niveau de condensation l'ADN se trouve-t-il lors de la métaphase ?",
+              "options": [
+                "Un état entièrement relâché et linéaire",
+                "Une pelote désorganisée invisible au microscope",
+                "Un état dissous dans les mitochondries",
+                "Un degré de condensation maximal facilitant la répartition des chromatides"
+              ],
+              "correctAnswers": [3],
+              "explanation": "La condensation atteint son paroxysme en métaphase, évitant les enchevêtrements lors de la migration anaphasique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un gène à l'échelle moléculaire ?",
+              "options": [
+                "Une protéine présente dans le cytoplasme",
+                "Une portion d'ADN portant une information déterminée",
+                "Une molécule de lipide assurant l'énergie cellulaire",
+                "Un organite délimité par une double membrane"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un gène est une séquence ordonnée de nucléotides de l'ADN qui code un produit fonctionnel (ARN ou protéine)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'emplacement précis et invariable occupé par un gène sur un chromosome ?",
+              "options": ["L'allèle", "Le codon", "Le locus", "Le centrosome"],
+              "correctAnswers": [2],
+              "explanation": "Le locus (au pluriel loci) désigne la position physique exacte d'un gène sur un chromosome donné."
+            },
+            {
+              "id": "q8",
+              "type": "multiple_choice",
+              "question": "Quels éléments anatomiques constituent un chromosome métaphasique typique ?",
+              "options": [
+                "Deux chromatides sœurs unies",
+                "Un centromère central ou sub-central",
+                "Une double membrane phospholipidique",
+                "Deux régions télomériques terminales"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Un chromosome métaphasique comprend deux chromatides sœurs réunies au niveau du centromère et bordées de télomères."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que deviennent les télomères au fil des divisions mitotiques dans la majorité des cellules somatiques ?",
+              "options": [
+                "Ils ont tendance à se raccourcir progressivement",
+                "Ils s'allongent indéfiniment à chaque cycle",
+                "Ils se transforment en histones fonctionnelles",
+                "Ils migrent spontanément dans le cytoplasme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À chaque réplication, la terminaison des brins d'ADN n'est pas entièrement copiée, provoquant une érosion progressive des télomères."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sous quelle conformation de la chromatine la transcription des gènes est-elle réalisable ?",
+              "options": [
+                "L'hétérochromatine hautement condensée",
+                "Les chromosomes métaphasiques bloqués par la colchicine",
+                "L'euchromatine décondensée et accessible aux enzymes",
+                "L'ADN fixé aux microtubules du fuseau"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Seule l'euchromatine, sous forme relâchée, offre l'espace nécessaire à l'ARN polymérase pour transcrire l'information génétique."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Caryotypes et génome humain",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien de chromosomes contient normalement une cellule somatique humaine ?",
+              "options": [
+                "46 chromosomes répartis en 23 paires",
+                "23 chromosomes sans aucune paire",
+                "48 chromosomes répartis en 24 paires",
+                "92 chromosomes répartis en 46 paires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules somatiques humaines sont diploïdes et contiennent 23 paires de chromosomes homologues, soit 46 chromosomes au total."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les chromosomes non impliqués dans la détermination chromosomique du sexe ?",
+              "options": [
+                "Les hétérochromosomes",
+                "Les autosomes",
+                "Les gonosomes",
+                "Les plasmides"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'espèce humaine possède 22 paires d'autosomes (chromosomes non sexuels) et 1 paire de gonosomes (chromosomes sexuels)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle formule gonosomique correspond classiquement au sexe biologique masculin chez l'Homme ?",
+              "options": ["XX", "YY", "XY", "X0"],
+              "correctAnswers": [2],
+              "explanation": "Chez l'Homme, les femmes possèdent deux chromosomes sexuels homologues XX et les hommes possèdent la paire hétérologue XY."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un caryotype en génétique médicale ?",
+              "options": [
+                "Une photographie ordonnée de l'ensemble des chromosomes d'une cellule",
+                "La liste de toutes les protéines sécrétées par le foie",
+                "Le séquençage complet des lipides membranaires",
+                "Un prélèvement exclusif de salive analysé par PCR"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le caryotype classe les chromosomes métaphasiques d'une cellule selon leur taille, forme et profil de bandes après coloration."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une cellule dont les chromosomes sont associés par paires homologues ?",
+              "options": [
+                "Haploïde (notée n)",
+                "Polyploïde sans limite",
+                "Aneuploïde par mutation",
+                "Diploïde (notée 2n)"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Une cellule diploïde possède chaque chromosome en double exemplaire homologue (un d'origine paternelle, un d'origine maternelle)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le nombre de chromosomes dans un spermatozoïde humain normal ?",
+              "options": [
+                "46 chromosomes dupliqués",
+                "23 chromosomes (n = 23)",
+                "44 autosomes et 2 gonosomes",
+                "1 seul chromosome géant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les gamètes sont des cellules haploïdes : ils ne contiennent qu'un seul exemplaire de chaque chromosome, soit 23 au total."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle anomalie du caryotype correspond à la trisomie 21 ?",
+              "options": [
+                "La perte d'un chromosome sexuel X",
+                "La présence de 47 chromosomes avec 3 chromosomes 18",
+                "La présence d'un troisième chromosome sur la paire 21 (47 chromosomes au total)",
+                "Le dédoublement complet du génome en 92 chromosomes"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La trisomie 21 (syndrome de Down) est une aneuploïdie causée par la présence de trois exemplaires du chromosome 21."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur quels critères morphologiques range-t-on les chromosomes dans un caryotype ?",
+              "options": [
+                "Leur taille décroissante, la position du centromère et le profil de striation des bandes",
+                "Leur couleur naturelle observée sans aucun colorant",
+                "Leur vitesse de dégradation en milieu aqueux",
+                "Leur affinité exclusive pour les membranes lipidiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chromosomes sont appariés et rangés du plus grand au plus petit selon l'indice centromérique et les bandes colorées (ex. Giemsa)."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Parmi ces formules chromosomiques, lesquelles décrivent une anomalie du nombre de chromosomes ?",
+              "options": ["46, XX", "47, XY, +21", "45, X", "46, XY"],
+              "correctAnswers": [1, 2],
+              "explanation": "47, XY, +21 correspond à la trisomie 21 masculine et 45, X au syndrome de Turner (monosomie X). 46, XX et 46, XY sont normaux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle substance chimique permet de bloquer les cellules en métaphase pour observer les chromosomes ?",
+              "options": [
+                "La colchicine",
+                "L'adrénaline",
+                "L'acide chlorhydrique",
+                "Le sérum physiologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La colchicine dépolymérise les microtubules du fuseau mitotique, figeant ainsi les cellules au stade de la métaphase."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Méiose : principes généraux et gamètes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le rôle biologique principal de la méiose dans la reproduction sexuée ?",
+              "options": [
+                "Produire des cellules haploïdes génétiquement diversifiées à partir d'une cellule diploïde",
+                "Multiplier à l'identique les cellules de la peau après une brûlure",
+                "Rétablir la diploïdie dans le cytoplasme de l'ovocyte fécondé",
+                "Produire deux cellules filles identiques à la cellule mère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méiose réduit le nombre de chromosomes de moitié (2n -> n) pour permettre la formation de gamètes haploïdes diversifiés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quels organes spécifiques la méiose se déroule-t-elle chez l'être humain ?",
+              "options": [
+                "Dans la moelle osseuse et la rate",
+                "Dans les gonades (testicules chez l'homme, ovaires chez la femme)",
+                "Dans le foie et les reins",
+                "Dans le cortex cérébral et l'hypophyse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La méiose a lieu exclusivement dans les glandes reproductrices (gonades) au cours de la gamétogenèse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de divisions cellulaires successives composent une méiose complète ?",
+              "options": [
+                "Une seule division directe",
+                "Trois divisions asymétriques",
+                "Deux divisions successives",
+                "Quatre divisions réductrices"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La méiose comprend deux divisions successives : la première division (réductionnelle) et la deuxième division (équationnelle)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de cellules filles sont générées à partir d'une cellule mère entrant en méiose ?",
+              "options": [
+                "Quatre cellules haploïdes",
+                "Deux cellules diploïdes",
+                "Huit cellules aneuploïdes",
+                "Une seule cellule géante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux divisions consécutives à partir d'une cellule initiale génèrent un total de quatre cellules filles haploïdes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien d'étapes de réplication de l'ADN précèdent ou accompagnent la méiose ?",
+              "options": [
+                "Deux réplications, une avant chaque division",
+                "Aucune réplication, l'ADN est fractionné",
+                "Une réplication continue pendant toute la méiose",
+                "Une seule réplication de l'ADN en phase S avant la première division"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Une seule réplication a lieu avant la méiose I ; la méiose II s'enchaîne directement sans réplication intermédiaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on traditionnellement la première division de la méiose ?",
+              "options": [
+                "Division conservative",
+                "Division réductionnelle",
+                "Division somatique",
+                "Division équationnelle"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La première division sépare les chromosomes homologues de chaque paire, réduisant le nombre de chromosomes de 2n à n."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la seconde division de la méiose ?",
+              "options": [
+                "Division binaire",
+                "Division mitotique ancestrale",
+                "Division équationnelle",
+                "Division cladistique"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La deuxième division sépare les chromatides sœurs de chaque chromosome, conservant le nombre haploïde n."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est l'état chromosomique d'une cellule à l'issue immédiate de la méiose I ?",
+              "options": [
+                "Haploïde avec n chromosomes constitués chacun de 2 chromatides",
+                "Diploïde avec 2n chromosomes à 1 chromatide",
+                "Haploïde avec n chromosomes à 1 seule chromatide",
+                "Polyploïde avec 4n chromatides libres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la fin de la télophase I, les cellules possèdent n chromosomes (haploïdie), chaque chromosome ayant encore deux chromatides."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel gamète mâle mobile est issu de la spermatogenèse par méiose ?",
+              "options": [
+                "L'ovocyte secondaire",
+                "Le spermatozoïde",
+                "Le globule polaire",
+                "Le follicule ovarien"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chez l'homme, la méiose des spermatocytes produit des spermatides qui se différencient ensuite en spermatozoïdes mobiles."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques distinguent fondamentalement la méiose de la mitose classique ?",
+              "options": [
+                "La méiose divise par deux le stock de chromosomes (2n vers n)",
+                "La mitose nécessite deux réplications successives de l'ADN",
+                "La méiose ne s'effectue que dans les cellules de la peau",
+                "La méiose comprend deux divisions successives pour une seule réplication"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "La méiose réalise deux divisions pour une seule réplication préalable, réduisant la diploïdie en haploïdie dans les cellules germinales."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Étapes détaillées de la méiose",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel phénomène remarquable survient spécifiquement lors de la prophase I de méiose ?",
+              "options": [
+                "L'appariement intime des chromosomes homologues en bivalents (ou tétrades)",
+                "La séparation précoce des chromatides sœurs",
+                "La réplication de l'ADN au niveau des télomères",
+                "La scission du cytoplasme par étranglement équatorial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En prophase I, les chromosomes homologues s'apparient gène à gène, formant des bivalents indispensables aux recombinaisons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'échange de fragments chromatidiens entre chromosomes homologues appariés en prophase I ?",
+              "options": [
+                "La mutation ponctuelle",
+                "Le crossing-over (ou enjambement)",
+                "La translocation robertsonienne",
+                "La transcription inverse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le crossing-over survient en prophase I : des chromatides non-sœurs se croisent et échangent des segments d'ADN équivalents."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que se sépare-t-il lors de l'anaphase I de méiose ?",
+              "options": [
+                "Les chromatides sœurs de chaque chromosome",
+                "Les membranes nucléaires externes",
+                "Les chromosomes homologues de chaque paire",
+                "Les ribosomes et le réticulum endoplasmique"
+              ],
+              "correctAnswers": [2],
+              "explanation": "En anaphase I, ce sont les paires de chromosomes homologues qui se disjoignent ; les centromères ne se divisent pas encore."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se sépare-t-il lors de l'anaphase II de méiose ?",
+              "options": [
+                "Les chromatides sœurs de chaque chromosome après rupture du centromère",
+                "Les paires de chromosomes homologues",
+                "Les mitochondries en deux fractions égales",
+                "Les sous-unités d'histones nucléosomiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anaphase II ressemble à une mitose : les centromères se clivent et les chromatides sœurs migrent vers les pôles opposés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment les bivalents s'alignent-ils en métaphase I ?",
+              "options": [
+                "Le long des membranes cellulaires opposées",
+                "En file indienne sur un seul cercle périphérique",
+                "De part et d'autre du plan équatorial de la cellule",
+                "Regroupés aléatoirement à l'un des pôles cellulaires"
+              ],
+              "correctAnswers": [2],
+              "explanation": "En métaphase I, les paires de chromosomes homologues (bivalents) se disposent de part et d'autre de la plaque équatoriale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de chromatides chaque chromosome possède-t-il à la fin de la télophase II ?",
+              "options": [
+                "Deux chromatides identiques",
+                "Une seule chromatide",
+                "Quatre chromatides condensées",
+                "Trois chromatides recombinées"
+              ],
+              "correctAnswers": [1],
+              "explanation": "À l'issue de la seconde division méiotique, chaque chromosome haploïde n'est plus constitué que d'une seule chromatide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la figure en X observable au microscope au point d'enjambement de deux chromatides homologues ?",
+              "options": [
+                "Un fuseau",
+                "Un centrosome",
+                "Un chiasma",
+                "Un lysosome"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le chiasma est la manifestation cytologique visible du crossing-over entre deux chromatides non-sœurs homologues."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle anomalie survient lorsqu'une paire de chromosomes ne se sépare pas lors de l'anaphase I ?",
+              "options": [
+                "Une non-disjonction chromosomique produisant des gamètes anormaux",
+                "La duplication instantanée des mitochondries",
+                "La formation immédiate d'un clone bactérien",
+                "L'inactivation irréversible de l'ADN polymérase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une non-disjonction en anaphase I conduit à des gamètes possédant un chromosome en trop (n+1) ou en moins (n-1)."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Parmi les événements suivants, lesquels se déroulent exclusivement au cours de la première division de méiose ?",
+              "options": [
+                "L'appariement des chromosomes homologues en prophase I",
+                "Le clivage des centromères des chromosomes simples",
+                "La séparation des paires de chromosomes homologues en anaphase I",
+                "La disparition définitive des ribosomes de la cellule"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'appariement en tétrades et la disjonction des paires homologues sont les événements spécifiques de la méiose réductionnelle (méiose I)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Y a-t-il une phase de synthèse d'ADN (phase S) entre la télophase I et la prophase II ?",
+              "options": [
+                "Oui, l'ADN double à nouveau",
+                "Non, les cellules enchaînent la seconde division sans répliquer leur ADN",
+                "Oui, mais uniquement pour les chromosomes sexuels",
+                "Oui, l'ARN remplace l'ADN pendant cette transition"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il n'y a pas d'interphase avec réplication entre les deux divisions de méiose, ce qui permet la réduction du nombre de chromatides."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Fécondation et rétablissement de la diploïdie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la fécondation à l'échelle biologique ?",
+              "options": [
+                "La rencontre et la fusion de deux gamètes haploïdes formant une cellule-œuf diploïde",
+                "La division conforme d'une cellule somatique de l'épiderme",
+                "L'expulsion des globules polaires hors des follicules",
+                "La transformation d'un tissu adipeux en tissu conjonctif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fécondation réunit deux gamètes haploïdes (mâle et femelle) pour former un zygote diploïde doté d'un nouveau génome."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la cellule unique résultant de la fusion des gamètes ?",
+              "options": [
+                "La morula",
+                "Le zygote (ou cellule-œuf)",
+                "Le blastocyste",
+                "La spermatogonie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le zygote est la cellule inaugurale diploïde d'un nouvel individu, issue de la fusion du spermatozoïde et de l'ovocyte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la ploïdie du zygote chez l'espèce humaine ?",
+              "options": [
+                "Haploïde (n = 23)",
+                "Triploïde (3n = 69)",
+                "Diploïde (2n = 46)",
+                "Tétraploïde (4n = 92)"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le zygote réunit les 23 chromosomes du spermatozoïde et les 23 chromosomes de l'ovocyte, rétablissant la diploïdie à 2n = 46."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mécanisme empêche la pénétration de plusieurs spermatozoïdes dans l'ovocyte (polyspermie) ?",
+              "options": [
+                "La réaction corticale modifiant la zone pellucide dès l'entrée du premier gamète",
+                "La destruction enzymatique immédiate du noyau femelle",
+                "La fermeture instantanée des trompes de Fallope",
+                "L'acidification volontaire du cytoplasme ovocytaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réaction corticale durcit l'enveloppe entourant l'ovocyte, constituant une barrière infranchissable pour les autres spermatozoïdes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'étape où les pronoyaux mâle et femelle fusionnent leur matériel génétique ?",
+              "options": [
+                "L'ovulation",
+                "La nidation",
+                "La mitose germinale",
+                "La caryogamie (ou amphimixie)"
+              ],
+              "correctAnswers": [3],
+              "explanation": "La caryogamie correspond à la fusion des membranes des pronuclei mâle et femelle et à la réunion de leurs chromosomes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle particularité concerne l'origine des mitochondries chez le futur embryon ?",
+              "options": [
+                "Elles proviennent à parts rigoureusement égales des deux parents",
+                "Elles sont presque exclusivement héritées du cytoplasme de l'ovocyte maternel",
+                "Elles sont toutes apportées par la pièce intermédiaire du spermatozoïde",
+                "Elles sont synthétisées spontanément sans ADN préalable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'ovocyte fournit la quasi-totalité du cytoplasme et des organites du zygote ; l'ADN mitochondrial est donc d'hérédité maternelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de combinaisons chromosomiques différentes la fécondation au hasard peut-elle engendrer chez l'humain (hors crossing-over) ?",
+              "options": [
+                "Environ 46 combinaisons seulement",
+                "Quelques centaines de milliers",
+                "Plus de 70 000 milliards de combinaisons uniques",
+                "Une seule combinaison strictement fixée par l'espèce"
+              ],
+              "correctAnswers": [2],
+              "explanation": "2²³ combinaisons de spermatozoïdes multipliées par 2²³ combinaisons d'ovocytes donnent plus de 70 000 milliards de possibilités (2⁴⁶)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la conséquence biologique fondamentale de l'alternance méiose-fécondation au cours des générations ?",
+              "options": [
+                "La stabilité du nombre de chromosomes propre à chaque espèce sexuée",
+                "L'augmentation exponentielle du nombre de gènes à chaque naissance",
+                "La diminution progressive de la taille des cellules somatiques",
+                "L'homogénéisation complète des allèles dans toute la population"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méiose divise par deux le lot chromosomique et la fécondation le rétablit, assurant la pérennité du caryotype de l'espèce."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Parmi ces affirmations, lesquelles sont exactes à propos de la fécondation ?",
+              "options": [
+                "Elle se déroule exclusivement dans la cavité de l'utérus",
+                "Elle amplifie considérablement la diversité génétique des descendants",
+                "Elle produit quatre cellules haploïdes indépendantes",
+                "Elle rétablit la diploïdie caractéristique de l'espèce"
+              ],
+              "correctAnswers": [1, 3],
+              "explanation": "En réunissant au hasard deux gamètes parmi des millions de combinaisons, la fécondation restaure la diploïdie et crée un génotype singulier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel gamète détermine le sexe chromosomique de l'enfant chez l'être humain ?",
+              "options": [
+                "Le spermatozoïde, qui apporte soit un chromosome X soit un chromosome Y",
+                "L'ovocyte, qui apporte au hasard un chromosome X ou un chromosome Z",
+                "Les deux gamètes par interaction thermique dans l'utérus",
+                "Le gamète qui possède le plus grand nombre d'autosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ovocyte apporte toujours un chromosome X, tandis que le spermatozoïde apporte soit un X (fille XX) soit un Y (garçon XY)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Cycles de vie et alternance de phases",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on le cycle biologique de l'être humain et des mammifères ?",
+              "options": [
+                "Un cycle diplophasique (la phase diploïde est dominante)",
+                "Un cycle haplophasique exclusif",
+                "Un cycle amibien sans mitose",
+                "Un cycle viral lysogénique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chez les mammifères, l'organisme adulte est diploïde ; la phase haploïde est réduite aux seuls gamètes : c'est un cycle diplophasique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle phase du cycle de reproduction correspond à l'état haploïde chez l'Homme ?",
+              "options": [
+                "Le stade embryonnaire précoce",
+                "Uniquement le stade gamète (spermatozoïdes et ovocytes)",
+                "L'enfance jusqu'à la puberté",
+                "Les cellules souches hématopoïétiques"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chez l'Homme, les gamètes sont les uniques cellules haploïdes (n = 23 chromosomes)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel événement réalise la transition entre la phase haploïde et la phase diploïde ?",
+              "options": [
+                "La mitose",
+                "La réplication de l'ADN",
+                "La fécondation",
+                "La méiose"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La fécondation rassemble deux noyaux haploïdes n pour donner un zygote diploïde 2n, amorçant la phase diploïde."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement biologique réalise la transition de la phase diploïde vers la phase haploïde ?",
+              "options": [
+                "La méiose",
+                "La différenciation cellulaire",
+                "La cytodiérèse mitotique",
+                "L'apoptose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méiose prend une cellule précurseur diploïde (2n) et génère des gamètes haploïdes (n)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Chez certains champignons filamenteux, le zygote subit la méiose aussitôt formé : comment qualifie-t-on ce cycle ?",
+              "options": [
+                "Un cycle diplophasique pur",
+                "Un cycle sans reproduction sexuée",
+                "Un cycle parthénogénétique",
+                "Un cycle haplophasique (la phase haploïde est prédominante)"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Quand le seul stade diploïde se résume au zygote qui entre immédiatement en méiose, le cycle de développement est dit haplophasique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on un cycle de vie où coexistent deux générations pluricellulaires (l'une haploïde et l'une diploïde) ?",
+              "options": [
+                "Un cycle asexué",
+                "Un cycle haplodiplophasique (fréquent chez les végétaux)",
+                "Un cycle endosymbiotique",
+                "Un cycle procaryote"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les mousses et fougères présentent un cycle haplodiplophasique avec alternance d'un gamétophyte (n) et d'un sporophyte (2n)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Par quel processus la cellule-œuf humaine donne-t-elle un organisme formé de milliards de cellules ?",
+              "options": [
+                "Par des méioses successives sans fécondation",
+                "Par simple gonflement osmotique du cytoplasme",
+                "Par une succession ordonnée de mitoses et de différenciations cellulaires",
+                "Par fusion spontanée avec des bactéries symbiotiques"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le développement embryonnaire puis fœtal repose sur des mitoses successives conservant l'information génétique initiale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la durée de vie moyenne d'un spermatozoïde dans les voies génitales féminines ?",
+              "options": [
+                "Environ 2 à 5 jours",
+                "Plusieurs mois consécutifs",
+                "Moins de 3 minutes",
+                "Toute la durée de vie de la femme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les spermatozoïdes survivent généralement entre 48 et 120 heures dans les sécrétions des voies génitales féminines."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la méiose est-elle indispensable dans tout cycle de reproduction sexuée ?",
+              "options": [
+                "Pour permettre à l'organisme de grandir en taille",
+                "Pour éviter le doublement du nombre de chromosomes à chaque génération",
+                "Pour fabriquer de l'énergie sous forme d'ATP",
+                "Pour éliminer tous les allèles mutés du génome"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sans méiose pour réduire le stock de chromosomes, la fécondation doublerait le caryotype à chaque génération (46 -> 92 -> 184...)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les propositions suivantes, lesquelles décrivent fidèlement le cycle de vie humain ?",
+              "options": [
+                "L'état haploïde est représenté uniquement par les gamètes",
+                "L'adulte est constitué de cellules haploïdes issues de la méiose",
+                "La fécondation réunit deux cellules haploïdes pour reformer un individu diploïde",
+                "Le zygote se divise directement par méiose pour former le fœtus"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Chez l'Homme, seuls les gamètes sont haploïdes ; leur fusion lors de la fécondation rétablit la diploïdie constitutive du nouvel individu."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Transmission des allèles et hérédité mendélienne",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un allèle pour un gène donné ?",
+              "options": [
+                "Une version ou variante de la séquence nucléotidique de ce gène",
+                "La protéine fabriquée par les ribosomes en dehors du noyau",
+                "Le centromère reliant les deux chromatides sœurs",
+                "Une maladie chromosomique affectant les autosomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un allèle est l'une des formes alternatives d'un gène, issue d'une ou plusieurs mutations dans sa séquence d'ADN."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie être homozygote pour un gène chez un organisme diploïde ?",
+              "options": [
+                "Ne posséder aucun allèle de ce gène sur ses chromosomes",
+                "Posséder deux allèles identiques de ce gène sur la paire de chromosomes homologues",
+                "Posséder deux allèles radicalement différents pour ce caractère",
+                "Avoir trois chromosomes au lieu de deux pour cette paire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un individu homozygote porte deux allèles identiques à un locus donné (par exemple A//A ou b//b)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie être hétérozygote pour un gène chez un organisme diploïde ?",
+              "options": [
+                "Avoir perdu l'un de ses chromosomes sexuels",
+                "Ne fabriquer aucune protéine enzymatique",
+                "Posséder deux allèles différents de ce gène sur ses chromosomes homologues",
+                "Avoir des gamètes dépourvus de matériel génétique"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Un individu hétérozygote porte deux allèles distincts pour le gène considéré (par exemple A//a)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un allèle qui s'exprime dans le phénotype même lorsqu'il n'est présent qu'en un seul exemplaire ?",
+              "options": [
+                "Un allèle dominant",
+                "Un allèle récessif",
+                "Un allèle silencieux",
+                "Un allèle léthal masqué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un allèle dominant impose l'expression de son caractère au niveau du phénotype chez l'hétérozygote comme chez l'homozygote."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans quelle condition un allèle récessif s'exprime-t-il dans le phénotype d'un individu diploïde ?",
+              "options": [
+                "Dès qu'il est associé à un allèle dominant puissant",
+                "En présence de n'importe quel autre allèle du gène",
+                "Uniquement s'il se trouve sur un chromosome sexuel Y",
+                "Uniquement s'il est présent à l'état homozygote (en double exemplaire)"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Un allèle récessif est masqué par un allèle dominant ; il ne peut s'exprimer que si l'individu en possède deux copies identiques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'ensemble des allèles portés par un individu pour un ou plusieurs gènes ?",
+              "options": [
+                "Le caryotype",
+                "Le génotype",
+                "Le phénotype",
+                "Le biotope"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le génotype correspond à la composition allélique précise d'un organisme, notée conventionnellement entre parenthèses ou barres."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'ensemble des caractères observables d'un individu à différentes échelles ?",
+              "options": [
+                "Le caryotype",
+                "Le code génétique",
+                "Le phénotype",
+                "Le transcriptome"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le phénotype (noté entre crochets) regroupe les caractéristiques morphologiques, physiologiques ou moléculaires observables."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel outil graphique à double entrée permet de prévoir les proportions des génotypes issus d'un croisement ?",
+              "options": [
+                "L'échiquier de croisement (ou tableau de croisement)",
+                "L'arbre phylogénétique universel",
+                "Le spectromètre de masse",
+                "Le profil électrophorétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échiquier de croisement croise les gamètes possibles des parents pour calculer les probabilités des génotypes de la descendance."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Deux parents hétérozygotes (A//a) pour un allèle dominant A et un allèle récessif a ont un enfant : que peut-on prédire ?",
+              "options": [
+                "Il y a 75 % de chances (3/4) que l'enfant présente le phénotype [A]",
+                "Tous les enfants auront obligatoirement le génotype hétérozygote (A//a)",
+                "Il y a 50 % de chances que l'enfant présente le phénotype [a]",
+                "Il y a 25 % de chances (1/4) que l'enfant soit homozygote récessif (a//a)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Le croisement A//a x A//a donne 1/4 A//A, 1/2 A//a et 1/4 a//a, soit 75 % de phénotype dominant [A] et 25 % de phénotype récessif [a]."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la codominance entre deux allèles différents d'un même gène ?",
+              "options": [
+                "L'un des deux allèles détruit complètement le second",
+                "Les deux allèles s'expriment conjointement et simultanément dans le phénotype",
+                "Aucun des deux allèles n'est traduit en protéine",
+                "Les deux allèles disparaissent lors de la réplication"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En cas de codominance, les deux allèles s'expriment pleinement chez l'hétérozygote (exemple : les allèles A et B du groupe sanguin AB)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Diversité",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Variabilité génétique et allèles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la source première et initiale de la création de nouveaux allèles dans le vivant ?",
+              "options": [
+                "Les mutations spontanées ou induites de la molécule d'ADN",
+                "L'exercice physique régulier des individus adultes",
+                "La digestion des nutriments par l'estomac",
+                "La condensation des ribosomes dans le nucléole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les mutations créent de nouvelles séquences de nucléotides et donc de nouveaux allèles au sein d'une espèce."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la présence de plusieurs allèles pour un même gène au sein d'une population ?",
+              "options": [
+                "Le mimétisme biologique",
+                "Le polymorphisme génique",
+                "L'hybridation cytoplasmique",
+                "L'hétérotrophie cellulaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un gène est dit polymorphe dans une population s'il existe sous au moins deux allèles avec une fréquence significative."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi chaque être humain (hors vrais jumeaux monozygotes) possède-t-il un génome unique au monde ?",
+              "options": [
+                "Chaque individu possède des acides aminés totalement inédits",
+                "L'ADN humain est entièrement renouvelé à chaque repas",
+                "L'immense polymorphisme combiné aux brassages méiotiques rend chaque combinaison unique",
+                "Le caryotype humain varie en nombre de chromosomes chez chaque personne saine"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les millions de polymorphismes alléliques et les brassages lors de la reproduction sexuée garantissent l'unicité génétique individuelle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel système illustre classiquement l'existence de plusieurs allèles (A, B, O) pour un même gène chez l'Homme ?",
+              "options": [
+                "Le système des groupes sanguins ABO",
+                "Le système de régulation de l'insuline",
+                "Le système des pigments chlorophylliens",
+                "Le système de coagulation de la lymphe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gène du groupe sanguin ABO possède trois allèles majeurs (A, B et O), illustrant la dominance, la récessivité et la codominance."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien d'allèles différents d'un gène donné une cellule somatique diploïde peut-elle porter au maximum ?",
+              "options": [
+                "Un seul allèle",
+                "Quatre allèles",
+                "Une infinité d'allèles",
+                "Au maximum deux allèles différents (un sur chaque chromosome homologue)"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Étant diploïde, chaque cellule possède deux chromosomes homologues par paire, donc au plus deux allèles d'un gène autosomal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une mutation ponctuelle ?",
+              "options": [
+                "La perte d'un bras entier de chromosome",
+                "La modification d'un seul nucléotide (ou d'un petit nombre de nucléotides) dans l'ADN",
+                "L'inversion complète de deux chromosomes homologues",
+                "Le dédoublement du fuseau mitotique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une mutation ponctuelle modifie ponctuellement la séquence d'ADN par substitution, insertion ou délétion d'un nucléotide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux individus possédant le même phénotype ont-ils obligatoirement le même génotype ?",
+              "options": [
+                "Oui, car le génotype est le reflet direct et exclusif du phénotype",
+                "Oui, car il n'existe pas d'allèle récessif chez l'Homme",
+                "Non, un individu de phénotype dominant peut être homozygote ou hétérozygote",
+                "Non, car le génotype change toutes les semaines"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Un individu de phénotype dominant [A] peut avoir pour génotype (A//A) ou (A//a) : même phénotype mais génotypes distincts."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne l'acronyme SNP (Single Nucleotide Polymorphism) ?",
+              "options": [
+                "Une variation d'un seul nucléotide fréquente dans une population",
+                "Une enzyme qui découpe l'ARN messager",
+                "Une protéine présente dans le sérum sanguin",
+                "Un organite participant à la respiration cellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les SNP sont des variations ponctuelles d'un nucléotide d'une personne à l'autre, constituant une source majeure de variabilité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la diversité génétique observable entre les individus appartenant à une même espèce ?",
+              "options": [
+                "La diversité écosystémique",
+                "La diversité génétique intraspécifique",
+                "La spéciation allopatrique",
+                "La diversité interspécifique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La variabilité des allèles et des caractères entre individus de la même espèce définit la diversité intraspécifique."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels processus concourent à entretenir la diversité génétique au sein d'une population sexuée ?",
+              "options": [
+                "L'apparition de mutations aléatoires dans l'ADN",
+                "La duplication des chromosomes sans division mitotique",
+                "Les brassages alléliques lors de la méiose et de la fécondation",
+                "Le clonage systématique des cellules de la lignée germinale"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les mutations créent la nouveauté allélique, tandis que la méiose et la fécondation brassent ces allèles en combinaisons infinies."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les mutations : origine et agents mutagènes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quelle fréquence approximative surviennent les mutations spontanées lors de la réplication chez l'humain ?",
+              "options": [
+                "Environ une erreur résiduelle par milliard de paires de bases répliquées",
+                "Une erreur toutes les dix bases répliquées",
+                "Cinquante erreurs par seconde dans chaque gène",
+                "Aucune erreur, la fidélité de réplication est absolue et parfaite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce aux mécanismes de relecture de l'ADN polymérase et de réparation, le taux d'erreur spontané est d'environ 1 pour 10⁹ bases."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un agent mutagène ?",
+              "options": [
+                "Une cellule cancéreuse capable de métastaser",
+                "Un facteur de l'environnement augmentant la fréquence d'apparition des mutations",
+                "Une enzyme responsable de la dégradation des glucides",
+                "Une bactérie symbiotique du tube digestif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un agent mutagène est un agent physique (UV, rayons X) ou chimique qui altère l'ADN et accroît la fréquence des mutations."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel composant du rayonnement solaire naturel constitue un agent mutagène notoire pour les cellules cutanées ?",
+              "options": [
+                "La lumière verte visible",
+                "Les rayons infrarouges chauffants",
+                "Les rayons ultraviolets (UV)",
+                "Les ondes radioélectriques"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les ultraviolets (notamment UVB et UVA) altèrent l'ADN des cellules de la peau et peuvent induire des lésions mutagènes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle altération moléculaire typique les rayons UV provoquent-ils entre deux thymines consécutives ?",
+              "options": [
+                "La formation d'une liaison covalente anormale appelée dimère de thymine",
+                "La transformation immédiate de la thymine en glucose",
+                "L'inversion complète des brins 5' et 3'",
+                "La libération d'histones dans le cytoplasme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les UV provoquent la formation de dimères de thymine qui déforment la double hélice et bloquent ou faussent la réplication."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Parmi ces composés chimiques, lequel est un agent mutagène avéré présent dans le goudron du tabac ?",
+              "options": [
+                "L'acide ascorbique (vitamine C)",
+                "Le chlorure de sodium",
+                "Le saccharose pur",
+                "Le benzo[a]pyrène"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Le benzo[a]pyrène présent dans les fumées de combustion se lie à l'ADN et provoque des mutations dans des gènes clés comme TP53."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les mutations surviennent-elles parce que l'organisme a 'besoin' de s'adapter à un nouveau milieu ?",
+              "options": [
+                "Oui, l'environnement dicte précisément la mutation utile à fabriquer",
+                "Non, les mutations sont des événements aléatoires se produisant indépendamment de leur utilité",
+                "Oui, les cellules anticipent toujours les changements du climat",
+                "Oui, l'ADN mute volontairement pour améliorer ses performances"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les mutations apparaissent par hasard ; elles ne sont pas provoquées intentionnellement par un besoin adaptatif de l'organisme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel type de rayonnement ionisant de très haute énergie est capable de briser directement les deux brins d'ADN ?",
+              "options": [
+                "Les micro-ondes domestiques",
+                "La lumière bleue des écrans",
+                "Les rayons X et les rayons gamma",
+                "Les rayonnements thermiques du corps"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les rayonnements ionisants (rayons X, radioactivité gamma) cassent les liaisons phosphodiester, provoquant des cassures double-brin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi une exposition excessive et répétée au soleil majore-t-elle le risque de cancer de la peau (mélanome) ?",
+              "options": [
+                "Elle induit des mutations répétées dans des gènes régulant le cycle cellulaire qui finissent par échapper à la réparation",
+                "Elle liquéfie les membranes plasmiques des cellules musculaires",
+                "Elle supprime tous les globules rouges du sang circulant",
+                "Elle empêche la respiration mitochondriale de l'ensemble du corps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mutations UV accumulées dans les oncogènes ou gènes suppresseurs de tumeurs peuvent entraîner une prolifération incontrôlée."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Parmi les facteurs suivants, lesquels sont des agents mutagènes reconnus ?",
+              "options": [
+                "Les rayonnements ultraviolets (UVB)",
+                "Les rayonnements ionisants (rayons X)",
+                "L'eau minérale gazeuse",
+                "Les dérivés aromatiques du goudron"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les UV, les rayons X et les hydrocarbures aromatiques polycycliques (goudrons) sont des mutagènes physiques et chimiques avérés."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le taux de mutation spontané d'un gène ?",
+              "options": [
+                "Le nombre de ribosomes traduisant le gène par heure",
+                "La probabilité naturelle qu'une mutation s'y produise par division ou par génération",
+                "La vitesse de dégradation de la protéine dans le lysosome",
+                "Le pourcentage de cytosines présentes dans le promoteur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le taux de mutation mesure la fréquence statistique à laquelle des altérations de séquence surviennent naturellement."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Mécanismes moléculaires et réparation de l'ADN",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle mutation ponctuelle correspond au remplacement d'une paire de nucléotides par une autre ?",
+              "options": [
+                "Une substitution",
+                "Une insertion",
+                "Une délétion",
+                "Une translocation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une substitution remplace une base azotée par une autre (ex: une paire A-T remplacée par une paire G-C) sans changer la longueur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle mutation correspond à l'ajout d'un ou plusieurs nucléotides dans la séquence d'un gène ?",
+              "options": [
+                "Une délétion",
+                "Une insertion",
+                "Une inversion",
+                "Une dénaturation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une insertion ajoute un ou plusieurs nucléotides dans la séquence d'ADN, allongeant la chaîne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle mutation correspond à la perte d'un ou plusieurs nucléotides dans l'ADN ?",
+              "options": [
+                "Une duplication",
+                "Une substitution",
+                "Une délétion",
+                "Une recombinaison"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Une délétion retire un ou plusieurs nucléotides de la molécule d'ADN."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle conséquence majeure une insertion ou délétion d'un seul nucléotide entraîne-t-elle souvent dans la partie codante ?",
+              "options": [
+                "Un décalage complet du cadre de lecture des codons modifiant toute la suite de la protéine",
+                "Une accélération prodigieuse de la vitesse de transcription",
+                "La disparition instantanée de la membrane nucléaire",
+                "L'inversion de la polarité 5' et 3' de la double hélice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le code génétique étant lu par triplets (codons), insérer ou retirer 1 nucléotide décale tout le cadre de lecture (frameshift)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une mutation silencieuse (ou synonyme) ?",
+              "options": [
+                "Une mutation qui bloque la production de son dans la gorge",
+                "Une mutation qui détruit complètement l'ADN de la cellule",
+                "Une mutation qui fait disparaître les introns du gène",
+                "Une mutation qui ne modifie pas l'acide aminé codé en raison de la redondance du code génétique"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Plusieurs codons différents codant pour le même acide aminé, une substitution peut laisser la protéine rigoureusement inchangée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une mutation faux-sens ?",
+              "options": [
+                "Une mutation qui transforme l'ADN en lipide",
+                "Une mutation qui entraîne le remplacement d'un acide aminé par un autre dans la protéine",
+                "Une mutation qui empêche la réplication mitochondriale",
+                "Une mutation qui copie le gène à l'envers"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une mutation faux-sens change le codon de telle sorte qu'un acide aminé différent est incorporé lors de la traduction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une mutation non-sens ?",
+              "options": [
+                "Une mutation qui n'a aucune logique chimique",
+                "Une mutation qui rajoute un acide aminé en début de protéine",
+                "Une mutation qui fait apparaître prématurément un codon-stop (codon arrêt)",
+                "Une mutation qui double le nombre de centromères"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'apparition d'un codon-stop prématuré interrompt la traduction et produit une protéine tronquée, généralement non fonctionnelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quels systèmes cellulaires enzymatiques corrigent la grande majorité des erreurs survenues lors de la réplication ?",
+              "options": [
+                "Les enzymes de réparation de l'ADN (excision de bases, excision de nucléotides, système de mismatch)",
+                "Les sucs digestifs pancréatiques",
+                "Les anticorps circulant dans le sang",
+                "Les télomérases uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des complexes enzymatiques spécialisés détectent les distorsions de l'ADN, excisent la zone défectueuse et la resynthétisent fidèlement."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Quelles conséquences une substitution d'un nucléotide dans un exon codant peut-elle entraîner sur la protéine ?",
+              "options": [
+                "Aucun changement d'acide aminé (mutation silencieuse)",
+                "Le changement d'un seul acide aminé (mutation faux-sens)",
+                "La duplication instantanée de toute la cellule",
+                "L'interruption anticipée de la chaîne d'acides aminés (mutation non-sens)"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Selon le codon résultant, une substitution peut être silencieuse, faux-sens (nouvel acide aminé) ou non-sens (codon-stop anticipé)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle maladie génétique humaine est causée par l'inactivation du système de réparation par excision des dimères de thymine ?",
+              "options": [
+                "Le daltonisme congénital",
+                "Le xeroderma pigmentosum (affection des 'enfants de la lune')",
+                "Le rachitisme carenciel",
+                "L'hémophilie A"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chez les personnes atteintes de xeroderma pigmentosum, l'absence d'enzymes de réparation de l'ADN rend chaque exposition aux UV cancérigène."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Mutations somatiques et germinales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une mutation somatique ?",
+              "options": [
+                "Une mutation touchant une cellule du corps non destinée à la reproduction",
+                "Une mutation transmise systématiquement à toute la progéniture",
+                "Une mutation affectant exclusivement les spermatozoïdes",
+                "Une modification volontaire des gènes par l'alimentation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules somatiques sont toutes les cellules de l'organisme à l'exception des cellules de la lignée germinale reproductrice."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une mutation germinale ?",
+              "options": [
+                "Une infection de la gorge par une bactérie germinale",
+                "Une mutation survenant dans les cellules souches des gamètes (lignée germinale)",
+                "Une mutation de l'émail dentaire lors de la mastication",
+                "Une altération de l'ADN survenant après la mort de l'organisme"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les mutations germinales affectent les gamètes ou leurs cellules mères dans les gonades et peuvent être transmises à la descendance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une mutation survenue dans une cellule de la peau d'un adulte peut-elle être transmise à ses enfants ?",
+              "options": [
+                "Oui, car toutes les cellules communiquent par le sang",
+                "Oui, si l'enfant s'expose au même ensoleillement",
+                "Non, car c'est une mutation somatique qui ne passe jamais dans les gamètes",
+                "Oui, par l'intermédiaire du lait maternel ou de la salive"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les mutations somatiques disparaissent avec la mort de la cellule ou de l'individu qui les porte ; elles ne sont pas héréditaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la conséquence essentielle d'une mutation germinale transmise lors de la fécondation ?",
+              "options": [
+                "Elle sera présente dans toutes les cellules de l'organisme de l'enfant qui en hérite",
+                "Elle disparaît dès la première mitose embryonnaire",
+                "Elle ne touche que les cellules musculaires du descendant",
+                "Elle détruit immédiatement le zygote sans exception"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme le zygote contient la mutation, toutes les cellules dérivées par mitose lors du développement hériteront de cet allèle muté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle pathologie grave peut résulter de l'accumulation de mutations somatiques dans un tissu ?",
+              "options": [
+                "L'ostéoporose mécanique",
+                "La grippe saisonnière",
+                "Le diabète de type 1 d'origine auto-immune",
+                "Le cancer"
+              ],
+              "correctAnswers": [3],
+              "explanation": "L'accumulation de mutations somatiques altérant la prolifération et la mort cellulaire programmée est le moteur de la cancérogenèse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'ensemble des cellules issues par mitoses successives d'une même cellule somatique mutée ?",
+              "options": [
+                "Un gamète polyploïde",
+                "Un clone cellulaire",
+                "Un bivalent méiotique",
+                "Une colonie bactérienne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un clone cellulaire est une population de cellules génétiquement identiques issues de la division mitotique d'une cellule ancestrale commune."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on les gènes dont l'altération par mutation somatique favorise la prolifération anarchique des cellules ?",
+              "options": [
+                "Les gènes mitochondriaux régulateurs",
+                "Les allèles récessifs du groupe sanguin",
+                "Les proto-oncogènes mutés en oncogènes et les gènes suppresseurs de tumeurs inactivés",
+                "Les gènes codant l'hémoglobine"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les oncogènes stimulent la division cellulaire tandis que les suppresseurs de tumeurs (comme TP53) freinent la multiplication anormale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi une mutation survenue dans un spermatozoïde a-t-elle une portée évolutive que n'a pas une mutation somatique ?",
+              "options": [
+                "Parce qu'elle peut se propager au fil des générations futures dans la population de l'espèce",
+                "Parce que les spermatozoïdes contiennent dix fois plus d'ADN que les autres cellules",
+                "Parce que les mutations germinales sont toujours bénéfiques pour la survie",
+                "Parce que le spermatozoïde répare lui-même les organes lésés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les mutations de la lignée germinale intègrent le pool génétique de la population et participent à l'évolution de l'espèce."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes, lesquelles opposent correctement mutation somatique et mutation germinale ?",
+              "options": [
+                "Les mutations somatiques sont transmissibles à la descendance par reproduction sexuée",
+                "Seules les mutations germinales peuvent devenir héréditaires",
+                "Les mutations somatiques peuvent provoquer des tumeurs localisées chez l'individu",
+                "Les mutations germinales n'affectent jamais l'embryon"
+              ],
+              "correctAnswers": [1, 2],
+              "explanation": "Les mutations somatiques touchent le corps de l'individu (cancers possibles) sans être héréditaires ; les germinales peuvent être transmises."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est l'effet habituel d'une mutation somatique touchant un neurone adulte qui ne se divise plus ?",
+              "options": [
+                "Elle a un impact négligeable car elle ne peut pas être transmise ni générer un clone de cellules",
+                "Elle provoque obligatoirement une leucémie fulgurante",
+                "Elle modifie la couleur des yeux de la descendance",
+                "Elle déclenche une méiose dans le système nerveux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une cellule post-mitotique (qui ne se divise plus), une mutation isolée n'engendre aucun clone et a généralement un impact minime."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Brassage interchromosomique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quelle étape exacte de la méiose le brassage interchromosomique a-t-il lieu ?",
+              "options": [
+                "En anaphase I, lors de la séparation aléatoire des chromosomes homologues",
+                "En prophase II, lors de la condensation des chromatides",
+                "En télophase II, lors de la cytodiérèse",
+                "En interphase G1, lors de la transcription"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orientation aléatoire des paires en métaphase I suivie de leur disjonction en anaphase I produit le brassage interchromosomique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le principe fondamental du brassage interchromosomique ?",
+              "options": [
+                "L'échange de fragments d'ADN entre deux chromatides d'un même chromosome",
+                "La migration indépendante et au hasard des chromosomes d'origine paternelle et maternelle vers chaque pôle",
+                "La duplication systématique des gènes situés sur le chromosome X",
+                "La disparition des chromosomes récessifs lors de la division"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pour chaque paire, chaque chromosome homologue migre vers un pôle de manière équiprobable et indépendante des autres paires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour une cellule possédant 2n = 4 chromosomes (2 paires), combien de combinaisons de gamètes le brassage interchromosomique permet-il ?",
+              "options": [
+                "2 combinaisons",
+                "8 combinaisons",
+                "4 combinaisons équiprobables (2²)",
+                "16 combinaisons"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Avec n = 2 paires indépendantes, le nombre de combinaisons de gamètes générées est égal à 2ⁿ = 2² = 4 combinaisons équiprobables."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle formule générale donne le nombre de types de gamètes produits par le brassage interchromosomique pour n paires indépendantes ?",
+              "options": [
+                "2 exposant n (2ⁿ)",
+                "2 multiplié par n (2n)",
+                "n exposant 2 (n²)",
+                "Factorielle de n (n!)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque paire homologue offrant 2 orientations possibles, pour n paires le nombre de combinaisons possibles est 2ⁿ."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Chez l'espèce humaine (n = 23 paires), combien de combinaisons de gamètes le seul brassage interchromosomique peut-il produire ?",
+              "options": [
+                "46 types de gamètes",
+                "529 types de gamètes",
+                "Environ 10 000 types",
+                "Plus de 8 millions de combinaisons différentes (2²³ = 8 388 608)"
+              ],
+              "correctAnswers": [3],
+              "explanation": "2²³ équivaut à environ 8,4 millions de combinaisons de gamètes génétiquement uniques par individu, sans compter les crossing-overs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À quelle condition deux gènes sont-ils dits 'indépendants' pour le brassage interchromosomique ?",
+              "options": [
+                "S'ils codent tous les deux pour la même enzyme musculaire",
+                "S'ils sont situés sur deux paires de chromosomes différentes",
+                "S'ils sont placés côte à côte sur la même chromatide",
+                "S'ils n'ont jamais subi de mutation au cours de l'évolution"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Des gènes portés par des paires de chromosomes distinctes se séparent de manière totalement indépendante lors de l'anaphase I."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelles proportions phénotypiques attend-on dans un test-cross impliquant deux gènes indépendants non liés ?",
+              "options": [
+                "100 % de phénotype parental",
+                "9/16, 3/16, 3/16, 1/16",
+                "Quatre phénotypes équiprobables en proportions 25 %, 25 %, 25 %, 25 % (1/4 chacun)",
+                "90 % de parentaux et 10 % de recombinés"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Pour deux gènes indépendants, le parent hétérozygote produit quatre types de gamètes en proportions égales (1/4, 1/4, 1/4, 1/4)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel rôle l'anaphase II joue-t-elle dans l'aboutissement de ce brassage ?",
+              "options": [
+                "Elle sépare les chromatides sœurs vers des cellules filles distinctes",
+                "Elle échange des portions de gènes entre autosomes",
+                "Elle supprime les allèles récessifs défectueux",
+                "Elle fusionne les gamètes deux à deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En anaphase II, la disjonction des chromatides sœurs finalise la répartition du matériel génétique dans 4 cellules haploïdes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux frères non jumeaux nés des mêmes parents peuvent-ils recevoir par hasard exactement les mêmes chromosomes ?",
+              "options": [
+                "Oui, cela arrive dans une naissance sur dix",
+                "La probabilité statistique est infime (inférieure à une chance sur 70 000 milliards)",
+                "Oui, car la fécondation choisit toujours les mêmes gamètes",
+                "Non, car le père ne transmet jamais de chromosomes à ses fils"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La combinaison du brassage interchromosomique chez les deux parents rend la probabilité de recevoir le même lot infinitésimale."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes, lesquelles s'appliquent fidèlement au brassage interchromosomique ?",
+              "options": [
+                "Il résulte du positionnement aléatoire des bivalents en métaphase I",
+                "Il a lieu entre les chromatides d'un même chromosome en prophase II",
+                "Il réduit la taille des chromosomes de 50 %",
+                "Il crée de nouvelles associations d'allèles entre gènes situés sur des chromosomes distincts"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Le brassage interchromosomique découle de l'orientation aléatoire des chromosomes en métaphase/anaphase I et combine des allèles de gènes non liés."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Brassage intrachromosomique (crossing-over)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quel stade précis de la méiose s'effectue le brassage intrachromosomique ?",
+              "options": [
+                "En prophase I, lors de l'appariement des chromosomes homologues",
+                "En anaphase II, lors de la séparation des chromatides",
+                "En télophase I, lors de la formation des noyaux",
+                "En métaphase II, sur la plaque équatoriale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le brassage intrachromosomique survient en prophase I grâce aux crossing-overs entre chromatides homologues appariées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mécanisme cytologique réalise le brassage intrachromosomique ?",
+              "options": [
+                "La phagocytose cellulaire",
+                "Le crossing-over (ou enjambement) entre chromatides non-sœurs",
+                "La réplication par l'ADN polymérase",
+                "La traduction par les ribosomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Lors d'un crossing-over, des fragments homologues de chromatides non-sœurs se cassent et se ressoudent de façon croisée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les figures en croix visibles au microscope où les chromatides ont échangé du matériel ?",
+              "options": [
+                "Les kinétochores",
+                "Les centrosomes",
+                "Les chiasmas",
+                "Les vacuoles"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les chiasmas sont les points de contact physique observables entre chromatides homologues témoignant d'un crossing-over."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le brassage intrachromosomique concerne-t-il des gènes situés sur le même chromosome (gènes liés) ?",
+              "options": [
+                "Oui, il permet la recombinaison des allèles de gènes physiquement liés sur une même molécule d'ADN",
+                "Non, il ne concerne que des gènes situés sur des chromosomes non homologues",
+                "Non, les gènes liés ne peuvent jamais être séparés par aucun mécanisme",
+                "Uniquement si les gènes sont situés sur le chromosome Y"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le crossing-over brise la liaison physique entre allèles de gènes liés, créant des chromatides recombinées inédites."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on les chromatides qui portent une nouvelle association d'allèles après un crossing-over ?",
+              "options": [
+                "Les chromatides parentales",
+                "Les chromatides dénaturées",
+                "Les chromatides silencieuses",
+                "Les chromatides recombinées"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Les chromatides qui ont échangé un fragment portent une combinaison d'allèles différente de celle des parents : elles sont dites recombinées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un croisement-test (test-cross) portant sur deux gènes liés, quelles proportions de phénotypes observe-t-on dans la descendance ?",
+              "options": [
+                "100 % de phénotypes recombinés",
+                "Les phénotypes parentaux sont majoritaires et les phénotypes recombinés sont minoritaires",
+                "Strictement 25 % de chaque phénotype sans exception",
+                "Aucun descendant n'est viable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le crossing-over ne se produisant pas systématiquement entre deux loci donnés, les gamètes parentaux sont toujours plus fréquents que les recombinés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De quoi dépend principalement la fréquence d'apparition des crossing-over entre deux gènes liés ?",
+              "options": [
+                "De la couleur des yeux de l'individu",
+                "De la température de la pièce au moment du test",
+                "De la distance physique qui sépare ces deux gènes sur le chromosome",
+                "Du nombre de ribosomes présents dans le cytoplasme"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Plus deux gènes sont éloignés l'un de l'autre sur un chromosome, plus la probabilité qu'un chiasma survienne entre eux est élevée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si deux gènes sont extrêmement proches sur un même chromosome, que peut-on dire de leur liaison ?",
+              "options": [
+                "La liaison est très forte et les allèles sont presque toujours transmis ensemble sans recombinaison",
+                "Ils s'éliminent mutuellement dès la prophase I",
+                "Ils migrent obligatoirement vers des pôles opposés",
+                "Leur fréquence de recombinaison atteint 100 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des gènes très proches sont fortement liés : la survenue d'un crossing-over entre leurs deux loci est un événement extrêmement rare."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes, lesquelles sont exactes à propos du crossing-over ?",
+              "options": [
+                "Il a lieu entre chromatides sœurs issues de la même molécule d'ADN",
+                "Il produit des associations alléliques nouvelles absentes chez les parents",
+                "Il se déroule entre chromatides non-sœurs de chromosomes homologues",
+                "Il supprime la moitié des chromosomes de la cellule"
+              ],
+              "correctAnswers": [1, 2],
+              "explanation": "Le crossing-over s'opère entre chromatides non-sœurs homologues en prophase I et génère une diversité génétique inédite."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la conséquence conjointe des brassages intra et interchromosomiques au terme de la méiose ?",
+              "options": [
+                "Chaque gamète produit est génétiquement singulier et unique",
+                "Tous les gamètes redeviennent rigoureusement identiques",
+                "La moitié des gamètes ne contient plus aucun gène",
+                "Les chromosomes sont tous transformés en chromatine circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La synergie entre crossing-overs (brassage intra) et disjonction indépendante (brassage inter) rend chaque gamète infiniment singulier."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Sélection naturelle et adaptation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel naturaliste britannique a formalisé la théorie de l'évolution par sélection naturelle en 1859 ?",
+              "options": [
+                "Charles Darwin",
+                "Gregor Mendel",
+                "Louis Pasteur",
+                "Jean-Baptiste de Lamarck"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Charles Darwin publie en 1859 'De l'origine des espèces', fondant la théorie moderne de l'évolution par sélection naturelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment définit-on la sélection naturelle en biologie évolutive ?",
+              "options": [
+                "La reproduction à l'identique de tous les individus sans aucune mortalité",
+                "La survie et la reproduction différentielles des individus selon les avantages conférés par leurs allèles dans un milieu donné",
+                "Le choix conscient exercé par les animaux pour transformer leur anatomie",
+                "La disparition soudaine de toutes les espèces végétales"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les individus porteurs d'allèles conférant un avantage de survie ou de fécondité dans leur milieu ont une descendance plus nombreuse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment évolue au fil des générations la fréquence d'un allèle conférant un avantage adaptatif avéré ?",
+              "options": [
+                "Sa fréquence diminue inexorablement jusqu'à disparaître",
+                "Sa fréquence reste rigoureusement bloquée à 1 %",
+                "Sa fréquence a tendance à augmenter au sein de la population",
+                "Il se transforme spontanément en allèle récessif délétère"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les individus porteurs laissant plus de descendants viables, l'allèle avantageux devient statistiquement plus fréquent au fil du temps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle condition préalable est indispensable pour que la sélection naturelle puisse s'exercer sur un caractère ?",
+              "options": [
+                "Il doit exister une variabilité génétique héritable pour ce caractère dans la population",
+                "Tous les individus doivent avoir exactement le même caryotype",
+                "L'environnement doit rester rigoureusement stable sans aucun prédateur",
+                "La population doit être constituée uniquement de clones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans diversité génétique initiale transmissible, aucun tri différentiel ne peut avoir lieu entre individus."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un allèle qui diminue les chances de survie ou de reproduction de son porteur ?",
+              "options": [
+                "Un allèle dominant exclusif",
+                "Un allèle fondateur",
+                "Un allèle neutre",
+                "Un allèle délétère (ou désavantageux)"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Un allèle délétère baisse la valeur sélective et tend à être contre-sélectionné (éliminé ou maintenu à très basse fréquence)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel exemple célèbre illustre l'action rapide de la sélection naturelle chez un papillon en Grande-Bretagne au XIXe siècle ?",
+              "options": [
+                "Le sphinx du troène",
+                "La phalène du bouleau (mélanisme industriel)",
+                "Le monarque d'Amérique",
+                "Le ver à soie d'élevage"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La suie industrielle ayant noirci les troncs, la forme sombre (carbonaria) mieux camouflée des prédateurs est devenue majoritaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'avantage conféré par un allèle est-il universel et immuable dans le temps ?",
+              "options": [
+                "Oui, un bon allèle est supérieur dans absolument tous les milieux possibles",
+                "Non, un allèle ne peut jamais apporter d'avantage biologique",
+                "Non, il est relatif aux conditions environnementales qui peuvent changer à tout moment",
+                "Oui, les allèles dominants sont toujours les plus efficaces"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La valeur sélective dépend entièrement du contexte écologique : un allèle avantageux dans un milieu froid peut devenir néfaste en milieu chaud."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle grandeur biologique mesure le succès reproducteur d'un individu par rapport aux autres membres de la population ?",
+              "options": [
+                "La valeur sélective (ou 'fitness')",
+                "Le taux de mitose tissulaire",
+                "Le quotient respiratoire",
+                "La pression osmotique intracellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La valeur sélective quantifie la capacité d'un organisme à survivre et à transmettre ses allèles à la génération suivante."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Quelles conditions sont indispensables à l'action de la sélection naturelle dans une population ?",
+              "options": [
+                "L'existence d'une diversité génétique initiale entre les individus",
+                "Une immortalité complète des individus adultes",
+                "Des différences de succès reproducteur liées aux caractères héréditaires",
+                "L'absence totale de reproduction sexuée"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La sélection naturelle requiert une variation phénotypique héritable corrélée à une différence de succès reproductif dans le milieu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment se comporte un allèle 'neutre' face à la sélection naturelle ?",
+              "options": [
+                "Il est systématiquement éradiqué en quelques jours",
+                "Il n'est pas soumis à la sélection naturelle car il ne procure ni avantage ni désavantage",
+                "Il force la cellule à subir une méiose anormale",
+                "Il double immédiatement sa fréquence dans toute la population"
+              ],
+              "correctAnswers": [1],
+              "explanation": "N'ayant aucun impact sur la valeur sélective, les allèles neutres évoluent sous le seul effet du hasard (dérive génétique)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Dérive génétique et effet fondateur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la dérive génétique en dynamique des populations ?",
+              "options": [
+                "La modification aléatoire des fréquences alléliques d'une génération à l'autre sous l'effet du hasard de l'échantillonnage des gamètes",
+                "Le déplacement migratoire des oiseaux vers les pays chauds en automne",
+                "La mutation ciblée des gènes sous l'effet direct de la volonté des individus",
+                "La dégradation spontanée des ribosomes dans l'eau salée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dérive génétique correspond aux fluctuations imprévisibles des fréquences alléliques dues au hasard de la reproduction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quel type de population la dérive génétique produit-elle ses effets les plus intenses et rapides ?",
+              "options": [
+                "Dans les populations à effectif infini",
+                "Dans les populations de petite taille (faible effectif)",
+                "Dans les populations continentales très étendues",
+                "Dans les cultures bactériennes géantes de plusieurs milliards d'individus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dans une petite population, l'échantillonnage aléatoire des gamètes entraîne de fortes fluctuations des fréquences alléliques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle issue la dérive génétique peut-elle provoquer pour un allèle neutre dans une petite population isolée ?",
+              "options": [
+                "Sa transformation en chromosome supplémentaire",
+                "Son maintien invariable et éternel à 50 %",
+                "Sa fixation (fréquence 100 %) ou sa disparition définitive (fréquence 0 %)",
+                "Sa conversion immédiate en ARN ribosomal"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Par hasard, la dérive génétique finit par fixer certains allèles à 100 % et éliminer les autres à 0 %, appauvrissant la diversité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on l'effet fondateur en génétique ?",
+              "options": [
+                "L'établissement d'une nouvelle population par un très petit groupe d'individus isolés emportant un échantillon réduit des allèles ancestraux",
+                "La création du premier laboratoire de génétique par Gregor Mendel",
+                "La découverte de la structure en double hélice de l'ADN en 1953",
+                "La première mitose observée chez un embryon de grenouille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet fondateur survient quand quelques pionniers colonisent un nouvel habitat, ne transmettant qu'une fraction de la diversité d'origine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un goulot d'étranglement démographique pour une espèce animale ?",
+              "options": [
+                "Une difficulté anatomique pour avaler de la nourriture solide",
+                "La réduction de la taille des cellules du cou",
+                "Une compétition accrue pour la nidification en haut des arbres",
+                "Une chute brutale et temporaire de l'effectif réduisant drastiquement la diversité génétique"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Après une catastrophe ou une épidémie réduisant la population à quelques survivants, de nombreux allèles disparaissent par hasard."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Contrairement à la sélection naturelle, la dérive génétique dépend-elle de l'avantage conféré par les allèles ?",
+              "options": [
+                "Oui, elle sélectionne uniquement les allèles les plus performants",
+                "Non, elle s'exerce de façon purement stochastique (aléatoire), sans tenir compte de la valeur sélective",
+                "Oui, elle accélère toujours l'adaptation des prédateurs",
+                "Oui, elle ne touche que les allèles dominants létaux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La dérive est aveugle à la valeur sélective : un allèle neutre voire légèrement désavantageux peut se fixer par simple hasard."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est l'impact global de la dérive génétique prolongée sur la diversité génétique d'une population isolée ?",
+              "options": [
+                "Elle crée spontanément des centaines de nouveaux chromosomes",
+                "Elle maintient toujours une hétérozygotie maximale",
+                "Elle appauvrit progressivement la diversité génétique intraspécifique",
+                "Elle annule toutes les lois de la physique"
+              ],
+              "correctAnswers": [2],
+              "explanation": "En provoquant la disparition aléatoire de nombreux allèles, la dérive génétique réduit le polymorphisme génique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi les espèces menacées à très faibles effectifs (comme le guépard) sont-elles vulnérables à la dérive génétique ?",
+              "options": [
+                "Parce que la perte aléatoire d'allèles utiles et la consanguinité réduisent leur capacité d'adaptation aux nouvelles maladies",
+                "Parce qu'elles arrêtent instantanément de se reproduire",
+                "Parce que leur ADN polymérase ne synthétise plus d'adénine",
+                "Parce que leurs cellules deviennent systématiquement haploïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La perte de diversité génétique rend les populations génétiquement uniformes et très fragiles face aux aléas écologiques ou pathogènes."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Parmi les propositions suivantes, lesquelles s'appliquent fidèlement à la dérive génétique ?",
+              "options": [
+                "Ses effets sont d'autant plus spectaculaires que la population compte peu d'individus",
+                "Elle transforme les cellules somatiques en cellules sexuelles",
+                "Elle n'affecte jamais les populations insulaires",
+                "Elle est causée par l'échantillonnage aléatoire des allèles transmis par les gamètes"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "La dérive résulte du tirage aléatoire des allèles à chaque génération et s'exprime avec une vigueur maximale dans les petits effectifs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel phénomène écologique peut contrecarrer l'appauvrissement génétique causé par la dérive dans une petite population ?",
+              "options": [
+                "La fermeture complète de toute communication avec l'extérieur",
+                "L'arrivée de nouveaux individus reproducteurs venus d'autres populations (flux génique)",
+                "L'interdiction de toute mitose dans les tissus",
+                "L'éradication de tous les jeunes individus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le flux génique (migration d'individus et brassage avec d'autres populations) réintroduit de nouveaux allèles et restaure la diversité."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Environnement, phénotype et épigénétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "De quoi résulte le phénotype observable d'un individu ?",
+              "options": [
+                "De l'interaction complexe entre son génotype et les facteurs de son environnement",
+                "Strictement de son génome sans aucune influence extérieure possible",
+                "Uniquement de la volonté de la personne",
+                "Du hasard des marées et de la météo du jour de sa naissance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le phénotype est le produit de l'expression du patrimoine génétique modulée par les conditions de vie et l'environnement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la capacité d'un même génotype à exprimer différents phénotypes selon le milieu de vie ?",
+              "options": [
+                "La dérive nucléotidique",
+                "La plasticité phénotypique",
+                "La spéciation sympatrique",
+                "La rétrotranscription"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La plasticité phénotypique permet à un organisme d'adapter sa morphologie ou sa physiologie aux variations du milieu sans changer son ADN."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'étudie l'épigénétique en biologie moderne ?",
+              "options": [
+                "Le mouvement des plaques tectoniques continentales",
+                "L'action exclusive des antibiotiques sur les parois bactériennes",
+                "Les modifications transmissibles de l'expression des gènes sans altération de la séquence des nucléotides de l'ADN",
+                "La classification systématique des fossiles marins"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'épigénétique s'intéresse aux changements d'activité des gènes (silenciage, activation) sans modification de la séquence d'ADN sous-jacente."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle modification biochimique fréquente de l'ADN réprime l'expression d'un gène en bloquant sa transcription ?",
+              "options": [
+                "La méthylation des cytosines dans les régions promotrices",
+                "L'évaporation spontanée des riboses",
+                "La fixation de molécules de sel marin",
+                "L'hydrolyse complète des liaisons peptidiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthylation de l'ADN et la désacétylation des histones condensent la chromatine, empêchant la fixation de l'ARN polymérase."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment des facteurs environnementaux comme l'alimentation ou le stress peuvent-ils influencer notre santé sans muter nos gènes ?",
+              "options": [
+                "En détruisant immédiatement l'ensemble des chromosomes",
+                "En transformant les cellules eucaryotes en virus géants",
+                "En remplaçant l'ADN par des chaînes d'acides gras",
+                "En modifiant les marques épigénétiques qui contrôlent l'intensité d'expression de nombreux gènes"
+              ],
+              "correctAnswers": [3],
+              "explanation": "L'environnement peut altérer les marques épigénétiques (méthylation, modifications d'histones), modifiant durablement l'activité génique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi de vrais jumeaux (monozygotes) peuvent-ils présenter des différences physiologiques ou de santé en vieillissant ?",
+              "options": [
+                "Parce qu'ils ne partagent aucun allèle en commun",
+                "Parce que leurs expériences et modes de vie distincts ont façonné des profils épigénétiques divergents",
+                "Parce que l'un des deux a perdu ses 23 paires de chromosomes",
+                "Parce que leur groupe sanguin change après 40 ans"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Bien qu'ayant le même ADN initial, les vrais jumeaux accumulent des marques épigénétiques différentes au gré de leur environnement respectif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel exemple végétal illustre classiquement la plasticité phénotypique selon l'altitude ?",
+              "options": [
+                "Une plante clonée poussant petite et rampante en haute montagne mais grande et élancée en plaine",
+                "Un arbre qui transforme ses feuilles en plumes en hiver",
+                "Une fleur qui ne contient aucun acide nucléique à l'ombre",
+                "Une fougère qui devient un mammifère au soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux boutures génétiquement identiques de pissenlit ou d'achillée développent des morphologies très contrastées selon l'altitude de culture."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les marques épigénétiques sont-elles obligatoirement irréversibles et figées à jamais ?",
+              "options": [
+                "Non, elles sont dynamiques et peuvent être remodelées au cours de la vie selon les conditions environnementales",
+                "Oui, une fois posées au stade embryonnaire, rien ne peut plus les modifier",
+                "Oui, car elles détruisent la double hélice d'ADN",
+                "Non, car elles disparaissent toutes chaque matin au réveil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les modifications épigénétiques sont modulables et réversibles : des changements d'hygiène de vie peuvent modifier le profil épigénétique."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Parmi les facteurs suivants, lesquels sont susceptibles d'influencer l'expression des gènes chez les êtres vivants ?",
+              "options": [
+                "Le régime nutritionnel et la présence de micronutriments",
+                "La température extérieure et le niveau d'ensoleillement",
+                "L'exposition chronique au stress ou à des polluants environnementaux",
+                "La position des constellations dans l'espace galactique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'alimentation, la température, la lumière et les toxiques environnementaux modulent l'expression génique par voies épigénétiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le niveau de phénotype correspondant à la nature et à la quantité des protéines présentes dans une cellule ?",
+              "options": [
+                "Le phénotype macroscopique",
+                "Le phénotype moléculaire",
+                "Le phénotype macro-économique",
+                "Le phénotype écosystémique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le phénotype moléculaire correspond à l'équipement protéique d'une cellule, résultant de la transcription et de la traduction des gènes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Diversité génétique et santé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une maladie monogénique en médecine génétique ?",
+              "options": [
+                "Une maladie provoquée par la mutation d'un seul gène identifié",
+                "Une maladie transmise uniquement par les piqûres de moustiques",
+                "Une infection causée par un virus à un seul filament d'ARN",
+                "Une fracture osseuse survenue lors d'un effort physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une maladie monogénique découle de l'altération d'un seul gène (ex: mucoviscidose, drépanocytose, myopathie de Duchenne)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle maladie génétique autosomique récessive fréquente touche la régulation du mucus respiratoire et digestif ?",
+              "options": [
+                "Le paludisme",
+                "La mucoviscidose (gène CFTR muté)",
+                "La varicelle",
+                "La rubéole"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La mucoviscidose est due à des mutations du gène CFTR codant un canal chlore, provoquant un épaississement anormal du mucus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel avantage sélectif explique le maintien de l'allèle de la drépanocytose (HbS) à haute fréquence dans certaines régions tropicales ?",
+              "options": [
+                "Il protège les porteurs hétérozygotes contre les formes sévères du paludisme (malaria)",
+                "Il rend les individus immunisés contre le venin de serpent",
+                "Il permet de respirer sous l'eau douce",
+                "Il empêche toute carie dentaire chez l'enfant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les hétérozygotes (HbA//HbS) résistent mieux au parasite Plasmodium falciparum responsable du paludisme, maintenant l'allèle par sélection."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment l'usage massif et inadapté des antibiotiques conduit-il à l'antibiorésistance des bactéries ?",
+              "options": [
+                "Par sélection naturelle des bactéries porteuses de mutations leur conférant une résistance à l'antibiotique",
+                "En transformant spontanément les antibiotiques en vitamines pour bactéries",
+                "En créant des nouveaux chromosomes dans les globules blancs humains",
+                "En détruisant directement les vaccins injectés dans le bras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'antibiotique élimine les bactéries sensibles ; seules les bactéries mutées résistantes survivent et se multiplient sans concurrence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'intérêt médical du dépistage néonatal systématique à la naissance (test de Guthrie) ?",
+              "options": [
+                "Déterminer la future taille adulte au millimètre près",
+                "Choisir le prénom officiel du nourrisson",
+                "Vérifier la couleur définitive des cheveux",
+                "Prendre en charge précocement des maladies génétiques graves avant l'apparition de séquelles irréversibles"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Le dépistage néonatal permet d'instaurer des traitements ou régimes adaptés dès les premiers jours de vie (ex. phénylcétonurie)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une maladie plurifactorielle (ou multifactorielle) ?",
+              "options": [
+                "Une maladie causée par un champignon géant",
+                "Une pathologie résultant de l'interaction de plusieurs gènes de prédisposition et de facteurs environnementaux",
+                "Une maladie transmise par simple poignée de main",
+                "Une anomalie du nombre de centromères"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les maladies multifactorielles (diabète de type 2, obésité, maladies cardiovasculaires) associent terrain génétique et mode de vie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel service médical spécialisé informe les futurs parents sur le risque de transmettre une anomalie génétique connue dans leur famille ?",
+              "options": [
+                "Le service de chirurgie esthétique",
+                "La consultation d'ophtalmologie d'urgence",
+                "La consultation de conseil génétique",
+                "La médecine du travail et de prévention"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le conseil génétique évalue les arbres généalogiques, propose des tests ciblés et éclaire les couples sur les risques de récurrence."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la source constante de nouveaux variants viraux lors d'une épidémie comme la grippe ou la Covid-19 ?",
+              "options": [
+                "Les erreurs aléatoires survenues lors de la réplication du génome viral chez les hôtes infectés",
+                "La pollution lumineuse nocturne des grandes villes",
+                "La consommation d'eau distillée par les patients",
+                "L'inhalation de particules de pollen au printemps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsqu'un virus se multiplie des milliards de fois, des erreurs de copie génèrent de nouveaux variants dont certains échappent à l'immunité."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Parmi ces affections médicales, lesquelles sont des maladies génétiques héréditaires chez l'être humain ?",
+              "options": [
+                "La mucoviscidose",
+                "La grippe saisonnière",
+                "L'hémophilie liée au chromosome X",
+                "La fracture du fémur"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "La mucoviscidose et l'hémophilie sont des pathologies monogéniques héréditaires transmises selon les lois de la génétique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la préservation de la diversité génétique au sein d'une espèce est-elle un rempart crucial contre les épidémies ?",
+              "options": [
+                "Elle empêche tout micro-organisme de pénétrer dans les cellules",
+                "Elle accroît la probabilité que certains individus possèdent des allèles de résistance naturelle au pathogène",
+                "Elle garantit que tous les individus possèdent strictement les mêmes anticorps",
+                "Elle stoppe instantanément la méiose des cellules de l'espèce"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une population diversifiée contient des variants immunitaires variés, évitant qu'un agent infectieux n'éradique l'ensemble des individus."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

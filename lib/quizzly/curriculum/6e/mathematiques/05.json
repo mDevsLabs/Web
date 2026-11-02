@@ -1,0 +1,1833 @@
+{
+  "id": "6e-mathematiques-05",
+  "year": "6e",
+  "subject": "mathematiques",
+  "title": "Proportionnalité et grandeurs",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Tableaux et échelles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Trois cahiers coûtent 6 €. Quelles affirmations sont vraies ?",
+              "options": [
+                "Six cahiers coûtent 12 €",
+                "Cinq cahiers coûtent 8 €",
+                "Quatre cahiers coûtent 8 €",
+                "Neuf cahiers coûtent 18 €"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Unitaire 2 € : 6×2=12 €, 9×2=18 €."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Prix de 7 cahiers ?",
+              "options": ["12 €", "14 €", "16 €", "18 €"],
+              "correctAnswers": [1],
+              "explanation": "7×2=14 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Avec 20 €, combien de cahiers ?",
+              "options": ["8", "9", "10", "11"],
+              "correctAnswers": [2],
+              "explanation": "20÷2=10."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cinq photos à 15 €. Huit photos ?",
+              "options": ["20 €", "22 €", "24 €", "26 €"],
+              "correctAnswers": [2],
+              "explanation": "3 €/photo ; 8×3=24 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quatre bus, 160 élèves. Sept bus ?",
+              "options": ["260", "280", "300", "320"],
+              "correctAnswers": [1],
+              "explanation": "40/bus ; 7×40=280."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 cm = 5 km. Six centimètres ?",
+              "options": ["25 km", "30 km", "35 km", "40 km"],
+              "correctAnswers": [1],
+              "explanation": "6×5=30 km."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "1 cm pour 2 m. Quatre centimètres ?",
+              "options": ["6 m", "8 m", "10 m", "12 m"],
+              "correctAnswers": [1],
+              "explanation": "4×2=8 m."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1 cm pour 10 m. Quatre-vingts mètres ?",
+              "options": ["6 cm", "7 cm", "8 cm", "9 cm"],
+              "correctAnswers": [2],
+              "explanation": "80÷10=8 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tableau 2→6, 5→15. Image de 8 ?",
+              "options": ["22", "24", "26", "28"],
+              "correctAnswers": [1],
+              "explanation": "×3 ; 8×3=24."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1 cm pour 4 m. Douze mètres ?",
+              "options": ["2 cm", "3 cm", "4 cm", "5 cm"],
+              "correctAnswers": [1],
+              "explanation": "12÷4=3 cm."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1 cm pour 3 m. Quelles paires sont justes ?",
+              "options": [
+                "5 cm → 15 m",
+                "5 cm → 12 m",
+                "2 cm → 6 m",
+                "2 cm → 9 m"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "5×3=15 m ; 2×3=6 m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Couloir 18 m, échelle 1 cm pour 3 m ?",
+              "options": ["5 cm", "6 cm", "7 cm", "8 cm"],
+              "correctAnswers": [1],
+              "explanation": "18÷3=6 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "12 gâteaux, 6 kg de farine. Cinq gâteaux ?",
+              "options": ["2 kg", "2,5 kg", "3 kg", "3,5 kg"],
+              "correctAnswers": [1],
+              "explanation": "0,5 kg/gâteau ; 5×0,5=2,5 kg."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "12 km en 2 h. En 5 h ?",
+              "options": ["28 km", "30 km", "32 km", "34 km"],
+              "correctAnswers": [1],
+              "explanation": "6 km/h ; 5×6=30 km."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau 4→20, 7→35. Image de 9 ?",
+              "options": ["40", "43", "45", "48"],
+              "correctAnswers": [2],
+              "explanation": "×5 ; 9×5=45."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 cm pour 2 m. Clôture 14 m ?",
+              "options": ["6 cm", "7 cm", "8 cm", "9 cm"],
+              "correctAnswers": [1],
+              "explanation": "14÷2=7 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "3 stylos à 4,50 €. Dix stylos ?",
+              "options": ["13 €", "14 €", "15 €", "16 €"],
+              "correctAnswers": [2],
+              "explanation": "1,50 € ; 10×1,50=15 €."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "9 cm sur plan, 1 cm = 5 km ?",
+              "options": ["40 km", "45 km", "50 km", "55 km"],
+              "correctAnswers": [1],
+              "explanation": "9×5=45 km."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "8 m de ruban à 24 €. Cinq mètres ?",
+              "options": ["12 €", "15 €", "18 €", "20 €"],
+              "correctAnswers": [1],
+              "explanation": "3 €/m ; 5×3=15 €."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1 cm pour 25 m. Bâtiment 100 m ?",
+              "options": ["3 cm", "4 cm", "5 cm", "6 cm"],
+              "correctAnswers": [1],
+              "explanation": "100÷25=4 cm."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "2 kg de pommes à 5 €. Quelles phrases sont exactes ?",
+              "options": [
+                "4 kg → 10 €",
+                "6 kg → 12 €",
+                "8 kg → 20 €",
+                "10 kg → 22 €"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "2,50 €/kg : 4×2,5=10 €, 8×2,5=20 €."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Prix de 3 kg ?",
+              "options": ["6,50 €", "7,00 €", "7,50 €", "8,00 €"],
+              "correctAnswers": [2],
+              "explanation": "3×2,5=7,50 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une table accueille 4 élèves. Huit tables ?",
+              "options": ["28", "30", "32", "34"],
+              "correctAnswers": [2],
+              "explanation": "8×4=32 élèves."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1 cm pour 8 m. Route 56 m ?",
+              "options": ["6 cm", "7 cm", "8 cm", "9 cm"],
+              "correctAnswers": [1],
+              "explanation": "56÷8=7 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "6 bouteilles, 9 L. Dix bouteilles ?",
+              "options": ["12 L", "14 L", "15 L", "16 L"],
+              "correctAnswers": [2],
+              "explanation": "1,5 L/b ; 10×1,5=15 L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tableau 3→12, 5→20. Image de 7 ?",
+              "options": ["26", "27", "28", "29"],
+              "correctAnswers": [2],
+              "explanation": "×4 ; 7×4=28."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "1 cm pour 2 m. Vingt mètres réels ?",
+              "options": ["8 cm", "9 cm", "10 cm", "11 cm"],
+              "correctAnswers": [2],
+              "explanation": "20÷2=10 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "4 tickets à 10 €. Neuf tickets ?",
+              "options": ["20 €", "22,50 €", "24 €", "25 €"],
+              "correctAnswers": [1],
+              "explanation": "2,50 € ; 9×2,50=22,50 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1 cm = 4 km. Trois cm sur carte ?",
+              "options": ["10 km", "11 km", "12 km", "13 km"],
+              "correctAnswers": [2],
+              "explanation": "3×4=12 km."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "3 pots pour 15 m². Vingt-cinq m² ?",
+              "options": ["4", "5", "6", "7"],
+              "correctAnswers": [1],
+              "explanation": "5 m²/pot ; 25÷5=5 pots."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1 cm pour 5 m. Conversions correctes ?",
+              "options": [
+                "3 cm → 15 m",
+                "4 cm → 25 m",
+                "6 cm → 30 m",
+                "8 cm → 35 m"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "3×5=15 m ; 6×5=30 m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Maison 45 m, échelle 1 cm pour 5 m ?",
+              "options": ["7 cm", "8 cm", "9 cm", "10 cm"],
+              "correctAnswers": [2],
+              "explanation": "45÷5=9 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "5 croissants, 250 g beurre. Huit croissants ?",
+              "options": ["350 g", "400 g", "450 g", "500 g"],
+              "correctAnswers": [1],
+              "explanation": "50 g ; 8×50=400 g."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "9 km en 30 min. En 1 h ?",
+              "options": ["16 km", "17 km", "18 km", "19 km"],
+              "correctAnswers": [2],
+              "explanation": "Doublement : 18 km."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau de coefficient 3 : antécédent de 24 ?",
+              "options": ["6", "7", "8", "9"],
+              "correctAnswers": [2],
+              "explanation": "24÷3=8."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "2 cm valent 14 m. Cinq cm ?",
+              "options": ["30 m", "32 m", "35 m", "38 m"],
+              "correctAnswers": [2],
+              "explanation": "7 m/cm ; 5×7=35 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "8 carnets à 28 €. Trois carnets ?",
+              "options": ["9 €", "10 €", "10,50 €", "11 €"],
+              "correctAnswers": [2],
+              "explanation": "3,50 € ; 3×3,50=10,50 €."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1 cm pour 2 m. Onze cm ?",
+              "options": ["20 m", "21 m", "22 m", "23 m"],
+              "correctAnswers": [2],
+              "explanation": "11×2=22 m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "600 g pâtes pour 4 personnes. Dix personnes ?",
+              "options": ["1200 g", "1300 g", "1400 g", "1500 g"],
+              "correctAnswers": [3],
+              "explanation": "150 g/p ; 10×150=1500 g."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "2 cm = 50 km. Cinq cm ?",
+              "options": ["100 km", "120 km", "125 km", "130 km"],
+              "correctAnswers": [2],
+              "explanation": "25 km/cm ; 5×25=125 km."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau coefficient 2,5. Lignes exactes ?",
+              "options": ["8→20", "8→18", "10→25", "12→30"],
+              "correctAnswers": [0, 2],
+              "explanation": "8×2,5=20 ; 10×2,5=25."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Image de 7 ?",
+              "options": ["16", "17,5", "18", "19"],
+              "correctAnswers": [1],
+              "explanation": "7×2,5=17,5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1 cm pour 20 m. Soixante mètres ?",
+              "options": ["2 cm", "3 cm", "4 cm", "5 cm"],
+              "correctAnswers": [1],
+              "explanation": "60÷20=3 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "9 pommes à 6,30 €. Quatre pommes ?",
+              "options": ["2,60 €", "2,70 €", "2,80 €", "2,90 €"],
+              "correctAnswers": [2],
+              "explanation": "0,70 € ; 4×0,70=2,80 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "8 L en 4 min. En 15 min ?",
+              "options": ["28 L", "30 L", "32 L", "34 L"],
+              "correctAnswers": [1],
+              "explanation": "2 L/min ; 15×2=30 L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 cm pour 15 m. Place 75 m ?",
+              "options": ["4 cm", "5 cm", "6 cm", "7 cm"],
+              "correctAnswers": [1],
+              "explanation": "75÷15=5 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "5 ouvriers, 40 m². Huit ouvriers ?",
+              "options": ["58 m²", "60 m²", "64 m²", "68 m²"],
+              "correctAnswers": [2],
+              "explanation": "8 m²/pers ; 8×8=64 m²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Antécédent de 30 (×2,5) ?",
+              "options": ["10", "11", "12", "13"],
+              "correctAnswers": [2],
+              "explanation": "30÷2,5=12."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1 cm pour 3 m. Douze cm ?",
+              "options": ["33 m", "34 m", "36 m", "38 m"],
+              "correctAnswers": [2],
+              "explanation": "12×3=36 m."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "6 kg pour 12 repas. Sept repas ?",
+              "options": ["3 kg", "3,5 kg", "4 kg", "4,5 kg"],
+              "correctAnswers": [1],
+              "explanation": "0,5 kg/repas ; 7×0,5=3,5 kg."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "20 pièces en 5 min. Affirmations vraies ?",
+              "options": [
+                "40 en 10 min",
+                "30 en 6 min",
+                "60 en 15 min",
+                "25 en 5 min"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "4/min : 10×4=40, 15×4=60."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pièces en 8 min ?",
+              "options": ["30", "32", "34", "36"],
+              "correctAnswers": [1],
+              "explanation": "8×4=32."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1 cm pour 6 m. Pont 42 m ?",
+              "options": ["6 cm", "7 cm", "8 cm", "9 cm"],
+              "correctAnswers": [1],
+              "explanation": "42÷6=7 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3 livres, 1,2 kg. Dix livres ?",
+              "options": ["3,6 kg", "4,0 kg", "4,2 kg", "4,5 kg"],
+              "correctAnswers": [1],
+              "explanation": "0,4 kg ; 10×0,4=4 kg."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau ×7 : image de 12 ?",
+              "options": ["82", "84", "86", "88"],
+              "correctAnswers": [1],
+              "explanation": "12×7=84."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 cm = 2 km. Randonnée 14 km ?",
+              "options": ["6 cm", "7 cm", "8 cm", "9 cm"],
+              "correctAnswers": [1],
+              "explanation": "14÷2=7 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "18 feuilles pour 6 élèves. Onze élèves ?",
+              "options": ["31", "32", "33", "34"],
+              "correctAnswers": [2],
+              "explanation": "3/élève ; 11×3=33."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1 cm pour 4 m. Cinquante-deux mètres ?",
+              "options": ["12 cm", "13 cm", "14 cm", "15 cm"],
+              "correctAnswers": [1],
+              "explanation": "52÷4=13 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "96 crayons, 8 cartons. Cinq cartons ?",
+              "options": ["55", "58", "60", "62"],
+              "correctAnswers": [2],
+              "explanation": "12/carton ; 5×12=60."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "5 badges à 2 €. Treize badges ?",
+              "options": ["4,80 €", "5,00 €", "5,20 €", "5,40 €"],
+              "correctAnswers": [2],
+              "explanation": "0,40 € ; 13×0,40=5,20 €."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1 cm pour 2 m. Mesures cohérentes ?",
+              "options": [
+                "6 cm pour 12 m",
+                "5 cm pour 12 m",
+                "9 cm pour 18 m",
+                "10 cm pour 18 m"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "12÷2=6 cm ; 18÷2=9 cm."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Terrain 30 m sur le plan ?",
+              "options": ["12 cm", "14 cm", "15 cm", "16 cm"],
+              "correctAnswers": [2],
+              "explanation": "30÷2=15 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "48 passagers, 4 bus. Neuf bus ?",
+              "options": ["104", "106", "108", "110"],
+              "correctAnswers": [2],
+              "explanation": "12/bus ; 9×12=108."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tableau ×3 : image de 8 ?",
+              "options": ["22", "23", "24", "25"],
+              "correctAnswers": [2],
+              "explanation": "8×3=24."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1 cm pour 25 m. Six cm ?",
+              "options": ["130 m", "140 m", "150 m", "160 m"],
+              "correctAnswers": [2],
+              "explanation": "6×25=150 m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "5 m de fil à 12 €. Huit mètres ?",
+              "options": ["18,20 €", "19,00 €", "19,20 €", "20,00 €"],
+              "correctAnswers": [2],
+              "explanation": "2,40 €/m ; 8×2,40=19,20 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "6 L/min pendant 25 min ?",
+              "options": ["140 L", "145 L", "150 L", "155 L"],
+              "correctAnswers": [2],
+              "explanation": "25×6=150 L."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1 cm pour 5 m. Allée 35 m ?",
+              "options": ["6 cm", "7 cm", "8 cm", "9 cm"],
+              "correctAnswers": [1],
+              "explanation": "35÷5=7 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "350 g pour 7 croquettes. Quatre croquettes ?",
+              "options": ["180 g", "190 g", "200 g", "210 g"],
+              "correctAnswers": [2],
+              "explanation": "50 g ; 4×50=200 g."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "×3,5 : antécédent de 49 ?",
+              "options": ["12", "13", "14", "15"],
+              "correctAnswers": [2],
+              "explanation": "49÷3,5=14."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "10 bonbons à 4 €. Phrases correctes ?",
+              "options": [
+                "25 bonbons → 10 €",
+                "15 bonbons → 6 €",
+                "20 bonbons → 8 €",
+                "30 bonbons → 11 €"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "0,40 € : 25×0,4=10 €, 20×0,4=8 €."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "35 bonbons ?",
+              "options": ["13 €", "14 €", "15 €", "16 €"],
+              "correctAnswers": [1],
+              "explanation": "35×0,4=14 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1 cm pour 8 m. Soixante-quatre mètres ?",
+              "options": ["7 cm", "8 cm", "9 cm", "10 cm"],
+              "correctAnswers": [1],
+              "explanation": "64÷8=8 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "2,4 m tissu pour 3 m tapis. Huit mètres ?",
+              "options": ["6,0 m", "6,2 m", "6,4 m", "6,6 m"],
+              "correctAnswers": [2],
+              "explanation": "0,8 m/m ; 8×0,8=6,4 m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "×3,5 : image de 5 ?",
+              "options": ["16", "17", "17,5", "18"],
+              "correctAnswers": [2],
+              "explanation": "5×3,5=17,5."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 cm = 3 km. Quatre cm ?",
+              "options": ["10 km", "11 km", "12 km", "13 km"],
+              "correctAnswers": [2],
+              "explanation": "4×3=12 km."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "24 carreaux, 6 ouvriers. Dix ouvriers ?",
+              "options": ["36", "38", "40", "42"],
+              "correctAnswers": [2],
+              "explanation": "4/ouvrier ; 10×4=40."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vingt-six mètres réels sur plan 1 cm pour 2 m ?",
+              "options": ["11 cm", "12 cm", "13 cm", "14 cm"],
+              "correctAnswers": [2],
+              "explanation": "26÷2=13 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "5 L pour 20 m². Douze litres ?",
+              "options": ["46 m²", "48 m²", "50 m²", "52 m²"],
+              "correctAnswers": [1],
+              "explanation": "4 m²/L ; 12×4=48 m²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "×3,5 : image de 15 ?",
+              "options": ["50", "51", "52,5", "54"],
+              "correctAnswers": [2],
+              "explanation": "15×3,5=52,5."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Plan école : 1 cm = 4 m. Paires exactes ?",
+              "options": [
+                "5 cm → 20 m",
+                "7 cm → 24 m",
+                "9 cm → 36 m",
+                "10 cm → 38 m"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "5×4=20 m ; 9×4=36 m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cour 48 m ?",
+              "options": ["10 cm", "11 cm", "12 cm", "13 cm"],
+              "correctAnswers": [2],
+              "explanation": "48÷4=12 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3 packs yaourts à 5,40 €. Un pack ?",
+              "options": ["1,60 €", "1,70 €", "1,80 €", "1,90 €"],
+              "correctAnswers": [2],
+              "explanation": "5,40÷3=1,80 €."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "15 km en 20 min. En 1 h ?",
+              "options": ["42 km", "44 km", "45 km", "46 km"],
+              "correctAnswers": [2],
+              "explanation": "×3 : 45 km."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau ×8 : image de 11 ?",
+              "options": ["84", "86", "88", "90"],
+              "correctAnswers": [2],
+              "explanation": "11×8=88."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 cm pour 10 m. Quatre-vingt-quinze mètres ?",
+              "options": ["8,5 cm", "9 cm", "9,5 cm", "10 cm"],
+              "correctAnswers": [2],
+              "explanation": "95÷10=9,5 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "100 pièces, 4 machines. Sept machines ?",
+              "options": ["165", "170", "175", "180"],
+              "correctAnswers": [2],
+              "explanation": "25/machine ; 7×25=175."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "2 cm = 18 km. Cinq cm ?",
+              "options": ["42 km", "44 km", "45 km", "46 km"],
+              "correctAnswers": [2],
+              "explanation": "9 km/cm ; 5×9=45 km."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "150 feuilles pour 10 élèves. Par élève ?",
+              "options": ["12", "13", "14", "15"],
+              "correctAnswers": [3],
+              "explanation": "150÷10=15."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Segments 3 cm et 8 cm (1 cm pour 2 m). Somme réelle ?",
+              "options": ["20 m", "21 m", "22 m", "23 m"],
+              "correctAnswers": [2],
+              "explanation": "(3+8)×2=22 m."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau 2→5, 4→10. Lignes correctes ?",
+              "options": ["6→15", "6→12", "8→20", "10→30"],
+              "correctAnswers": [0, 2],
+              "explanation": "×2,5 : 6→15, 8→20."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Image de 9 ?",
+              "options": ["21", "22", "22,5", "23"],
+              "correctAnswers": [2],
+              "explanation": "9×2,5=22,5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1 cm pour 12 m. Salle 84 m ?",
+              "options": ["6 cm", "7 cm", "8 cm", "9 cm"],
+              "correctAnswers": [1],
+              "explanation": "84÷12=7 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "5 tickets à 7,50 €. Douze tickets ?",
+              "options": ["16 €", "17 €", "18 €", "19 €"],
+              "correctAnswers": [2],
+              "explanation": "1,50 € ; 12×1,50=18 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "3 L en 6 min. Vingt minutes ?",
+              "options": ["8 L", "9 L", "10 L", "11 L"],
+              "correctAnswers": [2],
+              "explanation": "0,5 L/min ; 20×0,5=10 L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Écart 4 cm et 9 cm (1 cm pour 2 m) en réel ?",
+              "options": ["8 m", "9 m", "10 m", "11 m"],
+              "correctAnswers": [2],
+              "explanation": "(9−4)×2=10 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "×3 : antécédent de 33 ?",
+              "options": ["10", "11", "12", "13"],
+              "correctAnswers": [1],
+              "explanation": "33÷3=11."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Carte 1 cm = 5 km. Tronçons 2 cm + 3 cm ?",
+              "options": ["20 km", "23 km", "25 km", "28 km"],
+              "correctAnswers": [2],
+              "explanation": "5×5=25 km."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "20 kg pour 8 sacs. Treize sacs ?",
+              "options": ["30 kg", "32 kg", "32,5 kg", "33 kg"],
+              "correctAnswers": [2],
+              "explanation": "2,5 kg/sac ; 13×2,5=32,5 kg."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1 cm pour 3 m. Quinze cm ?",
+              "options": ["43 m", "44 m", "45 m", "46 m"],
+              "correctAnswers": [2],
+              "explanation": "15×3=45 m."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Unités",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Égalités de longueurs exactes ?",
+              "options": [
+                "3 m = 300 cm",
+                "5 m = 500 cm",
+                "2 m = 150 cm",
+                "4 m = 400 mm"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 m=100 cm."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "250 cm en m ?",
+              "options": ["2,05 m", "2,25 m", "2,50 m", "25 m"],
+              "correctAnswers": [2],
+              "explanation": "250÷100=2,50 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "7 m 35 cm en cm ?",
+              "options": ["735 cm", "7350 cm", "7035 cm", "73500 cm"],
+              "correctAnswers": [0],
+              "explanation": "700+35=735 cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1250 mm en m ?",
+              "options": ["1,025 m", "1,25 m", "12,5 m", "125 m"],
+              "correctAnswers": [1],
+              "explanation": "1250÷1000=1,25 m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "4,2 m en cm ?",
+              "options": ["42 cm", "420 cm", "4200 cm", "42000 cm"],
+              "correctAnswers": [1],
+              "explanation": "4,2×100=420 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "6 cm en mm ?",
+              "options": ["6", "16", "60", "600"],
+              "correctAnswers": [2],
+              "explanation": "6×10=60 mm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "3 m 8 cm en cm ?",
+              "options": ["308 cm", "380 cm", "3008 cm", "3080 cm"],
+              "correctAnswers": [0],
+              "explanation": "300+8=308 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "950 cm en m ?",
+              "options": ["0,95 m", "9,5 m", "95 m", "950 m"],
+              "correctAnswers": [1],
+              "explanation": "950÷100=9,5 m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "15 mm en cm ?",
+              "options": ["0,15 cm", "1,5 cm", "15 cm", "150 cm"],
+              "correctAnswers": [1],
+              "explanation": "15÷10=1,5 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "2,05 m en mm ?",
+              "options": ["205 mm", "2050 mm", "20500 mm", "205000 mm"],
+              "correctAnswers": [1],
+              "explanation": "2,05×1000=2050 mm."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Conversions masse correctes ?",
+              "options": [
+                "2 kg = 2000 g",
+                "3 kg = 300 g",
+                "500 g = 0,5 kg",
+                "1200 g = 12 kg"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "2 kg=2000 g ; 500 g=0,5 kg."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "3750 g en kg ?",
+              "options": ["0,375 kg", "3,075 kg", "3,75 kg", "37,5 kg"],
+              "correctAnswers": [2],
+              "explanation": "3750÷1000=3,75 kg."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1 kg 250 g en g ?",
+              "options": ["1250 g", "12500 g", "1025 g", "1125 g"],
+              "correctAnswers": [0],
+              "explanation": "1000+250=1250 g."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "850 g en kg ?",
+              "options": ["0,085 kg", "0,85 kg", "8,5 kg", "85 kg"],
+              "correctAnswers": [1],
+              "explanation": "850÷1000=0,85 kg."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "4 kg 30 g en g ?",
+              "options": ["4030 g", "4300 g", "4003 g", "430 g"],
+              "correctAnswers": [0],
+              "explanation": "4000+30=4030 g."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "2500 g en kg ?",
+              "options": ["0,25 kg", "2,5 kg", "25 kg", "250 kg"],
+              "correctAnswers": [1],
+              "explanation": "2500÷1000=2,5 kg."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "0,6 kg en g ?",
+              "options": ["6 g", "60 g", "600 g", "6000 g"],
+              "correctAnswers": [2],
+              "explanation": "0,6×1000=600 g."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "3 kg 5 g en g ?",
+              "options": ["3005 g", "3050 g", "3500 g", "30005 g"],
+              "correctAnswers": [0],
+              "explanation": "3000+5=3005 g."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "125 g en kg ?",
+              "options": ["0,0125 kg", "0,125 kg", "1,25 kg", "12,5 kg"],
+              "correctAnswers": [1],
+              "explanation": "125÷1000=0,125 kg."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "7,2 kg en g ?",
+              "options": ["720 g", "7200 g", "72000 g", "7020 g"],
+              "correctAnswers": [1],
+              "explanation": "7,2×1000=7200 g."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Capacités égales ?",
+              "options": [
+                "1 L = 100 cL",
+                "2 L = 200 cL",
+                "50 cL = 5 L",
+                "75 cL = 7,5 L"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 L=100 cL, 2 L=200 cL."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "3,5 L en cL ?",
+              "options": ["35 cL", "350 cL", "3500 cL", "0,35 cL"],
+              "correctAnswers": [1],
+              "explanation": "3,5×100=350 cL."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "240 cL en L ?",
+              "options": ["0,24 L", "2,4 L", "24 L", "240 L"],
+              "correctAnswers": [1],
+              "explanation": "240÷100=2,4 L."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1 L 25 cL en cL ?",
+              "options": ["125 cL", "1025 cL", "1250 cL", "225 cL"],
+              "correctAnswers": [0],
+              "explanation": "100+25=125 cL."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "850 cL en L ?",
+              "options": ["0,85 L", "8,5 L", "85 L", "850 L"],
+              "correctAnswers": [1],
+              "explanation": "850÷100=8,5 L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "0,75 L en cL ?",
+              "options": ["7,5 cL", "75 cL", "750 cL", "7500 cL"],
+              "correctAnswers": [1],
+              "explanation": "0,75×100=75 cL."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "5 L 40 cL en cL ?",
+              "options": ["540 cL", "504 cL", "5400 cL", "5040 cL"],
+              "correctAnswers": [0],
+              "explanation": "500+40=540 cL."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "320 cL en L ?",
+              "options": ["3,2 L", "32 L", "0,32 L", "320 L"],
+              "correctAnswers": [0],
+              "explanation": "320÷100=3,2 L."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1,08 L en cL ?",
+              "options": ["10,8 cL", "108 cL", "1080 cL", "180 cL"],
+              "correctAnswers": [1],
+              "explanation": "1,08×100=108 cL."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "60 cL en L ?",
+              "options": ["0,06 L", "0,6 L", "6 L", "60 L"],
+              "correctAnswers": [1],
+              "explanation": "60÷100=0,6 L."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Durées égales ?",
+              "options": [
+                "1 h 30 min = 90 min",
+                "2 h 15 min = 135 min",
+                "1 h 20 min = 70 min",
+                "45 min = 0,5 h"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "90 min et 135 min."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "2 h 40 min en min ?",
+              "options": ["140 min", "160 min", "180 min", "200 min"],
+              "correctAnswers": [1],
+              "explanation": "120+40=160 min."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "195 min en h min ?",
+              "options": ["3 h 05", "3 h 15", "3 h 25", "3 h 35"],
+              "correctAnswers": [1],
+              "explanation": "195=180+15."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "1 h 05 en min ?",
+              "options": ["60 min", "65 min", "105 min", "605 min"],
+              "correctAnswers": [1],
+              "explanation": "60+5=65 min."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "250 min : heures complètes ?",
+              "options": ["3", "4", "5", "6"],
+              "correctAnswers": [1],
+              "explanation": "250÷60=4 h reste 10."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "3 h 50 min en min ?",
+              "options": ["210 min", "220 min", "230 min", "350 min"],
+              "correctAnswers": [2],
+              "explanation": "180+50=230 min."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "125 min en h min ?",
+              "options": ["1 h 25", "2 h 05", "2 h 15", "2 h 25"],
+              "correctAnswers": [1],
+              "explanation": "125=120+5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "4 h 20 min en min ?",
+              "options": ["240 min", "250 min", "260 min", "420 min"],
+              "correctAnswers": [2],
+              "explanation": "240+20=260 min."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "305 min en h min ?",
+              "options": ["4 h 55", "5 h 05", "5 h 15", "5 h 25"],
+              "correctAnswers": [1],
+              "explanation": "305=300+5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "90 min en heures ?",
+              "options": ["1,2 h", "1,5 h", "1,8 h", "2,5 h"],
+              "correctAnswers": [1],
+              "explanation": "90÷60=1,5 h."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Conversions mixtes exactes ?",
+              "options": [
+                "2 m = 2000 mm",
+                "500 cm = 5 m",
+                "3 kg = 300 g",
+                "1 L = 10 cL"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "2 m=2000 mm ; 500 cm=5 m."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1 h 45 min + 35 min ?",
+              "options": ["2 h 10", "2 h 15", "2 h 20", "2 h 25"],
+              "correctAnswers": [2],
+              "explanation": "105+35=140 min=2 h 20."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3,2 kg en g ?",
+              "options": ["320 g", "3200 g", "32000 g", "3020 g"],
+              "correctAnswers": [1],
+              "explanation": "3,2×1000=3200 g."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "180 cL en L ?",
+              "options": ["0,18 L", "1,8 L", "18 L", "180 L"],
+              "correctAnswers": [1],
+              "explanation": "180÷100=1,8 L."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "5 m 60 cm en cm ?",
+              "options": ["560 cm", "506 cm", "5600 cm", "56000 cm"],
+              "correctAnswers": [0],
+              "explanation": "500+60=560 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "2 h 30 min − 50 min ?",
+              "options": ["1 h 30", "1 h 40", "1 h 50", "2 h 00"],
+              "correctAnswers": [1],
+              "explanation": "150−50=100 min=1 h 40."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "4500 g en kg ?",
+              "options": ["0,45 kg", "4,5 kg", "45 kg", "450 kg"],
+              "correctAnswers": [1],
+              "explanation": "4500÷1000=4,5 kg."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "75 mm en cm ?",
+              "options": ["0,75 cm", "7,5 cm", "75 cm", "750 cm"],
+              "correctAnswers": [1],
+              "explanation": "75÷10=7,5 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1 L 80 cL en cL ?",
+              "options": ["108 cL", "180 cL", "280 cL", "1080 cL"],
+              "correctAnswers": [1],
+              "explanation": "100+80=180 cL."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "150 min − 45 min ?",
+              "options": ["1 h 05", "1 h 15", "1 h 45", "2 h 05"],
+              "correctAnswers": [2],
+              "explanation": "105 min=1 h 45."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Longueurs : quelles égalités sont vraies ?",
+              "options": [
+                "1 m = 100 cm",
+                "1 m = 10 cm",
+                "10 mm = 1 cm",
+                "100 mm = 1 cm"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "1 m=100 cm ; 10 mm=1 cm."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "8 m 5 cm en cm ?",
+              "options": ["805 cm", "850 cm", "8005 cm", "85 cm"],
+              "correctAnswers": [0],
+              "explanation": "800+5=805 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3400 mm en m ?",
+              "options": ["0,34 m", "3,4 m", "34 m", "340 m"],
+              "correctAnswers": [1],
+              "explanation": "3400÷1000=3,4 m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "45 mm en cm ?",
+              "options": ["0,45 cm", "4,5 cm", "45 cm", "450 cm"],
+              "correctAnswers": [1],
+              "explanation": "45÷10=4,5 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1,75 m en cm ?",
+              "options": ["17,5 cm", "175 cm", "1750 cm", "17500 cm"],
+              "correctAnswers": [1],
+              "explanation": "1,75×100=175 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "620 cm en m ?",
+              "options": ["0,62 m", "6,2 m", "62 m", "620 m"],
+              "correctAnswers": [1],
+              "explanation": "620÷100=6,2 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "9 cm en mm ?",
+              "options": ["9", "90", "900", "9000"],
+              "correctAnswers": [1],
+              "explanation": "9×10=90 mm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "2 m 15 cm en cm ?",
+              "options": ["215 cm", "251 cm", "2150 cm", "2015 cm"],
+              "correctAnswers": [0],
+              "explanation": "200+15=215 cm."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "500 mm en cm ?",
+              "options": ["5 cm", "50 cm", "500 cm", "5000 cm"],
+              "correctAnswers": [1],
+              "explanation": "500÷10=50 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "0,9 m en mm ?",
+              "options": ["9 mm", "90 mm", "900 mm", "9000 mm"],
+              "correctAnswers": [2],
+              "explanation": "0,9×1000=900 mm."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Masses : égalités exactes ?",
+              "options": [
+                "1 kg = 1000 g",
+                "2 kg = 200 g",
+                "750 g = 0,75 kg",
+                "1500 g = 1,5 kg"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "1 kg=1000 g ; 1500 g=1,5 kg."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "2 kg 400 g en g ?",
+              "options": ["240 g", "2400 g", "2040 g", "24000 g"],
+              "correctAnswers": [1],
+              "explanation": "2000+400=2400 g."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "980 g en kg ?",
+              "options": ["0,098 kg", "0,98 kg", "9,8 kg", "98 kg"],
+              "correctAnswers": [1],
+              "explanation": "980÷1000=0,98 kg."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "0,25 kg en g ?",
+              "options": ["25 g", "250 g", "2500 g", "25000 g"],
+              "correctAnswers": [1],
+              "explanation": "0,25×1000=250 g."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "5 kg 75 g en g ?",
+              "options": ["5075 g", "575 g", "5750 g", "50075 g"],
+              "correctAnswers": [0],
+              "explanation": "5000+75=5075 g."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "3200 g en kg ?",
+              "options": ["0,32 kg", "3,2 kg", "32 kg", "320 kg"],
+              "correctAnswers": [1],
+              "explanation": "3200÷1000=3,2 kg."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "1,05 kg en g ?",
+              "options": ["105 g", "1050 g", "10500 g", "150 g"],
+              "correctAnswers": [1],
+              "explanation": "1,05×1000=1050 g."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "60 g en kg ?",
+              "options": ["0,006 kg", "0,06 kg", "0,6 kg", "6 kg"],
+              "correctAnswers": [1],
+              "explanation": "60÷1000=0,06 kg."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "6 kg 6 g en g ?",
+              "options": ["606 g", "6006 g", "660 g", "6060 g"],
+              "correctAnswers": [1],
+              "explanation": "6000+6=6006 g."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "8750 g en kg ?",
+              "options": ["0,875 kg", "8,75 kg", "87,5 kg", "875 kg"],
+              "correctAnswers": [1],
+              "explanation": "8750÷1000=8,75 kg."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Capacités : quelles égalités sont exactes ?",
+              "options": [
+                "25 cL = 0,25 L",
+                "250 cL = 2,5 L",
+                "75 cL = 0,75 L",
+                "500 cL = 50 L"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "25 cL=0,25 L ; 75 cL=0,75 L."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "4 L 50 cL en cL ?",
+              "options": ["450 cL", "405 cL", "4500 cL", "4050 cL"],
+              "correctAnswers": [0],
+              "explanation": "400+50=450 cL."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "275 cL en L ?",
+              "options": ["0,275 L", "2,75 L", "27,5 L", "275 L"],
+              "correctAnswers": [1],
+              "explanation": "275÷100=2,75 L."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "0,4 L en cL ?",
+              "options": ["4 cL", "40 cL", "400 cL", "4000 cL"],
+              "correctAnswers": [1],
+              "explanation": "0,4×100=40 cL."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2 L 5 cL en cL ?",
+              "options": ["205 cL", "250 cL", "2050 cL", "2005 cL"],
+              "correctAnswers": [0],
+              "explanation": "200+5=205 cL."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "150 cL en L ?",
+              "options": ["0,15 L", "1,5 L", "15 L", "150 L"],
+              "correctAnswers": [1],
+              "explanation": "150÷100=1,5 L."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "6,25 L en cL ?",
+              "options": ["62,5 cL", "625 cL", "6250 cL", "62500 cL"],
+              "correctAnswers": [1],
+              "explanation": "6,25×100=625 cL."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "95 cL en L ?",
+              "options": ["0,095 L", "0,95 L", "9,5 L", "95 L"],
+              "correctAnswers": [1],
+              "explanation": "95÷100=0,95 L."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "3 L 30 cL en cL ?",
+              "options": ["330 cL", "303 cL", "3300 cL", "3030 cL"],
+              "correctAnswers": [0],
+              "explanation": "300+30=330 cL."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "420 cL en L ?",
+              "options": ["0,42 L", "4,2 L", "42 L", "420 L"],
+              "correctAnswers": [1],
+              "explanation": "420÷100=4,2 L."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Durées : quelles égalités sont correctes ?",
+              "options": [
+                "3 h = 180 min",
+                "2 h 30 min = 150 min",
+                "1 h 10 min = 80 min",
+                "45 min = 0,75 h"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "3×60=180 ; 150 min=2 h 30."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1 h 55 min en min ?",
+              "options": ["105 min", "115 min", "155 min", "195 min"],
+              "correctAnswers": [1],
+              "explanation": "60+55=115 min."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "220 min en h min ?",
+              "options": ["3 h 20", "3 h 40", "4 h 20", "4 h 40"],
+              "correctAnswers": [1],
+              "explanation": "220=180+40 → 3 h 40."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "2 h 05 + 1 h 50 ?",
+              "options": ["3 h 45", "3 h 55", "4 h 05", "4 h 15"],
+              "correctAnswers": [1],
+              "explanation": "125+110=235 min=3 h 55."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "340 min en h min ?",
+              "options": ["5 h 20", "5 h 40", "6 h 20", "6 h 40"],
+              "correctAnswers": [1],
+              "explanation": "340=300+40 → 5 h 40."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "5 h 15 min en min ?",
+              "options": ["305 min", "310 min", "315 min", "515 min"],
+              "correctAnswers": [2],
+              "explanation": "300+15=315 min."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "175 min en h min ?",
+              "options": ["2 h 45", "2 h 55", "3 h 05", "3 h 15"],
+              "correctAnswers": [1],
+              "explanation": "175=120+55."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "4 h 00 − 1 h 35 ?",
+              "options": ["2 h 15", "2 h 25", "2 h 35", "2 h 45"],
+              "correctAnswers": [1],
+              "explanation": "240−95=145 min=2 h 25."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "72 min en h min ?",
+              "options": ["1 h 02", "1 h 12", "1 h 22", "1 h 32"],
+              "correctAnswers": [1],
+              "explanation": "72=60+12."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "120 min en heures ?",
+              "options": ["1 h", "1,5 h", "2 h", "2,5 h"],
+              "correctAnswers": [2],
+              "explanation": "120÷60=2 h."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Conversions variées exactes ?",
+              "options": [
+                "12 cm = 120 mm",
+                "1,2 m = 120 cm",
+                "800 g = 8 kg",
+                "35 cL = 0,35 L"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "12×10=120 mm ; 1,2×100=120 cm."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Somme : 2 m 40 cm + 1 m 35 cm ?",
+              "options": ["3 m 65 cm", "3 m 75 cm", "4 m 05 cm", "4 m 75 cm"],
+              "correctAnswers": [1],
+              "explanation": "240+135=375 cm=3 m 75 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "1 kg 500 g − 750 g ?",
+              "options": ["650 g", "750 g", "850 g", "950 g"],
+              "correctAnswers": [1],
+              "explanation": "1500−750=750 g."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3 L − 250 cL ?",
+              "options": ["0,5 L", "5 L", "50 L", "2,75 L"],
+              "correctAnswers": [0],
+              "explanation": "300 cL−250 cL=50 cL=0,5 L."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1 h 20 min + 2 h 45 min ?",
+              "options": ["3 h 55", "4 h 05", "4 h 15", "4 h 25"],
+              "correctAnswers": [1],
+              "explanation": "80+165=245 min=4 h 05."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "2500 mm en m ?",
+              "options": ["0,25 m", "2,5 m", "25 m", "250 m"],
+              "correctAnswers": [1],
+              "explanation": "2500÷1000=2,5 m."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "0,8 kg en g ?",
+              "options": ["8 g", "80 g", "800 g", "8000 g"],
+              "correctAnswers": [2],
+              "explanation": "0,8×1000=800 g."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "2,5 L en cL ?",
+              "options": ["25 cL", "250 cL", "2500 cL", "0,25 cL"],
+              "correctAnswers": [1],
+              "explanation": "2,5×100=250 cL."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "3 h 30 min − 1 h 55 min ?",
+              "options": ["1 h 25", "1 h 35", "1 h 45", "1 h 55"],
+              "correctAnswers": [1],
+              "explanation": "210−115=95 min=1 h 35."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "15 m en cm ?",
+              "options": ["150 cm", "1500 cm", "15000 cm", "150000 cm"],
+              "correctAnswers": [1],
+              "explanation": "15×100=1500 cm."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

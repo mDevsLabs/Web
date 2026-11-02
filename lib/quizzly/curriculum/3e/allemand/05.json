@@ -1,0 +1,2278 @@
+{
+  "id": "3e-allemand-05",
+  "year": "3e",
+  "subject": "allemand",
+  "order": 5,
+  "title": "Le passé en allemand",
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le prétérit de sein et haben",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Complète : « Gestern ___ ich den ganzen Tag zu Hause. »",
+              "options": ["war", "hatte", "bin", "habe"],
+              "correctAnswers": [0],
+              "explanation": "Au prétérit, avec la 1re personne du singulier (ich), le verbe sein prend la forme « war »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « Wir ___ gestern leider keine Schule. »",
+              "options": ["waren", "hatten", "habt", "sind"],
+              "correctAnswers": [1],
+              "explanation": "Avec « wir », le verbe haben au prétérit se conjugue « hatten » (nous avions)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme correcte de « sein » au prétérit avec le pronom « du » ?",
+              "options": ["bist", "wart", "warst", "hattest"],
+              "correctAnswers": [2],
+              "explanation": "La terminaison régulière de la 2e personne du singulier au prétérit est -st : du warst."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Wo ___ ihr am letzten Wochenende? »",
+              "options": ["waren", "warst", "seid", "wart"],
+              "correctAnswers": [3],
+              "explanation": "Avec le pronom de 2e personne du pluriel « ihr », sein devient « wart » au prétérit."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement le prétérit de « haben » ou « sein » ?",
+              "options": [
+                "Er war gestern sehr müde.",
+                "Sie hattet viel Glück.",
+                "Ich hatte gestern keine Zeit.",
+                "Wir waret im Kino."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Er war » et « ich hatte » sont parfaitement corrects. Les formes correctes pour les autres sont « ihr hattet » et « ihr wart »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme correspond à « sie » (pluriel) pour « haben » au prétérit ?",
+              "options": ["hatte", "hatten", "habt", "haben"],
+              "correctAnswers": [1],
+              "explanation": "Au pluriel, sie (ils/elles) prend la terminaison -en au prétérit : sie hatten."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on : « Elle avait un chien » ?",
+              "options": [
+                "Sie war einen Hund.",
+                "Sie hat einen Hund.",
+                "Sie hatte einen Hund.",
+                "Sie hattet einen Hund."
+              ],
+              "correctAnswers": [2],
+              "explanation": "À la 3e personne du singulier au prétérit, le verbe haben donne « sie hatte »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Es ___ gestern draußen sehr kalt. »",
+              "options": ["war", "hatte", "ist", "hat"],
+              "correctAnswers": [0],
+              "explanation": "Pour décrire la météo passée avec un adjectif comme kalt, on emploie « es war »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « ___ du gestern starke Kopfschmerzen? »",
+              "options": ["Warst", "Hast", "Bist", "Hattest"],
+              "correctAnswers": [3],
+              "explanation": "On a des maux de tête avec haben : au prétérit à la 2e personne du singulier, cela donne « du hattest »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduis : « Nous étions en vacances en Allemagne. »",
+              "options": [
+                "Wir hatten in Deutschland Ferien.",
+                "Wir waren in Deutschland im Urlaub.",
+                "Wir sind in Deutschland im Urlaub.",
+                "Wir wart in Deutschland im Urlaub."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Wir waren im Urlaub » traduit fidèlement « nous étions en vacances » au prétérit."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Le prétérit des verbes de modalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Complète : « Als Kind ___ Lukas schon sehr gut schwimmen. »",
+              "options": ["konnte", "kann", "konntest", "gekonnt"],
+              "correctAnswers": [0],
+              "explanation": "Au prétérit, können devient « konnte » à la 3e personne du singulier (sans Umlaut)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « Gestern ___ ich für die Klassenarbeit lernen. »",
+              "options": ["muss", "musste", "müsste", "gemusst"],
+              "correctAnswers": [1],
+              "explanation": "Le prétérit de müssen pour « ich » est « musste », qui exprime l'obligation passée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que perdent les verbes de modalité (können, müssen, dürfen, mögen) au prétérit ?",
+              "options": [
+                "Leur consonne finale",
+                "Leur terminaison personnelle",
+                "Leur inflexion / adoucissement (Umlaut)",
+                "Leur radical"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Tous les verbes de modalité perdent leur Umlaut au prétérit de l'indicatif : konnte, musste, durfte, mochte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Wir ___ ins Kino gehen, aber wir hatten kein Geld. »",
+              "options": ["willten", "wollen", "wollt", "wollten"],
+              "correctAnswers": [3],
+              "explanation": "Le prétérit de wollen avec « wir » est « wollten » (nous voulions)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales sont des prétérits corrects de verbes de modalité ?",
+              "options": ["durfte", "könnte", "sollte", "müsste"],
+              "correctAnswers": [0, 2],
+              "explanation": "« durfte » et « sollte » sont au prétérit de l'indicatif. « könnte » et « müsste » avec Umlaut sont au subjonctif II."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Warum ___ ihr gestern nicht zur Party kommen? »",
+              "options": ["konntest", "konntet", "könntet", "gekonnt"],
+              "correctAnswers": [1],
+              "explanation": "Avec le sujet « ihr », können prend la terminaison -et au prétérit : ihr konntet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Die Kinder ___ nach 22 Uhr nicht mehr fernsehen. »",
+              "options": ["durften", "dörften", "gedurft", "dürften"],
+              "correctAnswers": [0],
+              "explanation": "Dürfen (avoir la permission) perd son Umlaut et donne « durften » au pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduis : « Je ne voulais pas manger cette soupe. »",
+              "options": [
+                "Ich willte diese Suppe nicht essen.",
+                "Ich mochte keine Suppe essen.",
+                "Ich wollte diese Suppe nicht essen.",
+                "Ich habe keine Suppe gewollt."
+              ],
+              "correctAnswers": [2],
+              "explanation": "Wollen forme son prétérit en « wollte », sans modifier son radical en -i-."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Du ___ doch pünktlich um 18 Uhr zu Hause sein! »",
+              "options": ["sollst", "solltet", "gesollt", "solltest"],
+              "correctAnswers": [3],
+              "explanation": "Avec « du », sollen donne « solltest » au prétérit pour exprimer le devoir ou la consigne passée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Als kleines Kind ___ er absolut kein Gemüse. »",
+              "options": ["mochte", "möchte", "magte", "gemocht"],
+              "correctAnswers": [0],
+              "explanation": "Mögen (aimer / apprécier) devient « mochte » au prétérit à la 3e personne du singulier."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le parfait avec haben : verbes réguliers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se forme le participe passé régulier standard en allemand ?",
+              "options": [
+                "ge- + radical + -t",
+                "ge- + radical + -en",
+                "be- + radical + -t",
+                "radical + -ed"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le participe passé faible régulier suit la règle : préfixe ge- + radical verbal + terminaison -t."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « Ich habe gestern den ganzen Abend Musik ___. »",
+              "options": ["gehort", "gehört", "hören", "gegehört"],
+              "correctAnswers": [1],
+              "explanation": "Le verbe hören donne le participe passé régulier « gehört »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Was hast du am Wochenende Schönes ___? »",
+              "options": ["gemachen", "gemachst", "gemacht", "machen"],
+              "correctAnswers": [2],
+              "explanation": "Machen est un verbe faible régulier : ge- + mach + -t = gemacht."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Die Kinder haben im Garten fröhlich Fußball ___. »",
+              "options": ["gespielen", "spielen", "gespield", "gespielt"],
+              "correctAnswers": [3],
+              "explanation": "Spielen donne le participe passé « gespielt »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels participes passés réguliers sont correctement formés ?",
+              "options": ["gekauft", "gearbeit", "gesagt", "gelernen"],
+              "correctAnswers": [0, 2],
+              "explanation": "« gekauft » (kaufen) et « gesagt » (sagen) sont bien formés. Pour arbeiten c'est « gearbeitet », et pour lernen c'est « gelernt »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour les verbes dont le radical se termine par -t ou -d (comme arbeiten), quelle est la terminaison du participe ?",
+              "options": ["-et", "-en", "-st", "-te"],
+              "correctAnswers": [0],
+              "explanation": "Pour faciliter la prononciation, on ajoute un -e- euphonique avant le -t : radical + -et (ex: gearbeitet)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Er hat gestern sehr fleißig für den Test ___. »",
+              "options": ["gearbeit", "gearbeitet", "gearbeiten", "arbeiten"],
+              "correctAnswers": [1],
+              "explanation": "Arbeiten se terminant par un -t au radical donne le participe « gearbeitet »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Habt ihr eure Großeltern nach dem Weg ___? »",
+              "options": ["gefragen", "fragen", "gefragt", "gefraget"],
+              "correctAnswers": [2],
+              "explanation": "Fragen est régulier : ge- + frag + -t = gefragt."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Meine Schwester hat eine neue warme Jacke ___. »",
+              "options": ["gekaufen", "kaufte", "gekaufe", "gekauft"],
+              "correctAnswers": [3],
+              "explanation": "Kaufen donne « gekauft » au participe passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Où se place l'auxiliaire 'haben' dans une phrase déclarative simple au parfait ?",
+              "options": [
+                "En deuxième position",
+                "En toute fin de phrase",
+                "En première position",
+                "Juste avant le participe passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une proposition principale, le verbe conjugué (ici l'auxiliaire) occupe obligatoirement la 2e position."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le parfait avec sein : déplacements et changements d'état",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels verbes se conjuguent principalement avec l'auxiliaire 'sein' au parfait ?",
+              "options": [
+                "Les verbes transitifs avec COD",
+                "Les verbes de déplacement et de changement d'état",
+                "Uniquement les verbes réfléchis",
+                "Tous les verbes réguliers"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'auxiliaire sein est employé avec les verbes intransitifs indiquant un changement de lieu ou d'état, ainsi que sein et bleiben."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « Ich ___ gestern mit dem Zug nach Berlin gefahren. »",
+              "options": ["habe", "war", "bin", "bist"],
+              "correctAnswers": [2],
+              "explanation": "Fahren exprime un déplacement d'un point A à un point B : on utilise sein au présent (ich bin)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Lukas ist heute Morgen sehr früh ___. »",
+              "options": [
+                "aufstehen",
+                "aufgesteht",
+                "geaufstanden",
+                "aufgestanden"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Aufstehen (se lever) est un changement d'état à particule séparable : auf-ge-stand-en."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Die Schüler ___ pünktlich in die Schule gekommen. »",
+              "options": ["sind", "haben", "seid", "waren"],
+              "correctAnswers": [0],
+              "explanation": "Kommen est un verbe de déplacement qui se conjugue avec sein : die Schüler sind gekommen."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes forment leur parfait avec l'auxiliaire 'sein' ?",
+              "options": ["gehen", "essen", "fliegen", "kaufen"],
+              "correctAnswers": [0, 2],
+              "explanation": "Gehen (aller à pied) et fliegen (voler / aller en avion) expriment des déplacements et prennent sein. Essen et kaufen prennent haben."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Avec quel auxiliaire se conjugue le verbe 'bleiben' (rester) au parfait ?",
+              "options": ["haben", "sein", "werden", "dürfen"],
+              "correctAnswers": [1],
+              "explanation": "Bleiben est une exception notable : bien qu'il exprime l'immobilité, il se conjugue toujours avec sein (ich bin geblieben)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Wir ___ am Wochenende wegen des Regens zu Hause geblieben. »",
+              "options": ["haben", "wurden", "sind", "seid"],
+              "correctAnswers": [2],
+              "explanation": "Avec « wir », bleiben au parfait donne « wir sind ... geblieben »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Bist du gestern Abend schnell vor dem Fernseher ___? »",
+              "options": [
+                "eingeschlaft",
+                "einschlafen",
+                "geinschlafen",
+                "eingeschlafen"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Einschlafen (s'endormir) marque un changement d'état : participe II eing-e-schlaf-en."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Der Vogel ist hoch über das Haus ___. »",
+              "options": ["geflogen", "gefliegt", "fliegen", "gefliegen"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe fort fliegen a pour participe passé « geflogen »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Wann ___ ihr gestern Abend nach Hause gelaufen? »",
+              "options": ["haben", "seid", "sind", "habt"],
+              "correctAnswers": [1],
+              "explanation": "Laufen est un verbe de déplacement : avec « ihr », l'auxiliaire sein donne « seid »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le participe passé des verbes forts courants",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison caractéristique de la majorité des participes passés forts ?",
+              "options": ["-t", "-et", "-en", "-st"],
+              "correctAnswers": [2],
+              "explanation": "Les verbes forts ont un participe passé qui se termine généralement par -en (ex: gesungen, gesehen)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe fort « sehen » (voir) ?",
+              "options": ["geseht", "sehen", "gesieht", "gesehen"],
+              "correctAnswers": [3],
+              "explanation": "Sehen conserve sa voyelle au participe passé : gesehen."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « essen » (manger) ?",
+              "options": ["gegessen", "geesst", "geessen", "gegeßt"],
+              "correctAnswers": [0],
+              "explanation": "Essen insère un -g- euphonique : ge-g-essen = gegessen."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « trinken » (boire) ?",
+              "options": ["getrinkt", "getrunken", "getrank", "getrinket"],
+              "correctAnswers": [1],
+              "explanation": "Trinken subit une alternance vocalique en -u- : getrunken."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels participes passés correspondent à des verbes forts avec changement de voyelle ?",
+              "options": [
+                "gesungen (singen)",
+                "gespielt (spielen)",
+                "geschrieben (schreiben)",
+                "gemacht (machen)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Singen donne gesungen (i -> u) et schreiben donne geschrieben (ei -> ie). Spielen et machen sont réguliers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « sprechen » (parler) ?",
+              "options": ["gesprocht", "gesprochen", "gesprecht", "gesprechen"],
+              "correctAnswers": [1],
+              "explanation": "Sprechen change sa voyelle en -o- au participe passé : gesprochen."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « lesen » (lire) ?",
+              "options": ["gelest", "geleset", "gelesen", "gelasen"],
+              "correctAnswers": [2],
+              "explanation": "Le verbe fort lesen forme son participe en « gelesen »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « finden » (trouver) ?",
+              "options": ["gefindet", "gefundet", "gefind", "gefunden"],
+              "correctAnswers": [3],
+              "explanation": "Finden change son radical en -u- : gefunden."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Mein Freund hat mir einen langen Brief ___. »",
+              "options": [
+                "geschrieben",
+                "geschreibt",
+                "geschriebt",
+                "schreiben"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schreiben donne « geschrieben » (ei devient ie)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « nehmen » (prendre) ?",
+              "options": ["genehmt", "genommen", "genimmt", "genahmt"],
+              "correctAnswers": [1],
+              "explanation": "Nehmen donne « genommen », avec changement de voyelle et doublement du m."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les verbes à particule séparable au parfait",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où s'intercale le préfixe « ge- » dans un verbe à particule séparable au parfait ?",
+              "options": [
+                "Avant la particule",
+                "À la toute fin du mot",
+                "Entre la particule et le radical",
+                "Il est complètement supprimé"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Pour les verbes à particule séparable, ge- s'intercale entre la particule et la base verbale : particule + ge- + base + t/en."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « einkaufen » (faire des courses) ?",
+              "options": [
+                "geeinkauft",
+                "einkauft",
+                "eingekaufen",
+                "eingekauft"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Ein- + -ge- + -kauf- + -t = eingekauft."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « aufstehen » (se lever) ?",
+              "options": [
+                "aufgestanden",
+                "geaufstanden",
+                "aufgesteht",
+                "aufgestanden sein"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Auf- + -ge- + -standen (verbe fort) = aufgestanden."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Florian hat leckeren Kuchen zur Party ___. »",
+              "options": [
+                "gemitbracht",
+                "mitgebracht",
+                "mitgebringt",
+                "mitbrachten"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Mitbringen est un verbe mixte : mit- + -ge- + -bracht = mitgebracht."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels participes passés de verbes à particule séparable sont corrects ?",
+              "options": [
+                "angerufen (anrufen)",
+                "geanruft (anrufen)",
+                "eingeladen (einladen)",
+                "eingegebt (eingeben)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Anrufen donne angerufen et einladen donne eingeladen. Le ge- est bien inséré au milieu et les terminaisons fortes en -en sont respectées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Hast du heute Morgen das Fenster im Zimmer ___? »",
+              "options": [
+                "geaufmacht",
+                "aufgemacht",
+                "aufgemachen",
+                "aufgemachte"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Aufmachen est régulier : auf- + -ge- + -mach- + -t = aufgemacht."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Der Schnellzug nach Hamburg ist pünktlich ___. »",
+              "options": ["geabfahren", "abgefahrt", "abgefahren", "abfahren"],
+              "correctAnswers": [2],
+              "explanation": "Abfahren est fort : ab- + -ge- + -fahr- + -en = abgefahren."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « fernsehen » (regarder la télé) ?",
+              "options": [
+                "gefernsehen",
+                "ferngeseht",
+                "fernsehte",
+                "ferngesehen"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Fernsehen a la particule fern- séparable : fern- + -ge- + -sehen = ferngesehen."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Wer hat gestern den ganzen Müll ___? »",
+              "options": [
+                "weggeworfen",
+                "gewegworfen",
+                "weggewerft",
+                "weggeworft"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wegwerfen est fort : weg- + -ge- + -worf- + -en = weggeworfen."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Wann bist du heute Morgen ___? »",
+              "options": [
+                "geaufwacht",
+                "aufgewacht",
+                "aufgewachen",
+                "aufwachte"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Aufwachen (se réveiller) est régulier : auf- + -ge- + -wach- + -t = aufgewacht."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les verbes à particule inséparable et verbes en -ieren",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la règle concernant le préfixe « ge- » pour les verbes à particule inséparable (be-, ver-, er-...) ?",
+              "options": [
+                "Ils prennent toujours deux 'ge-'",
+                "Ils ne prennent JAMAIS le préfixe 'ge-'",
+                "Ils prennent 'ge-' uniquement à l'écrit",
+                "Le 'ge-' se place après la terminaison"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les préfixes inséparables (be-, emp-, ent-, er-, ge-, miss-, ver-, zer-) empêchent l'ajout du préfixe ge- au participe passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « besuchen » (visiter / rendre visite) ?",
+              "options": ["gebesucht", "besuchen", "besucht", "gebesuchen"],
+              "correctAnswers": [2],
+              "explanation": "Besuchen a le préfixe inséparable be- : pas de ge-, terminaison -t = besucht."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe fort inséparable « verstehen » (comprendre) ?",
+              "options": [
+                "geverstanden",
+                "versteht",
+                "geversteht",
+                "verstanden"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Verstehen est inséparable et fort : ver- + standen = verstanden (sans ge-)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la règle au parfait pour les verbes d'origine étrangère terminés en « -ieren » (ex: fotografieren) ?",
+              "options": [
+                "Pas de 'ge-', terminaison régulière en '-t'",
+                "Préfixe 'ge-', terminaison en '-en'",
+                "Doublement du radical obligatoire",
+                "Ils s'emploient uniquement au prétérit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les verbes en -ieren ne prennent pas de préfixe ge- et se terminent par -t (ex: fotografiert, repariert)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels participes passés NE PRENNENT PAS le préfixe « ge- » au parfait ?",
+              "options": ["erzählt", "geöffnet", "repariert", "getanzt"],
+              "correctAnswers": [0, 2],
+              "explanation": "Erzählen (préfixe inséparable er-) donne erzählt et reparieren (terminé en -ieren) donne repariert sans ge-."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « fotografieren » ?",
+              "options": [
+                "gefotografiert",
+                "fotografiert",
+                "fotografieren",
+                "gefotografieren"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Verbe en -ieren : pas de ge-, terminaison en -t -> fotografiert."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Die Lehrerin hat die schwere Grammatikregel gut ___. »",
+              "options": ["geerklärt", "erkläret", "erklärt", "geerklaren"],
+              "correctAnswers": [2],
+              "explanation": "Erklären a la particule inséparable er- : le participe est « erklärt »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Zum Geburtstag habe ich ein schönes Buch ___. »",
+              "options": ["gebekommen", "bekennt", "gebekommt", "bekommen"],
+              "correctAnswers": [3],
+              "explanation": "Bekommen est fort et inséparable : son participe passé reste identique à l'infinitif : bekommen."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « verlieren » (perdre) ?",
+              "options": ["verloren", "geverloren", "verliert", "verliertest"],
+              "correctAnswers": [0],
+              "explanation": "Verlieren est un verbe fort avec le préfixe inséparable ver- : verloren."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Wir haben im Unterricht lange über das Thema ___. »",
+              "options": [
+                "gediskutiert",
+                "diskutiert",
+                "diskutieren",
+                "gediskutieren"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Diskutieren se termine par -ieren, donc pas de ge- : diskutiert."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Choisir entre prétérit et parfait",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel temps du passé est majoritairement employé à l'oral en allemand pour raconter un événement ?",
+              "options": [
+                "Le prétérit",
+                "Le plus-que-parfait",
+                "Le parfait",
+                "Le futur antérieur"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le parfait (Perfekt) est le temps par excellence de la communication orale et des échanges informels au passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour quels verbes utilise-t-on couramment le prétérit même dans la langue parlée quotidienne ?",
+              "options": [
+                "Uniquement les verbes en -ieren",
+                "Tous les verbes de déplacement",
+                "Les verbes pronominaux",
+                "sein, haben et les verbes de modalité"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Même à l'oral, war, hatte et les verbes de modalité (konnte, musste, wollte...) sont préférés à leurs formes de parfait plus lourdes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quel type de texte rencontre-t-on principalement le prétérit pour tous les verbes ?",
+              "options": [
+                "Dans les récits littéraires, contes, romans et articles de presse",
+                "Dans les conversations téléphoniques informelles",
+                "Dans les textos et messages instantanés",
+                "Dans les bandes dessinées pour enfants uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit est le temps du récit écrit suivi, caractéristique des livres, articles journalistiques et contes de fées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À l'oral, quelle formulation est la plus spontanée pour dire : « J'avais faim » ?",
+              "options": [
+                "Ich habe Hunger gehabt.",
+                "Ich hatte Hunger.",
+                "Ich war Hunger.",
+                "Ich hätte Hunger."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Ich hatte Hunger » est beaucoup plus courant, fluide et spontané que « ich habe Hunger gehabt »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases illustrent un usage tout à fait naturel du passé à l'oral ?",
+              "options": [
+                "Ich war gestern im Park und habe Fußball gespielt.",
+                "Ich ging in den Park und spielte Fußball.",
+                "Gestern hatten wir viel Spaß und haben viel gelacht.",
+                "Ich trank eine Limonade und aß eine Bratwurst."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Combiner le prétérit des auxiliaires (war, hatten) avec le parfait pour les verbes d'action (habe gespielt, haben gelacht) est typique de l'oral."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme de prétérit du verbe « gehen » lit-on typiquement dans un roman ?",
+              "options": ["gang", "ging", "gehte", "ist gegangen"],
+              "correctAnswers": [1],
+              "explanation": "Le prétérit écrit de gehen est « ging » (verbe fort avec changement complet de radical)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète ce début de conte : « Es ___ einmal ein alter König in einem Schloss. »",
+              "options": ["ist gewesen", "hatte", "war", "war gewesen"],
+              "correctAnswers": [2],
+              "explanation": "La formule rituelle des contes en allemand est « Es war einmal... » (Il était une fois...)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on le plus naturellement à l'oral : « J'étais malade hier » ?",
+              "options": [
+                "Ich bin gestern krank gewesen.",
+                "Ich hatte gestern krank.",
+                "Ich warte gestern krank.",
+                "Ich war gestern krank."
+              ],
+              "correctAnswers": [3],
+              "explanation": "« Ich war krank » est la tournure universellement employée à l'oral."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : « Wir konnten gestern leider nicht kommen » ?",
+              "options": [
+                "Nous ne pouvions malheureusement pas venir hier.",
+                "Nous ne voulions pas venir hier.",
+                "Nous ne devions pas venir hier.",
+                "Nous n'étions pas venus hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Konnten est le prétérit de können (capacité / possibilité) : « nous ne pouvions pas »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est typique du style d'une lettre amicale ou d'un courriel informel ?",
+              "options": [
+                "Ich besuchte gestern ein Museum.",
+                "Ich habe gestern ein tolles Museum besucht.",
+                "Ich war gestern besuchend ein Museum.",
+                "Gestern ein Museum besuchte ich."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dans la correspondance informelle et chaleureuse, le parfait (habe besucht) est de mise."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "La place des éléments au parfait dans la phrase",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans une proposition principale affirmative simple, où se place l'auxiliaire (haben ou sein) ?",
+              "options": [
+                "En première position",
+                "En toute fin de phrase",
+                "En deuxième position",
+                "Devant le participe passé"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Dans toute proposition indépendante ou principale, le verbe conjugué (l'auxiliaire) est rigoureusement en position 2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se place le participe passé dans une proposition principale au parfait ?",
+              "options": [
+                "En deuxième position",
+                "Juste après l'auxiliaire",
+                "En première position",
+                "À la toute fin de la proposition"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Le participe passé non conjugué est rejeté en toute fin de proposition : c'est le cadre verbal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la structure formée par l'auxiliaire en position 2 et le participe en fin de phrase ?",
+              "options": [
+                "La parenthèse verbale (Satzklammer)",
+                "L'inversion totale",
+                "La double négation",
+                "Le rejet adverbial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette construction qui encadre les compléments s'appelle la Satzklammer ou parenthèse verbale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase respecte parfaitement la place des éléments au parfait ?",
+              "options": [
+                "Ich habe gespielt gestern im Park Fußball.",
+                "Ich habe gestern im Park Fußball gespielt.",
+                "Ich gestern habe im Park Fußball gespielt.",
+                "Gestern ich habe im Park Fußball gespielt."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sujet (Ich) + auxiliaire en 2 (habe) + compléments + participe passé en fin absolue (gespielt)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases ont une structure syntaxique correcte au parfait ?",
+              "options": [
+                "Wir sind am Samstag nach Köln gefahren.",
+                "Wir sind gefahren am Samstag nach Köln.",
+                "Hast du deine Hausaufgaben schon gemacht?",
+                "Hast du gemacht deine Hausaufgaben schon?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les participes « gefahren » et « gemacht » doivent toujours se trouver à la fin de leur proposition respective."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une question fermée (sans mot interrogatif) au parfait, où se trouve l'auxiliaire ?",
+              "options": [
+                "En toute fin de phrase",
+                "En première position",
+                "En deuxième position",
+                "Il est omis"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dans une question fermée (Ja/Nein-Frage), le verbe conjugué (l'auxiliaire) passe en 1re position (ex: Hast du...?)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase interrogative est correctement formulée ?",
+              "options": [
+                "Hast du gesehen den neuen Film gestern?",
+                "Gesehen hast du den neuen Film gestern?",
+                "Hast du gestern den neuen Film gesehen?",
+                "Du hast gestern den neuen Film gesehen?"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Auxiliaire en position 1 (Hast) + sujet (du) + compléments + participe passé final (gesehen)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si la phrase commence par un complément circonstanciel de temps (ex: Gestern), où se place le sujet ?",
+              "options": [
+                "En première position",
+                "Avant le participe passé",
+                "À la toute fin",
+                "Juste après l'auxiliaire conjugué (en position 3)"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Puisque l'auxiliaire reste impérativement en position 2, le sujet est inversé et vient immédiatement en position 3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase commençant par l'adverbe « Gestern » est correctement construite ?",
+              "options": [
+                "Gestern hat Anna ein spannendes Buch gelesen.",
+                "Gestern Anna hat ein spannendes Buch gelesen.",
+                "Gestern hat gelesen Anna ein spannendes Buch.",
+                "Gestern Anna ein spannendes Buch gelesen hat."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestern (1) + hat (2) + Anna (3, sujet inversé) + compléments + gelesen (participe final)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une subordonnée introduite par « weil », où se place l'auxiliaire au parfait ?",
+              "options": [
+                "En deuxième position",
+                "À la toute fin, juste après le participe passé",
+                "Juste après la conjonction weil",
+                "Avant le participe passé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En subordonnée, le verbe conjugué (l'auxiliaire) est rejeté tout à la fin, après le participe passé (ex: ... weil er geschlafen hat)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan Unité 1 : Raconter une journée passée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle phrase décrit correctement le réveil matinal au passé ?",
+              "options": [
+                "Ich habe um 7 Uhr aufgestanden.",
+                "Ich war um 7 Uhr aufgesteht.",
+                "Ich bin heute um 7 Uhr aufgestanden.",
+                "Ich bin um 7 Uhr aufstehen."
+              ],
+              "correctAnswers": [2],
+              "explanation": "Aufstehen exprime un changement d'état (se lever) : auxiliaire sein au présent (bin) + participe aufgestanden."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « Zum Frühstück ___ ich zwei Brötchen mit Marmelade gegessen. »",
+              "options": ["bin", "war", "hat", "habe"],
+              "correctAnswers": [3],
+              "explanation": "Essen est une action avec COD : l'auxiliaire est haben à la 1re personne du singulier (habe)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Danach ___ ich mit meinen Freunden zur Schule gefahren. »",
+              "options": ["bin", "habe", "war", "seid"],
+              "correctAnswers": [0],
+              "explanation": "Fahren est un déplacement : l'auxiliaire est sein (ich bin gefahren)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Im Deutschunterricht ___ wir eine spannende Geschichte gelesen. »",
+              "options": ["sind", "haben", "waren", "habt"],
+              "correctAnswers": [1],
+              "explanation": "Lesen prend l'auxiliaire haben : avec « wir », la forme conjuguée est « haben »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent correctement une action d'une journée passée ?",
+              "options": [
+                "Am Nachmittag habe ich meine Freunde im Park getroffen.",
+                "Am Nachmittag bin ich meine Freunde im Park getroffen.",
+                "Um 20 Uhr habe ich mit der Familie zu Abend gegessen.",
+                "Um 20 Uhr bin ich mit der Familie zu Abend gegessen."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Treffen (rencontrer) et essen (manger) se conjuguent tous les deux avec l'auxiliaire haben au parfait."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Am Abend ___ ich ziemlich müde, deshalb ging ich früh schlafen. »",
+              "options": ["hatte", "war", "habe", "bin"],
+              "correctAnswers": [1],
+              "explanation": "Pour exprimer un état de fatigue passé, on emploie le prétérit de sein : « ich war müde »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte pour dire qu'on a regardé un bon film ?",
+              "options": [
+                "Wir haben einen Film ferngesehen.",
+                "Wir sind zusammen einen Film gesehen.",
+                "Wir haben zusammen einen tollen Film gesehen.",
+                "Wir waren einen Film geguckt haben."
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Wir haben einen Film gesehen » respecte l'auxiliaire haben et le participe fort gesehen."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduis : « J'ai oublié mon cahier à la maison. »",
+              "options": [
+                "Ich bin mein Heft zu Hause vergessen.",
+                "Ich habe mein Heft zu Hause gevergessen.",
+                "Ich vergesse mein Heft zu Hause.",
+                "Ich habe mein Heft zu Hause vergessen."
+              ],
+              "correctAnswers": [3],
+              "explanation": "Vergessen est inséparable (ver-) : pas de ge-, participe vergessen avec l'auxiliaire haben."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Gestern ___ das Wetter den ganzen Tag wirklich herrlich. »",
+              "options": ["war", "hatte", "ist", "hat"],
+              "correctAnswers": [0],
+              "explanation": "Avec un sujet singulier neutre (das Wetter) au prétérit, le verbe sein donne « war »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase exprime avec succès que la journée s'est bien passée ?",
+              "options": [
+                "Der Tag ist mir gut gefallen.",
+                "Der Tag hat mir sehr gut gefallen.",
+                "Der Tag war mir gut gefallt.",
+                "Der Tag hat mir gut gefallt."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Gefallen (plaire) se conjugue avec haben : « Der Tag hat mir gut gefallen » (participe fort gefallen)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Hier, avant-hier et les moments de la journée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on « hier » en allemand ?",
+              "options": ["heute", "gestern", "morgen", "vorgestern"],
+              "correctAnswers": [1],
+              "explanation": "« gestern » signifie « hier ». « heute » = aujourd'hui, « morgen » = demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « avant-hier » en allemand ?",
+              "options": ["übermorgen", "damals", "vorgestern", "gestern"],
+              "correctAnswers": [2],
+              "explanation": "Le préfixe vor- indique l'antériorité : vor + gestern = vorgestern (avant-hier)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « hier soir » en allemand ?",
+              "options": [
+                "gestern Nacht",
+                "abends gestern",
+                "gestern spät",
+                "gestern Abend"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Pour exprimer « hier soir », on associe l'adverbe gestern et le nom Abend : « gestern Abend »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « hier matin » en allemand ?",
+              "options": [
+                "gestern Morgen",
+                "gestern Früh",
+                "morgens gestern",
+                "gestern frühstück"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« gestern Morgen » correspond à « hier matin ». (Attention à la majuscule de Morgen, qui est un nom ici)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs temporels font expressément référence au passé ?",
+              "options": [
+                "vorgestern",
+                "morgen",
+                "gestern Nachmittag",
+                "übermorgen"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Vorgestern (avant-hier) et gestern Nachmittag (hier après-midi) se situent dans le passé. Morgen et übermorgen renvoient au futur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi écrit-on « gestern Abend » avec une minuscule à gestern et une majuscule à Abend ?",
+              "options": [
+                "C'est une faute d'orthographe tolérée",
+                "gestern est un adverbe (minuscule) et Abend un nom commun (majuscule)",
+                "Les deux mots doivent toujours être en majuscules",
+                "gestern est un nom propre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En allemand, tous les noms communs prennent une majuscule (der Abend -> Abend), tandis que les adverbes s'écrivent en minuscule."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la déduction logique : « ___ war Sonntag, also ist heute Montag. »",
+              "options": ["Morgen", "Übermorgen", "Gestern", "Vorgestern"],
+              "correctAnswers": [2],
+              "explanation": "Si aujourd'hui est lundi, hier (gestern) était dimanche."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « hier après-midi » ?",
+              "options": [
+                "gestern Mittag",
+                "gestern Nacht",
+                "gestern Abend",
+                "gestern Nachmittag"
+              ],
+              "correctAnswers": [3],
+              "explanation": "L'après-midi se dit « der Nachmittag », d'où l'expression « gestern Nachmittag »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète pour une action passée : « Wir haben ___ fleißig im Garten gearbeitet. »",
+              "options": [
+                "gestern Nachmittag",
+                "morgen Nachmittag",
+                "übermorgen Abend",
+                "heute Abend vielleicht"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe est au parfait (haben gearbeitet), il exige donc un marqueur temporel révolu : gestern Nachmittag."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si aujourd'hui nous sommes mercredi, quel jour correspondait à « vorgestern » ?",
+              "options": ["Dienstag", "Montag", "Donnerstag", "Freitag"],
+              "correctAnswers": [1],
+              "explanation": "Deux jours avant mercredi (Mittwoch), c'était lundi (Montag)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les jours et les périodes passées (letzter / vorig-)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment traduit-on « la semaine dernière » (accusatif sans préposition) ?",
+              "options": [
+                "letzten Woche",
+                "letzter Woche",
+                "letzte Woche",
+                "letztes Woche"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Woche est féminin (die Woche) : à l'accusatif sans article, l'adjectif prend la désinence -e -> letzte Woche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « le mois dernier » (der Monat, masculin) ?",
+              "options": [
+                "letzte Monat",
+                "letztes Monat",
+                "letztem Monat",
+                "letzten Monat"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Monat est masculin (der Monat) : à l'accusatif de temps, l'adjectif prend -en -> letzten Monat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « l'année dernière » (das Jahr, neutre) ?",
+              "options": [
+                "letztes Jahr",
+                "letzten Jahr",
+                "letzte Jahr",
+                "letztem Jahr"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jahr est neutre (das Jahr) : à l'accusatif sans article, l'adjectif prend la terminaison -es -> letztes Jahr."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « lundi dernier » (der Montag, masculin) ?",
+              "options": [
+                "letzte Montag",
+                "letzten Montag",
+                "letztes Montag",
+                "letzter Montag"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tous les jours de la semaine sont masculins (der Montag) : à l'accusatif temporel -> letzten Montag."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions de temps au passé sont correctement déclinées (accusatif sans préposition) ?",
+              "options": [
+                "letztes Wochenende",
+                "letzten Jahr",
+                "letzten Sommer",
+                "letzter Woche"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Das Wochenende (neutre) donne « letztes Wochenende » et der Sommer (masculin) donne « letzten Sommer ». Les deux autres comportent des fautes de déclinaison."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "À quel cas grammatical s'expriment les compléments de temps sans préposition en allemand ?",
+              "options": [
+                "Au datif",
+                "À l'accusatif",
+                "Au génitif",
+                "Au nominatif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une durée ou un moment précis sans préposition se met à l'accusatif (der zeitliche Akkusativ)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « ___ bin ich mit meiner Familie nach München gereist. »",
+              "options": [
+                "Letztes Monat",
+                "Letzte Monat",
+                "Letzten Monat",
+                "Letztem Monat"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Der Monat au masculin à l'accusatif prend la terminaison -en : Letzten Monat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Wir haben ___ eine tolle Geburtstagsparty gefeiert. »",
+              "options": [
+                "letzten Wochenende",
+                "letzte Wochenende",
+                "letzter Wochenende",
+                "letztes Wochenende"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Das Wochenende étant neutre, l'accusatif donne « letztes Wochenende »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « ___ hatten wir an der Schule noch Sportunterricht. »",
+              "options": [
+                "Letzte Woche",
+                "Letzten Woche",
+                "Letztes Woche",
+                "Letzter Woche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Die Woche étant féminin, l'accusatif donne la terminaison -e : Letzte Woche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel adjectif est un synonyme plus soutenu de « letzt- » pour désigner le passé ?",
+              "options": ["nächst-", "vorig-", "künftig-", "jetzig-"],
+              "correctAnswers": [1],
+              "explanation": "Vorig- signifie « précédent / dernier » (ex: voriges Jahr = l'année dernière)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La préposition vor + datif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel cas suit toujours la préposition « vor » pour exprimer un repère passé (« il y a... ») ?",
+              "options": [
+                "L'accusatif",
+                "Le génitif",
+                "Le datif",
+                "Le nominatif"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Dans son emploi temporel pour situer un point de départ dans le passé, « vor » régit TOUJOURS le datif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « il y a un an » (das Jahr) ?",
+              "options": [
+                "vor ein Jahr",
+                "vor eines Jahres",
+                "vor einer Jahr",
+                "vor einem Jahr"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Jahr est neutre (das Jahr) : au datif singulier, l'article indéfini devient « einem » -> vor einem Jahr."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « il y a une semaine » (die Woche) ?",
+              "options": [
+                "vor einer Woche",
+                "vor eine Woche",
+                "vor einem Woche",
+                "vor eines Woche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Woche est féminin (die Woche) : au datif, l'article devient « einer » -> vor einer Woche."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « il y a un mois » (der Monat) ?",
+              "options": [
+                "vor einen Monat",
+                "vor einem Monat",
+                "vor einer Monat",
+                "vor eines Monats"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Monat est masculin (der Monat) : au datif singulier, l'article est « einem » -> vor einem Monat."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions avec la préposition « vor » sont correctement déclinées au datif ?",
+              "options": [
+                "vor drei Tagen",
+                "vor zwei Jahre",
+                "vor zehn Minuten",
+                "vor einen Monat"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« vor drei Tagen » (Tag prend -en au datif pluriel) et « vor zehn Minuten » sont justes. « vor zwei Jahre » est faux car il manque le -n du datif pluriel (Jahren)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que reçoit un nom au pluriel après la préposition « vor » au datif (sauf terminaison en -n ou -s) ?",
+              "options": [
+                "Un -s final",
+                "Un -e final",
+                "Un -n final",
+                "Aucune modification"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Tous les noms au datif pluriel prennent un -n final s'ils n'en possèdent pas déjà un ou ne finissent pas en -s (ex: vor zwei Jahren)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « il y a deux ans » en tenant compte du datif pluriel ?",
+              "options": [
+                "vor zwei Jahre",
+                "vor zweien Jahren",
+                "vor zwei Jahres",
+                "vor zwei Jahren"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Jahre prend la marque -n du datif pluriel : « vor zwei Jahren »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Ich habe Tobias ___ zufällig im Einkaufszentrum getroffen. »",
+              "options": [
+                "vor einer Stunde",
+                "vor ein Stunde",
+                "vor einen Stunde",
+                "vor eines Stunde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Die Stunde est féminin : au datif, on a « vor einer Stunde » (il y a une heure)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « il y a trois jours » ?",
+              "options": [
+                "vor drei Tage",
+                "vor drei Tagen",
+                "vor dreien Tagen",
+                "vor drei Tag"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Die Tage devient « den Tagen » au datif pluriel : vor drei Tagen."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on en allemand idiomatique : « il y a longtemps » ?",
+              "options": [
+                "vor lange Zeit",
+                "vor langes Zeit",
+                "vor langer Zeit",
+                "vor langen Zeit"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Die Zeit est féminin : au datif sans article, l'adjectif prend la marque -er -> vor langer Zeit."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les conjonctions de temps au passé : als vs wenn",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle conjonction emploie-t-on pour un événement unique ou une période révolue dans le passé ?",
+              "options": ["wenn", "wann", "während", "als"],
+              "correctAnswers": [3],
+              "explanation": "« als » s'emploie exclusivement pour un fait passé unique ou une période révolue et définie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle conjonction emploie-t-on pour une action répétée dans le passé (« à chaque fois que ») ?",
+              "options": ["wenn", "als", "wann", "ob"],
+              "correctAnswers": [0],
+              "explanation": "Pour une habitude ou une action qui se répétait dans le passé, on emploie « wenn » (souvent renforcé par immer wenn)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « ___ ich 10 Jahre alt war, wohnten wir in Hamburg. »",
+              "options": ["Wann", "Als", "Wenn", "Wie"],
+              "correctAnswers": [1],
+              "explanation": "Avoir 10 ans est une période unique dans le passé : on utilise obligatoirement « Als »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Immer ___ meine Oma zu Besuch kam, brachte sie leckere Kekse mit. »",
+              "options": ["als", "wann", "wenn", "während"],
+              "correctAnswers": [2],
+              "explanation": "La présence de « immer » signale une répétition régulière : on doit utiliser « wenn »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quelles phrases l'utilisation de la conjonction « als » est-elle correcte ?",
+              "options": [
+                "Als ich gestern nach Hause kam, schlief meine Katze.",
+                "Als ich jeden Sonntag ins Schwimmbad ging, war es toll.",
+                "Als wir 2022 in Rom waren, schien jeden Tag die Sonne.",
+                "Als du mich morgen besuchst, backe ich einen Kuchen."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Als » s'applique à un moment précis révolu (hier soir, notre séjour en 2022). Pour « jeden Sonntag » il fallait wenn, et pour demain également wenn."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la nature du mot « wann » par rapport à « wenn » et « als » ?",
+              "options": [
+                "C'est une conjonction de concession",
+                "C'est un pronom relatif obligatoire",
+                "C'est un mot interrogatif exprimant le moment ('quand ?')",
+                "C'est une préposition de lieu"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« wann » est un adverbe interrogatif employé dans les questions directes ou indirectes (Wann kommst du?)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la question directe : « ___ bist du gestern Abend eingeschlafen? »",
+              "options": ["Wenn", "Als", "Ob", "Wann"],
+              "correctAnswers": [3],
+              "explanation": "Dans une question directe portant sur l'heure ou le moment, on utilise uniquement « Wann »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « ___ mein Großvater ein kleiner Junge war, gab es noch keine Computer. »",
+              "options": ["Als", "Wenn", "Wann", "Während"],
+              "correctAnswers": [0],
+              "explanation": "L'enfance du grand-père est une tranche de vie passée unique : « Als mein Großvater... »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une subordonnée temporelle introduite par « als », où se place le verbe conjugué ?",
+              "options": [
+                "En deuxième position",
+                "À la toute fin de la proposition subordonnée",
+                "En première position",
+                "Juste après le sujet"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Comme dans toute proposition subordonnée introduite par une conjonction de subordination, le verbe conjugué se place à la fin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Jedes Mal, ___ wir früher Schulferien hatten, fuhren wir an die Ostsee. »",
+              "options": ["als", "wann", "wenn", "dass"],
+              "correctAnswers": [2],
+              "explanation": "« Jedes Mal, wenn... » (chaque fois que...) traduit sans équivoque la répétition dans le passé."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les adverbes de chronologie : ordonner un récit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel adverbe temporel signifie « d'abord / en premier lieu » ?",
+              "options": ["dann", "danach", "schließlich", "zuerst"],
+              "correctAnswers": [3],
+              "explanation": "« zuerst » (ou zunächst) introduit la toute première action d'une suite chronologique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels adverbes signifient couramment « ensuite / après cela » ?",
+              "options": [
+                "dann et danach",
+                "zuerst et anfangs",
+                "damals et nie",
+                "heute et morgen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« dann » et « danach » permettent d'enchaîner chronologiquement les étapes intermédiaires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel adverbe signifie « finalement / enfin » pour clore un déroulement temporel ?",
+              "options": ["zuerst", "schließlich", "damals", "anfangs"],
+              "correctAnswers": [1],
+              "explanation": "« schließlich » (ou zuletzt, am Ende) sert à introduire le dénouement ou la conclusion d'un récit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se passe-t-il pour le sujet lorsqu'un adverbe comme « Zuerst » commence la phrase ?",
+              "options": [
+                "Le sujet reste avant le verbe",
+                "Le sujet disparaît",
+                "Le sujet passe après le verbe conjugué (inversion)",
+                "Le sujet se met à l'accusatif"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'adverbe occupant la 1re place, le verbe conjugué vient impérativement en 2e place, suivi du sujet."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases respectent la syntaxe allemande après un adverbe de temps en tête ?",
+              "options": [
+                "Zuerst habe ich meine Zähne geputzt.",
+                "Zuerst ich habe meine Zähne geputzt.",
+                "Danach bin ich schnell zur Schule gegangen.",
+                "Danach ich bin schnell zur Schule gegangen."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Dans les deux cas valides, le verbe conjugué (habe, bin) est bien en 2e position, provoquant l'inversion avec le sujet ich."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Zuerst hat Tim die Hausaufgaben gemacht, ___ ist er Fußball spielen gegangen. »",
+              "options": ["wann", "als", "denn", "dann"],
+              "correctAnswers": [3],
+              "explanation": "« dann » (ensuite) est l'adverbe parfait pour marquer l'enchaînement des étapes : Zuerst..., dann..."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel adverbe ou groupe nominal signifie « au début » ?",
+              "options": ["am Anfang", "am Ende", "zuletzt", "plötzlich"],
+              "correctAnswers": [0],
+              "explanation": "« am Anfang » (ou « anfangs ») signifie « au début »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel adverbe exprime une action inattendue ou soudaine dans un récit au passé ?",
+              "options": ["langsam", "plötzlich", "gestern", "früher"],
+              "correctAnswers": [1],
+              "explanation": "« plötzlich » signifie « soudain / tout à coup »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la conclusion d'un récit : « ___ haben wir die schwere Aufgabe gemeinsam gelöst. »",
+              "options": ["Weil", "Dass", "Schließlich", "Obwohl"],
+              "correctAnswers": [2],
+              "explanation": "« Schließlich » (finalement) introduit harmonieusement le point d'aboutissement de l'action."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduis en respectant la syntaxe : « Après le dîner, nous avons regardé la télévision. »",
+              "options": [
+                "Nach dem Abendessen wir sahen fern.",
+                "Nach das Abendessen haben wir ferngesehen.",
+                "Vor dem Abendessen haben wir ferngesehen.",
+                "Nach dem Abendessen haben wir ferngesehen."
+              ],
+              "correctAnswers": [3],
+              "explanation": "« Nach dem Abendessen » (groupe en position 1) + « haben » (verbe en position 2) + « wir » (sujet en 3) + « ferngesehen »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La durée et le point de départ : seit + datif vs temps achevé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel temps verbal utilise l'allemand avec la préposition « seit » pour une action toujours en cours ?",
+              "options": [
+                "Le présent",
+                "Le parfait",
+                "Le prétérit",
+                "Le plus-que-parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement au français qui utilise parfois le passé composé, l'allemand emploie strictement le présent avec seit quand l'action continue."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel cas grammatical suit toujours la préposition temporelle « seit » ?",
+              "options": [
+                "L'accusatif",
+                "Le datif",
+                "Le nominatif",
+                "Le génitif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« seit » fait partie de la liste des prépositions régissant exclusivement le datif (aus, bei, mit, nach, seit, von, zu)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduis : « J'habite à Cologne depuis deux ans (et j'y habite encore). »",
+              "options": [
+                "Ich habe seit zwei Jahren in Köln gewohnt.",
+                "Ich wohnte vor zwei Jahren in Köln.",
+                "Ich wohne seit zwei Jahren in Köln.",
+                "Ich wohne seit zwei Jahre in Köln."
+              ],
+              "correctAnswers": [2],
+              "explanation": "Verbe au présent (Ich wohne) + préposition seit + datif pluriel (zwei Jahren)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « depuis un mois » avec « seit » (der Monat) ?",
+              "options": [
+                "seit einen Monat",
+                "seit einer Monat",
+                "seit eines Monats",
+                "seit einem Monat"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Der Monat au datif avec l'article indéfini devient « einem Monat » : seit einem Monat."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement « seit » avec le présent et le datif ?",
+              "options": [
+                "Wir lernen seit drei Jahren fleißig Deutsch.",
+                "Wir haben seit drei Jahren fleißig Deutsch gelernt.",
+                "Er spielt schon seit einer Woche Gitarre.",
+                "Er spielt schon seit eine Woche Gitarre."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Wir lernen seit drei Jahren » et « Er spielt seit einer Woche » associent bien le verbe au présent et le datif après seit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre « vor drei Tagen » et « seit drei Tagen » ?",
+              "options": [
+                "vor indique un moment passé achevé ('il y a'), seit indique une durée non révolue ('depuis')",
+                "vor s'emploie au futur et seit au passé",
+                "vor exige l'accusatif et seit le datif",
+                "Il n'y a aucune différence de sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« vor » renvoie à un événement ponctuel entièrement terminé dans le passé, tandis que « seit » marque une continuité jusqu'au présent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète pour une action qui continue : « Marie lernt ___ einer Stunde Vokabeln. »",
+              "options": ["vor", "seit", "ab", "in"],
+              "correctAnswers": [1],
+              "explanation": "Le verbe est au présent (lernt) et l'apprentissage est toujours en cours : on emploie « seit »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une action est totalement achevée dans le passé, emploie-t-on la préposition « seit » ?",
+              "options": [
+                "Oui, seit convient pour tout événement passé",
+                "Non, on utilise une durée avec le parfait ou le prétérit (ex: zwei Stunden lang)",
+                "Oui, mais uniquement avec l'auxiliaire sein",
+                "Non, on doit utiliser le futur antérieur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pour une action révolue et délimitée dans le temps, on exprime la durée simplement à l'accusatif (zwei Stunden lang) sans seit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète pour une durée passée révolue : « Gestern habe ich zwei Stunden lang Musik ___. »",
+              "options": ["hören", "gehört", "seit", "vorgehört"],
+              "correctAnswers": [1],
+              "explanation": "Il s'agit d'une action achevée hier : le parfait « habe ... gehört » s'impose."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète la question portant sur le point de départ : « Seit ___ wohnst du schon in dieser Stadt? »",
+              "options": ["wie", "als", "wer", "wann"],
+              "correctAnswers": [3],
+              "explanation": "« Seit wann...? » est l'expression interrogative consacrée pour demander « Depuis quand...? »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les années et les dates au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on une année sans date précise au passé (ex: 2020) en allemand correct ?",
+              "options": [
+                "im Jahr 2020 (ou directement 2020)",
+                "in 2020",
+                "am Jahr 2020",
+                "um 2020"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit soit « im Jahr 2020 », soit simplement « 2020 ». La tournure « in 2020 » est un anglicisme incorrect."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle erreur calquée sur l'anglais ('in 2010') ou le français ('en 2010') est formellement interdite en allemand ?",
+              "options": [
+                "Mettre l'année avant le verbe",
+                "Dire 'in 2010'",
+                "Employer le prétérit avec une année",
+                "Écrire l'année en chiffres"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On ne doit jamais dire « in + année » en allemand pour situer un événement temporel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on : « En 1989, le mur de Berlin est tombé » ?",
+              "options": [
+                "In 1989 fiel die Berliner Mauer.",
+                "Am 1989 fiel die Berliner Mauer.",
+                "1989 fiel die Berliner Mauer.",
+                "Im 1989 fiel die Berliner Mauer."
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'année se place directement en tête de phrase sans aucune préposition : « 1989 fiel die Berliner Mauer »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on une date précise avec le jour (ex: le 3 octobre) ?",
+              "options": [
+                "im 3. Oktober",
+                "um 3. Oktober",
+                "an 3. Oktober",
+                "am 3. Oktober"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Pour les jours précis et les dates, on emploie la contraction « am » (an + dem) : am 3. Oktober."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions d'années ou de dates sont correctes en allemand ?",
+              "options": [
+                "im Jahr 2015",
+                "in 2015",
+                "am 15. Mai",
+                "um 15. Mai"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« im Jahr 2015 » et « am 15. Mai » sont parfaitement authentiques et conformes à la grammaire allemande."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se lit le point d'un nombre ordinal dans une date comme « am 1. Mai » ?",
+              "options": [
+                "am ersten Mai",
+                "am eins Mai",
+                "am Mai ein",
+                "am erste Mai"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le point indique un nombre ordinal décliné au datif masculin singulier : « am ersten Mai »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Johann Wolfgang von Goethe wurde ___ 1749 in Frankfurt geboren. »",
+              "options": ["in", "im Jahr", "am", "an"],
+              "correctAnswers": [1],
+              "explanation": "Devant un millésime, on emploie la formule « im Jahr »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète avec l'année seule : « Der Zweite Weltkrieg endete ___ in Europa. »",
+              "options": ["in 1945", "am 1945", "1945", "auf 1945"],
+              "correctAnswers": [2],
+              "explanation": "Le millésime s'emploie seul comme adverbe temporel, sans préposition parasite."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on l'expression « au 20e siècle » ?",
+              "options": [
+                "in 20. Jahrhundert",
+                "am 20. Jahrhundert",
+                "um 20. Jahrhundert",
+                "im 20. Jahrhundert"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Das Jahrhundert est neutre : in + dem = « im 20. Jahrhundert » (se lit : im zwanzigsten Jahrhundert)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Mein Geburtstag war ___ 12. April. »",
+              "options": ["am", "im", "um", "vor"],
+              "correctAnswers": [0],
+              "explanation": "Avec un jour de calendrier précis, la préposition requise est « am »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Évoquer le passé lointain et les habitudes : damals, früher, oft",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie précisément l'adverbe « damals » ?",
+              "options": [
+                "Demain",
+                "À l'époque / en ce temps-là",
+                "Aujourd'hui",
+                "Bientôt"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« damals » fait référence à une période passée bien précise : « en ce temps-là / à cette époque »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe « früher » lorsqu'on parle du passé ?",
+              "options": [
+                "Maintenant",
+                "Plus tard",
+                "Autrefois / autrefois / jadis",
+                "Jamais"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« früher » signifie « autrefois / avant / plus tôt » et s'utilise souvent pour contraster avec le présent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel adverbe exprime la répétition fréquente d'une habitude passée (« souvent ») ?",
+              "options": ["selten", "nie", "damals", "oft"],
+              "correctAnswers": [3],
+              "explanation": "« oft » signifie « souvent » (ex: Wir haben oft im Wald gespielt)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel adverbe signifie « parfois / de temps en temps » ?",
+              "options": ["manchmal", "immer", "nie", "früher"],
+              "correctAnswers": [0],
+              "explanation": "« manchmal » correspond au français « parfois / quelquefois »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels adverbes permettent d'évoquer des habitudes passées ou une époque révolue ?",
+              "options": ["damals", "morgen", "früher", "übermorgen"],
+              "correctAnswers": [0, 2],
+              "explanation": "« damals » (à l'époque) et « früher » (autrefois) ancrent fermement le propos dans le passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « ___ hatten die Menschen weder Smartphones noch Internet. »",
+              "options": ["Morgen", "Damals", "Bald", "Künftig"],
+              "correctAnswers": [1],
+              "explanation": "« Damals » situe la phrase à une époque antérieure à l'arrivée d'Internet."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « ___ sind wir in den Sommerferien oft campen gegangen. »",
+              "options": ["Heute", "Morgen", "Früher", "Jetzt"],
+              "correctAnswers": [2],
+              "explanation": "« Früher » (autrefois / par le passé) cadre parfaitement avec l'évocation d'une habitude d'enfance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel adverbe exprime la rareté d'une action passée (« rarement ») ?",
+              "options": ["oft", "immer", "meistens", "selten"],
+              "correctAnswers": [3],
+              "explanation": "« selten » signifie « rarement »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel adverbe signifie « toujours » dans le sens de la constance ?",
+              "options": ["immer", "nie", "selten", "kaum"],
+              "correctAnswers": [0],
+              "explanation": "« immer » signifie « toujours » (oppose à « nie » = jamais)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduis en respectant la syntaxe : « À l'époque, nous habitions dans un petit village. »",
+              "options": [
+                "Damals wir wohnten in einem kleinen Dorf.",
+                "Damals wohnten wir in einem kleinen Dorf.",
+                "Früher wir haben gewohnt in einem Dorf.",
+                "Damals gewohnt haben wir in einem Dorf."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Damals (position 1) entraîne l'inversion sujet-verbe : wohnten (position 2) + wir (sujet)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les subordonnées temporelles au passé : nachdem et als",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle conjonction temporelle exprime l'antériorité d'une action (« après que ») ?",
+              "options": ["bevor", "weil", "nachdem", "obwohl"],
+              "correctAnswers": [2],
+              "explanation": "« nachdem » exprime l'antériorité immédiate et correspond à « après que »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une subordonnée introduite par « nachdem », où se place le verbe conjugué ?",
+              "options": [
+                "En deuxième position",
+                "En première position",
+                "Devant le sujet",
+                "À la toute fin de la proposition subordonnée"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Nachdem est une conjonction de subordination : le verbe conjugué est donc placé à la fin de la subordonnée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si la principale est au prétérit, à quel temps doit être la subordonnée introduite par « nachdem » ?",
+              "options": [
+                "Au plus-que-parfait (Plusquamperfekt)",
+                "Au présent",
+                "Au futur",
+                "Au parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour marquer l'antériorité par rapport à un passé au prétérit, l'allemand exige le plus-que-parfait (Plusquamperfekt)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment se forme le plus-que-parfait (Plusquamperfekt) en allemand ?",
+              "options": [
+                "Auxiliaire habe/bin au présent + participe passé",
+                "Auxiliaire hatte/war au prétérit + participe passé",
+                "Auxiliaire werde + infinitif",
+                "Radical du verbe + -te"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le plus-que-parfait se forme avec l'auxiliaire haben ou sein au prétérit (hatte / war) + le participe passé à la fin."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases subordonnées au passé respectent la règle du verbe à la fin ?",
+              "options": [
+                "Nachdem er gegessen hatte, ging er schlafen.",
+                "Nachdem er hatte gegessen, ging er schlafen.",
+                "Als wir in Berlin ankamen, regnete es.",
+                "Als wir ankamen in Berlin, regnete es."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Dans les subordonnées, les verbes « gegessen hatte » et « ankamen » sont impérativement placés en dernière position."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Nachdem sie die Hausaufgaben gemacht ___, ging sie mit Freunden aus. »",
+              "options": ["hat", "habe", "hatte", "hätte"],
+              "correctAnswers": [2],
+              "explanation": "La principale est au prétérit (ging) : la subordonnée avec nachdem doit être au plus-que-parfait avec l'auxiliaire « hatte »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle conjonction temporelle signifie « avant que / avant de » ?",
+              "options": ["nachdem", "als", "während", "bevor"],
+              "correctAnswers": [3],
+              "explanation": "« bevor » (ou « ehe ») introduit la postériorité et signifie « avant que »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle conjonction temporelle marque la simultanéité (« pendant que ») ?",
+              "options": ["während", "nachdem", "bevor", "seitdem"],
+              "correctAnswers": [0],
+              "explanation": "« während » introduit une action simultanée : « pendant que »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « ___ ich meine Zähne geputzt hatte, ging ich sofort ins Bett. »",
+              "options": ["Bevor", "Nachdem", "Obwohl", "Damit"],
+              "correctAnswers": [1],
+              "explanation": "L'action de se brosser les dents précède le coucher : l'antériorité s'exprime par « Nachdem »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Als das Telefon klingelte, hob ich sofort ab », quel élément suit immédiatement la virgule ?",
+              "options": [
+                "Le sujet ich",
+                "Le mot als",
+                "Le verbe conjugué hob de la principale",
+                "L'adverbe sofort"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La subordonnée occupant la 1re place, la proposition principale commence immédiatement par son verbe conjugué (hob)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan Unité 2 : Structurer un récit au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel connecteur chronologique utilise-t-on pour marquer la première étape d'une série d'actions ?",
+              "options": ["Schließlich", "Danach", "Zuletzt", "Zuerst"],
+              "correctAnswers": [3],
+              "explanation": "« Zuerst » (d'abord) pose la première borne temporelle d'un récit structuré."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « il y a trois semaines » en appliquant le datif ?",
+              "options": [
+                "vor drei Wochen",
+                "vor drei Woche",
+                "seit drei Wochen",
+                "vor dreien Wochen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vor + datif pluriel : die Wochen prenant déjà un -n, on obtient « vor drei Wochen »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « ___ ich 12 Jahre alt war, habe ich meine erste Gitarre bekommen. »",
+              "options": ["Wenn", "Als", "Wann", "Wie"],
+              "correctAnswers": [1],
+              "explanation": "Un fait unique dans le passé (avoir 12 ans) commande l'emploi exclusif de « Als »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « ___ Samstag haben wir einen wunderbaren Fahrradausflug gemacht. »",
+              "options": ["Letztes", "Letzte", "Letzten", "Letzter"],
+              "correctAnswers": [2],
+              "explanation": "Der Samstag au masculin accusatif temporel prend la désinence -en : Letzten Samstag."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs temporels permettent de situer des faits dans le passé ?",
+              "options": [
+                "vorgestern",
+                "vor einem Monat",
+                "übermorgen",
+                "nächste Woche"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vorgestern (avant-hier) et vor einem Monat (il y a un mois) sont tous deux des jalons passés révolus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète pour une amitié toujours vivante : « Ich kenne Sophie schon ___ drei Jahren. »",
+              "options": ["vor", "ab", "in", "seit"],
+              "correctAnswers": [3],
+              "explanation": "Le verbe est au présent (kenne) et l'amitié se poursuit : on utilise « seit » + datif pluriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la phrase pour marquer la conclusion du voyage : « ___ sind wir alle glücklich nach Hause zurückgekehrt. »",
+              "options": ["Schließlich", "Zuerst", "Bevor", "Als"],
+              "correctAnswers": [0],
+              "explanation": "« Schließlich » (finalement / au bout du compte) couronne harmonieusement la fin du périple."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase est correctement ordonnée pour dire : « Hier soir, nous avons mangé une pizza » ?",
+              "options": [
+                "Gestern Abend wir haben eine Pizza gegessen.",
+                "Gestern Abend haben wir eine leckere Pizza gegessen.",
+                "Gestern abend haben wir gegessen eine Pizza.",
+                "Morgen Abend haben wir eine Pizza gegessen."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Gestern Abend (position 1) + haben (auxiliaire en 2) + wir (sujet en 3) + COD + gegessen (participe final)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle formulation est correcte pour exprimer l'année 2021 en allemand ?",
+              "options": [
+                "in 2021",
+                "am 2021",
+                "im Jahr 2021 (ou 2021 seul)",
+                "um 2021"
+              ],
+              "correctAnswers": [2],
+              "explanation": "On ne met jamais « in » devant une année en allemand : « im Jahr 2021 » ou « 2021 »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète l'expression d'une habitude passée : « Wir sind früher jeden Sommer ___ nach Italien gefahren. »",
+              "options": ["nie", "kaum", "gestern", "wieder"],
+              "correctAnswers": [3],
+              "explanation": "« immer wieder » ou « wieder » exprime la répétition fidèle de voyages passés."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

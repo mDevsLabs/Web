@@ -1,0 +1,2058 @@
+{
+  "id": "6e-mathematiques-09",
+  "year": "6e",
+  "subject": "mathematiques",
+  "title": "Fonctions et variations",
+  "order": 9,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire une courbe",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Prix des cahiers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau : 1 cahier → 2 €, 2 → 4 €, 3 → 6 €. Quelles affirmations sont vraies ?",
+              "options": [
+                "Plus on achète de cahiers, plus on paie.",
+                "Le prix total baisse quand le nombre augmente.",
+                "4 cahiers coûtent 8 €.",
+                "2 cahiers coûtent moins qu’1 cahier."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Prix croissant ; 4 × 2 = 8 €."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Courbe qui monte de gauche à droite : la grandeur…",
+              "options": ["diminue", "augmente", "reste fixe", "disparaît"],
+              "correctAnswers": [1],
+              "explanation": "Montée = augmentation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "0 sticker → 0 pt, 1 → 3 pt, 2 → 6 pt. Points pour 5 stickers ?",
+              "options": ["8", "12", "15", "18"],
+              "correctAnswers": [2],
+              "explanation": "5 × 3 = 15 points."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Courbe descend entre 10 h et 12 h. La température…",
+              "options": ["augmente", "diminue", "double", "ne change pas"],
+              "correctAnswers": [1],
+              "explanation": "Descente = diminution."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1 pomme 1 €, 2 pommes 2 €, 3 pommes 3 €. Prix de 7 pommes ?",
+              "options": ["6 €", "7 €", "8 €", "14 €"],
+              "correctAnswers": [1],
+              "explanation": "7 × 1 = 7 €."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Segment horizontal de 14 h à 15 h. La quantité…",
+              "options": [
+                "augmente",
+                "diminue",
+                "ne change pas",
+                "devient négative"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Horizontal = constant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pages lues : lun 10, mar 20, mer 30. Tendance ?",
+              "options": ["diminue", "augmente", "fixe à 10", "aléatoire"],
+              "correctAnswers": [1],
+              "explanation": "10, 20, 30 : ça augmente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1 ticket 5 €, 2 tickets 10 €. Prix de 3 tickets ?",
+              "options": ["12 €", "15 €", "20 €", "25 €"],
+              "correctAnswers": [1],
+              "explanation": "3 × 5 = 15 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Courbe du niveau d’eau baisse après 18 h. Le niveau…",
+              "options": ["monte", "baisse", "explose", "est infini"],
+              "correctAnswers": [1],
+              "explanation": "Courbe basse = niveau plus petit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "2 crayons → 4 €. Prix d’un crayon ?",
+              "options": ["1 €", "2 €", "3 €", "4 €"],
+              "correctAnswers": [1],
+              "explanation": "4 ÷ 2 = 2 €."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Température dans la journée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Température monte de 8 h à 14 h, descend jusqu’à 20 h. Vrai ?",
+              "options": [
+                "De 8 h à 14 h, ça augmente.",
+                "De 14 h à 20 h, ça diminue.",
+                "Toujours constant.",
+                "Maximum à 8 h."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Montée matin, descente après-midi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "De 6 h à 9 h la courbe monte. Plus chaud à 9 h qu’à 6 h ?",
+              "options": ["Oui", "Non", "Impossible", "Égal"],
+              "correctAnswers": [0],
+              "explanation": "Montée : valeur plus grande à droite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "12 h → 22 °C, 13 h → 24 °C, 14 h → 26 °C. Gain de 13 h à 14 h ?",
+              "options": ["−2 °C", "+2 °C", "0 °C", "+4 °C"],
+              "correctAnswers": [1],
+              "explanation": "26 − 24 = +2 °C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Horizontal de 11 h à 12 h. Entre ces heures…",
+              "options": ["augmente", "diminue", "stable", "disparaît"],
+              "correctAnswers": [2],
+              "explanation": "Plateau = stable."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Maximum à 15 h. À 16 h la température est…",
+              "options": [
+                "plus haute qu’à 15 h",
+                "plus basse qu’à 15 h",
+                "négative",
+                "inconnue"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Après le max, ça baisse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "De minuit à 4 h courbe descend. La nuit…",
+              "options": ["chauffe", "refroidit", "fixe", "change de couleur"],
+              "correctAnswers": [1],
+              "explanation": "Descente = baisse de température."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "10 h → 18 °C, 11 h → 19 °C, 12 h → 20 °C. Que se passe-t-il ?",
+              "options": ["diminue", "augmente", "alterne", "rien"],
+              "correctAnswers": [1],
+              "explanation": "+1 °C par heure."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "17 h–19 h : courbe descend. Interprétation ?",
+              "options": [
+                "augmentation",
+                "diminution",
+                "stagnation",
+                "erreur obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Descente = diminution."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "7 h : 12 °C ; 8 h : 14 °C. Gain en 1 h ?",
+              "options": ["1 °C", "2 °C", "12 °C", "26 °C"],
+              "correctAnswers": [1],
+              "explanation": "14 − 12 = 2 °C."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Courbe en cloche. Le plus chaud est…",
+              "options": ["au début", "en montée", "au sommet", "après la fin"],
+              "correctAnswers": [2],
+              "explanation": "Sommet = maximum."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Distance en vélo",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Distance–temps : courbe monte 30 min. Vrai ?",
+              "options": [
+                "Distance augmente avec le temps.",
+                "Le cycliste recule.",
+                "Plus le temps passe, plus la distance augmente.",
+                "Distance toujours 0."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Courbe distance montante = plus loin en avançant dans le temps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Segment plat 10 min. Le cycliste…",
+              "options": ["avance", "s’arrête", "accélère", "vole"],
+              "correctAnswers": [1],
+              "explanation": "Distance constante = arrêt."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "0 min → 0 km, 5 min → 1 km, 10 min → 2 km. À 15 min ?",
+              "options": ["2 km", "3 km", "4 km", "5 km"],
+              "correctAnswers": [1],
+              "explanation": "+1 km / 5 min → 3 km."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Montée plus raide 0–10 min qu’10–20 min. Sur 10 min…",
+              "options": [
+                "plus de km au début",
+                "moins au début",
+                "0 km",
+                "km négatifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente plus forte = plus de km gagnés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Courbe descend. Distance parcourue mesurée…",
+              "options": ["diminue", "augmente toujours", "fixe", "double"],
+              "correctAnswers": [0],
+              "explanation": "Descente = distance plus petite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "1 h, courbe toujours montante. Distance finale…",
+              "options": ["< départ", "> départ", "nulle", "impossible"],
+              "correctAnswers": [1],
+              "explanation": "Toujours monter = plus loin qu’au départ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "20 min → 4 km, 25 min → 5 km, 30 min → 6 km. +km par 5 min ?",
+              "options": ["0,5", "1", "2", "5"],
+              "correctAnswers": [1],
+              "explanation": "+1 km chaque 5 min."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "40–50 min horizontal à 8 km. En 10 min…",
+              "options": ["+2 km", "0 km", "−8 km", "+8 km"],
+              "correctAnswers": [1],
+              "explanation": "Horizontal : pas de km en plus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "12 min → 3 km, 24 min → 6 km. Tendance ?",
+              "options": ["diminue", "augmente", "stop", "erreur"],
+              "correctAnswers": [1],
+              "explanation": "Distance double quand temps double."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bas à gauche, haut à droite. Globalement…",
+              "options": ["baisse", "hausse", "nulle", "temps négatif"],
+              "correctAnswers": [1],
+              "explanation": "De bas en haut = augmentation."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Visiteurs du musée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "lun 100, mar 150, mer 200 visiteurs. Vrai ?",
+              "options": [
+                "Mar–mer : augmentation.",
+                "Mer : plus que lun et mar.",
+                "Lun > mer.",
+                "Lun = mar."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "200 max ; 150 < 200."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Forte montée samedi. Le samedi…",
+              "options": [
+                "moins de monde",
+                "plus de monde",
+                "personne",
+                "fixe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Montée = plus de visiteurs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dim 80, lun 60. Variation ?",
+              "options": ["+20", "−20", "0", "+140"],
+              "correctAnswers": [1],
+              "explanation": "60 − 80 = −20."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Descente jeudi–vendredi. Vendredi…",
+              "options": [
+                "plus que jeudi",
+                "moins que jeudi",
+                "égal jeudi",
+                "fermé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Descente = moins."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "1 h → 10, 2 h → 20, 3 h → 30. À 4 h ?",
+              "options": ["30", "35", "40", "50"],
+              "correctAnswers": [2],
+              "explanation": "+10/h → 40."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plateau 12 h–14 h à 120. Entre ces heures…",
+              "options": ["croît", "stable", "nul", "double"],
+              "correctAnswers": [1],
+              "explanation": "Plateau = stable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Minimum mardi matin. C’est…",
+              "options": ["pic", "creux", "fermeture", "infini"],
+              "correctAnswers": [1],
+              "explanation": "Minimum = creux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "9 h–11 h : 50 → 90. Augmentation ?",
+              "options": ["40", "50", "90", "140"],
+              "correctAnswers": [0],
+              "explanation": "90 − 50 = 40."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Montée lun–mer, descente jeu. Jeu vs pic…",
+              "options": ["au-dessus", "en dessous", "égal", "sans lien"],
+              "correctAnswers": [1],
+              "explanation": "Après pic, valeurs plus basses."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "+25/jour depuis lun 75. Mercredi ?",
+              "options": ["100", "125", "150", "175"],
+              "correctAnswers": [1],
+              "explanation": "75, 100, 125."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Hauteur d'une plante",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Hauteur monte semaines 1–6. Vrai ?",
+              "options": [
+                "Plante grandit S1–S6.",
+                "Hauteur baisse.",
+                "Plus de semaines → plus haute (ici).",
+                "Plante absente."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Courbe montante = croissance."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "S2 : 4 cm, S4 : 8 cm. Variation ?",
+              "options": ["−4 cm", "+4 cm", "fixe 4", "0 cm"],
+              "correctAnswers": [1],
+              "explanation": "8 − 4 = +4 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plateau S7–S8 à 15 cm.",
+              "options": ["grandit", "stable", "rétrécit", "triple"],
+              "correctAnswers": [1],
+              "explanation": "Constant = plus de cm."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "S1→2, S2→5, S3→8. S4 si +3/sem ?",
+              "options": ["9", "10", "11", "14"],
+              "correctAnswers": [2],
+              "explanation": "8 + 3 = 11."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Descente après S10. Hauteur…",
+              "options": ["augmente", "diminue", "explose", "n/a"],
+              "correctAnswers": [1],
+              "explanation": "Descente = moins haut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Courbe A monte plus vite que B.",
+              "options": [
+                "A grandit plus",
+                "B grandit plus",
+                "égales",
+                "aucune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente plus forte = plus de cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "S0→0, S1→3, S2→6. S3 ?",
+              "options": ["7", "8", "9", "12"],
+              "correctAnswers": [2],
+              "explanation": "+3 → 9 cm."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Max à S12. S11 vs max…",
+              "options": ["plus haute", "≤ max souvent", "nulle", "?"],
+              "correctAnswers": [1],
+              "explanation": "Avant sommet, pas au-dessus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Graphique S5 → 10 cm. Tableau cohérent ?",
+              "options": ["S5:5", "S5:10", "S5:15", "S5:0"],
+              "correctAnswers": [1],
+              "explanation": "Même valeur lue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "S3–S6 strictement montant.",
+              "options": ["diminue", "augmente", "stagne", "illisible"],
+              "correctAnswers": [1],
+              "explanation": "Montée = augmentation."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Réservoir d'eau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Graphique niveau : monte 8 h–12 h, baisse 12 h–18 h. Vrai ?",
+              "options": [
+                "8 h–12 h : niveau augmente.",
+                "12 h–18 h : niveau diminue.",
+                "Toujours plein.",
+                "Jamais de variation."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Montée puis descente sur le graphique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Segment montant = remplissage. Le niveau…",
+              "options": ["baisse", "monte", "fixe", "négatif"],
+              "correctAnswers": [1],
+              "explanation": "Montée = plus d’eau affichée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Horizontal 2 h à 4 h à 50 L.",
+              "options": ["+10 L", "stable", "−50 L", "double"],
+              "correctAnswers": [1],
+              "explanation": "Plateau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Point le plus bas à 6 h. À 6 h niveau…",
+              "options": ["maximum", "minimum", "moyen", "infini"],
+              "correctAnswers": [1],
+              "explanation": "Point bas = minimum."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau : 1 h→10 L, 2 h→20 L, 3 h→30 L. 5 h ?",
+              "options": ["40", "45", "50", "60"],
+              "correctAnswers": [2],
+              "explanation": "+10 L/h → 50 L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Courbe descend vite après 20 h.",
+              "options": [
+                "fuite / vidange modélisée",
+                "remplissage",
+                "stable",
+                "gel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Descente rapide = niveau qui baisse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De 0 L à 40 L, courbe monte. Variation globale ?",
+              "options": ["diminution", "augmentation", "nulle", "aléatoire"],
+              "correctAnswers": [1],
+              "explanation": "0 à 40 : hausse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Même niveau à 9 h et 10 h sur courbe.",
+              "options": [
+                "augmente entre",
+                "diminue entre",
+                "égal",
+                "impossible"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Même ordonnée = égal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lecture : 14 h → 75 L. 15 h → 80 L.",
+              "options": ["−5 L", "+5 L", "0", "+75 L"],
+              "correctAnswers": [1],
+              "explanation": "80 − 75 = +5 L."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Courbe monte puis descend : forme…",
+              "options": [
+                "toujours montante",
+                "avec un maximum",
+                "horizontale",
+                "vide"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sommet = max local."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Notes sur 10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Notes : sep 12, oct 14, nov 16. Vrai ?",
+              "options": [
+                "La note augmente chaque mois.",
+                "Nov > sep.",
+                "Ça diminue.",
+                "Toutes égales."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "12 < 14 < 16."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Courbe note–mois monte. Progression ?",
+              "options": ["régression", "progression", "nulle", "hasard"],
+              "correctAnswers": [1],
+              "explanation": "Montée = mieux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Descente de mars à mai. Notes…",
+              "options": ["montent", "baissent", "fixes", "disparaissent"],
+              "correctAnswers": [1],
+              "explanation": "Descente = baisse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plateau à 15 sur 3 contrôles.",
+              "options": ["note variable", "note stable", "note 0", "note >20"],
+              "correctAnswers": [1],
+              "explanation": "Horizontal = même note."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau C1→8, C2→9, C3→10. C4 si +1 ?",
+              "options": ["9", "10", "11", "12"],
+              "correctAnswers": [2],
+              "explanation": "10 + 1 = 11."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Max de courbe = meilleure note du graphique.",
+              "options": ["vrai", "faux", "sans objet", "inverse"],
+              "correctAnswers": [0],
+              "explanation": "Sommet = plus haute note."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De 6 à 9 en montée régulière sur 3 pas. + par pas ?",
+              "options": ["0", "1", "2", "3"],
+              "correctAnswers": [1],
+              "explanation": "(9−6)/3 = 1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Courbe baisse après contrôle 4.",
+              "options": [
+                "élève s’améliore",
+                "élève baisse (lecture)",
+                "note fixe",
+                "examen annulé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Descente = note plus basse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux séries : A monte, B descend. A…",
+              "options": ["augmente", "diminue", "B augmente", "égales"],
+              "correctAnswers": [0],
+              "explanation": "Montée de A."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire courbe : gauche 5, droite 13.",
+              "options": [
+                "global baisse",
+                "global hausse",
+                "global 0",
+                "illisible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "5 → 13 : augmentation."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Ascenseur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Graphique étage–temps : monte 0–20 s, plat 20–40 s. Vrai ?",
+              "options": [
+                "0–20 s : étage augmente.",
+                "20–40 s : étage constant.",
+                "Toujours RDC.",
+                "Descente 0–20 s."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Montée puis plateau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Segment descendant. Ascenseur…",
+              "options": ["monte", "descend", "immobile", "sort"],
+              "correctAnswers": [1],
+              "explanation": "Étage qui baisse = descente."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Horizontal = portes ouvertes même étage.",
+              "options": [
+                "change d’étage",
+                "reste à l’étage",
+                "vole",
+                "étage négatif obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Constant = même étage."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tableau 0 s→0, 5 s→2, 10 s→4 (étages). 15 s ?",
+              "options": ["4", "5", "6", "8"],
+              "correctAnswers": [2],
+              "explanation": "+2 / 5 s → 6."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Montée plus raide = étages gagnés…",
+              "options": [
+                "plus vite",
+                "plus lentement",
+                "jamais",
+                "à l’envers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pente forte = changement rapide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "De étage 8 à 3, courbe descend.",
+              "options": ["+5", "−5 étages", "0", "+8"],
+              "correctAnswers": [1],
+              "explanation": "8 − 3 = 5 étages en moins."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sommet graphique = étage le plus haut atteint.",
+              "options": ["oui", "non", "RDC", "sous-sol"],
+              "correctAnswers": [0],
+              "explanation": "Maximum = plus haut étage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Montée puis descente même jour. Forme…",
+              "options": [
+                "seulement montante",
+                "aller-retour",
+                "horizontale totale",
+                "point"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Montée + descente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lecture : 30 s → étage 5. Signifie…",
+              "options": [
+                "à 30 s on est au 5e",
+                "à 5 s étage 30",
+                "rien",
+                "erreur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Coordonnée temps → étage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Courbe strictement montante 0–60 s.",
+              "options": ["diminue", "augmente (étage)", "fixe", "aléatoire"],
+              "correctAnswers": [1],
+              "explanation": "Toujours monter."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Livres empruntés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau semaine–livres : 1→2, 2→5, 3→8. Vrai ?",
+              "options": [
+                "Emprunts augmentent.",
+                "Sem 3 > sem 1.",
+                "Diminue.",
+                "Sem 1 = 8."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "2, 5, 8 croissants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Courbe bibliothèque monte en vacances.",
+              "options": [
+                "moins d’emprunts",
+                "plus d’emprunts",
+                "zéro",
+                "fixe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Montée = plus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Descente rentrée scolaire (modèle).",
+              "options": ["augmente", "diminue", "double", "infini"],
+              "correctAnswers": [1],
+              "explanation": "Descente = moins."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "+3 livres/semaine : sem 4 si sem 1 = 4 ?",
+              "options": ["7", "10", "13", "16"],
+              "correctAnswers": [2],
+              "explanation": "4+3+3+3=13 sem4 si linéaire depuis sem1... Actually sem1=4, sem2=7, sem3=10, sem4=13. Yes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plateau 4 semaines à 20 livres/semaine.",
+              "options": ["croît", "stable", "nul", "×2"],
+              "correctAnswers": [1],
+              "explanation": "Constant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Max graphique = semaine la plus empruntée.",
+              "options": ["oui", "non", "min", "0"],
+              "correctAnswers": [0],
+              "explanation": "Sommet = max."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "10→15 livres en montée. + ?",
+              "options": ["3", "5", "10", "25"],
+              "correctAnswers": [1],
+              "explanation": "15−10=5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Courbe baisse 3 mois consécutifs.",
+              "options": ["hausse", "baisse", "stable", "?"],
+              "correctAnswers": [1],
+              "explanation": "Descente continue."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lecture graph : jan 12, fév 18. Variation ?",
+              "options": ["−6", "+6", "0", "+30"],
+              "correctAnswers": [1],
+              "explanation": "18−12=+6."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bas gauche, haut droite sur l’année.",
+              "options": [
+                "baisse globale",
+                "hausse globale",
+                "0",
+                "impossible"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Augmentation globale."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Ensoleillement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Heures soleil : jan 6 h, jui 12 h (tableau). Vrai ?",
+              "options": [
+                "Juin > janvier.",
+                "De jan à jui ça augmente (ici).",
+                "Juin < jan.",
+                "Égal."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "6 < 12."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Courbe annuelle monte vers l’été.",
+              "options": [
+                "jours plus courts",
+                "jours plus ensoleillés (modèle)",
+                "nuit permanente",
+                "stable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Montée vers été."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Descente automne sur graphique.",
+              "options": [
+                "plus de soleil",
+                "moins de soleil",
+                "identique",
+                "pluie = graphique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Descente = moins d’heures."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Max en juillet sur courbe. Juillet…",
+              "options": ["creux", "pic ensoleillement", "0 h", "−5 h"],
+              "correctAnswers": [1],
+              "explanation": "Maximum = pic."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau +1 h/mois de fev (8 h) à mai ?",
+              "options": ["10 h", "11 h", "12 h", "13 h"],
+              "correctAnswers": [1],
+              "explanation": "Fév 8, mar 9, avr 10, mai 11."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Segment horizontal été.",
+              "options": [
+                "soleil change",
+                "durée ensoleillée stable",
+                "disparaît",
+                "inverse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Plateau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Symétrie montée printemps / descente automne.",
+              "options": [
+                "deux phases opposées",
+                "une seule montée",
+                "horizontal",
+                "vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hausse puis baisse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Avr 10 h, mai 11 h. + ?",
+              "options": ["0", "1 h", "10 h", "21 h"],
+              "correctAnswers": [1],
+              "explanation": "+1 h."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lire : déc 7 h. Signification ?",
+              "options": [
+                "7 h soleil ce mois (modèle)",
+                "7 mois",
+                "7°C",
+                "rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordonnée = heures."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Courbe complète année : souvent…",
+              "options": [
+                "toujours montante",
+                "montée puis descente",
+                "toujours 0",
+                "décroissante seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Cycle saisonnier."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Modéliser",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Goûter à la cantine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau : 1 gâteau 1,50 €, 2 → 3 €, 3 → 4,50 €. Vrai ?",
+              "options": [
+                "Prix augmente avec le nombre.",
+                "4 gâteaux : 6 €.",
+                "10 gâteaux : 1,50 €.",
+                "0 coûte 4,50 €."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1,50 € pièce ; 4×1,50=6 €."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Modèle : 1 jus 2 €. Tableau 5 jus ?",
+              "options": ["7 €", "8 €", "10 €", "12 €"],
+              "correctAnswers": [2],
+              "explanation": "5×2=10 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Entrée du tableau ?",
+              "options": ["Prix total", "Nombre de parts", "Couleur", "Jour"],
+              "correctAnswers": [1],
+              "explanation": "On fait varier la quantité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3 pommes 1,20 €, 5 pommes 2 €. 1 pomme ?",
+              "options": ["0,30 €", "0,40 €", "0,50 €", "1 €"],
+              "correctAnswers": [1],
+              "explanation": "1,20÷3=0,40 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Compléter : 0→0 €, 1→3 €, 2→6 €, 3→ ?",
+              "options": ["7 €", "8 €", "9 €", "12 €"],
+              "correctAnswers": [2],
+              "explanation": "3×3=9 €."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Graphique prix monte. Modèle ?",
+              "options": [
+                "plus d’items, plus cher",
+                "moins cher",
+                "gratuit",
+                "hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "8 yaourts à 0,75 €. Total ?",
+              "options": ["4 €", "5 €", "6 €", "8 €"],
+              "correctAnswers": [2],
+              "explanation": "8×0,75=6 €."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Vérifier modèle : tester…",
+              "options": [
+                "une nouvelle ligne",
+                "seulement le titre",
+                "rien",
+                "la marge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prédire puis comparer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "2 € par sandwich. 11 sandwiches ?",
+              "options": ["13 €", "20 €", "22 €", "24 €"],
+              "correctAnswers": [2],
+              "explanation": "11×2=22 €."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tableau régulier décrit…",
+              "options": [
+                "situation proportionnelle simple",
+                "dérivée",
+                "angles",
+                "probabilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même ajout par unité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Trajet en bus",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1 ticket 1,80 €, 2 → 3,60 €, 3 → 5,40 €. Vrai ?",
+              "options": [
+                "5 tickets : 9 €.",
+                "Prix augmente avec tickets.",
+                "1 ticket 5,40 €.",
+                "0 ticket 3,60 €."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1,80×5=9 €."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "4 personnes même tarif. 1 → 2,50 €. 4 ?",
+              "options": ["8 €", "9 €", "10 €", "12 €"],
+              "correctAnswers": [2],
+              "explanation": "4×2,50=10 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tableau km parcourus–essence : 20 km→2 L, 40→4 L. 60 km ?",
+              "options": ["4 L", "5 L", "6 L", "8 L"],
+              "correctAnswers": [2],
+              "explanation": "0,1 L/km."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Modéliser distance–temps à vitesse constante : tableau…",
+              "options": ["augmente régulièrement", "diminue", "vide", "fixe"],
+              "correctAnswers": [0],
+              "explanation": "Plus de temps → plus de km."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "6 trajets × 1,20 €.",
+              "options": ["6,20 €", "7,20 €", "8,20 €", "9,20 €"],
+              "correctAnswers": [1],
+              "explanation": "6×1,20=7,20 €."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sortie = coût, entrée = ?",
+              "options": ["nombre de trajets", "couleur bus", "météo", "âge"],
+              "correctAnswers": [0],
+              "explanation": "Quantité de trajets."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "10 km→1 L, 30 km→3 L. 25 km ?",
+              "options": ["2 L", "2,5 L", "3 L", "5 L"],
+              "correctAnswers": [1],
+              "explanation": "0,1 L/km → 2,5 L."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Courbe distance–temps droite montante.",
+              "options": ["s’éloigne", "recule", "immobile", "tourne"],
+              "correctAnswers": [0],
+              "explanation": "Distance croît."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Carte 10 voyages 15 €. 1 voyage coûte (modèle) ?",
+              "options": ["1 €", "1,50 €", "2 €", "15 €"],
+              "correctAnswers": [1],
+              "explanation": "15÷10=1,50 €."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "0 voyage → 0 € (modèle simple).",
+              "options": ["vrai", "faux", "100 €", "−1"],
+              "correctAnswers": [0],
+              "explanation": "Aucun trajet, pas de coût."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Température du four",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau min–°C : 0→20, 5→40, 10→60. Vrai ?",
+              "options": [
+                "+20 °C / 5 min.",
+                "15 min → 80 °C.",
+                "Ça diminue.",
+                "0 min → 60 °C."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "+4 °C/min ; 15 min → 80."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Modèle chauffe : temps↑ temp↑. Graphique ?",
+              "options": ["monte", "descend", "plat", "cercle"],
+              "correctAnswers": [0],
+              "explanation": "Chauffe = montée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Refroidissement modélisé : courbe…",
+              "options": ["monte", "descend", "?", "×2"],
+              "correctAnswers": [1],
+              "explanation": "Refroidir = baisse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tableau 0→18 °C, 1→22 °C, 2→26 °C. 4 min ?",
+              "options": ["30 °C", "32 °C", "34 °C", "36 °C"],
+              "correctAnswers": [2],
+              "explanation": "+4/min → 34."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Plateau 180 °C = four stabilisé.",
+              "options": ["temp monte", "temp fixe", "temp 0", "gel"],
+              "correctAnswers": [1],
+              "explanation": "Constant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Entrée temps, sortie température. 0 min ?",
+              "options": [
+                "souvent temp ambiante du modèle",
+                "500 °C",
+                "−10 °C",
+                "sans valeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Départ du modèle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De 50 à 90 en +10/min. Durée ?",
+              "options": ["2 min", "3 min", "4 min", "5 min"],
+              "correctAnswers": [2],
+              "explanation": "(90−50)/10=4."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau incohérent : 1→30, 2→25. Modèle…",
+              "options": ["croissant", "décroissant ici", "nul", "plat"],
+              "correctAnswers": [1],
+              "explanation": "30→25 baisse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prévoir 20 min si 10 min→100 °C linéaire +10/min depuis 0→0 ? Si 0→0 and 10→100, rate 10/min, 20→200",
+              "options": ["110 °C", "150 °C", "200 °C", "20 °C"],
+              "correctAnswers": [2],
+              "explanation": "+10 °C/min → 200."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Modéliser = trouver règle du tableau.",
+              "options": ["oui", "non", "dériver", "mesurer aire"],
+              "correctAnswers": [0],
+              "explanation": "Lien entrée-sortie."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Recette de crêpes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "2 œufs→4 crêpes, 4 œufs→8, 6→12. Vrai ?",
+              "options": [
+                "1 œuf → 2 crêpes.",
+                "10 œufs → 20 crêpes.",
+                "Plus d’œufs, moins de crêpes.",
+                "0 œuf → 8 crêpes."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "2 crêpes/œuf."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "500 mL lait → 10 crêpes. 1 L ?",
+              "options": ["15", "20", "25", "30"],
+              "correctAnswers": [1],
+              "explanation": "Double lait → double crêpes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tableau personnes–gâteaux : 1→1, 2→2, 5→ ?",
+              "options": ["3", "4", "5", "10"],
+              "correctAnswers": [2],
+              "explanation": "1/personne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3 kg farine → 60 pains. 5 kg ?",
+              "options": ["80", "90", "100", "120"],
+              "correctAnswers": [2],
+              "explanation": "20 pains/kg."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Modèle décroissant : parts restantes si on en prend.",
+              "options": ["augmente", "diminue", "fixe", "×3"],
+              "correctAnswers": [1],
+              "explanation": "Manger → moins reste."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "8 personnes, 2 tranches/personne. Tranches ?",
+              "options": ["8", "10", "16", "20"],
+              "correctAnswers": [2],
+              "explanation": "8×2=16."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Graphique monte : ingrédient vs portions.",
+              "options": [
+                "plus de portions, plus d’ingrédient",
+                "moins",
+                "0",
+                "hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "1 sachet → 4 muffins, 7 sachets ?",
+              "options": ["11", "24", "28", "32"],
+              "correctAnswers": [2],
+              "explanation": "7×4=28."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tester modèle : 3 unités prédites vs tableau.",
+              "options": ["cohérence", "oubli", "Celsius", "aire"],
+              "correctAnswers": [0],
+              "explanation": "Vérification."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Double recette = doubler tableau (modèle).",
+              "options": ["oui", "non", "÷2", "−1"],
+              "correctAnswers": [0],
+              "explanation": "Multiplicatif simple."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Points dans un jeu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1 niveau→50 pt, 2→100, 3→150. Vrai ?",
+              "options": [
+                "50 pt/niveau.",
+                "5 niveaux→250 pt.",
+                "Diminue.",
+                "0→150."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "50×5=250."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "+12 pt/ énigme. 9 énigmes ?",
+              "options": ["96", "108", "120", "132"],
+              "correctAnswers": [1],
+              "explanation": "9×12=108."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Temps jeu–score monte.",
+              "options": ["score baisse", "score monte", "0", "fixe"],
+              "correctAnswers": [1],
+              "explanation": "Plus jouer → plus de points (modèle)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "0 mission→0 pt, 4→20 pt. 7 missions ?",
+              "options": ["25", "30", "35", "40"],
+              "correctAnswers": [2],
+              "explanation": "5 pt/mission."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tableau vies restantes après niveaux : diminue.",
+              "options": [
+                "modèle croissant",
+                "modèle décroissant",
+                "plat",
+                "infini"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Moins de vies."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bonus ×2 : 15 pt deviennent ?",
+              "options": ["17", "30", "32", "45"],
+              "correctAnswers": [1],
+              "explanation": "15×2=30."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Graphique score plat 10 min.",
+              "options": ["gagne pts", "pts stables", "pts négatifs", "fin"],
+              "correctAnswers": [1],
+              "explanation": "Plateau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "6 bonnes réponses × 3 pt.",
+              "options": ["9", "15", "18", "21"],
+              "correctAnswers": [2],
+              "explanation": "6×3=18."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prédire 10e valeur si +7 par rang. Départ 3.",
+              "options": ["59", "66", "73", "80"],
+              "correctAnswers": [1],
+              "explanation": "3+9×7=66."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Modéliser score = choisir colonnes…",
+              "options": [
+                "action et points",
+                "couleur et goût",
+                "prénom",
+                "date seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entrée/sortie numériques."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Billets de cinéma",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1 place 8 €, 2→16, 3→24. Vrai ?",
+              "options": [
+                "4 places 32 €.",
+                "Prix ↑ avec places.",
+                "1 place 24 €.",
+                "0 place 8 €."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "8×4=32."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "9 places à 7 €.",
+              "options": ["56 €", "63 €", "70 €", "77 €"],
+              "correctAnswers": [1],
+              "explanation": "9×7=63."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tableau enfants–places adultes séparé : même idée, tarif enfant 5 €, 3 ?",
+              "options": ["8 €", "10 €", "15 €", "20 €"],
+              "correctAnswers": [2],
+              "explanation": "3×5=15."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pop-corn 4 €/sac, 6 sacs ?",
+              "options": ["20 €", "22 €", "24 €", "28 €"],
+              "correctAnswers": [2],
+              "explanation": "6×4=24."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Total = places + pop : 2×8 + 1×4 ?",
+              "options": ["12 €", "16 €", "20 €", "24 €"],
+              "correctAnswers": [2],
+              "explanation": "16+4=20."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Graphique coût monte avec entrées.",
+              "options": ["modèle croissant", "décroissant", "nul", "rond"],
+              "correctAnswers": [0],
+              "explanation": "Plus de billets, plus cher."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "12 € / personne, groupe 5.",
+              "options": ["50 €", "55 €", "60 €", "65 €"],
+              "correctAnswers": [2],
+              "explanation": "5×12=60."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "0 spectateur modèle simple.",
+              "options": ["0 €", "8 €", "min", "max"],
+              "correctAnswers": [0],
+              "explanation": "Pas de place."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tarif 6,50 €. 10 places ?",
+              "options": ["60 €", "65 €", "70 €", "75 €"],
+              "correctAnswers": [1],
+              "explanation": "10×6,50=65."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tableau aide à…",
+              "options": [
+                "prévoir un prix",
+                "calculer aire",
+                "tracer cercle",
+                "mesurer masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévision."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Limonade",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1 verre 0,80 €, 2→1,60, 5→4. Vrai ?",
+              "options": [
+                "Prix ↑ avec verres.",
+                "10 verres 8 €.",
+                "1 verre 4 €.",
+                "0 verre 1,60 €."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "0,80×10=8."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "4 citrons → 2 L. 10 citrons ?",
+              "options": ["4 L", "5 L", "6 L", "8 L"],
+              "correctAnswers": [1],
+              "explanation": "0,5 L/citron."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sucre 50 g/verre, 8 verres ?",
+              "options": ["350 g", "400 g", "450 g", "500 g"],
+              "correctAnswers": [1],
+              "explanation": "8×50=400."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Recette double : 3 L → 6 L eau (modèle).",
+              "options": ["÷2", "×2", "+1", "0"],
+              "correctAnswers": [1],
+              "explanation": "Double quantité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ventes jour–recette : plus chaud → plus verres (tableau croît).",
+              "options": ["diminue", "augmente", "fixe", "?"],
+              "correctAnswers": [1],
+              "explanation": "Croissant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "15 verres × 0,60 € coût unitaire. Recette ?",
+              "options": ["7 €", "8 €", "9 €", "10 €"],
+              "correctAnswers": [2],
+              "explanation": "15×0,60=9."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Stock si −3 verres/heure, modèle stock…",
+              "options": ["monte", "descend", "plat", "?"],
+              "correctAnswers": [1],
+              "explanation": "Consommation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau 0→0 L, 2→1 L, 4→2 L. 6 citrons équivalent 3 L ?",
+              "options": ["2 L", "3 L", "4 L", "6 L"],
+              "correctAnswers": [1],
+              "explanation": "Proportion."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "7 clients 2 verres/client. Verres ?",
+              "options": ["7", "12", "14", "16"],
+              "correctAnswers": [2],
+              "explanation": "7×2=14."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Modéliser vente = nombre × prix unitaire.",
+              "options": ["oui", "non", "dérivée", "angle"],
+              "correctAnswers": [0],
+              "explanation": "Modèle multiplicatif."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Impression de documents",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1 page 0,10 €, 10→1 €, 20→2 €. Vrai ?",
+              "options": [
+                "0,10 €/page.",
+                "50 pages 5 €.",
+                "Diminue.",
+                "0 page 2 €."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "0,10×50=5."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "25 pages couleur 0,20 €.",
+              "options": ["4 €", "5 €", "6 €", "7 €"],
+              "correctAnswers": [1],
+              "explanation": "25×0,20=5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pages–coût graphique monte.",
+              "options": ["plus pages plus cher", "moins", "gratuit", "?"],
+              "correctAnswers": [0],
+              "explanation": "Croissant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "100 pages, 0,05 € N&B.",
+              "options": ["4 €", "5 €", "6 €", "10 €"],
+              "correctAnswers": [1],
+              "explanation": "100×0,05=5."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Forfait 3 € + 0,02 €/page, 50 pages ?",
+              "options": ["3,50 €", "4 €", "4,50 €", "5 €"],
+              "correctAnswers": [1],
+              "explanation": "3+1=4 €."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "0 page (hors forfait 0) → 0 € variable.",
+              "options": ["0 € variable", "10 €", "forfait seul", "?"],
+              "correctAnswers": [0],
+              "explanation": "Pas de page."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "30→3 €, 60→6 €. 45 pages ?",
+              "options": ["4 €", "4,50 €", "5 €", "6 €"],
+              "correctAnswers": [1],
+              "explanation": "0,10/page."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tableau régulier : +0,10 € par page.",
+              "options": [
+                "modèle linéaire simple",
+                "exponentiel",
+                "aléatoire",
+                "vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas à pas constant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "80 pages à 0,08 €.",
+              "options": ["6,00 €", "6,40 €", "7,20 €", "8,00 €"],
+              "correctAnswers": [1],
+              "explanation": "80×0,08=6,40."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Modéliser coût impression : utile pour…",
+              "options": [
+                "budget",
+                "périmètre cercle",
+                "volume sphère",
+                "tangente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Anticiper dépense."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Colis et cartons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "1 carton 6 bouteilles, 2→12, 5→30. Vrai ?",
+              "options": [
+                "6 bouteilles/carton.",
+                "8 cartons→48.",
+                "Diminue.",
+                "0→30."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "6×8=48."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Paquet 8 stickers, 11 paquets ?",
+              "options": ["80", "84", "88", "96"],
+              "correctAnswers": [2],
+              "explanation": "11×8=88."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Poids colis : +2 kg/colis, 0→0, 4 colis ?",
+              "options": ["6 kg", "8 kg", "10 kg", "12 kg"],
+              "correctAnswers": [1],
+              "explanation": "4×2=8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Stock cartons diminue quand on expédie.",
+              "options": ["croissant", "décroissant", "plat", "?"],
+              "correctAnswers": [1],
+              "explanation": "Envois."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "3 boîtes × 24 œufs. Œufs ?",
+              "options": ["48", "64", "72", "96"],
+              "correctAnswers": [2],
+              "explanation": "3×24=72."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tableau colis–frais : 1→5 €, 2→10. 6 ?",
+              "options": ["25 €", "30 €", "35 €", "40 €"],
+              "correctAnswers": [1],
+              "explanation": "5×6=30."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Graphique monte : colis vs volume total.",
+              "options": [
+                "plus de colis, plus de volume",
+                "moins",
+                "0",
+                "inverse temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Croissance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "20 objets, 5/carton. Cartons ?",
+              "options": ["3", "4", "5", "6"],
+              "correctAnswers": [1],
+              "explanation": "20÷5=4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prévoir 9e ligne : +4 par rang, départ 1.",
+              "options": ["33", "37", "41", "45"],
+              "correctAnswers": [0],
+              "explanation": "1+8×4=33."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Modéliser emballage = compter par…",
+              "options": [
+                "groupes identiques",
+                "couleurs seules",
+                "prénoms",
+                "hasard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unités par lot."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse modéliser",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tableau croissant prix–quantité. On peut dire :",
+              "options": [
+                "Acheter plus coûte plus (souvent).",
+                "Courbe associée monte souvent.",
+                "Acheter plus coûte moins forcément.",
+                "Graphique inutile."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Modèle croissant cohérent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Modéliser = représenter une situation par…",
+              "options": [
+                "tableau/graphique",
+                "dérivée",
+                "cosinus seul",
+                "rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Outils 6e."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "3 kg à 4 €/kg. Total ?",
+              "options": ["7 €", "10 €", "12 €", "16 €"],
+              "correctAnswers": [2],
+              "explanation": "3×4=12."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Modèle décroissant : bonbons restants quand on en mange.",
+              "options": ["augmente", "diminue", "fixe", "double"],
+              "correctAnswers": [1],
+              "explanation": "Moins reste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "0 unité → 0 € (modèle simple achat).",
+              "options": ["vrai", "faux", "100 €", "−1"],
+              "correctAnswers": [0],
+              "explanation": "Rien acheté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vérifier : 5 unités prédites vs règle du tableau.",
+              "options": [
+                "test de cohérence",
+                "mesure angle",
+                "aire",
+                "volume sphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Validation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Distance 1 h→5 km, 2 h→10 km. 4 h ?",
+              "options": ["15 km", "20 km", "25 km", "40 km"],
+              "correctAnswers": [1],
+              "explanation": "5 km/h."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Température eau chauffe : tableau temps–°C…",
+              "options": ["augmente", "diminue", "0", "fixe"],
+              "correctAnswers": [0],
+              "explanation": "Chauffe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Prix unitaire 3 €, tableau 7 unités ?",
+              "options": ["10 €", "18 €", "21 €", "24 €"],
+              "correctAnswers": [2],
+              "explanation": "7×3=21."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "u2 Modéliser : objectif principal ?",
+              "options": [
+                "Prévoir avec tableau/courbe",
+                "Calculer dérivée",
+                "Écrire f(x)=ax+b",
+                "Tracer cercle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévision sans formule affine imposée."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

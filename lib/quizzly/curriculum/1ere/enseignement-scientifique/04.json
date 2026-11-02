@@ -1,0 +1,2668 @@
+{
+  "id": "1ere-enseignement-scientifique-04",
+  "year": "1ere",
+  "subject": "enseignement-scientifique",
+  "title": "La matière et les rayonnements",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Atomes et noyaux",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Structure et constituants du noyau atomique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "De quoi est constitué le noyau d'un atome ?",
+              "options": [
+                "De protons et de neutrons",
+                "De protons et d'électrons",
+                "De neutrons et d'électrons",
+                "Uniquement de protons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le noyau atomique est constitué de nucléons, c'est-à-dire de protons et de neutrons."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel nom générique donne-t-on aux particules qui composent le noyau atomique ?",
+              "options": [
+                "Nucléons",
+                "Positrons",
+                "Photons",
+                "Électrons de valence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le terme nucléon regroupe les protons et les neutrons situés dans le noyau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la notation conventionnelle d'un noyau, que représente le nombre Z ?",
+              "options": [
+                "Le numéro atomique, soit le nombre de protons",
+                "Le nombre de masse, soit le total de nucléons",
+                "Le nombre de neutrons uniquement",
+                "La charge électrique totale en coulombs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Z est le numéro atomique et indique le nombre de protons dans le noyau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la notation conventionnelle d'un noyau, que représente le nombre de masse A ?",
+              "options": [
+                "Le nombre total de nucléons (protons + neutrons)",
+                "Le nombre de neutrons uniquement",
+                "Le nombre d'électrons gravitant autour du noyau",
+                "La masse de l'atome en kilogrammes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "A est le nombre de masse : il compte la totalité des nucléons (A = Z + N)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on le nombre de neutrons N d'un noyau représenté par les nombres A et Z ?",
+              "options": ["N = A - Z", "N = A + Z", "N = Z - A", "N = A / Z"],
+              "correctAnswers": [0],
+              "explanation": "Puisque A = Z + N, le nombre de neutrons est N = A - Z."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la charge électrique d'un neutron ?",
+              "options": [
+                "Nulle (charge 0)",
+                "Positive (+1e)",
+                "Négative (-1e)",
+                "Variable selon l'élément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme son nom l'indique, le neutron est électriquement neutre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle interaction fondamentale assure la cohésion du noyau atomique malgré la répulsion électrostatique ?",
+              "options": [
+                "L'interaction forte",
+                "L'interaction gravitationnelle",
+                "L'interaction électromagnétique",
+                "L'interaction faible uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'interaction forte est attractive à très courte portée et l'emporte sur la répulsion électrique entre protons."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un noyau d'or possède Z = 79 et A = 197. Combien contient-il de neutrons ?",
+              "options": ["118", "79", "197", "276"],
+              "correctAnswers": [0],
+              "explanation": "Le nombre de neutrons est N = A - Z = 197 - 79 = 118."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur de la dimension du noyau d'un atome ?",
+              "options": [
+                "10⁻¹⁵ m (le femtomètre)",
+                "10⁻¹⁰ m (l'angström)",
+                "10⁻⁶ m (le micromètre)",
+                "10⁻³ m (le millimètre)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le noyau mesure environ 10⁻¹⁵ m, soit 100 000 fois moins que l'atome tout entier (10⁻¹⁰ m)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes, lesquelles sont exactes au sujet du noyau atomique ?",
+              "options": [
+                "Il concentre l'essentiel de la masse de l'atome",
+                "Sa charge électrique globale est positive",
+                "Il a un diamètre équivalent à celui du nuage électronique",
+                "Il est principalement composé d'électrons liés"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le noyau concentre plus de 99,9 % de la masse et possède une charge positive due aux protons."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Isotopes et stabilité nucléaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que sont deux isotopes d'un même élément chimique ?",
+              "options": [
+                "Des atomes ayant le même nombre de protons Z mais un nombre de neutrons différent",
+                "Des atomes ayant le même nombre de masse A mais des Z différents",
+                "Des atomes possédant un nombre de charges opposées",
+                "Des molécules ayant la même formule chimique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les isotopes ont le même Z (même élément) mais un nombre A différent (nombre de neutrons différent)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel élément chimique possède pour isotopes le protium, le deutérium et le tritium ?",
+              "options": ["L'hydrogène", "L'hélium", "Le carbone", "L'azote"],
+              "correctAnswers": [0],
+              "explanation": "L'hydrogène possède trois isotopes : ¹H (protium), ²H (deutérium) et ³H (tritium)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les isotopes carbone 12 et carbone 14 possèdent :",
+              "options": [
+                "Le même nombre de protons (6) mais un nombre de neutrons différent",
+                "Le même nombre de neutrons mais un nombre de protons différent",
+                "Le même nombre de masse",
+                "Des cortèges électroniques totalement dissemblables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le carbone 12 a 6 protons et 6 neutrons, tandis que le carbone 14 a 6 protons et 8 neutrons."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la zone regroupant les noyaux stables sur le graphique N en fonction de Z ?",
+              "options": [
+                "La vallée de stabilité",
+                "Le plateau de Mendeleïev",
+                "La bande de valence",
+                "La zone d'ionisation critique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur le diagramme de Segrè (N en fonction de Z), les noyaux stables forment la vallée de stabilité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour les noyaux légers stables (Z < 20), quelle relation approche au mieux le rapport entre N et Z ?",
+              "options": ["N ≈ Z", "N ≈ 2 * Z", "N ≈ Z / 3", "N ≈ 4 * Z"],
+              "correctAnswers": [0],
+              "explanation": "Pour les noyaux légers, la stabilité est maximale lorsque le nombre de neutrons est proche de celui des protons (N ≈ Z)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi les noyaux lourds stables ont-ils besoin d'une proportion plus élevée de neutrons que de protons ?",
+              "options": [
+                "Pour compenser la répulsion électrostatique croissante entre protons grâce à l'interaction forte",
+                "Pour attirer davantage d'électrons dans le cortège",
+                "Pour diminuer la densité centrale du noyau",
+                "Pour empêcher la capture des neutrinos solaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les neutrons ajoutent de l'interaction forte attractive sans ajouter de répulsion électrostatique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on l'abondance isotopique naturelle d'un élément ?",
+              "options": [
+                "Le pourcentage en nombre d'atomes de chaque isotope présent dans la nature",
+                "La masse molaire du plus lourd des isotopes existants",
+                "Le temps nécessaire pour créer un isotope en accélérateur",
+                "La radioactivité moyenne émise par une mole de cet élément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'abondance isotopique indique la fraction molaire relative de chaque isotope naturel d'un élément sur Terre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux isotopes d'un même élément ont-ils les mêmes propriétés chimiques ?",
+              "options": [
+                "Oui, car ils possèdent le même nombre d'électrons et la même structure électronique",
+                "Non, car leurs masses différentes modifient la valence",
+                "Non, car ils n'ont pas la même charge nucléaire",
+                "Uniquement lorsqu'ils sont portés à très haute température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les propriétés chimiques dépendent du cortège électronique, qui est identique pour deux isotopes d'un élément neutre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un noyau atomique instable qui se désintègre spontanément ?",
+              "options": [
+                "Un noyau radioactif ou radionucléide",
+                "Un noyau ferromagnétique",
+                "Un isotope réfractaire",
+                "Un noyau condensé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un noyau instable qui se transforme spontanément en émettant un rayonnement est un radionucléide."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels paramètres diffèrent entre deux isotopes d'un même élément chimique ?",
+              "options": [
+                "Le nombre de masse A",
+                "Le nombre de neutrons N",
+                "Le numéro atomique Z",
+                "Le nom de l'élément chimique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux isotopes partagent le même numéro atomique Z et le même nom, mais ont des nombres A et N différents."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La radioactivité naturelle et artificielle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la radioactivité ?",
+              "options": [
+                "La désintégration spontanée d'un noyau instable avec émission de rayonnement",
+                "La combustion thermique spontanée d'un corps pur",
+                "L'émission d'électrons sous l'action de la chaleur",
+                "La capture d'ondes radio par une antenne métallique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La radioactivité est un phénomène spontané au cours duquel un noyau instable se transmute en émettant des rayonnements."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En quoi consiste le rayonnement alpha (α) ?",
+              "options": [
+                "En l'émission d'un noyau d'hélium 4 (deux protons et deux neutrons)",
+                "En l'émission d'un électron de grande vitesse",
+                "En l'émission d'une onde électromagnétique de haute fréquence",
+                "En l'émission d'un neutron isolé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La particule alpha est un noyau d'hélium 4 (⁴₂He), constitué de deux protons et deux neutrons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En quoi consiste la radioactivité bêta moins (β⁻) ?",
+              "options": [
+                "En l'émission d'un électron produit par la transformation d'un neutron en proton",
+                "En l'émission d'un positron produit par un proton",
+                "En l'émission d'un photon gamma énergétique",
+                "En l'expulsion d'un proton hors du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lors d'une désintégration β⁻, un neutron se transforme en proton avec émission d'un électron rapide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quoi consiste la radioactivité bêta plus (β⁺) ?",
+              "options": [
+                "En l'émission d'un positon (positron), antiparticule de l'électron",
+                "En l'émission d'un électron de charge négative",
+                "En l'expulsion d'un noyau d'hélium",
+                "En l'absorption d'un photon gamma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La radioactivité β⁺ correspond à la transformation d'un proton en neutron avec émission d'un positron (⁰₊₁e)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la nature du rayonnement gamma (γ) ?",
+              "options": [
+                "Une onde électromagnétique très énergétique de très courte longueur d'onde",
+                "Un flux de protons chargés positivement",
+                "Un flux de neutrons thermiques lents",
+                "Une onde sonore de haute pression"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rayonnement gamma est un rayonnement électromagnétique de haute fréquence émis lors de la désexcitation d'un noyau."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel physicien français a découvert la radioactivité naturelle en 1896 avec des sels d'uranium ?",
+              "options": [
+                "Henri Becquerel",
+                "Pierre Curie",
+                "Antoine Lavoisier",
+                "Louis Pasteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Henri Becquerel a découvert la radioactivité en observant l'impression de plaques photographiques par des sels d'uranium."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel matériau simple suffit pour stopper complètement les particules alpha (α) ?",
+              "options": [
+                "Une simple feuille de papier ou les couches superficielles de la peau",
+                "Une dalle de béton de 1 mètre d'épaisseur",
+                "Une plaque de plomb de 10 cm",
+                "Un blindage d'acier trempé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les particules alpha ont un très faible pouvoir de pénétration et sont arrêtées par une feuille de papier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel matériau dense est couramment employé pour atténuer efficacement le rayonnement gamma (γ) ?",
+              "options": [
+                "Le plomb ou une épaisse couche de béton",
+                "Une feuille d'aluminium de 1 mm",
+                "Une vitre en plexiglas mince",
+                "Un tissu en coton épais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Très pénétrants, les photons gamma nécessitent des écrans denses et épais comme le plomb ou le béton."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la radioactivité artificielle, découverte par Frédéric et Irène Joliot-Curie en 1934 ?",
+              "options": [
+                "La radioactivité d'isotopes instables créés en laboratoire par bombardement nucléaire",
+                "Une radioactivité obtenue par chauffage chimique de métaux lourds",
+                "La lumière produite par une lampe fluorescente",
+                "L'ionisation produite par des frottements électrostatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La radioactivité artificielle est la production de radionucléides artificiels qui n'existent pas naturellement sur Terre."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les rayonnements suivants, lesquels sont constitués de particules matérielles chargées ?",
+              "options": [
+                "Le rayonnement alpha (α)",
+                "Le rayonnement bêta (β⁻ et β⁺)",
+                "Le rayonnement gamma (γ)",
+                "Les micro-ondes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les rayonnements alpha (noyaux d'hélium) et bêta (électrons/positrons) sont matériels et chargés, contrairement au photon gamma."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Lois de conservation de Soddy",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que stipulent les lois de Soddy lors d'une réaction nucléaire ?",
+              "options": [
+                "La conservation du nombre de nucléons A et de la charge électrique totale Z",
+                "La conservation exacte de la masse totale mesurée en grammes",
+                "La disparition des neutrons et la création de protons",
+                "La conservation du volume géométrique du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lois de Soddy imposent la conservation du nombre de masse A et du numéro atomique Z."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lors d'une émission alpha, comment varient les nombres A et Z du noyau père ?",
+              "options": [
+                "A diminue de 4 et Z diminue de 2",
+                "A diminue de 2 et Z diminue de 4",
+                "A diminue de 1 et Z augmente de 1",
+                "A reste constant et Z diminue de 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La particule alpha étant ⁴₂He, le noyau fils a pour caractéristiques (A - 4) et (Z - 2)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lors d'une désintégration bêta moins (β⁻), comment varient les nombres A et Z du noyau fils ?",
+              "options": [
+                "A reste constant et Z augmente de 1",
+                "A augmente de 1 et Z reste constant",
+                "A diminue de 1 et Z diminue de 1",
+                "A reste constant et Z diminue de 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'électron émis est noté ⁰₋₁e, donc par conservation A reste identique et Z devient Z + 1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lors d'une désintégration bêta plus (β⁺), comment varient les nombres A et Z du noyau fils ?",
+              "options": [
+                "A reste constant et Z diminue de 1",
+                "A diminue de 1 et Z augmente de 1",
+                "A reste constant et Z augmente de 1",
+                "A diminue de 4 et Z diminue de 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le positron émis est noté ⁰₊₁e, donc par conservation A reste identique et Z devient Z - 1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lors de la désexcitation gamma d'un noyau, comment évoluent les grandeurs A et Z ?",
+              "options": [
+                "A et Z restent inchangés",
+                "A diminue de 1 et Z reste identique",
+                "Z augmente de 1 et A reste identique",
+                "A et Z augmentent tous deux de 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'émission gamma libère de l'énergie sous forme de photon sans modifier la composition du noyau (A et Z constants)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soit la désintégration : ²²⁶₈₈Ra -> ²²²₈₆Rn + X. Quelle est la particule X ?",
+              "options": [
+                "Une particule alpha (⁴₂He)",
+                "Un électron bêta moins (⁰₋₁e)",
+                "Un positron bêta plus (⁰₊₁e)",
+                "Un neutron libre (¹₀n)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On a 226 = 222 + 4 et 88 = 86 + 2, ce qui correspond à un noyau d'hélium 4 (particule alpha)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le carbone 14 (Z = 6) subit une désintégration bêta moins en formant de l'azote N. Quel est le numéro atomique de l'azote formé ?",
+              "options": ["7", "5", "6", "8"],
+              "correctAnswers": [0],
+              "explanation": "En émission β⁻, Z augmente de 1 : 6 + 1 = 7, ce qui donne l'azote ¹⁴₇N."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment note-t-on symboliquement un électron émis lors d'une réaction nucléaire ?",
+              "options": ["⁰₋₁e", "⁰₊₁e", "¹₀n", "¹₁p"],
+              "correctAnswers": [0],
+              "explanation": "L'électron a un nombre de masse A = 0 et une charge électrique relative Z = -1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment note-t-on la particule alpha dans les équations de bilan nucléaire ?",
+              "options": ["⁴₂He", "²₄He", "¹₁H", "⁶₃Li"],
+              "correctAnswers": [0],
+              "explanation": "La particule alpha est un noyau d'hélium comportant 4 nucléons dont 2 protons (⁴₂He)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs sont rigoureusement conservées au cours de toute réaction nucléaire selon les lois de Soddy ?",
+              "options": [
+                "Le nombre total de nucléons A",
+                "La charge électrique totale Z",
+                "Le nombre de molécules de gaz",
+                "Le volume occupé par les atomes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux lois de Soddy garantissent la conservation de A (nucléons) et de Z (charge électrique)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Décroissance radioactive et loi exponentielle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le caractère fondamental de la désintégration d'un noyau radioactif individuel ?",
+              "options": [
+                "Aléatoire, spontané et inéluctable",
+                "Parfaitement prévisible à la seconde près",
+                "Déclenché par la température ambiante",
+                "Contrôlé par la pression du milieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La désintégration radioactive est un phénomène aléatoire et spontané : impossible de prédire l'instant de désintégration d'un noyau isolé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on l'activité A(t) d'un échantillon radioactif ?",
+              "options": [
+                "Le nombre de désintégrations nucléaires par seconde dans l'échantillon",
+                "La chaleur totale dissipée par l'échantillon en une heure",
+                "La vitesse de déplacement des atomes dans le solide",
+                "La masse totale de noyaux restants en kilogrammes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activité A(t) mesure le nombre moyen de désintégrations par seconde au sein de l'échantillon."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'unité du Système international pour l'activité radioactive ?",
+              "options": [
+                "Le becquerel (Bq)",
+                "Le sievert (Sv)",
+                "Le gray (Gy)",
+                "Le curie uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'unité légale du SI pour l'activité radioactive est le becquerel, noté Bq."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quoi correspond exactement 1 becquerel (1 Bq) ?",
+              "options": [
+                "1 désintégration par seconde",
+                "1000 désintégrations par minute",
+                "1 joule d'énergie absorbée par kilogramme",
+                "1 mole de noyaux désintégrés par an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un becquerel équivaut rigoureusement à une désintégration par seconde (1 Bq = 1 s⁻¹)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle fonction mathématique régit la décroissance du nombre de noyaux radioactifs N(t) au cours du temps ?",
+              "options": [
+                "Une fonction exponentielle décroissante",
+                "Une fonction affine décroissante",
+                "Une fonction logarithmique",
+                "Une fonction sinusoïdale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nombre de noyaux suit une loi exponentielle : N(t) = N₀ * e^(-λt)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans l'expression N(t) = N₀ * e^(-λt), que représente la grandeur λ ?",
+              "options": [
+                "La constante radioactive du nucléide considéré",
+                "La longueur d'onde de la lumière émise",
+                "La vitesse moyenne des particules émises",
+                "La masse atomique du noyau fils"
+              ],
+              "correctAnswers": [0],
+              "explanation": "λ est la constante radioactive, caractéristique de chaque isotope radioactif, exprimée en s⁻¹."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle relation relie l'activité A(t) au nombre de noyaux radioactifs N(t) présents ?",
+              "options": [
+                "A(t) = λ * N(t)",
+                "A(t) = N(t) / λ",
+                "A(t) = λ² * N(t)",
+                "A(t) = N(t) + λ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activité est directement proportionnelle au nombre de noyaux radioactifs : A(t) = λ * N(t)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La constante radioactive d'un isotope dépend-elle des conditions chimiques (température, pression, état physique) ?",
+              "options": [
+                "Non, c'est une constante nucléaire insensible aux conditions physico-chimiques usuelles",
+                "Oui, la désintégration s'accélère beaucoup lorsqu'on chauffe l'échantillon",
+                "Oui, la pression stoppe toute radioactivité",
+                "Oui, former une liaison chimique stabilise complètement le noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La radioactivité est un phénomène purement nucléaire, indépendant de l'état chimique ou thermique de l'atome."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment évolue l'activité d'une source radioactive isolée au cours du temps ?",
+              "options": [
+                "Elle diminue progressivement selon une loi exponentielle",
+                "Elle reste constante jusqu'à épuisement brutal",
+                "Elle augmente puis s'effondre en quelques secondes",
+                "Elle oscille régulièrement au fil des saisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activité décroît de manière continue et exponentielle à mesure que les noyaux radioactifs disparaissent."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propositions s'appliquent correctement à la désintégration radioactive ?",
+              "options": [
+                "Elle est spontanée et aléatoire pour un noyau donné",
+                "Elle suit une loi prévisible et déterministe à l'échelle d'une très grande population de noyaux",
+                "Elle peut être accélérée en utilisant un catalyseur chimique puissant",
+                "Elle ne concerne que les atomes artificiels créés par l'Homme"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La désintégration est aléatoire au niveau microscopique individuel mais statistique et très prévisible à l'échelle macroscopique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Temps de demi-vie radioactive",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la demi-vie t₁/₂ d'un isotope radioactif ?",
+              "options": [
+                "La durée au bout de laquelle la moitié des noyaux radioactifs initiaux se sont désintégrés",
+                "La durée totale après laquelle tous les noyaux ont disparu",
+                "Le temps nécessaire pour que la masse de l'échantillon double",
+                "La moitié du temps de formation de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La demi-vie t₁/₂ est la durée nécessaire pour que la moitié des noyaux d'un échantillon se désintègrent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Au bout d'une durée égale à deux demi-vies (2 * t₁/₂), quelle fraction des noyaux initiaux reste-t-il ?",
+              "options": [
+                "Un quart (1/4)",
+                "La moitié (1/2)",
+                "Trois quarts (3/4)",
+                "Zéro (aucun noyau)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après 1 demi-vie il reste 1/2 ; après 2 demi-vies il reste (1/2) * (1/2) = 1/4 des noyaux initiaux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Au bout de 3 demi-vies, quel pourcentage de la quantité initiale de radionucléides subsiste dans l'échantillon ?",
+              "options": ["12,5 %", "25 %", "33,3 %", "50 %"],
+              "correctAnswers": [0],
+              "explanation": "Au bout de 3 demi-vies, la fraction restante est (1/2)³ = 1/8, soit exactement 12,5 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un échantillon contient initialement 8000 noyaux de demi-vie 5 jours. Combien en reste-t-il après 15 jours ?",
+              "options": ["1000", "2000", "4000", "500"],
+              "correctAnswers": [0],
+              "explanation": "15 jours correspondent à 3 demi-vies (3 * 5 jours). Il reste 8000 / 8 = 1000 noyaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle formule relie la demi-vie t₁/₂ à la constante radioactive λ ?",
+              "options": [
+                "t₁/₂ = ln(2) / λ",
+                "t₁/₂ = λ / ln(2)",
+                "t₁/₂ = 2 * λ",
+                "t₁/₂ = ln(10) / λ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque e^(-λ * t₁/₂) = 1/2, on a -λ * t₁/₂ = -ln(2), d'où t₁/₂ = ln(2) / λ."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La demi-vie d'un isotope radioactif dépend-elle de la quantité initiale présente dans l'échantillon ?",
+              "options": [
+                "Non, c'est une caractéristique propre au radionucléide indépendante de la masse initiale",
+                "Oui, plus la masse est grande, plus la demi-vie s'allonge",
+                "Oui, un gros échantillon se désintègre toujours plus vite",
+                "Seulement pour les isotopes gazeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La demi-vie est une constante intrinsèque à chaque nucléide, indépendante de la taille de l'échantillon."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'iode 131 utilisé en médecine a une demi-vie de 8 jours. Au bout de combien de jours son activité est-elle divisée par 8 ?",
+              "options": ["24 jours", "16 jours", "32 jours", "8 jours"],
+              "correctAnswers": [0],
+              "explanation": "Diviser l'activité par 8 (2³) nécessite 3 demi-vies : 3 * 8 jours = 24 jours."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur de la demi-vie du carbone 14 ?",
+              "options": [
+                "5730 ans",
+                "24 heures",
+                "4,5 milliards d'années",
+                "30 secondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La demi-vie du carbone 14 est d'environ 5730 ans, ce qui en fait un excellent chronomètre pour l'archéologie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la gestion de certains déchets nucléaires impose-t-elle un stockage géologique profond de très longue durée ?",
+              "options": [
+                "Parce qu'ils contiennent des radionucléides dont la demi-vie atteint des dizaines de milliers d'années",
+                "Parce que leur activité augmente spontanément au fil des siècles",
+                "Parce qu'ils attirent les météorites en surface",
+                "Parce qu'ils se transforment en gaz hautement corrosif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les déchets dits de haute activité à vie longue mettent des dizaines de milliers d'années à voir leur radioactivité chuter."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les propositions suivantes relatives à la demi-vie, lesquelles sont scientifiquement exactes ?",
+              "options": [
+                "Au bout d'une demi-vie, l'activité de l'échantillon est divisée par deux",
+                "La demi-vie est constante pour un isotope radioactif donné",
+                "Au bout de deux demi-vies, la totalité des atomes radioactifs a disparu",
+                "La demi-vie est égale à l'inverse de la masse du noyau"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'activité est divisée par 2 après chaque demi-vie, et t₁/₂ est une caractéristique constante du radionucléide."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Datation radiométrique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Sur quel phénomène repose la datation d'un vestige biologique par le carbone 14 ?",
+              "options": [
+                "La décroissance radioactive du carbone 14 non renouvelé après la mort de l'organisme",
+                "L'accumulation progressive de carbone 14 capté dans le sol après l'enfouissement",
+                "La transformation chimique du carbone 12 en diamant au fil du temps",
+                "L'évaporation complète du dioxyde de carbone des tissus morts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la mort de l'organisme, les échanges avec l'atmosphère cessent et le carbone 14 piégé décroît exponentiellement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi le rapport ¹⁴C / ¹²C reste-t-il approximativement constant chez un être vivant au cours de sa vie ?",
+              "options": [
+                "Parce qu'il échange continuellement du carbone avec son milieu par respiration et alimentation",
+                "Parce que le carbone 14 ne se désintègre jamais dans une cellule vivante",
+                "Parce que l'organisme produit son propre carbone 14 par synthèse cellulaire",
+                "Parce que les cellules expulsent le carbone radioactif vers l'extérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant qu'il vit, l'organisme maintient son rapport ¹⁴C/¹²C en équilibre avec le milieu grâce au métabolisme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la limite maximale d'ancienneté mesurable avec une bonne précision par le carbone 14 ?",
+              "options": [
+                "Environ 50 000 ans",
+                "Environ 1 000 ans",
+                "Environ 4,5 milliards d'années",
+                "Environ 100 millions d'années"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au-delà de 50 000 ans (environ 8 à 9 demi-vies), la quantité de carbone 14 restant devient trop infime pour être mesurée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle méthode radiométrique est adaptée pour dater des roches très anciennes de la Terre ou de la Lune ?",
+              "options": [
+                "La méthode uranium-plomb ou potassium-argon",
+                "La méthode au carbone 14",
+                "La méthode au glucose marqué",
+                "La méthode à l'iode 131"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'uranium 238 et le potassium 40 ont des demi-vies de plus d'un milliard d'années, idéales pour dater les roches."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel âge la datation radiométrique des météorites a-t-elle permis d'attribuer à la Terre et au système solaire ?",
+              "options": [
+                "Environ 4,5 milliards d'années",
+                "Environ 6 000 ans",
+                "Environ 65 millions d'années",
+                "Environ 13,8 milliards d'années"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clair Patterson a déterminé en 1953 un âge d'environ 4,55 milliards d'années pour la Terre grâce à la méthode uranium-plomb."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que doit-on impérativement connaître pour calculer l'âge d'un échantillon par datation radiométrique ?",
+              "options": [
+                "La demi-vie du radioélément et les proportions initiale et actuelle d'isotopes",
+                "Uniquement la masse brute de la roche trouvée sur le terrain",
+                "La température de surface du lieu de découverte",
+                "La vitesse d'érosion du vent local"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut connaître la loi de décroissance (demi-vie) ainsi que les teneurs isotopiques initiale et actuelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi ne peut-on pas dater directement un outil préhistorique en silex pur avec la méthode du carbone 14 ?",
+              "options": [
+                "Parce que le silex est une roche minérale qui ne contient pas de matière carbonée organique",
+                "Parce que le silex détruit instantanément les neutrons du carbone",
+                "Parce que le carbone 14 ne se désintègre pas dans les minéraux",
+                "Parce que la roche est trop radioactive pour être manipulée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le carbone 14 ne permet de dater que des matériaux d'origine organique (bois, os, charbon, cuir)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans la méthode potassium-argon (K-Ar), à quel moment l'horloge radiométrique est-elle mise à zéro ?",
+              "options": [
+                "Lors de la solidification de la lave qui emprisonne l'argon formé dans la roche",
+                "Lors de l'érosion sédimentaire par l'eau de pluie",
+                "Au moment où la roche est ramassée par le géologue",
+                "Lors de l'évaporation de l'eau interstitielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tant que la roche est en fusion, l'argon gazeux s'échappe ; le chronomètre démarre dès que la roche se solidifie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment le carbone 14 est-il produit en continu dans la haute atmosphère terrestre ?",
+              "options": [
+                "Par l'action des neutrons du rayonnement cosmique sur les noyaux d'azote 14",
+                "Par les rejets gazeux des éruptions volcaniques sous-marines",
+                "Par la photosynthèse des forêts équatoriales",
+                "Par la combustion des météorites dans la thermosphère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les neutrons cosmiques percutent l'azote 14 de l'air : ¹⁴₇N + ¹₀n -> ¹⁴₆C + ¹₁p."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels objets ou vestiges peuvent être datés à l'aide de la méthode du carbone 14 ?",
+              "options": [
+                "Un fragment de charbon de bois découvert dans une grotte préhistorique",
+                "Un os de bison fossilisé datant de 20 000 ans",
+                "Un galet de basalte vieux de 250 millions d'années",
+                "Une pièce de monnaie en bronze antique sans trace organique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le carbone 14 date la matière organique morte de moins de 50 000 ans (charbon, os), pas les minéraux ou métaux anciens."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Réactions nucléaires provoquées : fission et fusion",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi consiste la fission nucléaire ?",
+              "options": [
+                "La scission d'un noyau lourd en deux noyaux plus légers sous l'impact d'un neutron",
+                "L'union de deux noyaux légers pour former un noyau plus lourd",
+                "La décomposition d'une molécule d'eau sous l'effet de l'électricité",
+                "L'émission d'un électron par un noyau radioactif au repos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fission est la rupture d'un noyau lourd instable en deux fragments plus légers, déclenchée par un neutron."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel isotope de l'uranium est fissile par des neutrons lents dans les réacteurs nucléaires civils ?",
+              "options": [
+                "L'uranium 235",
+                "L'uranium 238",
+                "L'uranium 234",
+                "L'uranium 239"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'uranium 235 est le seul isotope naturel fissile par des neutrons thermiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la fission de l'uranium 235 peut-elle entraîner une réaction en chaîne auto-entretenue ?",
+              "options": [
+                "Parce qu'elle libère deux ou trois neutrons capables de provoquer d'autres fissions",
+                "Parce que les produits formés explosent au contact de l'air",
+                "Parce que la réaction produit de l'oxygène qui active la combustion",
+                "Parce que la masse des réactifs augmente au cours de la réaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque fission libère des neutrons supplémentaires qui peuvent à leur tour induire de nouvelles fissions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quoi consiste la fusion nucléaire ?",
+              "options": [
+                "L'union de deux noyaux atomiques légers pour former un noyau plus lourd",
+                "La désintégration spontanée d'un noyau en particules alpha",
+                "Le passage de l'état solide à l'état liquide sous l'effet de la chaleur",
+                "La capture d'un électron périphérique par le noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion nucléaire réunit deux noyaux légers (comme le deutérium et le tritium) pour former un noyau plus lourd."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle réaction de fusion est principalement étudiée pour les futurs réacteurs thermonucléaires (ex: projet ITER) ?",
+              "options": [
+                "La fusion entre un noyau de deutérium et un noyau de tritium",
+                "La fusion entre deux noyaux d'uranium 238",
+                "La fusion entre un noyau de carbone et un noyau de plomb",
+                "La fusion entre un proton et un électron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réaction deutérium-tritium (²H + ³H -> ⁴He + n) est la plus accessible car elle nécessite la température d'ignition la plus basse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Où se produisent naturellement les réactions de fusion nucléaire à l'origine de l'énergie rayonnée ?",
+              "options": [
+                "Au cœur des étoiles, notamment au centre du Soleil",
+                "Dans le manteau supérieur de la Terre",
+                "Dans l'atmosphère lors des orages violents",
+                "Au fond des fosses océaniques profondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est au cœur des étoiles que la pression et la température extrêmes permettent la fusion de l'hydrogène en hélium."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la fusion nécessite-t-elle des températures de plusieurs dizaines de millions de degrés ?",
+              "options": [
+                "Pour conférer aux noyaux une énergie cinétique suffisante pour vaincre leur répulsion électrostatique",
+                "Pour casser les neutrons en petites particules instables",
+                "Pour permettre aux électrons de fusionner avec les protons",
+                "Pour évaporer le métal d'enceinte du réacteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux noyaux étant chargés positivement, ils se repoussent ; il faut une grande vitesse thermique pour franchir cette barrière."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le rôle des barres de contrôle (en bore ou en cadmium) dans le cœur d'un réacteur nucléaire de fission ?",
+              "options": [
+                "Absorber une partie des neutrons pour réguler ou arrêter la réaction en chaîne",
+                "Accélérer les neutrons pour augmenter la production thermique",
+                "Filtrer les impuretés chimiques de l'eau sous pression",
+                "Refroidir directement le combustible par conduction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bore et le cadmium sont de puissants absorbants de neutrons qui permettent de contrôler la puissance du réacteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À masse égale de réactifs, quel processus libère le plus d'énergie ?",
+              "options": [
+                "La fusion nucléaire",
+                "La fission nucléaire",
+                "La combustion du pétrole",
+                "La combustion du charbon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fusion libère environ 4 fois plus d'énergie par unité de masse que la fission, et des millions de fois plus qu'une combustion."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les propositions suivantes, lesquelles s'appliquent à la fission nucléaire exploitée dans les centrales actuelles ?",
+              "options": [
+                "Elle utilise des noyaux très lourds comme l'uranium 235",
+                "Elle génère des noyaux fils radioactifs appelés produits de fission",
+                "Elle assemble des noyaux d'hydrogène pour former de l'hélium",
+                "Elle ne nécessite aucun système de refroidissement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La fission casse des noyaux lourds comme ²³⁵U et engendre des déchets radioactifs (produits de fission)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Énergie nucléaire et équivalence masse-énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle formule universelle établie par Albert Einstein en 1905 relie la masse et l'énergie au repos ?",
+              "options": [
+                "E = m * c²",
+                "E = 1/2 * m * v²",
+                "E = m * g * h",
+                "E = h * ν"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La célèbre relation d'équivalence masse-énergie d'Einstein s'écrit E = m * c²."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la formule E = m * c², que représente la lettre c ?",
+              "options": [
+                "La vitesse de la lumière dans le vide (environ 3 * 10⁸ m/s)",
+                "La capacité thermique massique de l'eau",
+                "La constante gravitationnelle universelle",
+                "La charge électrique du proton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "c désigne la célérité de la lumière dans le vide, qui vaut approximativement 3,00 * 10⁸ m/s."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le défaut de masse Δm d'un noyau atomique stable constitué de Z protons et N neutrons ?",
+              "options": [
+                "La différence positive : [Z * m_p + N * m_n] - m_noyau",
+                "La masse totale du noyau divisée par le nombre A de nucléons",
+                "La perte de masse due au frottement des électrons en orbite",
+                "La différence entre la masse de deux isotopes du même élément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le défaut de masse est la différence entre la masse des nucléons isolés et la masse réelle du noyau lié."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi la masse d'un noyau lié est-elle toujours inférieure à la somme des masses de ses nucléons séparés ?",
+              "options": [
+                "Parce qu'une partie de la masse a été libérée sous forme d'énergie lors de la formation du noyau",
+                "Parce que les protons perdent leur charge électrique dans le noyau",
+                "Parce que les neutrons se compriment et rétrécissent",
+                "Parce que les forces magnétiques annulent la masse au repos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cohésion du noyau libère de l'énergie de liaison ; selon E = mc², cette énergie correspond à une diminution de masse."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'énergie de liaison E_l d'un noyau atomique ?",
+              "options": [
+                "L'énergie minimale qu'il faut fournir au noyau au repos pour le dissocier en ses nucléons isolés",
+                "L'énergie cinétique totale des électrons tournant autour du noyau",
+                "L'énergie produite lorsqu'un neutron se transforme en proton",
+                "L'énergie rayonnée par un atome lors de son ionisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie de liaison E_l = Δm * c² est l'énergie requise pour séparer totalement les nucléons d'un noyau au repos."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lors d'une réaction de fission ou de fusion qui libère de l'énergie, que constate-t-on sur la masse totale ?",
+              "options": [
+                "La masse des produits est légèrement inférieure à la masse des réactifs",
+                "La masse des produits est strictement supérieure à celle des réactifs",
+                "La masse reste parfaitement constante au gramme près sans aucune variation",
+                "La masse totale est exactement doublée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie libérée correspond à une perte de masse : ΔE = Δm * c² avec une masse finale inférieure à la masse initiale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle unité d'énergie est la plus pratique et usuelle à l'échelle de la physique nucléaire ?",
+              "options": [
+                "Le mégaélectron-volt (MeV)",
+                "Le kilowatt-heure (kWh)",
+                "La kilocalorie",
+                "Le newton-mètre cube"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mégaélectron-volt (1 MeV = 10⁶ eV = 1,602 * 10⁻¹³ J) est l'unité standard pour les énergies de liaison nucléaires."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de 1 électron-volt (1 eV) exprimée en joules ?",
+              "options": [
+                "1,602 * 10⁻¹⁹ J",
+                "9,109 * 10⁻³¹ J",
+                "3,000 * 10⁸ J",
+                "6,022 * 10²³ J"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, 1 eV correspond à l'énergie acquise par un électron accéléré sous 1 volt : 1 eV ≈ 1,602 * 10⁻¹⁹ J."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle courbe célèbre représente l'opposé de l'énergie de liaison par nucléon en fonction du nombre de masse A ?",
+              "options": [
+                "La courbe d'Aston",
+                "Le diagramme de Hertzsprung-Russell",
+                "La courbe de Gauss",
+                "La droite de Beer-Lambert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La courbe d'Aston trace -E_l/A en fonction de A ; elle met en évidence que le fer 56 est le noyau le plus stable."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propositions décrivent correctement la relation d'équivalence masse-énergie en physique nucléaire ?",
+              "options": [
+                "Une diminution de la masse d'un système correspond à une libération d'énergie vers l'extérieur",
+                "L'énergie de liaison d'un noyau est directement proportionnelle à son défaut de masse",
+                "La vitesse de la lumière c dépend de la nature des noyaux qui réagissent",
+                "La masse et l'énergie sont deux grandeurs totalement indépendantes sans aucune conversion possible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La formule d'Einstein implique qu'une perte de masse se traduit par une libération d'énergie selon E = Δm * c²."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Effets biologiques et radioprotection",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pourquoi qualifie-t-on certains rayonnements (alpha, bêta, gamma, X) de rayonnements ionisants ?",
+              "options": [
+                "Parce qu'ils possèdent une énergie suffisante pour arracher des électrons aux atomes de la matière traversée",
+                "Parce qu'ils colorent les tissus biologiques en jaune fluo",
+                "Parce qu'ils refroidissent brusquement le milieu liquide cellulaire",
+                "Parce qu'ils diffusent des ions positifs dans l'air sans toucher les atomes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un rayonnement ionisant transporte assez d'énergie pour éjecter des électrons atomiques et créer des ions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle unité du Système international mesure la dose efficace, reflétant le risque biologique pour l'organisme ?",
+              "options": [
+                "Le sievert (Sv)",
+                "Le becquerel (Bq)",
+                "Le gray (Gy) uniquement",
+                "Le watt par mètre carré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sievert (Sv) prend en compte la nature du rayonnement et la sensibilité des tissus pour évaluer le risque biologique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle molécule essentielle présente au cœur des cellules vivantes est la cible critique des rayonnements ionisants ?",
+              "options": [
+                "L'ADN (acide désoxyribonucléique)",
+                "Le glucose dissous dans le sérum",
+                "L'hémoglobine des globules rouges",
+                "Le cholestérol membranaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les altérations ou cassures de l'ADN provoquées par les rayonnements peuvent entraîner mutations ou mort cellulaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle technique médicale utilise des faisceaux de rayonnements ionisants ciblés pour détruire des cellules cancéreuses ?",
+              "options": [
+                "La radiothérapie",
+                "L'échographie Doppler",
+                "L'IRM fonctionnelle sans rayonnement",
+                "L'électroencéphalographie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La radiothérapie détruit les cellules tumorales en ciblant précisément leur ADN avec des rayonnements ionisants."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quels sont les trois principes essentiels de la radioprotection pour limiter l'exposition à une source externe ?",
+              "options": [
+                "Le temps (réduire), la distance (augmenter) et les écrans de protection (interposer)",
+                "La température, la pression atmosphérique et le taux d'humidité",
+                "Le régime alimentaire, le sport quotidien et le port de lunettes solaires",
+                "L'éclairage fluorescent, la vitesse de marche et le lavage des mains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour se protéger : réduire la durée d'exposition, maximiser la distance à la source et interposer des écrans adaptés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel gaz radioactif naturel, issu de la désintégration de l'uranium des roches granitiques, s'accumule dans les habitations mal ventilées ?",
+              "options": [
+                "Le radon 222",
+                "Le méthane",
+                "Le dioxyde d'azote",
+                "L'argon 40"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le radon est un gaz noble radioactif émetteur alpha qui provient des sols granitiques et s'infiltre dans les bâtiments."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un effet biologique qui apparaît obligatoirement au-delà d'un seuil de dose élevé (ex : brûlure cutanée) ?",
+              "options": [
+                "Un effet déterministe",
+                "Un effet stochastique ou probabiliste",
+                "Un effet psychosomatique",
+                "Un effet de résonance magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les effets déterministes apparaissent à coup sûr dès qu'un seuil de dose est dépassé, et leur gravité augmente avec la dose."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un effet à long terme (comme un cancer radio-induit) dont la probabilité d'apparition augmente avec la dose sans seuil certain ?",
+              "options": [
+                "Un effet stochastique (ou aléatoire)",
+                "Un effet déterministe immédiat",
+                "Un effet d'ionisation permanente",
+                "Un effet thermique réversible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les effets stochastiques sont aléatoires : c'est la probabilité de survenue (et non la gravité) qui croît avec la dose reçue."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel appareil portatif classique permet de détecter la présence de rayonnements ionisants en émettant des impulsions sonores ?",
+              "options": [
+                "Le compteur Geiger-Müller",
+                "Le galvanomètre thermique",
+                "L'oscilloscope cathodique",
+                "Le pH-mètre différentiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le compteur Geiger-Müller détecte l'ionisation d'un gaz sous l'effet de particules ou de photons ionisants."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les mesures suivantes, lesquelles permettent de réduire l'exposition d'un opérateur lors de manipulations radioactives ?",
+              "options": [
+                "Réduire au minimum la durée de présence à proximité de la source",
+                "Augmenter la distance séparant l'opérateur de la source",
+                "Interposer un écran protecteur adapté (par exemple en plomb pour le rayonnement gamma)",
+                "Augmenter la luminosité de la pièce pour neutraliser les photons"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les trois règles fondamentales de la radioprotection externe sont le temps, la distance et l'utilisation d'écrans adaptés."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Lumière et spectre",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La nature de la lumière : onde et photon",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de la vitesse de propagation de la lumière dans le vide ?",
+              "options": [
+                "Environ 300 000 km/s (soit 3,00 * 10⁸ m/s)",
+                "Environ 340 m/s",
+                "Environ 150 000 km/s",
+                "Environ 3 000 km/s"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La célérité de la lumière dans le vide est une constante fondamentale qui vaut environ 3,00 * 10⁸ m/s."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le quantum d'énergie associé au rayonnement électromagnétique ?",
+              "options": ["Le photon", "L'électron", "Le neutron", "Le phonon"],
+              "correctAnswers": [0],
+              "explanation": "Le photon est le quantum de lumière transportant une quantité discrète d'énergie électromagnétique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel concept de la physique moderne réconcilie le comportement ondulatoire et corpusculaire de la lumière ?",
+              "options": [
+                "La dualité onde-corpuscule",
+                "La réfraction totale",
+                "La diffraction continue",
+                "Le principe d'inertie galiléen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dualité onde-corpuscule stipule que la lumière possède simultanément des propriétés d'onde et de particule."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle relation mathématique relie la longueur d'onde dans le vide λ, la célérité c et la fréquence ν d'une onde lumineuse ?",
+              "options": ["λ = c / ν", "λ = c * ν", "λ = ν / c", "λ = c² * ν"],
+              "correctAnswers": [0],
+              "explanation": "La relation fondamentale est c = λ * ν, ce qui équivaut à λ = c / ν."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la charge électrique portée par un photon ?",
+              "options": [
+                "Nulle (charge 0)",
+                "Positive (+1e)",
+                "Négative (-1e)",
+                "Variable selon sa fréquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le photon est une particule neutre de charge électrique rigoureusement nulle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la masse au repos d'un photon dans le vide ?",
+              "options": [
+                "Nulle",
+                "Égale à la masse d'un électron",
+                "Égale à la masse d'un proton",
+                "Variable selon son énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En physique relativiste, le photon se déplace à la vitesse c et possède une masse au repos nulle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel physicien a introduit en 1900 l'hypothèse selon laquelle les échanges d'énergie lumineuse s'effectuent par quanta discrets ?",
+              "options": [
+                "Max Planck",
+                "Isaac Newton",
+                "Galilée",
+                "René Descartes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Max Planck a formulé en 1900 l'hypothèse des quanta pour expliquer le spectre d'émission du corps noir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel phénomène expérimental Albert Einstein a-t-il expliqué en 1905 en confirmant l'existence du photon ?",
+              "options": [
+                "L'effet photoélectrique",
+                "La réfraction de la lumière par un prisme",
+                "Les interférences des fentes d'Young",
+                "La polarisation par réflexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Einstein a montré que l'effet photoélectrique s'explique par l'absorption individuelle de photons d'énergie h*ν."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans quel intervalle approximatif de longueurs d'onde se situe la lumière visible par l'œil humain ?",
+              "options": [
+                "De 400 nm à 750 nm environ",
+                "De 1 nm à 100 nm",
+                "De 1 µm à 1 mm",
+                "De 10 cm à 1 m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le domaine visible s'étend environ du violet (400 nm) au rouge lointain (750-800 nm)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes relatives à la lumière, lesquelles sont exactes ?",
+              "options": [
+                "La lumière peut se propager dans le vide absolu",
+                "La lumière transporte de l'énergie sans transporter de matière",
+                "La vitesse de la lumière dans le vide dépend de l'intensité de la source",
+                "Les photons visibles sont des particules chargées positivement"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La lumière se propage dans le vide et transporte de l'énergie sous forme de photons neutres à vitesse invariante c."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Le spectre électromagnétique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel domaine du spectre électromagnétique possède les plus grandes longueurs d'onde (pouvant atteindre plusieurs kilomètres) ?",
+              "options": [
+                "Les ondes radio",
+                "Les rayons X",
+                "Les rayons gamma",
+                "Le rayonnement ultraviolet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ondes radio ont les longueurs d'onde les plus grandes du spectre (de quelques millimètres à plusieurs kilomètres)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel domaine d'ondes électromagnétiques correspond aux photons les plus énergétiques du spectre ?",
+              "options": [
+                "Les rayons gamma (γ)",
+                "Les micro-ondes",
+                "Les infrarouges",
+                "La lumière visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayons gamma possèdent les fréquences les plus élevées et donc les photons les plus énergétiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel domaine spectral est immédiatement adjacent au domaine visible au-delà du rouge (longueurs d'onde supérieures à 750 nm) ?",
+              "options": [
+                "L'infrarouge (IR)",
+                "L'ultraviolet (UV)",
+                "Les rayons X",
+                "Les rayons gamma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rayonnement infrarouge se situe immédiatement au-delà du rouge du spectre visible (λ > 750 nm)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel domaine spectral est immédiatement adjacent au domaine visible en deçà du violet (longueurs d'onde inférieures à 400 nm) ?",
+              "options": [
+                "L'ultraviolet (UV)",
+                "L'infrarouge (IR)",
+                "Les micro-ondes",
+                "Les ondes hertziennes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ultraviolet succède au violet pour les longueurs d'onde plus courtes (λ < 400 nm)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle relation générale existe entre la longueur d'onde et la fréquence d'une onde électromagnétique ?",
+              "options": [
+                "Plus la longueur d'onde est courte, plus la fréquence est élevée",
+                "Plus la longueur d'onde est courte, plus la fréquence est basse",
+                "La fréquence est indépendante de la longueur d'onde",
+                "La fréquence est proportionnelle au carré de la longueur d'onde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme c = λ * ν, la longueur d'onde et la fréquence sont inversement proportionnelles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel rayonnement électromagnétique est couramment utilisé en imagerie médicale pour traverser les tissus mous et révéler le squelette ?",
+              "options": [
+                "Les rayons X",
+                "Les ondes radio FM",
+                "Les micro-ondes",
+                "Le rayonnement infrarouge lointain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayons X sont absorbés préférentiellement par les tissus denses comme les os, ce qui permet la radiographie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel domaine du spectre est exploité pour les réseaux Wi-Fi et les appareils de cuisson à micro-ondes ?",
+              "options": [
+                "Les micro-ondes",
+                "Les rayons gamma",
+                "Les ultraviolets C",
+                "Les rayons X mous"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les micro-ondes (fréquence typique de 2,4 GHz) font vibrer les molécules d'eau pour chauffer les aliments."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans le spectre de la lumière visible, quelle couleur correspond à la longueur d'onde la plus courte et à l'énergie la plus élevée ?",
+              "options": ["Le violet", "Le rouge", "Le vert", "Le jaune"],
+              "correctAnswers": [0],
+              "explanation": "Le violet (vers 400 nm) a la fréquence la plus haute du visible et transporte les photons les plus énergétiques."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le bon ordre des rayonnements électromagnétiques par énergie photonique croissante ?",
+              "options": [
+                "Ondes radio < Infrarouge < Visible < Ultraviolet < Rayons X < Rayons gamma",
+                "Rayons gamma < Rayons X < Ultraviolet < Visible < Infrarouge < Ondes radio",
+                "Visible < Ondes radio < Infrarouge < Ultraviolet < Rayons X",
+                "Infrarouge < Visible < Ondes radio < Rayons gamma < Rayons X"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie augmente avec la fréquence : des ondes radio (très faible énergie) aux rayons gamma (extrêmement énergétiques)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels rayonnements parmi les suivants sont totalement invisibles pour l'œil humain ?",
+              "options": [
+                "Les rayons ultraviolets",
+                "Les rayons infrarouges",
+                "Les rayons X",
+                "La lumière verte de longueur d'onde 530 nm"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'œil humain ne perçoit que la bande visible (400 à 750 nm) ; UV, IR et rayons X sont invisibles."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Énergie du photon et quantification",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle relation mathématique donne l'énergie E d'un photon en fonction de sa fréquence ν ?",
+              "options": [
+                "E = h * ν",
+                "E = h / ν",
+                "E = 1/2 * h * ν²",
+                "E = h * c * ν"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule de Planck-Einstein est E = h * ν = h * c / λ."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans l'expression E = h * ν, que représente la constante h ?",
+              "options": [
+                "La constante de Planck",
+                "La constante de Boltzmann",
+                "La constante gravitationnelle",
+                "La constante de Coulomb"
+              ],
+              "correctAnswers": [0],
+              "explanation": "h est la constante de Planck, dont la valeur est d'environ 6,63 * 10⁻³⁴ J·s."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de la constante de Planck h dans le Système international ?",
+              "options": [
+                "Le joule-seconde (J·s)",
+                "Le joule par seconde (J/s)",
+                "Le watt-seconde (W·s)",
+                "Le mètre par seconde (m/s)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie E étant en joules et la fréquence ν en s⁻¹, la constante h s'exprime en J·s."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si la fréquence d'une onde lumineuse est multipliée par deux, que devient l'énergie de chaque photon ?",
+              "options": [
+                "Elle est doublée",
+                "Elle est divisée par deux",
+                "Elle est multipliée par quatre",
+                "Elle reste rigoureusement inchangée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme E = h * ν, l'énergie du photon est directement proportionnelle à sa fréquence."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Entre un photon de lumière bleue (450 nm) et un photon de lumière rouge (700 nm), lequel est le plus énergétique ?",
+              "options": [
+                "Le photon de lumière bleue",
+                "Le photon de lumière rouge",
+                "Ils possèdent exactement la même énergie",
+                "Cela dépend de la puissance de la lampe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque E = h*c/λ, plus la longueur d'onde est petite, plus l'énergie du photon est grande. Le bleu est plus énergétique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'affirmation 'l'énergie lumineuse est quantifiée' ?",
+              "options": [
+                "L'énergie est émise et absorbée sous forme de paquets discrets élémentaires appelés photons",
+                "L'énergie varie de façon strictement continue sans palier",
+                "La lumière transporte une quantité infinie d'énergie dans chaque rayon",
+                "L'énergie s'annule complètement lors d'une réflexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La quantification de l'énergie signifie qu'elle ne peut s'échanger que par multiples entiers du quantum h*ν."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment convertit-on une énergie exprimée en joules en électron-volts (eV) ?",
+              "options": [
+                "On divise la valeur en joules par 1,602 * 10⁻¹⁹",
+                "On multiplie la valeur en joules par 1,602 * 10⁻¹⁹",
+                "On soustrait 1,602 * 10⁻¹⁹ à la valeur en joules",
+                "On élève la valeur en joules au carré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque 1 eV = 1,602 * 10⁻¹⁹ J, l'énergie en eV vaut E(J) / (1,602 * 10⁻¹⁹)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur de l'énergie d'un photon dans le domaine visible ?",
+              "options": [
+                "De 1,6 eV à 3,1 eV environ",
+                "De 100 eV à 500 eV",
+                "Environ 0,001 eV",
+                "Plus de 1 000 000 eV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les photons visibles (400 à 750 nm) transportent entre environ 1,7 eV (rouge) et 3,1 eV (violet)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lorsque la longueur d'onde λ d'un rayonnement augmente, comment varie l'énergie de ses photons ?",
+              "options": [
+                "Elle diminue proportionnellement à 1/λ",
+                "Elle augmente proportionnellement à λ",
+                "Elle reste parfaitement constante",
+                "Elle oscille entre zéro et l'infini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après la formule E = h*c/λ, l'énergie du photon est inversement proportionnelle à sa longueur d'onde."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes sur l'énergie du photon, lesquelles sont scientifiquement exactes ?",
+              "options": [
+                "L'énergie d'un photon est proportionnelle à sa fréquence ν",
+                "Un photon de rayon X transporte beaucoup plus d'énergie qu'un photon infrarouge",
+                "Un faisceau lumineux très intense est composé de photons ayant chacun une vitesse supérieure à c",
+                "Tous les photons du spectre électromagnétique ont rigoureusement la même fréquence"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "E = h*ν : l'énergie croît avec la fréquence (donc rayon X > IR). Tous les photons vont à la vitesse c dans le vide."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le modèle de Bohr et les niveaux d'énergie atomiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans le modèle quantique de l'atome, comment se caractérisent les niveaux d'énergie des électrons ?",
+              "options": [
+                "Ils sont discrets et discontinus (quantifiés)",
+                "Ils varient de façon parfaitement continue",
+                "Ils prennent n'importe quelle valeur positive arbitraire",
+                "Ils sont tous égaux à zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un atome, les électrons ne peuvent occuper que certains niveaux d'énergie discrets bien définis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel nom donne-t-on au niveau d'énergie le plus bas et le plus stable d'un atome ?",
+              "options": [
+                "L'état fondamental",
+                "L'état excité",
+                "L'état ionisé",
+                "L'état critique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'état fondamental est l'état d'énergie minimale d'un système atomique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on un état d'un atome d'énergie supérieure à celle de son état fondamental ?",
+              "options": [
+                "Un état excité",
+                "Un état superfluide",
+                "Un état ionique neutre",
+                "Un état métastable permanent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsqu'un atome absorbe de l'énergie, un électron monte sur un niveau plus élevé : l'atome est dans un état excité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se produit-il lorsqu'un atome reçoit une énergie supérieure à son énergie d'ionisation ?",
+              "options": [
+                "L'électron est définitivement éjecté de l'atome, qui devient un ion positif",
+                "Le noyau atomique fusionne avec les électrons restants",
+                "L'atome se désintègre par radioactivité alpha",
+                "L'atome cesse d'interagir avec la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie d'ionisation est le seuil au-delà duquel l'électron n'est plus lié et s'échappe de l'atome."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Par convention, quelle valeur d'énergie attribue-t-on souvent à l'état ionisé où l'électron est libre et au repos (n -> infini) ?",
+              "options": [
+                "0 eV",
+                "-13,6 eV",
+                "+100 eV",
+                "Une valeur infinie positive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par convention, l'état d'ionisation libre correspond à E = 0 eV, ce qui rend négatifs les états liés de l'atome."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour l'atome d'hydrogène, quelle est la valeur de l'énergie de l'état fondamental (n = 1) selon cette convention ?",
+              "options": ["-13,6 eV", "0 eV", "-3,4 eV", "+13,6 eV"],
+              "correctAnswers": [0],
+              "explanation": "L'état fondamental de l'hydrogène est à -13,6 eV, ce qui signifie qu'il faut fournir 13,6 eV pour l'ioniser."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un diagramme de niveaux d'énergie atomiques ?",
+              "options": [
+                "Une échelle graduée verticale représentant les valeurs d'énergie possibles de l'atome par des segments horizontaux",
+                "Un graphique montrant l'orbite circulaire des planètes",
+                "Un tableau donnant la masse molaire des isotopes",
+                "Une courbe sinusoïdale de la charge du noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce diagramme représente graphiquement les différents paliers d'énergie quantifiée accessibles à l'atome."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un électron peut-il se trouver de façon stable sur un niveau d'énergie situé entre deux niveaux quantifiés permis ?",
+              "options": [
+                "Non, seules les valeurs d'énergie quantifiées sont permises par la mécanique quantique",
+                "Oui, s'il se déplace très lentement",
+                "Oui, uniquement à haute température",
+                "Oui, dans tous les atomes sauf l'hydrogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La quantification interdit strictement toute énergie intermédiaire entre deux niveaux propres de l'atome."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les niveaux d'énergie constituent-ils une signature propre à chaque élément chimique ?",
+              "options": [
+                "Parce qu'ils dépendent de la charge nucléaire Z et des interactions électroniques propres à cet élément",
+                "Parce que tous les atomes d'une même ligne ont exactement le même spectre",
+                "Parce que chaque atome possède exactement trois niveaux d'énergie",
+                "Parce que les niveaux d'énergie changent selon la pression atmosphérique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque élément chimique possède une configuration électronique et un numéro atomique uniques, d'où un jeu de niveaux unique."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes, lesquelles décrivent fidèlement le modèle des niveaux d'énergie atomiques ?",
+              "options": [
+                "L'énergie de l'atome est quantifiée et ne prend que des valeurs discontinues",
+                "L'état fondamental correspond au niveau d'énergie le plus bas",
+                "Un atome dans un état excité a une énergie inférieure à son état fondamental",
+                "L'atome peut absorber un photon de n'importe quelle énergie sans s'ioniser"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'énergie est quantifiée en niveaux discrets et l'état fondamental correspond à l'énergie minimale."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Spectres de raies d'émission",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment obtient-on expérimentalement un spectre de raies d'émission ?",
+              "options": [
+                "En excitant un gaz atomique sous basse pression (par décharge électrique ou chaleur) et en dispersant la lumière émise",
+                "En éclairant un solide froid avec une lampe torche",
+                "En filtrant la lumière blanche à travers un verre teinté",
+                "En condensant un gaz chaud en liquide sans émettre de lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un gaz atomique chaud sous basse pression émet un spectre discontinu formé de raies colorées caractéristiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quel phénomène microscopique correspond l'émission d'un photon par un atome ?",
+              "options": [
+                "À la transition d'un électron d'un niveau d'énergie supérieur vers un niveau inférieur",
+                "À l'expulsion d'un proton hors du noyau atomique",
+                "À l'absorption d'une onde thermique",
+                "À l'accélération continue de la rotation de l'atome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsqu'un atome se désexcite, son électron descend vers un niveau d'énergie plus bas en émettant un photon."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle relation donne l'énergie du photon émis lors d'une transition entre un niveau initial E_i et un niveau final E_f (E_i > E_f) ?",
+              "options": [
+                "E_photon = E_i - E_f",
+                "E_photon = E_i + E_f",
+                "E_photon = E_f - E_i",
+                "E_photon = E_i * E_f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par conservation de l'énergie, l'énergie du photon émis est la différence positive E_photon = E_i - E_f."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'aspect visuel caractéristique d'un spectre de raies d'émission dispersé par un réseau ou un prisme ?",
+              "options": [
+                "Des raies fines colorées et lumineuses sur un fond entièrement sombre",
+                "Une bande continue contenant toutes les couleurs sans interruption",
+                "Des raies noires sombres sur un fond coloré continu",
+                "Un cercle blanc monochrome et uniforme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le spectre d'émission d'un gaz atomique est formé de raies lumineuses isolées sur fond noir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi les lampes d'éclairage public à vapeur de sodium émettent-elles une lumière jaune intense ?",
+              "options": [
+                "À cause de deux raies d'émission très intenses du sodium situées vers 589 nm",
+                "Parce que le sodium absorbe tout le spectre jaune",
+                "Parce que le tube de verre est peint en jaune",
+                "Parce que le sodium ne possède aucun électron dans son état excité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La désexcitation des atomes de sodium produit un doublet de raies d'émission très intenses à 589,0 nm et 589,6 nm (jaune)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que permet d'identifier l'ensemble des raies d'émission d'un gaz inconnu ?",
+              "options": [
+                "La composition chimique élémentaire du gaz",
+                "La forme géométrique de l'ampoule en verre",
+                "La masse totale du laboratoire",
+                "La date de fabrication de la lampe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les raies d'émission constituent une véritable carte d'identité spectrale qui révèle la présence d'un élément chimique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on le processus au cours duquel un atome excité retombe de lui-même vers un niveau plus bas sans intervention extérieure ?",
+              "options": [
+                "L'émission spontanée",
+                "L'émission stimulée",
+                "L'ionisation résonnante",
+                "L'effet Raman"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'émission spontanée est le retour naturel et aléatoire d'un atome excité vers un état d'énergie plus stable."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si la différence d'énergie entre deux niveaux atomiques est ΔE, comment calcule-t-on la longueur d'onde λ de la raie émise ?",
+              "options": [
+                "λ = (h * c) / ΔE",
+                "λ = ΔE / (h * c)",
+                "λ = (h * ΔE) / c",
+                "λ = c / (h * ΔE)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque ΔE = h * c / λ, on en déduit immédiatement λ = (h * c) / ΔE."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans quel domaine du spectre électromagnétique se situent les raies de la série de Balmer pour l'atome d'hydrogène ?",
+              "options": [
+                "Dans le domaine visible",
+                "Dans les rayons gamma",
+                "Exclusivement dans les ondes radio",
+                "Dans les rayons X durs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La série de Balmer correspond aux transitions vers le niveau n = 2, produisant des raies dans le visible (rouge, turquoise, bleu, violet)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les propositions suivantes, lesquelles caractérisent un spectre de raies d'émission atomique ?",
+              "options": [
+                "Il est composé de raies colorées discrètes sur fond noir",
+                "Chaque raie correspond à la désexcitation d'un électron entre deux niveaux d'énergie",
+                "Il est émis par un solide dense chauffé au rouge",
+                "Il présente un fond continu arc-en-ciel sans aucune interruption"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le spectre de raies est discontinu (fond noir) et provient des transitions électroniques discrètes dans un gaz atomique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Spectres de raies d'absorption",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment obtient-on expérimentalement un spectre de raies d'absorption ?",
+              "options": [
+                "En faisant traverser un gaz froid sous basse pression par une lumière blanche continue",
+                "En observant un solide incandescent sans aucun filtre",
+                "En chauffant du gaz à haute pression dans un four fermé",
+                "En réfléchissant de la lumière sur un miroir plan parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière blanche traverse un gaz froid : les atomes absorbent sélectivement certaines longueurs d'onde précises."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quel phénomène microscopique correspond l'absorption d'un photon par un atome ?",
+              "options": [
+                "À la transition d'un électron d'un niveau d'énergie inférieur vers un niveau supérieur",
+                "À la perte d'un neutron par le noyau atomique",
+                "À la désintégration spontanée de l'atome",
+                "À la condensation d'une molécule d'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atome absorbe un photon d'énergie adaptée pour faire passer un électron vers un niveau d'énergie plus élevé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle condition précise le photon incident doit-il impérativement remplir pour être absorbé par un atome ?",
+              "options": [
+                "Son énergie doit correspondre exactement à l'écart entre deux niveaux d'énergie de l'atome : E_photon = E_f - E_i",
+                "Son énergie doit être strictement supérieure à 10 000 eV",
+                "Sa longueur d'onde doit être égale au diamètre du noyau atomique",
+                "Sa vitesse doit être inférieure à la vitesse du son"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En raison de la quantification, l'énergie du photon incident doit coïncider rigoureusement avec la différence entre deux niveaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'aspect visuel caractéristique d'un spectre de raies d'absorption ?",
+              "options": [
+                "Des raies sombres (noires) superposées à un fond continu coloré",
+                "Des raies très brillantes sur un fond entièrement noir",
+                "Une bande blanche uniforme sans aucune raie",
+                "Une alternance régulière de carrés multicolores"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les photons absorbés manquent à l'arrivée : ils apparaissent sous la forme de raies noires sur le fond continu arc-en-ciel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que remarque-t-on si l'on compare le spectre d'émission et le spectre d'absorption d'un même élément chimique gazeux ?",
+              "options": [
+                "Les raies sombres d'absorption sont situées exactement aux mêmes longueurs d'onde que les raies lumineuses d'émission",
+                "Les raies d'absorption sont systématiquement décalées de 50 nm vers le rouge",
+                "Les deux spectres ne présentent aucune similitude",
+                "Le spectre d'absorption possède dix fois plus de raies que le spectre d'émission"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un élément ne peut absorber que les photons qu'il est capable d'émettre : les raies occupent exactement les mêmes positions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les raies sombres observées dans le spectre du rayonnement solaire dès le début du XIXe siècle ?",
+              "options": [
+                "Les raies de Fraunhofer",
+                "Les bandes de conduction",
+                "Les séries de Lyman",
+                "Les lignes de Balmer uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Joseph von Fraunhofer a cartographié en 1814 des centaines de raies sombres dans le spectre solaire, portant son nom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que permet d'établir l'analyse des raies d'absorption observées dans le spectre de la lumière des étoiles ?",
+              "options": [
+                "La composition chimique des gaz présents dans l'atmosphère stellaire",
+                "La masse totale exacte de l'étoile en kilogrammes",
+                "La forme sphérique de l'orbite de la Terre",
+                "L'âge précis en années de chaque photon détecté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les raies d'absorption révèlent directement les espèces chimiques qui absorbent la lumière dans la haute atmosphère de l'étoile."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que devient l'énergie absorbée par l'atome lors de l'absorption d'un photon de résonance ?",
+              "options": [
+                "Elle est stockée temporairement dans l'état excité, puis réémise dans toutes les directions lors de la désexcitation",
+                "Elle est définitivement anéantie sans laisser de trace",
+                "Elle est convertie en radioactivité gamma au cœur du noyau",
+                "Elle s'échappe sous forme de chaleur solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atome excité se désexcite rapidement en réémettant un photon dans une direction aléatoire, d'où l'assombrissement dans l'axe d'observation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi un photon d'énergie 2,5 eV n'est-il pas absorbé par un atome d'hydrogène dans son état fondamental (-13,6 eV) ?",
+              "options": [
+                "Parce qu'aucun niveau d'énergie excité de l'hydrogène ne se trouve à -13,6 + 2,5 = -11,1 eV",
+                "Parce que les photons visibles ne peuvent jamais interagir avec l'hydrogène",
+                "Parce que l'hydrogène est un gaz transparent qui n'absorbe aucune onde",
+                "Parce que l'énergie du photon est trop forte et détruit l'atome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le premier niveau excité de l'hydrogène est à -3,4 eV (écart de 10,2 eV) : 2,5 eV ne correspond à aucune transition permise."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes, lesquelles sont vraies au sujet des spectres de raies d'absorption ?",
+              "options": [
+                "Ils apparaissent sous la forme de raies noires sur un fond coloré continu",
+                "Ils permettent d'identifier les éléments chimiques traversés par la lumière",
+                "Ils sont émis directement par un filament d'ampoule sans aucun gaz traversé",
+                "Les raies noires correspondent à des longueurs d'onde qui ne sont jamais réémises nulle part"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les spectres d'absorption sont formés de raies sombres sur fond continu et servent de carte d'identité chimique des gaz traversés."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Rayonnement thermique et spectre continu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel type de spectre émet un corps chaud et dense (solide, liquide ou gaz sous haute pression) ?",
+              "options": [
+                "Un spectre continu d'origine thermique",
+                "Un spectre de raies fines isolées",
+                "Un spectre entièrement noir sans lumière",
+                "Une onde monochromatique pure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matière dense et chaude émet un rayonnement thermique dont le spectre est continu (toutes les longueurs d'onde sont présentes)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En physique, qu'appelle-t-on un 'corps noir' idéal ?",
+              "options": [
+                "Un modèle d'objet qui absorbe tous les rayonnements électromagnétiques incidents et dont l'émission ne dépend que de sa température",
+                "Un objet peint en noir mat qui ne rayonne absolument aucune énergie",
+                "Un trou noir géant au centre d'une galaxie",
+                "Une boîte métallique hermétique opaque à la radioactivité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le corps noir est un émetteur thermique idéal dont le spectre d'émission ne dépend que de sa température thermodynamique T."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment évolue le spectre d'émission d'un corps chaud lorsque sa température augmente ?",
+              "options": [
+                "Le pic d'émission se déplace vers les plus courtes longueurs d'onde et la puissance émise augmente",
+                "Le pic d'émission se déplace vers les grandes longueurs d'onde",
+                "La lumière devient de plus en plus rouge sombre",
+                "La puissance totale rayonnée diminue progressivement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand T augmente, le maximum d'émission glisse vers les courtes longueurs d'onde (vers le bleu) et l'énergie émise augmente fortement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle loi physique relie la longueur d'onde du maximum d'émission λ_max d'un corps noir à sa température absolue T ?",
+              "options": [
+                "La loi du déplacement de Wien : λ_max * T = constante",
+                "La loi de Beer-Lambert",
+                "La loi d'Ohm",
+                "La loi de Snell-Descartes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de Wien énonce que le produit λ_max * T est constant : λ_max * T ≈ 2,898 * 10⁻³ m·K."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans la loi de Wien λ_max * T = 2,898 * 10⁻³ m·K, en quelle unité doit obligatoirement être exprimée la température T ?",
+              "options": [
+                "En kelvins (K)",
+                "En degrés Celsius (°C)",
+                "En degrés Fahrenheit (°F)",
+                "En joules (J)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température doit impérativement être exprimée en kelvins (K) dans toutes les lois de rayonnement thermique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment convertit-on une température de 27 °C en kelvins (K) ?",
+              "options": [
+                "T(K) = 27 + 273,15 ≈ 300 K",
+                "T(K) = 27 - 273,15 ≈ -246 K",
+                "T(K) = 27 * 273,15",
+                "T(K) = 27 / 273,15"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conversion entre Celsius et Kelvin est donnée par T(K) = θ(°C) + 273,15."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si la température absolue d'un corps incandescent est doublée, que devient la longueur d'onde de son pic d'émission λ_max ?",
+              "options": [
+                "Elle est divisée par deux",
+                "Elle est multipliée par deux",
+                "Elle est multipliée par quatre",
+                "Elle reste rigoureusement inchangée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après la loi de Wien λ_max = C / T, si T double, λ_max est divisée par deux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle loi stipule que la puissance totale rayonnée par mètre carré par un corps noir est proportionnelle à T⁴ ?",
+              "options": [
+                "La loi de Stefan-Boltzmann",
+                "La loi de gravitation de Newton",
+                "La loi de Kepler",
+                "La loi de Coulomb"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de Stefan-Boltzmann s'écrit P/S = σ * T⁴, où σ est la constante de Stefan-Boltzmann."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la couleur apparente d'une étoile dont la surface est particulièrement chaude (plus de 20 000 K) ?",
+              "options": ["Bleutée", "Rougeâtre", "Jaune pâle", "Verte fluo"],
+              "correctAnswers": [0],
+              "explanation": "Les étoiles les plus chaudes ont un pic d'émission dans l'ultraviolet et rayonnent beaucoup dans le bleu (ex: Rigel)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les affirmations suivantes relatives au rayonnement thermique, lesquelles sont scientifiquement exactes ?",
+              "options": [
+                "Un corps dense chauffé émet un spectre lumineux continu",
+                "Plus la température d'un corps est élevée, plus sa longueur d'onde de pic d'émission est courte",
+                "Le corps humain à 37 °C n'émet absolument aucun rayonnement électromagnétique",
+                "La loi de Wien relie directement la température à la composition chimique du corps"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le spectre thermique est continu, obéit à la loi de Wien (λ_max décroît avec T), et le corps humain rayonne dans l'infrarouge."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les spectres des étoiles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "De quel type est le spectre de la lumière émise par la surface d'une étoile comme le Soleil ?",
+              "options": [
+                "Un spectre continu d'émission thermique strié de raies d'absorption",
+                "Un spectre de raies d'émission pures sur fond noir",
+                "Un spectre monochromatique sans aucune raie",
+                "Une onde radio uniforme sans composante visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le spectre solaire est un spectre continu thermique produit par la photosphère, traversé par les raies d'absorption de son atmosphère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "D'où provient le fond continu lumineux du spectre d'une étoile ?",
+              "options": [
+                "De la photosphère, couche de gaz chaud et dense constituant la surface visible de l'étoile",
+                "Des nuages de poussières situés entre Mars et Jupiter",
+                "De la couronne solaire très diluée",
+                "Des aurores polaires de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La photosphère de l'étoile est dense et très chaude : elle émet un rayonnement thermique continu proche de celui du corps noir."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "D'où proviennent les raies sombres qui strient le spectre de la lumière solaire ?",
+              "options": [
+                "De l'absorption sélective par les atomes des gaz plus froids de la chromosphère et de l'atmosphère stellaire",
+                "De la poussière présente sur les miroirs des télescopes terrestres",
+                "De l'absorption par l'ozone stratosphérique uniquement",
+                "D'une baisse soudaine d'énergie au centre du Soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gaz de la chromosphère et de la haute atmosphère absorbent les photons correspondant exactement à leurs transitions atomiques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le pic d'émission du Soleil se situe vers 500 nm (vert). Quelle est approximativement la température de surface de la photosphère solaire ?",
+              "options": [
+                "Environ 5 800 K (près de 6 000 K)",
+                "Environ 15 millions de kelvins",
+                "Environ 300 K",
+                "Environ 100 000 K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après la loi de Wien : T = 2,898 * 10⁻³ / (500 * 10⁻⁹) ≈ 5 800 K."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel élément chimique inconnu à l'époque sur Terre a été découvert en 1868 grâce à une raie d'absorption du spectre solaire ?",
+              "options": [
+                "L'hélium (du grec Helios = Soleil)",
+                "L'uranium",
+                "Le xénon",
+                "Le titane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jules Janssen et Norman Lockyer ont observé une raie jaune inconnue dans le Soleil en 1868, révélant l'hélium avant sa découverte terrestre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quels sont les deux éléments chimiques très majoritaires composant le Soleil et la grande majorité des étoiles ?",
+              "options": [
+                "L'hydrogène et l'hélium",
+                "Le carbone et l'azote",
+                "Le fer et le nickel",
+                "L'oxygène et le silicium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Soleil est composé à environ 74 % d'hydrogène et 24 % d'hélium en masse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se traduit l'effet Doppler-Fizeau sur les raies d'absorption d'une étoile qui s'éloigne de la Terre ?",
+              "options": [
+                "Les raies sont décalées vers les plus grandes longueurs d'onde (décalage vers le rouge ou redshift)",
+                "Les raies sont décalées vers les plus courtes longueurs d'onde (blueshift)",
+                "Toutes les raies disparaissent instantanément",
+                "Les raies changent d'épaisseur sans changer de position"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éloignement d'une source lumineuse allonge les longueurs d'onde perçues : c'est le décalage vers le rouge (redshift)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle classification spectrale range les étoiles de la plus chaude (bleue) à la plus froide (rouge) ?",
+              "options": [
+                "O, B, A, F, G, K, M",
+                "M, K, G, F, A, B, O",
+                "A, B, C, D, E, F, G",
+                "Z, Y, X, W, V, U, T"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La séquence de Harvard classe les étoiles par ordre de température décroissante : O (très chaudes/bleues) à M (froides/rouges)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À quel type spectral appartient notre Soleil, dont la surface est d'environ 5 800 K et la couleur blanc-jaune ?",
+              "options": [
+                "Type spectral G (étoile naine jaune)",
+                "Type spectral O (supergéante bleue)",
+                "Type spectral M (naine rouge)",
+                "Type spectral B (géante bleue)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Soleil est classé comme une naine jaune de type spectral G2V."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles informations fondamentales les astrophysiciens peuvent-ils déduire directement du spectre d'une étoile ?",
+              "options": [
+                "La température de surface de l'étoile grâce au profil continu et à la loi de Wien",
+                "La composition chimique de son atmosphère grâce aux raies d'absorption",
+                "Sa vitesse radiale d'approche ou d'éloignement grâce à l'effet Doppler",
+                "Le nombre exact de planètes telluriques en orbite rapprochée"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'analyse spectrale fournit la température (Wien), la composition (raies) et la vitesse radiale (Doppler)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Applications des rayonnements : laser et spectroscopie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le sigle LASER en physique optique ?",
+              "options": [
+                "Light Amplification by Stimulated Emission of Radiation",
+                "Linear Acceleration of Solar Electrons and Radiation",
+                "Luminescent Absorption of Synchronized Energy Rays",
+                "Laser Atomic Synchronized Emission Resonance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "LASER signifie en anglais : amplification de lumière par émission stimulée de rayonnement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En quoi consiste l'émission stimulée à la base du fonctionnement d'un laser ?",
+              "options": [
+                "Un photon incident incite un atome excité à émettre un second photon strictement identique (même fréquence, phase et direction)",
+                "Un atome capture définitivement deux photons pour former un neutron",
+                "Un atome absorbe de la chaleur pour expulser un électron",
+                "Un photon gamma se transforme en particule alpha au centre d'un cristal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Théorisée par Einstein en 1917, l'émission stimulée produit deux photons parfaitement identiques et cohérents."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelles sont les trois caractéristiques remarquables d'un faisceau laser comparé à une source lumineuse ordinaire ?",
+              "options": [
+                "Monochromatique, directif et cohérent",
+                "Polychromatique, divergent et diffus",
+                "Infrarouge, instable et incohérent",
+                "Multidirectionnel, continu et thermique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un faisceau laser est hautement monochromatique (une seule longueur d'onde), très directif (peu divergent) et cohérent en phase."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la propriété de monochromaticité d'un faisceau laser ?",
+              "options": [
+                "Il est constitué d'une onde ayant une longueur d'onde extrêmement bien définie (spectre très étroit)",
+                "Il produit toutes les couleurs visibles en même temps",
+                "Il change de couleur à chaque seconde",
+                "Il ne se propage que dans les milieux transparents liquides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La monochromaticité signifie que le rayonnement ne contient qu'une seule couleur spectrale très pure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on 'l'inversion de population' indispensable pour amorcer l'effet laser ?",
+              "options": [
+                "Avoir davantage d'atomes dans un état excité que dans l'état de plus basse énergie",
+                "Avoir plus d'électrons libres que de protons dans l'enceinte",
+                "Inverser le sens de déplacement des atomes du gaz",
+                "Refroidir tous les atomes de l'échantillon à zéro kelvin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour que l'émission stimulée l'emporte sur l'absorption, le niveau excité doit être plus peuplé que le niveau inférieur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans quel domaine fondamental la spectroscopie d'absorption moléculaire (UV-visible ou IR) est-elle intensivement utilisée ?",
+              "options": [
+                "En chimie analytique pour doser des solutés et identifier des groupes fonctionnels",
+                "En mécanique pour peser les véhicules routiers en mouvement",
+                "En acoustique pour mesurer la vitesse du vent sous l'eau",
+                "En maçonnerie pour vérifier la verticalité des murs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La spectroscopie permet d'identifier la structure des molécules (IR) et de mesurer des concentrations (UV-visible)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel composant optique disperse les rayonnements selon leur longueur d'onde dans un spectrophotomètre moderne ?",
+              "options": [
+                "Un réseau de diffraction optique (ou un prisme)",
+                "Une lentille divergente ordinaire",
+                "Une lame de verre à faces parallèles",
+                "Un filtre opaque neutre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réseau de diffraction sépare spatialement les différentes longueurs d'onde par interférence et diffraction."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle loi de spectrophotométrie relie l'absorbance A d'une solution colorée à sa concentration molaire c (A = ε * l * c) ?",
+              "options": [
+                "La loi de Beer-Lambert",
+                "La loi de Coulomb",
+                "La loi d'Avogadro",
+                "La loi de Dalton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de Beer-Lambert établit que l'absorbance est proportionnelle à la concentration c et à la largeur de cuve l."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle application chirurgicale ophtalmologique de haute précision tire parti de la focalisation extrême d'un faisceau laser ?",
+              "options": [
+                "La découpe cornéenne et le traitement de la myopie (chirurgie Lasik)",
+                "Le remplacement chirurgical des os du crâne",
+                "L'anesthésie générale sans médicament",
+                "La mesure de la tension artérielle cardiaque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le laser femtoseconde et excimère permet de remodeler la cornée avec une précision microscopique pour corriger les défauts visuels."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les caractéristiques suivantes, lesquelles distinguent la lumière d'un laser de celle émise par une ampoule à incandescence ?",
+              "options": [
+                "Le faisceau laser présente une très faible divergence spatiale",
+                "Le rayonnement laser est hautement monochromatique",
+                "Tous les photons émis dans un faisceau laser sont en phase (cohérence temporelle et spatiale)",
+                "La lumière laser est un mélange continu de toutes les longueurs d'onde visibles"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un faisceau laser est directif, monochromatique et cohérent, contrairement à une ampoule qui émet un spectre large et incohérent."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Effets et usages du rayonnement solaire sur Terre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle fraction approximative de la puissance solaire totale incidente sur Terre est directement renvoyée vers l'espace par l'albédo ?",
+              "options": [
+                "Environ 30 % (albédo moyen terrestre d'environ 0,30)",
+                "Moins de 1 %",
+                "Environ 75 %",
+                "Plus de 95 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'albédo moyen de la Terre est d'environ 0,30 : 30 % de l'énergie solaire est directement réfléchie sans être absorbée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle surface terrestre possède l'albédo le plus élevé (réfléchissant la plus grande fraction du rayonnement reçu) ?",
+              "options": [
+                "La neige fraîche et la banquise",
+                "Les forêts tropicales humides",
+                "Les océans profonds calmes",
+                "Les chaussées en bitume noir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La neige fraîche réfléchit jusqu'à 80 à 90 % de la lumière solaire incidente, lui conférant un albédo proche de 0,9."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel phénomène atmosphérique naturel piège une partie du rayonnement infrarouge réémis par le sol terrestre ?",
+              "options": [
+                "L'effet de serre",
+                "L'effet photoélectrique",
+                "L'inversion de température polaire",
+                "La marée barométrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet de serre résulte de l'absorption et de la réémission du rayonnement infrarouge tellurique par certains gaz atmosphériques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quels sont les deux principaux gaz contribuant majoritairement à l'effet de serre naturel sur Terre ?",
+              "options": [
+                "La vapeur d'eau (H₂O) et le dioxyde de carbone (CO₂)",
+                "Le diazote (N₂) et le dioxygène (O₂)",
+                "L'argon et l'hélium",
+                "Le dihydrogène et le monoxyde de carbone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vapeur d'eau est le premier contributeur naturel à l'effet de serre, suivie du dioxyde de carbone."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel processus biologique végétal convertit une fraction de l'énergie lumineuse solaire en énergie chimique de liaison organique ?",
+              "options": [
+                "La photosynthèse",
+                "La fermentation lactique",
+                "La respiration cellulaire anaérobie",
+                "La transpiration foliaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La photosynthèse utilise l'énergie des photons solaires pour synthétiser des glucides à partir d'eau et de CO₂."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quels pigments situés dans les chloroplastes des végétaux chlorophylliens absorbent principalement les lumières bleue et rouge ?",
+              "options": [
+                "Les chlorophylles",
+                "L'hémoglobine",
+                "La mélanine",
+                "La kératine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chlorophylles a et b absorbent dans le bleu et le rouge et diffusent le vert, donnant aux feuilles leur couleur verte."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle fraction du rayonnement solaire stimule la synthèse de vitamine D dans la peau mais peut provoquer coups de soleil et cancers cutanés ?",
+              "options": [
+                "Le rayonnement ultraviolet B (UVB)",
+                "Le rayonnement infrarouge lointain",
+                "Les ondes radio solaires",
+                "La lumière visible jaune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayons UVB stimulent la biosynthèse de vitamine D mais sont cancérigènes et provoquent l'érythème solaire en cas de surexposition."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel dispositif technologique transforme directement l'énergie du rayonnement solaire en électricité sans pièce mécanique tournante ?",
+              "options": [
+                "Le panneau solaire photovoltaïque",
+                "Le capteur solaire thermique à eau",
+                "L'éolienne tripale",
+                "La turbine hydraulique à godets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules photovoltaïques utilisent des semi-conducteurs (comme le silicium) pour convertir directement les photons en courant électrique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sans l'effet de serre naturel atmosphérique, quelle serait la température moyenne régnant à la surface de la Terre ?",
+              "options": [
+                "Environ -18 °C au lieu de +15 °C",
+                "Environ -100 °C",
+                "Environ 0 °C",
+                "Environ +40 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans effet de serre, la Terre serait gelée avec une température moyenne de -18 °C au lieu des +15 °C actuels favorables à la vie."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels rôles essentiels le rayonnement solaire joue-t-il dans l'environnement et le système climatique terrestre ?",
+              "options": [
+                "Il alimente le cycle de l'eau en provoquant l'évaporation des océans",
+                "Il est le moteur de la circulation atmosphérique et des vents en créant des écarts thermiques",
+                "Il fournit l'énergie nécessaire à la production de matière organique par photosynthèse",
+                "Il accélère la désintégration radioactive de l'uranium au fond de la Terre"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le rayonnement solaire pilote le climat, le cycle de l'eau, les vents et la biosphère grâce à la photosynthèse."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

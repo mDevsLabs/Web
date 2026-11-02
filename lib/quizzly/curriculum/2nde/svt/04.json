@@ -1,0 +1,2728 @@
+{
+  "id": "2nde-svt-04",
+  "year": "2nde",
+  "subject": "svt",
+  "title": "La cellule et l'organisme",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Organisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les échelles d'organisation du vivant",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'ordre croissant exact des échelles d'organisation du vivant ?",
+              "options": [
+                "Molécule < Organite < Cellule < Tissu < Organe < Organisme",
+                "Cellule < Molécule < Tissu < Organite < Organe < Organisme",
+                "Organite < Molécule < Tissu < Cellule < Organisme < Organe",
+                "Molécule < Tissu < Cellule < Organite < Organe < Organisme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'organisation biologique va du plus petit au plus grand : les molécules forment des organites au sein des cellules, qui s'assemblent en tissus, puis en organes au sein de l'organisme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quel niveau d'organisation biologique correspond le cœur d'un mammifère ?",
+              "options": [
+                "Un organe",
+                "Un tissu",
+                "Une cellule",
+                "Un organite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cœur est un organe constitué de plusieurs tissus (musculaire, conjonctif, nerveux) qui coopèrent pour assurer le pompage du sang."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la plus petite unité structurale et fonctionnelle commune à tous les êtres vivants ?",
+              "options": ["La cellule", "L'atome", "Le tissu", "L'organe"],
+              "correctAnswers": [0],
+              "explanation": "La théorie cellulaire énonce que la cellule est l'unité structurale et fonctionnelle fondamentale de tout être vivant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le glucose, l'eau et les lipides se situent à quel niveau d'organisation biologique ?",
+              "options": [
+                "L'échelle moléculaire",
+                "L'échelle cellulaire",
+                "L'échelle tissulaire",
+                "L'échelle des organes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau, le glucose et les lipides sont des molécules chimiques composées d'atomes, situées au niveau d'organisation moléculaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on un ensemble de cellules semblables spécialisées dans une même fonction ?",
+              "options": [
+                "Un tissu",
+                "Un organite",
+                "Un système",
+                "Une molécule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tissu biologique est constitué d'un groupe coordonné de cellules de même type assurant une fonction commune (ex: tissu musculaire)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel instrument d'optique a historiquement permis la première observation de cellules au XVIIe siècle ?",
+              "options": [
+                "Le microscope optique",
+                "Le télescope réfracteur",
+                "Le microscope électronique à balayage",
+                "Le spectromètre de masse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est grâce au microscope optique que Robert Hooke a observé pour la première fois des cavités microscopiques dans du liège en 1665, qu'il a nommées cellules."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel ordre de grandeur correspond typiquement à la taille d'une cellule eucaryote moyenne ?",
+              "options": [
+                "De 10 à 100 micromètres (µm)",
+                "De 0,1 à 1 nanomètre (nm)",
+                "De 1 à 10 millimètres (mm)",
+                "De 1 à 10 mètres (m)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plupart des cellules eucaryotes végétales ou animales mesurent entre 10 et 100 µm, soit environ dix fois plus qu'une bactérie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un être vivant entièrement constitué d'une seule cellule autonome ?",
+              "options": [
+                "Unicellulaire",
+                "Pluricellulaire",
+                "Acellulaire",
+                "Multicellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un organisme unicellulaire (comme la levure, la paramécie ou les bactéries) accomplit toutes ses fonctions vitales au sein d'une unique cellule."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'appareil respiratoire ou l'appareil digestif correspond à quel niveau d'organisation ?",
+              "options": [
+                "Un système ou appareil d'organes",
+                "Un tissu spécialisé",
+                "Une cellule géante",
+                "Un organite complexe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un appareil ou système est un ensemble d'organes coordonnés concourant à une même grande fonction physiologique (ex: digestion, respiration)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les éléments suivants, lesquels correspondent à l'échelle des organites cellulaires ?",
+              "options": [
+                "Le chloroplaste",
+                "La mitochondrie",
+                "Le globule rouge",
+                "La molécule d'ADN"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le chloroplaste et la mitochondrie sont des compartiments intracellulaires délimités par des membranes (organites). Le globule rouge est une cellule et l'ADN est une molécule."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La cellule eucaryote et ses organites",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle structure délimite le matériel génétique chez les cellules eucaryotes ?",
+              "options": [
+                "L'enveloppe nucléaire",
+                "La paroi pectocellulosique",
+                "La capsule bactérienne",
+                "Le cytosquelette externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chez les eucaryotes, l'ADN est enfermé dans le noyau, qui est délimité par une enveloppe nucléaire percée de pores."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel organite est le siège principal de la production d'énergie cellulaire sous forme d'ATP ?",
+              "options": [
+                "La mitochondrie",
+                "Le lysosome",
+                "Le centriole",
+                "Le réticulum endoplasmique lisse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mitochondrie est la centrale énergétique de la cellule eucaryote : elle réalise la respiration cellulaire produisant l'ATP."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la phase liquide du cytoplasme dans laquelle baignent les organites ?",
+              "options": [
+                "Le cytosol",
+                "Le nucléoplasme",
+                "Le stroma",
+                "La matrice extracellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cytosol (ou hyaloplasme) est la fraction liquide gélatineuse du cytoplasme, riche en eau, ions et macromolécules."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel organite assure le tri, la maturation et l'adressage des protéines synthétisées ?",
+              "options": [
+                "L'appareil de Golgi",
+                "La mitochondrie",
+                "Le peroxysome",
+                "Le chloroplaste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'appareil de Golgi est formé d'un empilement de saccules qui modifie, trie et emballe les protéines dans des vésicules."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle membrane enveloppe la cellule et contrôle tous les échanges avec le milieu extérieur ?",
+              "options": [
+                "La membrane plasmique",
+                "La membrane nucléaire",
+                "La membrane thylakoïdale",
+                "La membrane mitochondriale interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La membrane plasmique isole le milieu intracellulaire du milieu extérieur tout en régulant sélectivement les échanges."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel complexe moléculaire est directement responsable de la synthèse des protéines dans la cellule ?",
+              "options": [
+                "Le ribosome",
+                "Le centrosome",
+                "Le liposome",
+                "Le nucléole seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les ribosomes traduisent l'information des ARN messagers en chaînes d'acides aminés pour fabriquer les protéines."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on l'organisation interne en compartiments fermés typique des eucaryotes ?",
+              "options": [
+                "La compartimentation cellulaire",
+                "L'hétérogénéité cytoplasmique",
+                "La segmentation tissulaire",
+                "La polymérisation membranaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compartimentation permet d'isoler des réactions chimiques incompatibles au sein d'organites spécialisés délimités par des membranes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans quel compartiment cellulaire la transcription de l'ADN en ARN a-t-elle lieu chez les eucaryotes ?",
+              "options": [
+                "Le noyau",
+                "Le cytosol",
+                "L'appareil de Golgi",
+                "La vacuole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transcription de l'ADN s'effectue dans le noyau ; les ARN messagers produits sont ensuite exportés vers le cytoplasme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel réseau de filaments protéiques assure le maintien de la forme cellulaire et le trafic intracellulaire ?",
+              "options": [
+                "Le cytosquelette",
+                "La matrice extracellulaire",
+                "La paroi primaire",
+                "Le réticulum nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cytosquelette est composé de microfilaments, microtubules et filaments intermédiaires qui structurent l'espace intracellulaire."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels organites de la cellule eucaryote sont délimités par une double membrane ?",
+              "options": [
+                "Le noyau",
+                "La mitochondrie",
+                "Le ribosome",
+                "Le lysosome"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le noyau possède une enveloppe nucléaire à double membrane et la mitochondrie possède deux membranes (interne et externe). Les ribosomes n'ont pas de membrane."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Cellule animale et cellule végétale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel organite présent chez les cellules végétales chlorophylliennes permet la photosynthèse ?",
+              "options": [
+                "Le chloroplaste",
+                "Le centrosome",
+                "Le lysosome",
+                "La mitochondrie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chloroplaste contient des pigments chlorophylliens capables de capter l'énergie lumineuse pour synthétiser des sucres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle enveloppe rigide externe est spécifique de la cellule végétale par rapport à la cellule animale ?",
+              "options": [
+                "La paroi pectocellulosique",
+                "La membrane plasmique",
+                "La capsule glucidique",
+                "La matrice cartilagineuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cellule végétale est entourée d'une paroi externe rigide riche en cellulose et pectines, absente chez les cellules animales."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel compartiment volumineux peut occuper jusqu'à 90 % du volume d'une cellule végétale adulte ?",
+              "options": [
+                "La vacuole centrale",
+                "Le noyau cellulaire",
+                "Le chloroplaste géant",
+                "L'appareil de Golgi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La grande vacuole centrale stocke l'eau et des solutés, exerçant une pression de turgescence qui maintient le port érigé de la plante."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel pigment confère leur couleur verte caractéristique aux chloroplastes des végétaux ?",
+              "options": [
+                "La chlorophylle",
+                "L'hémoglobine",
+                "La mélanine",
+                "Le carotène pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chlorophylle absorbe principalement la lumière bleue et rouge et réfléchit la lumière verte, donnant leur couleur aux feuilles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle forme géométrique régulière présentent souvent les cellules végétales au sein d'un tissu foliaire ?",
+              "options": [
+                "Polyédrique ou rectangulaire",
+                "Sphérique et totalement déformable",
+                "Étoilée avec prolongements fins",
+                "Fusiforme et allongée sans angles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rigidité de la paroi pectocellulosique impose aux cellules végétales des formes géométriques anguleuses souvent polyédriques."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel élément est commun aux cellules animales et végétales ?",
+              "options": [
+                "La présence de mitochondries",
+                "La présence d'une paroi cellulosique",
+                "La présence de chloroplastes",
+                "La présence d'une grande vacuole centrale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules animales et végétales sont toutes deux des cellules eucaryotes pourvues de mitochondries pour la respiration cellulaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel glucide structural forme les microfibrilles rigides de la paroi végétale ?",
+              "options": [
+                "La cellulose",
+                "Le glycogène",
+                "Le saccharose",
+                "Le lactose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cellulose est un polymère de glucose linéaire dont les fibres confèrent une grande résistance mécanique à la paroi végétale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on l'état d'une cellule végétale gonflée d'eau dont la vacuole pousse contre la paroi ?",
+              "options": [
+                "La turgescence",
+                "La plasmolyse",
+                "La lyse cellulaire",
+                "L'apoptose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La turgescence correspond au gonflement osmotique de la cellule végétale, limité par la rigidité de sa paroi protectrice."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans les cellules animales, la réserve glucidique intracellulaire est stockée sous forme de :",
+              "options": ["Glycogène", "Amidon", "Cellulose", "Fructose libre"],
+              "correctAnswers": [0],
+              "explanation": "Les animaux stockent le glucose sous forme de glycogène (dans le foie et les muscles), alors que les végétaux le stockent sous forme d'amidon."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles structures sont présentes chez les cellules végétales mais absentes chez les cellules animales ?",
+              "options": [
+                "Les chloroplastes",
+                "La paroi cellulosique",
+                "Les ribosomes",
+                "L'enveloppe nucléaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les chloroplastes et la paroi cellulosique sont spécifiques des cellules végétales. Les ribosomes et l'enveloppe nucléaire existent aussi chez les animaux."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Eucaryotes et procaryotes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel groupe d'êtres vivants constitue l'archétype des organismes procaryotes ?",
+              "options": [
+                "Les bactéries",
+                "Les champignons microscopiques",
+                "Les algues vertes",
+                "Les protozoaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bactéries et les archées sont des procaryotes. Les champignons, algues et protozoaires sont tous des eucaryotes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la différence majeure entre une cellule procaryote et une cellule eucaryote ?",
+              "options": [
+                "L'absence d'enveloppe nucléaire chez les procaryotes",
+                "L'absence d'information génétique chez les procaryotes",
+                "L'absence de membrane plasmique chez les eucaryotes",
+                "L'absence de métabolisme chez les procaryotes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les procaryotes ne possèdent pas de véritable noyau : leur ADN n'est pas séparé du cytoplasme par une enveloppe nucléaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où se situe l'ADN au sein d'une cellule procaryote ?",
+              "options": [
+                "Dans le cytoplasme au niveau du nucléoïde",
+                "Enfermé dans un noyau délimité",
+                "À l'intérieur des mitochondries",
+                "Dans l'espace périplasmique externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ADN bactérien baigne directement dans le cytosol dans une région condensée appelée nucléoïde."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel élément cellulaire est partagé à la fois par les procaryotes et les eucaryotes ?",
+              "options": [
+                "La membrane plasmique",
+                "Le réticulum endoplasmique",
+                "L'appareil de Golgi",
+                "La membrane nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les cellules vivantes sans exception possèdent une membrane plasmique délimitant leur cytoplasme et des ribosomes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur habituel du diamètre d'une cellule bactérienne ?",
+              "options": [
+                "De 1 à 5 micromètres (µm)",
+                "De 50 à 200 micromètres (µm)",
+                "De 0,01 à 0,05 micromètre (µm)",
+                "De 1 à 2 millimètres (mm)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une bactérie mesure généralement entre 1 et 5 µm, soit environ dix fois moins qu'une cellule eucaryote moyenne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se présente généralement le génome principal d'une bactérie ?",
+              "options": [
+                "Une molécule d'ADN circulaire unique",
+                "De multiples chromosomes linéaires condensés",
+                "Une chaîne d'ARN simple brin uniquement",
+                "Des protéines dépourvues d'acides nucléiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chromosome bactérien est généralement constitué d'une seule molécule d'ADN bicaténaire circulaire repliée sur elle-même."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie étymologiquement le terme 'procaryote' ?",
+              "options": [
+                "Avant le noyau",
+                "Sans cellule",
+                "Vrai noyau",
+                "Noyau multiple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Du grec 'pro' (avant) et 'karyon' (noyau), les procaryotes sont apparus avant l'émergence évolutive du noyau cellulaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quels organites compartimentés par une membrane sont absents chez les cellules procaryotes ?",
+              "options": [
+                "Les mitochondries et le réticulum endoplasmique",
+                "Les ribosomes",
+                "Les parois rigides",
+                "Les flagelles locomoteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les procaryotes ne possèdent aucun organite délimité par des membranes internes comme les mitochondries, les chloroplastes ou l'appareil de Golgi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quels organismes unicellulaires vivant souvent en milieux extrêmes sont également des procaryotes ?",
+              "options": [
+                "Les archées",
+                "Les levures",
+                "Les paramécies",
+                "Les amibes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les archées constituent avec les eubactéries les deux grands domaines du monde vivant procaryote."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propositions décrivent fidèlement les cellules procaryotes ?",
+              "options": [
+                "Elles ne possèdent pas d'organites entourés d'une membrane",
+                "Leur matériel génétique est en contact direct avec le cytoplasme",
+                "Elles possèdent de volumineux chloroplastes",
+                "Elles possèdent un noyau délimité par une membrane"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les procaryotes n'ont ni noyau ni organites membranaires : leur ADN est libre dans le cytoplasme. Elles n'ont pas de chloroplastes."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "La matrice extracellulaire animale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le réseau de macromolécules situé dans l'espace entourant les cellules animales ?",
+              "options": [
+                "La matrice extracellulaire",
+                "Le cytosol",
+                "La paroi pectique",
+                "Le fluide intracellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matrice extracellulaire (MEC) est un réseau complexe de protéines et de sucres enveloppant les cellules animales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle protéine fibreuse confère à la matrice extracellulaire animale sa grande résistance à la traction ?",
+              "options": [
+                "Le collagène",
+                "La myosine",
+                "L'hémoglobine",
+                "L'insuline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le collagène est la protéine la plus abondante du corps humain ; ses fibres confèrent solidité et résistance aux tissus (peau, tendons, os)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal de la matrice extracellulaire dans un tissu conjonctif animal ?",
+              "options": [
+                "Lier les cellules entre elles et maintenir la cohésion du tissu",
+                "Réaliser la réplication de l'ADN cellulaire",
+                "Produire directement du dioxygène pour la cellule",
+                "Assurer la dégradation des déchets nucléaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matrice extracellulaire ancre les cellules, assure la cohésion mécanique des tissus et participe à la transmission des signaux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles cellules résidentes du tissu conjonctif sont chargées de synthétiser les composants de la matrice ?",
+              "options": [
+                "Les fibroblastes",
+                "Les hématies",
+                "Les neurones moteurs",
+                "Les ostéoclastes exclusivement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fibroblastes sont des cellules fusiformes très actives qui sécrètent les fibres de collagène, d'élastine et la substance fondamentale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle protéine confère à la matrice de la peau ou des artères sa capacité à reprendre sa forme après étirement ?",
+              "options": [
+                "L'élastine",
+                "La kératine",
+                "La fibrine",
+                "La tubuline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élastine est une protéine qui forme des fibres élastiques capables de s'étirer et de revenir spontanément à leur longueur initiale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelles molécules transmembranaires permettent à la cellule d'adhérer physiquement à la matrice extracellulaire ?",
+              "options": [
+                "Les intégrines",
+                "Les histones",
+                "Les aquaporines",
+                "Les immunoglobulines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les intégrines sont des récepteurs protéiques de la membrane plasmique qui relient le cytosquelette interne aux protéines de la matrice."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le tissu osseux, comment se caractérise la matrice extracellulaire ?",
+              "options": [
+                "Elle est solidifiée et minéralisée par du phosphate de calcium",
+                "Elle est totalement liquide et dépourvue de fibres",
+                "Elle est constituée uniquement d'eau pure et de lipides",
+                "Elle est faite de cellulose et de lignine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matrice osseuse est calcifiée : des cristaux d'hydroxyapatite se déposent sur un réseau de fibres de collagène, conférant dureté et rigidité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel composant gélatineux fortement hydraté comble les espaces entre les fibres de collagène ?",
+              "options": [
+                "Les protéoglycanes",
+                "Les triglycérides denses",
+                "Les acides nucléiques",
+                "Les molécules d'ATP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les protéoglycanes retiennent l'eau et forment un gel hydraté qui amortit les chocs et facilite la diffusion des nutriments."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le cartilage articulaire, la matrice extracellulaire a pour propriété majeure de :",
+              "options": [
+                "Amortir les pressions et chocs mécaniques",
+                "Conduire l'influx nerveux à grande vitesse",
+                "Sécréter des sucs digestifs acides",
+                "Capter l'énergie solaire lumineuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Riche en eau et en protéoglycanes, la matrice du cartilage agit comme une éponge élastique amortissant les contraintes articulaires."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels rôles physiologiques essentiels remplit la matrice extracellulaire chez les animaux ?",
+              "options": [
+                "Assurer le soutien structural et l'adhérence cellulaire",
+                "Participer à la transmission de signaux mécaniques et chimiques",
+                "Stocker l'information génétique héréditaire",
+                "Réaliser la photosynthèse cellulaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La matrice extracellulaire assure l'intégrité mécanique des tissus et la communication cellulaire. L'ADN porte l'hérédité et la photosynthèse est végétale."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La paroi et les structures végétales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la fonction mécanique fondamentale de la paroi pour la cellule végétale ?",
+              "options": [
+                "Assurer un soutien structural et une protection contre l'éclatement",
+                "Permettre la contraction rythmique de la cellule",
+                "Faciliter la phagocytose de grosses particules",
+                "Bloquer totalement toute entrée d'eau et de solutés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La paroi squelettique rigide confère sa forme à la cellule végétale et résiste à la forte pression de turgescence sans éclater."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle substance polysaccharidique forme la 'colle' reliant les parois de deux cellules végétales voisines ?",
+              "options": [
+                "Les pectines de la lamelle moyenne",
+                "Le glycogène de liaison",
+                "Le cholestérol membranaire",
+                "L'acide hyaluronique animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lamelle moyenne est riche en pectines, des glucides complexes gélifiants qui soudent solidement les cellules végétales entre elles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel composé hydrophobe et très résistant rigidifie les parois des vaisseaux du bois (xylème) ?",
+              "options": [
+                "La lignine",
+                "L'amidon",
+                "La chlorophylle",
+                "Le saccharose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lignification imperméabilise et consolide les parois secondaires du bois, permettant le port vertical et la circulation de sève sous tension."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les minuscules ponts cytoplasmiques reliant deux cellules végétales à travers leur paroi ?",
+              "options": [
+                "Les plasmodesmes",
+                "Les desmosomes",
+                "Les synapses",
+                "Les pores nucléaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les plasmodesmes sont des canaux de communication directe reliant les cytoplasmes voisins et permettant le passage d'eau et d'ions."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel phénomène physique permet à la plante herbacée de se tenir droite grâce à la pression de ses vacuoles sur la paroi ?",
+              "options": [
+                "La turgescence",
+                "La sédimentation",
+                "La capillarité pure",
+                "L'évaporation stomatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression de turgescence exercée par le liquide vacuolaire sur la paroi rigide assure la fermeté et la rigidité des tiges herbacées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle couche pariétale se dépose en premier lors de la division et de la croissance cellulaire végétale ?",
+              "options": [
+                "La paroi primaire",
+                "La paroi secondaire lignifiée",
+                "La cuticule cireuse",
+                "L'écorce externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La paroi primaire, extensible, est synthétisée en premier et permet à la jeune cellule végétale de grandir par élongation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle propriété de la paroi primaire permet l'élongation de la jeune cellule végétale ?",
+              "options": [
+                "Son extensibilité sous l'effet de l'acidité et de la pression",
+                "Sa rigidité absolue et indéformable",
+                "Sa nature exclusivement minérale et cristalline",
+                "Son imperméabilité totale aux molécules d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous l'action de l'auxine et de l'acidification, les liaisons de la paroi primaire se relâchent temporairement, autorisant l'élongation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle couche cireuse protectrice recouvre souvent la paroi des cellules de l'épiderme des feuilles pour limiter les pertes d'eau ?",
+              "options": [
+                "La cuticule",
+                "La lamelle moyenne",
+                "La subérine interne",
+                "Le périoste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cuticule est une pellicule hydrophobe riche en cutine et en cires déposée à la surface des feuilles pour freiner la transpiration."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La paroi végétale peut être considérée d'un point de vue fonctionnel comme :",
+              "options": [
+                "Une matrice extracellulaire spécialisée propre aux végétaux",
+                "Une simple membrane plasmique dédoublée",
+                "Un organite intracellulaire de stockage d'énergie",
+                "Un tissu conducteur de nutriments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Située hors de la cellule et composée de polymères glucidiques sécrétés, la paroi végétale joue le rôle de matrice extracellulaire."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels polymères organiques entrent dans la composition de la paroi des cellules végétales ?",
+              "options": [
+                "La cellulose",
+                "La lignine",
+                "Le collagène",
+                "Le glycogène"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La cellulose et la lignine sont des constituants végétaux majeurs de la paroi. Le collagène et le glycogène sont exclusivement d'origine animale."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Spécialisation et différenciation cellulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi consiste le processus de différenciation cellulaire chez un organisme pluricellulaire ?",
+              "options": [
+                "En l'acquisition de caractéristiques structurales adaptées à une fonction précise",
+                "En la perte totale du matériel génétique originel",
+                "En la fusion de plusieurs cellules en une cellule géante",
+                "En la transformation irréversible d'une cellule en bactérie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La différenciation permet à des cellules issues de la cellule œuf de développer des structures spécialisées (forme, organites) pour remplir un rôle défini."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle caractéristique morphologique remarquable permet au neurone de transmettre des messages à distance ?",
+              "options": [
+                "La présence d'un long axone et de dendrites ramifiées",
+                "Une forme parfaitement cubique sans prolongements",
+                "L'absence de membrane plasmique et de cytoplasme",
+                "La présence de plusieurs vacuoles géantes d'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'axone permet la conduction de l'influx nerveux sur de grandes distances, parfois plus d'un mètre dans le corps humain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle particularité des hématies (globules rouges) humaines optimise le transport du dioxygène ?",
+              "options": [
+                "L'absence de noyau à maturité et la forme de disque biconcave",
+                "La présence d'une épaisse paroi de cellulose",
+                "La présence de nombreux chloroplastes photosynthétiques",
+                "La présence de plusieurs flagelles locomoteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence de noyau libère un espace maximal pour l'hémoglobine et la forme biconcave accroît la surface d'échanges gazeux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle cellule végétale racinaire possède un prolongement très fin augmentant considérablement la surface d'absorption d'eau ?",
+              "options": [
+                "Le poil absorbant",
+                "Le stomate",
+                "La cellule de garde",
+                "Le vaisseau de liber"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les poils absorbants sont des cellules épidermiques racinaires étirées qui démultiplient la surface de contact avec l'eau du sol."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel type de cellules animales possède des myofibrilles d'actine et de myosine capables de se contracter ?",
+              "options": [
+                "Les cellules musculaires (myocytes)",
+                "Les cellules épithéliales ciliées",
+                "Les adipocytes de stockage",
+                "Les ostéoblastes osseux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les myocytes renferment des protéines contractiles organisées qui glissent les unes sur les autres pour raccourcir la cellule."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi deux cellules spécialisées différentes d'un même organisme (ex: cellule de peau et neurone) ont-elles des rôles si distincts ?",
+              "options": [
+                "Elles expriment des gènes différents à partir du même génome",
+                "Elles possèdent un ADN entièrement différent",
+                "Elles ne sont pas issues de la même cellule œuf",
+                "L'une possède des gènes et l'autre aucun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les cellules d'un individu possèdent le même ADN, mais chacune n'en exprime qu'une fraction spécifique selon sa fonction."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelles cellules spécialisées de l'épiderme foliaire contrôlent l'ouverture des stomates et les flux de gaz ?",
+              "options": [
+                "Les cellules de garde stomatiques",
+                "Les cellules du parenchyme palissadique",
+                "Les cellules du xylème",
+                "Les cellules compagnes du liber"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par variation de leur turgescence, les deux cellules de garde ouvrent ou ferment l'ostiole pour réguler l'entrée de CO2 et la transpiration."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une cellule capable de se renouveler et de donner naissance à différents types cellulaires spécialisés ?",
+              "options": [
+                "Une cellule souche",
+                "Une cellule sénescente",
+                "Une cellule germinale mature",
+                "Une cellule cancéreuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules souches sont des cellules indifférenciées capables d'auto-renouvellement et de différenciation dans divers tissus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le tissu adipeux, les adipocytes sont spécialisés dans :",
+              "options": [
+                "L'accumulation de réserves lipidiques sous forme de triglycérides",
+                "La conduction de signaux électriques rapides",
+                "La production de dioxygène par photosynthèse",
+                "La filtration du sang et la formation de l'urine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adipocyte contient une grosse gouttelette lipidique qui repousse le noyau en périphérie, optimisant le stockage énergétique."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels exemples correspondent à des cellules hautement spécialisées chez les organismes pluricellulaires ?",
+              "options": [
+                "Le neurone",
+                "Le spermatozoïde",
+                "La molécule de glucose",
+                "L'atome d'azote"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le neurone et le spermatozoïde sont des cellules différenciées adaptées à des fonctions précises. Le glucose est une molécule et l'azote un atome."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "La membrane plasmique et sa structure",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels lipides constituent l'ossature fondamentale en double couche de la membrane plasmique ?",
+              "options": [
+                "Les phospholipides",
+                "Les triglycérides",
+                "Les cires minérales",
+                "Les prostaglandines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les phospholipides forment une bicouche lipidique continue et fluide qui constitue la matrice de toutes les membranes biologiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le fait qu'une molécule phospholipidique soit qualifiée d'amphiphile ?",
+              "options": [
+                "Elle possède une partie hydrophile et une partie hydrophobe",
+                "Elle est soluble uniquement dans les métaux lourds",
+                "Elle ne réagit avec aucune autre molécule chimique",
+                "Elle se transforme en protéine en milieu acide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une molécule amphiphile a une tête polaire attirée par l'eau (hydrophile) et des queues carbonées qui la fuient (hydrophobes)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la bicouche membranaire, où s'orientent spontanément les chaînes d'acides gras hydrophobes ?",
+              "options": [
+                "Vers l'intérieur de la bicouche, à l'abri de l'eau",
+                "Vers les milieux aqueux intra et extracellulaires",
+                "Uniquement à la surface externe en contact avec l'air",
+                "Dans le noyau cellulaire à travers des canaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les queues hydrophobes se regroupent face à face au centre de la membrane pour s'isoler des milieux aqueux intra et extracellulaires."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel modèle scientifique, proposé par Singer et Nicolson en 1972, décrit l'organisation dynamique de la membrane ?",
+              "options": [
+                "Le modèle de la mosaïque fluide",
+                "Le modèle de la double hélice rigide",
+                "Le modèle du sac imperméable continu",
+                "Le modèle du réseau cristallin fixe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La membrane est comparée à une 'mosaïque fluide' car lipides et protéines y sont mobiles et s'y déplacent latéralement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel lipide inséré entre les phospholipides régule la fluidité de la membrane plasmique des cellules animales ?",
+              "options": [
+                "Le cholestérol",
+                "Le glycérol pur",
+                "L'acide oléique libre",
+                "Le carotène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cholestérol empêche la membrane de se figer à basse température et d'être trop perméable à haute température chez l'animal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelles molécules insérées dans la membrane permettent le passage de substances ou la réception de signaux externes ?",
+              "options": [
+                "Les protéines membranaires",
+                "Les microfilaments d'ADN",
+                "Les grains d'amidon",
+                "Les molécules de saccharose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les protéines membranaires agissent comme des canaux, des transporteurs, des récepteurs hormonaux ou des enzymes catalytiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la capacité de la membrane à filtrer le passage des molécules selon leur taille et polarité ?",
+              "options": [
+                "La perméabilité sélective",
+                "L'imperméabilité absolue",
+                "La porosité totale",
+                "La diffusion non spécifique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La membrane est semi-perméable : elle laisse passer librement les gaz et petites molécules hydrophobes, mais filtre les ions et grosses molécules."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quels canaux protéiques membranaires accélèrent considérablement le passage de l'eau à travers la membrane ?",
+              "options": [
+                "Les aquaporines",
+                "Les histones",
+                "Les ribosomes",
+                "Les tubulines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les aquaporines sont des canaux protéiques transmembranaires spécifiques permettant un flux d'eau très rapide par osmose."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle structure glucidique située à la face externe de la membrane animale joue un rôle de reconnaissance cellulaire ?",
+              "options": [
+                "Le glycocalix (ou manteau de glucides)",
+                "La paroi de kératine",
+                "Le peptidoglycane",
+                "La pellicule lipidique interne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glycocalix est formé de chaînes de sucres liées aux lipides et protéines externes, servant de carte d'identité cellulaire."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels constituants moléculaires sont présents dans la membrane plasmique d'une cellule animale ?",
+              "options": [
+                "Des phospholipides",
+                "Des protéines membranaires",
+                "De l'amidon insolubilisé",
+                "Des fibres de cellulose"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La membrane animale est faite de lipides (phospholipides, cholestérol) et de protéines. L'amidon et la cellulose sont des macromolécules végétales."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "La molécule d'ADN et le génome",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la structure spatiale caractéristique de la molécule d'ADN ?",
+              "options": [
+                "Une double hélice",
+                "Un feuillet plissé rectiligne",
+                "Une sphère compacte unique",
+                "Une chaîne linéaire non appariée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ADN est constitué de deux brins enroulés en double hélice régulière autour d'un axe central imaginaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles sont les 4 bases azotées constituant les nucléotides de la molécule d'ADN ?",
+              "options": [
+                "Adénine, Thymine, Guanine, Cytosine",
+                "Adénine, Uracile, Guanine, Cytosine",
+                "Alanine, Tyrosine, Glycine, Cystéine",
+                "Adénine, Thiamine, Glucose, Choline"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les 4 bases de l'ADN sont A (Adénine), T (Thymine), G (Guanine) et C (Cytosine). L'uracile ne se trouve que dans l'ARN."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Selon la règle de complémentarité des bases azotées, avec quelle base s'apparie toujours l'Adénine (A) ?",
+              "options": [
+                "La Thymine (T)",
+                "La Cytosine (C)",
+                "La Guanine (G)",
+                "L'Uracile (U)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans l'ADN, l'Adénine s'apparie spécifiquement avec la Thymine par deux liaisons hydrogène (A = T)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Selon la règle de complémentarité des bases azotées, avec quelle base s'apparie toujours la Guanine (G) ?",
+              "options": [
+                "La Cytosine (C)",
+                "La Thymine (T)",
+                "L'Adénine (A)",
+                "L'Uracile (U)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Guanine s'apparie toujours avec la Cytosine par trois liaisons hydrogène (G ≡ C)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel type de liaisons chimiques faibles unit les bases azotées complémentaires entre les deux brins d'ADN ?",
+              "options": [
+                "Des liaisons hydrogène",
+                "Des liaisons covalentes doubles",
+                "Des liaisons peptidiques fortes",
+                "Des liaisons métalliques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les liaisons hydrogène maintiennent les deux brins associés tout en permettant leur ouverture lors de la réplication et de la transcription."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un gène à l'échelle moléculaire ?",
+              "options": [
+                "Une portion d'ADN dont la séquence détermine un caractère ou une protéine",
+                "Une molécule lipidique de réserve énergétique",
+                "Un organite cellulaire de forme hélicoïdale",
+                "Une cellule reproductrice embryonnaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un gène est une séquence précise de nucléotides portant l'information nécessaire à la synthèse d'une molécule fonctionnelle (ARN ou protéine)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que prouve la réussite d'expériences de transgénèse entre des espèces très éloignées (ex: méduse et souris) ?",
+              "options": [
+                "L'universalité de la molécule d'ADN et de son langage",
+                "Que toutes les espèces ont exactement le même nombre de chromosomes",
+                "Que les cellules animales peuvent réaliser la photosynthèse",
+                "Que l'ADN est une molécule propre aux mammifères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ADN utilise le même code chez tous les êtres vivants : un gène transféré peut être lu et exprimé par un hôte d'une autre espèce."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'ensemble des gènes et séquences d'ADN caractéristiques d'une espèce ?",
+              "options": [
+                "Le génome",
+                "Le caryotype",
+                "Le protéome",
+                "Le phénotype"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le génome représente la totalité du matériel génétique d'un organisme contenu dans chacune de ses cellules nucléées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "De quoi est constitué chaque nucléotide composant la chaîne d'ADN ?",
+              "options": [
+                "Un phosphate, un sucre (désoxyribose) et une base azotée",
+                "Un acide gras, un glycérol et un acide aminé",
+                "Un peptide, une base azotée et du glucose",
+                "Un ion fer, une vitamine et du ribose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque nucléotide résulte de l'association d'un groupe phosphate, d'un pentose (désoxyribose) et d'une des 4 bases azotées (A, T, G ou C)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propositions concernant la molécule d'ADN sont scientifiquement exactes ?",
+              "options": [
+                "Elle est constituée de deux brins complémentaires et antiparallèles",
+                "L'ordre des nucléotides constitue une séquence porteuse d'information",
+                "Elle est enfermée dans une vacuole chez les bactéries",
+                "Elle contient du ribose comme sucre dans ses nucléotides"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'ADN est bicaténaire, antiparallèle, et son information réside dans sa séquence de bases. Son sucre est le désoxyribose et les bactéries n'ont pas de vacuole."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Unité chimique et diversité des cellules",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les 4 éléments chimiques majeurs constituant l'essentiel de la matière vivante ?",
+              "options": [
+                "Carbone, Hydrogène, Oxygène, Azote (C, H, O, N)",
+                "Fer, Cuivre, Zinc, Plomb",
+                "Silicium, Aluminium, Chlore, Sodium",
+                "Hélium, Argon, Néon, Krypton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C, H, O et N représentent plus de 96 % de la masse de tous les êtres vivants sur Terre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle molécule minérale représente en moyenne 65 à 80 % de la masse d'un être vivant ?",
+              "options": [
+                "L'eau (H2O)",
+                "Le chlorure de sodium (NaCl)",
+                "Le dioxyde de carbone (CO2)",
+                "Le carbonate de calcium (CaCO3)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau est le solvant universel et le constituant majoritaire indispensable à toutes les réactions chimiques du vivant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une molécule organique en biologie ?",
+              "options": [
+                "Une molécule riche en carbone et hydrogène produite par les êtres vivants",
+                "Toute molécule minérale présente dans l'atmosphère",
+                "Une roche riche en sels minéraux cristallisés",
+                "Un gaz rare ne réagissant avec aucun composé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une molécule organique contient des liaisons carbone-carbone et carbone-hydrogène caractéristiques de la chimie du vivant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles sont les 4 grandes familles de molécules organiques du vivant ?",
+              "options": [
+                "Glucides, lipides, protides (protéines), acides nucléiques",
+                "Eau, sels minéraux, vitamines, métaux",
+                "Acides aminés, roches sédimentaires, gaz, minéraux",
+                "Enzymes, hormones, anticorps, toxines uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le monde vivant est bâti sur quatre classes fondamentales de macromolécules : glucides, lipides, protéines et acides nucléiques (ADN/ARN)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel élément chimique tétravalent forme le squelette de base de toutes les molécules organiques ?",
+              "options": [
+                "Le carbone (C)",
+                "L'oxygène (O)",
+                "L'azote (N)",
+                "Le phosphore (P)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le carbone peut former 4 liaisons covalentes stables avec d'autres atomes, permettant une infinie diversité de chaînes et anneaux moléculaires."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Les acides aminés sont les briques élémentaires formant quelle famille de macromolécules ?",
+              "options": [
+                "Les protéines",
+                "Les glucides complexes",
+                "Les lipides membranaires",
+                "Les acides nucléiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une protéine est une chaîne linéaire repliée d'acides aminés reliés entre eux par des liaisons peptidiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que traduit l'unité de composition chimique et d'organisation cellulaire de tous les êtres vivants ?",
+              "options": [
+                "Une origine commune à toutes les formes de vie terrestres",
+                "Une création indépendante et simultanée de chaque espèce",
+                "L'absence d'évolution biologique au cours des temps géologiques",
+                "Que tous les êtres vivants partagent le même régime alimentaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'universalité de l'ADN, du code génétique et de la cellule démontre que tous les êtres vivants descendent d'un même ancêtre commun (LUCA)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Malgré leur unité fondamentale, comment s'explique la diversité fonctionnelle des cellules ?",
+              "options": [
+                "Par la spécialisation structurale et l'expression ciblée de certains gènes",
+                "Par l'utilisation d'un code génétique différent pour chaque organe",
+                "Par l'absence d'ADN dans les tissus adultes",
+                "Par la présence d'éléments chimiques différents dans chaque cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les cellules d'un même individu partagent la même chimie de base, mais leur morphologie et leurs enzymes s'adaptent à leurs fonctions."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sous quelle forme de macromolécule végétale les glucides sont-ils polymérisés dans les tubercules ?",
+              "options": [
+                "L'amidon",
+                "Le glycogène",
+                "Le saccharose libre",
+                "L'hémoglobine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amidon est le polymère de réserve glucidique des végétaux, accumulé dans les amyloplastes des organes de réserve (pomme de terre, céréales)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles molécules appartiennent à la catégorie des molécules organiques ?",
+              "options": [
+                "Le glucose",
+                "L'albumine (protéine)",
+                "Le chlorure de potassium (KCl)",
+                "L'eau pure (H2O)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le glucose (glucide) et l'albumine (protéine) sont des molécules carbonées organiques. L'eau et le chlorure de potassium sont des substances minérales."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Fonctions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le métabolisme cellulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment définit-on scientifiquement le métabolisme cellulaire ?",
+              "options": [
+                "L'ensemble des réactions chimiques se déroulant au sein d'une cellule",
+                "La division du noyau cellulaire au cours de la mitose",
+                "Le déplacement passif des cellules dans un liquide",
+                "L'absorption exclusive d'eau par osmose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le métabolisme englobe toutes les transformations biochimiques de matière et d'énergie coordonnées au sein de la cellule."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'ensemble des réactions métaboliques de synthèse de molécules complexes ?",
+              "options": [
+                "L'anabolisme",
+                "Le catabolisme",
+                "La glycolyse",
+                "La digestion extracellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anabolisme regroupe les réactions de biosynthèse qui consomment de l'énergie pour former de grosses molécules à partir de précurseurs simples."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'ensemble des réactions métaboliques de dégradation de molécules fournissant de l'énergie ?",
+              "options": [
+                "Le catabolisme",
+                "L'anabolisme",
+                "La photosynthèse",
+                "La polymérisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le catabolisme détruit des molécules organiques complexes pour en extraire l'énergie chimique réutilisable sous forme d'ATP."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment désigne-t-on une succession ordonnée de réactions chimiques catalysées par des enzymes ?",
+              "options": [
+                "Une voie métabolique",
+                "Un cycle géologique",
+                "Un gradient osmotique",
+                "Un arc réflexe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une voie métabolique transforme progressivement un substrat initial en un produit final par une chaîne de réactions enzymatiques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "De quoi dépend principalement la capacité d'une cellule à réaliser une voie métabolique particulière ?",
+              "options": [
+                "De son équipement enzymatique codé par ses gènes",
+                "De la taille de sa membrane externe uniquement",
+                "Du nombre de vacuoles aqueuses qu'elle contient",
+                "De la couleur du noyau sous microscope"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour qu'une voie métabolique ait lieu, la cellule doit posséder les enzymes spécifiques catalysant chaque étape, dont la synthèse est sous contrôle génétique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle molécule énergétique universelle transfère l'énergie chimique nécessaire aux réactions cellulaires ?",
+              "options": [
+                "L'ATP (adénosine triphosphate)",
+                "L'ADN (acide désoxyribonucléique)",
+                "Le CO2 (dioxyde de carbone)",
+                "Le NaCl (chlorure de sodium)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ATP est la monnaie énergétique universelle de la cellule : son hydrolyse en ADP + Pi libère l'énergie nécessaire aux activités cellulaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une cellule capable de produire sa matière organique à partir de matière minérale et d'énergie ?",
+              "options": [
+                "Autotrophe",
+                "Hétérotrophe",
+                "Saprophyte",
+                "Parasite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules autotrophes (comme les cellules végétales chlorophylliennes) fabriquent leur matière organique à partir de CO2, d'eau et de sels minéraux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une cellule qui doit obligatoirement prélever des molécules organiques dans son milieu ?",
+              "options": [
+                "Hétérotrophe",
+                "Autotrophe",
+                "Chimiotrophe pure",
+                "Lithotrophe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules hétérotrophes (comme les cellules animales ou les champignons) dépendent de la matière organique préexistante prélevée dans leur milieu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un métabolisme qui nécessite la présence de dioxygène dissous dans le milieu est qualifié de :",
+              "options": [
+                "Métabolisme aérobie",
+                "Métabolisme anaérobie",
+                "Métabolisme fermentaire strict",
+                "Métabolisme abiotique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aérobiose qualifie les processus biochimiques qui requièrent du dioxygène comme accepteur final d'électrons (ex: respiration cellulaire)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propositions caractérisent le métabolisme d'une cellule ?",
+              "options": [
+                "Il permet la production d'énergie et le renouvellement de la matière cellulaire",
+                "Il est contrôlé par le patrimoine génétique et modulé par l'environnement",
+                "Il se déroule sans aucune enzyme",
+                "Il est identique chez tous les êtres vivants sans aucune variation"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le métabolisme assure la survie et la reproduction de la cellule grâce à des enzymes codées par l'ADN. Les voies varient selon les espèces (autotrophie, hétérotrophie)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La photosynthèse et l'autotrophie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle forme d'énergie externe alimente directement le métabolisme photosynthétique ?",
+              "options": [
+                "L'énergie lumineuse",
+                "L'énergie mécanique",
+                "L'énergie thermique géothermique",
+                "L'énergie nucléaire naturelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La photosynthèse capte les photons lumineux du soleil pour convertir leur énergie en liaisons chimiques stables dans les molécules glucidiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel gaz minéral est consommé par les cellules chlorophylliennes pour fabriquer du glucose lors de la photosynthèse ?",
+              "options": [
+                "Le dioxyde de carbone (CO2)",
+                "Le diazote (N2)",
+                "Le monoxyde de carbone (CO)",
+                "Le méthane (CH4)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO2 atmosphérique est absorbé par les feuilles et fixé dans des molécules organiques lors du cycle de Calvin dans les chloroplastes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel gaz vital est rejeté comme sous-produit dans l'atmosphère au cours de la photosynthèse ?",
+              "options": [
+                "Le dioxygène (O2)",
+                "Le dioxyde de soufre (SO2)",
+                "L'azote gazeux (N2)",
+                "L'argon (Ar)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La photolyse de l'eau (oxydation de H2O) dans les thylakoïdes libère du dioxygène comme déchet gazeux vital pour les organismes aérobies."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans quel organite cellulaire végétal se déroulent l'ensemble des réactions de la photosynthèse ?",
+              "options": [
+                "Le chloroplaste",
+                "La mitochondrie",
+                "Le péroxysome",
+                "Le noyau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chloroplaste renferme l'appareil photochimique (thylakoïdes) et les enzymes de fixation du carbone (stroma)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel pigment photosynthétique inséré dans les membranes thylakoïdiennes absorbe la lumière bleue et rouge ?",
+              "options": [
+                "La chlorophylle",
+                "La mélanine",
+                "Le cytochrome c",
+                "La myoglobine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chlorophylles a et b absorbent préférentiellement dans le rouge et le bleu pour exciter leurs électrons et initier la photosynthèse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle molécule organique simple à 6 carbones est le produit glucidique direct de base issu de la photosynthèse ?",
+              "options": [
+                "Le glucose",
+                "L'éthanol",
+                "L'acide pyruvique",
+                "Le cholestérol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équation globale de la photosynthèse aboutit à la synthèse de glucose (C6H12O6), ensuite transformé en saccharose ou amidon."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sous quelle forme macromoléculaire les cellules foliaires mettent-elles en réserve transitoire les glucides produits le jour ?",
+              "options": [
+                "L'amidon",
+                "Le glycogène",
+                "La cellulose",
+                "Les triglycérides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amidon est accumulé sous forme de grains insolubles dans les chloroplastes durant le jour, puis dégradé la nuit pour être redistribué."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la conversion énergétique globale opérée par les organismes autotrophes photosynthétiques ?",
+              "options": [
+                "Énergie lumineuse en énergie chimique",
+                "Énergie chimique en énergie thermique pure",
+                "Énergie cinétique en énergie électrique",
+                "Énergie nucléaire en énergie mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La photosynthèse transforme l'énergie du rayonnement lumineux en énergie chimique stockée dans la matière organique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelles parties d'une plante verte réalisent activement la photosynthèse ?",
+              "options": [
+                "Les feuilles et les tiges vertes contenant des chloroplastes",
+                "Les racines profondes dépourvues de pigments",
+                "Les fleurs fanées et les graines sèches",
+                "Le bois de cœur lignifié de l'arbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seuls les tissus verts exposés à la lumière (principalement le mésophylle foliaire) possèdent des chloroplastes fonctionnels."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels réactifs sont indispensables pour permettre la réaction globale de la photosynthèse ?",
+              "options": [
+                "L'eau (H2O)",
+                "Le dioxyde de carbone (CO2)",
+                "Le glucose préformé",
+                "Le dioxygène concentré (O2)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'équation bilan simplifiée est : 6 CO2 + 6 H2O + lumière -> C6H12O6 + 6 O2. L'eau et le CO2 sont les réactifs indispensables."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La respiration cellulaire et l'ATP",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le rôle physiologique essentiel de la respiration cellulaire pour la cellule vivante ?",
+              "options": [
+                "Dégrader des nutriments organiques pour régénérer de l'ATP",
+                "Synthétiser de grandes réserves d'amidon végétal",
+                "Dupliquer les chromosomes avant une mitose",
+                "Éliminer l'eau excédentaire par vaporisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La respiration cellulaire oxyde complètement la matière organique pour produire une grande quantité d'ATP utilisable pour le travail cellulaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel organite cellulaire constitue le siège principal de la respiration chez les eucaryotes ?",
+              "options": [
+                "La mitochondrie",
+                "L'appareil de Golgi",
+                "Le réticulum endoplasmique",
+                "Le lysosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mitochondrie réalise le cycle de Krebs dans sa matrice et la chaîne respiratoire sur ses crêtes membranaires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel gaz respiratoire est indispensable à la respiration cellulaire aérobie complète ?",
+              "options": [
+                "Le dioxygène (O2)",
+                "Le diazote (N2)",
+                "Le dioxyde de carbone (CO2)",
+                "L'hélium (He)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oxygène (O2) sert d'accepteur final d'électrons au bout de la chaîne respiratoire, où il est réduit en molécules d'eau (H2O)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quels sont les deux déchets minéraux produits par l'oxydation complète du glucose lors de la respiration ?",
+              "options": [
+                "Le dioxyde de carbone (CO2) et l'eau (H2O)",
+                "Le monoxyde de carbone et le méthane",
+                "L'éthanol et l'acide lactique",
+                "Le dioxygène et l'ammoniac"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équation globale C6H12O6 + 6 O2 -> 6 CO2 + 6 H2O montre que le glucose est intégralement minéralisé en CO2 et en eau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel nutriment énergétique majeur est dégradé en priorité lors de la respiration cellulaire ?",
+              "options": [
+                "Le glucose",
+                "L'acide désoxyribonucléique",
+                "La cellulose",
+                "L'hémoglobine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glucose est le carburant universel de la cellule animale et végétale pour initier la dégradation respiratoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment s'appelle la première étape cytoplasmique de découpage du glucose en pyruvate ?",
+              "options": [
+                "La glycolyse",
+                "Le cycle de Calvin",
+                "La phosphorylation oxydative",
+                "La photolyse de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La glycolyse se déroule dans le hyaloplasme sans O2 et scinde une molécule de glucose à 6 carbones en deux pyruvates à 3 carbones."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quels organismes réalisent la respiration cellulaire pour pourvoir à leurs besoins énergétiques ?",
+              "options": [
+                "Les animaux, les champignons et les végétaux (jour et nuit)",
+                "Uniquement les mammifères et les oiseaux",
+                "Uniquement les animaux prédateurs",
+                "Uniquement les bactéries anaérobies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La respiration est un processus universel chez les eucaryotes : même les plantes respirent en continu, le jour comme la nuit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que provoque pour une cellule animale l'arrêt brutal de l'apport en dioxygène et en ATP ?",
+              "options": [
+                "La cessation des activités cellulaires vitales et la mort cellulaire",
+                "Une transformation immédiate en chloroplaste",
+                "Une multiplication accélérée des organites",
+                "Une accélération de la photosynthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans O2, les mitochondries cessent de fabriquer de l'ATP : les pompes ioniques s'arrêtent, conduisant à la mort cellulaire rapide (nécrose)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel rendement approximatif en molécules d'ATP produit la respiration aérobie complète d'une molécule de glucose ?",
+              "options": [
+                "Environ 30 à 32 ATP",
+                "Exactement 2 ATP",
+                "Plus de 10 000 ATP",
+                "Moins de 0,5 ATP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce aux mitochondries, la respiration aérobie a un excellent rendement énergétique, produisant 30 à 32 molécules d'ATP par glucose dégradé."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels éléments sont des produits directs ou indirects de la respiration cellulaire complète ?",
+              "options": [
+                "Le dioxyde de carbone (CO2)",
+                "L'ATP (énergie chimique utilisable)",
+                "Le dioxygène (O2)",
+                "Le glucose"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La respiration cellulaire produit du CO2, de l'eau et de l'ATP. Le glucose et le dioxygène sont les réactifs consommés."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les fermentations cellulaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans quelle condition d'oxygénation du milieu certaines cellules basculent-elles vers la fermentation ?",
+              "options": [
+                "En milieu anaérobie (absence ou carence de dioxygène)",
+                "En présence d'un excès toxique de dioxygène pur",
+                "Uniquement dans le vide spatial absolu",
+                "En présence exclusive de lumière ultra-violette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fermentation permet de produire un peu d'énergie en l'absence de dioxygène lorsque la chaîne respiratoire mitochondriale ne peut fonctionner."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel champignon unicellulaire est le modèle classique pour l'étude de la fermentation alcoolique ?",
+              "options": [
+                "La levure de bière ou de boulangerie (Saccharomyces cerevisiae)",
+                "Le bacille lactique du yaourt",
+                "L'amibe d'eau douce",
+                "La moisissure Penicillium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La levure de boulangerie est un eucaryote facultatif capable de respirer en aérobiose et de fermenter le sucre en anaérobiose."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels sont les deux produits formés lors de la fermentation alcoolique du glucose ?",
+              "options": [
+                "L'éthanol et le dioxyde de carbone (CO2)",
+                "L'acide lactique et le dioxygène",
+                "L'eau pure et le monoxyde d'azote",
+                "Le glucose et l'acide chlorhydrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'équation de la fermentation alcoolique est : C6H12O6 -> 2 éthanol + 2 CO2 + 2 ATP."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel type de fermentation se produit dans les fibres musculaires humaines lors d'un effort très intense ?",
+              "options": [
+                "La fermentation lactique",
+                "La fermentation alcoolique",
+                "La fermentation butyrique",
+                "La fermentation acétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque l'apport d'O2 est insuffisant par rapport à l'effort demandé, les myocytes recourent à la fermentation lactique d'appoint."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel déchet organique s'accumule transitoirement dans le muscle lors d'une fermentation musculaire intense ?",
+              "options": [
+                "Le lactate (acide lactique)",
+                "L'éthanol pur",
+                "L'acide citrique",
+                "L'urée cristallisée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pyruvate est converti en lactate par la lactate déshydrogénase dans le cytoplasme pour régénérer le NAD+ nécessaire à la glycolyse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans quel compartiment de la cellule ont lieu les réactions de la fermentation ?",
+              "options": [
+                "Dans le cytoplasme (cytosol)",
+                "Dans la matrice mitochondriale",
+                "Dans le stroma du chloroplaste",
+                "Dans le nucléoplasme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fermentation se déroule entièrement dans le cytosol, sans intervention des mitochondries."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le bilan net de production d'ATP par molécule de glucose lors d'une fermentation ?",
+              "options": [
+                "2 molécules d'ATP",
+                "32 molécules d'ATP",
+                "120 molécules d'ATP",
+                "0 molécule d'ATP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seule la glycolyse produit de l'ATP lors de la fermentation, avec un bilan net de seulement 2 ATP par glucose."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la fermentation fournit-elle beaucoup moins d'énergie que la respiration cellulaire ?",
+              "options": [
+                "Car la matière organique n'est que partiellement dégradée",
+                "Car le glucose n'est pas utilisé du tout",
+                "Car toute l'énergie est détruite par la lumière",
+                "Car les enzymes fermentaires absorbent l'ATP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les déchets de fermentation (éthanol, lactate) sont des molécules organiques encore riches en énergie chimique non exploitée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle application biotechnologique ancestrale utilise la fermentation lactique de bactéries spécifiques ?",
+              "options": [
+                "La fabrication des yaourts et fromages",
+                "La vinification du raisin en vin",
+                "Le raffinage du pétrole brut",
+                "La fabrication du papier journal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bactéries lactiques fermentent le lactose du lait en acide lactique, ce qui acidifie le milieu et fait coaguler les caséines du lait."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques s'appliquent aux fermentations cellulaires ?",
+              "options": [
+                "Elles se déroulent sans utilisation de dioxygène",
+                "Elles libèrent un déchet organique encore riche en énergie chimique",
+                "Elles nécessitent impérativement l'activité des mitochondries",
+                "Elles produisent plus d'énergie que la respiration aérobie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les fermentations sont anaérobies et dégradent incomplètement le glucose en déchets organiques (éthanol, lactate) sans faire appel aux mitochondries."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les organites énergétiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les deux grands organites cellulaires spécialisés dans les conversions d'énergie chez les eucaryotes ?",
+              "options": [
+                "La mitochondrie et le chloroplaste",
+                "Le noyau et le ribosome",
+                "Le lysosome et le centrosome",
+                "L'appareil de Golgi et la vacuole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mitochondries (respiration) et les chloroplastes (photosynthèse) sont les deux organites spécialisés dans les transferts d'énergie cellulaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les replis de la membrane interne de la mitochondrie qui augmentent sa surface réactive ?",
+              "options": [
+                "Les crêtes mitochondriales",
+                "Les thylakoïdes",
+                "Les villosités cytoplasmiques",
+                "Les lamelles moyennes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les crêtes mitochondriales portent la chaîne de transport des électrons et les complexes ATP synthétase fabriquant l'ATP."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les sacs membranaires empilés contenant les pigments photosynthétiques dans le chloroplaste ?",
+              "options": [
+                "Les thylakoïdes",
+                "Les crêtes internes",
+                "Les vésicules de Golgi",
+                "Les canalicules lisses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les thylakoïdes forment des disques empilés (granums) dont les membranes renferment les photosystèmes capteurs de lumière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Selon la théorie endosymbiotique de Lynn Margulis, d'où proviennent les mitochondries et les chloroplastes ?",
+              "options": [
+                "De bactéries primitives internalisées par une cellule hôte ancestrale",
+                "De virus géants ayant perdu leur enveloppe externe",
+                "De fragments de paroi végétale dissous dans le cytosol",
+                "D'invaginations accidentelles de la membrane nucléaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'endosymbiose explique que d'anciennes bactéries aérobies et photosynthétiques ont été englobées en symbiose par un eucaryote primitif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel argument génétique majeur étaye fortement la théorie de l'endosymbiose ?",
+              "options": [
+                "Ils possèdent leur propre molécule d'ADN circulaire et leurs ribosomes",
+                "Ils ne contiennent aucune protéine fonctionnelle",
+                "Ils utilisent un code génétique totalement inconnu",
+                "Leur ADN est situé à l'extérieur de la cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mitochondries et chloroplastes possèdent un chromosome circulaire de type bactérien et des ribosomes 70S semblables à ceux des bactéries."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une cellule végétale verte exposée à la lumière, quelle complémentarité s'établit entre ces deux organites ?",
+              "options": [
+                "Les chloroplastes fournissent du glucose et de l'O2 aux mitochondries",
+                "Les mitochondries absorbent la lumière pour aider les chloroplastes",
+                "Les chloroplastes détruisent l'ATP produit par les mitochondries",
+                "Les mitochondries fabriquent les pigments verts du chloroplaste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La photosynthèse du chloroplaste produit du glucose et de l'O2, qui peuvent servir de substrats à la mitochondrie pour produire de l'ATP."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le milieu liquide interne de la mitochondrie entouré par sa membrane interne ?",
+              "options": [
+                "La matrice mitochondriale",
+                "Le stroma",
+                "Le cytosol",
+                "La lymphe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matrice mitochondriale contient les enzymes du cycle de Krebs, l'ADN mitochondrial et les ribosomes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le milieu liquide interne du chloroplaste dans lequel baignent les thylakoïdes ?",
+              "options": [
+                "Le stroma",
+                "La matrice",
+                "Le nucléoplasme",
+                "Le suc vacuolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le stroma est le gel aqueux interne du chloroplaste où a lieu la synthèse des sucres à partir du CO2 (phase photochimique indépendante)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les cellules musculaires du myocarde cardiaque possèdent-elles une densité exceptionnelle de mitochondries ?",
+              "options": [
+                "Pour subvenir à leurs besoins immenses et ininterrompus en énergie ATP",
+                "Pour stocker les pigments rouges du sang",
+                "Pour réaliser une photosynthèse interne d'urgence",
+                "Pour former une enveloppe rigide de protection"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cœur bat en permanence sans repos : ses cellules ont un besoin continu et énorme en ATP assuré par une abondance de mitochondries."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés sont partagées par les mitochondries et les chloroplastes ?",
+              "options": [
+                "Ils sont délimités par une double membrane",
+                "Ils possèdent leur propre matériel génétique",
+                "Ils contiennent tous les deux de la chlorophylle",
+                "Ils sont présents en nombre égal dans toutes les cellules animales"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux organites ont deux membranes et leur propre ADN d'origine bactérienne. Les chloroplastes sont absents chez les animaux et seuls à avoir de la chlorophylle."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les enzymes, catalyseurs biologiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la nature chimique fondamentale de la grande majorité des enzymes cellulaires ?",
+              "options": [
+                "Des protéines",
+                "Des glucides complexes",
+                "Des acides gras saturés",
+                "Des sels minéraux précipités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les enzymes sont des macromolécules protéiques repliées dans une conformation tridimensionnelle précise indispensable à leur fonction catalytique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la fonction principale d'une enzyme au cours d'une réaction biochimique ?",
+              "options": [
+                "Accélérer considérablement la réaction sans être modifiée à la fin",
+                "Fournir de la masse atomique supplémentaire aux produits",
+                "Ralentir la réaction pour éviter une surchauffe",
+                "Remplacer le substrat manquant dans le milieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'enzyme abaisse l'énergie d'activation d'une réaction, multipliant sa vitesse par des millions sans être consommée lors du cycle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la molécule spécifique qui se lie à l'enzyme pour être transformée ?",
+              "options": [
+                "Le substrat",
+                "Le cofacteur passif",
+                "Le catalyseur minéral",
+                "L'inhibiteur universel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le substrat est la molécule cible reconnue et modifiée par l'enzyme en produits de réaction."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment désigne-t-on la région tridimensionnelle de l'enzyme où s'accroche le substrat et s'opère la réaction ?",
+              "options": [
+                "Le site actif",
+                "Le pôle hydrophobe externe",
+                "Le domaine d'ancrage membranaire",
+                "Le codon d'initiation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le site actif est une poche formée par des acides aminés de liaison et catalytiques qui accueillent précisément le substrat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En quoi consiste la notion de 'spécificité de substrat' d'une enzyme ?",
+              "options": [
+                "Une enzyme donnée ne peut agir que sur un substrat précis ou un groupe très restreint",
+                "L'enzyme modifie sa formule chimique selon le substrat disponible",
+                "L'enzyme détruit tous les substrats environnants sans distinction",
+                "Le substrat est toujours identique pour toutes les enzymes du corps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce à la complémentarité de forme et de charges de son site actif, une enzyme ne reconnaît qu'un seul type de substrat (modèle clé-serrure)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment s'appelle l'état transitoire résultant de la liaison physique entre l'enzyme et son substrat ?",
+              "options": [
+                "Le complexe enzyme-substrat",
+                "La polymérase active",
+                "Le produit final conjugué",
+                "Le précipité d'inactivation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formation du complexe transitoire enzyme-substrat [ES] est l'étape indispensable à la transformation chimique du substrat en produit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que devient la molécule d'enzyme après avoir libéré les produits de la réaction catalysée ?",
+              "options": [
+                "Elle reste intacte et disponible pour catalyser un nouveau cycle",
+                "Elle est dégradée immédiatement en acides aminés perdus",
+                "Elle se transforme irréversiblement en substrat",
+                "Elle est expulsée hors de la cellule par exocytose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un catalyseur n'est pas consommé par la réaction : l'enzyme redevient libre et peut recommencer un nouveau cycle catalytique instantanément."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle enzyme digestive scinde les longues chaînes d'amidon en molécules plus courtes de maltose ?",
+              "options": [
+                "L'amylase",
+                "La lipase",
+                "La pepsine",
+                "L'ADN polymérase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'amylase salivaire et pancréatique hydrolyse les liaisons glucosidiques de l'amidon pour produire du maltose."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi une mutation génétique changeant un acide aminé du site actif peut-elle rendre une enzyme non fonctionnelle ?",
+              "options": [
+                "Cela altère la forme tridimensionnelle indispensable à la fixation du substrat",
+                "Cela transforme l'enzyme en molécule d'ADN",
+                "Cela empêche la cellule de fabriquer de l'eau",
+                "Cela supprime tous les ribosomes de la cellule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La reconnaissance dépend étroitement de la conformation géométrique du site actif : si un acide aminé change, le substrat ne peut plus s'y fixer."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés définissent rigoureusement une enzyme ?",
+              "options": [
+                "Elle agit à de très faibles concentrations",
+                "Elle fait preuve d'une grande spécificité d'action et de substrat",
+                "Elle est détruite et consommée au cours de la réaction chimique",
+                "Elle fonctionne indépendamment de la température et du pH"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les enzymes sont efficaces à faible dose et très spécifiques. Elles restent intactes après réaction et leur activité varie fortement selon la température et le pH."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les facteurs environnementaux du métabolisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que se passe-t-il pour la vitesse d'une réaction enzymatique quand la température augmente modérément jusqu'à son optimum ?",
+              "options": [
+                "Elle augmente grâce à une plus grande agitation et fréquence de collisions moléculaires",
+                "Elle diminue car les molécules s'immobilisent",
+                "Elle tombe immédiatement à zéro",
+                "Elle devient négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie cinétique thermique accroît la probabilité de rencontre entre l'enzyme et son substrat, augmentant la vitesse de réaction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que subit une enzyme humaine exposée à une température excessive de plus de 60 °C ?",
+              "options": [
+                "Une dénaturation irréversible de sa structure tridimensionnelle",
+                "Une activation permanente et incontrôlable",
+                "Une transformation spontanée en lipide",
+                "Une duplication spontanée de sa séquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chaleur brise les liaisons faibles qui maintiennent le repliement de la protéine : l'enzyme dénaturée perd définitivement son site actif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi une basse température (proche de 0 °C) ralentit-elle le métabolisme sans tuer les enzymes ?",
+              "options": [
+                "Les molécules bougent très lentement, ce qui inactive temporairement la réaction sans dénaturer",
+                "Les liaisons covalentes de l'enzyme sont brisées définitivement",
+                "Les substrats disparaissent du cytoplasme",
+                "L'ADN cellulaire est fragmenté par le gel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le froid ralentit l'agitation moléculaire : l'enzyme est 'endormie' mais intacte ; si on réchauffe, l'activité enzymatique reprend normalement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi l'activité d'une enzyme varie-t-elle fortement selon le pH du milieu ?",
+              "options": [
+                "Les variations de pH modifient les charges électriques et la conformation spatiale du site actif",
+                "Le pH modifie la séquence des nucléotides de l'ADN",
+                "Le pH fait bouillir le cytosol à température ambiante",
+                "L'eau se transforme en gaz sous l'effet du pH"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pH modifie l'ionisation des acides aminés du site actif, ce qui altère sa complémentarité chimique avec le substrat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle enzyme de l'estomac présente une activité optimale à un pH très acide voisin de 2 ?",
+              "options": [
+                "La pepsine",
+                "L'amylase salivaire",
+                "La trypsine pancréatique",
+                "La catalase hépatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pepsine gastrique est adaptée au milieu très acide de l'estomac généré par l'acide chlorhydrique pour digérer les protéines."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si l'on augmente la concentration en substrat à concentration constante d'enzyme, que fait la vitesse de réaction ?",
+              "options": [
+                "Elle augmente jusqu'à un plateau maximal de saturation des enzymes",
+                "Elle augmente indéfiniment de façon exponentielle",
+                "Elle chute brutalement à zéro dès le premier ajout",
+                "Elle reste parfaitement constante sans jamais varier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse plafonne (Vmax) lorsque tous les sites actifs des enzymes disponibles sont constamment occupés par du substrat (saturation)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chez les plantes terrestres, quel facteur climatique régule directement l'ouverture des stomates et les échanges de CO2 ?",
+              "options": [
+                "L'hygrométrie (humidité de l'air) et la luminosité",
+                "La teneur en diazote de l'air ambiant",
+                "La pression atmosphérique sous-marine",
+                "La vitesse de rotation de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière favorise l'ouverture des stomates pour capter le CO2, mais la sécheresse impose leur fermeture pour limiter l'évaporation de l'eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi un animal poïkilotherme (comme un reptile) est-il léthargique par temps très froid ?",
+              "options": [
+                "Sa température interne basse ralentit considérablement l'ensemble de ses réactions métaboliques",
+                "Il manque totalement d'oxygène dans son sang",
+                "Toutes ses enzymes digestives sont détruites par le froid",
+                "Ses cellules musculaires cessent de posséder de l'ADN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "N'ayant pas de régulation thermique interne constante, la température corporelle du reptile chute, ce qui ralentit toutes ses enzymes et son métabolisme."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel pigment photosynthétique accessoire aide la plante à capter la lumière lorsque l'intensité varie ?",
+              "options": [
+                "Les caroténoïdes",
+                "Les histones",
+                "L'actine",
+                "Le collagène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les caroténoïdes absorbent dans les longueurs d'onde bleu-vert et transmettent leur énergie à la chlorophylle tout en la protégeant de l'excès lumineux."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels paramètres physico-chimiques influencent l'efficacité du métabolisme cellulaire ?",
+              "options": [
+                "La température du milieu",
+                "Le pH du milieu",
+                "La forme géométrique du bocal d'expérimentation",
+                "La couleur de la blouse de l'expérimentateur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La température et le pH sont des facteurs environnementaux déterminants qui modifient directement la vitesse et l'intégrité des réactions enzymatiques."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Échanges et flux au sein de l'organisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Chez les vertébrés, quel tissu liquide circulant assure le transport continu des gaz et des nutriments ?",
+              "options": [
+                "Le sang",
+                "La bile",
+                "Le suc pancréatique",
+                "L'urine primaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sang propulsé par le cœur transporte le dioxygène, les nutriments dissous, les hormones et les déchets métaboliques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels vaisseaux microscopiques constituent le lieu exclusif d'échanges entre le sang et les cellules des tissus ?",
+              "options": [
+                "Les capillaires sanguins",
+                "Les artères aortes",
+                "Les veines caves",
+                "Les gros troncs lymphatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La paroi ultrafine (une seule couche de cellules endothéliales) des capillaires autorise la diffusion facile des gaz et molécules avec les tissus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel liquide clair issu du sang baigne directement les cellules pour servir d'intermédiaire d'échange ?",
+              "options": [
+                "La lymphe interstitielle",
+                "Le suc gastrique",
+                "Le plasma pur déshydraté",
+                "Le liquide amniotique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le liquide interstitiel (ou lymphe interstitielle) filtre hors des capillaires et entoure chaque cellule pour les échanges de proximité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chez les végétaux, quel tissu conducteur achemine l'eau et les sels minéraux absorbés par les racines vers les feuilles ?",
+              "options": [
+                "Le xylème (vaisseaux de bois)",
+                "Le phloème (tubes criblés)",
+                "Le parenchyme spongieux",
+                "L'endoderme racinaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le xylème est constitué de files de cellules mortes aux parois lignifiées conduisant la sève brute ascendante sous tension."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel tissu conducteur végétal distribue la sève élaborée riche en sucres à l'ensemble des organes consommateurs ?",
+              "options": [
+                "Le phloème",
+                "Le xylème",
+                "La cuticule",
+                "L'ostiole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le phloème est formé de cellules vivantes (tubes criblés) qui transportent la sève élaborée des feuilles photosynthétiques vers les racines et bourgeons."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel organe assure chez l'Homme les échanges gazeux vitaux entre l'air extérieur et le sang ?",
+              "options": [
+                "Les poumons au niveau des alvéoles pulmonaires",
+                "Le foie au niveau des hépatocytes",
+                "Les reins au niveau des néphrons",
+                "La rate au niveau des sinus veineux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les millions d'alvéoles pulmonaires offrent une surface de contact immense et fine pour la diffusion passive de l'O2 et du CO2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Par quelle vaste surface d'absorption intestinale les nutriments de l'alimentation passent-ils dans le sang ?",
+              "options": [
+                "Les villosités et microvillosités de l'intestin grêle",
+                "La paroi épaisse de l'œsophage",
+                "Les glandes salivaires",
+                "La vésicule biliaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les villosités intestinales déploient une surface d'environ 200 à 300 m² richement vascularisée pour l'absorption des nutriments."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel organe joue un rôle clé dans le stockage temporaire du glucose sous forme de glycogène et sa redistribution ?",
+              "options": ["Le foie", "Le poumon", "La trachée", "La thyroïde"],
+              "correctAnswers": [0],
+              "explanation": "Le foie stocke le surplus de glucose sous forme de glycogène après le repas et le relargue à jeun pour maintenir une glycémie constante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quels organes filtrent en permanence le sang pour éliminer les déchets métaboliques solubles comme l'urée ?",
+              "options": [
+                "Les reins",
+                "Les poumons",
+                "Les os longs",
+                "Les ganglions lymphatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les néphrons rénaux épurent le plasma sanguin de ses déchets azotés (urée, acide urique) et sécrètent l'urine."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels éléments participent activement aux flux et aux échanges de matière chez les êtres vivants ?",
+              "options": [
+                "Les vaisseaux sanguins capillaires",
+                "Les vaisseaux conducteurs de sève",
+                "La roche métamorphique",
+                "L'or pur cristallisé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les capillaires animaux et les vaisseaux conducteurs végétaux (xylème/phloème) sont les structures d'échange et de transport biologique."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Intégration et communication cellulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une substance chimique messagère sécrétée dans le sang agissant à distance sur des cellules cibles ?",
+              "options": [
+                "Une hormone",
+                "Un enzyme digestif",
+                "Un anticorps de défense",
+                "Un antigène étranger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une hormone est libérée par une glande endocrine dans la circulation sanguine et coordonne le fonctionnement d'organes cibles distants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle condition moléculaire est indispensable pour qu'une cellule soit sensible à une hormone précise ?",
+              "options": [
+                "Elle doit posséder un récepteur spécifique à cette hormone",
+                "Elle doit être totalement dépourvue de membrane",
+                "Elle doit flotter librement dans le sang sans ancrage",
+                "Elle doit être en cours de division cellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seules les cellules équipées du récepteur complémentaire (membranaire ou intracellulaire) peuvent reconnaître l'hormone et y répondre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle hormone hypoglycémiante est sécrétée par le pancréas lorsque le taux de sucre sanguin augmente ?",
+              "options": [
+                "L'insuline",
+                "Le glucagon",
+                "L'adrénaline",
+                "La cortisone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'insuline est sécrétée par les cellules bêta des îlots de Langerhans du pancréas suite à un repas pour abaisser la glycémie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel effet physiologique produit l'insuline sur les cellules cibles musculaires et hépatiques ?",
+              "options": [
+                "Elle stimule la capture du glucose et son stockage sous forme de glycogène",
+                "Elle déclenche la libération massive de glucose dans le sang",
+                "Elle détruit les réserves glucidiques des cellules",
+                "Elle bloque totalement la respiration cellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'insuline active l'entrée du glucose dans les cellules et stimule la glycogénogénèse dans le foie et les muscles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sous quelle forme l'information circule-t-elle le long du prolongement cytoplasmique d'un neurone ?",
+              "options": [
+                "Sous forme d'un signal électrique (potentiel d'action)",
+                "Sous forme d'un flux continu de molécules d'ATP",
+                "Par diffusion mécanique d'ondes acoustiques",
+                "Par émission d'ondes électromagnétiques radio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le message nerveux est véhiculé sous forme d'une onde de dépolarisation membranaire transitoire appelée potentiel d'action."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment s'appelle la zone de jonction et de transmission d'information entre deux cellules nerveuses ?",
+              "options": [
+                "Une synapse",
+                "Un desmosome",
+                "Une vacuole",
+                "Un sarcomère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La synapse est l'espace de contact fonctionnel où l'influx électrique est converti en signal chimique pour franchir la fente synaptique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelles molécules chimiques franchissent la fente synaptique pour transmettre le message au neurone suivant ?",
+              "options": [
+                "Les neurotransmetteurs",
+                "Les hormones stéroïdiennes",
+                "Les ribosomes libres",
+                "Les fibres de collagène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les vésicules présynaptiques libèrent des neurotransmetteurs (acétylcholine, dopamine...) qui se fixent sur les récepteurs postsynaptiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la capacité d'un organisme à maintenir la stabilité de son milieu intérieur malgré les variations externes ?",
+              "options": [
+                "L'homéostasie",
+                "L'hétérogénéité",
+                "La symbiose",
+                "La photosensibilité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'homéostasie régule la température, le pH, l'hydratation et la glycémie dans des limites compatibles avec la vie cellulaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quels canaux membranaires directs permettent le passage d'ions entre cellules animales adjacentes dans le muscle cardiaque ?",
+              "options": [
+                "Les jonctions communicantes (jonctions gap)",
+                "Les plasmodesmes végétaux",
+                "Les pores nucléaires",
+                "Les synapses chimiques à fente large"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les jonctions gap couplent électriquement les cellules cardiaques, permettant la propagation synchronisée de l'onde de contraction."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels systèmes majeurs assurent la coordination fonctionnelle des organes chez l'Homme ?",
+              "options": [
+                "Le système nerveux",
+                "Le système endocrinien (hormonal)",
+                "Le système tégumentaire seul",
+                "Le système cristallin minéral"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le système nerveux (rapide, ciblé) et le système endocrinien (lent, diffus) coopèrent pour intégrer les fonctions physiologiques de l'organisme."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Métabolisme et effort chez l'Homme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment évolue la consommation de dioxygène de l'organisme lors du passage du repos à un exercice musculaire ?",
+              "options": [
+                "Elle augmente rapidement pour répondre aux besoins accrus en ATP des muscles",
+                "Elle diminue car les muscles n'ont plus besoin d'énergie",
+                "Elle reste strictement constante quelle que soit l'intensité",
+                "Elle s'annule complètement pour basculer en anaérobie totale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La contraction musculaire consomme beaucoup d'ATP, obligeant les mitochondries à oxyder plus de substrats et à consommer plus de dioxygène."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le débit maximal de dioxygène qu'un individu peut consommer au cours d'un effort intense ?",
+              "options": [
+                "Le VO2max",
+                "L'indice de masse corporelle",
+                "La capacité pulmonaire vitale statique",
+                "Le quotient respiratoire minimal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le VO2max est le volume maximal de dioxygène consommé par unité de temps lors d'un effort physique maximal à saturation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle modification cardio-respiratoire immédiate observe-t-on dès le début d'un exercice physique ?",
+              "options": [
+                "Une augmentation simultanée des fréquences cardiaque et ventilatoire",
+                "Une baisse brutale du débit sanguin artériel",
+                "Une fermeture complète des alvéoles pulmonaires",
+                "Une diminution de la pression artérielle générale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cœur bat plus vite et plus fort et la respiration s'accélère pour approvisionner les muscles en dioxygène et évacuer le CO2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles molécules de réserve sont mobilisées dans l'organisme pour fournir de l'énergie lors d'un effort d'endurance ?",
+              "options": [
+                "Le glycogène et les lipides (acides gras)",
+                "Les sels minéraux et l'eau pure",
+                "Les acides nucléiques de l'ADN",
+                "Le dioxyde de carbone accumulé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le glycogène musculaire et hépatique fournit le glucose au début de l'effort, relayé par les acides gras du tissu adipeux lors d'un effort prolongé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi la production de chaleur corporelle augmente-t-elle fortement durant l'effort musculaire ?",
+              "options": [
+                "Car une part importante de l'énergie des réactions métaboliques est dissipée sous forme thermique",
+                "Car le sang cesse de circuler dans les membres",
+                "Car le muscle absorbe la chaleur ambiante",
+                "Car les os frottent les uns contre les autres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le rendement musculaire est d'environ 20 à 25 % : près de 75 % de l'énergie chimique consommée est libérée sous forme de chaleur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mécanisme physiologique permet à l'organisme d'évacuer la chaleur excédentaire générée par l'effort ?",
+              "options": [
+                "La sudation et la vasodilatation cutanée",
+                "La vasoconstriction des capillaires de la peau",
+                "La rétention totale d'eau dans les tissus",
+                "Le blocage de la respiration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évaporation de la sueur à la surface de la peau élimine efficacement les calories excédentaires pour stabiliser la température interne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment le débit sanguin est-il redistribué dans les différents organes durant un effort musculaire soutenu ?",
+              "options": [
+                "Il est massivement orienté vers les muscles actifs et réduit vers les organes digestifs",
+                "Il est dirigé en priorité vers l'estomac et les intestins",
+                "Il est stoppé en direction du cœur et du cerveau",
+                "Il est réparti de manière rigoureusement identique dans tous les organes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par vasodilatation ciblée, les muscles actifs reçoivent jusqu'à 80 % du débit cardiaque total au détriment temporaire des viscères."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel dysfonctionnement métabolique chronique se caractérise par une incapacité à réguler convenablement la glycémie ?",
+              "options": [
+                "Le diabète",
+                "L'asthme",
+                "L'ostéoporose",
+                "L'anémie ferriprive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diabète (type 1 ou type 2) résulte d'une absence ou d'une inefficacité de l'insuline, provoquant une hyperglycémie chronique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle adaptation cellulaire durable observe-t-on dans les fibres musculaires suite à un entraînement régulier d'endurance ?",
+              "options": [
+                "Une augmentation du nombre et du volume des mitochondries",
+                "Une disparition complète des capillaires sanguins",
+                "Une destruction de l'ADN des myocytes",
+                "Une réduction irréversible des réserves de glycogène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'entraînement stimule la biogenèse mitochondriale et la vascularisation capillaire, améliorant l'efficacité du métabolisme aérobie."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels paramètres physiologiques augmentent significativement lors d'un effort musculaire soutenu ?",
+              "options": [
+                "Le débit cardiaque",
+                "Le débit ventilatoire",
+                "Le transit intestinal",
+                "La production d'urine par les reins"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pendant l'exercice, les débits cardiaque et ventilatoire s'élèvent pour fournir l'oxygène aux muscles, tandis que la digestion et la diurèse ralentissent."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -6,10 +6,10 @@ import {
   PAGE_MARK_TONE_CLASS,
   PAGE_SHAPE_HEIGHTS,
   PAGE_SHAPE_WIDTHS,
-  readPageShapeTag,
   type PageShapeAttrs,
   type PageShapeKind,
   type PageTone,
+  readPageShapeTag,
 } from "@/lib/pages/style";
 
 function shapeBody(attrs: PageShapeAttrs): unknown[] {
@@ -102,9 +102,6 @@ function attrsOf(
  * forme, et le mode source conserve le document.
  */
 export const PageShape = Node.create({
-  atom: true,
-  group: "block",
-
   addAttributes() {
     return {
       height: { default: 80 },
@@ -113,6 +110,8 @@ export const PageShape = Node.create({
       width: { default: 200 },
     };
   },
+  atom: true,
+  group: "block",
 
   markdownTokenizer: {
     level: "block",
@@ -162,18 +161,17 @@ export const PageShape = Node.create({
   },
 
   renderHTML({ HTMLAttributes }) {
-    const parsed =
-      attrsOf({
-        height: Number(HTMLAttributes.height),
-        kind: HTMLAttributes.kind,
-        tone: HTMLAttributes.tone,
-        width: Number(HTMLAttributes.width),
-      }) ?? {
-        height: 80 as const,
-        kind: "rect" as const,
-        tone: null,
-        width: 200 as const,
-      };
+    const parsed = attrsOf({
+      height: Number(HTMLAttributes.height),
+      kind: HTMLAttributes.kind,
+      tone: HTMLAttributes.tone,
+      width: Number(HTMLAttributes.width),
+    }) ?? {
+      height: 80 as const,
+      kind: "rect" as const,
+      tone: null,
+      width: 200 as const,
+    };
     const toneClass = parsed.tone ? PAGE_MARK_TONE_CLASS[parsed.tone] : "";
     return [
       "div",

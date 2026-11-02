@@ -1,0 +1,2233 @@
+{
+  "id": "5e-allemand-08",
+  "year": "5e",
+  "subject": "allemand",
+  "title": "Voyage et ville en l'allemand",
+  "order": 8,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Se déplacer",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots allemands désignent un moyen de transport en commun ?",
+              "explanation": "Bus et Zug sont des véhicules collectifs courants en Allemagne.",
+              "options": ["der Bus", "der Zug", "die Fahrkarte", "links"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « le bus » en allemand ?",
+              "explanation": "Bus est masculin : der Bus.",
+              "options": ["der Bus", "die Bus", "das Bus", "der Zug"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « der Zug » ?",
+              "explanation": "Zug désigne le train.",
+              "options": ["le bus", "le train", "le ticket", "la gare"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« die Fahrkarte » correspond à…",
+              "explanation": "Fahrkarte = billet ou ticket de transport.",
+              "options": ["la station", "le billet", "la rue", "le pont"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour prendre le bus, tu achètes souvent…",
+              "explanation": "On paie une Fahrkarte avant ou dans le véhicule.",
+              "options": [
+                "eine Fahrkarte",
+                "ein Haus",
+                "eine Schule",
+                "ein Buch"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ich fahre mit dem Bus » veut dire…",
+              "explanation": "mit dem Bus = en bus.",
+              "options": [
+                "Je marche au bus",
+                "Je voyage en bus",
+                "Je vois le bus",
+                "Je vends le bus"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Où monte-t-on dans un Bus ?",
+              "explanation": "An der Haltestelle = à l'arrêt.",
+              "options": [
+                "an der Haltestelle",
+                "im Kino",
+                "in der Küche",
+                "auf dem Dach"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le train part généralement de…",
+              "explanation": "der Bahnhof est la gare.",
+              "options": ["dem Bahnhof", "dem Bett", "dem Tisch", "dem Garten"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« schnell » dans « Der Zug ist schnell » signifie…",
+              "explanation": "schnell = rapide.",
+              "options": ["lent", "rapide", "petit", "cher"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour aller en ville, Marie prend…",
+              "explanation": "En 5e, Bus et Zug servent à se déplacer en ville.",
+              "options": [
+                "den Bus oder den Zug",
+                "nur das Fenster",
+                "die Hausaufgabe",
+                "den Bleistift"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes servent à parler d'un déplacement payant ?",
+              "explanation": "Fahrkarte et Ticket (souvent Fahrkarte) concernent le paiement du trajet.",
+              "options": ["die Fahrkarte", "das Ticket", "geradeaus", "rechts"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« die Haltestelle » est…",
+              "explanation": "Haltestelle = arrêt de bus ou tram.",
+              "options": ["un arrêt", "un billet", "un pont", "un musée"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduire « Je prends le train » ?",
+              "explanation": "Ich nehme den Zug est la formulation simple.",
+              "options": [
+                "Ich nehme den Zug",
+                "Ich esse den Zug",
+                "Ich lese den Zug",
+                "Ich male den Zug"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un Bus est…",
+              "explanation": "Bus est masculin en allemand.",
+              "options": ["maskulin", "feminin", "neutre", "pluriel only"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« fahren » veut dire surtout…",
+              "explanation": "fahren = rouler / voyager en véhicule.",
+              "options": ["conduire ou voyager", "dormir", "chanter", "nager"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Où achète-t-on une Fahrkarte ?",
+              "explanation": "Souvent à la gare ou dans le bus.",
+              "options": [
+                "am Schalter oder im Bus",
+                "im Bett",
+                "unter dem Tisch",
+                "in der Tasche only"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« der Fahrplan » aide à…",
+              "explanation": "Fahrplan = horaire des transports.",
+              "options": ["voir les horaires", "cuisiner", "jouer", "dessiner"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Zug et Bus sont…",
+              "explanation": "Ce sont des moyens de transport.",
+              "options": [
+                "Verkehrsmittel",
+                "Lebensmittel",
+                "Möbel",
+                "Kleidung"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ich warte auf den Bus » signifie…",
+              "explanation": "warten auf = attendre.",
+              "options": [
+                "J'attends le bus",
+                "Je prends le bus",
+                "Je vends le bus",
+                "Je perds le bus"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour un trajet en train, il faut…",
+              "explanation": "Sans billet valide, le voyage est interdit.",
+              "options": [
+                "eine gültige Fahrkarte",
+                "nur Schuhe",
+                "einen Hund",
+                "eine Pizza"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots allemands sont des véhicules ou lignes de transport ?",
+              "explanation": "Bus et Zug transportent des passagers.",
+              "options": ["der Bus", "der Zug", "links", "wo ist"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« mit dem Zug fahren » = …",
+              "explanation": "mit dem Zug = en train.",
+              "options": [
+                "voyager en train",
+                "manger en train",
+                "dormir sur la route",
+                "courir à la gare"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La Fahrkarte prouve que…",
+              "explanation": "Elle montre que le trajet est payé.",
+              "options": [
+                "tu as payé le trajet",
+                "tu es professeur",
+                "tu habites Berlin",
+                "tu parles français"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« der Bahnsteig » est…",
+              "explanation": "Bahnsteig = quai de gare.",
+              "options": ["le quai", "le ticket", "le vélo", "le parc"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un enfant dit « Ich fahre Bus » : il veut dire…",
+              "explanation": "Formulation orale : je vais en bus.",
+              "options": [
+                "Je vais en bus",
+                "Je déteste le bus",
+                "Je répare le bus",
+                "Je dessine un bus"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« einsteigen » dans le bus signifie…",
+              "explanation": "einsteigen = monter dans le véhicule.",
+              "options": ["monter", "descendre", "courir", "parler"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« aussteigen » signifie…",
+              "explanation": "aussteigen = descendre du véhicule.",
+              "options": ["descendre", "monter", "acheter", "lire"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le Bus fährt…",
+              "explanation": "fährt = roule / circule (3e pers.).",
+              "options": [
+                "sur la route",
+                "dans l'eau only",
+                "dans le ciel only",
+                "sous terre always"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« pünktlich » pour un Zug veut dire…",
+              "explanation": "pünktlich = à l'heure.",
+              "options": ["à l'heure", "en retard always", "cassé", "gratuit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour aller à l'école, Paul prend le…",
+              "explanation": "Bus est fréquent pour l'école en ville.",
+              "options": [
+                "Bus",
+                "Kühlschrank",
+                "Fernseher",
+                "Regenschirm only as vehicle"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots relient le voyage et le paiement ?",
+              "explanation": "Zug/Bus nécessitent souvent une Fahrkarte.",
+              "options": ["der Zug", "die Fahrkarte", "geradeaus", "rechts"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« die Straßenbahn » ressemble à…",
+              "explanation": "Straßenbahn = tramway.",
+              "options": ["un tram", "un avion", "un bateau", "un vélo seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où trouve-t-on un Fahrplan ?",
+              "explanation": "À l'arrêt ou à la gare.",
+              "options": [
+                "an Haltestelle oder Bahnhof",
+                "nur zu Hause",
+                "im Schwimmbad",
+                "in der Suppe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich muss umsteigen » veut dire…",
+              "explanation": "umsteigen = changer de ligne ou de train.",
+              "options": [
+                "Je dois changer",
+                "Je dois dormir",
+                "Je dois manger",
+                "Je dois nager"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le mot « Ticket » en allemand est…",
+              "explanation": "Ticket est neutre : das Ticket.",
+              "options": [
+                "das Ticket",
+                "der Ticket",
+                "die Ticket",
+                "den Ticket"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« der Fahrer » du Bus est…",
+              "explanation": "Fahrer = conducteur.",
+              "options": [
+                "le chauffeur",
+                "le passager",
+                "le billet",
+                "l'arrêt"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« die Fahrt » signifie…",
+              "explanation": "Fahrt = trajet / voyage.",
+              "options": ["le trajet", "la maison", "la couleur", "le sport"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour voyager en Zug, on va d'abord au…",
+              "explanation": "Bahnhof = gare.",
+              "options": [
+                "Bahnhof",
+                "Schwimmbad",
+                "Bäckerei only",
+                "Kino only"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« billig » pour une Fahrkarte = …",
+              "explanation": "billig = bon marché.",
+              "options": ["bon marché", "très cher", "interdit", "lourd"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Wir fahren mit dem Bus in die Stadt » : ils vont…",
+              "explanation": "in die Stadt = en ville.",
+              "options": [
+                "en ville en bus",
+                "à la plage en avion",
+                "au lit",
+                "au cinéma à pied only"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots allemands désignent des choses utiles pour voyager en ville ?",
+              "explanation": "Bus et Fahrkarte servent au déplacement urbain.",
+              "options": ["der Bus", "die Fahrkarte", "links", "wo ist"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« die U-Bahn » est…",
+              "explanation": "U-Bahn = métro.",
+              "options": [
+                "le métro",
+                "le bus scolaire only",
+                "un taxi always",
+                "un bateau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ich habe keine Fahrkarte » : il…",
+              "explanation": "keine Fahrkarte = pas de billet.",
+              "options": [
+                "n'a pas de billet",
+                "a deux billets",
+                "est conducteur",
+                "est à la maison"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le Zug hat viele…",
+              "explanation": "Wagen = voitures / wagons.",
+              "options": ["Wagen", "Bücher", "Äpfel", "Stühle at home"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« abfahren » pour le Bus signifie…",
+              "explanation": "abfahren = partir.",
+              "options": ["partir", "arriver", "s'asseoir", "manger"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ankommen » signifie…",
+              "explanation": "ankommen = arriver.",
+              "options": ["arriver", "partir", "cacher", "perdre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« die Linie 5 » concerne…",
+              "explanation": "Linie = ligne de bus ou tram.",
+              "options": [
+                "une ligne de transport",
+                "une leçon de maths",
+                "une couleur",
+                "un animal"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour « mitfahren », tu…",
+              "explanation": "mitfahren = voyager avec quelqu'un.",
+              "options": [
+                "montes avec un autre",
+                "restes seul always",
+                "vends un ticket",
+                "cuisines"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« der Reisende » est…",
+              "explanation": "Reisende = voyageur.",
+              "options": ["le voyageur", "le billet", "la route", "le pont"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lisa kauft eine Fahrkarte für den…",
+              "explanation": "Contexte transport : Zug ou Bus.",
+              "options": ["Zug", "Tisch", "Stift", "Hund as ticket"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont liés au train en allemand ?",
+              "explanation": "Zug et Bahnhof vont ensemble.",
+              "options": [
+                "der Zug",
+                "der Bahnhof",
+                "rechts",
+                "links only direction"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« der Bus ist voll » : le bus est…",
+              "explanation": "voll = plein.",
+              "options": ["plein", "vide", "neuf", "bleu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« leer » pour un Bus = …",
+              "explanation": "leer = vide.",
+              "options": ["vide", "plein", "rapide", "cher"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich steige in den Bus ein » : action = …",
+              "explanation": "einsteigen = monter.",
+              "options": ["monter", "descendre", "courir", "parler allemand"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« die Fahrkarte bitte » est dit…",
+              "explanation": "Phrase polie pour demander ou montrer un billet.",
+              "options": [
+                "au contrôleur ou au guichet",
+                "au chat",
+                "au soleil",
+                "au tableau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« der Zug fährt nach Berlin » : direction…",
+              "explanation": "nach Berlin = vers Berlin.",
+              "options": ["Berlin", "Paris always", "école only", "nulle part"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« nach » indique…",
+              "explanation": "nach + ville = vers.",
+              "options": [
+                "la destination",
+                "la couleur",
+                "l'heure exacte only",
+                "le prix always"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« von » dans « von Hamburg » = …",
+              "explanation": "von = de / depuis.",
+              "options": ["depuis", "vers", "sous", "sans"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un Kind fährt mit der…",
+              "explanation": "Schule → Schulbus ou Bus.",
+              "options": ["Schulbus", "Gitarre", "Suppe", "Uhr as vehicle"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Wann kommt der Bus ? » demande…",
+              "explanation": "Wann = quand.",
+              "options": [
+                "l'heure d'arrivée",
+                "le prix du pain",
+                "la couleur",
+                "le prof"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots allemands concernent un ticket de transport ?",
+              "explanation": "Fahrkarte et Ticket sont synonymes courants.",
+              "options": [
+                "die Fahrkarte",
+                "das Ticket",
+                "der Bus as ticket",
+                "geradeaus"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« gültig » pour une Fahrkarte = …",
+              "explanation": "gültig = valide.",
+              "options": ["valide", "faux", "sale", "froid"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« der Schaffner » contrôle…",
+              "explanation": "Schaffner = contrôleur dans le train.",
+              "options": ["les billets", "la météo", "les devoirs", "le foot"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich fahre nach Hause mit dem Bus » : retour…",
+              "explanation": "nach Hause = à la maison.",
+              "options": [
+                "à la maison en bus",
+                "à l'école en train always",
+                "au zoo à pied only",
+                "nulle part"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« die Haltestelle » nummer…",
+              "explanation": "On lit le numéro de ligne à l'arrêt.",
+              "options": [
+                "zeigt die Linie",
+                "ist ein Essen",
+                "ist ein Tier",
+                "ist ein Buch"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« der Zug ist weg » : le train…",
+              "explanation": "weg = parti / plus là.",
+              "options": [
+                "est déjà parti",
+                "n'existe pas",
+                "est un bus",
+                "est petit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« warten » à l'arrêt = …",
+              "explanation": "warten = attendre.",
+              "options": ["attendre", "courir", "dormir", "manger"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« die Fahrzeit » est…",
+              "explanation": "Fahrzeit = durée du trajet.",
+              "options": [
+                "la durée du voyage",
+                "le billet",
+                "le conducteur",
+                "la gare only name"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour « ein Ticket kaufen » tu…",
+              "explanation": "kaufen = acheter.",
+              "options": [
+                "achètes un ticket",
+                "vends un ticket",
+                "manges un ticket",
+                "perds always"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tom und Anna fahren mit dem…",
+              "explanation": "Phrase type 5e : Zug ou Bus.",
+              "options": ["Zug", "Salat", "Fenster", "Bleistift"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels transports sont cités en vocabulaire 5e voyage ?",
+              "explanation": "Bus et Zug sont au programme déplacement.",
+              "options": [
+                "Bus",
+                "Zug",
+                "Fahrkarte as vehicle",
+                "rechts as vehicle"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« die Bushaltestelle » = …",
+              "explanation": "Bushaltestelle = arrêt de bus.",
+              "options": ["arrêt de bus", "gare only", "aéroport", "piscine"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« der ICE » est un…",
+              "explanation": "ICE = train rapide allemand.",
+              "options": ["train rapide", "bus local", "vélo", "bateau"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich brauche eine Fahrkarte » : besoin…",
+              "explanation": "brauchen = avoir besoin de.",
+              "options": [
+                "d'un billet",
+                "d'un chien",
+                "d'une pomme",
+                "d'un lit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« mit » dans mit dem Bus = …",
+              "explanation": "mit = avec / en (moyen).",
+              "options": [
+                "en (moyen de transport)",
+                "sans",
+                "contre",
+                "devant only"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« zu Fuß » vs Bus : zu Fuß = …",
+              "explanation": "zu Fuß = à pied.",
+              "options": ["à pied", "en bus", "en train", "en avion"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« der Busbahnhof » est…",
+              "explanation": "Gare routière pour les bus.",
+              "options": [
+                "la gare routière",
+                "le quai de train only",
+                "un parc",
+                "un magasin"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« einmal fahren » avec une Fahrkarte = …",
+              "explanation": "einmal = un trajet / une fois.",
+              "options": [
+                "un voyage simple",
+                "un abonnement annuel always",
+                "gratuit forever",
+                "interdit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Der Bus hält hier » : le bus…",
+              "explanation": "halten = s'arrêter.",
+              "options": ["s'arrête ici", "part toujours", "vole", "nage"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour une Sortie, die Klasse nimmt den…",
+              "explanation": "Sortie scolaire → bus.",
+              "options": ["Bus", "Computer as bus", "Tisch", "Regen"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots permettent de nommer bus et billet ?",
+              "explanation": "der Bus et die Fahrkarte sont essentiels.",
+              "options": ["der Bus", "die Fahrkarte", "geradeaus", "wo ist"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« die Zone » sur un ticket sert à…",
+              "explanation": "Zone tarifaire du réseau.",
+              "options": [
+                "indiquer la zone tarifaire",
+                "donner la météo",
+                "choisir la couleur",
+                "nommer le prof"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« der Zug hat Verspätung » : le train…",
+              "explanation": "Verspätung = retard.",
+              "options": [
+                "a du retard",
+                "est à l'heure",
+                "est un bus",
+                "est fermé always"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« pünktlich ankommen » = …",
+              "explanation": "Arriver à l'heure.",
+              "options": [
+                "arriver à l'heure",
+                "arriver en retard",
+                "ne pas arriver",
+                "partir"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ich fahre lieber mit dem Zug » : préférence…",
+              "explanation": "lieber = plutôt / de préférence.",
+              "options": ["le train", "dormir", "manger", "lire only"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« die S-Bahn » circule souvent…",
+              "explanation": "S-Bahn = train de banlieue / urbain.",
+              "options": [
+                "en banlieue et ville",
+                "sous l'eau",
+                "dans l'espace",
+                "sans rails"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« ein Ausflug mit dem Bus » : …",
+              "explanation": "Ausflug = sortie / excursion.",
+              "options": [
+                "excursion en bus",
+                "cours de maths",
+                "devoir maison",
+                "sieste"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« der Fahrpreis » = …",
+              "explanation": "Fahrpreis = prix du trajet.",
+              "options": [
+                "le prix du voyage",
+                "le conducteur",
+                "l'arrêt",
+                "la vitesse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« bitte validieren » pour Ticket : …",
+              "explanation": "validieren = composter le ticket.",
+              "options": [
+                "composter le billet",
+                "jeter le billet",
+                "manger le billet",
+                "coudre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Max zeigt seine…",
+              "explanation": "Contrôle : Fahrkarte.",
+              "options": [
+                "Fahrkarte",
+                "Hausaufgabe",
+                "Socke as ticket",
+                "Blume"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes allemands désignent train ou billet ?",
+              "explanation": "Zug et Fahrkarte clôturent le thème déplacement.",
+              "options": ["der Zug", "die Fahrkarte", "links", "rechts"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Guten Tag, eine Fahrkarte nach München » : achat…",
+              "explanation": "Phrase au guichet.",
+              "options": [
+                "billet pour Munich",
+                "bus pour Paris",
+                "pizza",
+                "carte postale"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« der Anschluss » en gare = …",
+              "explanation": "Anschluss = correspondance.",
+              "options": [
+                "la correspondance",
+                "le billet",
+                "le quai only name",
+                "le retard always"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich verpasse den Bus » : …",
+              "explanation": "verpassen = rater / manquer.",
+              "options": [
+                "Je rate le bus",
+                "Je prends le bus",
+                "Je conduis le bus",
+                "Je vends le bus"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« der nächste Bus » = …",
+              "explanation": "nächste = prochain.",
+              "options": [
+                "le prochain bus",
+                "le dernier always",
+                "un taxi",
+                "un vélo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« die Gleise » sont pour le…",
+              "explanation": "Gleise = rails / voies.",
+              "options": [
+                "Zug",
+                "Bus only always",
+                "Schiff in city",
+                "Fahrrad on rails always"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« sich setzen » dans le Bus = …",
+              "explanation": "sich setzen = s'asseoir.",
+              "options": ["s'asseoir", "courir", "crier", "descendre always"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« die Klasse fährt zusammen » : …",
+              "explanation": "zusammen = ensemble.",
+              "options": [
+                "voyage ensemble",
+                "reste seul",
+                "mange only",
+                "dort at home"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Vorsicht, die Tür schließt » : …",
+              "explanation": "Tür schließt = porte se ferme.",
+              "options": [
+                "attention, porte se ferme",
+                "le train est un bus",
+                "billet gratuit",
+                "arrêt supprimé always"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Récap 5e : pour se déplacer tu utilises Bus, Zug et…",
+              "explanation": "Fahrkarte complète le trio voyage.",
+              "options": [
+                "eine Fahrkarte",
+                "nur geradeaus",
+                "wo ist only",
+                "links as ticket"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Demander son chemin",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots allemands indiquent une direction ?",
+              "explanation": "links et rechts orientent à gauche et à droite.",
+              "options": ["links", "rechts", "der Zug", "die Fahrkarte"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« links » signifie…",
+              "explanation": "links = à gauche.",
+              "options": ["à gauche", "à droite", "tout droit", "derrière"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« rechts » signifie…",
+              "explanation": "rechts = à droite.",
+              "options": ["à droite", "à gauche", "tout droit", "ici"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« geradeaus » veut dire…",
+              "explanation": "geradeaus = tout droit.",
+              "options": ["tout droit", "à gauche", "à droite", "en arrière"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour demander un lieu, on dit souvent…",
+              "explanation": "Wo ist … ? = Où est … ?",
+              "options": [
+                "Wo ist … ?",
+                "Wie heißt du ?",
+                "Wie alt bist du ?",
+                "Was kostet das ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Wo ist der Bahnhof ? » demande…",
+              "explanation": "Localisation de la gare.",
+              "options": [
+                "où est la gare",
+                "l'heure du train",
+                "le prix du billet",
+                "le nom du chef"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Gehen Sie geradeaus » : consigne…",
+              "explanation": "Impératif poli : avancez tout droit.",
+              "options": [
+                "allez tout droit",
+                "tournez à gauche",
+                "arrêtez-vous",
+                "courez"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Dann links » après une rue = …",
+              "explanation": "dann = puis ; links = à gauche.",
+              "options": [
+                "puis à gauche",
+                "puis à droite",
+                "puis stop",
+                "puis retour"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« die Ecke » dans « an der Ecke rechts » = …",
+              "explanation": "Ecke = coin de rue.",
+              "options": ["le coin", "le pont", "le bus", "le billet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Entschuldigung, wo ist die Haltestelle ? » : tu…",
+              "explanation": "Phrase polie pour trouver l'arrêt.",
+              "options": [
+                "demandes où est l'arrêt",
+                "achètes un ticket",
+                "montes dans le train",
+                "dis bonjour only"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions aident à indiquer le chemin ?",
+              "explanation": "geradeaus et rechts guident le passant.",
+              "options": ["geradeaus", "rechts", "der Bus", "Fahrkarte"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Biegen Sie rechts ab » = …",
+              "explanation": "abbiegen = tourner.",
+              "options": [
+                "tournez à droite",
+                "tournez à gauche",
+                "continuez tout droit",
+                "reculez"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« links abbiegen » = …",
+              "explanation": "links abbiegen = tourner à gauche.",
+              "options": [
+                "tourner à gauche",
+                "tourner à droite",
+                "s'arrêter",
+                "monter"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Wo ist das Museum ? » cherche…",
+              "explanation": "Wo ist = où se trouve.",
+              "options": [
+                "l'emplacement du musée",
+                "le prix",
+                "l'âge",
+                "la couleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« die Straße » = …",
+              "explanation": "Straße = rue.",
+              "options": ["la rue", "la gare", "le billet", "le train"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« der Platz » souvent au centre-ville = …",
+              "explanation": "Platz = place.",
+              "options": ["la place", "le plafond", "le plateau", "la plante"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« gegenüber » = …",
+              "explanation": "gegenüber = en face.",
+              "options": ["en face", "derrière", "sous", "dans"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« neben » = …",
+              "explanation": "neben = à côté de.",
+              "options": ["à côté de", "loin de", "sans", "contre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« die erste Straße rechts » : tu prends…",
+              "explanation": "Première rue à droite.",
+              "options": [
+                "la 1re rue à droite",
+                "la 3e à gauche",
+                "le pont",
+                "le métro always"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ist es weit ? » demande si c'est…",
+              "explanation": "weit = loin.",
+              "options": ["loin", "cher", "facile", "fermé"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots servent à localiser avec Wo ist ?",
+              "explanation": "On combine Wo ist avec des lieux comme Bahnhof ou Haltestelle.",
+              "options": ["Wo ist", "der Bahnhof", "links", "rechts"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wo ist die Bushaltestelle ? » : lieu = …",
+              "explanation": "Bushaltestelle = arrêt de bus.",
+              "options": [
+                "arrêt de bus",
+                "musée",
+                "piscine",
+                "bibliothèque only"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« hier » dans « Es ist hier » = …",
+              "explanation": "hier = ici.",
+              "options": ["ici", "là-bas", "jamais", "demain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« dort » = …",
+              "explanation": "dort = là-bas.",
+              "options": ["là-bas", "ici", "partout", "nulle part"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Geh geradeaus und dann links » s'adresse à…",
+              "explanation": "Geh = impératif du tu.",
+              "options": ["tu (impératif)", "vous only always", "il", "nous"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« die Ampel » au carrefour = …",
+              "explanation": "Ampel = feu tricolore.",
+              "options": ["les feux", "le bus", "le billet", "le pont"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« an der Ampel rechts » : action à…",
+              "explanation": "Tourner à droite aux feux.",
+              "options": [
+                "tourner à droite aux feux",
+                "traverser sans regarder",
+                "monter au bus",
+                "acheter ticket"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« der Weg » = …",
+              "explanation": "Weg = chemin / route.",
+              "options": ["le chemin", "le vent", "le lait", "le jeu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ist das der richtige Weg ? » : …",
+              "explanation": "richtig = correct.",
+              "options": [
+                "Est-ce le bon chemin ?",
+                "Quelle heure ?",
+                "Combien ?",
+                "Qui es-tu ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Danke für die Hilfe » après directions = …",
+              "explanation": "Remercier pour l'aide.",
+              "options": [
+                "merci pour l'aide",
+                "bonjour",
+                "au revoir only insult",
+                "non merci"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots orientent sans nommer un transport ?",
+              "explanation": "links et geradeaus indiquent la direction.",
+              "options": ["links", "geradeaus", "der Zug", "die Fahrkarte"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wo ist die Schule ? » : tu cherches…",
+              "explanation": "Schule = école.",
+              "options": ["l'école", "le bus", "le ticket", "le train"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« die Kirche » près du centre = …",
+              "explanation": "Kirche = église.",
+              "options": [
+                "l'église",
+                "le cinéma",
+                "le stade only",
+                "l'aéroport"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« hinter » = …",
+              "explanation": "hinter = derrière.",
+              "options": ["derrière", "devant", "sous", "sur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« vor » = …",
+              "explanation": "vor = devant.",
+              "options": ["devant", "derrière", "sans", "entre only"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« zwischen » = …",
+              "explanation": "zwischen = entre.",
+              "options": ["entre", "contre", "sans", "après only"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Die Bank ist links » : la banque est…",
+              "explanation": "Bank = banque (ou banc selon contexte) ; ici direction.",
+              "options": ["à gauche", "à droite", "tout droit", "en haut"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« am Ende der Straße rechts » : …",
+              "explanation": "Fin de rue puis droite.",
+              "options": [
+                "au bout de la rue à droite",
+                "au début à gauche",
+                "au milieu tout droit only",
+                "nulle part"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« der Plan » ou « der Stadtplan » aide à…",
+              "explanation": "Plan de ville pour s'orienter.",
+              "options": [
+                "lire une carte de ville",
+                "acheter un bus",
+                "manger",
+                "dormir"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Entschuldigung » en demandant le chemin = …",
+              "explanation": "Politesse avant Wo ist.",
+              "options": ["excusez-moi", "au revoir", "bravo", "non"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses indiquent droite et tout droit ?",
+              "explanation": "rechts et geradeaus sont des instructions fréquentes.",
+              "options": ["rechts", "geradeaus", "Bus", "Zug"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wo ist das Hotel ? » : lieu = …",
+              "explanation": "Hotel = hôtel.",
+              "options": ["hôtel", "bus", "billet", "gare only always"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« das Geschäft » = …",
+              "explanation": "Geschäft = magasin.",
+              "options": ["magasin", "gare", "train", "arrêt only"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« der Supermarkt » : question Wo ist…",
+              "explanation": "Supermarkt = supermarché.",
+              "options": ["supermarché", "musée", "plage", "montagne"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« zu Fuß geradeaus » = …",
+              "explanation": "Marcher tout droit.",
+              "options": [
+                "à pied tout droit",
+                "en bus à gauche",
+                "en train",
+                "en voiture only"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« nicht weit » = …",
+              "explanation": "nicht weit = pas loin.",
+              "options": ["pas loin", "très loin", "impossible", "fermé"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« die Brücke » = …",
+              "explanation": "Brücke = pont.",
+              "options": ["le pont", "le bus", "la rue only", "le ticket"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Über die Brücke, dann links » : ordre…",
+              "explanation": "Traverser le pont puis gauche.",
+              "options": [
+                "pont puis gauche",
+                "gauche puis pont",
+                "droite only",
+                "stop"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« der Markt » Wo ist…",
+              "explanation": "Markt = marché.",
+              "options": ["marché", "train", "billet", "arrêt only name"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Können Sie mir helfen ? » = …",
+              "explanation": "Demande d'aide polie (Sie).",
+              "options": [
+                "Pouvez-vous m'aider ?",
+                "Quelle heure ?",
+                "Où est le bus always same",
+                "J'ai faim"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots forment la base de « demander où » ?",
+              "explanation": "Wo ist interroge le lieu ; links indique un côté.",
+              "options": ["Wo ist", "links", "Fahrkarte", "Zug"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wo ist der Park ? » : …",
+              "explanation": "Park = parc.",
+              "options": [
+                "où est le parc",
+                "heure du bus",
+                "prix train",
+                "nom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« der Eingang » = …",
+              "explanation": "Eingang = entrée.",
+              "options": ["l'entrée", "la sortie", "le toit", "le sol"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« der Ausgang » = …",
+              "explanation": "Ausgang = sortie.",
+              "options": ["la sortie", "l'entrée", "le billet", "le bus"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« rechts vom Bahnhof » = …",
+              "explanation": "À droite de la gare.",
+              "options": [
+                "à droite de la gare",
+                "à gauche du bus",
+                "dans le train",
+                "sous le ticket"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« links vom Museum » = …",
+              "explanation": "À gauche du musée.",
+              "options": [
+                "à gauche du musée",
+                "devant l'école only",
+                "dans le bus",
+                "sur le Zug"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« geradeaus bis zur Ampel » = …",
+              "explanation": "Tout droit jusqu'aux feux.",
+              "options": [
+                "tout droit jusqu'aux feux",
+                "à droite tout de suite",
+                "retour",
+                "arrêt"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« die Kreuzung » = …",
+              "explanation": "Kreuzung = carrefour.",
+              "options": ["carrefour", "gare", "billet", "wagon"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« An der Kreuzung rechts » : …",
+              "explanation": "Tourner à droite au carrefour.",
+              "options": [
+                "à droite au carrefour",
+                "tout droit au parc",
+                "bus only",
+                "ticket"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Vielen Dank » après un itinéraire = …",
+              "explanation": "Remerciement.",
+              "options": [
+                "merci beaucoup",
+                "bonjour",
+                "pardon only",
+                "oui non"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes guident un touriste perdu ?",
+              "explanation": "rechts et Wo ist le Bahnhof ? sont typiques.",
+              "options": [
+                "rechts",
+                "Wo ist",
+                "der Bus only vehicle",
+                "Fahrkarte price"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wo ist die Toilette ? » : …",
+              "explanation": "Toilette = toilettes.",
+              "options": [
+                "où sont les toilettes",
+                "où est le bus always",
+                "combien",
+                "qui"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« das Fundbüro » à la gare = …",
+              "explanation": "Fundbüro = bureau des objets trouvés.",
+              "options": [
+                "objets trouvés",
+                "billetterie only always",
+                "restaurant",
+                "piscine"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« der Informationsschalter » = …",
+              "explanation": "Point d'information.",
+              "options": [
+                "accueil / info",
+                "quai only",
+                "bus",
+                "ticket machine only name"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Gehen Sie bis zum Platz » : …",
+              "explanation": "Aller jusqu'à la place.",
+              "options": [
+                "jusqu'à la place",
+                "jusqu'au lit",
+                "sans bouger",
+                "en train only"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« dann » dans un itinéraire = …",
+              "explanation": "dann = puis / ensuite.",
+              "options": ["puis", "jamais", "hier", "sans"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« bis » = …",
+              "explanation": "bis = jusqu'à.",
+              "options": ["jusqu'à", "depuis", "sans", "contre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« die zweite Straße links » : …",
+              "explanation": "Deuxième rue à gauche.",
+              "options": ["2e rue à gauche", "1re à droite", "pont", "gare"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ist es in der Nähe ? » : …",
+              "explanation": "in der Nähe = à proximité.",
+              "options": [
+                "Est-ce proche ?",
+                "Est-ce cher ?",
+                "Est-ce fermé ?",
+                "Est-ce loin always wrong"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ich bin verloren » = …",
+              "explanation": "verloren = perdu.",
+              "options": [
+                "Je suis perdu",
+                "Je suis content",
+                "J'ai un billet",
+                "Je prends le bus"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots indiquent gauche et la question de lieu ?",
+              "explanation": "links et Wo ist structurent la demande de chemin.",
+              "options": ["links", "Wo ist", "Zug", "Bus"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wo ist der Busbahnhof ? » : …",
+              "explanation": "Gare routière.",
+              "options": ["gare routière", "musée", "plage", "école only"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« der Turm » visible en ville = …",
+              "explanation": "Turm = tour.",
+              "options": ["tour / tourelle", "bus", "ticket", "arrêt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« das Rathaus » = …",
+              "explanation": "Rathaus = mairie / hôtel de ville.",
+              "options": ["mairie", "gare", "bus", "billet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« geradeaus, der Turm ist dort » : le repère est…",
+              "explanation": "dort = là-bas.",
+              "options": [
+                "là-bas (la tour)",
+                "ici always",
+                "sous terre",
+                "dans le bus"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« links die Kirche, rechts der Park » : …",
+              "explanation": "Église à gauche, parc à droite.",
+              "options": [
+                "église gauche, parc droite",
+                "tout inverse",
+                "tout droit only",
+                "sans repères"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« der Weg ist einfach » : …",
+              "explanation": "einfach = simple / facile.",
+              "options": [
+                "chemin facile",
+                "chemin interdit",
+                "chemin cher",
+                "pas de chemin"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« die Richtung » = …",
+              "explanation": "Richtung = direction.",
+              "options": ["direction", "billet", "bus", "heure"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« In welche Richtung ? » = …",
+              "explanation": "Demande la direction.",
+              "options": [
+                "Dans quelle direction ?",
+                "Quelle heure ?",
+                "Quel prix ?",
+                "Quel bus number only"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Links? Nein, rechts! » corrige vers…",
+              "explanation": "Correction : à droite.",
+              "options": ["à droite", "à gauche", "tout droit", "retour"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions combinent orientation et ville ?",
+              "explanation": "geradeaus et links orientent dans les rues.",
+              "options": ["geradeaus", "links", "die Fahrkarte", "der Zug"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wo ist die Apotheke ? » : …",
+              "explanation": "Apotheke = pharmacie.",
+              "options": ["pharmacie", "bus", "train", "ticket"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« das Café » : Wo ist…",
+              "explanation": "Café = café.",
+              "options": ["le café", "la gare only", "le pont only", "le bus"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« der Bahnhof ist geradeaus » : …",
+              "explanation": "Gare tout droit.",
+              "options": [
+                "gare tout droit",
+                "gare à gauche only",
+                "bus rechts",
+                "ticket"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« die Haltestelle ist rechts » : …",
+              "explanation": "Arrêt à droite.",
+              "options": [
+                "arrêt à droite",
+                "arrêt à gauche always",
+                "train",
+                "billet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« der Weg zum Bus » : …",
+              "explanation": "Chemin vers le bus.",
+              "options": [
+                "chemin vers le bus",
+                "chemin vers le lit",
+                "sans bus",
+                "ticket only"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« zu » dans « zum Bahnhof » = …",
+              "explanation": "zum = zu dem = vers le.",
+              "options": ["vers le", "sans le", "loin de", "sous le"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« der Weg dauert fünf Minuten » : …",
+              "explanation": "dauern = durer.",
+              "options": [
+                "5 minutes à pied/chemin",
+                "5 heures always",
+                "5 billets",
+                "5 bus"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Keine Angst, es ist nah » : …",
+              "explanation": "nah = proche.",
+              "options": [
+                "c'est proche",
+                "c'est loin",
+                "c'est fermé",
+                "c'est cher"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Folgen Sie mir » = …",
+              "explanation": "Suivez-moi (guide).",
+              "options": [
+                "Suivez-moi",
+                "Allez seul",
+                "Achetez ticket",
+                "Montez Zug"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots résument « demander son chemin » en 5e ?",
+              "explanation": "Wo ist, links, rechts, geradeaus forment le noyau.",
+              "options": ["Wo ist", "geradeaus", "der Bus", "die Fahrkarte"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Entschuldigung, wo ist der Bahnhof ? Bitte geradeaus, dann links. » : d'abord…",
+              "explanation": "Ordre : tout droit puis gauche.",
+              "options": [
+                "geradeaus puis links",
+                "links puis geradeaus always",
+                "rechts only",
+                "stop"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« rechts » opposé de…",
+              "explanation": "Opposé de links.",
+              "options": ["links", "geradeaus", "Wo ist", "Bus"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« links » opposé de…",
+              "explanation": "Opposé de rechts.",
+              "options": ["rechts", "geradeaus", "dort", "hier"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Wo ist … ? » manque seulement…",
+              "explanation": "Il faut nommer le lieu.",
+              "options": [
+                "le nom du lieu",
+                "un billet",
+                "un bus always",
+                "une couleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour la gare + bus : « Wo ist die Haltestelle für den Bus zum Bahnhof ? » lie…",
+              "explanation": "Arrêt du bus vers la gare.",
+              "options": [
+                "arrêt bus vers gare",
+                "musée",
+                "piscine",
+                "ticket only"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Alles klar, danke ! » = …",
+              "explanation": "Compris, merci.",
+              "options": ["Compris, merci", "Je suis perdu", "Bonjour", "Non"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« der nördliche Teil » : nördlich = …",
+              "explanation": "nördlich = nord / au nord.",
+              "options": ["nord", "sud always", "est only", "ouest only"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« die Karte zeigen » : …",
+              "explanation": "Montrer la carte pour s'orienter.",
+              "options": [
+                "montrer la carte",
+                "manger la carte",
+                "vendre bus",
+                "perdre Zug"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Récap : pour demander son chemin tu utilises Wo ist, links, rechts et…",
+              "explanation": "geradeaus complète les directions de base.",
+              "options": [
+                "geradeaus",
+                "nur Fahrkarte",
+                "nur Zug",
+                "Bus as direction"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

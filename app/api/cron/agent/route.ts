@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { ensureAgentNotificationsInstalled } from "@/lib/agent/notifications/install";
 import { runSchedulerTick } from "@/lib/agent/scheduler/engine";
 import { errorResponse } from "@/lib/api/error-response";
-import { timingSafeCompare } from "@/lib/security/timing";
+import { verifyCronAuth } from "@/lib/security/timing";
 
 export const maxDuration = 300;
 
@@ -13,14 +13,8 @@ export const maxDuration = 300;
 // Idempotent : deux ticks concurrents ne créent jamais deux runs pour la
 // même occurrence (réservation atomique par lease).
 async function isAuthorized(request: Request): Promise<boolean> {
-  const cronSecret = process.env.CRON_SECRET;
-  const authHeader = request.headers.get("authorization");
-  const headerSecret = request.headers.get("x-cron-secret");
-
-  if (cronSecret) {
-    if (timingSafeCompare(authHeader, `Bearer ${cronSecret}`)) return true;
-    if (timingSafeCompare(headerSecret, cronSecret)) return true;
-    return false;
+  if (process.env.CRON_SECRET) {
+    return verifyCronAuth(request);
   }
 
   if (process.env.NODE_ENV === "production") {

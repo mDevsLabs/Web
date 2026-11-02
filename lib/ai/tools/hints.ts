@@ -49,8 +49,6 @@ export const TOOL_SYSTEM_HINTS = {
   note: "note (crée une note formatée et téléchargeable : markdown, texte, JSON, CSV, HTML, code)",
   qrCodeGenerator:
     "qrCodeGenerator (génère un QR code vectoriel SVG/PNG scannable pour un lien, texte, contact ou Wi-Fi)",
-  quizzly:
-    "quizzly (génère un quiz interactif complet de 1 à 50 questions avec choix unique/multiple, réponses correctes, explications et calcul de score pour tester l'utilisateur de manière ludique)",
   readUrl:
     "readUrl (extrait et lit le texte propre et structuré d'une page Web ou d'une documentation en ligne via son URL. À enchaîner après webSearch pour lire la page retenue avant de répondre)",
   requestSuggestions:

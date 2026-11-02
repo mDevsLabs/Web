@@ -1,0 +1,2363 @@
+{
+  "id": "3e-latin-05",
+  "year": "3e",
+  "subject": "latin",
+  "title": "Le passé en latin",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "L'imparfait de l'indicatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments composent l'imparfait de l'indicatif régulier en latin ?",
+              "options": [
+                "Le radical du présent",
+                "Le morphème temporel -ba-",
+                "Le suffixe de futur -bi-",
+                "Les désinences spécifiques du parfait (-i, -isti)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'imparfait régulier se forme sur le radical du présent, suivi du morphème -ba- et des désinences personnelles ordinaires (-m, -s, -t...)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la désinence de la 1re personne du singulier à l'imparfait de l'indicatif ?",
+              "options": ["-o", "-m", "-i", "-s"],
+              "correctAnswers": [1],
+              "explanation": "À l'imparfait, la 1re personne du singulier se termine toujours par -m (ex: amabam, legebam), et non par -o."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « amabant » en français ?",
+              "options": [
+                "Ils aimeront",
+                "Ils ont aimé",
+                "Ils aimaient",
+                "Ils aiment"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Amabant est à l'imparfait de l'indicatif, 3e personne du pluriel : ils aimaient."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « legebatis », quelle est la personne grammaticale ?",
+              "options": [
+                "1re personne du pluriel",
+                "2e personne du singulier",
+                "3e personne du pluriel",
+                "2e personne du pluriel"
+              ],
+              "correctAnswers": [3],
+              "explanation": "La désinence -tis indique la 2e personne du pluriel (« vous lisiez »)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la forme correcte de l'imparfait pour « audire » à la 1re personne du pluriel ?",
+              "options": ["Audiebamus", "Audibamus", "Audiamus", "Audiveramus"],
+              "correctAnswers": [0],
+              "explanation": "Pour la 4e conjugaison (audire), une voyelle de liaison -e- s'insère devant -ba- : audiebamus (« nous écoutions »)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la forme verbale « monebat » ?",
+              "options": [
+                "Il avertit",
+                "Il avertissait",
+                "Il avertira",
+                "Il avait averti"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Monebat est l'imparfait du verbe monere à la 3e personne du singulier : il avertissait."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel phonème consonne caractérise l'imparfait latin régulier ?",
+              "options": ["-v-", "-x-", "-b-", "-r-"],
+              "correctAnswers": [2],
+              "explanation": "L'élément -ba- (avec sa consonne -b-) est le marqueur morphologique de l'imparfait de l'indicatif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduisez en latin « vous dormiez » (verbe dormire) :",
+              "options": ["Dormiebant", "Dormitis", "Dormietis", "Dormiebatis"],
+              "correctAnswers": [3],
+              "explanation": "Dormire fait son imparfait en dormiebam, d'où à la 2e personne du pluriel : dormiebatis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase contient un verbe à l'imparfait ?",
+              "options": [
+                "Puer librum legebat",
+                "Puer librum legit",
+                "Puer librum leget",
+                "Puer librum legat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Legebat contient le suffixe d'imparfait -eba- : le garçon lisait un livre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un récit, l'imparfait de l'indicatif exprime principalement :",
+              "options": [
+                "Une action brève et soudaine",
+                "Une action passée continue, répétée ou une description",
+                "Une action future inévitable",
+                "Un ordre impératif catégorique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'imparfait peint l'arrière-plan du récit : descriptions, actions qui durent ou habitudes dans le passé."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'imparfait du verbe esse et ses composés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se conjugue le verbe « esse » (être) à la 1re personne du singulier de l'imparfait ?",
+              "options": ["Fui", "Essem", "Eram", "Ero"],
+              "correctAnswers": [2],
+              "explanation": "L'imparfait du verbe esse est eram (« j'étais »)."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles formes appartiennent à l'imparfait de l'indicatif du verbe « esse » ?",
+              "options": ["Erat", "Fuerat", "Erant", "Est"],
+              "correctAnswers": [0, 2],
+              "explanation": "Erat (3e personne du singulier) et erant (3e personne du pluriel) sont des formes d'imparfait de esse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Romani in foro erant » ?",
+              "options": [
+                "Les Romains seront sur le forum",
+                "Les Romains étaient sur le forum",
+                "Les Romains sont sur le forum",
+                "Les Romains furent sur le forum"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Erant est l'imparfait 3e personne du pluriel : ils étaient."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme de l'imparfait du verbe « posse » (pouvoir) à la 3e personne du singulier ?",
+              "options": ["Poterit", "Potuit", "Potest", "Poterat"],
+              "correctAnswers": [3],
+              "explanation": "Posse est composé de pot- + esse. Devant la voyelle e de eram, pot- reste pot- : poterat (« il pouvait »)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduisez « nous étions » en latin :",
+              "options": ["Eramus", "Eratis", "Fueramus", "Sumus"],
+              "correctAnswers": [0],
+              "explanation": "Eramus est la 1re personne du pluriel de l'imparfait du verbe esse."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie « aderat » (du verbe composé adesse) ?",
+              "options": [
+                "Il était absent",
+                "Il était présent",
+                "Il pouvait",
+                "Il sera là"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Adesse signifie « être présent / être là », donc aderat signifie « il était présent »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la 2e personne du pluriel de l'imparfait de « esse » ?",
+              "options": ["Eramus", "Estis", "Eratis", "Eritis"],
+              "correctAnswers": [2],
+              "explanation": "Eratis signifie « vous étiez »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « tu étais » en latin ?",
+              "options": ["Eras", "Eram", "Erat", "Es"],
+              "correctAnswers": [0],
+              "explanation": "Eras est la 2e personne du singulier de l'imparfait de esse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduisez « milites pugnare poterant » :",
+              "options": [
+                "Les soldats pourront combattre",
+                "Les soldats doivent combattre",
+                "Les soldats combattent",
+                "Les soldats pouvaient combattre"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Poterant est l'imparfait du verbe posse : les soldats pouvaient combattre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la forme correcte pour « ils étaient absents » (verbe abesse) ?",
+              "options": ["Aderant", "Aberant", "Absunt", "Abunt"],
+              "correctAnswers": [1],
+              "explanation": "Abesse forme son imparfait régulièrement sur eram : aberant (« ils étaient absents »)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le parfait : notion et désinences",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles désinences sont propres au parfait de l'indicatif actif ?",
+              "options": ["-isti", "-istis", "-bam", "-tis"],
+              "correctAnswers": [0, 1],
+              "explanation": "Les désinences du parfait actif sont spécifiques au latin : -i, -isti, -it, -imus, -istis, -erunt."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la désinence de la 1re personne du singulier au parfait actif ?",
+              "options": ["-m", "-i", "-o", "-is"],
+              "correctAnswers": [1],
+              "explanation": "Au parfait actif, la 1re personne du singulier se termine par -i (ex: amavi, legi, dixi)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison canonique de la 3e personne du pluriel au parfait actif ?",
+              "options": ["-ant", "-ebant", "-erunt", "-unt"],
+              "correctAnswers": [2],
+              "explanation": "La 3e personne du pluriel du parfait actif se termine par -erunt (ou parfois -ere en poésie)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En français moderne, le parfait latin se traduit couramment par :",
+              "options": [
+                "L'imparfait uniquement",
+                "Le présent ou le futur",
+                "Le conditionnel passé",
+                "Le passé simple ou le passé composé"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Le parfait latin cumule deux valeurs : l'action ponctuelle passée (passé simple) et le fait accompli (passé composé)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduit-on « amavisti » ?",
+              "options": [
+                "Tu as aimé / tu aimas",
+                "Vous avez aimé / vous aimâtes",
+                "J'ai aimé / j'aimai",
+                "Il a aimé / il aima"
+              ],
+              "correctAnswers": [0],
+              "explanation": "-isti est la désinence de la 2e personne du singulier au parfait : tu as aimé / tu aimas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « vidimus » ?",
+              "options": [
+                "Vous vîtes",
+                "Nous vîmes / nous avons vu",
+                "Ils virent",
+                "Je vis"
+              ],
+              "correctAnswers": [1],
+              "explanation": "-imus est la désinence de la 1re personne du pluriel au parfait : nous vîmes / nous avons vu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle forme correspond à la 3e personne du singulier du parfait actif ?",
+              "options": ["Audiebat", "Audiet", "Audivit", "Audit"],
+              "correctAnswers": [2],
+              "explanation": "Audivit est au parfait (radical audiv- + désinence -it) : il entendit / a entendu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « scripsistis », quelle est la personne grammaticale ?",
+              "options": [
+                "1re personne du pluriel",
+                "3e personne du pluriel",
+                "2e personne du singulier",
+                "2e personne du pluriel"
+              ],
+              "correctAnswers": [3],
+              "explanation": "La désinence -istis caractérise la 2e personne du pluriel du parfait (« vous avez écrit / vous écrivîtes »)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de formes composent traditionnellement les temps primitifs d'un verbe latin ?",
+              "options": [
+                "5 formes de référence",
+                "2 formes seulement",
+                "7 formes",
+                "12 formes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les 5 temps primitifs (ex: amo, amas, amare, amavi, amatum) fournissent tous les radicaux, dont le parfait en 4e position."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la 3e personne du singulier de « docere » au parfait ?",
+              "options": ["Docebat", "Docuit", "Docet", "Docuerat"],
+              "correctAnswers": [1],
+              "explanation": "Docere a pour parfait docui, docuisti, docuit (il a enseigné / il enseigna)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les radicaux de parfait en -v-, -u- et -s-",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le parfait régulier en -v- du verbe « laudare » (1re personne du singulier) ?",
+              "options": ["Laudui", "Laudasi", "Laudavi", "Laudam"],
+              "correctAnswers": [2],
+              "explanation": "La majorité des verbes de la 1re conjugaison forment leur parfait en -avi : laudavi."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels verbes forment un parfait sigmatique (avec suffixe -s-) ?",
+              "options": [
+                "Scribere (scripsi)",
+                "Dicere (dixi)",
+                "Amare (amavi)",
+                "Monere (monui)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Scribere -> scripsi (b+s=ps) et dicere -> dixi (c+s=x) sont des parfaits sigmatiques en -s-."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le parfait du verbe « monere » (avertir) ?",
+              "options": ["Monavi", "Monsi", "Monebam", "Monui"],
+              "correctAnswers": [3],
+              "explanation": "Les verbes de la 2e conjugaison ont fréquemment un parfait en -ui : monui, monuisti, monuit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans le parfait « dixi » (du verbe dicere), d'où provient la lettre « x » ?",
+              "options": [
+                "De la fusion du son guttural c avec le s du parfait",
+                "D'un préfixe d'insistance",
+                "D'une voyelle thématique allongée",
+                "D'un redoublement phonétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En latin, la consonne vélaire c ou g s'associe au s pour former la lettre double x (dic- + s- = dix-)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le parfait du verbe « manere » (rester) ?",
+              "options": ["Manavi", "Mansi", "Manui", "Manivi"],
+              "correctAnswers": [1],
+              "explanation": "Manere forme un parfait sigmatique : mansi, mansisti, mansit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le parfait régulier en -iv- du verbe « audire » ?",
+              "options": ["Audui", "Audisi", "Audivi", "Audii"],
+              "correctAnswers": [2],
+              "explanation": "La 4e conjugaison régulière forme typiquement son parfait en -ivi : audivi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le parfait du verbe « mittere » (envoyer) ?",
+              "options": ["Mittui", "Mittavi", "Misivi", "Misi"],
+              "correctAnswers": [3],
+              "explanation": "Mittere perd sa dentale devant le s du parfait pour donner misi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel verbe a pour parfait sigmatique « clausi » ?",
+              "options": [
+                "Claudere (fermer)",
+                "Clamare (crier)",
+                "Colere (cultiver)",
+                "Crescere (croître)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Claudere (claud- + s = claus-) donne clausi, clausisti, clausit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le parfait du verbe « habere » (avoir) ?",
+              "options": ["Habavi", "Habui", "Habsi", "Habi"],
+              "correctAnswers": [1],
+              "explanation": "Habere forme son parfait en -ui : habui, habuisti, habuit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le parfait caractérisé par l'adjonction d'un -s- au radical ?",
+              "options": [
+                "Le parfait vocalique",
+                "Le parfait à redoublement",
+                "Le parfait sigmatique",
+                "Le parfait passif"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le mot « sigmatique » vient de sigma, nom grec de la lettre s."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les parfaits à redoublement et allongement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le parfait à redoublement du verbe « dare » (donner) ?",
+              "options": ["Davi", "Dasi", "Didi", "Dedi"],
+              "correctAnswers": [3],
+              "explanation": "Dare redouble sa consonne initiale au parfait : dedi, dedisti, dedit."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels verbes forment leur parfait par redoublement de la consonne initiale ?",
+              "options": [
+                "Canere (cecini)",
+                "Currere (cucurri)",
+                "Legere (legi)",
+                "Amare (amavi)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Canere fait cecini et currere fait cucurri par redoublement de la syllabe initiale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le parfait à redoublement du verbe « stare » (être debout) ?",
+              "options": ["Stavi", "Steti", "Stui", "Stidi"],
+              "correctAnswers": [1],
+              "explanation": "Stare redouble sa consonne au parfait : steti, stetisti, stetit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le parfait du verbe « videre » (voir), formé par allongement de la voyelle radicale ?",
+              "options": ["Vidui", "Visivi", "Vidi", "Vividi"],
+              "correctAnswers": [2],
+              "explanation": "Videre (avec i bref au présent) forme son parfait vidi (avec i long), sans suffixe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le parfait du verbe « facere » (faire) ?",
+              "options": ["Feci", "Facui", "Fefici", "Faxi"],
+              "correctAnswers": [0],
+              "explanation": "Facere a pour parfait feci, avec allongement et changement de timbre vocalique (a bref -> e long)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le parfait du verbe « capere » (prendre) ?",
+              "options": ["Capui", "Cepi", "Capivi", "Cecipi"],
+              "correctAnswers": [1],
+              "explanation": "Capere fait cepi au parfait par allongement et apophonie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le parfait du verbe « vincere » (vaincre) ?",
+              "options": ["Vinxi", "Vicui", "Vici", "Vivici"],
+              "correctAnswers": [2],
+              "explanation": "Vincere a pour parfait vici (célèbre citation de César : Veni, vidi, vici)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le parfait du verbe « venire » (venir) ?",
+              "options": ["Venui", "Vensi", "Venivi", "Veni"],
+              "correctAnswers": [3],
+              "explanation": "Venire forme son parfait veni avec allongement du e radical (ē long)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le parfait du verbe « pellere » (repousser, chasser) ?",
+              "options": ["Pepuli", "Pulsi", "Pellui", "Pellavi"],
+              "correctAnswers": [0],
+              "explanation": "Pellere fait pepuli au parfait (redoublement de la consonne p-)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans la célèbre formule de César « Veni, vidi, vici », les trois verbes sont :",
+              "options": [
+                "À l'imparfait de l'indicatif",
+                "Au parfait de l'indicatif",
+                "Au présent de l'indicatif",
+                "Au plus-que-parfait"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Je suis venu, j'ai vu, j'ai vaincu » : les trois verbes sont à la 1re personne du singulier du parfait."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Le parfait du verbe esse et ses composés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la 1re personne du singulier du parfait du verbe « esse » ?",
+              "options": ["Eram", "Fueram", "Fui", "Sum"],
+              "correctAnswers": [2],
+              "explanation": "Le parfait du verbe esse se forme sur le radical fu- : fui, fuisti, fuit (« j'ai été / je fus »)."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles formes appartiennent au parfait du verbe « esse » ?",
+              "options": ["Fuimus", "Fuerunt", "Eramus", "Fuerint"],
+              "correctAnswers": [0, 1],
+              "explanation": "Fuimus (1re personne du pluriel) et fuerunt (3e personne du pluriel) sont des formes de parfait de esse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduisez en latin « Il fut un grand roi » :",
+              "options": [
+                "Magnus rex erat",
+                "Magnus rex erit",
+                "Magnus rex fuerat",
+                "Magnus rex fuit"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Fuit est la 3e personne du singulier du parfait de esse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme du parfait de « posse » à la 3e personne du singulier ?",
+              "options": ["Potuit", "Poterat", "Possit", "Potuerat"],
+              "correctAnswers": [0],
+              "explanation": "Posse forme son parfait sur le radical potu- : potuit (« il a pu / il put »)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Romani victores fuerunt » ?",
+              "options": [
+                "Les Romains étaient vainqueurs",
+                "Les Romains furent vainqueurs",
+                "Les Romains seront vainqueurs",
+                "Les Romains sont vainqueurs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Fuerunt est le parfait 3e personne du pluriel : ils furent / ont été."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « tu fus / tu as été » en latin ?",
+              "options": ["Fui", "Eras", "Fuisti", "Fueras"],
+              "correctAnswers": [2],
+              "explanation": "La 2e personne du singulier prend la désinence -isti : fuisti."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la 2e personne du pluriel du parfait du verbe « esse » ?",
+              "options": ["Fuistisne", "Fueratis", "Eratis", "Fuistis"],
+              "correctAnswers": [3],
+              "explanation": "Fuistis signifie « vous fûtes / vous avez été »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « Caesar adesse non potuit » ?",
+              "options": [
+                "César n'a pas pu être présent",
+                "César ne voulait pas venir",
+                "César n'était pas là",
+                "César ne pouvait pas vaincre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Potuit est le parfait de posse (« a pu ») suivi de l'infinitif adesse (« être présent »)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le parfait du verbe « prodesse » (être utile) à la 3e personne du singulier ?",
+              "options": ["Proderat", "Profuit", "Prodest", "Profuerat"],
+              "correctAnswers": [1],
+              "explanation": "Prodesse donne profui, profuisti, profuit au parfait de l'indicatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la forme correcte de « abesse » au parfait, à la 3e personne du pluriel ?",
+              "options": ["Aberant", "Afuerant", "Afuerunt", "Absunt"],
+              "correctAnswers": [2],
+              "explanation": "Abesse donne afuerunt au parfait de l'indicatif 3e personne du pluriel."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Le plus-que-parfait de l'indicatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se forme le plus-que-parfait de l'indicatif actif en latin ?",
+              "options": [
+                "Radical du présent + -ba-",
+                "Radical du parfait + terminaisons -eram, -eras...",
+                "Radical du parfait + désinences -i, -isti...",
+                "Radical du présent + -ero, -eris..."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le plus-que-parfait de l'indicatif actif se forme en ajoutant les formes de l'imparfait de esse (-eram, -eras, -erat...) au radical du parfait."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales sont au plus-que-parfait de l'indicatif ?",
+              "options": ["Laudaverat", "Dixerant", "Laudabat", "Dixit"],
+              "correctAnswers": [0, 1],
+              "explanation": "Laudaverat (laudav- + erat) et dixerant (dix- + erant) sont au plus-que-parfait de l'indicatif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « legerant » en français ?",
+              "options": [
+                "Ils lurent",
+                "Ils lisaient",
+                "Ils avaient lu",
+                "Ils liront"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Legerant est formé sur le radical de parfait leg- suivi de -erant : ils avaient lu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la 1re personne du singulier du plus-que-parfait de « audire » ?",
+              "options": ["Audiebam", "Audivero", "Audivi", "Audiveram"],
+              "correctAnswers": [3],
+              "explanation": "Radical de parfait audiv- + -eram = audiveram (« j'avais entendu »)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie la forme « scripseras » ?",
+              "options": [
+                "Tu avais écrit",
+                "Tu as écrit",
+                "Tu écrivais",
+                "Tu écriras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scripseras est la 2e personne du singulier du plus-que-parfait du verbe scribere."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la 1re personne du pluriel du plus-que-parfait du verbe « esse » ?",
+              "options": ["Eramus", "Fueramus", "Fuimus", "Fuerimus"],
+              "correctAnswers": [1],
+              "explanation": "Radical de parfait fu- + -eramus = fueramus (« nous avions été »)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que marque le plus-que-parfait par rapport à un autre fait passé ?",
+              "options": [
+                "Une simultanéité absolue",
+                "Une postériorité immédiate",
+                "Une antériorité dans le passé",
+                "Une incertitude conditionnelle"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le plus-que-parfait exprime une action accomplie avant une autre action déjà passée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « hostes urbem ceperant » ?",
+              "options": [
+                "Les ennemis prenaient la ville",
+                "Les ennemis ont pris la ville",
+                "Les ennemis prendront la ville",
+                "Les ennemis avaient pris la ville"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Ceperant est le plus-que-parfait du verbe capere (radical cep-) : ils avaient pris."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la forme du plus-que-parfait de « venire » à la 2e personne du pluriel ?",
+              "options": ["Veneratis", "Veniebatis", "Venistis", "Veneritis"],
+              "correctAnswers": [0],
+              "explanation": "Radical de parfait ven- + -eratis = veneratis (« vous étiez venus »)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « miles arma posuerat », comment traduit-on « posuerat » ?",
+              "options": ["Déposa", "Avait déposé", "Déposait", "Déposera"],
+              "correctAnswers": [1],
+              "explanation": "Posuerat est le plus-que-parfait du verbe ponere (radical posu-) : il avait posé / déposé."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Traduire le passé : imparfait ou parfait ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels rôles narratifs correspondent typiquement au parfait dans un texte latin ?",
+              "options": [
+                "Faire avancer les actions successives",
+                "Exprimer un fait ponctuel et décisif",
+                "Planter le décor et la météo",
+                "Décrire un état permanent sans fin déterminée"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le parfait enchaîne la chronologie des faits précis, tandis que l'imparfait peint le décor et la durée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « Dum Romani pugnabant, nuntius venit », quel verbe indique l'action soudaine ?",
+              "options": ["Pugnabant", "Venit", "Dum", "Nuntius"],
+              "correctAnswers": [1],
+              "explanation": "Venit est au parfait : le messager arriva (action ponctuelle) alors que les Romains combattaient (imparfait d'arrière-plan)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Solebat mane surgere » ?",
+              "options": [
+                "Il se leva un matin",
+                "Il se lèvera demain",
+                "Il avait coutume de se lever le matin",
+                "Il voulut se lever"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Solebat est à l'imparfait et exprime une habitude répétée dans le passé : il avait coutume de."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase latine relève d'une description de décor à l'imparfait ?",
+              "options": [
+                "Caesar exercitum eduxit",
+                "Hostes arma ceperunt",
+                "Consul orationem habuit",
+                "Silva densa et obscura erat"
+              ],
+              "correctAnswers": [3],
+              "explanation": "« Silva densa et obscura erat » (la forêt était dense et sombre) utilise l'imparfait pour décrire le cadre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre « amabat » et « amavit » ?",
+              "options": [
+                "Amabat exprime une durée continue, amavit pose le fait globalement accompli",
+                "Amabat est au futur, amavit au présent",
+                "Amabat est passif, amavit est actif",
+                "Il n'y a aucune différence d'aspect"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amabat (imparfait) décrit un sentiment prolongé ou en cours ; amavit (parfait) constate le fait dans sa globalité historique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel temps de l'indicatif est le principal moteur du récit pour les faits de premier plan ?",
+              "options": [
+                "L'imparfait",
+                "Le parfait",
+                "Le subjonctif présent",
+                "Le futur simple"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le parfait latin (équivalent de notre passé simple) structure la trame narrative des faits accomplis."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduisez « Nox erat et omnia quiescebant » :",
+              "options": [
+                "La nuit tomba et tout se tut",
+                "Ce sera la nuit et tout dormira",
+                "C'était la nuit et tout reposait",
+                "La nuit fut courte et tout bougeait"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les deux verbes erat et quiescebant sont à l'imparfait, peignant un tableau nocturne paisible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Subito clamor exortus est » ?",
+              "options": [
+                "Une clameur s'élevait sans cesse",
+                "Une clameur va s'élever",
+                "Il y avait une grande clameur",
+                "Soudain une clameur s'éleva"
+              ],
+              "correctAnswers": [3],
+              "explanation": "L'adverbe subito combiné au parfait indique un surgissement ponctuel : soudain s'éleva."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « Dum pastor dormiebat, lupus ovem rapuit », quel temps est « dormiebat » ?",
+              "options": [
+                "L'imparfait",
+                "Le parfait",
+                "Le présent",
+                "Le plus-que-parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dormiebat est à l'imparfait : l'action continue qui servait de cadre pendant que le loup a ravi la brebis."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel temps indicatif suit usuellement la conjonction temporelle « postquam » (après que) ?",
+              "options": [
+                "L'imparfait du subjonctif",
+                "Le parfait de l'indicatif",
+                "Le futur antérieur",
+                "Le présent du subjonctif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En latin classique, postquam est quasi systématiquement suivi du parfait de l'indicatif."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Récits et batailles au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie la locution militaire « Caesar castra posuit » ?",
+              "options": [
+                "César détruisit le camp",
+                "César quitta le camp",
+                "César établit son camp",
+                "César chercha le camp"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Castra ponere signifie « établir / asseoir son camp ». Posuit est le parfait de ponere."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels verbes au parfait évoquent une action d'engagement au combat ?",
+              "options": [
+                "Oppugnavit (il a attaqué)",
+                "Pugnavit (il a combattu)",
+                "Dormivit (il a dormi)",
+                "Mansit (il est resté)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Oppugnare (donner l'assaut) et pugnare (se battre) sont des verbes d'engagement guerrier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Dux signum dedit » ?",
+              "options": [
+                "Le chef vit le signal",
+                "Le chef attendit le signal",
+                "Le chef entendit le signal",
+                "Le chef donna le signal"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Dedit est le parfait de dare : le général donna le signal (de la charge)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Milites fortiter pugnaverunt » ?",
+              "options": [
+                "Les soldats combattirent courageusement",
+                "Les soldats combattront avec force",
+                "Les soldats fuient courageusement",
+                "Les soldats voulaient combattre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pugnaverunt est le parfait 3e personne du pluriel, fortiter signifie courageusement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le sens de l'expression « Hostes terga verterunt » ?",
+              "options": [
+                "Les ennemis tinrent bon",
+                "Les ennemis prirent la fuite",
+                "Les ennemis attaquèrent",
+                "Les ennemis levèrent leurs boucliers"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Tourner le dos » (terga vertere) est l'expression consacrée pour « s'enfuir / dérouter »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Traduisez « Legatus Romam pervenit » :",
+              "options": [
+                "Le lieutenant quitta Rome",
+                "Le lieutenant défendit Rome",
+                "Le lieutenant est arrivé à Rome",
+                "Le lieutenant envoya des troupes à Rome"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Pervenit (parfait de pervenire) signifie « parvint / arriva »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « Gladiatores in arenam intraverunt » ?",
+              "options": [
+                "Les gladiateurs sortirent de l'arène",
+                "Les gladiateurs combattaient dans l'arène",
+                "Les gladiateurs périrent dans l'arène",
+                "Les gladiateurs entrèrent dans l'arène"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Intraverunt est la 3e personne du pluriel du parfait du verbe intrare."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le parfait du verbe « caedere » (tailler en pièces, massacrer) à la 3e personne du pluriel ?",
+              "options": ["Ceciderunt", "Caciderunt", "Caedebant", "Caeserunt"],
+              "correctAnswers": [0],
+              "explanation": "Caedere forme son parfait avec redoublement : cecidi, d'où ceciderunt (« ils massacrèrent »)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Victoria Romanorum fuit » ?",
+              "options": [
+                "La victoire sera romaine",
+                "La victoire appartint aux Romains",
+                "Les Romains cherchaient la victoire",
+                "La victoire échappa aux Romains"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Fuit au parfait avec un génitif de possession : la victoire fut / appartint aux Romains."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « Senatus bellum decrevit » ?",
+              "options": [
+                "Le Sénat refusa la guerre",
+                "Le Sénat craignit la guerre",
+                "Le Sénat décréta la guerre",
+                "Le Sénat arrêta la guerre"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Decrevit est le parfait de decernere : le Sénat décréta / décida la guerre."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : raconter un événement au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels temps de l'indicatif constituent les piliers de la narration au passé en latin ?",
+              "options": [
+                "L'imparfait",
+                "Le parfait",
+                "Le futur simple",
+                "L'impératif présent"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'imparfait (aspect sécant, arrière-plan) et le parfait (aspect global, premier plan) articulent le récit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « Dum dux loquebatur, hostes impetum fecerunt », quel verbe est au parfait ?",
+              "options": ["Loquebatur", "Fecerunt", "Dux", "Impetum"],
+              "correctAnswers": [1],
+              "explanation": "Fecerunt est le parfait du verbe facere : les ennemis lancèrent une attaque."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme de « vincere » à la 1re personne du pluriel du parfait ?",
+              "options": ["Vincebamus", "Viceramus", "Vicimus", "Vincimus"],
+              "correctAnswers": [2],
+              "explanation": "Radical de parfait vic- + désinence -imus = vicimus (« nous avons vaincu / nous vainquîmes »)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel verbe de cette liste est au plus-que-parfait de l'indicatif ?",
+              "options": ["Miserunt", "Mittebant", "Mittunt", "Miserant"],
+              "correctAnswers": [3],
+              "explanation": "Miserant est formé du radical de parfait mis- et de -erant : ils avaient envoyé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduisez « Antiqui Graeci Trojam decem annos oppugnaverunt » :",
+              "options": [
+                "Les anciens Grecs assiégèrent Troie pendant dix ans",
+                "Les Grecs attaquent Troie tous les dix ans",
+                "Les Grecs avaient pris Troie en dix jours",
+                "Troie résista dix mois aux Grecs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oppugnaverunt est au parfait : ils assiégèrent Troie pendant dix ans."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme correspond à « ils étaient » (imparfait) ?",
+              "options": ["Fuerunt", "Erant", "Sunt", "Erunt"],
+              "correctAnswers": [1],
+              "explanation": "Erant est l'imparfait 3e personne du pluriel du verbe esse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la proposition « Fabulam narravit » ?",
+              "options": [
+                "Il écoutait une histoire",
+                "Il écrira une histoire",
+                "Il raconta une histoire",
+                "Il lit une fable"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Narravit est le parfait de narrare à la 3e personne du singulier : il raconta."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Romulus primus rex Romae fuit », quel est le rôle du parfait « fuit » ?",
+              "options": [
+                "Exprimer un souhait non réalisé",
+                "Indiquer une action future probable",
+                "Décrire un état inachevé",
+                "Poser un fait historique accompli"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Le parfait énonce le fait historique dans sa réalité achevée : Romulus fut le premier roi de Rome."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « nous avions entendu » en latin ?",
+              "options": [
+                "Audiveramus",
+                "Audiebamus",
+                "Audivimus",
+                "Audiverimus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Radical de parfait audiv- + -eramus = audiveramus (plus-que-parfait)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle proposition associe fidèlement le verbe et son parfait régulier ?",
+              "options": [
+                "Amare -> amui",
+                "Scribere -> scripsi",
+                "Legere -> legavi",
+                "Mittere -> mittui"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Scribere a pour parfait scripsi (formation sigmatique régulière b+s=ps)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les adverbes de temps usuels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adverbes latins désignent des repères temporels par rapport au jour d'énonciation ?",
+              "options": [
+                "Heri (hier)",
+                "Hodie (aujourd'hui)",
+                "Semper (toujours)",
+                "Saepe (souvent)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Heri (hier) et hodie (aujourd'hui) ancrent le discours dans le calendrier quotidien immédiat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe latin « heri » ?",
+              "options": ["Aujourd'hui", "Hier", "Demain", "Autrefois"],
+              "correctAnswers": [1],
+              "explanation": "Heri signifie « hier »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « hodie » ?",
+              "options": ["Demain", "Hier", "Aujourd'hui", "Toujours"],
+              "correctAnswers": [2],
+              "explanation": "Hodie (issu de la contraction de hoc die) signifie « aujourd'hui »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie « cras » en latin ?",
+              "options": ["Hier", "Tôt", "Tard", "Demain"],
+              "correctAnswers": [3],
+              "explanation": "Cras signifie « demain » (qui a donné le verbe procrastiner)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel adverbe latin signifie « autrefois / jadis » ?",
+              "options": ["Olim", "Nunc", "Heri", "Mox"],
+              "correctAnswers": [0],
+              "explanation": "Olim signifie « autrefois, jadis, en ce temps-là »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « maintenant / à présent » en latin ?",
+              "options": ["Tunc", "Nunc", "Olim", "Cras"],
+              "correctAnswers": [1],
+              "explanation": "Nunc signifie « maintenant, à cette heure »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe « tunc » (ou « tum ») ?",
+              "options": [
+                "Demain",
+                "Hier soir",
+                "Alors / en ce temps-là",
+                "Jamais"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Tunc ou tum renvoie à un moment passé précis : alors, à ce moment-là."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduisez « Heri epistulam scripsi » :",
+              "options": [
+                "Demain j'écrirai une lettre",
+                "Aujourd'hui j'écris une lettre",
+                "Autrefois j'écrivais des lettres",
+                "Hier j'ai écrit une lettre"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Heri = hier ; scripsi = j'ai écrit ; epistulam = une lettre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que veut dire « Hodie Romam veni » ?",
+              "options": [
+                "Aujourd'hui je suis venu à Rome",
+                "Hier je suis venu à Rome",
+                "Demain je viendrai à Rome",
+                "Bientôt j'irai à Rome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hodie indique aujourd'hui, et veni est la 1re personne du parfait."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel adverbe emploie-t-on pour situer un mythe ou un conte dans un passé lointain ?",
+              "options": ["Heri", "Olim", "Hodie", "Cras"],
+              "correctAnswers": [1],
+              "explanation": "Olim ouvre traditionnellement les récits mythologiques ou fabuleux (« autrefois / il était une fois »)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La chronologie : avant, pendant, après",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel adverbe signifie « auparavant / avant cela » ?",
+              "options": ["Postea", "Deinde", "Antea", "Nunc"],
+              "correctAnswers": [2],
+              "explanation": "Antea signifie « auparavant, plus tôt, avant ce moment »."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels adverbes permettent d'ordonner des événements successifs dans un récit ?",
+              "options": [
+                "Deinde (ensuite)",
+                "Postea (ensuite/après)",
+                "Numquam (jamais)",
+                "Semper (toujours)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deinde et postea articulent la progression narrative des étapes (« puis, ensuite »)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on l'adverbe « postea » ?",
+              "options": [
+                "Auparavant",
+                "Maintenant",
+                "Tout à coup",
+                "Ensuite / après cela"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Postea exprime la postériorité : par la suite, ensuite, après cela."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie « primum » ou « primo » ?",
+              "options": [
+                "D'abord / en premier lieu",
+                "Enfin",
+                "Jamais",
+                "Souvent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Primum ou primo introduit la première action d'une suite chronologique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel adverbe exprime l'aboutissement final : « enfin / à la fin » ?",
+              "options": ["Statim", "Tandem", "Primo", "Saepe"],
+              "correctAnswers": [1],
+              "explanation": "Tandem signifie « enfin, à la fin, au bout du compte »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans la série « primum... deinde... denique », que signifie « denique » ?",
+              "options": [
+                "D'abord",
+                "Hier",
+                "Enfin / pour finir",
+                "Pendant ce temps"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Denique clôt une succession d'actions : enfin, pour terminer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « interea » ?",
+              "options": ["Après cela", "Avant", "Jamais", "Pendant ce temps"],
+              "correctAnswers": [3],
+              "explanation": "Interea signifie « pendant ce temps, sur ces entrefaites »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduisez « Primum pugnavit, deinde vicit » :",
+              "options": [
+                "D'abord il combattit, ensuite il vainquit",
+                "Après avoir vaincu, il combattit",
+                "Il vainquit sans combattre d'abord",
+                "Il combattit ensuite pour vaincre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Primum introduit le premier événement, deinde le second."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel adverbe latin est synonyme de « interea » (entre-temps) ?",
+              "options": ["Antea", "Interim", "Postea", "Olim"],
+              "correctAnswers": [1],
+              "explanation": "Interim signifie également « pendant ce temps, entre-temps »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle locution adverbiale signifie « peu après » ?",
+              "options": [
+                "Multo ante",
+                "Nunc demum",
+                "Paulo post",
+                "Olim antea"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Paulo post (littéralement « d'un peu après ») indique un délai très court."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Fréquence et répétition",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adverbes latins expriment une répétition ou une fréquence de l'action ?",
+              "options": [
+                "Saepe (souvent)",
+                "Rursus (de nouveau)",
+                "Heri (hier)",
+                "Cras (demain)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Saepe (souvent) et rursus / iterum (de nouveau) désignent la fréquence et la réitération."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe latin « semper » ?",
+              "options": ["Souvent", "Toujours", "Jamais", "Rarement"],
+              "correctAnswers": [1],
+              "explanation": "Semper signifie « toujours, perpétuellement »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « saepe » ?",
+              "options": ["Toujours", "Jamais", "Souvent", "Parfois"],
+              "correctAnswers": [2],
+              "explanation": "Saepe signifie « souvent, maintes fois »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel adverbe latin signifie « jamais » ?",
+              "options": ["Semper", "Saepe", "Unde", "Numquam"],
+              "correctAnswers": [3],
+              "explanation": "Numquam (formé sur ne + umquam) signifie « jamais »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « interdum » ?",
+              "options": [
+                "Parfois / de temps en temps",
+                "Toujours",
+                "Jamais",
+                "Aujourd'hui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Interdum signifie « parfois, par intervalles, de temps à autre »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « de nouveau / pour la deuxième fois » en latin ?",
+              "options": ["Semper", "Iterum", "Numquam", "Tandem"],
+              "correctAnswers": [1],
+              "explanation": "Iterum signifie « de nouveau, une seconde fois » (qui a donné réitérer)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduisez « Romani saepe vincebant » :",
+              "options": [
+                "Les Romains ne gagnaient jamais",
+                "Les Romains ont gagné hier",
+                "Les Romains gagnaient souvent",
+                "Les Romains gagnaient toujours"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Saepe = souvent ; vincebant = ils gagnaient (imparfait d'habitude)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que veut dire « numquam mentior » ?",
+              "options": [
+                "Je mens souvent",
+                "Je dis toujours la vérité",
+                "Je mens parfois",
+                "Je ne mens jamais"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Numquam est l'adverbe négatif « jamais »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe « rursus » ?",
+              "options": [
+                "À nouveau / en retour",
+                "Bientôt",
+                "Enfin",
+                "Autrefois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rursus signifie « de nouveau, encore une fois, en arrière »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel adverbe composé signifie « parfois / quelquefois » par double négation ?",
+              "options": ["Numquam", "Nonnumquam", "Nunc", "Semper"],
+              "correctAnswers": [1],
+              "explanation": "Nonnumquam (non + numquam = « pas jamais ») signifie « parfois, quelquefois »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "L'expression de la durée (l'accusatif)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel cas exprime par excellence la durée continue sans préposition en latin ?",
+              "options": ["L'ablatif", "Le génitif", "L'accusatif", "Le datif"],
+              "correctAnswers": [2],
+              "explanation": "L'accusatif est le cas de l'extension dans l'espace comme dans le temps (durée continue)."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles expressions traduisent une durée continue à l'accusatif ?",
+              "options": [
+                "Tres horas (pendant trois heures)",
+                "Multos annos (pendant de nombreuses années)",
+                "Nocte (de nuit)",
+                "Tribus diebus (en trois jours)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tres horas et multos annos sont à l'accusatif de durée. Nocte et tribus diebus sont à l'ablatif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « decem annos » dans « Trojam decem annos oppugnaverunt » ?",
+              "options": [
+                "Le dixième an",
+                "Il y a dix ans",
+                "Dans dix ans",
+                "Pendant dix ans"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Decem annos est à l'accusatif pluriel : pendant dix ans (durée)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Traduisez « Duos menses Romae mansit » :",
+              "options": [
+                "Il resta à Rome pendant deux mois",
+                "Il partit de Rome dans deux mois",
+                "Il arriva à Rome le deuxième mois",
+                "Il visita Rome deux fois par mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Duos menses (accusatif) indique la durée du séjour : pendant deux mois."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dit-on « pendant toute la nuit » à l'accusatif de durée ?",
+              "options": [
+                "Tota nocte",
+                "Totam noctem",
+                "Totius noctis",
+                "Totis noctibus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Totam noctem est à l'accusatif singulier pour indiquer la durée nocturne ininterrompue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie « tres dies ambulavimus » ?",
+              "options": [
+                "Nous marcherons dans trois jours",
+                "Nous sommes arrivés il y a trois jours",
+                "Nous avons marché pendant trois jours",
+                "Trois jours se sont écoulés"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Tres dies est un accusatif de durée : pendant trois jours."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle préposition suivie de l'accusatif peut renforcer l'idée de durée ininterrompue (« durant ») ?",
+              "options": ["Cum", "De", "Sine", "Per"],
+              "correctAnswers": [3],
+              "explanation": "Per + accusatif souligne la continuité à travers tout l'intervalle temporel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Vixit nonaginta annos », quelle information apporte « nonaginta annos » ?",
+              "options": [
+                "La durée totale de sa vie (90 ans)",
+                "L'année de sa naissance",
+                "L'époque de son consulat",
+                "Le siècle de sa mort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nonaginta annos est à l'accusatif pour exprimer la durée de vie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduisez « Paucos dies moratus est » :",
+              "options": [
+                "Il partit après quelques jours",
+                "Il s'attarda quelques jours",
+                "Il arriva en peu de jours",
+                "Il refusa de rester quelques jours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Paucos dies est un accusatif de durée : pendant quelques jours."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif latin appelle comme réponse un accusatif de durée ?",
+              "options": [
+                "Quando ? (quand ?)",
+                "Quamdiu ? (combien de temps ?)",
+                "Ubi ? (où ?)",
+                "Cur ? (pourquoi ?)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Quamdiu signifie « pendant combien de temps ? », et s'emploie avec l'accusatif."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "L'expression du moment (l'ablatif)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel cas emploie-t-on sans préposition en latin pour situer une action dans le temps (« quand ? ») ?",
+              "options": [
+                "L'ablatif",
+                "L'accusatif",
+                "Le nominatif",
+                "Le vocatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ablatif de temps sans préposition indique le moment précis où a lieu l'action."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles expressions indiquent un moment précis à l'ablatif ?",
+              "options": [
+                "Nocte (de nuit / pendant la nuit)",
+                "Aestate (en été)",
+                "Totum diem (toute la journée)",
+                "Multas horas (de nombreuses heures)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nocte et aestate sont des ablatifs de temps. Totum diem et multas horas sont des accusatifs de durée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on la locution temporelle « prima luce » ?",
+              "options": [
+                "En pleine nuit",
+                "À la première lueur / à l'aube",
+                "Au coucher du soleil",
+                "À midi précis"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Prima luce (ablatif de temps) signifie « au point du jour, aux premières lueurs de l'aube »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie « media nocte » ?",
+              "options": [
+                "Vers midi",
+                "Toute la nuit",
+                "Au milieu de la nuit",
+                "La nuit prochaine"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Media nocte est un ablatif marquant le moment : au milieu de la nuit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduisez « Hieme Romani domi manebant » :",
+              "options": [
+                "Tout l'hiver dura longtemps",
+                "L'hiver chassa les Romains",
+                "Les Romains partirent avant l'hiver",
+                "En hiver, les Romains restaient chez eux"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Hieme est l'ablatif singulier de hiems (l'hiver) indiquant la saison où l'on reste chez soi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme à l'ablatif signifie « de jour » par opposition à « nocte » ?",
+              "options": ["Die", "Diem", "Dierum", "Diebusque"],
+              "correctAnswers": [0],
+              "explanation": "Die (ablatif singulier de dies) signifie « de jour, pendant le jour »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on « tertia hora » ?",
+              "options": [
+                "Pendant trois heures",
+                "À la troisième heure",
+                "Toutes les trois heures",
+                "Trois heures avant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tertia hora est un ablatif de moment : à la 3e heure du jour."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « eodem die » ?",
+              "options": [
+                "Un autre jour",
+                "Chaque jour",
+                "Le même jour",
+                "Le lendemain"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Eodem die est l'ablatif singulier du démonstratif idem et du nom dies : le même jour."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle question appelle une réponse à l'ablatif de moment ?",
+              "options": [
+                "Quamdiu ? (combien de temps ?)",
+                "Cur ? (pourquoi ?)",
+                "Quo ? (vers quel lieu ?)",
+                "Quando ? (quand ?)"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Quando (« quand ? ») interroge sur la date ou le moment ponctuel, exprimé à l'ablatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduisez « Vere aves cantant » :",
+              "options": [
+                "Au printemps, les oiseaux chantent",
+                "Les oiseaux chantent tout le printemps",
+                "Le printemps fait chanter les oiseaux",
+                "Les oiseaux aiment le printemps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vere est l'ablatif singulier neutre de ver (le printemps) : au printemps."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Conjonctions de temps (dum, postquam, ubi)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie la conjonction temporelle « dum » suivie de l'indicatif ?",
+              "options": [
+                "Après que",
+                "Pendant que / tandis que",
+                "Dès que",
+                "Avant que"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dum + indicatif (généralement présent) exprime la simultanéité : pendant que, tandis que."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles conjonctions introduisent une subordonnée de temps en latin ?",
+              "options": [
+                "Postquam (après que)",
+                "Ubi (quand / dès que)",
+                "Quamquam (bien que)",
+                "Quia (parce que)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Postquam et ubi sont des conjonctions temporelles. Quamquam exprime la concession et quia la cause."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « postquam » ?",
+              "options": ["Avant que", "Pendant que", "Après que", "Puisque"],
+              "correctAnswers": [2],
+              "explanation": "Postquam (formé de post + quam) signifie « après que »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le sens de la locution « simulac » (ou « simulatque ») ?",
+              "options": [
+                "Pendant que",
+                "Longtemps après",
+                "Si jamais",
+                "Dès que / aussitôt que"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Simulac (simul atque) signifie « aussitôt que, dès que »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel temps de l'indicatif suit canoniquement « postquam » en latin classique ?",
+              "options": [
+                "Le parfait de l'indicatif",
+                "Le subjonctif présent",
+                "Le futur simple",
+                "L'impératif futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Postquam est très couramment suivi de l'indicatif parfait en latin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « Ubi hostes vidit, signum dedit », quel est le sens de « ubi » ?",
+              "options": ["Où", "Quand / dès que", "Pourquoi", "Comment"],
+              "correctAnswers": [1],
+              "explanation": "Dans un contexte narratif temporel, ubi signifie « quand / dès que »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduisez « Dum haec geruntur, Caesar pervenit » :",
+              "options": [
+                "Après ces événements, César partit",
+                "Si ces événements se produisent, César viendra",
+                "Tandis que ces choses se passaient, César arriva",
+                "Parce que tout était fini, César resta"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Dum + indicatif présent (geruntur) exprime la simultanéité avec l'arrivée de César."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la conjonction temporelle « antequam » ?",
+              "options": ["Après que", "Dès que", "Pendant que", "Avant que"],
+              "correctAnswers": [3],
+              "explanation": "Antequam (ante + quam) signifie « avant que »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le « cum » suivi du subjonctif imparfait ou plus-que-parfait dans un récit au passé ?",
+              "options": [
+                "Le cum historique (ou narratif)",
+                "Le cum de pure répétition",
+                "Le cum de simultanéité stricte",
+                "Le cum adversatif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cum historique sert à relater les circonstances d'une action passée (« comme, alors que »)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduisez « Postquam Caesar venit, milites laeti fuerunt » :",
+              "options": [
+                "Avant l'arrivée de César, les soldats étaient tristes",
+                "Après que César fut arrivé, les soldats furent joyeux",
+                "Tandis que César arrivait, les soldats combattaient",
+                "Dès que César partit, les soldats crièrent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Postquam + parfait se traduit en français par « après que César fut arrivé / arriva »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Adverbes de rapidité et d'immédiateté",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel adverbe latin signifie « aussitôt / immédiatement » ?",
+              "options": ["Tandem", "Saepe", "Statim", "Olim"],
+              "correctAnswers": [2],
+              "explanation": "Statim signifie « immédiatement, sur-le-champ, aussitôt »."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels adverbes latins traduisent la soudaineté d'une action imprévue ?",
+              "options": [
+                "Subito (soudain)",
+                "Repente (tout à coup)",
+                "Semper (toujours)",
+                "Lente (lentement)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Subito et repente expriment tous deux un événement soudain et inattendu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « mox » en latin ?",
+              "options": ["Jamais", "Hier", "Tard", "Bientôt"],
+              "correctAnswers": [3],
+              "explanation": "Mox indique un futur ou une suite très proche : « bientôt, peu après »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe de promptitude « confestim » ?",
+              "options": [
+                "Aussitôt / en hâte",
+                "Lentement",
+                "Parfois",
+                "Après-demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confestim signifie « en toute hâte, sur-le-champ, sans tarder »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduisez « Subito canis latravit » :",
+              "options": [
+                "Le chien aboyait souvent",
+                "Soudain le chien aboya",
+                "Le chien n'aboie jamais",
+                "Bientôt le chien aboiera"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Subito marque la soudaineté, latravit est au parfait."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel adverbe s'oppose directement à « celeriter » (rapidement) ?",
+              "options": [
+                "Statim (aussitôt)",
+                "Mox (bientôt)",
+                "Lente (lentement)",
+                "Repente (soudain)"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Lente signifie lentement, antonyme de celeriter (promptement)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe « continuo » employé temporellement ?",
+              "options": [
+                "Continuellement pendant des siècles",
+                "Lentement",
+                "Rarement",
+                "Aussitôt / sur-le-champ"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Continuo signifie « immédiatement, sans interruption temporelle »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « statim fugit » ?",
+              "options": [
+                "Il s'enfuit immédiatement",
+                "Il s'enfuyait lentement",
+                "Il fuira demain",
+                "Il n'a jamais fui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statim = aussitôt / immédiatement ; fugit = il s'est enfui / prit la fuite."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la formule « brevi tempore » ?",
+              "options": [
+                "Pendant de longues années",
+                "En peu de temps",
+                "À chaque heure",
+                "Depuis toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Brevi tempore (ablatif) signifie « en peu de temps, rapidement »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduisez « Mox domum rediit » :",
+              "options": [
+                "Hier il est parti de la maison",
+                "Il reste toujours à la maison",
+                "Bientôt il rentra chez lui",
+                "Il ne rentrera jamais chez lui"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Mox indique la proximité temporelle (« bientôt / peu après »), rediit est le parfait de redire."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les âges, les saisons et les divisions du temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le nom latin « annus » ?",
+              "options": ["L'anneau", "La bague", "Le jour", "L'année / l'an"],
+              "correctAnswers": [3],
+              "explanation": "Annus, anni (masculin) désigne l'année (qui a donné annuel, anniversaire)."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels noms latins désignent des saisons de l'année ?",
+              "options": [
+                "Aestas (l'été)",
+                "Hiems (l'hiver)",
+                "Hora (l'heure)",
+                "Nox (la nuit)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Aestas (l'été), hiems (l'hiver), ver (le printemps) et autumnus (l'automne) sont les quatre saisons."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot neutre désigne « le printemps » en latin ?",
+              "options": ["Ver", "Aestas", "Hiems", "Autumnus"],
+              "correctAnswers": [0],
+              "explanation": "Ver, veris (neutre) est le nom latin du printemps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quels termes latins désignent respectivement le jour et la nuit ?",
+              "options": [
+                "Annus et mensis",
+                "Dies et nox",
+                "Hora et tempus",
+                "Sol et luna"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dies (masculin/féminin) désigne le jour et nox (féminin) la nuit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie le substantif « mensis » ?",
+              "options": ["La table", "L'esprit", "Le mois", "Le repas"],
+              "correctAnswers": [2],
+              "explanation": "Mensis, mensis (masculin) désigne le mois (étymologiquement lié aux cycles lunaires)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment les Romains découpaient-ils la journée entre lever et coucher du soleil ?",
+              "options": [
+                "En 24 heures de durée invariable",
+                "En 10 heures décimales",
+                "En 4 grandes tranches seulement",
+                "En 12 heures dont la durée variait selon la saison"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Le jour comptait toujours 12 heures, plus longues en été et plus courtes en hiver."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne une « vigilia » dans l'organisation de la nuit romaine ?",
+              "options": [
+                "Une veille militaire (quart de nuit)",
+                "Une fête religieuse nocturne",
+                "Un banquet d'amis",
+                "La lampe à huile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La nuit était divisée en quatre veilles (vigiliae) de garde militaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie le nom neutre de la 3e déclinaison « tempus » ?",
+              "options": [
+                "Le temple",
+                "Le temps / l'époque",
+                "La tempête",
+                "Le tambour"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tempus, temporis (neutre) désigne le temps, la durée ou le moment opportun."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel âge mythique désigne l'expression latine « aurea aetas » ?",
+              "options": [
+                "L'Âge de fer",
+                "L'Époque moderne",
+                "L'Âge d'or",
+                "L'Âge de bronze"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Aurea aetas renvoie au paradis mythologique de l'Âge d'or sous Saturne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « saeculum » en latin classique ?",
+              "options": [
+                "La semaine",
+                "La seconde",
+                "L'horloge solaire",
+                "Une génération humaine / un siècle"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Saeculum désigne une génération ou une durée d'environ un siècle."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Prépositions temporelles (ante, post, inter, sub)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle préposition suivie de l'accusatif signifie « avant » (dans le temps) ?",
+              "options": ["Ante", "Post", "Sub", "Sine"],
+              "correctAnswers": [0],
+              "explanation": "Ante + accusatif marque l'antériorité dans le temps (ex: ante bellum = avant la guerre)."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles prépositions temporelles se construisent obligatoirement avec l'accusatif ?",
+              "options": [
+                "Ante (avant)",
+                "Post (après)",
+                "Cum (avec)",
+                "Sine (sans)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ante et post régissent l'accusatif dans leurs emplois temporels."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « post bellum » ?",
+              "options": [
+                "Avant la guerre",
+                "Après la guerre",
+                "Pendant la guerre",
+                "Sans la guerre"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Post + accusatif signifie « après » : post bellum = après la guerre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la locution « ante lucem » ?",
+              "options": [
+                "En pleine lumière",
+                "Après le coucher du soleil",
+                "Avant le jour / avant l'aube",
+                "À midi précis"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Ante lucem signifie avant la lumière du jour, c'est-à-dire avant l'aube."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « sub noctem » avec la préposition sub suivie de l'accusatif ?",
+              "options": [
+                "En plein jour",
+                "Après la nuit",
+                "Pendant midi",
+                "Vers la nuit / à la tombée de la nuit"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Sub + accusatif de temps exprime l'approche immédiate : à l'approche de la nuit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Traduisez « inter cenam » :",
+              "options": [
+                "Pendant le dîner",
+                "Avant le dîner",
+                "Après le dîner",
+                "Sans dîner"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inter + accusatif situe l'action au cours du repas : pendant le dîner."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle expression situe un événement avant la fondation de Rome ?",
+              "options": [
+                "Post Urbem conditam",
+                "Ante Urbem conditam",
+                "In Urbe condita",
+                "Sub Urbe condita"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ante Urbem conditam (a.U.c.) situe le repère avant la date légendaire de 753 av. J.-C."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « post meridiem » (abrégé p.m. dans l'anglais horaire) ?",
+              "options": [
+                "Avant midi",
+                "À minuit",
+                "Après-midi",
+                "Dès l'aurore"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Post meridiem signifie littéralement « après le milieu du jour » (l'après-midi)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la formule temporelle « de nocte » ?",
+              "options": [
+                "Le lendemain matin",
+                "En plein midi",
+                "La nuit prochaine",
+                "De nuit / avant la fin de la nuit"
+              ],
+              "correctAnswers": [3],
+              "explanation": "De nocte signifie qu'une action est entreprise de nuit, dès la nuit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « Post paucos dies profectus est », que signifie « post paucos dies » ?",
+              "options": [
+                "Après quelques jours",
+                "Avant quelques jours",
+                "Pendant peu de jours",
+                "Depuis deux jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Post + accusatif marque l'intervalle écoulé : après quelques jours."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse : maîtriser les repères chronologiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels procédés grammaticaux permettent d'exprimer des repères temporels en latin ?",
+              "options": [
+                "Les adverbes temporels (heri, nunc, olim)",
+                "L'accusatif (durée) et l'ablatif (moment)",
+                "Le superlatif d'adjectif isolé",
+                "L'impératif futur sans verbe"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le temps s'exprime par les adverbes, les subordonnées temporelles et les cas (accusatif/ablatif)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « Olim Romani magnam partem mundi regebant », quel mot est le marqueur de temps ?",
+              "options": ["Regebant", "Olim", "Mundi", "Romani"],
+              "correctAnswers": [1],
+              "explanation": "Olim est l'adverbe temporel indiquant un passé lointain (« jadis, autrefois »)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduisez « Nocte dormimus, interdiu laboramus » :",
+              "options": [
+                "Le jour nous dormons, la nuit nous travaillons",
+                "Nous dormons toujours et ne travaillons jamais",
+                "La nuit nous dormons, le jour nous travaillons",
+                "Hier nous avons dormi, aujourd'hui nous travaillons"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Nocte (ablatif de moment) = de nuit ; interdiu (adverbe) = pendant la journée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour indiquer qu'une action dure pendant 5 ans, quelle forme latine utilise-t-on ?",
+              "options": [
+                "Quinque annis (ablatif)",
+                "Quinque annorum (génitif)",
+                "Quinque annos (datif)",
+                "Quinque annos (accusatif)"
+              ],
+              "correctAnswers": [3],
+              "explanation": "La durée continue s'exprime obligatoirement à l'accusatif sans préposition : quinque annos."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour situer un événement au dixième jour (« quand ? »), quelle tournure emploie-t-on ?",
+              "options": [
+                "Decimo die (ablatif)",
+                "Decimum diem (accusatif)",
+                "Decimi diei (génitif)",
+                "Decimus dies (nominatif)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le moment précis (quando ?) requiert l'ablatif sans préposition : decimo die."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie « Paulo post ad castra redierunt » ?",
+              "options": [
+                "Beaucoup plus tard ils partirent du camp",
+                "Peu après ils retournèrent au camp",
+                "Aussitôt ils quittèrent le camp",
+                "Ils restèrent longtemps au camp"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Paulo post = peu après ; redierunt = ils revinrent / retournèrent (au parfait)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduisez la maxime « Dum spiro, spero » :",
+              "options": [
+                "Quand je respire, je chante",
+                "Après avoir respiré, j'agis",
+                "Tant que je respire, j'espère",
+                "Puisque je vis, je combats"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Dum + indicatif présent exprime la simultanéité ininterrompue : « tant que je respire, j'espère »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel adverbe convient pour proclamer « enfin nous vaincrons ! » ?",
+              "options": [
+                "Numquam vincemus",
+                "Heri vincemus",
+                "Saepe vincemus",
+                "Tandem vincemus"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Tandem exprime le soulagement d'un dénouement attendu : enfin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « statim atque nuntius venit » ?",
+              "options": [
+                "Dès que le messager arriva",
+                "Pendant que le messager parlait",
+                "Avant que le messager ne parte",
+                "Parce que le messager fuyait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Statim atque (ou statim ac) signifie « dès que, aussitôt que »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle paire d'adverbes oppose « hier » et « demain » en latin ?",
+              "options": [
+                "Hodie et nunc",
+                "Heri et cras",
+                "Olim et semper",
+                "Tunc et deinde"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Heri signifie hier, et cras signifie demain."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

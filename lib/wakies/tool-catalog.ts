@@ -9,9 +9,9 @@
  *
  * CE QUI EST VOLONTAIREMENT ABSENT
  *
- * `getWeather` et `quizzly` ne figurent pas dans la liste des outils
- * SÉLECTIONNABLES : ils sont fournis par une extension (`lib/ai/tools/ids.ts`
- * les déclare `PLUGIN_PROVIDED_TOOL_IDS`). Les proposer ici créerait une case
+ * `getWeather` ne figure pas dans la liste des outils
+ * SÉLECTIONNABLES : il est fourni par une extension (`lib/ai/tools/ids.ts`
+ * le déclare `PLUGIN_PROVIDED_TOOL_IDS`). Le proposer ici créerait une case
  * à cocher qui semble attuned mais ne produirait aucun outil si l'extension
  * n'est pas installée. L'utilisateur choisit l'extension, pas l'outil.
  *

@@ -1,0 +1,2513 @@
+{
+  "id": "5e-chinois-05",
+  "year": "5e",
+  "subject": "chinois",
+  "title": "Le passé en chinois",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur 昨天 (zuótiān) sont vraies ?",
+              "options": [
+                "昨天 veut dire « hier ».",
+                "昨天 se prononce zuótiān.",
+                "昨天 signifie « demain ».",
+                "昨天 ne sert jamais au passé."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "昨天 est « hier », prononcé zuótiān."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « hier » ?",
+              "options": [
+                "今天 (jīntiān)",
+                "昨天 (zuótiān)",
+                "明天 (míngtiān)",
+                "现在 (xiànzài)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "昨天 (zuótiān) = hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans 我昨天去了学校, 昨天 signifie :",
+              "options": ["aujourd'hui", "hier", "demain", "maintenant"],
+              "correctAnswers": [1],
+              "explanation": "昨天 situe l'action la veille."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que marque 了 dans 我去了 (wǒ qùle) ?",
+              "options": ["futur", "action réalisée", "négation", "heure"],
+              "correctAnswers": [1],
+              "explanation": "了 indique que l'action est faite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase au passé « Je suis allé(e) » :",
+              "options": ["我去", "我去了", "我没去", "我去吗"],
+              "correctAnswers": [1],
+              "explanation": "我去了 = départ accompli."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "她昨天吃了饭 : quand a-t-elle mangé ?",
+              "options": ["demain", "hier", "jamais", "dans une heure"],
+              "correctAnswers": [1],
+              "explanation": "昨天 = hier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Hier j'ai regardé un film :",
+              "options": [
+                "我明天看了电影",
+                "我昨天看了电影",
+                "我现在看了电影",
+                "我昨天看电影吗"
+              ],
+              "correctAnswers": [1],
+              "explanation": "昨天 + 看了 = passé hier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase incohérente :",
+              "options": [
+                "我昨天写作业",
+                "我昨天去明天",
+                "我昨天睡觉",
+                "我昨天踢足球"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On ne mélange pas 昨天 et 明天."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "昨天很冷 (hěn lěng) :",
+              "options": [
+                "froid demain",
+                "froid hier",
+                "chaud aujourd'hui",
+                "neige maintenant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "昨天 décrit hier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "昨天晚上 (wǎnshang) signifie :",
+              "options": ["hier matin", "hier soir", "demain soir", "ce soir"],
+              "correctAnswers": [1],
+              "explanation": "晚上 = soir."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont au passé accompli ?",
+              "options": [
+                "我吃了 (wǒ chīle)",
+                "他去了 (tā qùle)",
+                "我去 (wǒ qù) sans contexte",
+                "我们到了 (wǒmen dàole)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "吃了 et 去了 marquent une action finie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sans 了, 我去 suggère plutôt :",
+              "options": [
+                "fait déjà terminé",
+                "projet ou habitude selon contexte",
+                "question",
+                "négation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "了 précise l'achèvement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Il est parti(e) :",
+              "options": ["他去了", "他去", "他没去", "他去吧"],
+              "correctAnswers": [0],
+              "explanation": "他去了 = il/elle est parti(e)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "我昨天买了书 : 买了 =",
+              "options": [
+                "achètera",
+                "a acheté",
+                "n'a pas acheté",
+                "achète toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "了 après 买 = passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hier nous avons joué :",
+              "options": [
+                "我们昨天玩了",
+                "我们明天玩了",
+                "我们昨天玩吗",
+                "我们没昨天了"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天玩了 = jeu hier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "了 se place surtout :",
+              "options": [
+                "avant le sujet",
+                "après le verbe",
+                "en tête de phrase",
+                "sans verbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "了 suit le verbe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "我到家了 signifie :",
+              "options": [
+                "J'irai demain.",
+                "Je suis arrivé(e) à la maison.",
+                "Je ne rentre pas.",
+                "J'habite ailleurs."
+              ],
+              "correctAnswers": [1],
+              "explanation": "到了 + 了 = arrivée faite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Devoirs finis hier :",
+              "options": [
+                "我昨天写完作业了",
+                "我明天写作业",
+                "我写了昨天吗",
+                "我昨天没写完了"
+              ],
+              "correctAnswers": [0],
+              "explanation": "写完…了 = terminé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "小狗跑了 (pǎole) :",
+              "options": ["va courir", "a couru", "ne court pas", "mange"],
+              "correctAnswers": [1],
+              "explanation": "跑了 = course faite."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Raconter hier en 5e :",
+              "options": [
+                "明天 + 吗",
+                "昨天 + verbe, souvent 了",
+                "现在 seul",
+                "没 + 了 obligatoire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Repère 昨天 et 了 pour le passé."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Repères du passé en chinois courant ?",
+              "options": [
+                "昨天 (zuótiān)",
+                "了 (le) pour action finie",
+                "明天 (míngtiān)",
+                "现在 (xiànzài)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "昨天 situe ; 了 achève l'action."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我昨天没去学校 :",
+              "options": [
+                "allé(e) hier",
+                "pas allé(e) hier",
+                "demain absent",
+                "va à l'école"
+              ],
+              "correctAnswers": [1],
+              "explanation": "没 nie le verbe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Question sur hier :",
+              "options": [
+                "你昨天来了吗？",
+                "你昨天来了。",
+                "你明天来了吗？",
+                "你现在不来了。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 = question oui/non."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Oui, venu(e) hier :",
+              "options": [
+                "对，我昨天来了",
+                "不，我昨天没来",
+                "我明天来了",
+                "我没昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "对 + 昨天来了 confirme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "爸爸昨天工作了 : qui ?",
+              "options": ["maman", "papa", "prof", "ami"],
+              "correctAnswers": [1],
+              "explanation": "爸爸 = père."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "我昨天很累 :",
+              "options": [
+                "fatigué(e) demain",
+                "fatigué(e) hier",
+                "jamais fatigué(e)",
+                "court maintenant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "昨天 + adjectif = hier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sortie au parc hier :",
+              "options": [
+                "我们昨天去了公园",
+                "我们去公园吧",
+                "我们没公园",
+                "我们昨天去吗公园"
+              ],
+              "correctAnswers": [0],
+              "explanation": "去了公园 = visite faite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pinyin de 昨天 :",
+              "options": ["jīntiān", "zuótiān", "míngtiān", "qiántiān"],
+              "correctAnswers": [1],
+              "explanation": "zuótiān."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "我昨天看见你了 : quand ?",
+              "options": ["demain", "hier", "jamais", "dans une heure"],
+              "correctAnswers": [1],
+              "explanation": "昨天 fixe le moment."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mot futur à éviter pour le passé :",
+              "options": ["了", "昨天", "明天", "去了"],
+              "correctAnswers": [2],
+              "explanation": "明天 = demain."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Je suis allé(e) » correct ?",
+              "options": [
+                "我去了",
+                "我昨天去了",
+                "我去 sans 了 pour passé sûr",
+                "我明天去了"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "我去了 et 我昨天去了 conviennent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我坐公共汽车去了 :",
+              "options": [
+                "bus demain",
+                "allé(e) en bus",
+                "jamais en bus",
+                "au bus maintenant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "坐…去了 = moyen + action faite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Elle a lu hier :",
+              "options": [
+                "她昨天看书了",
+                "她明天看书",
+                "她昨天没书",
+                "她看书吗昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天看书了 = lecture passée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "孩子们昨天笑了 :",
+              "options": [
+                "pleureront",
+                "ont ri hier",
+                "ne rient pas",
+                "courent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "笑了 = ri passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Nier « j'ai mangé » :",
+              "options": [
+                "我没吃",
+                "我吃了没",
+                "我没吃了",
+                "我没吃吗 affirmatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "没 + verbe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "我昨天没看电视 :",
+              "options": [
+                "a regardé la télé",
+                "n'a pas regardé la télé",
+                "regardera demain",
+                "regarde maintenant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "昨天 + 没 + verbe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "他去了商店 :",
+              "options": [
+                "parti au magasin",
+                "ira demain seulement",
+                "négation",
+                "question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "去了 = départ fait."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "我们到了车站 :",
+              "options": [
+                "arrivés à la gare",
+                "à la maison demain",
+                "nulle part",
+                "partent seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "到了 = arrivée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Passé le plus clair :",
+              "options": ["我吃饭", "我昨天吃饭了", "我明天吃饭", "我饭吃了吗"],
+              "correctAnswers": [1],
+              "explanation": "昨天 + 了 explicite."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "下雨了 (xià yǔ le) :",
+              "options": [
+                "va pleuvoir",
+                "commence à pleuvoir / changement",
+                "ne pleut jamais",
+                "hier obligé"
+              ],
+              "correctAnswers": [1],
+              "explanation": "了 peut marquer un changement."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Caractères de 昨天 ?",
+              "options": [
+                "昨 (zuó)",
+                "天 (tiān) dans 昨天",
+                "明 pour hier",
+                "今 pour hier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "昨天 = 昨 + 天."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我昨天八点起床了 :",
+              "options": [
+                "lève demain 8h",
+                "levé(e) à 8h hier",
+                "ne se lève jamais",
+                "maintenant seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "昨天 + heure + 了."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Examen passé :",
+              "options": [
+                "我昨天考试了",
+                "我明天考试了",
+                "我昨天吗考试",
+                "我没昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "考试了 = exam passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "朋友昨天来了 :",
+              "options": [
+                "ami demain",
+                "ami venu hier",
+                "pas d'ami",
+                "ami part"
+              ],
+              "correctAnswers": [1],
+              "explanation": "来了 hier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "J'ai écouté de la musique :",
+              "options": [
+                "我听了音乐",
+                "我听音乐吗 seule",
+                "我明天听了音乐",
+                "没听 futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "听了 = écoute faite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "猫昨天睡了很久 :",
+              "options": [
+                "dormira",
+                "a dormi longtemps hier",
+                "ne dort pas",
+                "mange"
+              ],
+              "correctAnswers": [1],
+              "explanation": "睡了很久 = long sommeil."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Parti hier ? (question)",
+              "options": [
+                "你昨天去了吗？",
+                "你昨天去了。",
+                "你明天去了吗？",
+                "你没去昨天。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "…了吗 = question passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "我昨天帮妈妈做饭了 :",
+              "options": [
+                "aidera demain",
+                "a aidé à cuisiner hier",
+                "n'aide jamais",
+                "maman seule"
+              ],
+              "correctAnswers": [1],
+              "explanation": "帮…做饭了 hier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pas un marqueur passé ici :",
+              "options": ["了", "昨天", "明天", "去了"],
+              "correctAnswers": [2],
+              "explanation": "明天 = futur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Raconter hier :",
+              "options": [
+                "明天 + 吗",
+                "昨天 + 了 si fini",
+                "sans sujet",
+                "了 avant sujet toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Base du chapitre."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases avec 昨天 correctes ?",
+              "options": [
+                "我昨天游泳了",
+                "他昨天踢足球了",
+                "我明天游泳了",
+                "现在昨天我"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux actions datées d'hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我昨天在朋友家 :",
+              "options": [
+                "demain chez ami",
+                "hier chez ami",
+                "jamais",
+                "sans sens"
+              ],
+              "correctAnswers": [1],
+              "explanation": "在 + lieu + 昨天."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "昨天天气很好 :",
+              "options": ["beau temps hier", "demain", "question", "négation"],
+              "correctAnswers": [0],
+              "explanation": "Météo d'hier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "我们昨天学了中文 :",
+              "options": [
+                "apprendront",
+                "ont appris hier",
+                "n'étudient pas",
+                "futur seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "学了 = appris."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "你昨天几点回家？ :",
+              "options": [
+                "où habites-tu",
+                "heure de retour hier",
+                "manger demain",
+                "couleur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "几点 = quelle heure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "我昨天写了邮件 :",
+              "options": [
+                "écrira demain",
+                "a écrit un mail hier",
+                "ne sait pas écrire",
+                "futur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "写了 = rédigé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "昨天我高兴了",
+                "我昨天高兴了吗 affirmatif",
+                "明天昨天我",
+                "我了吗昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre sujet/temps flexible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "妹妹昨天画画了 :",
+              "options": [
+                "dessinera",
+                "a dessiné hier",
+                "interdit",
+                "personne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "画画了 hier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Action déjà faite :",
+              "options": [
+                "了 après verbe",
+                "吗 au milieu",
+                "没 pour futur",
+                "明天 avant sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 = achevé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "我昨天没有打球 :",
+              "options": [
+                "a joué",
+                "n'a pas joué hier",
+                "jouera demain",
+                "joue maintenant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "没有 + verbe nie."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux bonnes réponses sur 我去了 ?",
+              "options": [
+                "了 marque le passé accompli",
+                " peut raconter un départ fait",
+                "signifie « je vais » demain sûr",
+                "est une question"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "我去了 = départ réalisé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "爷爷昨天来了 :",
+              "options": [
+                "grand-père demain",
+                "grand-père venu hier",
+                "grand-mère",
+                "parti"
+              ],
+              "correctAnswers": [1],
+              "explanation": "爷爷 + 昨天来了."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "我昨天跑步了 (pǎobù) :",
+              "options": ["courra", "a couru hier", "ne court pas", "nage"],
+              "correctAnswers": [1],
+              "explanation": "跑步了 = course faite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Neg : hier pas de devoirs :",
+              "options": [
+                "我昨天没写作业",
+                "我昨天写作业了",
+                "我明天没写",
+                "我没昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "没 + 写."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "他们昨天开会了 (kāihuì) :",
+              "options": [
+                "réunion demain",
+                "réunion tenue hier",
+                "pas de réunion",
+                "maintenant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "开会了 = réunion passée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien avec hier : 我昨天买了两个苹果",
+              "options": [
+                "deux pommes achetées hier",
+                "demain",
+                "zéro",
+                "dix sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "两个 = deux objets."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "你昨天忙吗？(máng) :",
+              "options": ["occupé(e) hier ?", "faim demain", "où", "couleur"],
+              "correctAnswers": [0],
+              "explanation": "忙 = occupé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "我昨天早起了 (zǎo qǐ) :",
+              "options": [
+                "lève tard demain",
+                "levé(e) tôt hier",
+                "dort",
+                "mange"
+              ],
+              "correctAnswers": [1],
+              "explanation": "早起了 = réveil matinal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "了 dans 我懂了 (dǒng le) :",
+              "options": [
+                "comprend maintenant / a compris",
+                "futur",
+                "négation",
+                "hier seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "懂了 = compris."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Hier + lieu + action :",
+              "options": [
+                "我昨天在图书馆看书了",
+                "我明天在图书馆",
+                "我昨天吗图书馆",
+                "图书馆昨天我了吗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在图书馆 + 看书了."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Vraies sur 昨天 en début de récit ?",
+              "options": [
+                "Peut ouvrir la phrase : 昨天我…",
+                "Peut suivre le sujet : 我昨天…",
+                "Doit être après 吗",
+                "Remplace 了"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux positions courantes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我昨天 téléphone éteint → 我昨天没接电话 :",
+              "options": [
+                "n'a pas répondu hier",
+                "répondra",
+                "répond toujours",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "没接 = n'a pas pris l'appel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "姐姐昨天结婚了 (jiéhūn) :",
+              "options": ["se mariera", "s'est mariée hier", "frère", "enfant"],
+              "correctAnswers": [1],
+              "explanation": "结婚了 = mariage passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle heure hier : 我昨天中午吃饭",
+              "options": [
+                "midi hier",
+                "minuit demain",
+                "matin futur",
+                "sans repas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "中午 = midi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "我们昨天赢了 (yíng) :",
+              "options": ["perdu", "gagné hier", "joueront", "nul"],
+              "correctAnswers": [1],
+              "explanation": "赢了 = victoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "我昨天学了一个新词 (cí) :",
+              "options": [
+                "mot nouveau appris hier",
+                "mot demain",
+                "aucun mot",
+                "question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "学了 = appris."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Contraste : 今天我去，昨天我…",
+              "options": ["去了", "去吗", "明天", "没吗"],
+              "correctAnswers": [0],
+              "explanation": "Hier passé : 去了."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "狗昨天叫了 (jiào) :",
+              "options": [
+                "chien aboiera",
+                "chien a aboyé hier",
+                "chat",
+                "silence"
+              ],
+              "correctAnswers": [1],
+              "explanation": "叫了 = aboiement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réponse : 你昨天做什么？",
+              "options": [
+                "我昨天做作业了",
+                "我明天做",
+                "我做什么吗",
+                "我没昨天做吗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse au passé avec 了."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Je n'étais pas là hier :",
+              "options": ["我昨天不在", "我昨天在", "我明天在", "我现在在吗"],
+              "correctAnswers": [0],
+              "explanation": "不在 = absent."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Paires cohérentes passé ?",
+              "options": [
+                "昨天 + 了",
+                "我去了 + contexte passé",
+                "昨天 + 明天",
+                "了 remplace sujet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Repère + particule ou verbe accompli."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我昨天骑自行车去了 (qí zìxíngchē) :",
+              "options": ["vélo demain", "allé à vélo hier", "à pied", "avion"],
+              "correctAnswers": [1],
+              "explanation": "骑自行车去了."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "老师昨天表扬了我 (biǎoyáng) :",
+              "options": ["punira", "m'a félicité(e) hier", "ignore", "demain"],
+              "correctAnswers": [1],
+              "explanation": "表扬 = féliciter."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Il pleuvait hier → idée proche :",
+              "options": ["昨天下雨了", "明天下雨了", "现在下雨吗", "我没雨"],
+              "correctAnswers": [0],
+              "explanation": "下雨了 = pluie (survenue)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "我昨天忘记带书了 (wàngjì) :",
+              "options": [
+                "oubliera",
+                "a oublié d'apporter le livre",
+                "souvient",
+                "demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "忘记…了 = oubli passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": " deux actions hier : 我昨天吃饭，然后看了电视",
+              "options": [
+                "manger puis télé hier",
+                "demain seulement",
+                "sans 了 possible",
+                "incohérent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "然后 enchaîne deux faits."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "你昨天高兴吗？ réponse non :",
+              "options": [
+                "不，我昨天不高兴",
+                "对，我昨天很高兴",
+                "我明天高兴",
+                "我高兴吗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不 + négation adjectif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "商店昨天关门了 (guānmén) :",
+              "options": [
+                "ouvrira",
+                "a fermé hier",
+                "ouvert maintenant",
+                "jamais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "关门了 = fermeture."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "我昨天第一次说中文 (dì yī cì) :",
+              "options": [
+                "première fois hier",
+                "dernière fois demain",
+                "jamais",
+                "sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "第一次 = première fois."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan u1 : mots clés",
+              "options": [
+                "昨天, 了, 我去了",
+                "明天, 现在",
+                "吗 seul",
+                "没 jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocabulaire du passé proche."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux traductions correctes « hier » ?",
+              "options": [
+                "昨天 (zuótiān)",
+                "我昨天… (phrase)",
+                "明天 (míngtiān)",
+                "现在 (xiànzài)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mot ou phrase avec 昨天."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Choix passé :",
+              "options": [
+                "我昨天去了",
+                "我去昨天了",
+                "我昨天去吗",
+                "我昨天没去了吗 affirmatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre naturel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "了 obligatoire pour passé ?",
+              "options": [
+                "toujours, contexte aide",
+                "jamais",
+                "seulement questions",
+                "remplace 昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Souvent 了, parfois 昨天 suffit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "我昨天见到老师了 :",
+              "options": [
+                "verrai prof",
+                "ai vu le prof hier",
+                "prof demain",
+                "pas de prof"
+              ],
+              "correctAnswers": [1],
+              "explanation": "见到了 = rencontre faite."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Négation hier :",
+              "options": [
+                "我昨天没去",
+                "我昨天去了没",
+                "我去昨天没",
+                "我没昨天去吗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天 + 没 + verbe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pinyin 去了 :",
+              "options": ["qù", "qùle", "qù ma", "méi qù"],
+              "correctAnswers": [1],
+              "explanation": "了 fusionne au pinyin qùle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Hier fête : 我们昨天过生日了 (guò shēngrì)",
+              "options": [
+                "anniv célébré hier",
+                "anniv demain",
+                "pas d'anniv",
+                "triste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "过生日了 = fêter anniv."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur débutant :",
+              "options": [
+                "我昨天看朋友",
+                "我昨天看朋友了",
+                "我昨天看了朋友",
+                "我昨天见朋友了"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voir quelqu'un : 见/看望 ; 看 seul est maladroit ici."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Question : As-tu mangé hier ?",
+              "options": [
+                "你昨天吃饭了吗？",
+                "你明天吃饭了吗？",
+                "你吃饭昨天",
+                "你吗昨天了"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了吗 pour passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase modèle du chapitre :",
+              "options": [
+                "我昨天去了学校",
+                "我明天去了学校",
+                "我去学校昨天吗",
+                "我没了昨天"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle 我昨天…了."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont des marqueurs de temps passé appris en 5e ?",
+              "options": [
+                "上个星期 (shàng ge xīngqī)",
+                "昨天 (zuótiān)",
+                "下个星期 (xià ge xīngqī)",
+                "后天 (hòutiān)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "上个星期 et 昨天 situent le passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "上个星期 (shàng ge xīngqī) signifie :",
+              "options": [
+                "cette semaine",
+                "la semaine dernière",
+                "la semaine prochaine",
+                "hier seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "上 = dernier passé ; 星期 = semaine."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "我上个星期去了北京 :",
+              "options": [
+                "ira Pékin",
+                "est allé(e) à Pékin la semaine dernière",
+                "aujourd'hui",
+                "jamais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "上个星期 + 去了."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ordre habituel :",
+              "options": [
+                "我上个星期很忙",
+                "上个星期我我",
+                "我忙上个星期吗",
+                "忙我上个星期"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet + marqueur + prédicat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "上个星期 vs 昨天 :",
+              "options": [
+                "identiques",
+                "上个星期 plus long",
+                "昨天 = semaine",
+                "demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Semaine vs jour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "了 dans 我上个星期学了五个汉字 :",
+              "options": ["futur", "actions passées", "négation", "question"],
+              "correctAnswers": [1],
+              "explanation": "学了 = appris."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Neg semaine dernière :",
+              "options": [
+                "我上个星期没去学校",
+                "我上个星期去了学校",
+                "我下个星期没去",
+                "我没星期"
+              ],
+              "correctAnswers": [0],
+              "explanation": "没 + verbe."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "上个星期一 (xīngqī yī) :",
+              "options": [
+                "lundi prochain",
+                "lundi dernier (semaine passée)",
+                "dimanche",
+                "mercredi futur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "上个 + jour de semaine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Question :",
+              "options": [
+                "你上个星期做什么？",
+                "你下个星期做什么？",
+                "你做什么上个吗",
+                "你吗星期"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quoi faire semaine dernière."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pinyin 上个星期 :",
+              "options": [
+                "xià ge xīngqī",
+                "shàng ge xīngqī",
+                "zuótiān",
+                "jīntiān"
+              ],
+              "correctAnswers": [1],
+              "explanation": "shàng ge xīngqī."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Marqueurs « avant / passé » ?",
+              "options": [
+                "以前 (yǐqián) souvent passé lointain",
+                "刚才 (gāngcái) tout à l'heure",
+                "以后 (yǐhòu) futur",
+                "明天"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "以前 et 刚才 orientent vers le passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "刚才 (gāngcái) :",
+              "options": [
+                "il y a longtemps",
+                "à l'instant / tout à l'heure",
+                "demain",
+                "semaine prochaine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Passé très récent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "我刚才吃了 :",
+              "options": [
+                "mangera",
+                "vient de manger",
+                "ne mange pas",
+                "hier seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "刚才 + 了 = action récente."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "以前我住在法国 :",
+              "options": [
+                "habiterai",
+                "habitais avant / par le passé",
+                "habite demain",
+                "négation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "以前 = autrefois."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Contrast : 以后 vs 以前",
+              "options": [
+                "以后 futur, 以前 passé",
+                "tous deux futur",
+                "tous deux hier",
+                "identiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "后 = après ; 前 = avant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "上个星期 + 刚才 ensemble ?",
+              "options": [
+                "possibles dans récit différent",
+                "jamais deux marqueurs",
+                "remplace 了",
+                "interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque fait a son repère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "他刚才走了 (zǒule) :",
+              "options": [
+                "partira",
+                "vient de partir",
+                "part hier semaine",
+                "ne part pas"
+              ],
+              "correctAnswers": [1],
+              "explanation": "刚才 + 走了."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "以前我不说中文 :",
+              "options": [
+                "parlerai",
+                "ne parlais pas avant",
+                "parle maintenant seulement futur",
+                "question"
+              ],
+              "correctAnswers": [1],
+              "explanation": "以前 + négation passée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "刚才 vs 昨天 :",
+              "options": [
+                "刚才 plus proche",
+                "identiques",
+                "昨天 plus proche",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "刚才 = instant récent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase récente :",
+              "options": [
+                "我刚才看见他",
+                "我明天看见他",
+                "我看见他吗",
+                "我没刚才"
+              ],
+              "correctAnswers": [0],
+              "explanation": "刚才 + verbe."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "已经…了 (yǐjīng…le) exprime ?",
+              "options": [
+                "action déjà faite",
+                "changement achevé",
+                "pas encore",
+                "futur sûr"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "已经…了 = déjà (fait)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我已经吃了 :",
+              "options": [
+                "vais manger",
+                "ai déjà mangé",
+                "ne mange pas",
+                "demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "已经 + 了."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "他上个星期已经回国了 (huí guó) :",
+              "options": [
+                "partira",
+                "est déjà rentré au pays semaine dernière",
+                "aujourd'hui seulement",
+                "jamais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "已经…了 + 上个星期."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "还没 (hái méi) :",
+              "options": [
+                "déjà fait",
+                "pas encore",
+                "toujours demain",
+                "question"
+              ],
+              "correctAnswers": [1],
+              "explanation": "还没 = pas encore."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "我还没做完 (zuò wán) :",
+              "options": [
+                "ai fini",
+                "n'ai pas encore fini",
+                "ferai demain",
+                "fini hier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "还没 + verbe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "已经 vs 刚才 :",
+              "options": [
+                "已经 = état achevé, 刚才 = moment",
+                "identiques",
+                "futur",
+                "négation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuances différentes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "电影已经开始了 (kāishǐ) :",
+              "options": [
+                "film commencera",
+                "film a déjà commencé",
+                "film fini",
+                "pas de film"
+              ],
+              "correctAnswers": [1],
+              "explanation": "已经开始了."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "上个星期我已经见过他 :",
+              "options": [
+                "verrai",
+                "l'avais déjà vu semaine dernière",
+                "jamais vu",
+                "demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "已经…见过."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Neg avec 已经 ?",
+              "options": ["我已经没吃", "我没已经吃", "我已经吃了没", "还没吃"],
+              "correctAnswers": [3],
+              "explanation": "还没 = pas encore (standard)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pinyin 已经 :",
+              "options": ["yǐjīng", "yǐhòu", "yǐqián", "gāngcái"],
+              "correctAnswers": [0],
+              "explanation": "yǐjīng."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux expressions « semaine dernière » correctes ?",
+              "options": [
+                "上个星期",
+                "上星期 (shàng xīngqī) courant",
+                "下个星期",
+                "这个星期 seule pour passé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "上 = semaine passée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "上星期我病了 (bìngle) :",
+              "options": [
+                "malade semaine prochaine",
+                "malade semaine dernière",
+                "sain",
+                "demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "上星期 + passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "从…到… (cóng…dào…) hier passé :",
+              "options": [
+                "我昨天从八点学到十点",
+                "我明天从到",
+                "我从吗到",
+                "没从到"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De 8h à 10h hier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "上个周末 (zhōumò) :",
+              "options": [
+                "week-end prochain",
+                "week-end dernier",
+                "aujourd'hui",
+                "midi"
+              ],
+              "correctAnswers": [1],
+              "explanation": "上 + 周末."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "我们上个周末去了海边 (hǎibiān) :",
+              "options": [
+                "mer demain",
+                "mer week-end passé",
+                "montagne",
+                "ville"
+              ],
+              "correctAnswers": [1],
+              "explanation": "去了海边."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "这个星期 (zhè ge xīngqī) :",
+              "options": [
+                "semaine dernière",
+                "cette semaine",
+                "semaine prochaine",
+                "hier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "这 = ce/cette."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "上个星期每天 (měi tiān) :",
+              "options": [
+                "chaque jour semaine passée",
+                "chaque jour futur",
+                "un seul jour",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "每天 répète sur la semaine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "时间 (shíjiān) signifie :",
+              "options": ["lieu", "temps / moment", "personne", "couleur"],
+              "correctAnswers": [1],
+              "explanation": "时间 = temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de jours dans 上个星期 ?",
+              "options": [
+                "environ sept jours",
+                "un jour",
+                "un mois",
+                "une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une semaine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase cohérente :",
+              "options": [
+                "上个星期我学了三天中文",
+                "上个星期我下星期",
+                "我上个吗星期",
+                "星期我上了个"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée dans semaine passée."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Repères plus lointains que 刚才 ?",
+              "options": ["上个星期", "以前", "刚才", "现在"],
+              "correctAnswers": [0, 1],
+              "explanation": "Semaine passée ou autrefois."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "早上 (zǎoshang) passé : 我昨天早上…",
+              "options": ["hier matin", "demain matin", "soir", "nuit"],
+              "correctAnswers": [0],
+              "explanation": "早上 = matin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "下午 (xiàwǔ) + 上个星期五 :",
+              "options": [
+                "vendredi aprem semaine dernière",
+                "lundi futur",
+                "matin",
+                "nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "星期五 = vendredi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "晚上 + marqueur passé :",
+              "options": ["昨天晚上", "明天晚上", "现在晚上", "晚上吗"],
+              "correctAnswers": [0],
+              "explanation": "昨天 ou contexte passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "两点 (liǎng diǎn) :",
+              "options": [
+                "deux heures",
+                "deux jours",
+                "deux semaines",
+                "deux mois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "点 = heure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "我上个星期两点回家 :",
+              "options": [
+                "rentré à 2h semaine passée",
+                "rentrera",
+                "2h demain",
+                "pas d'heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Heure + 上个星期."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "前 (qián) dans 以前 :",
+              "options": [
+                "avant / devant dans le temps",
+                "après",
+                "demain",
+                "question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "前 = avant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "后 (hòu) dans 以后 :",
+              "options": [
+                "après (souvent futur)",
+                "avant",
+                "hier",
+                "semaine passée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "后 = après."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "我昨天从家到学校 (cóng jiā dào xuéxiào) :",
+              "options": [
+                "trajet hier",
+                "trajet demain",
+                "sans lieu",
+                "question seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "从…到… trajet."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueur + 了 en fin :",
+              "options": [
+                "上个星期我搬家了 (bānjiā)",
+                "我搬家上个吗",
+                "我下个星期搬家了 passé",
+                "我没了星期"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Déménagement passé semaine dernière."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Questions temporelles correctes ?",
+              "options": [
+                "你什么时候去的？ (shénme shíhou)",
+                "你上个星期去了吗？",
+                "你去了什么时候吗",
+                "你吗时间去了"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "什么时候 / 上个星期…吗."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "什么时候 (shénme shíhou) :",
+              "options": ["quelle couleur", "quand", "où", "combien"],
+              "correctAnswers": [1],
+              "explanation": "什么时候 = quand."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse : 我上个星期去的 :",
+              "options": [
+                "quand : semaine dernière",
+                "demain",
+                "couleur",
+                "non"
+              ],
+              "correctAnswers": [0],
+              "explanation": "…去的 = moment du départ."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "几天 (jǐ tiān) :",
+              "options": [
+                "combien de jours",
+                "combien d'heures",
+                "quelle année",
+                "quelle couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "几天 = combien de jours."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "我上个星期去了三天 :",
+              "options": [
+                "parti trois jours semaine passée",
+                "trois heures",
+                "demain",
+                "zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "三天 durée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "去年 (qùnián) niveau proche 5e :",
+              "options": [
+                "l'année dernière",
+                "l'année prochaine",
+                "hier",
+                "semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "去 = passé ; 年 = année."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "我去年去了中国 :",
+              "options": [
+                "Chine année passée",
+                "Chine demain",
+                "France seule",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "去年 + 去了."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "上个月 (shàng ge yuè) :",
+              "options": ["mois dernier", "mois prochain", "semaine", "jour"],
+              "correctAnswers": [0],
+              "explanation": "月 = mois."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erreur :",
+              "options": [
+                "我上个星期去了",
+                "我下个星期去了 passé raconté",
+                "我昨天去了",
+                "我上个星期没去"
+              ],
+              "correctAnswers": [1],
+              "explanation": "下个 = prochain, pas passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Enchaîner passé : 先…然后…",
+              "options": [
+                "我先吃饭，然后去了公园",
+                "我先然后吗",
+                "我然后先明天",
+                "我没先"
+              ],
+              "correctAnswers": [0],
+              "explanation": "先…然后… ordre."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux marqueurs avec 了 fréquents ?",
+              "options": [
+                "上个星期…了",
+                "已经…了",
+                "吗…了 question seule",
+                "下…了 futur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Semaine passée ou déjà."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我昨天已经睡了 :",
+              "options": ["dormira", "déjà couché hier", "court", "mange"],
+              "correctAnswers": [1],
+              "explanation": "已经 + passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "刚才下雨，现在不下了 :",
+              "options": [
+                "pleut encore",
+                "a plu ; maintenant stop",
+                "soleil demain",
+                "neige"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Contraste passé récent / maintenant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "上个星期天天 (tiāntiān) 下雨 :",
+              "options": [
+                "plu chaque jour semaine passée",
+                "plu demain",
+                "sec",
+                "vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "天天 = chaque jour."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "久 (jiǔ) :",
+              "options": ["longtemps", "court", "vite", "demain"],
+              "correctAnswers": [0],
+              "explanation": "久 = longtemps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "我等了很久 (děngle hěn jiǔ) :",
+              "options": [
+                "attendu longtemps",
+                "attendra",
+                "pas attendu",
+                "court"
+              ],
+              "correctAnswers": [0],
+              "explanation": "等了 + 很久."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "开始 (kāishǐ) + passé :",
+              "options": [
+                "我上个星期开始学习",
+                "我下个星期开始 passé",
+                "我开始吗",
+                "没开始 futur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "开始学习 passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "结束 (jiéshù) :",
+              "options": ["finir / terminer", "commencer", "manger", "dormir"],
+              "correctAnswers": [0],
+              "explanation": "结束 = fin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "课上个星期结束了 :",
+              "options": [
+                "cours fini semaine passée",
+                "cours commence",
+                "demain",
+                "pas de cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "结束了 = terminé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "一起 (yīqǐ) passé :",
+              "options": [
+                "我们上个星期一起学习",
+                "我们下个星期一起 passé",
+                "一起吗",
+                "没一起 futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一起 = ensemble."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Futur à ne pas confondre avec passé ?",
+              "options": [
+                "下个星期 (xià ge xīngqī)",
+                "明天 (míngtiān)",
+                "上个星期",
+                "昨天"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "下 et 明 = futur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "我上个星期买了很多书 (hěn duō) :",
+              "options": [
+                "beaucoup achetés semaine passée",
+                "vendra",
+                "aucun",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很多 = beaucoup."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "再 (zài) dans passé narratif :",
+              "options": [
+                "peut signifier « encore / de nouveau » selon phrase",
+                "toujours futur",
+                "négation",
+                "heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "再 = encore (contexte)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "又 (yòu) passé :",
+              "options": [
+                "又下雨了 = il a encore plu",
+                "demain",
+                "jamais",
+                "salut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "又 = de nouveau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "还 (hái) : 他还住在巴黎 (过去叙述) idée",
+              "options": [
+                "vivait encore / toujours là",
+                "parti",
+                "demain",
+                "négation seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "还 = encore (état)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "只 (zhǐ) : 我只去了两天",
+              "options": [
+                "seulement deux jours",
+                "beaucoup",
+                "jamais",
+                "demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "只 = seulement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "常常 (chángcháng) passé :",
+              "options": [
+                "我上个星期常常运动",
+                "我明天常常 passé",
+                "常常吗",
+                "没常常 futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Habitude semaine passée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "有时候 (yǒu shíhou) :",
+              "options": ["parfois", "toujours", "jamais", "maintenant seul"],
+              "correctAnswers": [0],
+              "explanation": "有时候 = parfois."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "我有时候上个星期去图书馆 :",
+              "options": [
+                "phrase maladroite ; mieux : 上个星期我有时候…",
+                "parfaite",
+                "futur",
+                "question"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur large avant détail."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "正确 :",
+              "options": [
+                "上个星期我有时候在图书馆看书",
+                "我上个星期在有时候",
+                "我下星期有时候去了 passé",
+                "我了吗有时候"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ordre naturel."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Durée + passé ?",
+              "options": [
+                "我学了两个小时 (liǎng ge xiǎoshí)",
+                "我上个星期去了五天",
+                "我两个小时吗",
+                "我五天了没动词"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Heures ou jours avec verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "小时 (xiǎoshí) :",
+              "options": ["heure (durée)", "jour", "semaine", "mois"],
+              "correctAnswers": [0],
+              "explanation": "小时 = heure."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "我昨天写了一个小时作业 :",
+              "options": [
+                "une heure de devoirs hier",
+                "une semaine",
+                "demain",
+                "zéro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée 一个小时."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "半 (bàn) : 半个钟头 (zhōngtóu) :",
+              "options": ["demi-heure", "heure entière", "jour", "mois"],
+              "correctAnswers": [0],
+              "explanation": "半 = moitié."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "分钟 (fēnzhōng) :",
+              "options": ["minute", "heure", "jour", "année"],
+              "correctAnswers": [0],
+              "explanation": "分钟 = minute."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "我上个星期每天跑三十分钟 :",
+              "options": [
+                "30 min course chaque jour semaine passée",
+                "30 jours",
+                "demain",
+                "sans course"
+              ],
+              "correctAnswers": [0],
+              "explanation": "每天 + durée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "快 (kuài) : 我很快做完了 :",
+              "options": ["fini rapidement", "lentement", "demain", "pas fini"],
+              "correctAnswers": [0],
+              "explanation": "快 = vite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "慢 (màn) passé :",
+              "options": [
+                "他上个星期走得很慢",
+                "il court demain",
+                "rapide",
+                "ne marche pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "慢 = lent."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "早 (zǎo) / 晚 (wǎn) :",
+              "options": [
+                "我昨天回来晚了",
+                "tôt/tard dans récit",
+                "couleurs",
+                "nombres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "晚 = tard."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Synthèse marqueurs :",
+              "options": [
+                "昨天, 上个星期, 刚才, 已经",
+                "明天, 后天",
+                "吗 seul",
+                "没 jamais avec temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Panorama u2."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases passé avec marqueur ?",
+              "options": [
+                "我上个星期去了上海",
+                "我昨天已经到家了",
+                "我下个星期去了",
+                "我现在去了 passé lointain"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "上个星期 / 昨天 + 已经."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Choisir passé :",
+              "options": [
+                "以前我更小",
+                "我更小以前吗",
+                "我更小以后 passé",
+                "我明天更小"
+              ],
+              "correctAnswers": [0],
+              "explanation": "以前 + état passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "我上个星期没见到他 :",
+              "options": ["pas vu semaine passée", "vu", "verra", "demain vu"],
+              "correctAnswers": [0],
+              "explanation": "没见到."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "刚才他说什么？",
+              "options": [
+                "Qu'a-t-il dit à l'instant ?",
+                "Demain ?",
+                "Couleur ?",
+                "Où demain ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "刚才 + question."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "已经 + neg :",
+              "options": [
+                "我已经不知道了",
+                "我已经没知道",
+                "没已经",
+                "了吗已经"
+              ],
+              "correctAnswers": [0],
+              "explanation": "已经…了 état."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "上个星期 vs 昨天 même action :",
+              "options": [
+                "昨天 plus précis en jour",
+                "identiques toujours",
+                "demain",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Granularité jour vs semaine."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Récap 5e passé :",
+              "options": [
+                "了, 昨天, 我去了, 上个星期",
+                "文言",
+                "classique",
+                "sans pinyin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectifs chapitre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase examen :",
+              "options": [
+                "我上个星期和朋友们踢足球了",
+                "我下个星期和朋友们踢足球了 passé",
+                "我朋友们上个吗",
+                "我没和了"
+              ],
+              "correctAnswers": [0],
+              "explanation": "和 = avec ; 了 passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "时间 marqueur en tête :",
+              "options": [
+                "上个星期我很忙",
+                "我很忙上个吗",
+                "我忙上星期了明天",
+                "吗上个星期"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur avant prédicat possible."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Meilleure conclusion chapitre :",
+              "options": [
+                "Les marqueurs situent ; 了 marque souvent l'action faite",
+                "Un seul mot suffit toujours",
+                "Le passé n'existe pas en chinois",
+                "Seul 吗"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Idée centrale du chapitre 05."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

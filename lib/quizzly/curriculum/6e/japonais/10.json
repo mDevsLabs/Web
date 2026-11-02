@@ -1,0 +1,2333 @@
+{
+  "id": "6e-japonais-10",
+  "year": "6e",
+  "subject": "japonais",
+  "title": "Vers l'examen en japonais",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Compréhension",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mini-dialogue : A « こんにちは (konnichiwa) » — B « こんにちは ». Quelles réponses décrivent bien cette scène ?",
+              "options": [
+                "Salutation de jour entre deux personnes",
+                "Au revoir définitif",
+                "Remerciement après un cadeau",
+                "Bonjour / salut courant (sans keigo)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "こんにちは sert à saluer dans la journée ; ce n'est ni un au revoir ni un remerciement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie おはよう (ohayou) le matin à l'école ?",
+              "options": [
+                "Bonjour (matin)",
+                "Bonne nuit",
+                "À demain",
+                "Excuse-moi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "おはよう = bonjour le matin, usage familier à l'école."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "A dit « さようなら (sayounara) ». B répond souvent :",
+              "options": ["さようなら", "おはよう", "ありがとう", "すみません"],
+              "correctAnswers": [0],
+              "explanation": "On renvoie le salut d'au revoir de façon simple."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « わたし (watashi) は マリア です », わたし veut dire :",
+              "options": ["Je / moi", "Toi", "École", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "わたし = pronom « je »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 がっこう (gakkou) 」 désigne :",
+              "options": ["L'école", "La maison", "Le parc", "Le matin"],
+              "correctAnswers": [0],
+              "explanation": "がっこう = école."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "A : « げんき (genki) ですか。 » — sens de la question ?",
+              "options": [
+                "Ça va ? / Tu vas bien ?",
+                "Où habites-tu ?",
+                "Quelle heure est-il ?",
+                "Quel âge as-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "げんきですか = demander si quelqu'un va bien."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réponse : « はい、げんき です。 » — はい signifie :",
+              "options": ["Oui", "Non", "Peut-être", "Merci"],
+              "correctAnswers": [0],
+              "explanation": "はい = oui."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 ともだち (tomodachi) 」 =",
+              "options": ["Ami(e)", "Professeur", "Classe", "Stylo"],
+              "correctAnswers": [0],
+              "explanation": "ともだち = ami."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "A : « ありがとう (arigatou) 」 — B peut répondre :",
+              "options": [
+                "どういたしまして (dou itashimashite)",
+                "さようなら",
+                "おはよう",
+                "きのう"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse courante à merci : de rien."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le mot せんせい (sensei) dans « これは せんせい です » désigne :",
+              "options": ["Le professeur", "L'élève", "La salle", "Le livre"],
+              "correctAnswers": [0],
+              "explanation": "せんせい = enseignant(e)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases : « これ (kore) は ほん (hon) です » et « それ (sore) は ノート (nooto) です ». Que désignent これ et それ ?",
+              "options": [
+                "Ceci (près de moi)",
+                "Cela (près de toi)",
+                "Hier",
+                "Demain"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "これ = ceci ; それ = cela (près de l'autre)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 ほん 」 signifie :",
+              "options": ["Livre", "Crayon", "Table", "Porte"],
+              "correctAnswers": [0],
+              "explanation": "ほん = livre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la classe : 「 つくえ (tsukue) 」 est :",
+              "options": [
+                "Le bureau / la table",
+                "La chaise",
+                "Le tableau",
+                "La fenêtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "つくえ = bureau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 いす (isu) 」 =",
+              "options": ["Chaise", "Sac", "Cloche", "Cour"],
+              "correctAnswers": [0],
+              "explanation": "いす = chaise."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "A : « これは なん (nan) ですか。 » — A demande :",
+              "options": [
+                "Qu'est-ce que c'est ?",
+                "Où vas-tu ?",
+                "Tu aimes ?",
+                "C'est à quelle heure ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "なんですか = qu'est-ce que c'est ?"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Réponse : 「 これは えんぴつ (enpitsu) です。 」 — えんぴつ =",
+              "options": ["Crayon", "Gomme", "Règle", "Trousse"],
+              "correctAnswers": [0],
+              "explanation": "えんぴつ = crayon."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 かばん (kaban) 」 désigne :",
+              "options": ["Sac", "Chapeau", "Chaussures", "Gant"],
+              "correctAnswers": [0],
+              "explanation": "かばん = sac."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 じゅぎょう (jugyou) 」 veut dire :",
+              "options": ["Cours / leçon", "Récréation", "Devoir", "Examen"],
+              "correctAnswers": [0],
+              "explanation": "じゅぎょう = cours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« きょう (kyou) は なんようび (nanyoubi) ですか。 » — on demande :",
+              "options": [
+                "Quel jour sommes-nous aujourd'hui ?",
+                "Quelle heure ?",
+                "Quel mois ?",
+                "Quel temps ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "なんようび = quel jour de la semaine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 げつようび (getsuyoubi) 」 =",
+              "options": ["Lundi", "Mardi", "Samedi", "Dimanche"],
+              "correctAnswers": [0],
+              "explanation": "げつようび = lundi."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« りんご (ringo) が すき (suki) です » et « ナス (nasu) は きらい (kirai) です » — sens de すき et きらい ?",
+              "options": [
+                "Aimer / apprécier",
+                "Ne pas aimer",
+                "Hier",
+                "Demain"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "すき = aimer ; きらい = ne pas aimer."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 りんご が すき です。 」 exprime :",
+              "options": [
+                "J'aime les pommes",
+                "Je déteste les pommes",
+                "Je mange une pomme",
+                "La pomme est rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "が marque l'objet aimé ; すき = aimer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 スポーツ (supootsu) 」 dans « スポーツ が すき です » =",
+              "options": ["Sport", "Musique", "Dessin", "Lecture"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt sport."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "A : « なに (nani) が すき ですか。 » — question :",
+              "options": [
+                "Qu'est-ce que tu aimes ?",
+                "Où es-tu ?",
+                "Combien ?",
+                "Pourquoi ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "なにがすき = qu'aimes-tu ?"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 おんがく (ongaku) 」 =",
+              "options": ["Musique", "Cuisine", "Voyage", "Jeu vidéo"],
+              "correctAnswers": [0],
+              "explanation": "おんがく = musique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 えいが (eiga) が すき じゃない です。 」 signifie :",
+              "options": [
+                "Je n'aime pas le cinéma",
+                "J'adore le cinéma",
+                "Je vais au cinéma",
+                "Le film est long"
+              ],
+              "correctAnswers": [0],
+              "explanation": "すきじゃない = ne pas aimer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 ねこ (neko) 」 =",
+              "options": ["Chat", "Chien", "Oiseau", "Poisson"],
+              "correctAnswers": [0],
+              "explanation": "ねこ = chat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 いぬ (inu) が すき です。 」 — いぬ =",
+              "options": ["Chien", "Chat", "Lapin", "Cheval"],
+              "correctAnswers": [0],
+              "explanation": "いぬ = chien."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Couleur : 「 あか (aka) 」 =",
+              "options": ["Rouge", "Bleu", "Vert", "Jaune"],
+              "correctAnswers": [0],
+              "explanation": "あか = rouge."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 みどり (midori) 」 désigne :",
+              "options": ["Vert", "Noir", "Blanc", "Rose"],
+              "correctAnswers": [0],
+              "explanation": "みどり = vert."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« きのう (kinou) テスト が ありました。 あした (ashita) やすみ です。  » Quels mots indiquent un jour ?",
+              "options": ["きのう", "あした", "テスト", "やすみ"],
+              "correctAnswers": [0, 1],
+              "explanation": "きのう = hier ; あした = demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 きのう 」 signifie :",
+              "options": ["Hier", "Aujourd'hui", "Demain", "Maintenant"],
+              "correctAnswers": [0],
+              "explanation": "きのう = hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 あした 」 signifie :",
+              "options": ["Demain", "Hier", "Ce matin", "Ce soir"],
+              "correctAnswers": [0],
+              "explanation": "あした = demain."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 きょう 」 =",
+              "options": ["Aujourd'hui", "Demain", "Hier", "La semaine"],
+              "correctAnswers": [0],
+              "explanation": "きょう = aujourd'hui."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« きのう サッカー (sakkaa) を しました。 » — action :",
+              "options": [
+                "J'ai fait du foot hier",
+                "Je ferai du foot demain",
+                "Je n'aime pas le foot",
+                "Le foot est à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "しました = fait (passé) ; きのう = hier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 あした がっこう へ いきます (ikimasu)。 」 — いきます =",
+              "options": ["Aller", "Manger", "Dormir", "Lire"],
+              "correctAnswers": [0],
+              "explanation": "いきます = aller."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 やすみ (yasumi) 」 dans « あした やすみ です » =",
+              "options": ["Repos / pas d'école", "Cours", "Devoir", "Réunion"],
+              "correctAnswers": [0],
+              "explanation": "やすみ = congé, repos."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 まいにち (mainichi) 」 =",
+              "options": ["Tous les jours", "Une fois", "Jamais", "Souvent"],
+              "correctAnswers": [0],
+              "explanation": "まいにち = chaque jour."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« こんばん (konban) べんきょう (benkyou) します。 » — moment :",
+              "options": ["Ce soir", "Hier matin", "Demain midi", "L'an passé"],
+              "correctAnswers": [0],
+              "explanation": "こんばん = ce soir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 べんきょう します 」 =",
+              "options": ["Étudier / réviser", "Jouer", "Chanter", "Cuisiner"],
+              "correctAnswers": [0],
+              "explanation": "べんきょう = études."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "A « がっこう (gakkou) は どこ (doko) ですか。 » B « あそこ (asoko) です。 » Quels mots renvoient à un lieu ?",
+              "options": ["がっこう", "あそこ", "ありがとう", "げんき"],
+              "correctAnswers": [0, 1],
+              "explanation": "がっこう = école ; あそこ = là-bas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 どこ 」 dans une question =",
+              "options": ["Où ?", "Qui ?", "Quand ?", "Combien ?"],
+              "correctAnswers": [0],
+              "explanation": "どこ = où."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 ここ (koko) 」 =",
+              "options": ["Ici", "Là-bas", "Partout", "Nulle part"],
+              "correctAnswers": [0],
+              "explanation": "ここ = ici."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 うち (uchi) 」 souvent =",
+              "options": ["Maison / chez moi", "École", "Magasin", "Gare"],
+              "correctAnswers": [0],
+              "explanation": "うち = maison (familier)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« うち へ かえります (kaerimasu)。 » — かえります =",
+              "options": [
+                "Rentrer (chez soi)",
+                "Partir en voyage",
+                "Entrer en classe",
+                "Monter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "かえる = rentrer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 としょかん (toshokan) 」 =",
+              "options": ["Bibliothèque", "Cantine", "Gymnase", "Infirmerie"],
+              "correctAnswers": [0],
+              "explanation": "としょかん = bibliothèque."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 しょくどう (shokudou) 」 =",
+              "options": ["Cantine", "Cour de récré", "Labo", "Bureau"],
+              "correctAnswers": [0],
+              "explanation": "しょくどう = cantine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "A : « いま (ima) なんじ (nanji) ですか。 » — demande :",
+              "options": [
+                "Quelle heure est-il ?",
+                "Quel jour ?",
+                "Quel mois ?",
+                "Quelle année ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "なんじ = quelle heure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「 ８じ (hachiji) 」 =",
+              "options": ["8 heures", "8 jours", "8 mois", "8 personnes"],
+              "correctAnswers": [0],
+              "explanation": "じ = heure."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 ９じ はん (han) 」 =",
+              "options": ["9 h 30", "9 h 00", "9 h 15", "10 h 30"],
+              "correctAnswers": [0],
+              "explanation": "はん = et demie."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« わたし は １２さい (juuni sai) です。 ともだち は １３さい です。 » De quoi parle-t-on ?",
+              "options": [
+                "L'âge en années (さい)",
+                "Comparer deux personnes",
+                "La couleur",
+                "Le sport"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "さい = ans ; la phrase compare l'âge de deux personnes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 １０さい 」 =",
+              "options": ["10 ans", "10 heures", "10 livres", "10 amis"],
+              "correctAnswers": [0],
+              "explanation": "さい compte les années."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Question : 「 なんさい (nansai) ですか。 」 =",
+              "options": [
+                "Quel âge as-tu ?",
+                "Quel prix ?",
+                "Quelle taille ?",
+                "Quel nom ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "なんさい = quel âge."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 かぞく (kazoku) 」 =",
+              "options": ["Famille", "Classe", "Équipe", "Voisins"],
+              "correctAnswers": [0],
+              "explanation": "かぞく = famille."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 おとうさん (otousan) 」 =",
+              "options": ["Père", "Mère", "Frère", "Grand-mère"],
+              "correctAnswers": [0],
+              "explanation": "おとうさん = papa."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 おかあさん (okaasan) 」 =",
+              "options": ["Mère", "Père", "Sœur", "Oncle"],
+              "correctAnswers": [0],
+              "explanation": "おかあさん = maman."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 おにいさん (oniisan) 」 =",
+              "options": ["Grand frère", "Petite sœur", "Cousin", "Bébé"],
+              "correctAnswers": [0],
+              "explanation": "おにいさん = frère aîné."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 いもうと (imouto) 」 =",
+              "options": ["Petite sœur", "Grand frère", "Ami", "Prof"],
+              "correctAnswers": [0],
+              "explanation": "いもうと = petite sœur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« これは わたし の (no) かぞく です。 」 — の indique :",
+              "options": ["Possession / de", "Lieu", "Temps", "Négation"],
+              "correctAnswers": [0],
+              "explanation": "の = de (ma famille)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 ペット (petto) が います (imasu)。 」 — います =",
+              "options": ["Il y a (être vivant)", "Manger", "Aimer", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "います = exister (animaux, personnes)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« ごはん (gohan) と みそしる (misoshiru) を たべます。  » Quels mots sont des aliments ?",
+              "options": ["ごはん", "みそしる", "たべます", "です"],
+              "correctAnswers": [0, 1],
+              "explanation": "ごはん = riz/repas ; みそしる = soupe miso."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 たべます 」 =",
+              "options": ["Manger", "Boire", "Acheter", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "たべます = manger."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 のみます (nomimasu) 」 =",
+              "options": ["Boire", "Dormir", "Lire", "Écrire"],
+              "correctAnswers": [0],
+              "explanation": "のみます = boire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 みず (mizu) 」 =",
+              "options": ["Eau", "Jus", "Thé", "Lait"],
+              "correctAnswers": [0],
+              "explanation": "みず = eau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 パン (pan) 」 =",
+              "options": ["Pain", "Poisson", "Viande", "Fruit"],
+              "correctAnswers": [0],
+              "explanation": "Emprunt pain."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "A : « すきな (sukina) たべもの (tabemono) は なん ですか。 » — たべもの =",
+              "options": ["Nourriture", "Boisson", "Ustensile", "Recette"],
+              "correctAnswers": [0],
+              "explanation": "たべもの = aliment."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "「 さかな (sakana) 」 =",
+              "options": ["Poisson", "Viande", "Légume", "Dessert"],
+              "correctAnswers": [0],
+              "explanation": "さかな = poisson."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« きのう ラーメン (raamen) を たべました。 » — temps :",
+              "options": ["Hier", "Demain", "Ce matin", "Semaine prochaine"],
+              "correctAnswers": [0],
+              "explanation": "きのう = hier ; たべました passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「 おいしい (oishii) 」 =",
+              "options": ["Délicieux", "Froid", "Cher", "Petit"],
+              "correctAnswers": [0],
+              "explanation": "おいしい = bon (goût)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« これは おいしくない です。 » signifie :",
+              "options": [
+                "Ce n'est pas bon (au goût)",
+                "C'est très bon",
+                "Je n'ai pas faim",
+                "C'est chaud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "おいしくない = pas bon."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« きょう は あめ (ame) です。 あした は はれ (hare) です。  » Quels mots décrivent la météo ?",
+              "options": ["あめ", "はれ", "きょう", "あした"],
+              "correctAnswers": [0, 1],
+              "explanation": "あめ = pluie ; はれ = beau temps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 あめ 」 =",
+              "options": ["Pluie", "Neige", "Vent", "Soleil"],
+              "correctAnswers": [0],
+              "explanation": "あめ = pluie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 はれ 」 =",
+              "options": ["Beau temps", "Orage", "Brouillard", "Nuage seul"],
+              "correctAnswers": [0],
+              "explanation": "はれ = beau temps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 ゆき (yuki) 」 =",
+              "options": ["Neige", "Pluie", "Chaleur", "Nuage"],
+              "correctAnswers": [0],
+              "explanation": "ゆき = neige."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 あつい (atsui) 」 =",
+              "options": ["Chaud", "Froid", "Léger", "Lourd"],
+              "correctAnswers": [0],
+              "explanation": "あつい = chaud."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 さむい (samui) 」 =",
+              "options": ["Froid", "Chaud", "Doux", "Humide"],
+              "correctAnswers": [0],
+              "explanation": "さむい = froid."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "A : « てんき (tenki) は どう (dou) ですか。 » — てんき =",
+              "options": ["Météo", "Heure", "Lieu", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "てんき = temps (météo)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« いい (ii) てんき です。  » — いい =",
+              "options": ["Bon / agréable", "Mauvais", "Petit", "Grand"],
+              "correctAnswers": [0],
+              "explanation": "いい = bon."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« あした サッカー を します。 あめ だ (da) ら やすみ。 » S'il pleut demain :",
+              "options": [
+                "Pas de foot / repos",
+                "Foot obligatoire",
+                "Examen",
+                "Cantine fermée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あめだら = s'il pleut → repos."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 くもり (kumori) 」 =",
+              "options": ["Nuageux", "Ensoleillé", "Vent fort", "Orage"],
+              "correctAnswers": [0],
+              "explanation": "くもり = couvert."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« ７じ に おきます (okimasu)。 ８じ に がっこう へ いきます。  » Quelles actions ?",
+              "options": [
+                "Se lever",
+                "Aller à l'école",
+                "Dormir la sieste",
+                "Manger le dîner"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "おきます = se lever ; いきます = aller."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "「 おきます 」 le matin =",
+              "options": ["Se lever", "Se coucher", "Rentrer", "Jouer"],
+              "correctAnswers": [0],
+              "explanation": "おきる = se lever."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "「 ねます (nemasu) 」 =",
+              "options": ["Dormir", "Manger", "Jouer", "Courir"],
+              "correctAnswers": [0],
+              "explanation": "ねます = dormir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« よる (yoru) １０じ に ねます。  » — よる =",
+              "options": [
+                "Le soir / la nuit",
+                "Le matin",
+                "Midi",
+                "L'après-midi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "よる = soir/nuit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "「 あさ (asa) 」 =",
+              "options": ["Matin", "Soir", "Nuit", "Midi"],
+              "correctAnswers": [0],
+              "explanation": "あさ = matin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "「 あらいます (araimasu) 」 (visage) =",
+              "options": ["Se laver", "Se coiffer", "S'habiller", "Courir"],
+              "correctAnswers": [0],
+              "explanation": "あらう = laver."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« ７じ ３０ぷん (nanpun) に うち を でます (demasu)。  » — でます =",
+              "options": ["Sortir (de)", "Entrer", "Monter", "Descendre"],
+              "correctAnswers": [0],
+              "explanation": "でます = sortir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "「 はしります (hashirimasu) 」 =",
+              "options": ["Courir", "Marcher lentement", "Nager", "Sauter"],
+              "correctAnswers": [0],
+              "explanation": "はしる = courir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« あした ６じ に おきます。  » — jour :",
+              "options": [
+                "Demain",
+                "Hier",
+                "Aujourd'hui seulement",
+                "La semaine passée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あした = demain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "「 れんしゅう (renshuu) します 」 =",
+              "options": [
+                "S'entraîner / réviser",
+                "Dormir",
+                "Manger",
+                "Regarder la TV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "れんしゅう = entraînement."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Récap : « こんにちは。 わたし は たろう です。 がっこう が すき です。 あした テスト です。  » Quels thèmes apparaissent ?",
+              "options": [
+                "Salutation et présentation",
+                "École et goût",
+                "Demain / futur proche",
+                "Keigo honorifique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salut, nom, école aimée ; あした aussi mais [0,1] couvrent salut/présentation et école/goût."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« テスト (tesuto) あした です。  » — テスト =",
+              "options": ["Contrôle / test", "Vacances", "Fête", "Sport"],
+              "correctAnswers": [0],
+              "explanation": "テスト = test."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« きのう は やすみ でした。  » — temps :",
+              "options": ["Hier", "Demain", "Ce matin", "Ce soir"],
+              "correctAnswers": [0],
+              "explanation": "きのう = hier ; でした passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "「 だいじょうぶ (daijoubu) 」 =",
+              "options": [
+                "Ça va / pas de problème",
+                "Dangereux",
+                "Interdit",
+                "Fatigué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "だいじょうぶ = ça va."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "A : « すみません (sumimasen) 」 — sens courant :",
+              "options": [
+                "Excuse-moi / pardon",
+                "Bon appétit",
+                "Félicitations",
+                "Bonne nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "すみません = excuse-moi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« いって きます (itte kimasu) 」 en partant =",
+              "options": [
+                "J'y vais (je reviens)",
+                "Au revoir pour toujours",
+                "Bon voyage à toi",
+                "Merci beaucoup"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule en partant de la maison."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réponse à いってきます : « いって らっしゃい (itterasshai) 」 =",
+              "options": [
+                "Va / bon départ (familier)",
+                "Bonne nuit",
+                "À demain",
+                "De rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse familiale au départ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« ただいま (tadaima) 」 en rentrant =",
+              "options": ["Me revoici", "Au revoir", "Merci", "Oui"],
+              "correctAnswers": [0],
+              "explanation": "Je suis rentré."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "「 おかえり (okaeri) 」 =",
+              "options": ["Bon retour", "Bonjour", "Pardon", "Bravo"],
+              "correctAnswers": [0],
+              "explanation": "Accueil au retour."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « マリアさん », さん sert à :",
+              "options": [
+                "Marquer le respect simple (suffixe)",
+                "Indiquer le pluriel",
+                "Former une question",
+                "Nier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "さん = suffixe poli standard, pas keigo spécial."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Expression",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour saluer un camarade à 14 h, quelles formules conviennent ?",
+              "options": [
+                "こんにちは (konnichiwa)",
+                "おはよう (ohayou)",
+                "さようなら (sayounara)",
+                "こんばんは (konbanwa)"
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Après-midi : こんにちは ; le soir on dirait こんばんは — à 14 h こんにちは est la bonne base ; おはよう est le matin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le matin à l'école, tu dis :",
+              "options": ["おはよう", "こんばんは", "さようなら", "ありがとう"],
+              "correctAnswers": [0],
+              "explanation": "おはよう = bonjour du matin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tu quittes le collège :",
+              "options": ["さようなら", "おはよう", "すみません", "はい"],
+              "correctAnswers": [0],
+              "explanation": "さようなら = au revoir."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour te présenter :",
+              "options": [
+                "わたし は マリア です",
+                "これ は ほん です",
+                "がっこう へ いきます",
+                "きのう でした"
+              ],
+              "correctAnswers": [0],
+              "explanation": "わたしは…です = je m'appelle / je suis."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Demander « Ça va ? » :",
+              "options": [
+                "げんき ですか",
+                "なんじ ですか",
+                "どこ ですか",
+                "なんさい ですか"
+              ],
+              "correctAnswers": [0],
+              "explanation": "げんきですか = ça va ?"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Répondre oui, ça va :",
+              "options": [
+                "はい、げんき です",
+                "いいえ、げんき じゃない",
+                "さようなら",
+                "どうも"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse affirmative polie simple."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Remercier :",
+              "options": ["ありがとう", "すみません", "おはよう", "さようなら"],
+              "correctAnswers": [0],
+              "explanation": "ありがとう = merci."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Excuser un petit choc dans le couloir :",
+              "options": ["すみません", "ありがとう", "さようなら", "げんき"],
+              "correctAnswers": [0],
+              "explanation": "すみません = pardon / excuse-moi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Demander le nom :",
+              "options": [
+                "おなまえ は なん ですか",
+                "いくら ですか",
+                "どこ ですか",
+                "なんじ ですか"
+              ],
+              "correctAnswers": [0],
+              "explanation": "おなまえ = nom."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Répondre « De rien » :",
+              "options": [
+                "どういたしまして",
+                "さようなら",
+                "おはよう",
+                "いいえ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse standard à ありがとう."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parler de l'école : quelles phrases sont correctes ?",
+              "options": [
+                "がっこう へ いきます (gakkou e ikimasu)",
+                "がっこう が すき です",
+                "がっこう を たべます",
+                "がっこう は おいしい"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On va à l'école (へ) ; on peut aimer l'école (がすき)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« J'ai un cours » :",
+              "options": [
+                "じゅぎょう が あります",
+                "じゅぎょう を のみます",
+                "じゅぎょう が すき じゃない だけ",
+                "じゅぎょう は あめ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あります = il y a / j'ai (cours)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« C'est un crayon » :",
+              "options": [
+                "これは えんぴつ です",
+                "これは えんぴつ を たべます",
+                "えんぴつ が いきます",
+                "えんぴつ へ いきます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "…です = c'est."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Où est l'école ? »",
+              "options": [
+                "がっこう は どこ ですか",
+                "がっこう は なん ですか",
+                "がっこう は いくら ですか",
+                "がっこう は だれ ですか"
+              ],
+              "correctAnswers": [0],
+              "explanation": "どこ = où."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« C'est là-bas » :",
+              "options": [
+                "あそこ です",
+                "ここ です",
+                "きのう です",
+                "あした です"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あそこ = là-bas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Mon ami est sympa » (structure simple) :",
+              "options": [
+                "ともだち は いい ひと です",
+                "ともだち を たべます",
+                "ともだち へ ねます",
+                "ともだち が あめ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "いいひと = bonne personne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Le professeur est là » :",
+              "options": [
+                "せんせい は ここ です",
+                "せんせい を すき",
+                "せんせい へ いきます だけ",
+                "せんせい は たべます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ここです = est ici."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Demander l'heure :",
+              "options": [
+                "いま なんじ ですか",
+                "いま どこ ですか",
+                "いま だれ ですか",
+                "いま なんさい ですか"
+              ],
+              "correctAnswers": [0],
+              "explanation": "なんじ = quelle heure."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« À 8 heures » :",
+              "options": [
+                "８じ です",
+                "８にん です",
+                "８さい です",
+                "８ほん です"
+              ],
+              "correctAnswers": [0],
+              "explanation": "じ = heure."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« C'est lundi » :",
+              "options": [
+                "げつようび です",
+                "すいようび じゃない だけ",
+                "きのう です",
+                "あめ です"
+              ],
+              "correctAnswers": [0],
+              "explanation": "げつようび = lundi."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exprimer un goût : quelles phrases vont ?",
+              "options": [
+                "りんご が すき です",
+                "サッカー が すき です",
+                "りんご を すき します",
+                "すき が りんご です"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "が + すき ; pas を すき."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je n'aime pas le cinéma » :",
+              "options": [
+                "えいが が すき じゃない です",
+                "えいが を たべます",
+                "えいが へ いきます だけ",
+                "えいが は ８じ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "すきじゃない = ne pas aimer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Demander ce que quelqu'un aime :",
+              "options": [
+                "なに が すき ですか",
+                "なに を たべます か だけ",
+                "どこ が すき",
+                "いつ が すき です か だけ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "なにがすき = qu'aimes-tu ?"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« J'aime la musique » :",
+              "options": [
+                "おんがく が すき です",
+                "おんがく を のみます",
+                "おんがく へ ねます",
+                "おんがく は どこ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "おんがくがすき."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Je n'aime pas les aubergines » :",
+              "options": [
+                "ナス が きらい です",
+                "ナス が すき です",
+                "ナス を いきます",
+                "ナス は せんせい"
+              ],
+              "correctAnswers": [0],
+              "explanation": "きらい = ne pas aimer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Le chat est mignon » (simple) :",
+              "options": [
+                "ねこ は かわいい (kawaii) です",
+                "ねこ を たべます",
+                "ねこ へ いきます",
+                "ねこ が ８じ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "かわいい = mignon."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« J'aime le sport » :",
+              "options": [
+                "スポーツ が すき です",
+                "スポーツ を のみます",
+                "スポーツ は どこ ですか",
+                "スポーツ へ ねます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "スポーツがすき."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Couleur préférée : « J'aime le bleu »",
+              "options": [
+                "あお (ao) が すき です",
+                "あお を たべます",
+                "あお へ いきます",
+                "あお は なんじ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あお = bleu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« C'est bon (délicieux) » :",
+              "options": [
+                "おいしい です",
+                "さむい です",
+                "あつい です だけ",
+                "あめ です"
+              ],
+              "correctAnswers": [0],
+              "explanation": "おいしい = bon au goût."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ce n'est pas bon » :",
+              "options": [
+                "おいしくない です",
+                "おいしい です",
+                "すき です",
+                "げんき です"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Négation de おいしい."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parler du temps : quelles phrases sont correctes ?",
+              "options": [
+                "きのう テスト が ありました",
+                "あした やすみ です",
+                "きのう あした です",
+                "あした きのう いきました"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hier test ; demain repos — ordre temporel cohérent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Demain, pas d'école » :",
+              "options": [
+                "あした やすみ です",
+                "きのう やすみ です",
+                "きょう あした です",
+                "あした きのう"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あした = demain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hier, j'ai étudié » :",
+              "options": [
+                "きのう べんきょう しました",
+                "あした べんきょう します",
+                "きょう きのう します",
+                "きのう あした しました"
+              ],
+              "correctAnswers": [0],
+              "explanation": "きのう + passé しました."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Aujourd'hui, récré » :",
+              "options": [
+                "きょう やすみじかん (yasumijikan) です",
+                "あした やすみ だけ",
+                "きのう テスト",
+                "あした ねます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "きょう = aujourd'hui."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Demain, j'irai à l'école » :",
+              "options": [
+                "あした がっこう へ いきます",
+                "きのう がっこう へ いきます",
+                "あした がっこう を たべます",
+                "きのう やすみ です"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あした + いきます futur proche."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ce soir, je révise » :",
+              "options": [
+                "こんばん べんきょう します",
+                "あさ ねます",
+                "きのう サッカー",
+                "あした あめ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "こんばん = ce soir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Tous les jours, cours de japonais » :",
+              "options": [
+                "まいにち にほんご (nihongo) の じゅぎょう です",
+                "いちど だけ",
+                "きのう だけ",
+                "あした だけ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "まいにち = chaque jour."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Le test est demain » :",
+              "options": [
+                "テスト は あした です",
+                "テスト は きのう です",
+                "テスト を たべます",
+                "テスト へ いきます だけ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あした = demain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Hier, c'était dimanche » (passé) :",
+              "options": [
+                "きのう は にちようび (nichiyoubi) でした",
+                "あした は げつようび",
+                "きょう きのう",
+                "あした でした"
+              ],
+              "correctAnswers": [0],
+              "explanation": "でした = c'était."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« À demain ! » (familier école) :",
+              "options": [
+                "また あした (mata ashita)",
+                "さようなら だけ",
+                "おはよう",
+                "ありがとう だけ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "またあした = à demain."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Mini-dialogue école : A « これは なん ですか。 » B « ほん です。 » Quelles répliques sont possibles ?",
+              "options": [
+                "Demander un objet",
+                "Nommer un livre",
+                "Demander l'heure",
+                "Parler de la pluie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "なんですか = qu'est-ce ; ほん = livre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Qu'est-ce que c'est ? »",
+              "options": [
+                "これは なん ですか",
+                "これは どこ ですか",
+                "これは いくら ですか",
+                "これは なんじ ですか"
+              ],
+              "correctAnswers": [0],
+              "explanation": "なん = quoi."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« C'est mon sac » :",
+              "options": [
+                "これは わたし の かばん です",
+                "これは かばん を たべます",
+                "かばん へ いきます",
+                "かばん が あめ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "の = possession."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« J'écris avec un crayon » (simple) :",
+              "options": [
+                "えんぴつ で かきます (kakimasu)",
+                "えんぴつ を のみます",
+                "えんぴつ へ ねます",
+                "えんぴつ が すき だけ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "で = avec (outil)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Je lis un livre » :",
+              "options": [
+                "ほん を よみます (yomimasu)",
+                "ほん を たべます",
+                "ほん へ いきます",
+                "ほん が ８じ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "を + verbe ; よみます = lire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je mange du pain » :",
+              "options": [
+                "パン を たべます",
+                "パン を のみます だけ",
+                "パン へ いきます",
+                "パン が どこ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "を たべます."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Je bois de l'eau » :",
+              "options": [
+                "みず を のみます",
+                "みず を たべます",
+                "みず へ ねます",
+                "みず が すき だけ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "のみます = boire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Inviter : « On joue au foot ? »",
+              "options": [
+                "サッカー を しませんか (shimasen ka)",
+                "サッカー を たべます",
+                "サッカー は どこ だけ",
+                "サッカー が ８じ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "しませんか = proposition."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Accepter :",
+              "options": [
+                "はい、いい ですよ (ii desu yo)",
+                "いいえ、さようなら",
+                "おはよう だけ",
+                "ありがとう だけ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "はい、いいですよ = d'accord."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Refuser poliment :",
+              "options": [
+                "すみません、だめ (dame) です",
+                "はい、たべます",
+                "げんき です",
+                "こんにちは"
+              ],
+              "correctAnswers": [0],
+              "explanation": "だめ = non / pas possible."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Routine : « ６じ に おきます。 ７じ に あさごはん (asagohan) を たべます。 » Quelles actions ?",
+              "options": [
+                "Se lever",
+                "Petit-déjeuner",
+                "Dormir à 6 h",
+                "Aller au cinéma"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "おきます = lever ; あさごはんをたべます = petit-déj."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je me lève à 7 h » :",
+              "options": [
+                "７じ に おきます",
+                "７じ に ねます",
+                "７じ に たべます だけ",
+                "７じ は どこ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "おきます à 7 h."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je vais à l'école » :",
+              "options": [
+                "がっこう へ いきます",
+                "がっこう を のみます",
+                "がっこう が あめ",
+                "がっこう へ ねます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "へ いきます."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je rentre à la maison » :",
+              "options": [
+                "うち へ かえります",
+                "うち を たべます",
+                "うち が すき だけ",
+                "うち へ おきます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "かえります = rentrer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Je me couche à 22 h » :",
+              "options": [
+                "１０じ に ねます",
+                "１０じ に おきます",
+                "１０じ に いきます",
+                "１０じ は ほん"
+              ],
+              "correctAnswers": [0],
+              "explanation": "22 h = 10 pm → １０じにねます."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je fais mes devoirs ce soir » :",
+              "options": [
+                "こんばん しゅくだい (shukudai) を します",
+                "あさ ねます",
+                "きのう テスト",
+                "あした やすみ だけ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "しゅくだい = devoirs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Je me lave le visage » :",
+              "options": [
+                "かお (kao) を あらいます",
+                "かお を たべます",
+                "かお へ いきます",
+                "かお が ８じ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あらいます = laver."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Demain, lever tôt » :",
+              "options": [
+                "あした は ６じ に おきます",
+                "きのう ６じ に おきました",
+                "きょう あした",
+                "あした ねます だけ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あした futur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Hier, fatigué » :",
+              "options": [
+                "きのう は つかれました (tsukaremashita)",
+                "あした つかれます",
+                "きょう きのう",
+                "あした げんき"
+              ],
+              "correctAnswers": [0],
+              "explanation": "きのう + passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Je m'entraîne au foot » :",
+              "options": [
+                "サッカー の れんしゅう を します",
+                "サッカー を たべます",
+                "サッカー へ ねます",
+                "サッカー が どこ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "れんしゅう = entraînement."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Météo et activité : « きょう は あめ です。 うち で べんきょう します。 » Que dit-on ?",
+              "options": [
+                "Il pleut aujourd'hui",
+                "Étudier à la maison",
+                "Demain soleil obligatoire",
+                "Manger à l'école"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "あめ = pluie ; うちでべんきょう = étudier chez soi."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Il fait beau » :",
+              "options": [
+                "はれ です",
+                "あめ です",
+                "ゆき です だけ",
+                "くもり だけ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "はれ = beau temps."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Il pleut » :",
+              "options": [
+                "あめ です",
+                "はれ です",
+                "あつい です",
+                "さむい です だけ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あめ = pluie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Il fait froid » :",
+              "options": [
+                "さむい です",
+                "あつい です",
+                "おいしい です",
+                "げんき です"
+              ],
+              "correctAnswers": [0],
+              "explanation": "さむい = froid."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Il fait chaud » :",
+              "options": ["あつい です", "さむい です", "あめ です", "ねます"],
+              "correctAnswers": [0],
+              "explanation": "あつい = chaud."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Demander la météo :",
+              "options": [
+                "てんき は どう ですか",
+                "てんき は どこ ですか",
+                "てんき は なんじ",
+                "てんき を たべます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "てんきはどう = météo comment."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Bonne météo aujourd'hui » :",
+              "options": [
+                "きょう は いい てんき です",
+                "あした あめ です",
+                "きのう ねます",
+                "あした きのう"
+              ],
+              "correctAnswers": [0],
+              "explanation": "いいてんき = belle météo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Demain, beau temps » :",
+              "options": [
+                "あした は はれ です",
+                "きのう は あめ",
+                "きょう あした",
+                "あめ へ いきます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あしたははれ."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« S'il pleut, je reste » :",
+              "options": [
+                "あめ なら (nara) うち です",
+                "はれ なら ねます",
+                "あした だけ",
+                "スポーツ を たべます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "なら = si / dans ce cas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« C'est nuageux » :",
+              "options": ["くもり です", "はれ です", "あか です", "ほん です"],
+              "correctAnswers": [0],
+              "explanation": "くもり = couvert."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Famille : « わたし の かぞく は ４にん (yonin) です。 おとうさん と おかあさん が います。 » Quelles idées ?",
+              "options": [
+                "Taille de la famille",
+                "Présence des parents",
+                "Quatre écoles",
+                "Quatre tests"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "４にん = 4 personnes ; parents avec います."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Mon père » :",
+              "options": [
+                "わたし の おとうさん",
+                "わたし の おかあさん",
+                "わたし の えんぴつ",
+                "わたし の あめ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "おとうさん = père."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ma mère » :",
+              "options": [
+                "わたし の おかあさん",
+                "わたし の おとうさん",
+                "わたし の がっこう",
+                "わたし の きのう"
+              ],
+              "correctAnswers": [0],
+              "explanation": "おかあさん = mère."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« J'ai un frère » :",
+              "options": [
+                "おにいさん が います",
+                "おにいさん を たべます",
+                "おにいさん へ ねます",
+                "おにいさん は あめ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "がいます = j'ai (personne)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Quel âge as-tu ? »",
+              "options": [
+                "なんさい ですか",
+                "なんじ ですか",
+                "どこ ですか",
+                "なに ですか"
+              ],
+              "correctAnswers": [0],
+              "explanation": "なんさい = quel âge."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« J'ai 13 ans » :",
+              "options": [
+                "１３さい です",
+                "１３じ です",
+                "１３にん です",
+                "１３ほん です"
+              ],
+              "correctAnswers": [0],
+              "explanation": "さい = ans."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Mon petit chien est mignon » :",
+              "options": [
+                "いぬ は かわいい です",
+                "いぬ を たべます",
+                "いぬ へ いきます だけ",
+                "いぬ が ８じ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "かわいい pour l'animal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Il y a un chat chez moi » :",
+              "options": [
+                "うち に ねこ が います",
+                "うち を ねこ たべます",
+                "ねこ へ がっこう",
+                "ねこ は なんじ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "に + が います = chez moi il y a."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Présenter sa sœur :",
+              "options": [
+                "これは わたし の いもうと です",
+                "これは いもうと を たべます",
+                "いもうと へ いきます",
+                "いもうと が あめ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "これは…です."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ma famille est grande » (simple) :",
+              "options": [
+                "かぞく は おおきい (ookii) です",
+                "かぞく を のみます",
+                "かぞく へ ねます",
+                "かぞく が ８じ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "おおきい = grand."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Au revoir et retour : quelles paires vont ensemble ?",
+              "options": [
+                "いってきます → いってらっしゃい",
+                "ただいま → おかえり",
+                "おはよう → さようなら seul",
+                "ありがとう → おはよう"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Formules familiales départ/retour."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En partant de chez toi :",
+              "options": [
+                "いって きます",
+                "ただいま",
+                "おかえり",
+                "どういたしまして"
+              ],
+              "correctAnswers": [0],
+              "explanation": "いってきます au départ."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse au départ :",
+              "options": [
+                "いって らっしゃい",
+                "さようなら だけ",
+                "おはよう",
+                "ありがとう"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accueil du départ."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En rentrant :",
+              "options": [
+                "ただいま",
+                "いって きます",
+                "いって らっしゃい",
+                "こんばんは だけ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ただいま = je suis rentré."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quand quelqu'un rentre :",
+              "options": ["おかえり", "さようなら", "すみません", "なんじ"],
+              "correctAnswers": [0],
+              "explanation": "おかえり = bon retour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Bon appétit » (simple cours) :",
+              "options": [
+                "いただきます (itadakimasu)",
+                "ごちそうさま (gochisousama) seul avant",
+                "おはよう",
+                "げんき"
+              ],
+              "correctAnswers": [0],
+              "explanation": "いただきます avant manger (courant)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Après le repas :",
+              "options": [
+                "ごちそうさまでした",
+                "いただきます",
+                "おはよう",
+                "いってきます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remerciement après repas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Félicitations / bravo » :",
+              "options": [
+                "おめでとう (omedetou)",
+                "すみません",
+                "さむい",
+                "どこ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "おめでとう = bravo / félicitations."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ce n'est rien / de rien » (variante) :",
+              "options": [
+                "いいえ、だいじょうぶ です",
+                "さようなら",
+                "あした",
+                "あめ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse rassurante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« À bientôt » :",
+              "options": [
+                "また ね (mata ne)",
+                "おはよう だけ",
+                "きのう",
+                "ほん"
+              ],
+              "correctAnswers": [0],
+              "explanation": "またね = à plus."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Synthèse examen : quelles phrases préparent bien un oral de 6e ?",
+              "options": [
+                "こんにちは。 わたし は … です。",
+                "… が すき です。",
+                "… を けいご します だけ",
+                "きのう と あした を まぜない"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salut + présentation ; exprimer un goût — bases 6e."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Commencer une présentation :",
+              "options": [
+                "こんにちは。 わたし は マリア です。",
+                "さようなら。 わたし は マリア。",
+                "ありがとう。 がっこう。",
+                "おはよう。 きのう です。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salut + わたしは…です."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parler de l'école et d'un goût :",
+              "options": [
+                "がっこう が すき です。 サッカー も (mo) すき です。",
+                "がっこう を たべます。",
+                "すき が あめ。",
+                "がっこう へ ねます。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "がすき ; も = aussi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hier et demain sans mélange :",
+              "options": [
+                "きのう テスト でした。 あした やすみ です。",
+                "きのう あした いきます。",
+                "あした きのう でした。",
+                "きょう きのう あした です。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé hier, futur demain."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Demander et répondre sur la santé :",
+              "options": [
+                "A : げんき ですか。 B : はい、げんき です。",
+                "A : どこ。 B : はい。",
+                "A : たべます。 B : ねます。",
+                "A : あめ。 B : ほん。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dialogue げんき."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Remercier et répondre :",
+              "options": [
+                "A : ありがとう。 B : どういたしまして。",
+                "A : さようなら。 B : おはよう。",
+                "A : ねます。 B : たべます。",
+                "A : ８じ。 B : どこ。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Merci / de rien."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Objet de classe :",
+              "options": [
+                "これは わたし の えんぴつ です。",
+                "これは えんぴつ を いきます。",
+                "えんぴつ が あめ。",
+                "えんぴつ へ ねます。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présentation objet."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Invitation polie :",
+              "options": [
+                "いっしょ (issho) に サッカー を しませんか。",
+                "サッカー を たべます。",
+                "サッカー は どこ だけ。",
+                "サッカー へ ねます。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "いっしょに = ensemble."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Conclure poliment (sans keigo) :",
+              "options": [
+                "ありがとう ございました (arigatou gozaimashita)",
+                "… だけ さようなら おはよう",
+                "きのう あした",
+                "あめ はれ たべます"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Remerciement final courant en classe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte pour « Demain, école à 8 h » :",
+              "options": [
+                "あした ８じ に がっこう へ いきます。",
+                "あした ８さい がっこう。",
+                "きのう ８じ ねます。",
+                "きょう あした ほん。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "あした + heure + へ いきます."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

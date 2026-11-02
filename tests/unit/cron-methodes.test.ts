@@ -57,6 +57,7 @@ describe("Cron — le val appelle bien des routes qui l'écoutent", () => {
         "/api/cron/agent",
         "/api/cron/notifications",
         "/api/cron/planning",
+        "/api/cron/quizzly",
         "/api/cron/vibe",
         "/api/cron/wakies",
       ])
@@ -144,5 +145,52 @@ describe("Cron — le bail survit à la durée maximale de l'invocation", () => 
     // Un bail plus court que l'exécution autorise la reprise PENDANT qu'elle
     // tourne : deux appels de modèle pour une même occurrence.
     expect(TACHE_BAIL_MS).toBeGreaterThan(maxDuration * 1000);
+  });
+});
+
+describe("Cron — vérification de l'authentification (verifyCronAuth)", () => {
+  it("accepte Authorization: Bearer <secret>", async () => {
+    const { verifyCronAuth } = await import("@/lib/security/timing");
+    const req = new Request("http://localhost/api/cron/agent", {
+      headers: { authorization: "Bearer mon-super-secret" },
+    });
+    expect(verifyCronAuth(req, "mon-super-secret")).toBe(true);
+  });
+
+  it("accepte authorization: bearer <secret> insensible à la casse", async () => {
+    const { verifyCronAuth } = await import("@/lib/security/timing");
+    const req = new Request("http://localhost/api/cron/agent", {
+      headers: { authorization: "bearer mon-super-secret" },
+    });
+    expect(verifyCronAuth(req, "mon-super-secret")).toBe(true);
+  });
+
+  it("accepte x-cron-secret", async () => {
+    const { verifyCronAuth } = await import("@/lib/security/timing");
+    const req = new Request("http://localhost/api/cron/agent", {
+      headers: { "x-cron-secret": "mon-super-secret" },
+    });
+    expect(verifyCronAuth(req, "mon-super-secret")).toBe(true);
+  });
+
+  it("gère les guillemets résiduels dans l'environnement et les en-têtes", async () => {
+    const { verifyCronAuth } = await import("@/lib/security/timing");
+    const req1 = new Request("http://localhost/api/cron/agent", {
+      headers: { authorization: 'Bearer "mon-super-secret"' },
+    });
+    expect(verifyCronAuth(req1, '"mon-super-secret"')).toBe(true);
+
+    const req2 = new Request("http://localhost/api/cron/agent", {
+      headers: { "x-cron-secret": '"mon-super-secret"' },
+    });
+    expect(verifyCronAuth(req2, '  "mon-super-secret"  ')).toBe(true);
+  });
+
+  it("rejette les faux secrets", async () => {
+    const { verifyCronAuth } = await import("@/lib/security/timing");
+    const req = new Request("http://localhost/api/cron/agent", {
+      headers: { authorization: "Bearer faux-secret" },
+    });
+    expect(verifyCronAuth(req, "mon-super-secret")).toBe(false);
   });
 });

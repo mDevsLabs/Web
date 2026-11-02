@@ -130,7 +130,8 @@ export const PageStyle = Mark.create({
     const font = isPageFont(HTMLAttributes.font) ? HTMLAttributes.font : null;
     const size = isPageSize(HTMLAttributes.size) ? HTMLAttributes.size : null;
     const tone = isPageTone(HTMLAttributes.tone) ? HTMLAttributes.tone : null;
-    const underline = HTMLAttributes.underline === true || HTMLAttributes.underline === "1";
+    const underline =
+      HTMLAttributes.underline === true || HTMLAttributes.underline === "1";
     return [
       "m",
       mergeAttributes(HTMLAttributes, {

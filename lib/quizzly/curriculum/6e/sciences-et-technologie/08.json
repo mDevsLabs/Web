@@ -1,0 +1,2728 @@
+{
+  "id": "6e-sciences-et-technologie-08",
+  "year": "6e",
+  "subject": "sciences-et-technologie",
+  "title": "Information et signaux",
+  "order": 8,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Capteurs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Qu'est-ce qu'un capteur ?",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels objets sont des capteurs ?",
+              "options": [
+                "Thermomètre",
+                "Crayon",
+                "Capteur de lumière",
+                "Gomme"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Un capteur mesure une grandeur ; thermomètre et capteur de lumière le font."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Un capteur sert surtout à :",
+              "options": ["Mesurer", "Peindre", "Cuisiner", "Dormir"],
+              "correctAnswers": [0],
+              "explanation": "Il transforme une information du milieu en signal utilisable."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "La température est mesurée avec :",
+              "options": [
+                "Un thermomètre",
+                "Une règle",
+                "Une balance",
+                "Un mètre ruban"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le thermomètre est un capteur de température."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Un capteur de lumière réagit à :",
+              "options": [
+                "La luminosité",
+                "Le bruit",
+                "L'humidité",
+                "Le poids"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il détecte plus ou moins de lumière."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Notre peau peut capter :",
+              "options": [
+                "Le toucher et la chaleur",
+                "Uniquement la lumière",
+                "Uniquement le son",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La peau est un capteur de contact et de température."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Un détecteur de fumée capte :",
+              "options": [
+                "Des particules dans l'air",
+                "La couleur des murs",
+                "Le vent",
+                "La pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il réagit à la fumée pour alerter."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Un capteur est placé dans un objet pour :",
+              "options": [
+                "Recueillir une information",
+                "Décorer",
+                "Alléger",
+                "Cacher"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il permet à l'objet de « sentir » le milieu."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "La luminosité d'une pièce peut être mesurée par :",
+              "options": [
+                "Un capteur de lumière",
+                "Un haut-parleur",
+                "Un miroir",
+                "Un carnet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seul un capteur mesure la lumière."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Sans capteur, une lampe automatique ne pourrait pas :",
+              "options": [
+                "S'allumer quand il fait nuit",
+                "Briller",
+                "Avoir une ampoule",
+                "Être fixée au plafond"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le capteur détecte l'obscurité pour commander la lampe."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Un capteur envoie en général :",
+              "options": [
+                "Un signal",
+                "De la peinture",
+                "De l'eau",
+                "De la poussière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il transmet une information sous forme de signal."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Capteurs et grandeurs",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles grandeurs peut-on mesurer avec des capteurs courants ?",
+              "options": [
+                "Température",
+                "Nombre de pages",
+                "Luminosité",
+                "Couleur des yeux"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Température et luminosité se mesurent ; les autres ne sont pas des grandeurs capteur classiques ici."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Un anémomètre mesure :",
+              "options": [
+                "La vitesse du vent",
+                "La température",
+                "Le son",
+                "La lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un capteur lié au vent."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Un hygromètre mesure :",
+              "options": [
+                "L'humidité de l'air",
+                "La masse",
+                "La distance",
+                "Le bruit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il indique l'eau dans l'air."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Un capteur de proximité détecte :",
+              "options": [
+                "Un objet proche",
+                "La musique",
+                "Le goût",
+                "L'odeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il voit si quelque chose approche."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "La balance est un capteur de :",
+              "options": ["Masse", "Lumière", "Son", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Elle mesure le poids ou la masse."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Un capteur de pluie sur une voiture sert à :",
+              "options": [
+                "Activer les essuie-glaces",
+                "Chauffer",
+                "Rouler plus vite",
+                "Ouvrir le coffre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il détecte l'eau sur le pare-brise."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Mesurer, c'est :",
+              "options": [
+                "Obtenir une valeur d'une grandeur",
+                "Deviner",
+                "Dessiner",
+                "Chanter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On associe un nombre ou un niveau à ce qu'on observe."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Un capteur de niveau d'eau indique :",
+              "options": [
+                "Si le réservoir est plein ou vide",
+                "La couleur de l'eau",
+                "Le bruit",
+                "La vitesse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il surveille la quantité d'eau."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Un microphone capte surtout :",
+              "options": ["Le son", "La lumière", "Le magnétisme", "Le goût"],
+              "correctAnswers": [0],
+              "explanation": "Il transforme les vibrations sonores en signal."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Un capteur doit être :",
+              "options": [
+                "Adapté à ce qu'il mesure",
+                "Identique pour tout",
+                "Toujours géant",
+                "Toujours rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque capteur est conçu pour une grandeur."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "L'œil capteur de lumière",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "L'œil permet de capter :",
+              "options": [
+                "La lumière",
+                "Les images visuelles",
+                "Le bruit pur",
+                "Les odeurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La lumière entre dans l'œil et le cerveau forme l'image."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "L'organe qui voit s'appelle :",
+              "options": ["L'œil", "L'oreille", "Le nez", "La langue"],
+              "correctAnswers": [0],
+              "explanation": "La vision est le rôle de l'œil."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Sans lumière, on voit :",
+              "options": [
+                "Très mal ou pas",
+                "Mieux",
+                "En couleur vive",
+                "Rien change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut de la lumière pour voir."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "La pupille devient plus petite quand :",
+              "options": [
+                "Il y a beaucoup de lumière",
+                "Il fait nuit",
+                "On dort",
+                "On mange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle limite la lumière entrante."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Un signal lumineux peut être :",
+              "options": [
+                "Une lampe qui clignote",
+                "Un parfum",
+                "Un goût",
+                "Un vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clignoter transmet une information par la lumière."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "La rétine reçoit :",
+              "options": [
+                "La lumière focalisée",
+                "Le son",
+                "L'air",
+                "La nourriture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la partie sensible à la lumière."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Un feu rouge de vélo est un signal :",
+              "options": ["Lumineux", "Sonore", "Olfactif", "Gustatif"],
+              "correctAnswers": [0],
+              "explanation": "On le voit grâce à la lumière."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Les lunettes de soleil protègent l'œil de :",
+              "options": [
+                "Trop de lumière",
+                "Trop de bruit",
+                "Trop de froid",
+                "Trop de poids"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elles filtrent la luminosité."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Voir, c'est recevoir un message par :",
+              "options": ["La lumière", "L'eau", "Le sable", "Le métal"],
+              "correctAnswers": [0],
+              "explanation": "La vision passe par des signaux lumineux."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "La nuit, une lampe de poche envoie :",
+              "options": [
+                "Un faisceau lumineux",
+                "Un son",
+                "Une odeur",
+                "Un vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un signal lumineux portable."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "L'oreille et le son",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels éléments concernent le son ?",
+              "options": [
+                "L'oreille",
+                "Le haut-parleur",
+                "La rétine",
+                "Le thermomètre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Oreille capte le son ; haut-parleur l'émet."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "L'oreille capte :",
+              "options": [
+                "Les vibrations sonores",
+                "La lumière",
+                "Les odeurs",
+                "Le froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le son est une vibration de l'air."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Un signal sonore peut être :",
+              "options": [
+                "Une sirène",
+                "Une ombre",
+                "Une couleur",
+                "Une odeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sirène alerte par le bruit."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Parler, c'est envoyer :",
+              "options": [
+                "Un message sonore",
+                "Un rayon laser",
+                "Une odeur",
+                "Une image seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La voix est un signal sonore."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Dans le vide spatial, le son :",
+              "options": [
+                "Ne se propage pas",
+                "Est très fort",
+                "Devient lumière",
+                "Double"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut un milieu (air, eau) pour le son."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Un son trop fort peut :",
+              "options": [
+                "Abîmer l'oreille",
+                "Améliorer la vue",
+                "Rendre la peau bleue",
+                "Éteindre le soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut protéger ses oreilles."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Un klaxon envoie :",
+              "options": [
+                "Un signal sonore",
+                "Un signal lumineux seul",
+                "Rien",
+                "De la fumée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On entend le klaxon."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Le tambour produit :",
+              "options": [
+                "Du son",
+                "De la lumière",
+                "Du parfum",
+                "De la glace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La peau du tambour vibre."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Écouter, c'est :",
+              "options": [
+                "Recevoir un signal sonore",
+                "Émettre de la lumière",
+                "Mesurer la masse",
+                "Compter les pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oreille reçoit le message sonore."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Un capteur sonore dans une alarme détecte :",
+              "options": [
+                "Un bruit ou un seuil sonore",
+                "La couleur",
+                "Le poids",
+                "La date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il réagit au niveau sonore."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Chaîne capteur-traitement",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Dans une lampe automatique, on trouve :",
+              "options": [
+                "Un capteur de lumière",
+                "Une source lumineuse",
+                "Un moteur de voiture",
+                "Un thermomètre médical"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Capteur décide ; lampe éclaire."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Après le capteur, l'information peut être :",
+              "options": ["Traitée pour agir", "Jetée", "Peinte", "Mangée"],
+              "correctAnswers": [0],
+              "explanation": "Un dispositif utilise le signal pour commander."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Un interrupteur marche/arrêt est une commande :",
+              "options": ["Oui/non", "Couleur", "Musique", "Parfum"],
+              "correctAnswers": [0],
+              "explanation": "Deux états simples : allumé ou éteint."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Un capteur + une alarme forment :",
+              "options": [
+                "Une chaîne d'information",
+                "Un jeu",
+                "Un livre",
+                "Un tableau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteur → signal → alarme sonore."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Le signal du capteur peut allumer :",
+              "options": ["Une diode", "Un arbre", "Un nuage", "Une montagne"],
+              "correctAnswers": [0],
+              "explanation": "Une petite lampe (LED) indique l'état."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Mesurer puis afficher sur un écran, c'est :",
+              "options": [
+                "Transmettre l'information",
+                "Effacer la mémoire",
+                "Casser l'appareil",
+                "Dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écran montre la valeur mesurée."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Un portail automatique utilise souvent :",
+              "options": [
+                "Un capteur de présence",
+                "Un crayon",
+                "Une gomme",
+                "Un stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il détecte une personne ou une voiture."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Si le capteur est cassé, l'appareil :",
+              "options": [
+                "Ne fonctionne plus correctement",
+                "Va plus vite",
+                "Devient invisible",
+                "Change de couleur seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans mesure fiable, la commande échoue."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "La chaîne d'information commence par :",
+              "options": ["La capture", "La vente", "Le dessin", "Le sport"],
+              "correctAnswers": [0],
+              "explanation": "On capte d'abord une info du milieu."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Un thermostat règle le chauffage grâce à :",
+              "options": [
+                "Un capteur de température",
+                "Un haut-parleur",
+                "Un miroir",
+                "Un carnet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il mesure la température ambiante."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Capteurs du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels appareils contiennent un capteur ?",
+              "options": [
+                "Téléphone (luminosité)",
+                "Four micro-ondes (porte)",
+                "Stylo bille",
+                "Cahier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Écran s'adapte à la lumière ; porte détecte ouverture."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "L'écran du téléphone s'éclaircit dehors grâce à :",
+              "options": [
+                "Un capteur de lumière",
+                "Un ventilateur",
+                "Un moteur",
+                "Une antenne seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il adapte la luminosité de l'écran."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Une montre connectée peut capter :",
+              "options": [
+                "Le pouls",
+                "La couleur du ciel",
+                "Le bruit de la lune",
+                "Le poids d'un camion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteur cardiaque sur le poignet."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Un ascenseur s'arrête si la porte capte :",
+              "options": ["Un obstacle", "Une odeur", "Un goût", "Un dessin"],
+              "correctAnswers": [0],
+              "explanation": "Capteur de sécurité anti-pincement."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Le GPS du téléphone utilise des capteurs de :",
+              "options": [
+                "Position et mouvement",
+                "Goût",
+                "Parfum",
+                "Couleur des yeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accéléromètre et position aident la navigation."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Un détecteur de mouvement allume une lumière quand :",
+              "options": [
+                "Quelqu'un passe",
+                "Il pleut des livres",
+                "La terre s'arrête",
+                "Le soleil disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il voit un déplacement."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "La sonnette vidéo capte :",
+              "options": [
+                "Image et parfois son",
+                "Uniquement le vent",
+                "Uniquement la pluie",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caméra et micro transmettent l'info."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Un capteur dans une calculatrice solaire reçoit :",
+              "options": ["La lumière", "Le son", "L'eau", "Le sable"],
+              "correctAnswers": [0],
+              "explanation": "Le soleil fournit l'énergie via la lumière."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Les feux de recul de voiture utilisent souvent :",
+              "options": [
+                "Des capteurs de distance",
+                "Des plumes",
+                "Des stickers",
+                "Des crayons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils détectent un obstacle derrière."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Un capteur rend un objet :",
+              "options": [
+                "Sensible à son environnement",
+                "Plus lourd toujours",
+                "Invisible",
+                "Silencieux toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il réagit à ce qui l'entoure."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Signaux lumineux",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels signaux sont lumineux ?",
+              "options": [
+                "Feu tricolore",
+                "Phare de vélo",
+                "Klaxon",
+                "Tambour"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Feu et phare émettent de la lumière."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Rouge au feu signifie souvent :",
+              "options": ["Stop", "Allez vite", "Dansez", "Dormez"],
+              "correctAnswers": [0],
+              "explanation": "Code couleur pour la sécurité routière."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Un phare clignotant informe :",
+              "options": [
+                "Qu'on tourne ou qu'on change de direction",
+                "Qu'il neige",
+                "Qu'on mange",
+                "Qu'on lit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal lumineux clignotant = message."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Une LED verte sur un appareil peut signifier :",
+              "options": ["Marche OK", "Danger", "Panique", "Faim"],
+              "correctAnswers": [0],
+              "explanation": "Couleur = code simple d'état."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Le soleil est une source de :",
+              "options": [
+                "Lumière",
+                "Son audible dans l'espace",
+                "Parfum",
+                "Glaces"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il éclaire la Terre."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Un signal lumineux voyage dans :",
+              "options": [
+                "L'air ou le vide (lumière)",
+                "Uniquement l'eau",
+                "La terre solide",
+                "Le bois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lumière se propage sans air."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Afficher OUI par une lumière allumée, c'est :",
+              "options": [
+                "Coder l'information",
+                "Cacher",
+                "Effacer",
+                "Oublier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Allumé = oui, éteint = non possible."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Un écran de téléphone envoie :",
+              "options": [
+                "De la lumière colorée",
+                "Du parfum",
+                "Du vent",
+                "De la pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pixels = petites sources lumineuses."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Voir un signal, il faut :",
+              "options": [
+                "Des yeux ou une caméra",
+                "Des oreilles seules",
+                "Le nez",
+                "La langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteur de lumière requis."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Un laser de présentation émet :",
+              "options": [
+                "Un faisceau lumineux",
+                "Un son",
+                "Une odeur",
+                "Un goût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Point lumineux sur l'écran."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Signaux sonores",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels signaux sont sonores ?",
+              "options": [
+                "Sonnette",
+                "Alarme incendie",
+                "Projecteur",
+                "Miroir"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On les entend."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Un bip court peut signifier :",
+              "options": [
+                "Attention ou confirmation",
+                "Couleur bleue",
+                "Faim",
+                "Sommeil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code sonore simple."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Le son a besoin d'un :",
+              "options": [
+                "Milieu comme l'air",
+                "Vide parfait seul",
+                "Rien du tout",
+                "Miroir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les vibrations se transmettent dans un fluide ou solide."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Chuchoter, c'est envoyer un signal :",
+              "options": ["Sonore faible", "Lumineux", "Olfactif", "Gustatif"],
+              "correctAnswers": [0],
+              "explanation": "Volume sonore plus bas."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Un haut-parleur transforme un signal électrique en :",
+              "options": ["Son", "Lumière seule", "Odeur", "Goût"],
+              "correctAnswers": [0],
+              "explanation": "Il fait vibrer l'air."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Un message « oui » peut être un :",
+              "options": ["Bip unique", "Silence total", "Parfum", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "Code sonore oui/non possible."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Les oreilles protègent-on avec :",
+              "options": [
+                "Des bouchons dans le bruit fort",
+                "De la peinture",
+                "Du sable",
+                "De l'eau dans l'œil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire le signal sonore dangereux."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Un cor de brume sur un bateau envoie :",
+              "options": [
+                "Un signal sonore d'avertissement",
+                "Une lumière",
+                "Une odeur",
+                "Un vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alerte dans le brouillard."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Écouter un message vocal, c'est capter :",
+              "options": [
+                "Des signaux sonores",
+                "Des rayons X seuls",
+                "Des odeurs",
+                "Des saveurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La voix est un son."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Son fort et son faible diffèrent par :",
+              "options": ["L'intensité", "La couleur", "Le goût", "L'odeur"],
+              "correctAnswers": [0],
+              "explanation": "Plus d'énergie = son plus fort."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Comparer capteurs",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels couples capteur-grandeur sont corrects ?",
+              "options": [
+                "Oreille – son",
+                "Œil – lumière",
+                "Thermomètre – bruit",
+                "Micro – lumière"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Oreille et œil sont nos capteurs naturels."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Pour mesurer la lumière du jour, on utilise plutôt :",
+              "options": [
+                "Capteur de luminosité",
+                "Microphone",
+                "Balance",
+                "Thermomètre seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grandeur = luminosité."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Pour entendre un message, on utilise :",
+              "options": [
+                "L'oreille",
+                "Le thermomètre",
+                "La règle",
+                "La balance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteur biologique du son."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Un capteur artificiel imite parfois :",
+              "options": [
+                "Un organe des sens",
+                "Un rocher",
+                "Un nuage",
+                "Une étoile lointaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Microphone ≈ oreille, caméra ≈ œil."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Deux capteurs différents peuvent mesurer :",
+              "options": [
+                "Deux grandeurs différentes",
+                "Toujours la même",
+                "Rien",
+                "Uniquement la couleur des yeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun a son rôle."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Choisir le bon capteur, c'est :",
+              "options": [
+                "Adapter l'outil à la mesure",
+                "Utiliser n'importe quoi",
+                "Ne jamais mesurer",
+                "Peindre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne mesure pas le son avec un thermomètre."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Un appareil photo capte :",
+              "options": [
+                "La lumière de la scène",
+                "Le bruit seul",
+                "Le poids seul",
+                "La température seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capteur image = lumière."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Un capteur peut être :",
+              "options": [
+                "Naturel ou fabriqué",
+                "Uniquement magique",
+                "Toujours invisible",
+                "Toujours géant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Œil naturel, LED artificielle."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Sans capteur adapté, l'information est :",
+              "options": [
+                "Fausse ou absente",
+                "Toujours parfaite",
+                "Toujours colorée",
+                "Toujours bruyante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mauvais capteur = mauvaise mesure."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Capteur et signal sont liés car :",
+              "options": [
+                "Le capteur produit ou reçoit un signal",
+                "Ils n'ont aucun lien",
+                "Le signal mange le capteur",
+                "Le capteur est un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mesure → signal → utilisation."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision Capteurs",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels organes sont des capteurs naturels ?",
+              "options": ["Œil", "Oreille", "Marteau", "Clou"],
+              "correctAnswers": [0, 1],
+              "explanation": "Œil et oreille captent lumière et son."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Un capteur mesure une :",
+              "options": [
+                "Grandeur",
+                "Couleur de crayon",
+                "Page de livre",
+                "Forme de nuage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Température, lumière, son…"
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Signal lumineux : exemple",
+              "options": ["Feu de vélo", "Parfum", "Goût", "Vent seul"],
+              "correctAnswers": [0],
+              "explanation": "Phare = lumière."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Signal sonore : exemple",
+              "options": ["Cloche d'école", "Miroir", "Ombre", "Couleur"],
+              "correctAnswers": [0],
+              "explanation": "On entend la cloche."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Thermomètre →",
+              "options": ["Température", "Son", "Lumière", "Odeur"],
+              "correctAnswers": [0],
+              "explanation": "Capteur classique."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "La chaîne d'info commence par :",
+              "options": ["Capture", "Impression", "Vente", "Sport"],
+              "correctAnswers": [0],
+              "explanation": "Capteur en premier."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Lampe auto + capteur :",
+              "options": [
+                "S'allume la nuit",
+                "Ne marche jamais",
+                "Devient liquide",
+                "Vole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Détecte obscurité."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Microphone capte :",
+              "options": ["Son", "Lumière", "Masse", "Distance seule"],
+              "correctAnswers": [0],
+              "explanation": "Capteur sonore."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Protéger ses yeux du soleil :",
+              "options": [
+                "Lunettes adaptées",
+                "Bouchons d'oreille",
+                "Gants seuls",
+                "Chapeau seul suffit toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire lumière forte."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Un capteur envoie :",
+              "options": ["Un signal", "De la colle", "Du sable", "Du bois"],
+              "correctAnswers": [0],
+              "explanation": "Information transportée."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Communication",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Message et information",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Qu'est-ce qu'un message ?",
+              "options": [
+                "Une information transmise",
+                "Un bruit sans sens toujours",
+                "Une lettre ou un signal porteur de sens",
+                "Un rocher"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Message = info envoyée à quelqu'un."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Communiquer, c'est :",
+              "options": [
+                "Échanger une information",
+                "Dormir",
+                "Couper l'électricité",
+                "Peindre un mur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut émetteur et récepteur."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "L'émetteur :",
+              "options": [
+                "Envoie le message",
+                "Reçoit toujours seul",
+                "Est toujours muet",
+                "Est un caillou"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il produit ou envoie l'info."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Le récepteur :",
+              "options": [
+                "Reçoit le message",
+                "Envoie toujours",
+                "Est toujours une lampe",
+                "Est invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il capte le signal."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Parler au téléphone : message par",
+              "options": ["Son", "Lumière seule", "Odeur", "Goût"],
+              "correctAnswers": [0],
+              "explanation": "Voix = signal sonore."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Lever la main en classe envoie :",
+              "options": [
+                "Un message visuel",
+                "Un parfum",
+                "Un goût",
+                "Un vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gestuelle = communication."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Sans récepteur, le message :",
+              "options": [
+                "N'est pas reçu",
+                "Devient plus fort",
+                "Change en eau",
+                "Disparaît du dictionnaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut quelqu'un ou quelque chose qui reçoit."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Une affiche avec un pictogramme communique par :",
+              "options": ["Image", "Son seul", "Odeur", "Goût"],
+              "correctAnswers": [0],
+              "explanation": "Signal visuel."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "L'information peut voyager par :",
+              "options": [
+                "Lumière ou son",
+                "Uniquement par magie",
+                "Uniquement par eau",
+                "Uniquement par sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signaux lumineux et sonores courants."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Comprendre un message, c'est :",
+              "options": [
+                "Décoder l'information",
+                "Effacer",
+                "Cacher",
+                "Oublier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Donner un sens au signal reçu."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Code oui / non",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Un code simple oui/non peut utiliser :",
+              "options": [
+                "Lumière allumée = oui",
+                "Bip = oui",
+                "Couleur des yeux",
+                "Parfum"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux états clairs : oui ou non."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Lampe éteinte peut signifier :",
+              "options": ["Non", "Oui toujours", "Peut-être", "Deux fois oui"],
+              "correctAnswers": [0],
+              "explanation": "Convention binaire simple."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Deux clignotements peuvent signifier :",
+              "options": [
+                "Un message codé",
+                "Rien jamais",
+                "De la pluie",
+                "De la neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rythme = code."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Un interrupteur ON/OFF est :",
+              "options": [
+                "Un code deux états",
+                "Un livre",
+                "Un animal",
+                "Une montagne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marche ou arrêt."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Panneau rond rouge barré signifie souvent :",
+              "options": [
+                "Interdit",
+                "Obligatoire",
+                "Piste de danse",
+                "Piscine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code visuel = non/interdit."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Croix verte pharmacie : message",
+              "options": ["Visuel codé", "Sonore", "Olfactif", "Gustatif"],
+              "correctAnswers": [0],
+              "explanation": "Symbole reconnu."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Pour décoder, il faut :",
+              "options": [
+                "Connaître le code",
+                "Fermer les yeux",
+                "Ne pas écouter",
+                "Ignorer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même règle pour tous."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Oui/non est le plus simple car :",
+              "options": [
+                "Deux choix seulement",
+                "Infini de choix",
+                "Aucun choix",
+                "Trois cents choix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Binaire = 2 états."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Un drapeau levé peut signifier :",
+              "options": [
+                "Oui ou attention",
+                "Non toujours",
+                "Silence",
+                "Faim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code visuel conventionnel."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Changer le code sans prévenir :",
+              "options": [
+                "Crée des erreurs",
+                "Améliore toujours",
+                "Ne change rien",
+                "Efface le soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous doivent comprendre la même règle."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Communication visuelle",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Messages visuels :",
+              "options": [
+                "Panneau routier",
+                "Gestuelle",
+                "Klaxon seul",
+                "Tambour seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On voit panneau et geste."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Un pictogramme est :",
+              "options": ["Dessin symbolique", "Son", "Odeur", "Saveur"],
+              "correctAnswers": [0],
+              "explanation": "Image code."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Feu vert : souvent",
+              "options": ["On peut avancer", "Stop", "Dormir", "Manger"],
+              "correctAnswers": [0],
+              "explanation": "Code couleur."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Lire un SMS, c'est message :",
+              "options": ["Visuel sur écran", "Olfactif", "Gustatif", "Vent"],
+              "correctAnswers": [0],
+              "explanation": "Texte = lumière de l'écran."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Langue des signes :",
+              "options": [
+                "Communication visuelle",
+                "Communication sonore seule",
+                "Parfum",
+                "Goût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mains et visage visibles."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Récepteur d'un panneau :",
+              "options": [
+                "Conducteur ou piéton",
+                "Thermomètre",
+                "Balance",
+                "Règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Humain qui voit."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Signal lumineux clignotant =",
+              "options": [
+                "Message qui change dans le temps",
+                "Message figé",
+                "Rien",
+                "Odeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Clignoter attire l'attention."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Afficher une flèche indique :",
+              "options": ["Direction", "Température", "Poids", "Son"],
+              "correctAnswers": [0],
+              "explanation": "Code directionnel."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Sans lumière, panneau réfléchissant :",
+              "options": [
+                "Renvoie la lumière des phares",
+                "Émet du parfum",
+                "Fait du bruit seul",
+                "Disparaît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visible la nuit avec phares."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Message visuel clair doit être :",
+              "options": ["Lisible", "Invisible", "Minuscule flou", "Caché"],
+              "correctAnswers": [0],
+              "explanation": "Compréhension rapide."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Communication sonore",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Exemples de messages sonores :",
+              "options": ["Appel de cloche", "Sirène", "Miroir", "Affiche"],
+              "correctAnswers": [0, 1],
+              "explanation": "On entend cloche et sirène."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Crier « au secours » :",
+              "options": [
+                "Message sonore d'urgence",
+                "Message lumineux",
+                "Odeur",
+                "Goût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voix = son."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Un rythme de tambour peut :",
+              "options": [
+                "Porter un code",
+                "Être invisible toujours",
+                "Être une odeur",
+                "Être une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Battements = information."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Récepteur du message vocal :",
+              "options": ["Oreille", "Rétine", "Peau seule", "Nez"],
+              "correctAnswers": [0],
+              "explanation": "Capteur du son."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Parler plus fort peut aider si :",
+              "options": [
+                "Le récepteur est loin",
+                "On veut être invisible",
+                "On éteint la lumière",
+                "On ferme les yeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Intensité sonore."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Silence peut signifier :",
+              "options": [
+                "Non ou arrêt",
+                "Oui fort",
+                "Deux messages",
+                "Trois sirènes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Absence de signal possible."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Sonnerie de téléphone :",
+              "options": ["Message sonore", "Rayon laser", "Parfum", "Glace"],
+              "correctAnswers": [0],
+              "explanation": "Alerte auditive."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Bruits inutiles :",
+              "options": [
+                "Gênent la communication",
+                "Aident toujours",
+                "Sont des images",
+                "Sont des odeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parasites sonores."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Émetteur d'une sifflet de coach :",
+              "options": ["Coach", "Thermomètre", "Miroir", "Cahier"],
+              "correctAnswers": [0],
+              "explanation": "Humain produit le son."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Message sonore court :",
+              "options": [
+                "Va vite à l'oreille",
+                "Ne voyage jamais",
+                "Devient lumière",
+                "Devient eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Propagation dans l'air."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Émetteur et récepteur",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Paires émetteur–récepteur :",
+              "options": [
+                "Enseignant – élève",
+                "Radio – auditeur",
+                "Pierre – pierre",
+                "Livre fermé – rien"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un envoie, l'autre reçoit."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Sans émetteur :",
+              "options": [
+                "Pas de message envoyé",
+                "Message double",
+                "Message lumineux seul",
+                "Message magique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut une source."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Haut-parleur est surtout :",
+              "options": [
+                "Émetteur de son",
+                "Récepteur de lumière",
+                "Capteur de masse",
+                "Thermomètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il diffuse le son."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Micro est surtout :",
+              "options": [
+                "Capteur / émetteur vers fil",
+                "Miroir",
+                "Balance",
+                "Règle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Capte le son pour le transmettre."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Caméra filme : émetteur d'",
+              "options": [
+                "Images (lumière)",
+                "Sons seuls",
+                "Odeurs",
+                "Saveurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal visuel."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Écran de TV : récepteur qui :",
+              "options": [
+                "Affiche l'image",
+                "Capte le son seul",
+                "Pèse",
+                "Mesure température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montre le message visuel."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Dialogue :",
+              "options": [
+                "Deux sens émetteur/récepteur",
+                "Un seul sens toujours",
+                "Aucun message",
+                "Que lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chacun parle et écoute."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Distance grande : signal doit être :",
+              "options": [
+                "Assez fort ou visible",
+                "Toujours invisible",
+                "Toujours odeur",
+                "Toujours goût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récepteur doit percevoir."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Obstacle entre émetteur et récepteur :",
+              "options": [
+                "Peut bloquer le message",
+                "Renforce toujours",
+                "Crée deux soleils",
+                "Efface la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mur bloque son ou lumière."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Bonne communication nécessite :",
+              "options": [
+                "Code commun",
+                "Rien",
+                "Deux langues différentes sans traduction",
+                "Chaos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même signification des signaux."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Distance et signal",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Signaux qui voyagent loin (avec aide) :",
+              "options": [
+                "Lumière du phare",
+                "Son du haut-parleur",
+                "Pensée sans signal",
+                "Odeur sans air"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Phare et HP transmettent à distance."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Plus on s'éloigne, son souvent :",
+              "options": [
+                "Paraît plus faible",
+                "Devient toujours plus fort",
+                "Devient lumière",
+                "Disparaît en couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Atténuation."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Lumière de torche éclaire :",
+              "options": [
+                "Zone devant soi",
+                "Toute la planète",
+                "Le fond de l'océan seul",
+                "La lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Portée limitée."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Mégaphone sert à :",
+              "options": [
+                "Renforcer le message sonore",
+                "Éteindre",
+                "Peindre",
+                "Dormir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amplification."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Message codé par lampes entre collines :",
+              "options": [
+                "Communication visuelle à distance",
+                "Odeur",
+                "Goût",
+                "Vent seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signaux lumineux."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Mur épais entre deux personnes :",
+              "options": [
+                "Le son est atténué",
+                "Le son double",
+                "La lumière traverse toujours",
+                "Rien change"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Obstacle absorbe."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Voir un avion loin : signal",
+              "options": [
+                "Lumière réfléchie ou feux",
+                "Odeur",
+                "Saveur",
+                "Parfum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lumière solaire réfléchie."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Crier dans un tunnel :",
+              "options": [
+                "Écho renvoie le son",
+                "Silence total",
+                "Lumière seule",
+                "Odeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réflexion du son."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Pour être compris de loin, on peut :",
+              "options": [
+                "Agrandir le geste ou parler fort",
+                "Fermer les yeux",
+                "Ne rien faire",
+                "Utiliser odeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal plus perceptible."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Signal faible risque :",
+              "options": [
+                "Message perdu",
+                "Message toujours clair",
+                "Deux messages",
+                "Trois messages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récepteur ne détecte pas."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Signaux de sécurité",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Alertes de sécurité :",
+              "options": [
+                "Sirène incendie",
+                "Feu rouge",
+                "Sticker décoratif",
+                "Doodle"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Son et lumière alertent."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Alarme incendie : message",
+              "options": [
+                "Sonore d'urgence",
+                "Gustatif",
+                "Olfactif seul",
+                "Texte seul invisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Évacuer."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Triangle danger sur route :",
+              "options": [
+                "Panneau visuel",
+                "Instrument de musique",
+                "Aliment",
+                "Jouet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prévenir conducteur."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Bip de ceinture non attachée :",
+              "options": [
+                "Message sonore",
+                "Parfum",
+                "Couleur cheveux",
+                "Goût"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rappel sécurité."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Feu clignotant orange :",
+              "options": ["Attention", "Manger", "Dormir", "Nager"],
+              "correctAnswers": [0],
+              "explanation": "Code attention."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Sortie de secours lumineuse :",
+              "options": ["Guide visuel", "Bloque", "Cache", "Efface"],
+              "correctAnswers": [0],
+              "explanation": "Visible dans le noir."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Message urgence doit être :",
+              "options": [
+                "Clair et rapide",
+                "Confus",
+                "Invisible",
+                "Lent toujours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sécurité des personnes."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Klaxon en danger :",
+              "options": [
+                "Avertit les autres",
+                "Décoration",
+                "Parfum",
+                "Nourriture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Signal sonore."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Pictogramme extincteur :",
+              "options": [
+                "Montre où est l'extincteur",
+                "Joue de la musique",
+                "Mesure masse",
+                "Compte pages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Info visuelle."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Comprendre les signaux de sécurité :",
+              "options": [
+                "Protège",
+                "Rien",
+                "Nuit seulement",
+                "Jour seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réagir correctement."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Clignotements et rythmes",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Un code simple peut utiliser :",
+              "options": [
+                "Clignotements",
+                "Pauses silencieuses",
+                "Couleur des yeux",
+                "Poids"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lumière ON/OFF ou son/silence."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": " trois clignotements rapides peuvent signifier :",
+              "options": [
+                "Lettre ou mot codé",
+                "Rien",
+                "De la pluie",
+                "De la neige"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rythme porte info."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Phare qui clignote sur bateau :",
+              "options": [
+                "Signal lumineux d'identification",
+                "Odeur",
+                "Saveur",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Visible de nuit."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Morse simplifié 6e :",
+              "options": [
+                "Court/long = symboles",
+                "Uniquement parfum",
+                "Uniquement goût",
+                "Uniquement poids"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Durée du signal code."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Pause entre deux bips :",
+              "options": [
+                "Fait partie du code",
+                "Ne compte pas",
+                "Est une odeur",
+                "Est une couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Timing = information."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Clignoter lampe torche SOS :",
+              "options": [
+                "Message lumineux d'aide",
+                "Message gustatif",
+                "Rien",
+                "Vent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code international connu."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Récepteur doit noter :",
+              "options": [
+                "Ordre et durée",
+                "Couleur yeux",
+                "Masse",
+                "Taille chaussure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décoder le rythme."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Même code pour tous permet :",
+              "options": [
+                "Se comprendre",
+                "Se perdre",
+                "Ne jamais parler",
+                "Oublier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convention partagée."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Signal trop rapide :",
+              "options": [
+                "Difficile à comprendre",
+                "Toujours facile",
+                "Devient odeur",
+                "Devient eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récepteur doit suivre."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Clignotement vs lumière fixe :",
+              "options": [
+                "Informations différentes",
+                "Identiques toujours",
+                "Aucun signal",
+                "Odeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Variation = message."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Erreurs de communication",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Causes de mauvaise communication :",
+              "options": [
+                "Bruit qui couvre le message",
+                "Code non connu",
+                "Lumière claire",
+                "Signal adapté"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Parasite ou mauvaise règle."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Mauvais code compris :",
+              "options": [
+                "Action incorrecte",
+                "Toujours parfait",
+                "Deux soleils",
+                "Pluie de livres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Erreur d'interprétation."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Parler dos tourné :",
+              "options": [
+                "Message sonore affaibli",
+                "Message plus clair",
+                "Lumière",
+                "Odeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voix moins directe."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Panneau caché par arbre :",
+              "options": [
+                "Récepteur ne voit pas",
+                "Tout le monde voit",
+                "Son plus fort",
+                "Odeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Obstacle visuel."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Deux significations pour même signal :",
+              "options": [
+                "Confusion",
+                "Clarté",
+                "Deux messages clairs",
+                "Silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ambiguïté dangereuse."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Vérifier que message est reçu :",
+              "options": [
+                "Reformuler ou répéter",
+                "Ignorer",
+                "Dormir",
+                "Peindre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Boucle de communication."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Signal trop faible :",
+              "options": [
+                "Peut être ignoré",
+                "Toujours entendu",
+                "Devient lumière",
+                "Devient parfum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seuil de perception."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Langues différentes sans traduction :",
+              "options": [
+                "Message incompris",
+                "Message clair",
+                "Deux codes identiques",
+                "Silence utile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Code verbal différent."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Corriger une erreur :",
+              "options": [
+                "Renvoyer message clair",
+                "Cacher",
+                "Augmenter confusion",
+                "Éteindre tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nouveau signal explicite."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Bonne habitude :",
+              "options": [
+                "Signaux simples et connus",
+                "Signaux aléatoires",
+                "Aucun signal",
+                "Signaux secrets changeants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fiabilité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision Communication",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Communication 6e utilise surtout :",
+              "options": [
+                "Lumière",
+                "Son",
+                "Protocole internet lycée",
+                "Satellite seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Signaux lumineux et sonores."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Émetteur envoie ; récepteur :",
+              "options": ["Reçoit", "Envoie toujours", "Dort", "Peint"],
+              "correctAnswers": [0],
+              "explanation": "Rôles complémentaires."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Code oui/non :",
+              "options": ["Deux états", "Cent états", "Zéro état", "Infini"],
+              "correctAnswers": [0],
+              "explanation": "Binaire simple."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Feu tricolore : message",
+              "options": ["Visuel codé", "Olfactif", "Gustatif", "Vent"],
+              "correctAnswers": [0],
+              "explanation": "Couleurs = consignes."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Sirène : message",
+              "options": ["Sonore", "Visuel seul", "Goût", "Odeur"],
+              "correctAnswers": [0],
+              "explanation": "Alerte par le bruit."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Décoder =",
+              "options": ["Comprendre le code", "Effacer", "Cacher", "Oublier"],
+              "correctAnswers": [0],
+              "explanation": "Donner sens au signal."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Gestuelle :",
+              "options": ["Visuel", "Son seul", "Parfum", "Glaces"],
+              "correctAnswers": [0],
+              "explanation": "Corps visible."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Obstacle :",
+              "options": [
+                "Peut bloquer signal",
+                "Renforce toujours",
+                "Crée deux lunes",
+                "Efface code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mur, distance…"
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Message clair :",
+              "options": [
+                "Court et connu",
+                "Secret changeant",
+                "Invisible",
+                "Confus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Efficacité."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Information transmise par signal :",
+              "options": ["Communication", "Isolation", "Sommeil", "Peinture"],
+              "correctAnswers": [0],
+              "explanation": "Lien entre émetteur et récepteur."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

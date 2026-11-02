@@ -41,6 +41,7 @@ export type ResumeClient = {
   displayName: string;
   equippedFrame: string | null;
   gems: number;
+  giftsReceived?: any[];
   hearts: number;
   heartsUpdatedAt: string;
   league: string;
@@ -93,6 +94,7 @@ const LIENS: {
   label: string;
 }[] = [
   { href: "/quizzly", icone: MapIcon, label: "Parcours" },
+  { href: "/quizzly/synthese", icone: GraduationCapIcon, label: "Synthèse" },
   { href: "/quizzly/ligues", icone: TrophyIcon, label: "Ligues" },
   { href: "/quizzly/amis", icone: UsersIcon, label: "Amis" },
   { href: "/quizzly/coach", icone: SparklesIcon, label: "Coach" },

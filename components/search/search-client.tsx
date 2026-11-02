@@ -1223,15 +1223,15 @@ export function SearchClient() {
       <SearchHistorySidebar
         hasMore={historyHasMore}
         isLoading={historyLoading}
-        onOpenChange={setHistoryOpen}
-        open={historyOpen}
         onClear={() => void clearRecent()}
         onForget={(id) => void forgetRecent(id)}
         onLoadMore={() => void loadMoreHistory()}
         onOpen={(id) => void openHistoryEntry(id)}
+        onOpenChange={setHistoryOpen}
         onPin={(id, pinned) => void pinRecent(id, pinned)}
         onRename={(id, title) => void renameRecent(id, title)}
         onShare={(texte) => void shareSearchQuery(texte)}
+        open={historyOpen}
         recent={recent}
       />
       <div className="relative flex min-h-dvh min-w-0 flex-1 flex-col">

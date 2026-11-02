@@ -105,9 +105,7 @@ export function MarkdownEditor({
   const onSelectionRef = useRef(onSelection);
   onChangeRef.current = onChange;
   onSelectionRef.current = onSelection;
-  const [mode, setMode] = useState<"source" | "visual">(() =>
-    inspectPageMarkdown(value).supported ? "visual" : "source"
-  );
+  const [mode, setMode] = useState<"source" | "visual">("visual");
   const [findQuery, setFindQuery] = useState("");
   const [replaceWith, setReplaceWith] = useState("");
   const sourceRef = useRef<HTMLTextAreaElement>(null);
@@ -158,8 +156,8 @@ export function MarkdownEditor({
             redo: current.can().redo(),
             strike: current.isActive("strike"),
             task: current.isActive("taskList"),
-            undo: current.can().undo(),
             underline: current.getAttributes("pageStyle").underline === true,
+            undo: current.can().undo(),
             zoneFont: isPageFont(current.getAttributes("pageStyle").font)
               ? current.getAttributes("pageStyle").font
               : "",
@@ -343,13 +341,18 @@ export function MarkdownEditor({
     }
     const form = new FormData();
     form.append("file", file);
-    const response = await fetch("/api/library", { body: form, method: "POST" });
+    const response = await fetch("/api/library", {
+      body: form,
+      method: "POST",
+    });
     const data = (await response.json().catch(() => null)) as {
       file?: { url?: string };
       message?: string;
     } | null;
     if (response.status === 409 || response.status === 429) {
-      toast.message(data?.message || "Le quota de la Bibliothèque est atteint.");
+      toast.message(
+        data?.message || "Le quota de la Bibliothèque est atteint."
+      );
       return;
     }
     if (!response.ok || !data?.file?.url) {
@@ -364,7 +367,11 @@ export function MarkdownEditor({
       ?.chain()
       .focus()
       .insertContent({
-        attrs: { height: kind === "line" || kind === "arrow" ? 48 : 80, kind, width: 200 },
+        attrs: {
+          height: kind === "line" || kind === "arrow" ? 48 : 80,
+          kind,
+          width: 200,
+        },
         type: "pageShape",
       })
       .run();
@@ -379,30 +386,8 @@ export function MarkdownEditor({
   return (
     <div className="flex min-h-0 flex-1 flex-col">
       <div className="flex flex-wrap items-center gap-1 border-b border-border/60 px-2 py-1.5">
-        <div
-          aria-label="Mise en forme"
-          className="flex items-center gap-0.5"
-          role="toolbar"
-        >
-          <button
-            className={toolClass(mode === "visual")}
-            disabled={readOnly}
-            onClick={() => switchMode("visual")}
-            type="button"
-          >
-            Visuel
-          </button>
-          <button
-            className={toolClass(mode === "source")}
-            onClick={() => switchMode("source")}
-            type="button"
-          >
-            Source
-          </button>
-        </div>
         {mode === "visual" && editor && !readOnly ? (
           <>
-            <span className="mx-1 h-4 w-px bg-border" />
             <button
               aria-label="Titre 1"
               aria-pressed={state?.h1}

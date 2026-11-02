@@ -1,0 +1,2728 @@
+{
+  "id": "4e-svt-04",
+  "year": "4e",
+  "subject": "svt",
+  "order": 4,
+  "title": "La cellule et l'organisme",
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Organisation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Découverte de la cellule et microscopie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel scientifique a employé pour la première fois le mot « cellule » en observant une coupe de liège au microscope ?",
+              "options": [
+                "Robert Hooke",
+                "Louis Pasteur",
+                "Gregor Mendel",
+                "Charles Darwin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En 1665, le savant anglais Robert Hooke a observé des alvéoles dans du liège au microscope et les a nommées « cellules » en référence aux cellules des moines."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel instrument d'optique a été indispensable pour découvrir et observer les premières cellules ?",
+              "options": [
+                "Le stéthoscope",
+                "Le microscope optique",
+                "La lunette astronomique",
+                "Le télescope"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le microscope optique utilise des lentilles de verre et la lumière visible pour grossir les objets minuscules invisibles à l'œil nu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le principe fondamental énoncé par la théorie cellulaire au XIXe siècle ?",
+              "options": [
+                "Les cellules naissent spontanément à partir d'eau pure",
+                "Tous les êtres vivants sont constitués d'au moins une cellule",
+                "Seuls les animaux sont constitués de cellules vivantes",
+                "Les cellules végétales sont des structures inertes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La théorie cellulaire stipule que tout être vivant est composé d'une ou plusieurs cellules, et que la cellule est l'unité de base de la vie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel microscope utilise un faisceau d'électrons et permet de visualiser l'intérieur détaillé des organites cellulaires ?",
+              "options": [
+                "La loupe binoculaire",
+                "La loupe à main",
+                "Le microscope électronique",
+                "Le miroir réfléchissant"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le microscope électronique offre un grossissement et une résolution bien supérieurs au microscope optique, révélant les ultrastructures de la cellule."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant la microscopie en biologie sont correctes ?",
+              "options": [
+                "Le microscope optique utilise la lumière visible pour éclairer l'échantillon",
+                "La loupe binoculaire permet de voir des détails nanométriques de l'ADN",
+                "Le microscope électronique permet des grossissements de plusieurs centaines de milliers de fois",
+                "Une cellule humaine moyenne est aisément visible sans aucun instrument optique"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le microscope optique s'appuie sur la lumière visible tandis que le microscope électronique atteint de très forts grossissements indispensables pour explorer les organites."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle unité de mesure est la plus couramment utilisée pour exprimer le diamètre d'une cellule animale moyenne ?",
+              "options": [
+                "Le micromètre (µm)",
+                "Le millimètre (mm)",
+                "Le mètre (m)",
+                "Le kilomètre (km)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le micromètre (1 µm = 0,001 mm ou 10⁻⁶ m) est l'unité de prédilection pour mesurer la plupart des cellules, dont le diamètre est compris entre 10 et 50 µm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que dépose-t-on souvent sur une préparation microscopique pour mettre en valeur le noyau ou d'autres constituants cellulaires ?",
+              "options": [
+                "De l'eau de Javel concentrée",
+                "Un colorant biologique comme le bleu de méthylène",
+                "Du vinaigre blanc pur",
+                "De l'huile de moteur minérale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les colorants biologiques (comme le bleu de méthylène ou l'eau iodée) se fixent sur certains constituants cellulaires pour créer des contrastes visibles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sur quelle partie mobile du microscope optique pose-t-on la lame de verre contenant la préparation biologique ?",
+              "options": [
+                "Dans l'oculaire",
+                "Sous le miroir",
+                "Sur la platine",
+                "Sur la vis micrométrique"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La platine accueille la lame maintenue par des valets, percée d'un trou central laissant passer la lumière du condenseur."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Parmi ces scientifiques, lesquels ont joué un rôle majeur dans l'élaboration de la théorie cellulaire ?",
+              "options": [
+                "Theodor Schwann",
+                "Matthias Schleiden",
+                "Isaac Newton",
+                "Marie Curie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Schleiden (botaniste) et Schwann (zoologiste) ont établi en 1838-1839 que plantes et animaux sont tous composés de cellules, fondant la théorie cellulaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que stipule le principe formulé par Rudolf Virchow : « Toute cellule provient d'une cellule préexistante » ?",
+              "options": [
+                "La matière minérale se transforme spontanément en cellules vivantes",
+                "Les cellules se multiplient par division d'une cellule mère déjà existante",
+                "Les cellules apparaissent par magie dans la poussière en décomposition",
+                "Les cellules ne peuvent jamais se diviser ni se reproduire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ce principe réfute la génération spontanée : une nouvelle cellule naît toujours de la division d'une cellule mère préexistante."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La structure fondamentale de la cellule",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle fine membrane délimite le milieu intérieur de la cellule et contrôle ses échanges avec l'extérieur ?",
+              "options": [
+                "La membrane plasmique",
+                "La paroi osseuse",
+                "La carapace de chitine",
+                "La cuticule calcaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La membrane plasmique est la barrière sélective qui délimite toutes les cellules vivantes, isolant le cytoplasme du milieu extracellulaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on le milieu gélatineux intérieur de la cellule dans lequel baignent les différents organites ?",
+              "options": [
+                "Le suc gastrique",
+                "Le cytoplasme",
+                "Le plasma sanguin",
+                "L'hémolymphe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le cytoplasme est constitué d'un liquide aqueux appelé cytosol et des divers organites cellulaires indispensables à la vie cellulaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel organite volumineux, délimité par une enveloppe, renferme l'information génétique (ADN) chez les eucaryotes ?",
+              "options": [
+                "La vacuole de réserve",
+                "La mitochondrie",
+                "Le noyau",
+                "Le ribosome"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le noyau est le centre de contrôle génétique de la cellule eucaryote ; il abrite l'ADN sous forme de chromatine ou de chromosomes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on les cellules dont le matériel génétique est contenu dans un véritable noyau ?",
+              "options": [
+                "Les cellules procaryotes",
+                "Les cellules bactériennes",
+                "Les cellules eucaryotes",
+                "Les particules virales"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les cellules eucaryotes (du grec « eu » vrai et « karyon » noyau) possèdent un noyau délimité par une enveloppe nucléaire."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les trois constituants majeurs que l'on retrouve dans toute cellule eucaryote typique ?",
+              "options": [
+                "Une membrane plasmique",
+                "Un cytoplasme",
+                "Une coquille rigide minérale",
+                "Un noyau cellulaire délimité"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Toute cellule eucaryote possède au minimum une membrane plasmique, un cytoplasme et un noyau contenant l'ADN."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sous quelle forme condensée l'ADN du noyau devient-il clairement visible lors de la division cellulaire ?",
+              "options": [
+                "Sous forme de grains d'amidon",
+                "Sous forme de chromosomes",
+                "Sous forme de gouttelettes lipidiques",
+                "Sous forme de cristaux de sel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Lors de la division, la chromatine s'enroule et se condense pour former des chromosomes visibles au microscope optique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le rôle essentiel de la membrane plasmique d'une cellule ?",
+              "options": [
+                "Bloquer absolument tout passage d'eau et de matière",
+                "Former un squelette rigide indéformable",
+                "Contrôler de façon sélective les échanges de substances avec le milieu extérieur",
+                "Convertir les rayons UV en énergie électrique"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La membrane plasmique est semi-perméable : elle permet l'entrée des nutriments et du dioxygène tout en laissant sortir les déchets."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les organismes unicellulaires dépourvus de noyau individualisé, comme les bactéries ?",
+              "options": [
+                "Les eucaryotes",
+                "Les procaryotes",
+                "Les champignons filamenteux",
+                "Les protozoaires complexes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les procaryotes (comme les bactéries) possèdent un chromosome circulaire libre dans le cytoplasme, sans enveloppe nucléaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans quelle partie aqueuse du cytoplasme se déroulent de nombreuses réactions métaboliques cellulaires ?",
+              "options": [
+                "Dans le cytosol (hyaloplasme)",
+                "Dans l'espace extracellulaire",
+                "Dans l'air ambiant",
+                "Dans la sève brute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cytosol est la phase liquide du cytoplasme, riche en eau, en ions, en sucres et en enzymes nécessaires au métabolisme."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle caractéristique commune partagent TOUS les êtres vivants de notre planète sans exception ?",
+              "options": [
+                "Ils possèdent tous un squelette osseux",
+                "Ils possèdent tous des poumons pour respirer",
+                "Ils sont tous formés d'une ou plusieurs cellules",
+                "Ils se déplacent tous activement à l'aide de pattes"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La cellule est l'unité structurale universelle du vivant : de la bactérie à la baleine, tout organisme vivant est cellulaire."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Cellules animales et cellules végétales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel organite de couleur verte est présent dans les cellules végétales chlorophylliennes pour réaliser la photosynthèse ?",
+              "options": [
+                "La mitochondrie",
+                "Le centrosome",
+                "Le chloroplaste",
+                "Le lysosome"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les chloroplastes renferment la chlorophylle et captent l'énergie lumineuse pour synthétiser de la matière organique lors de la photosynthèse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle enveloppe rigide entoure la membrane plasmique des cellules végétales et leur confère une forme géométrique ?",
+              "options": [
+                "La paroi pectocellulosique",
+                "La cuticule calcaire",
+                "La membrane squelettique de chitine",
+                "La couche graisseuse externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La paroi pectocellulosique (ou paroi végétale) est une structure rigide entourant la cellule végétale, assurant son soutien mécanique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel vaste compartiment aqueux occupe souvent plus de 80 % du volume d'une cellule végétale adulte ?",
+              "options": [
+                "Le globule lipidique géant",
+                "La grande vacuole centrale",
+                "Le lysosome volumineux",
+                "La vésicule biliaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La vacuole centrale stocke l'eau, des ions et des réserves, et participe au maintien de la pression de turgescence de la cellule végétale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle forme géométrique régulière présentent généralement les cellules végétales observées dans une feuille d'élodée ?",
+              "options": [
+                "Une forme sphérique et isolée",
+                "Une forme rectangulaire ou polyédrique bien délimitée",
+                "Une forme d'étoile très souple et variable",
+                "Une forme d'anneau creux sans cytoplasme"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Grâce à leur paroi rigide, les cellules végétales ont une forme polygonale ou rectangulaire caractéristique et sont souvent jointives."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels constituants sont spécifiques aux cellules végétales chlorophylliennes et absents des cellules animales types ?",
+              "options": [
+                "Les chloroplastes",
+                "La paroi pectocellulosique",
+                "La membrane plasmique",
+                "Le noyau cellulaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les chloroplastes et la paroi pectocellulosique caractérisent les cellules végétales. La membrane plasmique et le noyau sont communs aux deux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi les cellules buccales humaines observées au microscope ont-elles des contours souples et arrondis ?",
+              "options": [
+                "Parce qu'elles n'ont pas de noyau cellulaire",
+                "Parce qu'elles ne possèdent pas de paroi rigide, seulement une membrane plasmique souple",
+                "Parce qu'elles sont composées uniquement d'air inspiré",
+                "Parce que ce sont des cellules végétales mortes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les cellules animales ne possèdent pas de paroi externe rigide : leur membrane plasmique souple leur donne une forme plus arrondie et deformable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel pigment végétal donne leur couleur verte aux chloroplastes des feuilles ?",
+              "options": [
+                "L'hémoglobine",
+                "La mélanine",
+                "La chlorophylle",
+                "Le carotène"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La chlorophylle est le pigment photosynthétique vert qui absorbe la lumière rouge et bleue tout en réfléchissant la lumière verte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel organite indispensable à la respiration cellulaire et à la production d'énergie trouve-t-on chez les animaux ET les végétaux ?",
+              "options": [
+                "La mitochondrie",
+                "Le chloroplaste",
+                "La paroi cellulaire",
+                "Le stomate foliaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mitochondrie est présente dans toutes les cellules eucaryotes (animales comme végétales) pour produire l'énergie par respiration."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Parmi les structures suivantes, lesquelles sont présentes dans une cellule de feuille verte d'oignon ou d'élodée ?",
+              "options": [
+                "Des chloroplastes",
+                "Des mitochondries",
+                "Un noyau cellulaire",
+                "Des écailles osseuses"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Une cellule végétale foliaire possède des chloroplastes pour la photosynthèse, des mitochondries pour respirer et un noyau contenant l'ADN."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que se passe-t-il dans une cellule végétale lorsque sa vacuole se vide d'eau lors d'un manque prolongé d'arrosage ?",
+              "options": [
+                "La cellule gonfle et explose brutalement",
+                "La cellule perd sa turgescence (plasmolyse) et la plante fane",
+                "La plante produit immédiatement de nouvelles fleurs",
+                "La paroi pectocellulosique se liquéfie totalement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Quand la vacuole se dégonfle, la pression de turgescence diminue : la cellule rétrécit à l'intérieur de sa paroi et la tige ramollit (flétrissement)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Organismes unicellulaires et pluricellulaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un être vivant entièrement constitué d'une seule cellule assurant toutes ses fonctions vitales ?",
+              "options": [
+                "Un organisme pluricellulaire",
+                "Un organisme unicellulaire",
+                "Un organisme acellulaire",
+                "Un organisme bicellulaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Un organisme unicellulaire est formé d'une cellule unique qui accomplit seule la nutrition, la respiration, la reproduction et la motricité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Parmi les êtres vivants suivants, lequel est un exemple classique d'organisme unicellulaire eucaryote vivant en eau douce ?",
+              "options": [
+                "La paramécie",
+                "La grenouille rousse",
+                "Le saule pleureur",
+                "Le ver de terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La paramécie est un protozoaire cilié d'eau douce : c'est un organisme unicellulaire eucaryote complexe et très mobile."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment la paramécie se déplace-t-elle avec agilité dans son milieu aquatique ?",
+              "options": [
+                "Grâce à deux ailes membraneuses",
+                "Grâce aux battements coordonnés de milliers de cils vibratiles",
+                "En s'appuyant sur des pattes palmées",
+                "En ondulant une queue cartilagineuse"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La surface de la paramécie est recouverte de cils vibratiles dont les battements synchronisés propulsent l'organisme dans l'eau."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La levure utilisée pour faire lever le pain ou fabriquer la bière est un organisme unicellulaire appartenant au groupe des :",
+              "options": [
+                "Bactéries procaryotes",
+                "Végétaux chlorophylliens",
+                "Champignons microscopiques (mycètes)",
+                "Animaux invertébrés"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La levure de boulanger (Saccharomyces cerevisiae) est un champignon eucaryote unicellulaire qui réalise la fermentation."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels organismes parmi les suivants sont des êtres vivants unicellulaires ?",
+              "options": [
+                "La levure de bière",
+                "La bactérie intestinale Escherichia coli",
+                "Le papillon monarque",
+                "Le sapin des Vosges"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La levure et la bactérie sont formées d'une seule cellule. Le papillon et le sapin sont des organismes pluricellulaires complexes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment fonctionnent les cellules au sein d'un organisme pluricellulaire comme l'Homme ou un arbre ?",
+              "options": [
+                "Chaque cellule est isolée et ignore les autres",
+                "Les cellules se spécialisent et coopèrent pour assurer les grandes fonctions",
+                "Une seule cellule travaille pendant que toutes les autres dorment",
+                "Les cellules changent d'espèce vivante chaque jour"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chez les pluricellulaires, les cellules se différencient et s'associent en tissus spécialisés qui coopèrent au sein de l'organisme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mode de reproduction asexuée observe-t-on chez la levure lorsqu'une petite cellule fille apparaît sur la cellule mère ?",
+              "options": [
+                "La ponte d'œufs microscopiques",
+                "Le bourgeonnement",
+                "La pollinisation anémophile",
+                "La germination de graines"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le bourgeonnement consiste en l'apparition d'une excroissance qui grandit puis se détache pour former une nouvelle levure autonome."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur du nombre de cellules composant le corps d'un être humain adulte ?",
+              "options": [
+                "Environ 10 000 cellules",
+                "Quelques millions de cellules",
+                "Plusieurs dizaines de milliers de milliards de cellules",
+                "Exactement 1 milliard de cellules"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le corps humain compte environ 30 à 40 000 milliards de cellules (3 à 4 × 10¹³), toutes issues de la cellule-œuf initiale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la particularité fondamentale d'une bactérie par rapport à une cellule de paramécie ou d'être humain ?",
+              "options": [
+                "Elle possède dix noyaux indépendants",
+                "C'est un procaryote dont l'ADN n'est pas enfermé dans un noyau délimité",
+                "Elle mesure toujours plus de 5 millimètres de long",
+                "Elle est toujours formée de plusieurs tissus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La bactérie est un organisme procaryote : son matériel génétique baigne directement dans le cytoplasme sans enveloppe nucléaire."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels avantages apporte l'organisation pluricellulaire par rapport à la vie unicellulaire ?",
+              "options": [
+                "La spécialisation efficace des cellules pour des tâches variées (digestion, défense, motricité)",
+                "L'acquisition d'une plus grande taille corporelle et d'une autonomie face à l'environnement",
+                "L'obligation de vivre exclusivement dans des sources d'eau bouillante",
+                "La capacité de réparer ou renouveler des tissus endommagés"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La pluricellularité permet la division du travail entre cellules spécialisées, une plus grande taille et la capacité de régénération tissulaire."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "De la cellule au tissu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la définition biologique exacte d'un « tissu » chez les êtres vivants pluricellulaires ?",
+              "options": [
+                "Un ensemble de cellules semblables coopérant pour accomplir une fonction précise",
+                "Une pièce d'étoffe tissée recouvrant la surface d'un animal",
+                "Un organe complet et autonome comme le foie ou le rein",
+                "Une chaîne d'atomes de carbone isolée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tissu est un groupe de cellules de même structure et de même origine, coordonnées pour assurer une tâche biologique déterminée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le processus au cours duquel une cellule souche acquiert une forme et des fonctions spécialisées ?",
+              "options": [
+                "La dégénérescence cellulaire",
+                "La différenciation cellulaire",
+                "La calcification spontanée",
+                "La liquéfaction métabolique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La différenciation cellulaire permet à des cellules issues de la cellule-œuf de se spécialiser (neurone, cellule musculaire, etc.)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel grand type de tissu recouvre les surfaces du corps (peau) et tapisse les cavités internes (estomac, intestins) ?",
+              "options": [
+                "Le tissu musculaire strié",
+                "Le tissu épithélial (ou épithélium)",
+                "Le tissu osseux spongieux",
+                "Le tissu adipeux profond"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le tissu épithélial est formé de cellules jointives reposant sur une lame basale ; il protège et assure l'absorption ou la sécrétion."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel tissu biologique possède des cellules capables de se contracter pour produire des mouvements et des forces mécaniques ?",
+              "options": [
+                "Le tissu nerveux",
+                "Le tissu cartilagineux",
+                "Le tissu musculaire",
+                "Le tissu adipeux"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le tissu musculaire est constitué de myocytes contenant des filaments contractiles d'actine et de myosine produisant le mouvement."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels grands types de tissus fondamentaux constituent le corps des animaux vertébrés ?",
+              "options": [
+                "Le tissu musculaire",
+                "Le tissu nerveux",
+                "Le tissu épithélial",
+                "Le tissu chlorophyllien foliaire"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les quatre grands tissus animaux sont l'épithélium, le tissu conjonctif, le tissu musculaire et le tissu nerveux. Le chlorophyllien est végétal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel tissu spécialisé est responsable de la transmission très rapide des messages électriques à travers l'organisme ?",
+              "options": [
+                "Le tissu nerveux",
+                "Le tissu osseux",
+                "Le tissu adipeux",
+                "Le tissu cutané superficiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tissu nerveux (composé de neurones et de cellules gliales) achemine et traite les signaux électriques (influx nerveux)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel tissu liquide particulier est constitué de cellules baignant dans une matrice liquide appelée plasma ?",
+              "options": [
+                "La bile hépatique",
+                "La sueur cutanée",
+                "Le sang",
+                "L'urine vésicale"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le sang est un tissu conjonctif liquide constitué d'hématies, de leucocytes et de plaquettes baignant dans le plasma sanguin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chez les végétaux, quel tissu conducteur tubulaire transporte la sève brute (eau et sels minéraux) des racines aux feuilles ?",
+              "options": [
+                "Le xylème",
+                "L'écorce externe",
+                "Le parenchyme chlorophyllien",
+                "L'épiderme imperméable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le xylème est formé de vaisseaux conducteurs à parois lignifiées qui montent la sève brute depuis les racines jusqu'aux feuilles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel tissu végétal situé dans l'épaisseur des feuilles est le siège principal de la photosynthèse grâce à ses chloroplastes ?",
+              "options": [
+                "Le tissu osseux végétal",
+                "Le parenchyme chlorophyllien (ou mésophylle)",
+                "Le liège protecteur du tronc",
+                "Le sclérenchyme de soutien"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le parenchyme chlorophyllien (palissadique et lacuneux) contient des cellules riches en chloroplastes réalisant la photosynthèse."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques unissent les cellules appartenant à un même tissu biologique ?",
+              "options": [
+                "Une forme et des structures adaptées à une même fonction biologique",
+                "Une communication et une adhérence étroites entre cellules voisines",
+                "Un ADN complètement différent d'une cellule à l'autre dans le même corps",
+                "Une coopération coordonnée au service du tissu"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les cellules d'un même tissu possèdent le même ADN mais expriment les mêmes gènes de spécialisation et communiquent entre elles."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Des tissus aux organes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « organe » au sein d'un organisme pluricellulaire complexe ?",
+              "options": [
+                "Une structure formée de plusieurs tissus associés pour remplir une fonction précise",
+                "Une seule cellule isolée flottant dans un liquide corporel",
+                "Une molécule minérale inerte sans activité biologique",
+                "Un groupe de bactéries symbiotiques extérieures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un organe (comme le cœur, le foie ou une feuille) regroupe plusieurs tissus différents dont la coopération assure une fonction vitale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel organe musculaire creux agit comme une pompe pour propulser le sang dans l'ensemble de l'organisme ?",
+              "options": [
+                "Le poumon",
+                "Le cœur",
+                "La rate",
+                "La vésicule biliaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le cœur est un organe constitué d'un tissu musculaire puissant (le myocarde), de tissu conjonctif, d'un épithélium et de nerfs."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels tissus trouve-t-on réunis dans la paroi de l'estomac pour assurer le brassage et la digestion chimique des aliments ?",
+              "options": [
+                "Uniquement du tissu osseux rigide",
+                "Uniquement des fibres végétales en bois",
+                "Un épithélium glandulaire, des couches de tissus musculaires et du tissu nerveux",
+                "Exclusivement du tissu adipeux jaune"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'estomac possède un épithélium sécréteur d'acide et d'enzymes, des muscles lisses pour brasser le chyme et des nerfs pour réguler."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Chez les végétaux à fleurs, quel organe aérien spécialisé est le siège majeur de la photosynthèse et de la transpiration ?",
+              "options": [
+                "La feuille",
+                "La racine pivotante",
+                "L'écorce racinaire",
+                "La coiffe terminale souterraine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La feuille est un organe végétal aplati formé d'un épiderme protecteur, d'un parenchyme photosynthétique et de vaisseaux conducteurs."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les éléments suivants, lesquels sont des organes du corps humain ?",
+              "options": [
+                "Le poumon",
+                "Le rein",
+                "La molécule d'hémoglobine",
+                "Le cerveau"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le poumon, le rein et le cerveau sont des organes. L'hémoglobine est une molécule (protéine) contenue dans les globules rouges."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel organe végétal souterrain permet à la plante de s'ancrer solidement dans le sol et d'absorber l'eau et les sels minéraux ?",
+              "options": [
+                "La fleur",
+                "La tige aérienne",
+                "La racine",
+                "Le bourgeon terminal"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La racine est l'organe qui ancre le végétal et absorbe la solution du sol grâce à sa zone de poils absorbants."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le plus grand organe du corps humain par sa surface, formé de l'épiderme superficiel et du derme conjonctif ?",
+              "options": ["La peau", "Le foie", "L'estomac", "La langue"],
+              "correctAnswers": [0],
+              "explanation": "La peau est un organe complet couvrant environ 2 m² chez l'adulte, servant de barrière protectrice, régulatrice et sensorielle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel organe respiratoire assure les échanges gazeux (absorption d'O2 et rejet de CO2) entre l'air ambiant et le sang ?",
+              "options": [
+                "La rate",
+                "Le poumon",
+                "Le pancréas",
+                "La glande thyroïde"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les poumons contiennent des millions d'alvéoles pulmonaires entourées de capillaires, réalisant les échanges gazeux vitaux."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Quels tissus coopèrent dans une feuille végétale pour assurer ses fonctions biologiques ?",
+              "options": [
+                "L'épiderme muni de stomates pour les échanges gazeux",
+                "Le parenchyme chlorophyllien pour fabriquer les sucres par photosynthèse",
+                "Les nervures conductrices (xylème et phloème) pour transporter les sèves",
+                "Un tissu musculaire contractile pour battre des ailes"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La feuille combine un épiderme à cuticule et stomates, un parenchyme photosynthétique et des vaisseaux conducteurs de sève."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lorsque l'un des tissus composant un organe vital est détruit par une lésion ou une maladie ?",
+              "options": [
+                "L'organe continue à fonctionner sans la moindre anomalie",
+                "Le fonctionnement global de l'organe est perturbé ou gravement compromis",
+                "L'organe se transforme instantanément en tissu osseux",
+                "Tous les autres organes du corps disparaissent aussitôt"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque tissu apporte sa contribution indispensable : la perte d'un tissu (comme le muscle cardiaque lors d'un infarctus) altère tout l'organe."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Des organes aux appareils et systèmes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on un « appareil » ou un « système » en physiologie humaine ?",
+              "options": [
+                "Un groupe d'organes coordonnés concourant à la réalisation d'une même grande fonction vitale",
+                "Un instrument chirurgical en métal utilisé par les médecins",
+                "Une seule cellule géante assurant toute la digestion",
+                "Un ensemble de bactéries vivant dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un appareil ou système (digestif, respiratoire, circulatoire...) associe plusieurs organes qui travaillent en synergie pour une fonction vitale."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels organes principaux composent l'appareil digestif chez l'être humain ?",
+              "options": [
+                "Bouche, œsophage, estomac, intestin grêle et gros intestin",
+                "Trachée, bronches, bronchioles et alvéoles pulmonaires",
+                "Cerveau, cervelet, moelle épinière et nerfs périphériques",
+                "Cœur, artères, capillaires sanguins et veines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'appareil digestif est formé du tube digestif (bouche, œsophage, estomac, intestins) et de glandes annexes (foie, pancréas, glandes salivaires)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel système assure le transport continu des nutriments, du dioxygène et des déchets dans tout le corps ?",
+              "options": [
+                "Le système respiratoire",
+                "Le système circulatoire (ou cardiovasculaire)",
+                "Le système tégumentaire",
+                "Le système squelettique passif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le système cardiovasculaire (cœur et vaisseaux sanguins) propulse et achemine le sang vers tous les organes du corps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel appareil permet de filtrer en permanence le sang pour évacuer les déchets azotés solubles sous forme d'urine ?",
+              "options": [
+                "L'appareil digestif",
+                "L'appareil respiratoire",
+                "L'appareil urinaire",
+                "L'appareil reproducteur"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'appareil urinaire (reins, uretères, vessie, urètre) épure le sang en fabriquant et en éliminant l'urine."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels appareils ou systèmes collaborent étroitement lors de la réalisation d'une course à pied ?",
+              "options": [
+                "L'appareil locomoteur (muscles et os)",
+                "L'appareil respiratoire (ventilation accrue)",
+                "L'appareil cardiovasculaire (débit sanguin augmenté)",
+                "Le système tectonique terrestre"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La course mobilise les muscles (locomoteur), accélère la respiration (respiratoire) et le cœur (circulatoire) pour oxygéner l'organisme."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel système commande et coordonne les fonctions corporelles grâce à des signaux électriques transmis par les nerfs ?",
+              "options": [
+                "Le système nerveux",
+                "Le système musculaire seul",
+                "Le système urinaire",
+                "Le système digestif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système nerveux (cerveau, moelle épinière, nerfs) capte les informations, les intègre et ordonne les réponses appropriées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel appareil a pour fonction biologique d'assurer la production des gamètes et la perpétuation de l'espèce ?",
+              "options": [
+                "L'appareil respiratoire",
+                "L'appareil reproducteur",
+                "L'appareil circulatoire",
+                "L'appareil excréteur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'appareil reproducteur (gonades et voies génitales) produit les cellules reproductrices et permet la reproduction sexuée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chez une plante à fleurs, comment nomme-t-on l'ensemble des organes aériens formés par la tige, les rameaux et les feuilles ?",
+              "options": [
+                "Le système racinaire profond",
+                "L'appareil caulinaire",
+                "Le réseau mycorhizien souterrain",
+                "Le bulbe écailleux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'appareil caulinaire (du latin « caulis », tige) regroupe les organes aériens végétatifs de la plante (tige, bourgeons, feuilles)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel système spécialisé assure la défense de l'organisme contre les bactéries pathogènes, les virus et les cellules anormales ?",
+              "options": [
+                "Le système immunitaire",
+                "Le système digestif",
+                "Le système squelettique",
+                "Le système respiratoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système immunitaire (leucocytes, ganglions, rate, moelle osseuse) protège l'organisme contre les infections et agressions extérieures."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Pour quelles raisons dit-on que les appareils du corps humain sont interdépendants ?",
+              "options": [
+                "L'appareil respiratoire fournit le dioxygène transporté par l'appareil circulatoire",
+                "L'appareil digestif absorbe les nutriments qui alimentent les cellules de tous les organes",
+                "Le système nerveux et les hormones régulent le fonctionnement du cœur et des poumons",
+                "Chaque organe vit de manière autonome sans recevoir aucun liquide nourricier"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Tous les appareils du corps coopèrent étroitement : la défaillance de l'un retentit immédiatement sur les autres."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les cellules spécialisées du corps humain",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle cellule hautement ramifiée du système nerveux est spécialisée dans la genèse et la conduction de l'influx nerveux ?",
+              "options": [
+                "L'hématie",
+                "Le neurone",
+                "L'adipocyte",
+                "Le fibroblaste"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le neurone possède un corps cellulaire, des dendrites réceptrices et un long axone conducteur d'influx nerveux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle forme particulière présente l'hématie (globule rouge) humaine pour circuler facilement et optimiser les échanges gazeux ?",
+              "options": [
+                "Un disque biconcave sans noyau",
+                "Une sphère rigide hérissée de pointes",
+                "Un cube dur entouré d'une paroi de bois",
+                "Un filament ramifié de 20 centimètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hématie humaine mature est anucléée et a une forme de disque biconcave souple qui maximise sa surface d'échange d'oxygène."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle protéine riche en fer, présente en abondance dans les globules rouges, fixe et transporte le dioxygène ?",
+              "options": [
+                "La mélanine",
+                "La kératine",
+                "L'hémoglobine",
+                "La myosine"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'hémoglobine donne sa couleur rouge au sang et fixe le dioxygène au niveau des poumons pour le libérer dans les organes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles cellules allongées, riches en filaments contractiles, sont capables de se raccourcir pour générer un mouvement ?",
+              "options": [
+                "Les cellules osseuses (ostéocytes)",
+                "Les cellules musculaires (myocytes)",
+                "Les cellules adipeuses",
+                "Les cellules épidermiques"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les myocytes (fibres musculaires) renferment des myofibrilles d'actine et de myosine qui glissent pour raccourcir la cellule."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Parmi les cellules suivantes, lesquelles sont des cellules différenciées spécialisées du corps humain ?",
+              "options": [
+                "Le neurone",
+                "Le spermatozoïde",
+                "Le lymphocyte (globule blanc)",
+                "La cellule de garde de stomate végétal"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le neurone, le spermatozoïde et le lymphocyte sont des cellules humaines spécialisées. La cellule stomatique appartient aux plantes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle cellule reproductrice mâle est pourvue d'un long flagelle lui permettant de nager activement vers l'ovocyte ?",
+              "options": [
+                "Le spermatozoïde",
+                "L'ovocyte",
+                "Le neurone moteur",
+                "Le thrombocyte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le spermatozoïde est une cellule mobile profilée : sa tête porte l'ADN, sa pièce intermédiaire fournit l'énergie et son flagelle ondule."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle cellule du tissu adipeux est spécialisée dans le stockage des graisses sous forme d'une grosse gouttelette de lipides ?",
+              "options": [
+                "L'ostéocyte",
+                "L'adipocyte",
+                "Le néphron",
+                "Le chondrocyte"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'adipocyte emmagasine les triglycérides dans une volumineuse vacuole lipidique qui repousse le cytoplasme et le noyau en périphérie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel type de globule blanc patrouille dans les tissus pour englober et détruire les débris et bactéries par phagocytose ?",
+              "options": [
+                "L'hématie anucléée",
+                "La plaquette sanguine",
+                "Le macrophage (phagocyte)",
+                "Le globule rouge"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le macrophage est un gros leucocyte capable de se déformer pour ingérer et digérer des agents pathogènes par phagocytose."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les cellules d'un même individu ont-elles des formes si différentes alors qu'elles possèdent toutes le même ADN d'origine ?",
+              "options": [
+                "Parce que chaque cellule possède un ADN totalement différent issu du hasard",
+                "Parce que seuls les gènes nécessaires à leur fonction spécifique sont actifs (exprimés)",
+                "Parce que les cellules changent d'ADN tous les dimanches soir",
+                "Parce que les cellules mangent des aliments différents selon leur emplacement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Toutes les cellules d'un organisme ont le même génome, mais l'expression sélective de certains gènes détermine leur spécialisation."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles adaptations structurales illustrent parfaitement le lien entre forme et fonction chez les cellules humaines ?",
+              "options": [
+                "L'axone très allongé du neurone pour transporter l'influx sur de grandes distances",
+                "La forme biconcave et fine de l'hématie qui maximise les échanges d'oxygène",
+                "Le flagelle mobile du spermatozoïde qui assure sa progression dans les voies génitales",
+                "La présence d'une carapace d'acier entourant les globules blancs"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La morphologie d'une cellule spécialisée est admirablement adaptée à sa mission biologique au sein de l'organisme."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Échelles du vivant et ordres de grandeur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle unité de longueur correspond à un millionième de mètre (10⁻⁶ m) ou à un millième de millimètre ?",
+              "options": [
+                "Le micromètre (µm)",
+                "Le nanomètre (nm)",
+                "Le millimètre (mm)",
+                "Le centimètre (cm)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 micromètre (1 µm) = 10⁻⁶ m = 0,001 mm. C'est l'échelle de mesure typique de la cellule et des gros organites."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur de la taille d'une cellule animale moyenne du corps humain ?",
+              "options": [
+                "1 à 2 millimètres",
+                "10 à 50 micromètres (µm)",
+                "Moins de 0,01 nanomètre",
+                "5 à 10 centimètres"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La majorité des cellules humaines ont un diamètre variant entre 10 et 50 µm (une hématie mesure environ 7 à 8 µm)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur de la taille d'une bactérie classique comme un bacille ou un staphylocoque ?",
+              "options": [
+                "10 centimètres",
+                "5 millimètres",
+                "1 à 2 micromètres (µm)",
+                "500 nanomètres de rayon de molécule"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les bactéries mesurent généralement entre 1 et 5 µm, soit environ dix fois moins qu'une cellule eucaryote moyenne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la plus petite unité vivante structurale et fonctionnelle capable de vivre de façon autonome ?",
+              "options": ["La cellule", "L'organe", "Le tissu", "L'appareil"],
+              "correctAnswers": [0],
+              "explanation": "La cellule est la plus petite entité biologique possédant toutes les caractéristiques du vivant (nutrition, métabolisme, reproduction)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles progressions d'échelles respectent l'ordre croissant du plus petit au plus grand dans le monde vivant ?",
+              "options": [
+                "Molécule d'ADN < Organite (mitochondrie) < Cellule < Tissu < Organe",
+                "Atome de carbone < Molécule de glucose < Bactérie < Cellule humaine < Organisme",
+                "Organe < Tissu < Cellule < Molécule < Atome",
+                "Organisme < Organe < Tissu < Cellule < Atome"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'organisation biologique s'échelonne des atomes aux molécules, puis aux organites, cellules, tissus, organes et organismes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur de la taille d'un virus comme celui de la grippe ou du coronavirus ?",
+              "options": [
+                "Environ 100 nanomètres (nm)",
+                "Environ 5 millimètres",
+                "Environ 50 micromètres",
+                "Environ 1 mètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les virus mesurent entre 20 et 300 nm (0,02 à 0,3 µm) ; ils sont invisibles au microscope optique classique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel instrument d'observation est indispensable pour visualiser des structures biologiques de l'ordre du nanomètre ?",
+              "options": [
+                "La loupe de botaniste",
+                "Le microscope électronique",
+                "Le miroir grossissant",
+                "L'œil nu avec une règle graduée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le microscope électronique (à transmission ou à balayage) permet d'observer des détails de l'ordre du nanomètre (membrane, virus, ADN)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'œuf d'autruche ou le jaune d'œuf de poule a la particularité exceptionnelle d'être :",
+              "options": [
+                "Un tissu composé de milliards de cellules",
+                "Une cellule unique géante visible à l'œil nu grâce à ses réserves",
+                "Un virus aquatique inoffensif",
+                "Une cellule dépourvue de tout cytoplasme"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le jaune d'œuf non fécondé est un ovocyte géant gorgé de réserves nutritives (vitellus), observable à l'œil nu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de micromètres (µm) y a-t-il exactement dans un millimètre (mm) ?",
+              "options": ["10 µm", "100 µm", "1 000 µm", "1 000 000 µm"],
+              "correctAnswers": [2],
+              "explanation": "1 mm = 1 000 µm. Par conséquent, une cellule de 20 µm est 50 fois plus petite qu'un millimètre."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les éléments suivants, lesquels peuvent être observés avec un microscope optique de collège ?",
+              "options": [
+                "Une cellule d'épiderme d'oignon",
+                "Un globule rouge humain dans un frottis sanguin",
+                "Une molécule isolée d'eau ou de glucose",
+                "Un atome individuel d'oxygène"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le microscope optique (limite de résolution ~0,2 µm) permet de voir cellules et gros organites, mais pas les molécules ni les atomes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan sur l'organisation cellulaire et l'organisme",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle proposition résume le mieux l'unité de structure du monde vivant ?",
+              "options": [
+                "Tous les êtres vivants sont formés d'une ou plusieurs cellules possédant un plan d'organisation commun",
+                "Les animaux sont formés de cellules mais pas les végétaux",
+                "Les plantes n'ont aucun point commun avec les animaux au niveau cellulaire",
+                "Seuls les organes visibles à l'œil nu sont constitués de cellules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tous les vivants partagent une unité fondamentale : la cellule, délimitée par une membrane plasmique et contenant le matériel génétique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel niveau d'organisation biologique se situe directement entre le tissu et le système (ou appareil) ?",
+              "options": [
+                "La cellule",
+                "L'organite",
+                "L'organe",
+                "La molécule"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La hiérarchie biologique s'établit ainsi : cellule -> tissu -> organe -> appareil (ou système) -> organisme."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel niveau d'organisation regroupe plusieurs organes coordonnés pour accomplir une fonction physiologique majeure ?",
+              "options": [
+                "L'appareil ou système",
+                "Le tissu",
+                "L'atome",
+                "La membrane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un appareil (ou système) est une association d'organes complémentaires concourant à une grande fonction (ex. digestion, excrétion)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelles deux structures élémentaires sont obligatoirement présentes chez TOUTES les cellules vivantes (procaryotes et eucaryotes) ?",
+              "options": [
+                "Une carapace en chitine et un squelette interne",
+                "Une membrane plasmique et un cytoplasme",
+                "Des poumons internes et des os",
+                "Des chloroplastes verts et une grande vacuole"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Toute cellule vivante possède au minimum une membrane plasmique isolante, un cytoplasme métabolique et du matériel génétique (ADN)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations traduisent l'unité cellulaire et génétique de l'ensemble des êtres vivants ?",
+              "options": [
+                "Tous les êtres vivants descendent d'un même ancêtre commun cellulaire (LUCA)",
+                "L'ADN est la molécule universelle support de l'information génétique chez tous les vivants",
+                "Chaque espèce possède des mécanismes biochimiques totalement incompatibles avec les autres",
+                "La division cellulaire permet la transmission de la vie de génération en génération"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "L'universalité de la cellule, de l'ADN et du code génétique prouve l'origine commune de tous les êtres vivants sur Terre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lors de la réalisation d'un dessin d'observation scientifique au microscope, quel élément doit obligatoirement figurer sous le titre ?",
+              "options": [
+                "Le grossissement utilisé ou une barre d'échelle",
+                "La couleur des murs du laboratoire",
+                "La marque du verre de la lamelle",
+                "L'heure précise de début du cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un dessin d'observation scientifique exige un titre précis, des légendes alignées et l'indication du grossissement (ex. : Grossissement ×400)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel terme désigne un ensemble cohérent d'appareils et d'organes formant un être vivant complet et autonome ?",
+              "options": [
+                "Le ribosome",
+                "L'organisme",
+                "L'organite",
+                "Le chromosome"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'organisme est l'entité biologique vivante autonome (un animal, une plante, un champignon, une bactérie)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi les cellules végétales d'épiderme d'oignon forment-elles une mosaïque régulière de cellules jointives ?",
+              "options": [
+                "Parce que l'oignon est un liquide durci au froid",
+                "Parce que chaque cellule est entourée d'une paroi pectocellulosique rigide liée aux cellules voisines",
+                "Parce que les cellules sont cousues entre elles par des fils protéiques",
+                "Parce qu'elles sont constituées de blocs de métal"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La paroi pectocellulosique rigide donne une forme géométrique stable aux cellules végétales et les cimente entre elles par la lamelle moyenne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment résume-t-on la relation fondamentale entre la morphologie d'une cellule spécialisée et son rôle ?",
+              "options": [
+                "La forme cellulaire est totalement aléatoire sans aucun lien avec son activité",
+                "La structure et la forme d'une cellule sont étroitement adaptées à sa fonction biologique",
+                "Toutes les cellules du corps ont rigoureusement la même forme sphérique",
+                "La forme des cellules change au hasard chaque minute"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En biologie, la structure dicte la fonction : l'allongement du neurone permet la conduction, la forme biconcave de l'hématie optimise les échanges gazeux."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels critères permettent de reconnaître une cellule eucaryote par rapport à une bactérie procaryote ?",
+              "options": [
+                "La présence d'un noyau bien délimité par une enveloppe nucléaire",
+                "La présence d'organites compartimentés (mitochondries, réticulum) dans le cytoplasme",
+                "L'absence totale de membrane autour de la cellule",
+                "Une taille généralement dix fois supérieure à celle d'une bactérie moyenne"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les eucaryotes possèdent un noyau, des organites compartimentés et une taille typique de 10 à 100 µm, contre 1 à 5 µm pour les procaryotes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Fonctions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Les besoins nutritifs des cellules",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les deux éléments essentiels prélevés en permanence dans le sang par les cellules animales pour fonctionner ?",
+              "options": [
+                "Le glucose et le dioxygène",
+                "Le dioxyde de carbone et l'urée",
+                "L'acide chlorhydrique et le fer pur",
+                "L'alcool et les graisses toxiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les cellules animales consomment en continu du glucose (nutriment énergétique) et du dioxygène (O2) apportés par le sang."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel glucide simple circulant dans le sang représente le carburant énergétique de base utilisé par nos cellules ?",
+              "options": [
+                "L'amidon brut",
+                "Le glucose",
+                "La cellulose des plantes",
+                "Le lactose non digéré"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le glucose est le sucre simple issu de la digestion des glucides alimentaires ; il est dégradé par la cellule pour produire de l'énergie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "D'où proviennent principalement les nutriments qui parviennent aux cellules par l'intermédiaire du sang ?",
+              "options": [
+                "De l'air inspiré par le nez",
+                "De la peau sous l'effet des rayons UV",
+                "De la digestion des aliments au niveau de l'intestin grêle",
+                "Du foie qui produit de l'eau pure"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La digestion transforme les aliments en nutriments solubles qui traversent la paroi de l'intestin grêle pour entrer dans le sang (absorption intestinale)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment le dioxygène (O2) nécessaire aux cellules entre-t-il dans l'organisme pour rejoindre la circulation sanguine ?",
+              "options": [
+                "Par la digestion gastrique dans l'estomac",
+                "Par diffusion à travers les alvéoles pulmonaires de l'appareil respiratoire",
+                "Par absorption dans les reins",
+                "Par la transpiration cutanée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Lors de la ventilation, l'air riche en dioxygène arrive dans les alvéoles où l'O2 traverse la fine paroi alvéolo-capillaire pour se fixer sur l'hémoglobine."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments constituent les besoins nutritifs indispensables au métabolisme des cellules de notre corps ?",
+              "options": [
+                "L'eau et les sels minéraux",
+                "Les nutriments organiques (glucose, acides aminés, acides gras)",
+                "Le dioxygène (O2)",
+                "Le monoxyde de carbone toxique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les cellules ont besoin d'eau, de sels minéraux, de nutriments organiques (énergie et construction) et de dioxygène pour respirer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que font les cellules musculaires de leur consommation de glucose et de dioxygène au cours d'un effort physique intense ?",
+              "options": [
+                "Elles augmentent considérablement leur consommation pour produire plus d'énergie",
+                "Elles arrêtent totalement de consommer des nutriments",
+                "Elles rejettent du glucose dans le sang circulant",
+                "Elles réduisent leur activité mitochondriale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour soutenir la contraction musculaire, les myocytes consomment davantage de glucose et d'O2, ce qui accélère la respiration et le rythme cardiaque."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le liquide extracellulaire dans lequel baignent directement les cellules et qui sert d'intermédiaire avec le sang ?",
+              "options": [
+                "L'urine primitive",
+                "Le liquide amniotique",
+                "La lymphe interstitielle (liquide interstitiel)",
+                "Le liquide céphalo-rachidien"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La lymphe interstitielle entoure les cellules des tissus ; les nutriments et les gaz y diffusent depuis les capillaires sanguins vers les cellules."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "De quels éléments minéraux simples une cellule végétale chlorophyllienne a-t-elle besoin pour vivre et produire sa matière organique ?",
+              "options": [
+                "De sang et de viande hachée",
+                "De lumière, d'eau, de sels minéraux et de dioxyde de carbone (CO2)",
+                "D'obscurité totale et de graisse animale",
+                "De sucre raffiné uniquement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les cellules chlorophylliennes sont autotrophes : elles ont besoin d'eau, de sels minéraux et de CO2 qu'elles combinent grâce à l'énergie lumineuse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel type de nutriment sert de matériau de construction fondamental pour fabriquer et renouveler les protéines cellulaires ?",
+              "options": [
+                "Les acides aminés",
+                "Les acides gras saturés",
+                "Les sucres rapides",
+                "Les vitamines minérales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Issus de la digestion des protéines alimentaires, les acides aminés sont assemblés par les ribosomes cellulaires pour former de nouvelles protéines."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles conséquences graves une privation prolongée de dioxygène entraîne-t-elle sur les cellules du cerveau ?",
+              "options": [
+                "Un arrêt immédiat de la respiration cellulaire et de la production d'ATP",
+                "Des lésions cérébrales irréversibles et la mort cellulaire en quelques minutes",
+                "Une multiplication accélérée des neurones sains",
+                "Une perte de conscience rapide en quelques secondes"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les neurones dépendent en permanence d'un apport d'O2 : sans oxygène, la production d'énergie s'arrête, provoquant syncope et nécrose."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La respiration cellulaire et l'énergie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la définition biologique exacte de la « respiration cellulaire » à l'échelle d'une cellule ?",
+              "options": [
+                "Le simple passage de l'air dans la trachée et les poumons",
+                "Une réaction chimique oxydant le glucose grâce au dioxygène pour libérer de l'énergie",
+                "La filtration de l'eau par la vessie",
+                "La division du cytoplasme en deux cellules filles"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La respiration cellulaire est une réaction biochimique au cours de laquelle le glucose est dégradé en présence d'O2, produisant de l'énergie chimique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels sont les deux produits rejetés par la cellule à l'issue de la réaction de respiration cellulaire ?",
+              "options": [
+                "Le dioxyde de carbone (CO2) et l'eau (H2O)",
+                "Le dioxygène et le glucose",
+                "L'azote et le fer",
+                "L'urée et l'acide chlorhydrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oxydation du glucose produit du dioxyde de carbone (CO2) et de l'eau (H2O), qui sont éliminés comme déchets métaboliques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quel organite cellulaire spécialisé s'effectue l'essentiel de la respiration cellulaire productrice d'énergie ?",
+              "options": [
+                "L'appareil de Golgi",
+                "Le réticulum endoplasmique",
+                "La mitochondrie",
+                "Le ribosome"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les mitochondries sont les centrales énergétiques de la cellule eucaryote où se déroulent les étapes majeures de la respiration cellulaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sous quelle forme d'énergie chimique directement utilisable l'énergie libérée par la respiration est-elle emmagasinée ?",
+              "options": [
+                "L'énergie chimique sous forme d'ATP (adénosine triphosphate)",
+                "L'énergie nucléaire",
+                "L'énergie cinétique mécanique externe",
+                "L'énergie solaire pure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ATP est la molécule universelle de transfert d'énergie cellulaire : elle alimente la contraction, les synthèses et les transports actifs."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels réactifs chimiques sont consommés par la cellule au cours de la respiration cellulaire ?",
+              "options": [
+                "Le glucose",
+                "Le dioxygène (O2)",
+                "Le dioxyde de carbone",
+                "L'ammoniac toxique"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La respiration cellulaire consomme du glucose et du dioxygène pour produire de l'énergie, de l'eau et du dioxyde de carbone."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'advient-il d'une partie importante de l'énergie libérée lors de la dégradation des nutriments par la cellule ?",
+              "options": [
+                "Elle disparaît totalement de l'univers",
+                "Elle est dissipée sous forme de chaleur contribuant au maintien de la température corporelle",
+                "Elle crée de la lumière fluorescente dans la peau",
+                "Elle se transforme en plomb lourd"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une fraction de l'énergie est convertie en chaleur, ce qui permet aux animaux homéothermes (comme l'Homme) de maintenir leur corps à 37 °C."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel gaz respiratoire est absorbé en permanence par les mitochondries pour réaliser la respiration cellulaire ?",
+              "options": [
+                "Le dioxygène (O2)",
+                "Le diazote (N2)",
+                "Le dioxyde de carbone (CO2)",
+                "Le méthane (CH4)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dioxygène agit comme accepteur final d'électrons dans la chaîne respiratoire mitochondriale, permettant une production massive d'ATP."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle équation chimique simplifiée résume fidèlement le bilan de la respiration cellulaire ?",
+              "options": [
+                "Glucose + Dioxygène -> Dioxyde de carbone + Eau + Énergie",
+                "Dioxyde de carbone + Eau -> Glucose + Dioxygène",
+                "Glucose + Eau -> Dioxygène + Énergie",
+                "Énergie + Dioxyde de carbone -> Glucose + Dioxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C6H12O6 + 6 O2 -> 6 CO2 + 6 H2O + Énergie. C'est l'équation bilan fondamentale de la respiration cellulaire aérobie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les cellules d'une plante verte réalisent-elles la respiration cellulaire ?",
+              "options": [
+                "Non, seules les cellules animales respirent",
+                "Oui, le jour comme la nuit, grâce à leurs propres mitochondries",
+                "Non, elles ne respirent que sous la terre",
+                "Uniquement lorsqu'elles perdent leurs feuilles en automne"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les cellules végétales possèdent des mitochondries et respirent en permanence (jour et nuit) pour couvrir leurs besoins énergétiques."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles manifestations physiologiques accompagnent une hausse de la respiration cellulaire lors d'une course ?",
+              "options": [
+                "Une consommation accrue de glucose et de dioxygène par les cellules musculaires",
+                "Un dégagement de chaleur provoquant la transpiration pour évacuer le surplus thermique",
+                "Une baisse brutale et durable du rythme cardiaque au repos",
+                "Une augmentation du volume de dioxyde de carbone rejeté par les poumons"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "L'effort accélère la respiration cellulaire dans les muscles : consommation accrue d'O2 et de glucose, rejet accru de CO2 et de chaleur."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les échanges entre cellules et milieu intérieur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À travers quels vaisseaux sanguins microscopiques aux parois très fines s'effectuent tous les échanges entre le sang et les cellules ?",
+              "options": [
+                "Les artères élastiques",
+                "Les capillaires sanguins",
+                "Les grosses veines caves",
+                "Les vaisseaux lymphatiques géants"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les capillaires sanguins sont les vaisseaux les plus fins du corps (diamètre ~8 µm) ; leurs parois minces permettent la diffusion de la matière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel gaz passe du sang vers les cellules au niveau des capillaires des organes ?",
+              "options": [
+                "Le dioxygène",
+                "Le dioxyde de carbone",
+                "L'ammoniac",
+                "Le méthane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dioxygène quitte le sang des capillaires pour diffuser vers la lymphe interstitielle puis vers les cellules qui en consomment."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel déchet gazeux produit par les cellules diffuse vers le sang des capillaires pour être évacué ?",
+              "options": [
+                "L'ozone",
+                "Le dioxygène",
+                "Le dioxyde de carbone",
+                "Le monoxyde de carbone"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le dioxyde de carbone produit par la respiration cellulaire diffuse des cellules vers le sang qui le transporte vers les poumons."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Par quel phénomène physique passif les gaz dissous et les nutriments se déplacent-ils d'une zone concentrée vers une zone moins concentrée ?",
+              "options": [
+                "La centrifugation",
+                "La diffusion",
+                "L'ébullition",
+                "La distillation"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La diffusion est le déplacement passif spontané des molécules d'un milieu de plus forte concentration vers un milieu de plus faible concentration."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles substances quittent le sang capillaire pour entrer dans les cellules utilisatrices d'un organe ?",
+              "options": [
+                "Le glucose",
+                "Le dioxygène",
+                "Les acides aminés",
+                "L'urée rejetée par la cellule"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le glucose, l'O2 et les acides aminés entrent dans les cellules pour couvrir leurs besoins métaboliques. L'urée est un déchet qui en sort."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment la paroi des capillaires sanguins est-elle structurée pour favoriser des échanges rapides et efficaces ?",
+              "options": [
+                "Elle est très fine, formée d'une seule couche de cellules endothéliales aplaties",
+                "Elle est blindée par une couche de calcaire osseux",
+                "Elle a une épaisseur de plusieurs millimètres pour résister à la pression",
+                "Elle est entièrement imperméable à tout liquide aqueux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'endothélium capillaire est monocellulaire et ultrafin, ce qui réduit la distance de diffusion au minimum."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle différence de composition observe-t-on entre le sang qui entre dans un muscle actif et le sang qui en ressort ?",
+              "options": [
+                "Le sang sortant est plus riche en O2 et en glucose",
+                "Le sang sortant est plus pauvre en O2 et en glucose, mais plus riche en CO2",
+                "Le sang sortant est totalement dépourvu de cellules sanguines",
+                "Le sang sortant est strictement identique au sang entrant"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le muscle prélève du glucose et de l'O2 et rejette du CO2 : le sang sortant est donc appauvri en O2/glucose et enrichi en CO2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que devient le surplus de lymphe interstitielle qui baigne les cellules des tissus de l'organisme ?",
+              "options": [
+                "Elle s'écoule par la peau en continu vers l'extérieur",
+                "Elle est collectée par les vaisseaux lymphatiques et réinjectée dans le sang veineux",
+                "Elle se transforme en graisse solide sous la peau",
+                "Elle est détruite et vaporisée par les poumons"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les vaisseaux lymphatiques drainent la lymphe interstitielle, la filtrent dans les ganglions et la réintroduisent dans la circulation sanguine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment la surface d'échange entre le sang et les cellules est-elle démultipliée au sein d'un muscle en activité ?",
+              "options": [
+                "Grâce à un réseau capillaire extrêmement dense et ramifié qui entoure chaque fibre musculaire",
+                "En réduisant la vascularisation à un seul gros vaisseau rectiligne",
+                "En créant une poche d'air isolante entre le sang et les cellules",
+                "En supprimant totalement les capillaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque fibre musculaire est au contact de plusieurs capillaires, offrant une surface d'échange gigantesque et une distance de diffusion minime."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels facteurs physiologiques maximisent l'efficacité des échanges de matière au niveau des capillaires des organes ?",
+              "options": [
+                "Une distance de diffusion très courte grâce à la minceur de la paroi capillaire",
+                "Une vitesse d'écoulement du sang très ralentie dans le lit capillaire",
+                "Une surface totale de contact immense offerte par des milliards de capillaires",
+                "Une couche de cire totalement étanche séparant le sang des cellules"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La faible épaisseur, la vitesse lente du sang et l'immense surface totale des capillaires optimisent les échanges par diffusion."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "L'élimination des déchets cellulaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel déchet gazeux toxique produit par le métabolisme cellulaire est éliminé en permanence par les poumons ?",
+              "options": [
+                "L'urée toxique",
+                "Le dioxyde de carbone (CO2)",
+                "L'acide lactique solide",
+                "Le sel minéral"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le CO2 produit par la respiration cellulaire diffuse dans le sang, qui le transporte vers les poumons où il est expiré."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel déchet azoté toxique issu de la dégradation des protéines et des acides aminés par les cellules est filtré par les reins ?",
+              "options": [
+                "Le glucose sanguin",
+                "L'amidon digéré",
+                "L'urée",
+                "L'insuline pancréatique"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'urée provient de la dégradation des acides aminés dans le foie ; transportée par le sang, elle est filtrée et excrétée par les reins."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel organe assure l'épuration continue du sang en fabriquant l'urine ?",
+              "options": [
+                "Le rein",
+                "Le pancréas",
+                "La vésicule biliaire",
+                "L'estomac"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux reins filtrent environ 180 litres de sang par jour pour éliminer l'eau en excès, les sels et les déchets azotés comme l'urée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Par quels fins conduits musculaires l'urine formée dans les reins descend-elle jusqu'à la vessie ?",
+              "options": [
+                "Les veines jugulaires",
+                "Les uretères",
+                "Les bronches principales",
+                "Les trompes de Fallope"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chaque rein est relié à la vessie par un conduit appelé uretère. L'urètre est le canal qui évacue ensuite l'urine vers l'extérieur."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels organes participent directement à l'élimination des déchets produits par nos cellules ?",
+              "options": [
+                "Les reins (élimination de l'urée et de l'eau)",
+                "Les poumons (élimination du CO2)",
+                "La peau via les glandes sudoripares (élimination de sueur contenant des déchets)",
+                "Le cœur"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les reins, les poumons et la peau sont les principaux organes excréteurs. Le cœur est une pompe qui fait circuler le sang."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que contient normalement l'urine d'un individu en bonne santé ?",
+              "options": [
+                "De l'eau, des sels minéraux en excès et de l'urée",
+                "De l'alcool pur et de l'hémoglobine",
+                "Du glucose en grande quantité et des protéines",
+                "Des globules rouges vivants et des plaquettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'urine saine contient environ 95 % d'eau, de l'urée, de l'acide urique et des sels minéraux. Elle ne doit contenir ni glucose ni protéines."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel organe détoxifie le sang en transformant l'ammoniaque très toxique en urée moins toxique ?",
+              "options": [
+                "La rate",
+                "La glande thyroïde",
+                "Le foie",
+                "Le côlon descendant"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le foie est l'usine chimique de détoxification de l'organisme ; il convertit l'ammoniaque toxique en urée avant son rejet par les reins."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signale généralement la présence anormale de glucose (glycosurie) dans l'urine d'un patient lors d'un test ?",
+              "options": [
+                "Une excellente forme athlétique",
+                "Une anomalie de régulation de la glycémie, comme un diabète",
+                "Une absence totale de rein gauche",
+                "Une déshydratation aiguë temporaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Normalement, tout le glucose filtré est réabsorbé par le rein. Si la glycémie dépasse un seuil (diabète), le glucose déborde dans l'urine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'unité microscopique fonctionnelle du rein chargée de filtrer le sang et d'élaborer l'urine ?",
+              "options": [
+                "Le néphron",
+                "Le neurone",
+                "Le chondrocyte",
+                "L'alvéole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque rein contient environ 1 million de néphrons, composés d'un glomérule filtrant et d'un tubule de réabsorption et de sécrétion."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Pourquoi l'élimination continue des déchets cellulaires est-elle indispensable à la survie de l'organisme ?",
+              "options": [
+                "Pour empêcher l'accumulation toxique d'urée qui empoisonnerait les cellules",
+                "Pour maintenir la stabilité du milieu intérieur (homéostasie)",
+                "Pour libérer de la place afin de stocker du sable",
+                "Pour éviter l'acidification excessive du sang causée par l'accumulation de CO2"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "L'accumulation d'urée (urémie) ou de CO2 (acidose) est mortelle : l'excrétion maintient les constantes physico-chimiques du milieu intérieur."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Métabolisme autotrophe et hétérotrophe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un être vivant capable de synthétiser sa propre matière organique uniquement à partir de matière minérale et d'énergie ?",
+              "options": [
+                "Autotrophe",
+                "Hétérotrophe",
+                "Parasite obligatoire",
+                "Décomposeur carnivore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les organismes autotrophes (comme les plantes vertes) fabriquent leur matière organique à partir de CO2, d'eau et de sels minéraux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un être vivant qui doit consommer de la matière organique préexistante pour se nourrir et fabriquer ses constituants ?",
+              "options": [
+                "Autotrophe",
+                "Producteur primaire",
+                "Hétérotrophe",
+                "Photosynthétique"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les animaux, les champignons et de nombreuses bactéries sont hétérotrophes : ils se nourrissent de matière organique produite par d'autres vivants."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel processus métabolique majeur permet aux végétaux verts de capter la lumière solaire pour produire du glucose à partir de CO2 et d'eau ?",
+              "options": [
+                "La fermentation lactique",
+                "La photosynthèse",
+                "La mitose foliaire",
+                "La calcification"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La photosynthèse convertit l'énergie lumineuse en énergie chimique stockée dans les liaisons des molécules organiques (glucose)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel gaz d'une importance vitale pour les animaux est libéré dans l'atmosphère par les feuilles lors de la photosynthèse à la lumière ?",
+              "options": [
+                "Le dioxyde de carbone",
+                "Le diazote",
+                "Le dioxygène (O2)",
+                "Le monoxyde de carbone"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La photolyse de l'eau au cours de la photosynthèse libère du dioxygène (O2), enrichissant l'atmosphère en oxygène respirable."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles conditions environnementales et cellulaires sont indispensables à la réalisation de la photosynthèse par une plante ?",
+              "options": [
+                "La présence de lumière",
+                "La disponibilité en dioxyde de carbone (CO2) et en eau",
+                "La présence de chloroplaste contenant de la chlorophylle",
+                "L'absence totale de cellules vivantes"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La photosynthèse exige de la lumière, de l'eau, du dioxyde de carbone et des chloroplastes fonctionnels riches en chlorophylle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Par quelles ouvertures microscopiques situées sur l'épiderme des feuilles le dioxyde de carbone pénètre-t-il dans les tissus végétaux ?",
+              "options": [
+                "Les stomates",
+                "Les cuticules sèches",
+                "Les racines adventives",
+                "Les alvéoles végétales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les stomates sont des orifices délimités par deux cellules de garde qui s'ouvrent ou se ferment pour réguler les échanges gazeux et la transpiration."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans quel organite cellulaire végétal se déroulent toutes les réactions de la photosynthèse ?",
+              "options": [
+                "La vacuole",
+                "Le chloroplaste",
+                "La mitochondrie",
+                "Le ribosome"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le chloroplaste renferme les thylakoïdes riches en chlorophylle et le stroma où le CO2 est fixé pour fabriquer des glucides."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sous quelle forme de glucide complexe de réserve la matière organique produite par photosynthèse est-elle stockée dans les chloroplastes ?",
+              "options": [
+                "Le glycogène animal",
+                "Le collagène",
+                "L'amidon",
+                "Le cholestérol végétal"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le glucose produit par photosynthèse est polymérisé sous forme de grains d'amidon, mis en réserve dans les feuilles ou les tubercules."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que font les cellules d'une plante verte durant la nuit, lorsque la lumière solaire est absente ?",
+              "options": [
+                "Elles n'effectuent plus de photosynthèse mais continuent de respirer en consommant de l'O2 et rejetant du CO2",
+                "Elles meurent toutes en attendant le lever du jour",
+                "Elles absorbent du méthane par leurs racines",
+                "Elles se mettent à chasser activement des proies"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'obscurité, la photosynthèse s'arrête. Seule la respiration persiste : la plante absorbe du dioxygène et rejette du dioxyde de carbone."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propositions concernant les autotrophes et les hétérotrophes sont scientifiquement exactes ?",
+              "options": [
+                "Les végétaux autotrophes constituent la base de la plupart des chaînes alimentaires (producteurs primaires)",
+                "Les hétérotrophes dépendent entièrement de la matière organique fabriquée par les autotrophes",
+                "Les cellules végétales ne possèdent aucune mitochondrie et ne réalisent jamais de respiration",
+                "La photosynthèse consomme du CO2 et rejette de l'O2, compensant en partie la respiration des vivants"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les végétaux chlorophylliens nourrissent les chaînes alimentaires. Ils possèdent à la fois des chloroplastes et des mitochondries."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Division cellulaire et multiplication",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le mécanisme de division cellulaire par lequel une cellule mère donne deux cellules filles génétiquement identiques ?",
+              "options": [
+                "La photosynthèse",
+                "La mitose",
+                "La fécondation",
+                "La nécrose spontanée"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La mitose est la division cellulaire conforme qui assure la multiplication des cellules en conservant l'intégralité du caryotype (46 chromosomes chez l'Homme)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que doit impérativement accomplir la cellule au cours de l'interphase avant de débuter sa division cellulaire ?",
+              "options": [
+                "Détruire tous ses organites",
+                "Dupliquer son ADN (réplication)",
+                "Réduire ses chromosomes de moitié",
+                "Perdre sa membrane plasmique"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avant la division, la réplication de l'ADN copie chaque molécule à l'identique : chaque chromosome passe de 1 à 2 chromatides sœurs identiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels rôles majeurs la division cellulaire joue-t-elle chez un organisme pluricellulaire comme l'Homme ?",
+              "options": [
+                "Réduire la taille des organes d'année en année",
+                "Permettre la croissance du corps et le renouvellement continu des cellules usées ou mortes",
+                "Remplacer les cellules vivantes par des cristaux minéraux",
+                "Empêcher toute guérison après une coupure"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La division cellulaire permet à la cellule-œuf de donner un organisme adulte complet, et remplace les milliards de cellules détruites chaque jour."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le processus biologique de réparation d'une plaie cutanée permis par la prolifération des cellules voisines ?",
+              "options": [
+                "La cicatrisation",
+                "La putréfaction des tissus",
+                "La fossilisation de l'épiderme",
+                "La déshydratation cutanée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lors d'une blessure, les cellules de l'épiderme et du derme se divisent activement pour reformer un tissu protecteur intact : c'est la cicatrisation."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles étapes successives composent le cycle d'une cellule qui se multiplie ?",
+              "options": [
+                "Une phase de croissance et de duplication de l'ADN (interphase)",
+                "La séparation équitable des chromatides de chaque chromosome (mitose)",
+                "La division finale du cytoplasme en deux cellules distinctes (cytodiérèse)",
+                "La transformation définitive de la cellule en une masse minérale morte"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le cycle cellulaire comprend l'interphase (croissance et réplication), la mitose (séparation des chromosomes) et la cytodiérèse (partage du cytoplasme)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de chromosomes contient chacune des deux cellules filles issues de la mitose d'une cellule humaine à 46 chromosomes ?",
+              "options": [
+                "23 chromosomes",
+                "46 chromosomes",
+                "92 chromosomes",
+                "12 chromosomes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La mitose est une division conforme : chacune des deux cellules filles reçoit exactement le même patrimoine génétique, soit 46 chromosomes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les cellules indifférenciées capables de s'autorenouveler et de donner naissance à divers types de cellules spécialisées ?",
+              "options": [
+                "Les cellules souches",
+                "Les cellules sénescentes",
+                "Les hématies âgées",
+                "Les neurones dégénérés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules souches (présentes dans la moelle osseuse, la peau...) se divisent pour maintenir leur réserve et fabriquer des cellules différenciées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chez les végétaux, dans quelles zones de croissance situées à la pointe des tiges et des racines observe-t-on d'intenses divisions cellulaires ?",
+              "options": [
+                "L'écorce morte du tronc",
+                "Les grains de pollen",
+                "Les méristèmes",
+                "Les stomates âgés"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les méristèmes apicaux (racinaires et caulinaires) sont des tissus végétaux perpétuellement jeunes où les cellules se multiplient par mitose."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'advient-il de l'enveloppe nucléaire au début de la mitose pour permettre aux chromosomes de se déplacer vers les pôles de la cellule ?",
+              "options": [
+                "Elle durcit en formant une coquille d'os",
+                "Elle se désagrège temporairement avant de se reformer autour des deux nouveaux noyaux",
+                "Elle reste totalement intacte et scellée",
+                "Elle se transforme en paroi en bois"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'enveloppe nucléaire se dissout en prophase, libérant les chromosomes qui sont guidés par le fuseau mitotique, puis se reforme en télophase."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les situations suivantes, lesquelles reposent directement sur la multiplication cellulaire par mitose ?",
+              "options": [
+                "La croissance en taille d'un adolescent au cours de la puberté",
+                "Le renouvellement continu de la muqueuse tapissant l'intérieur de l'intestin",
+                "L'allongement d'une racine de graine germée dans l'eau",
+                "La fonte de la banquise sous l'effet du soleil"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La croissance des os, la régénération de la paroi intestinale et l'élongation racinaire reposent toutes sur la multiplication active de cellules par mitose."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Communication et coordination cellulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel type de messager chimique est sécrété dans le sang par une glande endocrine pour agir à distance sur des cellules cibles ?",
+              "options": [
+                "Une enzyme digestive",
+                "Une hormone",
+                "Un neurone moteur",
+                "Une bactérie amie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une hormone est une substance informative sécrétée dans la circulation sanguine qui modifie l'activité d'organes ou de cellules cibles distantes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour qu'une cellule cible puisse détecter une hormone circulante et y réagir, que doit-elle obligatoirement posséder ?",
+              "options": [
+                "Un récepteur spécifique à cette hormone",
+                "Un flagelle locomoteur",
+                "Une paroi en bois imperméable",
+                "Un pigment vert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action d'une hormone est ciblée : seules les cellules portant le récepteur complémentaire spécifique (liaison clé-serrure) peuvent être stimulées."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle hormone vitale fabriquée par le pancréas ordonne aux cellules hépatiques et musculaires de stocker le glucose pour faire baisser la glycémie ?",
+              "options": [
+                "L'adrénaline",
+                "La mélatonine",
+                "L'insuline",
+                "Le suc pancréatique"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'insuline est l'hormone hypoglycémiante : elle favorise l'entrée et le stockage du glucose dans les cellules du foie, des muscles et du tissu adipeux."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la zone de jonction spécialisée par laquelle deux neurones communiquent par voie chimique ?",
+              "options": [
+                "La synapse",
+                "Le sarcomère",
+                "Le ribosome",
+                "Le stomate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La synapse est la zone de contact entre deux neurones (ou entre un neurone et un muscle) où l'information passe via des neurotransmetteurs chimiques."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels modes de communication permettent aux cellules d'un organisme pluricellulaire de coordonner leurs fonctions ?",
+              "options": [
+                "La communication nerveuse rapide par signaux électriques et synapses",
+                "La communication hormonale diffuse par voie sanguine",
+                "La communication par contact direct entre molécules membranaires voisines",
+                "La communication par ondes radioélectriques artificielles"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les cellules communiquent par influx nerveux (très rapide), hormones (plus lent et durable) et contacts membranaires directs (jonctions communicantes)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle molécule chimique libérée dans la fente synaptique assure la transmission du message au neurone suivant ?",
+              "options": [
+                "Une hormone thyroïdienne",
+                "Un neurotransmetteur",
+                "Un globule rouge",
+                "Une molécule d'amidon"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les neurotransmetteurs (comme l'acétylcholine ou la dopamine) sont stockés dans des vésicules et libérés dans la fente synaptique lors d'un signal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se compare la vitesse d'action du système nerveux à celle du système hormonal ?",
+              "options": [
+                "Le message nerveux est quasi instantané (millisecondes) alors que le message hormonal est plus progressif et durable",
+                "Le message hormonal se propage toujours plus vite que l'électricité",
+                "Le message nerveux met plusieurs jours à atteindre sa cible",
+                "Ils ont rigoureusement la même vitesse d'action"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'influx nerveux circule à plusieurs dizaines de mètres par seconde (réflexes), tandis que les hormones cheminent dans le sang de façon plus lente."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle hormone de stress sécrétée par les glandes surrénales accélère instantanément les fréquences cardiaque et ventilatoire en cas de danger ?",
+              "options": [
+                "L'insuline",
+                "L'adrénaline",
+                "La salive",
+                "Le mucus"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'adrénaline prépare le corps à la fuite ou au combat : elle stimule le cœur, dilate les bronches et mobilise le glucose pour les muscles."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la capacité de l'organisme à maintenir constants ses paramètres internes (glycémie, température, pH) malgré les variations extérieures ?",
+              "options": [
+                "La mitose",
+                "La phagocytose",
+                "L'homéostasie",
+                "L'hémolyse"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'homéostasie est l'équilibre dynamique du milieu intérieur maintenu grâce à des boucles de régulation nerveuses et hormonales."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Que se produit-il si les cellules cibles d'un individu perdent leurs récepteurs fonctionnels à une hormone essentielle ?",
+              "options": [
+                "Les cellules deviennent incapables de détecter le signal hormonal et d'y répondre",
+                "Le paramètre biologique régulé par l'hormone devient anormal (ex. glycémie trop élevée)",
+                "L'organisme peut développer une pathologie grave comme le diabète de type 2",
+                "Toutes les cellules du corps se transforment immédiatement en bactéries"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Dans le diabète de type 2, les cellules cibles deviennent résistantes à l'insuline (perte de sensibilité des récepteurs), ce qui entraîne une hyperglycémie."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Réponses cellulaires aux agressions et immunité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles barrières naturelles de l'organisme constituent le premier rempart infranchissable contre l'intrusion des micro-organismes pathogènes ?",
+              "options": [
+                "La peau et les muqueuses",
+                "Les os et le cartilage",
+                "Les hématies du sang",
+                "Les poils des bras uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La peau intacte et les muqueuses (digestives, respiratoires) sécrètent des substances protectrices et forment une barrière mécanique étanche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle grande famille de cellules sanguines assure la défense immunitaire de l'organisme contre les infections ?",
+              "options": [
+                "Les globules rouges",
+                "Les globules blancs (leucocytes)",
+                "Les plaquettes seules",
+                "Les adipocytes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les leucocytes (phagocytes, lymphocytes B et T) sont les cellules immunitaires chargées de neutraliser et détruire les agents pathogènes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la réponse immunitaire rapide et locale qui se déclenche lors d'une plaie cutanée (rougeur, chaleur, gonflement, douleur) ?",
+              "options": [
+                "La réaction inflammatoire aiguë",
+                "L'hémophilie spontanée",
+                "La crise cardiaque",
+                "L'asphyxie cellulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réaction inflammatoire aiguë est une défense innée précoce qui attire les cellules immunitaires sur le lieu de l'infection ou de la lésion."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mécanisme cellulaire permet à un phagocyte d'encercler, d'avaler et de digérer un microbe pathogène pour le détruire ?",
+              "options": [
+                "La photosynthèse",
+                "La division mitotique",
+                "La phagocytose",
+                "L'osmose inverse"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La phagocytose comprend l'adhésion, l'ingestion du microbe dans une vésicule (phagosome) et sa digestion par des enzymes lysosomales."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles sont les étapes successives d'une phagocytose réussie par un macrophage ?",
+              "options": [
+                "L'adhésion à la membrane du micro-organisme étranger",
+                "L'ingestion du microbe grâce à des prolongements cellulaires (pseudopodes)",
+                "La digestion enzymatique et le rejet des débris microbiens",
+                "La photosynthèse du micro-organisme dans un chloroplaste"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La phagocytose se déroule en quatre étapes : adhésion, ingestion, digestion enzymatique et rejet des déchets microbiens inoffensifs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quels globules blancs spécialisés fabriquent et libèrent des molécules d'anticorps spécifiques dans le sang ?",
+              "options": [
+                "Les globules rouges",
+                "Les lymphocytes B (différenciés en plasmocytes)",
+                "Les kératinocytes morts",
+                "Les adipocytes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les lymphocytes B reconnaissent spécifiquement un antigène microbien et se multiplient pour sécréter des anticorps neutralisants."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le rôle précis des lymphocytes T tueurs (lymphocytes T cytotoxiques) ?",
+              "options": [
+                "Détruire par contact les cellules de l'organisme infectées par un virus ou cancéreuses",
+                "Transporter le dioxygène aux tissus périphériques",
+                "Digérer les graisses alimentaires dans l'estomac",
+                "Filtrer l'urine dans la vessie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lymphocytes T cytotoxiques reconnaissent les cellules de notre corps infectées par un virus et leur injectent des protéines perforantes (perforine)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel procédé médical s'appuie sur la mémoire immunitaire des cellules pour protéger durablement un individu contre une maladie infectieuse ?",
+              "options": [
+                "La vaccination",
+                "La pose d'une attelle",
+                "La prise d'antidouleur simple",
+                "L'anesthésie générale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un vaccin présente un antigène inoffensif : il déclenche la formation de lymphocytes mémoires qui réagiront très vite en cas de contact ultérieur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment les anticorps libérés dans le sang neutralisent-ils les bactéries et virus pathogènes ?",
+              "options": [
+                "Ils détruisent les cellules de peau saines",
+                "Ils se lient spécifiquement aux antigènes de surface des microbes pour former des complexes immuns neutralisants",
+                "Ils nourrissent les microbes pathogènes en sucre",
+                "Ils fabriquent des globules rouges supplémentaires"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les anticorps se fixent aux antigènes complémentaires des microbes, les neutralisent et facilitent leur élimination par phagocytose."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels signes cliniques locaux traduisent l'activité des cellules et des vaisseaux lors d'une réaction inflammatoire ?",
+              "options": [
+                "La rougeur et la chaleur provoquées par la dilatation des vaisseaux sanguins locaux",
+                "Le gonflement (œdème) dû à la sortie de plasma et de phagocytes vers le tissu lésé",
+                "La douleur provoquée par la stimulation chimique des terminaisons nerveuses locales",
+                "Une baisse spectaculaire de la température de la zone sous 0 °C"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les quatre signes cardinaux de l'inflammation sont rougeur, chaleur, gonflement et douleur, résultant de la mobilisation immunitaire locale."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Dysfonctionnements cellulaires et santé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la prolifération anormale, incontrôlée et anarchique de cellules au sein d'un tissu, pouvant former une masse ?",
+              "options": [
+                "Une tumeur (pouvant être cancéreuse)",
+                "Une hypertrophie musculaire bénéfique",
+                "Une cicatrisation accélérée saine",
+                "Un renouvellement normal de peau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une tumeur se développe lorsque des cellules échappent aux signaux de régulation du cycle cellulaire et se multiplient indéfiniment."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle modification accidentelle dans la séquence de l'ADN d'une cellule peut être à l'origine d'une cancérisation ?",
+              "options": [
+                "Une consommation passagère d'eau minérale",
+                "Une ou plusieurs mutations génétiques touchant des gènes régulateurs de la division",
+                "L'absence totale de cytoplasme",
+                "Une exposition brève à l'air frais"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les mutations de gènes régulant le cycle cellulaire (oncogènes, gènes suppresseurs de tumeurs) peuvent transformer une cellule saine en cellule cancéreuse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels facteurs nocifs de l'environnement augmentent la fréquence des mutations de l'ADN et favorisent l'apparition de cancers ?",
+              "options": [
+                "Une alimentation riche en fruits et légumes",
+                "Les rayons ultraviolets (UV) du soleil et les substances chimiques cancérigènes du tabac",
+                "L'exercice physique modéré régulier",
+                "Un sommeil nocturne réparateur"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les UV, les goudrons du tabac, l'alcool et certaines radiations sont des agents mutagènes reconnus qui endommagent l'ADN cellulaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les foyers cancéreux secondaires formés lorsque des cellules tumorales se détachent et colonisent d'autres organes ?",
+              "options": [
+                "Des métastases",
+                "Des leucocytes",
+                "Des synapses",
+                "Des stomates"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les métastases apparaissent quand des cellules d'une tumeur maligne migrent par les voies sanguine ou lymphatique pour former de nouvelles tumeurs ailleurs."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles attitudes de prévention permettent de réduire significativement le risque de dysfonctionnements cellulaires et de mutations ?",
+              "options": [
+                "Protéger sa peau du soleil avec de la crème, un chapeau et des vêtements",
+                "Éviter la consommation de tabac et réduire celle de boissons alcoolisées",
+                "Adopter une alimentation diversifiée riche en fibres et en vitamines antioxydantes",
+                "S'exposer volontairement à des substances radioactives dangereuses"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Une bonne hygiène de vie (zéro tabac, modération d'alcool, protection solaire et alimentation équilibrée) prévient de nombreux cancers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que provoque une carence prolongée en fer alimentaire sur le fonctionnement des globules rouges ?",
+              "options": [
+                "Une surproduction de kératine dans les cheveux",
+                "Une baisse de synthèse d'hémoglobine entraînant une anémie et de la fatigue",
+                "Une augmentation de la vitesse de course",
+                "Une transformation des globules rouges en neurones"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le fer est l'atome central de l'hème dans l'hémoglobine : un manque de fer empêche la synthèse d'hémoglobine, provoquant une anémie ferriprive."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le mécanisme génétiquement programmé de mort cellulaire qui permet d'éliminer les cellules endommagées ou superflues ?",
+              "options": [
+                "La mitose",
+                "L'apoptose",
+                "L'inflammation aiguë",
+                "La calcification"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'apoptose (ou « suicide cellulaire ») est un processus normal et contrôlé permettant d'éliminer les cellules âgées, anormales ou inutiles."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que subissent les cellules du myocarde cardiaque lorsqu'une artère coronaire est obstruée lors d'un infarctus ?",
+              "options": [
+                "Privées de dioxygène et de glucose, les cellules meurent rapidement par nécrose",
+                "Les cellules commencent à réaliser la photosynthèse pour survivre",
+                "Les cellules fabriquent des os pour boucher l'artère",
+                "Le tissu cardiaque devient instantanément immortel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ischémie (arrêt de l'irrigation sanguine) prive les cellules musculaires d'oxygène : sans ATP, les myocytes meurent (infarctus du myocarde)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment un virus (comme le virus de la grippe ou le VIH) perturbe-t-il le fonctionnement d'une cellule hôte qu'il infecte ?",
+              "options": [
+                "Il pirate la machinerie cellulaire pour fabriquer des copies de lui-même, détruisant souvent la cellule",
+                "Il répare les mutations génétiques de la cellule pour la soigner",
+                "Il lui apporte du dioxygène pur pour accélérer son métabolisme",
+                "Il transforme la cellule hôte en globule rouge sain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un virus est un parasite intracellulaire obligatoire : il détourne les organites et les enzymes de la cellule hôte pour se répliquer, causant sa mort."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les exemples suivants, lesquels illustrent des dysfonctionnements pathologiques du métabolisme cellulaire ?",
+              "options": [
+                "L'incapacité des cellules à capter le glucose en cas d'insulino-résistance (diabète de type 2)",
+                "La prolifération cellulaire anarchique et l'invasion de tissus voisins dans un cancer",
+                "La mort brutale de neurones privés d'O2 lors d'un accident vasculaire cérébral (AVC)",
+                "La croissance normale et ordonnée des cheveux et des ongles chez un enfant"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le diabète de type 2, les tumeurs cancéreuses et les nécroses post-AVC sont des dysfonctionnements cellulaires majeurs étudiés en santé."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan sur le métabolisme et les fonctions cellulaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel terme scientifique désigne l'ensemble des réactions chimiques de synthèse et de dégradation qui se déroulent dans une cellule vivante ?",
+              "options": [
+                "La dérive génétique",
+                "Le métabolisme cellulaire",
+                "La fossilisation sédimentaire",
+                "La méiose des gamètes"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le métabolisme cellulaire regroupe le catabolisme (dégradation de molécules libérant de l'énergie) et l'anabolisme (synthèse de molécules)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle primordial de la molécule d'ATP synthétisée lors de la respiration cellulaire dans les mitochondries ?",
+              "options": [
+                "Donner une odeur caractéristique aux tissus corporels",
+                "Fournir l'énergie chimique directement utilisable pour toutes les activités cellulaires",
+                "Former une carapace rigide de calcaire autour de la cellule",
+                "Remplacer l'eau dans le cytoplasme cellulaire"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'ATP est la « monnaie énergétique » universelle de la cellule : son hydrolyse fournit l'énergie nécessaire à la contraction, aux synthèses et aux transports."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels organites cellulaires complémentaires assurent respectivement la photosynthèse chez les végétaux et la respiration chez les eucaryotes ?",
+              "options": [
+                "Les chloroplastes (matière organique) et les mitochondries (respiration et énergie)",
+                "Les lysosomes et les centrioles",
+                "Les vacuoles géantes et les ribosomes seuls",
+                "La paroi rigide et le centrosome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chloroplaste produit des glucides grâce à la lumière (photosynthèse), tandis que la mitochondrie dégrade ces glucides pour fabriquer de l'ATP (respiration)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que démontre le fait que toutes les cellules de la planète utilisent le même code génétique et les mêmes molécules énergétiques (ATP) ?",
+              "options": [
+                "Une simple coïncidence sans aucune signification biologique",
+                "L'unité fonctionnelle profonde et l'origine commune de tous les êtres vivants de la Terre",
+                "Une théorie obsolète réfutée par la génétique moderne",
+                "Une anomalie qui ne concerne que les grands mammifères"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'universalité de l'ADN, du code génétique, de l'ATP et de la membrane plasmique atteste de l'unité du vivant et d'une parenté évolutive commune."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles grandes fonctions vitales s'accomplissent quotidiennement à l'échelle de chaque cellule vivante ?",
+              "options": [
+                "L'approvisionnement en matière nutritive et les échanges gazeux respiratoires",
+                "La production et l'utilisation d'énergie chimique pour accomplir des activités cellulaires",
+                "L'élimination des déchets métaboliques vers le milieu extérieur",
+                "La télépathie acoustique entre espèces différentes"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Toute cellule vivante échange de la matière, consomme des nutriments, produit de l'énergie et élimine des déchets pour se maintenir en vie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que devient la matière organique produite par les autotrophes ou ingérée par les hétérotrophes qui n'est pas dégradée pour l'énergie ?",
+              "options": [
+                "Elle sert de briques élémentaires pour fabriquer de nouveaux constituants cellulaires (croissance et renouvellement)",
+                "Elle est obligatoirement transformée en pierre minérale indestructible",
+                "Elle s'évapore instantanément dans l'atmosphère sans servir à la cellule",
+                "Elle est intégralement rejetée sous forme de poison toxique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La matière organique non brûlée pour l'énergie sert à l'anabolisme : fabrication de membranes, de protéines, de glycogène ou d'amidon pour grandir et se réparer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la pratique d'un sport soutenu augmente-t-elle à la fois la température du corps et le rythme respiratoire ?",
+              "options": [
+                "La respiration cellulaire accrue pour fournir de l'énergie dégage de la chaleur et exige davantage de dioxygène",
+                "Les os frottent entre eux en générant des étincelles électriques",
+                "Les poumons aspirent de l'eau chaude extérieure pour réchauffer le sang",
+                "Le sang cesse de circuler pour éviter la fatigue musculaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les muscles ont besoin de plus d'ATP : la respiration cellulaire s'accélère, augmentant la demande en O2 (ventilation) et la libération de chaleur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel système d'organes assure le lien permanent entre les cellules des organes et les systèmes d'approvisionnement ou d'excrétion ?",
+              "options": [
+                "L'appareil locomoteur passif",
+                "L'appareil circulatoire sanguin",
+                "L'appareil respiratoire seul",
+                "Le squelette osseux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le sang véhicule l'O2 (poumons), les nutriments (intestin), le CO2 (vers poumons) et l'urée (vers reins) pour alimenter et nettoyer chaque cellule."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la conséquence inévitable pour l'organisme si l'équilibre du milieu intérieur (homéostasie) n'est plus maintenu ?",
+              "options": [
+                "Le fonctionnement des cellules est gravement perturbé, ce qui entraîne la maladie ou la mort",
+                "Les cellules deviennent invulnérables et immortelles",
+                "L'organisme se métamorphose en plante verte",
+                "Il n'y a aucun effet car les cellules ne dépendent pas du milieu intérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cellules ne peuvent survivre que dans des conditions très stables (température, pH, hydratation, concentrations ioniques) assurées par l'homéostasie."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles conclusions fondamentales peut-on tirer sur le fonctionnement d'un organisme pluricellulaire ?",
+              "options": [
+                "L'organisme pluricellulaire fonctionne grâce à la coopération harmonieuse et coordonnée de ses cellules et tissus",
+                "Toutes les cellules du corps ont des besoins fondamentaux en matière et en énergie pour vivre",
+                "Chaque cellule fonctionne en parfaite autarcie sans aucune dépendance envers les autres organes",
+                "La santé et la survie de l'organisme dépendent directement de l'état de fonctionnement de ses cellules"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Chez un pluricellulaire, les cellules sont interdépendantes : la survie de l'individu repose sur la coordination étroite de ses milliards de cellules."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

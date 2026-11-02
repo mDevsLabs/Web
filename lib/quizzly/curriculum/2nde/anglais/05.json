@@ -1,0 +1,2453 @@
+{
+  "id": "2nde-anglais-05",
+  "year": "2nde",
+  "subject": "anglais",
+  "title": "Le passé en anglais",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le prétérit simple : verbes réguliers et terminaison -ed",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la règle générale pour former le prétérit d'un verbe régulier en anglais ?",
+              "options": [
+                "On ajoute la terminaison -ed à la base verbale.",
+                "On ajoute le suffixe -ing au verbe.",
+                "On place systématiquement l'auxiliaire did devant le verbe.",
+                "On modifie la voyelle centrale du verbe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les verbes réguliers, le prétérit affirmatif se forme en ajoutant -ed à la base verbale (ex: watch -> watched)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment orthographie-t-on le prétérit du verbe « stop » ?",
+              "options": ["stopped", "stoped", "stoppt", "stopping"],
+              "correctAnswers": [0],
+              "explanation": "Pour un verbe d'une syllabe se terminant par consonne-voyelle-consonne, on double la consonne finale avant d'ajouter -ed."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « marry » ?",
+              "options": ["married", "marryed", "marred", "marrying"],
+              "correctAnswers": [0],
+              "explanation": "Quand un verbe régulier se termine par une consonne suivie de -y, le -y se transforme en -i devant -ed (marry -> married)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans quel cas la terminaison -ed se prononce-t-elle /ɪd/ ?",
+              "options": [
+                "Après les sons /t/ ou /d/",
+                "Après les sons /p/ ou /k/",
+                "Après les voyelles longues",
+                "Après les consonnes nasales /m/ et /n/"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La terminaison -ed se prononce /ɪd/ uniquement après une base verbale se terminant par le son /t/ (wanted) ou /d/ (decided)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Parmi ces verbes au prétérit, lequel a une terminaison -ed prononcée /t/ ?",
+              "options": ["watched", "played", "cleaned", "started"],
+              "correctAnswers": [0],
+              "explanation": "Après un son sourd comme /tʃ/ dans watch, le suffixe -ed s'assourdit et se prononce /t/."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Parmi ces verbes au prétérit, lequel a une terminaison -ed prononcée /d/ ?",
+              "options": ["called", "kissed", "shouted", "laughed"],
+              "correctAnswers": [0],
+              "explanation": "Après une consonne voisée comme /l/, -ed se prononce simplement /d/."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme correcte au prétérit du verbe « live » ?",
+              "options": ["lived", "liveed", "livved", "livet"],
+              "correctAnswers": [0],
+              "explanation": "Lorsque le verbe régulier se termine déjà par un -e muet, on se contente d'ajouter -d."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase est correctement conjuguée au prétérit ?",
+              "options": [
+                "Yesterday, they visited the British Museum.",
+                "Yesterday, they did visited the British Museum.",
+                "Yesterday, they visiting the British Museum.",
+                "Yesterday, they visit the British Museum."
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la forme affirmative du prétérit simple, on utilise directement la base verbale + -ed sans auxiliaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la règle d'orthographe pour le verbe « play » au prétérit ?",
+              "options": [
+                "On ajoute simplement -ed (played) car le y est précédé d'une voyelle.",
+                "On remplace y par ied (plaied).",
+                "On double le y (playyed).",
+                "Le verbe est invariable (play)."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le -y final est précédé d'une voyelle (a, e, o, u), on ajoute simplement -ed : play -> played, enjoy -> enjoyed."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels verbes réguliers doublent leur consonne finale au prétérit simple ?",
+              "options": [
+                "plan -> planned",
+                "prefer -> preferred",
+                "open -> opened",
+                "listen -> listened"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Plan et prefer doublent leur consonne finale car l'accent tonique porte sur la dernière syllabe terminée par consonne-voyelle-consonne."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les formes négative et interrogative au prétérit simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel auxiliaire utilise-t-on pour former la négation au prétérit simple pour la plupart des verbes ?",
+              "options": [
+                "did not (didn't)",
+                "do not (don't)",
+                "does not (doesn't)",
+                "was not (wasn't)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au prétérit simple, l'auxiliaire de négation est did not (didn't) pour toutes les personnes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que devient le verbe lexical après l'auxiliaire « didn't » ?",
+              "options": [
+                "Il reste à la base verbale (infinitif sans to).",
+                "Il prend la marque -ed.",
+                "Il prend la marque -ing.",
+                "Il prend un -s à la 3e personne du singulier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme l'auxiliaire did porte déjà la marque du passé, le verbe lexical qui suit reste à la base verbale nue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases négatives est grammaticalement correcte ?",
+              "options": [
+                "She didn't watch TV last night.",
+                "She didn't watched TV last night.",
+                "She not watched TV last night.",
+                "She doesn't watched TV last night."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit 'didn't watch' car après didn't le verbe lexical se met à la base verbale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment pose-t-on une question fermée (Yes/No question) au prétérit simple ?",
+              "options": [
+                "Did + Sujet + Base Verbale... ?",
+                "Did + Sujet + Verbe en -ed... ?",
+                "Do + Sujet + Base Verbale... ?",
+                "Sujet + Did + Base Verbale... ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure interrogative standard au prétérit est : Did + Sujet + Base Verbale ?"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la bonne formulation interrogative ?",
+              "options": [
+                "Did you lock the front door?",
+                "Did you locked the front door?",
+                "Locked you the front door?",
+                "Do you locked the front door?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question correcte est 'Did you lock... ?' avec la base verbale lock."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment répond-on brièvement à la question « Did they enjoy the trip? » par l'affirmative ?",
+              "options": [
+                "Yes, they did.",
+                "Yes, they enjoyed.",
+                "Yes, they do.",
+                "Yes, they had."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une réponse courte, on reprend le pronom sujet et l'auxiliaire de la question : 'Yes, they did.'"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment pose-t-on une question où le mot interrogatif « Who » est sujet de la phrase ?",
+              "options": [
+                "Who broke the kitchen window?",
+                "Who did break the kitchen window?",
+                "Who did broke the kitchen window?",
+                "Who does break the kitchen window?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand le mot interrogatif est sujet, on n'utilise pas l'auxiliaire did : le verbe se conjugue directement au prétérit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase interrogative avec mot interrogatif complément est correcte ?",
+              "options": [
+                "Where did you spend your summer holidays?",
+                "Where you spent your summer holidays?",
+                "Where did you spent your summer holidays?",
+                "Where spent you your summer holidays?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma standard : Mot interrogatif + Did + Sujet + Base Verbale (Where did you spend... ?)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la forme négative de « He was at home » ?",
+              "options": [
+                "He wasn't at home.",
+                "He didn't be at home.",
+                "He didn't was at home.",
+                "He hadn't at home."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe be est un auxiliaire : il ne prend pas did et forme sa négation seul (was not / wasn't)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases négatives au prétérit sont grammaticalement correctes ?",
+              "options": [
+                "We didn't go to London last weekend.",
+                "They weren't satisfied with the results.",
+                "He didn't went to the cinema yesterday.",
+                "I hadn't any homework to did."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On utilise didn't + base verbale (didn't go) et weren't pour le verbe be au prétérit pluriel."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les verbes irréguliers fondamentaux (Partie 1)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelles sont les deux formes du verbe « be » au prétérit simple ?",
+              "options": [
+                "was / were",
+                "been / being",
+                "did / done",
+                "had / have"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe be a deux formes au prétérit : was (avec I, he, she, it) et were (avec you, we, they)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « go » ?",
+              "options": ["went", "goed", "gone", "goes"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de go est went (forme irrégulière issue d'un autre radical en vieil anglais)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « have » ?",
+              "options": ["had", "haved", "has", "hadden"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de have est had pour toutes les personnes grammaticales."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « see » ?",
+              "options": ["saw", "seed", "seen", "sight"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de see est saw (seen étant le participe passé)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « do » ?",
+              "options": ["did", "doed", "done", "does"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit du verbe lexical ou auxiliaire do est did."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « come » ?",
+              "options": ["came", "comed", "come", "camed"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de come est came (come - came - come)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « make » ?",
+              "options": ["made", "maked", "make", "maden"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de make est made (make - made - made)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « take » ?",
+              "options": ["took", "taked", "taken", "toke"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de take est took (take - took - taken)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez la phrase : « Yesterday, I ... my keys on the table. » (verbe leave)",
+              "options": ["left", "leaved", "lefted", "leave"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit du verbe leave est left (leave - left - left)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels couples (Base Verbale -> Prétérit) sont parfaitement corrects ?",
+              "options": [
+                "say -> said",
+                "get -> got",
+                "give -> gaved",
+                "run -> runned"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Say donne said et get donne got. En revanche, give donne gave (non gaved) et run donne ran (non runned)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les verbes irréguliers fondamentaux (Partie 2)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « write » ?",
+              "options": ["wrote", "writed", "written", "wroten"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de write est wrote (write - wrote - written)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la particularité du verbe « read » au prétérit ?",
+              "options": [
+                "Il s'écrit « read » mais se prononce /rɛd/ comme la couleur red.",
+                "Il s'écrit « red » et se prononce /ri:d/.",
+                "Il prend un -ed régulier : readed.",
+                "Il devient « rode » à l'oral comme à l'écrit."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au prétérit, read conserve la même orthographe mais change de prononciation : /rɛd/."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « buy » ?",
+              "options": ["bought", "buyed", "brought", "baught"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de buy est bought (attention à ne pas le confondre avec brought, qui vient de bring)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « think » ?",
+              "options": ["thought", "thinked", "thank", "though"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de think est thought (think - thought - thought)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « bring » ?",
+              "options": ["brought", "bringed", "bought", "brang"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de bring est brought (bring - brought - brought)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « speak » ?",
+              "options": ["spoke", "speaked", "spoken", "spake"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de speak est spoke (speak - spoke - spoken)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « tell » ?",
+              "options": ["told", "telled", "talked", "tale"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de tell est told (tell - told - told)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « She ... me a wonderful gift for my birthday. » (verbe give)",
+              "options": ["gave", "gived", "given", "gifted"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de give est gave (give - gave - given)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la forme au prétérit du verbe « know » ?",
+              "options": ["knew", "knowed", "known", "new"],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit de know est knew (know - knew - known)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels verbes ont exactement la même forme à l'infinitif et au prétérit simple ?",
+              "options": ["cut", "cost", "lose", "send"],
+              "correctAnswers": [0, 1],
+              "explanation": "Cut (cut - cut - cut) et cost (cost - cost - cost) sont invariables. Lose devient lost et send devient sent."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le prétérit en BE + V-ing (Past Continuous)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se forme le prétérit continu (Past Continuous) ?",
+              "options": [
+                "was / were + base verbale-ing",
+                "did + base verbale-ing",
+                "had + base verbale-ed",
+                "have / has + participe passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Past Continuous se forme avec l'auxiliaire be au prétérit (was ou were) suivi du participe présent en -ing."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel énoncé illustre le mieux l'emploi du Past Continuous ?",
+              "options": [
+                "Une action en cours de déroulement à un moment précis du passé.",
+                "Une vérité générale intemporelle.",
+                "Une action brève et soudaine sans durée.",
+                "Une habitude répétée dans le présent."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Past Continuous sert à décrire une action qui était en train de se dérouler à un instant repère du passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez avec le sujet « they » : « At 8 pm yesterday, they ... dinner. »",
+              "options": [
+                "were having",
+                "was having",
+                "are having",
+                "had having"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom sujet 'they', l'auxiliaire be au prétérit est were, d'où 'were having'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez avec le sujet « she » : « At that time, she ... for her exam. »",
+              "options": [
+                "was revising",
+                "were revising",
+                "did revising",
+                "is revising"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec la 3e personne du singulier (she), on emploie was, d'où 'was revising'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment forme-t-on la négation au Past Continuous avec « we » ?",
+              "options": [
+                "We were not (weren't) listening.",
+                "We did not listening.",
+                "We was not listening.",
+                "We had not listening."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation se porte directement sur l'auxiliaire were : were not ou weren't."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme interrogative correcte au Past Continuous ?",
+              "options": [
+                "What were you doing when the alarm rang?",
+                "What was you doing when the alarm rang?",
+                "What did you doing when the alarm rang?",
+                "What you were doing when the alarm rang?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'you', l'auxiliaire est were, et l'inversion donne : 'What were you doing... ?'"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment orthographie-t-on le verbe « run » au participe en -ing ?",
+              "options": ["running", "runing", "runned", "runnin"],
+              "correctAnswers": [0],
+              "explanation": "Pour un verbe court consonne-voyelle-consonne, on double la consonne finale devant -ing (run -> running)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi les verbes d'état (stative verbs comme know, love, belong) s'emploient-ils rarement au Past Continuous ?",
+              "options": [
+                "Ils décrivent un état permanent ou cognitif plutôt qu'un processus dynamique.",
+                "Ils n'existent pas au passé en anglais.",
+                "Ils sont uniquement réguliers en -ed.",
+                "Ils nécessitent obligatoirement l'auxiliaire have."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les 'stative verbs' expriment des états, croyances ou sentiments et ne s'emploient généralement pas aux formes continues en -ing."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases contient une erreur ?",
+              "options": [
+                "I was understanding the whole lesson easily.",
+                "I was writing a letter when Tom arrived.",
+                "They were playing tennis all morning.",
+                "It was raining heavily at midnight."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Understand est un verbe d'état cognitif ; on dit 'I understood', non 'I was understanding'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement le Past Continuous ?",
+              "options": [
+                "While the teacher was speaking, the students were taking notes.",
+                "He was sleeping when the phone suddenly rang.",
+                "They were went to the stadium at six.",
+                "I was heard a terrible noise."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases avec was speaking/were taking notes et was sleeping décrivent parfaitement des actions en déroulement dans le passé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Prétérit simple vs Past Continuous",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans une narration au passé, quelle est l'articulation typique entre le Past Continuous et le prétérit simple ?",
+              "options": [
+                "Le Past Continuous pose le décor d'arrière-plan, le prétérit simple exprime l'événement soudain.",
+                "Le Past Continuous exprime toujours l'action la plus courte.",
+                "Le prétérit simple ne peut jamais s'employer dans la même phrase que le Past Continuous.",
+                "Le prétérit simple sert uniquement aux actions futures."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Past Continuous décrit l'action d'arrière-plan qui dure, interrompue ou ponctuée par une action brève au prétérit simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez : « I ... down the street when I ... an old friend. »",
+              "options": [
+                "was walking / met",
+                "walked / was meeting",
+                "was walking / was meeting",
+                "walked / met"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marcher dans la rue est l'action en cours (was walking) et rencontrer un ami est l'événement ponctuel (met)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle conjonction introduit généralement l'action continue et longue ?",
+              "options": ["While", "Suddenly", "At once", "Immediately"],
+              "correctAnswers": [0],
+              "explanation": "While (pendant que) est généralement suivi du Past Continuous pour introduire une action en déroulement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle conjonction introduit le plus souvent l'action brève qui interrompt le cours des choses ?",
+              "options": ["When", "While", "Whereas", "During"],
+              "correctAnswers": [0],
+              "explanation": "When (lorsque / quand) introduit fréquemment l'action ponctuelle au prétérit simple."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « While Lucy ... a book, the lights ... out. »",
+              "options": [
+                "was reading / went",
+                "read / were going",
+                "was reading / was going",
+                "readed / went"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lucy était en train de lire (was reading) lorsque les lumières se sont éteintes soudainement (went out)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : « When I arrived, they were eating » ?",
+              "options": [
+                "Le repas avait déjà commencé avant mon arrivée.",
+                "Ils ont attendu que j'arrive pour commencer à manger.",
+                "Ils avaient déjà terminé leur repas.",
+                "Ils ont refusé de manger avec moi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Past Continuous 'were eating' indique que l'action de manger était déjà en cours au moment de l'arrivée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : « When I arrived, they ate » ?",
+              "options": [
+                "Ils ont commencé à manger après mon arrivée.",
+                "Ils étaient en train de manger à mon arrivée.",
+                "Ils avaient mangé avant mon arrivée.",
+                "Ils ne voulaient pas manger."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux prétérits simples successifs indiquent une suite chronologique d'actions : l'arrivée d'abord, puis le repas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment exprimer deux actions longues et simultanées dans le passé ?",
+              "options": [
+                "En utilisant le Past Continuous pour les deux verbes reliés par while.",
+                "En utilisant le prétérit simple pour les deux avec when.",
+                "En mettant le premier verbe au futur et le second au passé.",
+                "En utilisant le Present Perfect pour les deux verbes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour deux actions simultanées en cours : 'While he was cooking, she was setting the table.'"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Choisissez la bonne phrase :",
+              "options": [
+                "What were you doing when the fire started?",
+                "What did you do when the fire was starting?",
+                "What were you did when the fire started?",
+                "What was you doing when the fire started?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'What were you doing when the fire started?' oppose l'activité en cours à l'événement soudain."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases combinent correctement prétérit simple et Past Continuous ?",
+              "options": [
+                "He fell off his ladder while he was painting the ceiling.",
+                "The baby was crying when the doorbell rang.",
+                "While I walked to school, it was beginning to rain.",
+                "She dropped her glass because she was danced."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les structures 'fell ... while was painting' et 'was crying when rang' associent parfaitement action longue et action brève."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "L'habitude passée avec used to",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que permet d'exprimer la structure « used to + base verbale » ?",
+              "options": [
+                "Une habitude ou un état passé qui n'est plus vrai aujourd'hui.",
+                "Une habitude actuelle ancrée dans le présent.",
+                "Une action ponctuelle qui aura lieu demain.",
+                "L'utilisation d'un outil technologique dans le présent."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Used to + BV exprime une rupture entre le passé et le présent : une habitude ou situation passée révolue."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle phrase traduit fidèlement : « J'avais l'habitude d'habiter à Manchester » ?",
+              "options": [
+                "I used to live in Manchester.",
+                "I am used to live in Manchester.",
+                "I used living in Manchester.",
+                "I use to lived in Manchester."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise 'used to' suivi de la base verbale nue 'live'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment forme-t-on la négation avec « used to » ?",
+              "options": [
+                "didn't use to + base verbale",
+                "used not to + verbe en -ing",
+                "didn't used to + base verbale",
+                "don't use to + base verbale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La forme négative standard est 'didn't use to' (l'auxiliaire did portant déjà la marque du passé, use perd son d)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment pose-t-on une question sur une habitude passée avec cette structure ?",
+              "options": [
+                "Did you use to play rugby at school?",
+                "Did you used to play rugby at school?",
+                "Used you to play rugby at school?",
+                "Do you used to play rugby at school?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question standard s'articule ainsi : Did + Sujet + use to + base verbale ?"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : « He used to smoke » ?",
+              "options": [
+                "Il fumait autrefois, mais il ne fume plus aujourd'hui.",
+                "Il a l'habitude de fumer tous les jours actuellement.",
+                "Il fume occasionnellement en soirée.",
+                "Il aimerait commencer à fumer."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Used to implique un contraste fort avec le présent : l'action appartenait au passé et a cessé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre « used to + BV » et « be used to + V-ing » ?",
+              "options": [
+                "Used to + BV exprime une habitude passée révolue ; be used to + V-ing exprime l'accoutumance (être habitué à).",
+                "Used to s'emploie uniquement au futur, be used to au passé.",
+                "Il n'y a aucune différence de sens.",
+                "Be used to s'emploie uniquement avec des verbes réguliers."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Be used to + V-ing' signifie être accoutumé à quelque chose (ex: I am used to getting up early)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Peut-on utiliser « used to » pour une action qui ne s'est produite qu'une seule fois dans le passé ?",
+              "options": [
+                "Non, pour une action unique et datée, on doit utiliser le prétérit simple.",
+                "Oui, used to convient à n'importe quelle action passée ponctuelle.",
+                "Oui, si l'action a duré plus de 2 heures.",
+                "Non, on doit obligatoirement employer le Past Perfect."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un événement unique (ex: Yesterday I went to London), on utilise le prétérit simple, jamais used to."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel modal de substitution peut exprimer une habitude passée, mais uniquement pour des actions et non des états ?",
+              "options": ["would", "should", "must", "might"],
+              "correctAnswers": [0],
+              "explanation": "Would peut exprimer une habitude passée (Every summer we would go camping), mais pas un état (on ne dit pas 'He would be tall')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « There ... be a cinema in this street twenty years ago. »",
+              "options": ["used to", "would", "was used to", "uses to"],
+              "correctAnswers": [0],
+              "explanation": "Avec un verbe d'état comme be, seul used to est possible pour exprimer une situation passée révolue."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement « used to » pour exprimer une habitude ou situation passée ?",
+              "options": [
+                "She used to have long hair when she was a teenager.",
+                "We didn't use to like spicy food, but now we love it.",
+                "They used to buying books every week.",
+                "I use to went to the cinema yesterday."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Used to s'emploie avec une base verbale (used to have) et donne didn't use to à la forme négative."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Le plus-que-parfait (Past Perfect simple)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se forme le Past Perfect simple en anglais ?",
+              "options": [
+                "had + participe passé",
+                "have / has + participe passé",
+                "did + participe passé",
+                "was / were + participe passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Past Perfect simple se forme invariablement avec l'auxiliaire had suivi du participe passé du verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal du Past Perfect dans un récit au passé ?",
+              "options": [
+                "Exprimer une action antérieure à un repère ou à une autre action déjà située dans le passé.",
+                "Exprimer une action future vue depuis le présent.",
+                "Remplacer le prétérit simple pour toutes les actions brèves.",
+                "Indiquer qu'une action se déroule en ce moment même."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Past Perfect est le passé du passé : il marque l'antériorité par rapport à un autre événement passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « When we arrived at the station, the train ... already ... »",
+              "options": [
+                "had ... left",
+                "has ... left",
+                "did ... leave",
+                "was ... left"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le train est parti avant notre arrivée passée : on emploie donc le Past Perfect (had already left)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase traduit correctement : « Elle s'est rendu compte qu'elle avait oublié son passeport » ?",
+              "options": [
+                "She realized that she had forgotten her passport.",
+                "She realized that she forgot her passport.",
+                "She had realized that she forgot her passport.",
+                "She was realizing that she has forgotten her passport."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oubli du passeport est antérieur à la prise de conscience passée (realized), d'où had forgotten."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment forme-t-on la négation au Past Perfect simple ?",
+              "options": [
+                "had not (hadn't) + participe passé",
+                "did not have + participe passé",
+                "have not + participe passé",
+                "was not + participe passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation se fixe sur l'auxiliaire had : had not ou la forme contractée hadn't."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme interrogative correcte au Past Perfect ?",
+              "options": [
+                "Had they seen the film before that night?",
+                "Did they had seen the film before that night?",
+                "Have they seen the film before that night?",
+                "Were they seen the film before that night?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure interrogative est : Had + Sujet + Participe Passé... ?"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : « By the time Mark woke up, his sister had eaten all the pancakes » ?",
+              "options": [
+                "Sa sœur avait déjà mangé toutes les crêpes avant le réveil de Mark.",
+                "Sa sœur a attendu le réveil de Mark pour manger les crêpes.",
+                "Mark a mangé toutes les crêpes avant le réveil de sa sœur.",
+                "Mark et sa sœur ont partagé les crêpes au réveil."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'By the time + prétérit' est suivi du Past Perfect pour signifier que l'action était déjà achevée avant ce repère."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « He failed his driving test because he ... enough. »",
+              "options": [
+                "hadn't practiced",
+                "hasn't practiced",
+                "didn't practiced",
+                "wasn't practiced"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le manque d'entraînement a eu lieu avant l'échec à l'examen passé : on emploie hadn't practiced."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la forme du participe passé du verbe « break » au Past Perfect ?",
+              "options": [
+                "broken (had broken)",
+                "broke (had broke)",
+                "breaked (had breaked)",
+                "braked (had braked)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les formes de break sont break - broke - broken. Au Past Perfect, on a donc had broken."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement le Past Perfect simple pour marquer l'antériorité ?",
+              "options": [
+                "I couldn't enter the house because I had lost my key.",
+                "After they had finished their homework, they went out to play.",
+                "When the bell rang, the students had already leaving.",
+                "He told me that he never has seen such a spectacle."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Had lost' et 'had finished' expriment tous deux une antériorité par rapport à un événement repère au prétérit."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "La modalité au passé : could, had to, was able to",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel modal est le prétérit direct de « can » pour exprimer une capacité générale dans le passé ?",
+              "options": ["could", "would", "should", "might"],
+              "correctAnswers": [0],
+              "explanation": "Could est le prétérit de can et s'emploie pour exprimer une capacité ou aptitude générale dans le passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on une obligation dans le passé (équivalent passé de « must ») ?",
+              "options": [
+                "had to + base verbale",
+                "musted + base verbale",
+                "could to + base verbale",
+                "should have + base verbale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le modal must n'a pas de forme propre au prétérit ; on le remplace systématiquement par had to."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour décrire une réussite ponctuelle dans une situation précise et difficile, que privilégie-t-on par rapport à « could » ?",
+              "options": [
+                "was / were able to + base verbale",
+                "used to + base verbale",
+                "would rather + base verbale",
+                "could to + base verbale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un exploit ou accomplissement ponctuel réussi dans le passé, on emploie 'was/were able to' (ou managed to)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « The fire spread quickly, but everyone ... escape safely. »",
+              "options": ["was able to", "could", "had to", "used to"],
+              "correctAnswers": [0],
+              "explanation": "Il s'agit d'une réussite spécifique et ponctuelle dans une situation de crise : on emploie was able to."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À la forme négative, peut-on employer « couldn't » pour une incapacité ponctuelle aussi bien que générale ?",
+              "options": [
+                "Oui, couldn't s'utilise indifféremment pour une incapacité générale ou ponctuelle.",
+                "Non, couldn't est strictement interdit pour les situations ponctuelles.",
+                "Non, on doit obligatoirement dire 'was not able to'.",
+                "Oui, mais uniquement le week-end."
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la forme négative, la distinction s'estompe : couldn't et wasn't able to sont tous deux couramment acceptés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on l'absence d'obligation dans le passé (« nous n'étions pas obligés de ») ?",
+              "options": [
+                "didn't have to + base verbale",
+                "hadn't to + base verbale",
+                "mustn't + base verbale",
+                "didn't must + base verbale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence d'obligation au passé s'exprime par 'didn't have to + BV' (ex: We didn't have to wear a uniform)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « When I was six, I ... swim very well. » (capacité générale)",
+              "options": ["could", "had to", "must", "might to"],
+              "correctAnswers": [0],
+              "explanation": "Pour une aptitude générale développée dans l'enfance, on emploie could."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment pose-t-on la question : « As-tu dû travailler tard hier ? »",
+              "options": [
+                "Did you have to work late yesterday?",
+                "Had you to work late yesterday?",
+                "Musted you work late yesterday?",
+                "Did you must work late yesterday?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La question sur une obligation passée emprunte l'auxiliaire did : 'Did you have to work... ?'"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie : « You shouldn't have said that » ?",
+              "options": [
+                "Tu n'aurais pas dû dire cela (reproche sur une action passée).",
+                "Tu ne devais pas dire cela sous peine de punition.",
+                "Tu ne pouvais pas dire cela physiquement.",
+                "Tu ne diras pas cela à l'avenir."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Should have / shouldn't have + participe passé sert à exprimer un regret ou un reproche sur le passé."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont grammaticalement correctes pour exprimer la modalité au passé ?",
+              "options": [
+                "Because of the heavy snow, we had to cancel the trip.",
+                "Despite the thick fog, the pilot was able to land the plane.",
+                "Yesterday, I must go to the dentist at two o'clock.",
+                "She coulded speak three foreign languages when she was ten."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Had to cancel' exprime l'obligation passée et 'was able to land' la réussite d'un acte ponctuel complexe. Musted et coulded n'existent pas."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Récit d'événements et connecteurs narratifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mot de liaison emploie-t-on pour introduire le tout premier événement d'un récit chronologique ?",
+              "options": [
+                "First / First of all",
+                "Finally",
+                "Consequently",
+                "Meanwhile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "First ou First of all (D'abord / En premier lieu) sert à introduire le point de départ d'une chronologie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel adverbe exprime une survenue soudaine et inattendue dans une histoire ?",
+              "options": ["Suddenly", "Gradually", "Eventually", "Generally"],
+              "correctAnswers": [0],
+              "explanation": "Suddenly signifie 'soudainement' ou 'tout à coup' et dynamise le récit d'événements inattendus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le connecteur « meanwhile » dans un récit ?",
+              "options": [
+                "Pendant ce temps / Dans l'intervalle",
+                "C'est pourquoi",
+                "Malgré tout",
+                "Peu de temps après"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Meanwhile exprime la simultanéité entre deux actions distinctes : 'pendant ce temps'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le sens exact du faux-ami « eventually » en anglais ?",
+              "options": [
+                "Finalement / À la fin (après un long processus)",
+                "Éventuellement / Peut-être",
+                "De temps en temps",
+                "Certainement pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Eventually est un faux-ami majeur : il ne signifie pas 'éventuellement' mais 'finalement / au bout du compte'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduit-on : « Dès que nous sommes arrivés, le concert a commencé » ?",
+              "options": [
+                "As soon as we arrived, the concert started.",
+                "As long as we arrived, the concert started.",
+                "As well as we arrived, the concert started.",
+                "As far as we arrived, the concert started."
+              ],
+              "correctAnswers": [0],
+              "explanation": "As soon as signifie 'dès que' ou 'aussitôt que' et lie deux événements immédiatement consécutifs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel connecteur permet de conclure une narration en soulignant l'aboutissement final ?",
+              "options": [
+                "In the end / At last",
+                "At first",
+                "To begin with",
+                "However"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In the end ou At last permet de clore une narration en exprimant le dénouement ou soulagement final."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « We looked everywhere for the keys. ..., we found them under the sofa. »",
+              "options": ["Finally", "At first", "Firstly", "As soon as"],
+              "correctAnswers": [0],
+              "explanation": "Finally marque l'étape ultime et réussie d'une recherche prolongée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel connecteur marque la succession chronologique simple (« ensuite / puis ») ?",
+              "options": ["Then", "Than", "Though", "Through"],
+              "correctAnswers": [0],
+              "explanation": "Then (à ne pas confondre avec than utilisé pour la comparaison) signifie 'ensuite / puis'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle locution signifie « au début », souvent suivie d'un revirement ?",
+              "options": ["At first", "At least", "At last", "At once"],
+              "correctAnswers": [0],
+              "explanation": "At first signifie 'au début' et s'oppose souvent à later ou in the end (ex: At first I was scared, but then...)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs narratifs expriment une idée de temps ou de succession temporelle ?",
+              "options": [
+                "afterwards",
+                "shortly after",
+                "furthermore",
+                "in addition"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Afterwards (par la suite) et shortly after (peu de temps après) expriment le temps, tandis que furthermore et in addition ajoutent un argument."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Yesterday, ago et last : les repères révolus",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel temps verbal s'impose obligatoirement avec des marqueurs révolus comme « yesterday », « ago » ou « last week » ?",
+              "options": [
+                "Le prétérit simple",
+                "Le présent simple",
+                "Le Present Perfect",
+                "Le futur simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En anglais, tout repère temporel totalement coupé du présent (yesterday, last year, ago) exige obligatoirement le prétérit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se place le marqueur « ago » dans un groupe de mots ?",
+              "options": [
+                "Toujours après la durée quantifiée (ex: three years ago).",
+                "Toujours devant la durée quantifiée (ex: ago three years).",
+                "Entre l'auxiliaire et le verbe principal.",
+                "En tout début de phrase uniquement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ago est une postposition : il se place toujours après l'expression de la durée (two hours ago, ten days ago)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on : « Il y a deux jours » ?",
+              "options": [
+                "Two days ago",
+                "There are two days",
+                "Since two days",
+                "For two days"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour situer un moment passé par rapport au présent, 'il y a + durée' se traduit par '[durée] ago'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « I saw Sarah ... »",
+              "options": [
+                "yesterday morning",
+                "the yesterday morning",
+                "at yesterday morning",
+                "last yesterday"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On dit directement 'yesterday morning' sans article ni préposition."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dit-on « hier soir » en anglais courant ?",
+              "options": [
+                "last night (ou yesterday evening)",
+                "yesterday night exclusively",
+                "the previous evening only",
+                "before night"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour désigner la nuit passée ou la soirée d'hier, 'last night' est la formulation idiomatique la plus naturelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle formulation est correcte avec l'adjectif « last » ?",
+              "options": [
+                "last Monday",
+                "the last Monday (pour parler de lundi dernier)",
+                "on last Monday",
+                "at last Monday"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour désigner le jour le plus récent écoulé, on dit 'last Monday' sans article 'the' ni préposition 'on'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases contient une faute de temps grammatical ?",
+              "options": [
+                "I have seen him two days ago.",
+                "I saw him two days ago.",
+                "I saw him last Friday.",
+                "He graduated five years ago."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne peut jamais utiliser le Present Perfect avec 'ago' ; il faut employer le prétérit : 'I saw him two days ago'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « avant-hier » en anglais ?",
+              "options": [
+                "the day before yesterday",
+                "before yesterday",
+                "the yesterday before",
+                "yesterday minus one"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression consacrée pour 'avant-hier' est 'the day before yesterday'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « We moved into this apartment ... »",
+              "options": [
+                "a month ago",
+                "since a month",
+                "for a month ago",
+                "before one month"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement ponctuel d'emménagement dans le passé s'exprime avec 'a month ago'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles expressions temporelles renvoient obligatoirement à une période révolue ?",
+              "options": [
+                "three weeks ago",
+                "last summer",
+                "so far",
+                "up to now"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Three weeks ago' et 'last summer' désignent un temps entièrement révolu, alors que 'so far' et 'up to now' lient le passé au présent."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les dates, années et repères calendaires passés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle préposition utilise-t-on devant une année calendaire précise dans le passé (ex: 2012) ?",
+              "options": [
+                "in (in 2012)",
+                "on (on 2012)",
+                "at (at 2012)",
+                "by (by 2012)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant les années et les siècles, on utilise la préposition 'in' (in 1998, in the 21st century)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle préposition utilise-t-on devant une date précise comportant le jour et le mois (ex: July 4th) ?",
+              "options": [
+                "on (on July 4th)",
+                "in (in July 4th)",
+                "at (at July 4th)",
+                "from (from July 4th)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant un jour précis ou une date complète, la préposition requise est 'on' (on July 4th, on Monday)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle préposition emploie-t-on devant un siècle (ex: le XIXe siècle) ?",
+              "options": [
+                "in (in the 19th century)",
+                "on (on the 19th century)",
+                "at (at the 19th century)",
+                "during to (during to 19th century)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On emploie 'in' pour situer un événement dans un siècle : 'in the nineteenth century'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment lit-on oralement l'année « 1984 » en anglais ?",
+              "options": [
+                "nineteen eighty-four",
+                "one thousand nine hundred eighty-four",
+                "nineteen hundred eighty-four",
+                "ninety eighty-four"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les années historiques se lisent généralement par groupe de deux chiffres : 19 (nineteen) 84 (eighty-four)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment lit-on l'année « 2005 » en anglais standard ?",
+              "options": [
+                "two thousand and five (ou twenty oh-five)",
+                "twenty five hundred",
+                "twenty zero five exclusively",
+                "two hundred and five"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les années 2000-2009 se disent principalement 'two thousand and (five)' ou 'twenty oh-five'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « Neil Armstrong walked on the moon ... July 20th, 1969. »",
+              "options": ["on", "in", "at", "to"],
+              "correctAnswers": [0],
+              "explanation": "Puisque la date mentionne le jour exact (July 20th), on doit impérativement employer la préposition 'on'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « The second term started ... January. » (nom de mois seul)",
+              "options": ["in", "on", "at", "for"],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom de mois employé seul sans quantième de jour, on utilise la préposition 'in' (in January)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase est correctement formulée au prétérit avec un repère calendaire ?",
+              "options": [
+                "The Berlin Wall fell in November 1989.",
+                "The Berlin Wall has fallen in November 1989.",
+                "The Berlin Wall was fallen in November 1989.",
+                "The Berlin Wall falls in November 1989."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La date historique précise de 1989 impose l'emploi du prétérit simple actif 'fell'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment désigne-t-on la décennie des années 1960 en anglais ?",
+              "options": [
+                "the 1960s (the nineteen sixties)",
+                "the 1960th",
+                "the sixties year",
+                "in 1960 years"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une décennie s'écrit avec un s pluriel : the 1960s (ou the sixties)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases associent correctement la préposition temporelle et son repère passé ?",
+              "options": [
+                "World War I ended on November 11th, 1918.",
+                "William Shakespeare died in 1616.",
+                "Queen Victoria was born at May 24th, 1819.",
+                "The festival took place on 2015."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On utilise 'on' pour un jour précis (on November 11th) et 'in' pour une année seule (in 1616)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "For et since au passé et au Present Perfect",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre « since » et « for » ?",
+              "options": [
+                "Since indique un point de départ précis ; for mesure une durée globale.",
+                "Since mesure une durée ; for indique une date de départ.",
+                "Since s'emploie uniquement au futur ; for s'emploie au passé.",
+                "Il n'existe aucune distinction, ils sont interchangeables."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Since introduit le point de départ d'une période (since 2010), tandis que for quantifie une durée (for five years)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez : « I have lived in Bristol ... three years. »",
+              "options": ["for", "since", "during", "ago"],
+              "correctAnswers": [0],
+              "explanation": "'Three years' est une durée quantifiée : on utilise donc la préposition 'for'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « She has worked here ... last September. »",
+              "options": ["since", "for", "during", "ago"],
+              "correctAnswers": [0],
+              "explanation": "'Last September' est un point de départ temporel fixe : on emploie donc 'since'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : « He lived in Berlin for five years » (au prétérit simple) ?",
+              "options": [
+                "Il a vécu à Berlin pendant 5 ans, mais il n'y vit plus aujourd'hui.",
+                "Il vit à Berlin depuis 5 ans et y vit encore actuellement.",
+                "Il s'installera à Berlin dans 5 ans.",
+                "Il n'a jamais réussi à vivre à Berlin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "For associé au prétérit simple indique une durée révolue qui n'a plus de lien avec le présent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : « He has lived in Berlin for five years » (au Present Perfect) ?",
+              "options": [
+                "Il vit à Berlin depuis cinq ans et y réside toujours aujourd'hui.",
+                "Son séjour à Berlin est totalement terminé.",
+                "Il partira de Berlin dans cinq jours.",
+                "Il a visité Berlin cinq fois au cours de sa vie."
+              ],
+              "correctAnswers": [0],
+              "explanation": "For associé au Present Perfect traduit 'depuis' et indique que l'action débutée dans le passé se poursuit dans le présent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle préposition choisit-on avec l'expression : « ... breakfast this morning » ?",
+              "options": ["since", "for", "during to", "from ago"],
+              "correctAnswers": [0],
+              "explanation": "Le petit-déjeuner de ce matin constitue un point de repère précis marquant le départ, donc on dit 'since breakfast'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « They haven't seen each other ... they graduated from high school. »",
+              "options": ["since", "for", "during", "while"],
+              "correctAnswers": [0],
+              "explanation": "La proposition subordonnée au prétérit ('they graduated') sert de point de départ temporel, d'où l'emploi de 'since'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase française « J'attends depuis une demi-heure » se traduit-elle par un Present Perfect ?",
+              "options": [
+                "Parce que l'attente a commencé dans le passé et continue au moment où l'on parle.",
+                "Parce que le verbe attendre est un verbe irrégulier.",
+                "Parce que la phrase contient un chiffre inférieur à 60.",
+                "Parce que l'anglais ne possède pas de temps présent."
+              ],
+              "correctAnswers": [0],
+              "explanation": "En anglais, toute action débutée dans le passé et liée au présent exige le Present Perfect (I have been waiting for half an hour)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases contient une erreur d'association temporelle ?",
+              "options": [
+                "I live here since 2018.",
+                "I have lived here since 2018.",
+                "I lived there for two years in the nineties.",
+                "She has been ill for three days."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne peut pas utiliser le présent simple avec since pour traduire 'depuis' ; il faut le Present Perfect (I have lived here since...)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles expressions complètent correctement la phrase avec « since » ?",
+              "options": [
+                "since Monday",
+                "since 2015",
+                "since two weeks",
+                "since ten minutes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Monday' et '2015' sont des points de départ précis (since). En revanche, 'two weeks' et 'ten minutes' sont des durées (for)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Ever, never, already, yet : bilan d'expérience",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quoi sert l'adverbe « ever » dans une question au Present Perfect ?",
+              "options": [
+                "À demander si une expérience a eu lieu au moins une fois dans la vie jusqu'à maintenant.",
+                "À préciser l'heure exacte de l'action.",
+                "À demander pourquoi l'action n'a pas été réalisée.",
+                "À situer une action dans le futur proche."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une question comme 'Have you ever... ?', ever signifie 'déjà / au cours de ta vie' pour dresser un bilan d'expérience."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle question est la formulation idiomatique correcte pour demander : « Es-tu déjà allé à New York ? »",
+              "options": [
+                "Have you ever been to New York?",
+                "Have you ever gone to New York?",
+                "Did you ever went to New York?",
+                "Are you ever been in New York?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour demander si quelqu'un a fait un voyage aller-retour dans sa vie, on emploie 'have you ever been to... ?'"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie la réponse : « I have never eaten sushi » ?",
+              "options": [
+                "Je n'ai jamais mangé de sushis de toute ma vie.",
+                "Je ne mange pas de sushis le soir.",
+                "J'ai mangé des sushis hier.",
+                "J'adore manger des sushis."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Never apporte une valeur de négation totale sur l'ensemble de l'existence : 'ne jamais'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où se place généralement l'adverbe « already » dans une phrase affirmative au Present Perfect ?",
+              "options": [
+                "Entre l'auxiliaire have et le participe passé.",
+                "Devant le sujet de la phrase.",
+                "Obligatoirement après le complément d'objet.",
+                "À la fin de la phrase uniquement."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Already (déjà) se place typiquement en position médiane : entre l'auxiliaire have/has et le participe passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase affirmative est correctement ordonnée ?",
+              "options": [
+                "I have already finished my assignment.",
+                "I already have finished my assignment.",
+                "I have finished already my assignment.",
+                "Already I have finished my assignment."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre standard le plus rigoureux est : Sujet + have/has + already + participe passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans quel type de phrases emploie-t-on couramment l'adverbe « yet » en fin de proposition ?",
+              "options": [
+                "Dans les phrases négatives (« pas encore ») et interrogatives (« déjà »).",
+                "Dans les phrases affirmatives au passé simple.",
+                "Uniquement avec des ordres à l'impératif.",
+                "Uniquement dans les phrases exclamatives au futur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yet se place en fin de phrase dans les négations ('not yet' = pas encore) et les questions (Have you called him yet?)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie : « Has the postman arrived yet? »",
+              "options": [
+                "Le facteur est-il déjà arrivé ?",
+                "Pourquoi le facteur est-il en retard ?",
+                "Le facteur arrive-t-il demain ?",
+                "Quand le facteur est-il parti ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une interrogation, yet en fin d'énoncé correspond au français 'déjà' (est-il déjà arrivé ?)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « I haven't completed my project ... »",
+              "options": ["yet", "already", "ever", "never"],
+              "correctAnswers": [0],
+              "explanation": "En fin de phrase négative, on utilise 'yet' pour signifier 'pas encore'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la phrase « I haven't never seen this movie » est-elle incorrecte en anglais standard ?",
+              "options": [
+                "Elle contient une double négation interdite (haven't + never).",
+                "Le verbe see ne peut pas s'employer au Present Perfect.",
+                "Movie est un mot archaïque.",
+                "Never doit obligatoirement être suivi d'un adjectif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Never étant déjà négatif, le verbe doit rester à la forme affirmative : on dit 'I have never seen' ou 'I haven't ever seen'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont grammaticalement et sémantiquement correctes ?",
+              "options": [
+                "Have you ever climbed a mountain?",
+                "They haven't made their decision yet.",
+                "She has yet finished her homework.",
+                "Did you already saw that play?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Have you ever climbed' et 'haven't made... yet' respectent parfaitement les règles de position et de temps du Present Perfect."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Just, recently et lately",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle nuance temporelle apporte l'adverbe « just » combiné au Present Perfect ?",
+              "options": [
+                "L'action vient tout juste de se produire quelques instants plus tôt.",
+                "L'action s'est produite il y a plusieurs siècles.",
+                "L'action se produira dans un futur lointain.",
+                "L'action est uniquement imaginaire."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Just exprime une immédiateté toute récente : l'équivalent français de 'venir de + infinitif'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on : « Le train vient de partir » ?",
+              "options": [
+                "The train has just left.",
+                "The train comes to leave.",
+                "The train just leaves.",
+                "The train is just leaving now."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression 'venir de faire quelque chose' se traduit par have/has + just + participe passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où se place l'adverbe « just » dans la phrase anglaise ?",
+              "options": [
+                "Entre l'auxiliaire have/has et le participe passé.",
+                "Toujours en toute fin de proposition.",
+                "Toujours avant le sujet de la phrase.",
+                "Après le complément d'objet direct."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Just se place entre l'auxiliaire have/has et le participe passé (ex: I have just heard the news)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifient les adverbes « recently » et « lately » ?",
+              "options": [
+                "Récemment / Ces derniers temps",
+                "Tardivement / En retard",
+                "Rarement / Presque jamais",
+                "Exactement / Précisément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recently et lately signifient 'récemment' ou 'ces derniers temps' (lately ne signifie pas 'tardivement' mais 'dernièrement')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « Have you seen any good movies ... ? »",
+              "options": ["lately", "just", "late", "ago"],
+              "correctAnswers": [0],
+              "explanation": "Lately se place en fin de phrase pour demander si un événement s'est produit au cours des dernières semaines."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En anglais américain familier, quel temps est souvent toléré avec « just » à la place du Present Perfect ?",
+              "options": [
+                "Le prétérit simple (ex: I just saw him).",
+                "Le plus-que-parfait.",
+                "Le présent continu.",
+                "Le futur antérieur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anglais américain oral utilise très couramment le prétérit simple avec just (ex: 'I just ate' au lieu de 'I have just eaten')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « Be careful, I have ... painted this bench! »",
+              "options": ["just", "yet", "ago", "ever"],
+              "correctAnswers": [0],
+              "explanation": "La peinture est encore fraîche car l'action vient tout juste de se produire : 'I have just painted'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la différence d'usage entre « late » et « lately » ?",
+              "options": [
+                "Late est le contraire d'early (en retard) ; lately signifie récemment / ces temps-ci.",
+                "Late est un adverbe de lieu ; lately est un adverbe de manière.",
+                "Late s'emploie uniquement au pluriel.",
+                "Il n'y a aucune différence, ce sont deux synonymes parfaits."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Late signifie 'en retard / tard', tandis que lately signifie 'ces derniers temps / récemment'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « She has been very stressed at work ... »",
+              "options": ["recently", "just", "ago", "ever"],
+              "correctAnswers": [0],
+              "explanation": "Recently se positionne naturellement en fin de phrase pour qualifier une période récente."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont grammaticalement correctes pour exprimer une action très récente ?",
+              "options": [
+                "We have just received your email.",
+                "They have recently bought a new house.",
+                "She has just arrived yet.",
+                "I have seen him lately two days ago."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Have just received' et 'have recently bought' respectent parfaitement l'usage des adverbes de passé immédiat."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Prétérit simple vs Present Perfect simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel critère fondamental détermine le choix entre le prétérit simple et le Present Perfect en anglais ?",
+              "options": [
+                "La présence ou non d'un lien avec le présent (moment de parole).",
+                "Le nombre de personnes qui accomplissent l'action.",
+                "La longueur de la phrase en nombre de mots.",
+                "Le caractère régulier ou irrégulier du verbe."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prétérit ancre l'action dans un passé révolu et coupé du présent ; le Present Perfect relie l'action au présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez : « Shakespeare ... many famous plays. » (Shakespeare est décédé en 1616)",
+              "options": ["wrote", "has written", "writes", "is writing"],
+              "correctAnswers": [0],
+              "explanation": "Puisque Shakespeare est mort et sa vie close, toute son activité d'écriture est au prétérit simple (wrote)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « J.K. Rowling ... many bestselling novels. » (Elle est vivante et continue d'écrire)",
+              "options": [
+                "has written",
+                "wrote only in the past",
+                "was written",
+                "had write"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un auteur vivant dont la période créatrice reste ouverte aujourd'hui, on emploie le Present Perfect (has written)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase indique que la perte des clés a une conséquence directe immédiate maintenant ?",
+              "options": [
+                "I have lost my keys (I can't open the door now).",
+                "I lost my keys (yesterday, but I found them later).",
+                "I had lost my keys.",
+                "I lose my keys every hour."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Present Perfect 'I have lost my keys' met en valeur le résultat actuel : je ne les ai pas en ce moment même."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on « Did you have lunch? » à 15h, mais « Have you had lunch? » à 12h30 ?",
+              "options": [
+                "Parce qu'à 15h l'heure habituelle du déjeuner est passée, alors qu'à 12h30 la période du déjeuner est encore en cours.",
+                "Parce que le verbe have change de sens à partir de midi.",
+                "Parce que les questions à 15h sont toujours au prétérit.",
+                "Il s'agit d'une pure convention sans explication temporelle."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si la fenêtre temporelle est perçue comme close, on utilise le prétérit ; si elle est encore ouverte, le Present Perfect s'impose."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases contient une faute grave en anglais britannique standard ?",
+              "options": [
+                "I have visited Rome in 2019.",
+                "I visited Rome in 2019.",
+                "I have visited Rome twice.",
+                "I went to Rome three years ago."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une date révolue (in 2019) est incompatible avec le Present Perfect ; il faut dire 'I visited Rome in 2019'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : « Have you seen Tom today? » ?",
+              "options": [
+                "As-tu vu Tom aujourd'hui (la journée en cours n'étant pas encore terminée) ?",
+                "As-tu vu Tom hier soir ?",
+                "Où Tom a-t-il voyagé aujourd'hui ?",
+                "Pourquoi Tom ne vient-il jamais ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Today' est une période de temps non révolue au moment où l'on parle, justifiant l'emploi du Present Perfect."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « Where ... born? »",
+              "options": ["were you", "have you been", "did you be", "are you"],
+              "correctAnswers": [0],
+              "explanation": "La naissance est un événement historique et daté dans le passé : on dit 'Where were you born?' (au prétérit simple)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « Oh no! Look! Somebody ... my bicycle! »",
+              "options": [
+                "has stolen",
+                "stole yesterday",
+                "had stolen",
+                "steals"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le constat immédiat ('Oh no! Look!') met l'accent sur le résultat présent du vol : on emploie le Present Perfect."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont grammaticalement correctes en respectant l'opposition prétérit / Present Perfect ?",
+              "options": [
+                "I lived in Madrid for two years when I was a child.",
+                "She has lived in Madrid since 2021 and loves it.",
+                "They have arrived yesterday at midnight.",
+                "Did you ever been to Australia?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le séjour d'enfance révolu prend le prétérit (lived), tandis que la résidence actuelle débutée en 2021 prend le Present Perfect."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Still, already, not yet : nuances temporelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle nuance temporelle fondamentale exprime « still » ?",
+              "options": [
+                "La continuité d'une action ou d'un état qui persiste (toujours / encore).",
+                "La fin définitive d'une action.",
+                "Une action qui vient d'avoir lieu il y a une seconde.",
+                "Une action qui n'a jamais commencé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Still indique qu'une action ou situation débutée dans le passé se poursuit sans interruption : 'toujours / encore'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où se place l'adverbe « still » dans une phrase affirmative avec un verbe ordinaire ?",
+              "options": [
+                "Avant le verbe lexical (ex: She still lives here).",
+                "En toute fin de phrase exclusivement.",
+                "Avant le sujet de la proposition.",
+                "Entre le verbe et son complément d'objet direct."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Still se place généralement devant le verbe ordinaire (She still works) ou après l'auxiliaire be (She is still here)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où se place « still » dans une phrase négative pour marquer l'étonnement ou l'insistance ?",
+              "options": [
+                "Avant l'auxiliaire négatif (ex: He still hasn't replied).",
+                "Après le participe passé.",
+                "À la fin de la phrase.",
+                "Au début avant la majuscule."
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la forme négative, still se place devant l'auxiliaire pour insister sur l'incompréhension ou le retard : 'He still hasn't called'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle nuance exprime « already » dans une question ?",
+              "options": [
+                "La surprise que l'action se soit produite plus tôt que prévu.",
+                "Le regret que l'action ne se soit pas produite.",
+                "L'assurance que l'action est impossible.",
+                "Une interrogation sur le lieu géographique."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une question, already exprime l'étonnement face à la rapidité de l'événement (ex: Have you eaten already? = Tu as déjà mangé ?!)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre « still » et « yet » dans une tournure négative ?",
+              "options": [
+                "« Not yet » constate simplement que l'action n'est pas accomplie ; « still not » souligne l'impatience ou la surprise face au retard.",
+                "Il n'existe aucune nuance sémantique.",
+                "Still s'emploie uniquement au futur, yet au présent.",
+                "Yet est réservé à l'écrit soutenu."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'He hasn't called yet' constate un fait neutre ; 'He still hasn't called' traduit l'agacement ou l'étonnement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « Are you ... working on that essay? It is 2 am! »",
+              "options": ["still", "yet", "already", "ago"],
+              "correctAnswers": [0],
+              "explanation": "On interroge sur la continuité de l'activité tardive dans la nuit : 'Are you still working?'"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on : « Il n'est pas encore rentré » de manière neutre ?",
+              "options": [
+                "He hasn't come home yet.",
+                "He isn't come home already.",
+                "He doesn't come home still.",
+                "He yet hasn't come home."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule neutre standard pour 'pas encore' est le Present Perfect avec 'yet' en fin de phrase."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « I ... haven't found my keys despite searching everywhere. »",
+              "options": ["still", "yet", "already", "ever"],
+              "correctAnswers": [0],
+              "explanation": "Placé devant l'auxiliaire 'haven't', seul 'still' convient pour exprimer la persistance du problème."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la remarque : « You've finished already! That was quick! » ?",
+              "options": [
+                "Tu as déjà terminé ! C'était rapide !",
+                "Tu n'as pas encore terminé ton travail.",
+                "Tu dois recommencer ton devoir.",
+                "Tu ne finiras jamais à l'heure."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Already souligne ici la rapidité inattendue de l'accomplissement de la tâche."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont correctement construites avec ces adverbes temporels ?",
+              "options": [
+                "They are still waiting for their exam grades.",
+                "She hasn't replied to my message yet.",
+                "Have you yet done your bed?",
+                "I still have ate nothing this morning."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Still waiting' et 'hasn't replied... yet' sont parfaitement conformes aux règles de position et de syntaxe."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "While, during et as",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la règle grammaticale pour employer la préposition « during » ?",
+              "options": [
+                "During est toujours suivi d'un groupe nominal (nom ou pronom), jamais d'une proposition avec verbe conjugué.",
+                "During est obligatoirement suivi d'un verbe conjugué avec sujet.",
+                "During ne s'emploie qu'au futur simple.",
+                "During doit être suivi d'un infinitif avec to."
+              ],
+              "correctAnswers": [0],
+              "explanation": "During est une préposition : elle est suivie d'un nom (during the film, during the holidays), jamais d'un sujet + verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la règle grammaticale pour employer la conjonction « while » ?",
+              "options": [
+                "While est une conjonction suivie d'une proposition (sujet + verbe conjugué).",
+                "While ne peut être suivi que d'une date chiffrée.",
+                "While est toujours suivi d'un nom sans verbe.",
+                "While s'utilise uniquement avec l'auxiliaire will."
+              ],
+              "correctAnswers": [0],
+              "explanation": "While introduit une proposition subordonnée complète (ex: While I was studying...)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « I fell asleep ... the movie. »",
+              "options": ["during", "while", "as", "whereas"],
+              "correctAnswers": [0],
+              "explanation": "'The movie' étant un groupe nominal, on doit utiliser la préposition 'during'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « I fell asleep ... I was watching the movie. »",
+              "options": ["while", "during", "for", "by"],
+              "correctAnswers": [0],
+              "explanation": "'I was watching...' étant une proposition avec sujet et verbe, on doit utiliser la conjonction 'while'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans quel contexte la conjonction « as » s'emploie-t-elle pour exprimer la simultanéité temporelle ?",
+              "options": [
+                "Pour exprimer la simultanéité immédiate entre deux événements (au moment où / alors que).",
+                "Pour remplacer la préposition since devant une date.",
+                "Pour mesurer la durée d'un voyage en avion.",
+                "Uniquement pour exprimer un contraste opposé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "As exprime la simultanéité étroite : 'As I walked into the room, the phone rang' (Au moment où je suis entré...)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « She received a phone call ... the meeting. »",
+              "options": ["during", "while", "as", "when to"],
+              "correctAnswers": [0],
+              "explanation": "'The meeting' est un nom, donc on emploie la préposition 'during'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Peut-on utiliser « while » directement suivi d'un participe en -ing sans sujet explicite ?",
+              "options": [
+                "Oui, quand le sujet de l'action est le même que celui de la proposition principale (ex: while walking).",
+                "Non, c'est strictement interdit dans tous les registres de langue.",
+                "Oui, mais uniquement avec le verbe to be.",
+                "Non, on doit obligatoirement remplacer while par during."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure participiale est courante : 'While waiting for the bus, I read a book' (en attendant le bus...)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases contient une erreur de syntaxe ?",
+              "options": [
+                "During I was on vacation, I visited museums.",
+                "While I was on vacation, I visited museums.",
+                "During my vacation, I visited museums.",
+                "During the night, it snowed heavily."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ne peut pas faire suivre during d'une proposition avec verbe (I was) ; il faut dire 'While I was...' ou 'During my vacation'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « ... I opened the front door, I smelled fresh coffee. »",
+              "options": ["As", "During", "Throughout", "Despite"],
+              "correctAnswers": [0],
+              "explanation": "As traduit ici la simultanéité immédiate : 'Au moment où j'ai ouvert la porte...'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont grammaticalement correctes ?",
+              "options": [
+                "Nobody spoke during the exam.",
+                "He broke his ankle while he was playing football.",
+                "They met during they were traveling across Canada.",
+                "While the flight, the passengers slept peacefully."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'During the exam' associe during à un nom, et 'while he was playing' associe while à une proposition complète."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "By the time, until et before",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie la locution conjonctive « by the time » ?",
+              "options": [
+                "Au moment où / Quand enfin (marquant une échéance limite)",
+                "Depuis que",
+                "Pendant que",
+                "Afin que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "By the time indique le moment où une limite temporelle est atteinte (ex: By the time we arrived...)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle association de temps verbaux utilise-t-on avec « by the time » dans une narration passée ?",
+              "options": [
+                "By the time + prétérit simple ..., proposition principale au Past Perfect.",
+                "By the time + présent ..., proposition principale au prétérit.",
+                "By the time + futur ..., proposition principale au présent.",
+                "By the time + Past Perfect ..., proposition principale au futur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schéma narratif classique : 'By the time + prétérit (repère), l'action principale avait déjà eu lieu au Past Perfect'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « By the time the police arrived, the thieves ... »",
+              "options": [
+                "had escaped",
+                "escaped",
+                "have escaped",
+                "were escaping"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les voleurs s'étaient déjà enfuis avant l'arrivée de la police, d'où le Past Perfect 'had escaped'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie « until » (ou sa forme familière « till ») ?",
+              "options": [
+                "Jusqu'à / Jusqu'à ce que",
+                "Depuis",
+                "Dès que",
+                "Avant que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Until marque la fin d'une période continue, le point d'arrêt dans le temps : 'jusqu'à'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « We waited in the rain ... the bus finally came. »",
+              "options": ["until", "by the time", "since", "during"],
+              "correctAnswers": [0],
+              "explanation": "L'attente a duré de manière continue jusqu'au moment où le bus est arrivé : 'until the bus came'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre « until » et « before » ?",
+              "options": [
+                "Until exprime une action continue qui dure jusqu'à un repère ; before situe un événement antérieur à un autre repère.",
+                "Until ne s'emploie qu'au présent, before qu'au passé.",
+                "Before exige obligatoirement un nom, until un verbe.",
+                "Il n'y a aucune différence, ce sont des synonymes parfaits."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Until mesure la persistance d'une situation jusqu'à un terme ; before exprime l'antériorité simple (avant)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : « Always check your passport ... you leave for the airport. »",
+              "options": ["before", "until", "by the time", "since"],
+              "correctAnswers": [0],
+              "explanation": "On vérifie son passeport chronologiquement avant le départ : 'before you leave'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie : « He didn't start eating until everyone sat down » ?",
+              "options": [
+                "Il a attendu que tout le monde soit assis pour commencer à manger.",
+                "Il a commencé à manger avant que les autres ne s'assoient.",
+                "Il a refusé de s'asseoir à table.",
+                "Il n'a pas mangé du tout de la soirée."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Not ... until' exprime que l'action ne se déclenche qu'au moment précis où la condition temporelle est remplie."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « She worked ... 9 pm yesterday evening. »",
+              "options": ["until", "by the time", "during", "ago"],
+              "correctAnswers": [0],
+              "explanation": "Pour indiquer l'heure limite jusqu'à laquelle l'activité a continué, on emploie 'until 9 pm'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont grammaticalement et chronologiquement correctes ?",
+              "options": [
+                "By the time we got to the cinema, the film had already started.",
+                "They stayed at the library until it closed.",
+                "By the time he woke up, everyone has already left.",
+                "She didn't speak until she was asking."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'By the time + got ..., had already started' et 'stayed ... until it closed' respectent scrupuleusement la cohérence temporelle."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan global : choisir le bon temps et le bon marqueur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel temps verbal convient : « When I was a child, I ... in a small village. »",
+              "options": [
+                "lived",
+                "have lived",
+                "was living always",
+                "am living"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'When I was a child' ancre le fait dans une période passée close : on emploie le prétérit simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel temps verbal convient : « Look at my new phone! My parents ... it for my birthday! »",
+              "options": [
+                "have bought",
+                "bought three years ago",
+                "were buying",
+                "had bought"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accent est mis sur le résultat visible au présent ('Look at my new phone!'), ce qui appelle le Present Perfect."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : « We ... TV when suddenly the power went out. »",
+              "options": ["were watching", "watched", "have watched", "watch"],
+              "correctAnswers": [0],
+              "explanation": "L'action en cours interrompue par la coupure d'électricité se met au Past Continuous (were watching)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : « She didn't recognize him because he ... his hair completely. »",
+              "options": [
+                "had changed",
+                "has changed",
+                "was changing",
+                "changes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le changement de coiffure a eu lieu avant le moment de la rencontre passée : Past Perfect (had changed)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez : « I haven't heard from Peter ... last Christmas. »",
+              "options": ["since", "for", "ago", "during"],
+              "correctAnswers": [0],
+              "explanation": "'Last Christmas' est un point de départ repère, ce qui impose 'since' avec le Present Perfect négatif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : « Dinosaurs disappeared millions of years ... »",
+              "options": ["ago", "since", "before now", "for"],
+              "correctAnswers": [0],
+              "explanation": "Une durée révolue comptée à rebours depuis le présent s'exprime par '[durée] + ago'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est totalement correcte ?",
+              "options": [
+                "He has lived in London for ten years before moving to Paris.",
+                "He lived in London for ten years before moving to Paris.",
+                "He is living in London for ten years before moving to Paris.",
+                "He lives in London since ten years before moving to Paris."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Puisque le séjour à Londres est totalement révolu avant le déménagement à Paris, on utilise le prétérit simple 'lived'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « How long ... your best friend? » (vous êtes toujours amis)",
+              "options": [
+                "have you known",
+                "did you know",
+                "are you knowing",
+                "were you knowing"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour demander depuis combien de temps dure une situation actuelle avec un verbe d'état (know), on emploie le Present Perfect."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « As soon as the bell rang, the pupils ... the classroom. »",
+              "options": [
+                "left",
+                "have left",
+                "were leaving already",
+                "had leave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux actions successives immédiates dans le passé sont toutes deux au prétérit simple (rang / left)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases démontrent un accord parfait entre le temps verbal et son marqueur temporel ?",
+              "options": [
+                "She has already finished her breakfast.",
+                "They moved to Australia two years ago.",
+                "I have visited the Louvre yesterday afternoon.",
+                "He is living in Canada since 2010."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Has already finished' (Present Perfect + already) et 'moved ... two years ago' (prétérit + ago) sont parfaitement conformes."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

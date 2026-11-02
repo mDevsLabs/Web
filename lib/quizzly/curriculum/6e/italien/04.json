@@ -1,0 +1,2033 @@
+{
+  "id": "6e-italien-04",
+  "year": "6e",
+  "subject": "italien",
+  "title": "La grammaire de l'italien",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Les articles définis il et la",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels articles définis sont au singulier ?",
+              "options": ["il", "la", "i", "le"],
+              "correctAnswers": [0, 1],
+              "explanation": "« il » et « la » sont singuliers ; « i » et « le » sont pluriels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« le livre » en italien :",
+              "options": ["il libro", "la libro", "un libro", "i libro"],
+              "correctAnswers": [0],
+              "explanation": "Libro est masculin : il libro."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« la maison » en italien :",
+              "options": ["il casa", "la casa", "una casa", "le casa"],
+              "correctAnswers": [1],
+              "explanation": "Casa est féminin : la casa."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Article devant tavolo (masculin) :",
+              "options": ["la", "il", "le", "una"],
+              "correctAnswers": [1],
+              "explanation": "Tavolo est masculin singulier : il."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Article devant penna (féminin) :",
+              "options": ["il", "i", "la", "un"],
+              "correctAnswers": [2],
+              "explanation": "Penna est féminin singulier : la."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "___ gatto (le chat) :",
+              "options": ["la", "il", "le", "una"],
+              "correctAnswers": [1],
+              "explanation": "Gatto est masculin : il gatto."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "___ scuola (l'école) :",
+              "options": ["il", "i", "la", "un"],
+              "correctAnswers": [2],
+              "explanation": "Scuola est féminin : la scuola."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduction de « la porte » :",
+              "options": ["il porta", "la porta", "un porta", "i porta"],
+              "correctAnswers": [1],
+              "explanation": "Porta est féminin : la porta."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« il » correspond surtout au français :",
+              "options": ["une", "le (masc. sing.)", "les (fém.)", "des"],
+              "correctAnswers": [1],
+              "explanation": "Il = article défini masculin singulier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "la ragazzo",
+                "il ragazza",
+                "il ragazzo",
+                "la ragazzo"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Ragazzo est masculin : il ragazzo."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Les articles définis i et le",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels articles définis sont au pluriel ?",
+              "options": ["i", "le", "il", "la"],
+              "correctAnswers": [0, 1],
+              "explanation": "I = masc. plur. ; le = fém. plur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« les livres » :",
+              "options": ["il libri", "i libri", "le libri", "la libri"],
+              "correctAnswers": [1],
+              "explanation": "Libri : masculin pluriel → i libri."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« les maisons » :",
+              "options": ["i case", "il case", "le case", "la case"],
+              "correctAnswers": [2],
+              "explanation": "Case : féminin pluriel → le case."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Devant ragazze (filles) :",
+              "options": ["il", "i", "la", "le"],
+              "correctAnswers": [3],
+              "explanation": "Ragazze : fém. plur. → le ragazze."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Devant ragazzi (garçons) :",
+              "options": ["i", "le", "la", "il"],
+              "correctAnswers": [0],
+              "explanation": "Ragazzi : masc. plur. → i ragazzi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pluriel de il gatto :",
+              "options": ["le gatti", "i gatti", "il gatti", "la gatti"],
+              "correctAnswers": [1],
+              "explanation": "Masculin pluriel : i gatti."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pluriel de la penna :",
+              "options": ["i penne", "il penne", "le penne", "la penne"],
+              "correctAnswers": [2],
+              "explanation": "Féminin pluriel : le penne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "___ studenti (élèves masc.) :",
+              "options": ["le", "i", "il", "la"],
+              "correctAnswers": [1],
+              "explanation": "Studenti : masc. plur. → i studenti."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« le » s'emploie avec :",
+              "options": ["masc. sing.", "fém. plur.", "masc. plur.", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Le = défini féminin pluriel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": ["i ragazza", "le ragazzo", "i ragazzi", "le ragazzo"],
+              "correctAnswers": [2],
+              "explanation": "I ragazzi est correct."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "L'article indéfini un",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des articles indéfinis ?",
+              "options": ["un", "una", "il", "la"],
+              "correctAnswers": [0, 1],
+              "explanation": "Un et una sont indéfinis ; il et la sont définis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "un libro signifie :",
+              "options": ["le livre", "un livre", "les livres", "la livre"],
+              "correctAnswers": [1],
+              "explanation": "Un + nom masc. = un livre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« un garçon » :",
+              "options": [
+                "una ragazzo",
+                "un ragazzo",
+                "il ragazzo",
+                "un ragazza"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ragazzo : un ragazzo."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Indéfini devant tavolo :",
+              "options": ["una", "un", "il", "le"],
+              "correctAnswers": [1],
+              "explanation": "Un tavolo."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "un gatto signifie :",
+              "options": ["le chat", "les chats", "un chat", "une chatte"],
+              "correctAnswers": [2],
+              "explanation": "Un chat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Forme incorrecte :",
+              "options": ["un amico", "un cane", "una amico", "un quaderno"],
+              "correctAnswers": [2],
+              "explanation": "Amico est masc. : un amico."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "___ zaino (un sac) :",
+              "options": ["una", "un", "la", "i"],
+              "correctAnswers": [1],
+              "explanation": "Zaino masc. : un zaino."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "il libro vs un libro :",
+              "options": [
+                "défini / indéfini",
+                "pluriel / singulier",
+                "fém. / masc.",
+                "présent / futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il = le ; un = un."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "un professore : le nom est",
+              "options": [
+                "fém. plur.",
+                "masc. sing.",
+                "fém. sing.",
+                "masc. plur."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Professore est masculin singulier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« un crayon » (matita) :",
+              "options": ["un matita", "una matita", "un matite", "il matita"],
+              "correctAnswers": [1],
+              "explanation": "Matita est fém. : una matita."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "L'article indéfini una",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels articles peuvent traduire « une » ou « un » ?",
+              "options": ["una", "un", "i", "le"],
+              "correctAnswers": [0, 1],
+              "explanation": "Un et una sont indéfinis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "una casa signifie :",
+              "options": [
+                "la maison",
+                "une maison",
+                "les maisons",
+                "un maison"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une maison."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« une fille » :",
+              "options": [
+                "un ragazza",
+                "una ragazza",
+                "il ragazza",
+                "una ragazzo"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Una ragazza."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Devant penna :",
+              "options": ["un", "una", "il", "i"],
+              "correctAnswers": [1],
+              "explanation": "Una penna."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "una scuola signifie :",
+              "options": ["l'école", "des écoles", "une école", "les écoles"],
+              "correctAnswers": [2],
+              "explanation": "Une école."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": ["una libro", "un libro", "una ragazza", "un ragazza"],
+              "correctAnswers": [2],
+              "explanation": "Una ragazza accorde bien."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "___ amica (une amie) :",
+              "options": ["un", "una", "il", "le"],
+              "correctAnswers": [1],
+              "explanation": "Una amica."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "On ne dit pas una devant :",
+              "options": ["ragazza", "casa", "ragazzo", "mela"],
+              "correctAnswers": [2],
+              "explanation": "Ragazzo : un ragazzo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "la penna / una penna :",
+              "options": [
+                "le stylo / un stylo",
+                "un stylo / le stylo",
+                "les stylos / des stylos",
+                "stylo / crayon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Défini vs indéfini."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "una mela : le nom est",
+              "options": ["masculin", "féminin", "pluriel", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Una → féminin singulier."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Masculin et féminin singulier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Noms masculins usuels :",
+              "options": ["libro", "ragazzo", "casa", "penna"],
+              "correctAnswers": [0, 1],
+              "explanation": "Libro et ragazzo sont masc. ; casa et penna fém."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ragazza en -a est souvent :",
+              "options": ["masculin", "féminin", "pluriel", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Beaucoup de noms en -a sont féminins."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« il » avec :",
+              "options": ["ragazza", "casa", "ragazzo", "penna"],
+              "correctAnswers": [2],
+              "explanation": "Il ragazzo."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« la » avec :",
+              "options": ["libro", "tavolo", "scuola", "zaino"],
+              "correctAnswers": [2],
+              "explanation": "La scuola."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Couple correct :",
+              "options": ["il casa", "la gatto", "il quaderno", "la amico"],
+              "correctAnswers": [2],
+              "explanation": "Il quaderno."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Amie (fém.) :",
+              "options": ["amico", "amica", "amici", "amiche"],
+              "correctAnswers": [1],
+              "explanation": "Amica."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Mela (pomme) :",
+              "options": ["il mela", "la mela", "i mela", "un mela"],
+              "correctAnswers": [1],
+              "explanation": "La mela."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Cane (chien) :",
+              "options": ["la cane", "una cane", "il cane", "le cane"],
+              "correctAnswers": [2],
+              "explanation": "Il cane."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Erreur :",
+              "options": ["la ragazza", "il ragazzo", "la ragazzo", "il libro"],
+              "correctAnswers": [2],
+              "explanation": "Il ragazzo, pas la ragazzo."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour un / una on regarde :",
+              "options": ["couleur", "genre du nom", "longueur", "heure"],
+              "correctAnswers": [1],
+              "explanation": "Genre grammatical."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Masculin et féminin pluriel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pluriels corrects :",
+              "options": ["i libri", "le ragazze", "il case", "la ragazzi"],
+              "correctAnswers": [0, 1],
+              "explanation": "I libri et le ragazze."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pluriel de ragazza :",
+              "options": [
+                "i ragazza",
+                "le ragazze",
+                "il ragazze",
+                "le ragazza"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le ragazze."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pluriel de ragazzo :",
+              "options": ["i ragazzi", "le ragazzi", "il ragazzi", "i ragazza"],
+              "correctAnswers": [0],
+              "explanation": "I ragazzi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pluriel de casa :",
+              "options": ["i case", "le case", "la case", "il case"],
+              "correctAnswers": [1],
+              "explanation": "Le case."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pluriel de libro :",
+              "options": ["le libri", "i libri", "il libri", "la libri"],
+              "correctAnswers": [1],
+              "explanation": "I libri."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "le penne signifie :",
+              "options": ["le stylo", "les stylos", "un stylo", "la stylo"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel défini."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Après i ou le, le nom est :",
+              "options": ["singulier", "pluriel", "infinitif", "adjectif"],
+              "correctAnswers": [1],
+              "explanation": "I et le marquent le pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Forme fausse :",
+              "options": ["i gatti", "il amiche", "le amiche", "i cani"],
+              "correctAnswers": [1],
+              "explanation": "On dit le amiche, pas il amiche."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "i zaini : zaini est",
+              "options": ["fém. sing.", "masc. plur.", "fém. plur.", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "I zaini = sacs masc. plur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "le ragazze =",
+              "options": ["la fille", "les filles", "un garçon", "les garçons"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel féminin."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Choisir le bon article défini",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Articles définis en italien (niveau 6e) :",
+              "options": ["il", "la", "un", "sono"],
+              "correctAnswers": [0, 1],
+              "explanation": "Il et la sont définis ; un est indéfini ; sono est un verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "___ quaderno",
+              "options": ["la", "il", "le", "una"],
+              "correctAnswers": [1],
+              "explanation": "Quaderno masc. : il."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "___ finestra",
+              "options": ["il", "i", "la", "un"],
+              "correctAnswers": [2],
+              "explanation": "Finestra fém. : la."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "___ occhiali (lunettes, plur.)",
+              "options": ["il", "la", "i", "le"],
+              "correctAnswers": [2],
+              "explanation": "Occhiali masc. plur. : i."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "___ mele (pommes)",
+              "options": ["il", "i", "le", "la"],
+              "correctAnswers": [2],
+              "explanation": "Mele fém. plur. : le."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le chat (plur.) :",
+              "options": ["il gatti", "i gatti", "le gatti", "la gatti"],
+              "correctAnswers": [1],
+              "explanation": "I gatti."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'ami (masc.) :",
+              "options": ["la amico", "il amico", "un amico", "le amico"],
+              "correctAnswers": [1],
+              "explanation": "Il amico."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La porte (plur.) :",
+              "options": ["i porte", "le porte", "il porte", "la porte"],
+              "correctAnswers": [1],
+              "explanation": "Le porte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel groupe est correct ?",
+              "options": ["il tavolo", "i tavolo", "la tavolo", "un tavolo"],
+              "correctAnswers": [0],
+              "explanation": "Il tavolo : masculin singulier avec article défini."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "___ bici (vélo, fém.)",
+              "options": ["il", "la", "i", "un"],
+              "correctAnswers": [1],
+              "explanation": "La bici."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Choisir le bon article indéfini",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Indéfini + nom singulier :",
+              "options": ["un libro", "una mela", "i libri", "le mele"],
+              "correctAnswers": [0, 1],
+              "explanation": "Un libro et una mela ; i/le sont pluriels définis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un stylo (penna) :",
+              "options": ["un penna", "una penna", "il penna", "le penna"],
+              "correctAnswers": [1],
+              "explanation": "Una penna."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un chien :",
+              "options": ["una cane", "un cane", "la cane", "i cane"],
+              "correctAnswers": [1],
+              "explanation": "Un cane."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une table :",
+              "options": ["un tavolo", "una tavolo", "il tavolo", "le tavolo"],
+              "correctAnswers": [0],
+              "explanation": "Tavolo masc. : un tavolo."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une chaise (sedia) :",
+              "options": ["un sedia", "una sedia", "il sedia", "i sedia"],
+              "correctAnswers": [1],
+              "explanation": "Sedia fém. : una sedia."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Faux :",
+              "options": ["un gatto", "una casa", "un casa", "una ragazza"],
+              "correctAnswers": [2],
+              "explanation": "Casa fém. : una casa."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "___ uomo (un homme)",
+              "options": ["una", "un", "la", "le"],
+              "correctAnswers": [1],
+              "explanation": "Un uomo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "___ donna (une femme)",
+              "options": ["un", "una", "il", "i"],
+              "correctAnswers": [1],
+              "explanation": "Una donna."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Indéfini ≠ défini :",
+              "options": ["un = il", "una = la", "un ≠ il", "i = un"],
+              "correctAnswers": [2],
+              "explanation": "Indéfini vs défini."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "___ ora (une heure)",
+              "options": ["un", "una", "il", "i"],
+              "correctAnswers": [1],
+              "explanation": "Ora fém. : una ora."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Accorder avec le nom",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Accords corrects :",
+              "options": [
+                "il ragazzo",
+                "la ragazza",
+                "il ragazza",
+                "la ragazzo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Il ragazzo et la ragazza seulement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Completa : ___ ragazze",
+              "options": ["il", "i", "le", "un"],
+              "correctAnswers": [2],
+              "explanation": "Le ragazze."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Completa : ___ ragazzi",
+              "options": ["le", "i", "la", "una"],
+              "correctAnswers": [1],
+              "explanation": "I ragazzi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Completa : ___ libro",
+              "options": ["la", "il", "le", "una"],
+              "correctAnswers": [1],
+              "explanation": "Il libro."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Completa : un ___",
+              "options": ["ragazza", "ragazzo", "ragazze", "ragazzi"],
+              "correctAnswers": [1],
+              "explanation": "Un ragazzo."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Completa : una ___",
+              "options": ["ragazzo", "ragazza", "libro", "tavolo"],
+              "correctAnswers": [1],
+              "explanation": "Una ragazza."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Erreur :",
+              "options": ["la mela", "un melo", "una mela", "il melo"],
+              "correctAnswers": [1],
+              "explanation": "Un melo serait un pommier ; une pomme = una mela."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "i + nom en -i signifie souvent :",
+              "options": [
+                "singulier",
+                "pluriel masculin",
+                "féminin",
+                "verbe essere"
+              ],
+              "correctAnswers": [1],
+              "explanation": "I libri, i gatti… pluriel masc."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "le + nom en -e (fém.) :",
+              "options": [
+                "singulier",
+                "pluriel féminin",
+                "masculin",
+                "indéfini"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le ragazze, le penne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bon couple :",
+              "options": [
+                "una libro",
+                "un ragazza",
+                "il quaderno",
+                "la quaderno"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Il quaderno."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision des articles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Articles définis pluriels :",
+              "options": ["i", "le", "un", "una"],
+              "correctAnswers": [0, 1],
+              "explanation": "I et le ; un/una indéfinis singuliers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tous les articles définis :",
+              "options": ["un, una", "il, la, i, le", "sono, sei", "il, un"],
+              "correctAnswers": [1],
+              "explanation": "Il, la, i, le."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tous les indéfinis (6e) :",
+              "options": ["il et la", "un et una", "i et le", "sono et sei"],
+              "correctAnswers": [1],
+              "explanation": "Un et una."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "i libri =",
+              "options": ["le livre", "un livre", "les livres", "la livre"],
+              "correctAnswers": [2],
+              "explanation": "Défini masc. plur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "una casa =",
+              "options": [
+                "la maison",
+                "une maison",
+                "les maisons",
+                "le maison"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Indéfini fém."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "la scuola =",
+              "options": ["une école", "l'école", "des écoles", "un école"],
+              "correctAnswers": [1],
+              "explanation": "Défini fém."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "le ragazzo",
+                "i ragazza",
+                "le ragazze",
+                "il ragazze"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Le ragazze."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": ["un amica", "una amico", "un amico", "una amici"],
+              "correctAnswers": [2],
+              "explanation": "Un amico."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "il + la servent au :",
+              "options": ["pluriel", "singulier", "passé", "futur"],
+              "correctAnswers": [1],
+              "explanation": "Articles singuliers définis."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant un nom, l'article indique :",
+              "options": [
+                "seulement la couleur",
+                "défini ou indéfini",
+                "l'heure",
+                "le verbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Défini (il/la/i/le) ou indéfini (un/una)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Le verbe essere : sono",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« sono » peut signifier :",
+              "options": ["je suis", "ils sont", "tu es", "nous sommes"],
+              "correctAnswers": [0, 1],
+              "explanation": "Sono = io sono (je suis) ou loro sono (ils sont) au présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Io ___ italiano.",
+              "options": ["sei", "sono", "il", "una"],
+              "correctAnswers": [1],
+              "explanation": "Je suis → sono."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Loro ___ studenti.",
+              "options": ["sei", "sono", "il", "la"],
+              "correctAnswers": [1],
+              "explanation": "Ils sont → sono."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Traduction : « Je suis un élève »",
+              "options": [
+                "Io sono uno studente",
+                "Io sei uno studente",
+                "Io sono una studente",
+                "Io il studente"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Io sono + un studente (masc.)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« sono » est la forme de :",
+              "options": ["essere (je/ils)", "avere", "parler", "manger"],
+              "correctAnswers": [0],
+              "explanation": "Verbe être : essere."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Noi ___ amici → aussi avec sono ? Non, noi siamo. Ici : Loro ___ felici.",
+              "options": ["sei", "sono", "un", "la"],
+              "correctAnswers": [1],
+              "explanation": "Loro sono = ils sont."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Io ___ Maria.",
+              "options": ["sono", "sei", "il", "i"],
+              "correctAnswers": [0],
+              "explanation": "Je suis Maria."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sens de « Sono contento » (garçon) :",
+              "options": [
+                "Tu es content",
+                "Je suis content",
+                "Il est content",
+                "Ils sont contents"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Io sono contento."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Opposite de « sei » pour « je » :",
+              "options": ["il", "sono", "la", "un"],
+              "correctAnswers": [1],
+              "explanation": "Je → sono ; tu → sei."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "options": [
+                "Io sei Marco",
+                "Io sono Marco",
+                "Io il Marco",
+                "Io una Marco"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Io sono Marco."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Le verbe essere : sei",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« sei » correspond à :",
+              "options": ["tu es", "vous êtes (fam.)", "je suis", "il est"],
+              "correctAnswers": [0, 1],
+              "explanation": "Sei = tu es (2e pers. sing.). Vous êtes familier peut se traduire aussi par sei en contexte tutoiement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tu ___ Luca.",
+              "options": ["sono", "sei", "il", "i"],
+              "correctAnswers": [1],
+              "explanation": "Tu es → sei."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduction : « Tu es italien »",
+              "options": [
+                "Tu sei italiano",
+                "Tu sono italiano",
+                "Tu il italiano",
+                "Tu una italiano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tu sei italiano (tu es italien)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pronom avec sei :",
+              "options": ["io", "tu", "lui", "loro"],
+              "correctAnswers": [1],
+              "explanation": "Tu + sei."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sei ___ ? (Tu es… ?)",
+              "options": [
+                "ragazzo",
+                "ragazza",
+                "correct avec adjectif/nom",
+                "verbe fini"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Sei + complément : Sei studente ?"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Tu es une fille » :",
+              "options": [
+                "Tu sei una ragazza",
+                "Tu sono una ragazza",
+                "Tu il ragazza",
+                "Tu i ragazza"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tu sei una ragazza."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Erreur :",
+              "options": [
+                "Tu sei alto",
+                "Tu sei alta",
+                "Tu sono alto",
+                "Tu sei Marco"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Tu prend sei, pas sono."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sei contenta →",
+              "options": [
+                "Je suis contente",
+                "Tu es contente",
+                "Il est content",
+                "Ils sont contents"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tu es contente (fille)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Io sono / Tu ___",
+              "options": ["sono", "sei", "il", "la"],
+              "correctAnswers": [1],
+              "explanation": "Alternance je suis / tu es."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Question : ___ italiano?",
+              "options": ["Sono", "Sei", "Il", "Una"],
+              "correctAnswers": [1],
+              "explanation": "Sei italiano ? = Tu es italien ?"
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Il est et elle est",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour « il est » / « elle est » on utilise :",
+              "options": ["lui è", "lei è", "io sono", "tu sei"],
+              "correctAnswers": [0, 1],
+              "explanation": "Lui è / lei è (niveau 6e : il est / elle est)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lui ___ un ragazzo.",
+              "options": ["sono", "sei", "è", "il"],
+              "correctAnswers": [2],
+              "explanation": "Il est → è (3e pers.)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lei ___ una ragazza.",
+              "options": ["è", "sei", "sono", "una"],
+              "correctAnswers": [0],
+              "explanation": "Elle est → è."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Il ___ Marco.",
+              "options": ["sono", "sei", "è", "un"],
+              "correctAnswers": [2],
+              "explanation": "Il est Marco."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Lei ___ professessa.",
+              "options": ["il", "è", "sono", "i"],
+              "correctAnswers": [1],
+              "explanation": "Elle est professeur (f.)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Traduction : « Il est grand »",
+              "options": [
+                "Lui è alto",
+                "Lui sono alto",
+                "Lui sei alto",
+                "Il alto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lui è alto."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« La ragazza è italiana » : sujet +",
+              "options": ["sono", "sei", "è", "un"],
+              "correctAnswers": [2],
+              "explanation": "La ragazza è… 3e pers."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Il ragazzo ___ studente.",
+              "options": ["sono", "sei", "è", "la"],
+              "correctAnswers": [2],
+              "explanation": "Il ragazzo è studente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Faux :",
+              "options": [
+                "Lei è Anna",
+                "Lui è Paolo",
+                "Lei sono Anna",
+                "Il gatto è piccolo"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Lei è, pas sono."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "È =",
+              "options": [
+                "suis/es/sommes",
+                "est (il/elle)",
+                "article",
+                "pluriel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "3e personne singulier de essere."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Tu es",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formes de « tu es » en italien :",
+              "options": ["tu sei", "sei (sans tu)", "io sono", "loro sono"],
+              "correctAnswers": [0, 1],
+              "explanation": "Tu sei ou sei seul en question."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complete : Tu ___ di Roma?",
+              "options": ["sono", "sei", "è", "il"],
+              "correctAnswers": [1],
+              "explanation": "Tu sei di Roma ?"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tu es de Paris » :",
+              "options": [
+                "Tu sei di Parigi",
+                "Tu sono di Parigi",
+                "Tu il Parigi",
+                "Tu una Parigi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tu sei di Parigi."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sei stanco =",
+              "options": [
+                "Je suis fatigué",
+                "Tu es fatigué",
+                "Il est fatigué",
+                "Ils sont fatigués"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tu es fatigué (m.)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Amico : Tu ___ un amico.",
+              "options": ["sono", "sei", "è", "un"],
+              "correctAnswers": [1],
+              "explanation": "Tu sei un amico."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Amica : Tu ___ un'amica.",
+              "options": ["sei", "sono", "il", "i"],
+              "correctAnswers": [0],
+              "explanation": "Tu sei un'amica."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réponse : Sì, ___ studente.",
+              "options": ["sono", "sei", "io sono", "tu sei"],
+              "correctAnswers": [1],
+              "explanation": "Oui, tu es élève → Sì, sei studente (on garde tu)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Question polie 6e : ___ nuovo?",
+              "options": ["Sono", "Sei", "È", "Il"],
+              "correctAnswers": [1],
+              "explanation": "Sei nuovo ? Nouveau ?"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tu sei + un/una :",
+              "options": [
+                "toujours pluriel",
+                "accord avec nom",
+                "pas de nom",
+                "seulement il"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tu sei una ragazza / un ragazzo."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Correct :",
+              "options": [
+                "Tu sono Luca",
+                "Tu sei Luca",
+                "Tu il Luca",
+                "Tu una Luca"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tu sei Luca."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Je suis et tu es",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Paires correctes :",
+              "options": ["io sono", "tu sei", "io sei", "tu sono"],
+              "correctAnswers": [0, 1],
+              "explanation": "Io sono et tu sei."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Io ___ ; Tu ___",
+              "options": ["sono / sei", "sei / sono", "il / la", "un / una"],
+              "correctAnswers": [0],
+              "explanation": "Io sono, tu sei."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dialogue : — Io sono Anna. — Ciao! Tu ___ ?",
+              "options": ["sono", "sei", "è", "il"],
+              "correctAnswers": [1],
+              "explanation": "Et toi tu es ? → Tu sei ?"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Je suis élève (f.) :",
+              "options": [
+                "Io sono una studentessa",
+                "Io sei una studentessa",
+                "Io il studentessa",
+                "Io un studentessa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Io sono una studentessa."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tu es élève (m.) :",
+              "options": [
+                "Tu sono uno studente",
+                "Tu sei uno studente",
+                "Tu il studente",
+                "Tu la studente"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Tu sei uno studente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Io sono + nom propre :",
+              "options": [
+                "Io sono Giulia",
+                "Io sei Giulia",
+                "Io il Giulia",
+                "Io una Giulia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Io sono Giulia."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On ne dit pas :",
+              "options": [
+                "Io sono triste",
+                "Tu sei felice",
+                "Io sei triste",
+                "Tu sei triste"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Io prend sono."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sono et sei sont :",
+              "options": ["articles", "présent de essere", "passé", "futur"],
+              "correctAnswers": [1],
+              "explanation": "Présent de l'indicatif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Io sono italiano / Tu sei italiana : accord",
+              "options": [
+                "adjectif avec sujet",
+                "adjectif avec article",
+                "pas d'accord",
+                "pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Italiano/italiana selon le locuteur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mini-dialogue correct :",
+              "options": [
+                "Io sei… Tu sono…",
+                "Io sono… Tu sei…",
+                "Il sono… La sei…",
+                "Un sono… Una sei…"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Io sono… Tu sei…"
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Phrases avec un e una",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases correctes :",
+              "options": [
+                "Io sono un ragazzo",
+                "Io sono una ragazza",
+                "Io sono un ragazza",
+                "Io sono una ragazzo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un ragazzo / una ragazza."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "C'est un chat :",
+              "options": [
+                "È un gatto",
+                "È una gatto",
+                "È il gatto",
+                "Sono un gatto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "È un gatto."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "C'est une maison :",
+              "options": [
+                "È un casa",
+                "È una casa",
+                "È il casa",
+                "Sei una casa"
+              ],
+              "correctAnswers": [1],
+              "explanation": "È una casa."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tu sei ___ amica.",
+              "options": ["un", "una", "il", "i"],
+              "correctAnswers": [1],
+              "explanation": "Una amica."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Io sono ___ studente.",
+              "options": ["una", "un", "le", "la"],
+              "correctAnswers": [1],
+              "explanation": "Un studente."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Traduction : « C'est un livre »",
+              "options": [
+                "È un libro",
+                "È una libro",
+                "È il libro",
+                "Sono un libro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "È un libro."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduction : « C'est une école »",
+              "options": [
+                "È un scuola",
+                "È una scuola",
+                "È la scuola",
+                "Sei una scuola"
+              ],
+              "correctAnswers": [1],
+              "explanation": "È una scuola."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur :",
+              "options": ["una penna", "un libro", "un ragazza", "una mela"],
+              "correctAnswers": [2],
+              "explanation": "Una ragazza."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « Io sono una ragazza », una indique :",
+              "options": ["pluriel", "une (indéfini fém.)", "le", "tu es"],
+              "correctAnswers": [1],
+              "explanation": "Article indéfini féminin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase : Lui è ___ dottore.",
+              "options": ["una", "un", "le", "la"],
+              "correctAnswers": [1],
+              "explanation": "Un dottore."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Phrases avec il e la",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Avec article défini :",
+              "options": ["il libro", "la casa", "un libro", "il casa"],
+              "correctAnswers": [0, 1],
+              "explanation": "Il libro et la casa ; il casa est faux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le livre est sur la table : Il libro è sul ___.",
+              "options": ["tavolo", "tavola", "un tavolo", "sono"],
+              "correctAnswers": [0],
+              "explanation": "Sul tavolo (sur la table) — il tavolo."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La maison est grande : ___ casa è grande.",
+              "options": ["il", "la", "un", "i"],
+              "correctAnswers": [1],
+              "explanation": "La casa è grande."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Il ragazzo è ; La ragazza ___",
+              "options": ["sono", "è", "sei", "il"],
+              "correctAnswers": [1],
+              "explanation": "La ragazza è…"
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "___ gatto è nero.",
+              "options": ["Il", "La", "Una", "Sei"],
+              "correctAnswers": [0],
+              "explanation": "Il gatto è nero."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "___ penna è blu.",
+              "options": ["Il", "La", "Un", "I"],
+              "correctAnswers": [1],
+              "explanation": "La penna è blu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase : i ragazzi sono ; le ragazze ___",
+              "options": ["sono", "è", "sei", "il"],
+              "correctAnswers": [0],
+              "explanation": "Le ragazze sono."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Definit : « the » souvent =",
+              "options": ["un/una", "il/la/i/le", "sono/sei", "è seulement"],
+              "correctAnswers": [1],
+              "explanation": "Articles définis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Faux :",
+              "options": [
+                "il quaderno",
+                "la matita",
+                "la quaderno",
+                "la sedia"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Il quaderno."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le chat (def.) est mignon : ___ gatto è carino.",
+              "options": ["La", "Il", "Una", "Sei"],
+              "correctAnswers": [1],
+              "explanation": "Il gatto è carino."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Petites phrases affirmatives",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases affirmatives correctes :",
+              "options": [
+                "Io sono felice",
+                "Tu sei felice",
+                "Io sei felice",
+                "Tu sono felice"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Io sono / tu sei felice."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Marco ___ italiano.",
+              "options": ["sono", "sei", "è", "il"],
+              "correctAnswers": [2],
+              "explanation": "Marco è italiano."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Noi siamo amici — en 6e on retient surtout : Loro ___ amici.",
+              "options": ["sono", "sei", "è", "un"],
+              "correctAnswers": [0],
+              "explanation": "Loro sono amici."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La pizza ___ buona.",
+              "options": ["sono", "sei", "è", "un"],
+              "correctAnswers": [2],
+              "explanation": "La pizza è buona."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Io ___ di Francia.",
+              "options": ["sono", "sei", "è", "il"],
+              "correctAnswers": [0],
+              "explanation": "Io sono di Francia."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tu ___ molto gentile.",
+              "options": ["sono", "sei", "è", "la"],
+              "correctAnswers": [1],
+              "explanation": "Tu sei molto gentile."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Il cane ___ piccolo.",
+              "options": ["è", "sono", "sei", "una"],
+              "correctAnswers": [0],
+              "explanation": "Il cane è piccolo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le ragazze ___ simpatiche.",
+              "options": ["è", "sono", "sei", "il"],
+              "correctAnswers": [1],
+              "explanation": "Le ragazze sono simpatiche."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Structure sujet + verbe + :",
+              "options": [
+                "seulement article",
+                "complément (adjectif/nom)",
+                "toujours passé",
+                "subjonctif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Phrase simple S + V + complément."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Correct :",
+              "options": [
+                "Io è Marco",
+                "Io sono Marco",
+                "Io sei Marco",
+                "Il sono Marco"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Io sono Marco."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Questions simples avec sei",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Questions avec « sei » :",
+              "options": [
+                "Sei italiano?",
+                "Tu sei Luca?",
+                "Sono italiano?",
+                "Il sei?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sei italiano ? / Tu sei Luca ?"
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Tu es italien ? »",
+              "options": [
+                "Sei italiano?",
+                "Sono italiano?",
+                "È italiano?",
+                "Il italiano?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sei italiano ?"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Tu es élève ? »",
+              "options": [
+                "Sei studente?",
+                "Sono studente?",
+                "È studente?",
+                "Un studente?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sei studente ?"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réponse : Sì, ___.",
+              "options": ["sono", "sei", "è", "il"],
+              "correctAnswers": [0],
+              "explanation": "Oui je suis → Sì, io sono (souvent Sì, sono)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réponse négative 6e : No, ___ francese.",
+              "options": ["sono", "non sono", "sei", "il"],
+              "correctAnswers": [1],
+              "explanation": "Non sono francese (je ne suis pas)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sei ___ ? (content, m.)",
+              "options": [
+                "contento",
+                "contenta",
+                "il contento",
+                "una contento"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sei contento ?"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tu sei di ___ ? (ville)",
+              "options": ["il Roma", "Roma", "un Roma", "la Roma"],
+              "correctAnswers": [1],
+              "explanation": "Tu sei di Roma ? (di + ville)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Intonation : statement → question en italien souvent",
+              "options": ["même mots + ?", "subjonctif", "passé", "pluriel"],
+              "correctAnswers": [0],
+              "explanation": "Sei Marco ? avec intonation/point d'interrogation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Es-tu… ? » familier :",
+              "options": ["Sono…?", "Sei…?", "È…?", "Il…?"],
+              "correctAnswers": [1],
+              "explanation": "Sei… ?"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Question correcte :",
+              "options": [
+                "Tu sono amico?",
+                "Sei amico?",
+                "Il sei amico?",
+                "Un sei amico?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Sei amico ?"
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Révision des phrases",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formes de essere (6e) :",
+              "options": ["sono", "sei", "è", "subjunctif"],
+              "correctAnswers": [0, 1],
+              "explanation": "Sono, sei, è au présent ; pas de subjonctif ici."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Io ___ ; Tu ___ ; Lui ___",
+              "options": [
+                "sono / sei / è",
+                "sei / sono / è",
+                "sono / sono / sei",
+                "il / la / un"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Io sono, tu sei, lui è."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase avec il :",
+              "options": [
+                "Il ragazzo sono alto",
+                "Il ragazzo è alto",
+                "Il ragazzo sei alto",
+                "La ragazzo è alto"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Il ragazzo è alto."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase avec la :",
+              "options": [
+                "La ragazza è simpatica",
+                "La ragazza sono simpatica",
+                "Il ragazza è simpatica",
+                "La ragazza sei simpatica"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ragazza è simpatica."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "un/una dans : Io sono ___ ragazza.",
+              "options": ["un", "una", "il", "i"],
+              "correctAnswers": [1],
+              "explanation": "Una ragazza."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "i/le : ___ libri sono nuovi.",
+              "options": ["Il", "I", "La", "Un"],
+              "correctAnswers": [1],
+              "explanation": "I libri sono nuovi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le case ___ vecchie.",
+              "options": ["è", "sono", "sei", "il"],
+              "correctAnswers": [1],
+              "explanation": "Pluriel : sono."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Question : ___ Marco?",
+              "options": ["Sono", "Sei", "È", "Il"],
+              "correctAnswers": [1],
+              "explanation": "Sei Marco ? (tu es)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Affirmation : Io ___ una studentessa.",
+              "options": ["sei", "sono", "è", "una"],
+              "correctAnswers": [1],
+              "explanation": "Io sono una studentessa."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "options": [
+                "Tu sono il ragazzo",
+                "Io sei la ragazza",
+                "Loro sono i ragazzi",
+                "Le ragazze è"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Loro sono i ragazzi est correct. Les autres accords sont faux."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

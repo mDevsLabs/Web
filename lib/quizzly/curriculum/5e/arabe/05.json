@@ -1,0 +1,2273 @@
+{
+  "id": "5e-arabe-05",
+  "year": "5e",
+  "subject": "arabe",
+  "title": "Le passé en l'arabe",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles transcriptions vont avec le mot arabe « hier » (أمس) ?",
+              "options": ["ams", "amss", "ghadan", "al-yawm"],
+              "correctAnswers": [0, 1],
+              "explanation": "أمس se lit ams ou amss ; ghadan et al-yawm ne signifient pas hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "أمس (ams) signifie :",
+              "options": ["hier", "demain", "aujourd’hui", "bientôt"],
+              "correctAnswers": [0],
+              "explanation": "أمس = la journée d’avant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hier je suis allé(e) » :",
+              "options": ["أمس ذهبت", "غداً ذهبت", "أمس أذهب", "اليوم ذهبت"],
+              "correctAnswers": [0],
+              "explanation": "أمس + verbe au passé ذهبت."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "dhahabtu (ذهبت) =",
+              "options": [
+                "je suis allé(e)",
+                "tu es allé(e)",
+                "il est allé",
+                "nous sommes allés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "-tu marque la 1re personne au passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Hier j’ai mangé » :",
+              "options": ["أمس أكلت", "أمس آكل", "غداً أكلت", "أكلت غداً"],
+              "correctAnswers": [0],
+              "explanation": "أكلت = j’ai mangé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "akaltu (أكلت) signifie :",
+              "options": ["j’ai mangé", "j’ai bu", "je mange", "j’ai lu"],
+              "correctAnswers": [0],
+              "explanation": "أكلت exprime une action alimentaire passée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "المدرسة (al-madrasa) =",
+              "options": ["l’école", "la maison", "le marché", "hier"],
+              "correctAnswers": [0],
+              "explanation": "المدرسة désigne l’école."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour raconter hier, le verbe est :",
+              "options": [
+                "au passé",
+                "au présent",
+                "à l’impératif",
+                "sans conjugaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On raconte une action déjà faite."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "إلى (ila) indique souvent :",
+              "options": ["direction vers", "couleur", "nombre", "demain"],
+              "correctAnswers": [0],
+              "explanation": "إلى marque la direction."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ordre fréquent en récit :",
+              "options": [
+                "أمس puis verbe passé",
+                "verbe futur puis أمس",
+                "présent seul",
+                "nom seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On situe le moment puis l’action."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases racontent « hier » + « je suis allé(e) » ?",
+              "options": ["أمس ذهبت", "ذهبت أمس", "أمس أذهب", "غداً ذهبت"],
+              "correctAnswers": [0, 1],
+              "explanation": "أمس avec ذهبت convient, l’ordre peut varier en phrase courte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ذهبت (dhahabtu) =",
+              "options": ["je suis allé(e)", "j’ai mangé", "hier", "école"],
+              "correctAnswers": [0],
+              "explanation": "ذهبت est le passé « je » de aller."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "البيت (al-bayt) =",
+              "options": ["la maison", "le livre", "l’eau", "demain"],
+              "correctAnswers": [0],
+              "explanation": "البيت = maison."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je suis allé(e) à la maison hier » :",
+              "options": [
+                "أمس ذهبت إلى البيت",
+                "أمس أذهب إلى البيت",
+                "غداً ذهبت إلى البيت",
+                "ذهبت إلى غداً"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس + passé + destination."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "أمس ne traduit pas :",
+              "options": ["demain", "hier", "la veille", "jour d’avant"],
+              "correctAnswers": [0],
+              "explanation": "Demain = غداً."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Action terminée : on emploie :",
+              "options": ["passé", "présent habituel", "futur", "salutation"],
+              "correctAnswers": [0],
+              "explanation": "Le passé raconte l’accompli."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Parc : حديقة (hadiqa) — « hier au parc » utilise :",
+              "options": [
+                "أمس + passé",
+                "غداً + passé",
+                "أمس + présent",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hier demande un verbe au passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La 1re personne passée se termine souvent en transcription par :",
+              "options": ["-tu", "-ta", "-na", "-un"],
+              "correctAnswers": [0],
+              "explanation": "En 5e, -tu aide à repérer « je » passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot est un lieu ?",
+              "options": ["المدرسة", "أكلت", "ذهبت", "أمس"],
+              "correctAnswers": [0],
+              "explanation": "المدرسة est un nom de lieu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase cohérente :",
+              "options": [
+                "أمس ذهبت",
+                "ذهبت غداً",
+                "أمس يذهب",
+                "اليوم ذهبت sans contexte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس + ذهبت = hier je suis allé."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont au passé « j’ai… » ?",
+              "options": [
+                "أكلت (akaltu)",
+                "آكل (akulu)",
+                "شربت (sharibtu)",
+                "أشرب (ashrabu)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "أكلت et شربت sont passées ; آكل et أشرب sont présentes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "akaltu =",
+              "options": ["j’ai mangé", "j’ai bu", "je mange", "j’ai lu"],
+              "correctAnswers": [0],
+              "explanation": "أكلت = j’ai mangé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hier j’ai mangé » :",
+              "options": ["أمس أكلت", "أمس آكل", "أكلت غداً", "غداً آكل"],
+              "correctAnswers": [0],
+              "explanation": "أمس + أكلت."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "غداء (ghada') =",
+              "options": ["déjeuner", "hier", "école", "eau"],
+              "correctAnswers": [0],
+              "explanation": "غداء = repas de midi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Chez moi » souvent :",
+              "options": ["في البيت", "في أمس", "في ذهبت", "في غداً"],
+              "correctAnswers": [0],
+              "explanation": "في البيت = à la maison."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "sharibtu (شربت) =",
+              "options": ["j’ai bu", "j’ai mangé", "je bois", "j’ai écrit"],
+              "correctAnswers": [0],
+              "explanation": "شربت = j’ai bu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "ماء (ma') =",
+              "options": ["eau", "livre", "hier", "aller"],
+              "correctAnswers": [0],
+              "explanation": "ماء = eau."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Différence أكلت / شربت :",
+              "options": [
+                "manger / boire",
+                "aller / lire",
+                "hier / demain",
+                "maison / école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux verbes passés différents."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Récit du repas d’hier :",
+              "options": [
+                "أمس + passé",
+                "غداً + présent",
+                "impératif",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On combine marqueur et passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Hier j’ai bu de l’eau » :",
+              "options": [
+                "أمس شربت ماء",
+                "أمس أشرب ماء",
+                "شربت غداً",
+                "ماء أمس فقط"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس + شربت + ماء."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases situent « hier » + « j’ai bu » ?",
+              "options": ["أمس شربت", "شربت أمس", "أمس أشرب", "غداً شربت"],
+              "correctAnswers": [0, 1],
+              "explanation": "أمس et شربت se combinent ; l’ordre peut inverser."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "شربت =",
+              "options": ["j’ai bu", "j’ai mangé", "je bois", "j’ai lu"],
+              "correctAnswers": [0],
+              "explanation": "شربت passé 1re personne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hier » en arabe :",
+              "options": ["أمس", "غداً", "الآن", "أسبوع"],
+              "correctAnswers": [0],
+              "explanation": "أمس = hier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Présent de boire « je » ressemble à :",
+              "options": ["أشرب", "شربت", "شربوا", "تشرب"],
+              "correctAnswers": [0],
+              "explanation": "أشرب = je bois (présent)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Action d’hier : verbe en :",
+              "options": [
+                "passé",
+                "présent",
+                "futur proche",
+                "infinitif français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hier → passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« J’ai lu » :",
+              "options": ["قرأت (qara'tu)", "كتبت", "ذهبت", "أمس"],
+              "correctAnswers": [0],
+              "explanation": "قرأت = j’ai lu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "كتاب (kitab) =",
+              "options": ["livre", "eau", "maison", "hier"],
+              "correctAnswers": [0],
+              "explanation": "كتاب = livre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Hier j’ai lu » :",
+              "options": ["أمس قرأت", "أمس أقرأ", "قرأت غداً", "غداً أقرأ"],
+              "correctAnswers": [0],
+              "explanation": "أمس + قرأت."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "قرأت vs كتبت (katabtu) :",
+              "options": [
+                "lire / écrire",
+                "boire / manger",
+                "aller / venir",
+                "hier / demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux actions scolaires passées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Petit récit scolaire d’hier :",
+              "options": [
+                "أمس + verbe passé + lieu",
+                "غداً + impératif",
+                "présent seul",
+                "deux marqueurs contradictoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure simple quand + action + parfois lieu."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des verbes passés « je » ?",
+              "options": [
+                "قرأت (qara'tu)",
+                "أقرأ (aqra'u)",
+                "كتبت (katabtu)",
+                "أكتب (aktubu)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "قرأت et كتبت sont passés ; أقرأ et أكتب sont présents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "qara'tu =",
+              "options": ["j’ai lu", "j’ai écrit", "je lis", "j’ai bu"],
+              "correctAnswers": [0],
+              "explanation": "قرأت = lu (passé)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "katabtu (كتبت) =",
+              "options": ["j’ai écrit", "j’ai lu", "j’ai mangé", "j’ai couru"],
+              "correctAnswers": [0],
+              "explanation": "كتبت = j’ai écrit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Hier j’ai écrit » :",
+              "options": ["أمس كتبت", "أمس أكتب", "كتبت غداً", "غداً أكتب"],
+              "correctAnswers": [0],
+              "explanation": "أمس + كتبت."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Devoir (cahier) :",
+              "options": ["دفتر (daftar)", "أمس", "شربت", "غداً"],
+              "correctAnswers": [0],
+              "explanation": "دفتر = cahier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Hier à l’école j’ai lu » inclut :",
+              "options": ["المدرسة", "غداً seul", "sans verbe", "futur"],
+              "correctAnswers": [0],
+              "explanation": "المدرسة nomme l’école."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le passé sert à :",
+              "options": [
+                "raconter",
+                "commander",
+                "saluer",
+                "compter seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On raconte ce qui est fait."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Transcription de كتبت :",
+              "options": ["katabtu", "akaltu", "dhahabtu", "ams"],
+              "correctAnswers": [0],
+              "explanation": "كتبت = katabtu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase impossible pour « demain » :",
+              "options": [
+                "أمس كتبت",
+                "غداً سأكتب",
+                "غداً أكتب (présent futur proche)",
+                "selon le niveau غداً …"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس ne va pas avec « demain » comme sens."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Enchaîner lecture hier :",
+              "options": [
+                "أمس قرأت كتاب",
+                "قرأت كتاب غداً",
+                "أمس أقرأ",
+                "كتاب أمس sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس + passé + objet."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses disent « j’ai marché / suis allé à pied » au passé « je » ?",
+              "options": ["مشيت (mashitu)", "أمشي (amshi)", "مشيت", "يمشي"],
+              "correctAnswers": [0, 2],
+              "explanation": "مشيت est passé 1re personne ; أمشي est présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "mashitu (مشيت) =",
+              "options": [
+                "j’ai marché",
+                "je marche",
+                "j’ai couru",
+                "j’ai nagé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مشيت = j’ai marché."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hier j’ai marché au parc » :",
+              "options": [
+                "أمس مشيت في الحديقة",
+                "أمس أمشي في الحديقة",
+                "مشيت غداً",
+                "في أمس"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس + مشيت + lieu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "حديقة (hadiqa) =",
+              "options": ["parc / jardin", "école", "hier", "repas"],
+              "correctAnswers": [0],
+              "explanation": "حديقة = espace vert."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "في (fi) indique souvent :",
+              "options": ["dans / à", "vers demain", "passé", "couleur"],
+              "correctAnswers": [0],
+              "explanation": "في = dans, à."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je suis allé en voiture » niveau simple peut rester :",
+              "options": ["ذهبت", "أمس seul", "ماء", "كتاب"],
+              "correctAnswers": [0],
+              "explanation": "ذهبت garde le sens d’aller."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Récit sport d’hier :",
+              "options": ["أمس + passé", "présent seul", "غداً", "sans sujet"],
+              "correctAnswers": [0],
+              "explanation": "Même modèle qu’avec ذهبت."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "مشيت et ذهبت :",
+              "options": [
+                "marcher / aller",
+                "manger / boire",
+                "lire / écrire",
+                "hier / demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux verbes de déplacement passés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot est un marqueur de temps ?",
+              "options": ["أمس", "حديقة", "مشيت", "كتاب"],
+              "correctAnswers": [0],
+              "explanation": "أمس situe hier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase la plus logique :",
+              "options": [
+                "أمس مشيت",
+                "مشيت أمس غداً",
+                "أمس أمشي",
+                "غداً مشيت hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس + passé مشيت."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases disent « hier j’ai étudié » ?",
+              "options": ["أمس درست", "درست أمس", "أمس أدرس", "غداً درست"],
+              "correctAnswers": [0, 1],
+              "explanation": "درست au passé avec أمس ; ordre flexible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "darastu (درست) =",
+              "options": ["j’ai étudié", "j’étudie", "j’ai joué", "j’ai dormi"],
+              "correctAnswers": [0],
+              "explanation": "درست = j’ai étudié."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Leçon » :",
+              "options": ["درس (dars)", "أمس", "مشيت", "غداً"],
+              "correctAnswers": [0],
+              "explanation": "درس = leçon."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Hier j’ai étudié la leçon » :",
+              "options": [
+                "أمس درست الدرس",
+                "أمس أدرس الدرس",
+                "درست غداً",
+                "الدرس أمس sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس + درست + objet."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Présent « j’étudie » ressemble à :",
+              "options": ["أدرس", "درست", "يدرسون", "تدرسين"],
+              "correctAnswers": [0],
+              "explanation": "أدرس = présent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Après l’école hier, on peut dire :",
+              "options": [
+                "أمس درست",
+                "أمس غداً",
+                "درست فقط sans temps",
+                "غداً درست"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس cadre le récit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "الدرس (al-dars) avec al- =",
+              "options": ["la leçon", "hier", "j’ai bu", "demain"],
+              "correctAnswers": [0],
+              "explanation": "Al- rend le nom défini."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "درست et قرأت :",
+              "options": [
+                "étudier / lire",
+                "manger / boire",
+                "aller / marcher",
+                "hier / semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux activités scolaires passées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour résumer la journée d’hier à l’école :",
+              "options": [
+                "plusieurs phrases أمس + passé",
+                "un seul nom",
+                "futur",
+                "impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On enchaîne actions passées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Transcription درست :",
+              "options": ["darastu", "dhahabtu", "sharibtu", "ams"],
+              "correctAnswers": [0],
+              "explanation": "درست se lit darastu."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels groupes contiennent أمس + un verbe au passé « je » ?",
+              "options": ["أمس لعبت", "أمس ألعب", "أمس ذهبت", "غداً لعبت"],
+              "correctAnswers": [0, 2],
+              "explanation": "لعبت et ذهبت passés avec أمس ; ألعب est présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "la'ibtu (لعبت) =",
+              "options": [
+                "j’ai joué",
+                "je joue",
+                "j’ai dormi",
+                "j’ai travaillé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "لعبت = j’ai joué."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hier j’ai joué » :",
+              "options": ["أمس لعبت", "أمس ألعب", "لعبت غداً", "غداً ألعب"],
+              "correctAnswers": [0],
+              "explanation": "أمس + لعبت."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Hier j’ai dormi » (niveau 5e) :",
+              "options": ["أمس نمت (namtu)", "أمس أنام", "نمت غداً", "أمس ألعب"],
+              "correctAnswers": [0],
+              "explanation": "نمت = j’ai dormi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "namtu (نمت) =",
+              "options": ["j’ai dormi", "j’ai joué", "je dors", "j’ai mangé"],
+              "correctAnswers": [0],
+              "explanation": "نمت passé sommeil."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soir :",
+              "options": ["مساء (masa')", "أمس seul", "درس", "kitab"],
+              "correctAnswers": [0],
+              "explanation": "مساء = soir."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Raconter la soirée d’hier :",
+              "options": [
+                "أمس مساء… + passé",
+                "غداً مساء",
+                "présent",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut préciser le moment puis l’action."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "لعبت et نمت :",
+              "options": [
+                "jouer / dormir",
+                "lire / écrire",
+                "aller / boire",
+                "hier / demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux actions quotidiennes passées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase mélange mal « demain » et « hier » ?",
+              "options": [
+                "أمس لعبت و غداً في نفس الجملة ك récit passé",
+                "أمس لعبت",
+                "أمس نمت",
+                "أمس ذهبت"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un récit d’hier évite de confondre les repères."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En 5e, raconter hier c’est surtout :",
+              "options": [
+                "أمس + verbe en -tu passé",
+                "futur",
+                "présent seul",
+                "liste de noms"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle أمس + passé 1re personne."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions françaises vont avec des verbes passés « je » vus en 5e ?",
+              "options": [
+                "j’ai mangé → أكلت",
+                "je mange → أكلت",
+                "j’ai bu → شربت",
+                "j’ai bu → أشرب"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "أكلت et شربت traduisent j’ai mangé / bu au passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Enchaînement : « Hier je suis allé, j’ai mangé » commence par :",
+              "options": [
+                "أمس ذهبت… أكلت",
+                "غداً ذهبت",
+                "أمس أذهب",
+                "ذهبت sans أمس"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس introduit la journée d’hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Même sujet « je » sur deux verbes passés :",
+              "options": [
+                "ذهبت ثم أكلت",
+                "يذهب ثم يأكل",
+                "غداً ذهبت",
+                "أمس present"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux passés -tu consécutifs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ثم (thumma) =",
+              "options": ["puis", "hier", "non", "demain"],
+              "correctAnswers": [0],
+              "explanation": "ثم enchaîne les actions."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Hier à l’école puis à la maison » utilise :",
+              "options": [
+                "المدرسة et البيت",
+                "أمس seul",
+                "verbes futurs",
+                "sans noms"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux lieux connus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le plus long récit reste :",
+              "options": [
+                "plusieurs passés avec أمس",
+                "un adjectif",
+                "un nombre",
+                "salut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On cumule actions passées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel verbe n’est pas passé « je » ?",
+              "options": ["آكل", "أكلت", "شربت", "ذهبت"],
+              "correctAnswers": [0],
+              "explanation": "آكل est présent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« J’ai lu puis j’ai écrit » :",
+              "options": [
+                "قرأت ثم كتبت",
+                "أقرأ ثم أكتب",
+                "قرأت غداً",
+                "أمس seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux passés avec ثم."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "أمس en début de récit indique :",
+              "options": [
+                "toute la suite peut concerner hier",
+                "demain",
+                "maintenant",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس cadre le récit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bonne habitude en 5e :",
+              "options": [
+                "marqueur temps + passé",
+                "présent pour hier",
+                "oublier la transcription",
+                "mélanger غداً et أمس sans raison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure claire temps + action."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont des mini-récits d’« hier » complets ?",
+              "options": [
+                "أمس ذهبت إلى المدرسة",
+                "أمس أكلت في البيت",
+                "أمس أذهب",
+                "غداً درست"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux phrases avec أمس, passé et lieu ou repas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour clore un récit « hier » on peut ajouter :",
+              "options": ["ثم نمت", "غداً نمت", "أمس أنام", "sans verbe"],
+              "correctAnswers": [0],
+              "explanation": "On peut finir par une dernière action passée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Titre du chapitre : passé =",
+              "options": [
+                "actions déjà faites",
+                "actions futures",
+                "présent seul",
+                "noms seuls"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passé raconte l’accompli."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mot-clé « hier » :",
+              "options": ["أمس (ams)", "الأسبوع الماضي", "غداً", "الآن"],
+              "correctAnswers": [0],
+              "explanation": "أمس = hier dans cette unité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Verbe passé « je suis allé » :",
+              "options": ["ذهبت", "ذهب", "يذهب", "اذهب"],
+              "correctAnswers": [0],
+              "explanation": "ذهبت = dhahabtu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Verbe passé « j’ai mangé » :",
+              "options": ["أكلت", "آكل", "يأكل", "كل"],
+              "correctAnswers": [0],
+              "explanation": "أكلت = akaltu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Écouter puis choisir : ams =",
+              "options": ["hier", "semaine dernière", "demain", "matin"],
+              "correctAnswers": [0],
+              "explanation": "ams transcrit أمس."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le récit le plus cohérent :",
+              "options": [
+                "أمس: ذهبت، درست، أكلت",
+                "غداً: ذهبت",
+                "أمس: أذهب",
+                "sans أمس ni passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suite d’actions passées sous أمس."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Transcription الأسبوع الماضي n’appartient pas à « hier seul » mais à :",
+              "options": [
+                "unité marqueurs de temps",
+                "couleurs",
+                "nombres",
+                "salutations"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La semaine dernière est un autre repère."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif unité « Raconter hier » :",
+              "options": [
+                "produire أمس + passé « je »",
+                "conjuguer tout le pluriel",
+                "apprendre le futur",
+                "oublier la transcription"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle simple de récit au passé proche."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions sont des repères passés en arabe (niveau 5e) ?",
+              "options": [
+                "أمس (ams)",
+                "الأسبوع الماضي (al-usbu' al-madi)",
+                "غداً (ghadan)",
+                "الآن (al-ana)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "أمس et الأسبوع الماضي situent le passé ; غداً et الآن sont présent/futur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "الأسبوع الماضي =",
+              "options": [
+                "la semaine dernière",
+                "hier soir",
+                "demain",
+                "cette semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "الأسبوع الماضي = semaine passée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "al-usbu' al-madi transcrit :",
+              "options": ["الأسبوع الماضي", "أمس", "غداً", "المدرسة"],
+              "correctAnswers": [0],
+              "explanation": "C’est la semaine dernière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« La semaine dernière je suis allé(e) » :",
+              "options": [
+                "الأسبوع الماضي ذهبت",
+                "غداً ذهبت",
+                "الأسبوع الماضي أذهب",
+                "أمس غداً"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur + passé ذهبت."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "أمس vs الأسبوع الماضي :",
+              "options": [
+                "un jour / une période",
+                "identiques",
+                "futur / présent",
+                "couleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس = hier ; l’autre = environ sept jours."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Après un marqueur de temps passé, le verbe est :",
+              "options": ["au passé", "au présent", "toujours futur", "absent"],
+              "correctAnswers": [0],
+              "explanation": "Le repère passé appelle le passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« La semaine dernière j’ai mangé » :",
+              "options": [
+                "الأسبوع الماضي أكلت",
+                "الأسبوع الماضي آكل",
+                "أكلت غداً",
+                "أمس فقط interdit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "الأسبوع الماضي + أكلت."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "usbu' (أسبوع) =",
+              "options": ["semaine", "jour", "mois", "heure"],
+              "correctAnswers": [0],
+              "explanation": "أسبوع = semaine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "madi (ماضي) suggère :",
+              "options": ["passé", "futur", "présent", "lieu"],
+              "correctAnswers": [0],
+              "explanation": "ماضي = passé, écoulé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel marqueur est le plus court ?",
+              "options": [
+                "أمس",
+                "الأسبوع الماضي",
+                "الأسبوع الماضي ذهبت أكلت",
+                "phrase entière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس est un seul mot."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent correctement أمس avec un passé ?",
+              "options": ["أمس شربت", "أمس أكلت", "أمس يشرب", "غداً أمس"],
+              "correctAnswers": [0, 1],
+              "explanation": "أمس avec شربت ou أكلت ; présent يشرب est incohérent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de jours couvre surtout « أمس » ?",
+              "options": [
+                "un jour (hier)",
+                "sept jours",
+                "un mois",
+                "une heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس = la veille."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hier j’ai bu » rappel :",
+              "options": [
+                "أمس شربت",
+                "الأسبوع الماضي شربت",
+                "غداً شربت",
+                "أمس أشرب"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس + شربت."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Marqueur + passé : ordre fréquent en 5e :",
+              "options": [
+                "marqueur d’abord",
+                "verbe futur d’abord",
+                "objet seul",
+                "adjectif seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On annonce quand, puis l’action."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "الأسبوع الماضي درست =",
+              "options": [
+                "la semaine dernière j’ai étudié",
+                "hier j’étudie",
+                "demain j’ai étudié",
+                "j’étudie maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère semaine + passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ghadan (غداً) =",
+              "options": ["demain", "hier", "semaine dernière", "maintenant"],
+              "correctAnswers": [0],
+              "explanation": "غداً ≠ marqueur passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "al-ana (الآن) =",
+              "options": [
+                "maintenant",
+                "hier",
+                "semaine passée",
+                "passé lointain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "الآن = now."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Choisir le marqueur pour « last week I went » :",
+              "options": [
+                "الأسبوع الماضي",
+                "أمس seul pour 7 jours",
+                "غداً",
+                "الآن"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une semaine → الأسبوع الماضي."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Choisir pour « yesterday I ate » :",
+              "options": ["أمس", "الأسبوع الماضي", "غداً", "usbu' seul"],
+              "correctAnswers": [0],
+              "explanation": "Un jour → أمس."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les marqueurs aident à :",
+              "options": [
+                "situer l’action dans le temps",
+                "donner la couleur",
+                "compter de 1 à 10",
+                "saluer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ils répondent à « quand ? »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots ne sont PAS des marqueurs de passé proche en 5e ?",
+              "options": ["غداً", "الآن", "أمس", "الأسبوع الماضي"],
+              "correctAnswers": [0, 1],
+              "explanation": "غداً et الآن orientent futur/présent ; les deux autres sont passés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Avant » simple : قبل (qabla) avec passé peut signifier :",
+              "options": [
+                "avant (dans le passé)",
+                "demain",
+                "maintenant",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "قبل situe avant un moment (niveau introductif)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Hier soir » niveau 5e :",
+              "options": [
+                "أمس مساء",
+                "غداً مساء",
+                "الأسبوع الماضي مساء seul",
+                "مساء غداً"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس + مساء précise le moment."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "مساء (masa') =",
+              "options": ["soir", "matin", "midi", "nuit seulement"],
+              "correctAnswers": [0],
+              "explanation": "مساء = soir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Hier matin » :",
+              "options": [
+                "أمس صباحاً (sabahan)",
+                "أمس مساء",
+                "غداً صباحاً",
+                "الآن صباحاً"
+              ],
+              "correctAnswers": [0],
+              "explanation": "صباحاً = le matin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "sabahan =",
+              "options": ["le matin (adverbe)", "hier", "semaine", "école"],
+              "correctAnswers": [0],
+              "explanation": "صباحاً indique le matin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Préciser matin/soir sert à :",
+              "options": [
+                "affiner « quand » hier",
+                "changer le verbe en futur",
+                "supprimer أمس",
+                "parler de demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On précise la partie de la journée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "أمس صباحاً ذهبت =",
+              "options": [
+                "hier matin je suis allé(e)",
+                "demain matin",
+                "semaine dernière",
+                "maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement marqueurs + passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "أمس مساء نمت =",
+              "options": [
+                "hier soir j’ai dormi",
+                "hier matin j’ai joué",
+                "demain soir",
+                "semaine passée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "مساء + passé نمت."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le marqueur le plus précis pour « hier » reste :",
+              "options": ["أمس", "غداً", "كتاب", "ماء"],
+              "correctAnswers": [0],
+              "explanation": "أمس = hier."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases placent « la semaine dernière » + passé ?",
+              "options": [
+                "الأسبوع الماضي لعبت",
+                "الأسبوع الماضي أكلت",
+                "الأسبوع الماضي ألعب",
+                "غداً لعبت"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "لعبت et أكلت passés avec الأسبوع الماضي."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« La semaine dernière j’ai joué » :",
+              "options": [
+                "الأسبوع الماضي لعبت",
+                "أمس لعبت pour 7 jours",
+                "غداً لعبت",
+                "الآن لعبت"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère hebdomadaire + passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Durée approximative de الأسبوع الماضي :",
+              "options": [
+                "environ 7 jours",
+                "1 heure",
+                "1 jour seulement",
+                "1 an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أسبوع = semaine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "الأسبوع الماضي قرأت =",
+              "options": [
+                "semaine dernière j’ai lu",
+                "hier j’ai lu obligatoire",
+                "demain j’ai lu",
+                "présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur + قرأت."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si l’action était hier, le meilleur marqueur est :",
+              "options": ["أمس", "الأسبوع الماضي", "غداً", "الآن"],
+              "correctAnswers": [0],
+              "explanation": "Plus précis pour un jour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si l’action était il y a plusieurs jours (semaine écoulée) :",
+              "options": ["الأسبوع الماضي", "أمس seul", "غداً", "salut"],
+              "correctAnswers": [0],
+              "explanation": "La semaine passée couvre plusieurs jours."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le verbe après marqueur passé :",
+              "options": [
+                "ذهبت، أكلت، etc.",
+                "أذهب، آكل présent",
+                "futur seul",
+                "nom seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formes en -tu passées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduire al-madi dans al-usbu' al-madi :",
+              "options": ["passé / écoulé", "futur", "présent", "lieu"],
+              "correctAnswers": [0],
+              "explanation": "ماضي = passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase incohérente :",
+              "options": [
+                "غداً الأسبوع الماضي ذهبت",
+                "الأسبوع الماضي ذهبت",
+                "أمس ذهبت",
+                "أمس أكلت"
+              ],
+              "correctAnswers": [0],
+              "explanation": "غداً contredit un repère passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif : choisir le marqueur selon :",
+              "options": [
+                "quand l’action a eu lieu",
+                "la couleur",
+                "le nombre de lettres",
+                "le prénom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps réel de l’action guide le choix."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples marqueur + sens sont corrects ?",
+              "options": [
+                "أمس → hier",
+                "غداً → demain",
+                "الأسبوع الماضي → demain",
+                "الآن → hier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "أمس/غداً ; les autres paires sont fausses."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Associer : passé récent jour =",
+              "options": ["أمس", "غداً", "الآن", "maybe"],
+              "correctAnswers": [0],
+              "explanation": "أمس = hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Associer : passé période ~semaine =",
+              "options": ["الأسبوع الماضي", "أمس", "غداً", "مساء seul"],
+              "correctAnswers": [0],
+              "explanation": "Semaine dernière."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Maintenant » :",
+              "options": ["الآن", "أمس", "الأسبوع الماضي", "qabla"],
+              "correctAnswers": [0],
+              "explanation": "الآن = now."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Demain » :",
+              "options": ["غداً", "أمس", "ماضي", "درست"],
+              "correctAnswers": [0],
+              "explanation": "غداً = tomorrow."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tableau mental : marqueur passé → verbe :",
+              "options": ["passé", "présent", "impératif", "nom"],
+              "correctAnswers": [0],
+              "explanation": "Accord temps verbal."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "الأسبوع الماضي كتبت =",
+              "options": [
+                "semaine dernière j’ai écrit",
+                "hier j’écris",
+                "demain écrit",
+                "maintenant passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur + كتبت."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "أمس مشيت =",
+              "options": [
+                "hier j’ai marché",
+                "semaine dernière",
+                "demain",
+                "présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس + passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour ne pas confondre أمس et غداً :",
+              "options": [
+                "ams vs ghadan",
+                "même mot",
+                "aucune transcription",
+                "couleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux transcriptions distinctes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En quiz, lire la transcription aide à :",
+              "options": [
+                "reconnaître le marqueur",
+                "oublier le sens",
+                "mélanger futur et passé",
+                "supprimer l’arabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien écriture arabe / français."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases ont un marqueur de temps AU DÉBUT ?",
+              "options": [
+                "أمس درست",
+                "الأسبوع الماضي لعبت",
+                "درست أمس",
+                "لعبت"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "أمس et الأسبوع الماضي commencent la phrase."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "درست أمس reste :",
+              "options": [
+                "correcte (ordre inversé)",
+                "impossible",
+                "futur",
+                "sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le marqueur peut suivre en phrase courte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En 5e, l’ordre préféré en classe est souvent :",
+              "options": [
+                "marqueur puis verbe",
+                "verbe puis marqueur toujours interdit",
+                "sans marqueur",
+                "futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle didactique marqueur + passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Question « Quand ? » → réponse avec :",
+              "options": [
+                "أمس ou الأسبوع الماضي",
+                "couleur",
+                "nombre",
+                "prénom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère temporel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Quand es-tu allé ? — … » :",
+              "options": [
+                "أمس / الأسبوع الماضي + ذهبت",
+                "غداً ذهبت",
+                "الآن ذهبت passé",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse complète avec passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "من (man) = qui ; متى (mata) =",
+              "options": ["quand", "où", "comment", "pourquoi"],
+              "correctAnswers": [0],
+              "explanation": "متى questionne le moment."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Répondre à mata avec :",
+              "options": [
+                "marqueur + passé",
+                "adjectif",
+                "salut",
+                "nom animal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On donne un moment + action."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "أمس + mata :",
+              "options": [
+                "mata demande quand ; أمس répond hier",
+                "identiques",
+                "futur",
+                "lieu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lien question / réponse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "الأسبوع الماضي répond à mata si :",
+              "options": [
+                "l’action date de la semaine passée",
+                "c’était hier matin seulement",
+                "c’est demain",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choix selon la durée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bilan : marqueurs + passé servent à :",
+              "options": [
+                "dialoguer sur le passé",
+                "décrire une couleur",
+                "compter",
+                "saluer seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Communication sur « quand »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes suivent logiquement « la semaine dernière » ?",
+              "options": ["ذهبت", "أكلت", "أذهب", "سأذهب"],
+              "correctAnswers": [0, 1],
+              "explanation": "Passés ذهبت et أكلت ; présent/futur moins cohérents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Récit : « La semaine dernière : école, maison, repas » utilise :",
+              "options": [
+                "الأسبوع الماضي + plusieurs passés",
+                "غداً",
+                "présent",
+                "un marqueur futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un repère pour plusieurs actions."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "الأسبوع الماضي ذهبت إلى المدرسة و أكلت في البيت =",
+              "options": [
+                "récit passé sur la semaine",
+                "futur",
+                "présent",
+                "sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux passés sous un marqueur."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "و (wa) =",
+              "options": ["et", "ou", "mais", "donc"],
+              "correctAnswers": [0],
+              "explanation": "و coordonne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un marqueur pour tout un paragraphe :",
+              "options": [
+                "on le répète ou on le garde en tête",
+                "interdit",
+                "remplacé par غداً",
+                "supprimé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut répéter ou supposer le même « quand »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "أمس peut introduire :",
+              "options": [
+                "plusieurs actions passées d’hier",
+                "seulement une lettre",
+                "demain",
+                "futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs verbes sous le même hier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Différence de portée :",
+              "options": [
+                "أمس < الأسبوع الماضي en durée",
+                "égale toujours",
+                "غداً plus long",
+                "الآن = semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hier est plus court qu’une semaine."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Il y a deux jours » dépasse le 5e ; le plus proche reste :",
+              "options": [
+                "الأسبوع الماضي (approx.) ou أمس selon le cas",
+                "غداً",
+                "الآن",
+                "sans marqueur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On reste sur les repères vus."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Transcription obligatoire en 5e pour :",
+              "options": [
+                "أمس et الأسبوع الماضي",
+                "seulement chiffres",
+                "rien",
+                "couleurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux marqueurs clés du chapitre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase modèle semaine :",
+              "options": [
+                "الأسبوع الماضي درست و لعبت",
+                "غداً درست",
+                "أمس pour toute la semaine obligatoire",
+                "présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur hebdo + passés."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles options mélangent bien marqueur + transcription ?",
+              "options": [
+                "أمس (ams)",
+                "الأسبوع الماضي (al-usbu' al-madi)",
+                "غداً (ghadan) comme passé",
+                "الآن (al-ana) comme hier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux marqueurs passés avec leur transcription."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Écrire ams sans arabe : on pense à :",
+              "options": ["أمس", "أسبوع", "ماضي", "مدرسة"],
+              "correctAnswers": [0],
+              "explanation": "ams = hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "al-usbu' al-madi désigne :",
+              "options": ["la semaine passée", "hier", "demain", "le matin"],
+              "correctAnswers": [0],
+              "explanation": "Expression complète apprise en 5e."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le mot ماضي dans l’expression =",
+              "options": ["passé", "futur", "présent", "lieu"],
+              "correctAnswers": [0],
+              "explanation": "ماضي = passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le mot أسبوع =",
+              "options": ["semaine", "jour", "mois", "heure"],
+              "correctAnswers": [0],
+              "explanation": "أسبوع = semaine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Choisir transcription pour « hier j’ai bu » :",
+              "options": [
+                "أمس شربت",
+                "ghadan sharibtu",
+                "al-ana sharibtu",
+                "kitab"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ams + passé sharibtu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Choisir pour « semaine dernière j’ai lu » :",
+              "options": [
+                "الأسبوع الماضي قرأت",
+                "أمس قرأt obligatoire",
+                "غداً",
+                "الآن"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur hebdomadaire + qara'tu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Erreur fréquente :",
+              "options": [
+                "غداً avec verbe passé pour « demain » mal placé",
+                "أمس + passé",
+                "الأسبوع الماضي + passé",
+                "ams = hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confondre ghadan et passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le chapitre « passé » exclut comme repère principal :",
+              "options": [
+                "غداً pour raconter hier",
+                "أمس",
+                "الأسبوع الماضي",
+                "passé -tu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "غداً oriente l’avenir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mémo : deux piliers marqueurs 5e :",
+              "options": [
+                "أمس et الأسبوع الماضي",
+                "غداً et الآن",
+                "couleurs",
+                "nombres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hier et semaine dernière."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles actions conviennent après أمس ?",
+              "options": ["ذهبت", "نمت", "سأذهب", "أذهب"],
+              "correctAnswers": [0, 1],
+              "explanation": "Passés ذهبت et نمت ; futur/présent moins adaptés."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Scénario : cours hier →",
+              "options": [
+                "أمس درست",
+                "الأسبوع الماضي pour hier seul",
+                "غداً درست",
+                "الآن درست passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hier = أمس."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Scénario : voyage il y a ~5 jours (classe) →",
+              "options": [
+                "الأسبوع الماضي ذهبت",
+                "أمس seul obligatoire",
+                "غداً",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semaine passée plus plausible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Justifier le marqueur : action hier soir →",
+              "options": ["أمس مساء", "غداً", "usbu' seul", "al-ana"],
+              "correctAnswers": [0],
+              "explanation": "Précision soir sur hier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Justifier : action lundi dernier (dans la semaine écoulée) →",
+              "options": [
+                "الأسبوع الماضي",
+                "أمس si ce n’était pas hier",
+                "غداً",
+                "salut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repère hebdomadaire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Puisque le verbe est passé, غداً est :",
+              "options": [
+                "incohérent comme « quand »",
+                "obligatoire",
+                "identique à أمس",
+                "marqueur passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Futur vs passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "الآن + passé « j’ai » sans autre contexte :",
+              "options": [
+                "étrange (maintenant vs accompli)",
+                "toujours parfait",
+                "obligatoire",
+                "marqueur hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maintenant ≠ hier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Révision : dhahabtu après marqueur =",
+              "options": ["je suis allé(e)", "demain", "présent", "nom"],
+              "correctAnswers": [0],
+              "explanation": "Passé 1re personne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Révision : akaltu après أمس =",
+              "options": ["hier j’ai mangé", "demain", "présent", "futur"],
+              "correctAnswers": [0],
+              "explanation": "أمس + j’ai mangé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Compétence visée :",
+              "options": [
+                "choisir marqueur + passé cohérent",
+                "tous les temps verbaux",
+                "cas arabes",
+                "poésie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Objectif 5e du chapitre."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont des modèles finaux du chapitre ?",
+              "options": [
+                "أمس ذهبت و أكلت",
+                "الأسبوع الماضي درست و لعبت",
+                "غداً ذهبت",
+                "أمس أذهب"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux récits passés avec marqueurs différents."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Mot arabe « hier » :",
+              "options": ["أمس", "ماضي", "أسبوع", "غداً"],
+              "correctAnswers": [0],
+              "explanation": "أمس = hier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Expression « semaine dernière » :",
+              "options": [
+                "الأسبوع الماضي",
+                "أمس الماضي",
+                "غداً الأسبوع",
+                "الآن الأسبوع"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule apprise en 5e."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Verbe passé « je suis allé » :",
+              "options": ["ذهبت (dhahabtu)", "أذهب", "يذهب", "اذهب"],
+              "correctAnswers": [0],
+              "explanation": "ذهبت au passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Verbe passé « j’ai mangé » :",
+              "options": ["أكلت (akaltu)", "آكل", "يأكل", "أكل"],
+              "correctAnswers": [0],
+              "explanation": "أكلت = akaltu."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sans marqueur, le passé -tu peut quand même :",
+              "options": [
+                "raconter si le contexte indique le passé",
+                "signifier toujours demain",
+                "être interdit",
+                "remplacer أمس"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contexte ou une question mata aide."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Avec marqueur, la phrase est :",
+              "options": [
+                "plus claire pour le lecteur",
+                "moins claire",
+                "futur",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le marqueur explicite « quand »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Unité 1 + unité 2 ensemble :",
+              "options": [
+                "raconter hier puis situer avec marqueurs",
+                "apprendre le futur seul",
+                "oublier la transcription",
+                "copier la 6e"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Récit + repères temporels."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Test final : « La semaine dernière j’ai mangé à la maison »",
+              "options": [
+                "الأسبوع الماضي أكلت في البيت",
+                "أمس أكلت في البيت pour toute la semaine",
+                "غداً أكلت",
+                "الآن أكلت"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marqueur hebdo + passé + lieu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Test final : « Hier je suis allé à l’école »",
+              "options": [
+                "أمس ذهبت إلى المدرسة",
+                "الأسبوع الماضي pour hier strict",
+                "غداً ذهبت",
+                "أمس أذهب"
+              ],
+              "correctAnswers": [0],
+              "explanation": "أمس + dhahabtu + école."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

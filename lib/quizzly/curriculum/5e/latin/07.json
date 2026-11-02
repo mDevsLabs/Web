@@ -1,0 +1,2253 @@
+{
+  "id": "5e-latin-07",
+  "year": "5e",
+  "subject": "latin",
+  "title": "Opinions et sentiments en latin",
+  "order": 7,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Donner son avis",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots latins de ce chapitre expriment une pensée ou un sentiment à la première personne ?",
+              "explanation": "Puto et amo appartiennent aux verbes d'avis et de sentiment étudiés en 5e.",
+              "options": ["puto", "amo", "sed", "et"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « puto » ?",
+              "explanation": "Puto signifie « je pense » ou « j'estime ».",
+              "options": ["Je pense", "J'aime", "Je crains", "Je marche"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La terminaison -o de « puto » indique surtout quelle personne ?",
+              "explanation": "En latin courant, -o marque la première personne du singulier : je.",
+              "options": ["Je", "Tu", "Il", "Vous"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Puto librum bonum esse » : quel rôle joue puto ?",
+              "explanation": "Puto introduit le jugement de l'élève sur le livre.",
+              "options": [
+                "Exprimer une opinion",
+                "Exprimer une peur",
+                "Exprimer un amour",
+                "Nier une idée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle traduction française convient pour commencer un avis avec puto ?",
+              "explanation": "On rend puto par « je pense que » suivi de l'idée.",
+              "options": ["Je pense que", "J'aime", "Peut-être", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Puto est plutôt un verbe de…",
+              "explanation": "Puto décrit un acte mental, pas un mouvement.",
+              "options": ["Pensée", "Course", "Manger", "Dormir"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase contient puto ?",
+              "explanation": "Puto hoc verum esse = je pense que c'est vrai.",
+              "options": [
+                "Puto hoc verum esse",
+                "Amo panem",
+                "Timeo lupum",
+                "Curro in horto"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour dire « je pense que la leçon est facile », quel verbe mets-tu en tête ?",
+              "explanation": "Puto ouvre la phrase d'avis.",
+              "options": ["Puto", "Amo", "Timeo", "Fortasse"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Puto peut-il introduire ce que tu crois vrai ou faux ?",
+              "explanation": "Puto sert à énoncer une croyance ou un jugement.",
+              "options": [
+                "Oui",
+                "Non, seulement des ordres",
+                "Non, seulement des questions",
+                "Non, seulement des négations"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel mot n'est pas un synonyme français de puto ?",
+              "explanation": "« Je crains » correspond à timeo, pas à puto.",
+              "options": ["Je crains", "Je pense", "J'estime", "Je crois"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes latins expriment un sentiment positif ou une appréciation personnelle ?",
+              "explanation": "Amo exprime l'affection ; puto peut aussi accompagner un sentiment mais amo est le verbe d'amour.",
+              "options": ["amo", "puto", "timeo", "non"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « amo » ?",
+              "explanation": "Amo signifie « j'aime ».",
+              "options": ["J'aime", "Je pense", "Je crains", "Je nie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Amo Latinam » se traduit par…",
+              "explanation": "Amo + complément = j'aime + ce que j'aime.",
+              "options": [
+                "J'aime le latin",
+                "Je crains le latin",
+                "Je pense au latin",
+                "Je n'aime pas le latin"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Amo exprime plutôt…",
+              "explanation": "Amo relève du sentiment, pas de la simple opinion.",
+              "options": [
+                "Un sentiment d'affection",
+                "Une peur",
+                "Une pure négation",
+                "Un « peut-être »"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase dit « j'aime la musique » en latin (musica) ?",
+              "explanation": "Amo musicam : amo + accusatif.",
+              "options": [
+                "Amo musicam",
+                "Timeo musicam",
+                "Puto musicam",
+                "Non amo musicam"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La terminaison de « amo » indique…",
+              "explanation": "Comme puto, amo se termine en -o : je.",
+              "options": ["Je", "Tu", "Ils", "Nous"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel verbe n'exprime pas l'amour ou l'appréciation ?",
+              "explanation": "Timeo exprime la crainte.",
+              "options": ["Timeo", "Amo", "Amo", "Amo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Amo magistrum » : qui est aimé ?",
+              "explanation": "Magistrum est l'accusatif de magister : le professeur.",
+              "options": ["Le professeur", "Le loup", "La peur", "Le « non »"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour parler de ce que tu aimes en classe, tu utilises surtout…",
+              "explanation": "Amo convient pour dire ce qu'on aime.",
+              "options": ["Amo", "Timeo", "Fortasse", "Sed"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Amo et puto : quelle différence simple ?",
+              "explanation": "Amo = sentiment ; puto = pensée ou jugement.",
+              "options": [
+                "Amo = j'aime, puto = je pense",
+                "Les deux signifient je crains",
+                "Les deux signifient non",
+                "Amo = peut-être"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes de ce chapitre peuvent traduire une émotion plutôt qu'une simple idée neutre ?",
+              "explanation": "Amo et timeo portent affection et peur ; puto reste plus mental.",
+              "options": ["amo", "timeo", "puto", "et"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « timeo » ?",
+              "explanation": "Timeo signifie « je crains » ou « j'ai peur ».",
+              "options": ["Je crains", "J'aime", "Je pense", "Je marche"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Timeo lupum » signifie…",
+              "explanation": "Lupum = le loup ; timeo = je crains.",
+              "options": [
+                "Je crains le loup",
+                "J'aime le loup",
+                "Je pense au loup",
+                "Je ne crains pas le loup"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Timeo exprime surtout…",
+              "explanation": "Timeo indique la peur ou l'inquiétude.",
+              "options": [
+                "La peur",
+                "L'amour",
+                "Le « mais »",
+                "Le « peut-être »"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase exprime une crainte ?",
+              "explanation": "Timeo + complément = je crains…",
+              "options": [
+                "Timeo tempestatem",
+                "Amo tempestatem",
+                "Puto tempestatem",
+                "Fortasse tempestas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En français, timeo correspond le mieux à…",
+              "explanation": "Je crains / j'ai peur de rendent timeo.",
+              "options": ["Je crains", "J'aime", "Je pense que", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Timeo » : quelle personne ?",
+              "explanation": "Terminaison -o : je crains.",
+              "options": ["Je", "Tu", "Il", "Nous"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel verbe n'exprime pas la peur ?",
+              "explanation": "Amo exprime l'affection positive.",
+              "options": ["Amo", "Timeo", "Timeo", "Timeo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Puto, amo, timeo : lequel parle de danger ressenti ?",
+              "explanation": "Timeo convient pour la peur.",
+              "options": ["Timeo", "Amo", "Puto", "Sed"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Timeo peut-il être suivi d'un nom (accusatif) ?",
+              "explanation": "On craint quelque chose : timeo + accusatif.",
+              "options": [
+                "Oui",
+                "Non, jamais",
+                "Seulement avec non",
+                "Seulement avec fortasse"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots servent à donner son avis ou son ressenti en latin (pas à relier deux idées) ?",
+              "explanation": "Puto et timeo sont des verbes d'avis ou de sentiment ; sed sert à nuancer plus loin.",
+              "options": ["puto", "timeo", "sed", "fortasse"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduction de « Puto verum esse » ?",
+              "explanation": "Puto + idée = je pense que c'est vrai.",
+              "options": [
+                "Je pense que c'est vrai",
+                "J'aime la vérité",
+                "Je crains la vérité",
+                "Ce n'est pas vrai"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduction de « Amo scholam » ?",
+              "explanation": "Scholam = l'école ; amo = j'aime.",
+              "options": [
+                "J'aime l'école",
+                "Je crains l'école",
+                "Je pense à l'école",
+                "Peut-être l'école"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Traduction de « Timeo canem » ?",
+              "explanation": "Canem = le chien ; timeo = je crains.",
+              "options": [
+                "Je crains le chien",
+                "J'aime le chien",
+                "Je pense au chien",
+                "Le chien craint"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel verbe choisis-tu pour « je pense que l'exercice est difficile » ?",
+              "explanation": "Puto introduit le jugement sur la difficulté.",
+              "options": ["Puto", "Amo", "Timeo", "Non"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel verbe pour « j'aime les histoires romaines » ?",
+              "explanation": "Amo exprime l'appréciation.",
+              "options": ["Amo", "Puto", "Timeo", "Sed"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel verbe pour « je crains l'examen » ?",
+              "explanation": "Timeo marque la peur face à l'examen.",
+              "options": ["Timeo", "Amo", "Puto", "Fortasse"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les trois verbes puto, amo, timeo sont à la…",
+              "explanation": "Ils se terminent en -o : je.",
+              "options": [
+                "Première personne (je)",
+                "Deuxième personne (tu)",
+                "Troisième personne (il)",
+                "Pluriel (nous)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase est une opinion ?",
+              "explanation": "Puto indique ce que l'on pense.",
+              "options": [
+                "Puto hoc facile esse",
+                "Amo facile",
+                "Timeo facile",
+                "Non facile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est un sentiment d'affection ?",
+              "explanation": "Amo + complément traduit j'aime…",
+              "options": [
+                "Amo amicos meos",
+                "Puto amicos",
+                "Timeo amicos",
+                "Sed amicos"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans une phrase d'avis, quels verbes peuvent ouvrir ce que dit l'élève ?",
+              "explanation": "Puto ouvre une pensée ; amo peut ouvrir un aveu de goût.",
+              "options": ["puto", "amo", "et", "sed"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Amo legere » peut signifier en contexte scolaire…",
+              "explanation": "Amo + infinitif ou activité : j'aime lire.",
+              "options": [
+                "J'aime lire",
+                "Je crains de lire",
+                "Je pense lire",
+                "Je ne lis pas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Opposé de « j'aime » en latin dans ce chapitre, on peut dire…",
+              "explanation": "Non amo = je n'aime pas (non nie l'idée).",
+              "options": ["Non amo", "Amo", "Puto", "Timeo amo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Amo est-il adapté pour parler d'un plat que tu apprécies ?",
+              "explanation": "Amo convient pour ce qu'on aime.",
+              "options": [
+                "Oui",
+                "Non, seulement puto",
+                "Non, seulement timeo",
+                "Non, seulement sed"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot latin dans « Amo Romam » est l'objet aimé ?",
+              "explanation": "Romam est l'accusatif de Roma.",
+              "options": ["Romam", "Amo", "Romae", "Romani"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« J'aime la classe » avec classis (classe) : quel verbe ?",
+              "explanation": "Amo + accusatif de la chose aimée.",
+              "options": ["Amo", "Puto", "Timeo", "Fortasse"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Amo exprime-t-il toujours une émotion positive ?",
+              "explanation": "Amo indique affection ou goût, pas la peur.",
+              "options": [
+                "Oui, de l'affection ou du goût",
+                "Non, toujours la peur",
+                "Non, toujours la négation",
+                "Non, toujours le doute"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle réponse française correspond à amo + sport ?",
+              "explanation": "Structure : j'aime + le sport.",
+              "options": [
+                "J'aime le sport",
+                "Je crains le sport",
+                "Je pense au sport",
+                "Peut-être le sport"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Entre puto et amo, lequel dit ce que tu ressens comme plaisir ?",
+              "explanation": "Amo porte le plaisir ou l'affection.",
+              "options": ["Amo", "Puto", "Timeo", "Non"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase correcte en latin pour « j'aime le théâtre » (theatrum) ?",
+              "explanation": "Amo theatrum : accusatif theatrum.",
+              "options": [
+                "Amo theatrum",
+                "Timeo theatrum",
+                "Puto theatrum",
+                "Sed theatrum"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes permettent de parler de ce qui te fait peur ou inquiétude ?",
+              "explanation": "Timeo exprime la peur ; puto peut formuler une crainte mais timeo est le verbe dédié.",
+              "options": ["timeo", "puto", "amo", "et"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Timeo errare » peut signifier…",
+              "explanation": "Timeo + infinitif : je crains de me tromper / de faire une erreur.",
+              "options": [
+                "Je crains de me tromper",
+                "J'aime me tromper",
+                "Je pense me tromper",
+                "Je ne me trompe pas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour dire « je n'ai pas peur », on peut utiliser…",
+              "explanation": "Non timeo nie la peur.",
+              "options": ["Non timeo", "Timeo", "Amo", "Fortasse timeo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Timeo convient pour parler de…",
+              "explanation": "Un examen, un animal, une situation : timeo + complément.",
+              "options": [
+                "Ce qui fait peur",
+                "Ce qu'on adore",
+                "Un simple « mais »",
+                "Un « peut-être » seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Timeo noctem » : traduction ?",
+              "explanation": "Noctem = la nuit ; timeo = je crains.",
+              "options": [
+                "Je crains la nuit",
+                "J'aime la nuit",
+                "Je pense à la nuit",
+                "La nuit craint"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel verbe remplace mal « je crains » ?",
+              "explanation": "Amo traduit l'amour, pas la peur.",
+              "options": ["Amo", "Timeo", "Timeo", "Timeo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Puto, amo, timeo : lequel n'est ni opinion ni amour ?",
+              "explanation": "Timeo = peur.",
+              "options": ["Timeo", "Puto", "Amo", "Puto et amo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une phrase avec timeo exprime…",
+              "explanation": "Un sentiment de crainte.",
+              "options": [
+                "Un sentiment de crainte",
+                "Une certitude",
+                "Un connecteur « mais »",
+                "Un « et »"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Je crains le bruit » : quel verbe latin en tête ?",
+              "explanation": "Timeo + bruit (sonus, accusatif sonum).",
+              "options": ["Timeo", "Amo", "Puto", "Sed"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Timeo et amo : ils expriment tous deux…",
+              "explanation": "Ce sont des sentiments, contrairement à puto qui est plus mental.",
+              "options": [
+                "Des sentiments",
+                "Seulement des négations",
+                "Seulement des conjonctions",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Associe correctement : quels couples verbe latin / sens français sont justes ?",
+              "explanation": "Puto = je pense et amo = j'aime sont les bases du chapitre.",
+              "options": [
+                "puto → je pense",
+                "amo → j'aime",
+                "timeo → j'aime",
+                "puto → je crains"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "timeo → …",
+              "explanation": "Timeo = je crains.",
+              "options": ["Je crains", "J'aime", "Je pense", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un avis sur un film, tu choisis plutôt…",
+              "explanation": "Puto : je pense que le film est…",
+              "options": ["Puto", "Timeo", "Amo seul sans sens", "Et"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour dire que tu adores ton animal, tu choisis…",
+              "explanation": "Amo + animal.",
+              "options": ["Amo", "Timeo", "Non", "Sed"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour dire que les orages te font peur…",
+              "explanation": "Timeo + tempête / tonnerre.",
+              "options": ["Timeo", "Amo", "Puto", "Fortasse"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Trois verbes à retenir pour donner son avis et ses sentiments :",
+              "explanation": "Puto, amo, timeo couvrent pensée, affection et peur.",
+              "options": [
+                "Puto, amo, timeo",
+                "Sed, et, non",
+                "Fortasse seul",
+                "Curro, video, audio"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Puto » dans une conversation de classe sert à…",
+              "explanation": "Partager son point de vue.",
+              "options": [
+                "Donner son point de vue",
+                "Refuser avec non",
+                "Nuancer avec sed",
+                "Douter avec fortasse seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lequel n'appartient pas au trio opinion/sentiment de u1 ?",
+              "explanation": "Fortasse nuance le doute ; il est surtout étudié en u2.",
+              "options": ["Fortasse", "Puto", "Amo", "Timeo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase : « Puto… sed… » : puto introduit…",
+              "explanation": "Puto pose l'avis ; sed viendra nuancer plus tard.",
+              "options": [
+                "L'avis principal",
+                "Seulement la négation",
+                "Rien",
+                "Un ordre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En résumé, u1 « Donner son avis » repose surtout sur…",
+              "explanation": "Trois verbes à la première personne.",
+              "options": [
+                "Puto, amo, timeo",
+                "Non, sed, fortasse seuls",
+                "Et, sed, non",
+                "Subjonctif"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions françaises correspondent à des verbes latins de u1 ?",
+              "explanation": "Je pense et j'aime rendent puto et amo.",
+              "options": ["Je pense", "J'aime", "Mais", "Peut-être"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Latin pour « je crains » ?",
+              "explanation": "Timeo.",
+              "options": ["Timeo", "Amo", "Puto", "Sed"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Latin pour « je pense » ?",
+              "explanation": "Puto.",
+              "options": ["Puto", "Amo", "Timeo", "Non"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Latin pour « j'aime » ?",
+              "explanation": "Amo.",
+              "options": ["Amo", "Puto", "Timeo", "Fortasse"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Je pense que c'est intéressant » commence en latin par…",
+              "explanation": "Puto + le reste de l'idée.",
+              "options": ["Puto", "Amo", "Timeo", "Et"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« J'aime les jeux » : verbe latin ?",
+              "explanation": "Amo + ludum/ludos.",
+              "options": ["Amo", "Puto", "Timeo", "Sed"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Je crains les araignées » : verbe latin ?",
+              "explanation": "Timeo + araneas (accusatif pluriel).",
+              "options": ["Timeo", "Amo", "Puto", "Non"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel verbe latin ne figure pas dans la consigne « opinions et sentiments » de u1 ?",
+              "explanation": "Sed sert à nuancer, pas à ouvrir un sentiment pur.",
+              "options": ["Sed", "Puto", "Amo", "Timeo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Trouver l'intrus : puto, amo, timeo, sed",
+              "explanation": "Sed est une conjonction, pas un verbe d'avis.",
+              "options": ["Sed", "Puto", "Amo", "Timeo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les verbes u1 se disent à la première personne « je » grâce à la terminaison…",
+              "explanation": "-o en latin courant pour je.",
+              "options": ["-o", "-s", "-t", "-mus"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans quelles phrases latines reconnais-tu un verbe de u1 à la forme « je » ?",
+              "explanation": "Puto librum bonum et amo magistrum contiennent puto et amo.",
+              "options": [
+                "Puto librum bonum",
+                "Amo magistrum",
+                "Sed fortasse",
+                "Et non"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Timeo responsum » : sens ?",
+              "explanation": "Responsum = la réponse ; timeo = je crains.",
+              "options": [
+                "Je crains la réponse",
+                "J'aime la réponse",
+                "Je pense à la réponse",
+                "Pas de réponse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Puto exercitium longum esse » : sens global ?",
+              "explanation": "Je pense que l'exercice est long.",
+              "options": [
+                "Je pense que l'exercice est long",
+                "J'aime l'exercice long",
+                "Je crains l'exercice",
+                "L'exercice n'est pas long"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase dit « j'aime les vacances » (feriae) ?",
+              "explanation": "Amo ferias.",
+              "options": [
+                "Amo ferias",
+                "Timeo ferias",
+                "Puto ferias",
+                "Non feriae"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel verbe manque : « ___ Latinam amo » (j'aime le latin) ?",
+              "explanation": "Amo est déjà là ; la phrase montre amo en action.",
+              "options": [
+                "Amo est déjà le verbe d'amour",
+                "Puto",
+                "Timeo",
+                "Sed"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ordre logique en français : verbe latin puto se place…",
+              "explanation": "Comme en français : je pense que…",
+              "options": [
+                "Au début de l'avis",
+                "Toujours à la fin seule",
+                "Jamais en phrase",
+                "Après sed seulement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Peut-on enchaîner puto puis une idée sur un livre ?",
+              "explanation": "Oui : puto + jugement sur le livre.",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement avec subjonctif",
+                "Seulement à la 3e personne"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Amo peut-il être suivi d'un nom en accusatif ?",
+              "explanation": "Amo + accusatif : j'aime quelque chose.",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement au pluriel",
+                "Seulement avec non"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Timeo peut-il être suivi d'un nom en accusatif ?",
+              "explanation": "Timeo + accusatif : je crains quelque chose.",
+              "options": ["Oui", "Non", "Seulement puto", "Seulement fortasse"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase mixte : avis + sentiment positif utilise typiquement…",
+              "explanation": "Puto pour l'avis, amo pour l'affection selon le contexte.",
+              "options": [
+                "Puto ou amo selon le sens",
+                "Sed seul",
+                "Non seul",
+                "Fortasse seul"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour réviser u1, quels verbes latins doivent être reconnus immédiatement ?",
+              "explanation": "Puto, amo et timeo sont le cœur de l'unité.",
+              "options": ["puto", "amo", "timeo", "curro"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Révision : puto = ?",
+              "explanation": "Je pense.",
+              "options": ["Je pense", "J'aime", "Je crains", "Non"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Révision : amo = ?",
+              "explanation": "J'aime.",
+              "options": ["J'aime", "Je pense", "Je crains", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Révision : timeo = ?",
+              "explanation": "Je crains.",
+              "options": ["Je crains", "J'aime", "Je pense", "Peut-être"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel verbe pour un jugement sur la difficulté ?",
+              "explanation": "Puto.",
+              "options": ["Puto", "Amo", "Timeo", "Et"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel verbe pour un goût personnel ?",
+              "explanation": "Amo.",
+              "options": ["Amo", "Puto", "Timeo", "Sed"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel verbe pour une peur ?",
+              "explanation": "Timeo.",
+              "options": ["Timeo", "Amo", "Puto", "Fortasse"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "u1 prépare surtout à…",
+              "explanation": "Exprimer pensée et sentiments avant de nuancer en u2.",
+              "options": [
+                "Exprimer pensée et sentiments",
+                "Decliner tous les cas",
+                "Conjuguer au subjonctif",
+                "Traduire Cicéron intégral"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Intruse dans la liste puto, amo, timeo, video (je vois) ?",
+              "explanation": "Video n'est pas du programme de ce chapitre.",
+              "options": ["Video", "Puto", "Amo", "Timeo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les trois verbes u1 sont tous à la forme…",
+              "explanation": "Je : puto, amo, timeo.",
+              "options": ["Je (1re personne)", "Tu", "Il", "Ils"],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Nuancer",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots latins de u2 servent à modifier ou affiner une idée ?",
+              "explanation": "Non nie ; sed et fortasse nuancent une affirmation.",
+              "options": ["non", "sed", "puto seul", "amo seul"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « non » en latin ?",
+              "explanation": "Non signifie « non » et nie le mot ou l'idée qui suit.",
+              "options": ["Non", "Mais", "Peut-être", "Et"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Non amo » signifie…",
+              "explanation": "Non + amo = je n'aime pas.",
+              "options": [
+                "Je n'aime pas",
+                "J'aime",
+                "Je crains",
+                "Mais j'aime"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Non se place en latin généralement…",
+              "explanation": "Juste avant ce qu'on nie : non + verbe ou non + adjectif.",
+              "options": [
+                "Avant ce qu'on nie",
+                "Toujours en fin de phrase seule",
+                "Jamais avec un verbe",
+                "Après sed seulement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Non timeo » : traduction ?",
+              "explanation": "Je ne crains pas.",
+              "options": [
+                "Je ne crains pas",
+                "Je crains",
+                "J'aime",
+                "Peut-être je crains"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Non est-il un verbe ?",
+              "explanation": "Non est un adverbe de négation.",
+              "options": [
+                "Non, c'est une négation",
+                "Oui, je marche",
+                "Oui, j'aime",
+                "Oui, je pense"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour nuancer en disant le contraire d'« j'aime »…",
+              "explanation": "Non amo.",
+              "options": ["Non amo", "Amo", "Sed amo", "Fortasse amo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Non puto » peut signifier…",
+              "explanation": "Je ne pense pas (pas d'accord avec une idée).",
+              "options": [
+                "Je ne pense pas",
+                "Je pense",
+                "J'aime penser",
+                "Peut-être je pense"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Non en français correspond à…",
+              "explanation": "La particule de négation non.",
+              "options": ["Non", "Mais", "Peut-être", "Et"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans non, « amo » est positif ; avec non devant amo…",
+              "explanation": "La phrase devient négative.",
+              "options": [
+                "La phrase est négative",
+                "La phrase est plus forte en amour",
+                "Rien ne change",
+                "C'est sed"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots introduisent une opposition ou un correctif dans une phrase ?",
+              "explanation": "Sed marque le contraste ; non peut précéder une correction.",
+              "options": ["sed", "non", "et", "amo"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « sed » ?",
+              "explanation": "Sed signifie « mais ».",
+              "options": ["Mais", "Non", "Peut-être", "Et"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Amo Latinam, sed difficilis est » : sed introduit…",
+              "explanation": "Une idée qui contraste : j'aime, mais c'est difficile.",
+              "options": [
+                "Une nuance ou un contraste",
+                "Une négation totale",
+                "Un « et » simple",
+                "Une peur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En français, sed se traduit le plus souvent par…",
+              "explanation": "Mais.",
+              "options": ["Mais", "Non", "Peut-être", "Parce que"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sed relie deux parties qui sont…",
+              "explanation": "Souvent opposées ou complémentaires avec tension.",
+              "options": [
+                "En contraste ou nuancées",
+                "Identiques sans lien",
+                "Toujours négatives",
+                "Toujours des questions"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Puto facile esse, sed timeo errare » : sens de sed ?",
+              "explanation": "Je pense que c'est facile, mais je crains de me tromper.",
+              "options": ["Mais (contraste)", "Non", "Et", "Peut-être"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sed est une…",
+              "explanation": "Conjonction de coordination.",
+              "options": [
+                "Conjonction",
+                "Verbe",
+                "Négation seule",
+                "Interjection"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase utilise sed correctement pour nuancer ?",
+              "explanation": "Amo ludum, sed parvus est = j'aime le jeu, mais il est court.",
+              "options": [
+                "Amo ludum, sed parvus est",
+                "Non sed amo",
+                "Sed non latin",
+                "Amo sed"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sed et « et » (et) : différence simple ?",
+              "explanation": "Sed oppose ou nuance ; et additionne.",
+              "options": [
+                "Sed = mais, et = et",
+                "Les deux = non",
+                "Les deux = peur",
+                "Sed = j'aime"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour répondre avec une réserve après un avis positif, tu ajoutes…",
+              "explanation": "Sed + la réserve.",
+              "options": [
+                "Sed",
+                "Non seul sans verbe",
+                "Amo seul",
+                "Timeo seul"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots latins expriment le doute ou adoucissent une certitude ?",
+              "explanation": "Fortasse = peut-être ; non peut aussi atténuer en niant trop fort.",
+              "options": ["fortasse", "non", "sed", "puto"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « fortasse » ?",
+              "explanation": "Fortasse signifie « peut-être ».",
+              "options": ["Peut-être", "Mais", "Non", "Et"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Fortasse cras veniam » : nuance ?",
+              "explanation": "Je viendrai peut-être demain : pas de certitude.",
+              "options": [
+                "Incertitude",
+                "Certitude absolue",
+                "Négation totale",
+                "Peur seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fortasse en français…",
+              "explanation": "Peut-être.",
+              "options": ["Peut-être", "Mais", "Non", "J'aime"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Puto, fortasse, difficile est » : fortasse…",
+              "explanation": "Adoucit l'avis : je pense, peut-être, que c'est difficile.",
+              "options": [
+                "Adoucit ou doute",
+                "Remplace puto",
+                "Signifie j'aime",
+                "Signifie je crains toujours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fortasse est plutôt…",
+              "explanation": "Un adverbe de doute.",
+              "options": [
+                "Un adverbe de doute",
+                "Un verbe",
+                "Une négation forte",
+                "Un « et »"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase est incertaine grâce à fortasse ?",
+              "explanation": "Fortasse pluit = il pleut peut-être.",
+              "options": [
+                "Fortasse pluit",
+                "Non pluit certe",
+                "Pluit sed",
+                "Amo pluit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Fortasse vs puto : différence ?",
+              "explanation": "Puto affirme penser ; fortasse marque le maybe.",
+              "options": [
+                "Fortasse = peut-être, puto = je pense",
+                "Identiques",
+                "Fortasse = non",
+                "Puto = peut-être seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour nuancer un « oui » hésitant en latin, on peut dire…",
+              "explanation": "Fortasse oui / fortasse verum est.",
+              "options": ["Fortasse", "Non seul", "Sed seul", "Timeo seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fortasse convient quand tu…",
+              "explanation": "N'es pas sûr de ta réponse.",
+              "options": [
+                "N'es pas sûr",
+                "Es totalement certain",
+                "Nies tout avec non",
+                "Contrasts avec sed seul"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots combinent négation et contraste dans ce chapitre ?",
+              "explanation": "Non nie ; sed oppose la deuxième partie à la première.",
+              "options": ["non", "sed", "fortasse", "amo"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Non amo, sed timeo » : deux nuances ?",
+              "explanation": "Je n'aime pas, mais je crains (contraste).",
+              "options": [
+                "Négation puis contraste",
+                "Double amour",
+                "Double peur seule",
+                "Peut-être seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ordre logique : d'abord non pour…",
+              "explanation": "Nier, puis sed pour ajouter l'autre face.",
+              "options": [
+                "Nier puis contraster",
+                "Aimer puis craindre sans lien",
+                "Penser sans mots",
+                "Subjonctif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Non puto, sed fortasse verum est » : sens global ?",
+              "explanation": "Je ne pense pas, mais peut-être que c'est vrai.",
+              "options": [
+                "Négation d'avis + doute possible",
+                "Certitude",
+                "Amour",
+                "Peur seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Non + sed en français ressemble à…",
+              "explanation": "Pas… mais… / non… mais…",
+              "options": [
+                "Non… mais…",
+                "Peut-être… et…",
+                "J'aime… donc…",
+                "Je crains… et…"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase mélange non et un verbe de u1 ?",
+              "explanation": "Non timeo = je ne crains pas.",
+              "options": [
+                "Non timeo",
+                "Sed timeo",
+                "Fortasse timeo seul",
+                "Et timeo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sed après une idée négative sert à…",
+              "explanation": "Présenter l'autre aspect.",
+              "options": [
+                "Présenter l'autre aspect",
+                "Répéter non",
+                "Effacer fortasse",
+                "Conjuguer"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Non difficile, sed longum » : nuance ?",
+              "explanation": "Ce n'est pas difficile, mais c'est long.",
+              "options": [
+                "Correction de jugement",
+                "Peur",
+                "Amour",
+                "Question"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Non sans verbe peut parfois nier…",
+              "explanation": "Un adjectif ou une courte réponse : non, difficile.",
+              "options": [
+                "Un adjectif ou une réponse courte",
+                "Toujours sed",
+                "Toujours fortasse",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "u2 commence par non et sed pour…",
+              "explanation": "Affiner ce qu'on dit après puto/amo/timeo.",
+              "options": [
+                "Affiner les avis de u1",
+                "Apprendre le subjonctif",
+                "Decliner",
+                "Ignorer les sentiments"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots adoucissent ou modulent une affirmation ?",
+              "explanation": "Fortasse adoucit ; sed modère en opposant une nuance.",
+              "options": ["fortasse", "sed", "non seul toujours", "curro"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Puto bonum, fortasse optimum » : fortasse…",
+              "explanation": "Passe de « bon » à « peut-être excellent » avec prudence.",
+              "options": [
+                "Renforce avec prudence",
+                "Nie tout",
+                "Remplace sed",
+                "Exprime peur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Amo, sed fortasse non semper » : deux nuances ?",
+              "explanation": "J'aime, mais peut-être pas toujours.",
+              "options": [
+                "Contraste + doute",
+                "Certitude",
+                "Négation pure",
+                "Peur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Fortasse avec puto : effet ?",
+              "explanation": "Je pense, peut-être… = avis moins catégorique.",
+              "options": [
+                "Avis moins catégorique",
+                "Amour certain",
+                "Peur certaine",
+                "Non total"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduction : « Peut-être je viens » ?",
+              "explanation": "Fortasse venio.",
+              "options": [
+                "Fortasse venio",
+                "Non venio",
+                "Sed venio certe",
+                "Amo venio"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Fortasse se place souvent…",
+              "explanation": "En tête ou avant l'idée doutée.",
+              "options": [
+                "Avant l'idée incertaine",
+                "Seulement en fin de livre",
+                "Jamais avec verbe",
+                "Après subjonctif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nuancer avec fortasse évite…",
+              "explanation": "Une affirmation trop sûre.",
+              "options": [
+                "Une certitude excessive",
+                "Toute phrase",
+                "Non et sed",
+                "Puto"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Fortasse timeo» : sens ?",
+              "explanation": "Peut-être je crains / j'ai peut-être peur.",
+              "options": [
+                "Peut-être je crains",
+                "Je ne crains pas",
+                "J'aime",
+                "Mais je crains"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel trio u2 pour nuancer ?",
+              "explanation": "Non, sed, fortasse.",
+              "options": [
+                "Non, sed, fortasse",
+                "Puto, amo, timeo seuls",
+                "Et, et, et",
+                "Subjonctif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fortasse est l'outil principal pour…",
+              "explanation": "Le doute poli.",
+              "options": [
+                "Le doute poli",
+                "La haine",
+                "La course",
+                "La négation seule"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Repère les traductions correctes des mots de nuance u2.",
+              "explanation": "Non = non, sed = mais.",
+              "options": [
+                "non → non",
+                "sed → mais",
+                "fortasse → mais",
+                "non → et"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "fortasse → …",
+              "explanation": "Peut-être.",
+              "options": ["Peut-être", "Mais", "Non", "J'aime"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase : « J'aime, mais c'est difficile » en latin ?",
+              "explanation": "Amo, sed difficile est.",
+              "options": [
+                "Amo, sed difficile est",
+                "Non amo difficile",
+                "Fortasse amo",
+                "Timeo sed"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase : « Je ne pense pas » ?",
+              "explanation": "Non puto.",
+              "options": [
+                "Non puto",
+                "Puto non",
+                "Sed puto",
+                "Fortasse puto certe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase : « Peut-être demain » (cras) ?",
+              "explanation": "Fortasse cras.",
+              "options": [
+                "Fortasse cras",
+                "Non cras",
+                "Sed cras certe",
+                "Amo cras"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sed dans « Timeo, sed venio » ?",
+              "explanation": "Je crains, mais je viens quand même.",
+              "options": ["Contraste", "Négation", "Peut-être seul", "Amour"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Non dans « Non timeo lupum » ?",
+              "explanation": "Je ne crains pas le loup.",
+              "options": ["Négation", "Mais", "Peut-être", "Et"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot n'est pas de u2 ?",
+              "explanation": "Puto est surtout u1, même s'il revient dans les phrases.",
+              "options": [
+                "Puto comme mot de nuance u2",
+                "Non",
+                "Sed",
+                "Fortasse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Intruse : non, sed, fortasse, amo (verbe d'amour u1)",
+              "explanation": "Amo n'est pas un outil de nuance comme les trois autres.",
+              "options": ["Amo", "Non", "Sed", "Fortasse"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nuancer en latin 5e repose sur…",
+              "explanation": "Non, sed, fortasse avec puto/amo/timeo.",
+              "options": [
+                "Non, sed, fortasse",
+                "Subjonctif",
+                "Ablatif seul",
+                "Génitif seul"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans une réponse de classe nuancée, quels mots latins peuvent apparaître ?",
+              "explanation": "Non pour refuser partiellement, fortasse pour douter.",
+              "options": ["non", "fortasse", "sed", "subjunctivus"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Réponse nuancée à « Aimes-tu le devoir ? » : « J'aime, ___ c'est long »",
+              "explanation": "Sed = mais.",
+              "options": ["sed", "non", "fortasse seul", "et"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« ___ amo carnem » = je n'aime pas la viande",
+              "explanation": "Non amo carnem.",
+              "options": ["Non", "Sed", "Fortasse", "Et"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ___ verum est » = c'est peut-être vrai",
+              "explanation": "Fortasse verum est.",
+              "options": ["Fortasse", "Non", "Sed", "Timeo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Enchaîner puto + sed sert à…",
+              "explanation": "Donner un avis puis le corriger.",
+              "options": [
+                "Avis puis correction",
+                "Peur seule",
+                "Amour seul",
+                "Nier puto"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Non + amo + sed + timeo peut signifier…",
+              "explanation": "Je n'aime pas, mais je crains (exemple de contraste).",
+              "options": [
+                "Contraste entre sentiment et peur",
+                "Certitude",
+                "Subjonctif",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fortasse après puto rend l'élève…",
+              "explanation": "Moins catégorique.",
+              "options": [
+                "Moins catégorique",
+                "En colère",
+                "Sans verbe",
+                "Toujours négatif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le titre u2 « Nuancer » signifie…",
+              "explanation": "Modifier la force d'une phrase.",
+              "options": [
+                "Modifier la force d'une phrase",
+                "Tout nier",
+                "Tout affirmer fort",
+                "Oublier le latin"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase est la plus prudente ?",
+              "explanation": "Fortasse rend l'affirmation prudente.",
+              "options": [
+                "Fortasse recte respondi",
+                "Certe certe certe",
+                "Non non non",
+                "Sed sed sed"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Mots u2 à retenir avec puto/amo/timeo :",
+              "explanation": "Non, sed, fortasse.",
+              "options": [
+                "Non, sed, fortasse",
+                "Et, et, et",
+                "Curro, video",
+                "Subjonctif"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases latines mélangent un verbe u1 et un mot u2 ?",
+              "explanation": "Non amo et puto, sed difficile est combinent les deux unités.",
+              "options": [
+                "Non amo",
+                "Puto, sed difficile est",
+                "Et video",
+                "Curro"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Puto facile, sed longum » : traduction ?",
+              "explanation": "Je pense que c'est facile, mais long.",
+              "options": [
+                "Je pense facile, mais long",
+                "J'aime long",
+                "Je crains facile",
+                "Peut-être long seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Amo magistrum, non timeo eum » : nuances ?",
+              "explanation": "J'aime le prof, je ne le crains pas.",
+              "options": [
+                "Amour et absence de peur",
+                "Peur seule",
+                "Doute seul",
+                "Mais seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Fortasse amo, non certe » : sens ?",
+              "explanation": "Peut-être j'aime, pas sûrement.",
+              "options": [
+                "Amour incertain",
+                "Amour certain",
+                "Peur",
+                "Non = mais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Chapitre complet : verbes + nuance =",
+              "explanation": "Puto, amo, timeo avec non, sed, fortasse.",
+              "options": [
+                "Puto/amo/timeo + non/sed/fortasse",
+                "Subjonctif seul",
+                "Sans non",
+                "Sans verbes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Non timeo, sed timeo errare » : paradoxe nuancé ?",
+              "explanation": "Je ne crains pas (X), mais je crains de me tromper.",
+              "options": [
+                "Nuancer la peur",
+                "Double négation vide",
+                "Amour",
+                "Et"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sed peut-il suivre puto ?",
+              "explanation": "Oui : je pense… mais…",
+              "options": [
+                "Oui",
+                "Non jamais",
+                "Seulement avec subjonctif",
+                "Seulement en 6e"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Non peut-il précéder timeo ?",
+              "explanation": "Oui : non timeo.",
+              "options": [
+                "Oui",
+                "Non jamais",
+                "Seulement sed",
+                "Seulement fortasse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Fortasse peut-il accompagner amo ?",
+              "explanation": "Oui : peut-être j'aime.",
+              "options": [
+                "Oui",
+                "Non jamais",
+                "Remplace amo",
+                "Interdit en 5e"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif du chapitre 07 en 5e :",
+              "explanation": "Opinions, sentiments et nuance sans subjonctif.",
+              "options": [
+                "Opinions, sentiments, nuance",
+                "Subjonctif",
+                "Guerre des Gaules intégrale",
+                "Déclinaisons seules"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Choisis les bonnes équivalences français ↔ latin pour ce chapitre.",
+              "explanation": "Sed = mais et fortasse = peut-être.",
+              "options": [
+                "sed → mais",
+                "fortasse → peut-être",
+                "non → et",
+                "puto → mais"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "non → …",
+              "explanation": "Non.",
+              "options": ["Non", "Mais", "Peut-être", "Je pense"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Situation : tu n'es pas d'accord. Mot latin utile ?",
+              "explanation": "Non ou non puto.",
+              "options": ["Non", "Fortasse seul", "Amo", "Et"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Situation : tu es d'accord en partie. Mot latin utile ?",
+              "explanation": "Sed pour la réserve.",
+              "options": ["Sed", "Non seul", "Timeo seul", "Curro"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Situation : tu hésites. Mot latin utile ?",
+              "explanation": "Fortasse.",
+              "options": ["Fortasse", "Non certe", "Sed certe", "Amo certe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je pense, mais je ne suis pas sûr » pourrait utiliser…",
+              "explanation": "Puto + sed ou fortasse.",
+              "options": [
+                "Puto et fortasse ou sed",
+                "Subjonctif",
+                "Rien",
+                "Curro"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot transforme « j'aime » en « je n'aime pas » ?",
+              "explanation": "Non devant amo.",
+              "options": ["Non", "Sed", "Fortasse", "Et"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot n'annule pas mais oppose deux idées ?",
+              "explanation": "Sed.",
+              "options": ["Sed", "Non", "Fortasse", "Amo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot marque l'incertitude sans nier ?",
+              "explanation": "Fortasse.",
+              "options": ["Fortasse", "Non", "Sed", "Timeo seul"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En débat en latin 5e, tu combines surtout…",
+              "explanation": "Verbes d'avis/sentiment + non/sed/fortasse.",
+              "options": [
+                "Puto/amo/timeo + non/sed/fortasse",
+                "Subjonctif",
+                "Grec",
+                "Sans mots"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Révision finale : quels mots du chapitre 07 sont indispensables ?",
+              "explanation": "Les six : puto, amo, timeo, non, sed, fortasse.",
+              "options": ["puto", "non", "sed", "subjunctivus"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Révision : amo = ?",
+              "explanation": "J'aime.",
+              "options": ["J'aime", "Non", "Mais", "Peut-être"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Révision : timeo = ?",
+              "explanation": "Je crains.",
+              "options": ["Je crains", "Mais", "Non", "Peut-être"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Révision : sed = ?",
+              "explanation": "Mais.",
+              "options": ["Mais", "Non", "Peut-être", "Je pense"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Révision : fortasse = ?",
+              "explanation": "Peut-être.",
+              "options": ["Peut-être", "Mais", "Non", "J'aime"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Révision : non = ?",
+              "explanation": "Non.",
+              "options": ["Non", "Mais", "Peut-être", "Je crains"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "u1 + u2 : titre du chapitre ?",
+              "explanation": "Opinions et sentiments en latin.",
+              "options": [
+                "Opinions et sentiments en latin",
+                "Guerre et paix",
+                "Subjonctif",
+                "Chiffres romains"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ce chapitre évite volontairement…",
+              "explanation": "Pas de subjonctif en 5e ici.",
+              "options": ["Le subjonctif", "Puto", "Amo", "Non"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase modèle : « Je pense, j'aime, je crains, mais peut-être non » utilise…",
+              "explanation": "Tout le vocabulaire du chapitre.",
+              "options": [
+                "Puto, amo, timeo, sed, fortasse, non",
+                "Subjonctif",
+                "Un seul mot",
+                "Aucun verbe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après ce chapitre, tu peux surtout…",
+              "explanation": "Donner ton avis et le nuancer en latin simple.",
+              "options": [
+                "Donner ton avis et le nuancer",
+                "Traduire Virgile entier",
+                "Conjuguer au subjonctif",
+                "Sans puto"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

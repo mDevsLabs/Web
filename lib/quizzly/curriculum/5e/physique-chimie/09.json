@@ -1,0 +1,2233 @@
+{
+  "id": "5e-physique-chimie-09",
+  "year": "5e",
+  "subject": "physique-chimie",
+  "title": "L'énergie",
+  "order": 9,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Formes",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces exemples, lesquels désignent une forme d'énergie que l'on étudie en 5e ?",
+              "options": [
+                "L'énergie de mouvement d'un vélo",
+                "Le numéro de téléphone d'un ami",
+                "L'énergie lumineuse du Soleil",
+                "La couleur préférée d'un livre"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'énergie permet surtout de :",
+              "options": [
+                "Faire fonctionner des objets ou produire des effets",
+                "Changer le prénom d'un élève",
+                "Compter les pages d'un cahier",
+                "Effacer une tache sans eau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un objet en mouvement possède de l'énergie :",
+              "options": [
+                "De mouvement",
+                "Chimique uniquement",
+                "Sonore obligatoire",
+                "Gravitationnelle interdite en 5e"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une bouilloire chaude transmet surtout de l'énergie :",
+              "options": [
+                "Thermique",
+                "Lumineuse seule",
+                "Nucléaire",
+                "Magique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une ampoule allumée diffuse surtout de l'énergie :",
+              "options": [
+                "Lumineuse",
+                "Chimique pure",
+                "De mouvement du fil",
+                "De pluie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans une prise murale, l'énergie disponible est surtout :",
+              "options": [
+                "Électrique",
+                "Thermique du mur",
+                "Lumineuse du plâtre",
+                "Chimique du ciment"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le sucre dans un bonbon est une réserve d'énergie :",
+              "options": [
+                "Chimique",
+                "Lumineuse",
+                "Électrique directe",
+                "De vent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le vent qui pousse un moulin fournit de l'énergie :",
+              "options": [
+                "De mouvement de l'air",
+                "Chimique du bois",
+                "Lumineuse de la nuit",
+                "Électrique sans conversion"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "On dit qu'une forme d'énergie est une manière de :",
+              "options": [
+                "Stocker ou transporter de l'énergie",
+                "Nommer une matière",
+                "Mesurer une masse",
+                "Compter des atomes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans énergie, un ventilateur branché :",
+              "options": [
+                "Ne tourne pas",
+                "Change de couleur",
+                "Devient plus lourd",
+                "Produit de la lumière seule"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels phénomènes montrent de l'énergie de mouvement ?",
+              "options": [
+                "Un ballon roulant",
+                "Une pierre immobile",
+                "Un skieur qui descend",
+                "Un tableau accroché"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Plus un objet va vite, son énergie de mouvement est en général :",
+              "options": [
+                "Plus grande",
+                "Nulle",
+                "Toujours identique",
+                "Uniquement chimique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un train en marche possède surtout de l'énergie :",
+              "options": [
+                "De mouvement",
+                "Lumineuse interne",
+                "Chimique du rail",
+                "Thermique du ciel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une balançoire en oscillation a de l'énergie :",
+              "options": [
+                "De mouvement",
+                "Électrique du bois",
+                "Chimique de la corde",
+                "Lumineuse du métal"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'eau qui coule dans une rivière transporte de l'énergie :",
+              "options": ["De mouvement", "De couleur", "De goût", "De parfum"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un objet au repos au sol a une énergie de mouvement :",
+              "options": [
+                "Nulle par rapport au sol",
+                "Maximale",
+                "Toujours double",
+                "Électrique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Faire tourner une toupie, c'est lui donner de l'énergie :",
+              "options": [
+                "De mouvement",
+                "Lumineuse",
+                "Chimique du plastique",
+                "Thermique du sol"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un vélo freiné progressivement perd de l'énergie :",
+              "options": [
+                "De mouvement",
+                "De masse",
+                "De volume",
+                "De couleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'énergie de mouvement dépend aussi de la :",
+              "options": [
+                "Masse de l'objet",
+                "Couleur des yeux",
+                "Marque du stylo",
+                "Taille du cartable"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un avion en vol utilise l'énergie de mouvement de :",
+              "options": [
+                "L'air et de l'appareil",
+                "Uniquement la lune",
+                "La gravité seule",
+                "La lumière sans moteur"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Où observe-t-on surtout de l'énergie thermique ?",
+              "options": [
+                "Une tasse de chocolat chaud",
+                "Un glaçon froid qui réchauffe l'air autour en fondant lentement",
+                "Un livre fermé froid au toucher",
+                "Un radiateur allumé"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'énergie thermique est liée à la :",
+              "options": [
+                "Température",
+                "Couleur du papier",
+                "Forme du triangle",
+                "Vitesse de la lumière seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Se rapprocher d'un feu de camp, on ressent de l'énergie :",
+              "options": [
+                "Thermique",
+                "Électrique du bois",
+                "Chimique visible",
+                "Lumineuse uniquement sans chaleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un sol chauffé par le soleil stocke un peu d'énergie :",
+              "options": [
+                "Thermique",
+                "Sonore",
+                "Magnétique du sable",
+                "Chimique du caillou"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Frotter les mains réchauffe la peau : de l'énergie thermique apparaît par :",
+              "options": [
+                "Frottements",
+                "Télépathie",
+                "Refroidissement magique",
+                "Lumière seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un thermomètre indique une température liée à l'énergie :",
+              "options": [
+                "Thermique",
+                "De mouvement du mercure seule sans chaleur",
+                "Chimique du verre",
+                "Lumineuse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La glace dans un verre refroidit la boisson : transfert d'énergie :",
+              "options": ["Thermique", "Électrique", "Lumineuse", "De vent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une casserole sur le feu reçoit de l'énergie :",
+              "options": ["Thermique", "De marque", "De forme", "De parfum"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'énergie thermique se propage vers les zones :",
+              "options": [
+                "Plus froides en général",
+                "Plus chaudes toujours",
+                "Sans matière",
+                "Sans contact jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un manteau garde la chaleur du corps : il limite les pertes d'énergie :",
+              "options": [
+                "Thermique",
+                "Lumineuse",
+                "Chimique",
+                "De mouvement du tissu"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objets émettent ou utilisent surtout de l'énergie lumineuse ?",
+              "options": [
+                "Le Soleil",
+                "Une lampe torche allumée",
+                "Un carnet fermé",
+                "Un coussin dans le noir"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'énergie lumineuse permet de :",
+              "options": [
+                "Voir des objets",
+                "Chauffer sans lumière",
+                "Courir plus vite seule",
+                "Manger sans digestion"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une étoile lointaine nous envoie de l'énergie :",
+              "options": [
+                "Lumineuse",
+                "Chimique directe",
+                "Électrique du vide",
+                "De mouvement de l'air"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un écran de téléphone allumé produit de l'énergie :",
+              "options": [
+                "Lumineuse",
+                "Thermique seule obligatoire",
+                "Chimique du plastique",
+                "De pluie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans lumière dans une pièce close, nos yeux :",
+              "options": [
+                "Distinguent mal les formes",
+                "Voient parfaitement",
+                "Devinent la température",
+                "Sentent l'électricité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un feu d'artifice produit de l'énergie lumineuse et aussi :",
+              "options": [
+                "Thermique",
+                "Uniquement sonore",
+                "Chimique visible",
+                "De mouvement du ciel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La lune reflète la lumière du Soleil : c'est de l'énergie :",
+              "options": [
+                "Lumineuse réfléchie",
+                "Électrique",
+                "Chimique de roche",
+                "De vent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une luciole produit une faible énergie :",
+              "options": ["Lumineuse", "Nucléaire", "De marée", "Magnétique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les plantes vertes utilisent la lumière du Soleil : énergie reçue :",
+              "options": [
+                "Lumineuse",
+                "Électrique du sol",
+                "De mouvement des racines",
+                "Chimique sortante"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fermer un rideau réduit l'énergie :",
+              "options": [
+                "Lumineuse entrante",
+                "Chimique du tissu",
+                "De mouvement du rail",
+                "Électrique du mur"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels appareils fonctionnent grâce à l'énergie électrique ?",
+              "options": [
+                "Un sèche-cheveux branché",
+                "Une calculatrice à pile",
+                "Une pierre sur la table",
+                "Un cahier ouvert"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'énergie électrique circule dans :",
+              "options": [
+                "Un circuit fermé",
+                "Un livre fermé",
+                "Un sac vide",
+                "Une image dessinée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une pile fournit de l'énergie :",
+              "options": [
+                "Électrique",
+                "Lumineuse seule",
+                "Chimique consommée instantanément sans conversion",
+                "De mouvement direct"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un fil électrique transporte de l'énergie :",
+              "options": [
+                "Électrique",
+                "Thermique du plastique seule",
+                "De vent",
+                "Lumineuse permanente"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Couper l'interrupteur arrête le passage d'énergie :",
+              "options": [
+                "Électrique",
+                "Chimique du mur",
+                "De marée",
+                "Lumineuse du plafond"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un téléphone en charge reçoit de l'énergie :",
+              "options": [
+                "Électrique",
+                "De mouvement",
+                "Chimique du câble",
+                "Thermique du vent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'électricité du réseau arrive chez nous par des :",
+              "options": ["Câbles", "Feuilles", "Nuages", "Cailloux"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un moteur électrique transforme l'énergie électrique en énergie :",
+              "options": [
+                "De mouvement",
+                "Lumineuse seule",
+                "Chimique",
+                "De pluie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Toucher un fil nu dangereux : l'énergie électrique peut :",
+              "options": ["Blesser", "Guérir", "Peindre", "Couper le vent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une ampoule branchée consomme de l'énergie :",
+              "options": ["Électrique", "De marque", "De forme", "De parfum"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels aliments sont des réserves d'énergie chimique pour le corps ?",
+              "options": [
+                "Du pain",
+                "De l'eau pure sans sucre",
+                "Des pâtes",
+                "Un caillou"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'énergie chimique des aliments sert surtout à :",
+              "options": [
+                "Faire fonctionner notre corps",
+                "Allumer une prise",
+                "Produire de la lumière seule",
+                "Refroidir une pièce"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Après le petit-déjeuner, on a plus d'énergie pour :",
+              "options": [
+                "Courir en cours de récré",
+                "Dormir debout",
+                "Éteindre le Soleil",
+                "Vider l'océan"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le bois sec brûle : il libère de l'énergie :",
+              "options": [
+                "Chimique stockée",
+                "Lumineuse du vide",
+                "Électrique du feu",
+                "De mouvement du match"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les muscles utilisent l'énergie chimique venant de :",
+              "options": [
+                "La digestion des aliments",
+                "La lune",
+                "Le vent seul",
+                "La couleur des chaussures"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un fruit mûr contient des sucres : énergie :",
+              "options": ["Chimique", "Électrique", "De marée", "Magnétique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans manger longtemps, on manque d'énergie :",
+              "options": [
+                "Chimique pour bouger",
+                "Lumineuse",
+                "Électrique interne",
+                "De pluie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le pétrole est une source d'énergie :",
+              "options": [
+                "Chimique",
+                "Lumineuse pure",
+                "De mouvement directe",
+                "Sonore"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les réserves d'énergie dans les aliments viennent du :",
+              "options": [
+                "Soleil via les plantes",
+                "Courant des prises",
+                "Foudre directe",
+                "Vent sans soleil"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Manger équilibré aide à disposer d'énergie :",
+              "options": [
+                "Chimique utile",
+                "Électrique du fourchette",
+                "Thermique du plateau",
+                "De mouvement du sel"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Associe correctement : un feu de cheminée produit surtout de l'énergie…",
+              "options": [
+                "Thermique",
+                "Lumineuse aussi un peu",
+                "Électrique du bois",
+                "De marée"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un hélicoptère en vol utilise surtout l'énergie :",
+              "options": [
+                "De mouvement",
+                "Chimique du ciel",
+                "Lumineuse du rotor",
+                "Électrique du vent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une torche allumée combine énergie électrique et :",
+              "options": [
+                "Lumineuse en sortie",
+                "Chimique du plafond",
+                "De marée",
+                "Thermique du livre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Manger une barre céréales avant le sport apporte de l'énergie :",
+              "options": ["Chimique", "Électrique", "Lumineuse", "De vent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un sèche-cheveux transforme l'énergie électrique en énergie :",
+              "options": [
+                "Thermique et de mouvement de l'air",
+                "Chimique",
+                "Lumineuse seule",
+                "De pluie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le soleil sur la peau apporte surtout de l'énergie :",
+              "options": [
+                "Lumineuse et thermique",
+                "Électrique",
+                "Chimique du corps",
+                "De marée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une voiture roulante a surtout de l'énergie :",
+              "options": [
+                "De mouvement",
+                "Lumineuse interne",
+                "Chimique du bitume",
+                "Électrique du panneau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une guitare jouée produit de l'énergie :",
+              "options": [
+                "Sonore liée au mouvement",
+                "Électrique du bois",
+                "Chimique des cordes",
+                "Lumineuse du médiator"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Recharger une console utilise l'énergie :",
+              "options": [
+                "Électrique",
+                "Chimique du jeu",
+                "De mouvement du bouton",
+                "Lumineuse de l'écran éteint"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Identifier la forme d'énergie, c'est dire comment l'énergie se :",
+              "options": ["Manifeste", "Efface", "Colore", "Pèse"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles paires forment d'énergie sont bien distinctes en 5e ?",
+              "options": [
+                "Lumineuse et thermique",
+                "Électrique et chimique des aliments",
+                "Couleur et parfum",
+                "Prénom et nom"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'énergie de mouvement ne se confond pas avec l'énergie :",
+              "options": [
+                "Chimique d'un repas",
+                "De déplacement d'un objet",
+                "De rotation d'une roue",
+                "De chute d'une balle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une pile stockée contient surtout de l'énergie :",
+              "options": [
+                "Chimique convertie en électrique",
+                "Lumineuse prête",
+                "De mouvement",
+                "Thermique du métal"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La chaleur d'un radiateur n'est pas de l'énergie :",
+              "options": [
+                "Lumineuse principale",
+                "Thermique",
+                "Transmise",
+                "Utile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La lumière d'une LED n'est pas directement de l'énergie :",
+              "options": [
+                "Chimique des aliments",
+                "Lumineuse",
+                "Électrique en amont",
+                "Visible"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un objet peut avoir plusieurs formes d'énergie en même temps :",
+              "options": ["Vrai", "Faux toujours", "Interdit", "Impossible"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le vent et un coureur ont tous deux de l'énergie :",
+              "options": [
+                "De mouvement",
+                "Chimique identique",
+                "Lumineuse",
+                "Électrique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'eau chaude et le soleil transmettent surtout de l'énergie :",
+              "options": [
+                "Thermique",
+                "Électrique",
+                "Chimique pure",
+                "De marque"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer des formes d'énergie aide à :",
+              "options": [
+                "Comprendre les transformations",
+                "Changer de classe",
+                "Effacer la matière",
+                "Oublier les unités"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une forme d'énergie peut se transformer en une autre :",
+              "options": [
+                "Oui",
+                "Jamais",
+                "Seulement la nuit",
+                "Uniquement en 6e"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Où de l'énergie est-elle stockée avant d'être utilisée ?",
+              "options": [
+                "Dans une pile",
+                "Dans les aliments",
+                "Dans un miroir sans lumière",
+                "Dans un trou vide"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une batterie de voiture stocke de l'énergie :",
+              "options": [
+                "Chimique puis électrique",
+                "Lumineuse",
+                "De vent",
+                "De marée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les réserves de graisse du corps stockent de l'énergie :",
+              "options": ["Chimique", "Électrique", "Lumineuse", "Sonore"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le bois dans un tas stocke de l'énergie :",
+              "options": ["Chimique", "De mouvement", "Électrique", "De pluie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un réservoir d'essence contient de l'énergie :",
+              "options": [
+                "Chimique",
+                "Lumineuse",
+                "Thermique seule",
+                "De rotation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Stocker de l'énergie permet de l'utiliser :",
+              "options": [
+                "Plus tard",
+                "Jamais",
+                "Sans conversion",
+                "Sans sécurité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une pomme dans le panier garde son énergie :",
+              "options": ["Chimique", "Électrique", "De marée", "Magnétique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le soleil n'est pas un stock : il envoie en continu de l'énergie :",
+              "options": [
+                "Lumineuse",
+                "Chimique du ciel",
+                "Électrique directe",
+                "De marque"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une bouteille d'eau chaude retient un peu d'énergie :",
+              "options": ["Thermique", "Chimique", "Lumineuse", "Électrique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avant de courir, l'énergie utile est surtout :",
+              "options": [
+                "Chimique des repas",
+                "Lumineuse du stade",
+                "Électrique des chaussures",
+                "De pluie"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Cite deux formes d'énergie vues en 5e :",
+              "options": [
+                "Électrique",
+                "Thermique",
+                "Politique",
+                "Grammaticale"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un objet qui tombe a de l'énergie :",
+              "options": [
+                "De mouvement",
+                "Chimique du vide",
+                "Lumineuse du sol",
+                "Électrique de l'air"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La flamme d'une bougie donne lumière et :",
+              "options": ["Chaleur", "Électricité", "Vent", "Pluie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Brancher une lampe, c'est utiliser l'énergie :",
+              "options": [
+                "Électrique",
+                "Chimique du fil",
+                "De marée",
+                "Magnétique du plafond"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le petit-déjeuner recharge l'énergie :",
+              "options": [
+                "Chimique du corps",
+                "Lumineuse des yeux",
+                "Électrique du lait",
+                "De mouvement du beurre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le vent fait tourner une éolienne : énergie reçue :",
+              "options": [
+                "De mouvement de l'air",
+                "Chimique des pales",
+                "Lumineuse du ciel",
+                "Électrique sans conversion"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Toucher un tuyau de radiateur, on sent l'énergie :",
+              "options": ["Thermique", "Sonore seule", "Chimique", "De marque"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sans énergie, les appareils électriques :",
+              "options": [
+                "Ne fonctionnent pas",
+                "Devient plus légers",
+                "Changent de matière",
+                "Produisent de l'or"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Nommer la forme d'énergie, c'est décrire :",
+              "options": [
+                "Comment elle se manifeste",
+                "La masse exacte",
+                "Le prix",
+                "La date"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les cinq grandes familles vues incluent l'énergie :",
+              "options": ["Lumineuse", "Magique", "Historique", "Géographique"],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Conversions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent une conversion d'énergie simple ?",
+              "options": [
+                "Une pile fait briller une lampe",
+                "Un repas aide à courir",
+                "Un livre change de titre",
+                "Un crayon devient plus long"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Convertir l'énergie, c'est la faire passer d'une forme à :",
+              "options": [
+                "Une autre forme",
+                "Une autre matière",
+                "Un autre prénom",
+                "Un autre pays"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une chaîne de conversions commence souvent par une :",
+              "options": [
+                "Source d'énergie",
+                "Couleur",
+                "Odeur",
+                "Forme géométrique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "L'énergie chimique d'une pile devient surtout de l'énergie :",
+              "options": [
+                "Électrique",
+                "Lumineuse directe sans fil",
+                "De marée",
+                "Magnétique du plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Manger puis marcher : conversion de l'énergie chimique en énergie :",
+              "options": [
+                "De mouvement",
+                "Lumineuse",
+                "Électrique du sol",
+                "De pluie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une ampoule convertit l'énergie électrique en énergie :",
+              "options": ["Lumineuse", "Chimique", "De marée", "Sonore seule"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On ne crée pas d'énergie : on la :",
+              "options": [
+                "Transforme",
+                "Détruit totalement",
+                "Efface",
+                "Peint"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un ventilateur convertit l'énergie électrique en énergie :",
+              "options": [
+                "De mouvement de l'air",
+                "Chimique",
+                "Lumineuse",
+                "De marée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le soleil → plante → repas → course est une chaîne de :",
+              "options": ["Conversions", "Couleurs", "Masses", "Volumes"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Schématiser une conversion, c'est montrer :",
+              "options": [
+                "Forme avant et après",
+                "Le prénom de l'élève",
+                "La météo",
+                "Le menu cantine"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans une lampe torche, quelles conversions se produisent ?",
+              "options": [
+                "Chimique vers électrique",
+                "Électrique vers lumineuse",
+                "Lumineuse vers prénom",
+                "Thermique vers couleur de crayon"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La pile dans une torche fournit d'abord de l'énergie :",
+              "options": [
+                "Électrique",
+                "Lumineuse",
+                "De mouvement",
+                "De marée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'ampoule de la torche émet surtout de l'énergie :",
+              "options": ["Lumineuse", "Chimique", "De pluie", "Magnétique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sans pile, la torche ne convertit plus l'énergie :",
+              "options": [
+                "Électrique en lumière",
+                "Chimique en vent",
+                "Lumineuse en eau",
+                "De marée en sel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une pile usée éclaire moins : moins d'énergie :",
+              "options": [
+                "Chimique disponible",
+                "Lumineuse entrante",
+                "De marée",
+                "Historique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le fil de la torche transporte l'énergie :",
+              "options": [
+                "Électrique",
+                "Chimique du plastique",
+                "De mouvement",
+                "De marque"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Allumer l'interrupteur ferme le circuit pour la :",
+              "options": [
+                "Conversion",
+                "Disparition de l'énergie",
+                "Création de matière",
+                "Chute de la lune"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une LED consomme souvent moins d'énergie :",
+              "options": [
+                "Électrique pour la même lumière",
+                "Chimique du ciel",
+                "De marée",
+                "Magnétique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La chaleur faible de l'ampoule montre aussi une conversion en énergie :",
+              "options": [
+                "Thermique",
+                "De marée",
+                "Chimique du verre",
+                "Sonore principale"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pile → lampe : ordre logique des formes :",
+              "options": [
+                "Chimique, électrique, lumineuse",
+                "Lumineuse, chimique, électrique",
+                "Électrique seule",
+                "Aucune"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comment la nourriture permet-elle de bouger ?",
+              "options": [
+                "Énergie chimique libérée par la digestion",
+                "Énergie de mouvement stockée dans le sel",
+                "Conversion en énergie de mouvement des muscles",
+                "Lumière du frigo"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Après un repas, le corps transforme l'énergie chimique pour :",
+              "options": [
+                "Contracter les muscles",
+                "Allumer une prise",
+                "Faire briller le stylo",
+                "Changer la gravité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Courir un 100 m utilise l'énergie chimique devenant :",
+              "options": [
+                "Énergie de mouvement",
+                "Énergie lumineuse seule",
+                "Énergie de marée",
+                "Énergie du prénom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sans repas, la conversion chimique → mouvement est :",
+              "options": ["Difficile", "Infinie", "Magique", "Électrique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Les sucres des aliments sont une étape de la conversion vers :",
+              "options": [
+                "Mouvement",
+                "Lumière directe",
+                "Électricité du corps",
+                "Vent artificiel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Monter des escaliers convertit l'énergie chimique en énergie :",
+              "options": [
+                "De mouvement et un peu thermique",
+                "Lumineuse",
+                "Électrique",
+                "De pluie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le sport consomme l'énergie :",
+              "options": [
+                "Chimique préalable",
+                "Lumineuse du ballon",
+                "Électrique du terrain",
+                "De marée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Respirer fort après la course montre aussi production d'énergie :",
+              "options": ["Thermique", "Lumineuse", "De marée", "Magnétique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La chaîne soleil → plante → mangeur → sprint montre des :",
+              "options": ["Conversions", "Couleurs", "Atomes seuls", "Cartes"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Manger équilibré aide les conversions vers le :",
+              "options": [
+                "Mouvement",
+                "Sommeil éternel",
+                "Refroidissement du soleil",
+                "Allumage des prises"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Avec le soleil, quelles conversions simples observe-t-on ?",
+              "options": [
+                "Lumineuse vers thermique sur la peau",
+                "Lumineuse vers chimique dans les plantes",
+                "Lumineuse vers prénom",
+                "Thermique vers couleur de craie"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un panneau solaire convertit l'énergie lumineuse en énergie :",
+              "options": [
+                "Électrique",
+                "Chimique du verre",
+                "De marée",
+                "Sonore"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sécher un linge au soleil : l'énergie lumineuse aide à évaporer l'eau par :",
+              "options": [
+                "Chauffage thermique",
+                "Électricité",
+                "Vent seul sans soleil",
+                "Sel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les feuilles vertes transforment la lumière en énergie :",
+              "options": [
+                "Chimique stockée",
+                "Électrique directe",
+                "De marée",
+                "Magnétique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans soleil la nuit, les panneaux produisent :",
+              "options": [
+                "Peu ou pas d'électricité",
+                "Toute la lumière",
+                "De la pluie",
+                "Du pétrole"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une calculatrice solaire utilise la conversion lumineuse → :",
+              "options": ["Électrique", "Chimique", "De marée", "Sonore"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La lumière du soleil voyage jusqu'à la Terre : énergie :",
+              "options": [
+                "Lumineuse",
+                "Chimique",
+                "Électrique du vide",
+                "De marée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ombre et soleil montrent que l'énergie lumineuse se :",
+              "options": [
+                "Bloque ou passe",
+                "Crée ex nihilo",
+                "Devient masse",
+                "Efface la matière"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réchauffer une voiture au soleil : conversion vers :",
+              "options": ["Thermique", "Électrique", "Chimique", "De marée"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le soleil est une source pour plusieurs :",
+              "options": [
+                "Conversions en chaîne",
+                "Prénoms",
+                "Masses",
+                "Couleurs de crayon"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quand on freine un vélo, quelles conversions apparaissent ?",
+              "options": [
+                "Énergie de mouvement vers thermique",
+                "Énergie de mouvement vers sonore",
+                "Énergie vers nouveau prénom",
+                "Énergie vers couleur du ciel"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Frotter deux surfaces réchauffe : conversion mouvement → :",
+              "options": [
+                "Thermique",
+                "Lumineuse seule",
+                "Chimique",
+                "De marée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Marteler un clou chauffe le métal : énergie de mouvement devient :",
+              "options": ["Thermique", "Électrique", "Lumineuse", "De pluie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les freins d'un vélo chauffent : l'énergie de mouvement est :",
+              "options": [
+                "Transformée",
+                "Créée",
+                "Effacée totalement",
+                "Peinte"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Battre un tambour produit du son : conversion vers énergie :",
+              "options": ["Sonore", "Chimique", "Électrique", "De marée"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ralentir une toupie convertit l'énergie de mouvement en :",
+              "options": [
+                "Thermique et sonore",
+                "Lumière pure",
+                "Électricité",
+                "Pluie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'énergie de mouvement diminue quand on :",
+              "options": ["Freine", "Accélère", "Saute", "Lance"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une corde qui casse après frottement a converti de l'énergie en :",
+              "options": ["Chaleur", "Lumière seule", "Électricité", "Marée"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les frottements transforment souvent le mouvement en :",
+              "options": ["Chaleur", "Or", "Eau pure", "Lumière obligatoire"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comprendre freinage = conversion aide à expliquer :",
+              "options": [
+                "Pourquoi ça chauffe",
+                "Pourquoi le ciel est carré",
+                "Pourquoi 1+1=3",
+                "Pourquoi les livres volent"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels appareils convertissent chimique → électrique ?",
+              "options": [
+                "Une pile neuve",
+                "Une batterie chargée",
+                "Un miroir",
+                "Une règle"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une pile, la réaction chimique produit un courant :",
+              "options": [
+                "Électrique",
+                "Lumineux direct",
+                "De marée",
+                "Magnétique du plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une voiture électrique en charge stocke de l'énergie :",
+              "options": [
+                "Chimique dans la batterie",
+                "Lumineuse",
+                "De marée",
+                "Sonore"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quand la pile est vide, la conversion chimique → électrique :",
+              "options": [
+                "S'arrête",
+                "Double",
+                "Crée de la lumière seule",
+                "Fait pleuvoir"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Brancher un jouet sur piles utilise l'énergie :",
+              "options": [
+                "Électrique produite",
+                "Lumineuse du carton",
+                "De marée",
+                "Chimique du sol"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le symbole + et − sur une pile indique le sens du :",
+              "options": ["Courant électrique", "Vent", "Menu", "Devoir"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Recycler les piles limite les déchets de produits :",
+              "options": ["Chimiques", "Lumineux", "De marée", "Historiques"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une montre à pile convertit chimique → électrique → :",
+              "options": [
+                "Mouvement des aiguilles",
+                "Lumière du soleil",
+                "Pluie",
+                "Sel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer pile et prise : les deux peuvent alimenter en :",
+              "options": [
+                "Énergie électrique",
+                "Énergie chimique directe au moteur",
+                "Énergie de marée",
+                "Énergie du prénom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Schéma pile → moteur : deuxième forme d'énergie :",
+              "options": [
+                "Électrique",
+                "Lumineuse",
+                "De marée",
+                "Grammaticale"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles conversions impliquent l'électricité produite puis utilisée ?",
+              "options": [
+                "Solaire → électrique → lumière d'ampoule",
+                "Pile → électrique → ventilateur",
+                "Crayon → couleur → prénom",
+                "Pierre → masse → histoire"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une enceinte branchée convertit l'énergie électrique en énergie :",
+              "options": ["Sonore", "Chimique", "De marée", "Lumineuse seule"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un four micro-ondes convertit l'électricité en énergie :",
+              "options": [
+                "Thermique des aliments",
+                "Lumineuse pure",
+                "De marée",
+                "Magnétique du ciel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un ascenseur convertit l'électricité en énergie :",
+              "options": ["De mouvement", "Chimique", "Lumineuse", "De pluie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une voiture électrique en marche : électrique → :",
+              "options": [
+                "Mouvement",
+                "Lumière seule",
+                "Sel",
+                "Vent artificiel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Couper le courant stoppe les conversions qui utilisent l'énergie :",
+              "options": [
+                "Électrique",
+                "Chimique du mur",
+                "De marée",
+                "Du prénom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une télévision convertit l'électricité en lumière et :",
+              "options": ["Son", "Pluie", "Sel", "Marée"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La prise murale fournit l'énergie après conversion dans les :",
+              "options": ["Centrales", "Cahiers", "Stylos", "Chaussures"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Économiser l'électricité limite les conversions :",
+              "options": ["Inutiles", "Impossibles", "Magiques", "Historiques"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fil électrique → ampoule : dernière forme utile :",
+              "options": ["Lumineuse", "Chimique", "De marée", "Prénom"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels exemples vont de l'énergie électrique vers la lumière ?",
+              "options": [
+                "Une lampe de bureau",
+                "Un éclairage public la nuit",
+                "Un caillou sec",
+                "Un cahier bleu"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une guirlande de Noël convertit l'électricité en :",
+              "options": ["Lumière", "Pluie", "Sel", "Marée"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un projecteur de classe transforme l'électricité en énergie :",
+              "options": ["Lumineuse", "Chimique", "De marée", "Du stylo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Éteindre la lumière coupe la conversion électrique → :",
+              "options": ["Lumineuse", "Chimique", "De marée", "Historique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une lampe halogène chauffe aussi : conversion partielle en :",
+              "options": ["Thermique", "Marée", "Sel", "Prénom"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le phare d'un vélo à dynamo convertit le mouvement en électricité puis en :",
+              "options": ["Lumière", "Pluie", "Sel", "Marée"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans ampoule, le circuit peut avoir de l'électricité sans :",
+              "options": ["Lumière utile", "Fil", "Pile", "Interrupteur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La lumière blanche d'une lampe vient de la conversion de l'énergie :",
+              "options": [
+                "Électrique",
+                "Chimique du plafond",
+                "De marée",
+                "Du cartable"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Plusieurs lampes en parallèle consomment chacune de l'énergie :",
+              "options": ["Électrique", "De marée", "Du prénom", "Historique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif d'une lampe : rendre visible grâce à la conversion → :",
+              "options": ["Lumineuse", "Chimique", "De marée", "Sonore seule"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans la chaîne alimentaire énergétique simple, quelles conversions interviennent ?",
+              "options": [
+                "Lumière solaire → plante",
+                "Plante → énergie chimique du mangeur",
+                "Cahier → prénom",
+                "Crayon → marée"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un herbivore mange de l'herbe : il récupère l'énergie :",
+              "options": [
+                "Chimique",
+                "Électrique",
+                "Lumineuse directe",
+                "De marée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un carnivore mange une proie : l'énergie chimique se :",
+              "options": [
+                "Transmet",
+                "Disparaît totalement",
+                "Devient lumière seule",
+                "Crée du pétrole"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Les plantes sont le premier maillon de conversion de la lumière en :",
+              "options": ["Énergie chimique", "Électricité", "Marée", "Sel"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'humain qui mange des légumes utilise une conversion déjà faite par :",
+              "options": ["Les plantes", "La lune", "Le stylo", "Le cartable"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'énergie ne remonte pas automatiquement du corps vers le :",
+              "options": ["Soleil", "Repas", "Muscle", "Cerveau"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À chaque maillon, une partie de l'énergie devient :",
+              "options": ["Chaleur", "Or", "Lumière infinie", "Marée"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le petit-déjeuner reçoit l'énergie du blé qui a capté la :",
+              "options": ["Lumière", "Marée", "Prise murale", "Pluie seule"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comprendre la chaîne aide à voir pourquoi le soleil est une :",
+              "options": ["Source", "Couleur", "Masse", "Forme"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Coureur après pasta : dernière conversion utile :",
+              "options": ["Mouvement", "Lumière", "Électricité", "Marée"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles conversions simples de 5e sont correctes ?",
+              "options": [
+                "Pile → lumière de torche",
+                "Repas → course",
+                "Cahier → électricité",
+                "Gomme → marée"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Convertir, ce n'est pas :",
+              "options": [
+                "Créer de l'énergie from scratch",
+                "Changer de forme",
+                "Enchaîner des étapes",
+                "Utiliser une source"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une éolienne : mouvement de l'air → souvent électricité → peut éclairer : conversion finale :",
+              "options": ["Lumineuse", "Chimique", "De marée", "Du prénom"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Freiner, manger, allumer une lampe : trois exemples de :",
+              "options": ["Conversions", "Couleurs", "Masses", "Cartes"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Schéma avec flèches entre formes d'énergie décrit une :",
+              "options": [
+                "Conversion",
+                "Recette de cuisine seule",
+                "Liste de prénoms",
+                "Carte IGN"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La pile de la telecommande convertit chimique → :",
+              "options": [
+                "Électrique",
+                "Lumineuse directe",
+                "De marée",
+                "Pluie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le corps transforme le sandwich en énergie pour :",
+              "options": [
+                "Bouger",
+                "Allumer le soleil",
+                "Vider l'océan",
+                "Changer de classe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une ampoule consomme de l'électricité et produit surtout de la :",
+              "options": ["Lumière", "Marée", "Sel", "Pluie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Repérer entrée et sortie d'énergie dans un objet, c'est analyser sa :",
+              "options": ["Conversion", "Couleur", "Marque", "Date"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ce chapitre prépare à toujours nommer la forme d'énergie :",
+              "options": [
+                "Avant et après",
+                "Seulement avant",
+                "Jamais",
+                "Uniquement en latin"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

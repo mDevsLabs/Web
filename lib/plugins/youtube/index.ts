@@ -172,7 +172,10 @@ function youtubeChannelDetails(deps: PluginToolDeps) {
         channelId: resolvedId,
         customUrl: textField(snippet?.customUrl, 80),
         description: textField(snippet?.description, 280),
-        source: sourceRef(`${BASE}/youtube/v3/channels`, "Fiche chaîne YouTube"),
+        source: sourceRef(
+          `${BASE}/youtube/v3/channels`,
+          "Fiche chaîne YouTube"
+        ),
         subscriberCount: textField(stats?.subscriberCount, 20),
         title: textField(snippet?.title, 180),
         url: resolvedId

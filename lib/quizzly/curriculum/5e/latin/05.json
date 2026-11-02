@@ -1,0 +1,2193 @@
+{
+  "id": "5e-latin-05",
+  "year": "5e",
+  "subject": "latin",
+  "title": "Le passé en latin",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont au parfait simple (action passée terminée) ?",
+              "explanation": "Le parfait simple exprime une action achevée dans le passé, comme vidit ou amavit.",
+              "options": ["vidit", "amo", "amavit", "lego"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le mot latin heri ?",
+              "explanation": "Heri correspond à « hier » en français.",
+              "options": ["aujourd'hui", "hier", "demain", "maintenant"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « Heri amicam vidit », que signifie vidit ?",
+              "explanation": "Vidit est la 3e personne du singulier du parfait de videre : il/elle a vu.",
+              "options": ["il voit", "il a vu", "il verra", "il voyait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase raconte correctement ce qui s'est passé hier ?",
+              "explanation": "Heri + parfait simple situe l'action la veille.",
+              "options": [
+                "Heri puer ludet",
+                "Heri puellam amavit",
+                "Cras amabit",
+                "Nunc legit"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Amavit est le parfait de quel verbe ?",
+              "explanation": "Amavit vient de amare, aimer.",
+              "options": ["amare", "habere", "venire", "dicere"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Il a entendu » au parfait simple de audire, c'est :",
+              "explanation": "Le parfait de audire est audivit à la 3e personne du singulier.",
+              "options": ["audit", "audivit", "audiet", "audiebat"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour dire « hier le garçon a couru », on met :",
+              "explanation": "Heri marque la date ; cucurrit est le parfait de currere.",
+              "options": [
+                "Heri puer currit",
+                "Heri puer cucurrit",
+                "Cras puer cucurrit",
+                "Heri puer curritur"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La terminaison -it en vidit indique surtout :",
+              "explanation": "En parfait simple, -it est une terminaison fréquente à la 3e personne du singulier.",
+              "options": [
+                "le futur",
+                "le présent",
+                "le passé achevé",
+                "l'infinitif"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Venit au parfait signifie :",
+              "explanation": "Venit peut être « il est venu » (parfait de venire).",
+              "options": ["il vient", "il est venu", "il viendra", "il venait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Heri magister discipulos laudavit signifie :",
+              "explanation": "Laudavit est le parfait de laudare : a loué.",
+              "options": [
+                "Hier le maître loue les élèves",
+                "Hier le maître a loué les élèves",
+                "Demain le maître louera",
+                "Le maître loue maintenant"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots conviennent pour parler d'hier ?",
+              "explanation": "Heri et une forme au parfait simple situent l'action dans le passé récent.",
+              "options": ["heri", "cras", "heri vidit", "hodie"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dixit vient de dicere et signifie :",
+              "explanation": "Dixit est le parfait de dicere : il/elle a dit.",
+              "options": ["il dit", "il a dit", "il dira", "il disait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Elle a aimé la rose » se dit :",
+              "explanation": "Rosam est l'accusatif ; amavit est le parfait.",
+              "options": [
+                "Rosam amat",
+                "Rosam amavit",
+                "Rosae amat",
+                "Rosam amabit"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Heri sol non fulsit signifie :",
+              "explanation": "Fulsit est le parfait de fulgere : briller.",
+              "options": [
+                "Hier le soleil brille",
+                "Hier le soleil n'a pas brillé",
+                "Demain le soleil brillera",
+                "Le soleil brille"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel verbe est au parfait ?",
+              "explanation": "Scivit est le parfait de scire (savoir).",
+              "options": ["scit", "scivit", "sciet", "sciebat"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour raconter une suite d'actions d'hier, on emploie surtout :",
+              "explanation": "Le parfait simple enchaîne des faits passés terminés.",
+              "options": [
+                "le présent",
+                "le parfait simple",
+                "l'infinitif seul",
+                "le futur"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Fecit signifie :",
+              "explanation": "Fecit est le parfait de facere : a fait.",
+              "options": ["il fait", "il a fait", "il fera", "il faisait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Hier nous avons chanté » : heri + parfait de canere (3e pl.) donne :",
+              "explanation": "Canere a le parfait cecinerunt à la 1re personne du pluriel on utilise souvent cecinimus en récit.",
+              "options": [
+                "heri canimus",
+                "heri cecinimus",
+                "heri canemus",
+                "heri canebamus"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Potuit est le parfait de :",
+              "explanation": "Potuit vient de posse : a pu.",
+              "options": ["posse", "ponere", "portare", "placere"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Heri in silvam ivimus signifie :",
+              "explanation": "Ivimus est le parfait de ire : nous sommes allés.",
+              "options": [
+                "Hier nous allons en forêt",
+                "Hier nous sommes allés en forêt",
+                "Demain nous irons",
+                "Nous allons en forêt"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Choisis deux traductions possibles de formes au parfait simple.",
+              "explanation": "Vidit et amavit se traduisent par un passé composé français.",
+              "options": ["il a vu", "il voit", "elle a aimé", "elle aime"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Hodie's'oppose à heri et signifie :",
+              "explanation": "Hodie = aujourd'hui, heri = hier.",
+              "options": ["hier", "aujourd'hui", "demain", "autrefois"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cepit (de capere) signifie :",
+              "explanation": "Cepit est le parfait de capere : a pris.",
+              "options": ["il prend", "il a pris", "il prendra", "il prenait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Heri pater cenam paravit : paravit signifie",
+              "explanation": "Paravit vient de parare : a préparé.",
+              "options": ["prépare", "a préparé", "préparera", "préparait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase est au passé achevé ?",
+              "explanation": "Clamavit est le parfait de clamare.",
+              "options": [
+                "Puella clamat",
+                "Puella clamavit",
+                "Puella clamabit",
+                "Puella clamabat"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vit au parfait de videre, c'est :",
+              "explanation": "La 3e personne du singulier du parfait est vidit.",
+              "options": ["videt", "vidit", "videbit", "videbat"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Heri multa verba audivimus signifie :",
+              "explanation": "Audivimus : nous avons entendu.",
+              "options": [
+                "Hier nous entendons beaucoup de mots",
+                "Hier nous avons entendu beaucoup de mots",
+                "Demain nous entendrons",
+                "Nous entendons"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mansit (de manere) signifie :",
+              "explanation": "Mansit : il/elle est resté(e).",
+              "options": ["reste", "est resté", "restera", "restait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour dire qu'hier il a lu le livre :",
+              "explanation": "Legit est le parfait de legere.",
+              "options": [
+                "Heri librum legit",
+                "Heri librum legat",
+                "Cras librum legit",
+                "Heri librum legitur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Amavisti est :",
+              "explanation": "-isti marque la 2e personne du singulier du parfait : tu as aimé.",
+              "options": [
+                "tu aimes",
+                "tu as aimé",
+                "il a aimé",
+                "vous avez aimé"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments forment une phrase « hier » correcte ?",
+              "explanation": "Heri + sujet + parfait racontent un fait passé.",
+              "options": ["Heri", "cras", "puer lusit", "nunc ludet"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Lusit (de ludere) signifie :",
+              "explanation": "Lusit : il/elle a joué.",
+              "options": ["joue", "a joué", "jouera", "jouait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Heri nox fuit longa : fuit est le parfait de",
+              "explanation": "Fuit vient de esse : fut / a été.",
+              "options": ["esse", "facere", "ferre", "fugere"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Il a écrit » avec scribere :",
+              "explanation": "Scribere → scripsit.",
+              "options": ["scribit", "scripsit", "scribet", "scribebat"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Heri Romam venimus signifie :",
+              "explanation": "Venimus : nous sommes venus.",
+              "options": [
+                "Hier nous venons à Rome",
+                "Hier nous sommes venus à Rome",
+                "Demain à Rome",
+                "Nous venons"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme n'est PAS au parfait ?",
+              "explanation": "Amat est le présent de amare.",
+              "options": ["amavit", "vidit", "amat", "audivit"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tenuit (de tenere) signifie :",
+              "explanation": "Tenuit : a tenu.",
+              "options": ["tient", "a tenu", "tiendra", "tenait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Heri cum amicis cenavi : cenavi signifie",
+              "explanation": "Cenavi : j'ai dîné (parfait de cenare).",
+              "options": ["je dîne", "j'ai dîné", "je dînerai", "je dînais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Risit signifie :",
+              "explanation": "Risit : il/elle a ri (ridere).",
+              "options": ["rit", "a ri", "rira", "riait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Heri pluit : pluit est",
+              "explanation": "Pluit : il a plu (même forme qu'un présent météo, ici avec heri = passé).",
+              "options": [
+                "il pleut (hier : il a plu)",
+                "il pleuvra",
+                "il pleuvait",
+                "il ne pleut pas"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Repère deux parfaits de verbes courants en 5e.",
+              "explanation": "Amavit et venit sont des parfaits fréquents.",
+              "options": ["amavit", "amas", "venit", "venis"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Heri uxor cenam coxit : coxit signifie",
+              "explanation": "Coxit : a cuit (coquere).",
+              "options": ["cuit", "a cuit", "cuira", "cuisait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dormivit signifie :",
+              "explanation": "Dormivit : a dormi.",
+              "options": ["dort", "a dormi", "dormira", "dormait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Tu as vu » au parfait :",
+              "explanation": "2e pers. sg. de videre : vidisti.",
+              "options": ["vidit", "vidisti", "vidimus", "vidistis"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Heri litteras scripsisti signifie :",
+              "explanation": "Scripsisti : tu as écrit.",
+              "options": [
+                "Hier tu écris des lettres",
+                "Hier tu as écrit des lettres",
+                "Demain tu écriras",
+                "Tu écris"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Misit (de mittere) signifie :",
+              "explanation": "Misit : a envoyé.",
+              "options": ["envoie", "a envoyé", "enverra", "envoyait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Heri puer pilam iecit : iecit signifie",
+              "explanation": "Iecit : a lancé (iacere).",
+              "options": ["lance", "a lancé", "lancera", "lançait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot latin = « hier » ?",
+              "explanation": "Heri est le marqueur de la veille.",
+              "options": ["tum", "heri", "postridie", "nunc"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Stetit signifie :",
+              "explanation": "Stetit : s'est tenu / est resté debout (stare).",
+              "options": ["se tient", "s'est tenu", "se tiendra", "se tenait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Heri fabulam narravi signifie :",
+              "explanation": "Narravi : j'ai raconté.",
+              "options": [
+                "Hier je raconte une fable",
+                "Hier j'ai raconté une fable",
+                "Demain je raconterai",
+                "Je raconte"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux réponses : sens du parfait simple.",
+              "explanation": "Il exprime une action passée terminée et un fait achevé.",
+              "options": [
+                "action passée terminée",
+                "action en cours",
+                "fait achevé",
+                "action future"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Heri luna claruit : claruit signifie",
+              "explanation": "Claruit : a brillé / s'est éclairée (clarescere/clareo).",
+              "options": ["brille", "a brillé", "brillera", "brillait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Habuit est le parfait de :",
+              "explanation": "Habuit vient de habere : a eu.",
+              "options": ["habere", "habitare", "hibernare", "haerere"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Nous avons aimé » : parfait de amare, 1re pl. :",
+              "explanation": "Amavimus : nous avons aimé.",
+              "options": ["amavimus", "amavistis", "amavit", "amavisti"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Heri frater me ad ludum duxit : duxit signifie",
+              "explanation": "Duxit : a mené (ducere).",
+              "options": ["mène", "a mené", "mènera", "menait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Cucurrit signifie :",
+              "explanation": "Cucurrit : a couru (currere).",
+              "options": ["court", "a couru", "courra", "courait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Heri nihil feci signifie :",
+              "explanation": "Feci : j'ai fait ; nihil = rien.",
+              "options": [
+                "Hier je ne fais rien",
+                "Hier je n'ai rien fait",
+                "Demain je ferai",
+                "Je fais tout"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quis heri venit ? demande :",
+              "explanation": "Venit au parfait : qui est venu hier ?",
+              "options": [
+                "Qui vient hier ?",
+                "Qui est venu hier ?",
+                "Qui viendra ?",
+                "Qui venait ?"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Petivit signifie :",
+              "explanation": "Petivit : a demandé / cherché (petere).",
+              "options": ["demande", "a demandé", "demandera", "demandait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Heri multos libros legi : legi ici est",
+              "explanation": "Legi : j'ai lu (parfait de legere).",
+              "options": ["je lis", "j'ai lu", "je lirai", "je lisais"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases situent l'action à hier ?",
+              "explanation": "Heri en tête + parfait indique la veille.",
+              "options": [
+                "Heri cantavit",
+                "Cras cantabit",
+                "Heri audivit",
+                "Nunc cantat"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Cantavit signifie :",
+              "explanation": "Cantavit : a chanté.",
+              "options": ["chante", "a chanté", "chantera", "chantait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Heri sero domum redii : redii signifie",
+              "explanation": "Redii : je suis rentré (redire).",
+              "options": [
+                "je rentre",
+                "je suis rentré",
+                "je rentrerai",
+                "je rentrais"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Vicit (de vincere) signifie :",
+              "explanation": "Vicit : a vaincu.",
+              "options": ["vainc", "a vaincu", "vaincra", "vaincait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Heri pater mihi donum dedit : dedit signifie",
+              "explanation": "Dedit : a donné (dare).",
+              "options": ["donne", "a donné", "donnera", "donnait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Il a entendu la voix » : vocem audivit signifie",
+              "explanation": "Vocem = la voix (acc.) ; audivit = a entendu.",
+              "options": [
+                "il entend la voix",
+                "il a entendu la voix",
+                "il entendra",
+                "—"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Heri sol ortus est : ortus est signifie",
+              "explanation": "Ortus est : s'est levé (orior).",
+              "options": ["se lève", "s'est levé", "se lèvera", "se levait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tulit (de ferre) signifie souvent :",
+              "explanation": "Tulit : a porté / a emmené.",
+              "options": ["porte", "a porté", "emportera", "portait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Heri cum sorore lusi : lusi signifie",
+              "explanation": "Lusi : j'ai joué (ludere).",
+              "options": ["je joue", "j'ai joué", "je jouerai", "je jouais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Amavit et vidit partagent :",
+              "explanation": "Ce sont des formes du parfait simple à la 3e personne du singulier.",
+              "options": [
+                "le présent",
+                "le parfait 3e sg.",
+                "le futur",
+                "l'impératif"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Choisis deux verbes au parfait dans la liste.",
+              "explanation": "Dixit et scripsit sont au parfait simple.",
+              "options": ["dixit", "dicit", "scripsit", "scribit"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Heri tempestas magna fuit : traduction",
+              "explanation": "Fuit : il y a eu / c'était (passé).",
+              "options": [
+                "Hier le temps est grand",
+                "Hier il y a eu une grande tempête",
+                "Demain tempête",
+                "Le temps est beau"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Fluxit (de fluere) signifie :",
+              "explanation": "Fluxit : a coulé.",
+              "options": ["coule", "a coulé", "coulera", "coulait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Heri aquam bibi : bibi signifie",
+              "explanation": "Bibi : j'ai bu (bibere).",
+              "options": ["je bois", "j'ai bu", "je boirai", "je buvais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Elle a vu la lune » : lunam vidit",
+              "explanation": "Vidit : a vu ; lunam = la lune.",
+              "options": [
+                "elle voit la lune",
+                "elle a vu la lune",
+                "elle verra",
+                "—"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Heri pueri luserunt : luserunt signifie",
+              "explanation": "Luserunt : ils ont joué (3e pl.).",
+              "options": [
+                "ils jouent",
+                "ils ont joué",
+                "ils joueront",
+                "ils jouaient"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Credidit signifie :",
+              "explanation": "Credidit : a cru (credere).",
+              "options": ["croit", "a cru", "croira", "croyait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Heri veritatem dixi : dixi signifie",
+              "explanation": "Dixi : j'ai dit (dicere).",
+              "options": ["je dis", "j'ai dit", "je dirai", "je disais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Parfait de amare, 3e sg. :",
+              "explanation": "Amavit : il/elle a aimé.",
+              "options": ["amat", "amavit", "amabit", "amabat"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Heri ad forum ivi signifie :",
+              "explanation": "Ivi : je suis allé.",
+              "options": [
+                "Hier je vais au forum",
+                "Hier je suis allé au forum",
+                "Demain au forum",
+                "Je vais"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux mots utiles pour un récit au passé (5e).",
+              "explanation": "Heri et tum servent à situer des faits passés (tum enchaîne).",
+              "options": ["heri", "cras", "tum", "semper cras"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Heri puer pilam amisit : amisit signifie",
+              "explanation": "Amisit : a perdu (amittere).",
+              "options": ["perd", "a perdu", "perdra", "perdait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Reppulit signifie :",
+              "explanation": "Reppulit : a repoussé ( repellere).",
+              "options": ["repousse", "a repoussé", "repoussera", "repoussait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ils ont aimé » : amaverunt ou amavērunt, forme 3e pl. :",
+              "explanation": "Amavērunt / amaverunt : ils ont aimé.",
+              "options": ["amavimus", "amaverunt", "amavit", "amavisti"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Heri nox fuit brevis signifie :",
+              "explanation": "La nuit d'hier a été courte.",
+              "options": [
+                "La nuit est courte",
+                "Hier la nuit a été courte",
+                "Demain nuit longue",
+                "La nuit sera brève"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sensit (de sentire) signifie :",
+              "explanation": "Sensit : a senti / a perçu.",
+              "options": ["sent", "a senti", "sentira", "sentait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Heri magna gaudia habuimus : habuimus signifie",
+              "explanation": "Habuimus : nous avons eu.",
+              "options": [
+                "nous avons",
+                "nous avons eu",
+                "nous aurons",
+                "nous avions"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Parfait de videre, 1re sg. :",
+              "explanation": "Vidi : j'ai vu.",
+              "options": ["video", "vidi", "videbo", "videbam"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Heri tu me vidisti : traduction",
+              "explanation": "Vidisti : tu as vu.",
+              "options": [
+                "Hier tu me vois",
+                "Hier tu m'as vu",
+                "Demain tu me verras",
+                "Tu me vois"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Clausit signifie :",
+              "explanation": "Clausit : a fermé (claudere).",
+              "options": ["ferme", "a fermé", "fermera", "fermait"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour conclure un récit « hier », quels choix sont pertinents ?",
+              "explanation": "Heri + parfait simple ferment le récit au passé.",
+              "options": [
+                "Heri omnia bene facta sunt",
+                "Cras ridebimus",
+                "Heri puella venit",
+                "Nunc paramus"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Facta sunt (parfait de facere, 3e pl. neutre) signifie :",
+              "explanation": "Facta sunt : ont été faits / se sont faits.",
+              "options": [
+                "se font",
+                "ont été faits",
+                "se feront",
+                "se faisaient"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Heri ad scholam tardus fui : fui signifie",
+              "explanation": "Fui : j'ai été / je suis arrivé en étant (esse).",
+              "options": [
+                "je suis",
+                "j'ai été / je fus",
+                "je serai",
+                "j'étais"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Omnia heri parata erant — avec heri, parata erant évoque :",
+              "explanation": "Heri + imparfait : état dans le passé ; en 5e on retient surtout heri + parfait pour l'action.",
+              "options": [
+                "hier tout était prêt",
+                "demain",
+                "aujourd'hui",
+                "jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Heri pater fabulam legavit : legavit =",
+              "explanation": "Legavit : a lu (parfait de legere, sens narratif).",
+              "options": ["lit", "a lu", "lira", "lisait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Récapitulatif : vidit =",
+              "explanation": "Vidit : il/elle a vu.",
+              "options": ["voit", "a vu", "verra", "voyait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Récapitulatif : amavit =",
+              "explanation": "Amavit : il/elle a aimé.",
+              "options": ["aime", "a aimé", "aimera", "aimait"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Heri significa en français :",
+              "explanation": "Heri = hier.",
+              "options": ["hier", "puis", "demain", "tôt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Heri amici ad me venerunt : venerunt signifie",
+              "explanation": "Venerunt : ils sont venus.",
+              "options": [
+                "ils viennent",
+                "ils sont venus",
+                "ils viendront",
+                "ils venaient"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase résume le chapitre « raconter hier » ?",
+              "explanation": "On combine heri et le parfait simple pour raconter.",
+              "options": [
+                "Heri + présent",
+                "Heri + parfait simple",
+                "Cras + futur",
+                "Nunc + infinitif"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des marqueurs de temps en latin (5e) ?",
+              "explanation": "Tum, heri et postridie situent les événements dans le temps.",
+              "options": ["tum", "rosa", "heri", "mensa"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tum signifie le plus souvent :",
+              "explanation": "Tum = alors / puis, pour enchaîner dans le passé.",
+              "options": ["hier", "alors / puis", "demain", "jamais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Postridie signifie :",
+              "explanation": "Postridie = le lendemain / le jour d'après.",
+              "options": [
+                "la veille",
+                "le lendemain",
+                "maintenant",
+                "autrefois"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Heri puer lusit, tum cenavit : tum introduit",
+              "explanation": "Tum marque l'événement suivant dans le récit.",
+              "options": [
+                "le même moment",
+                "un moment après",
+                "le futur lointain",
+                "le présent"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Cras s'oppose à heri et signifie :",
+              "explanation": "Cras = demain.",
+              "options": ["hier", "demain", "puis", "tôt"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nunc signifie :",
+              "explanation": "Nunc = maintenant.",
+              "options": ["maintenant", "hier", "alors", "après"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Heri … postridie enchaînés signifient :",
+              "explanation": "Hier, puis le lendemain.",
+              "options": [
+                "hier puis demain (le jour suivant)",
+                "maintenant puis hier",
+                "demain puis hier",
+                "—"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un récit passé, tum se traduit souvent par :",
+              "explanation": "Tum enchaîne : « puis », « alors ».",
+              "options": ["puis", "toujours", "bientôt", "hier"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel marqueur place l'action après hier ?",
+              "explanation": "Postridie = le jour d'après (par rapport à un jour donné).",
+              "options": ["heri", "postridie", "nunc", "iam"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Heri vidit, tum amavit : sens global",
+              "explanation": "Il a vu hier, puis il a aimé (suite d'actions passées).",
+              "options": [
+                "Il voit puis aime demain",
+                "Hier il a vu, puis il a aimé",
+                "Il aimera puis verra",
+                "Maintenant seulement"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux marqueurs qui ne signifient pas « demain ».",
+              "explanation": "Heri = hier ; tum = alors (pas demain).",
+              "options": ["heri", "cras", "tum", "postridie"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Postridie venit : traduction probable",
+              "explanation": "Il/elle est venu(e) le lendemain.",
+              "options": [
+                "Il vient hier",
+                "Il est venu le lendemain",
+                "Il viendra demain matin",
+                "Il ne vient pas"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tum puer clamavit : tum indique",
+              "explanation": "Puis le garçon a crié.",
+              "options": [
+                "avant tout",
+                "ensuite dans le récit",
+                "dans cent ans",
+                "au présent"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ordre logique : heri, puis le jour suivant =",
+              "explanation": "Heri puis postridie.",
+              "options": [
+                "heri … cras",
+                "heri … postridie",
+                "postridie … heri",
+                "nunc … heri"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hodie et heri :",
+              "explanation": "Hodie = aujourd'hui, heri = hier.",
+              "options": [
+                "synonymes",
+                "jours consécutifs opposés au présent",
+                " deux futurs",
+                "infinitifs"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mane signifie souvent :",
+              "explanation": "Mane = le matin.",
+              "options": ["le matin", "le soir", "la nuit", "le lendemain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vespere signifie :",
+              "explanation": "Vespere = le soir.",
+              "options": ["le matin", "le soir", "hier", "puis"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Heri mane puer legit : traduction",
+              "explanation": "Hier matin le garçon a lu.",
+              "options": [
+                "Demain matin il lit",
+                "Hier matin le garçon a lu",
+                "Le soir il lira",
+                "Maintenant"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tum + parfait simple sert à",
+              "explanation": "Enchaîner des actions passées terminées.",
+              "options": [
+                "parler du futur",
+                "enchaîner le passé",
+                "négation",
+                "questions"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Postridie s'oppose à :",
+              "explanation": "Postridie = lendemain ; pridie (hors programme 6e copié) = veille — ici praeheri/pridie non exigé ; postridie = après un jour.",
+              "options": [
+                "le jour d'avant (heri dans une série)",
+                "le même instant",
+                "l'infinitif",
+                "la 1re personne"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples marqueur + sens sont corrects ?",
+              "explanation": "Heri = hier ; postridie = lendemain (relativement).",
+              "options": [
+                "heri / hier",
+                "tum / demain fixe",
+                "postridie / lendemain",
+                "cras / hier"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Heri, tum, postridie dans un récit :",
+              "explanation": "On situe hier, puis ensuite, puis le jour suivant.",
+              "options": [
+                "présent uniquement",
+                "progression dans le temps passé",
+                "futur seul",
+                "génitif"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Iam signifie souvent :",
+              "explanation": "Iam = déjà / maintenant (selon contexte).",
+              "options": [
+                "déjà / maintenant (souvent)",
+                "hier",
+                "lendemain",
+                "jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Heri puella cantavit; tum dormivit :",
+              "explanation": "Hier elle a chanté, puis a dormi.",
+              "options": [
+                "Elle chante puis dort demain",
+                "Hier chant puis sommeil ensuite",
+                "Futur seulement",
+                "Présent"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Postridie amici venerunt :",
+              "explanation": "Les amis sont venus le lendemain.",
+              "options": [
+                "Amis hier",
+                "Amis le lendemain",
+                "Amis maintenant",
+                "Amis jamais"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tum et postridie diffèrent : tum =",
+              "explanation": "Tum = alors dans l'enchaînement ; postridie = jour suivant.",
+              "options": [
+                "alors dans le récit",
+                "toujours « hier »",
+                "accusatif",
+                "pluriel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nunc … heri dans une phrase correcte :",
+              "explanation": "Ils ne se combinent pas logiquement pour un même instant unique.",
+              "options": [
+                "toujours ensemble",
+                "marqueurs de temps différents (maintenant / hier)",
+                "identiques",
+                "verbes"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Heri vespere cenavimus : vespere =",
+              "explanation": "Hier soir nous avons dîné.",
+              "options": ["hier matin", "hier soir", "demain", "puis"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Cras postridie n'est pas une expression usuelle ; cras seul =",
+              "explanation": "Cras = demain.",
+              "options": ["demain", "hier", "puis", "—"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Marqueur pour « puis il a vu » :",
+              "explanation": "Tum vidit : puis il a vu.",
+              "options": [
+                "tum vidit",
+                "heri cras",
+                "postridie nunc",
+                "rosa vidit"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Repère deux adverbes de temps latin.",
+              "explanation": "Nunc et heri situent le moment.",
+              "options": ["nunc", "bonus", "heri", "parvus"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Saepe indique :",
+              "explanation": "Saepe = souvent (fréquence, lié au temps).",
+              "options": ["souvent", "hier", "une fois", "demain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Heri semel, tum bis : semel =",
+              "explanation": "Semel = une fois.",
+              "options": ["une fois", "deux fois", "hier", "puis"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Postridie sol claruit : moment",
+              "explanation": "Le lendemain le soleil a brillé.",
+              "options": ["hier", "le jour suivant", "maintenant", "jamais"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tum magister intravit : intravit est",
+              "explanation": "Puis le maître est entré (parfait).",
+              "options": ["présent", "parfait passé", "futur", "infinitif"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Heri = which French word?",
+              "explanation": "Heri = hier.",
+              "options": ["hier", "puis", "après-demain", "tôt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Enchaînement : Heri ludit. Tum cenavit. Postridie abiit.",
+              "explanation": "Hier jeu, puis dîner, lendemain il est parti.",
+              "options": [
+                "tout au futur",
+                "trois moments différents dans le passé",
+                "présent seul",
+                "génitif"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Diu signifie :",
+              "explanation": "Diu = longtemps.",
+              "options": ["longtemps", "brièvement", "hier", "lendemain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Heri diu laboravi : traduction",
+              "explanation": "Hier j'ai longtemps travaillé.",
+              "options": [
+                "Demain je travaille",
+                "Hier j'ai longtemps travaillé",
+                "Je ne travaille pas",
+                "Puis je travaillerai"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tum se place plutôt :",
+              "explanation": "Entre deux faits déjà racontés au passé.",
+              "options": [
+                "avant le début",
+                "entre deux événements passés",
+                "après le futur",
+                "dans le vocatif"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux traductions correctes de postridie et tum.",
+              "explanation": "Postridie = lendemain ; tum = puis / alors.",
+              "options": ["le lendemain", "la table", "puis", "le garçon"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Heri nix cecidit, postridie sol shone : postridie",
+              "explanation": "Neige hier, soleil le lendemain.",
+              "options": [
+                "même jour",
+                "jour suivant",
+                "hier encore",
+                "futur lointain"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ante signifie souvent :",
+              "explanation": "Ante = avant.",
+              "options": ["avant", "après", "hier", "puis"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Post signifie :",
+              "explanation": "Post = après.",
+              "options": ["après", "avant", "hier", "matin"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Heri ante cenam ambulavit : traduction",
+              "explanation": "Hier avant le dîner il/elle a marché.",
+              "options": [
+                "Après le dîner demain",
+                "Hier avant le dîner il a marché",
+                "Maintenant",
+                "Il marche"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tum post cenam narravit :",
+              "explanation": "Puis après le dîner il/elle a raconté.",
+              "options": [
+                "Avant le repas",
+                "Ensuite après le repas",
+                "Demain matin",
+                "Jamais"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot marque « hier » ?",
+              "explanation": "Heri.",
+              "options": ["tum", "heri", "post", "mox"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mox signifie :",
+              "explanation": "Mox = bientôt / sous peu.",
+              "options": ["bientôt", "hier", "lendemain", "souvent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Heri puer fessus fuit; postridie iterum lusit :",
+              "explanation": "Hier fatigué, lendemain il a rejoué.",
+              "options": [
+                "même jour",
+                "lendemain il a de nouveau joué",
+                "futur",
+                "présent"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tum + verbe au parfait =",
+              "explanation": "Puis [action passée terminée].",
+              "options": [
+                "puis + passé achevé",
+                "demain + présent",
+                "hier + futur",
+                "négation"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Marqueurs opposés heri / cras : choisis les bons sens.",
+              "explanation": "Heri = hier ; cras = demain.",
+              "options": [
+                "heri = hier",
+                "heri = demain",
+                "cras = demain",
+                "cras = hier"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Interdum signifie :",
+              "explanation": "Interdum = parfois.",
+              "options": ["parfois", "hier", "toujours", "lendemain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Heri interdum pluit, tum claruit :",
+              "explanation": "Hier il a parfois plu, puis il a fait clair.",
+              "options": [
+                "Futur",
+                "Hier pluie parfois puis éclaircie",
+                "Présent",
+                "Infinitif"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Postridie quid fiet ? avec fiet (futur) pose :",
+              "explanation": "Que se passera-t-il le lendemain ? (marqueur + futur).",
+              "options": [
+                "Hier",
+                "Lendemain (question au futur)",
+                "Maintenant",
+                "Passé"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Heri tum postridie : le plus long récit utilise",
+              "explanation": "Plusieurs repères temporels pour ordonner les faits.",
+              "options": [
+                "un seul marqueur",
+                "plusieurs marqueurs",
+                "aucun verbe",
+                "accusatif seul"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Primo signifie souvent :",
+              "explanation": "Primo = d'abord.",
+              "options": ["d'abord", "enfin", "hier", "lendemain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Heri primo ambulavit, tum cenavit :",
+              "explanation": "Hier d'abord marche, puis dîner.",
+              "options": [
+                "Demain",
+                "Hier d'abord puis ensuite",
+                "Présent",
+                "Génitif"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Denique signifie :",
+              "explanation": "Denique = enfin.",
+              "options": ["enfin", "hier", "bientôt", "souvent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Tum denique domum rediit :",
+              "explanation": "Puis enfin il/elle est rentré(e) chez lui.",
+              "options": [
+                "D'abord",
+                "Puis enfin rentrée",
+                "Demain",
+                "Hier matin seulement"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Postridie = traduction la plus proche en 5e :",
+              "explanation": "Le lendemain (du jour dont on parle).",
+              "options": [
+                "le lendemain",
+                "hier soir",
+                "maintenant",
+                "avant-hier"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots enchaînent un récit (5e) ?",
+              "explanation": "Tum et denique ordonnent les étapes.",
+              "options": ["tum", "rosa", "denique", "luna"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Heri labor tum otium : otium =",
+              "explanation": "Travail hier, puis loisir.",
+              "options": ["loisir", "guerre", "hier", "lendemain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Cotidie signifie :",
+              "explanation": "Cotidie = chaque jour.",
+              "options": ["chaque jour", "hier seul", "lendemain", "jamais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Heri non venit; postridie venit :",
+              "explanation": "Pas venu hier, venu le lendemain.",
+              "options": [
+                "Même jour",
+                "Hier non, lendemain oui",
+                "Futur",
+                "Présent"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tum subito clamavit : subito =",
+              "explanation": "Puis soudain il/elle a crié.",
+              "options": ["soudain", "lentement", "hier", "après-demain"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Nondum signifie :",
+              "explanation": "Nondum = pas encore.",
+              "options": ["pas encore", "déjà", "hier", "puis"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Heri nondum paratus fuit; tum paravit :",
+              "explanation": "Hier pas encore prêt, puis il a préparé.",
+              "options": [
+                "Toujours prêt",
+                "Pas encore prêt puis action",
+                "Demain",
+                "Infinitif"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Iam tum … exprime souvent :",
+              "explanation": "Déjà alors (emphaze temporelle).",
+              "options": [
+                "déjà à ce moment-là",
+                "demain",
+                "hier seul",
+                "accusatif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Heri iam sero fuit : traduction",
+              "explanation": "Hier il était déjà tard.",
+              "options": [
+                "Demain tôt",
+                "Hier il était déjà tard",
+                "Maintenant",
+                "Puis"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Postridie mane =",
+              "explanation": "Le lendemain matin.",
+              "options": ["hier soir", "lendemain matin", "maintenant", "puis"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux expressions avec heri correctes.",
+              "explanation": "Heri mane / heri vespere précisent le moment de la veille.",
+              "options": [
+                "heri mane",
+                "heri cras",
+                "heri vespere",
+                "heri postridie"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Simul signifie parfois :",
+              "explanation": "Simul = en même temps.",
+              "options": ["en même temps", "hier", "lendemain", "après tout"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Heri puer et puella simul luserunt :",
+              "explanation": "Hier garçon et fille ont joué en même temps.",
+              "options": [
+                "Demain",
+                "Hier ensemble au même moment",
+                "Puis séparément",
+                "Futur"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tum post pugnam quietus fuit : post =",
+              "explanation": "Puis après le combat il/elle a été calme.",
+              "options": ["avant", "après", "hier", "dans"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Heri ante meridiem : traduction",
+              "explanation": "Hier avant midi.",
+              "options": [
+                "Hier après midi",
+                "Hier avant midi",
+                "Demain",
+                "Puis"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Post meridiem heri :",
+              "explanation": "Hier après midi.",
+              "options": [
+                "Hier après midi",
+                "Lendemain matin",
+                "Futur",
+                "Présent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel triplet ordonne le temps ?",
+              "explanation": "Heri → tum → postridie.",
+              "options": [
+                "cras, heri, nunc",
+                "heri, tum, postridie",
+                "rosa, amat, videt",
+                "—"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Olim signifie :",
+              "explanation": "Olim = autrefois / jadis.",
+              "options": ["autrefois", "demain", "hier", "puis"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Heri recente, olim longinquo : heri =",
+              "explanation": "Hier (passé proche) vs jadis (lointain).",
+              "options": ["passé proche", "futur", "présent", "accusatif"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Postridie iter fecit : iter fecit =",
+              "explanation": "Le lendemain il/elle a fait route / a voyagé.",
+              "options": [
+                "voyage hier",
+                "lendemain a voyagé",
+                "voyage maintenant",
+                "futur"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sens de tum et cras :",
+              "explanation": "Tum = puis ; cras = demain.",
+              "options": [
+                "tum = puis",
+                "tum = hier",
+                "cras = demain",
+                "cras = hier"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Heri tres horas studuit; tum lusit :",
+              "explanation": "Hier trois heures d'étude, puis jeu.",
+              "options": [
+                "Futur",
+                "Hier étude puis jeu",
+                "Présent",
+                "Lendemain"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Postridie eadem fecit : eadem =",
+              "explanation": "Lendemain il/elle a fait la même chose.",
+              "options": ["la même chose", "autre chose", "hier", "jamais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tum atque postridie : atque =",
+              "explanation": "Et / ainsi — enchaînement (tum … et le lendemain).",
+              "options": ["et", "sans", "hier", "contre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Heri pluit; postridie ventus fuit :",
+              "explanation": "Pluie hier, vent le lendemain.",
+              "options": [
+                "Même temps",
+                "Deux jours différents",
+                "Présent",
+                "Infinitif seul"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rursus signifie :",
+              "explanation": "Rursus = de nouveau.",
+              "options": [
+                "de nouveau",
+                "hier",
+                "puis une seule fois",
+                "demain"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Postridie rursus venit :",
+              "explanation": "Le lendemain il/elle est revenu(e) de nouveau.",
+              "options": ["Hier", "Lendemain encore", "Jamais", "Présent"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Heri tum postridie in fabula : rôle des mots",
+              "explanation": "Ils structurent le déroulement du récit.",
+              "options": [
+                "couleurs",
+                "structure temporelle",
+                "cas grammatical seul",
+                "pluriel"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Nunc heri cras : nunc =",
+              "explanation": "Nunc = maintenant (axe du présent).",
+              "options": ["maintenant", "hier", "demain", "puis"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Meilleure définition de marqueur de temps :",
+              "explanation": "Mot qui situe l'action dans le temps.",
+              "options": [
+                "mot qui situe l'action dans le temps",
+                "terminaison verbale",
+                "cas du nom",
+                " préposition seule"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Révision : deux marqueurs + parfait (5e).",
+              "explanation": "Heri + vidit ; tum + amavit enchaînent le passé.",
+              "options": [
+                "heri vidit",
+                "cras amat",
+                "tum amavit",
+                "nunc videt"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Heri, tum, postridie : ordre narratif type",
+              "explanation": "Veille → puis → jour suivant.",
+              "options": [
+                "futur → présent",
+                "hier → puis → lendemain",
+                "accusatif → génitif",
+                "verbe seul"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Postridie =",
+              "explanation": "Le lendemain.",
+              "options": ["le lendemain", "hier", "alors", "maintenant"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tum =",
+              "explanation": "Alors / puis.",
+              "options": ["alors / puis", "hier", "demain", "souvent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Heri puer librum legit, tum somnum cepit, postridie narravit : étapes",
+              "explanation": "Lecture hier, puis sommeil, récit le lendemain.",
+              "options": [
+                "une seule action",
+                "trois moments",
+                "futur",
+                "présent"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Avec heri, le verbe est le plus souvent :",
+              "explanation": "Parfait simple pour action passée terminée.",
+              "options": [
+                "parfait simple",
+                "futur seul",
+                "infinitif",
+                "impératif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Vidit après tum : tum vidit =",
+              "explanation": "Puis il/elle a vu.",
+              "options": [
+                "puis il a vu",
+                "hier il voit",
+                "demain il verra",
+                "il voit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Amavit après heri : heri amavit =",
+              "explanation": "Hier il/elle a aimé.",
+              "options": ["hier il a aimé", "demain", "maintenant", "il aime"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Différence tum / postridie :",
+              "explanation": "Tum enchaîne ; postridie nomme le jour suivant.",
+              "options": [
+                "identiques",
+                "tum = alors ; postridie = lendemain",
+                "tum = hier",
+                "postridie = présent"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chapitre « marqueurs de temps » : mots clés 5e",
+              "explanation": "Heri, tum, postridie avec le parfait simple.",
+              "options": [
+                "heri, tum, postridie",
+                "ablatif absolu",
+                "6e déclinaison",
+                "—"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

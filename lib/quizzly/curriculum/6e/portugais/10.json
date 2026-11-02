@@ -1,0 +1,2348 @@
+{
+  "id": "6e-portugais-10",
+  "year": "6e",
+  "subject": "portugais",
+  "title": "Vers l'examen en portugais",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Compréhension",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Olá! Como estás? — Estou bem, obrigado. » Vrai ?",
+              "options": [
+                "Olá = bonjour.",
+                "Como estás? = comment vas-tu ?",
+                "Estou bem = j'ai faim.",
+                "Obrigado = au revoir."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Estou bem = je vais bien ; obrigado = merci."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bom dia",
+              "options": ["Bonsoir", "Bonjour (matin)", "Au revoir", "Merci"],
+              "correctAnswers": [1],
+              "explanation": "Salutation du matin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Chamo-me Ana",
+              "options": [
+                "Elle se présente",
+                "Elle part",
+                "Elle mange",
+                "Elle dort"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chamo-me = je m'appelle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Como te chamas?",
+              "options": [
+                "Où habites-tu ?",
+                "Comment t'appelles-tu ?",
+                "Quelle heure ?",
+                "As-tu faim ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Chamar-se = s'appeler."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tenho doze anos",
+              "options": ["10 ans", "11 ans", "12 ans", "13 ans"],
+              "correctAnswers": [2],
+              "explanation": "Doze = douze."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Muito prazer",
+              "options": ["Désolé", "Enchanté", "À demain", "Silence"],
+              "correctAnswers": [1],
+              "explanation": "Politesse à la rencontre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Até amanhã",
+              "options": ["À demain", "Hier", "Aujourd'hui", "Bonsoir"],
+              "correctAnswers": [0],
+              "explanation": "Amanhã = demain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Boa tarde",
+              "options": ["Matin", "Après-midi", "Nuit", "Merci"],
+              "correctAnswers": [1],
+              "explanation": "Après-midi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Adeus",
+              "options": ["Bonjour", "Au revoir", "Oui", "Non"],
+              "correctAnswers": [1],
+              "explanation": "On quitte quelqu'un."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Por favor",
+              "options": ["S'il te plaît", "De rien", "Bienvenue", "Pardon"],
+              "correctAnswers": [0],
+              "explanation": "Demande polie."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Na escola leio um livro. » Vrai ?",
+              "options": [
+                "Na escola = à l'école.",
+                "Leio = je lis.",
+                "Livro = cahier.",
+                "Um = deux."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Livro = livre ; um = un."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sala de aula",
+              "options": ["Cour", "Salle de classe", "Cantine", "Bibliothèque"],
+              "correctAnswers": [1],
+              "explanation": "Lieu de cours."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Caderno",
+              "options": ["Cahier", "Crayon", "Table", "Cloche"],
+              "correctAnswers": [0],
+              "explanation": "Objet d'écriture."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lápis",
+              "options": ["Gomme", "Crayon", "Règle", "Cartable"],
+              "correctAnswers": [1],
+              "explanation": "Pour écrire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "O professor fala português",
+              "options": [
+                "L'élève parle",
+                "Le prof parle portugais",
+                "On mange",
+                "On dort"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Fala = parle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Matéria de matemática",
+              "options": ["Sport", "Maths", "Musique", "Cuisine"],
+              "correctAnswers": [1],
+              "explanation": "Matière scolaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dever de casa",
+              "options": ["Devoirs", "Jeux", "Vacances", "Cloche"],
+              "correctAnswers": [0],
+              "explanation": "À la maison."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Gosto de inglês",
+              "options": [
+                "Je déteste l'anglais",
+                "J'aime l'anglais",
+                "Je suis prof",
+                "Je suis malade"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Gosto de = j'aime."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Professora",
+              "options": ["Prof (f)", "Prof (m)", "Élève", "Directeur"],
+              "correctAnswers": [0],
+              "explanation": "Féminin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Preciso de ajuda",
+              "options": ["Besoin d'aide", "Pas faim", "Je pars", "Content"],
+              "correctAnswers": [0],
+              "explanation": "Preciso de = j'ai besoin de."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Gosto de pizza, mas não gosto de peixe. » Vrai ?",
+              "options": [
+                "Gosto de = j'aime.",
+                "Não gosto de = je n'aime pas.",
+                "Peixe = poulet.",
+                "Mas = et."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Peixe = poisson ; mas = mais."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Adoro chocolate",
+              "options": ["Je déteste", "J'adore", "Je refuse", "J'oublie"],
+              "correctAnswers": [1],
+              "explanation": "Adoro = j'adore."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Não gosto de café",
+              "options": [
+                "J'aime le café",
+                "Je n'aime pas le café",
+                "Je bois du thé",
+                "Je dors"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Não = ne… pas."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Detesto sopa",
+              "options": [
+                "J'adore la soupe",
+                "Je déteste la soupe",
+                "Je cuisine",
+                "Pas faim"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Detesto = je déteste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fruta",
+              "options": ["Viande", "Fruit", "Fromage", "Pain"],
+              "correctAnswers": [1],
+              "explanation": "Aliment."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Prefiro sumo de laranja",
+              "options": [
+                "Je préfère le jus d'orange",
+                "Je bois du lait",
+                "Je mange du poisson",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prefiro = je préfère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Gelado",
+              "options": ["Glaces", "Eau", "Soupe", "Salade"],
+              "correctAnswers": [0],
+              "explanation": "Dessert."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Como arroz e feijão",
+              "options": [
+                "Je lis",
+                "Je mange riz et haricots",
+                "Je cours",
+                "Je chante"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Como = je mange."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bebo água",
+              "options": [
+                "Je bois de l'eau",
+                "Je mange",
+                "Je dors",
+                "Je parle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bebo = je bois."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Não como carne",
+              "options": [
+                "Je mange de la viande",
+                "Je ne mange pas de viande",
+                "J'adore la viande",
+                "Je cuisine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Não como = je ne mange pas."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Ontem fui à escola. Amanhã vou ao cinema. » Vrai ?",
+              "options": [
+                "Ontem = hier.",
+                "Amanhã = demain.",
+                "Hoje = demain.",
+                "Fui = futur."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Fui = passé ; hoje = aujourd'hui."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Hoje",
+              "options": ["Hier", "Aujourd'hui", "Demain", "Jamais"],
+              "correctAnswers": [1],
+              "explanation": "Présent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Ontem",
+              "options": ["Demain", "Hier", "Matin", "Soir"],
+              "correctAnswers": [1],
+              "explanation": "Passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Amanhã",
+              "options": ["Hier", "Demain", "Aujourd'hui", "Toujours"],
+              "correctAnswers": [1],
+              "explanation": "Futur proche."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hoje estudo português",
+              "options": ["Hier", "Aujourd'hui j'étudie", "Demain", "Jamais"],
+              "correctAnswers": [1],
+              "explanation": "Estudo = j'étudie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ontem choveu",
+              "options": [
+                "Il pleut demain",
+                "Il a plu hier",
+                "Il fait soleil",
+                "Il neige"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Choveu = a plu."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Amanhã não há escola",
+              "options": [
+                "Pas d'école demain",
+                "École hier",
+                "École aujourd'hui",
+                "École le soir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Não há = il n'y a pas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "De manhã",
+              "options": ["Le matin", "La nuit", "Hier", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Manhã = matin."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À noite",
+              "options": ["Matin", "Soir / nuit", "Midi", "Après-midi"],
+              "correctAnswers": [1],
+              "explanation": "Noite = nuit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Depois das aulas vou a casa",
+              "options": [
+                "Avant les cours",
+                "Après les cours, je vais à la maison",
+                "Je reste à l'école",
+                "Je dors en classe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Depois = après."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« A minha mãe chama-se Maria. O meu pai chama-se João. » Vrai ?",
+              "options": [
+                "Mãe = mère.",
+                "Pai = père.",
+                "Irmão = sœur.",
+                "Minha = mon/ma."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Irmão = frère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Irmã",
+              "options": ["Frère", "Sœur", "Père", "Cousin"],
+              "correctAnswers": [1],
+              "explanation": "Féminin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Avô",
+              "options": ["Grand-mère", "Grand-père", "Oncle", "Tante"],
+              "correctAnswers": [1],
+              "explanation": "Avó = grand-mère."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tenho um irmão e duas irmãs",
+              "options": ["1 frère, 2 sœurs", "2 frères", "3 frères", "Aucun"],
+              "correctAnswers": [0],
+              "explanation": "Duas = deux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Família",
+              "options": ["Famille", "École", "Ville", "Sport"],
+              "correctAnswers": [0],
+              "explanation": "Parenté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Moro com os meus pais",
+              "options": [
+                "Je vis avec mes parents",
+                "Je suis seul",
+                "Je suis à l'école",
+                "Je voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moro = j'habite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Cão",
+              "options": ["Chat", "Chien", "Oiseau", "Poisson"],
+              "correctAnswers": [1],
+              "explanation": "Animal."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Gato",
+              "options": ["Chien", "Chat", "Cheval", "Vache"],
+              "correctAnswers": [1],
+              "explanation": "Animal."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "O meu cão é pequeno",
+              "options": ["Grand chien", "Petit chien", "Pas de chien", "Chat"],
+              "correctAnswers": [1],
+              "explanation": "Pequeno = petit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Filho",
+              "options": ["Fils", "Fille", "Père", "Mère"],
+              "correctAnswers": [0],
+              "explanation": "Filha = fille."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Três amigos, cinco livros, dez lápis. » Vrai ?",
+              "options": [
+                "Três = 3.",
+                "Cinco = 5.",
+                "Dez = 12.",
+                "Amigos = amis."
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Dez = 10."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Um, dois, três",
+              "options": ["1,2,3", "4,5,6", "7,8,9", "10,11,12"],
+              "correctAnswers": [0],
+              "explanation": "Début du compte."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quatro + três",
+              "options": ["Six", "Sept", "Huit", "Neuf"],
+              "correctAnswers": [1],
+              "explanation": "4+3=7."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Cor azul",
+              "options": ["Rouge", "Bleu", "Vert", "Jaune"],
+              "correctAnswers": [1],
+              "explanation": "Azul = bleu."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Verde",
+              "options": ["Vert", "Noir", "Blanc", "Rose"],
+              "correctAnswers": [0],
+              "explanation": "Couleur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "A casa é branca",
+              "options": ["Rouge", "Blanche", "Bleue", "Noire"],
+              "correctAnswers": [1],
+              "explanation": "Branca = blanche."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Preto",
+              "options": ["Noir", "Gris", "Orange", "Violet"],
+              "correctAnswers": [0],
+              "explanation": "Couleur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "São oito horas",
+              "options": ["6 h", "7 h", "8 h", "9 h"],
+              "correctAnswers": [2],
+              "explanation": "Oito = huit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Meio-dia",
+              "options": ["Midi", "Minuit", "Matin", "Soir"],
+              "correctAnswers": [0],
+              "explanation": "Douze heures."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tenho quinze anos",
+              "options": ["13", "14", "15", "16"],
+              "correctAnswers": [2],
+              "explanation": "Quinze = quinze."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« — Queres água? — Sim, por favor. » Vrai ?",
+              "options": [
+                "Queres = tu veux.",
+                "Água = eau.",
+                "Sim = oui.",
+                "Por favor = merci."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Por favor = s'il te plaît."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Queres sumo?",
+              "options": [
+                "Tu veux du jus ?",
+                "Tu as mal ?",
+                "Tu pars ?",
+                "Tu lis ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sumo = jus."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Não, obrigado",
+              "options": ["Oui merci", "Non merci", "Bonjour", "Au revoir"],
+              "correctAnswers": [1],
+              "explanation": "Refus poli."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Estou com fome",
+              "options": ["Soif", "Faim", "Fatigue", "Joie"],
+              "correctAnswers": [1],
+              "explanation": "Fome = faim."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sede",
+              "options": ["Faim", "Soif", "Peur", "Joie"],
+              "correctAnswers": [1],
+              "explanation": "Soif."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "O almoço é às treze horas",
+              "options": ["Petit-déj", "Déjeuner à 13 h", "Dîner", "Goûter"],
+              "correctAnswers": [1],
+              "explanation": "Almoço = déjeuner."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pequeno-almoço",
+              "options": ["Petit-déjeuner", "Déjeuner", "Dîner", "Collation"],
+              "correctAnswers": [0],
+              "explanation": "Matin."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comemos na cantina",
+              "options": [
+                "On mange à la cantine",
+                "On dort",
+                "On étudie",
+                "On nage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comemos = nous mangeons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Jantar",
+              "options": ["Dîner", "Déjeuner", "Goûter", "Petit-déj"],
+              "correctAnswers": [0],
+              "explanation": "Soir."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Está delicioso!",
+              "options": ["Mauvais", "Délicieux", "Froid", "Cher"],
+              "correctAnswers": [1],
+              "explanation": "Compliment."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Segunda-feira tenho teste. Sexta-feira não tenho aulas. » Vrai ?",
+              "options": [
+                "Segunda-feira = lundi.",
+                "Teste = test.",
+                "Tenho = je n'ai pas.",
+                "Sexta = jeudi."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sexta = vendredi ; tenho = j'ai."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Domingo",
+              "options": ["Dimanche", "Lundi", "Samedi", "Mercredi"],
+              "correctAnswers": [0],
+              "explanation": "Jour."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Às sete levanto-me",
+              "options": [
+                "Je me couche à 7 h",
+                "Je me lève à 7 h",
+                "Je mange",
+                "Je cours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Levanto-me."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deito-me",
+              "options": ["Me lève", "Me couche", "Mange", "Lis"],
+              "correctAnswers": [1],
+              "explanation": "Soir."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Vou de autocarro para a escola",
+              "options": ["Bus pour l'école", "À pied", "Chez moi", "Nage"],
+              "correctAnswers": [0],
+              "explanation": "Autocarro = bus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "A pé",
+              "options": ["Voiture", "À pied", "Train", "Avion"],
+              "correctAnswers": [1],
+              "explanation": "Transport."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Chego à escola às oito e meia",
+              "options": ["8 h", "8 h 30", "9 h", "7 h"],
+              "correctAnswers": [1],
+              "explanation": "Et demie."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pausa",
+              "options": ["Pause", "Cours", "Devoir", "Examen"],
+              "correctAnswers": [0],
+              "explanation": "Récréation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Depois do jantar vejo televisão",
+              "options": [
+                "Avant dîner",
+                "Après dîner, TV",
+                "Je dors",
+                "Je cours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Vejo = regarde."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Fim de semana",
+              "options": ["Semaine", "Week-end", "Matin", "Nuit"],
+              "correctAnswers": [1],
+              "explanation": "Samedi-dimanche."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Hoje faz sol. Ontem choveu. Amanhã faz frio. » Vrai ?",
+              "options": [
+                "Faz sol = il fait soleil.",
+                "Choveu = il a plu.",
+                "Faz frio = chaud.",
+                "Amanhã = demain."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Faz frio = froid."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Está a chover",
+              "options": ["Il pleut", "Il neige", "Vent", "Beau"],
+              "correctAnswers": [0],
+              "explanation": "Chover."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Nevou ontem",
+              "options": ["Neigé hier", "Pluie", "Chaud", "Vent"],
+              "correctAnswers": [0],
+              "explanation": "Nevar."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calor",
+              "options": ["Chaleur", "Froid", "Pluie", "Vent"],
+              "correctAnswers": [0],
+              "explanation": "Chaud."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Frio",
+              "options": ["Froid", "Chaud", "Soleil", "Nuage"],
+              "correctAnswers": [0],
+              "explanation": "Froid."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Levo um casaco",
+              "options": ["Manteau", "Mange", "Nage", "Chante"],
+              "correctAnswers": [0],
+              "explanation": "Casaco."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Verão",
+              "options": ["Été", "Hiver", "Printemps", "Automne"],
+              "correctAnswers": [0],
+              "explanation": "Saison."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Inverno",
+              "options": ["Hiver", "Été", "Automne", "Printemps"],
+              "correctAnswers": [0],
+              "explanation": "Saison."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "No verão vou à praia",
+              "options": ["Été, plage", "Hiver", "École", "Cinéma"],
+              "correctAnswers": [0],
+              "explanation": "Praia = plage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tempo",
+              "options": ["Météo", "Heure", "Lieu", "Repas"],
+              "correctAnswers": [0],
+              "explanation": "Temps qu'il fait."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Olá! Chamo-me Sofia. Tenho doze anos. Gosto de música. Amanhã tenho exame. » Vrai ?",
+              "options": [
+                "12 ans.",
+                "Aime la musique.",
+                "Examen hier.",
+                "Déteste musique."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Amanhã = demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Exame de português",
+              "options": ["Examen de portugais", "Sport", "Repas", "Vacances"],
+              "correctAnswers": [0],
+              "explanation": "Exame = examen."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Estudo muito hoje",
+              "options": [
+                "Je m'amuse",
+                "J'étudie beaucoup",
+                "Je dors",
+                "Je mange"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Estudo."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Boa sorte!",
+              "options": ["Bonne chance", "Bonjour", "Merci", "Au revoir"],
+              "correctAnswers": [0],
+              "explanation": "Avant examen."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Preciso de ler o livro",
+              "options": [
+                "Lire le livre",
+                "Pas lire",
+                "Pas de livre",
+                "Je pars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ler = lire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Escrevo",
+              "options": ["J'écris", "Je lis", "Je parle", "Je cours"],
+              "correctAnswers": [0],
+              "explanation": "Ecrire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Compreendo a pergunta",
+              "options": [
+                "Je comprends",
+                "Je ne comprends pas",
+                "Je dors",
+                "Je mange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pergunta = question."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Resposta",
+              "options": ["Réponse", "Question", "Leçon", "Classe"],
+              "correctAnswers": [0],
+              "explanation": "Mot clé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "O teste é fácil",
+              "options": ["Facile", "Difficile", "Pas de test", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Fácil."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Até logo e bom trabalho!",
+              "options": [
+                "Au revoir, bon travail",
+                "Bonjour",
+                "Merci",
+                "Bonne nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formules de fin."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Expression",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dire « Bonjour, je m'appelle Léa » :",
+              "options": [
+                "Olá! Chamo-me Léa.",
+                "Bom dia. Chamo-me Léa.",
+                "Adeus, chamo-me Léa.",
+                "Chamo-me Léa, tenho fome."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salutation + Chamo-me."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment t'appelles-tu ?",
+              "options": [
+                "Como estás?",
+                "Como te chamas?",
+                "Onde moras?",
+                "Quantos anos tens?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Prénom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "J'ai quatorze ans.",
+              "options": [
+                "Tenho catorze anos.",
+                "Tenho quatorze anos.",
+                "Tenho catorze ano.",
+                "Sou catorze anos."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tenho … anos."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Enchanté !",
+              "options": [
+                "Muito prazer!",
+                "Muito obrigado!",
+                "Por favor!",
+                "Desculpa!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rencontre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment vas-tu ?",
+              "options": [
+                "Como estás?",
+                "Como te chamas?",
+                "O que fazes?",
+                "Onde vaes?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estás."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Je vais bien.",
+              "options": [
+                "Estou bem.",
+                "Estou mal.",
+                "Estou cansado.",
+                "Estou com fome."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse positive."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Au revoir !",
+              "options": ["Olá!", "Adeus!", "Bom dia!", "Sim!"],
+              "correctAnswers": [1],
+              "explanation": "Quitter."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Merci (garçon).",
+              "options": ["Obrigada.", "Obrigado.", "Por favor.", "De nada."],
+              "correctAnswers": [1],
+              "explanation": "Masc."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "De rien.",
+              "options": ["De nada.", "Por favor.", "Desculpa.", "Adeus."],
+              "correctAnswers": [0],
+              "explanation": "Réponse à merci."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "À demain !",
+              "options": [
+                "Até amanhã!",
+                "Até ontem!",
+                "Boa tarde!",
+                "Boa noite!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amanhã."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases correctes à l'école :",
+              "options": [
+                "Tenho um caderno.",
+                "Leio um livro.",
+                "Sou um lápis.",
+                "Tenho escola um."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sou = je suis ; ordre incorrect."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "J'ai un crayon.",
+              "options": [
+                "Tenho um lápis.",
+                "Tenho uma lápis.",
+                "Tenho um livro.",
+                "Tenho lápis um."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Um lápis."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Je suis en classe.",
+              "options": [
+                "Estou na sala de aula.",
+                "Estou na escola de aula.",
+                "Estou no lápis.",
+                "Estou bem escola."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Na sala."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le prof explique.",
+              "options": [
+                "O professor explica.",
+                "A professor explica.",
+                "O professor explico.",
+                "Os professor explica."
+              ],
+              "correctAnswers": [0],
+              "explanation": "3e pers."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "J'aime les maths.",
+              "options": [
+                "Gosto de matemática.",
+                "Gosto matemática de.",
+                "Não gosto de matemática.",
+                "Gosto de matemáticas mal."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gosto de."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "J'ai besoin d'aide.",
+              "options": [
+                "Preciso de ajuda.",
+                "Preciso ajuda de.",
+                "Quero de ajuda.",
+                "Tenho ajuda preciso."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Preciso de."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les devoirs",
+              "options": [
+                "O dever de casa",
+                "Os deveres de casa",
+                "As dever de casa",
+                "Um dever de escola"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "J'étudie le portugais.",
+              "options": [
+                "Estudo português.",
+                "Estudo o português.",
+                "Estudo portugueses.",
+                "Estudo de português."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Forme simple."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La leçon est intéressante.",
+              "options": [
+                "A lição é interessante.",
+                "O lição é interessante.",
+                "A lição são interessante.",
+                "A lição é interessantes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lição f."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Où est le cahier ?",
+              "options": [
+                "Onde está o caderno?",
+                "Onde é o caderno?",
+                "Como está o caderno?",
+                "Quem está o caderno?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Onde está."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exprimer un goût :",
+              "options": [
+                "Gosto de fruta.",
+                "Adoro gelado.",
+                "Detesto e adoro a mesma coisa.",
+                "Não gosto de sopa."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Detesto e adoro… = phrase absurde."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je n'aime pas le café.",
+              "options": [
+                "Não gosto de café.",
+                "Não gosto café de.",
+                "Gosto de café não.",
+                "Não gosto de cafés mal."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Não gosto de."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Je préfère le thé.",
+              "options": [
+                "Prefiro chá.",
+                "Prefiro o chá.",
+                "Prefiro chás.",
+                "Prefiro de chá."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prefiro."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "J'adore le chocolat.",
+              "options": [
+                "Adoro chocolate.",
+                "Adoro o chocolate.",
+                "Detesto chocolate.",
+                "Não adoro chocolate."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Adoro."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Je mange une pomme.",
+              "options": [
+                "Como uma maçã.",
+                "Bebo uma maçã.",
+                "Como um maçã.",
+                "Como maçãs uma."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maçã f."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Je bois de l'eau.",
+              "options": [
+                "Bebo água.",
+                "Bebo a água.",
+                "Como água.",
+                "Bebo águas ontem."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Beber."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tu veux du jus ?",
+              "options": [
+                "Queres sumo?",
+                "Queres sumos?",
+                "Quero sumo?",
+                "Queres água sumo?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Queres."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Oui, s'il te plaît.",
+              "options": [
+                "Sim, por favor.",
+                "Não, por favor.",
+                "Sim, obrigado.",
+                "Não, adeus."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sim + por favor."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Je déteste les légumes.",
+              "options": [
+                "Detesto legumes.",
+                "Gosto de legumes.",
+                "Detesto de legumes.",
+                "Detesto legume."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Detesto."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "C'est délicieux !",
+              "options": [
+                "Está delicioso!",
+                "Está mal.",
+                "Está frio.",
+                "Está adeus."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compliment."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parler du temps :",
+              "options": [
+                "Hoje vou à escola.",
+                "Amanhã vou ao parque.",
+                "Ontem vou amanhã.",
+                "Hoje fui ontem."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Phrases incohérentes à éviter."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demain je vais au cinéma.",
+              "options": [
+                "Amanhã vou ao cinema.",
+                "Ontem vou ao cinema.",
+                "Hoje vou ontem.",
+                "Amanhã vou o cinema."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amanhã."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Hier il a plu.",
+              "options": [
+                "Ontem choveu.",
+                "Amanhã choveu.",
+                "Hoje choveu ontem.",
+                "Ontem chove."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Aujourd'hui j'étudie.",
+              "options": [
+                "Hoje estudo.",
+                "Ontem estudo.",
+                "Amanhã estudo hoje.",
+                "Hoje estudei amanhã."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hoje."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À demain !",
+              "options": [
+                "Até amanhã!",
+                "Até ontem!",
+                "Até hoje!",
+                "Até logo ontem."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Il fait beau aujourd'hui.",
+              "options": [
+                "Hoje faz sol.",
+                "Ontem faz sol hoje.",
+                "Amanhã faz sol ontem.",
+                "Hoje faz sol amanhã."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Faz sol."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Je me lève le matin.",
+              "options": [
+                "De manhã levanto-me.",
+                "De manhã deito-me.",
+                "De noite levanto-me.",
+                "De manhã durmo-me."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Levanto-me."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Après les cours.",
+              "options": [
+                "Depois das aulas.",
+                "Antes das aulas.",
+                "Durante das aulas.",
+                "Sem das aulas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Depois."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le soir je me couche.",
+              "options": [
+                "À noite deito-me.",
+                "À noite levanto-me.",
+                "De manhã deito-me.",
+                "À noite como-me."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deito-me."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Il est huit heures.",
+              "options": [
+                "São oito horas.",
+                "São oito hora.",
+                "É oito horas.",
+                "São oito horas ontem."
+              ],
+              "correctAnswers": [0],
+              "explanation": "São horas."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parler de la famille :",
+              "options": [
+                "A minha mãe é simpática.",
+                "Tenho uma irmã.",
+                "O meu irmão é a mãe.",
+                "Minha mãe o meu."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Irmão ≠ mère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ma sœur s'appelle Ana.",
+              "options": [
+                "A minha irmã chama-se Ana.",
+                "O meu irmã chama-se Ana.",
+                "A minha irmão chama-se Ana.",
+                "Minha irmã chama Ana-se."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Irmã."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "J'habite avec mes parents.",
+              "options": [
+                "Moro com os meus pais.",
+                "Moro os meus pais com.",
+                "Vivo com meus pais.",
+                "Moro com minhas pais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Moro com."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mon grand-père est vieux.",
+              "options": [
+                "O meu avô é velho.",
+                "A minha avô é velho.",
+                "O meu avô é velha.",
+                "Os meu avô é velho."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avô m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "J'ai un chat.",
+              "options": [
+                "Tenho um gato.",
+                "Tenho uma gato.",
+                "Tenho um gata.",
+                "Tenho gato um."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gato m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Mon chien est petit.",
+              "options": [
+                "O meu cão é pequeno.",
+                "A minha cão é pequeno.",
+                "O meu cão é pequena.",
+                "O meu cães é pequeno."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cão."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ma famille est grande.",
+              "options": [
+                "A minha família é grande.",
+                "O meu família é grande.",
+                "A minha família são grande.",
+                "A minha família é grandes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Família f."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mon père et ma mère",
+              "options": [
+                "O meu pai e a minha mãe",
+                "A meu pai e o minha mãe",
+                "O meu pai e o minha mãe",
+                "Meu o pai e mãe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Possessifs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "J'ai deux frères.",
+              "options": [
+                "Tenho dois irmãos.",
+                "Tenho duas irmãos.",
+                "Tenho dois irmãs.",
+                "Tenho dois irmão."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dois irmãos."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ma fille a six ans.",
+              "options": [
+                "A minha filha tem seis anos.",
+                "O meu filha tem seis anos.",
+                "A minha filha tem seis ano.",
+                "A minha filho tem seis anos."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filha + tem."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Indiquer un lieu :",
+              "options": [
+                "Moro em Lisboa.",
+                "Estou em casa.",
+                "Vou ao parque.",
+                "Moro ao casa."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Em casa ; moro ao casa faux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où habites-tu ?",
+              "options": [
+                "Onde moras?",
+                "Onde estás morar?",
+                "Como moras?",
+                "Quem moras?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Onde moras."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Je vais à l'école.",
+              "options": [
+                "Vou à escola.",
+                "Vou a escola.",
+                "Vou na escola.",
+                "Vou escola."
+              ],
+              "correctAnswers": [0],
+              "explanation": "À escola."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Je suis à la maison.",
+              "options": [
+                "Estou em casa.",
+                "Estou na casa em.",
+                "Estou a casa.",
+                "Estou em casas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Em casa."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le parc est près.",
+              "options": [
+                "O parque é perto.",
+                "A parque é perto.",
+                "O parque é longe perto.",
+                "Os parque é perto."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Parque m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Je vais au supermarché.",
+              "options": [
+                "Vou ao supermercado.",
+                "Vou a supermercado.",
+                "Vou no supermercado.",
+                "Vou supermercado ao."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ao."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'école est grande.",
+              "options": [
+                "A escola é grande.",
+                "O escola é grande.",
+                "A escola são grande.",
+                "A escola é grandes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Escola f."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Je suis au Portugal.",
+              "options": [
+                "Estou em Portugal.",
+                "Estou no Portugal.",
+                "Estou à Portugal.",
+                "Estou Portugal em."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Em + pays."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La bibliothèque",
+              "options": [
+                "A biblioteca",
+                "O biblioteca",
+                "As biblioteca",
+                "Um biblioteca"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Féminin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Je vais à la plage en été.",
+              "options": [
+                "No verão vou à praia.",
+                "No inverno vou à praia.",
+                "No verão vou a praia em.",
+                "No verão vou praia."
+              ],
+              "correctAnswers": [0],
+              "explanation": "No verão."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formules polies :",
+              "options": ["Por favor.", "Desculpa.", "Obrigado.", "Cala-te."],
+              "correctAnswers": [0, 1],
+              "explanation": "Cala-te = impératif grossier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Excuse-moi.",
+              "options": ["Desculpa.", "Obrigado.", "De nada.", "Adeus."],
+              "correctAnswers": [0],
+              "explanation": "Pardon."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "S'il te plaît.",
+              "options": [
+                "Por favor.",
+                "Por favorado.",
+                "Por favores.",
+                "Favor por."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Standard."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Merci (fille).",
+              "options": [
+                "Obrigada.",
+                "Obrigado.",
+                "Obrigados.",
+                "Obrigadas tu."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Féminin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bonne chance !",
+              "options": [
+                "Boa sorte!",
+                "Boa noite sorte!",
+                "Bom sorte!",
+                "Boa sortes!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Examen."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bienvenue !",
+              "options": [
+                "Bem-vindo!",
+                "Bem-adeus!",
+                "Bem-obrigado!",
+                "Bem-por favor!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accueil."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pardon, je ne comprends pas.",
+              "options": [
+                "Desculpa, não percebo.",
+                "Desculpa, percebo não.",
+                "Obrigado, não percebo.",
+                "Desculpa, percebo sim."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Não percebo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Peux-tu répéter ?",
+              "options": [
+                "Podes repetir?",
+                "Podes repetir por favor?",
+                "Repetes podes?",
+                "Podes repetir não?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Podes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Oui, bien sûr.",
+              "options": [
+                "Sim, claro.",
+                "Não, claro.",
+                "Sim, adeus.",
+                "Sim, desculpa mal."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Claro."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bon appétit !",
+              "options": [
+                "Bom apetite!",
+                "Bom trabalho!",
+                "Boa sorte!",
+                "Bom dia apetite!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repas."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Négations correctes :",
+              "options": [
+                "Não gosto de peixe.",
+                "Não tenho fome.",
+                "Não estou bem mal.",
+                "Não vou à escola hoje."
+              ],
+              "correctAnswers": [0, 3],
+              "explanation": "Não + verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je ne mange pas de viande.",
+              "options": [
+                "Não como carne.",
+                "Não como a carne.",
+                "Como não carne.",
+                "Não comer carne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Não como."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Je n'ai pas faim.",
+              "options": [
+                "Não tenho fome.",
+                "Tenho não fome.",
+                "Não estou fome.",
+                "Não tenho sede fome."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ter fome."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Je ne suis pas fatigué.",
+              "options": [
+                "Não estou cansado.",
+                "Estou não cansado.",
+                "Não estou cansada sim.",
+                "Não sou cansado estou."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estou cansado."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Je ne comprends pas.",
+              "options": [
+                "Não percebo.",
+                "Percebo não.",
+                "Não percebo sim.",
+                "Não percebes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "1re pers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Il n'y a pas d'école demain.",
+              "options": [
+                "Amanhã não há escola.",
+                "Amanhã há não escola.",
+                "Ontem não há escola.",
+                "Não amanhã há escola."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Não há."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Je ne veux pas.",
+              "options": [
+                "Não quero.",
+                "Quero não.",
+                "Não queres.",
+                "Não querer."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quero."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Je ne parle pas anglais.",
+              "options": [
+                "Não falo inglês.",
+                "Falo não inglês.",
+                "Não falo português.",
+                "Não falo inglês ontem."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Não falo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ce n'est pas difficile.",
+              "options": [
+                "Não é difícil.",
+                "É não difícil.",
+                "Não é fácil difícil.",
+                "Não são difícil."
+              ],
+              "correctAnswers": [0],
+              "explanation": "É difícil."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Je ne suis pas malade.",
+              "options": [
+                "Não estou doente.",
+                "Estou não doente.",
+                "Não estou bem doente.",
+                "Não estou doente sim."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Doente."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Questions correctes :",
+              "options": [
+                "O que fazes?",
+                "Onde moras?",
+                "Quantos anos tens?",
+                "Como moras anos?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Como moras anos = faux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel âge as-tu ?",
+              "options": [
+                "Quantos anos tens?",
+                "Quantos anos tem?",
+                "Quantos anos tenho?",
+                "Quantos anos tens tu não?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tens."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce que tu fais ?",
+              "options": [
+                "O que fazes?",
+                "O que fazes tu?",
+                "Onde fazes?",
+                "Quem fazes?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "O que fazes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle heure est-il ?",
+              "options": [
+                "Que horas são?",
+                "Que hora é?",
+                "Quantas horas são?",
+                "Onde horas são?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule courante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qui est-ce ?",
+              "options": ["Quem é?", "O que é?", "Onde é?", "Como é quem?"],
+              "correctAnswers": [0],
+              "explanation": "Quem."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi ?",
+              "options": ["Porquê?", "Porque?", "Por quê?", "Porque não?"],
+              "correctAnswers": [0],
+              "explanation": "Interrogatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quand ?",
+              "options": [
+                "Quando?",
+                "Quando é?",
+                "Onde quando?",
+                "Quando não?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quando."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien (prix) ?",
+              "options": [
+                "Quanto custa?",
+                "Quantos custa?",
+                "Quanto custam?",
+                "Onde custa?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quanto custa."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Est-ce que tu aimes le sport ?",
+              "options": [
+                "Gostas de desporto?",
+                "Gostas de desportos?",
+                "Gosto de desporto?",
+                "Gostas desporto de?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gostas."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Parles-tu portugais ?",
+              "options": [
+                "Falas português?",
+                "Falas portugueses?",
+                "Falo português?",
+                "Falas português não?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Falas."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases utiles à l'examen :",
+              "options": [
+                "Boa sorte no exame!",
+                "Não percebo a pergunta.",
+                "Preciso de estudar.",
+                "Adeus, não estudo."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Demander clarification."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je dois réviser.",
+              "options": [
+                "Preciso de rever.",
+                "Preciso rever de.",
+                "Preciso de estudar mal.",
+                "Preciso de rever ontem."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rever = réviser."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'examen est difficile.",
+              "options": [
+                "O exame é difícil.",
+                "A exame é difícil.",
+                "O exame são difícil.",
+                "O exame é difícil ontem."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exame m."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Je réponds à la question.",
+              "options": [
+                "Respondo à pergunta.",
+                "Respondo a pergunta.",
+                "Respondo pergunta à.",
+                "Respondo à perguntas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "À pergunta."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Je lis le texte.",
+              "options": [
+                "Leio o texto.",
+                "Leio a texto.",
+                "Leio texto o.",
+                "Leio os texto."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Texto m."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "J'écris la réponse.",
+              "options": [
+                "Escrevo a resposta.",
+                "Escrevo o resposta.",
+                "Escrevo resposta a.",
+                "Escrevo as resposta."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Resposta f."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "C'est facile pour moi.",
+              "options": [
+                "É fácil para mim.",
+                "É fácil para eu.",
+                "É difícil para mim.",
+                "É fácil mim para."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Para mim."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Je suis prête.",
+              "options": [
+                "Estou pronto.",
+                "Estou pronta.",
+                "Estou prontos.",
+                "Estou cansado."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pronta = fille."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Bon travail !",
+              "options": [
+                "Bom trabalho!",
+                "Boa sorte!",
+                "Bom apetite!",
+                "Bom dia trabalho!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Encouragement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Je réussis l'examen.",
+              "options": [
+                "Passo no exame.",
+                "Passo exame no mal.",
+                "Não passo sempre ontem.",
+                "Passo no exame amanhã ontem."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passo no exame = je réussis."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

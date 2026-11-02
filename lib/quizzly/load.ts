@@ -12,6 +12,8 @@ import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { assouplirChapitre } from "@/lib/quizzly/normalize";
 import {
+  CHAPTER_FILES,
+  type ChapterFileName,
   estAnneeScolaire,
   PROGRAM,
   SCHOOL_YEARS,
@@ -85,10 +87,14 @@ export function identifiantQuiz(
 }
 
 const QUIZ_ID =
-  /^(6e|5e|4e|3e|2nde|1ere|terminale)\/([a-z0-9-]+)\/(01|02|03)\/(u1|u2)\/(q(?:0[1-9]|10))$/;
+  /^(6e|5e|4e|3e|2nde|1ere|terminale)\/([a-z0-9-]+)\/(0[1-9]|10)\/(u1|u2)\/(q(?:0[1-9]|10))$/;
+
+function estFichierChapitre(valeur: string): valeur is ChapterFileName {
+  return (CHAPTER_FILES as readonly string[]).includes(valeur);
+}
 
 export function analyserIdentifiantQuiz(id: string): {
-  fichier: "01" | "02" | "03";
+  fichier: ChapterFileName;
   matiereId: string;
   quiz: string;
   unite: "u1" | "u2";
@@ -109,7 +115,7 @@ export function analyserIdentifiantQuiz(id: string): {
   if (!matiereId || !fichier || !unite || !quiz) {
     return null;
   }
-  if (fichier !== "01" && fichier !== "02" && fichier !== "03") {
+  if (!estFichierChapitre(fichier)) {
     return null;
   }
   if (unite !== "u1" && unite !== "u2") {
@@ -122,7 +128,7 @@ function integrerChapitre(
   index: CurriculumIndex,
   annee: SchoolYear,
   matiere: SubjectSpec,
-  fichier: "01" | "02" | "03",
+  fichier: ChapterFileName,
   chapitre: ChapterFile
 ): void {
   if (
@@ -173,7 +179,7 @@ function integrerChapitre(
 async function lireChapitre(
   annee: SchoolYear,
   matiereId: string,
-  fichier: "01" | "02" | "03"
+  fichier: ChapterFileName
 ): Promise<ChapterFile | null> {
   const complet = path.join(RACINE, annee, matiereId, `${fichier}.json`);
   const relatif = path.relative(RACINE, complet);
@@ -226,7 +232,7 @@ async function construireIndex(): Promise<CurriculumIndex> {
       continue;
     }
     for (const matiere of PROGRAM[annee]) {
-      for (const fichier of ["01", "02", "03"] as const) {
+      for (const fichier of CHAPTER_FILES) {
         const chapitre = await lireChapitre(annee, matiere.id, fichier);
         if (chapitre) {
           integrerChapitre(index, annee, matiere, fichier, chapitre);

@@ -1,0 +1,2048 @@
+{
+  "id": "5e-allemand-04",
+  "year": "5e",
+  "subject": "allemand",
+  "title": "La grammaire de l'allemand",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont correctes avec le nom « Tisch » (masculin) ?",
+              "explanation": "Tisch est masculin : on emploie der Tisch et ein Tisch.",
+              "options": ["der Tisch", "die Tisch", "ein Tisch", "eine Tisch"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel article défini convient à « Schule » (féminin) ?",
+              "explanation": "Schule est féminin, l'article défini est die.",
+              "options": ["der", "die", "das", "den"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel article défini convient à « Haus » (neutre) ?",
+              "explanation": "Haus est neutre, l'article défini est das.",
+              "options": ["der", "die", "das", "dem"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel article indéfini convient à « Frau » (féminin) ?",
+              "explanation": "Avec un nom féminin on utilise une.",
+              "options": ["ein", "eine", "der", "das"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel article indéfini convient à « Kind » (neutre) ?",
+              "explanation": "Kind est neutre : ein Kind, comme pour le masculin au singulier.",
+              "options": ["eine", "ein", "die", "der"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « le livre » en allemand ?",
+              "explanation": "Buch est neutre : das Buch.",
+              "options": ["der Buch", "die Buch", "das Buch", "den Buch"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « un garçon » en allemand ?",
+              "explanation": "Junge est masculin : ein Junge.",
+              "options": ["eine Junge", "ein Junge", "der Junge", "das Junge"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel genre a le mot « Mädchen » ?",
+              "explanation": "Mädchen finit en -chen et est neutre : das Mädchen.",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "explanation": "Stuhl est masculin : der Stuhl.",
+              "options": ["die Stuhl", "der Stuhl", "das Stuhl", "eine Stuhl"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel article défini pour « Katze » (chatte) ?",
+              "explanation": "Katze est féminin : die Katze.",
+              "options": ["der", "die", "das", "ein"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases avec « Auto » (neutre) sont correctes ?",
+              "explanation": "Auto est neutre : das Auto et ein Auto.",
+              "options": ["das Auto", "die Auto", "ein Auto", "eine Auto"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Hund » (chien) prend quel article défini ?",
+              "explanation": "Hund est masculin : der Hund.",
+              "options": ["die", "der", "das", "dem"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Blume » (fleur) prend quel article indéfini ?",
+              "explanation": "Blume est féminin : eine Blume.",
+              "options": ["ein", "eine", "der", "das"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot est féminin ?",
+              "explanation": "Zeitung (journal) est féminin : die Zeitung.",
+              "options": ["der Tisch", "die Lampe", "das Fenster", "der Stift"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot est neutre ?",
+              "explanation": "Fenster (fenêtre) est neutre : das Fenster.",
+              "options": ["der Mann", "die Tür", "das Bett", "die Wand"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot est masculin ?",
+              "explanation": "Stift (stylo) est masculin : der Stift.",
+              "options": ["die Schule", "das Heft", "der Baum", "das Bild"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « une école » ?",
+              "explanation": "Schule est féminin : eine Schule.",
+              "options": [
+                "ein Schule",
+                "eine Schule",
+                "der Schule",
+                "das Schule"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « le chien » ?",
+              "explanation": "Hund est masculin : der Hund.",
+              "options": ["die Hund", "das Hund", "der Hund", "ein Hund"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle combinaison article + nom est fausse ?",
+              "explanation": "Tür est féminin, on ne dit pas der Tür.",
+              "options": ["die Tür", "das Zimmer", "der Lehrer", "eine Katze"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Apfel » (pomme) est masculin. Quelle forme est correcte ?",
+              "explanation": "Apfel est masculin : der Apfel ou ein Apfel.",
+              "options": ["die Apfel", "das Apfel", "der Apfel", "eine Apfel"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes conviennent à « Lampe » (féminin) ?",
+              "explanation": "Lampe est féminin : die Lampe et eine Lampe.",
+              "options": ["die Lampe", "der Lampe", "eine Lampe", "ein Lampe"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Article défini de « Bruder » (frère) ?",
+              "explanation": "Bruder est masculin : der Bruder.",
+              "options": ["die", "das", "der", "dem"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Article indéfini de « Ball » (ballon, masculin) ?",
+              "explanation": "Ball est masculin : ein Ball.",
+              "options": ["eine", "ein", "das", "die"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Schwester » (sœur) : quel article défini ?",
+              "explanation": "Schwester est féminin : die Schwester.",
+              "options": ["der", "das", "die", "den"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Bett » (lit) : quel article ?",
+              "explanation": "Bett est neutre : das Bett.",
+              "options": ["der", "die", "das", "eine"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le pluriel en allemand prend souvent quel article défini ?",
+              "explanation": "Au pluriel, l'article défini est die (die Kinder, die Bücher).",
+              "options": ["der", "die", "das", "ein"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« die Bücher » signifie :",
+              "explanation": "Bücher est le pluriel de Buch ; die marque le pluriel défini.",
+              "options": ["le livre", "un livre", "les livres", "la livre"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte ?",
+              "explanation": "Mutter est féminin : die Mutter.",
+              "options": [
+                "der Mutter",
+                "das Mutter",
+                "die Mutter",
+                "ein Mutter"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« ein Heft » : le nom Heft est…",
+              "explanation": "Heft (cahier) est neutre, mais ein s'emploie au masculin et au neutre.",
+              "options": [
+                "toujours féminin",
+                "masculin ou neutre avec ein",
+                "toujours pluriel",
+                "féminin avec ein"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Choisis l'article pour « Vater » :",
+              "explanation": "Vater est masculin : der Vater.",
+              "options": ["die", "das", "der", "eine"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux bonnes traductions de « une fille » :",
+              "explanation": "Mädchen est neutre : ein Mädchen ; on peut aussi dire das Mädchen pour « la fille ».",
+              "options": [
+                "ein Mädchen",
+                "eine Mädchen",
+                "das Mädchen",
+                "der Mädchen"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Genre de « Banane » ?",
+              "explanation": "Banane est féminin : die Banane.",
+              "options": ["masculin", "féminin", "neutre", "pluriel seulement"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« der Lehrer » signifie :",
+              "explanation": "Lehrer est masculin avec l'article der.",
+              "options": ["la prof", "le prof", "un prof", "les profs"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« das Wasser » : Wasser est…",
+              "explanation": "Wasser (eau) est neutre en allemand.",
+              "options": [
+                "masculin",
+                "féminin",
+                "neutre",
+                "féminin au pluriel"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle option est « un chat » (masc.) ?",
+              "explanation": "Kater ou Katerchen masculin : ein Kater.",
+              "options": ["eine Katze", "ein Kater", "das Katze", "die Kater"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Erreur courante : on ne dit pas…",
+              "explanation": "Tisch est masculin, pas das Tisch.",
+              "options": [
+                "der Tisch",
+                "ein Tisch",
+                "das Tisch",
+                "der große Tisch"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« die Kinder » : Kinder est…",
+              "explanation": "Kinder est le pluriel de Kind ; die est l'article au pluriel.",
+              "options": [
+                "singulier neutre",
+                "pluriel",
+                "féminin singulier",
+                "masculin"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Article pour « Orange » (féminin) ?",
+              "explanation": "Orange est féminin : die Orange / eine Orange.",
+              "options": ["der", "das", "die", "den"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« ein Bild » signifie :",
+              "explanation": "Bild est neutre : ein Bild = une image / un tableau.",
+              "options": ["les images", "une image", "la image", "le images"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : ___ Tür (la porte)",
+              "explanation": "Tür est féminin : die Tür.",
+              "options": ["der", "das", "die", "ein"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formes correctes avec « Mann » :",
+              "explanation": "Mann est masculin : der Mann et ein Mann.",
+              "options": ["der Mann", "die Mann", "ein Mann", "eine Mann"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Garten » (jardin) : article défini ?",
+              "explanation": "Garten est masculin : der Garten.",
+              "options": ["die", "das", "der", "dem"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Milch » (lait) : article ?",
+              "explanation": "Milch est féminin : die Milch.",
+              "options": ["der", "die", "das", "ein"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Neutre parmi :",
+              "explanation": "Radio est neutre : das Radio.",
+              "options": ["der Computer", "die Uhr", "das Radio", "der Freund"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Féminin parmi :",
+              "explanation": "Nacht (nuit) est féminin : die Nacht.",
+              "options": ["der Tag", "die Nacht", "das Jahr", "der Monat"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« eine Uhr » signifie :",
+              "explanation": "Uhr (montre / heure) est féminin : eine Uhr.",
+              "options": [
+                "une montre / une heure",
+                "un horloge",
+                "le montre",
+                "des heures"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduction de « das Kind » :",
+              "explanation": "Kind est neutre : das Kind = l'enfant.",
+              "options": ["un enfant", "l'enfant", "les enfants", "une enfant"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« der Tag » =",
+              "explanation": "Tag est masculin : der Tag = le jour.",
+              "options": ["la jour", "le jour", "un jour", "les jours"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase a le bon article ?",
+              "explanation": "Schule est féminin : die Schule.",
+              "options": [
+                "der Schule ist groß",
+                "die Schule ist groß",
+                "das Schule ist groß",
+                "eine Schule ist der"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« ein Freund » : Freund est…",
+              "explanation": "Freund (ami) est masculin : ein Freund.",
+              "options": ["féminin", "masculin", "neutre", "pluriel"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Correct avec « Fenster » (neutre) :",
+              "explanation": "Fenster est neutre : das Fenster et ein Fenster.",
+              "options": [
+                "das Fenster",
+                "der Fenster",
+                "ein Fenster",
+                "eine Fenster"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Article de « Straße » (rue, fém.) ?",
+              "explanation": "Straße est féminin : die Straße.",
+              "options": ["der", "die", "das", "ein"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« der Zug » signifie :",
+              "explanation": "Zug (train) est masculin : der Zug.",
+              "options": ["le train", "un train", "la train", "les trains"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« eine Stadt » =",
+              "explanation": "Stadt (ville) est féminin : eine Stadt.",
+              "options": ["une ville", "un ville", "la ville", "les villes"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Erreur :",
+              "explanation": "Frau est féminin : die Frau, pas der Frau.",
+              "options": [
+                "die Frau",
+                "eine Frau",
+                "der Frau",
+                "das ist die Frau"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« das Brot » : genre ?",
+              "explanation": "Brot (pain) est neutre.",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pluriel : « die Äpfel » sont…",
+              "explanation": "Äpfel est pluriel ; die est l'article défini pluriel.",
+              "options": [
+                "des pommes (def.)",
+                "une pomme",
+                "le pomme",
+                "un pomme"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« der Apfel » au singulier :",
+              "explanation": "Apfel est masculin singulier : der Apfel.",
+              "options": ["le pomme", "un pomme", "la pomme", "les pommes"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : ___ Buch (le livre)",
+              "explanation": "Buch est neutre : das Buch.",
+              "options": ["der", "die", "das", "eine"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« ein Tier » : Tier est…",
+              "explanation": "Tier (animal) est neutre : ein Tier.",
+              "options": ["masculin", "féminin", "neutre", "toujours die"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases correctes avec « Katze » (fém.) :",
+              "explanation": "Katze est féminin : die Katze et eine Katze.",
+              "options": ["die Katze", "der Katze", "eine Katze", "ein Katze"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« der Baum » =",
+              "explanation": "Baum (arbre) est masculin.",
+              "options": ["l'arbre", "un arbre", "la arbre", "les arbres"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Article indéfini pour « Problem » (neutre) ?",
+              "explanation": "Problem est neutre : ein Problem.",
+              "options": ["eine", "ein", "der", "die"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« die Sonne » signifie :",
+              "explanation": "Sonne (soleil) est féminin : die Sonne.",
+              "options": ["le soleil", "la soleil", "un soleil", "les soleils"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Masculin :",
+              "explanation": "Monat (mois) est masculin : der Monat.",
+              "options": [
+                "die Woche",
+                "der Monat",
+                "das Wochenende",
+                "die Stunde"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« das Ei » =",
+              "explanation": "Ei (œuf) est neutre : das Ei.",
+              "options": ["l'œuf", "un œuf", "la œuf", "les œufs"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Faux :",
+              "explanation": "Wagen est masculin : der Wagen, pas das Wagen.",
+              "options": [
+                "der Wagen",
+                "ein Wagen",
+                "das Wagen",
+                "der große Wagen"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« eine Familie » : Familie est…",
+              "explanation": "Familie est féminin : eine Familie.",
+              "options": ["neutre", "masculin", "féminin", "pluriel"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduction « un problème » :",
+              "explanation": "Problem est neutre : ein Problem.",
+              "options": [
+                "eine Problem",
+                "ein Problem",
+                "der Problem",
+                "die Problem"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« der Name » : Name est…",
+              "explanation": "Name (nom) est masculin : der Name.",
+              "options": ["féminin", "neutre", "masculin", "sans article"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bon accord avec « Schule » :",
+              "explanation": "Schule est féminin : die Schule et eine Schule.",
+              "options": [
+                "die Schule",
+                "der Schule",
+                "eine Schule",
+                "ein Schule"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« das Jahr » =",
+              "explanation": "Jahr (année) est neutre : das Jahr.",
+              "options": ["l'année", "une année", "le année", "les années"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Article pour « Hand » (main, fém.) ?",
+              "explanation": "Hand est féminin : die Hand.",
+              "options": ["der", "das", "die", "ein"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ein Bein » signifie :",
+              "explanation": "Bein (jambe) est neutre : ein Bein.",
+              "options": ["une jambe", "un jambe", "la jambe", "les jambes"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Neutre :",
+              "explanation": "Dach (toit) est neutre : das Dach.",
+              "options": ["der Boden", "die Decke", "das Dach", "der Himmel"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« die Hand » :",
+              "explanation": "Hand est féminin singulier.",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« der Fuß » =",
+              "explanation": "Fuß (pied) est masculin : der Fuß.",
+              "options": ["le pied", "un pied", "la pied", "les pieds"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Correct :",
+              "explanation": "Zeitung est féminin : die Zeitung.",
+              "options": [
+                "der Zeitung",
+                "das Zeitung",
+                "die Zeitung",
+                "ein Zeitung"
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« eine Idee » : Idee est…",
+              "explanation": "Idee est féminin : eine Idee.",
+              "options": ["masculin", "neutre", "féminin", "pluriel"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : ___ Hund (un chien)",
+              "explanation": "Hund est masculin : ein Hund.",
+              "options": ["eine", "ein", "das", "die"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Formes justes pour « Kind » (neutre) :",
+              "explanation": "Kind est neutre : das Kind et ein Kind.",
+              "options": ["das Kind", "der Kind", "ein Kind", "eine Kind"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« die Blume » =",
+              "explanation": "Blume est féminin : die Blume = la fleur.",
+              "options": ["la fleur", "un fleur", "le fleur", "les fleurs"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Féminin :",
+              "explanation": "Antwort (réponse) est féminin : die Antwort.",
+              "options": ["der Text", "die Antwort", "das Wort", "der Satz"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« ein Wort » : Wort est…",
+              "explanation": "Wort (mot) est neutre : ein Wort.",
+              "options": ["féminin", "masculin", "neutre", "pluriel"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Erreur :",
+              "explanation": "Brot est neutre : das Brot, pas der Brot.",
+              "options": ["das Brot", "ein Brot", "der Brot", "gutes Brot"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« der Brief » signifie :",
+              "explanation": "Brief (lettre courrier) est masculin.",
+              "options": ["la lettre", "le lettre", "un lettre", "les lettres"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Article défini pluriel « les chats » (Katzen) :",
+              "explanation": "Au pluriel on dit die Katzen.",
+              "options": [
+                "der Katzen",
+                "die Katzen",
+                "das Katzen",
+                "ein Katzen"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« eine Frage » =",
+              "explanation": "Frage (question) est féminin : eine Frage.",
+              "options": [
+                "une question",
+                "un question",
+                "la question",
+                "les questions"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Masculin :",
+              "explanation": "Satz (phrase) est masculin : der Satz.",
+              "options": ["die Frage", "der Satz", "das Beispiel", "die Regel"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« das Beispiel » :",
+              "explanation": "Beispiel (exemple) est neutre.",
+              "options": [
+                "masculin",
+                "féminin",
+                "neutre",
+                "pluriel obligatoire"
+              ],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux traductions possibles de « l'école » (Schule) :",
+              "explanation": "Schule est féminin : die Schule (défini) ; eine Schule = une école.",
+              "options": [
+                "die Schule",
+                "der Schule",
+                "eine Schule",
+                "das Schule"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rappel : der =",
+              "explanation": "Der marque le masculin singulier défini.",
+              "options": [
+                "masculin défini",
+                "féminin défini",
+                "neutre défini",
+                "pluriel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Rappel : das =",
+              "explanation": "Das marque le neutre singulier défini.",
+              "options": ["masculin", "féminin", "neutre singulier", "pluriel"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Rappel : eine =",
+              "explanation": "Eine est l'article indéfini féminin.",
+              "options": [
+                "masculin indéfini",
+                "féminin indéfini",
+                "neutre indéfini",
+                "pluriel"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Rappel : ein =",
+              "explanation": "Ein s'emploie au masculin et au neutre singulier indéfini.",
+              "options": [
+                "féminin seulement",
+                "masculin et neutre",
+                "pluriel seulement",
+                "toujours avec die"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« die » au pluriel avec « Freunde » :",
+              "explanation": "Freunde est pluriel : die Freunde = les amis.",
+              "options": ["les amis", "un ami", "l'ami", "une amie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Choisis la bonne paire :",
+              "explanation": "Tisch masculin → der ; Lampe féminin → die.",
+              "options": [
+                "der Tisch / die Lampe",
+                "die Tisch / der Lampe",
+                "das Tisch / das Lampe",
+                "der Tisch / das Lampe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Choisis la bonne paire indéfinie :",
+              "explanation": "Ball masculin → ein ; Blume féminin → eine.",
+              "options": [
+                "ein Ball / eine Blume",
+                "eine Ball / ein Blume",
+                "ein Ball / ein Blume",
+                "eine Ball / eine Blume"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mot avec das :",
+              "explanation": "Museum est neutre : das Museum.",
+              "options": ["der Park", "die Bank", "das Museum", "der Markt"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour progresser, il faut apprendre chaque nom avec…",
+              "explanation": "En allemand le genre se mémorise avec l'article (der/die/das).",
+              "options": [
+                "sa couleur seulement",
+                "son article",
+                "sa traduction française seule",
+                "le verbe suivant"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont correctes ?",
+              "explanation": "Ich bin et Du bist sont les formes correctes de « être » à la 1re et 2e personne.",
+              "options": [
+                "Ich bin Anna.",
+                "Ich bist Anna.",
+                "Du bist Tom.",
+                "Du bin Tom."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ich ___ müde. » (être)",
+              "explanation": "Avec ich on emploie bin.",
+              "options": ["bist", "bin", "ist", "sind"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Du ___ mein Freund. »",
+              "explanation": "Avec du on emploie bist.",
+              "options": ["bin", "bist", "ist", "seid"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Traduction : « Je suis élève. »",
+              "explanation": "Élève = Schüler(in) ; ich bin = je suis.",
+              "options": [
+                "Du bist Schüler.",
+                "Ich bin Schüler.",
+                "Ich ist Schüler.",
+                "Bin ich Schüler."
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En allemand, le verbe se place en général…",
+              "explanation": "Dans une phrase declarative simple, le verbe est en 2e position.",
+              "options": [
+                "en première position",
+                "en deuxième position",
+                "à la fin",
+                "n'importe où"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase correcte :",
+              "explanation": "Sujet + verbe en 2e position : Ich komme aus Frankreich.",
+              "options": [
+                "Komme ich aus Frankreich.",
+                "Ich aus Frankreich komme.",
+                "Ich komme aus Frankreich.",
+                "Aus Frankreich ich komme."
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Heute ___ ich in Berlin. » (être)",
+              "explanation": "Heute en 1re position, le verbe reste en 2e : bin.",
+              "options": ["bist", "bin", "ist", "sind"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Du ___ zwölf Jahre alt. »",
+              "explanation": "Avec du : bist.",
+              "options": ["bin", "bist", "ist", "binst"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Question : « Bist du Lehrer? » Réponse positive :",
+              "explanation": "On répond Ja, ich bin Lehrer.",
+              "options": [
+                "Ja, du bist Lehrer.",
+                "Ja, ich bin Lehrer.",
+                "Ja, ich bist Lehrer.",
+                "Ja, bin Lehrer ich."
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ich heiße Maria. » signifie :",
+              "explanation": "Heißen = s'appeler ; ich heiße = je m'appelle.",
+              "options": [
+                "Je suis Maria.",
+                "Je m'appelle Maria.",
+                "Tu t'appelles Maria.",
+                "Maria est ici."
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases avec verbe en 2e position :",
+              "explanation": "Après le sujet ou un adverbe en tête, le verbe vient juste après.",
+              "options": [
+                "Morgen gehe ich zur Schule.",
+                "Morgen ich gehe zur Schule.",
+                "Ich gehe zur Schule.",
+                "Gehe ich zur Schule morgen."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Wir ___ aus Deutschland. » (être)",
+              "explanation": "Avec wir on dit sind.",
+              "options": ["bin", "bist", "ist", "sind"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Er ___ mein Bruder. »",
+              "explanation": "Avec er/sie/es on emploie ist.",
+              "options": ["bin", "bist", "ist", "sind"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ordre correct :",
+              "explanation": "Sujet-verbe-complément : Du lernst Deutsch.",
+              "options": [
+                "Lernst du Deutsch.",
+                "Du lernst Deutsch.",
+                "Du Deutsch lernst.",
+                "Deutsch du lernst."
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ich wohne in Paris. » signifie :",
+              "explanation": "Wohnen = habiter ; in + ville.",
+              "options": [
+                "Je vais à Paris.",
+                "J'habite à Paris.",
+                "Je suis Paris.",
+                "Paris m'habite."
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Avec « heute » en tête : « Heute ___ wir Sport. » (machen)",
+              "explanation": "Verbe en 2e position : machen.",
+              "options": ["wir machen", "machen wir", "macht wir", "wir macht"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Négation simple avec « nicht » :",
+              "explanation": "Nicht se place souvent en fin de phrase : Ich bin nicht müde.",
+              "options": [
+                "Ich nicht bin müde.",
+                "Ich bin müde nicht.",
+                "Ich bin nicht müde.",
+                "Nicht ich bin müde."
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Sie ___ Lehrerin. » (she)",
+              "explanation": "Sie (elle) + ist.",
+              "options": ["bin", "bist", "ist", "sind"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ich spreche Deutsch. » : le verbe est…",
+              "explanation": "Spreche est en 2e position après Ich.",
+              "options": [
+                "en 1re position",
+                "en 2e position",
+                "en dernière position",
+                "absent"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Salutation + phrase : « Hallo! Ich ___ Lisa. »",
+              "explanation": "Se présenter : Ich bin Lisa.",
+              "options": ["bist", "bin", "ist", "sind"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Réponses correctes à « Wie heißt du? » :",
+              "explanation": "On répond Ich heiße… ou Mein Name ist…",
+              "options": [
+                "Ich heiße Paul.",
+                "Du heißt Paul.",
+                "Mein Name ist Paul.",
+                "Ich bin heiße Paul."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Was machst du? » — « Ich ___ Hausaufgaben. » (machen)",
+              "explanation": "Du fragst, ich réponds avec mache.",
+              "options": ["machst", "mache", "macht", "machen"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Phrase : « ___ bist du? » (âge)",
+              "explanation": "Wie alt bist du? = Quel âge as-tu?",
+              "options": ["Wie alt", "Wie alt bist", "Wie bist alt", "Alt wie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich ___ gern Pizza. » (essen)",
+              "explanation": "Ich esse = je mange.",
+              "options": ["esse", "isst", "esst", "essen"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Verbe en 2e position :",
+              "explanation": "Jetzt + verbe + sujet : Jetzt komme ich.",
+              "options": [
+                "Jetzt ich komme.",
+                "Jetzt komme ich.",
+                "Ich jetzt komme.",
+                "Komme jetzt ich."
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Du ___ Fußball. » (spielen)",
+              "explanation": "Du spielst.",
+              "options": ["spiele", "spielst", "spielt", "spielen"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduction : « Tu es sympa. »",
+              "explanation": "Sympa = nett ; du bist nett = Du bist nett.",
+              "options": [
+                "Ich bin nett.",
+                "Du bist nett.",
+                "Du bin nett.",
+                "Du ist nett."
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Hier ___ meine Schwester. » (sein)",
+              "explanation": "Schwester est singulier : ist.",
+              "options": ["bin", "bist", "ist", "sind"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Question ouverte correcte :",
+              "explanation": "Wo wohnst du? = Où habites-tu?",
+              "options": [
+                "Wo du wohnst?",
+                "Wo wohnst du?",
+                "Du wohnst wo?",
+                "Wohnst wo du?"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Guten Tag! Ich ___ Max. »",
+              "explanation": "Présentation avec bin.",
+              "options": ["bist", "bin", "ist", "sind"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases avec « ich » correctes :",
+              "explanation": "Ich + bin / komme / heiße sont bien conjugués.",
+              "options": [
+                "Ich komme aus Spanien.",
+                "Ich kommst aus Spanien.",
+                "Ich bin glücklich.",
+                "Ich bist glücklich."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ du aus Frankreich? » (kommen)",
+              "explanation": "Question : Kommst du…?",
+              "options": ["Kommst", "Komme", "Kommt", "Kommen"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Wir ___ Freunde. » (sein)",
+              "explanation": "Wir sind.",
+              "options": ["bin", "ist", "sind", "bist"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Adverbe en tête : « Dort ___ das Kino. »",
+              "explanation": "Dort ist das Kino — verbe en 2e position.",
+              "options": ["das Kino ist", "ist das Kino", "ist", "Kino ist"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ich trinke Wasser. » signifie :",
+              "explanation": "Trinken = boire.",
+              "options": [
+                "Je mange de l'eau.",
+                "Je bois de l'eau.",
+                "Tu bois de l'eau.",
+                "L'eau boit."
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Er ___ gern Musik. » (hören)",
+              "explanation": "Er hört.",
+              "options": ["höre", "hörst", "hört", "hören"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase incorrecte :",
+              "explanation": "En déclaratif simple : Ich lese ein Buch, pas Ich ein Buch lese.",
+              "options": [
+                "Ich lese ein Buch.",
+                "Ich ein Buch lese.",
+                "Heute lese ich.",
+                "Ich lese heute."
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Seid ihr Schüler? » — « Ja, wir ___ Schüler. »",
+              "explanation": "Wir sind.",
+              "options": ["bin", "ist", "sind", "bist"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Mein Name ___ Peter. » (sein)",
+              "explanation": "Name est masculin singulier : ist.",
+              "options": ["bin", "bist", "ist", "sind"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ich ___ in der Schule. » (sein)",
+              "explanation": "Ich bin.",
+              "options": ["bist", "bin", "ist", "sind"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases avec « du » bien formées :",
+              "explanation": "Du bist et du kommst sont corrects.",
+              "options": [
+                "Du bist spät.",
+                "Du bin spät.",
+                "Du kommst heute.",
+                "Du komme heute."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ ist das? » (demander un objet)",
+              "explanation": "Was ist das? = Qu'est-ce que c'est?",
+              "options": ["Was", "Wie", "Wo", "Wer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Das ___ mein Hund. » (sein)",
+              "explanation": "Das ist…",
+              "options": ["bin", "bist", "ist", "sind"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich ___ nicht traurig. » (sein)",
+              "explanation": "Ich bin nicht…",
+              "options": ["bist", "bin", "ist", "bin nicht"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ordre : sujet + verbe + complément",
+              "explanation": "Modèle : Er wohnt in München.",
+              "options": [
+                "Er in München wohnt.",
+                "Wohnt er in München.",
+                "Er wohnt in München.",
+                "In München er wohnt."
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Morgen ___ ich früh auf. » (aufstehen → stehe auf)",
+              "explanation": "Morgen stehe ich… verbe en 2e position.",
+              "options": ["ich stehe", "stehe ich", "stehst ich", "ich stehst"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« ___ heißen Sie? » (formel)",
+              "explanation": "Comment vous appelez-vous ? = Wie heißen Sie?",
+              "options": ["Wie", "Was", "Wo", "Wer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ich ___ du? » (être, familiar)",
+              "explanation": "On dit : Ich bin… Und du?",
+              "options": ["bist und", "bin. Und", "bin und", "bist. Und"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Sie ___ aus Italien. » (elle)",
+              "explanation": "Sie (she) + kommt.",
+              "options": ["komme", "kommst", "kommt", "kommen"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Wir ___ Deutsch. » (lernen)",
+              "explanation": "Wir lernen.",
+              "options": ["lerne", "lernst", "lernt", "lernen"],
+              "correctAnswers": [3]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Questions correctes en allemand :",
+              "explanation": "Verbe en tête pour la question : Bist du…? / Kommst du…?",
+              "options": [
+                "Bist du müde?",
+                "Du bist müde?",
+                "Kommst du mit?",
+                "Du kommst mit?"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ich ___ vierzehn. » (âge, sein)",
+              "explanation": "Pour l'âge : Ich bin vierzehn.",
+              "options": ["habe", "bin", "ist", "bist"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« ___ wohnst du? »",
+              "explanation": "Wo wohnst du?",
+              "options": ["Wo", "Was", "Wie", "Wann"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Das ist ___ Auto. » (neutre, indéfini)",
+              "explanation": "Auto neutre : ein Auto.",
+              "options": ["eine", "ein", "der", "die"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase complète : « Ich ___ und du ___. » (sein)",
+              "explanation": "Ich bin, du bist.",
+              "options": [
+                "bin / bist",
+                "bist / bin",
+                "ist / sind",
+                "bin / bin"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Heute ___ es schön. » (sein, il)",
+              "explanation": "Es ist — verbe en 2e position après Heute.",
+              "options": ["ist", "bin", "bist", "sind"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« ___ du müde? »",
+              "explanation": "Bist du müde?",
+              "options": ["Bin", "Bist", "Ist", "Sind"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Réponse : « Nein, ich ___ nicht müde. »",
+              "explanation": "Ich bin nicht müde.",
+              "options": ["bist", "bin", "ist", "bin nicht"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Ich ___ in der Klasse 5. » (sein)",
+              "explanation": "Ich bin in der Klasse…",
+              "options": ["bist", "bin", "ist", "habe"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sens de « Und du? »",
+              "explanation": "Et toi ? — pour relancer après une réponse.",
+              "options": ["Et moi ?", "Et toi ?", "Et lui ?", "Et nous ?"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases avec verbe conjugué correct pour « wir » :",
+              "explanation": "Wir sind / wir spielen sont corrects.",
+              "options": [
+                "Wir sind hier.",
+                "Wir ist hier.",
+                "Wir spielen Fußball.",
+                "Wir spielt Fußball."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Er ___ mein Vater. »",
+              "explanation": "Er ist.",
+              "options": ["bin", "bist", "ist", "sind"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« ___ sprecht ihr? » (parler)",
+              "explanation": "Sprecht ihr? — question avec verbe en tête.",
+              "options": ["Sprecht", "Spreche", "Sprechen", "Sprichst"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ich ___ aus Paris. » (kommen)",
+              "explanation": "Ich komme.",
+              "options": ["kommst", "komme", "kommt", "kommen"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mauvaise phrase :",
+              "explanation": "Avec du on ne dit pas du bin.",
+              "options": [
+                "Du bist nett.",
+                "Du bin nett.",
+                "Du bist hier.",
+                "Bist du nett?"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Jetzt ___ ich zu Hause. » (sein)",
+              "explanation": "Jetzt bin ich — V2.",
+              "options": ["ich bin", "bin ich", "bist ich", "ich bist"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« ___ ist dein Name? »",
+              "explanation": "Wie ist dein Name?",
+              "options": ["Wie", "Was", "Wo", "Wer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ich ___ gern Schokolade. » (mögen → mag)",
+              "explanation": "Ich mag.",
+              "options": ["mag", "magst", "mögt", "mögen"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduction : « Nous sommes en classe. »",
+              "explanation": "Wir sind in der Klasse.",
+              "options": [
+                "Ihr seid in der Klasse.",
+                "Wir sind in der Klasse.",
+                "Wir bin in der Klasse.",
+                "Sie sind in der Klasse."
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Das ___ gut. » (sein)",
+              "explanation": "Das ist gut.",
+              "options": ["bin", "bist", "ist", "sind"],
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Réponses à « Ich bin Lea. » possibles :",
+              "explanation": "On peut répondre Hallo Lea! ou Ich bin Tom.",
+              "options": [
+                "Hallo, Lea!",
+                "Du bist Lea.",
+                "Ich bin Tom.",
+                "Ich bist Tom."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ du Deutsch? » (sprechen)",
+              "explanation": "Sprichst du Deutsch?",
+              "options": ["Sprichst", "Spreche", "Spricht", "Sprechen"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ich ___ kein Fleisch. » (essen)",
+              "explanation": "Ich esse.",
+              "options": ["esse", "isst", "esst", "isst du"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase : « In Deutschland ___ ich. » (wohnen)",
+              "explanation": "In Deutschland wohne ich — V2.",
+              "options": ["ich wohne", "wohne ich", "wohnst ich", "ich wohnst"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Du ___ sehr freundlich. » (sein)",
+              "explanation": "Du bist.",
+              "options": ["bin", "bist", "ist", "seid"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ___ ihr aus der Schweiz? » (kommen)",
+              "explanation": "Kommt ihr…?",
+              "options": ["Kommt", "Kommst", "Komme", "Kommen"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Es ___ kalt heute. » (sein)",
+              "explanation": "Es ist kalt.",
+              "options": ["bin", "bist", "ist", "sind"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ich ___ Tom und ___ Schüler. »",
+              "explanation": "Ich heiße Tom ; ich bin Schüler.",
+              "options": [
+                "heiße / bin",
+                "heißt / bist",
+                "heisse / ist",
+                "heiße / bist"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Où est le verbe en « Vielleicht komme ich. » ?",
+              "explanation": "Vielleicht en 1re position, komme en 2e.",
+              "options": [
+                "position 1",
+                "position 2",
+                "fin de phrase",
+                "absent"
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Gute Nacht! Ich ___ schlafen. » (gehen → gehe)",
+              "explanation": "Ich gehe schlafen.",
+              "options": ["gehst", "gehe", "geht", "gehen"],
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux phrases avec « es ist » ou équivalent correct :",
+              "explanation": "Es ist… est la forme standard pour « c'est ».",
+              "options": [
+                "Es ist warm.",
+                "Es warm ist.",
+                "Es ist spät.",
+                "Es ist spät ist."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ___ bist du? » (nationalité, sein)",
+              "explanation": "On peut demander Woher kommst du? ; pour « qui es-tu » c'est Wer bist du? — ici « Wer bist du? »",
+              "options": ["Wer", "Wo", "Was", "Wie"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ich ___ nicht aus Berlin. » (kommen)",
+              "explanation": "Ich komme nicht…",
+              "options": ["kommst", "komme", "kommt", "kommen"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Am Montag ___ wir Sport. » (haben → haben)",
+              "explanation": "Am Montag haben wir — V2.",
+              "options": ["wir haben", "haben wir", "habt wir", "wir habt"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ___ du hungrig? » (sein)",
+              "explanation": "Bist du hungrig?",
+              "options": ["Bin", "Bist", "Ist", "Hast"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Sie ___ Lehrer. » (formel, sein)",
+              "explanation": "Sie (vous) sind — mais Lehrer singulier souvent avec ist si Sie = she ; ici « Sie ist Lehrerin » pour elle. Question : Sie (she) ist Lehrerin.",
+              "options": ["bin", "bist", "ist", "sind"],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase la plus simple correcte :",
+              "explanation": "Ich bin hier. — sujet + verbe + complément.",
+              "options": [
+                "Hier bin ich auch.",
+                "Ich hier bin.",
+                "Bin ich hier.",
+                "Ich bin hier."
+              ],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Wir ___ keine Zeit. » (haben)",
+              "explanation": "Wir haben.",
+              "options": ["habe", "hast", "hat", "haben"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« ___ heißt du? »",
+              "explanation": "Wie heißt du?",
+              "options": ["Wie", "Was", "Wo", "Warum"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Ich ___ du auch. » (aimer → mag)",
+              "explanation": "Ich mag dich auch. — ici « Ich mag dich auch » ; option « mag » avec « dich » implicite : Ich mag dich auch — closest: Ich mag … For quiz « Ich ___ dich auch » — use mag",
+              "options": ["mag", "magst", "mögen", "mögt"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux affirmations vraies sur les phrases allemandes simples :",
+              "explanation": "Le verbe est en 2e position et ich/du utilisent bin/bist avec sein.",
+              "options": [
+                "Le verbe est souvent en 2e position.",
+                "Le verbe est toujours en dernière position.",
+                "Ich bin et du bist sont corrects.",
+                "Ich bist est correct."
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Récap : « je suis » =",
+              "explanation": "Ich bin.",
+              "options": ["du bist", "ich bin", "er ist", "wir sind"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Récap : « tu es » =",
+              "explanation": "Du bist.",
+              "options": ["ich bin", "du bist", "du bin", "ihr seid"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Exemple V2 :",
+              "explanation": "Heute fahre ich — adverbe + verbe + sujet.",
+              "options": [
+                "Heute ich fahre.",
+                "Heute fahre ich.",
+                "Ich fahre heute.",
+                "Fahre ich heute."
+              ],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ich ___ Emma. Und du? » (sein)",
+              "explanation": "Ich bin Emma.",
+              "options": ["bist", "bin", "ist", "sind"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ___ du aus Paris? » (kommen)",
+              "explanation": "Kommst du aus Paris?",
+              "options": ["Komme", "Kommst", "Kommt", "Kommen"],
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase complète correcte :",
+              "explanation": "Das ist meine Schwester — ist en 2e position.",
+              "options": [
+                "Das meine Schwester ist.",
+                "Ist das meine Schwester.",
+                "Das ist meine Schwester.",
+                "Meine Schwester das ist."
+              ],
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Wir ___ glücklich. » (sein)",
+              "explanation": "Wir sind glücklich.",
+              "options": ["bin", "bist", "ist", "sind"],
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour dire « Je m'appelle… » on utilise surtout :",
+              "explanation": "Ich heiße… ou Ich bin… selon le contexte ; heiße est le verbe « s'appeler ».",
+              "options": ["Ich heiße", "Ich heißt", "Du heiße", "Ich heißen"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Bonne habitude pour construire une phrase :",
+              "explanation": "On place le verbe conjugué en deuxième position dans la phrase affirmative simple.",
+              "options": [
+                "mettre le verbe n'importe où",
+                "verbe en 2e position",
+                "toujours omettre le sujet",
+                "mettre l'article à la fin"
+              ],
+              "correctAnswers": [1]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

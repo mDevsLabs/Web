@@ -1,0 +1,2568 @@
+{
+  "id": "1ere-nsi-05",
+  "year": "1ere",
+  "subject": "nsi",
+  "title": "Interactions homme-machine",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Événements",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Modèle événementiel et programmation réactive",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la programmation événementielle dans le contexte d'une page Web ?",
+              "options": [
+                "Un paradigme où le déroulement du programme est guidé par des événements externes",
+                "Un programme qui s'exécute obligatoirement de haut en bas sans jamais s'interrompre",
+                "Une méthode pour compiler du code JavaScript vers du langage machine",
+                "Un protocole réseau pour transférer des fichiers volumineux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En programmation événementielle, les fonctions s'exécutent en réponse à des actions de l'utilisateur ou du système (clic, touche pressée, etc.)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En JavaScript dans un navigateur, qui déclenche généralement les événements utilisateur ?",
+              "options": [
+                "L'utilisateur via des périphériques comme la souris ou le clavier",
+                "Le serveur distant de manière périodique",
+                "Le compilateur HTML lors du téléchargement de la page",
+                "Le système d'exploitation lors de l'extinction de la machine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les événements utilisateur proviennent des actions physiques (clics, frappe, mouvements) captées par le navigateur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quel ordre s'exécute le code associé à un événement ?",
+              "options": [
+                "Au moment précis où l'événement survient et est traité par la boucle d'événements",
+                "Toujours avant même que la page ne soit affichée à l'écran",
+                "Strictement dans l'ordre alphabétique des noms de fonctions",
+                "À intervalles réguliers toutes les secondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le code d'un gestionnaire d'événement n'est exécuté que lorsque l'événement associé est déclenché et traité par l'Event Loop."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'une fonction de rappel (callback) associée à un événement ?",
+              "options": [
+                "Définir les instructions à exécuter automatiquement lorsque l'événement se produit",
+                "Créer une sauvegarde chiffrée de la base de données du navigateur",
+                "Télécharger automatiquement une nouvelle version du navigateur",
+                "Redémarrer la connexion réseau en cas de coupure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction callback est appelée en retour par le navigateur dès que l'événement attendu est intercepté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si aucun gestionnaire d'événement n'est associé à un clic sur un bouton sans action par défaut ?",
+              "options": [
+                "L'événement se produit mais aucune action personnalisée n'est exécutée",
+                "Le navigateur affiche immédiatement une erreur fatale et se ferme",
+                "La page web recharge automatiquement son contenu",
+                "Le bouton est définitivement supprimé de la page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si aucun gestionnaire n'est attaché, l'événement est simplement ignoré par le script sans provoquer d'erreur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle structure interne au moteur JavaScript orchestre l'exécution des fonctions de rappel événementielles ?",
+              "options": [
+                "La boucle d'événements (Event Loop)",
+                "Le registre de boot du disque dur",
+                "Le serveur mandataire (Proxy)",
+                "L'arbre binaire de recherche des polices"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Event Loop gère la file d'attente des messages et exécute les fonctions associées dès que la pile d'appels est libre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la programmation événementielle est-elle particulièrement adaptée aux interfaces graphiques ?",
+              "options": [
+                "Elle évite de bloquer l'interface pendant l'attente des interactions de l'utilisateur",
+                "Elle supprime totalement le besoin d'écrire des fichiers CSS",
+                "Elle permet d'exécuter du code sans utiliser de mémoire vive",
+                "Elle empêche tout piratage des requêtes HTTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le programme reste réactif et attentif aux actions de l'utilisateur sans tourner en boucle active bloquante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que fait le thread d'exécution JavaScript principal lorsqu'il est en attente d'un clic ?",
+              "options": [
+                "Il reste disponible pour traiter d'autres tâches ou attend passivement",
+                "Il exécute une boucle `while(true)` qui sature le processeur",
+                "Il éteint temporairement l'écran pour économiser l'énergie",
+                "Il envoie des requêtes en continu au serveur distant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce au mécanisme asynchrone non-bloquant, le fil d'exécution n'est pas mobilisé inutilement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le fait d'associer une fonction à un événement sur un élément ?",
+              "options": [
+                "Attacher un écouteur d'événement (event listener)",
+                "Compiler une interface homme-machine",
+                "Sérialiser un objet JSON",
+                "Déréférencer un pointeur mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On enregistre ou attache un écouteur (listener) qui 'surveille' la survenue de l'événement."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les propositions suivantes, lesquelles représentent des événements standards dans une page Web ?",
+              "options": [
+                "Le clic de la souris sur un bouton",
+                "L'enfoncement d'une touche du clavier",
+                "Le chargement complet du document HTML",
+                "La surchauffe physique de la carte mère"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le clic, la frappe au clavier et la fin du chargement du document sont des événements logiciels standard gérés par le navigateur."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Événements de la souris et du pointeur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel événement est émis lorsque l'utilisateur enfonce puis relâche le bouton principal de la souris sur un élément ?",
+              "options": ["click", "hover", "press", "mousehit"],
+              "correctAnswers": [0],
+              "explanation": "L'événement standard 'click' combine l'enfoncement puis le relâchement du bouton de la souris sur la même cible."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel événement est déclenché lors de deux clics consécutifs très rapprochés sur un même élément ?",
+              "options": ["dblclick", "double_press", "twoclick", "click2"],
+              "correctAnswers": [0],
+              "explanation": "'dblclick' est l'événement déclenché par un double-clic rapide de la souris."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel événement se produit au moment exact où le pointeur de la souris entre dans la zone d'un élément ?",
+              "options": ["mouseenter", "mouseexit", "mousedown", "mousefocus"],
+              "correctAnswers": [0],
+              "explanation": "'mouseenter' (ou 'mouseover') est déclenché dès que le curseur pénètre sur l'élément."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement est déclenché en continu lorsque l'utilisateur déplace le pointeur au-dessus d'un élément ?",
+              "options": ["mousemove", "mousedrag", "mouserun", "pointertrack"],
+              "correctAnswers": [0],
+              "explanation": "'mousemove' est émis de façon répétée à chaque changement de coordonnées du curseur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre 'mousedown' et 'click' ?",
+              "options": [
+                "'mousedown' se déclenche dès l'enfoncement du bouton, avant même son relâchement",
+                "'click' ne fonctionne qu'avec le bouton droit de la souris",
+                "'mousedown' est réservé exclusivement aux écrans tactiles",
+                "'click' ne peut être détecté que sur les liens hypertextes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'mousedown' réagit à l'appui initial, alors que 'click' attend la séquence complète appui puis relâchement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel événement survient lorsque le curseur de la souris sort du périmètre d'un élément ?",
+              "options": ["mouseleave", "mousedrop", "mouseescape", "mouseoff"],
+              "correctAnswers": [0],
+              "explanation": "'mouseleave' (ou 'mouseout') est déclenché lorsque le pointeur quitte la zone de l'élément."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle propriété de l'événement souris fournit l'abscisse X du curseur par rapport à la zone visible du navigateur (viewport) ?",
+              "options": [
+                "event.clientX",
+                "event.posX",
+                "event.screenX",
+                "event.targetX"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'clientX' et 'clientY' donnent les coordonnées du curseur relatives à la fenêtre d'affichage visible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel événement permet d'intercepter le clic droit pour personnaliser ou bloquer le menu surgissant ?",
+              "options": ["contextmenu", "rightclick", "altclick", "menuopen"],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'contextmenu' est déclenché par un clic droit avant l'apparition du menu contextuel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle valeur prend la propriété `event.button` lors d'un clic effectué avec le bouton principal (gauche) de la souris ?",
+              "options": ["0", "1", "2", "-1"],
+              "correctAnswers": [0],
+              "explanation": "Selon le standard DOM, `event.button` vaut 0 pour le bouton principal (gauche), 1 pour la molette et 2 pour le bouton droit."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les événements suivants, lesquels sont spécifiquement liés aux actions de la souris ou du pointeur ?",
+              "options": ["mouseup", "mouseenter", "mousemove", "keydown"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "'mouseup', 'mouseenter' et 'mousemove' sont des événements souris ; 'keydown' est un événement lié au clavier."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Événements du clavier et saisie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel événement est émis au moment où une touche du clavier commence à être enfoncée ?",
+              "options": ["keydown", "keyup", "keypress", "keyactive"],
+              "correctAnswers": [0],
+              "explanation": "'keydown' se produit immédiatement dès qu'une touche physique est pressée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel événement se déclenche lorsqu'une touche du clavier est relâchée par l'utilisateur ?",
+              "options": ["keyup", "keyrelease", "keydown", "keyoff"],
+              "correctAnswers": [0],
+              "explanation": "'keyup' signale que la touche n'est plus enfoncée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle propriété moderne de l'événement clavier renvoie la valeur textuelle de la touche (ex: 'Enter', 'a', 'ArrowUp') ?",
+              "options": [
+                "event.key",
+                "event.keyCode",
+                "event.letter",
+                "event.char"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'event.key' est la propriété standard moderne qui fournit la représentation textuelle directe de la touche."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle propriété de l'événement clavier indique le code physique de la touche, indépendant de la disposition du clavier ?",
+              "options": [
+                "event.code",
+                "event.key",
+                "event.physical",
+                "event.scan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'event.code' (ex: 'KeyQ', 'Space') identifie la touche physique, sans dépendre du clavier (AZERTY ou QWERTY)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'utilisateur maintient une touche enfoncée de manière prolongée ?",
+              "options": [
+                "L'événement 'keydown' est émis de façon répétée à intervalles réguliers",
+                "L'ordinateur se met immédiatement en veille prolongée",
+                "Le navigateur ignore toutes les frappes suivantes",
+                "L'événement 'keyup' est déclenché après deux secondes automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'autorépétition du clavier provoque une succession d'événements 'keydown' tant que la touche reste enfoncée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel élément reçoit directement les événements de frappe clavier lorsqu'on écrit dans une page ?",
+              "options": [
+                "L'élément interactif qui possède le focus au moment de la frappe",
+                "Le premier lien `<a>` rencontré dans le code HTML",
+                "Uniquement l'élément `<title>` situé dans le `<head>`",
+                "Tous les éléments de la page simultanément sans hiérarchie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les événements clavier sont ciblés sur l'élément actif ayant le focus (ou sur `document` si aucun n'est ciblé)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la propriété `event.keyCode` (renvoyant un entier comme 13 ou 65) est-elle aujourd'hui déconseillée (dépréciée) ?",
+              "options": [
+                "Elle posait de nombreux problèmes de compatibilité selon les navigateurs et dispositions",
+                "Elle a été supprimée pour interdire tout usage du clavier sur le web",
+                "Elle ralentissait la vitesse de frappe physique de l'utilisateur",
+                "Elle ne fonctionnait que sur les ordinateurs portables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`keyCode` était inconsistant selon les navigateurs et claviers internationaux. On lui préfère `event.key` et `event.code`."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment tester de manière moderne et standard si la touche pressée est la touche Entrée ?",
+              "options": [
+                "if (event.key === 'Enter')",
+                "if (event.code === 13)",
+                "if (event.isEnterKey())",
+                "if (event.name === 'Entree')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression `event.key === 'Enter'` est la méthode recommandée pour détecter la touche Entrée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel attribut HTML permet à un élément non interactif (ex: une `<div>`) de recevoir le focus et les événements clavier ?",
+              "options": [
+                "tabindex='0'",
+                "keyboard='true'",
+                "focusable='yes'",
+                "input='enable'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attribut `tabindex='0'` insère l'élément dans l'ordre de tabulation du document, lui permettant d'obtenir le focus."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi ces propriétés de l'événement clavier, lesquelles sont des booléens indiquant si une touche modificatrice était maintenue ?",
+              "options": [
+                "event.ctrlKey",
+                "event.shiftKey",
+                "event.altKey",
+                "event.enterKey"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "`ctrlKey`, `shiftKey` et `altKey` sont des booléens standards pour les modificateurs. Il n'existe pas d'attribut `enterKey`."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Événements de formulaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel événement est déclenché lorsqu'un utilisateur valide et tente d'envoyer un formulaire HTML ?",
+              "options": ["submit", "send", "post", "transmit"],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'submit' est émis par l'élément `<form>` lorsqu'il est soumis par clic sur un bouton ou appui sur Entrée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel événement se déclenche immédiatement à chaque frappe ou modification de texte dans un champ `<input>` ?",
+              "options": ["input", "change", "update", "modify"],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'input' réagit en direct à la moindre modification du contenu d'un champ de saisie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quand l'événement 'change' est-il généralement déclenché sur un champ texte standard `<input type='text'>` ?",
+              "options": [
+                "Lorsque la valeur a été modifiée et que le champ perd le focus",
+                "À chaque caractère tapé sans attendre",
+                "Uniquement lorsque la page est fermée par l'utilisateur",
+                "Dès que la souris survole le champ sans cliquer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur un champ texte, 'change' attend que l'utilisateur valide la saisie en quittant le champ (perte de focus) après modification."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement se produit lorsqu'un champ de formulaire devient l'élément actif prêt à recevoir la saisie ?",
+              "options": ["focus", "active", "select", "enter"],
+              "correctAnswers": [0],
+              "explanation": "'focus' est déclenché lorsqu'un élément interactif prend la sélection (au clic ou par tabulation)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel événement se produit au moment où un champ de formulaire perd la sélection active ?",
+              "options": ["blur", "leave", "unfocus", "defocus"],
+              "correctAnswers": [0],
+              "explanation": "'blur' est l'événement standard déclenché lors de la perte du focus par un élément."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel événement est émis lors de la réinitialisation des valeurs d'un formulaire via un bouton de type 'reset' ?",
+              "options": ["reset", "clear", "empty", "restart"],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'reset' est émis par le formulaire lorsque ses champs sont remis à leurs valeurs initiales."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur quel élément du DOM doit-on généralement placer l'écouteur pour intercepter la soumission d'un formulaire ?",
+              "options": [
+                "Sur la balise `<form>` elle-même",
+                "Sur la première balise `<label>` de la page",
+                "Exclusivement sur la balise `<body>`",
+                "Sur chaque balise `<input>` individuellement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'élément `<form>` qui émet l'événement 'submit', qu'il soit déclenché par un bouton ou par la touche Entrée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel événement de champ est idéal pour implémenter un filtrage ou une recherche instantanée pendant la frappe ?",
+              "options": ["input", "submit", "blur", "copy"],
+              "correctAnswers": [0],
+              "explanation": "'input' s'exécute en temps réel à chaque caractère ajouté ou supprimé, ce qui est parfait pour la recherche dynamique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel type de bouton HTML déclenche naturellement la soumission d'un formulaire lorsqu'il est cliqué ?",
+              "options": [
+                "<button type='submit'>",
+                "<button type='button'>",
+                "<button type='reset'>",
+                "<button type='cancel'>"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un bouton avec `type='submit'` (comportement par défaut des boutons dans un `<form>`) soumet le formulaire."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les événements suivants, lesquels s'appliquent couramment aux formulaires et à leurs champs de saisie ?",
+              "options": ["submit", "change", "focus", "dblclick_database"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "'submit', 'change' et 'focus' sont des événements classiques de formulaire. 'dblclick_database' n'existe pas."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Écouteurs d'événements et addEventListener",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle méthode standard permet d'enregistrer un gestionnaire d'événement sur un élément du DOM ?",
+              "options": [
+                "element.addEventListener()",
+                "element.attachListener()",
+                "element.onEvent()",
+                "element.bindEvent()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`addEventListener()` est la méthode standard moderne du DOM pour écouter des événements."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le premier argument attendu par la méthode `element.addEventListener('click', maFonction)` ?",
+              "options": [
+                "Le nom de l'événement sous forme de chaîne de caractères",
+                "La référence vers la fonction de rappel à exécuter",
+                "Le code HTML complet de l'élément cible",
+                "Le temps en millisecondes avant le déclenchement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le premier paramètre est le type d'événement à écouter (ex: 'click', 'keydown', 'submit')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi déconseille-t-on l'utilisation d'attributs HTML inline tels que `onclick='faireQuelqueChose()'` ?",
+              "options": [
+                "Cela mélange la structure HTML et le comportement JavaScript, nuisant à la maintenabilité",
+                "Le navigateur refuse catégoriquement d'afficher la page web",
+                "Cela empêche définitivement le navigateur de se connecter à Internet",
+                "Cette syntaxe consomme deux fois plus d'espace sur le disque dur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Séparer le contenu (HTML), le style (CSS) et la logique (JS) est un principe fondamental de bonne conception logicielle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle méthode permet de retirer un gestionnaire d'événement précédemment attaché avec `addEventListener` ?",
+              "options": [
+                "element.removeEventListener()",
+                "element.detachEvent()",
+                "element.clearEventListener()",
+                "element.deleteListener()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`removeEventListener()` permet de désactiver un écouteur sur un élément."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle condition est indispensable pour pouvoir retirer un écouteur avec `removeEventListener()` ?",
+              "options": [
+                "Avoir passé une référence vers une fonction nommée (non anonyme) lors de l'enregistrement",
+                "Avoir rechargé la page web au moins une fois",
+                "Utiliser obligatoirement une fonction fléchée inline",
+                "Avoir défini l'événement avec un délai d'au moins 5 secondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour désinscrire un écouteur, il faut fournir exactement la même référence de fonction que celle passée à `addEventListener`."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peut-on attacher plusieurs fonctions distinctes pour un même événement sur le même élément avec `addEventListener` ?",
+              "options": [
+                "Oui, toutes les fonctions attachées seront exécutées successivement lors de l'événement",
+                "Non, la seconde fonction écrase toujours la première sans avertissement",
+                "Non, cela provoque un plantage immédiat de la console JavaScript",
+                "Oui, mais seulement si le bouton est de couleur rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à la propriété `onclick`, `addEventListener` permet d'enregistrer autant d'écouteurs indépendants que souhaité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la syntaxe correcte pour déclencher la fonction `saluer` lors d'un clic sur `btn` ?",
+              "options": [
+                "btn.addEventListener('click', saluer);",
+                "btn.addEventListener('click', saluer());",
+                "btn.addEventListener(click, 'saluer');",
+                "btn.attachEvent('onclick', saluer);"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On passe le nom de l'événement entre guillemets et la référence de la fonction `saluer` sans les parenthèses d'appel immédiat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel paramètre la fonction de rappel reçoit-elle automatiquement lors de son invocation par le navigateur ?",
+              "options": [
+                "Un objet représentant l'événement (souvent noté `e` ou `event`)",
+                "Une chaîne de caractères contenant le mot de passe utilisateur",
+                "La liste de tous les fichiers du système d'exploitation",
+                "Un entier aléatoire entre 1 et 100"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le navigateur transmet en premier argument un objet `Event` contenant les caractéristiques détaillées de l'événement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que fait l'option `{ once: true }` lorsqu'elle est fournie en troisième paramètre à `addEventListener` ?",
+              "options": [
+                "L'écouteur s'exécute une seule fois puis se supprime automatiquement",
+                "L'événement ne peut être déclenché que par une seule personne à la fois",
+                "La fonction s'exécute immédiatement avant même le clic",
+                "L'élément devient invisible après son activation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'option `{ once: true }` désinscrit automatiquement l'écouteur dès sa première exécution."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels sont les avantages majeurs de l'utilisation de `addEventListener` ?",
+              "options": [
+                "Permet d'attacher plusieurs écouteurs sur le même événement",
+                "Favorise la séparation entre la structure HTML et le code JavaScript",
+                "Permet de contrôler la phase de propagation (capture ou bouillonnement)",
+                "Compte les clics même lorsque l'ordinateur est éteint"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "`addEventListener` offre flexibilité, modularité et contrôle précis de la propagation sans polluer le balisage HTML."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "L'objet Event et ses propriétés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que représente le paramètre `event` (souvent abrégé `e`) reçu par une fonction de callback ?",
+              "options": [
+                "Une instance d'objet contenant toutes les métadonnées de l'événement survenu",
+                "Une variable globale contenant l'adresse IP du serveur Web",
+                "Un simple nombre entier correspondant au compteur de clics",
+                "Le code source complet de la page HTML actuelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'objet `event` encapsule toutes les informations sur l'action qui vient d'avoir lieu (coordonnées, cible, touches, etc.)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle propriété de l'objet événement désigne l'élément du DOM le plus profond ayant provoqué l'événement ?",
+              "options": [
+                "event.target",
+                "event.origin",
+                "event.source",
+                "event.sender"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`event.target` fait référence à l'élément précis qui a initié l'événement (l'élément cliqué)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la nuance entre `event.target` et `event.currentTarget` ?",
+              "options": [
+                "`currentTarget` est l'élément auquel l'écouteur est rattaché, alors que `target` est l'élément qui a déclenché l'événement",
+                "`target` est toujours la fenêtre globale `window`, `currentTarget` est l'élément cliqué",
+                "Il n'existe aucune nuance, les deux propriétés pointent toujours vers le même objet",
+                "`currentTarget` ne fonctionne que pour les événements liés à la souris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lors du bouillonnement, `target` est la source initiale du clic, tandis que `currentTarget` est l'élément qui écoute actuellement l'événement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle propriété de l'objet événement renvoie une chaîne indiquant le nom de l'événement (ex: 'click') ?",
+              "options": [
+                "event.type",
+                "event.name",
+                "event.kind",
+                "event.action"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`event.type` contient le nom du type d'événement sous forme de texte (ex: 'click', 'keydown')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans le gestionnaire d'un champ `<input>`, quelle expression permet de récupérer le texte saisi par l'utilisateur via l'événement ?",
+              "options": [
+                "event.target.value",
+                "event.target.textContent",
+                "event.target.innerHTML",
+                "event.target.textValue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sur un champ de saisie HTML, la propriété `.value` de l'élément cible (`event.target.value`) contient le texte saisi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que vaut la propriété booléenne `event.defaultPrevented` si la méthode `preventDefault()` a été appelée sur l'événement ?",
+              "options": ["true", "false", "null", "undefined"],
+              "correctAnswers": [0],
+              "explanation": "`event.defaultPrevented` passe à `true` dès que l'action par défaut a été annulée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle propriété d'un événement permet de mesurer avec précision le moment de son déclenchement en millisecondes ?",
+              "options": [
+                "event.timeStamp",
+                "event.time",
+                "event.clock",
+                "event.date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`event.timeStamp` retourne le temps écoulé depuis le chargement de la page jusqu'au déclenchement de l'événement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle propriété d'un événement de pointeur indique les coordonnées du curseur par rapport à la page entière (y compris le défilement) ?",
+              "options": [
+                "event.pageX et event.pageY",
+                "event.clientX et event.clientY",
+                "event.screenX et event.screenY",
+                "event.offsetX et event.offsetY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`pageX` et `pageY` prennent en compte le défilement (scroll) de la page, contrairement à `clientX` et `clientY`."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une fonction callback classique (non fléchée), à quel élément correspond la valeur du mot-clé `this` ?",
+              "options": [
+                "À `event.currentTarget` (l'élément qui écoute l'événement)",
+                "Toujours au document racine HTML",
+                "À un nombre entier négatif",
+                "À l'élément enfant le plus bas de la page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une fonction standard, `this` est lié à l'élément sur lequel l'écouteur a été enregistré (`event.currentTarget`)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les propriétés suivantes, lesquelles font partie des propriétés standards de l'objet `Event` en JavaScript ?",
+              "options": [
+                "event.target",
+                "event.type",
+                "event.currentTarget",
+                "event.sqlQuery"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "`target`, `type` et `currentTarget` sont des propriétés natives du DOM. `sqlQuery` n'existe pas."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Prévention des comportements par défaut",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle méthode de l'objet `Event` permet d'empêcher l'action par défaut imposée par le navigateur ?",
+              "options": [
+                "event.preventDefault()",
+                "event.stopDefault()",
+                "event.cancelAction()",
+                "event.halt()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`event.preventDefault()` annule le comportement natif associé par défaut à un événement par le navigateur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que provoque l'appel de `event.preventDefault()` lors de la soumission d'un formulaire (`submit`) ?",
+              "options": [
+                "Le formulaire n'est pas envoyé au serveur et la page ne se recharge pas",
+                "Toutes les données du formulaire sont effacées immédiatement",
+                "Le navigateur ferme immédiatement l'onglet en cours",
+                "Le formulaire est envoyé deux fois plus rapidement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cela bloque l'envoi HTTP natif et le rechargement de page, permettant de traiter les données en JavaScript."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le comportement par défaut d'un clic sur un lien `<a href='https://example.com'>` ?",
+              "options": [
+                "Le navigateur navigue vers l'URL indiquée dans l'attribut `href`",
+                "Le navigateur télécharge l'intégralité du site sous forme d'archive zip",
+                "Le texte du lien s'efface automatiquement",
+                "L'ordinateur se déconnecte du réseau Wi-Fi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par défaut, un lien hypertexte conduit le navigateur vers la cible indiquée dans `href`."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si on souhaite vérifier les champs d'un formulaire en JavaScript avant de l'envoyer, quelle est la bonne pratique ?",
+              "options": [
+                "Intercepter `submit`, appeler `preventDefault()`, vérifier les champs, puis envoyer si valide",
+                "Supprimer tous les boutons de soumission du document HTML",
+                "Éteindre la connexion réseau pendant la saisie des données",
+                "Laisser le formulaire s'envoyer sans aucune vérification"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bloquer la soumission par défaut permet de contrôler les entrées côté client et d'afficher d'éventuelles alertes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Est-ce que la méthode `event.preventDefault()` arrête la propagation de l'événement dans le DOM ?",
+              "options": [
+                "Non, elle annule seulement l'action native mais l'événement continue de se propager",
+                "Oui, elle stoppe immédiatement tout bouillonnement vers les éléments parents",
+                "Oui, et elle supprime tous les écouteurs de la page entière",
+                "Non, elle ne fonctionne que si la page ne contient aucune image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`preventDefault()` annule l'action par défaut du navigateur, mais ne bloque pas la propagation (qui requiert `stopPropagation()`)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si on appelle `preventDefault()` sur un événement dont la propriété `cancelable` vaut `false` ?",
+              "options": [
+                "L'appel n'a aucun effet car l'événement ne peut pas être annulé",
+                "Le navigateur plante avec un message d'erreur bloquant",
+                "L'ordinateur redémarre instantanément",
+                "Tous les styles CSS de la page sont désactivés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seuls les événements pour lesquels `event.cancelable === true` peuvent voir leur comportement par défaut annulé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment empêcher la saisie d'un caractère non désiré dans un champ lors de l'événement `keydown` ?",
+              "options": [
+                "En vérifiant la touche dans l'écouteur et en appelant `event.preventDefault()`",
+                "En supprimant le clavier physique de l'utilisateur",
+                "En réinitialisant tout le système d'exploitation",
+                "En changeant la couleur du texte en blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Appeler `preventDefault()` sur `keydown` empêche le navigateur d'insérer le caractère dans le champ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans quel type d'application web moderne utilise-t-on massivement `preventDefault()` sur les formulaires pour communiquer avec des API ?",
+              "options": [
+                "Les applications à page unique (SPA ou Single Page Applications)",
+                "Les sites web statiques sans aucun script",
+                "Les serveurs de bases de données relationnelles purs",
+                "Les pilotes d'imprimante réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans une SPA, on empêche le rechargement de page et on transmet les données de manière asynchrone (ex: avec `fetch`)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel comportement par défaut est annulé lorsqu'on appelle `preventDefault()` sur l'événement `contextmenu` ?",
+              "options": [
+                "L'affichage du menu contextuel standard du navigateur au clic droit",
+                "La fermeture de la fenêtre du navigateur",
+                "Le défilement automatique vers le haut de la page",
+                "Le zoom avant de l'affichage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bloquer `contextmenu` permet de masquer le menu contextuel natif pour afficher un menu sur mesure."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Dans quelles situations courantes est-il pertinent d'utiliser `event.preventDefault()` ?",
+              "options": [
+                "Empêcher le rechargement de la page lors de la soumission d'un formulaire",
+                "Interdire le suivi d'un lien hypertexte pour exécuter une action JavaScript à la place",
+                "Personnaliser le comportement du clic droit en bloquant le menu natif",
+                "Augmenter physiquement la bande passante de la connexion Internet"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "`preventDefault()` s'utilise pour les formulaires, les liens ou les menus contextuels, mais n'a aucun lien avec le matériel réseau."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Propagation des événements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le phénomène de bouillonnement ('event bubbling') dans l'arbre DOM ?",
+              "options": [
+                "L'événement remonte successivement de l'élément cible vers tous ses ancêtres jusqu'au document",
+                "L'événement descend depuis la racine jusqu'à l'élément le plus profond",
+                "Le processeur exécute l'écouteur deux fois pour vérifier son résultat",
+                "Tous les éléments de la page reçoivent l'événement dans un ordre purement aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bouillonnement (bubbling) fait remonter l'événement de l'élément enfant vers son parent, puis grand-parent, jusqu'à `document`."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle méthode de l'objet événement permet d'interrompre la propagation vers les éléments parents ?",
+              "options": [
+                "event.stopPropagation()",
+                "event.haltBubbling()",
+                "event.preventBubble()",
+                "event.breakChain()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`event.stopPropagation()` empêche l'événement de continuer son ascension dans l'arborescence du DOM."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans l'ordre standard W3C de propagation d'un événement, quelle phase se déroule en premier ?",
+              "options": [
+                "La phase de capture (capture phase)",
+                "La phase de bouillonnement (bubbling phase)",
+                "La phase de compilation",
+                "La phase de rendu graphique final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La propagation débute par la descente (capture), atteint la cible (target), puis remonte en bouillonnement (bubbling)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quoi consiste la phase de capture (ou 'trickling') ?",
+              "options": [
+                "L'événement descend depuis l'objet `window` à travers l'arbre DOM jusqu'à la cible",
+                "L'événement est capturé par un serveur distant pour analyse",
+                "Le texte de l'élément est copié automatiquement dans le presse-papier",
+                "L'événement est détruit avant d'avoir pu être traité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pendant la phase de capture, l'événement descend de la racine de l'arborescence vers l'élément ayant déclenché l'action."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Par défaut, lors d'un appel à `element.addEventListener('click', fn)`, dans quelle phase la fonction est-elle invoquée ?",
+              "options": [
+                "Pendant la phase de bouillonnement (bubbling)",
+                "Pendant la phase de capture exclusivement",
+                "Avant même que le clic ne se produise",
+                "Uniquement après la fermeture du navigateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par défaut, le troisième argument vaut `false`, ce qui signifie que l'écouteur est déclenché lors du bouillonnement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment activer l'écoute pendant la phase de capture avec `addEventListener` ?",
+              "options": [
+                "En passant `true` ou `{ capture: true }` comme troisième argument",
+                "En préfixant le nom de l'événement par le mot 'capture'",
+                "En écrivant l'écouteur en lettres majuscules",
+                "Ce n'est pas possible en JavaScript moderne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le troisième paramètre (booléen ou objet d'options) permet d'activer la phase de capture avec `{ capture: true }`."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la 'délégation d'événements' en JavaScript ?",
+              "options": [
+                "Placer un seul écouteur sur un élément parent pour gérer les événements de tous ses enfants",
+                "Déléguer l'exécution du code JavaScript à un serveur web distant",
+                "Transférer la gestion des clics de souris au clavier",
+                "Partager des variables entre plusieurs onglets du navigateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce au bouillonnement, un écouteur sur le parent intercepte les événements de ses enfants (y compris ceux ajoutés dynamiquement)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle méthode arrête la propagation et empêche aussi les autres écouteurs du même élément de s'exécuter ?",
+              "options": [
+                "event.stopImmediatePropagation()",
+                "event.stopPropagation()",
+                "event.preventDefault()",
+                "event.kill()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`stopImmediatePropagation()` bloque non seulement le bouillonnement vers les parents, mais aussi les autres écouteurs sur le même nœud."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si un bouton est dans un `<div>`, et que les deux ont un écouteur de clic en bouillonnement, quel ordre d'exécution est observé ?",
+              "options": [
+                "L'écouteur du bouton s'exécute d'abord, puis celui du `<div>`",
+                "L'écouteur du `<div>` s'exécute toujours en premier",
+                "Un seul des deux s'exécute au hasard",
+                "Les deux s'exécutent simultanément sur deux processeurs différents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En phase de bouillonnement, l'élément cible le plus imbriqué (le bouton) est traité avant son parent (le `<div>`)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels sont les principaux bénéfices de la technique de délégation d'événements ?",
+              "options": [
+                "Elle gère automatiquement les nouveaux éléments enfants créés dynamiquement",
+                "Elle réduit la consommation mémoire en évitant d'attacher des dizaines d'écouteurs",
+                "Elle simplifie la maintenance du code en centralisant la logique",
+                "Elle permet d'exécuter du code sans avoir de navigateur web"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La délégation évite de boucler sur de nombreux enfants et prend en compte les nœuds ajoutés ultérieurement."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Événements liés à la fenêtre et au document",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel événement du document se déclenche dès que l'arbre DOM est prêt, sans attendre les images ou feuilles de style externes ?",
+              "options": ["DOMContentLoaded", "load", "ready", "domready"],
+              "correctAnswers": [0],
+              "explanation": "`DOMContentLoaded` s'active dès que le HTML a été analysé et que le DOM est construit, permettant de manipuler les nœuds plus tôt."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la différence majeure entre `DOMContentLoaded` et l'événement `load` de `window` ?",
+              "options": [
+                "`load` attend le chargement complet de toutes les ressources externes (images, feuilles de style, scripts)",
+                "`DOMContentLoaded` attend le téléchargement des vidéos alors que `load` non",
+                "`load` se produit toujours avant `DOMContentLoaded`",
+                "`DOMContentLoaded` ne fonctionne que sur les ordinateurs Apple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`DOMContentLoaded` n'attend pas les ressources lourdes (images), tandis que `load` se déclenche quand la page est 100% chargée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel événement est émis lorsque l'utilisateur redimensionne la fenêtre du navigateur ?",
+              "options": ["resize", "changeSize", "scale", "reformat"],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'resize' de `window` se déclenche dès que les dimensions de la zone d'affichage changent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel événement se déclenche lorsque l'utilisateur fait défiler le contenu de la page web ?",
+              "options": ["scroll", "wheelmove", "pageDown", "slide"],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'scroll' signale le déplacement des barres de défilement ou de la vue de la page."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sur quel objet JavaScript écoute-t-on habituellement l'événement 'resize' ?",
+              "options": [
+                "window",
+                "document.body",
+                "document.head",
+                "navigator"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'objet global `window` qui gère les dimensions de la fenêtre du navigateur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi est-il recommandé d'exécuter ses scripts interagissant avec le DOM après l'événement `DOMContentLoaded` ?",
+              "options": [
+                "Pour s'assurer que les éléments ciblés existent déjà dans le DOM lors de la sélection",
+                "Pour empêcher le navigateur de mettre en cache les fichiers CSS",
+                "Pour chiffrer le code source avant son affichage",
+                "Pour désactiver automatiquement les publicités"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le DOM n'est pas encore construit, `document.querySelector` ou `getElementById` renvoient `null`."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel événement est émis juste avant que la page ne soit déchargée (lors d'une navigation ou fermeture d'onglet) ?",
+              "options": ["beforeunload", "afterclose", "endpage", "destroy"],
+              "correctAnswers": [0],
+              "explanation": "'beforeunload' permet d'avertir l'utilisateur d'éventuelles modifications non enregistrées avant qu'il ne quitte la page."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel attribut de la balise `<script src='...'>` permet d'exécuter le script automatiquement après la construction du DOM sans bloquer le rendu ?",
+              "options": ["defer", "async_only", "wait", "lazy"],
+              "correctAnswers": [0],
+              "explanation": "L'attribut `defer` télécharge le script en parallèle et attend que le DOM soit prêt pour l'exécuter dans l'ordre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que risque-t-il d'arriver si un script placé dans le `<head>` sans `defer` tente d'accéder à un bouton du `<body>` ?",
+              "options": [
+                "L'élément n'est pas encore chargé et la fonction renvoie une erreur sur un élément nul (`null`)",
+                "Le navigateur télécharge automatiquement le bouton en priorité",
+                "Le style CSS de la page entière est définitivement corrompu",
+                "La machine de l'utilisateur s'éteint"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le script s'exécute immédiatement alors que le `<body>` n'a pas encore été analysé par le parseur HTML."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les événements suivants, lesquels sont couramment attachés à l'objet global `window` ?",
+              "options": ["resize", "scroll", "load", "keyboardPressElement"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "'resize', 'scroll' et 'load' s'écoutent couramment sur `window`. 'keyboardPressElement' n'existe pas."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Minuteurs et événements temporels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle fonction standard exécute une fonction de rappel une seule fois après un délai donné en millisecondes ?",
+              "options": [
+                "setTimeout()",
+                "setInterval()",
+                "setDelay()",
+                "sleep()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`setTimeout(callback, delai)` planifie une unique exécution de la fonction après le délai indiqué."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle fonction permet d'exécuter une fonction de rappel de manière répétée à intervalles réguliers ?",
+              "options": [
+                "setInterval()",
+                "setTimeout()",
+                "repeatFunction()",
+                "setLoop()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`setInterval(callback, intervalle)` appelle la fonction répétitivement à la fréquence spécifiée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle fonction permet d'annuler un compte à rebours planifié avec `setTimeout` ?",
+              "options": [
+                "clearTimeout()",
+                "stopTimeout()",
+                "cancelDelay()",
+                "removeTimeout()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`clearTimeout(id)` annule l'exécution future du minuteur identifié par `id`."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que renvoie la fonction `setInterval` lors de son appel en JavaScript dans le navigateur ?",
+              "options": [
+                "Un identifiant numérique unique permettant de référencer et stopper l'intervalle",
+                "La chaîne de caractères 'INTERVAL_RUNNING'",
+                "Le résultat immédiat de la fonction callback",
+                "Une référence vers le processeur physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'appel renvoie un identifiant (ID) qui doit être conservé pour pouvoir stopper l'intervalle avec `clearInterval(id)`."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle unité de temps est utilisée pour les durées passées aux fonctions `setTimeout` et `setInterval` ?",
+              "options": [
+                "La milliseconde (ms)",
+                "La seconde (s)",
+                "La microseconde (µs)",
+                "La minute (min)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les délais sont toujours exprimés en millisecondes (1 seconde = 1000 millisecondes)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle instruction permet d'interrompre un minuteur répétitif dont l'identifiant est stocké dans la variable `monIntervalle` ?",
+              "options": [
+                "clearInterval(monIntervalle);",
+                "stopInterval(monIntervalle);",
+                "clearTimeout(monIntervalle);",
+                "delete monIntervalle;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`clearInterval()` est la fonction conçue spécifiquement pour arrêter les répétitions de `setInterval`."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle valeur doit-on passer comme second argument à `setTimeout` pour déclencher une action au bout de 2,5 secondes ?",
+              "options": ["2500", "2.5", "25", "250"],
+              "correctAnswers": [0],
+              "explanation": "2,5 secondes correspondent à 2,5 × 1000 = 2500 millisecondes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que provoque l'instruction `setTimeout(action, 0)` en JavaScript ?",
+              "options": [
+                "Elle place `action` dans la file d'attente pour exécution dès que la pile courante est vide",
+                "Elle exécute immédiatement `action` de manière strictement synchrone",
+                "Elle provoque une erreur car le délai minimal légal est de 1 seconde",
+                "Elle met la page en pause indéfiniment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même avec un délai de 0 ms, la fonction est confiée aux Web APIs et ne sera traitée qu'au prochain tour de l'Event Loop."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle méthode native du navigateur est aujourd'hui privilégiée pour réaliser des animations fluides synchronisées avec l'écran ?",
+              "options": [
+                "requestAnimationFrame()",
+                "setInterval()",
+                "setTimeout()",
+                "window.refresh()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`requestAnimationFrame()` synchronise les calculs d'animation avec le taux de rafraîchissement de l'écran (généralement 60 Hz)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant les minuteurs en JavaScript sont correctes ?",
+              "options": [
+                "Ils s'exécutent de façon asynchrone sans bloquer la réactivité de l'interface",
+                "`clearTimeout` prend en argument l'identifiant retourné par `setTimeout`",
+                "Un délai de 1000 millisecondes correspond à une seconde",
+                "`setInterval` s'arrête automatiquement au bout de 5 exécutions"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "`setInterval` tourne indéfiniment tant qu'on ne l'interrompt pas avec `clearInterval`. Les trois autres affirmations sont exactes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Interfaces",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le Document Object Model (DOM) et arborescence",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le sigle DOM dans le développement Web ?",
+              "options": [
+                "Document Object Model",
+                "Data Order Management",
+                "Digital Oriented Machine",
+                "Design Object Maker"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DOM signifie Document Object Model : c'est l'interface de programmation qui représente la page sous forme d'objets."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sous quelle structure de données abstraite le DOM modélise-t-il une page HTML ?",
+              "options": [
+                "Une arborescence (un arbre de nœuds)",
+                "Une table de hachage à une seule dimension",
+                "Une file d'attente FIFO",
+                "Une pile d'entiers naturels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le DOM est structuré comme un arbre hiérarchique où chaque balise, texte ou attribut est un nœud."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel élément constitue la racine de l'arbre des éléments HTML dans le DOM ?",
+              "options": [
+                "L'élément `<html>` (`document.documentElement`)",
+                "La balise `<head>`",
+                "La balise `<p>`",
+                "L'élément `<div>` le plus haut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élément racine englobant tout le document HTML est la balise `<html>`."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un élément situé directement à l'intérieur d'un autre dans la hiérarchie du DOM ?",
+              "options": [
+                "Un élément enfant (child)",
+                "Un élément ancêtre",
+                "Un élément frère (sibling)",
+                "Un élément distant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un élément contenu immédiatement au sein d'un nœud est son nœud enfant (child node)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans le modèle du DOM, comment sont représentés les textes situés à l'intérieur des balises ?",
+              "options": [
+                "Comme des nœuds de type texte (TextNode)",
+                "Comme des variables d'environnement globales",
+                "Comme des fichiers texte séparés sur le disque",
+                "Comme des balises invisibles sans nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le texte à l'intérieur d'un élément est stocké dans un nœud spécifique de type texte, enfant de l'élément balise."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel objet global en JavaScript sert de point d'entrée pour accéder et manipuler le DOM de la page ?",
+              "options": [
+                "document",
+                "window.system",
+                "navigator.dom",
+                "console.root"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'objet `document` est l'instance centrale représentant le document chargé et fournissant les méthodes d'accès au DOM."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on deux éléments qui partagent exactement le même nœud parent direct ?",
+              "options": [
+                "Des éléments frères (siblings)",
+                "Des éléments cousins",
+                "Des éléments dupliqués",
+                "Des éléments clones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En terminologie d'arbre, les nœuds partageant le même parent sont appelés des frères (siblings)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que le DOM est dynamique ?",
+              "options": [
+                "Parce qu'il peut être inspecté, modifié ou restructuré en temps réel par des scripts JavaScript",
+                "Parce qu'il change de couleur selon l'heure de la journée",
+                "Parce qu'il s'efface automatiquement toutes les dix minutes",
+                "Parce qu'il ne s'affiche que sur les appareils connectés en 5G"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le DOM n'est pas figé : JavaScript peut ajouter, modifier ou supprimer des nœuds sans recharger la page."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle propriété d'un élément DOM permet d'accéder directement à son élément parent ?",
+              "options": [
+                "element.parentElement",
+                "element.parentRoot",
+                "element.superNode",
+                "element.ancestor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`parentElement` (ou `parentNode`) renvoie le nœud parent direct de l'élément dans l'arbre DOM."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les propositions suivantes, lesquelles représentent des types de nœuds valides dans l'arbre DOM ?",
+              "options": [
+                "Nœud élément (Element node)",
+                "Nœud texte (Text node)",
+                "Nœud commentaire (Comment node)",
+                "Nœud de transistor matériel"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les éléments HTML, les textes et les commentaires sont des types de nœuds standards du DOM."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Sélection d'éléments dans le DOM",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle méthode permet de cibler un élément unique à partir de son attribut identifiant `id` ?",
+              "options": [
+                "document.getElementById()",
+                "document.findId()",
+                "document.selectId()",
+                "document.queryId()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`getElementById('monId')` renvoie l'élément dont l'attribut `id` correspond exactement à la chaîne fournie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle méthode moderne permet de sélectionner le premier élément correspondant à un sélecteur CSS quelconque ?",
+              "options": [
+                "document.querySelector()",
+                "document.querySelectorAll()",
+                "document.getElement()",
+                "document.findCSS()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`querySelector()` utilise la syntaxe standard des sélecteurs CSS et retourne le premier élément correspondant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle méthode renvoie la liste de tous les éléments correspondant à un sélecteur CSS donné ?",
+              "options": [
+                "document.querySelectorAll()",
+                "document.querySelector()",
+                "document.getElementsBySelector()",
+                "document.getAll()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`querySelectorAll()` renvoie l'ensemble des éléments correspondants sous forme d'une `NodeList`."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le type de l'objet retourné par la méthode `document.querySelectorAll()` ?",
+              "options": [
+                "Une NodeList",
+                "Un tableau JavaScript natif standard (Array)",
+                "Une simple chaîne de caractères JSON",
+                "Un nombre entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`querySelectorAll()` renvoie une collection statique d'éléments appelée `NodeList` (qui possède notamment `.forEach`)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle méthode historique renvoie une collection vivante de tous les éléments portant une classe CSS spécifique ?",
+              "options": [
+                "document.getElementsByClassName()",
+                "document.getClasses()",
+                "document.selectClass()",
+                "document.filterByClass()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`getElementsByClassName()` renvoie une `HTMLCollection` vivante des éléments partageant la classe indiquée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que renvoie `document.getElementById('introuvable')` si aucun élément de la page ne porte cet identifiant ?",
+              "options": [
+                "null",
+                "undefined",
+                "false",
+                "Un élément vide créé automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsqu'aucun élément ne correspond, la méthode renvoie la valeur primitive `null`."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la syntaxe CSS correcte dans `querySelector` pour cibler un élément portant la classe 'bouton' ?",
+              "options": [
+                "document.querySelector('.bouton')",
+                "document.querySelector('#bouton')",
+                "document.querySelector('class=bouton')",
+                "document.querySelector('@bouton')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En CSS, le point `.` préfixe le nom des classes. On écrit donc `.bouton`."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la syntaxe correcte dans `querySelector` pour cibler un bouton ayant l'identifiant 'valider' ?",
+              "options": [
+                "document.querySelector('#valider')",
+                "document.querySelector('.valider')",
+                "document.querySelector('id::valider')",
+                "document.querySelector('&valider')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En CSS, le dièse `#` préfixe les identifiants uniques (`id`)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Peut-on appeler `querySelector` sur un sous-élément précis au lieu de l'objet `document` ?",
+              "options": [
+                "Oui, la recherche sera alors restreinte aux descendants de cet élément",
+                "Non, `querySelector` ne peut être invoqué que sur la racine `document`",
+                "Oui, mais uniquement si l'élément est un tableau `<table>`",
+                "Non, cela supprime l'élément du document"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`monElement.querySelector(...)` permet d'effectuer une recherche ciblée uniquement au sein de la sous-arborescence de `monElement`."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les sélecteurs suivants passés à `querySelector`, lesquels sont syntaxiquement valides en CSS ?",
+              "options": [
+                "#menu-principal",
+                ".item.actif",
+                "ul > li:first-child",
+                "$$[invalid_selector]"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les trois premiers sélecteurs respectent la syntaxe standard CSS (id, classes combinées, sélecteur d'enfant et pseudo-classe)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Modification du contenu et des attributs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle propriété permet de lire ou modifier le contenu textuel brut d'un élément sans interpréter les balises HTML ?",
+              "options": [
+                "element.textContent",
+                "element.innerHTML",
+                "element.rawHTML",
+                "element.contentString"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`textContent` injecte ou extrait du texte pur, en traitant les chevrons comme de simples caractères textuels."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle propriété permet d'insérer du code HTML qui sera automatiquement analysé et transformé en nœuds du DOM ?",
+              "options": [
+                "element.innerHTML",
+                "element.textContent",
+                "element.value",
+                "element.outerText"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`innerHTML` interprète la chaîne comme du balisage HTML et engendre les éléments DOM correspondants."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi l'utilisation de `innerHTML` avec des données non fiables saisies par des utilisateurs présente-t-elle un risque grave ?",
+              "options": [
+                "Elle expose la page à des failles de sécurité de type Cross-Site Scripting (XSS)",
+                "Elle désactive définitivement la carte graphique du client",
+                "Elle empêche le navigateur d'accéder au protocole HTTP",
+                "Elle supprime tous les fichiers de style CSS du serveur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si un texte malveillant contenant des balises `<script>` ou des gestionnaires inline est inséré via `innerHTML`, du code non désiré peut s'exécuter."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle méthode permet de définir ou changer la valeur d'un attribut HTML sur un élément (ex: `href`, `src`) ?",
+              "options": [
+                "element.setAttribute(nom, valeur)",
+                "element.changeAttr(nom, valeur)",
+                "element.writeAttribute(nom, valeur)",
+                "element.putProperty(nom, valeur)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`setAttribute('attribut', 'valeur')` met à jour ou crée l'attribut HTML spécifié sur l'élément."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle méthode permet de lire la valeur textuelle d'un attribut HTML existant sur un élément ?",
+              "options": [
+                "element.getAttribute(nom)",
+                "element.readAttribute(nom)",
+                "element.fetchAttr(nom)",
+                "element.scan(nom)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`getAttribute('nom')` renvoie la valeur de l'attribut demandé sous forme de chaîne, ou `null` s'il n'existe pas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle méthode permet de supprimer totalement un attribut HTML d'un élément du DOM ?",
+              "options": [
+                "element.removeAttribute(nom)",
+                "element.deleteAttribute(nom)",
+                "element.clearAttr(nom)",
+                "element.dropAttribute(nom)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`removeAttribute('nom')` élimine l'attribut spécifié de l'élément."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment accède-t-on en JavaScript aux attributs de données personnalisés au format `data-score='10'` ?",
+              "options": [
+                "element.dataset.score",
+                "element.data.score",
+                "element.customData.score",
+                "element.metadata.score"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'objet `element.dataset` rassemble tous les attributs `data-*` de l'élément sous forme de propriétés en camelCase."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour vider entièrement le contenu textuel d'un paragraphe `p`, quelle instruction est la plus sûre et rapide ?",
+              "options": [
+                "p.textContent = '';",
+                "p.removeDOMTree();",
+                "p.deleteText();",
+                "p.clear();"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Assigner une chaîne vide à `textContent` supprime immédiatement tous les nœuds enfants de manière performante et sécurisée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle méthode permet de vérifier si un élément possède un attribut HTML précis ?",
+              "options": [
+                "element.hasAttribute(nom)",
+                "element.containsAttribute(nom)",
+                "element.isAttrPresent(nom)",
+                "element.checkAttribute(nom)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`hasAttribute('nom')` renvoie un booléen (`true` ou `false`) indiquant la présence de l'attribut."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les propriétés et méthodes suivantes, lesquelles permettent de modifier le contenu ou les attributs d'un élément DOM ?",
+              "options": [
+                "element.textContent",
+                "element.innerHTML",
+                "element.setAttribute()",
+                "element.consoleLogContent()"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "`textContent`, `innerHTML` et `setAttribute()` modifient directement l'élément DOM. `consoleLogContent()` n'existe pas."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Manipulation des styles CSS via le DOM",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle propriété d'un élément DOM permet de modifier directement ses règles CSS en ligne (attribut `style`) ?",
+              "options": [
+                "element.style",
+                "element.css",
+                "element.design",
+                "element.theme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`element.style` est un objet représentant les déclarations de style en ligne de l'élément."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment s'écrit la propriété CSS `background-color` lorsqu'on la modifie via `element.style` en JavaScript ?",
+              "options": [
+                "element.style.backgroundColor",
+                "element.style['background-color-css']",
+                "element.style.colorBackground",
+                "element.style.bg_color"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En JavaScript, les propriétés CSS composées avec des tirets sont transposées en notation camelCase (ex: `backgroundColor`)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel objet d'un élément DOM fournit les méthodes pratiques pour ajouter, supprimer ou basculer des classes CSS ?",
+              "options": [
+                "element.classList",
+                "element.classes",
+                "element.styleClass",
+                "element.classManager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`classList` est une liste de jetons (`DOMTokenList`) offrant des méthodes intuitives pour manipuler les classes CSS."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle méthode de `classList` permet d'ajouter une nouvelle classe CSS sans écraser les classes déjà présentes ?",
+              "options": [
+                "element.classList.add('ma-classe')",
+                "element.classList.append('ma-classe')",
+                "element.classList.push('ma-classe')",
+                "element.classList.insert('ma-classe')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`classList.add()` ajoute une ou plusieurs classes spécifiées sans altérer les classes existantes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle méthode de `classList` ajoute la classe si elle est absente, ou la retire si elle est déjà présente ?",
+              "options": [
+                "element.classList.toggle('active')",
+                "element.classList.switch('active')",
+                "element.classList.swap('active')",
+                "element.classList.invert('active')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`toggle()` bascule l'état de la classe (ajout si absente, retrait si présente) et renvoie un booléen."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle méthode de `classList` permet de vérifier si un élément possède déjà une classe donnée ?",
+              "options": [
+                "element.classList.contains('active')",
+                "element.classList.has('active')",
+                "element.classList.includes('active')",
+                "element.classList.exists('active')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`classList.contains('nom')` renvoie `true` si la classe est présente, `false` sinon."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi est-il généralement recommandé d'utiliser `classList` plutôt que de modifier `element.style` en ligne ?",
+              "options": [
+                "Pour séparer les règles graphiques dans les fichiers CSS et ne manipuler que des états en JavaScript",
+                "Parce que `element.style` est interdit par les normes du W3C",
+                "Parce que `classList` fonctionne même sans connexion Internet",
+                "Parce que modifier `element.style` ralentit la souris de l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piloter des classes CSS garde le design dans les fichiers `.css` et offre une maintenance beaucoup plus claire et modulaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle méthode de `classList` retire une classe CSS d'un élément ?",
+              "options": [
+                "element.classList.remove('invisible')",
+                "element.classList.delete('invisible')",
+                "element.classList.drop('invisible')",
+                "element.classList.clear('invisible')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`classList.remove('nom')` supprime la classe passée en paramètre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle fonction permet de récupérer les styles réellement appliqués et calculés par le navigateur sur un élément ?",
+              "options": [
+                "window.getComputedStyle(element)",
+                "element.getRealStyle()",
+                "document.calculateStyle(element)",
+                "element.computedCSS()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`window.getComputedStyle(element)` renvoie un objet contenant les valeurs calculées finales de toutes les propriétés CSS."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les méthodes suivantes, lesquelles appartiennent nativement à l'objet `element.classList` ?",
+              "options": [
+                "classList.add()",
+                "classList.remove()",
+                "classList.toggle()",
+                "classList.applyColorRule()"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "`add`, `remove`, `toggle`, `contains` et `replace` sont les méthodes de base de `classList`. `applyColorRule` n'existe pas."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Création et suppression dynamique de nœuds",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle méthode de `document` permet d'instancier un nouvel élément HTML (ex: un paragraphe ou une div) ?",
+              "options": [
+                "document.createElement('p')",
+                "document.newElement('p')",
+                "document.generateTag('p')",
+                "document.buildNode('p')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`document.createElement(nomBalise)` crée un nouveau nœud élément en mémoire sans l'attacher encore à l'arbre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle méthode permet d'insérer un nœud enfant à la fin de la liste des enfants d'un élément parent ?",
+              "options": [
+                "parent.appendChild(enfant)",
+                "parent.insertLast(enfant)",
+                "parent.addNode(enfant)",
+                "parent.pushChild(enfant)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`appendChild(noeud)` ajoute le nœud à la fin des enfants de l'élément appelant."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle méthode moderne permet de supprimer un élément du DOM directement sans devoir cibler son parent ?",
+              "options": [
+                "element.remove()",
+                "element.delete()",
+                "element.detach()",
+                "element.destroy()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode standard `element.remove()` retire directement l'élément de son arbre parent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle méthode historique retire un enfant spécifique depuis son élément parent ?",
+              "options": [
+                "parent.removeChild(enfant)",
+                "parent.deleteChild(enfant)",
+                "parent.dropChild(enfant)",
+                "parent.erase(enfant)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`parent.removeChild(enfant)` détache le nœud enfant de son parent et le renvoie en mémoire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que devient un élément créé avec `document.createElement('div')` tant qu'il n'est pas inséré dans l'arbre ?",
+              "options": [
+                "Il existe uniquement en mémoire vive et n'est pas visible sur la page",
+                "Il s'affiche automatiquement en bas de la page à droite",
+                "Il est immédiatement sauvegardé dans un fichier HTML sur le serveur",
+                "Il est détruit par le ramasse-miettes après 1 milliseconde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nœud est un objet JavaScript orphelin en mémoire : il faut l'insérer (ex: via `appendChild`) pour qu'il devienne visible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle méthode permet d'insérer un nouvel élément juste avant un élément de référence donné dans un parent ?",
+              "options": [
+                "parent.insertBefore(nouveauNoeud, noeudReference)",
+                "parent.insertAhead(nouveauNoeud, noeudReference)",
+                "parent.prependBefore(nouveauNoeud)",
+                "parent.placeBefore(nouveauNoeud, noeudReference)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`parent.insertBefore(newChild, refChild)` place le nouveau nœud exactement avant le nœud de référence."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle méthode permet de cloner un nœud existant du DOM ?",
+              "options": [
+                "element.cloneNode(true)",
+                "element.copy()",
+                "element.duplicate()",
+                "document.cloneElement(element)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`element.cloneNode(deep)` crée une copie du nœud. Avec `true`, la copie est profonde (inclut tous les enfants)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle méthode de `document` permet de fabriquer un nœud texte pur ?",
+              "options": [
+                "document.createTextNode('Mon texte')",
+                "document.createText('Mon texte')",
+                "document.buildStringNode('Mon texte')",
+                "document.newText('Mon texte')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`document.createTextNode(texte)` génère un nœud texte sans balise HTML."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle méthode moderne permet d'insérer plusieurs nœuds ou chaînes de texte à la fin d'un élément parent en un seul appel ?",
+              "options": [
+                "parent.append(noeud1, noeud2, 'texte')",
+                "parent.concatChildren(noeud1, noeud2)",
+                "parent.pushAll(noeud1, noeud2)",
+                "parent.batchInsert(noeud1, noeud2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`parent.append()` accepte plusieurs nœuds et chaînes de caractères, contrairement à `appendChild` qui n'accepte qu'un seul nœud."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les méthodes suivantes, lesquelles permettent d'insérer un élément dans l'arbre DOM ?",
+              "options": [
+                "parent.appendChild()",
+                "parent.insertBefore()",
+                "parent.append()",
+                "element.remove()"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "`appendChild`, `insertBefore` et `append` insèrent des nœuds. `element.remove()` supprime le nœud."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Formulaires HTML : balises et champs de saisie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle balise HTML délimite l'ensemble d'un formulaire interactif ?",
+              "options": ["<form>", "<input>", "<fieldset>", "<dialog>"],
+              "correctAnswers": [0],
+              "explanation": "La balise `<form>` englobe l'ensemble des contrôles interactifs et définit les attributs d'envoi (`action`, `method`)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle balise auto-fermante permet de créer la majorité des champs de saisie (texte, mot de passe, case à cocher, etc.) ?",
+              "options": ["<input>", "<field>", "<textarea>", "<select>"],
+              "correctAnswers": [0],
+              "explanation": "La balise `<input>` s'adapte à de nombreux types de saisies via son attribut `type` (text, password, checkbox, etc.)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel type d'input masque visuellement les caractères au fur et à mesure de leur saisie (ex: ronds noirs ou étoiles) ?",
+              "options": [
+                "<input type='password'>",
+                "<input type='hidden'>",
+                "<input type='secret'>",
+                "<input type='mask'>"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`type='password'` occulte visuellement le texte saisi à l'écran pour protéger les mots de passe des regards indiscrets."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle balise HTML est utilisée pour permettre la saisie de textes longs sur plusieurs lignes ?",
+              "options": [
+                "<textarea>",
+                "<input type='multiline'>",
+                "<textblock>",
+                "<paragraph input='true'>"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`<textarea>` crée une zone de texte multiligne avec possibilité d'étirement et de retour à la ligne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle balise HTML permet de concevoir une liste déroulante d'options parmi lesquelles l'utilisateur peut choisir ?",
+              "options": [
+                "<select>",
+                "<dropdown>",
+                "<optionset>",
+                "<menuitem>"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La balise `<select>` combinée à des éléments enfants `<option>` crée un menu déroulant de sélection."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel élément HTML permet d'associer un texte descriptif et accessible à un champ de formulaire ?",
+              "options": ["<label>", "<legend>", "<span>", "<title>"],
+              "correctAnswers": [0],
+              "explanation": "`<label>` associe un libellé textuel à un champ. Cliquer sur le label place le focus sur le champ correspondant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel attribut d'un `<input>` définit la clé (le nom de la variable) transmise au serveur lors de la soumission du formulaire ?",
+              "options": ["name", "id", "value", "key"],
+              "correctAnswers": [0],
+              "explanation": "L'attribut `name` est indispensable pour que la donnée saisie soit transmise sous la forme `nom=valeur`."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel type d'input permet de cocher ou décocher des options indépendantes dans un formulaire ?",
+              "options": [
+                "<input type='checkbox'>",
+                "<input type='radio'>",
+                "<input type='button'>",
+                "<input type='select'>"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`type='checkbox'` crée une case à cocher binaire (coché/non coché), indépendante des autres cases."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel type d'input permet de ne sélectionner qu'une seule option mutuellement exclusive au sein d'un groupe partageant le même `name` ?",
+              "options": [
+                "<input type='radio'>",
+                "<input type='checkbox'>",
+                "<input type='single'>",
+                "<input type='unique'>"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les boutons radio (`type='radio'`) portant le même `name` forment un groupe où une seule option peut être cochée."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels éléments font partie des composants natifs pour construire un formulaire en HTML ?",
+              "options": ["<select>", "<textarea>", "<button>", "<database>"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "`<select>`, `<textarea>` et `<button>` sont des balises HTML standards de formulaire. `<database>` n'existe pas."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Transmission des données : méthode HTTP GET",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où sont transportées les données du formulaire lorsque la méthode HTTP choisie est GET ?",
+              "options": [
+                "Dans l'URL elle-même, à la suite de l'adresse sous forme de query string",
+                "Dans le corps invisible chiffré de la requête réseau",
+                "Sur une clé USB connectée à l'ordinateur",
+                "Dans le fichier de style CSS de la page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En méthode GET, les paires nom=valeur sont concaténées directement dans l'URL après un point d'interrogation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel caractère sépare l'adresse URL de base de la chaîne de paramètres (query string) en méthode GET ?",
+              "options": [
+                "Le point d'interrogation (?)",
+                "L'esperluette (&)",
+                "Le dièse (#)",
+                "Le point-virgule (;)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le point d'interrogation `?` marque le début de la chaîne de paramètres dans une URL."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel symbole est utilisé pour séparer plusieurs paires `nom=valeur` dans l'URL en méthode GET ?",
+              "options": [
+                "L'esperluette (&)",
+                "La virgule (,)",
+                "L'étoile (*)",
+                "Le tiret bas (_)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les paramètres successifs sont séparés par le symbole `&` (ex: `?nom=Dupont&prenom=Jean`)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi la méthode GET ne doit-elle JAMAIS être utilisée pour transmettre un mot de passe ou des données confidentielles ?",
+              "options": [
+                "Les données apparaissent en clair dans l'URL, l'historique du navigateur et les journaux de serveurs",
+                "GET empêche le serveur de lire les informations reçues",
+                "GET efface automatiquement le mot de passe sur le serveur",
+                "GET bloque le fonctionnement du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les URLs sont conservées dans l'historique, les favoris et les logs de serveurs : les données sensibles y seraient exposées."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est un avantage majeur de la méthode GET pour les moteurs de recherche ou les catalogues en ligne ?",
+              "options": [
+                "L'URL résultante peut être enregistrée dans les favoris ou partagée avec d'autres utilisateurs",
+                "GET permet d'envoyer des vidéos de plusieurs gigaoctets",
+                "GET garantit que le site fonctionnera sans connexion Internet",
+                "GET accélère le processeur de l'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une URL avec paramètres GET est reproductible : on peut la copier, la mettre en favori ou l'indexer."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment les espaces et caractères spéciaux sont-ils encodés dans l'URL en méthode GET ?",
+              "options": [
+                "Ils sont encodés en pourcentages (URL encoding / percent-encoding, ex: %20 ou +)",
+                "Ils sont purement et simplement supprimés de la saisie",
+                "Ils provoquent un message d'erreur bloquant",
+                "Ils sont transformés en majuscules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'encodage URL remplace les caractères réservés ou non-ASCII par des séquences en pourcentages (ex: `%20` pour un espace)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la valeur par défaut de l'attribut `method` d'une balise `<form>` si elle n'est pas précisée ?",
+              "options": ["GET", "POST", "PUT", "DELETE"],
+              "correctAnswers": [0],
+              "explanation": "Si l'attribut `method` est omis dans la balise `<form>`, le navigateur utilise la méthode GET par défaut."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle limitation technique caractérise principalement la méthode GET par rapport à POST ?",
+              "options": [
+                "La longueur totale de l'URL est limitée par les serveurs et navigateurs (environ 2000 caractères)",
+                "GET ne fonctionne pas sur les téléphones portables",
+                "GET ne permet d'envoyer que des nombres entiers",
+                "GET ne peut être exécuté qu'une seule fois par jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les URLs ayant une longueur maximale pratique, GET ne permet pas d'envoyer de gros volumes de données ou des fichiers."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une requête HTTP GET doit-elle normalement modifier l'état des données sur le serveur (principe d'idempotence) ?",
+              "options": [
+                "Non, GET est conçue pour consulter ou rechercher des données sans modifier l'état du serveur",
+                "Oui, GET doit toujours effacer une ligne en base de données",
+                "Oui, GET crée systématiquement un nouveau compte utilisateur",
+                "Peu importe, les normes HTTP n'imposent aucune distinction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon les normes HTTP, GET est une méthode dite sûre et idempotente : elle sert à lire des données, pas à créer des effets de bord destructifs."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant la méthode HTTP GET sont exactes ?",
+              "options": [
+                "Les paramètres sont visibles directement dans la barre d'adresse de l'URL",
+                "Les requêtes GET peuvent être mises en cache par le navigateur",
+                "L'URL résultante peut être partagée facilement par lien hypertexte",
+                "Les données sont placées dans le corps (body) de la requête HTTP"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "En GET, les données sont dans l'URL (visibles, partageables et mises en cache). Elles ne sont pas dans le corps de la requête."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Transmission des données : méthode HTTP POST",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où sont placées les données saisies dans un formulaire lors d'une transmission par la méthode HTTP POST ?",
+              "options": [
+                "Dans le corps (body ou payload) de la requête HTTP",
+                "Dans la barre d'adresse URL visible par tous",
+                "Dans le titre de l'onglet du navigateur",
+                "Dans les commentaires du fichier HTML"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En méthode POST, les données sont transportées dans le corps de la requête HTTP, sans être concaténées à l'URL."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Les données envoyées par une requête POST apparaissent-elles dans la barre d'adresse du navigateur ?",
+              "options": [
+                "Non, l'URL reste propre et ne dévoile pas les données transmises",
+                "Oui, elles s'affichent toujours après un point d'interrogation",
+                "Oui, mais uniquement si la connexion est en Wi-Fi",
+                "Uniquement si l'utilisateur appuie sur la touche Échap"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à GET, POST n'insère aucun paramètre dans l'URL."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la méthode POST est-elle obligatoire pour soumettre des formulaires de connexion avec mot de passe ?",
+              "options": [
+                "Elle évite que le mot de passe ne soit stocké dans l'historique de navigation ou visible à l'écran",
+                "Elle permet de calculer le mot de passe automatiquement sans l'utilisateur",
+                "Elle compresse le mot de passe pour réduire le prix de l'abonnement Internet",
+                "Elle empêche le serveur de vérifier si le compte existe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne pas afficher les données dans l'URL protège la confidentialité élémentaire de la saisie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que demande souvent le navigateur lorsque l'utilisateur actualise une page résultant d'une soumission POST ?",
+              "options": [
+                "Une boîte de dialogue avertissant que les données du formulaire vont être renvoyées",
+                "L'arrêt définitif de l'ordinateur",
+                "La saisie du mot de passe de la box Internet",
+                "Le téléchargement d'un nouveau système d'exploitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour éviter de reproduire une action non idempotente (comme payer deux fois), le navigateur demande confirmation du renvoi."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Peut-on téléverser des fichiers volumineux (images, vidéos, PDF) via la méthode HTTP POST ?",
+              "options": [
+                "Oui, le corps de la requête POST n'a pas de limite stricte imposée par le protocole HTTP",
+                "Non, le protocole HTTP interdit l'envoi de fichiers",
+                "Non, seul le protocole Bluetooth peut transmettre des images",
+                "Oui, mais uniquement des fichiers d'une taille inférieure à 5 octets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "POST permet de transmettre des charges utiles de grande taille dans le corps de la requête."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel attribut de la balise `<form>` doit obligatoirement valoir 'POST' pour utiliser ce mode d'envoi ?",
+              "options": [
+                "method='POST'",
+                "action='POST'",
+                "type='POST'",
+                "protocol='POST'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'attribut `method='POST'` (ou en minuscules) qui spécifie la méthode HTTP à employer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel en-tête HTTP (header) informe le serveur du format des données envoyées dans le corps de la requête ?",
+              "options": [
+                "Content-Type",
+                "User-Agent",
+                "Accept-Language",
+                "Host"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`Content-Type` indique le type MIME des données transmises (ex: `application/x-www-form-urlencoded` ou `multipart/form-data`)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel encodage de formulaire (`enctype`) est indispensable pour téléverser un fichier avec `<input type='file'>` en POST ?",
+              "options": [
+                "multipart/form-data",
+                "application/x-www-form-urlencoded",
+                "text/plain",
+                "application/zip"
+              ],
+              "correctAnswers": [0],
+              "explanation": "`enctype='multipart/form-data'` découpe la requête en segments pour transmettre les flux binaires de fichiers."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La méthode POST garantit-elle à elle seule le chiffrement des données qui transitent sur le réseau physique ?",
+              "options": [
+                "Non, seul le protocole HTTPS (TLS) chiffre les données pour empêcher l'interception sur le réseau",
+                "Oui, POST crypte toujours les données de manière militaire",
+                "Oui, aucun pirate ne peut intercepter une requête POST",
+                "Non, POST convertit automatiquement les données en langage assembleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "POST n'affiche pas les données dans l'URL, mais en simple HTTP elles circulent en clair dans le body. HTTPS est obligatoire pour le chiffrement."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels sont les atouts clés de la méthode HTTP POST par rapport à la méthode GET ?",
+              "options": [
+                "Les données sensibles ne sont pas exposées dans l'URL ni dans l'historique",
+                "Capacité à transmettre des volumes importants de données et des fichiers",
+                "Adaptée aux opérations de modification d'état (création de compte, paiement)",
+                "Possibilité de créer un favori de navigateur conservant les données saisies"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "POST n'expose pas les données dans l'URL et supporte de gros volumes, mais ne permet pas de marquer l'état en favori."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Cycle requête-réponse HTTP et architecture Web",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel protocole de communication de la couche application régit les échanges entre le navigateur client et le serveur web ?",
+              "options": [
+                "HTTP (HyperText Transfer Protocol)",
+                "FTP (File Transfer Protocol)",
+                "SSH (Secure Shell)",
+                "SMTP (Simple Mail Transfer Protocol)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HTTP est le protocole fondamental du Web permettant au client de demander et recevoir des ressources web."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans le modèle client-serveur du Web, quel est le rôle principal du navigateur ?",
+              "options": [
+                "Envoyer des requêtes au serveur, recevoir les ressources et restituer l'interface graphique",
+                "Héberger en permanence les bases de données de tous les sites mondiaux",
+                "Distribuer les adresses IP publiques sur le réseau Internet",
+                "Routage physique des paquets réseau à travers les câbles sous-marins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le navigateur agit comme client : il émet des requêtes HTTP, reçoit du HTML/CSS/JS et assure le rendu visuel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le code d'état HTTP 200 renvoyé par un serveur web ?",
+              "options": [
+                "Succès (OK) : la requête a été traitée avec succès et la ressource est renvoyée",
+                "Erreur de syntaxe dans la demande du client",
+                "Page introuvable sur le serveur",
+                "Accès strictement interdit par mot de passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le code 200 OK indique que la requête a été reçue, comprise et traitée avec succès."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le code d'état HTTP 404 ?",
+              "options": [
+                "Not Found : la ressource demandée n'existe pas ou n'a pas été trouvée sur le serveur",
+                "Internal Server Error : le serveur a planté lors de l'exécution du script",
+                "Forbidden : l'utilisateur n'a pas les droits pour accéder au fichier",
+                "Created : la nouvelle ressource a bien été créée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le code 404 Not Found signale que le serveur n'a trouvé aucune ressource correspondant à l'URL demandée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle classe de codes de statut HTTP (série 500) signale une anomalie ou un échec côté serveur ?",
+              "options": [
+                "Les codes 5xx (ex: 500 Internal Server Error)",
+                "Les codes 2xx (ex: 200 OK)",
+                "Les codes 3xx (ex: 301 Redirect)",
+                "Les codes 1xx (ex: 100 Continue)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les codes 5xx indiquent que le serveur a rencontré une erreur ou est incapable d'exécuter la requête."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel code de statut HTTP indique que l'accès à la ressource est formellement refusé (Forbidden) ?",
+              "options": ["403", "200", "302", "502"],
+              "correctAnswers": [0],
+              "explanation": "403 Forbidden indique que le serveur a compris la requête mais refuse catégoriquement de l'autoriser."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De quelles deux parties principales se compose généralement une requête ou réponse HTTP ?",
+              "options": [
+                "Les en-têtes (headers) et le corps (body)",
+                "Le nom d'utilisateur et le mot de passe",
+                "Le code binaire et le fichier zip",
+                "Le style CSS et la police de caractères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un message HTTP comporte une section d'en-têtes (métadonnées) suivie éventuellement d'un corps de contenu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle version sécurisée de HTTP chiffre les communications de bout en bout grâce à TLS/SSL ?",
+              "options": ["HTTPS", "HTTP2_RAW", "S-HTML", "SECURE-IP"],
+              "correctAnswers": [0],
+              "explanation": "HTTPS applique le protocole de chiffrement TLS sur HTTP pour garantir confidentialité et intégrité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel code de statut HTTP de la famille 3xx indique une redirection permanente vers une nouvelle URL ?",
+              "options": [
+                "301 Moved Permanently",
+                "400 Bad Request",
+                "204 No Content",
+                "503 Service Unavailable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le code 301 informe le navigateur et les moteurs de recherche que la page a déménagé de façon définitive."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Parmi les codes de statut HTTP suivants, lesquels sont conformes aux normes et couramment rencontrés ?",
+              "options": [
+                "200 OK",
+                "404 Not Found",
+                "500 Internal Server Error",
+                "999 Terminal Crash"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "200, 404 et 500 sont des codes de statut HTTP officiels. Le code 999 n'existe pas dans la norme RFC."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Validation des données et bonnes pratiques d'ergonomie et sécurité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pourquoi ne doit-on JAMAIS se fier uniquement à la validation des données effectuée côté client en JavaScript ?",
+              "options": [
+                "Un utilisateur malveillant peut facilement désactiver JavaScript ou forger directement des requêtes HTTP",
+                "Le navigateur efface automatiquement les données validées en JavaScript",
+                "Les scripts clients ne fonctionnent que le matin",
+                "La validation en JavaScript ralentit le disque dur du serveur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le client est sous le contrôle total de l'utilisateur : la validation côté serveur est strictement obligatoire pour la sécurité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel attribut HTML5 permet de rendre obligatoire le remplissage d'un champ avant l'envoi du formulaire ?",
+              "options": ["required", "mandatory", "notnull", "obligatory"],
+              "correctAnswers": [0],
+              "explanation": "L'attribut booléen `required` empêche la soumission du formulaire par le navigateur tant que le champ est vide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel attribut HTML5 permet de restreindre la saisie d'un champ selon une expression régulière (Regex) ?",
+              "options": ["pattern", "regex", "validate", "filter"],
+              "correctAnswers": [0],
+              "explanation": "L'attribut `pattern` accepte une expression régulière que la valeur saisie doit impérativement respecter."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'objectif premier de la validation des données côté client pour l'utilisateur ?",
+              "options": [
+                "Améliorer l'expérience utilisateur (UX) en fournissant un retour immédiat sans attendre le serveur",
+                "Remplacer complètement la base de données du serveur",
+                "Bloquer définitivement toute attaque informatique sur le serveur",
+                "Empêcher l'ordinateur de consommer de la batterie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La validation client guide l'utilisateur immédiatement avec ergonomie et fluidité, mais ne remplace pas la sécurité serveur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'attaque de sécurité consistant à injecter du code JavaScript malveillant interprété par d'autres visiteurs ?",
+              "options": [
+                "Cross-Site Scripting (XSS)",
+                "Déni de service distribué (DDoS)",
+                "Attaque par force brute",
+                "Usurpation d'adresse MAC"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La faille XSS survient lorsque des données non assainies fournies par un utilisateur sont injectées dans le DOM et exécutées comme du script."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi est-il primordial d'échapper les caractères comme `<`, `>` et `&` avant d'afficher du contenu saisi par un utilisateur ?",
+              "options": [
+                "Pour empêcher le navigateur d'interpréter ce texte comme des balises HTML exécutables",
+                "Pour réduire la taille du fichier sur le disque dur",
+                "Pour traduire automatiquement le texte en anglais",
+                "Pour obliger l'utilisateur à retaper son mot de passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échappement transforme par exemple `<` en `&lt;`, neutralisant toute interprétation de balise non désirée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En termes d'accessibilité numérique (a11y), pourquoi chaque champ de formulaire doit-il avoir un `<label>` associé ?",
+              "options": [
+                "Pour que les lecteurs d'écran pour malvoyants puissent annoncer clairement la fonction du champ",
+                "Pour que la page web se charge deux fois plus vite",
+                "Pour forcer l'utilisateur à utiliser une souris",
+                "Pour interdire l'utilisation du clavier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les technologies d'assistance vocale lisent le label associé pour indiquer à l'utilisateur ce qui est attendu dans le champ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment relie-t-on formellement une balise `<label>` à un champ `<input id='courriel'>` ?",
+              "options": [
+                "<label for='courriel'>Adresse e-mail :</label>",
+                "<label target='courriel'>Adresse e-mail :</label>",
+                "<label link='courriel'>Adresse e-mail :</label>",
+                "<label id='courriel'>Adresse e-mail :</label>"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attribut `for` du label doit correspondre rigoureusement à l'attribut `id` de l'élément d'entrée visé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle règle d'ergonomie essentielle permet d'éviter la frustration de l'utilisateur en cas d'erreur de saisie ?",
+              "options": [
+                "Conserver les données valides déjà tapées et signaler précisément le champ en erreur avec une explication claire",
+                "Vider entièrement le formulaire et forcer à tout recommencer depuis le début",
+                "Fermer la fenêtre du navigateur sans donner d'explication",
+                "Afficher uniquement un code d'erreur numérique sans aucun texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un formulaire ergonomique préserve les saisies correctes et cible explicitement l'anomalie avec bienveillance."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles sont les bonnes pratiques recommandées lors de la conception d'un formulaire interactif sécurisé et ergonomique ?",
+              "options": [
+                "Valider systématiquement les données sur le serveur en plus de la validation client",
+                "Associer des balises `<label>` explicites à chaque champ de saisie",
+                "Fournir des messages d'aide et d'erreur clairs et compréhensibles",
+                "Transmettre les identifiants et mots de passe en clair dans l'URL avec GET"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Valider sur le serveur, associer des labels et guider l'utilisateur sont de bonnes pratiques. Transmettre des secrets par GET est une grave faille."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

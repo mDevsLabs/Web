@@ -1,0 +1,2258 @@
+{
+  "id": "5e-physique-chimie-08",
+  "year": "5e",
+  "subject": "physique-chimie",
+  "title": "Mouvement et forces",
+  "order": 8,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Décrire un mouvement",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour décrire un mouvement, on a besoin de…",
+              "options": [
+                "un repère (point de référence)",
+                "un thermomètre",
+                "un objet dont on suit la position",
+                "une balance"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La trajectoire d'un objet est…",
+              "options": [
+                "l'ensemble des positions successives qu'il occupe",
+                "sa masse en kilogrammes",
+                "sa température",
+                "sa couleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un mouvement rectiligne a une trajectoire…",
+              "options": [
+                "en ligne droite",
+                "en cercle",
+                "en zigzag aléatoire sans forme",
+                "toujours verticale"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un cycliste parcourt 300 m en 60 s. Sa vitesse moyenne vaut…",
+              "options": ["5 m/s", "360 m/s", "0,2 m/s", "60 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour calculer une vitesse moyenne, on utilise…",
+              "options": [
+                "distance parcourue ÷ durée du parcours",
+                "durée ÷ distance",
+                "masse ÷ volume",
+                "distance × durée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "L'unité SI de vitesse est…",
+              "options": ["m/s", "kg", "N", "L"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si un objet ne change pas de position par rapport à un repère, il est…",
+              "options": [
+                "immobile pour ce repère",
+                "obligatoirement en chute libre",
+                "toujours accéléré",
+                "obligatoirement lancé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un train parcourt 120 km en 2 h. Sa vitesse moyenne vaut…",
+              "options": ["60 km/h", "240 km/h", "30 km/h", "122 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un mouvement curviligne suit une trajectoire…",
+              "options": [
+                "courbe",
+                "strictement rectiligne",
+                "sans aucun déplacement",
+                "toujours horizontale"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un piéton fait 400 m en 5 min (300 s). Sa vitesse moyenne vaut environ…",
+              "options": ["1,3 m/s", "80 m/s", "0,013 m/s", "2000 m/s"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un mouvement est dit uniforme lorsque…",
+              "options": [
+                "la vitesse reste constante",
+                "la vitesse augmente sans cesse",
+                "l'objet ne se déplace pas",
+                "la vitesse ne change pas au cours du temps"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une voiture parcourt 150 m en 30 s. Vitesse moyenne ?",
+              "options": ["5 m/s", "4500 m/s", "0,2 m/s", "180 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le repère sert à…",
+              "options": [
+                "situer la position de l'objet",
+                "mesurer la masse",
+                "déterminer le pH",
+                "mesurer le volume d'un liquide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur un schéma, la flèche qui indique le sens du déplacement s'appelle souvent…",
+              "options": [
+                "un vecteur vitesse (représentation)",
+                "un thermomètre",
+                "un filtre",
+                "un réactif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "2 km en 0,5 h donnent une vitesse moyenne de…",
+              "options": ["4 km/h", "1 km/h", "0,25 km/h", "1000 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un objet en rotation autour d'un axe a une trajectoire…",
+              "options": [
+                "circulaire (ou curviligne)",
+                "toujours rectiligne",
+                "sans forme définie",
+                "toujours verticale"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "90 m en 15 s : vitesse moyenne ?",
+              "options": ["6 m/s", "1350 m/s", "0,17 m/s", "105 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Observer un mouvement depuis un trottoir fixe ou depuis un train en marche change…",
+              "options": [
+                "la description du mouvement (repère différent)",
+                "la masse de l'objet",
+                "le nombre d'atomes",
+                "la couleur de l'objet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un skieur descend une piste : trajectoire le plus souvent…",
+              "options": [
+                "curviligne",
+                "rectiligne sur toute la montagne",
+                "sans déplacement",
+                "toujours un point fixe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "750 m en 250 s : vitesse moyenne ?",
+              "options": ["3 m/s", "187500 m/s", "0,33 m/s", "1000 m/s"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La distance parcourue et la durée sont…",
+              "options": [
+                "des grandeurs utiles pour la vitesse moyenne",
+                "toujours exprimées en newtons",
+                "des grandeurs qui se mesurent avec un voltmètre",
+                "liées par v = d ÷ t (vitesse moyenne)"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un coureur fait 100 m en 20 s. Vitesse moyenne ?",
+              "options": ["5 m/s", "2000 m/s", "0,05 m/s", "120 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un mouvement peut être décrit comme lent ou rapide en comparant…",
+              "options": [
+                "les vitesses",
+                "les goûts",
+                "les odeurs",
+                "les saveurs"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "45 km en 1,5 h : vitesse moyenne ?",
+              "options": ["30 km/h", "67,5 km/h", "15 km/h", "46,5 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La trajectoire d'une balle lancée en l'air (sans vent) est en général…",
+              "options": [
+                "curviligne",
+                "un segment horizontal infini",
+                "un point fixe",
+                "toujours verticale sans courbure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "240 m en 40 s : vitesse moyenne ?",
+              "options": ["6 m/s", "9600 m/s", "0,17 m/s", "280 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour un même trajet, doubler la durée divise la vitesse moyenne par…",
+              "options": ["2", "4", "10", "1 (inchangée)"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un satellite décrit une orbite : son mouvement par rapport à la Terre est…",
+              "options": [
+                "un mouvement (trajectoire)",
+                "une absence totale de déplacement",
+                "une masse sans vitesse",
+                "un phénomène uniquement chimique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1,2 km en 20 min (1/3 h) : vitesse moyenne ?",
+              "options": ["3,6 km/h", "24 km/h", "0,6 km/h", "1,22 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un chronomètre sert surtout à mesurer…",
+              "options": [
+                "une durée",
+                "une masse",
+                "un volume",
+                "une température de fusion"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Deux objets peuvent paraître immobiles l'un par rapport à l'autre si…",
+              "options": [
+                "ils ont la même vitesse (même sens)",
+                "l'un est dans le vide absolu sans repère",
+                "ils se déplacent ensemble à la même vitesse",
+                "l'un est toujours à température 0 °C"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "560 m en 80 s : vitesse moyenne ?",
+              "options": ["7 m/s", "44800 m/s", "0,14 m/s", "640 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le mouvement d'une passagère assise dans un TGV par rapport au sol est…",
+              "options": [
+                "le même que celui du train (approximation)",
+                "toujours nul en toute circonstance",
+                "impossible à décrire",
+                "toujours vertical vers le haut"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "18 km en 36 min (0,6 h) : vitesse moyenne ?",
+              "options": ["30 km/h", "648 km/h", "0,5 km/h", "54 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une trajectoire en « S » est…",
+              "options": [
+                "curviligne",
+                "rectiligne",
+                "un seul point",
+                "sans longueur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "200 m en 50 s : vitesse moyenne ?",
+              "options": ["4 m/s", "10000 m/s", "0,25 m/s", "250 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La vitesse moyenne ne dit pas forcément…",
+              "options": [
+                "la vitesse instantanée à chaque instant",
+                "une distance totale",
+                "un temps total",
+                "un quotient distance/durée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un objet qui revient au point de départ après un trajet a parcouru une distance…",
+              "options": [
+                "non nulle (longueur du chemin)",
+                "toujours nulle",
+                "égale à la masse",
+                "mesurée en kg"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "3,5 km en 70 min (7/6 h environ 1,167 h) — 3,5/1,167 ≈ 3 km/h ? Recalcul : 70 min = 7/6 h, 3,5 ÷ (7/6) = 3 km/h. Question : 3,5 km en 70 min donne environ…",
+              "options": ["3 km/h", "35 km/h", "0,5 km/h", "245 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour convertir une durée de 2 min en secondes, on obtient…",
+              "options": ["120 s", "2 s", "200 s", "0,02 s"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un graphique distance-temps (d en fonction de t) peut montrer…",
+              "options": [
+                "comment la distance augmente avec le temps",
+                "la couleur du ciel",
+                "un mouvement plus ou moins rapide (pente)",
+                "la masse molaire"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "125 m en 25 s : vitesse moyenne ?",
+              "options": ["5 m/s", "3125 m/s", "0,2 m/s", "150 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un mouvement de va-et-vient sur une ligne droite reste…",
+              "options": [
+                "rectiligne (trajectoire)",
+                "forcément circulaire",
+                "sans trajectoire",
+                "toujours à vitesse nulle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "6 km en 2 h : vitesse moyenne ?",
+              "options": ["3 km/h", "12 km/h", "0,33 km/h", "8 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La position d'un objet indique…",
+              "options": [
+                "où il se trouve par rapport au repère",
+                "combien il pèse",
+                "son âge",
+                "sa composition chimique exacte"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "480 m en 2 min (120 s) : vitesse moyenne ?",
+              "options": ["4 m/s", "960 m/s", "0,25 m/s", "240 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un avion en croisière parcourt des kilomètres : on parle de…",
+              "options": [
+                "grandes distances et longues durées",
+                "distances nulles",
+                "durée nulle",
+                "vitesse toujours nulle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "27 m en 9 s : vitesse moyenne ?",
+              "options": ["3 m/s", "243 m/s", "0,33 m/s", "36 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si la distance double à durée égale, la vitesse moyenne…",
+              "options": [
+                "double",
+                "est divisée par 2",
+                "reste nulle",
+                "diminue de moitié"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un pendule oscille : trajectoire typique…",
+              "options": [
+                "curviligne (arc)",
+                "rectiligne horizontale infinie",
+                "un point unique",
+                "sans mouvement"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour comparer deux mouvements sur la même distance, celui qui met le moins de temps est…",
+              "options": [
+                "le plus rapide (vitesse moyenne plus grande)",
+                "le plus lent",
+                "celui avec la plus courte durée",
+                "celui avec la plus petite vitesse moyenne"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1 km en 5 min (300 s) : vitesse moyenne ?",
+              "options": ["≈ 3,3 m/s", "5000 m/s", "0,003 m/s", "1500 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un objet lancé roule puis s'arrête : sa vitesse moyenne sur tout le trajet…",
+              "options": [
+                "est distance totale ÷ durée totale",
+                "est toujours la vitesse du départ",
+                "est infinie",
+                "ne dépend pas de la distance"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "84 km en 1 h 24 min (1,4 h) : vitesse moyenne ?",
+              "options": ["60 km/h", "117,6 km/h", "1 km/h", "85,4 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le mouvement de la Lune autour de la Terre est…",
+              "options": [
+                "un mouvement périodique",
+                "absence de trajectoire",
+                "un changement de saveur",
+                "une réaction acide-base"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "160 m en 20 s : vitesse moyenne ?",
+              "options": ["8 m/s", "3200 m/s", "0,125 m/s", "180 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un repère fixé au sol d'un stade sert à suivre…",
+              "options": [
+                "un coureur sur la piste",
+                "la masse de l'air",
+                "le pH de la piste",
+                "la couleur des chaussures uniquement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "0,5 km en 10 min (1/6 h) : vitesse moyenne ?",
+              "options": ["3 km/h", "5 km/h", "0,05 km/h", "30 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Trajectoire rectiligne + vitesse constante = mouvement…",
+              "options": [
+                "rectiligne uniforme",
+                "sans mouvement",
+                "toujours circulaire",
+                "impossible"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "35 m en 7 s : vitesse moyenne ?",
+              "options": ["5 m/s", "245 m/s", "0,2 m/s", "42 m/s"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La description d'un mouvement dépend…",
+              "options": [
+                "du repère choisi",
+                "du goût du chocolat",
+                "de l'observateur / du référentiel",
+                "de la couleur du papier"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "900 m en 3 min (180 s) : vitesse moyenne ?",
+              "options": ["5 m/s", "2700 m/s", "0,003 m/s", "903 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un bus fait des arrêts : sa vitesse moyenne sur le trajet complet…",
+              "options": [
+                "est plus faible que s'il roulait sans s'arrêter (à même distance)",
+                "est toujours nulle",
+                "ne dépend pas des arrêts",
+                "égale toujours 130 km/h"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "24 km en 48 min (0,8 h) : vitesse moyenne ?",
+              "options": ["30 km/h", "1152 km/h", "0,5 km/h", "72 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un objet en chute verticale (sans tenir compte de l'air) a une trajectoire…",
+              "options": [
+                "rectiligne verticale",
+                "circulaire",
+                "sans déplacement",
+                "horizontale seulement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "66 m en 11 s : vitesse moyenne ?",
+              "options": ["6 m/s", "726 m/s", "0,17 m/s", "77 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "km/h et m/s mesurent la même grandeur physique :…",
+              "options": ["la vitesse", "la masse", "la force", "le volume"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "10 km en 20 min (1/3 h) : vitesse moyenne ?",
+              "options": ["30 km/h", "200 km/h", "0,5 km/h", "10,3 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur une route droite, une voiture garde le cap : trajectoire…",
+              "options": [
+                "rectiligne",
+                "obligatoirement circulaire",
+                "un point",
+                "sans longueur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "420 m en 140 s : vitesse moyenne ?",
+              "options": ["3 m/s", "58800 m/s", "0,33 m/s", "560 m/s"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un mouvement accéléré (vitesse qui augmente) n'est pas…",
+              "options": [
+                "un mouvement uniforme",
+                "un mouvement où la vitesse varie",
+                "un mouvement avec changement de vitesse",
+                "un mouvement toujours à vitesse constante"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "50 m en 10 s : vitesse moyenne ?",
+              "options": ["5 m/s", "500 m/s", "0,2 m/s", "60 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un enregistrement vidéo à cadence fixe aide à étudier…",
+              "options": [
+                "un mouvement dans le temps",
+                "la masse atomique",
+                "le numéro de groupe",
+                "le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "5 km en 25 min (25/60 h ≈ 0,417 h) : vitesse moyenne ?",
+              "options": ["12 km/h", "125 km/h", "0,2 km/h", "30 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La trace laissée par un avion de chasse dans le ciel (sans vent) suit…",
+              "options": [
+                "sa trajectoire",
+                "sa masse",
+                "son volume",
+                "sa température de fusion"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "72 m en 18 s : vitesse moyenne ?",
+              "options": ["4 m/s", "1296 m/s", "0,25 m/s", "90 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Parcourir 1 m en 1 s équivaut à une vitesse moyenne de…",
+              "options": ["1 m/s", "1 km/h exactement", "0,001 m/s", "100 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "32 km en 40 min (2/3 h) : vitesse moyenne ?",
+              "options": ["48 km/h", "1280 km/h", "0,8 km/h", "72 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un tour complet sur une piste circulaire : trajectoire…",
+              "options": [
+                "circulaire (fermée)",
+                "rectiligne infinie",
+                "un seul point",
+                "sans courbure"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1000 m en 200 s : vitesse moyenne ?",
+              "options": ["5 m/s", "200000 m/s", "0,005 m/s", "1200 m/s"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La vitesse moyenne sur un parcours en côte puis en descente (même distance aller-retour)…",
+              "options": [
+                "tient compte de toute la distance et de toute la durée",
+                "ignore la durée",
+                "est toujours la vitesse maximale",
+                "se calcule par distance totale ÷ durée totale"
+              ],
+              "correctAnswers": [0, 3]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "14 km en 28 min (28/60 h) ≈ 30 km/h. Calcul : 14/(28/60)=30. Vitesse ?",
+              "options": ["30 km/h", "392 km/h", "0,5 km/h", "42 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un mobile qui ralentit jusqu'à l'arrêt a une vitesse qui…",
+              "options": [
+                "diminue",
+                "reste constante forcément",
+                "augmente toujours",
+                "devient une masse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "95 m en 19 s : vitesse moyenne ?",
+              "options": ["5 m/s", "1805 m/s", "0,2 m/s", "114 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Décrire un mouvement, c'est préciser trajectoire et…",
+              "options": [
+                "évolution de la vitesse (rapide/lent, uniforme ou non)",
+                "couleur des yeux",
+                "numéro de téléphone",
+                "saveur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "8 km en 16 min (16/60 h) : vitesse moyenne ?",
+              "options": ["30 km/h", "128 km/h", "0,5 km/h", "24 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un mètre ruban peut servir à mesurer…",
+              "options": [
+                "une distance",
+                "une force en newtons directement",
+                "un courant électrique",
+                "un pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "300 m en 1 min (60 s) : vitesse moyenne ?",
+              "options": ["5 m/s", "18000 m/s", "0,003 m/s", "360 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux voitures sur la même route à la même vitesse moyenne ont des trajectoires…",
+              "options": [
+                "parallèles si même sens (idée simple)",
+                "obligatoirement circulaires",
+                "sans rapport",
+                "toujours opposées"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "1,5 km en 30 min (0,5 h) : vitesse moyenne ?",
+              "options": ["3 km/h", "45 km/h", "0,05 km/h", "1,8 km/h"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour un même objet, changer de repère peut faire paraître le mouvement…",
+              "options": [
+                "différent",
+                "identique dans tous les cas sans exception",
+                "plus rapide ou plus lent selon le repère",
+                "toujours immobile"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "64 m en 16 s : vitesse moyenne ?",
+              "options": ["4 m/s", "1024 m/s", "0,25 m/s", "80 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La Terre tourne : pour un observateur dans l'espace lointain, un habitant à l'équateur…",
+              "options": [
+                "est en mouvement",
+                "n'a jamais de trajectoire",
+                "n'a pas de vitesse",
+                "est un liquide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "20 km en 50 min (5/6 h) : vitesse moyenne ?",
+              "options": ["24 km/h", "1000 km/h", "0,4 km/h", "70 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un objet qui tourne sur lui-même peut avoir un centre fixe : trajectoire des points du bord…",
+              "options": [
+                "circulaire",
+                "rectiligne infinie",
+                "absente",
+                "toujours verticale uniquement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "110 m en 22 s : vitesse moyenne ?",
+              "options": ["5 m/s", "2420 m/s", "0,2 m/s", "132 m/s"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La distance parcourue s'exprime souvent en…",
+              "options": [
+                "m ou km",
+                "newtons",
+                "degrés Celsius uniquement",
+                "mol"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "7,2 km en 1 h 12 min (1,2 h) : vitesse moyenne ?",
+              "options": ["6 km/h", "8,64 km/h", "1 km/h", "72 km/h"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un mouvement périodique se répète…",
+              "options": [
+                "régulièrement dans le temps",
+                "une seule fois sans retour",
+                "sans trajectoire",
+                "uniquement en chimie"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Synthèse : vitesse moyenne = distance ÷ durée. 180 m en 45 s donne…",
+              "options": ["4 m/s", "8100 m/s", "0,25 m/s", "225 m/s"],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Interactions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une action de contact nécessite…",
+              "options": [
+                "que les objets se touchent",
+                "une distance infinie",
+                "un contact direct pour pousser ou tirer",
+                "un champ magnétique invisible sans objet"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pousser une porte, c'est exercer…",
+              "options": [
+                "une action de contact",
+                "le poids de la Lune",
+                "une masse",
+                "un volume"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le poids d'un objet est l'action…",
+              "options": [
+                "de la Terre sur cet objet (attraction)",
+                "de l'objet sur lui-même uniquement",
+                "du vent sans gravité",
+                "d'un ressort décoratif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tirer une corde pour déplacer un cartable, c'est…",
+              "options": [
+                "tirer (action de contact)",
+                "mesurer la température",
+                "faire une dissolution",
+                "changer le numéro atomique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans interaction, la vitesse d'un objet isolé (idée simple)…",
+              "options": [
+                "ne change pas (effet des actions)",
+                "double toujours",
+                "devient une couleur",
+                "disparaît la masse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le frottement entre chaussures et sol est une action…",
+              "options": [
+                "de contact",
+                "à distance sans toucher",
+                "uniquement chimique",
+                "toujours nulle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On mesure le poids avec…",
+              "options": [
+                "une balance (dynamomètre/balance)",
+                "un thermomètre",
+                "un pH-mètre",
+                "une éprouvette graduée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Appuyer sur le frein d'un vélo, c'est…",
+              "options": [
+                "pousser sur un mécanisme",
+                "créer de la lumière par fusion",
+                "mesurer le volume d'air",
+                "diluer un sel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le poids se dirige vers…",
+              "options": [
+                "le centre de la Terre (vers le bas)",
+                "toujours le nord magnétique",
+                "l'espace sans direction",
+                "le haut uniquement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux équipes de tir à la corde s'exercent mutuellement des actions…",
+              "options": [
+                "de contact via la corde",
+                "sans aucune interaction",
+                "uniquement à distance gravitationnelle sans contact",
+                "chimiques"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les interactions peuvent…",
+              "options": [
+                "modifier la vitesse d'un objet",
+                "changer la trajectoire",
+                "transformer un métal en gaz noble",
+                "laisser un objet sans effet possible"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "La réaction du sol qui soutient une table est une action…",
+              "options": [
+                "de contact (appui)",
+                "du Soleil sur la table",
+                "un pH",
+                "une température"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Plus un objet est massif (à même endroit), plus son poids est…",
+              "options": [
+                "grand (en général sur Terre)",
+                "toujours nul",
+                "indépendant de la Terre",
+                "égal à sa couleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lancer un ballon avec la main : la main…",
+              "options": [
+                "pousse le ballon au contact",
+                "attire le ballon sans le toucher magiquement",
+                "mesure le pH du ballon",
+                "filtre l'eau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une interaction s'exerce toujours entre…",
+              "options": [
+                "au moins deux « partenaires » (objets ou milieux)",
+                "un seul objet seul",
+                "aucun objet",
+                "deux températures"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le poids et la masse ne sont pas la même chose : la masse se mesure en…",
+              "options": [
+                "kg",
+                "newtons uniquement pour la masse",
+                "degrés",
+                "litres pour la masse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Freiner un patin à roulettes avec la main, c'est…",
+              "options": [
+                "une action de contact qui ralentit",
+                "le poids de Mars",
+                "une réaction acide-base",
+                "un changement de phase"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un ressort étiré par une main subit une action…",
+              "options": [
+                "de contact (tirer/étirer)",
+                "à distance sans toucher",
+                "uniquement nucléaire",
+                "sans direction"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La Terre attire les objets : on appelle cette attraction le…",
+              "options": ["poids (action gravitaire)", "volume", "débit", "pH"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Coller une affiche au mur avec du ruban adhésif : le mur exerce…",
+              "options": [
+                "une action de contact",
+                "aucune action",
+                "seulement de la lumière",
+                "un courant électrique obligatoire"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour qu'un objet immobile se mette en mouvement, il faut…",
+              "options": [
+                "une interaction qui modifie son état",
+                "souvent une action de contact ou une poussée/tirée",
+                "obligatoirement rien du tout",
+                "uniquement changer sa couleur"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ouvrir un tiroir en le tirant, c'est exercer…",
+              "options": [
+                "une force de contact (tirer)",
+                "le poids du tiroir sur la Terre inversement seul",
+                "un volume",
+                "un filtre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un objet posé sur une étagère : la Terre attire l'objet (poids) et l'étagère…",
+              "options": [
+                "pousse vers le haut (appui)",
+                "disparaît",
+                "n'exerce rien",
+                "fond l'objet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le frottement tend à…",
+              "options": [
+                "s'opposer au glissement",
+                "augmenter toujours la vitesse sans limite",
+                "créer de la masse",
+                "mesurer le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Action et réaction (idée simple) : si tu pousses un mur, le mur…",
+              "options": [
+                "pousse aussi sur toi (contact)",
+                "n'exerce jamais d'action",
+                "devient liquide",
+                "change de numéro atomique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le poids d'un livre sur Terre est vertical et…",
+              "options": [
+                "vers le bas",
+                "vers le haut",
+                "sans direction",
+                "horizontal toujours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Nager : l'eau pousse le nageur (poussée d'Archimède — idée de contact/fluid) — contact avec…",
+              "options": [
+                "l'eau",
+                "le vide total",
+                "rien",
+                "un aimant lointain seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Appuyer sur une touche de clavier, c'est…",
+              "options": [
+                "pousser",
+                "tirer la Terre",
+                "mesurer une masse molaire",
+                "faire une distillation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sans le poids, les objets lâchés…",
+              "options": [
+                "ne tomberaient pas vers le sol (sur Terre)",
+                "tomberaient quand même pareil sans gravité",
+                "deviendraient des gaz",
+                "perdraient leur couleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une corde tendue entre deux personnes transmet…",
+              "options": [
+                "une action de tirer/pousser",
+                "un pH",
+                "une température de fusion",
+                "un numéro de groupe"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le poids dépend…",
+              "options": [
+                "de la masse de l'objet",
+                "de l'attraction de la Terre",
+                "de la couleur de l'objet",
+                "du goût"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Frotter les mains pour se réchauffer, c'est…",
+              "options": [
+                "du frottement (contact)",
+                "gravitation sans contact",
+                "une réaction chimique obligatoire",
+                "un laser"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un objet en chute libre (lâché) subit surtout…",
+              "options": [
+                "le poids de la Terre",
+                "une poussée du sol",
+                "un courant électrique",
+                "un changement de saveur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tirer un rideau, c'est une action…",
+              "options": [
+                "de contact",
+                "à distance sans fil",
+                "uniquement magnétique interne",
+                "sans direction"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux aimants qui se repoussent sans se toucher : interaction…",
+              "options": [
+                "à distance (pas contact — exception utile)",
+                "de contact obligatoire",
+                "chimique",
+                "un pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le dynamomètre mesure souvent…",
+              "options": [
+                "une force (action)",
+                "un volume en L seulement",
+                "une température",
+                "un débit sanguin"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un vélo freiné par les patins de frein : frottement…",
+              "options": [
+                "de contact",
+                "sans toucher la roue",
+                "dans le vide lointain",
+                "uniquement nucléaire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La Terre attire la Lune : c'est une interaction…",
+              "options": [
+                "à distance (gravitation)",
+                "de contact direct",
+                "de dissolution",
+                "de filtration"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pousser un chariot de courses, c'est…",
+              "options": [
+                "pousser (contact)",
+                "mesurer le poids sans mouvement",
+                "créer un acide",
+                "faire un arc-en-ciel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sur la Lune, le poids d'un astronaute serait…",
+              "options": [
+                "plus faible qu sur Terre (même masse)",
+                "identique en newtons à la Terre",
+                "nul en masse",
+                "infini"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une action peut être modélisée par une flèche qui indique…",
+              "options": [
+                "le sens de l'action",
+                "l'intensité (longueur qualitative)",
+                "la température du corps",
+                "le numéro de période"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Serrer une vis avec une clé, c'est…",
+              "options": [
+                "tourner/pousser au contact",
+                "attirer la Terre",
+                "mesurer un pH",
+                "faire fondre la vis"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le poids s'exprime souvent en…",
+              "options": ["newtons (N)", "litres", "degrés Celsius", "mol"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un objet glisse moins vite sur moquette épaisse à cause…",
+              "options": [
+                "du frottement plus fort",
+                "du poids nul",
+                "d'une masse nulle",
+                "d'un pH élevé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tirer un verre sur la table pour l'approcher, c'est…",
+              "options": [
+                "tirer (contact)",
+                "le poids du verre vers le haut",
+                "une combustion",
+                "une cristallisation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La masse d'un élève reste la même sur Terre ou sur la Lune, mais son poids…",
+              "options": [
+                "change selon l'astre",
+                "reste toujours identique en N",
+                "disparaît",
+                "devient un volume"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un parachute freine la chute grâce à l'air qui…",
+              "options": [
+                "exerce une action (résistance)",
+                "n'existe pas",
+                "augmente la masse",
+                "mesure le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Appuyer sur une balle pour la comprimer, c'est…",
+              "options": ["pousser", "tirer la Terre", "filtrer", "distiller"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le fil d'une canne à pêche transmet une action quand le poisson…",
+              "options": [
+                "tire (contact via fil)",
+                "n'existe pas",
+                "change la masse atomique",
+                "fait fondre l'eau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans action du moteur ni frottement notable, un patineur lancé sur glace…",
+              "options": [
+                "garde approximativement sa vitesse (idée)",
+                "s'arrête instantanément sans raison",
+                "devient un liquide",
+                "perd toute masse"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Les actions de contact se rencontrent quand…",
+              "options": [
+                "on marche (pied-sol)",
+                "on appuie sur un bouton",
+                "on observe une étoile sans rien toucher",
+                "on lit un livre sans le toucher (pas de contact pour le lire à distance)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le poids est une action exercée par…",
+              "options": [
+                "la Terre sur l'objet",
+                "l'objet sur la Terre seul sans réciproque",
+                "le vent uniquement",
+                "un bécher"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pousser un ami sur une balançoire (jeu), c'est…",
+              "options": [
+                "pousser au contact",
+                "mesurer son volume",
+                "faire une titration",
+                "changer son numéro atomique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un objet suspendu à un fil : le fil…",
+              "options": [
+                "tire vers le haut (tension)",
+                "pousse vers le bas uniquement",
+                "n'a aucune action",
+                "mesure le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le frottement de l'air sur une voiture ralentit…",
+              "options": [
+                "légèrement le mouvement (effet)",
+                "augmente toujours la vitesse",
+                "crée de la masse",
+                "change le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tirer la langue (humour) — sérieusement : tirer un tiroir, action…",
+              "options": [
+                "de contact",
+                "gravitationnelle sans contact",
+                "chimique",
+                "nucléaire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux patineurs se poussent : ils exercent des actions…",
+              "options": [
+                "réciproques de contact",
+                "sans interaction",
+                "uniquement à distance",
+                "de dissolution"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La balance indique une valeur liée au poids quand l'objet…",
+              "options": [
+                "appuie sur la plateforme",
+                "flotte dans le vide sans contact",
+                "est à des années-lumière",
+                "est un gaz sans contenants"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un élastique qui revient en place exerce…",
+              "options": [
+                "une action de contact (tirer/pousser)",
+                "un pH",
+                "un courant",
+                "une fusion"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour soulever un carton, tu…",
+              "options": [
+                "tires/pousses vers le haut (contact)",
+                "attires la Terre sans effort",
+                "mesures un débit",
+                "fais une chromatographie"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Une interaction peut mettre un objet…",
+              "options": [
+                "en mouvement",
+                "à l'arrêt (ralentir)",
+                "dans un état de liquide sans chaleur",
+                "sans jamais changer sa vitesse"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le sol exerce une action sur tes pieds quand tu…",
+              "options": [
+                "marches",
+                "flottes dans l'espace loin de tout",
+                "es un rayon de lumière",
+                "n'as pas de masse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le poids d'une pomme est l'action de la Terre…",
+              "options": [
+                "sur la pomme",
+                "sur la Lune uniquement",
+                "sur le Soleil seulement",
+                "sans objet cible"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Frotter une craie sur un tableau laisse une trace : frottement…",
+              "options": [
+                "de contact",
+                "sans toucher",
+                "dans le vide",
+                "radioactif obligatoire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un ressort comprimé sous un jouet pousse le jouet : action…",
+              "options": [
+                "de contact",
+                "à distance infinie sans ressort",
+                "chimique",
+                "de filtration"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tirer une cloche de vélo, c'est…",
+              "options": [
+                "tirer/pousser un levier",
+                "mesurer la masse molaire",
+                "faire une réaction acide-base",
+                "créer un isotope"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sans poussée ni pesanteur notable (station spatiale en chute libre orbitale), les objets flottent : le poids et l'appui se compensent (idée simple) — on parle d'…",
+              "options": [
+                "impesanteur apparente",
+                "masse nulle",
+                "pH nul",
+                "volume infini"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pousser une poussette, c'est…",
+              "options": [
+                "pousser",
+                "attirer le Soleil",
+                "diluer",
+                "cristalliser"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le contact roue-route permet à la voiture de…",
+              "options": [
+                "avancer sans glisser librement (adhérence)",
+                "voler sans moteur",
+                "devenir un gaz",
+                "perdre sa masse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une action plus intense (plus « forte ») peut produire…",
+              "options": [
+                "un changement de vitesse plus grand",
+                "toujours zéro effet",
+                "un changement de numéro atomique",
+                "un pH obligatoire"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Le poids et la poussée du sol sur un livre posé…",
+              "options": [
+                "peuvent se compenser (livre immobile)",
+                "font toujours tomber le livre",
+                "agissent toutes les deux sur le livre",
+                "disparaissent si le livre est rouge"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Gratter une étiquette, c'est…",
+              "options": [
+                "frottement (contact)",
+                "gravitation seule",
+                "fusion",
+                "distillation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'aimant sur un frigo agit…",
+              "options": [
+                "à distance sur la porte métallique",
+                "uniquement s'il traverse le mur sans champ",
+                "chimiquement sur le plastique pur",
+                "sur le pH de l'air"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tirer un bouchon de bouteille, c'est…",
+              "options": [
+                "tirer (contact)",
+                "pousser la Terre",
+                "mesurer un volume molaire",
+                "faire une combustion"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La Terre est un astre qui…",
+              "options": [
+                "attire les objets (gravité)",
+                "repousse tout sans exception",
+                "n'a aucune interaction",
+                "mesure le pH"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un garçon tire une corde vers lui pendant qu'une fille tire de l'autre côté : forces…",
+              "options": [
+                "opposées via la corde",
+                "identiques sans opposition",
+                "absentes",
+                "chimiques"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Appuyer sur l'accélérateur (pédale), c'est…",
+              "options": [
+                "pousser une pédale (contact)",
+                "créer de la masse",
+                "filtrer l'huile",
+                "titrer un acide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le poids d'un objet varie selon l'astre, la masse…",
+              "options": [
+                "reste la même",
+                "double toujours sur la Lune",
+                "devient nulle partout",
+                "se mesure en newtons"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un ballon de foot frappé par le pied : le pied…",
+              "options": [
+                "pousse le ballon brièvement",
+                "attire le ballon sans contact",
+                "mesure le pH du gazon",
+                "distille l'herbe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'eau exerce une poussée sur un bateau flottant : interaction avec…",
+              "options": ["le fluide (eau)", "le vide", "un isotope", "un pH"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour qu'un objet change de direction, il faut…",
+              "options": [
+                "une interaction (action)",
+                "souvent une force latérale ou un contact",
+                "obligatoirement rien",
+                "un changement de couleur"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un clou enfoncé avec un marteau : le marteau…",
+              "options": [
+                "pousse le clou (contact)",
+                "tire la Terre",
+                "mesure un débit",
+                "faire sublimer le clou"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le poids est dirigé vers le centre de la Terre, donc vers…",
+              "options": [
+                "le bas (vertical)",
+                "l'est toujours",
+                "le nord magnétique",
+                "le haut"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Glisser une chaise bruyante : le bruit vient en partie…",
+              "options": [
+                "du frottement contact",
+                "du pH",
+                "d'une fusion",
+                "d'un laser"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tirer un panier en osier, c'est…",
+              "options": [
+                "tirer",
+                "créer un gaz noble",
+                "mesurer la conductivité",
+                "changer la période"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un objet plus lourd (plus massif) sur Terre a en général un poids…",
+              "options": [
+                "plus grand",
+                "nul",
+                "sans rapport avec la masse",
+                "mesuré en litres"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les freins à disque serrent le disque : action…",
+              "options": [
+                "de contact (frottement)",
+                "à distance sans toucher",
+                "chimique",
+                "de dilution"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une élastique autour de liasses exerce…",
+              "options": [
+                "une pression de contact",
+                "un pH",
+                "un courant continu",
+                "une radioactivité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La gravitation est l'interaction…",
+              "options": [
+                "à distance entre masses",
+                "de contact obligatoire",
+                "de filtration",
+                "de titration"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pousser une porte coulissante, c'est…",
+              "options": [
+                "pousser",
+                "attirer la Lune",
+                "mesurer un pH",
+                "faire une chromatographie"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Récapitulatif : les actions peuvent être…",
+              "options": [
+                "de contact (pousser, tirer, frottement)",
+                "à distance (Terre qui attire)",
+                "toujours sans effet",
+                "uniquement des changements de couleur"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le poids est une force, la masse est une…",
+              "options": [
+                "grandeur de quantité de matière",
+                "force en newtons",
+                "température",
+                "volume"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Tirer un plug de baignoire, l'eau s'écoule : tu as…",
+              "options": [
+                "tiré le plug (contact)",
+                "modifié le pH de l'eau obligatoirement",
+                "créé un isotope",
+                "mesuré la masse molaire de l'air"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un objet lancé horizontalement finit par retomber à cause…",
+              "options": [
+                "du poids (Terre)",
+                "du pH",
+                "d'une dilution",
+                "d'un filtre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Appuyer sur une gomme pour effacer, c'est…",
+              "options": [
+                "pousser/frotter (contact)",
+                "attirer le Soleil",
+                "distiller",
+                "titrer"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux objets en contact peuvent s'exercer des actions…",
+              "options": [
+                "simultanément",
+                "jamais",
+                "uniquement à distance",
+                "sans direction"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La Terre attire un satellite en orbite : interaction…",
+              "options": [
+                "gravitationnelle à distance",
+                "de frottement avec le sol",
+                "chimique",
+                "de filtration"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pousser un bouton d'ascenseur, c'est…",
+              "options": [
+                "pousser",
+                "mesurer un volume molaire",
+                "faire fondre le bouton",
+                "changer le numéro de groupe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sans interaction avec le sol, un patineur ne pourrait pas…",
+              "options": [
+                "se propulser en poussant (contact)",
+                "avoir une masse",
+                "avoir une couleur",
+                "exister"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Synthèse : le poids est l'action de la Terre sur un objet ; pousser et tirer sont des actions…",
+              "options": [
+                "de contact",
+                "toujours à distance sans toucher",
+                "de mesure de pH",
+                "de changement de phase obligatoire"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

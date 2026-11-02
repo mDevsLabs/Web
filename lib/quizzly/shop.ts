@@ -80,10 +80,76 @@ export const SHOP_ITEMS: readonly ShopItem[] = [
     label: "Cadre or",
     price: 420,
   },
+  {
+    description: "Un anneau cyan scintillant pour les passionnés.",
+    id: "cadre-diamant",
+    kind: "frame",
+    label: "Cadre diamant",
+    price: 600,
+  },
+  {
+    description: "Un anneau violet pourpre éclatant.",
+    id: "cadre-amethyste",
+    kind: "frame",
+    label: "Cadre améthyste",
+    price: 500,
+  },
 ];
 
-export function articleBoutique(id: string): ShopItem | undefined {
-  return SHOP_ITEMS.find((article) => article.id === id);
+export type QuizzlyGift = {
+  claimed: boolean;
+  claimedAt?: string;
+  gems?: number;
+  hearts?: number;
+  id: string;
+  itemId?: string;
+  itemLabel?: string;
+  message?: string;
+  recipientId: string;
+  senderDisplayName: string;
+  senderId: string;
+  senderUsername: string;
+  sentAt: string;
+  xp?: number;
+};
+
+// Liste en mémoire pour les articles ajoutés dynamiquement à l'exécution.
+const ARTICLES_PERSONNALISES: ShopItem[] = [];
+
+export function listerArticlesBoutique(
+  customs: readonly ShopItem[] = []
+): readonly ShopItem[] {
+  const uniques = new Map<string, ShopItem>();
+  for (const art of SHOP_ITEMS) {
+    uniques.set(art.id, art);
+  }
+  for (const art of ARTICLES_PERSONNALISES) {
+    uniques.set(art.id, art);
+  }
+  for (const art of customs) {
+    uniques.set(art.id, art);
+  }
+  return Array.from(uniques.values());
+}
+
+export function enregistrerArticleMemoire(item: ShopItem): void {
+  const index = ARTICLES_PERSONNALISES.findIndex((a) => a.id === item.id);
+  if (index >= 0) {
+    ARTICLES_PERSONNALISES[index] = item;
+  } else {
+    ARTICLES_PERSONNALISES.push(item);
+  }
+}
+
+export function articleBoutique(
+  id: string,
+  extraItems: readonly ShopItem[] = []
+): ShopItem | undefined {
+  return (
+    SHOP_ITEMS.find((article) => article.id === id) ||
+    ARTICLES_PERSONNALISES.find((article) => article.id === id) ||
+    extraItems.find((article) => article.id === id)
+  );
 }
 
 export function classeCadre(id: string | null): string {
@@ -95,6 +161,12 @@ export function classeCadre(id: string | null): string {
   }
   if (id === "cadre-ardoise") {
     return "ring-2 ring-q-level";
+  }
+  if (id === "cadre-diamant") {
+    return "ring-2 ring-cyan-400";
+  }
+  if (id === "cadre-amethyste") {
+    return "ring-2 ring-purple-500";
   }
   return "ring-1 ring-border";
 }

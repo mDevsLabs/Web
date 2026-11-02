@@ -1,0 +1,2438 @@
+{
+  "id": "5e-russe-06",
+  "year": "5e",
+  "subject": "russe",
+  "title": "L'avenir et les projets en russe",
+  "order": 6,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Dire ce qu'on va faire",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases disent correctement « Demain je vais lire » ?",
+              "explanation": "Завтра (zavtra) et буду + infinitif forment le futur usuel en 5e.",
+              "options": [
+                "Завтра я буду читать (zavtra ya budu chitat)",
+                "Я буду читать завтра (ya budu chitat zavtra)",
+                "Завтра я читаю (zavtra ya chitayu)",
+                "Вчера я читал (vchera ya chital)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Завтра (zavtra) » signifie :",
+              "explanation": "C'est l'adverbe standard pour « demain ».",
+              "options": ["Demain", "Hier", "Aujourd'hui", "Tôt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « я буду читать (ya budu chitat) », « буду » indique :",
+              "explanation": "« Буду » est le futur de « être » à la 1re personne.",
+              "options": [
+                "Un projet futur (je vais)",
+                "Le passé",
+                "L'impératif",
+                "Une question"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Читать (chitat) » veut dire :",
+              "explanation": "Infinitif « lire », complément de « буду ».",
+              "options": ["Lire", "Jouer", "Manger", "Dormir"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Сегодня (segodnya) » veut dire :",
+              "explanation": "Opposé de завтra pour situer le plan dans le temps.",
+              "options": ["Aujourd'hui", "Demain", "Après", "Jamais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Traduction de « Je vais jouer » ?",
+              "explanation": "Même structure : буду + infinitif « играть ».",
+              "options": [
+                "Я буду играть (ya budu igrat)",
+                "Я играл (ya igral)",
+                "Играй (igray)",
+                "Он играет (on igraet)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Смотреть (smotret) » signifie :",
+              "explanation": "Verbe courant pour « regarder un film » demain.",
+              "options": ["Regarder", "Écrire", "Chanter", "Nager"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour un plan demain, on évite surtout :",
+              "explanation": "Le passé « читал » ne décrit pas un projet futur.",
+              "options": [
+                "Le passé seul sans буду",
+                "Буду + infinitif",
+                "Завтра en tête",
+                "Un infinitif après буду"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Потом (potom) » veut dire :",
+              "explanation": "Adverbe utile pour enchaîner deux actions futures.",
+              "options": ["Ensuite / après", "Hier", "Maintenant", "Toujours"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Я буду учиться (ya budu uchitsya) » signifie :",
+              "explanation": "« Учиться » = apprendre / étudier.",
+              "options": [
+                "Je vais étudier",
+                "J'étudiais",
+                "Étudie !",
+                "Il étudie"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots russe sont des adverbes de temps pour parler d'avenir proche ?",
+              "explanation": "Завтра et скоро situent l'action dans le futur proche.",
+              "options": [
+                "Завтра (zavtra)",
+                "Скоро (skoro)",
+                "Стол (stol)",
+                "Книга (kniga)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Скоро (skoro) » signifie :",
+              "explanation": "Exprime « bientôt », sans date précise.",
+              "options": ["Bientôt", "Loin", "Lentement", "Souvent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ты будешь читать (ty budesh chitat) » : qui parle ?",
+              "explanation": "« Ты » = tu ; « будешь » = futur 2e personne.",
+              "options": [
+                "On parle à un ami (tu)",
+                "Je parle de moi",
+                "Il parle de lui",
+                "Nous parlons"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Будешь (budesh) » correspond à :",
+              "explanation": "Forme future de « être » pour « tu ».",
+              "options": [
+                "Tu seras / tu vas",
+                "Je vais",
+                "Ils vont",
+                "Nous allons"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Traduction : « Tu vas regarder demain » ?",
+              "explanation": "Завтра + ty budesh + smotret.",
+              "options": [
+                "Завтра ты будешь смотреть (zavtra ty budesh smotret)",
+                "Ты смотришь (ty smotrish)",
+                "Ты смотрел (ty smotrel)",
+                "Смотри (smotri)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Гулять (gulyat) » veut dire :",
+              "explanation": "Infinitif « se promener ».",
+              "options": ["Se promener", "Cuisiner", "Travailler", "Pleurer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« На выходных (na vykhodnykh) » signifie :",
+              "explanation": "Expression pour « le week-end ».",
+              "options": ["Le week-end", "Le matin", "La nuit", "En classe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase correcte : « Le week-end je vais me promener » ?",
+              "explanation": "На выходных + ya budu + gulyat.",
+              "options": [
+                "На выходных я буду гулять (na vykhodnykh ya budu gulyat)",
+                "Я гуляю вчера",
+                "Гуляй дома",
+                "Он гулял завтра"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Вечером (vecherom) » veut dire :",
+              "explanation": "Adverbe « le soir » pour préciser quand.",
+              "options": [
+                "Le soir",
+                "Le midi",
+                "Tôt le matin",
+                "Jamais le soir"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Мы будем слушать (my budem slushat) » signifie :",
+              "explanation": "« Мы » = nous ; « будем » = futur 1re pluriel.",
+              "options": [
+                "Nous allons écouter",
+                "Vous écoutez",
+                "J'écoute",
+                "Ils écoutaient"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont au futur composé (буду/будешь/будем + infinitif) ?",
+              "explanation": "Le futur composé associe « être » au futur et l'infinitif.",
+              "options": [
+                "Я буду писать (ya budu pisat)",
+                "Он будет играть (on budet igrat)",
+                "Я пишу (ya pishu)",
+                "Он играл (on igral)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Он будет (on budet) » : « будет » est le futur de :",
+              "explanation": "3e personne singulier « il » + être au futur.",
+              "options": [
+                "Il va / il sera",
+                "Tu vas",
+                "Nous allons",
+                "Je vais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Писать (pisat) » signifie :",
+              "explanation": "Infinitif « écrire ».",
+              "options": ["Écrire", "Lire seulement", "Compter", "Danser"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Завтра он будет писать (zavtra on budet pisat) » veut dire :",
+              "explanation": "Plan futur pour « il » demain.",
+              "options": [
+                "Demain il va écrire",
+                "Hier il écrivait",
+                "Écris !",
+                "Il écrit maintenant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Слушать (slushat) » veut dire :",
+              "explanation": "Infinitif « écouter ».",
+              "options": ["Écouter", "Regarder", "Parler", "Courir"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Утром (utrom) » signifie :",
+              "explanation": "Adverbe « le matin ».",
+              "options": [
+                "Le matin",
+                "Le soir",
+                "L'après-midi seulement",
+                "La nuit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Послезавтра (poslezavtra) » veut dire :",
+              "explanation": "Littéralement « après-demain ».",
+              "options": [
+                "Après-demain",
+                "Avant-hier",
+                "Demain matin",
+                "Chaque jour"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduction : « Après-demain nous allons écouter » ?",
+              "explanation": "Послезавтра + my budem + slushat.",
+              "options": [
+                "Послезавтра мы будем слушать (poslezavtra my budem slushat)",
+                "Мы слушали (my slushali)",
+                "Слушай (slushay)",
+                "Сегодня слушаем"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Она будет (ona budet) » : le sujet est :",
+              "explanation": "« Она » = elle.",
+              "options": ["Elle", "Il", "Tu", "Ils"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Работать (rabotat) » signifie :",
+              "explanation": "Infinitif « travailler ».",
+              "options": [
+                "Travailler",
+                "Dormir",
+                "Rire",
+                "Voyager en avion uniquement"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adverbes indiquent « quand » pour un projet ?",
+              "explanation": "Завтра et вечером répondent à « quand ? ».",
+              "options": [
+                "Завтра (zavtra)",
+                "Вечером (vecherom)",
+                "Синий (siniy)",
+                "Большой (bolshoy)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Днём (dnyom) » veut dire :",
+              "explanation": "« De jour / l'après-midi » selon le contexte scolaire.",
+              "options": [
+                "De jour / l'après-midi",
+                "La nuit",
+                "Hier",
+                "Jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Я не буду (ya ne budu) » introduit :",
+              "explanation": "« Не » nie le futur : je ne vais pas.",
+              "options": [
+                "Un projet refusé (je ne vais pas)",
+                "Une question",
+                "Un compliment",
+                "Le passé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Я не буду играть (ya ne budu igrat) » signifie :",
+              "explanation": "Négation du futur avec « не » devant « буду ».",
+              "options": [
+                "Je ne vais pas jouer",
+                "Je joue beaucoup",
+                "Joue !",
+                "Il ne jouait pas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Готовить (gotovit) » veut dire :",
+              "explanation": "Infinitif « préparer / cuisiner ».",
+              "options": ["Préparer / cuisiner", "Nager", "Dormir", "Lire"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Завтра я буду готовить (zavtra ya budu gotovit) » :",
+              "explanation": "Plan culinaire ou préparation pour demain.",
+              "options": [
+                "Demain je vais préparer",
+                "Je préparais hier",
+                "Prépare !",
+                "Il prépare"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Вместе (vmeste) » signifie :",
+              "explanation": "Adverbe « ensemble » pour un projet commun.",
+              "options": ["Ensemble", "Seul", "Loin", "Tôt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Мы будем готовить вместе (my budem gotovit vmeste) » :",
+              "explanation": "Nous + futur + infinitif + vmeste.",
+              "options": [
+                "Nous allons préparer ensemble",
+                "Tu prépares seul",
+                "Ils préparaient",
+                "Préparez !"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Что ты будешь делать завтра? (chto ty budesh delat zavtra?) » demande :",
+              "explanation": "Question standard sur les projets de demain.",
+              "options": [
+                "Que feras-tu demain ?",
+                "Où habites-tu ?",
+                "Comment tu t'appelles ?",
+                "Quelle heure est-il ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Делать (delat) » signifie :",
+              "explanation": "Infinitif général « faire ».",
+              "options": [
+                "Faire",
+                "Être",
+                "Avoir",
+                "Aller (verbe de mouvement spécialisé)"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses peuvent répondre à « Что ты будешь делать завтра? » ?",
+              "explanation": "On répond avec буду/будешь + infinitif, souvent avec завтра.",
+              "options": [
+                "Я буду читать (ya budu chitat)",
+                "Завтра я буду играть (zavtra ya budu igrat)",
+                "Я стол (ya stol)",
+                "Завтра вчера (zavtra vchera)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Отдыхать (otdykhat) » veut dire :",
+              "explanation": "Infinitif « se reposer ».",
+              "options": [
+                "Se reposer",
+                "Travailler dur",
+                "Crier",
+                "Étudier la nuit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« На каникулах (na kanikulakh) » signifie :",
+              "explanation": "« Pendant les vacances ».",
+              "options": [
+                "Pendant les vacances",
+                "En classe",
+                "À l'école le lundi",
+                "Hier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Летом (letom) » veut dire :",
+              "explanation": "Adverbe « en été ».",
+              "options": [
+                "En été",
+                "En hiver",
+                "Au printemps seulement",
+                "La nuit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Зимой (zimoy) » signifie :",
+              "explanation": "Adverbe « en hiver ».",
+              "options": ["En hiver", "En automne", "Demain", "Bientôt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Я буду отдыхать летом (ya budu otdykhat letom) » :",
+              "explanation": "Projet estival avec летом.",
+              "options": [
+                "Je vais me reposer en été",
+                "Je me reposais",
+                "Repose-toi !",
+                "Il se repose"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Помогать (pomogat) » veut dire :",
+              "explanation": "Infinitif « aider ».",
+              "options": ["Aider", "Oublier", "Cacher", "Vendre"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Завтра я буду помогать маме (zavtra ya budu pomogat mame) » :",
+              "explanation": "Projet d'aider + complément « maman » au datif.",
+              "options": [
+                "Demain j'aiderai maman",
+                "J'aidais hier",
+                "Aide !",
+                "Maman aide"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Мама (mama) » dans « маме (mame) » est au :",
+              "explanation": "En 5e on retient « помогать + datif » pour « à qui ».",
+              "options": [
+                "Datif (à maman)",
+                "Nominatif seul",
+                "Accusatif direct",
+                "Instrumental"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Вы будете (vy budete) » s'adresse à :",
+              "explanation": "« Вы » = vous (poli ou pluriel).",
+              "options": ["Vous", "Je", "Il", "Elle seulement"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels infinitifs conviennent après « буду » pour un loisir ?",
+              "explanation": "Читать et смотреть décrivent des activités de loisir courantes.",
+              "options": [
+                "Читать (chitat)",
+                "Смотреть (smotret)",
+                "Быть столом (byt stolom)",
+                "Вчера (vchera)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Кино (kino) » dans un plan veut souvent dire :",
+              "explanation": "« Le cinéma / un film ».",
+              "options": [
+                "Cinéma / film",
+                "Cuisine",
+                "Stade",
+                "Bibliothèque interdite"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Я буду смотреть кино (ya budu smotret kino) » :",
+              "explanation": "Projet de regarder un film.",
+              "options": [
+                "Je vais regarder un film",
+                "Je filmais hier",
+                "Regarde !",
+                "Ils regardent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Книга (kniga) » + « читать » :",
+              "explanation": "On lit une kniga.",
+              "options": [
+                "Lire un livre",
+                "Manger un livre",
+                "Écrire le ciel",
+                "Nager"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Завтра я буду читать книгу (zavtra ya budu chitat knigu) » :",
+              "explanation": "Accusatif « knigu » après lire.",
+              "options": [
+                "Demain je vais lire un livre",
+                "Hier livre",
+                "Lis le passé",
+                "Nous lisons"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Музыка (muzyka) » + « слушать » :",
+              "explanation": "Écouter de la musique.",
+              "options": [
+                "Écouter de la musique",
+                "Regarder la musique",
+                "Cuisiner la musique",
+                "Fermer la musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Я буду слушать музыку (ya budu slushat muzyku) » :",
+              "explanation": "Futur + slushat + muzyku.",
+              "options": [
+                "Je vais écouter de la musique",
+                "J'écoutais",
+                "Écoute !",
+                "Elle chante"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Дома (doma) » signifie :",
+              "explanation": "Adverbe « à la maison ».",
+              "options": [
+                "À la maison",
+                "Au lycée lointain",
+                "Dans la rue seulement",
+                "À l'étranger"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Завтра я буду дома (zavtra ya budu doma) » :",
+              "explanation": "« Буду дома » = je serai / je resterai à la maison.",
+              "options": [
+                "Demain je serai à la maison",
+                "Demain je vais à l'école obligatoirement",
+                "Hier à la maison",
+                "Va home !"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« В школе (v shkole) » veut dire :",
+              "explanation": "« À l'école » (lieu).",
+              "options": [
+                "À l'école",
+                "À la maison",
+                "Au cinéma",
+                "En vacances"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases parlent d'étudier demain ?",
+              "explanation": "Учиться avec буду/будешь exprime le projet d'apprendre.",
+              "options": [
+                "Завтра я буду учиться (zavtra ya budu uchitsya)",
+                "Ты будешь учиться (ty budesh uchitsya)",
+                "Я учился вчера seul sans буду",
+                "Стол учится"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Урок (urok) » signifie :",
+              "explanation": "« Leçon / cours ».",
+              "options": ["Leçon / cours", "Vacances", "Film", "Repas"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Готовиться (gotovitsya) » veut dire :",
+              "explanation": "« Se préparer » (réviser).",
+              "options": [
+                "Se préparer / réviser",
+                "Dormir",
+                "Jouer dehors",
+                "Oublier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Я буду готовиться к уроку (ya budu gotovitsya k uroku) » :",
+              "explanation": "Préparation à un cours avec « к » + datif.",
+              "options": [
+                "Je vais me préparer pour le cours",
+                "Je préparais hier",
+                "Prépare !",
+                "Le cours prépare"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« К (k) » devant « уроку » indique :",
+              "explanation": "Préposition « pour / vers » avec datif en 5e.",
+              "options": [
+                "Pour (préparer pour le cours)",
+                "Sans cours",
+                "Contre le cours",
+                "Après le cours passé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Друг (drug) » : « с другом (s drugom) » signifie :",
+              "explanation": "« Avec un ami » (instrumental).",
+              "options": [
+                "Avec un ami",
+                "Sans ami",
+                "Contre l'ami",
+                "L'ami mange"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Мы будем играть с другом (my budem igrat s drugom) » :",
+              "explanation": "Projet de jouer ensemble avec un ami.",
+              "options": [
+                "Nous allons jouer avec un ami",
+                "Ils jouaient seuls",
+                "Joue !",
+                "Ami joue"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Парк (park) » : projet « se promener au parc » ?",
+              "explanation": "« В парке » ou « гулять в парке » selon la phrase apprise.",
+              "options": [
+                "Гулять в парке (gulyat v parke)",
+                "Читать парк",
+                "Слушать парк",
+                "Писать парк"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Завтра мы будем гулять в парке (zavtra my budem gulyat v parke) » :",
+              "explanation": "Demain + nous + promenade au parc.",
+              "options": [
+                "Demain nous irons nous promener au parc",
+                "Hier au parc",
+                "Promène !",
+                "Il parque"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Они будут (oni budut) » signifie :",
+              "explanation": "Futur 3e personne pluriel « ils/elles vont ».",
+              "options": ["Ils/elles vont", "Je vais", "Tu vas", "Vous seul"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des sujets (qui fait l'action) ?",
+              "explanation": "Я et мы sont des pronoms sujets pour conjuguer буду/будем.",
+              "options": [
+                "Я (ya)",
+                "Мы (my)",
+                "Завтра (zavtra)",
+                "Буду (budu)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Тоже (tozhe) » veut dire :",
+              "explanation": "« Aussi / moi aussi ».",
+              "options": ["Aussi", "Jamais", "Hier", "Lentement"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Я тоже буду читать (ya tozhe budu chitat) » :",
+              "explanation": "Exprime « moi aussi je vais lire ».",
+              "options": [
+                "Moi aussi je vais lire",
+                "Je ne lis pas",
+                "Lis !",
+                "Il lit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ещё (yeshchyo) » signifie souvent :",
+              "explanation": "« Encore / aussi (autre chose) » selon le contexte.",
+              "options": ["Encore / aussi", "Fini", "Hier", "Non"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Завтра я ещё буду учиться (zavtra ya yeshchyo budu uchitsya) » :",
+              "explanation": "« Encore demain j'étudierai ».",
+              "options": [
+                "Demain j'étudierai encore",
+                "Je n'étudie jamais",
+                "Étudie !",
+                "Ils étudiaient"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« План (plan) » en russe c'est :",
+              "explanation": "Emprunt transparent « план ».",
+              "options": [
+                "План (plan)",
+                "Стол (stol)",
+                "Небо (nebo)",
+                "Час (chas)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« У меня есть план (u menya yest plan) » :",
+              "explanation": "Structure « chez moi il y a un plan ».",
+              "options": [
+                "J'ai un plan",
+                "Je suis un plan",
+                "Plan mange",
+                "Pas de plan"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Мой план — читать (moy plan — chitat) » :",
+              "explanation": "Expliquer son projet avec un nom + infinitif.",
+              "options": [
+                "Mon plan est de lire",
+                "Mon plan hier",
+                "Lis plan !",
+                "Plan lit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« После уроков (posle urokov) » signifie :",
+              "explanation": "« Après les cours ».",
+              "options": [
+                "Après les cours",
+                "Avant les cours",
+                "Pendant la nuit",
+                "Jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« После уроков я буду отдыхать (posle urokov ya budu otdykhat) » :",
+              "explanation": "Moment après l'école + repos.",
+              "options": [
+                "Après les cours je vais me reposer",
+                "Avant les cours je travaille",
+                "Repose cours !",
+                "Cours repose"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions de temps vont avec un futur ?",
+              "explanation": "Послезавтра et на выходных placent l'action plus tard.",
+              "options": [
+                "Послезавтра (poslezavtra)",
+                "На выходных (na vykhodnykh)",
+                "Вчера (vchera)",
+                "Сейчас только passé"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« В воскресенье (v voskresene) » veut dire :",
+              "explanation": "« Dimanche / le dimanche ».",
+              "options": ["Le dimanche", "Le lundi", "La nuit", "Hier"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« В понедельник (v ponidelnik) » signifie :",
+              "explanation": "« Lundi ».",
+              "options": ["Lundi", "Mardi", "Mercredi", "Vendredi"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« В субботу (v subbotu) » :",
+              "explanation": "Accusatif du jour « samedi ».",
+              "options": ["Samedi", "Dimanche", "Jeudi", "Hier"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« В субботу я буду гулять (v subbotu ya budu gulyat) » :",
+              "explanation": "Projet pour samedi.",
+              "options": [
+                "Samedi je vais me promener",
+                "Samedi hier",
+                "Promène samedi passé !",
+                "Il samedi"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Когда? (kogda?) » demande :",
+              "explanation": "Question « quand ? ».",
+              "options": ["Quand ?", "Où ?", "Qui ?", "Pourquoi ?"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réponse à « Когда ты будешь читать? » :",
+              "explanation": "On répond avec un adverbe ou jour + futur.",
+              "options": [
+                "Завтра (zavtra)",
+                "Стол (stol)",
+                "Быстро (bystro)",
+                "Здесь (zdes)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Рано (rano) » signifie :",
+              "explanation": "« Tôt ».",
+              "options": ["Tôt", "Tard", "Souvent", "Peu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Поздно (pozdno) » veut dire :",
+              "explanation": "« Tard ».",
+              "options": ["Tard", "Tôt", "Demain", "Hier"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Завтра рано я буду вставать (zavtra rano ya budu vstavat) » :",
+              "explanation": "« Вставать » = se lever ; plan de demain matin tôt.",
+              "options": [
+                "Demain je me lèverai tôt",
+                "Je me couchais",
+                "Lève !",
+                "Ils dorment"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases résument bien un emploi du temps de demain ?",
+              "explanation": "Enchaîner plusieurs буду + infinitif avec завтра est naturel.",
+              "options": [
+                "Завтра я буду учиться, потом отдыхать (zavtra ya budu uchitsya, potom otdykhat)",
+                "Утром буду читать, вечером смотреть (utrom budu chitat, vecherom smotret)",
+                "Завтра я вчера",
+                "Буду без infinitif seul"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Сначала (snachala) » signifie :",
+              "explanation": "« D'abord » pour ordonner les plans.",
+              "options": ["D'abord", "Ensuite seulement", "Jamais", "Hier"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Сначала учиться, потом играть (snachala uchitsya, potom igrat) » :",
+              "explanation": "Ordre des activités sans conjugaison dans la liste.",
+              "options": [
+                "D'abord étudier, ensuite jouer",
+                "Jouer d'abord toujours",
+                "Hier d'abord",
+                "Rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Целый день (tselyy den) » veut dire :",
+              "explanation": "« Toute la journée ».",
+              "options": [
+                "Toute la journée",
+                "Une minute",
+                "La nuit",
+                "Jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Завтра целый день я буду читать (zavtra tseliy den ya budu chitat) » :",
+              "explanation": "Projet intensif de lecture demain.",
+              "options": [
+                "Demain je vais lire toute la journée",
+                "Je lis une seconde",
+                "Lis passé !",
+                "Ils lisent hier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Мечта (mechta) » signifie :",
+              "explanation": "« Rêve / souhait ».",
+              "options": ["Rêve / souhait", "Table", "Porte", "Crayon"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Я буду мечтать (ya budu mechtat) » :",
+              "explanation": "« Мечтать » = rêver.",
+              "options": [
+                "Je vais rêver",
+                "Je rêvais",
+                "Rêve !",
+                "Elle travaille"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Надеюсь (nadeyus) » exprime :",
+              "explanation": "« J'espère » (souvent suivi d'un projet).",
+              "options": ["J'espère", "Je refuse", "J'oublie", "Je cours"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Надеюсь, завтра будет солнце (nadeyus, zavtra budet solntse) » :",
+              "explanation": "Espoir + météo demain avec « будет ».",
+              "options": [
+                "J'espère qu'il fera soleil demain",
+                "Il pleuvait",
+                "Soleil hier",
+                "Pas de demain"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour dire tes projets en russe en 5e, tu utilises surtout :",
+              "explanation": "Завтра + буду/будешь/будем + infinitif couvre la leçon.",
+              "options": [
+                "Завтра + буду + infinitif",
+                "Passé seul",
+                "Present sans sens",
+                "Verbes de mouvement lycée"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Invitations",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases invitent poliment un ami ?",
+              "explanation": "Хочешь et пойдём sont des formules d'invitation familières en 5e.",
+              "options": [
+                "Хочешь в кино? (khochesh v kino?)",
+                "Пойдём в парк! (poydom v park!)",
+                "Я стол (ya stol)",
+                "Вчера только (vchera tolko)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Хочешь (khochesh) » vient de :",
+              "explanation": "2e personne singulier de « vouloir » au présent.",
+              "options": [
+                "Vouloir (tu veux)",
+                "Aller au passé",
+                "Lire",
+                "Dormir"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Хочешь чай? (khochesh chay?) » demande :",
+              "explanation": "Offre ou invitation « Tu veux du thé ? ».",
+              "options": [
+                "Tu veux du thé ?",
+                "Tu as lu ?",
+                "Va-t'en !",
+                "Il pleut ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Пойдём (poydom) » signifie :",
+              "explanation": "« Allons-y » (1re personne pluriel impératif / suggestion).",
+              "options": [
+                "Allons-y",
+                "Reste ici",
+                "Je vais seul",
+                "Ils partent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Пойдём в кино! (poydom v kino!) » :",
+              "explanation": "Invitation à aller au cinéma ensemble.",
+              "options": [
+                "Allons au cinéma !",
+                "Je suis au cinéma hier",
+                "Ne va pas",
+                "Le cinéma lit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Давай (davay) » sert à :",
+              "explanation": "« Allez / vas-y / allons » selon le contexte.",
+              "options": [
+                "Proposer ou pousser à faire quelque chose",
+                "Refuser",
+                "Dire bonjour seulement",
+                "Compter"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Давай играть! (davay igrat!) » :",
+              "explanation": "Proposition de jouer.",
+              "options": [
+                "Allez, jouons / joue !",
+                "Ne joue pas",
+                "Je jouais",
+                "Ils lisent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Приходи (prikhodi) » veut dire :",
+              "explanation": "Impératif « viens » (à un ami).",
+              "options": ["Viens", "Pars", "Assieds-toi seulement", "Mange"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Приходи ко мне! (prikhodi ko mne!) » :",
+              "explanation": "« Viens chez moi » avec « ко мне ».",
+              "options": [
+                "Viens chez moi !",
+                "Va chez lui",
+                "Reste loin",
+                "Je viens hier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réponse positive simple :",
+              "explanation": "« Да, давай » accepte l'invitation.",
+              "options": [
+                "Да, давай! (da, davay!)",
+                "Нет, спасибо (net, spasibo)",
+                "Стол (stol)",
+                "Вчера (vchera)"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses refusent poliment ?",
+              "explanation": "« Нет, спасибо » et « не могу » sont courantes en 5e.",
+              "options": [
+                "Нет, спасибо (net, spasibo)",
+                "Я не могу (ya ne mogu)",
+                "Да, пойдём! (da, poydom!)",
+                "Конечно! (konechno!)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Нет, спасибо (net, spasibo) » :",
+              "explanation": "Refus poli « non merci ».",
+              "options": [
+                "Non merci",
+                "Oui avec plaisir",
+                "Bonjour",
+                "Au revoir seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Я не могу (ya ne mogu) » signifie :",
+              "explanation": "« Je ne peux pas » (empêchement).",
+              "options": [
+                "Je ne peux pas",
+                "Je peux tout",
+                "Je vais",
+                "Ils peuvent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Могу (mogu) » veut dire :",
+              "explanation": "« Je peux » au présent.",
+              "options": [
+                "Je peux",
+                "Tu peux",
+                "Il ne peut pas",
+                "Nous ne pouvons pas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Хочешь пиццу? (khochesh pitstsu?) » :",
+              "explanation": "« Tu veux de la pizza ? » (invitation / offre).",
+              "options": [
+                "Tu veux de la pizza ?",
+                "Tu manges hier",
+                "Pizza court",
+                "Il lit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Да, хочу (da, khochu) » :",
+              "explanation": "Acceptation « oui, je veux ».",
+              "options": [
+                "Oui, je veux",
+                "Non jamais",
+                "Peut-être hier",
+                "Je dors"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Когда? (kogda?) » dans une invitation sert à :",
+              "explanation": "Fixer le moment du rendez-vous.",
+              "options": [
+                "Demander quand",
+                "Demander où seulement",
+                "Demander pourquoi",
+                "Refuser"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« В шесть часов (v shest chasov) » :",
+              "explanation": "« À six heures ».",
+              "options": [
+                "À six heures",
+                "À six livres",
+                "Six amis",
+                "Six jours passés"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Хорошо (khorosho) » pour accepter :",
+              "explanation": "« D'accord / OK ».",
+              "options": ["D'accord", "Non", "Mal", "Peut-être non"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Отлично! (otlichno!) » exprime :",
+              "explanation": "« Super / excellent » pour accepter avec enthousiasme.",
+              "options": ["Super !", "Triste", "Ennui", "Colère"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles questions invitent à sortir ?",
+              "explanation": "« Куда пойдём? » et « Хочешь гулять? » proposent une sortie.",
+              "options": [
+                "Куда пойдём? (kuda poydyom?)",
+                "Хочешь гулять? (khochesh gulyat?)",
+                "Сколько стоит стол?",
+                "Как тебя зовут passé"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Куда (kuda) » demande :",
+              "explanation": "« Où (direction) ? ».",
+              "options": [
+                "Où allons-nous ?",
+                "Quand ?",
+                "Pourquoi ?",
+                "Combien ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Куда пойдём? (kuda poydyom?) » :",
+              "explanation": "« Où allons-nous ? » après une invitation.",
+              "options": [
+                "Où allons-nous ?",
+                "Où es-tu né ?",
+                "Où est la lune hier",
+                "Où dormais-tu passé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« В парк (v park) » répond :",
+              "explanation": "Direction « au parc ».",
+              "options": [
+                "Au parc",
+                "À la maison seulement",
+                "Au passé",
+                "Nulle part"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Пойдём в парк! (poydom v park!) » :",
+              "explanation": "Invitation au parc.",
+              "options": [
+                "Allons au parc !",
+                "Le parc lit",
+                "Je suis parc",
+                "Reste"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Хочешь гулять? (khochesh gulyat?) » :",
+              "explanation": "« Tu veux te promener ? ».",
+              "options": [
+                "Tu veux te promener ?",
+                "Tu veux dormir obligatoire",
+                "Tu lis",
+                "Il mange"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Сейчас (seychas) » dans « пойдём сейчас » :",
+              "explanation": "« Maintenant ».",
+              "options": [
+                "Maintenant",
+                "Hier",
+                "Jamais",
+                "L'an prochain lycée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Пойдём сейчас! (poydom seychas!) » :",
+              "explanation": "Invitation immédiate.",
+              "options": [
+                "Allons-y maintenant !",
+                "Allons hier",
+                "Reste maintenant",
+                "Ils vont"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Вместе (vmeste) » dans une invitation :",
+              "explanation": "Insiste sur « ensemble ».",
+              "options": ["Ensemble", "Seul", "Sans toi", "Contre toi"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Давай пойдём вместе (davay poydyom vmeste) » :",
+              "explanation": "« Allez, allons-y ensemble ».",
+              "options": [
+                "Allez, allons-y ensemble",
+                "Restons seuls",
+                "Va seul",
+                "Ils ensemble hier"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels lieux conviennent après « пойдём в … » ?",
+              "explanation": "« В кино » et « в кафе » sont des destinations usuelles.",
+              "options": [
+                "Кино (kino)",
+                "Кафе (kafe)",
+                "Синий (siniy)",
+                "Быстро (bystro)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Кафе (kafe) » : invitation :",
+              "explanation": "« Пойдём в кафе » = allons au café.",
+              "options": [
+                "Пойдём в кафе! (poydom v kafe!)",
+                "Кафе читает",
+                "Я кафе",
+                "Нет café"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Магазин (magazin) » :",
+              "explanation": "« Magasin » — sortie shopping.",
+              "options": ["Magasin", "École seulement", "Ciel", "Musique"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Пойдём в магазин (poydom v magazin) » :",
+              "explanation": "Proposition d'aller au magasin.",
+              "options": [
+                "Allons au magasin",
+                "Le magasin joue",
+                "Hier magasin",
+                "Reste"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Хочешь мороженое? (khochesh morozhenoye?) » :",
+              "explanation": "« Tu veux une glace ? ».",
+              "options": [
+                "Tu veux une glace ?",
+                "Tu as froid ?",
+                "Il neige ?",
+                "Tu lis ?"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Мороженое (morozhenoye) » :",
+              "explanation": "Crème glacée.",
+              "options": ["Glace", "Soupe", "Pain sec", "Crayon"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Конечно! (konechno!) » pour accepter :",
+              "explanation": "« Bien sûr ! ».",
+              "options": ["Bien sûr !", "Jamais", "Non merci", "Peut-être non"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Извини, не могу (izvini, ne mogu) » :",
+              "explanation": "Excuse + refus « désolé, je ne peux pas ».",
+              "options": [
+                "Désolé, je ne peux pas",
+                "Oui avec plaisir",
+                "Bonjour",
+                "Merci pour hier seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Извини (izvini) » veut dire :",
+              "explanation": "« Désolé » (familier).",
+              "options": ["Désolé", "Bravo", "Bon appétit", "Bienvenue"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« У меня урок (u menya urok) » explique :",
+              "explanation": "Raison de refuser : j'ai cours.",
+              "options": [
+                "J'ai un cours",
+                "J'ai un parc",
+                "Je suis glace",
+                "Je vais toujours"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases fixent un rendez-vous ?",
+              "explanation": "« В воскресенье » et « в шесть » donnent jour et heure.",
+              "options": [
+                "В воскресенье (v voskresene)",
+                "В шесть часов (v shest chasov)",
+                "Стол завтра",
+                "Нет когда"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Встретимся (vstretimsya) » signifie :",
+              "explanation": "« Nous retrouverons / on se retrouve ».",
+              "options": ["On se retrouve", "Je dors", "Tu lis", "Ils mangent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Давай встретимся завтра (davay vstretimsya zavtra) » :",
+              "explanation": "Proposition de se voir demain.",
+              "options": [
+                "Retrouvons-nous demain",
+                "Hier on se voit",
+                "Ne viens pas",
+                "Il seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Где? (gde?) » demande :",
+              "explanation": "« Où ? » (lieu).",
+              "options": ["Où ?", "Quand ?", "Qui ?", "Combien ?"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Где встретимся? (gde vstretimsya?) » :",
+              "explanation": "Où se retrouver.",
+              "options": [
+                "Où on se retrouve ?",
+                "Quand manger passé",
+                "Pourquoi cours",
+                "Qui parle anglais seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« У школы (u shkoly) » :",
+              "explanation": "« Près de l'école » (rendez-vous).",
+              "options": [
+                "Près de l'école",
+                "Dans la lune",
+                "Sans lieu",
+                "Chez le passé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Давай у школы (davay u shkoly) » :",
+              "explanation": "Suggestion de point de rendez-vous.",
+              "options": [
+                "Retrouvons-nous près de l'école",
+                "L'école invite seule",
+                "Jamais école",
+                "École demain hier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Жду (zhdu) » veut dire :",
+              "explanation": "« J'attends ».",
+              "options": ["J'attends", "Je cours", "Je refuse", "Je dors"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Я жду тебя (ya zhdu tebya) » :",
+              "explanation": "« Je t'attends ».",
+              "options": [
+                "Je t'attends",
+                "Tu m'attends hier",
+                "Il attend le livre",
+                "Nous lisons"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Скоро увидимся (skoro uvidimsya) » :",
+              "explanation": "« On se verra bientôt ».",
+              "options": [
+                "On se verra bientôt",
+                "On ne se verra jamais",
+                "Hier on s'est vu",
+                "Le livre se voit"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels impératifs invitent un ami (tu) ?",
+              "explanation": "« Приходи » et « давай » s'adressent à l'ami.",
+              "options": [
+                "Приходи! (prikhodi!)",
+                "Давай! (davay!)",
+                "Они читают",
+                "Я вчера"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Заходи (zakhodi) » signifie :",
+              "explanation": "« Passe / entre » (chez quelqu'un).",
+              "options": [
+                "Passe / entre",
+                "Sors vite",
+                "Assieds interdit",
+                "Mange passé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Заходи ко мне (zakhodi ko mne) » :",
+              "explanation": "« Passe chez moi ».",
+              "options": [
+                "Passe chez moi",
+                "Va chez lui",
+                "Reste dehors",
+                "Je entre hier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Будет весело (budet veselo) » :",
+              "explanation": "« Ce sera amusant » pour convaincre.",
+              "options": [
+                "Ce sera amusant",
+                "Ce sera triste",
+                "C'était hier",
+                "Ce n'est pas fun"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Весело (veselo) » veut dire :",
+              "explanation": "« Amusant / gai ».",
+              "options": ["Amusant", "Ennuyeux", "Froid", "Lent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Хочешь посмотреть фильм? (khochesh posmotret film?) » :",
+              "explanation": "Invitation à regarder un film.",
+              "options": [
+                "Tu veux voir un film ?",
+                "Tu écris un film",
+                "Le film mange",
+                "Hier film"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Фильм (film) » :",
+              "explanation": "Emprunt « film ».",
+              "options": ["Film", "Stylo", "Route", "Neige seule"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Да, пойдём (da, poydom) » :",
+              "explanation": "Acceptation + allons-y.",
+              "options": ["Oui, allons-y", "Non merci", "Je ne peux", "Reste"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Может быть (mozhet byt) » :",
+              "explanation": "« Peut-être » (réponse nuancée).",
+              "options": [
+                "Peut-être",
+                "Certainement non",
+                "Toujours oui",
+                "Jamais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Посмотрим (posmotrim) » :",
+              "explanation": "« On verra » (réponse prudente).",
+              "options": [
+                "On verra",
+                "On a vu hier",
+                "Ne regarde pas",
+                "Ils voient"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles offres utilisent « хочешь » ?",
+              "explanation": "« Хочешь чай? » et « хочешь играть? » sont des modèles d'offre.",
+              "options": [
+                "Хочешь чай? (khochesh chay?)",
+                "Хочешь играть? (khochesh igrat?)",
+                "Хочешь вчера?",
+                "Хочешь стол?"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Чай (chay) » :",
+              "explanation": "Thé.",
+              "options": ["Thé", "Café obligatoire", "Livre", "Chaise"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Хочешь играть в футбол? (khochesh igrat v futbol?) » :",
+              "explanation": "Invitation au football.",
+              "options": [
+                "Tu veux jouer au foot ?",
+                "Tu lis le foot",
+                "Le foot dort",
+                "Hier foot"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Футбол (futbol) » :",
+              "explanation": "Football.",
+              "options": [
+                "Football",
+                "Tennis seul",
+                "Natation interdite",
+                "Basket lycée spécial"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Игра (igra) » signifie :",
+              "explanation": "« Jeu / match ».",
+              "options": ["Jeu", "Devoir", "Silence", "Route"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Давай поиграем (davay poigraem) » :",
+              "explanation": "« Jouons un peu ».",
+              "options": [
+                "Jouons un peu",
+                "Ne jouons pas",
+                "Ils jouaient",
+                "Lis le jeu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Поиграем (poigraem) » :",
+              "explanation": "1re personne pluriel « nous jouerons / jouons ».",
+              "options": [
+                "Nous jouons (proposition)",
+                "Je joue seul passé",
+                "Tu dors",
+                "Elle lit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« У тебя есть время? (u tebya yest vremya?) » :",
+              "explanation": "« As-tu le temps ? » avant d'inviter.",
+              "options": [
+                "As-tu le temps ?",
+                "As-tu faim seule",
+                "Où es-tu",
+                "Comment ça va passé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Время (vremya) » :",
+              "explanation": "Temps / moment.",
+              "options": ["Temps", "Couleur", "Animal", "Verbe passé"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Да, есть (da, yest) » répond :",
+              "explanation": "« Oui, j'ai (du temps) ».",
+              "options": [
+                "Oui, j'ai",
+                "Non jamais",
+                "Peut-être hier",
+                "Je suis temps"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses montrent de l'enthousiasme ?",
+              "explanation": "« Отлично » et « с удовольствием » acceptent avec plaisir.",
+              "options": [
+                "Отлично! (otlichno!)",
+                "С удовольствием! (s udovolstviyem!)",
+                "Нет (net)",
+                "Не хочу (ne khochu)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« С удовольствием (s udovolstviyem) » :",
+              "explanation": "« Avec plaisir ».",
+              "options": [
+                "Avec plaisir",
+                "Sans plaisir",
+                "Désolé",
+                "En colère"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Не хочу (ne khochu) » :",
+              "explanation": "« Je ne veux pas » (refus).",
+              "options": ["Je ne veux pas", "Je veux", "Allons-y", "Super"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Почему? (pochemu?) » après un refus demande :",
+              "explanation": "« Pourquoi ? ».",
+              "options": ["Pourquoi ?", "Où ?", "Quand ?", "Combien ?"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Потому что занят (potomu chto zanyat) » :",
+              "explanation": "« Parce que je suis occupé ».",
+              "options": [
+                "Parce que je suis occupé",
+                "Parce que je suis libre",
+                "Parce qu'il pleut toujours",
+                "Sans raison"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Занят (zanyat) » (masculin) :",
+              "explanation": "Occupé (garçon / homme parlant).",
+              "options": ["Occupé", "Libre", "Heureux seul", "Froid"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Тогда позже (togda pozzhe) » :",
+              "explanation": "« Alors plus tard » (contre-proposition).",
+              "options": [
+                "Alors plus tard",
+                "Maintenant seulement",
+                "Jamais",
+                "Hier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Позже (pozzhe) » veut dire :",
+              "explanation": "« Plus tard ».",
+              "options": ["Plus tard", "Plus tôt", "Tôt", "Maintenant"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Договорились (dogovorilis) » :",
+              "explanation": "« C'est entendu / d'accord ».",
+              "options": [
+                "C'est entendu",
+                "Pas d'accord",
+                "Au revoir seul",
+                "Bonjour"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« До завтра (do zavtra) » en quittant :",
+              "explanation": "« À demain ».",
+              "options": ["À demain", "À hier", "À jamais", "À maintenant"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases invitent à la maison ?",
+              "explanation": "« Приходи ко мне » et « зайди » invitent chez soi.",
+              "options": [
+                "Приходи ко мне! (prikhodi ko mne!)",
+                "Заходи! (zakhodi!)",
+                "Пойдём в парк seul",
+                "Я не друг"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« День рождения (den rozhdeniya) » :",
+              "explanation": "Anniversaire — contexte d'invitation.",
+              "options": ["Anniversaire", "Examen", "Mercredi seul", "Hier"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Приходи на день рождения! (prikhodi na den rozhdeniya!) » :",
+              "explanation": "« Viens à mon anniversaire ! ».",
+              "options": [
+                "Viens à l'anniversaire !",
+                "Pars de la fête",
+                "Le gâteau lit",
+                "Hier fête"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Праздник (prazdnik) » :",
+              "explanation": "Fête / jour férié.",
+              "options": ["Fête", "Cours", "Devoir seul", "Silence"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Будет праздник (budet prazdnik) » :",
+              "explanation": "« Ce sera une fête ».",
+              "options": [
+                "Ce sera une fête",
+                "C'était hier",
+                "Pas de fête",
+                "Le livre fête"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Подарок (podarok) » :",
+              "explanation": "Cadeau.",
+              "options": ["Cadeau", "Chaise", "Route", "Verbe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Хочешь чай и печенье? (khochesh chay i pechene?) » :",
+              "explanation": "Offre à la maison.",
+              "options": [
+                "Tu veux thé et biscuits ?",
+                "Tu veux dormir",
+                "Tu lis",
+                "Il court"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Печенье (pechene) » :",
+              "explanation": "Biscuit / gâteau sec.",
+              "options": ["Biscuit", "Soupe", "Viande seule", "Eau interdite"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Спасибо за приглашение (spasibo za priglasheniye) » :",
+              "explanation": "« Merci pour l'invitation ».",
+              "options": [
+                "Merci pour l'invitation",
+                "Refus poli",
+                "Bonjour seul",
+                "Où est le parc"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Приглашение (priglasheniye) » :",
+              "explanation": "Invitation (nom).",
+              "options": ["Invitation", "Occupation", "Colère", "Devoir"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules clôturent un accord d'invitation ?",
+              "explanation": "« Договорились » et « до завтра » confirment le plan.",
+              "options": [
+                "Договорились! (dogovorilis!)",
+                "До завтра! (do zavtra!)",
+                "Нет спасибо",
+                "Я не могу toujours"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ждём тебя (zhdyom tebya) » :",
+              "explanation": "« Nous t'attendons » (hôte).",
+              "options": [
+                "Nous t'attendons",
+                "Tu nous attends hier",
+                "Il attend le stylo",
+                "Pas d'attente"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Обязательно приходи (obyazatelno prikhodi) » :",
+              "explanation": "« Viens absolument ».",
+              "options": [
+                "Viens absolument",
+                "Ne viens pas",
+                "Peut-être non",
+                "Hier viens"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Обязательно (obyazatelno) » :",
+              "explanation": "« Absolument / obligatoirement ».",
+              "options": ["Absolument", "Peut-être", "Jamais", "Lentement"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« С другом (s drugom) » dans « приходи с другом » :",
+              "explanation": "« Avec un ami » (tu peux amener un ami).",
+              "options": [
+                "Avec un ami",
+                "Sans ami",
+                "Contre ami",
+                "Ami seul part"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Можно (mozhno) » dans « можно прийти? » :",
+              "explanation": "« Est-ce que je peux venir ? ».",
+              "options": [
+                "Est-ce permis / puis-je",
+                "Interdit",
+                "Hier",
+                "Il pleut"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Можно прийти? (mozhno priyti?) » :",
+              "explanation": "Demande polie de venir.",
+              "options": [
+                "Puis-je venir ?",
+                "Dois-je partir",
+                "Où est la lune",
+                "Combien de livres"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Конечно, приходи (konechno, prikhodi) » :",
+              "explanation": "Acceptation chaleureuse de la visite.",
+              "options": [
+                "Bien sûr, viens",
+                "Non jamais",
+                "Va-t'en",
+                "Je ne sais pas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Будет много гостей (budet mnogo gostey) » :",
+              "explanation": "« Il y aura beaucoup d'invités ».",
+              "options": [
+                "Il y aura beaucoup d'invités",
+                "Personne ne vient",
+                "Un seul invité hier",
+                "Les invités lisent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour inviter en russe en 5e, tu retiens surtout :",
+              "explanation": "Хочешь, пойдём, давай et приходи couvrent les invitations de base.",
+              "options": [
+                "Хочешь, пойдём, давай, приходи",
+                "Verbes de mouvement lycée",
+                "Passé seul",
+                "Sans réponse"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

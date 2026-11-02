@@ -6,7 +6,7 @@
  * déjà ramenés au fuseau Europe/Paris par l'appelant.
  */
 
-import type { ShopItem } from "@/lib/quizzly/shop";
+import type { QuizzlyGift, ShopItem } from "@/lib/quizzly/shop";
 
 export const HEARTS_MAX = 5;
 export const HEART_REGEN_MS = 30 * 60 * 1000;
@@ -65,7 +65,10 @@ export type StreakState = {
 };
 
 export type Cosmetics = {
+  customItems?: ShopItem[];
   equippedFrame: string | null;
+  giftsReceived?: QuizzlyGift[];
+  giftsSent?: QuizzlyGift[];
   ownedFrames: string[];
 };
 
@@ -319,7 +322,13 @@ export function idsDebloques(
 
 export function normaliserCosmetiques(valeur: unknown): Cosmetics {
   if (!valeur || typeof valeur !== "object" || Array.isArray(valeur)) {
-    return { equippedFrame: null, ownedFrames: [] };
+    return {
+      customItems: [],
+      equippedFrame: null,
+      giftsReceived: [],
+      giftsSent: [],
+      ownedFrames: [],
+    };
   }
   const source = valeur as Record<string, unknown>;
   const bruts = Array.isArray(source.ownedFrames) ? source.ownedFrames : [];
@@ -333,8 +342,20 @@ export function normaliserCosmetiques(valeur: unknown): Cosmetics {
   ];
   const equipe =
     typeof source.equippedFrame === "string" ? source.equippedFrame : null;
+  const giftsReceived = Array.isArray(source.giftsReceived)
+    ? (source.giftsReceived as QuizzlyGift[])
+    : [];
+  const giftsSent = Array.isArray(source.giftsSent)
+    ? (source.giftsSent as QuizzlyGift[])
+    : [];
+  const customItems = Array.isArray(source.customItems)
+    ? (source.customItems as ShopItem[])
+    : [];
   return {
+    customItems,
     equippedFrame: equipe && ownedFrames.includes(equipe) ? equipe : null,
+    giftsReceived,
+    giftsSent,
     ownedFrames,
   };
 }

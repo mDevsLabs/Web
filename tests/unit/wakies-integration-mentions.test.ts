@@ -142,10 +142,13 @@ describe("applyIntegrationMentions", () => {
   });
 
   it("déduplique deux mentions du même connecteur dans un même message", async () => {
-    const result = await mentionner(["GoogleMaps", "googlemaps", "GOOGLEMAPS"], {
-      connections: ["google-maps"],
-      installations: [installation("google-maps")],
-    });
+    const result = await mentionner(
+      ["GoogleMaps", "googlemaps", "GOOGLEMAPS"],
+      {
+        connections: ["google-maps"],
+        installations: [installation("google-maps")],
+      }
+    );
     expect(result.pluginIds).toEqual(["google-maps"]);
   });
 });

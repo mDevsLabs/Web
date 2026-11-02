@@ -1,0 +1,2413 @@
+{
+  "id": "5e-russe-07",
+  "year": "5e",
+  "subject": "russe",
+  "title": "Opinions et sentiments en russe",
+  "order": 7,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Donner son avis",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules expriment un avis ou un sentiment en russe ?",
+              "explanation": "Я думаю et Я люблю ouvrent une opinion ou un goût personnel.",
+              "options": [
+                "Я думаю (ya dumayu)",
+                "Я люблю (ya lyublyu)",
+                "До свидания (do svidaniya)",
+                "Спасибо (spasibo)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « Я думаю (ya dumayu) » ?",
+              "explanation": "Dumayu correspond à « je pense ».",
+              "options": ["Je pense", "J'ai peur", "Peut-être", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « Я люблю (ya lyublyu) » ?",
+              "explanation": "Lyublyu exprime l'affection ou le goût.",
+              "options": ["J'aime", "Je pense", "J'ai peur", "Bonjour"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie « Я боюсь (ya boyus) » ?",
+              "explanation": "Boyus indique une crainte.",
+              "options": ["J'ai peur", "J'aime", "Je pense", "Merci"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dire « je pense » en russe ?",
+              "explanation": "Ya dumayu est la formule de base.",
+              "options": ["Ya dumayu", "Ya lyublyu", "Ya boyus", "Mozhet byt"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans « Ya dumayu, eto khorosho », ya dumayu sert à…",
+              "explanation": "On annonce un jugement.",
+              "options": ["Donner son avis", "Saluer", "Hésiter", "Opposer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Ya lyublyu muzyku » parle de…",
+              "explanation": "Lyublyu + nom = ce qu'on aime.",
+              "options": ["Un goût", "Une peur", "Un doute", "Un mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ya boyus sobak » exprime…",
+              "explanation": "Boyus décrit ce qui fait peur.",
+              "options": ["Une crainte", "Un avis", "Un amour", "Un salut"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase donne un avis ?",
+              "explanation": "Dumayu introduit un jugement.",
+              "options": [
+                "Ya dumayu, eto interesno",
+                "Spasibo, papa",
+                "Do svidaniya",
+                "Privet, mama"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour « j'aime le sport » :",
+              "explanation": "Lyublyu convient pour un hobby.",
+              "options": [
+                "Ya lyublyu sport",
+                "Ya boyus sport",
+                "Ya dumayu sport",
+                "No sport"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent « je pense » ?",
+              "explanation": "Seul ya dumayu introduit une pensée.",
+              "options": [
+                "Ya dumayu, eto skuchno",
+                "Ya dumayu, eto veselo",
+                "Ya lyublyu eto",
+                "Spasibo"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ya dumayu, eto interesno » = …",
+              "explanation": "Interesno = intéressant.",
+              "options": [
+                "Je pense que c'est intéressant",
+                "J'aime les chiens",
+                "J'ai peur",
+                "Peut-être"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Après ya dumayu, on ajoute…",
+              "explanation": "On précise l'idée jugée.",
+              "options": [
+                "Un jugement",
+                "Un au revoir",
+                "Un prénom seul",
+                "Un nombre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ya dumayu, eto trudno » : trudno = …",
+              "explanation": "Trudno signifie difficile.",
+              "options": ["Difficile", "Facile", "Bon", "Petit"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le mot « penser » à la 1re personne :",
+              "explanation": "Dumayu vient de dumat.",
+              "options": ["Dumayu", "Lyublyu", "Boyus", "No"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« À mon avis, c'est bien » :",
+              "explanation": "Khorosho = bien.",
+              "options": [
+                "Ya dumayu, eto khorosho",
+                "Ya boyus khorosho",
+                "Mozhet byt, net",
+                "No, poka"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Ya dumayu sert à…",
+              "explanation": "C'est une opinion personnelle.",
+              "options": [
+                "Partager ce qu'on croit",
+                "Compter",
+                "Saluer",
+                "Avoir peur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Skuchno dans ya dumayu, eto skuchno = …",
+              "explanation": "Skuchno = ennuyeux.",
+              "options": ["Ennuyeux", "Délicieux", "Rapide", "Loin"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase n'est PAS une pensée ?",
+              "explanation": "Boyus exprime la peur.",
+              "options": [
+                "Ya boyus vysoty",
+                "Ya dumayu, eto legko",
+                "Ya dumayu, da",
+                "Ya dumayu, net"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En classe, pour donner son avis :",
+              "explanation": "Ya dumayu ouvre la prise de parole.",
+              "options": [
+                "Ya dumayu, eto pravilno",
+                "Ya boyus uroka",
+                "Mozhet byt chay",
+                "No, zdravstvuyte"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases disent « j'aime » ?",
+              "explanation": "Ya lyublyu marque le goût.",
+              "options": [
+                "Ya lyublyu knigi",
+                "Ya lyublyu kino",
+                "Ya boyus knigi",
+                "Do svidaniya"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ya lyublyu morozhenoye » = …",
+              "explanation": "Morozhenoye = glace.",
+              "options": [
+                "J'aime la glace",
+                "Je pense à la glace",
+                "J'ai peur",
+                "Peut-être"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lyublyu vient du verbe…",
+              "explanation": "Lyubit = aimer.",
+              "options": ["Aimer", "Penser", "Craindre", "Douter"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« J'aime la musique » :",
+              "explanation": "Muzyku est l'accusatif.",
+              "options": [
+                "Ya lyublyu muzyku",
+                "Ya dumayu muzyku",
+                "Ya boyus muzyku",
+                "No muzyka"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ya lyublyu igry » : igry = …",
+              "explanation": "Igry = jeux.",
+              "options": ["Des jeux", "Des examens", "Des nuits", "Des mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Phrase de goût :",
+              "explanation": "Lyublyu + nom fonctionne en 5e.",
+              "options": [
+                "Ya lyublyu zhivotnykh",
+                "Ya boyus zhivotnykh",
+                "Ya dumayu, net",
+                "Spasibo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Zhivotnykh = …",
+              "explanation": "Animaux au génitif pluriel.",
+              "options": [
+                "Les animaux",
+                "Les professeurs",
+                "Les villes",
+                "Les nombres"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour un hobby :",
+              "explanation": "Risovat = dessiner.",
+              "options": [
+                "Ya lyublyu risovat",
+                "Ya boyus risovat",
+                "Ya dumayu risovat",
+                "Mozhet risovat"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Letom dans ya lyublyu letom kupatsya = …",
+              "explanation": "Letom = en été.",
+              "options": ["En été", "En hiver", "Peut-être", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ya lyublyu ne remplace pas…",
+              "explanation": "Boyus reste pour la peur.",
+              "options": ["Ya boyus", "Privet", "Da", "Net"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases disent « j'ai peur » ?",
+              "explanation": "Ya boyus + génitif est le modèle.",
+              "options": [
+                "Ya boyus temnoty",
+                "Ya boyus ekzamenov",
+                "Ya lyublyu temnotu",
+                "Ya dumayu, da"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Ya boyus » = …",
+              "explanation": "Boyus = j'ai peur.",
+              "options": ["J'ai peur", "Je pense", "J'aime", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Temnoty = …",
+              "explanation": "Obscurité au génitif.",
+              "options": [
+                "De l'obscurité",
+                "De la lumière",
+                "Du thé",
+                "De la musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ekzamenov = …",
+              "explanation": "Examens au génitif pluriel.",
+              "options": [
+                "Des examens",
+                "Des bonbons",
+                "Des livres",
+                "Des saluts"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Boyus s'oppose à…",
+              "explanation": "Lyublyu exprime le plaisir.",
+              "options": ["Ya lyublyu", "Spasibo", "Poka", "Zdravstvuyte"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Vysoty = …",
+              "explanation": "Hauteur au génitif.",
+              "options": ["La hauteur", "La musique", "L'école", "Le maybe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« J'ai peur des chiens » :",
+              "explanation": "Sobak = chiens (gén.).",
+              "options": [
+                "Ya boyus sobak",
+                "Ya lyublyu sobak",
+                "Ya dumayu sobak",
+                "No sobaki"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase de crainte :",
+              "explanation": "Groza = orage.",
+              "options": [
+                "Ya boyus groza",
+                "Ya lyublyu groza",
+                "Ya dumayu, khorosho",
+                "Privet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Groza = …",
+              "explanation": "Orage au génitif.",
+              "options": ["L'orage", "Le dessin", "Le matin", "La ville"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ya boyus sert à…",
+              "explanation": "On nomme la source de peur.",
+              "options": ["Parler d'une peur", "Aimer", "Penser", "Nuancer"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels débuts sont des avis ou sentiments ?",
+              "explanation": "Dumayu et lyublyu ne sont pas des saluts.",
+              "options": [
+                "Ya dumayu",
+                "Ya lyublyu",
+                "Spasibo (spasibo)",
+                "Do svidaniya (do svidaniya)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le trio du chapitre (penser, aimer, craindre) :",
+              "explanation": "Trois verbes à la 1re personne.",
+              "options": [
+                "Dumayu, lyublyu, boyus",
+                "No, mozhet byt, spasibo",
+                "Kto, gde, kogda",
+                "Da, net, poka"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ya dumayu, eto khorosho » et « Ya lyublyu eto » :",
+              "explanation": "L'un juge, l'autre aime.",
+              "options": [
+                "Avis puis sentiment",
+                "Deux saluts",
+                "Deux peurs",
+                "Deux peut-être"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "On n'utilise pas boyus pour…",
+              "explanation": "Boyus n'exprime pas un goût.",
+              "options": [
+                "Dire qu'on aime",
+                "Dire qu'on a peur",
+                "Nommer une crainte",
+                "Parler d'un orage"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Eto dans ya dumayu, eto interesno = …",
+              "explanation": "Eto = cela / ce.",
+              "options": ["Cela", "Bonjour", "Peut-être", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase mélange penser et peur ?",
+              "explanation": "Deux verbes du chapitre dans une réponse.",
+              "options": [
+                "Ya dumayu, no ya boyus",
+                "Ya lyublyu, ya lyublyu",
+                "Spasibo, do svidaniya",
+                "Mozhet byt, mozhet byt"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour dire « j'aime et c'est bien » en deux phrases :",
+              "explanation": "Lyublyu puis dumayu restent simples.",
+              "options": [
+                "Ya lyublyu. Ya dumayu, eto khorosho",
+                "Ya boyus. Spasibo",
+                "No. Poka",
+                "Mozhet byt. Privet"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot n'est pas un sentiment du chapitre ?",
+              "explanation": "Spasibo remercie.",
+              "options": ["Spasibo", "Dumayu", "Lyublyu", "Boyus"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pravilno = …",
+              "explanation": "Correct, juste.",
+              "options": ["Correct", "Ennuyeux", "Cher", "Lent"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase d'opinion :",
+              "explanation": "Legko = facile.",
+              "options": [
+                "Ya dumayu, eto legko",
+                "Ya boyus legko",
+                "Ya lyublyu legko",
+                "No legko"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses donnent un avis sur l'école ?",
+              "explanation": "Dumayu juge ; lyublyu aime un aspect.",
+              "options": [
+                "Ya dumayu, urok interesnyy",
+                "Ya lyublyu shkolu",
+                "Ya boyus shkolu",
+                "Poka, papa"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Urok interesnyy = …",
+              "explanation": "Cours intéressant.",
+              "options": [
+                "Le cours est intéressant",
+                "J'ai peur du cours",
+                "Peut-être cours",
+                "Mais cours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Ya lyublyu russkiy yazyk » = …",
+              "explanation": "On aime la langue russe.",
+              "options": [
+                "J'aime la langue russe",
+                "Je pense russe",
+                "J'ai peur du russe",
+                "Mais russe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ya boyus otvetit » : otvetit = …",
+              "explanation": "Répondre (infinitif).",
+              "options": ["Répondre", "Chanter", "Courir", "Dormir"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Avis sur un devoir facile :",
+              "explanation": "Legko = facile.",
+              "options": [
+                "Ya dumayu, domashneye zadaniye legkoye",
+                "Ya boyus domashneye zadaniye",
+                "Mozhet byt, spasibo",
+                "No, do svidaniya"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Shkolu dans ya lyublyu shkolu = …",
+              "explanation": "École à l'accusatif.",
+              "options": ["L'école", "La peur", "Le maybe", "Le mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Peur de parler en classe :",
+              "explanation": "Boyus + infinitif possible en 5e.",
+              "options": [
+                "Ya boyus govorit",
+                "Ya lyublyu govorit",
+                "Ya dumayu govorit",
+                "No govorit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Govorit = …",
+              "explanation": "Parler.",
+              "options": ["Parler", "Manger", "Lire", "Écrire"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Je pense que le prof est sympa » :",
+              "explanation": "Uchitel = professeur.",
+              "options": [
+                "Ya dumayu, uchitel khoroshiy",
+                "Ya boyus uchitel",
+                "Ya lyublyu, mozhet byt",
+                "Spasibo, uchitel"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Khoroshiy = …",
+              "explanation": "Bon, sympa.",
+              "options": ["Bon / sympa", "Ennuyeux", "Noir", "Lent"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases parlent de loisirs aimés ?",
+              "explanation": "Lyublyu + activité ou objet.",
+              "options": [
+                "Ya lyublyu tantsevat",
+                "Ya lyublyu slushat muzyku",
+                "Ya boyus tantsevat",
+                "Zdravstvuyte"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tantsevat = …",
+              "explanation": "Danser.",
+              "options": ["Danser", "Nager", "Dessiner", "Lire"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Slushat muzyku = …",
+              "explanation": "Écouter de la musique.",
+              "options": [
+                "Écouter de la musique",
+                "Avoir peur de la musique",
+                "Peut-être musique",
+                "Mais musique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ya dumayu, futbol zdorovo » : zdorovo = …",
+              "explanation": "Super, génial (fam.).",
+              "options": ["Super", "Peur", "Mais", "Peut-être"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Avis sur un film :",
+              "explanation": "Kino = cinéma/film.",
+              "options": [
+                "Ya dumayu, eto kino skuchno",
+                "Ya boyus kino",
+                "Ya lyublyu, no net",
+                "Spasibo, kino"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Ya lyublyu gulyat v parke » : gulyat = …",
+              "explanation": "Se promener.",
+              "options": ["Se promener", "Avoir peur", "Penser", "Nuancer"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Peur des grandes foules :",
+              "explanation": "Tolpa = foule.",
+              "options": [
+                "Ya boyus bolshoy tolpe",
+                "Ya lyublyu tolpe",
+                "Ya dumayu tolpe",
+                "Mozhet byt tolpe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ya lyublyu chitat » = …",
+              "explanation": "J'aime lire.",
+              "options": [
+                "J'aime lire",
+                "Je pense lire",
+                "J'ai peur de lire",
+                "Peut-être lire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Chitat = …",
+              "explanation": "Lire.",
+              "options": ["Lire", "Cuisiner", "Jouer", "Dormir"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sentiment positif sur la neige :",
+              "explanation": "Sneg = neige.",
+              "options": [
+                "Ya lyublyu sneg",
+                "Ya boyus sneg",
+                "Ya dumayu, no",
+                "Mozhet byt sneg"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases contiennent ya boyus (ya boyus) ?",
+              "explanation": "Les deux formules expriment une peur.",
+              "options": [
+                "Ya boyus (ya boyus)",
+                "Ya boyus zmey (ya boyus zmey)",
+                "Ya lyublyu (ya lyublyu)",
+                "Spasibo (spasibo)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Zmey = …",
+              "explanation": "Serpent.",
+              "options": ["Serpent", "Chat", "Livre", "Thé"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle paire est penser + transcription ?",
+              "explanation": "Dumayu = je pense.",
+              "options": [
+                "Ya dumayu (ya dumayu)",
+                "No (no)",
+                "Mozhet byt (mozhet byt)",
+                "Spasibo (spasibo)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« J'aime le thé » :",
+              "explanation": "Chay = thé.",
+              "options": [
+                "Ya lyublyu chay",
+                "Ya boyus chay",
+                "Ya dumayu chay",
+                "No chay"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Opinion négative :",
+              "explanation": "Ploho = mal.",
+              "options": [
+                "Ya dumayu, eto ploho",
+                "Ya lyublyu ploho",
+                "Ya boyus ploho",
+                "Mozhet ploho"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ploho = …",
+              "explanation": "Mal, mauvais.",
+              "options": ["Mal", "Bien", "Peut-être", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Peur de la nuit :",
+              "explanation": "Noch = nuit.",
+              "options": [
+                "Ya boyus nochi",
+                "Ya lyublyu nochi",
+                "Ya dumayu nochi",
+                "No nochi"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Nochi = …",
+              "explanation": "Nuit au génitif.",
+              "options": ["De la nuit", "Du matin", "Du sport", "Du maybe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Je pense, oui » en russe :",
+              "explanation": "Da = oui.",
+              "options": [
+                "Ya dumayu, da",
+                "Ya boyus, da",
+                "Ya lyublyu, da",
+                "Mozhet, da"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Je pense, non » :",
+              "explanation": "Net = non.",
+              "options": [
+                "Ya dumayu, net",
+                "Ya lyublyu, net",
+                "Spasibo, net",
+                "Poka, net"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles équivalences français/russe sont justes ?",
+              "explanation": "Lyublyu aime ; boyus craint.",
+              "options": [
+                "J'aime les chats = Ya lyublyu koshek",
+                "J'ai peur = Ya boyus",
+                "Je pense = Ya lyublyu",
+                "Merci = Ya boyus"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Koshek = …",
+              "explanation": "Chats au génitif pluriel.",
+              "options": ["Des chats", "Des chiens", "Des profs", "Des mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduire « j'aime voyager » :",
+              "explanation": "Puteshestvovat = voyager.",
+              "options": [
+                "Ya lyublyu puteshestvovat",
+                "Ya boyus puteshestvovat",
+                "Ya dumayu puteshestvovat",
+                "No puteshestvovat"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je pense que c'est amusant » :",
+              "explanation": "Veselo = amusant.",
+              "options": [
+                "Ya dumayu, eto veselo",
+                "Ya boyus veselo",
+                "Ya lyublyu, mozhet byt",
+                "Spasibo, veselo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Veselo = …",
+              "explanation": "Gai, amusant.",
+              "options": ["Amusant", "Triste", "Peur", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peur de l'eau profonde :",
+              "explanation": "Glubokaya voda.",
+              "options": [
+                "Ya boyus glubokoy vody",
+                "Ya lyublyu vody",
+                "Ya dumayu vody",
+                "Mozhet vody"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« J'aime ma famille » :",
+              "explanation": "Semya = famille.",
+              "options": [
+                "Ya lyublyu svoyu semyu",
+                "Ya boyus semyu",
+                "Ya dumayu semyu",
+                "No semyu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Avis sur la pluie :",
+              "explanation": "Dozhd = pluie.",
+              "options": [
+                "Ya dumayu, dozhd ne ochen",
+                "Ya lyublyu dozhd ne ochen",
+                "Ya boyus dozhd ne ochen",
+                "Mozhet dozhd"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ne ochen = …",
+              "explanation": "Pas très.",
+              "options": ["Pas très", "Très", "Peut-être", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase de crainte logique :",
+              "explanation": "Infinitif après boyus.",
+              "options": [
+                "Ya boyus poteryatsya",
+                "Ya lyublyu poteryatsya",
+                "Ya dumayu poteryatsya",
+                "No poteryatsya"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots-clés résument « Donner son avis » ?",
+              "explanation": "Dumayu et lyublyu ouvrent pensée et goût.",
+              "options": [
+                "Ya dumayu (ya dumayu)",
+                "Ya lyublyu (ya lyublyu)",
+                "Do svidaniya (do svidaniya)",
+                "Spasibo (spasibo)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour un avis, on choisit d'abord…",
+              "explanation": "Dumayu avant les outils de nuance.",
+              "options": ["Ya dumayu", "No", "Mozhet byt", "Poka"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour un goût :",
+              "explanation": "Lyublyu reste la clé.",
+              "options": ["Ya lyublyu", "Ya boyus", "Spasibo", "Do svidaniya"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour une peur :",
+              "explanation": "Boyus + complément.",
+              "options": ["Ya boyus", "Ya dumayu", "Ya lyublyu", "Privet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Bilan : « Je pense, c'est correct »",
+              "explanation": "Pravilno révise l'unité.",
+              "options": [
+                "Ya dumayu, eto pravilno",
+                "Ya lyublyu pravilno",
+                "Ya boyus pravilno",
+                "No pravilno"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bilan : « J'aime danser »",
+              "explanation": "Tantsevat revu plus tôt.",
+              "options": [
+                "Ya lyublyu tantsevat",
+                "Ya boyus tantsevat",
+                "Ya dumayu tantsevat",
+                "Mozhet tantsevat"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Bilan : « J'ai peur des examens »",
+              "explanation": "Ekzamenov est au génitif.",
+              "options": [
+                "Ya boyus ekzamenov",
+                "Ya lyublyu ekzamenov",
+                "Ya dumayu ekzamenov",
+                "No ekzamenov"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase est un salut, pas un avis ?",
+              "explanation": "Zdravstvuyte accueille.",
+              "options": [
+                "Zdravstvuyte",
+                "Ya dumayu, da",
+                "Ya lyublyu chay",
+                "Ya boyus groza"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Eto khorosho après ya dumayu signifie…",
+              "explanation": "Jugement positif sur cela.",
+              "options": [
+                "Je pense que c'est bien",
+                "J'aime bien",
+                "J'ai peur",
+                "Peut-être bien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif de l'unité u1 :",
+              "explanation": "Exprimer pensée, goût et peur clairement.",
+              "options": [
+                "Donner son avis et ses sentiments",
+                "Nuancer avec mais",
+                "Dire seulement bonjour",
+                "Conjuguer au subjonctif"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Nuancer",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots russes nuancent une phrase ?",
+              "explanation": "Но et Может быть adoucissent ou opposent une idée.",
+              "options": [
+                "Но (no)",
+                "Может быть (mozhet byt)",
+                "Спасибо (spasibo)",
+                "Привет (privet)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Но (no) » signifie…",
+              "explanation": "No introduit une opposition ou un contraste.",
+              "options": ["Mais", "Peut-être", "Je pense", "J'aime"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Может быть (mozhet byt) » signifie…",
+              "explanation": "Mozhet byt marque le doute ou l'hypothèse.",
+              "options": ["Peut-être", "Mais", "J'ai peur", "Merci"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour nuancer « j'aime, mais c'est difficile » :",
+              "explanation": "No lie les deux parties.",
+              "options": [
+                "Ya lyublyu, no eto trudno",
+                "Ya boyus, no spasibo",
+                "Mozhet byt, privet",
+                "Spasibo, no da"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "No se place…",
+              "explanation": "Souvent entre deux idées contrastées.",
+              "options": [
+                "Entre deux parties de phrase",
+                "Seulement au début",
+                "Seulement à la fin",
+                "Dans un prénom"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Mozhet byt, zavtra » = …",
+              "explanation": "Peut-être demain.",
+              "options": [
+                "Peut-être demain",
+                "Mais demain",
+                "Je pense demain",
+                "J'ai peur demain"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase hésite ?",
+              "explanation": "Mozhet byt ouvre l'incertitude.",
+              "options": [
+                "Mozhet byt, ya poydu",
+                "Ya dumayu, eto khorosho",
+                "Ya lyublyu chay",
+                "Ya boyus sobak"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Ya dumayu, eto khorosho, no trudno » : no sert à…",
+              "explanation": "On admet une difficulté après un avis positif.",
+              "options": [
+                "Opposer deux idées",
+                "Saluer",
+                "Avoir peur",
+                "Aimer"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Transcription de но :",
+              "explanation": "No se prononce « no ».",
+              "options": ["No", "Mozhet byt", "Boyus", "Dumayu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Transcription de может быть :",
+              "explanation": "Mozhet byt = peut-être.",
+              "options": ["Mozhet byt", "No", "Lyublyu", "Spasibo"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases utilisent « mais » (no) ?",
+              "explanation": "No relie deux propositions contrastées.",
+              "options": [
+                "Ya lyublyu kino, no eto dolgo",
+                "Eto interesno, no trudno",
+                "Mozhet byt, da",
+                "Spasibo, papa"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dolgo = …",
+              "explanation": "Longtemps / long.",
+              "options": ["Long / longtemps", "Facile", "Peur", "Peut-être"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« J'aime, mais j'ai peur » :",
+              "explanation": "Lyublyu puis boyus avec no.",
+              "options": [
+                "Ya lyublyu, no ya boyus",
+                "Ya dumayu, mozhet byt",
+                "Spasibo, no",
+                "Privet, boyus"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "No ne remplace pas…",
+              "explanation": "Mozhet byt exprime le doute, pas l'opposition.",
+              "options": [
+                "Mozhet byt pour « mais »",
+                "L'idée de contraste",
+                "Une deuxième clause",
+                "Un avis nuancé"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ya dumayu, da, no ne ochen » = …",
+              "explanation": "Oui, mais pas très (sûr).",
+              "options": [
+                "Je pense oui, mais pas très",
+                "J'aime, peur, maybe",
+                "Salut mais merci",
+                "Peut-être mais non"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Contraste sur la météo :",
+              "explanation": "Beau mais froid typique en 5e.",
+              "options": [
+                "Khorosho, no kholodno",
+                "Mozhet byt, spasibo",
+                "Ya boyus, privet",
+                "Lyublyu, do svidaniya"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Kholodno = …",
+              "explanation": "Froid (il fait froid).",
+              "options": ["Froid", "Chaud", "Peut-être", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Film intéressant mais long » :",
+              "explanation": "Interesnyy no dolgiy.",
+              "options": [
+                "Interesnyy, no dolgiy",
+                "Boyus, no lyublyu",
+                "Mozhet byt kino",
+                "Spasibo, kino"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dolgiy = …",
+              "explanation": "Long (adj.).",
+              "options": ["Long", "Court", "Peur", "Penser"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "No convient quand…",
+              "explanation": "Deux vérités partielles coexistent.",
+              "options": [
+                "On veut un contraste",
+                "On dit bonjour",
+                "On est sûr à 100 %",
+                "On remercie"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases commencent par « peut-être » ?",
+              "explanation": "Mozhet byt ouvre une réponse incertaine.",
+              "options": [
+                "Mozhet byt, da",
+                "Mozhet byt, net",
+                "Ya dumayu, da",
+                "No, spasibo"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Mozhet byt, ya ne poydu » = …",
+              "explanation": "Peut-être je n'irai pas.",
+              "options": [
+                "Peut-être je n'irai pas",
+                "Mais je n'irai pas",
+                "Je pense que non",
+                "J'ai peur d'aller"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Mozhet byt indique…",
+              "explanation": "On n'est pas certain.",
+              "options": ["Un doute", "Un salut", "Une peur sûre", "Un mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réponse prudente à « Tu viens ? » :",
+              "explanation": "Mozhet byt laisse la porte ouverte.",
+              "options": ["Mozhet byt", "Ya boyus", "Spasibo", "Do svidaniya"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Mozhet byt, eto pravda » = …",
+              "explanation": "Peut-être que c'est vrai.",
+              "options": [
+                "Peut-être que c'est vrai",
+                "Mais c'est vrai",
+                "J'aime la vérité",
+                "J'ai peur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pravda = …",
+              "explanation": "Vérité.",
+              "options": ["Vérité", "Mensonge", "Peur", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "On combine avis + doute :",
+              "explanation": "Dumayu puis mozhet byt nuancent.",
+              "options": [
+                "Ya dumayu, mozhet byt, eto khorosho",
+                "Ya boyus, no spasibo",
+                "Spasibo, mozhet byt",
+                "Privet, no"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Mozhet byt ne remplace pas…",
+              "explanation": "No oppose ; mozhet byt doute.",
+              "options": [
+                "No pour un contraste net",
+                "Une hésitation",
+                "Une hypothèse",
+                "Une réponse courte"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Peut-être plus tard » :",
+              "explanation": "Pozzhe = plus tard.",
+              "options": [
+                "Mozhet byt, pozzhe",
+                "No, pozzhe",
+                "Ya lyublyu pozzhe",
+                "Ya boyus pozzhe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pozzhe = …",
+              "explanation": "Plus tard.",
+              "options": ["Plus tard", "Tôt", "Mais", "Peur"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases mélangent dumayu et no ?",
+              "explanation": "Penser puis contrast avec no.",
+              "options": [
+                "Ya dumayu, eto khorosho, no dorogo",
+                "Ya dumayu, interesno, no trudno",
+                "Mozhet byt, spasibo",
+                "Ya lyublyu, privet"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dorogo = …",
+              "explanation": "Cher (prix élevé).",
+              "options": ["Cher", "Gratuit", "Peut-être", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Je pense que oui, mais… » :",
+              "explanation": "Da, no introduit la nuance.",
+              "options": [
+                "Ya dumayu, da, no…",
+                "Ya boyus, da",
+                "Mozhet byt, lyublyu",
+                "Spasibo, no da"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Nuancer une peur :",
+              "explanation": "Boyus mais lyublyu aussi possible.",
+              "options": [
+                "Ya boyus, no ya lyublyu smotret",
+                "Ya dumayu, spasibo",
+                "Mozhet byt, boyus",
+                "No, do svidaniya"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Smotret = …",
+              "explanation": "Regarder.",
+              "options": ["Regarder", "Courir", "Dormir", "Manger"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Peut-être j'ai peur » :",
+              "explanation": "Mozhet byt + boyus adoucit.",
+              "options": [
+                "Mozhet byt, ya boyus",
+                "No, ya boyus",
+                "Ya lyublyu boyus",
+                "Spasibo, boyus"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase la plus prudente :",
+              "explanation": "Mozhet byt montre l'incertitude.",
+              "options": [
+                "Mozhet byt, eto pravilno",
+                "Eto pravilno!",
+                "Ya boyus, net",
+                "Spasibo, da"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« J'aime, mais peut-être demain » :",
+              "explanation": "Lyublyu, mozhet byt zavtra.",
+              "options": [
+                "Ya lyublyu, mozhet byt, zavtra",
+                "Ya boyus zavtra",
+                "No zavtra",
+                "Spasibo zavtra"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "No et mozhet byt ensemble :",
+              "explanation": "Contraste puis doute sur la suite.",
+              "options": [
+                "Eto khorosho, no mozhet byt trudno",
+                "Spasibo, no privet",
+                "Ya boyus, lyublyu",
+                "Do svidaniya, da"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif de nuancer :",
+              "explanation": "Éviter les avis trop absolus.",
+              "options": [
+                "Montrer doute ou contraste",
+                "Ne parler que en salutations",
+                "Oublier ya dumayu",
+                "Utiliser le subjonctif"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des outils de nuance du chapitre ?",
+              "explanation": "No et mozhet byt complètent dumayu/lyublyu/boyus.",
+              "options": [
+                "No (no)",
+                "Mozhet byt (mozhet byt)",
+                "Privet (privet)",
+                "Poka (poka)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduire « mais » :",
+              "explanation": "No = mais.",
+              "options": ["No", "Mozhet byt", "Dumayu", "Boyus"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Traduire « peut-être » :",
+              "explanation": "Mozhet byt = peut-être.",
+              "options": ["Mozhet byt", "No", "Lyublyu", "Spasibo"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ya lyublyu shkolu, no ustal » : ustal = …",
+              "explanation": "Fatigué.",
+              "options": ["Fatigué", "Content", "Peur", "Peut-être"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Contraste école :",
+              "explanation": "Aime l'école mais cours difficile.",
+              "options": [
+                "Ya lyublyu shkolu, no urok trudnyy",
+                "Ya boyus shkolu",
+                "Mozhet byt shkola",
+                "Spasibo, shkola"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Mozhet byt, ya dumayu, da » = …",
+              "explanation": "Peut-être je pense oui.",
+              "options": [
+                "Peut-être je pense oui",
+                "Mais je pense oui",
+                "J'ai peur oui",
+                "Merci oui"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Phrase avec no seulement :",
+              "explanation": "Deux clauses liées par mais.",
+              "options": [
+                "Ya dumayu, eto legko, no skuchno",
+                "Mozhet byt legko",
+                "Ya boyus legko",
+                "Spasibo legko"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase avec mozhet byt seulement :",
+              "explanation": "Réponse non engageante.",
+              "options": ["Mozhet byt", "No", "Ya boyus", "Ya lyublyu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ustal après no montre…",
+              "explanation": "Contraste avec l'idée positive d'avant.",
+              "options": [
+                "Un mais (fatigue)",
+                "Un salut",
+                "Une peur",
+                "Un maybe seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Nuancer ≠ …",
+              "explanation": "Nuancer adoucit ; affirmer catégoriquement non.",
+              "options": [
+                "Parler sans aucun doute",
+                "Utiliser no",
+                "Utiliser mozhet byt",
+                "Combiner avec ya dumayu"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles réponses utilisent mozhet byt correctement ?",
+              "explanation": "Mozhet byt + oui/non ou idée incertaine.",
+              "options": [
+                "Mozhet byt, segodnya",
+                "Mozhet byt, pozzhe",
+                "No, segodnya",
+                "Spasibo, pozzhe"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Segodnya = …",
+              "explanation": "Aujourd'hui.",
+              "options": ["Aujourd'hui", "Demain", "Mais", "Peur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Peut-être aujourd'hui » :",
+              "explanation": "Mozhet byt, segodnya.",
+              "options": [
+                "Mozhet byt, segodnya",
+                "No, segodnya",
+                "Ya boyus segodnya",
+                "Ya lyublyu segodnya"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« C'est bien, mais cher » :",
+              "explanation": "Khorosho, no dorogo.",
+              "options": [
+                "Khorosho, no dorogo",
+                "Mozhet byt dorogo",
+                "Ya boyus dorogo",
+                "Spasibo dorogo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Inviter avec doute :",
+              "explanation": "Mozhet byt, poydem?",
+              "options": [
+                "Mozhet byt, poydem?",
+                "No, poydem!",
+                "Ya boyus poydem",
+                "Spasibo poydem"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Poydem = …",
+              "explanation": "Allons (nous).",
+              "options": ["Allons", "Restons", "Peur", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Je pense, mais j'ai peur » :",
+              "explanation": "Dumayu + no + boyus.",
+              "options": [
+                "Ya dumayu, no ya boyus",
+                "Mozhet byt, spasibo",
+                "Ya lyublyu, privet",
+                "No, do svidaniya"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle nuance est la plus douce ?",
+              "explanation": "Mozhet byt adoucit plus que non sec.",
+              "options": [
+                "Mozhet byt, net",
+                "Net!",
+                "Ya boyus",
+                "Spasibo, net"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Film : peut-être intéressant » :",
+              "explanation": "Mozhet byt, interesno.",
+              "options": [
+                "Mozhet byt, interesno",
+                "No interesno",
+                "Ya boyus interesno",
+                "Spasibo interesno"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "No après un compliment :",
+              "explanation": "Eto khorosho, no… limite l'enthousiasme.",
+              "options": [
+                "Eto khorosho, no…",
+                "Eto khorosho!",
+                "Mozhet byt!",
+                "Spasibo!"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles phrases opposent deux sentiments ?",
+              "explanation": "No entre lyublyu et boyus ou dumayu et boyus.",
+              "options": [
+                "Ya lyublyu, no ya boyus",
+                "Ya dumayu, khorosho, no boyus",
+                "Mozhet byt, spasibo",
+                "Privet, poka"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« J'aime nager, mais j'ai peur de l'eau profonde » simplifié :",
+              "explanation": "Lyublyu kupatsya, no boyus glubiny.",
+              "options": [
+                "Ya lyublyu kupatsya, no boyus glubiny",
+                "Ya dumayu voda",
+                "Mozhet byt voda",
+                "Spasibo voda"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Glubiny = …",
+              "explanation": "Profondeur (gén.).",
+              "options": ["De la profondeur", "Du sport", "Du thé", "Du maybe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réponse nuancée sur le temps :",
+              "explanation": "Mozhet byt, poydet dozhd.",
+              "options": [
+                "Mozhet byt, poydet dozhd",
+                "No dozhd",
+                "Ya lyublyu dozhd",
+                "Ya boyus dozhd"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Poydet dozhd = …",
+              "explanation": "Il va pleuvoir.",
+              "options": ["Il va pleuvoir", "Il fait beau", "Mais", "Peur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Peut-être je viendrai » :",
+              "explanation": "Mozhet byt, ya priedu.",
+              "options": [
+                "Mozhet byt, ya priedu",
+                "No, ya priedu",
+                "Ya boyus priedu",
+                "Spasibo priedu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Priedu = …",
+              "explanation": "Je viendrai.",
+              "options": ["Je viendrai", "Je pars", "Peur", "Mais"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "No après ya lyublyu :",
+              "explanation": "Aime mais… limite ou contredit.",
+              "options": [
+                "Ya lyublyu, no…",
+                "Ya lyublyu!",
+                "Mozhet byt lyublyu",
+                "Spasibo lyublyu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Différence no / mozhet byt :",
+              "explanation": "No = opposition ; mozhet byt = incertitude.",
+              "options": [
+                "Contraste vs doute",
+                "Deux saluts",
+                "Deux peurs",
+                "Deux mercis"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase complète nuancée :",
+              "explanation": "Avis + mais + peur possible.",
+              "options": [
+                "Ya dumayu, eto zdorovo, no ya boyus",
+                "Spasibo, poka",
+                "Privet, mama",
+                "Do svidaniya, net"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles transcriptions vont avec « mais » et « peut-être » ?",
+              "explanation": "No et mozhet byt sont les paires cyrillique/transcription.",
+              "options": [
+                "Но (no)",
+                "Может быть (mozhet byt)",
+                "Я думаю (ya dumayu)",
+                "Спасибо (spasibo)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Choisir « mais » en russe :",
+              "explanation": "No = mais.",
+              "options": ["No", "Mozhet byt", "Boyus", "Dumayu"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Choisir « peut-être » en russe :",
+              "explanation": "Mozhet byt = peut-être.",
+              "options": ["Mozhet byt", "No", "Lyublyu", "Privet"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Ya dumayu, mozhet byt, net » = …",
+              "explanation": "Je pense, peut-être non.",
+              "options": [
+                "Je pense, peut-être non",
+                "Mais non",
+                "J'aime non",
+                "J'ai peur non"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Eto veselo, no pozdno » : pozdno = …",
+              "explanation": "Tard.",
+              "options": ["Tard", "Tôt", "Peut-être", "Peur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Contraste horaire :",
+              "explanation": "Amusant mais tard.",
+              "options": [
+                "Veselo, no pozdno",
+                "Mozhet byt pozdno",
+                "Boyus pozdno",
+                "Spasibo pozdno"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Peut-être c'est vrai, mais difficile » :",
+              "explanation": "Mozhet byt pravda, no trudno.",
+              "options": [
+                "Mozhet byt, eto pravda, no trudno",
+                "No mozhet byt spasibo",
+                "Ya boyus pravda",
+                "Ya lyublyu trudno"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase n'utilise ni no ni mozhet byt ?",
+              "explanation": "Phrase simple d'avis sans nuance.",
+              "options": [
+                "Ya dumayu, eto khorosho",
+                "Ya dumayu, khorosho, no trudno",
+                "Mozhet byt, da",
+                "Eto khorosho, no dolgo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Nuancer un « j'aime » :",
+              "explanation": "Lyublyu, no ne vsegda.",
+              "options": [
+                "Ya lyublyu, no ne vsegda",
+                "Ya boyus vsegda",
+                "Spasibo vsegda",
+                "Mozhet byt vsegda"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Ne vsegda = …",
+              "explanation": "Pas toujours.",
+              "options": ["Pas toujours", "Toujours", "Peut-être", "Mais"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles traductions français → russe sont correctes ?",
+              "explanation": "Mais = no ; peut-être = mozhet byt.",
+              "options": [
+                "Mais = no (no)",
+                "Peut-être = mozhet byt (mozhet byt)",
+                "Mais = mozhet byt",
+                "Peur = no"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Oui, mais non » simplifié :",
+              "explanation": "Da, no net.",
+              "options": [
+                "Da, no net",
+                "Mozhet byt net",
+                "Ya boyus net",
+                "Spasibo net"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Peut-être demain nous irons » :",
+              "explanation": "Mozhet byt, zavtra my poydem.",
+              "options": [
+                "Mozhet byt, zavtra my poydem",
+                "No zavtra poydem",
+                "Ya lyublyu zavtra",
+                "Ya boyus zavtra"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je pense que c'est bien, mais long » :",
+              "explanation": "Ya dumayu, khorosho, no dolgo.",
+              "options": [
+                "Ya dumayu, eto khorosho, no dolgo",
+                "Mozhet byt dolgo",
+                "Ya boyus dolgo",
+                "Spasibo dolgo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réponse polie incertaine :",
+              "explanation": "Mozhet byt adoucit un refus.",
+              "options": [
+                "Mozhet byt, izvinite",
+                "No!",
+                "Ya boyus",
+                "Spasibo!"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Izvinite = …",
+              "explanation": "Excusez-moi / pardon.",
+              "options": ["Pardon", "Merci", "Mais", "Peur"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« J'aime, mais j'ai peur des araignées » :",
+              "explanation": "Lyublyu prirodu, no boyus paukov.",
+              "options": [
+                "Ya lyublyu prirodu, no boyus paukov",
+                "Mozhet byt pauki",
+                "Ya dumayu pauki",
+                "Spasibo pauki"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Paukov = …",
+              "explanation": "Araignées (gén. pl.).",
+              "options": [
+                "Des araignées",
+                "Des chats",
+                "Des livres",
+                "Des mais"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Phrase avec les cinq mots-clés du chapitre possible :",
+              "explanation": "On peut enchaîner dumayu, lyublyu, boyus, no, mozhet byt.",
+              "options": [
+                "Ya dumayu, ya lyublyu, no mozhet byt, ya boyus",
+                "Spasibo, poka",
+                "Privet, do svidaniya",
+                "Net, da"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Meilleure définition de « Nuancer » :",
+              "explanation": "Ajouter mais ou peut-être à un avis.",
+              "options": [
+                "Adoucir ou opposer avec no et mozhet byt",
+                "Ne parler qu'en salutations",
+                "Remplacer ya dumayu",
+                "Ignorer les sentiments"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels couples cyrillique/transcription sont justes pour u2 ?",
+              "explanation": "No et mozhet byt sont le cœur de Nuancer.",
+              "options": [
+                "Но (no)",
+                "Может быть (mozhet byt)",
+                "Привет (privet)",
+                "Пока (poka)"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bilan : « mais » en russe",
+              "explanation": "No clôt l'unité de contraste.",
+              "options": [
+                "No (no)",
+                "Mozhet byt (mozhet byt)",
+                "Boyus (boyus)",
+                "Dumayu (dumayu)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Bilan : « peut-être » en russe",
+              "explanation": "Mozhet byt pour l'incertitude.",
+              "options": [
+                "Mozhet byt (mozhet byt)",
+                "No (no)",
+                "Lyublyu (lyublyu)",
+                "Spasibo (spasibo)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Phrase modèle du chapitre entier :",
+              "explanation": "Penser, aimer, craindre, nuancer.",
+              "options": [
+                "Ya dumayu, ya lyublyu, no mozhet byt, ya boyus",
+                "Spasibo, poka",
+                "Privet, do svidaniya",
+                "Net, da, net"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Ya lyublyu, no eto trudno » résume…",
+              "explanation": "Goût + contraste difficulté.",
+              "options": [
+                "Aimer mais trouver difficile",
+                "Peur seule",
+                "Salut",
+                "Subjonctif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Mozhet byt, ya poydu v kino » = …",
+              "explanation": "Peut-être j'irai au cinéma.",
+              "options": [
+                "Peut-être j'irai au cinéma",
+                "Mais j'irai",
+                "J'ai peur du cinéma",
+                "Je pense toujours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "No vs mozhet byt en un mot :",
+              "explanation": "Opposition / doute.",
+              "options": [
+                "Mais / peut-être",
+                "Bonjour / merci",
+                "Peur / amour",
+                "Oui / non seuls"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase est la plus nuancée ?",
+              "explanation": "Contraste no + doute mozhet byt.",
+              "options": [
+                "Ya dumayu, eto khorosho, no mozhet byt trudno",
+                "Eto khorosho!",
+                "Ya boyus",
+                "Spasibo"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Objectif u2 « Nuancer » :",
+              "explanation": "Enrichir avis et sentiments avec no et mozhet byt.",
+              "options": [
+                "Opposer ou douter avec no et mozhet byt",
+                "Apprendre seulement les saluts",
+                "Supprimer ya dumayu",
+                "Utiliser le subjonctif français"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chapitre 07 en une idée :",
+              "explanation": "Exprimer et nuancer opinions et sentiments en russe simple.",
+              "options": [
+                "Opinions (dumayu, lyublyu, boyus) nuancées (no, mozhet byt)",
+                "Alphabet seul",
+                "Grammaire 6e",
+                "Conversation sans transcriptions"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

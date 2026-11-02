@@ -154,7 +154,9 @@ export async function POST(request: Request) {
               encodeSummaryEvent({ delta: EMPTY_SUMMARY, type: "text-delta" })
             )
           );
-          controller.enqueue(encoder.encode(encodeSummaryEvent({ type: "done" })));
+          controller.enqueue(
+            encoder.encode(encodeSummaryEvent({ type: "done" }))
+          );
           controller.close();
         },
       });
@@ -348,7 +350,13 @@ N'utilise aucune connaissance extérieure aux extraits.`;
       providerOptions: resolveReasoningProviderOptions(
         normalizeReasoningLevel(preferences?.reasoningLevel)
       ),
-      stopWhen: ({ steps }: any) => steps.length >= (followUp ? 4 : 1),
+      stopWhen: ({ steps }: any) => {
+        const lastStep = steps.at(-1);
+        if (lastStep?.toolCalls && lastStep.toolCalls.length > 0) {
+          return false;
+        }
+        return steps.length >= (followUp ? 4 : 1);
+      },
       system: systemPrompt,
       ...(followUp ? { tools: { webSearch } } : {}),
     };

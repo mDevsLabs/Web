@@ -1,0 +1,2713 @@
+{
+  "id": "5e-chinois-10",
+  "year": "5e",
+  "subject": "chinois",
+  "title": "Vers l'examen en chinois",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Compréhension",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : 老师：你们明天(míngtiān)有英语(yīngyǔ)考试(kǎoshì)吗？ 学生：有。我觉得(wǒ juéde)要多复习(fùxí)。\nQuelles affirmations sont vraies ?",
+              "options": [
+                "Demain ils ont un examen d'anglais.",
+                "L'élève estime qu'il faut réviser.",
+                "Demain il n'y a pas d'examen.",
+                "L'élève trouve inutile de réviser."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le professeur confirme l'examen de demain et l'élève donne son avis avec 觉得 pour réviser."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "昨天(zuótiān)我们做了听写(tīngxiě)。 Que signifie 昨天 ?",
+              "options": ["demain", "hier", "aujourd'hui", "bientôt"],
+              "correctAnswers": [1],
+              "explanation": "昨天 renvoie au jour passé, ici celui de la dictée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "同学：你觉得(juéde)数学(shùxué)难(nán)吗？ 我：不太(bù tài)难。",
+              "options": [
+                "Il trouve les maths très difficiles.",
+                "Il trouve les maths pas trop difficiles.",
+                "Il refuse de parler.",
+                "Il n'a pas cours demain."
+              ],
+              "correctAnswers": [1],
+              "explanation": "不太难 signifie que les maths ne lui semblent pas très dures."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "妈妈：明天早点儿(zǎo diǎnr)起床(qǐchuáng)！",
+              "options": [
+                "Se coucher tard demain",
+                "Se lever tôt demain",
+                "Parler d'hier soir",
+                "Annuler l'école"
+              ],
+              "correctAnswers": [1],
+              "explanation": "明天 et 早点儿起床 visent le réveil du lendemain."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "你的书(shū)在哪儿(nǎr)？ 在(zài)书包(shūbāo)里。",
+              "options": [
+                "Sur le bureau",
+                "Dans le cartable",
+                "À la cantine",
+                "Perdu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "在书包里 localise le livre dans le sac."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "请(qǐng)打开(dākāi)课本(kèběn)第十(shí)页(yè)。",
+              "options": [
+                "Fermer le cahier",
+                "Ouvrir le manuel p.10",
+                "Copier demain",
+                "Sortir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "打开第十页 demande d'ouvrir à la page dix."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "昨天我生病(shēngbìng)了，没(méi)去学校(xuéxiào)。",
+              "options": [
+                "Malade demain",
+                "Malade hier, absent",
+                "En voyage demain",
+                "Pas de cours hier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "昨天 et 生病 expliquent l'absence d'hier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "我觉得这个(zhège)汉字(hànzì)很有意思(yìsi)。",
+              "options": [
+                "Caractère ennuyeux",
+                "Caractère intéressant",
+                "Caractère inconnu",
+                "Demain on l'étudie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "觉得…很有意思 est un avis positif."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "明天我们参观(cānguān)博物馆(bówùguǎn)。",
+              "options": ["Hier", "Demain", "La semaine dernière", "Ce matin"],
+              "correctAnswers": [1],
+              "explanation": "明天 programme la visite au lendemain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "下午(xiàwǔ)有体育课(tǐyùkè)。我觉得很累(lèi)。",
+              "options": [
+                "Cours reposant",
+                "Cours fatigant",
+                "Pas de sport",
+                "Sport demain matin"
+              ],
+              "correctAnswers": [1],
+              "explanation": "觉得很累 dit que le sport l'épuise."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : 学生A：你昨天(zuótiān)去哪儿(qù nǎr)了？ 学生B：我去图书馆(túshūguǎn)了。我觉得那儿很安静(ānjìng)。\nQuelles infos sont correctes ?",
+              "options": [
+                "B est allé à la bibliothèque hier.",
+                "B trouve l'endroit calme.",
+                "B part demain à la bibliothèque.",
+                "B dit que c'est bruyant."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "昨天 indique le passage à la bibliothèque et 觉得 exprime l'avis sur le calme."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "明天要(yào)交(jiāo)作业(zuòyè)。",
+              "options": [
+                "Rendre les devoirs demain",
+                "Rendre hier",
+                "Pas de devoirs",
+                "Devoir en anglais seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天交作业 fixe la remise au lendemain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "老师：大家(dàjiā)觉得(juéde)这个课文(kèwén)长(cháng)吗？",
+              "options": [
+                "Le prof demande un avis sur la longueur",
+                "Le prof parle de demain",
+                "Le prof interdit de lire",
+                "Le prof parle d'hier seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…长吗 interroge l'opinion sur la longueur du texte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "昨天考试(kǎoshì)，今天(jīntiān)发(fā)成绩(chéngjì)。",
+              "options": [
+                "Notes demain",
+                "Notes aujourd'hui après examen d'hier",
+                "Pas d'examen",
+                "Examen demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "La chronologie lie l'examen d'hier aux notes d'aujourd'hui."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "我在(wǒ zài)教室(jiàoshì)等你(děng nǐ)。",
+              "options": [
+                "Il attend dans la salle de classe",
+                "Il attend demain",
+                "Il est à la maison",
+                "Il refuse d'attendre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在教室等你 situe l'attente en classe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "你觉得(juéde)口语(kǒuyǔ)练习(liànxí)怎么样(zěnmeyàng)？",
+              "options": [
+                "Question sur l'avis du oral",
+                "Question sur hier seulement",
+                "Refus de parler",
+                "Demande l'heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…怎么样 demande ce que l'on pense de l'exercice oral."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "明天带(dài)笔(bǐ)和(hé)本子(běnzi)。",
+              "options": [
+                "Apporter stylo et cahier demain",
+                "Apporter hier",
+                "Rien demain",
+                "Seulement le cartable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天带笔和本子 est consigne pour le lendemain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "昨天我们学了五个(wǔ gè)新(xīn)词(cí)。",
+              "options": [
+                "Cinq mots nouveaux appris hier",
+                "Cinq mots demain",
+                "Pas de vocabulaire",
+                "Cinq phrases demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天 et 学了 marquent l'apprentissage passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "同学：我觉得(juéde)听(tīng)中文(zhōngwén)歌(gē)有帮助(yǒu bāngzhù)。",
+              "options": [
+                "Écouter des chansons chinoises l'aide selon lui",
+                "Il déteste la musique",
+                "C'est pour demain seulement",
+                "Parle d'hier au musée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…有帮助 donne un avis sur l'écoute de chansons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "老师：明天八(bā)点(diǎn)见(jiàn)！",
+              "options": [
+                "Rendez-vous demain 8h",
+                "Rendez-vous hier 8h",
+                "Pas d'heure",
+                "Huit pages demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天八点见 fixe l'heure du lendemain."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : 妈妈：你明天有学校(xuéxiào)活动(huódòng)吗？ 孩子：有。我觉得很有意思。昨天老师已经(yǐjīng)说了。\nQuelles phrases sont vraies ?",
+              "options": [
+                "Demain il y a une activité scolaire.",
+                "L'enfant la trouve intéressante.",
+                "Demain il n'y a rien.",
+                "Le prof n'en a jamais parlé."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Demain une activité est confirmée et 觉得 positive l'avis ; hier le prof l'a annoncée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "请(qǐng)听(tīng)录音(lùyīn)两遍(liǎng biàn)。",
+              "options": [
+                "Écouter l'enregistrement deux fois",
+                "Écouter demain seulement",
+                "Ne pas écouter",
+                "Une seule fois hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "听录音两遍 demande deux écoutes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "我觉得(juéde)写(xiě)汉字(hànzì)比(bǐ)说话(shuōhuà)难(nán)。",
+              "options": [
+                "Écrire les caractères lui semble plus dur que parler",
+                "Parler est plus dur",
+                "Tout est facile demain",
+                "Parle d'hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "比…难 compare écriture et oral avec 觉得."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "昨天天气(tiānqì)很(hěn)冷(lěng)，我们室内(shìnèi)上课(shàngkè)。",
+              "options": [
+                "Froid hier, cours en intérieur",
+                "Froid demain",
+                "Pas de cours",
+                "Chaud hier dehors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天冷 motive les cours à l'intérieur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "你的同屋(tóngwù)是谁(shuí)？",
+              "options": [
+                "Qui est ton camarade de chambre/table ?",
+                "Où est demain ?",
+                "Quelle heure ?",
+                "Combien de pages ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "同屋是谁 demande l'identité du camarade."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "明天别(bié)迟到(chídào)！",
+              "options": [
+                "Ne pas arriver en retard demain",
+                "Arriver en retard demain",
+                "Hier en retard",
+                "Pas d'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天别迟到 est un avertissement pour le lendemain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "老师：你觉得(juéde)哪(nǎ)道题(dào tí)最难(nán)？",
+              "options": [
+                "Quelle question te semble la plus dure ?",
+                "Quelle heure demain ?",
+                "Où hier ?",
+                "Pas de devoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪道题最难 cible l'avis avec 觉得."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "我昨天帮(bāng)同学(tóngxué)借(jiè)了一(yì)本(běn)书。",
+              "options": [
+                "Il a prêté/emprunté un livre pour un camarade hier",
+                "Demain à la bibliothèque",
+                "Il refuse d'aider",
+                "Pas de livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天帮…借书 décrit une aide passée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "食堂(shítáng)在(zài)教学楼(jiàoxuélóu)旁边(pángbiān)。",
+              "options": [
+                "La cantine est à côté du bâtiment",
+                "La cantine est demain",
+                "Pas de cantine",
+                "Hier fermée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在…旁边 situe la cantine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "我觉得明天考试(kǎoshì)要(yào)认真(rènzhēn)复习。",
+              "options": [
+                "Il pense devoir réviser sérieusement pour demain",
+                "Il ignore l'examen",
+                "Examen hier",
+                "Pas d'avis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…要认真复习 lie avis et préparation de demain."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : 学生：老师，我昨天没(méi)做完(wán)练习(liànxí)。 老师：没关系(méi guānxi)，明天交也可以(kěyǐ)。\nQuelles affirmations conviennent ?",
+              "options": [
+                "L'élève n'a pas fini les exercices hier.",
+                "Il pourra rendre demain.",
+                "Il doit rendre hier obligatoirement.",
+                "Le prof refuse demain."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hier l'exercice est incomplet et le prof accepte la remise demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "请(qǐng)用(yòng)中文(zhōngwén)回答(huídá)。",
+              "options": [
+                "Répondre en chinois",
+                "Répondre demain",
+                "Répondre en français seulement",
+                "Ne pas répondre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "用中文回答 impose la langue chinoise."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "同学：你觉得(juéde)新(xīn)老师(lǎoshī)怎么样？ 我：很好(hěn hǎo)。",
+              "options": [
+                "Il apprécie le nouveau prof",
+                "Il le trouve mauvais",
+                "Parle d'hier au musée",
+                "Demain pas de prof"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…很好 est un avis favorable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "明天我们换(huàn)座位(zuòwèi)。",
+              "options": [
+                "Changement de places demain",
+                "Changement hier",
+                "Pas de changement",
+                "Dehors demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天换座位 programme le changement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "昨天我忘(wàng)带(dài)铅笔(qiānbǐ)了。",
+              "options": [
+                "Oubli du crayon hier",
+                "Oubli demain",
+                "A tout apporté",
+                "Pas de cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天忘带铅笔 raconte un oubli passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "图书馆(túshūguǎn)下午(xiàwǔ)四(sì)点(diǎn)关(guān)门(mén)。",
+              "options": [
+                "Bibliothèque fermée à 16h",
+                "Ouverte toute la nuit",
+                "Demain seulement",
+                "Hier matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "下午四点关门 donne l'heure de fermeture."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "我觉得(juéde)跟(gēn)朋友(péngyou)一起(yìqǐ)学习(xuéxí)更(gèng)快乐(kuàilè)。",
+              "options": [
+                "Étudier avec des amis lui plaît",
+                "Il étudie seul toujours",
+                "Demain sans amis",
+                "Parle d'hier sport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…更快乐 exprime un avis sur étudier à plusieurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "老师：请(qǐng)看(kàn)黑板(hēibǎn)。",
+              "options": [
+                "Regarder le tableau",
+                "Fermer les yeux",
+                "Sortir demain",
+                "Écrire hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "看黑板 demande de regarder le tableau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "明天带(dài)雨(yǔ)伞(sǎn)，会(huì)下雨(xià yǔ)。",
+              "options": [
+                "Apporter un parapluie demain, pluie prévue",
+                "Soleil demain",
+                "Pluie hier seulement",
+                "Pas de météo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天…会下雨 conseille le parapluie pour la pluie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "昨天我们看了(kàn le)一个(yí gè)中文(zhōngwén)短(duǎn)视频(pín)。",
+              "options": [
+                "Visionnage d'une courte vidéo chinoise hier",
+                "Vidéo demain",
+                "Pas de vidéo",
+                "Film en anglais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天看了…视频 situe l'activité passée."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : 学生A：明天你有空(kòng)吗？ 学生B：下午没空。我觉得上午(shàngwǔ)可以(kěyǐ)一起(yìqǐ)复习。\nQuelles réponses sont exactes ?",
+              "options": [
+                "B n'est pas libre l'après-midi demain.",
+                "B propose de réviser le matin.",
+                "B est libre toute la journée demain.",
+                "B refuse toute révision."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Demain après-midi occupé et proposition de révision le matin avec 觉得."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "请(qǐng)大声(dà shēng)读(dú)第三(dì sān)段(duàn)。",
+              "options": [
+                "Lire le 3e paragraphe à voix haute",
+                "Lire demain",
+                "Chuchoter",
+                "Paragraphe d'hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "大声读第三段 précise quoi lire et comment."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "我觉得(juéde)这个(zhège)生词(shēngcí)很(hěn)常用(chángyòng)。",
+              "options": [
+                "Ce mot lui semble fréquent",
+                "Mot rare selon lui",
+                "Pas de vocabulaire",
+                "Demain seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…很常用 donne l'avis sur l'usage du mot."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "昨天体育(tǐyù)课(kè)取消(qǔxiāo)了。",
+              "options": [
+                "Cours de sport annulé hier",
+                "Annulé demain",
+                "Pas annulé",
+                "Dehors hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天…取消了 indique l'annulation passée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "你的邮箱(yóuxiāng)地址(dìzhǐ)是什么(shénme)？",
+              "options": [
+                "Demande l'adresse e-mail",
+                "Demande l'heure",
+                "Demande demain",
+                "Demande la cantine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "邮箱地址是什么 cible l'adresse mail."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "明天要(yào)穿(chuān)运动服(yùndòngfú)。",
+              "options": [
+                "Tenue de sport demain",
+                "Tenue hier",
+                "Pas de sport",
+                "Uniforme demain soir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天要穿运动服 est consigne vestimentaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "老师：你觉得(juéde)听力(tīnglì)进步(jìnbù)了(le)吗？",
+              "options": [
+                "Le prof demande si l'oral compris progresse",
+                "Parle de demain",
+                "Refuse l'écoute",
+                "Hier pas de progrès"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…进步了吗 interroge l'avis sur les progrès."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "我在(wǒ zài)电脑(diànnǎo)上(shàng)做(zuò)练习。",
+              "options": [
+                "Faire des exercices sur ordinateur",
+                "Demain sans PC",
+                "Hier dehors",
+                "Pas d'exercice"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在电脑上做练习 situe l'activité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "同学：昨天你的发音(fāyīn)很好(hěn hǎo)！",
+              "options": [
+                "Compliment sur la prononciation d'hier",
+                "Critique demain",
+                "Parle de demain",
+                "Pas de cours oral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天…发音很好 complimente la veille."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "我觉得(juéde)明天早(zǎo)睡(shuì)一点儿(yìdiǎnr)。",
+              "options": [
+                "Il pense qu'il vaut mieux se coucher tôt demain",
+                "Dormir tard demain",
+                "Hier tard",
+                "Pas d'avis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得明天早睡 exprime un conseil pour le lendemain."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : 老师：昨天谁(shuí)没(méi)交(jiāo)作文(zuòwén)？ 学生：我。我觉得写得(xiě de)不好(bù hǎo)。 老师：明天可以再(zài)改(gǎi)。\nQuelles infos sont correctes ?",
+              "options": [
+                "L'élève n'a pas rendu la rédaction hier.",
+                "Il juge sa rédaction mauvaise.",
+                "Il a rendu hier une bonne copie.",
+                "Le prof interdit de corriger demain."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Non-remise hier, avis négatif avec 觉得, correction possible demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "请(qǐng)跟(gēn)我说(shuō)拼音(pīnyīn)。",
+              "options": [
+                "Répéter les pinyin avec le prof",
+                "Écrire demain",
+                "Silence",
+                "Lire en français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "跟我说拼音 demande une répétition orale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "明天我们讨论(tǎolùn)环保(huánbǎo)。",
+              "options": [
+                "Débat sur l'environnement demain",
+                "Débat hier",
+                "Pas de thème",
+                "Sport demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天讨论环保 planifie le sujet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "昨天我收到(shōudào)了(le)三(sān)封(fēng)邮件(yóujiàn)。",
+              "options": [
+                "Trois e-mails reçus hier",
+                "Demain trois mails",
+                "Aucun mail",
+                "Une lettre demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天收到…邮件 compte les messages passés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "你觉得(juéde)在线(zàixiàn)课(kè)方便(fāngbiàn)吗？",
+              "options": [
+                "Demande si le cours en ligne est pratique",
+                "Parle d'hier",
+                "Refuse Internet",
+                "Demain pas de cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…方便吗 sonde l'avis sur le cours en ligne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "教室(jiàoshì)里(lǐ)请(qǐng)不要(bù yào)吃(chī)东西(dōngxi)。",
+              "options": [
+                "Interdiction de manger en classe",
+                "Manger librement",
+                "Demain dehors",
+                "Hier autorisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请不要吃东西 est règle de la salle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "我明天要(yào)去(qù)看(kàn)医生(yīshēng)。",
+              "options": [
+                "Rendez-vous médical demain",
+                "Médecin hier",
+                "Pas de sortie",
+                "École demain matin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天要看医生 programme la visite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "昨天我们学了(liǎo)怎么(zěnme)问(wèn)路(lù)。",
+              "options": [
+                "Apprentissage pour demander son chemin hier",
+                "Demain seulement",
+                "Pas de leçon",
+                "Demander demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天学了怎么问路 situe la leçon passée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "我觉得(juéde)多(duō)读(dú)课文(kèwén)对(duì)考试(kǎoshì)有(yǒu)用(yòng)。",
+              "options": [
+                "Lire le texte aide l'examen selon lui",
+                "Inutile de lire",
+                "Examen hier",
+                "Pas d'examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…有用 lie lecture et préparation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "同学：你的笔(bǐ)可以(kěyǐ)借(jiè)我(wǒ)吗？",
+              "options": [
+                "Demande à emprunter le stylo",
+                "Refuse demain",
+                "Parle de demain examen",
+                "Donne le cartable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "可以借我吗 est demande de prêt."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : 学生：老师，我觉得明天演讲(yǎnjiǎng)有点(yìdiǎnr)紧张(jǐnzhāng)。 老师：昨天你练习(liànxí)得很好，明天也会(huì)很好。\nQuelles phrases sont vraies ?",
+              "options": [
+                "L'élève est un peu stressé pour demain.",
+                "Le prof rappelle une bonne répétition hier.",
+                "L'élève n'a jamais répété.",
+                "Le prof dit que demain sera mauvais."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "觉得 exprime le stress futur ; le prof valorise la pratique d'hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "请(qǐng)把(bǎ)手机(shǒujī)放(fàng)在(zài)包里(bāo lǐ)。",
+              "options": [
+                "Ranger le téléphone dans le sac",
+                "Utiliser le téléphone",
+                "Demain seulement",
+                "Hier dehors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "把手机放在包里 demande de ranger l'appareil."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "明天是(shì)星期(xīngqī)五(wǔ)。",
+              "options": [
+                "Demain vendredi",
+                "Demain lundi",
+                "Hier vendredi",
+                "Pas de jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天是星期五 indique le jour suivant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "昨天我帮(bāng)老师(lǎoshī)发(fā)材料(cáiliào)。",
+              "options": [
+                "A aidé à distribuer des documents hier",
+                "Demain distribution",
+                "Refus d'aider",
+                "Pas de documents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天帮老师发材料 décrit l'aide passée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "你觉得(juéde)哪个(nǎge)声调(shēngdiào)最难(nán)？",
+              "options": [
+                "Quel ton te semble le plus difficile ?",
+                "Quelle heure demain ?",
+                "Où est la cantine ?",
+                "Pas de tons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "哪个声调最难 demande un avis avec 觉得."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "我们(wǒmen)明天八(bā)点(diǎn)在(zài)门口(ménkǒu)见(jiàn)。",
+              "options": [
+                "Rendez-vous demain 8h à l'entrée",
+                "Hier à la porte",
+                "Pas d'heure",
+                "Dehors hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天八点在门口见 fixe lieu et heure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "我觉得(juéde)记(jì)汉字(hànzì)要(yào)多(duō)写(xiě)几(jǐ)遍(biàn)。",
+              "options": [
+                "Il faut écrire plusieurs fois pour mémoriser selon lui",
+                "Ne jamais écrire",
+                "Demain sans écriture",
+                "Hier une fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…要多写几遍 conseille la répétition écrite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "请(qǐng)坐(zuò)好(hǎo)，开始(kāishǐ)上课(shàngkè)。",
+              "options": [
+                "Bien s'asseoir, cours commence",
+                "Sortir de la salle",
+                "Demain cours",
+                "Fin de cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "坐好，开始上课 lance la séance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "昨天我的(wǒ de)电脑(diànnǎo)坏了(huài le)。",
+              "options": [
+                "Ordinateur en panne hier",
+                "Neuf demain",
+                "Pas de PC",
+                "Réparé hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天…坏了 signale la panne passée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "同学：你觉得(juéde)食堂(shítáng)的(de)饭(fàn)怎么样？",
+              "options": [
+                "Demande l'avis sur la cantine",
+                "Demande demain menu",
+                "Parle d'hier bibliothèque",
+                "Refuse manger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…怎么样 interroge l'opinion sur la nourriture."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : 妈妈：你昨天为什么(wèishénme)回来(huílái)晚(wǎn)？ 孩子：我在学校复习。我觉得考试很重要(zhòngyào)。\nQuelles affirmations sont correctes ?",
+              "options": [
+                "L'enfant est rentré tard hier à cause des révisions.",
+                "Il estime l'examen important.",
+                "Il est rentré tôt hier sans étudier.",
+                "Il dit que l'examen n'a aucune importance."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Retour tard hier pour réviser et 觉得 souligne l'importance de l'examen."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "明天请(qǐng)带(dài) headphones(耳机(ěrjī))。",
+              "options": [
+                "Apporter un casque demain",
+                "Pas d'audio",
+                "Hier seulement",
+                "Interdit d'écouter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天带耳机 prépare l'écoute du lendemain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "老师：昨天的内容(nèiróng)大家(dàjiā)懂(dǒng)了吗(le ma)？",
+              "options": [
+                "Le prof vérifie la compréhension d'hier",
+                "Parle de demain",
+                "Pas de leçon",
+                "Refuse questions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天的内容…懂了吗 porte sur la veille."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "我觉得(juéde)说(shuō)慢(màn)一点儿(yìdiǎnr)更(gèng)清楚(qīngchu)。",
+              "options": [
+                "Parler plus lentement semble plus clair",
+                "Parler vite",
+                "Demain vite",
+                "Hier confus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…更清楚 recommande un débit lent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "我的(wǒ de)座位(zuòwèi)在(zài)窗户(chuānghu)旁边(pángbiān)。",
+              "options": [
+                "Place près de la fenêtre",
+                "Devant la porte",
+                "Demain change",
+                "Pas de place"
+              ],
+              "correctAnswers": [0],
+              "explanation": "在窗户旁边 situe le siège."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "明天我们考试(kǎoshì)，不能(bù néng)用(yòng)词典(cídiǎn)。",
+              "options": [
+                "Examen demain sans dictionnaire",
+                "Dictionnaire autorisé demain",
+                "Examen hier",
+                "Pas d'examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天考试…不能用词典 donne la règle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "昨天我认识了(rènshi le)两个(liǎng gè)新(xīn)同学(tóngxué)。",
+              "options": [
+                "Deux nouveaux camarades rencontrés hier",
+                "Demain rencontre",
+                "Personne",
+                "Un seul hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天认识了两个新同学 raconte la rencontre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "请(qǐng)把(bǎ)答案(dá'àn)写(xiě)在(zài)答题卡(dá tí kǎ)上(shàng)。",
+              "options": [
+                "Écrire les réponses sur la feuille",
+                "Répondre à l'oral seulement",
+                "Demain sans feuille",
+                "Hier effacé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "把答案写在答题卡上 indique où écrire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "我觉得(juéde)小组(xiǎozǔ)活动(huódòng)很(hěn)有趣(yǒuqù)。",
+              "options": [
+                "Les travaux de groupe lui plaisent",
+                "Il déteste le groupe",
+                "Demain seul",
+                "Hier pas d'activité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…很有趣 est avis positif sur le groupe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "同学：明天见(jiàn)，路上(lù shàng)小心(xiǎoxīn)！",
+              "options": [
+                "Salut pour demain avec prudence",
+                "Au revoir pour hier",
+                "Pas de sortie",
+                "Reste en classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天见，路上小心 souhaite prudence pour le lendemain."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : 学生A：你觉得昨天的听写(tīngxiě)难吗？ 学生B：不太难。我明天还要(yào)练(liàn)写(xiě)速度(sùdù)。\nQuelles réponses sont vraies ?",
+              "options": [
+                "B trouve la dictée d'hier pas très difficile.",
+                "B veut encore travailler la vitesse demain.",
+                "B dit que hier était impossible.",
+                "B refuse d'écrire demain."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "不太难 juge hier ; 明天还要练 vise la vitesse future."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "请(qǐng)关闭(guānbì)聊天(liáotiān)窗口(chuāngkǒu)。",
+              "options": [
+                "Fermer la fenêtre de chat",
+                "Ouvrir le chat",
+                "Demain discuter",
+                "Hier seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "关闭聊天窗口 demande de fermer le chat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "明天我们拍(pāi)班级(bānjí)照片(zhàopiàn)。",
+              "options": [
+                "Photo de classe demain",
+                "Photo hier",
+                "Pas de photo",
+                "Dehors hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天拍班级照片 planifie la photo."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "我觉得(juéde)预习(yùxí)课文(kèwén)对(duì)上课(shàngkè)有(yǒu)帮助(bāngzhù)。",
+              "options": [
+                "Préparer le texte aide le cours selon lui",
+                "Préparer est inutile",
+                "Demain sans cours",
+                "Hier sans texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得预习有帮助 lie préparation et cours."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "昨天图书馆(túshūguǎn)人(rén)很(hěn)多(duō)。",
+              "options": [
+                "Bibliothèque très fréquentée hier",
+                "Vide hier",
+                "Demain fermée",
+                "Personne hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天…人很多 décrit l'affluence passée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "老师：请(qǐng)举手(jǔ shǒu)回答(huídá)。",
+              "options": [
+                "Lever la main pour répondre",
+                "Parler sans main",
+                "Demain seulement",
+                "Écrire seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "举手回答 est consigne de participation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "我明天早(zǎo)上(shàng)有(yǒu)钢琴(gāngqín)课(kè)。",
+              "options": [
+                "Cours de piano demain matin",
+                "Piano hier soir",
+                "Pas de musique",
+                "Après-midi demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天早上有钢琴课 programme la leçon."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "同学：你觉得(juéde)这个(zhège)App好用(hǎo yòng)吗？",
+              "options": [
+                "Demande si l'application est pratique",
+                "Demande l'heure",
+                "Parle d'hier",
+                "Refuse tech"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…好用吗 sonde l'avis sur l'app."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "请(qǐng)把(bǎ)垃圾(lājī)扔(rēng)进(jìn)垃圾桶(lājī tǒng)。",
+              "options": [
+                "Jeter les déchets à la poubelle",
+                "Laisser par terre",
+                "Demain nettoyer",
+                "Hier sale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "扔进垃圾桶 indique le tri des déchets."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "昨天我们学了(liǎo)介绍(jièshào)家庭(jiātíng)。",
+              "options": [
+                "Leçon présentation familiale hier",
+                "Famille demain",
+                "Pas de leçon",
+                "Sport hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天学了介绍家庭 situe le thème passé."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue : 老师：明天测验(cèyàn)十(shí)个(gè)生词(shēngcí)。 学生：我觉得我已经(yǐjīng)准备好了(zhǔnbèi hǎo le)。昨天我复习了两(liǎng)遍(biàn)。\nQuelles infos sont exactes ?",
+              "options": [
+                "Demain quiz de dix mots.",
+                "L'élève se sent prêt et a révisé deux fois hier.",
+                "Demain pas de quiz.",
+                "Hier aucune révision."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Annonce du quiz demain ; 觉得 prêt et révisions d'hier confirmées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "请(qǐng)检查(jiǎnchá)拼写(pīnxiě)和(hé)声调(shēngdiào)。",
+              "options": [
+                "Vérifier orthographe pinyin et tons",
+                "Ignorer les tons",
+                "Demain seulement",
+                "Hier sans contrôle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "检查拼写和声调 rappelle les deux points."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "我觉得(juéde)问(wèn)老师(lǎoshī)不(bù)丢脸(diūliǎn)。",
+              "options": [
+                "Demander au prof n'est pas honteux selon lui",
+                "Honte de demander",
+                "Demain interdit",
+                "Hier seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…不丢脸 rassure sur poser des questions."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "明天放学(fàngxué)后(hòu)我(wǒ)去(qù)训练(xùnliàn)足球(zúqiú)。",
+              "options": [
+                "Foot après les cours demain",
+                "Foot hier",
+                "Pas de sport",
+                "Matin demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天放学后…足球 programme l'entraînement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "昨天老师(lǎoshī)表扬(biǎoyáng)了(le)我(wǒ)的(de)进步(jìnbù)。",
+              "options": [
+                "Prof a complimenté ses progrès hier",
+                "Critique demain",
+                "Pas de progrès",
+                "Demain examen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天…表扬了进步 raconte le compliment."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "同学：你的(wǒ de)笔记(bǐjì)可以(kěyǐ)借(jiè)我(wǒ)看(kàn)吗？",
+              "options": [
+                "Demande à voir/emprunter les notes",
+                "Refuse notes",
+                "Demain sans notes",
+                "Parle d'hier pluie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "笔记可以借我看吗 demande accès aux notes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "我觉得(juéde)每天(měitiān)听(tīng)十(shí)分钟(zhōng)中文(zhōngwén)很(hěn)有用(yòng)。",
+              "options": [
+                "Dix minutes d'écoute quotidienne lui semble utile",
+                "Inutile d'écouter",
+                "Demain une heure",
+                "Hier rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "觉得…很有用 valorise l'écoute régulière."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "请(qǐng)在(zài)线(xiàn)提交(tíjiāo)作业(zuòyè)，截止(jiézhǐ)明天(míngtiān)。",
+              "options": [
+                "Rendre en ligne avant demain",
+                "Rendre hier",
+                "Papier seulement",
+                "Pas de date"
+              ],
+              "correctAnswers": [0],
+              "explanation": "截止明天 fixe la remise en ligne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "昨天我们玩(wán)了(le)中文(zhōngwén)游戏(yóuxì)复习(fùxí)生词。",
+              "options": [
+                "Jeu chinois pour réviser le vocabulaire hier",
+                "Jeu demain",
+                "Pas de vocabulaire",
+                "Sport hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天…游戏复习生词 décrit l'activité passée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "老师：祝大家(zhù dàjiā)明天考试(kǎoshì)顺利(shùnlì)！",
+              "options": [
+                "Souhaite bonne réussite à l'examen de demain",
+                "Parle d'hier",
+                "Pas d'examen",
+                "Mauvaise chance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "祝大家明天考试顺利 encourage pour demain."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Expression",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Contexte : hier tu as manqué la dictée ; demain tu veux t'excuser et dire que tu vas réviser.\nQuelles phrases conviennent en chinois (niveau 5e) ?",
+              "options": [
+                "老师，昨天我没来，对不起。明天我会复习。",
+                "我觉得我应该更认真。",
+                "明天我不来学校。",
+                "昨天考试很好玩。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Excuses pour hier et promesse de réviser ; 觉得 peut exprimer la prise de conscience."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dire « Demain j'ai un examen de chinois » ?",
+              "options": [
+                "明天我有中文考试。",
+                "昨天我有中文考试。",
+                "我觉得中文考试。",
+                "明天我不考试中文。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天…有…考试 suit l'ordre sujet-temps-activité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dire « Je trouve que cette leçon est intéressante » ?",
+              "options": [
+                "我觉得这一课很有意思。",
+                "明天这一课很有意思。",
+                "昨天我不觉得。",
+                "这一课没有意思觉得。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我觉得 + phrase adjuge l'avis sur la leçon."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réponse polie : un camarade te demande 你觉得作业多吗？ Tu trouves qu'il y en a un peu trop.",
+              "options": [
+                "我觉得有一点儿多。",
+                "我觉得作业明天。",
+                "昨天作业少。",
+                "作业不作业。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有一点儿多 répond avec 觉得 de façon mesurée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Phrase correcte pour « Hier nous avons appris dix mots » :",
+              "options": [
+                "昨天我们学了十个词。",
+                "明天我们学了十个词。",
+                "昨天我们学十个词了。",
+                "我们昨天十个词学。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 marque l'action achevée hier avec 昨天 en tête."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Inviter : « Demain on révise ensemble après l'école ? »",
+              "options": [
+                "明天放学后我们一起复习吗？",
+                "昨天放学后我们一起复习吗？",
+                "我觉得明天学校。",
+                "明天复习不一起。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 transforme la proposition en question pour demain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Exprimer un avis : « Je pense que parler chinois est utile »",
+              "options": [
+                "我觉得说中文很有用。",
+                "明天说中文很有用。",
+                "昨天说中文没有。",
+                "有用我觉得说中文。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "我觉得说中文很有用 structure opinion + activité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Consigne en classe : « Ouvre ton manuel page 5 »",
+              "options": [
+                "请打开课本第五页。",
+                "请关闭课本第五页。",
+                "明天第五页课本。",
+                "我觉得第五页。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请打开课本第五页 est la formule d'instruction."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dire « Demain il ne faut pas être en retard » :",
+              "options": [
+                "明天别迟到。",
+                "昨天别迟到。",
+                "我觉得迟到。",
+                "明天迟到很好。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "别 + verbe interdit l'action pour demain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Répondre : 你昨天去哪儿了？ Tu es resté à l'école pour le club chinois.",
+              "options": [
+                "昨天我在学校参加中文俱乐部。",
+                "明天我在学校参加中文俱乐部。",
+                "我觉得学校俱乐部。",
+                "昨天我不去学校了。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天 + 在…参加… situe l'activité passée."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tu écris à ton prof : avis sur la dictée d'hier et projet pour demain.\nQuelles phrases sont bien formées ?",
+              "options": [
+                "老师，我觉得昨天的听写有点难。",
+                "明天我想再练一遍。",
+                "老师，我觉得明天的听写昨天。",
+                "昨天明天听写难。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avis avec 觉得 sur hier et intention claire pour demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je trouve que le prof parle trop vite » :",
+              "options": [
+                "我觉得老师说话太快。",
+                "我觉得老师说话太慢。",
+                "明天老师说话。",
+                "昨天老师不说话。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "太快 exprime l'excès de vitesse avec 觉得."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Demander l'heure du cours de demain :",
+              "options": [
+                "明天中文课几点？",
+                "昨天中文课几点？",
+                "我觉得几点中文课。",
+                "中文课明天不几点。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "几点 interroge l'heure avec 明天."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Proposer : « On peut étudier à la bibliothèque demain matin ? »",
+              "options": [
+                "明天上午我们可以去图书馆学习吗？",
+                "昨天上午我们可以去图书馆学习吗？",
+                "我觉得图书馆明天。",
+                "明天图书馆学习不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "可以…吗 formule une proposition polie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Raconter : « Hier il a plu, nous sommes restés en classe »",
+              "options": [
+                "昨天下雨了，我们留在教室。",
+                "明天下雨了，我们留在教室。",
+                "昨天我们下雨教室。",
+                "我觉得下雨昨天。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "了 avec 下雨 et conséquence en classe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Opinion : « Je trouve les exercices en ligne pratiques »",
+              "options": [
+                "我觉得在线练习很方便。",
+                "我觉得在线练习不方便。",
+                "明天在线练习。",
+                "在线我觉得方便练习。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很方便 donne l'avis positif sur le en ligne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Refuser poliment une sortie demain (tu révises) :",
+              "options": [
+                "对不起，明天我要复习。",
+                "对不起，昨天我要复习。",
+                "我觉得对不起。",
+                "明天对不起复习。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "对不起 + 明天我要复习 excuse et motive."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase pour « Apporte ton cahier demain » :",
+              "options": [
+                "明天请带你的本子。",
+                "昨天请带你的本子。",
+                "请带明天你的本子觉得。",
+                "带本子明天请不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天请带… place le temps avant la consigne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Compléter : 同学问「你觉得汉字难吗？」 Tu dis non, pas trop.",
+              "options": [
+                "我觉得不太难。",
+                "我觉得太难难。",
+                "明天不太难。",
+                "昨天我觉得难不太。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不太难 est réponse standard avec 觉得."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Annoncer : « Demain nous avons une présentation orale »",
+              "options": [
+                "明天我们有口语展示。",
+                "昨天我们有口语展示。",
+                "我觉得口语展示。",
+                "明天口语展示没有我们。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天我们有… annonce l'activité future."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Message à un camarade : hier tu étais malade ; demain tu reviens.\nQuelles phrases sont correctes ?",
+              "options": [
+                "我昨天生病了，没来学校。",
+                "明天我会来上课。",
+                "我明天生病了昨天。",
+                "觉得没来学校昨天。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Maladie hier expliquée et retour annoncé pour demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demander un avis : « Qu'est-ce que tu penses de ce texte ? »",
+              "options": [
+                "你觉得这篇课文怎么样？",
+                "你觉得这篇课文明天？",
+                "昨天这篇课文怎么样？",
+                "这篇课文觉得怎么样明天？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你觉得…怎么样 est la question d'opinion."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Répondre positivement : « Je trouve le club chinois super »",
+              "options": [
+                "我觉得中文俱乐部很棒。",
+                "我觉得中文俱乐部很糟。",
+                "明天中文俱乐部。",
+                "中文俱乐部我觉得不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很棒 traduit un avis très positif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Hier j'ai oublié mon devoir à la maison » :",
+              "options": [
+                "昨天我把作业忘在家里了。",
+                "明天我把作业忘在家里了。",
+                "昨天作业我在家觉得。",
+                "忘作业昨天家。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "把…忘在…了 structure l'oubli passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Proposer de réviser demain soir :",
+              "options": [
+                "我们明天晚上一起复习吧。",
+                "我们昨天晚上一起复习吧。",
+                "我觉得明天晚上吧。",
+                "明天晚上复习不一起吧。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吧 adoucit la suggestion pour demain soir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Exprimer : « Je pense qu'il faut écouter plus »",
+              "options": [
+                "我觉得应该多听一点儿。",
+                "我觉得应该少听一点儿。",
+                "明天应该多听。",
+                "多听我觉得应该不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "应该…一点儿 conseille d'augmenter l'écoute."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Question prof : « Demain on peut poser des questions ? »",
+              "options": [
+                "老师，明天可以提问吗？",
+                "老师，昨天可以提问吗？",
+                "老师，我觉得提问吗？",
+                "老师，明天提问不可以吗不？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "可以…吗 demande la permission pour demain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dire « Hier la cantine était fermée » :",
+              "options": [
+                "昨天食堂关门了。",
+                "明天食堂关门了。",
+                "昨天食堂开门觉得。",
+                "食堂昨天关不门。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "关门了 indique la fermeture passée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réponse : 明天要带什么？ Il faut stylo et manuel.",
+              "options": [
+                "要带笔和课本。",
+                "要带笔和课本昨天。",
+                "我觉得带笔。",
+                "明天带不笔和课本。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "要带… liste les objets nécessaires."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Opinion modeste : « Je trouve que je progresse un peu »",
+              "options": [
+                "我觉得我有点进步。",
+                "我觉得我没有进步。",
+                "明天我有点进步。",
+                "进步我觉得有点不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有点进步 exprime un progrès limité avec 觉得."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Présentation orale : intro demain + avis sur la préparation d'hier.\nQuelles phrases vont bien ?",
+              "options": [
+                "明天我要介绍我的家庭。",
+                "我觉得昨天练习很有帮助。",
+                "明天昨天介绍家庭。",
+                "觉得练习家庭明天。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Annonce du sujet demain et avis positif sur la répétition d'hier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Demain est-ce qu'on a cours de sport ? »",
+              "options": [
+                "明天有体育课吗？",
+                "昨天有体育课吗？",
+                "我觉得有体育课吗？",
+                "明天体育课有不有吗？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吗 en fin interroge l'emploi du temps de demain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Répondre : tu es d'accord, l'exercice n'est pas trop long.",
+              "options": [
+                "我觉得不太长。",
+                "我觉得太长长。",
+                "明天不太长。",
+                "太长我觉得不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不太长 nuance l'accord avec 觉得."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Excuses : « Désolé, hier je suis arrivé en retard »",
+              "options": [
+                "对不起，昨天我迟到了。",
+                "对不起，明天我迟到了。",
+                "对不起，我觉得迟到。",
+                "迟到昨天对不起我。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "对不起 + 昨天…迟到了 formule les excuses."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Inviter : « Demain déjeunons à la cantine ensemble ? »",
+              "options": [
+                "明天我们在食堂一起吃饭吗？",
+                "昨天我们在食堂一起吃饭吗？",
+                "我觉得食堂吃饭。",
+                "明天食堂吃饭不一起。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "一起吃饭吗 propose le déjeuner commun demain."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Je trouve important de relire le texte »",
+              "options": [
+                "我觉得再读一遍课文很重要。",
+                "我觉得课文不重要。",
+                "明天课文很重要不读。",
+                "再读课文我觉得不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "再读一遍…很重要 insiste sur la relecture."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Demander de répéter (classe) :",
+              "options": [
+                "请再说一遍。",
+                "请别说了。",
+                "明天再说一遍觉得。",
+                "说一遍请不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "请再说一遍 demande une répétition."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Plan : « Demain je vais demander au prof »",
+              "options": [
+                "明天我要问老师。",
+                "昨天我要问老师。",
+                "我要问老师觉得明天。",
+                "明天问老师要不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天我要… exprime intention future."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Hier nous n'avons pas fini ; on continue demain »",
+              "options": [
+                "昨天我们没做完，明天继续。",
+                "明天我们没做完，昨天继续。",
+                "昨天明天没做完继续。",
+                "没做完我觉得昨天。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement passé incomplet et continuation demain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avis : « Je trouve que travailler en petit groupe aide »",
+              "options": [
+                "我觉得小组学习有帮助。",
+                "我觉得小组学习没帮助。",
+                "明天小组学习。",
+                "小组我觉得学习。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有帮助 conclut l'avis sur le groupe."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Email court au prof : problème hier + solution demain.\nQuelles phrases sont adaptées ?",
+              "options": [
+                "老师，昨天我的电脑坏了，没交作业。",
+                "明天我会补交。",
+                "老师，我觉得电脑明天坏昨天。",
+                "补交作业觉得老师。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Explication d'hier et engagement de remise demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Conseil à un ami : « Je pense que tu devrais dormir tôt avant l'examen de demain »",
+              "options": [
+                "我觉得你明天考试前应该早睡。",
+                "我觉得你昨天考试前应该早睡。",
+                "明天你应该我觉得早睡。",
+                "考试前早睡应该不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "应该早睡 cible la veille de l'examen de demain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Question : « Tu trouves la prononciation difficile ? »",
+              "options": [
+                "你觉得发音难吗？",
+                "你觉得发音难明天？",
+                "昨天你觉得发音难吗？",
+                "发音觉得难吗你？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你觉得…难吗 interroge l'avis sur la prononciation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réponse : un peu, mais ça va.",
+              "options": [
+                "有一点儿难，但是还可以。",
+                "非常难，不可以。",
+                "明天还可以。",
+                "我觉得还可以难。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有一点儿…但是还可以 nuance la difficulté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Hier j'ai prêté mon dictionnaire à Li »",
+              "options": [
+                "昨天我把词典借给李了。",
+                "明天我把词典借给李了。",
+                "昨天借词典李我觉得。",
+                "借给李词典昨天把。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "把…借给…了 décrit le prêt passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Proposition : « Demain on teste nos dialogues ? »",
+              "options": [
+                "明天我们试试对话吗？",
+                "昨天我们试试对话吗？",
+                "试试对话明天我觉得。",
+                "对话试试明天不吗？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "试试…吗 propose un essai pour demain."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Opinion : « Je trouve que l'écoute en classe est claire »",
+              "options": [
+                "我觉得课堂听力很清楚。",
+                "我觉得课堂听力不清楚。",
+                "明天课堂听力。",
+                "清楚我觉得课堂。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很清楚 qualifie positivement l'écoute."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rappel : « N'oublie pas le devoir demain »",
+              "options": [
+                "别忘了明天交作业。",
+                "别忘了昨天交作业。",
+                "觉得别忘了作业。",
+                "明天别忘了交作业不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "别忘了… rappelle l'action pour demain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Hier le prof a expliqué les tons ; demain on pratique »",
+              "options": [
+                "昨天老师讲了声调，明天我们练习。",
+                "明天老师讲了声调，昨天我们练习。",
+                "昨天明天声调讲练习。",
+                "讲声调我觉得昨天。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chronologie explication hier et pratique demain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Répondre : 你觉得在线作业怎么样？ C'est pratique.",
+              "options": [
+                "我觉得很方便。",
+                "我觉得很不方便。",
+                "明天很方便。",
+                "很方便我觉得不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很方便 répond à 怎么样 avec 觉得."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dialogue à écrire : saluer un nouveau camarade + donner ton avis sur la classe.\nQuelles répliques conviennent ?",
+              "options": [
+                "你好！我觉得我们班很友好。",
+                "你叫什么名字？",
+                "我觉得你好我们班。",
+                "明天我们班名字。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salutation avec avis sur la classe et question de nom sont naturelles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demander : « Quelle leçon préfères-tu ? » (avis)",
+              "options": [
+                "你最喜欢哪一课？",
+                "你明天哪一课？",
+                "你觉得哪一课昨天？",
+                "最喜欢哪一课你觉得不？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "最喜欢… interroge la préférence."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Réponse : « J'aime bien la leçon 3, je trouve les dialogues utiles »",
+              "options": [
+                "我喜欢第三课，我觉得对话很有用。",
+                "我喜欢第三课，明天对话。",
+                "第三课我觉得不喜欢。",
+                "对话有用第三课不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "喜欢 + 觉得…有用 combine goût et utilité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Demain pas d'école, je vais me reposer »",
+              "options": [
+                "明天不上学，我要休息。",
+                "昨天不上学，我要休息。",
+                "明天上学，我要休息。",
+                "休息我要明天觉得。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不上学 + 要休息 explique la journée libre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Hier tu as bien participé ; exprime-le :",
+              "options": [
+                "昨天我举手回答了很多次。",
+                "明天我举手回答了很多次。",
+                "昨天我举手觉得很多。",
+                "很多次数回答昨天不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很多次 précise la participation passée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Opinion : « Je trouve qu'il faut écrire les caractères régulièrement »",
+              "options": [
+                "我觉得要经常写汉字。",
+                "我觉得不要写汉字。",
+                "明天写汉字经常。",
+                "经常写我觉得汉字不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "要经常… conseille la régularité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Demander l'autorisation : emprunter le livre jusqu'à demain",
+              "options": [
+                "我可以借这本书到明天吗？",
+                "我可以借这本书到昨天吗？",
+                "我觉得借书到明天。",
+                "借这本书到明天可以吗不？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "可以…吗 + 到明天 fixe la durée du prêt."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase : « Hier nous avons regardé une vidéo ; demain nous discutons »",
+              "options": [
+                "昨天我们看了视频，明天我们讨论。",
+                "明天我们看了视频，昨天我们讨论。",
+                "视频昨天讨论明天看。",
+                "看了视频我觉得昨天。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Enchaînement vidéo hier et discussion demain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Répondre à 明天见！ poliment :",
+              "options": [
+                "明天见！路上小心！",
+                "昨天见！",
+                "我觉得明天见。",
+                "见明天不！"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天见！路上小心！ répond au salut du lendemain."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Avis : « Je trouve que réviser avec des flashcards aide »",
+              "options": [
+                "我觉得用卡片复习有帮助。",
+                "我觉得用卡片复习没帮助。",
+                "明天用卡片复习。",
+                "卡片我觉得复习。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "用卡片复习…有帮助 décrit la méthode utile."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Tu prépares l'examen de demain : deux phrases pour ton journal.\nLesquelles sont correctes ?",
+              "options": [
+                "我觉得我还需要练听力。",
+                "明天我要早点儿睡觉。",
+                "明天我觉得还需要昨天。",
+                "睡觉早点儿需要觉得。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Besoin de pratiquer l'écoute et coucher tôt pour demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Je trouve cette question facile »",
+              "options": [
+                "我觉得这道题很容易。",
+                "我觉得这道题很难。",
+                "明天这道题容易。",
+                "容易我觉得这道题不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很容易 exprime la facilité perçue."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Expliquer absence hier : rendez-vous médical",
+              "options": [
+                "昨天我去看医生了。",
+                "明天我去看医生了。",
+                "昨天我看医生觉得。",
+                "看医生昨天不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "昨天…去看医生了 justifie l'absence."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Proposer échange : « On swape nos notes de hier ? »",
+              "options": [
+                "我们交换昨天的笔记吗？",
+                "我们交换明天的笔记吗？",
+                "交换笔记昨天我觉得。",
+                "笔记交换吗昨天不？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "交换…笔记吗 propose l'échange des notes d'hier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Opinion : « Le prof explique bien »",
+              "options": [
+                "我觉得老师讲得很清楚。",
+                "我觉得老师讲得不清楚。",
+                "明天老师讲清楚。",
+                "清楚讲我觉得老师。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "讲得很清楚 complimente la pédagogie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Consigne auto : « Demain je relirai le vocabulaire »",
+              "options": [
+                "明天我会再复习生词。",
+                "昨天我会再复习生词。",
+                "我会再复习生词觉得明天。",
+                "再复习生词明天不会。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天我会… annonce l'action future."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Question camarade : 你觉得明天会难吗？ Tu penses que non.",
+              "options": [
+                "我觉得不会太难。",
+                "我觉得会太难。",
+                "昨天不会太难。",
+                "不会我觉得太难。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不会太难 rassure pour demain avec 觉得."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Hier j'ai perdu mon stylo ; demain j'en apporte un autre »",
+              "options": [
+                "昨天我丢了笔，明天我带另一支。",
+                "明天我丢了笔，昨天我带另一支。",
+                "丢笔昨天带明天觉得。",
+                "另一支笔带明天不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Perte hier et solution matérielle demain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Remercier : le prof a corrigé hier",
+              "options": [
+                "谢谢老师昨天帮我改作业。",
+                "谢谢老师明天帮我改作业。",
+                "谢谢老师觉得改作业。",
+                "改作业谢谢昨天不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "谢谢…昨天…改作业 exprime la gratitude passée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Invitation : « Viens chez moi demain après-midi réviser »",
+              "options": [
+                "明天下午来我家一起复习吧。",
+                "昨天下午来我家一起复习吧。",
+                "来我家我觉得明天。",
+                "复习吧来我家下午不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "吧 invite poliment pour demain après-midi."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Réponse au prof sur projet de week-end (devoir pour mardi/demain scolaire).\nQuelles phrases sont bien formées ?",
+              "options": [
+                "我觉得这个作业很有意思。",
+                "明天我会开始写。",
+                "明天我觉得作业昨天有意思。",
+                "开始写觉得作业。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avis positif et intention de commencer demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demander : « Peux-tu m'aider avec la prononciation ? »",
+              "options": [
+                "你可以帮我练发音吗？",
+                "你可以帮我练发音昨天吗？",
+                "我觉得帮我练发音吗？",
+                "帮我练发音你可以不吗？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "你可以…吗 demande de l'aide pour l'oral."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Accepter : « D'accord, demain après l'école »",
+              "options": [
+                "好的，明天放学后。",
+                "好的，昨天放学后。",
+                "好的，我觉得放学后。",
+                "好的，放学后明天不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "好的 confirme avec horaire de demain."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Je trouve que j'ai besoin de plus de vocabulaire »",
+              "options": [
+                "我觉得我需要多背一点儿生词。",
+                "我觉得我不需要生词。",
+                "明天我需要生词。",
+                "多背生词我觉得不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "需要多背… exprime le besoin lexical."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Raconter hier : premier essai de présentation",
+              "options": [
+                "昨天我第一次做口语展示。",
+                "明天我第一次做口语展示。",
+                "第一次口语我觉得昨天。",
+                "做口语展示昨天不第一次。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "第一次… situe la première fois hier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Opinion : « Les jeux en classe sont motivants »",
+              "options": [
+                "我觉得课堂游戏很有意思。",
+                "我觉得课堂游戏很无聊。",
+                "明天课堂游戏。",
+                "游戏课堂我觉得不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很有意思 valorise les jeux pédagogiques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Prévenir : « Demain j'arrive peut-être un peu en retard (rdv) »",
+              "options": [
+                "明天我可能会晚一点儿到。",
+                "昨天我可能会晚一点儿到。",
+                "我觉得晚一点儿到明天。",
+                "可能会到晚一点儿不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "可能会…到 annonce un possible retard demain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase : « Hier nous avons copié les mots ; demain nous les utilisons »",
+              "options": [
+                "昨天我们抄了生词，明天我们用它们。",
+                "明天我们抄了生词，昨天我们用它们。",
+                "抄生词昨天用明天觉得。",
+                "用它们明天抄不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copie hier et usage prévu demain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Répondre : 你觉得作业难吗？ Pas vraiment.",
+              "options": [
+                "我觉得不太难。",
+                "我觉得非常难。",
+                "明天不太难。",
+                "不太难我觉得作业不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "不太难 adoucit la négation de difficulté."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Souhaiter bonne chance pour l'examen de demain à un ami :",
+              "options": [
+                "祝你明天考试顺利！",
+                "祝你昨天考试顺利！",
+                "我觉得考试顺利！",
+                "顺利考试祝你明天不！"
+              ],
+              "correctAnswers": [0],
+              "explanation": "祝你…顺利 est formule d'encouragement."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Commentaire après cours : hier trop rapide, demain tu demanderas de ralentir.\nQuelles phrases expriment cela ?",
+              "options": [
+                "我觉得昨天老师讲得太快。",
+                "明天我想请老师慢一点。",
+                "我觉得明天老师昨天快。",
+                "慢一点请觉得老师。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avis sur le rythme d'hier et demande pour demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Demain nous présentons notre projet en chinois »",
+              "options": [
+                "明天我们用中文介绍我们的项目。",
+                "昨天我们用中文介绍我们的项目。",
+                "用中文项目我觉得明天。",
+                "介绍项目明天中文不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "用中文介绍… annonce la présentation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Opinion : « Je trouve les pauses utiles »",
+              "options": [
+                "我觉得休息一会儿很有用。",
+                "我觉得休息一会儿没用。",
+                "明天休息一会儿。",
+                "休息我觉得有用不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "休息一会儿…有用 défend les pauses."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Hier tu as mal compris ; phrase au prof :",
+              "options": [
+                "老师，昨天我有一点儿没听懂。",
+                "老师，明天我有一点儿没听懂。",
+                "老师，我觉得没听懂昨天不。",
+                "没听懂昨天老师一点儿。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "有一点儿没听懂 admet une incompréhension passée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Promesse : « Demain je poserai des questions »",
+              "options": [
+                "明天我会多问问题。",
+                "昨天我会多问问题。",
+                "我会多问问题觉得明天。",
+                "多问问题明天不会。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天我会… engage la participation future."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comparer : « Je trouve parler plus facile qu'écrire »",
+              "options": [
+                "我觉得说比写容易。",
+                "我觉得写比说容易。",
+                "明天说比写容易。",
+                "比写容易我觉得说不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "说比写容易 structure la comparaison."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Inviter prof : « Pouvez-vous répéter demain la règle ? »",
+              "options": [
+                "老师，明天您可以再讲一遍这个规则吗？",
+                "老师，昨天您可以再讲一遍这个规则吗？",
+                "老师，我觉得讲规则吗？",
+                "再讲规则明天可以不吗？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "您可以…吗 respectueux pour redemander demain."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Hier j'ai étudié deux heures ; aujourd'hui je suis fatigué »",
+              "options": [
+                "昨天我学习了两个小时，今天我很累。",
+                "明天我学习了两个小时，今天我很累。",
+                "学习两个小时昨天累今天。",
+                "很累我觉得今天。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux heures hier explique la fatigue aujourd'hui."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Réponse positive à 你觉得这个App有帮助吗？",
+              "options": [
+                "我觉得很有帮助。",
+                "我觉得没有帮助。",
+                "明天很有帮助。",
+                "有帮助我觉得不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "很有帮助 affirme l'utilité perçue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Clore un échange : à demain en classe",
+              "options": [
+                "明天课堂上见！",
+                "昨天课堂上见！",
+                "我觉得课堂上见。",
+                "课堂上见明天不！"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天课堂上见 fixe le prochain rendez-vous."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bilan avant examen : avis sur ta préparation + plan pour la veille (demain soir / nuit avant).\nQuelles phrases conviennent ?",
+              "options": [
+                "我觉得我已经准备得不错。",
+                "明天晚上我要早点儿睡。",
+                "我觉得准备得不错昨天睡。",
+                "早点儿睡准备觉得。"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Auto-évaluation avec 觉得 et sommeil tôt pour être prêt."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Demander : « Tu es prêt pour le test de demain ? »",
+              "options": [
+                "你准备好明天的测验了吗？",
+                "你准备好昨天的测验了吗？",
+                "你觉得准备好测验了吗明天不？",
+                "准备好测验你了吗明天？"
+              ],
+              "correctAnswers": [0],
+              "explanation": "…了吗 interroge l'état de préparation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Répondre : presque, il reste à revoir les mots.",
+              "options": [
+                "差不多，我还要复习生词。",
+                "差不多，我不复习生词。",
+                "明天我还要复习生词差不多。",
+                "复习生词我觉得差不多不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "还要复习生词 précise ce qu'il reste à faire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Hier le mock exam m'a aidé ; demain je fais le vrai »",
+              "options": [
+                "昨天模拟考试对我有帮助，明天我考正式的。",
+                "明天模拟考试对我有帮助，昨天我考正式的。",
+                "模拟考试昨天正式明天觉得。",
+                "考正式的帮助昨天不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Simulacre hier et examen réel demain."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Opinion finale : « Je trouve que j'ai progressé cette année »",
+              "options": [
+                "我觉得今年我进步很大。",
+                "我觉得今年我没有进步。",
+                "明天我进步很大。",
+                "进步很大我觉得今年不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "今年…进步很大 bilan positif de l'année."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Remercier camarades : entraînement oral hier",
+              "options": [
+                "谢谢你们昨天跟我练口语。",
+                "谢谢你们明天跟我练口语。",
+                "谢谢你们觉得练口语。",
+                "练口语谢谢昨天不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "谢谢…昨天…练口语 reconnaît l'aide passée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Consigne à soi : « Demain, reste calme à l'examen »",
+              "options": [
+                "明天考试的时候要保持冷静。",
+                "昨天考试的时候要保持冷静。",
+                "保持冷静我觉得考试。",
+                "考试的时候冷静要不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "要保持冷静 conseille pour le moment de l'examen."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Phrase : « Je pense que l'effort quotidien compte »",
+              "options": [
+                "我觉得每天努力很重要。",
+                "我觉得努力不重要。",
+                "明天努力很重要。",
+                "每天我觉得努力不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "每天努力很重要 généralise sur la régularité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Au prof : « Si j'ai une question demain, je lèverai la main »",
+              "options": [
+                "老师，明天我有问题会举手。",
+                "老师，昨天我有问题会举手。",
+                "老师，我觉得有问题举手。",
+                "有问题会举手老师明天不。"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天…会举手 promet la participation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Clôture chapitre : « Rendez-vous demain pour l'évaluation ! »",
+              "options": [
+                "明天评估见！加油！",
+                "昨天评估见！加油！",
+                "我觉得评估见加油。",
+                "评估见明天加油不！"
+              ],
+              "correctAnswers": [0],
+              "explanation": "明天评估见 avec 加油 lance l'évaluation."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

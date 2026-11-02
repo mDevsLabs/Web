@@ -1,0 +1,2688 @@
+{
+  "id": "terminale-enseignement-scientifique-05",
+  "year": "terminale",
+  "subject": "enseignement-scientifique",
+  "title": "Le Soleil, la Terre et le climat",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Énergie reçue",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le rayonnement solaire et la fusion nucléaire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments interviennent directement dans les réactions de fusion thermonucléaire au cœur du Soleil ?",
+              "options": [
+                "Des noyaux d'hydrogène (protons)",
+                "La formation de noyaux d'hélium 4",
+                "Des réactions de fission de l'uranium",
+                "Une libération colossale d'énergie"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Au cœur du Soleil, la fusion transforme des protons en hélium avec libération d'énergie selon E = mc². Il n'y a pas de fission d'uranium."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle relation d'Albert Einstein permet de relier la perte de masse du Soleil à l'énergie rayonnée ?",
+              "options": ["E = mc²", "E = hν", "P = U × I", "F = m × a"],
+              "correctAnswers": [0],
+              "explanation": "La relation d'équivalence masse-énergie d'Einstein E = mc² explique la perte de masse solaire compensée par l'énergie rayonnée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la température approximative à la surface du Soleil (photosphère) ?",
+              "options": [
+                "5 778 K (environ 5 500 °C)",
+                "15 millions de kelvins",
+                "1 000 °C",
+                "300 K"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La photosphère solaire a une température d'environ 5 778 K, tandis que le cœur atteint environ 15 millions de kelvins."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "D'après la loi de Wien, comment varie la longueur d'onde du maximum d'émission quand la température augmente ?",
+              "options": [
+                "Elle diminue vers les courtes longueurs d'onde",
+                "Elle augmente vers les infrarouges",
+                "Elle reste strictement constante",
+                "Elle double automatiquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de Wien (λmax × T = constante) indique que la longueur d'onde maximale est inversement proportionnelle à la température absolue."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans quel domaine du spectre électromagnétique se situe le pic d'émission du rayonnement solaire ?",
+              "options": [
+                "Dans le domaine visible (vers 500 nm)",
+                "Dans les rayons X",
+                "Dans les ondes radio",
+                "Dans les infrarouges lointains"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Soleil émet son maximum d'intensité lumineuse dans le domaine du visible, autour de 500 nm (vert-jaune)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel pourcentage approximatif de la masse du Système solaire est concentré dans le Soleil ?",
+              "options": [
+                "Plus de 99,8 %",
+                "Environ 50 %",
+                "Environ 75 %",
+                "Moins de 25 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Soleil concentre à lui seul environ 99,86 % de la masse totale de l'ensemble du Système solaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le principal mécanisme de transport d'énergie dans la zone radiative du Soleil ?",
+              "options": [
+                "L'absorption et la réémission successive de photons",
+                "La convection thermique de matière",
+                "La conduction par contact solide",
+                "L'induction électromagnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la zone radiative, l'énergie se déplace sous forme de photons successivement absorbés et réémis par les particules du plasma."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle particule quasi insensible à la matière est émise en abondance lors des fusions solaires ?",
+              "options": [
+                "Le neutrino",
+                "Le neutron thermique",
+                "Le positron stable",
+                "L'électron lourd"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les neutrinos électroniques produits lors des réactions nucléaires traversent le Soleil et l'espace presque sans interagir."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que devient la puissance totale émise par le Soleil lorsqu'on s'en éloigne ?",
+              "options": [
+                "Elle se répartit sur une sphère de surface proportionnelle à d²",
+                "Elle augmente avec le carré de la distance",
+                "Elle reste constante par unité de surface",
+                "Elle disparaît brutalement à 1 UA"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La puissance totale émise se conserve mais se dilue sur une sphère de surface 4πd², donc la puissance surfacique décroît en 1/d²."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est l'état de la matière constituant le cœur du Soleil ?",
+              "options": [
+                "Un plasma hautement ionisé",
+                "Un gaz moléculaire neutre",
+                "Un solide métallique dense",
+                "Un liquide visqueux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À des millions de degrés, les électrons sont arrachés aux noyaux : la matière solaire est sous forme de plasma ionisé."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La constante solaire et la puissance reçue",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions sont vraies concernant la constante solaire ?",
+              "options": [
+                "Elle vaut environ 1 361 W/m² au sommet de l'atmosphère terrestre",
+                "Elle est mesurée perpendiculairement aux rayons solaires",
+                "Elle vaut 340 W/m² sur le disque terrestre",
+                "Elle dépend de la distance Terre-Soleil"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La constante solaire est d'environ 1 361 W/m² sur une surface perpendiculaire aux rayons à 1 UA de distance du Soleil."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle surface intercepte le rayonnement solaire incident par rapport au rayon terrestre R ?",
+              "options": [
+                "Un disque de surface π × R²",
+                "Une sphère de surface 4π × R²",
+                "Une demi-sphère de surface 2π × R²",
+                "Un cylindre de surface 2π × R"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Terre projette dans l'espace une ombre circulaire : elle intercepte donc le flux solaire sur une section de disque πR²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la puissance moyenne reçue par m² au sommet de l'atmosphère sur toute la Terre est-elle d'environ 340 W/m² ?",
+              "options": [
+                "Car la surface de la sphère (4πR²) est 4 fois celle du disque (πR²)",
+                "Car l'atmosphère absorbe 75 % de l'énergie",
+                "Car la Terre ne tourne que la moitié de l'année",
+                "Car le Soleil s'éteint la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie interceptée par le disque πR² se répartit sur la surface totale de la sphère 4πR², soit un rapport de 1/4 : 1 361 / 4 ≈ 340 W/m²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quelle distance moyenne du Soleil la Terre orbite-t-elle (définition de l'unité astronomique) ?",
+              "options": [
+                "Environ 150 millions de kilomètres",
+                "Environ 1 milliard de kilomètres",
+                "Environ 384 000 kilomètres",
+                "Environ 15 millions de kilomètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La distance moyenne Terre-Soleil, soit 1 unité astronomique (UA), est d'environ 149,6 millions de kilomètres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si la distance au Soleil d'une planète était multipliée par 2, sa constante solaire serait divisée par :",
+              "options": ["4", "2", "8", "16"],
+              "correctAnswers": [0],
+              "explanation": "L'éclairement décroît en 1/d². En doublant la distance, la constante solaire est divisée par 2² = 4."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle unité internationale mesure une puissance par unité de surface ?",
+              "options": [
+                "Le watt par mètre carré (W/m²)",
+                "Le joule par seconde (J/s)",
+                "Le newton par mètre (N/m)",
+                "Le pascal (Pa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le flux de puissance surfacique s'exprime en watts par mètre carré (W/m² ou W·m⁻²)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle part approximative de l'énergie solaire incidente moyenne (340 W/m²) est directement absorbée par la surface terrestre ?",
+              "options": [
+                "Environ 160 à 170 W/m² (environ 50 %)",
+                "La totalité des 340 W/m²",
+                "Moins de 10 W/m²",
+                "Environ 300 W/m²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Environ la moitié du rayonnement incident (environ 48-50 %, soit 160-170 W/m²) est absorbée par la surface continentale et océanique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel instrument placé sur satellite mesure la puissance du rayonnement solaire total reçu ?",
+              "options": [
+                "Un pyrhéliomètre ou radiomètre spatial",
+                "Un baromètre à mercure",
+                "Un sismomètre à large bande",
+                "Un anémomètre à coupelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les radiomètres et pyrhéliomètres satellitaires mesurent précisément l'irradiance solaire totale (TSI)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La constante solaire varie-t-elle au cours d'un cycle solaire d'environ 11 ans ?",
+              "options": [
+                "Oui, de l'ordre de 0,1 %",
+                "Oui, elle varie de plus de 50 %",
+                "Non, elle est strictement invariante au milliardième",
+                "Oui, elle diminue de moitié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'activité magnétique du Soleil module la constante solaire d'environ 0,1 % (environ 1 W/m²) sur un cycle de 11 ans."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel facteur géométrique explique que la puissance solaire reçue au sol varie au cours d'une journée ?",
+              "options": [
+                "La variation de l'angle d'incidence des rayons du Soleil",
+                "La distance Terre-Soleil qui change toutes les heures",
+                "La modification du diamètre solaire",
+                "La pulsation du noyau solaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rotation de la Terre modifie en permanence l'angle d'incidence des rayons solaires par rapport à l'horizontale locale."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La forme de la Terre et la répartition latitudinale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels phénomènes résultent directement de la sphéricité de la Terre pour le rayonnement solaire reçu ?",
+              "options": [
+                "Une puissance surfacique reçue plus élevée à l'équateur qu'aux pôles",
+                "L'étalement d'un même faisceau solaire sur une plus grande surface à haute latitude",
+                "Une température moyenne au sol dépendante de la latitude",
+                "L'annulation totale du rayonnement solaire aux équinoxes"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La forme sphérique implique que les rayons frappent le sol avec un angle plus rasant aux pôles qu'à l'équateur, étalant l'énergie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi fait-il en moyenne plus chaud à l'équateur qu'aux pôles ?",
+              "options": [
+                "Les rayons solaires y arrivent plus perpendiculairement au sol",
+                "L'équateur est beaucoup plus proche du Soleil",
+                "L'atmosphère y est dépourvue de dioxygène",
+                "L'effet de serre y est dix fois plus faible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'équateur, l'incidence des rayons est proche de la normale (90°), ce qui concentre l'énergie sur une surface minimale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quand le Soleil est au zénith (angle d'incidence nul par rapport à la verticale), la puissance surfacique reçue par le sol est :",
+              "options": [
+                "Maximale",
+                "Nulle",
+                "Minimale",
+                "Égale à zéro absolu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au zénith, la surface éclairée par un faisceau de section donnée est minimale, donc la puissance surfacique reçue est maximale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'angle entre la direction des rayons solaires et le plan horizontal du lieu d'observation ?",
+              "options": [
+                "La hauteur du Soleil (élévation solaire)",
+                "L'azimut magnétique",
+                "La déclinaison lunaire",
+                "La longitude géodésique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La hauteur angulaire du Soleil correspond à l'angle formé par les rayons incidents avec le plan tangent à l'horizon local."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si la hauteur du Soleil est notée h, la puissance surfacique reçue au sol est proportionnelle à :",
+              "options": ["sin(h)", "cos(h)", "tan(h)", "1 / sin(h)"],
+              "correctAnswers": [0],
+              "explanation": "La puissance surfacique varie comme sin(h), où h est la hauteur du Soleil au-dessus de l'horizon (maximale à h = 90°)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle conséquence majeure a le gradient thermique latitudinal sur la Terre ?",
+              "options": [
+                "La mise en mouvement des circulations atmosphérique et océanique",
+                "L'arrêt de la rotation terrestre",
+                "La disparition complète des océans polaires",
+                "L'inversion du champ magnétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le déséquilibre thermique entre les régions équatoriales chaudes et polaires froides entraîne les grands courants atmosphériques et marins."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À midi solaire aux pôles le jour de l'équinoxe, quelle est la hauteur du Soleil sur l'horizon ?",
+              "options": [
+                "0° (le Soleil rase l'horizon)",
+                "90° (au zénith)",
+                "45°",
+                "23,5°"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aux pôles, le jour de l'équinoxe, le centre du disque solaire se trouve exactement sur la ligne d'horizon (hauteur = 0°)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle région terrestre reçoit le plus d'énergie solaire en moyenne cumulée sur l'ensemble de l'année ?",
+              "options": [
+                "La zone intertropicale",
+                "Les calottes polaires",
+                "Les zones tempérées d'altitude",
+                "Le cercle polaire antarctique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La zone intertropicale bénéficie d'une insolation quasi verticale tout au long de l'année, maximisant le cumul d'énergie reçue."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel trajet atmosphérique les rayons solaires traversent-ils aux hautes latitudes par rapport à l'équateur ?",
+              "options": [
+                "Une épaisseur d'atmosphère plus grande",
+                "Une épaisseur d'atmosphère identique",
+                "Une épaisseur d'atmosphère plus faible",
+                "Aucune épaisseur car l'air y est absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rayons rasants aux hautes latitudes traversent une colonne d'air plus épaisse, accentuant l'atténuation et la diffusion."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel savant de l'Antiquité a utilisé l'inclinaison des rayons solaires à deux latitudes différentes pour mesurer le rayon terrestre ?",
+              "options": ["Ératosthène", "Aristote", "Ptolémée", "Pythagore"],
+              "correctAnswers": [0],
+              "explanation": "Ératosthène a calculé la circonférence de la Terre en comparant les ombres à Syène et à Alexandrie au solstice d'été."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les saisons et les paramètres orbitaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels facteurs astronomiques expliquent l'existence des saisons sur Terre ?",
+              "options": [
+                "L'inclinaison de l'axe de rotation de la Terre par rapport à l'écliptique",
+                "La révolution de la Terre autour du Soleil",
+                "La variation considérable de la distance Terre-Soleil",
+                "La conservation de la direction de l'axe terrestre dans l'espace"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les saisons sont dues à l'obliquité de l'axe terrestre (~23,44°) conservée au cours de sa révolution. La distance au Soleil a un effet minime."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la valeur approximative de l'inclinaison de l'axe de rotation terrestre par rapport à la normale au plan de l'écliptique ?",
+              "options": ["23,4°", "0°", "45°", "90°"],
+              "correctAnswers": [0],
+              "explanation": "L'axe de rotation de la Terre est incliné d'environ 23°26' (soit ~23,44°) par rapport à la perpendiculaire au plan de l'orbite."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lors du solstice de juin, quel hémisphère reçoit la puissance solaire maximale ?",
+              "options": [
+                "L'hémisphère Nord",
+                "L'hémisphère Sud",
+                "Les deux hémisphères exactement à égalité",
+                "Uniquement le pôle Sud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au solstice de juin, le pôle Nord est incliné vers le Soleil : c'est le début de l'été astronomique dans l'hémisphère Nord."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se passe-t-il le jour d'un équinoxe (en mars et en septembre) ?",
+              "options": [
+                "La durée du jour est égale à celle de la nuit sur toute la Terre",
+                "Le Soleil reste sous l'horizon 24 heures partout",
+                "Il fait nuit continue à l'équateur",
+                "Le Soleil ne se couche jamais sur aucun méridien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot équinoxe vient du latin 'aequa nox' (nuit égale) : la durée du jour et de la nuit est de 12 heures sur l'ensemble du globe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le point de l'orbite terrestre le plus proche du Soleil, atteint début janvier ?",
+              "options": [
+                "Le périhélie",
+                "L'aphélie",
+                "Le périgée",
+                "L'apogée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le périhélie est le point de l'orbite le plus rapproché du Soleil (~147 millions de km), atteint vers le 3 ou 4 janvier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se nomment les trois paramètres orbitaux qui modulent l'insolation sur de longues périodes (théorie de Milankovitch) ?",
+              "options": [
+                "Excentricité, obliquité et précession",
+                "Vitesse, masse et rayon",
+                "Constante de Hubble, redshift et masse",
+                "Albédo, salinité et température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Milankovitch a montré que l'excentricité orbitale, l'obliquité axiale et la précession des équinoxes rythment les cycles climatiques glaciaires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la période approximative de variation de l'obliquité de la Terre (inclinaison de son axe) ?",
+              "options": [
+                "Environ 41 000 ans",
+                "Environ 1 an",
+                "Environ 100 ans",
+                "Environ 1 million d'années"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inclinaison de l'axe terrestre oscille entre 22,1° et 24,5° selon une période dominante d'environ 41 000 ans."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Au-delà de quelle latitude observe-t-on le phénomène du Soleil de minuit au moins un jour par an ?",
+              "options": [
+                "66,5° (cercles polaires)",
+                "23,5° (tropiques)",
+                "45° (latitudes moyennes)",
+                "90° uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le jour polaire (Soleil de minuit) n'apparaît qu'au-delà des cercles polaires arctique (66°33' N) et antarctique (66°33' S)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi l'été de l'hémisphère Nord ne coïncide-t-il pas avec la distance minimale Terre-Soleil ?",
+              "options": [
+                "Parce que la Terre est à l'aphélie en juillet, montrant la prépondérance de l'inclinaison",
+                "Parce que le Soleil s'éteint en été",
+                "Parce que la Lune bloque la chaleur en janvier",
+                "Parce que l'orbite est parfaitement circulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En juillet, la Terre est au plus loin du Soleil (aphélie) : cela prouve que l'inclinaison axiale prime largement sur la distance."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle forme géométrique possède l'orbite de la Terre autour du Soleil ?",
+              "options": [
+                "Une ellipse de très faible excentricité",
+                "Un cercle rigoureusement parfait",
+                "Une parabole ouverte",
+                "Une spirale logarithmique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon la première loi de Kepler, l'orbite terrestre est une ellipse quasi circulaire (excentricité actuelle d'environ 0,0167)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "L'albédo terrestre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques définissent l'albédo d'une surface ?",
+              "options": [
+                "C'est une grandeur sans unité comprise entre 0 et 1 (ou 0 et 100 %)",
+                "C'est la fraction du rayonnement incident qui est réfléchie",
+                "Il dépend de la nature et de la couleur de la surface",
+                "Il mesure l'énergie émise sous forme d'infrarouges thermiques"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'albédo est le rapport sans dimension de la puissance solaire réfléchie sur la puissance incidente. Les infrarouges relèvent de l'émission."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la valeur moyenne de l'albédo global de la Terre ?",
+              "options": [
+                "Environ 0,30 (30 %)",
+                "Environ 0,90 (90 %)",
+                "Environ 0,05 (5 %)",
+                "Environ 0,70 (70 %)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Terre réfléchit en moyenne vers l'espace environ 30 % du rayonnement solaire incident (albédo moyen A ≈ 0,30)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parmi les surfaces suivantes, laquelle possède l'albédo le plus élevé ?",
+              "options": [
+                "La neige fraîche",
+                "Une forêt de conifères",
+                "L'océan profond sous le soleil au zénith",
+                "Un champ labouré sombre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La neige fraîche très blanche peut réfléchir entre 80 % et 90 % du rayonnement solaire incident (albédo de 0,8 à 0,9)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'albédo approximatif d'un océan d'eau liquide calme lorsque les rayons solaires arrivent verticalement ?",
+              "options": [
+                "Très faible, de 0,05 à 0,10 (5 à 10 %)",
+                "Très fort, supérieur à 0,85",
+                "Strictement égal à 1",
+                "Environ 0,50"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau liquide calme absorbe l'essentiel de la lumière incidente normale : son albédo est très faible (environ 5 à 8 %)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que devient la fraction du rayonnement solaire qui n'est pas réfléchie par la Terre (1 - albédo) ?",
+              "options": [
+                "Elle est absorbée par l'atmosphère et la surface, puis convertie en chaleur",
+                "Elle est détruite et disparaît de l'Univers",
+                "Elle est renvoyée instantanément sans réchauffement",
+                "Elle se transforme en matière solide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La part non réfléchie (1 - A), soit ~70 %, est absorbée par le système climatique (atmosphère, océans, continents) et l'échauffe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment la fonte de la banquise polaire modifie-t-elle l'albédo local de la région arctique ?",
+              "options": [
+                "L'albédo diminue fortement, passant de ~0,8 à ~0,1",
+                "L'albédo augmente fortement vers 1",
+                "L'albédo reste rigoureusement inchangé",
+                "L'albédo devient négatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La glace blanche est remplacée par de l'eau liquide sombre : l'albédo chute, entraînant une absorption accrue de rayonnement solaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel constituant atmosphérique contribue le plus à l'albédo de la Terre vu depuis l'espace ?",
+              "options": [
+                "Les nuages",
+                "Le dioxyde de carbone gazeux",
+                "Le diazote",
+                "La poussière stratosphérique résiduelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nuages couvrent environ 60 % du globe et possèdent un albédo élevé (0,4 à 0,8), constituant le contributeur majeur à l'albédo terrestre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si l'albédo moyen de la Terre venait à augmenter (par exemple sous l'effet d'un nuage de cendres volcaniques), la température globale :",
+              "options": [
+                "Diminuerait",
+                "Augmenterait",
+                "Resterait constante",
+                "Doublerait instantanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un albédo plus fort signifie que davantage d'énergie solaire est renvoyée dans l'espace, ce qui provoque un refroidissement du globe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un corps noir théorique parfait a un albédo égal à :",
+              "options": ["0", "1", "0,5", "-1"],
+              "correctAnswers": [0],
+              "explanation": "Par définition, un corps noir absorbe la totalité du rayonnement électromagnétique incident sans en réfléchir aucun (albédo = 0)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi les forêts tropicales denses ont-elles un albédo relativement bas (environ 0,15) ?",
+              "options": [
+                "Les pigments chlorophylliens absorbent fortement le rayonnement visible",
+                "Les feuilles sont recouvertes de glace",
+                "Les arbres renvoient tous les photons vers le ciel",
+                "La canopée est transparente au rayonnement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La végétation dense piège la lumière par réflexions multiples et absorption par la chlorophylle, d'où un albédo sombre (~15 %)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "L'absorption et l'émission par la surface terrestre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions sont exactes concernant l'émission thermique de la surface terrestre ?",
+              "options": [
+                "Elle émet un rayonnement électromagnétique continu dans le domaine infrarouge",
+                "La puissance surfacique émise dépend de la quatrième puissance de sa température (T⁴)",
+                "Elle n'émet aucun rayonnement la nuit",
+                "Son spectre dépend de la température de surface"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La surface terrestre émet en continu du rayonnement infrarouge thermique selon la loi de Stefan-Boltzmann (P = σ·T⁴), de jour comme de nuit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle loi physique énonce que la puissance surfacique rayonnée par un corps noir est proportionnelle à T⁴ ?",
+              "options": [
+                "La loi de Stefan-Boltzmann",
+                "La loi d'Ohm",
+                "La loi de Mariotte",
+                "La loi de gravitation universelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de Stefan-Boltzmann s'écrit P/S = σT⁴, où σ est la constante de Stefan-Boltzmann (5,67 × 10⁻⁸ W·m⁻²·K⁻⁴)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de la température T qui doit impérativement être utilisée dans la loi de Stefan-Boltzmann ?",
+              "options": [
+                "Le kelvin (K)",
+                "Le degré Celsius (°C)",
+                "Le degré Fahrenheit (°F)",
+                "Le joule (J)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans les lois de Stefan-Boltzmann et de Wien, la température doit obligatoirement être exprimée en kelvins (T_K = T_°C + 273,15)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi le rayonnement émis par la Terre se situe-t-il dans l'infrarouge alors que celui du Soleil est dans le visible ?",
+              "options": [
+                "Parce que la Terre (~288 K) est beaucoup plus froide que la surface du Soleil (~5 778 K)",
+                "Parce que la Terre tourne sur elle-même",
+                "Parce que la Terre possède un champ magnétique",
+                "Parce que l'oxygène bloque la lumière visible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "D'après la loi de Wien, une température beaucoup plus basse déplace le pic d'émission vers les grandes longueurs d'onde (infrarouge ~10 µm)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Autour de quelle longueur d'onde se situe approximativement le pic d'émission du rayonnement terrestre ?",
+              "options": [
+                "10 micromètres (infrarouge thermique)",
+                "500 nanomètres (vert)",
+                "1 millimètre (micro-ondes)",
+                "10 nanomètres (ultraviolet)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une température moyenne de ~15 °C (288 K), la loi de Wien donne λmax ≈ 2 898 / 288 ≈ 10 µm, en plein domaine infrarouge."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle fraction environ de l'énergie absorbée par le sol est transférée à l'atmosphère par évaporation de l'eau (chaleur latente) ?",
+              "options": [
+                "Environ 80 W/m² (flux très significatif)",
+                "Zéro watt car l'eau ne s'évapore pas",
+                "Plus de 300 W/m²",
+                "Moins de 1 W/m²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évaporation à la surface des océans et continents transfère une chaleur latente majeure d'environ 80 W/m² vers l'atmosphère."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le transfert d'énergie thermique par contact direct entre le sol chaud et l'air sus-jacent ?",
+              "options": [
+                "La conduction thermique et la convection sensible",
+                "Le rayonnement gamma",
+                "L'induction nucléaire",
+                "L'advection gravitationnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contact direct chauffe l'air par conduction, puis l'air chaud monte par convection thermique (flux de chaleur sensible)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que mesure un thermomètre infrarouge orienté vers la surface du sol ?",
+              "options": [
+                "La luminance infrarouge émise par le sol pour en déduire sa température",
+                "La concentration de CO2 au sol",
+                "La pression atmosphérique locale",
+                "La vitesse des molécules d'azote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le thermomètre infrarouge capte le flux radiatif émis dans l'infrarouge thermique et calcule la température radiative correspondante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les nuits sont-elles généralement plus froides lorsque le ciel est parfaitement dégagé que lorsqu'il est couvert ?",
+              "options": [
+                "Le rayonnement infrarouge émis par le sol s'échappe directement vers l'espace sans réémission nuageuse",
+                "Le vent est toujours nul sous les nuages",
+                "La Lune absorbe la chaleur de la Terre",
+                "L'atmosphère disparaît quand il n'y a pas de nuages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En l'absence de nuages, une grande partie du rayonnement infrarouge quitte le sol sans être renvoyée, accentuant le refroidissement nocturne."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si la température absolue d'une surface passe de 300 K à 330 K (+10 %), sa puissance surfacique rayonnée augmente d'environ :",
+              "options": ["46 % (car 1,1⁴ ≈ 1,46)", "10 %", "20 %", "100 %"],
+              "correctAnswers": [0],
+              "explanation": "La puissance variant en T⁴, une augmentation de 10 % (facteur 1,1) multiplie la puissance rayonnée par (1,1)⁴ ≈ 1,464, soit +46 %."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "L'effet de serre atmosphérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gaz participent de manière majeure à l'effet de serre naturel de l'atmosphère terrestre ?",
+              "options": [
+                "La vapeur d'eau (H2O)",
+                "Le dioxyde de carbone (CO2)",
+                "Le méthane (CH4)",
+                "Le diazote (N2)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "H2O, CO2 et CH4 sont des gaz à effet de serre car leurs molécules triatomiques ou plus absorbent l'infrarouge. N2 et O2 ne l'absorbent pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi les molécules diatomiques symétriques comme le diazote (N2) et le dioxygène (O2) ne sont-elles pas des gaz à effet de serre ?",
+              "options": [
+                "Leurs vibrations ne créent pas de variation de moment dipolaire",
+                "Elles sont trop légères pour interagir avec les photons",
+                "Elles n'existent pas dans la basse atmosphère",
+                "Elles réfléchissent 100 % de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour absorber le rayonnement infrarouge, une molécule doit subir une variation de son moment dipolaire lors de ses modes de vibration."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle principal des gaz à effet de serre dans le bilan d'énergie de la Terre ?",
+              "options": [
+                "Ils absorbent le rayonnement infrarouge émis par la Terre et en réémettent une partie vers le sol",
+                "Ils bloquent totalement la lumière visible venant du Soleil",
+                "Ils fabriquent de l'énergie par fusion thermonucléaire",
+                "Ils réfléchissent les rayons gamma dans l'espace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les gaz à effet de serre absorbent le rayonnement infrarouge terrestre et réémettent ce rayonnement dans toutes les directions, y compris vers le sol."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle serait la température moyenne à la surface de la Terre sans aucun effet de serre naturel ?",
+              "options": [
+                "Environ -18 °C",
+                "Environ 0 °C",
+                "Environ -80 °C",
+                "Environ +15 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans atmosphère à effet de serre, l'équilibre radiatif donnerait une température moyenne de -18 °C (255 K), gelant toute eau liquide."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Grâce à l'effet de serre naturel, quelle est la température moyenne effective à la surface de la Terre ?",
+              "options": [
+                "Environ +15 °C",
+                "Environ +35 °C",
+                "Environ 0 °C",
+                "Environ -5 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet de serre naturel apporte un réchauffement d'environ 33 °C, portant la température moyenne de surface à environ +15 °C (288 K)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel gaz contribue le plus en pourcentage à l'effet de serre naturel de la Terre ?",
+              "options": [
+                "La vapeur d'eau (environ 60 %)",
+                "Le dioxyde de carbone",
+                "L'ozone troposphérique",
+                "Le protoxyde d'azote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vapeur d'eau est le principal contributeur à l'effet de serre naturel (environ 60 %, et jusqu'à 75 % en incluant les nuages)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle propriété spectrale de l'atmosphère permet aux rayonnements visibles solaires d'atteindre le sol ?",
+              "options": [
+                "La fenêtre de transparence atmosphérique pour les longueurs d'onde du visible",
+                "L'opacité totale de l'air aux photons",
+                "La réfraction complète vers le vide",
+                "L'absence de matière dans l'air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atmosphère est très largement transparente aux rayonnements solaires de courtes longueurs d'onde (visible et proche infrarouge)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle planète du Système solaire subit un effet de serre extrême menant à une température de surface de plus de 460 °C ?",
+              "options": ["Vénus", "Mars", "Mercure", "Jupiter"],
+              "correctAnswers": [0],
+              "explanation": "L'atmosphère très dense de Vénus, composée à 96 % de CO2, produit un effet de serre colossal portant le sol à environ 465 °C."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi Mars a-t-elle un effet de serre très faible malgré une atmosphère riche en CO2 ?",
+              "options": [
+                "Son atmosphère est extrêmement ténue (pression au sol très faible d'environ 6 hPa)",
+                "Le CO2 martien ne possède pas de liaisons chimiques",
+                "Le Soleil ne brille jamais sur Mars",
+                "Mars est recouverte d'un miroir d'argent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression atmosphérique martienne est inférieure à 1 % de celle de la Terre : la masse totale de gaz est trop faible pour un effet notable."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le rayonnement infrarouge renvoyé par l'atmosphère vers la surface terrestre ?",
+              "options": [
+                "Le rayonnement descendant (ou contre-rayonnement atmosphérique)",
+                "Le vent solaire",
+                "Le rayonnement cosmique fossile",
+                "L'onde gravitationnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atmosphère chaude réémet du rayonnement infrarouge vers le bas : c'est le contre-rayonnement atmosphérique (~330 W/m²)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Le bilan radiatif de la Terre à l'équilibre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "À l'équilibre radiatif global de la planète Terre, quelles égalités sont vérifiées ?",
+              "options": [
+                "Puissance solaire absorbée = Puissance infrarouge totale réémise vers l'espace",
+                "Puissance solaire incidente = Puissance réfléchie + Puissance absorbée",
+                "Puissance absorbée = Puissance incidente multipliée par 2",
+                "Température moyenne globale constante dans le temps"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "À l'équilibre, l'énergie reçue absorbée compense exactement l'énergie émise vers l'espace, maintenant une température moyenne stable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si la Terre reçoit 340 W/m² et que son albédo est de 0,30, quelle est la puissance solaire nette absorbée par la Terre ?",
+              "options": ["Environ 238 W/m²", "340 W/m²", "102 W/m²", "0 W/m²"],
+              "correctAnswers": [0],
+              "explanation": "La puissance absorbée vaut P = 340 × (1 - 0,30) = 340 × 0,70 = 238 W/m² (les 102 W/m² restants étant réfléchis vers l'espace)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour que la Terre soit à l'équilibre radiatif avec une puissance absorbée de 238 W/m², quelle puissance infrarouge doit-elle émettre vers l'espace ?",
+              "options": [
+                "Exactement 238 W/m²",
+                "340 W/m²",
+                "1361 W/m²",
+                "0 W/m²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le principe de conservation de l'énergie impose que le flux sortant vers l'espace équilibre strictement le flux entrant absorbé (238 W/m²)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si la puissance absorbée devient supérieure à la puissance émise vers l'espace ?",
+              "options": [
+                "Le système climatique accumule de l'énergie et la température moyenne augmente",
+                "La Terre se refroidit immédiatement",
+                "L'orbite de la Terre s'agrandit de moitié",
+                "La constante solaire est divisée par deux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un déséquilibre radiatif positif implique un gain net d'énergie thermique dans le système Terre, ce qui entraîne un réchauffement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans quelle composante du système Terre plus de 90 % de l'excédent d'énergie du réchauffement climatique actuel est-il stocké ?",
+              "options": [
+                "Les océans",
+                "L'atmosphère",
+                "Les calottes glaciaires",
+                "La biomasse végétale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En raison de leur masse et de leur grande capacité thermique, les océans absorbent environ 91 % de l'excès d'énergie emmagasiné par la Terre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel concept thermodynamique régit l'état stationnaire d'un système sans accumulation nette d'énergie ?",
+              "options": [
+                "Le premier principe de la thermodynamique (conservation de l'énergie)",
+                "Le principe de relativité restreinte",
+                "La loi de Faraday",
+                "Le principe d'exclusion de Pauli"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La conservation de l'énergie stipule que la variation d'énergie interne est nulle lorsque les flux entrants et sortants s'équilibrent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la valeur actuelle du déséquilibre radiatif terrestre mesuré au sommet de l'atmosphère par les satellites ?",
+              "options": [
+                "Environ +0,8 à +1 W/m²",
+                "Environ +50 W/m²",
+                "Rigoureusement 0,000 W/m²",
+                "Environ -10 W/m²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet de serre anthropique crée actuellement un déséquilibre radiatif positif d'environ 0,8 à 1,0 W/m², moteur du réchauffement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment la surface terrestre à 288 K peut-elle émettre ~390 W/m² d'infrarouges alors qu'elle ne reçoit que ~160 W/m² du Soleil ?",
+              "options": [
+                "Grâce à l'apport supplémentaire du contre-rayonnement infrarouge de l'atmosphère (~330 W/m²)",
+                "Grâce à la chaleur du noyau terrestre",
+                "C'est une erreur de mesure physique",
+                "Par création spontanée d'énergie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La surface reçoit l'énergie solaire directe plus le contre-rayonnement infrarouge de l'atmosphère, lui permettant d'émettre ~390 W/m²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle fraction approximative du flux géothermique interne de la Terre participe au bilan radiatif de surface ?",
+              "options": [
+                "Négligeable (environ 0,08 W/m²)",
+                "Majeure (environ 150 W/m²)",
+                "Égale au flux solaire",
+                "Supérieure à 500 W/m²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le flux thermique interne issu de la radioactivité du manteau n'est que de ~0,08 W/m², soit 4 000 fois moins que l'apport solaire."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la température théorique calculée en assimilant la Terre à un corps noir sans atmosphère ?",
+              "options": [
+                "La température d'équilibre radiatif (ou effective)",
+                "La température critique de Curie",
+                "Le zéro absolu de Kelvin",
+                "La température de fusion de l'eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La température effective de rayonnement de la Terre est celle déduite de σ·T_eff⁴ = 238 W/m², soit T_eff ≈ 255 K (-18 °C)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "La dynamique atmosphérique et océanique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes assurent le transport de chaleur de l'équateur vers les pôles sur Terre ?",
+              "options": [
+                "La circulation atmosphérique générale (cellules de Hadley, Ferrel, polaire)",
+                "Les courants océaniques de surface et profonds",
+                "La conduction thermique à travers la croûte continentale",
+                "Les dépressions et anticyclones des moyennes latitudes"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "L'atmosphère et les océans transportent la chaleur excédentaire des tropiques vers les pôles. La conduction rocheuse est négligeable."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans quelle zone de latitude le bilan radiatif net au sommet de l'atmosphère est-il excédentaire (gains > pertes) ?",
+              "options": [
+                "Entre l'équateur et environ 38° de latitude",
+                "Au-delà de 70° de latitude uniquement",
+                "Uniquement au-dessus de l'Antarctique",
+                "Nulle part sur Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entre l'équateur et ~38° de latitude, l'énergie solaire absorbée dépasse l'infrarouge émis : la zone intertropicale est excédentaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quelle zone de latitude le bilan radiatif net est-il déficitaire (pertes infrarouges > gains solaires) ?",
+              "options": [
+                "Aux hautes latitudes et aux pôles (au-delà de 38°)",
+                "À l'équateur uniquement",
+                "Dans les déserts tropicaux uniquement",
+                "Au centre des océans équatoriaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aux pôles, le rayonnement solaire absorbé est faible (forte inclinaison, fort albédo), alors que l'émission IR continue crée un déficit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la cellule convective atmosphérique tropicale où l'air chaud monte à l'équateur et redescend vers 30° de latitude ?",
+              "options": [
+                "La cellule de Hadley",
+                "La cellule polaire",
+                "La cellule de Faraday",
+                "La cellule de Biot-Savart"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cellule de Hadley transporte l'air chaud et humide montant au niveau de la ZCIT vers les zones subtropicales descendantes (déserts)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle force due à la rotation de la Terre dévie les vents vers la droite dans l'hémisphère Nord ?",
+              "options": [
+                "La force de Coriolis",
+                "La force centrifuge galiléenne",
+                "La force d'Archimède",
+                "La force de Lorentz"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La force de Coriolis, liée au référentiel terrestre en rotation, dévie les trajectoires vers la droite au Nord et vers la gauche au Sud."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment s'appellent les vents réguliers soufflant des tropiques vers l'équateur ?",
+              "options": [
+                "Les alizés",
+                "Les quarantièmes rugissants",
+                "Les vents catabatiques",
+                "Les mistrals"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les alizés sont des vents réguliers d'est (nord-est au nord, sud-est au sud) convergeant dans la zone intertropicale."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la circulation thermohaline dans les océans mondiaux ?",
+              "options": [
+                "Une circulation profonde mondiale mue par les écarts de température et de salinité",
+                "Une marée causée uniquement par la Lune",
+                "Un courant généré exclusivement par les vagues de surface",
+                "Un mouvement d'eau provoqué par les navires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La circulation thermohaline (tapis roulant océanique) dépend des gradients de densité de l'eau, contrôlés par la température et la salinité."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel courant océanique de surface chaud contribue à la douceur relative du climat de l'Europe de l'Ouest ?",
+              "options": [
+                "Le Gulf Stream et la Dérive Nord-Atlantique",
+                "Le courant de Humboldt",
+                "Le courant du Labrador",
+                "Le courant de Benguela"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Gulf Stream transporte de l'eau chaude depuis le golfe du Mexique vers l'Atlantique Nord, réchauffant la façade ouest européenne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les masses d'eau océaniques plongent-elles en profondeur dans l'Atlantique Nord (vers la mer de Norvège) ?",
+              "options": [
+                "Elles deviennent froides et salées, donc plus denses que les eaux sous-jacentes",
+                "Elles sont aspirées par des gouffres magmatiques",
+                "Elles sont poussées vers le bas par la pluie tropicale",
+                "Elles perdent toute leur masse volumique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En se refroidissant et en voyant leur salinité augmenter lors de la formation de glace de mer, les eaux deviennent denses et plongent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle part du transport méridien total de chaleur vers les pôles est prise en charge par l'atmosphère ?",
+              "options": [
+                "Environ deux tiers (la circulation atmosphérique est dominante)",
+                "Moins de 5 %",
+                "Strictement 100 %",
+                "Zéro pour cent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atmosphère assure environ les deux tiers du transport méridien total de chaleur, l'océan assurant le tiers restant."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Mesures et bilans énergétiques par satellite",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels instruments ou missions spatiales sont spécifiquement conçus pour mesurer le bilan radiatif de la Terre ?",
+              "options": [
+                "L'expérience CERES (Clouds and the Earth's Radiant Energy System)",
+                "La mission spatiale ERBE de la NASA",
+                "Le télescope spatial James Webb",
+                "L'instrument ScaRaB franco-russe"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "CERES, ERBE et ScaRaB sont des radiomètres dédiés au bilan radiatif terrestre. Le James Webb observe l'espace profond."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que mesure un radiomètre spatial à large bande tourné vers la Terre ?",
+              "options": [
+                "Le flux solaire réfléchi (ondes courtes) et le flux infrarouge thermique émis (ondes longues)",
+                "La vitesse de rotation de la Terre",
+                "La gravité au fond des océans",
+                "Le nombre d'impacts d'astéroïdes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces capteurs séparent le rayonnement solaire réfléchi (visible/proche IR : 0,2 à 5 µm) et le rayonnement terrestre émis (5 à 100 µm)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel type d'orbite est privilégié pour surveiller en continu et à heure solaire fixe l'ensemble de la surface terrestre ?",
+              "options": [
+                "Une orbite héliosynchrone polaire en basse altitude",
+                "Une orbite équatoriale très elliptique",
+                "Une orbite lunaire stationnaire",
+                "Une trajectoire hyperbolique d'échappement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'orbite héliosynchrone fait passer le satellite au-dessus de chaque point toujours à la même heure solaire locale, idéal pour comparer l'albédo."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quelle altitude orbitent les satellites météorologiques géostationnaires comme Meteosat ?",
+              "options": [
+                "Environ 36 000 km au-dessus de l'équateur",
+                "Environ 400 km",
+                "Environ 800 km",
+                "Environ 150 000 km"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les satellites géostationnaires sont situés à ~35 786 km d'altitude au-dessus de l'équateur, restant immobiles par rapport au sol."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi les mesures par satellite ont-elles révolutionné la climatologie globale ?",
+              "options": [
+                "Elles offrent une couverture globale, continue et homogène des océans et continents",
+                "Elles modifient le climat en absorbant les nuages",
+                "Elles suppriment l'effet de serre naturel",
+                "Elles remplacent totalement les lois de la physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avant les satellites, les mesures étaient limitées aux stations terrestres et navires, laissant d'immenses zones océaniques sans données."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel phénomène céleste périodique est surveillé par satellite pour connaître les variations de l'irradiance solaire totale (TSI) ?",
+              "options": [
+                "Le cycle des taches solaires et facules magnétiques",
+                "Le passage des comètes de Kuiper",
+                "Les éclipses de Jupiter",
+                "Les phases de la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'apparition des taches (sombres) et facules (brillantes) module légèrement la TSI d'environ 1 W/m² au cours du cycle de 11 ans."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment les satellites distinguent-ils les nuages d'eau liquide des cirrus de glace en altitude ?",
+              "options": [
+                "Par leurs signatures spectrales distinctes dans les canaux infrarouges thermiques",
+                "En envoyant une sonde matérielle prélever de la neige",
+                "En mesurant le bruit du vent",
+                "Par télépathie laser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les cirrus froids en haute altitude émettent à une température de brillance beaucoup plus basse que les nuages bas et chauds."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle composante du bilan radiatif présente la plus grande incertitude dans les mesures satellitaires et modèles ?",
+              "options": [
+                "Le rôle radiatif global des nuages (albédo vs effet de serre)",
+                "La masse du Soleil",
+                "Le rayon de la Terre",
+                "La vitesse de la lumière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nuages exercent à la fois un effet de refroidissement (albédo) et de réchauffement (effet de serre), dont le bilan net reste délicat à quantifier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est l'estimation satellite actuelle de l'albédo moyen de la planète Terre ?",
+              "options": [
+                "0,29 ± 0,01",
+                "0,50 ± 0,05",
+                "0,12 ± 0,01",
+                "0,80 ± 0,02"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les séries de mesures satellitaires CERES indiquent un albédo moyen planétaire stabilisé autour de 29 % à 30 % (0,29)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que confirme la comparaison sur plusieurs décennies entre flux solaire absorbé et flux infrarouge sortant mesurés par satellite ?",
+              "options": [
+                "La Terre emmagasine plus d'énergie qu'elle n'en renvoie vers l'espace",
+                "La Terre se refroidit à grande vitesse",
+                "Le Soleil ne produit plus d'énergie",
+                "L'atmosphère s'est entièrement vidée de son eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les satellites confirment l'existence d'un déséquilibre radiatif net positif d'environ +0,8 W/m² accumulé par le système terrestre."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Le climat terrestre",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Météorologie versus climatologie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles différences fondamentales distinguent la météorologie de la climatologie ?",
+              "options": [
+                "La météorologie étudie le temps à court terme (jours, semaines) sur un lieu précis",
+                "La climatologie analyse des statistiques sur de longues périodes (au moins 30 ans)",
+                "La météorologie utilise des moyennes sur des siècles",
+                "L'Organisation Météorologique Mondiale (OMM) définit les normes des normales climatiques"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La météorologie prévoit le temps à court terme, tandis que la climatologie étudie les moyennes et variabilités statistiques sur 30 ans minimum."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur quelle durée minimale de référence l'OMM préconise-t-elle de calculer les normales climatiques d'une région ?",
+              "options": ["30 ans", "1 an", "10 jours", "1 000 ans"],
+              "correctAnswers": [0],
+              "explanation": "L'Organisation Météorologique Mondiale (OMM) utilise des périodes de référence glissantes de 30 ans (ex. 1991-2020) pour définir le climat normal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Laquelle de ces affirmations relève du domaine de la météorologie et non du climat ?",
+              "options": [
+                "Un orage violent avec chutes de grêle s'est abattu sur Lyon hier après-midi",
+                "Le climat méditerranéen est caractérisé par des étés chauds et secs",
+                "La température moyenne mondiale a augmenté de plus de 1 °C depuis 1850",
+                "L'Arctique connaît un climat polaire aride et froid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un événement ponctuel à une date et un lieu précis (comme un orage d'hier) est un phénomène météorologique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi ne peut-on pas conclure à l'arrêt du réchauffement climatique si un hiver est exceptionnellement rigoureux ?",
+              "options": [
+                "Car la variabilité météorologique locale à court terme ne contredit pas une tendance climatique globale sur plusieurs décennies",
+                "Car les thermomètres ne fonctionnent pas en hiver",
+                "Car l'hiver prouve que le Soleil s'éloigne définitivement",
+                "Car la neige est chaude en réalité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La variabilité naturelle du temps produit des fluctuations locales qui s'inscrivent dans une hausse globale de long terme."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelles grandeurs physiques font partie des paramètres mesurés pour caractériser un climat ?",
+              "options": [
+                "Températures, précipitations, hygrométrie, ensoleillement et vents",
+                "Uniquement la vitesse de la Lune",
+                "Le niveau d'oxygène dans l'eau de pluie exclusivement",
+                "La couleur du sol marin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le climat est décrit par un ensemble de variables atmosphériques moyennées : température, pluie, humidité, pression, vent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la classification climatique mondiale la plus couramment utilisée (regroupant climats A, B, C, D, E) ?",
+              "options": [
+                "La classification de Köppen-Geiger",
+                "La classification périodique de Mendeleïev",
+                "L'échelle de Richter",
+                "La classification de Linné"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La classification de Köppen-Geiger classe les climats selon les températures et précipitations annuelles et saisonnières."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la portée temporelle maximale de prévisibilité déterministe des modèles météorologiques opérationnels actuels ?",
+              "options": [
+                "Environ 10 à 15 jours en raison du comportement chaotique de l'atmosphère",
+                "6 mois à l'heure près",
+                "10 ans avec précision absolue",
+                "Une demi-heure seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'effet papillon (sensibilité aux conditions initiales) limite la prévision météo détaillée à une dizaine ou quinzaine de jours."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi les modèles climatiques peuvent-ils projeter le climat à 50 ou 100 ans alors que la météo ne dépasse pas deux semaines ?",
+              "options": [
+                "Parce qu'ils calculent des bilans statistiques et énergétiques moyens contraints par les forçages, et non la météo d'un jour donné",
+                "Parce qu'ils utilisent des ordinateurs dix millions de fois plus petits",
+                "Parce que le climat futur est déjà connu par avance",
+                "Parce que l'atmosphère s'arrête de bouger à l'échelle du siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le climat prévoit l'état statistique moyen du système soumis à des forçages radiatifs (ex. quantité de GES), sans prédire la météo quotidienne."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle anomalie climatique désigne un écart par rapport à :",
+              "options": [
+                "La moyenne calculée sur une période de référence trentenaire",
+                "La température du zéro absolu",
+                "La température moyenne de l'ébullition de l'eau",
+                "La valeur maximale enregistrée dans l'Univers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anomalie de température est la différence algébrique entre la valeur mesurée et la moyenne de référence sur 30 ans."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lequel de ces événements illustre une tendance climatique à long terme ?",
+              "options": [
+                "L'avancement régulier des dates de vendanges de plusieurs semaines en France depuis 50 ans",
+                "Une rafale de vent à 120 km/h enregistrée lors d'un coup de vent",
+                "Une averse de grêle de 15 minutes en juillet",
+                "Un brouillard matinal persistant jusqu'à midi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évolution systématique des dates de récolte sur un demi-siècle reflète une modification durable des conditions thermiques climatiques."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les indicateurs du climat passé (paléoclimatologie)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles archives naturelles permettent aux paléoclimatologues de reconstituer les climats passés ?",
+              "options": [
+                "Les carottes de glace polaire (Antarctique, Groenland)",
+                "Les sédiments marins et lacustres",
+                "Les cernes des arbres (dendrochronologie)",
+                "Les variations de l'orbite de Mercure"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les glaces, sédiments (pollens, foraminifères) et cernes d'arbres constituent des archives paléoclimatiques terrestres de premier ordre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel thermomètre isotopique est couramment utilisé dans les molécules d'eau (H2O) des carottes de glace polaire ?",
+              "options": [
+                "Le rapport isotopique δ¹⁸O (oxygène 18) ou δD (deutérium)",
+                "Le rapport carbone 14 sur carbone 12",
+                "L'uranium 238",
+                "Le potassium 40"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fractionnement isotopique de l'oxygène (¹⁸O/¹⁶O) et de l'hydrogène (²H/¹H) lors de la condensation dépend de la température de l'air."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que renferment les bulles d'air piégées dans les profondeurs des calottes glaciaires polaires ?",
+              "options": [
+                "Des échantillons authentiques de l'atmosphère terrestre du passé",
+                "De l'eau liquide sous vide",
+                "Des gaz toxiques synthétiques",
+                "Des fossiles d'oiseaux marins"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En se compactant, la neige emprisonne de l'air : ces bulles permettent de mesurer directement les teneurs passées en CO2 et CH4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Jusqu'à quel âge dans le passé la carotte de glace du dôme C en Antarctique (projet EPICA) a-t-elle permis de remonter ?",
+              "options": [
+                "Environ 800 000 ans",
+                "Environ 10 000 ans",
+                "Environ 65 millions d'années",
+                "Environ 4,5 milliards d'années"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La carotte EPICA forée en Antarctique a fourni un enregistrement continu du climat et des gaz atmosphériques sur 800 000 ans (8 cycles glaciaires)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle discipline scientifique étudie les grains de pollen fossiles piégés dans les tourbières pour reconstituer la végétation passée ?",
+              "options": [
+                "La palynologie",
+                "La sismologie",
+                "La pétrologie",
+                "L'ichtyologie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La palynologie analyse les pollens fossiles : l'identification des espèces végétales renseigne sur le climat local passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel groupe de micro-organismes marins à coquille calcaire sert d'indicateur paléoclimatique dans les sédiments océaniques ?",
+              "options": [
+                "Les foraminifères",
+                "Les cyanobactéries filamenteuses",
+                "Les virus marins",
+                "Les trilobites géants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La composition isotopique et les assemblages d'espèces de foraminifères benthiques et planctoniques reflètent la température et le volume des glaces."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que mesure la dendrochronologie pour dater et analyser les climats des derniers millénaires ?",
+              "options": [
+                "L'épaisseur et la densité des cernes de croissance annuelle des troncs d'arbres",
+                "La forme des feuilles d'arbres actuels",
+                "La profondeur des racines des graminées",
+                "Le nombre de branches principales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La largeur des cernes annuels dépend des conditions climatiques (température, humidité) subies par l'arbre pendant sa croissance."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment évolue la valeur du δ¹⁸O dans les glaces polaires lors d'une période de refroidissement glaciaire ?",
+              "options": [
+                "Elle diminue (les glaces s'appauvrissent en ¹⁸O)",
+                "Elle augmente fortement",
+                "Elle devient égale à zéro",
+                "Elle double instantanément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par temps froid, la vapeur d'eau précipitant aux pôles est plus appauvrie en isotopes lourds : le δ¹⁸O de la glace diminue."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À l'inverse, que fait le δ¹⁸O des carbonates de coquilles de foraminifères océaniques lors d'une glaciation ?",
+              "options": [
+                "Il augmente (l'océan s'enrichit en ¹⁸O car le ¹⁶O est piégé dans les glaces continentales)",
+                "Il diminue fortement",
+                "Il devient nul",
+                "Il disparaît complètement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les calottes stockent préférentiellement l'eau légère en ¹⁶O : l'eau de mer et les coquilles marines s'enrichissent alors en ¹⁸O."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel terme désigne un indice indirect (comme un cerne ou un pollen) utilisé pour déduire une grandeur climatique passée ?",
+              "options": [
+                "Un indicateur indirect ou 'proxy'",
+                "Un capteur piézoélectrique",
+                "Un étalon métrique",
+                "Un vecteur gravitationnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En paléoclimatologie, on appelle 'proxy' un substitut naturel conservé permettant d'estimer des températures ou pluviométries du passé."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les variations climatiques naturelles du passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels facteurs naturels sont à l'origine des grandes variations climatiques passées de la Terre ?",
+              "options": [
+                "Les variations périodiques des paramètres orbitaux de la Terre (théorie de Milankovitch)",
+                "Le volcanisme majeur et les émissions massives d'aérosols et de gaz",
+                "La dérive des continents et la tectonique des plaques",
+                "Les activités industrielles du Paléolithique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'astronomie (Milankovitch), le volcanisme et la tectonique des plaques modifient naturellement le climat sur différentes échelles de temps."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle était la périodicité dominante des grands cycles glaciaires-interglaciaires au cours du dernier million d'années ?",
+              "options": [
+                "Environ 100 000 ans (rythmée par l'excentricité orbitale)",
+                "Environ 1 000 ans",
+                "Environ 10 ans",
+                "Environ 4,5 milliards d'années"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Depuis la transition du Pléistocène moyen, les glaciations se succèdent environ tous les 100 000 ans en lien avec l'excentricité orbitale."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Lors du Dernier Maximum Glaciaire (il y a environ 20 000 ans), quelle était la différence de température moyenne globale par rapport à l'ère préindustrielle ?",
+              "options": [
+                "Environ 5 à 6 °C de moins",
+                "Environ 30 °C de moins",
+                "Environ 1 °C de plus",
+                "Exactement la même température"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un refroidissement mondial de seulement 5 à 6 °C suffisait à recouvrir l'Europe du Nord et le Canada d'épaisses calottes de glace de plusieurs kilomètres."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "De combien le niveau moyen de la mer était-il plus bas lors du Dernier Maximum Glaciaire par rapport à aujourd'hui ?",
+              "options": [
+                "D'environ 120 mètres",
+                "De seulement 1 mètre",
+                "De plus de 3 000 mètres",
+                "Le niveau était plus haut de 50 mètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau stockée sur les continents sous forme d'immenses calottes glaciaires abaissait le niveau marin global d'environ 120 mètres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment s'appelle la période chaude interglaciaire actuelle débutée il y a environ 11 700 ans ?",
+              "options": [
+                "L'Holocène",
+                "Le Pléistocène",
+                "Le Mésozoïque",
+                "Le Silurien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Holocène est l'époque géologique interglaciaire actuelle, caractérisée par une remarquable stabilité climatique ayant favorisé l'agriculture."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la période de refroidissement relatif observée en Europe entre le XIVe et le XIXe siècle ?",
+              "options": [
+                "Le Petit Âge Glaciaire",
+                "La Grande Glaciation du Quaternaire",
+                "L'Optimum Éocène",
+                "La Période Chaude Médiévale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Petit Âge Glaciaire (~1300-1850) a connu une avancée notable des glaciers alpins, liée à une baisse d'activité solaire et au volcanisme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel événement volcanique en 1815 en Indonésie a provoqué 'l'année sans été' de 1816 en Europe et Amérique du Nord ?",
+              "options": [
+                "L'éruption du Tambora",
+                "L'éruption du Vésuve",
+                "L'éruption de la Montagne Pelée",
+                "L'éruption de l'Eyjafjallajökull"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'éruption cataclysmique du Tambora a injecté des millions de tonnes d'aérosols soufrés dans la stratosphère, réfléchissant la lumière solaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle était la concentration atmosphérique en CO2 lors des périodes glaciaires les plus froides des 800 000 dernières années ?",
+              "options": [
+                "Environ 180 ppm",
+                "Environ 420 ppm",
+                "Environ 10 ppm",
+                "Environ 1 500 ppm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les carottes de glace montrent que le CO2 oscillait naturellement entre ~180 ppm (glaciaire) et ~280 ppm (interglaciaire)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les variations d'insolation de Milankovitch seules ne suffisent-elles pas à expliquer l'amplitude des cycles glaciaires ?",
+              "options": [
+                "Elles doivent être amplifiées par des rétroactions du système climatique (albédo et cycle du carbone)",
+                "Parce que le Soleil s'est éteint plusieurs fois",
+                "Parce que l'orbite terrestre est imaginaire",
+                "Parce que la théorie est entièrement fausse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les variations orbitales déclenchent les transitions, mais les rétroactions (albédo des glaces, dégazage/dissolution du CO2) amplifient considérablement le signal."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle période hyperthermique survenue il y a environ 56 millions d'années sert d'analogue ancien à une libération massive de carbone ?",
+              "options": [
+                "Le PETM (Maximum Thermique du Paléocène-Éocène)",
+                "La crise Permien-Trias",
+                "La glaciation ordovicienne",
+                "L'explosion cambrienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PETM a vu une injection rapide de milliers de gigatonnes de carbone, provoquant un réchauffement mondial de 5 à 8 °C et une acidification marine."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le changement climatique contemporain",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels faits empiriques mesurés confirment la réalité du réchauffement climatique mondial contemporain ?",
+              "options": [
+                "La hausse de la température moyenne globale de surface de plus de 1,1 °C depuis 1850-1900",
+                "La diminution de la masse des calottes glaciaires du Groenland et de l'Antarctique",
+                "L'élévation mesurée du niveau moyen des océans",
+                "L'augmentation constante de l'étendue de la banquise arctique en été"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Toutes les observations confirment le réchauffement : température, fonte des glaces, montée des océans. La banquise arctique recule fortement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle concentration approximative de dioxyde de carbone (CO2) l'atmosphère terrestre a-t-elle dépassée en 2023-2024 ?",
+              "options": ["420 ppm", "280 ppm", "180 ppm", "1 000 ppm"],
+              "correctAnswers": [0],
+              "explanation": "Le CO2 atmosphérique mesuré à Mauna Loa a dépassé 420 ppm (parties par million), contre environ 280 ppm avant l'ère industrielle (+50 %)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la vitesse actuelle de réchauffement climatique par rapport aux transitions glaciaires naturelles passées ?",
+              "options": [
+                "Elle est environ 10 à 50 fois plus rapide",
+                "Elle est 1 000 fois plus lente",
+                "Elle est rigoureusement identique",
+                "Elle est nulle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rapidité actuelle du réchauffement d'origine anthropique est sans précédent depuis au moins des centaines de milliers d'années."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment l'absorption d'environ 25 à 30 % du CO2 anthropique par les océans modifie-t-elle l'eau de mer ?",
+              "options": [
+                "Elle provoque une acidification de l'océan (baisse du pH)",
+                "Elle rend l'océan hyper-basique (hausse du pH)",
+                "Elle transforme l'eau de mer en pétrole",
+                "Elle annule toute salinité marine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dissolution du CO2 forme de l'acide carbonique (H2CO3), ce qui fait baisser le pH moyen de l'eau de mer (acidification océanique)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "De combien le pH moyen des eaux de surface océaniques a-t-il diminué depuis le début de l'ère industrielle ?",
+              "options": [
+                "D'environ 0,1 unité pH (soit une augmentation d'acidité de ~30 %)",
+                "De 5 unités pH",
+                "De 0,0001 unité pH seulement",
+                "Le pH n'a pas varié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pH moyen est passé de 8,2 à 8,1 environ. L'échelle de pH étant logarithmique, une baisse de 0,1 unité correspond à +30 % d'ions H+."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment évolue la masse des glaciers de montagne à l'échelle mondiale depuis plusieurs décennies ?",
+              "options": [
+                "Elle subit un recul et une perte de masse quasi généralisés",
+                "Elle progresse massivement vers les vallées",
+                "Elle reste d'une parfaite constance",
+                "Elle double tous les dix ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La quasi-totalité des glaciers de montagne sur l'ensemble de la planète perdent de la masse de manière continue et accélérée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la vitesse actuelle d'élévation du niveau moyen des océans mesurée par altimétrie satellite ?",
+              "options": [
+                "Environ 3,5 à 4 mm par an",
+                "Environ 1 mètre par an",
+                "Environ 0,01 mm par siècle",
+                "Zéro car l'eau s'évapore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les altimètres radar satellitaires (Topex/Poseidon, Jason, Copernicus) mesurent une montée moyenne de ~3,7 mm/an, en accélération."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle part du réchauffement observé depuis 1850 est attribuable aux activités humaines selon le 6e rapport du GIEC ?",
+              "options": [
+                "La quasi-totalité (100 % de l'ordre de 1,1 °C observé)",
+                "Moins de 10 %",
+                "Zéro pour cent, tout est solaire",
+                "Environ 1 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le GIEC conclut qu'il est sans équivoque que l'influence humaine a réchauffé l'atmosphère, les océans et les terres."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment la teneur en dioxygène dissous dans les océans évolue-t-elle avec le réchauffement des eaux ?",
+              "options": [
+                "Elle diminue car les gaz sont moins solubles dans une eau plus chaude",
+                "Elle augmente considérablement",
+                "Elle reste rigoureusement fixe",
+                "Elle est convertie en fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solubilité des gaz diminue quand la température de l'eau monte, provoquant une désoxygénation des masses d'eau marines."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel secteur d'activité humaine est le premier émetteur direct de gaz à effet de serre dans le monde ?",
+              "options": [
+                "La production d'énergie (électricité et chaleur à partir de combustibles fossiles)",
+                "L'aviation civile seule",
+                "L'utilisation d'ordinateurs personnels",
+                "Le tourisme spatial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le secteur énergétique (centrales à charbon, gaz, pétrole) représente plus d'un tiers des émissions mondiales de gaz à effet de serre."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le forçage radiatif d'origine anthropique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels gaz à effet de serre contribuent directement au forçage radiatif positif d'origine anthropique ?",
+              "options": [
+                "Le dioxyde de carbone (CO2)",
+                "Le méthane (CH4)",
+                "Le protoxyde d'azote (N2O)",
+                "Le dihydrogène (H2)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "CO2, CH4, N2O et les gaz fluorés (CFC, HFC) sont les principaux moteurs du forçage radiatif anthropique positif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se définit le forçage radiatif en climatologie ?",
+              "options": [
+                "La variation nette du bilan radiatif au sommet de la troposphère due à un facteur externe, exprimée en W/m²",
+                "La force mécanique du vent sur les éoliennes",
+                "La pression exercée par la lumière sur le sol en pascals",
+                "L'énergie cinétique des vagues marines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le forçage radiatif mesure le déséquilibre énergétique induit par un facteur (en W/m²) par rapport à une situation de référence (1750)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Selon le GIEC, quelle est la valeur totale approximative du forçage radiatif anthropique net en 2019 par rapport à 1750 ?",
+              "options": [
+                "Environ +2,7 W/m² (fourchette de +1,9 à +3,8 W/m²)",
+                "Environ +150 W/m²",
+                "Environ -10 W/m²",
+                "Rigoureusement 0 W/m²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le forçage radiatif net dû aux activités humaines est estimé à environ +2,72 W/m², principalement causé par l'augmentation des GES."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel gaz contribue pour la plus grande part au forçage radiatif anthropique positif actuel ?",
+              "options": [
+                "Le dioxyde de carbone (CO2, environ +2,1 W/m²)",
+                "L'ozone stratosphérique",
+                "Le xénon",
+                "Le monoxyde de carbone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO2 est de loin le principal responsable du forçage radiatif d'origine humaine en raison de ses émissions massives et de sa longue durée de vie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel effet radiatif majeur ont les aérosols soufrés émis par la pollution industrielle dans la basse atmosphère ?",
+              "options": [
+                "Un forçage radiatif négatif (refroidissement par diffusion de la lumière solaire)",
+                "Un fort réchauffement par absorption des micro-ondes",
+                "Aucun effet radiatif",
+                "Une émission massive de rayons X"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les aérosols de sulfate réfléchissent directement le rayonnement solaire et augmentent l'albédo des nuages, exerçant un effet refroidissant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la durée de séjour typique d'une fraction importante du CO2 injecté dans l'atmosphère par les activités humaines ?",
+              "options": [
+                "Plusieurs siècles à plusieurs millénaires",
+                "Quelques jours seulement",
+                "Exactement un an",
+                "Moins de deux heures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Environ 20 % du CO2 émis aujourd'hui demeurera dans l'atmosphère pendant plus de 1 000 ans, rendant le changement climatique irréversible à court terme."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la durée de vie atmosphérique approximative du méthane (CH4), gaz à fort potentiel de réchauffement ?",
+              "options": [
+                "Environ 10 à 12 ans",
+                "Environ 1 million d'années",
+                "Deux minutes",
+                "Cinq siècles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le méthane est éliminé par réaction avec les radicaux hydroxyles (OH) en une douzaine d'années, mais son pouvoir réchauffant à 20 ans est très élevé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment compare-t-on le pouvoir réchauffant des différents gaz à effet de serre sur 100 ans par rapport au CO2 ?",
+              "options": [
+                "Par le Potentiel de Réchauffement Global (PRG100)",
+                "Par l'indice UV de l'OMS",
+                "Par l'indice de masse corporelle",
+                "Par l'échelle de Mohs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le PRG à 100 ans évalue l'impact radiatif cumulé d'un kg de gaz par rapport à 1 kg de CO2 (PRG du CH4 ~ 28, du N2O ~ 273)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle activité humaine est la première source émettrice de protoxyde d'azote (N2O) ?",
+              "options": [
+                "L'utilisation d'engrais azotés dans les sols agricoles",
+                "Le trafic aérien supersonique",
+                "La métallurgie du cuivre",
+                "L'éclairage urbain LED"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'épandage massif d'engrais azotés chimiques et organiques stimule la nitrification et dénitrification bactérienne, émettant du N2O."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est l'influence du rayonnement solaire naturel sur le forçage radiatif mesuré depuis 1750 ?",
+              "options": [
+                "Négligeable (proche de 0,0 W/m² par rapport au forçage humain)",
+                "Il explique 95 % du réchauffement",
+                "Il a diminué de 80 W/m²",
+                "Il a doublé en intensité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les variations solaires depuis 1750 sont estimées à moins de +0,05 W/m², très inférieures aux +2,7 W/m² d'origine anthropique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les rétroactions positives et amplificatrices",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes constituent des boucles de rétroaction positive (amplificatrices) dans le climat terrestre ?",
+              "options": [
+                "La fonte de la glace diminuant l'albédo et augmentant l'absorption de chaleur",
+                "L'augmentation de la vapeur d'eau atmosphérique suite à la hausse des températures",
+                "La libération de gaz à effet de serre par le dégel du pergélisol",
+                "L'augmentation du rayonnement infrarouge émis par la Terre proportionnelle à T⁴"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'albédo-glace, la vapeur d'eau et le pergélisol amplifient le réchauffement (rétroactions positives). L'émission en T⁴ est négative (stabilisatrice)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment fonctionne la rétroaction albédo-glace ?",
+              "options": [
+                "Réchauffement → Fonte des glaces → Baisse de l'albédo → Plus d'énergie absorbée → Réchauffement accentué",
+                "Réchauffement → Plus de glace → Albédo plus fort → Refroidissement",
+                "Refroidissement → Fonte totale → Albédo nul → Tempête",
+                "Réchauffement → La glace devient noire sans fondre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diminution de surfaces enneigées/glacées au profit d'eaux ou sols plus sombres abaisse l'albédo et amplifie l'absorption d'énergie solaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la vapeur d'eau (H2O) joue-t-elle le rôle d'une rétroaction positive majeure et non d'un forçage primaire ?",
+              "options": [
+                "Sa concentration dépend de la température de l'air (loi de Clausius-Clapeyron) et son temps de résidence n'est que de quelques jours",
+                "Parce qu'elle n'est pas un gaz à effet de serre",
+                "Parce que l'eau ne s'évapore jamais au-dessus de 0 °C",
+                "Parce que les activités humaines en fabriquent peu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'air chaud peut contenir plus de vapeur d'eau (~+7 % par °C). Cet apport de vapeur renforce l'effet de serre, amplifiant le réchauffement initial."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le pergélisol (ou permafrost) dont le dégel inquiète les climatologues ?",
+              "options": [
+                "Un sol gelé en permanence depuis au moins deux années consécutives",
+                "Une couche de glace flottante sur l'océan",
+                "Un type d'arbre résistant au gel",
+                "Un minerai d'uranium des pôles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pergélisol couvre de vastes territoires en Sibérie, Alaska et Canada : son dégel libère du CO2 et du méthane piégés dans la matière organique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi le dégel du pergélisol arctique libère-t-il d'importantes quantités de méthane et de CO2 ?",
+              "options": [
+                "La matière organique ancienne dégèle et subit une décomposition microbienne",
+                "Les roches se mettent à fondre comme de la lave",
+                "L'eau se transforme spontanément en méthane pur",
+                "Les mammouths fossiles absorbent tout l'oxygène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des bactéries décomposent la matière organique ancestrale dégelée, produisant du CO2 en milieu aérobie et du CH4 en milieu anaérobie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le phénomène où les forêts boréales et tropicales ravagées par la sécheresse et les incendies deviennent émettrices nettes de carbone ?",
+              "options": [
+                "Une rétroaction positive du cycle du carbone",
+                "Une photosynthèse inversée permanente",
+                "Une désertification instantanée",
+                "Un forçage orbital de Milankovitch"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque les incendies et le dépérissement d'arbres libèrent plus de CO2 que la forêt n'en absorbe, le puits de carbone se transforme en source."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on un 'point de bascule' (tipping point) dans le système climatique ?",
+              "options": [
+                "Un seuil critique au-delà duquel un changement devient brutal, autonome et difficilement réversible",
+                "Le moment où le Soleil se couche à l'horizon",
+                "Le point d'inversion des pôles magnétiques",
+                "L'arrêt instantané de la gravité terrestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un point de bascule est un seuil de réchauffement où des boucles d'amplification auto-entretenues entraînent une bascule irréversible de sous-systèmes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Laquelle de ces entités climatiques est identifiée comme un point de bascule potentiel majeur ?",
+              "options": [
+                "La calotte glaciaire du Groenland ou la forêt amazonienne",
+                "La hauteur de la tour Eiffel",
+                "La salinité d'une piscine municipale",
+                "La température moyenne de Mars"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La déstabilisation irréversible de la calotte groenlandaise ou le dépérissement de l'Amazonie sont des points de bascule majeurs étudiés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'amplification du réchauffement observée plus particulièrement aux hautes latitudes boréales ?",
+              "options": [
+                "L'amplification polaire (ou arctique)",
+                "L'effet d'alizé méridional",
+                "Le gradient adiabatique sec",
+                "L'oscillation de Chandler"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Arctique se réchauffe deux à quatre fois plus vite que la moyenne mondiale, notamment sous l'effet de la rétroaction albédo-glace."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel composé de glace et de gaz piégé sous forte pression dans les sédiments marins froids pourrait se déstabiliser en cas de réchauffement ?",
+              "options": [
+                "Les hydrates de méthane (ou clathrates)",
+                "Les nitrates de sodium solides",
+                "L'hélium liquide",
+                "Le chlorure de potassium pur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les clathrates de méthane piégés dans les fonds océaniques froids pourraient dégazer du CH4 en cas de réchauffement prolongé des eaux profondes."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les rétroactions négatives et puits de carbone",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mécanismes agissent comme des rétroactions négatives (stabilisatrices) limitant l'ampleur du réchauffement climatique ?",
+              "options": [
+                "L'augmentation de l'émission infrarouge vers l'espace avec la hausse de la température de surface (effet Stefan-Boltzmann en T⁴)",
+                "L'absorption d'une partie du CO2 émis par les puits naturels de carbone (océans et biosphère)",
+                "La fonte de la banquise diminuant l'albédo",
+                "L'effet d'albédo accru de certains nuages bas plus épais"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La loi de Planck/Stefan-Boltzmann, les puits de carbone et certains nuages bas freinent la hausse des températures. La fonte de la banquise l'amplifie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle fraction approximative des émissions anthropiques annuelles de CO2 est actuellement absorbée par l'ensemble des puits de carbone naturels (océans + biosphère) ?",
+              "options": [
+                "Environ la moitié (environ 50 à 55 %)",
+                "Strictement 100 % (aucun CO2 ne reste dans l'air)",
+                "Moins de 1 %",
+                "Zéro pour cent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les océans (~25 %) et la biomasse terrestre (~30 %) absorbent ensemble plus de la moitié du CO2 que nous rejetons, limitant la hausse atmosphérique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment l'océan absorbe-t-il physiquement le CO2 atmosphérique en surface ?",
+              "options": [
+                "Par dissolution chimique selon la loi de Henry (pompe de solubilité)",
+                "Par évaporation totale de l'eau salée",
+                "Par réaction explosive avec le sel",
+                "Par condensation de l'azote liquide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CO2 se dissout dans l'eau de surface en fonction de sa pression partielle atmosphérique et forme des espèces carbonatées (pompe de solubilité)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le mécanisme océanique où le phytoplancton fixe le carbone par photosynthèse avant de chuter vers les grands fonds ?",
+              "options": [
+                "La pompe biologique de carbone",
+                "La dérive des continents",
+                "La tornade d'eau profonde",
+                "Le cycle de Krebs abyssal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pompe biologique séquestre le carbone dans les profondeurs océaniques et sédiments par sédimentation des cadavres et excréments planctoniques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi les puits de carbone naturels risquent-ils de perdre en efficacité à mesure que le réchauffement s'accentue ?",
+              "options": [
+                "L'eau plus chaude dissout moins de CO2 et les forêts subissent stress hydrique et incendies",
+                "Parce que les plantes cessent définitivement de respirer la nuit",
+                "Parce que les océans vont bouillir d'ici deux ans",
+                "Parce que le carbone disparaît de la matière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La solubilité du CO2 baisse dans une eau chaude, et la saturation des sols/forêts limite leur capacité d'absorption future."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel processus géologique très lent à l'échelle des centaines de milliers d'années piège définitivement le CO2 atmosphérique ?",
+              "options": [
+                "L'altération chimique des silicates continentaux suivie de la précipitation de carbonates marins",
+                "L'érosion mécanique du sable par le vent",
+                "La désintégration radioactive du quartz",
+                "L'impact répété de météorites lunaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'altération des roches silicatées consomme du CO2 dissous dans les pluies, formant des bicarbonates transportés aux océans pour former du calcaire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi l'émission thermique radiative d'un corps en T⁴ est-elle la rétroaction négative fondamentale du système Terre ?",
+              "options": [
+                "Plus la Terre se réchauffe, plus elle rayonne d'énergie infrarouge vers l'espace, freinant l'échauffement",
+                "Elle refroidit la Terre en détruisant ses photons",
+                "Elle empêche le Soleil d'émettre sa lumière",
+                "Elle éteint la radioactivité naturelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la réponse de Planck : une hausse de température induit une forte hausse de l'émission infrarouge (T⁴), ce qui tend à rétablir l'équilibre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel effet sur l'albédo ont les nuages bas et épais de type stratocumulus ?",
+              "options": [
+                "Ils ont un albédo élevé et réfléchissent fortement le rayonnement solaire, exerçant un effet refroidissant",
+                "Ils piègent les infrarouges sans réfléchir la lumière",
+                "Ils réchauffent la Terre de 50 °C",
+                "Ils sont invisibles aux satellites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nuages bas sont denses et très réflecteurs au sommet, avec une température proche du sol : leur effet albédo refroidissant domine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'augmentation temporaire de la photosynthèse végétale stimulée par des concentrations élevées de CO2 dans l'air ?",
+              "options": [
+                "L'effet de fertilisation par le CO2",
+                "L'effet de serre racinaire",
+                "La sénescence précoce",
+                "La photolyse de l'azote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un taux de CO2 plus élevé favorise transitoirement la photosynthèse si l'eau et les nutriments (azote, phosphore) ne sont pas limitants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle part du CO2 émis chaque année par les combustibles fossiles reste accumulée dans l'atmosphère (fraction aéroportée) ?",
+              "options": [
+                "Environ 45 %",
+                "Exactement 0 %",
+                "Plus de 99 %",
+                "Moins de 5 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fraction aéroportée est d'environ 45 % : les 55 % restants sont absorbés par les puits océaniques et continentaux."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Modélisation numérique du climat et rôle du GIEC",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels principes et composantes sont intégrés dans les modèles climatiques globaux (Mocages, IPSL, CNRM, etc.) ?",
+              "options": [
+                "Les lois fondamentales de la physique (mécanique des fluides, thermodynamique, rayonnement)",
+                "Un découpage de l'atmosphère et de l'océan en mailles tridimensionnelles (grille 3D)",
+                "L'inclusion des interactions entre atmosphère, océan, glaces et biosphère",
+                "Des prédictions météo individuelles pour chaque jour du siècle prochain"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les modèles résolvent numériquement les équations physiques sur une grille 3D couplée, mais ne prédisent pas la météo quotidienne exacte."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'acronyme GIEC (ou IPCC en anglais) créé en 1988 par l'ONU et l'OMM ?",
+              "options": [
+                "Groupe d'experts Intergouvernemental sur l'Évolution du Climat",
+                "Groupement International pour l'Écologie et le Commerce",
+                "Gestionnaire d'Industrie et d'Énergie Carbonée",
+                "Guide Institutionnel d'Études Chimiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le GIEC évalue l'état des connaissances scientifiques, techniques et socio-économiques relatives au changement climatique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle exact du GIEC dans la production scientifique mondiale ?",
+              "options": [
+                "Il ne mène pas de recherches propres mais synthétise et évalue les publications scientifiques relues par les pairs",
+                "Il finance exclusivement des laboratoires privés d'énergie solaire",
+                "Il vote des lois pénales obligatoires pour les citoyens",
+                "Il fabrique des modèles informatiques secrets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les rapports du GIEC constituent une méta-analyse rigoureuse de la littérature scientifique mondiale évaluée par les pairs."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans les projections du GIEC, que désignent les scénarios 'SSP' (Shared Socioeconomic Pathways) utilisés dans le 6e rapport ?",
+              "options": [
+                "Des trajectoires d'évolution socio-économique et d'émissions de gaz à effet de serre au XXIe siècle",
+                "Des plans de guerre nucléaire mondiale",
+                "Des catalogues de ventes d'automobiles",
+                "Des méthodes de prédiction astrologique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les scénarios SSP décrivent différents futurs possibles de développement mondial, démographie, technologies et émissions associées (ex. SSP1-1.9 à SSP5-8.5)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la 'sensibilité climatique à l'équilibre' (ECS) évaluée par les modèles ?",
+              "options": [
+                "La hausse de température moyenne globale résultant d'un doublement de la concentration de CO2 atmosphérique",
+                "La température atteinte en cas d'extinction du Soleil",
+                "Le temps nécessaire pour faire bouillir 1 litre d'eau",
+                "La vitesse de rotation de la Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ECS quantifie le réchauffement d'équilibre obtenu après un doublement du CO2 (estimé par le GIEC entre 2,5 °C et 4 °C, valeur centrale ~3 °C)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment les climatologues vérifient-ils la robustesse et la validité d'un modèle climatique ?",
+              "options": [
+                "En simulant les climats du passé récent (XXe siècle) et lointain et en comparant aux observations historiques",
+                "En demandant l'avis d'acteurs de cinéma célèbres",
+                "En tirant à pile ou face les résultats",
+                "En appliquant le modèle uniquement sur un seul village"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La validation des modèles repose sur leur capacité à reproduire fidèlement les climats passés (hindcasting) et les événements historiques observés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que montre la comparaison des simulations climatiques avec forçages naturels seuls vs forçages naturels et anthropiques ?",
+              "options": [
+                "Seuls les modèles incluant les forçages anthropiques parviennent à reproduire la hausse de température observée depuis 1950",
+                "Les forçages naturels suffisent amplement à tout expliquer",
+                "L'ajout des gaz à effet de serre fait baisser la température dans le modèle",
+                "Les résultats sont incompatibles avec les lois de la physique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans les émissions humaines de gaz à effet de serre, les modèles indiquent que le climat serait resté stable ou aurait légèrement refroidi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi les modèles climatiques utilisent-ils des 'paramétrisations' pour certains phénomènes ?",
+              "options": [
+                "Pour représenter des processus de petite échelle spatiale (comme les nuages) plus petits que la taille d'une maille de calcul",
+                "Pour falsifier délibérément les résultats scientifiques",
+                "Parce que les ordinateurs ne savent pas calculer d'additions",
+                "Pour supprimer le temps qui passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les nuages ou la turbulence se déroulent à une échelle sub-maille : ils sont décrits par des lois statistiques simplifiées (paramétrisations)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de groupes de travail principaux composent le GIEC pour la rédaction de ses rapports d'évaluation ?",
+              "options": [
+                "Trois groupes (bases physiques, impacts/adaptation, atténuation)",
+                "Dix groupes secrets",
+                "Un seul groupe sans sous-division",
+                "Cinquante comités régionaux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le GIEC comprend le Groupe 1 (bases scientifiques physiques), le Groupe 2 (vulnérabilité, impacts, adaptation) et le Groupe 3 (atténuation)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la plage de réchauffement estimée pour le scénario très émetteur SSP5-8.5 d'ici 2100 par rapport à l'ère préindustrielle ?",
+              "options": [
+                "Entre +3,3 °C et +5,7 °C (avec une valeur médiane vers 4,4 °C)",
+                "Moins de 0,5 °C",
+                "Exactement 25 °C",
+                "Un refroidissement de 2 °C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le scénario à très fortes émissions SSP5-8.5 conduit à un réchauffement catastrophique supérieur à 4 °C en moyenne mondiale d'ici 2100."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Conséquences globales et régionales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les conséquences majeures observées et projetées du réchauffement climatique contemporain ?",
+              "options": [
+                "L'élévation continue du niveau moyen de la mer",
+                "L'intensification de la fréquence et de la sévérité des vagues de chaleur",
+                "L'altération du cycle de l'eau avec augmentation des sécheresses et des pluies extrêmes",
+                "La disparition complète de l'effet de pesanteur"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le réchauffement provoque hausse marine, canicules, pluies torrentielles et sécheresses. La gravité terrestre n'est pas modifiée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels sont les deux moteurs physiques principaux de l'élévation actuelle du niveau marin ?",
+              "options": [
+                "La dilatation thermique de l'eau plus chaude et la fonte des glaces continentales (glaciers et calottes)",
+                "La fonte de la banquise flottante et le vent solaire",
+                "Les déversements d'eaux usées domestiques",
+                "La chute de météorites dans les océans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau se dilate lorsqu'elle se réchauffe (thermostérique), et la fonte des glaces situées sur la terre ferme ajoute de la masse liquide à l'océan."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la fonte de la banquise (glace de mer flottante) ne fait-elle pas monter directement le niveau de la mer ?",
+              "options": [
+                "En vertu du principe d'Archimède, la glace flottante déplace déjà un volume d'eau équivalent à sa masse liquide",
+                "Parce que la banquise est faite d'air pur",
+                "Parce que la banquise fond uniquement en hiver",
+                "Parce que l'eau douce est rejetée dans l'espace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme un glaçon fondant dans un verre plein, la fonte de la glace flottante ne change pas le niveau d'eau (principe d'Archimède)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel volume équivalent d'élévation du niveau marin mondial la fonte totale de la calotte du Groenland représenterait-elle ?",
+              "options": [
+                "Environ 7 mètres",
+                "Environ 1 millimètre",
+                "Environ 150 mètres",
+                "Zéro mètre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La calotte de glace du Groenland renferme assez d'eau douce pour élever le niveau moyen des mers d'environ 7 mètres si elle fondait totalement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel volume équivalent d'élévation du niveau marin mondial la calotte de l'Antarctique renferme-t-elle au total ?",
+              "options": [
+                "Environ 58 mètres",
+                "Environ 2 mètres",
+                "Environ 500 mètres",
+                "Moins de 10 centimètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Antarctique est le plus grand réservoir de glace d'eau douce de la planète : sa fonte totale représenterait environ 58 mètres d'élévation marine."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel risque côtier est directement aggravé par la combinaison de la hausse du niveau marin et des tempêtes ?",
+              "options": [
+                "Les submersions marines et l'érosion côtière accrue",
+                "La formation de montagnes sous-marines",
+                "La baisse brutale des marées",
+                "La salinisation des nuages de haute altitude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec un niveau marin plus haut, les surcotes de tempête pénètrent plus profondément dans les terres, accélérant l'érosion du littoral."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel impact direct le réchauffement des eaux et l'acidification ont-ils sur les récifs coralliens tropicaux ?",
+              "options": [
+                "Le blanchissement des coraux par expulsion de leurs algues symbiotiques (zooxanthelles) et la mortalité massive",
+                "Une accélération prodigieuse de leur croissance",
+                "La transformation des coraux en poissons",
+                "L'apparition de coquilles en fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le stress thermique rompt la symbiose corail-zooxanthelle, entraînant le blanchissement et souvent la mort des écosystèmes coralliens."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment le changement climatique modifie-t-il la répartition géographique des espèces animales et végétales ?",
+              "options": [
+                "Une migration des aires de répartition vers les pôles et vers des altitudes plus élevées",
+                "Une migration systématique vers l'équateur chaud",
+                "L'immobilité absolue de toutes les espèces vivantes",
+                "La disparition instantanée de tout règne végétal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour retrouver leurs niches thermiques optimales, de nombreuses espèces migrent vers le nord (dans l'hémisphère Nord) ou vers les sommets."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi les canicules contemporaines sont-elles plus intenses et plus fréquentes ?",
+              "options": [
+                "Le décalage de la distribution statistique des températures vers des valeurs plus élevées augmente fortement la probabilité des extrêmes chauds",
+                "Parce que le Soleil s'est rapproché de la Terre de 10 %",
+                "Parce que la nuit ne tombe plus en été",
+                "Parce que le feu sort spontanément du sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un simple décalage vers la droite de la courbe gaussienne des températures multiplie de façon spectaculaire la fréquence des chaleurs extrêmes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelles conséquences sanitaires directes le réchauffement entraîne-t-il pour les populations humaines ?",
+              "options": [
+                "Hausse de la mortalité liée aux vagues de chaleur et expansion d'aires de maladies vectorielles (dengue, paludisme)",
+                "La guérison universelle de toutes les maladies infectieuses",
+                "La baisse des besoins en eau potable",
+                "L'immunité totale contre les virus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les canicules provoquent des surmortalités importantes, et la hausse des températures étend l'aire de moustiques vecteurs de pathogènes."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Atténuation et adaptation au changement climatique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles actions relèvent de l'atténuation (mitigation) du changement climatique ?",
+              "options": [
+                "Le développement massif des énergies renouvelables et décarbonées (solaire, éolien, nucléaire)",
+                "L'amélioration de l'efficacité énergétique dans les bâtiments et les transports",
+                "La restauration et la protection des forêts et des zones humides",
+                "La construction de digues pour se protéger de la montée des eaux"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'atténuation consiste à réduire les émissions ou capter les GES. Construire des digues est une mesure d'adaptation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la distinction fondamentale entre 'atténuation' et 'adaptation' face au réchauffement ?",
+              "options": [
+                "L'atténuation s'attaque aux causes (réduire les émissions), l'adaptation limite les impacts et vulnérabilités",
+                "L'atténuation s'applique aux océans, l'adaptation uniquement aux villes",
+                "L'atténuation est gratuite, l'adaptation coûte tout le PIB",
+                "Ce sont deux synonymes parfaits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'atténuation agit en amont pour freiner le réchauffement ; l'adaptation ajuste nos sociétés et infrastructures aux changements inévitables."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel traité international signé en 2015 fixe l'objectif de limiter le réchauffement bien en dessous de 2 °C, et si possible à 1,5 °C ?",
+              "options": [
+                "L'Accord de Paris sur le climat",
+                "Le protocole de Montréal",
+                "Le traité de Versailles",
+                "La convention de Ramsar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Accord de Paris (COP21, 2015) est le traité juridiquement contraignant fixant le plafond de réchauffement à 1,5 °C - 2 °C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'objectif de 'zéro émission nette' (neutralité carbone) visé par de nombreux pays à l'horizon 2050 ?",
+              "options": [
+                "L'équilibre strict entre les émissions de gaz à effet de serre anthropiques résiduelles et leur absorption par des puits de carbone",
+                "L'interdiction totale de respirer pour les humains",
+                "La fermeture de tous les hôpitaux et écoles",
+                "L'exportation de tout le CO2 vers la Lune"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La neutralité carbone est atteinte lorsque la quantité de GES rejetée est compensée par une quantité équivalente absorbée et séquestrée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le 'budget carbone résiduel' défini par le GIEC ?",
+              "options": [
+                "La quantité cumulée maximale de CO2 que l'humanité peut encore émettre pour ne pas dépasser un seuil de réchauffement donné",
+                "Le prix en euros d'une tonne de charbon",
+                "La somme d'argent allouée aux scientifiques du GIEC",
+                "Le nombre total d'atomes de carbone sur Terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réchauffement étant quasi proportionnel au cumul des émissions de CO2, il existe une limite physique absolue aux émissions futures permises."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Laquelle de ces mesures illustre concrètement une stratégie d'adaptation au réchauffement climatique ?",
+              "options": [
+                "La désimperméabilisation et végétalisation des cours d'écoles et villes pour créer des îlots de fraîcheur",
+                "L'interdiction de fabriquer des vélos",
+                "L'allumage permanent de feux de charbon",
+                "L'interdiction des panneaux photovoltaïques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Végétaliser les villes permet de réduire la vulnérabilité aux canicules urbaines : c'est une mesure typique d'adaptation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le secteur des transports, quel levier d'action permet de réduire le plus efficacement les émissions directes ?",
+              "options": [
+                "Le report modal vers les mobilités douces, les transports en commun ferrés et l'électrification des véhicules légers",
+                "La construction d'autoroutes géantes à 10 voies",
+                "L'augmentation de la vitesse autorisée sur route",
+                "L'usage exclusif de kérosène lourd"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décarboner les transports implique sobriété, transfert modal vers le rail et le vélo, et électrification des véhicules."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la 'maladaptation' face au changement climatique ?",
+              "options": [
+                "Une action d'adaptation qui s'avère néfaste, augmentant la vulnérabilité ou les émissions de gaz à effet de serre à long terme",
+                "Une adaptation parfaite réussie en un jour",
+                "Le fait de ne pas avoir d'ordinateur",
+                "Une erreur de grammaire dans un rapport"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La maladaptation aggrave la situation future, par exemple recourir massivement à la climatisation polluante qui réchauffe l'air urbain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le principe des techniques dites de Captage et Stockage de Carbone (CSC) ?",
+              "options": [
+                "Capter le CO2 à la sortie d'installations industrielles et le comprimer pour l'enfouir dans des formations géologiques profondes",
+                "Mettre le CO2 dans des bouteilles plastiques à la poubelle",
+                "Utiliser des ventilateurs géants pour souffler le CO2 vers le ciel",
+                "Filtrer l'air avec du tissu ordinaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CSC isole le CO2 concentré d'usines lourdes (cimenteries, aciéries) et l'injecte dans d'anciens gisements d'hydrocarbures ou aquifères salins."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la sobriété énergétique et matérielle est-elle considérée comme un pilier indispensable de la transition ?",
+              "options": [
+                "Car les solutions technologiques seules ne suffisent pas à temps pour respecter les budgets carbone résiduels",
+                "Car elle détruit la science",
+                "Car elle interdit toute forme de vie en société",
+                "Car les ingénieurs refusent de construire des machines"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon le GIEC, combiner sobriété (réduire la demande), efficacité technique et énergies renouvelables est indispensable pour atteindre les cibles climatiques."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

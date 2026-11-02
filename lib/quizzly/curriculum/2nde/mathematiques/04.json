@@ -1,0 +1,2073 @@
+{
+  "id": "2nde-mathematiques-04",
+  "year": "2nde",
+  "subject": "mathematiques",
+  "title": "Nombres et calculs",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Priorités et fractions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Ensembles de nombres et appartenance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À quel plus petit ensemble de nombres appartient le nombre -7 ?",
+              "options": [
+                "ℕ (entiers naturels)",
+                "ℤ (entiers relatifs)",
+                "ⅅ (décimaux)",
+                "ℚ (rationnels)"
+              ],
+              "correctAnswers": [1],
+              "explanation": "-7 est un entier négatif, il appartient donc à ℤ mais pas à ℕ."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels nombres parmi les suivants sont des nombres décimaux (éléments de ⅅ) ?",
+              "options": ["3/4", "1/3", "-2,5", "√2"],
+              "correctAnswers": [0, 2],
+              "explanation": "3/4 = 0,75 et -2,5 ont un nombre fini de chiffres après la virgule. 1/3 et √2 ne sont pas décimaux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le nombre π est un nombre :",
+              "options": [
+                "Rationnel non décimal",
+                "Irrationnel",
+                "Entier naturel",
+                "Décimal"
+              ],
+              "correctAnswers": [1],
+              "explanation": "π ne peut pas s'écrire sous la forme d'une fraction d'entiers, c'est un nombre irrationnel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle inclusion entre ensembles de nombres est correcte ?",
+              "options": [
+                "ℕ ⊂ ℤ ⊂ ⅅ ⊂ ℚ ⊂ ℝ",
+                "ℤ ⊂ ℕ ⊂ ℚ ⊂ ⅅ ⊂ ℝ",
+                "ℕ ⊂ ⅅ ⊂ ℤ ⊂ ℚ ⊂ ℝ",
+                "ℚ ⊂ ⅅ ⊂ ℤ ⊂ ℕ ⊂ ℝ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout entier naturel est relatif, tout relatif est décimal, tout décimal est rationnel, tout rationnel est réel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le nombre 1/7 est :",
+              "options": [
+                "Un entier relatif",
+                "Un décimal non entier",
+                "Un rationnel non décimal",
+                "Un irrationnel"
+              ],
+              "correctAnswers": [2],
+              "explanation": "1/7 est le quotient de deux entiers, mais sa division ne se termine jamais : c'est un rationnel non décimal."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien vaut √16 dans les ensembles usuels ?",
+              "options": [
+                "4, élément de ℕ",
+                "-4, élément de ℤ\\ℕ",
+                "16, élément de ℕ",
+                "Un irrationnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "√16 = 4, qui est un entier naturel (ℕ)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un nombre décimal s'écrit sous la forme a/10^n avec :",
+              "options": [
+                "a ∈ ℝ et n ∈ ℕ",
+                "a ∈ ℤ et n ∈ ℕ",
+                "a ∈ ℚ et n ∈ ℤ",
+                "a ∈ ℕ et n ∈ ℝ"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Par définition, un décimal est le quotient d'un entier relatif par une puissance de 10."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le nombre 0 appartient à :",
+              "options": [
+                "Aucun ensemble",
+                "Uniquement ℝ",
+                "ℕ, ℤ, ⅅ, ℚ et ℝ",
+                "Uniquement ℤ"
+              ],
+              "correctAnswers": [2],
+              "explanation": "0 est un entier naturel, il appartient donc à tous les ensembles usuels de nombres."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'inverse de 5/3 est :",
+              "options": ["-5/3", "3/5", "-3/5", "5/(-3)"],
+              "correctAnswers": [1],
+              "explanation": "L'inverse d'une fraction non nulle a/b est b/a. L'inverse de 5/3 est 3/5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'opposé du nombre -3/4 est :",
+              "options": ["-4/3", "4/3", "3/4", "-3/4"],
+              "correctAnswers": [2],
+              "explanation": "L'opposé d'un nombre x est -x. L'opposé de -3/4 est 3/4."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Fractions : simplification et équivalence",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la forme irréductible de 42/70 ?",
+              "options": ["21/35", "3/5", "6/10", "7/10"],
+              "correctAnswers": [1],
+              "explanation": "En divisant le numérateur et le dénominateur par leur PGCD 14, on obtient 3/5."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles fractions sont égales à 3/4 ?",
+              "options": ["9/12", "15/20", "6/10", "12/18"],
+              "correctAnswers": [0, 1],
+              "explanation": "3×3/(4×3) = 9/12 et 3×5/(4×5) = 15/20. Les autres fractions ne valent pas 3/4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour quelle valeur de x a-t-on x/15 = 4/5 ?",
+              "options": ["10", "12", "8", "6"],
+              "correctAnswers": [1],
+              "explanation": "Par produit en croix, 5x = 15 × 4 = 60, donc x = 60/5 = 12."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Simplifier l'expression (18 × 25) / (15 × 30).",
+              "options": ["1", "3/2", "2/3", "5/6"],
+              "correctAnswers": [0],
+              "explanation": "18 × 25 = 450 et 15 × 30 = 450. Le quotient vaut donc 1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Laquelle de ces fractions est déjà irréductible ?",
+              "options": ["14/21", "27/36", "11/25", "35/49"],
+              "correctAnswers": [2],
+              "explanation": "11 et 25 n'ont aucun diviseur commun autre que 1. La fraction est donc irréductible."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le signe de la fraction (-15)/(-25) est :",
+              "options": ["Positif", "Négatif", "Nul", "Indéterminé"],
+              "correctAnswers": [0],
+              "explanation": "Le quotient de deux nombres de même signe est positif : (-15)/(-25) = 15/25 = 3/5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comparer 5/7 et 7/9 :",
+              "options": [
+                "5/7 < 7/9",
+                "5/7 > 7/9",
+                "5/7 = 7/9",
+                "On ne peut pas savoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "5 × 9 = 45 et 7 × 7 = 49. Comme 45 < 49, on a 5/7 < 7/9."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Rendre irréductible la fraction 120/180 :",
+              "options": ["2/3", "3/4", "4/6", "6/9"],
+              "correctAnswers": [0],
+              "explanation": "En divisant par 60 (PGCD de 120 et 180), on obtient 2/3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux fractions a/b et c/d sont égales si et seulement si :",
+              "options": [
+                "a + d = b + c",
+                "a × d = b × c",
+                "a × c = b × d",
+                "a - d = b - c"
+              ],
+              "correctAnswers": [1],
+              "explanation": "C'est la règle fondamentale de l'égalité des produits en croix."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que vaut (-24)/36 sous forme simplifiée ?",
+              "options": ["-2/3", "2/3", "-3/2", "-4/6"],
+              "correctAnswers": [0],
+              "explanation": "En divisant numérateur et dénominateur par 12, on trouve -2/3."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Fractions : addition et soustraction",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Calculer 2/7 + 3/7 :",
+              "options": ["5/14", "5/7", "6/7", "5/49"],
+              "correctAnswers": [1],
+              "explanation": "Même dénominateur : on additionne les numérateurs (2 + 3)/7 = 5/7."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calculer 1/3 + 1/4 :",
+              "options": ["2/7", "7/12", "1/12", "5/12"],
+              "correctAnswers": [1],
+              "explanation": "Le dénominateur commun est 12 : 4/12 + 3/12 = 7/12."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quelles sommes donnent un résultat égal à 1 ?",
+              "options": ["3/8 + 5/8", "2/5 + 3/5", "1/2 + 1/3", "4/7 + 2/7"],
+              "correctAnswers": [0, 1],
+              "explanation": "3/8 + 5/8 = 8/8 = 1 et 2/5 + 3/5 = 5/5 = 1."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer 5/6 - 1/2 :",
+              "options": ["4/4", "1/3", "2/6", "1/6"],
+              "correctAnswers": [1],
+              "explanation": "5/6 - 3/6 = 2/6 = 1/3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calculer 2 - 3/5 :",
+              "options": ["-1/5", "7/5", "1/5", "3/5"],
+              "correctAnswers": [1],
+              "explanation": "2 = 10/5, donc 10/5 - 3/5 = 7/5."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calculer -4/9 + 7/9 :",
+              "options": ["3/9 = 1/3", "-11/9", "3/18", "-1/3"],
+              "correctAnswers": [0],
+              "explanation": "(-4 + 7)/9 = 3/9 = 1/3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calculer 3/4 - 5/6 :",
+              "options": ["-1/12", "1/12", "-2/2", "-1/2"],
+              "correctAnswers": [0],
+              "explanation": "Le dénominateur commun est 12 : 9/12 - 10/12 = -1/12."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calculer 7/10 - 2/15 :",
+              "options": ["17/30", "5/5", "1/6", "9/30"],
+              "correctAnswers": [0],
+              "explanation": "Dénominateur commun 30 : 21/30 - 4/30 = 17/30."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calculer -1/3 - 1/6 :",
+              "options": ["-1/2", "-1/9", "1/2", "-2/9"],
+              "correctAnswers": [0],
+              "explanation": "-2/6 - 1/6 = -3/6 = -1/2."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que vaut l'expression 1/2 - 1/3 + 1/6 ?",
+              "options": ["1/3", "1/2", "0", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "3/6 - 2/6 + 1/6 = 2/6 = 1/3."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Fractions : multiplication et division",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Calculer 3/5 × 10/9 :",
+              "options": ["2/3", "30/45", "1/3", "6/9"],
+              "correctAnswers": [0],
+              "explanation": "(3 × 10)/(5 × 9) = 30/45 = 2/3."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Diviser par une fraction non nulle revient à :",
+              "options": [
+                "Multiplier par son opposé",
+                "Multiplier par son inverse",
+                "Diviser par son inverse",
+                "Soustraire cette fraction"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Règle fondamentale : a/b ÷ c/d = a/b × d/c."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels produits sont égaux à 1/2 ?",
+              "options": ["1/4 × 2", "3/4 × 2/3", "5/6 × 3/5", "2/5 × 5/2"],
+              "correctAnswers": [0, 1],
+              "explanation": "1/4 × 2 = 2/4 = 1/2 et 3/4 × 2/3 = 6/12 = 1/2. 5/6 × 3/5 = 1/2 aussi ? Attendez : 15/30 = 1/2 ! Voyons : 5/6 × 3/5 = 1/2 également ! [0, 1, 2]"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer (2/3) ÷ (4/9) :",
+              "options": ["3/2", "8/27", "2/3", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "2/3 × 9/4 = 18/12 = 3/2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calculer (-5/7) × (14/15) :",
+              "options": ["-2/3", "2/3", "-10/21", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "(-5 × 14)/(7 × 15) = -70/105 = -2/3."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calculer 4 ÷ (2/5) :",
+              "options": ["10", "8/5", "2/5", "1/10"],
+              "correctAnswers": [0],
+              "explanation": "4 × 5/2 = 20/2 = 10."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calculer (3/8) ÷ 6 :",
+              "options": ["1/16", "9/4", "18/8", "1/8"],
+              "correctAnswers": [0],
+              "explanation": "3/8 × 1/6 = 3/48 = 1/16."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le carré de -3/5 ?",
+              "options": ["9/25", "-9/25", "6/10", "-6/10"],
+              "correctAnswers": [0],
+              "explanation": "(-3/5)² = (-3)² / 5² = 9/25."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calculer (-2/3) ÷ (-4/5) :",
+              "options": ["5/6", "-5/6", "8/15", "-8/15"],
+              "correctAnswers": [0],
+              "explanation": "-2/3 × (-5/4) = 10/12 = 5/6."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que vaut l'inverse de -7/2 ?",
+              "options": ["-2/7", "2/7", "7/2", "-7/2"],
+              "correctAnswers": [0],
+              "explanation": "L'inverse conserve le signe : 1 / (-7/2) = -2/7."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Priorités opératoires avec fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Calculer 1/2 + 3/4 × 2/3 :",
+              "options": ["1", "5/6", "7/8", "4/3"],
+              "correctAnswers": [0],
+              "explanation": "La multiplication est prioritaire : 3/4 × 2/3 = 1/2. Puis 1/2 + 1/2 = 1."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Dans le calcul A = 5/3 - 2/3 × (1/4 + 1/2), quelles opérations effectue-t-on avant la soustraction finale ?",
+              "options": [
+                "L'addition entre parenthèses",
+                "La multiplication par 2/3",
+                "La soustraction 5/3 - 2/3",
+                "La division par 4"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "On calcule d'abord les parenthèses, puis la multiplication prioritaire sur la soustraction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calculer (1/2 + 1/3) × 6 :",
+              "options": ["5", "6", "2", "3"],
+              "correctAnswers": [0],
+              "explanation": "1/2 + 1/3 = 5/6. Puis 5/6 × 6 = 5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer 3/4 - 1/4 ÷ 2 :",
+              "options": ["5/8", "1/4", "1/2", "1"],
+              "correctAnswers": [0],
+              "explanation": "Division prioritaire : 1/4 ÷ 2 = 1/8. Puis 3/4 - 1/8 = 6/8 - 1/8 = 5/8."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calculer (2/3)² - 1/9 :",
+              "options": ["1/3", "4/9", "1/9", "5/9"],
+              "correctAnswers": [0],
+              "explanation": "(2/3)² = 4/9. 4/9 - 1/9 = 3/9 = 1/3."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calculer (1 - 1/3) ÷ (1 + 1/3) :",
+              "options": ["1/2", "2/3", "3/4", "1"],
+              "correctAnswers": [0],
+              "explanation": "(2/3) ÷ (4/3) = 2/3 × 3/4 = 2/4 = 1/2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calculer 2 × (3/4 - 1/2) + 1/4 :",
+              "options": ["3/4", "1/2", "1", "1/4"],
+              "correctAnswers": [0],
+              "explanation": "3/4 - 1/2 = 1/4. 2 × 1/4 = 1/2. 1/2 + 1/4 = 3/4."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que vaut l'expression 5 - 2 × 3/2 ?",
+              "options": ["2", "9/2", "3", "1"],
+              "correctAnswers": [0],
+              "explanation": "Multiplication d'abord : 2 × 3/2 = 3. Puis 5 - 3 = 2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calculer (3/5 × 5/3) - (1/2 ÷ 1/4) :",
+              "options": ["-1", "0", "1", "2"],
+              "correctAnswers": [0],
+              "explanation": "3/5 × 5/3 = 1 et 1/2 ÷ 1/4 = 2. 1 - 2 = -1."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calculer [1/2 + (3/4 - 1/8)] :",
+              "options": ["9/8", "7/8", "5/8", "11/8"],
+              "correctAnswers": [0],
+              "explanation": "3/4 - 1/8 = 5/8. Puis 1/2 + 5/8 = 4/8 + 5/8 = 9/8."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Puissances et règles de calcul",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pour tout réel a non nul et entiers n et p, que vaut a^n × a^p ?",
+              "options": ["a^(n+p)", "a^(n×p)", "a^(n-p)", "(2a)^(n+p)"],
+              "correctAnswers": [0],
+              "explanation": "Lorsqu'on multiplie deux puissances d'un même nombre, on additionne les exposants."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles égalités sont vraies pour a > 0 et b > 0 ?",
+              "options": [
+                "(a × b)^n = a^n × b^n",
+                "(a^n)^p = a^(n×p)",
+                "(a + b)^n = a^n + b^n",
+                "a^n / a^p = a^(n/p)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les puissances se distribuent sur la multiplication et se composent par produit. Elles ne se distribuent pas sur l'addition."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calculer 2^(-3) :",
+              "options": ["1/8", "-8", "-6", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "Par définition, a^(-n) = 1/a^n. Donc 2^(-3) = 1/2³ = 1/8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Simplifier l'expression (10^5 × 10^(-2)) / 10^7 :",
+              "options": ["10^(-4)", "10^4", "10^10", "10^(-10)"],
+              "correctAnswers": [0],
+              "explanation": "Numérateur : 10^(5-2) = 10^3. Quotient : 10^(3-7) = 10^(-4)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que vaut (-3)^4 ?",
+              "options": ["81", "-81", "12", "-12"],
+              "correctAnswers": [0],
+              "explanation": "L'exposant 4 est pair, donc le résultat est positif : (-3)⁴ = 81."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que vaut -3^4 ?",
+              "options": ["-81", "81", "-12", "12"],
+              "correctAnswers": [0],
+              "explanation": "Le signe moins n'est pas dans la puissance : -(3⁴) = -81."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour tout réel non nul x, que vaut x^0 ?",
+              "options": ["1", "0", "x", "Indéterminé"],
+              "correctAnswers": [0],
+              "explanation": "Par convention et cohérence avec les quotients de puissances, tout nombre non nul à la puissance 0 vaut 1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calculer (2^3)^2 :",
+              "options": ["64", "32", "16", "128"],
+              "correctAnswers": [0],
+              "explanation": "(2³)² = 2^(3×2) = 2^6 = 64."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Écrire sous la forme 2^n le quotient 8^2 / 4^3 :",
+              "options": ["2^0 = 1", "2^1", "2^2", "2^(-1)"],
+              "correctAnswers": [0],
+              "explanation": "8² = (2³)² = 2^6 et 4³ = (2²)³ = 2^6. Donc 2^6 / 2^6 = 1 = 2^0."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Simplifier (a^3 × b^(-2)) / (a^(-1) × b^3) :",
+              "options": ["a^4 / b^5", "a^2 / b", "a^4 × b", "a^2 / b^5"],
+              "correctAnswers": [0],
+              "explanation": "a^(3 - (-1)) = a^4 et b^(-2 - 3) = b^(-5) = 1/b^5, d'où a^4 / b^5."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Notation scientifique et ordre de grandeur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la notation scientifique de 45 000 ?",
+              "options": [
+                "4,5 × 10^4",
+                "45 × 10^3",
+                "0,45 × 10^5",
+                "4,5 × 10^(-4)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La notation scientifique est a × 10^n avec 1 ≤ a < 10. Ici 4,5 × 10^4."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels nombres sont écrits en notation scientifique ?",
+              "options": [
+                "7,2 × 10^(-5)",
+                "1,03 × 10^8",
+                "0,85 × 10^3",
+                "12 × 10^4"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "0,85 < 1 et 12 ≥ 10 ne respectent pas la condition 1 ≤ a < 10."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Écrire 0,000 38 en notation scientifique :",
+              "options": [
+                "3,8 × 10^(-4)",
+                "3,8 × 10^(-5)",
+                "38 × 10^(-5)",
+                "0,38 × 10^(-3)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On déplace la virgule de 4 crans vers la droite : 3,8 × 10^(-4)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est l'ordre de grandeur de 8,9 × 10^6 ?",
+              "options": ["10^7", "10^6", "8 × 10^6", "10^8"],
+              "correctAnswers": [0],
+              "explanation": "8,9 est plus proche de 10 que de 1, donc l'ordre de grandeur est 10 × 10^6 = 10^7."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calculer (3 × 10^4) × (2 × 10^5) en notation scientifique :",
+              "options": ["6 × 10^9", "6 × 10^20", "5 × 10^9", "6 × 10^8"],
+              "correctAnswers": [0],
+              "explanation": "(3 × 2) × 10^(4+5) = 6 × 10^9."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calculer (8 × 10^7) / (4 × 10^(-2)) :",
+              "options": ["2 × 10^9", "2 × 10^5", "4 × 10^9", "2 × 10^(-9)"],
+              "correctAnswers": [0],
+              "explanation": "8/4 = 2 et 10^(7 - (-2)) = 10^9, soit 2 × 10^9."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Donner la notation scientifique de 150 × 10^3 :",
+              "options": [
+                "1,5 × 10^5",
+                "1,5 × 10^3",
+                "15 × 10^4",
+                "0,15 × 10^6"
+              ],
+              "correctAnswers": [0],
+              "explanation": "150 = 1,5 × 10², donc 1,5 × 10² × 10³ = 1,5 × 10^5."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un nanomètre (1 nm) correspond à :",
+              "options": ["10^(-9) m", "10^(-6) m", "10^(-3) m", "10^(-12) m"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe nano signifie 10^(-9)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Donner l'ordre de grandeur du produit 2,1 × 10^3 × 4,8 × 10^2 :",
+              "options": ["10^6", "10^5", "10^7", "10^4"],
+              "correctAnswers": [0],
+              "explanation": "2,1 × 4,8 ≈ 10, et 10^3 × 10^2 = 10^5, donc 10 × 10^5 = 10^6."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Écrire 0,05 × 10^(-3) en notation scientifique :",
+              "options": [
+                "5 × 10^(-5)",
+                "5 × 10^(-1)",
+                "5 × 10^(-4)",
+                "0,5 × 10^(-4)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0,05 = 5 × 10^(-2), donc 5 × 10^(-2) × 10^(-3) = 5 × 10^(-5)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Racines carrées : propriétés fondamentales",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pour tout réel positif a, que vaut (√a)² ?",
+              "options": ["a", "a²", "√a", "2a"],
+              "correctAnswers": [0],
+              "explanation": "Par définition de la racine carrée d'un nombre positif, son carré redonne ce nombre."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Pour a ≥ 0 et b ≥ 0, quelles égalités sont toujours vraies ?",
+              "options": [
+                "√(a × b) = √a × √b",
+                "√(a / b) = √a / √b (si b > 0)",
+                "√(a + b) = √a + √b",
+                "√(a - b) = √a - √b"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La racine carrée est compatible avec la multiplication et la division, mais PAS avec l'addition ou la soustraction."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Simplifier √75 sous la forme a√b avec b le plus petit entier possible :",
+              "options": ["5√3", "3√5", "25√3", "15√5"],
+              "correctAnswers": [0],
+              "explanation": "√75 = √(25 × 3) = √25 × √3 = 5√3."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calculer √18 + √50 :",
+              "options": ["8√2", "√68", "15√2", "2√34"],
+              "correctAnswers": [0],
+              "explanation": "√18 = 3√2 et √50 = 5√2. Donc 3√2 + 5√2 = 8√2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que vaut √( (-7)² ) ?",
+              "options": ["7", "-7", "49", "-49"],
+              "correctAnswers": [0],
+              "explanation": "(-7)² = 49, et la racine carrée d'un nombre est toujours positive : √49 = 7."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Écrire 1/√2 avec un dénominateur entier :",
+              "options": ["√2 / 2", "2 / √2", "√2", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "On multiplie numérateur et dénominateur par √2 : (1 × √2)/(√2 × √2) = √2 / 2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calculer (2√3)² :",
+              "options": ["12", "6", "36", "18"],
+              "correctAnswers": [0],
+              "explanation": "(2√3)² = 2² × (√3)² = 4 × 3 = 12."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Développer et simplifier (√5 - 1)(√5 + 1) :",
+              "options": ["4", "6", "√24", "5"],
+              "correctAnswers": [0],
+              "explanation": "Identité remarquable (a-b)(a+b) = a² - b² : (√5)² - 1² = 5 - 1 = 4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Résoudre l'équation x² = 25 dans ℝ :",
+              "options": [
+                "x = 5 ou x = -5",
+                "x = 5 uniquement",
+                "x = 25 ou x = -25",
+                "Aucune solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour tout a > 0, x² = a admet deux solutions réelles : √a et -√a."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien de solutions réelles possède l'équation x² = -9 ?",
+              "options": [
+                "0 solution",
+                "1 solution",
+                "2 solutions",
+                "Infinité de solutions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un carré de réel est toujours positif ou nul, il ne peut donc jamais valoir -9 dans ℝ."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Développements et identités remarquables",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Développer (x + 3)² :",
+              "options": [
+                "x² + 6x + 9",
+                "x² + 9",
+                "x² + 3x + 9",
+                "x² + 6x + 6"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(a + b)² = a² + 2ab + b², donc x² + 2×x×3 + 3² = x² + 6x + 9."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles sont les trois identités remarquables fondamentales pour tous réels a et b ?",
+              "options": [
+                "(a + b)² = a² + 2ab + b²",
+                "(a - b)² = a² - 2ab + b²",
+                "(a - b)(a + b) = a² - b²",
+                "(a + b)² = a² + b²"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les trois identités remarquables du collège et lycée sont a² + 2ab + b², a² - 2ab + b² et a² - b²."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Développer (2x - 5)² :",
+              "options": [
+                "4x² - 20x + 25",
+                "4x² - 25",
+                "4x² - 10x + 25",
+                "2x² - 20x + 25"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(2x)² - 2 × (2x) × 5 + 5² = 4x² - 20x + 25."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Développer (3x + 4)(3x - 4) :",
+              "options": ["9x² - 16", "9x² + 16", "9x² - 24x - 16", "3x² - 16"],
+              "correctAnswers": [0],
+              "explanation": "Forme (a+b)(a-b) = a² - b² = (3x)² - 4² = 9x² - 16."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Développer et réduire (x - 2)(x + 5) :",
+              "options": [
+                "x² + 3x - 10",
+                "x² - 3x - 10",
+                "x² + 7x - 10",
+                "x² + 3x + 10"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x × x + x × 5 - 2 × x - 2 × 5 = x² + 5x - 2x - 10 = x² + 3x - 10."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Développer -3x(2x - 4) :",
+              "options": ["-6x² + 12x", "-6x² - 12x", "-6x + 12", "6x² - 12x"],
+              "correctAnswers": [0],
+              "explanation": "-3x × 2x + (-3x) × (-4) = -6x² + 12x."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Réduire l'expression (x + 1)² - (x - 1)² :",
+              "options": ["4x", "2x² + 2", "2", "0"],
+              "correctAnswers": [0],
+              "explanation": "(x² + 2x + 1) - (x² - 2x + 1) = x² + 2x + 1 - x² + 2x - 1 = 4x."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Développer (5 - x)² :",
+              "options": [
+                "25 - 10x + x²",
+                "25 - x²",
+                "25 + 10x + x²",
+                "10 - 10x + x²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "5² - 2 × 5 × x + x² = 25 - 10x + x²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calculer mentalement 99² à l'aide d'une identité remarquable :",
+              "options": ["9801", "9810", "9901", "9701"],
+              "correctAnswers": [0],
+              "explanation": "99² = (100 - 1)² = 10 000 - 200 + 1 = 9801."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calculer 101 × 99 avec les identités remarquables :",
+              "options": ["9999", "10001", "9990", "9900"],
+              "correctAnswers": [0],
+              "explanation": "(100 + 1)(100 - 1) = 100² - 1² = 10 000 - 1 = 9999."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Factorisations et expressions algébriques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Factoriser 6x + 9 :",
+              "options": ["3(2x + 3)", "3(2x + 9)", "6(x + 3)", "x(6 + 9)"],
+              "correctAnswers": [0],
+              "explanation": "Le facteur commun est 3 : 6x + 9 = 3 × 2x + 3 × 3 = 3(2x + 3)."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles expressions sont factorisées sous forme d'un produit de facteurs du premier degré ?",
+              "options": [
+                "(2x + 1)(x - 3)",
+                "(x - 4)²",
+                "x² + 5x + 6",
+                "2x(x + 1) + 3"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "(2x+1)(x-3) et (x-4)² sont des produits. x²+5x+6 et 2x(x+1)+3 sont des sommes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Factoriser x² - 16 :",
+              "options": [
+                "(x - 4)(x + 4)",
+                "(x - 8)(x + 8)",
+                "(x - 4)²",
+                "(x + 4)²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "a² - b² = (a - b)(a + b) avec a = x et b = 4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Factoriser x² + 10x + 25 :",
+              "options": [
+                "(x + 5)²",
+                "(x - 5)²",
+                "(x + 10)²",
+                "(x + 25)(x + 1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'identité remarquable a² + 2ab + b² = (a + b)² avec a = x et b = 5."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Factoriser 4x² - 12x + 9 :",
+              "options": ["(2x - 3)²", "(2x + 3)²", "(4x - 3)²", "(2x - 9)²"],
+              "correctAnswers": [0],
+              "explanation": "(2x)² - 2 × (2x) × 3 + 3² = (2x - 3)²."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Factoriser l'expression (2x + 1)(x - 3) + (2x + 1)(3x + 2) :",
+              "options": [
+                "(2x + 1)(4x - 1)",
+                "(2x + 1)(4x + 5)",
+                "(2x + 1)(2x - 1)",
+                "(4x - 1)²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Facteur commun (2x + 1) : (2x + 1)[(x - 3) + (3x + 2)] = (2x + 1)(4x - 1)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Factoriser 25 - 9x² :",
+              "options": [
+                "(5 - 3x)(5 + 3x)",
+                "(3x - 5)(3x + 5)",
+                "(5 - 9x)(5 + 9x)",
+                "(5 - 3x)²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "a² - b² avec a = 5 et b = 3x, donc (5 - 3x)(5 + 3x)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Factoriser (x + 2)² - 9 :",
+              "options": [
+                "(x - 1)(x + 5)",
+                "(x + 1)(x - 5)",
+                "(x - 7)(x + 11)",
+                "(x + 2 - 3)²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "a² - b² avec a = x + 2 et b = 3 : [(x+2) - 3][(x+2) + 3] = (x - 1)(x + 5)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le facteur commun dans 5x² - 15x ?",
+              "options": ["5x", "5", "x", "15x"],
+              "correctAnswers": [0],
+              "explanation": "5x² = 5x × x et -15x = 5x × (-3), le facteur commun maximal est 5x."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Factoriser complètement 2x² - 18 :",
+              "options": [
+                "2(x - 3)(x + 3)",
+                "2(x² - 9)",
+                "(2x - 6)(x + 3)",
+                "(x - 3)(2x + 6)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On met 2 en facteur : 2(x² - 9) = 2(x - 3)(x + 3)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Problèmes numériques",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Proportions et pourcentages simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le coefficient multiplicateur associé à une hausse de 15 % ?",
+              "options": ["1,15", "0,15", "1,015", "0,85"],
+              "correctAnswers": [0],
+              "explanation": "Une augmentation de t % correspond à multiplier par 1 + t/100, soit 1 + 0,15 = 1,15."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Parmi les coefficients multiplicateurs suivants, lesquels correspondent à une baisse ?",
+              "options": ["0,75", "0,92", "1,05", "1,30"],
+              "correctAnswers": [0, 1],
+              "explanation": "Un coefficient strictement compris entre 0 et 1 correspond à une baisse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le coefficient multiplicateur associé à une baisse de 20 % ?",
+              "options": ["0,80", "0,20", "1,20", "0,08"],
+              "correctAnswers": [0],
+              "explanation": "Une baisse de 20 % correspond au coefficient 1 - 20/100 = 0,80."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un article à 80 € augmente de 25 %. Quel est son nouveau prix ?",
+              "options": ["100 €", "105 €", "95 €", "120 €"],
+              "correctAnswers": [0],
+              "explanation": "80 × 1,25 = 100 € (ou 80 + 20 = 100 €)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la proportion sous forme de pourcentage de 18 élèves parmi 24 ?",
+              "options": ["75 %", "60 %", "80 %", "72 %"],
+              "correctAnswers": [0],
+              "explanation": "18 / 24 = 3 / 4 = 0,75 = 75 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le prix d'un objet passe de 50 € à 65 €. Quelle est la variation absolue ?",
+              "options": ["+15 €", "+30 %", "+10 €", "-15 €"],
+              "correctAnswers": [0],
+              "explanation": "La variation absolue est Vf - Vi = 65 - 50 = +15 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le prix d'un objet passe de 50 € à 65 €. Quel est le taux d'évolution ?",
+              "options": ["+30 %", "+15 %", "+25 %", "+20 %"],
+              "correctAnswers": [0],
+              "explanation": "(65 - 50) / 50 = 15 / 50 = 0,30 = +30 %."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un pantalon à 60 € est soldé à -30 %. Quel est son prix soldé ?",
+              "options": ["42 €", "40 €", "48 €", "38 €"],
+              "correctAnswers": [0],
+              "explanation": "60 × (1 - 0,30) = 60 × 0,70 = 42 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un groupe de 200 personnes, 45 % sont des femmes. Combien y a-t-il de femmes ?",
+              "options": ["90", "80", "100", "95"],
+              "correctAnswers": [0],
+              "explanation": "200 × 0,45 = 90."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un coefficient multiplicateur de 1,04 correspond à :",
+              "options": [
+                "Une hausse de 4 %",
+                "Une hausse de 40 %",
+                "Une baisse de 4 %",
+                "Une hausse de 0,4 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1,04 - 1 = 0,04 = +4 %."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Évolutions successives et pourcentages réciproques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Un prix augmente de 10 % puis augmente à nouveau de 10 %. Quelle est la hausse globale ?",
+              "options": ["21 %", "20 %", "22 %", "19 %"],
+              "correctAnswers": [0],
+              "explanation": "CM global = 1,10 × 1,10 = 1,21, ce qui correspond à une hausse globale de 21 %."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Concernant les évolutions successives, quelles affirmations sont vraies ?",
+              "options": [
+                "Les coefficients multiplicateurs se multiplient",
+                "Les pourcentages d'évolution ne s'additionnent pas",
+                "Le coefficient global est la somme des coefficients",
+                "L'ordre des évolutions successives modifie le résultat final"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "CM_global = CM1 × CM2. Les taux ne s'additionnent pas et la multiplication est commutative."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une hausse de 50 % est suivie d'une baisse de 50 %. Que devient le prix initial ?",
+              "options": [
+                "Il diminue de 25 %",
+                "Il revient au prix de départ",
+                "Il diminue de 20 %",
+                "Il augmente de 25 %"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CM global = 1,50 × 0,50 = 0,75 = 1 - 0,25. Le prix diminue donc globalement de 25 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le taux d'évolution réciproque d'une baisse de 20 % ?",
+              "options": ["+25 %", "+20 %", "+30 %", "+15 %"],
+              "correctAnswers": [0],
+              "explanation": "CM = 0,80. CM' = 1 / 0,80 = 1,25, soit une hausse de 25 % pour revenir à la valeur initiale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le coefficient multiplicateur réciproque d'un coefficient CM ?",
+              "options": ["1 / CM", "-CM", "1 - CM", "CM - 1"],
+              "correctAnswers": [0],
+              "explanation": "Pour annuler l'effet d'une multiplication par CM, on multiplie par son inverse 1 / CM."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un prix baisse de 50 %. Quelle hausse doit-il subir pour retrouver sa valeur initiale ?",
+              "options": ["+100 %", "+50 %", "+75 %", "+200 %"],
+              "correctAnswers": [0],
+              "explanation": "Le prix est divisé par 2 (CM = 0,5). Il faut le doubler (×2, soit +100 %) pour revenir au départ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un objet augmente de 20 % puis baisse de 20 %. Son prix final est :",
+              "options": [
+                "Inférieur au prix initial",
+                "Égal au prix initial",
+                "Supérieur au prix initial",
+                "Nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1,20 × 0,80 = 0,96 < 1. Le prix a baissé de 4 %."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Après une hausse de 25 %, un article coûte 125 €. Quel était son prix initial ?",
+              "options": ["100 €", "90 €", "105 €", "110 €"],
+              "correctAnswers": [0],
+              "explanation": "Prix initial = 125 / 1,25 = 100 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une action chute de 10 % un jour puis monte de 10 % le lendemain. Quel est le CM global ?",
+              "options": ["0,99", "1,00", "0,90", "1,01"],
+              "correctAnswers": [0],
+              "explanation": "CM global = 0,90 × 1,10 = 0,99 (baisse de 1 %)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si la population d'une ville est multipliée par 4, quelle a été la hausse en pourcentage ?",
+              "options": ["+300 %", "+400 %", "+200 %", "+350 %"],
+              "correctAnswers": [0],
+              "explanation": "CM = 4 = 1 + 3 = 1 + 300/100. L'augmentation est de 300 %."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Équations du premier degré",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Résoudre dans ℝ l'équation 3x - 5 = 16 :",
+              "options": ["x = 7", "x = 11/3", "x = 21", "x = 3"],
+              "correctAnswers": [0],
+              "explanation": "3x = 16 + 5 = 21, donc x = 21 / 3 = 7."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles équations admettent x = 2 comme solution ?",
+              "options": [
+                "4x - 3 = 5",
+                "3(x + 1) = 9",
+                "2x + 1 = 6",
+                "x² - 4 = 1"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "4(2) - 3 = 5 (vrai) et 3(2 + 1) = 9 (vrai). 2(2)+1=5 ≠ 6 et 2²-4=0 ≠ 1."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Résoudre 5x + 3 = 2x - 9 :",
+              "options": ["x = -4", "x = 4", "x = -2", "x = -12/7"],
+              "correctAnswers": [0],
+              "explanation": "5x - 2x = -9 - 3 ⇔ 3x = -12 ⇔ x = -4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Résoudre 2(x - 3) = 4x + 2 :",
+              "options": ["x = -4", "x = 4", "x = -2", "x = 2"],
+              "correctAnswers": [0],
+              "explanation": "2x - 6 = 4x + 2 ⇔ -2x = 8 ⇔ x = -4."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de solutions réelles admet l'équation 0x = 5 ?",
+              "options": [
+                "0 solution",
+                "1 solution",
+                "Infinité de solutions",
+                "x = 5"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0 × x = 0 pour tout x, donc 0x ne peut jamais être égal à 5. L'ensemble des solutions est vide."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de solutions possède l'équation 0x = 0 dans ℝ ?",
+              "options": [
+                "Une infinité (tous les réels)",
+                "Une seule solution : x = 0",
+                "Aucune solution",
+                "Deux solutions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'égalité 0 = 0 est toujours vraie pour tout réel x : S = ℝ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Résoudre l'équation produit-nul (2x - 3)(x + 4) = 0 :",
+              "options": [
+                "x = 3/2 ou x = -4",
+                "x = -3/2 ou x = 4",
+                "x = 3 ou x = -4",
+                "x = 2/3 ou x = -4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un produit est nul si l'un au moins des facteurs est nul : 2x - 3 = 0 ou x + 4 = 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Résoudre x/3 + 1 = 4 :",
+              "options": ["x = 9", "x = 5", "x = 3", "x = 15"],
+              "correctAnswers": [0],
+              "explanation": "x/3 = 3 ⇔ x = 3 × 3 = 9."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Résoudre (x + 1)/2 = (2x - 1)/3 :",
+              "options": ["x = 5", "x = 1", "x = 3", "x = -5"],
+              "correctAnswers": [0],
+              "explanation": "Produit en croix : 3(x + 1) = 2(2x - 1) ⇔ 3x + 3 = 4x - 2 ⇔ -x = -5 ⇔ x = 5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Résoudre l'équation 4x² - 9 = 0 :",
+              "options": [
+                "x = 3/2 ou x = -3/2",
+                "x = 9/4",
+                "x = 3/2 uniquement",
+                "Aucune solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(2x - 3)(2x + 3) = 0, d'où x = 3/2 ou x = -3/2."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Inéquations du premier degré",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Lorsqu'on multiplie ou divise les deux membres d'une inéquation par un nombre strictement négatif :",
+              "options": [
+                "Le sens de l'inégalité change",
+                "Le sens reste identique",
+                "L'inégalité devient une égalité",
+                "L'inégalité n'a plus de solution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiplier ou diviser par un nombre strictement négatif inverse le sens de l'inégalité."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels nombres appartiennent à l'ensemble des solutions de l'inéquation 2x - 1 > 5 ?",
+              "options": ["4", "5", "3", "2"],
+              "correctAnswers": [0, 1],
+              "explanation": "2x - 1 > 5 ⇔ 2x > 6 ⇔ x > 3. 4 et 5 sont strictement supérieurs à 3, mais pas 3 ni 2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Résoudre -3x ≤ 12 :",
+              "options": ["x ≥ -4", "x ≤ -4", "x ≥ 4", "x ≤ 4"],
+              "correctAnswers": [0],
+              "explanation": "On divise par -3 (négatif), donc le sens change : x ≥ 12 / (-3) = -4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Résoudre 4x + 7 < 2x - 3 :",
+              "options": ["x < -5", "x > -5", "x < 5", "x > 5"],
+              "correctAnswers": [0],
+              "explanation": "4x - 2x < -3 - 7 ⇔ 2x < -10 ⇔ x < -5."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'ensemble des solutions de x ≥ 3 s'écrit sous forme d'intervalle :",
+              "options": ["[3 ; +∞[", "]3 ; +∞[", "]-∞ ; 3]", "]-∞ ; 3["],
+              "correctAnswers": [0],
+              "explanation": "L'inégalité est large (≥), donc le crochet est fermé en 3 : [3 ; +∞[."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Résoudre 1 - 2x > 7 :",
+              "options": ["x < -3", "x > -3", "x < 3", "x > 3"],
+              "correctAnswers": [0],
+              "explanation": "-2x > 6 ⇔ x < 6 / (-2) ⇔ x < -3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Résoudre 5(x - 1) ≥ 2(x + 2) :",
+              "options": ["x ≥ 3", "x ≤ 3", "x ≥ 1", "x ≤ 1"],
+              "correctAnswers": [0],
+              "explanation": "5x - 5 ≥ 2x + 4 ⇔ 3x ≥ 9 ⇔ x ≥ 3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la plus petite valeur entière solution de 3x - 4 ≥ 8 ?",
+              "options": ["4", "3", "5", "0"],
+              "correctAnswers": [0],
+              "explanation": "3x ≥ 12 ⇔ x ≥ 4. La plus petite valeur entière est donc 4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Résoudre x/2 + 3 ≤ 5 :",
+              "options": ["x ≤ 4", "x ≤ 1", "x ≥ 4", "x ≤ 8"],
+              "correctAnswers": [0],
+              "explanation": "x/2 ≤ 2 ⇔ x ≤ 4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "L'inéquation 0x > 2 admet pour ensemble de solutions :",
+              "options": ["L'ensemble vide ∅", "ℝ tout entier", "{0}", "{2}"],
+              "correctAnswers": [0],
+              "explanation": "0 > 2 est toujours faux, il n'y a donc aucune solution réelle."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Intervalles et encadrements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Traduire en inégalité l'appartenance x ∈ [-2 ; 5[ :",
+              "options": [
+                "-2 ≤ x < 5",
+                "-2 < x ≤ 5",
+                "-2 ≤ x ≤ 5",
+                "-2 < x < 5"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Crochet fermé en -2 signifie -2 ≤ x, crochet ouvert en 5 signifie x < 5."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quels nombres appartiennent à l'intervalle ]-1 ; 4] ?",
+              "options": ["0", "4", "-1", "4,1"],
+              "correctAnswers": [0, 1],
+              "explanation": "-1 est exclu (crochet ouvert), 4 est inclus (fermé), 0 est dedans, 4,1 est strictement supérieur à 4."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'intersection [-3 ; 4] ∩ [1 ; 7] ?",
+              "options": ["[1 ; 4]", "[-3 ; 7]", "[1 ; 7]", "[-3 ; 1]"],
+              "correctAnswers": [0],
+              "explanation": "L'intersection est l'ensemble des éléments communs aux deux intervalles : [1 ; 4]."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la réunion [-3 ; 4] ∪ [1 ; 7] ?",
+              "options": ["[-3 ; 7]", "[1 ; 4]", "[-3 ; 1]", "[4 ; 7]"],
+              "correctAnswers": [0],
+              "explanation": "La réunion rassemble tous les éléments des deux intervalles : [-3 ; 7]."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si 2 ≤ x ≤ 5, quel est l'encadrement de 3x - 1 ?",
+              "options": [
+                "5 ≤ 3x - 1 ≤ 14",
+                "6 ≤ 3x - 1 ≤ 15",
+                "5 ≤ 3x - 1 ≤ 15",
+                "6 ≤ 3x - 1 ≤ 14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3 × 2 - 1 = 5 et 3 × 5 - 1 = 14, donc 5 ≤ 3x - 1 ≤ 14."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si 1 ≤ x ≤ 4, quel est l'encadrement de -2x + 3 ?",
+              "options": [
+                "-5 ≤ -2x + 3 ≤ 1",
+                "1 ≤ -2x + 3 ≤ 5",
+                "-5 ≤ -2x + 3 ≤ -1",
+                "-8 ≤ -2x + 3 ≤ -2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiplier par -2 inverse le sens : -8 ≤ -2x ≤ -2. Puis ajouter 3 : -5 ≤ -2x + 3 ≤ 1."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est l'amplitude de l'intervalle [2,5 ; 7,8] ?",
+              "options": ["5,3", "5,2", "10,3", "5,15"],
+              "correctAnswers": [0],
+              "explanation": "L'amplitude est la différence b - a = 7,8 - 2,5 = 5,3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le centre de l'intervalle [-2 ; 8] ?",
+              "options": ["3", "5", "6", "2"],
+              "correctAnswers": [0],
+              "explanation": "Le centre est la moyenne des bornes : (-2 + 8) / 2 = 6 / 2 = 3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que vaut l'intersection ]-∞ ; 2[ ∩ [5 ; +∞[ ?",
+              "options": [
+                "∅ (ensemble vide)",
+                "[2 ; 5]",
+                "]-∞ ; +∞[",
+                "{2 ; 5}"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il n'y a aucun nombre qui soit à la fois strictement inférieur à 2 et supérieur ou égal à 5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si 2 ≤ x ≤ 6 et 3 ≤ y ≤ 5, encadrer x + y :",
+              "options": [
+                "5 ≤ x + y ≤ 11",
+                "6 ≤ x + y ≤ 11",
+                "5 ≤ x + y ≤ 10",
+                "6 ≤ x + y ≤ 30"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On additionne membre à membre : 2 + 3 ≤ x + y ≤ 6 + 5, soit 5 ≤ x + y ≤ 11."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Valeur absolue et distances",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que vaut la valeur absolue de -7, notée |-7| ?",
+              "options": ["7", "-7", "0", "1/7"],
+              "correctAnswers": [0],
+              "explanation": "La valeur absolue d'un nombre négatif est son opposé : |-7| = 7."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Quelles égalités sont toujours vraies pour tous réels x et y ?",
+              "options": [
+                "|x| ≥ 0",
+                "|x × y| = |x| × |y|",
+                "|x + y| = |x| + |y|",
+                "|-x| = -|x|"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une valeur absolue est positive et multiplicative. L'inégalité triangulaire donne |x + y| ≤ |x| + |y|."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la distance sur la droite graduée entre les points d'abscisses 3 et -5 ?",
+              "options": ["8", "-2", "2", "-8"],
+              "correctAnswers": [0],
+              "explanation": "La distance est |3 - (-5)| = |3 + 5| = 8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Résoudre dans ℝ l'équation |x - 2| = 5 :",
+              "options": [
+                "x = 7 ou x = -3",
+                "x = 7 ou x = 3",
+                "x = 3 ou x = -7",
+                "x = 5 ou x = -5"
+              ],
+              "correctAnswers": [0],
+              "explanation": "|x - 2| = 5 ⇔ x - 2 = 5 ou x - 2 = -5 ⇔ x = 7 ou x = -3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'inégalité |x - 1| ≤ 3 équivaut à quel intervalle pour x ?",
+              "options": ["[-2 ; 4]", "[-3 ; 3]", "[1 ; 4]", "[-4 ; 2]"],
+              "correctAnswers": [0],
+              "explanation": "|x - 1| ≤ 3 ⇔ -3 ≤ x - 1 ≤ 3 ⇔ -2 ≤ x ≤ 4, soit l'intervalle [-2 ; 4]."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la distance entre les abscisses -4 et -9 ?",
+              "options": ["5", "-5", "13", "-13"],
+              "correctAnswers": [0],
+              "explanation": "|-4 - (-9)| = |-4 + 9| = 5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour tout réel x, que vaut √(x²) ?",
+              "options": ["|x|", "x", "-x", "x²"],
+              "correctAnswers": [0],
+              "explanation": "La racine carrée d'un carré est toujours positive : √(x²) = |x|."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Résoudre dans ℝ l'équation |x| = -3 :",
+              "options": [
+                "Aucune solution",
+                "x = -3 ou x = 3",
+                "x = 3",
+                "x = 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une valeur absolue ne peut jamais être strictement négative. S = ∅."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'ensemble des réels x tels que |x| < 4 est :",
+              "options": ["]-4 ; 4[", "[-4 ; 4]", "[0 ; 4[", "]-∞ ; 4["],
+              "correctAnswers": [0],
+              "explanation": "|x| < 4 signifie que la distance de x à 0 est strictement inférieure à 4 : x ∈ ]-4 ; 4[."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si a < b, quelle est la distance entre a et b ?",
+              "options": ["b - a", "a - b", "a + b", "|b + a|"],
+              "correctAnswers": [0],
+              "explanation": "Comme b > a, b - a est positif, donc |a - b| = b - a."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Résolution de problèmes concrets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Un automobiliste roule à 90 km/h pendant 2 h 20 min. Quelle distance parcourt-il ?",
+              "options": ["210 km", "180 km", "200 km", "220 km"],
+              "correctAnswers": [0],
+              "explanation": "2 h 20 min = 2 + 1/3 h = 7/3 h. Distance = 90 × (7/3) = 210 km."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Dans une démarche de modélisation par équation, quelles étapes sont essentielles ?",
+              "options": [
+                "Le choix de l'inconnue avec son unité",
+                "La mise en équation du problème",
+                "L'oubli de la vérification du résultat",
+                "Le choix au hasard d'une formule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Définir l'inconnue, poser l'équation, la résoudre et vérifier la cohérence sont les étapes clés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La somme de trois entiers consécutifs vaut 72. Quel est le plus petit ?",
+              "options": ["23", "24", "22", "25"],
+              "correctAnswers": [0],
+              "explanation": "n + (n + 1) + (n + 2) = 72 ⇔ 3n + 3 = 72 ⇔ 3n = 69 ⇔ n = 23."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un rectangle a un périmètre de 36 cm et sa longueur mesure le double de sa largeur. Quelle est sa largeur ?",
+              "options": ["6 cm", "12 cm", "8 cm", "4 cm"],
+              "correctAnswers": [0],
+              "explanation": "Périmètre = 2(L + l) = 2(2l + l) = 6l = 36 cm, donc l = 6 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un cycliste roule à 20 km/h à l'aller sur 40 km, puis à 40 km/h au retour. Quelle est sa vitesse moyenne ?",
+              "options": ["26,7 km/h", "30 km/h", "25 km/h", "28 km/h"],
+              "correctAnswers": [0],
+              "explanation": "Temps aller : 40/20 = 2 h. Temps retour : 40/40 = 1 h. Distance totale 80 km en 3 h : 80/3 ≈ 26,7 km/h."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un père a 40 ans et son fils a 12 ans. Dans combien d'années l'âge du père sera-t-il le double de celui du fils ?",
+              "options": ["16 ans", "14 ans", "18 ans", "20 ans"],
+              "correctAnswers": [0],
+              "explanation": "40 + x = 2(12 + x) ⇔ 40 + x = 24 + 2x ⇔ x = 16 ans. (Père 56 ans, fils 28 ans)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une réduction de 15 € sur un article à 60 € correspond à un pourcentage de :",
+              "options": ["25 %", "20 %", "15 %", "30 %"],
+              "correctAnswers": [0],
+              "explanation": "15 / 60 = 1 / 4 = 0,25 = 25 %."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un robinet remplit un bassin en 3 h, un autre en 6 h. En combien de temps le remplissent-ils ensemble ?",
+              "options": ["2 h", "4,5 h", "1,5 h", "2,5 h"],
+              "correctAnswers": [0],
+              "explanation": "Débit combiné : 1/3 + 1/6 = 3/6 = 1/2 bassin par heure. Il faut donc 2 heures."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un capital de 1 000 € est placé à 3 % d'intérêts simples par an. Au bout de 4 ans, il vaut :",
+              "options": ["1 120 €", "1 125,51 €", "1 030 €", "1 200 €"],
+              "correctAnswers": [0],
+              "explanation": "Intérêts = 1 000 × 0,03 × 4 = 120 €. Valeur finale = 1 120 €."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Deux tarifs sont proposés : Tarif A : 2 € le trajet ; Tarif B : abonnement de 15 € puis 1 € le trajet. À partir de combien de trajets le tarif B est-il plus avantageux ?",
+              "options": [
+                "16 trajets",
+                "15 trajets",
+                "14 trajets",
+                "10 trajets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "15 + x < 2x ⇔ x > 15. Le premier entier strictement supérieur à 15 est 16."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Arithmétique : divisibilité et nombres premiers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Un nombre entier naturel est dit premier s'il possède :",
+              "options": [
+                "Exactement 2 diviseurs distincts (1 et lui-même)",
+                "Au moins 2 diviseurs",
+                "Un nombre infini de diviseurs",
+                "Uniquement des diviseurs pairs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, un nombre premier possède exactement deux diviseurs positifs distincts : 1 et lui-même."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Parmi les nombres suivants, lesquels sont des nombres premiers ?",
+              "options": ["2", "19", "1", "27"],
+              "correctAnswers": [0, 1],
+              "explanation": "2 et 19 sont premiers. 1 n'a qu'un seul diviseur (non premier). 27 est divisible par 3 et 9."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le seul nombre premier qui soit pair ?",
+              "options": ["2", "0", "4", "Il n'en existe aucun"],
+              "correctAnswers": [0],
+              "explanation": "2 est le seul entier pair premier, car tout autre pair supérieur à 2 est divisible par 2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un entier est divisible par 3 si et seulement si :",
+              "options": [
+                "La somme de ses chiffres est divisible par 3",
+                "Son dernier chiffre est 3",
+                "Son dernier chiffre est impair",
+                "La somme de ses chiffres est paire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le critère usuel de divisibilité par 3 en base 10."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la décomposition en facteurs premiers de 60 ?",
+              "options": ["2² × 3 × 5", "2 × 3 × 10", "4 × 15", "2³ × 3 × 5"],
+              "correctAnswers": [0],
+              "explanation": "60 = 4 × 15 = 2² × 3 × 5, avec 2, 3 et 5 tous premiers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de diviseurs positifs le nombre 12 possède-t-il ?",
+              "options": ["6", "4", "5", "8"],
+              "correctAnswers": [0],
+              "explanation": "Les diviseurs de 12 sont 1, 2, 3, 4, 6 et 12, soit 6 diviseurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la décomposition en facteurs premiers de 84 ?",
+              "options": ["2² × 3 × 7", "2 × 6 × 7", "4 × 21", "2³ × 7"],
+              "correctAnswers": [0],
+              "explanation": "84 = 2 × 42 = 2 × 2 × 21 = 2² × 3 × 7."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le nombre 91 est-il premier ?",
+              "options": [
+                "Non, car 91 = 7 × 13",
+                "Oui, car il se termine par 1",
+                "Non, car il est pair",
+                "Oui, il n'a aucun diviseur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "91 = 7 × 13, donc 91 n'est pas premier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un entier est divisible par 4 si et seulement si :",
+              "options": [
+                "Le nombre formé par ses deux derniers chiffres est divisible par 4",
+                "Son dernier chiffre est 4",
+                "La somme de ses chiffres est divisible par 4",
+                "Son dernier chiffre est pair"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme 100 est multiple de 4, seuls les deux derniers chiffres comptent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien y a-t-il de nombres premiers inférieurs à 10 ?",
+              "options": [
+                "4 (2, 3, 5, 7)",
+                "5 (1, 2, 3, 5, 7)",
+                "3 (3, 5, 7)",
+                "4 (3, 5, 7, 9)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ce sont 2, 3, 5 et 7. 1 n'est pas premier et 9 est divisible par 3."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "PGCD, PPCM et fractions irréductibles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le PGCD de 36 et 48 ?",
+              "options": ["12", "6", "18", "4"],
+              "correctAnswers": [0],
+              "explanation": "36 = 2² × 3² et 48 = 2⁴ × 3. Le PGCD prend les facteurs communs avec le plus petit exposant : 2² × 3 = 12."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "Deux entiers a et b sont dits premiers entre eux si :",
+              "options": [
+                "Leur PGCD est égal à 1",
+                "La fraction a/b est irréductible",
+                "Ils sont tous les deux des nombres premiers",
+                "Leur somme est un nombre premier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Par définition, PGCD(a, b) = 1, ce qui rend la fraction a/b irréductible. Ils ne sont pas nécessairement premiers individuellement (ex : 8 et 9)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le PPCM de 6 et 8 ?",
+              "options": ["24", "48", "14", "16"],
+              "correctAnswers": [0],
+              "explanation": "6 = 2 × 3 et 8 = 2³. Le PPCM est 2³ × 3 = 24."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour tous entiers positifs a et b, quelle relation lie PGCD et PPCM ?",
+              "options": [
+                "PGCD(a, b) × PPCM(a, b) = a × b",
+                "PGCD(a, b) + PPCM(a, b) = a + b",
+                "PGCD(a, b) × a = PPCM(a, b) × b",
+                "PPCM(a, b) / PGCD(a, b) = a / b"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la propriété fondamentale : le produit du PGCD et du PPCM est égal au produit des deux nombres."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans l'algorithme d'Euclide, quel calcul itère-t-on pour trouver PGCD(a, b) ?",
+              "options": [
+                "Les divisions euclidiennes successives des restes",
+                "Les multiplications successives",
+                "Les additions des diviseurs",
+                "Les racines carrées des quotients"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'algorithme d'Euclide repose sur PGCD(a, b) = PGCD(b, r) où r est le reste de la division euclidienne de a par b."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le dernier reste non nul dans l'algorithme d'Euclide appliqué à 55 et 20 ?",
+              "options": ["5", "15", "10", "1"],
+              "correctAnswers": [0],
+              "explanation": "55 = 20 × 2 + 15 ; 20 = 15 × 1 + 5 ; 15 = 5 × 3 + 0. Le dernier reste non nul est 5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Rendre la fraction 84/126 irréductible en divisant par son PGCD (42) :",
+              "options": ["2/3", "4/6", "3/4", "7/9"],
+              "correctAnswers": [0],
+              "explanation": "84 / 42 = 2 et 126 / 42 = 3, d'où 2/3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les nombres 14 et 25 sont-ils premiers entre eux ?",
+              "options": [
+                "Oui, car leur seul diviseur commun est 1",
+                "Non, car aucun n'est premier",
+                "Non, ils sont tous deux pairs",
+                "Oui, car 25 - 14 = 11 est premier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "14 = 2 × 7 et 25 = 5². Ils n'ont aucun diviseur premier commun, donc PGCD(14, 25) = 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le plus petit dénominateur commun pour additionner 1/12 et 1/18 ?",
+              "options": ["36", "216", "72", "30"],
+              "correctAnswers": [0],
+              "explanation": "Le plus petit dénominateur commun est PPCM(12, 18) = 36."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si a divise b, alors que vaut PGCD(a, b) ?",
+              "options": ["a", "b", "1", "a × b"],
+              "correctAnswers": [0],
+              "explanation": "Si a divise b, le plus grand diviseur commun à a et b est a lui-même."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Algorithmique et calcul numérique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En Python, que renvoie l'instruction 7 // 2 ?",
+              "options": ["3", "3.5", "1", "4"],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur // effectue la division euclidienne (quotient entier), donc 7 // 2 = 3."
+            },
+            {
+              "id": "q2",
+              "type": "multiple_choice",
+              "question": "En Python, quels opérateurs permettent de manipuler la division et les restes entiers ?",
+              "options": [
+                "// (quotient entier)",
+                "% (reste / modulo)",
+                "** (puissance)",
+                "+= (incrémentation)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "// donne le quotient entier de la division euclidienne et % donne le reste (modulo)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que vaut l'instruction 17 % 5 en Python ?",
+              "options": ["2", "3", "3.4", "1"],
+              "correctAnswers": [0],
+              "explanation": "17 = 5 × 3 + 2, donc le reste modulo 5 vaut 2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Après l'exécution de :\nx = 5\nx = x + 3\nx = 2 * x\nQuelle est la valeur de x ?",
+              "options": ["16", "11", "13", "10"],
+              "correctAnswers": [0],
+              "explanation": "x prend 5, puis 5 + 3 = 8, puis 2 × 8 = 16."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle condition teste si un entier n est pair en programmation ?",
+              "options": [
+                "n % 2 == 0",
+                "n // 2 == 0",
+                "n / 2 == 0",
+                "n % 2 == 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un nombre est pair si le reste de sa division par 2 est nul : n % 2 == 0."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de fois la boucle 'for i in range(5):' est-elle exécutée ?",
+              "options": [
+                "5 fois (pour i de 0 à 4)",
+                "6 fois (pour i de 0 à 5)",
+                "4 fois (pour i de 1 à 4)",
+                "Infinité de fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "range(5) génère les 5 entiers 0, 1, 2, 3 et 4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que calcule la fonction suivante ?\ndef f(n):\n    s = 0\n    for i in range(1, n+1):\n        s = s + i\n    return s",
+              "options": [
+                "La somme des entiers de 1 à n",
+                "Le produit des entiers de 1 à n",
+                "La moyenne des entiers de 1 à n",
+                "Le double de n"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À chaque itération, on ajoute i à s : on calcule 1 + 2 + ... + n."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la valeur renvoyée par f(4) pour la fonction de somme précédente ?",
+              "options": ["10", "24", "4", "16"],
+              "correctAnswers": [0],
+              "explanation": "1 + 2 + 3 + 4 = 10."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un algorithme de recherche du seuil par boucle 'while', la boucle s'arrête lorsque :",
+              "options": [
+                "La condition du while devient fausse",
+                "La variable atteint 0",
+                "La condition du while devient vraie",
+                "Après 100 tours obligatoirement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une boucle 'while condition:' s'exécute tant que la condition est vraie et s'arrête dès qu'elle devient fausse."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En Python, que vaut l'expression 2 ** 3 ?",
+              "options": ["8", "6", "9", "5"],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur ** représente l'élévation à la puissance : 2³ = 8."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

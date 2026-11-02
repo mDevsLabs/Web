@@ -1,0 +1,2443 @@
+{
+  "id": "4e-turc-05",
+  "year": "4e",
+  "subject": "turc",
+  "title": "Le passé en turc",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Le suffixe du passé en -di",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles formes font partie des variantes harmoniques du suffixe du passé constaté ?",
+              "type": "multiple_choice",
+              "options": ["-dı", "-miş", "-du", "-ecek"],
+              "correctAnswers": [0, 2],
+              "explanation": "Le passé déterminé suit l'harmonie vocalique à 4 formes : -dı, -di, -du, -dü (ainsi que les variantes en -t-)."
+            },
+            {
+              "id": "q2",
+              "question": "Quel suffixe de passé s'ajoute au verbe « gelmek » (venir) pour dire « il/elle est venu(e) » ?",
+              "type": "single_choice",
+              "options": ["-di", "-dı", "-du", "-dü"],
+              "correctAnswers": [0],
+              "explanation": "Le radical « gel- » se termine par la voyelle antérieure « e », le suffixe est donc « -di » : « geldi »."
+            },
+            {
+              "id": "q3",
+              "question": "Comment se conjugue le verbe « kalmak » (rester) à la 3e personne du singulier au passé ?",
+              "type": "single_choice",
+              "options": ["kaldı", "kaldi", "kaldu", "kaltı"],
+              "correctAnswers": [0],
+              "explanation": "La dernière voyelle de « kal- » est « a » (postérieure non arrondie), le suffixe est « -dı » : « kaldı »."
+            },
+            {
+              "id": "q4",
+              "question": "Quelle forme prend le passé pour le verbe « görmek » (voir) à la 3e personne du singulier ?",
+              "type": "single_choice",
+              "options": ["gördü", "gördi", "gördu", "gördı"],
+              "correctAnswers": [0],
+              "explanation": "La voyelle « ö » est antérieure et arrondie, le suffixe devient « -dü » : « gördü »."
+            },
+            {
+              "id": "q5",
+              "question": "Quel est le passé de « okumak » (lire) à la 3e personne du singulier ?",
+              "type": "single_choice",
+              "options": ["okudu", "okudı", "okudi", "okudü"],
+              "correctAnswers": [0],
+              "explanation": "La voyelle « u » est postérieure arrondie, on ajoute « -du » : « okudu »."
+            },
+            {
+              "id": "q6",
+              "question": "En turc, le passé en « -di » correspond principalement à :",
+              "type": "single_choice",
+              "options": [
+                "un fait certain, constaté ou vécu",
+                "une action future incertaine",
+                "une habitude générale au présent",
+                "une supposition non vérifiée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le passé en -di (bilinen/görülen geçmiş zaman) exprime une action passée constatée, certaine ou vécue."
+            },
+            {
+              "id": "q7",
+              "question": "Quelle est la base verbale du verbe « yazmak » (écrire) ?",
+              "type": "single_choice",
+              "options": ["yaz-", "yazm-", "yazma-", "yazmak-"],
+              "correctAnswers": [0],
+              "explanation": "En retirant l'infinitif « -mak », on obtient le radical « yaz- »."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « il/elle a écrit » en turc ?",
+              "type": "single_choice",
+              "options": ["yazdı", "yazti", "yazdu", "yazdi"],
+              "correctAnswers": [0],
+              "explanation": "Avec la voyelle « a » et la consonne sonore « z », on obtient « yazdı »."
+            },
+            {
+              "id": "q9",
+              "question": "Combien de variantes au total existe-t-il pour le suffixe du passé (-d- et -t-) ?",
+              "type": "single_choice",
+              "options": ["8", "4", "2", "6"],
+              "correctAnswers": [0],
+              "explanation": "Il y a 8 variantes : -dı, -di, -du, -dü et -tı, -ti, -tu, -tü selon les voyelles et les consonnes."
+            },
+            {
+              "id": "q10",
+              "question": "Dans « Ali dün geldi », quelle est la fonction temporelle de « geldi » ?",
+              "type": "single_choice",
+              "options": [
+                "passé constaté (Ali est venu)",
+                "présent continu (Ali vient)",
+                "futur (Ali viendra)",
+                "impératif (Ali, viens !)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Geldi » est le verbe « gelmek » au passé constaté à la 3e personne du singulier."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Les personnes au passé (singulier)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles terminaisons indiquent respectivement la 1re et la 2e personne du singulier au passé ?",
+              "type": "multiple_choice",
+              "options": ["-k", "-m", "-ler", "-n"],
+              "correctAnswers": [1, 3],
+              "explanation": "Au passé en -di, « -m » indique « je » (ben) et « -n » indique « tu » (sen)."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « je suis venu » (gelmek) en turc ?",
+              "type": "single_choice",
+              "options": ["geldim", "geldin", "geldi", "geldik"],
+              "correctAnswers": [0],
+              "explanation": "gel- (radical) + -di (passé) + -m (1re pers. sing.) = geldim."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie « Sen dün ne yaptın? » ?",
+              "type": "single_choice",
+              "options": [
+                "Qu'as-tu fait hier ?",
+                "Que fais-tu aujourd'hui ?",
+                "Où vas-tu demain ?",
+                "Quand es-tu venu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Dün » = hier, « ne » = que/quoi, « yaptın » = tu as fait (yap-tı-n)."
+            },
+            {
+              "id": "q4",
+              "question": "Quelle est la forme correcte pour « j'ai lu » avec « okumak » ?",
+              "type": "single_choice",
+              "options": ["okudum", "okudun", "okudu", "okudım"],
+              "correctAnswers": [0],
+              "explanation": "oku- + -du + -m = okudum."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « tu as vu » avec le verbe « görmek » ?",
+              "type": "single_choice",
+              "options": ["gördün", "gördüm", "gördü", "gördünüz"],
+              "correctAnswers": [0],
+              "explanation": "gör- + -dü + -n = gördün (2e personne du singulier)."
+            },
+            {
+              "id": "q6",
+              "question": "Quelle terminaison porte la 3e personne du singulier (« o ») au passé ?",
+              "type": "single_choice",
+              "options": [
+                "aucune marque supplémentaire après le suffixe de temps",
+                "-m",
+                "-n",
+                "-si"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 3e personne du singulier, aucun suffixe personnel n'est ajouté : « o geldi », « o yazdı »."
+            },
+            {
+              "id": "q7",
+              "question": "Complétez : « Ben dün bir elma ... » (yemek, j'ai mangé).",
+              "type": "single_choice",
+              "options": ["yedim", "yedin", "yedi", "yedik"],
+              "correctAnswers": [0],
+              "explanation": "Le radical de yemek est « ye- », passé « ye-di », avec « ben » on obtient « yedim »."
+            },
+            {
+              "id": "q8",
+              "question": "Que signifie « Anladım » ?",
+              "type": "single_choice",
+              "options": [
+                "J'ai compris",
+                "Tu as compris",
+                "Il a compris",
+                "Nous avons compris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "anla- (comprendre) + -dı (passé) + -m (je) = anladım (j'ai compris)."
+            },
+            {
+              "id": "q9",
+              "question": "Complétez la phrase : « Sen dün çok yoruldun mu? » Que signifie « yoruldun » ?",
+              "type": "single_choice",
+              "options": [
+                "tu t'es fatigué",
+                "je me suis fatigué",
+                "il s'est fatigué",
+                "nous nous sommes fatigués"
+              ],
+              "correctAnswers": [0],
+              "explanation": "yorul- (se fatiguer) + -du- + -n (tu) = tu t'es fatigué."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle phrase signifie « J'ai acheté un livre » ?",
+              "type": "single_choice",
+              "options": [
+                "Bir kitap aldım.",
+                "Bir kitap aldın.",
+                "Bir kitap aldı.",
+                "Bir kitap aldık."
+              ],
+              "correctAnswers": [0],
+              "explanation": "al- (prendre/acheter) + -dı + -m = aldım (j'ai acheté)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Les personnes au passé (pluriel)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles marques correspondent à des personnes du pluriel au passé ?",
+              "type": "multiple_choice",
+              "options": [
+                "-k (1re pluriel)",
+                "-niz (2e pluriel)",
+                "-m (1re singulier)",
+                "-n (2e singulier)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Au passé en -di : -k = biz (nous), -niz/-nız/-nüz/-nuz = siz (vous), -ler/-lar = onlar (ils/elles)."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « nous sommes venus » en turc ?",
+              "type": "single_choice",
+              "options": ["geldik", "geldiniz", "geldiler", "geldim"],
+              "correctAnswers": [0],
+              "explanation": "gel- + -di + -k = geldik (nous sommes venus)."
+            },
+            {
+              "id": "q3",
+              "question": "Quelle est la forme correcte pour « vous êtes allés » (siz / gitmek) ?",
+              "type": "single_choice",
+              "options": ["gittiniz", "gittik", "gittiler", "gittim"],
+              "correctAnswers": [0],
+              "explanation": "git- + -ti + -niz = gittiniz."
+            },
+            {
+              "id": "q4",
+              "question": "Comment traduire « ils ont écrit » en turc ?",
+              "type": "single_choice",
+              "options": ["yazdılar", "yazdık", "yazdınız", "yazdım"],
+              "correctAnswers": [0],
+              "explanation": "yaz- + -dı + -lar = yazdılar."
+            },
+            {
+              "id": "q5",
+              "question": "Que signifie la phrase « Dün sinemaya gittik » ?",
+              "type": "single_choice",
+              "options": [
+                "Hier nous sommes allés au cinéma.",
+                "Hier vous êtes allés au cinéma.",
+                "Hier ils sont allés au cinéma.",
+                "Hier je suis allé au cinéma."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Gittik » porte la marque « -k » de la première personne du pluriel (biz / nous)."
+            },
+            {
+              "id": "q6",
+              "question": "Quelle forme prend « voir » (görmek) avec « siz » au passé ?",
+              "type": "single_choice",
+              "options": ["gördünüz", "gördük", "gördüler", "gördün"],
+              "correctAnswers": [0],
+              "explanation": "gör- + -dü + -nüz = gördünüz."
+            },
+            {
+              "id": "q7",
+              "question": "Complétez : « Biz dün Türkçe ... » (travailler/étudier = çalışmak).",
+              "type": "single_choice",
+              "options": ["çalıştık", "çalıştınız", "çalıştılar", "çalıştım"],
+              "correctAnswers": [0],
+              "explanation": "çalış- + -tı + -k = çalıştık (nous avons étudié/travaillé)."
+            },
+            {
+              "id": "q8",
+              "question": "Quand le sujet est « Onlar », le suffixe « -ler / -lar » sur le verbe est :",
+              "type": "single_choice",
+              "options": [
+                "facultatif si le pronom ou sujet pluriel est déjà exprimé",
+                "strictement interdit",
+                "obligatoire à la 1re personne",
+                "remplacé par -k"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le sujet pluriel humain est exprimé (ex: Onlar geldiler / Onlar geldi), le suffixe -ler/-lar peut être omis."
+            },
+            {
+              "id": "q9",
+              "question": "Traduisez : « Vous avez fait vos devoirs » (ödev yaptınız).",
+              "type": "single_choice",
+              "options": [
+                "Ödev yaptınız.",
+                "Ödev yaptık.",
+                "Ödev yaptılar.",
+                "Ödev yaptın."
+              ],
+              "correctAnswers": [0],
+              "explanation": "yap- + -tı + -nız = yaptınız (vous avez fait)."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle est la traduction de « Öğrenciler bahçede oynadılar » ?",
+              "type": "single_choice",
+              "options": [
+                "Les élèves ont joué dans le jardin.",
+                "Les élèves jouent dans la cour.",
+                "L'élève a joué à la maison.",
+                "Nous avons joué dans le jardin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Öğrenciler (les élèves) + bahçede (dans le jardin) + oynadılar (ont joué)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : La forme négative au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases sont correctement conjuguées à la forme négative au passé ?",
+              "type": "multiple_choice",
+              "options": [
+                "Dün okula gitmedim.",
+                "O hiç konuşmadı.",
+                "Ben bugün geleceğim.",
+                "Yarın erken kalk."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Gitmedim » (je ne suis pas allé) et « konuşmadı » (il n'a pas parlé) sont au passé négatif."
+            },
+            {
+              "id": "q2",
+              "question": "Quels sont les deux suffixes possibles de la négation verbale ?",
+              "type": "single_choice",
+              "options": ["-me / -ma", "-mi / -mı", "-di / -dı", "-siz / -sız"],
+              "correctAnswers": [0],
+              "explanation": "La négation des verbes se fait avec le suffixe à 2 formes « -me » ou « -ma » placé après le radical."
+            },
+            {
+              "id": "q3",
+              "question": "Puisque le suffixe négatif finit toujours par « e » ou « a », quelles sont les seules formes du passé négatif ?",
+              "type": "single_choice",
+              "options": [
+                "-medi / -madı",
+                "-medü / -madu",
+                "-meti / -matı",
+                "-miş / -mış"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après « -me », la voyelle est « e » -> « -di ». Après « -ma », la voyelle est « a » -> « -dı »."
+            },
+            {
+              "id": "q4",
+              "question": "Comment dit-on « je ne suis pas venu » en turc ?",
+              "type": "single_choice",
+              "options": ["gelmedim", "gelmedin", "gelmedi", "gelmedik"],
+              "correctAnswers": [0],
+              "explanation": "gel- + -me- + -di- + -m = gelmedim."
+            },
+            {
+              "id": "q5",
+              "question": "Traduisez : « Tu n'as pas fait tes devoirs ».",
+              "type": "single_choice",
+              "options": [
+                "Ödev yapmadın.",
+                "Ödev yapmadım.",
+                "Ödev yapmadı.",
+                "Ödev yapmadık."
+              ],
+              "correctAnswers": [0],
+              "explanation": "yap- + -ma- + -dı- + -n = yapmadın."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie la phrase « Ali dün bizi görmedi » ?",
+              "type": "single_choice",
+              "options": [
+                "Ali ne nous a pas vus hier.",
+                "Ali nous a vus hier.",
+                "Ali ne veut pas venir hier.",
+                "Ali a vu notre ami hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "gör- + -me- + -di = görmedi (il n'a pas vu) ; « bizi » = nous (COD)."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « nous n'avons pas compris » ?",
+              "type": "single_choice",
+              "options": [
+                "anlamadık",
+                "anlamadınız",
+                "anlamadılar",
+                "anlamadım"
+              ],
+              "correctAnswers": [0],
+              "explanation": "anla- + -ma- + -dı- + -k = anlamadık."
+            },
+            {
+              "id": "q8",
+              "question": "Pourquoi n'a-t-on jamais de variante en « -t » (comme *-meti) à la forme négative ?",
+              "type": "single_choice",
+              "options": [
+                "Parce que le suffixe négatif finit par une voyelle (e ou a), qui n'est jamais sourde.",
+                "Parce que le turc interdit la lettre t au passé.",
+                "Parce que -me s'assimile en -ne.",
+                "Parce que c'est une exception réservée au présent."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« -me » et « -ma » se terminent par une voyelle sonore, la consonne du passé reste donc « d »."
+            },
+            {
+              "id": "q9",
+              "question": "Quelle est la forme négative de « okuduk » (nous avons lu) ?",
+              "type": "single_choice",
+              "options": ["okumadık", "okumedik", "okumadınız", "okumadılar"],
+              "correctAnswers": [0],
+              "explanation": "oku- + -ma- + -dı- + -k = okumadık (nous n'avons pas lu)."
+            },
+            {
+              "id": "q10",
+              "question": "Traduisez : « Ils n'ont pas acheté ce livre ».",
+              "type": "single_choice",
+              "options": [
+                "Bu kitabı almadılar.",
+                "Bu kitabı aldılar.",
+                "Bu kitabı almadık.",
+                "Bu kitabı almadınız."
+              ],
+              "correctAnswers": [0],
+              "explanation": "al- + -ma- + -dı- + -lar = almadılar (ils n'ont pas acheté/pris)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Poser une question au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases interrogatives au passé sont correctement formées ?",
+              "type": "multiple_choice",
+              "options": [
+                "Dün okula gittin mi?",
+                "Film başladım mı?",
+                "Ödevi yaptınız mı?",
+                "Sen geldi misin?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Au passé en -di, la particule interrogative mi/mı/mu/mü se place APRÈS le verbe déjà conjugué : « gittin mi? », « yaptınız mı? »."
+            },
+            {
+              "id": "q2",
+              "question": "Où se place la particule interrogative (mi, mı, mu, mü) au passé en -di ?",
+              "type": "single_choice",
+              "options": [
+                "séparée, après le verbe entièrement conjugué",
+                "attachée au début du verbe",
+                "entre le radical et le passé",
+                "directement avant le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au passé en -di, le verbe porte la terminaison personnelle, puis la particule interrogative s'écrit séparée : « geldin mi? »."
+            },
+            {
+              "id": "q3",
+              "question": "Comment demande-t-on « Es-tu venu hier ? » ?",
+              "type": "single_choice",
+              "options": [
+                "Dün geldin mi?",
+                "Dün geldin mu?",
+                "Dün geldin misin?",
+                "Dün geldin miyim?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Geldin » finit par la voyelle « i », la particule harmonique est « mi » : « geldin mi? »."
+            },
+            {
+              "id": "q4",
+              "question": "Quelle est la question pour « Avez-vous vu Mehmet ? » (siz) ?",
+              "type": "single_choice",
+              "options": [
+                "Mehmet'i gördünüz mü?",
+                "Mehmet'i gördünüz mi?",
+                "Mehmet'i gördün mü?",
+                "Mehmet'i gördük mü?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Gördünüz » finit par « ü », la particule interrogative est « mü » : « gördünüz mü? »."
+            },
+            {
+              "id": "q5",
+              "question": "Comment dit-on « A-t-il/elle lu le livre ? » ?",
+              "type": "single_choice",
+              "options": [
+                "Kitabı okudu mu?",
+                "Kitabı okudu mü?",
+                "Kitabı okudu mı?",
+                "Kitabı okudun mu?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Okudu » se termine par « u », la particule est « mu » : « okudu mu? »."
+            },
+            {
+              "id": "q6",
+              "question": "Comment demande-t-on « N'es-tu pas venu hier ? » (interro-négative) ?",
+              "type": "single_choice",
+              "options": [
+                "Dün gelmedin mi?",
+                "Dün gelmedin mı?",
+                "Dün geldin mi?",
+                "Dün gelmedik mi?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On utilise le verbe au passé négatif suivi de la particule : « gelmedin mi? » (n'es-tu pas venu ?)."
+            },
+            {
+              "id": "q7",
+              "question": "Que signifie la question « Kahvaltı yaptın mı? » ?",
+              "type": "single_choice",
+              "options": [
+                "As-tu pris le petit-déjeuner ?",
+                "Prends-tu le déjeuner ?",
+                "Veux-tu un café ?",
+                "As-tu préparé le dîner ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Kahvaltı yapmak » = prendre son petit-déjeuner. « Kahvaltı yaptın mı? » = As-tu pris le petit-déjeuner ?"
+            },
+            {
+              "id": "q8",
+              "question": "Pour répondre affirmativement à « Dün çalıştın mı? », on dit :",
+              "type": "single_choice",
+              "options": [
+                "Evet, çalıştım.",
+                "Hayır, çalıştım.",
+                "Evet, çalışmadım.",
+                "Evet, çalıştı."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Evet » (oui) + verbe à la 1re personne « çalıştım » (j'ai travaillé)."
+            },
+            {
+              "id": "q9",
+              "question": "Pour répondre négativement à « Dün sinemaya gittiniz mi? » (nous) :",
+              "type": "single_choice",
+              "options": [
+                "Hayır, gitmedik.",
+                "Evet, gittik.",
+                "Hayır, gitmedim.",
+                "Hayır, gitmediniz."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hayır » (non) + « gitmedik » (nous ne sommes pas allés)."
+            },
+            {
+              "id": "q10",
+              "question": "Complétez : « Onlar dün akşam tiyatroya gittiler ... ? »",
+              "type": "single_choice",
+              "options": ["mi", "mu", "mü", "mı"],
+              "correctAnswers": [0],
+              "explanation": "Après « gittiler », la dernière voyelle est « e », la particule interrogative est donc « mi »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Verbes d'action du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases décrivent des actions de la routine quotidienne passée ?",
+              "type": "multiple_choice",
+              "options": [
+                "Sabah erkenden kalktım.",
+                "Dişlerimi fırçaladım.",
+                "Gelecek yıl mezun olacağım.",
+                "Uçak birazdan kalkacak."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Kalktım » (je me suis levé) et « fırçaladım » (je me suis brossé les dents) sont des verbes de routine au passé."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « je me suis réveillé / levé » en turc ?",
+              "type": "single_choice",
+              "options": ["kalktım", "yattım", "uyudum", "çıktım"],
+              "correctAnswers": [0],
+              "explanation": "kalkmak = se lever. Au passé 1re personne : kalk- + -tı + -m = kalktım."
+            },
+            {
+              "id": "q3",
+              "question": "Traduisez : « Dün akşam televizyon izledim ».",
+              "type": "single_choice",
+              "options": [
+                "Hier soir j'ai regardé la télévision.",
+                "Hier soir j'ai écouté la radio.",
+                "Hier matin j'ai regardé un film.",
+                "Ce soir je regarde la télévision."
+              ],
+              "correctAnswers": [0],
+              "explanation": "izlemek = regarder/suivre. « Televizyon izledim » = j'ai regardé la télévision."
+            },
+            {
+              "id": "q4",
+              "question": "Comment dit-on « nous avons bu du thé » en turc ?",
+              "type": "single_choice",
+              "options": [
+                "Çay içtik.",
+                "Çay içtim.",
+                "Çay içtiniz.",
+                "Çay içtiler."
+              ],
+              "correctAnswers": [0],
+              "explanation": "içmek = boire. iç- + -ti + -k = içtik (nous avons bu)."
+            },
+            {
+              "id": "q5",
+              "question": "Quelle phrase signifie « Il est sorti de la maison à huit heures » ?",
+              "type": "single_choice",
+              "options": [
+                "Saat sekizde evden çıktı.",
+                "Saat sekizde eve geldi.",
+                "Saat sekizde okula gitti.",
+                "Saat sekizde yatağa girdi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "çıkmak = sortir. « Evden çıktı » = il/elle est sorti(e) de la maison."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie « Dün müzik dinledim » ?",
+              "type": "single_choice",
+              "options": [
+                "Hier j'ai écouté de la musique.",
+                "Hier j'ai joué de la musique.",
+                "Hier j'ai chanté une chanson.",
+                "Aujourd'hui j'écoute de la musique."
+              ],
+              "correctAnswers": [0],
+              "explanation": "dinlemek = écouter. « Dinledim » = j'ai écouté."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « tu as dormi » en turc ?",
+              "type": "single_choice",
+              "options": ["uyudun", "uyudum", "uyudu", "uyuduk"],
+              "correctAnswers": [0],
+              "explanation": "uyumak = dormir. uyu- + -du + -n = uyudun."
+            },
+            {
+              "id": "q8",
+              "question": "Traduisez : « Anneme yardım ettim ».",
+              "type": "single_choice",
+              "options": [
+                "J'ai aidé ma mère.",
+                "J'ai téléphoné à ma mère.",
+                "Ma mère m'a aidé.",
+                "Je suis allé chez ma mère."
+              ],
+              "correctAnswers": [0],
+              "explanation": "yardım etmek (+ datif) = aider quelqu'un. « Anneme yardım ettim » = j'ai aidé ma mère."
+            },
+            {
+              "id": "q9",
+              "question": "Comment dit-on « nous avons préparé le dîner » ?",
+              "type": "single_choice",
+              "options": [
+                "Akşam yemeği hazırladık.",
+                "Akşam yemeği hazırladım.",
+                "Akşam yemeği hazırladınız.",
+                "Akşam yemeği yedik."
+              ],
+              "correctAnswers": [0],
+              "explanation": "hazırlamak = préparer. hazırla- + -dı + -k = hazırladık."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie la phrase « Dün bütün gün evde oturdum » ?",
+              "type": "single_choice",
+              "options": [
+                "Hier je suis resté assis / à la maison toute la journée.",
+                "Hier je suis sorti de la maison toute la journée.",
+                "Hier j'ai nettoyé toute la maison.",
+                "Hier j'ai dormi toute la nuit."
+              ],
+              "correctAnswers": [0],
+              "explanation": "oturmak = s'asseoir, rester assis / habiter. « Evde oturdum » = je suis resté à la maison."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Consonnes dures et passé en -ti",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles consonnes finales transforment le « d » du passé en « t » ?",
+              "type": "multiple_choice",
+              "options": [
+                "f, s, t, k",
+                "ç, ş, h, p",
+                "l, m, n, r",
+                "b, c, d, g"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La règle du « Fıstıkçı Şahap » regroupe les 8 consonnes sourdes : f, s, t, k, ç, ş, h, p."
+            },
+            {
+              "id": "q2",
+              "question": "Quel est le passé de « gitmek » (aller) à la 3e personne du singulier ?",
+              "type": "single_choice",
+              "options": ["gitti", "giddi", "gidi", "giti"],
+              "correctAnswers": [0],
+              "explanation": "Le radical « git- » se termine par la consonne sourde « t », le suffixe devient « -ti » : « gitti »."
+            },
+            {
+              "id": "q3",
+              "question": "Comment conjugue-t-on « yapmak » (faire) à la 1re personne du singulier au passé ?",
+              "type": "single_choice",
+              "options": ["yaptım", "yapdım", "yaptın", "yapdim"],
+              "correctAnswers": [0],
+              "explanation": "Le radical « yap- » finit par la sourde « p » -> yap- + -tı + -m = yaptım."
+            },
+            {
+              "id": "q4",
+              "question": "Quelle est la forme correcte pour le verbe « bakmak » (regarder) avec « o » ?",
+              "type": "single_choice",
+              "options": ["baktı", "bakdı", "bakti", "baktu"],
+              "correctAnswers": [0],
+              "explanation": "« bak- » finit par « k » (sourde) et la voyelle est « a » -> baktı."
+            },
+            {
+              "id": "q5",
+              "question": "Comment conjugue-t-on « içmek » (boire) à la 3e personne du singulier au passé ?",
+              "type": "single_choice",
+              "options": ["içti", "içdi", "içtu", "içtı"],
+              "correctAnswers": [0],
+              "explanation": "« iç- » finit par la sourde « ç » -> iç- + -ti = içti."
+            },
+            {
+              "id": "q6",
+              "question": "Quel est le passé de « konuşmak » (parler) à la 1re personne du pluriel ?",
+              "type": "single_choice",
+              "options": ["konuştuk", "konuşduk", "konuştunuz", "konuştum"],
+              "correctAnswers": [0],
+              "explanation": "« konuş- » finit par « ş » (sourde), voyelle « u » -> konuş- + -tu + -k = konuştuk."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « la porte s'est ouverte / il a ouvert la porte » (açmak, 3e pers.) ?",
+              "type": "single_choice",
+              "options": ["açtı", "açdı", "açti", "açtu"],
+              "correctAnswers": [0],
+              "explanation": "aç- + -tı = açtı (car « ç » est une consonne sourde)."
+            },
+            {
+              "id": "q8",
+              "question": "Quelle forme prend « düşmek » (tomber) à la 3e personne du singulier au passé ?",
+              "type": "single_choice",
+              "options": ["düştü", "düşdü", "düşti", "düşdı"],
+              "correctAnswers": [0],
+              "explanation": "düş- finit par « ş » (sourde) et voyelle « ü » -> düştü."
+            },
+            {
+              "id": "q9",
+              "question": "Parmi ces verbes au passé, lequel possède un suffixe en « -t- » ?",
+              "type": "single_choice",
+              "options": [
+                "koştu (courir)",
+                "geldi (venir)",
+                "yazdı (écrire)",
+                "okudu (lire)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "koş- finit par « ş » (sourde), donc « koştu ». Les autres ont des voyelles ou consonnes sonores (geldi, yazdı, okudu)."
+            },
+            {
+              "id": "q10",
+              "question": "Que signifie la phrase « Ali vazoyu kırdı ve çok korktu » ?",
+              "type": "single_choice",
+              "options": [
+                "Ali a cassé le vase et a eu très peur.",
+                "Ali a acheté le vase et a ri.",
+                "Ali a vu le vase et est parti.",
+                "Ali a nettoyé le vase et a couru."
+              ],
+              "correctAnswers": [0],
+              "explanation": "kırmak -> kırdı (casser) ; korkmak -> korktu (avoir peur, avec « k » sourde)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Être et avoir au passé (idi / vardı)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases traduisent une notion d'existence ou de possession au passé ?",
+              "type": "multiple_choice",
+              "options": [
+                "Yarın param olacak.",
+                "Dün çok vaktim vardı.",
+                "O gün hiç param yoktu.",
+                "Bugün hava güzel."
+              ],
+              "correctAnswers": [1, 2],
+              "explanation": "« Vardı » (il y avait / j'avais) et « yoktu » (il n'y avait pas / je n'avais pas) expriment l'existence/possession au passé."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « j'étais malade hier » en turc ?",
+              "type": "single_choice",
+              "options": [
+                "Dün hastaydım.",
+                "Dün hastaydın.",
+                "Dün hastaydı.",
+                "Dün hastayız."
+              ],
+              "correctAnswers": [0],
+              "explanation": "hasta (malade) + -y- (tampon) + -dı (passé) + -m (je) = hastaydım."
+            },
+            {
+              "id": "q3",
+              "question": "Quelle est la forme passée de « var » (il y a) ?",
+              "type": "single_choice",
+              "options": ["vardı", "varti", "vardır", "vardım"],
+              "correctAnswers": [0],
+              "explanation": "var + -dı = vardı (il y avait)."
+            },
+            {
+              "id": "q4",
+              "question": "Quelle est la forme passée de « yok » (il n'y a pas) ?",
+              "type": "single_choice",
+              "options": ["yoktu", "yokdu", "yokti", "yoktı"],
+              "correctAnswers": [0],
+              "explanation": "Le mot « yok » se termine par la consonne sourde « k », le suffixe devient « -tu » : « yoktu »."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « Nous étions à la maison » ?",
+              "type": "single_choice",
+              "options": [
+                "Evdeydik.",
+                "Evdeydim.",
+                "Evdeydiniz.",
+                "Evdeydiler."
+              ],
+              "correctAnswers": [0],
+              "explanation": "ev-de (à la maison) + -y- + -di- + -k (nous) = evdeydik."
+            },
+            {
+              "id": "q6",
+              "question": "Traduisez : « Dün hava çok soğuktu ».",
+              "type": "single_choice",
+              "options": [
+                "Hier le temps était très froid.",
+                "Hier il faisait très chaud.",
+                "Aujourd'hui il fait très froid.",
+                "Demain il fera froid."
+              ],
+              "correctAnswers": [0],
+              "explanation": "soğuk (froid) finit par « k » sourde -> soğuktu (était froid)."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « tu étais très fatigué » ?",
+              "type": "single_choice",
+              "options": [
+                "Çok yorgundun.",
+                "Çok yorgundum.",
+                "Çok yorgundu.",
+                "Çok yorgunduk."
+              ],
+              "correctAnswers": [0],
+              "explanation": "yorgun (fatigué) + -du- + -n (tu) = yorgundun."
+            },
+            {
+              "id": "q8",
+              "question": "Quelle phrase signifie « Je n'avais pas de temps hier » ?",
+              "type": "single_choice",
+              "options": [
+                "Dün hiç vaktim yoktu.",
+                "Dün çok vaktim vardı.",
+                "Dün vaktim var.",
+                "Yarın vaktim yok."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Vaktim yoktu » = je n'avais pas de temps (il n'y avait pas de mon temps)."
+            },
+            {
+              "id": "q9",
+              "question": "Pourquoi ajoute-t-on un « y » dans « evdeydim » ?",
+              "type": "single_choice",
+              "options": [
+                "C'est une lettre tampon pour éviter le contact de deux voyelles.",
+                "C'est la marque du pluriel.",
+                "C'est une consonne d'insistance facultative.",
+                "C'est la négation du nom."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quand le nom se termine par une voyelle, la particule de passé -idi s'accroche avec le « y » de liaison : evde-y-di-m."
+            },
+            {
+              "id": "q10",
+              "question": "Comment demande-t-on « Étais-tu à l'école hier ? » ?",
+              "type": "single_choice",
+              "options": [
+                "Dün okulda mıydın?",
+                "Dün okulda miydin?",
+                "Dün okulda muydun?",
+                "Dün okulda mıydın."
+              ],
+              "correctAnswers": [0],
+              "explanation": "okulda (à l'école) + mı (question) + -y- (tampon) + -dın = okulda mıydın?"
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Récits et enchaînement d'actions",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases expriment une succession d'actions au passé hier matin ?",
+              "type": "multiple_choice",
+              "options": [
+                "Sabah uyandım ve elimi yüzümü yıkadım.",
+                "Kahvaltı yaptım, sonra evden çıktım.",
+                "Yarın arkadaşlarımla buluşacağım.",
+                "Her akşam kitap okurum."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux premières phrases décrivent une chronologie d'actions au passé en -di."
+            },
+            {
+              "id": "q2",
+              "question": "Quel mot permet de dire « ensuite / plus tard » pour lier deux actions ?",
+              "type": "single_choice",
+              "options": ["sonra", "önce", "çünkü", "ama"],
+              "correctAnswers": [0],
+              "explanation": "« Sonra » signifie ensuite / après / plus tard."
+            },
+            {
+              "id": "q3",
+              "question": "Traduisez : « Önce ders çalıştım, sonra müzik dinledim ».",
+              "type": "single_choice",
+              "options": [
+                "D'abord j'ai étudié, ensuite j'ai écouté de la musique.",
+                "J'ai écouté de la musique sans étudier.",
+                "D'abord j'ai écouté de la musique, puis j'ai révisé.",
+                "J'ai étudié et je n'ai pas écouté de musique."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Önce » = d'abord, « sonra » = ensuite."
+            },
+            {
+              "id": "q4",
+              "question": "Que signifie le connecteur « ve » dans un récit ?",
+              "type": "single_choice",
+              "options": ["et", "mais", "ou", "donc"],
+              "correctAnswers": [0],
+              "explanation": "« Ve » est la conjonction de coordination « et »."
+            },
+            {
+              "id": "q5",
+              "question": "Comment dit-on « Hier nous avons rencontré nos amis au parc » ?",
+              "type": "single_choice",
+              "options": [
+                "Dün parkta arkadaşlarımızla buluştuk.",
+                "Dün parkta arkadaşlarımızla konuştun.",
+                "Dün evde arkadaşlarımızı gördük.",
+                "Yarın parkta arkadaşlarımızla buluşacağız."
+              ],
+              "correctAnswers": [0],
+              "explanation": "buluşmak = se rencontrer. buluş- + -tu + -k = buluştuk."
+            },
+            {
+              "id": "q6",
+              "question": "Dans un récit au passé, le verbe principal de chaque proposition se place généralement :",
+              "type": "single_choice",
+              "options": [
+                "à la fin de la proposition (ordre SOV)",
+                "au tout début de la phrase",
+                "juste après le sujet uniquement",
+                "avant le complément de temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En turc, le verbe conjugué se place traditionnellement à la fin de la proposition."
+            },
+            {
+              "id": "q7",
+              "question": "Complétez : « Eve geldim, ellerimi ... » (laver = yıkamak, 1re pers. sing.).",
+              "type": "single_choice",
+              "options": ["yıkadım", "yıkadın", "yıkadı", "yıkadık"],
+              "correctAnswers": [0],
+              "explanation": "yıka- + -dı + -m = yıkadım (j'ai lavé mes mains)."
+            },
+            {
+              "id": "q8",
+              "question": "Que signifie « Akşam erken yattım çünkü çok yorgundum » ?",
+              "type": "single_choice",
+              "options": [
+                "Le soir je me suis couché tôt car j'étais très fatigué.",
+                "Le soir je me suis réveillé car j'avais faim.",
+                "Hier soir je suis sorti car j'avais de l'énergie.",
+                "Demain je me coucherai tôt car je serai fatigué."
+              ],
+              "correctAnswers": [0],
+              "explanation": "yatmak = se coucher / s'allonger ; « çünkü » = parce que / car."
+            },
+            {
+              "id": "q9",
+              "question": "Traduisez : « Ma sœur a préparé un délicieux gâteau ».",
+              "type": "single_choice",
+              "options": [
+                "Kız kardeşim lezzetli bir pasta yaptı.",
+                "Kız kardeşim lezzetli bir pasta yedi.",
+                "Annem lezzetli bir pasta aldı.",
+                "Kız kardeşim okula gitti."
+              ],
+              "correctAnswers": [0],
+              "explanation": "yapmak = faire/préparer -> pasta yaptı (a fait un gâteau)."
+            },
+            {
+              "id": "q10",
+              "question": "Que raconte la phrase : « Yağmur başladı, bu yüzden içeri girdik » ?",
+              "type": "single_choice",
+              "options": [
+                "La pluie a commencé, c'est pourquoi nous sommes entrés à l'intérieur.",
+                "Le soleil brillait, alors nous sommes sortis au jardin.",
+                "Le vent soufflait mais nous sommes restés dehors.",
+                "La pluie s'est arrêtée, donc nous sommes partis."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Yağmur başladı » = la pluie a commencé ; « bu yüzden » = c'est pourquoi ; « içeri girdik » = nous sommes entrés."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Bilan : Maîtriser le passé défini",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles phrases au passé sont parfaitement bien accordées ?",
+              "type": "multiple_choice",
+              "options": [
+                "Biz dün çok güzel bir gün geçirdik.",
+                "Sen ödevini bitirdin mi?",
+                "Onlar konsere gittiler.",
+                "Ben dün sinemaya gittin."
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "« Geçirdik » s'accorde avec biz (-k), « bitirdin » avec sen (-n), « gittiler » avec onlar. « Ben ... gittin » est incorrect."
+            },
+            {
+              "id": "q2",
+              "question": "Quelle est la règle pour choisir entre -d- et -t- au passé ?",
+              "type": "single_choice",
+              "options": [
+                "On met -t- après les consonnes sourdes (f, s, t, k, ç, ş, h, p), sinon -d-.",
+                "On met -t- uniquement à la première personne.",
+                "On met -t- devant les voyelles ouvertes.",
+                "Le choix est libre et sans conséquence."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'assimilation consonantique impose -t- après les 8 consonnes sourdes du turc."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « Nous avons gagné le match hier » ?",
+              "type": "single_choice",
+              "options": [
+                "Dün maçı kazandık.",
+                "Dün maçı kazandım.",
+                "Dün maçı kazandınız.",
+                "Dün maçı kazandılar."
+              ],
+              "correctAnswers": [0],
+              "explanation": "kazanmak = gagner. kazan- + -dı + -k = kazandık."
+            },
+            {
+              "id": "q4",
+              "question": "Quelle phrase signifie « Tu as perdu tes clés ? » ?",
+              "type": "single_choice",
+              "options": [
+                "Anahtarlarını kaybettin mi?",
+                "Anahtarlarını kaybettim mi?",
+                "Anahtarlarını buldun mu?",
+                "Anahtarlarını aldın mı?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "kaybetmek = perdre. kaybet- + -ti- + -n = kaybettin mi?"
+            },
+            {
+              "id": "q5",
+              "question": "Quelle forme verbale correspond à « elle n'a rien dit » ?",
+              "type": "single_choice",
+              "options": [
+                "hiçbir şey söylemedi",
+                "hiçbir şey söyledi",
+                "hiçbir şey söylemedim",
+                "hiçbir şey söylemedik"
+              ],
+              "correctAnswers": [0],
+              "explanation": "söylemek (dire) à la 3e personne du singulier au passé négatif : söyle- + -me- + -di = söylemedi."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie « Öğretmen tahtaya yazı yazdı » ?",
+              "type": "single_choice",
+              "options": [
+                "Le professeur a écrit au tableau.",
+                "Le professeur a effacé le tableau.",
+                "L'élève a lu le tableau.",
+                "Le professeur a parlé de la leçon."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Öğretmen (le professeur) + tahtaya (au tableau) + yazı yazdı (a écrit du texte)."
+            },
+            {
+              "id": "q7",
+              "question": "Trouvez la phrase incorrecte :",
+              "type": "single_choice",
+              "options": [
+                "Biz dün parka gittim.",
+                "Biz dün parka gittik.",
+                "Sen dün parka gittin.",
+                "Onlar dün parka gittiler."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Biz » exige la terminaison « -k » (gittik), et non « -m » qui renvoie à « ben »."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « Hier nous n'étions pas fatigués » ?",
+              "type": "single_choice",
+              "options": [
+                "Dün yorgun değildik.",
+                "Dün yorgunduk.",
+                "Dün yorgun değildim.",
+                "Dün yorgun yoktuk."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation de l'adjectif au passé utilise « değil » : değil + -di- + -k = değildik."
+            },
+            {
+              "id": "q9",
+              "question": "Traduisez : « Dün akşam ne yediniz? »",
+              "type": "single_choice",
+              "options": [
+                "Qu'avez-vous mangé hier soir ?",
+                "Qu'avez-vous préparé hier matin ?",
+                "Où avez-vous mangé ce midi ?",
+                "Qu'allons-nous manger ce soir ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ne (quoi/que) + yediniz (vous avez mangé, verbe yemek)."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle est la bonne suite : « Zeynep dün kütüphaneye gitti ve iki kitap ... » ?",
+              "type": "single_choice",
+              "options": ["aldı", "aldım", "aldın", "aldık"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet est Zeynep (3e personne du singulier), le verbe est donc « aldı » (elle a pris/emprunté)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Hier et ses moments (dün)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions temporelles font directement référence à la journée d'hier ?",
+              "type": "multiple_choice",
+              "options": [
+                "dün sabah",
+                "dün akşam",
+                "yarın akşam",
+                "gelecek hafta"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Dün sabah » (hier matin) et « dün akşam » (hier soir) précisent des moments de la journée d'hier."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie le mot turc « dün » ?",
+              "type": "single_choice",
+              "options": ["hier", "aujourd'hui", "demain", "toujours"],
+              "correctAnswers": [0],
+              "explanation": "« Dün » signifie « hier » en turc."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « hier matin » en turc ?",
+              "type": "single_choice",
+              "options": ["dün sabah", "dün akşam", "dün gece", "dün öğlen"],
+              "correctAnswers": [0],
+              "explanation": "dün (hier) + sabah (matin) = dün sabah."
+            },
+            {
+              "id": "q4",
+              "question": "Comment traduit-on « hier soir » ?",
+              "type": "single_choice",
+              "options": ["dün akşam", "dün sabah", "yarın akşam", "bu akşam"],
+              "correctAnswers": [0],
+              "explanation": "dün (hier) + akşam (soir) = dün akşam."
+            },
+            {
+              "id": "q5",
+              "question": "Que signifie « dün gece » ?",
+              "type": "single_choice",
+              "options": [
+                "la nuit dernière / hier soir tard",
+                "ce matin",
+                "demain soir",
+                "hier à midi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Gece » signifie « la nuit » ; « dün gece » = la nuit dernière / hier pendant la nuit."
+            },
+            {
+              "id": "q6",
+              "question": "Comment dit-on « hier midi » en turc ?",
+              "type": "single_choice",
+              "options": ["dün öğlen", "dün sabah", "dün akşam", "dün gece"],
+              "correctAnswers": [0],
+              "explanation": "öğlen = midi / le midi ; « dün öğlen » = hier midi."
+            },
+            {
+              "id": "q7",
+              "question": "Traduisez : « Dün akşam bize misafir geldi ».",
+              "type": "single_choice",
+              "options": [
+                "Hier soir, des invités sont venus chez nous.",
+                "Hier matin, nous sommes allés chez des invités.",
+                "Demain soir, des amis viendront.",
+                "Ce soir, nous recevons du monde."
+              ],
+              "correctAnswers": [0],
+              "explanation": "dün akşam = hier soir ; bize = chez nous / à nous ; misafir = invité(s) ; geldi = est/sont venu(s)."
+            },
+            {
+              "id": "q8",
+              "question": "Quelle phrase signifie « Hier, je n'ai pas pu dormir de la nuit » ?",
+              "type": "single_choice",
+              "options": [
+                "Dün gece hiç uyumadım.",
+                "Dün gece çok uyudum.",
+                "Dün sabah erken kalktım.",
+                "Yarın gece uyumayacağım."
+              ],
+              "correctAnswers": [0],
+              "explanation": "dün gece = la nuit dernière ; hiç uyumadım = je n'ai pas du tout dormi."
+            },
+            {
+              "id": "q9",
+              "question": "Dans « Dün sabah saat yedide kalktım », quelle information temporelle apporte « dün sabah » ?",
+              "type": "single_choice",
+              "options": [
+                "le moment précis : hier matin",
+                "le lieu de l'action",
+                "la durée de l'action",
+                "la répétition habituelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Dün sabah » situe l'action dans le passé spécifique d'hier matin."
+            },
+            {
+              "id": "q10",
+              "question": "Que répond-on à la question « Dün neredeydin? » pour dire « J'étais à la maison » ?",
+              "type": "single_choice",
+              "options": [
+                "Evdeydim.",
+                "Okuldaydım.",
+                "Sinemadaydım.",
+                "Sokaktaydım."
+              ],
+              "correctAnswers": [0],
+              "explanation": "ev-de-y-di-m = j'étais à la maison."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Les expressions avec « geçen »",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions temporelles emploient l'adjectif « geçen » pour désigner une période passée ?",
+              "type": "multiple_choice",
+              "options": ["geçen hafta", "geçen yıl", "gelecek ay", "her gün"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Geçen » signifie « passé / dernier » dans « geçen hafta » (la semaine dernière) et « geçen yıl » (l'année dernière)."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « la semaine dernière » en turc ?",
+              "type": "single_choice",
+              "options": [
+                "geçen hafta",
+                "gelecek hafta",
+                "bu hafta",
+                "her hafta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "geçen (passé/dernier) + hafta (semaine) = geçen hafta."
+            },
+            {
+              "id": "q3",
+              "question": "Comment traduit-on « le mois dernier » ?",
+              "type": "single_choice",
+              "options": ["geçen ay", "gelecek ay", "bu ay", "iki ay"],
+              "correctAnswers": [0],
+              "explanation": "ay = mois ; geçen ay = le mois dernier."
+            },
+            {
+              "id": "q4",
+              "question": "Quels sont les deux mots équivalents pour dire « l'année dernière » ?",
+              "type": "single_choice",
+              "options": [
+                "geçen yıl / geçen sene",
+                "geçen ay / geçen gün",
+                "bu yıl / bu sene",
+                "gelecek yıl / seneye"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Yıl » et « sene » sont synonymes pour « année ». On dit « geçen yıl » ou « geçen sene »."
+            },
+            {
+              "id": "q5",
+              "question": "Comment dit-on « l'été dernier » en turc ?",
+              "type": "single_choice",
+              "options": ["geçen yaz", "geçen kış", "geçen bahar", "geçen güz"],
+              "correctAnswers": [0],
+              "explanation": "yaz = été ; geçen yaz = l'été dernier."
+            },
+            {
+              "id": "q6",
+              "question": "Traduisez : « Geçen pazar pikniğe gittik ».",
+              "type": "single_choice",
+              "options": [
+                "Dimanche dernier, nous sommes allés en pique-nique.",
+                "Dimanche prochain, nous irons en pique-nique.",
+                "Chaque dimanche, nous allons au parc.",
+                "Hier nous avons fait un pique-nique."
+              ],
+              "correctAnswers": [0],
+              "explanation": "geçen pazar = dimanche dernier ; pikniğe gittik = nous sommes allés en pique-nique."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « le week-end dernier » en turc ?",
+              "type": "single_choice",
+              "options": [
+                "geçen hafta sonu",
+                "bu hafta sonu",
+                "gelecek hafta sonu",
+                "her hafta sonu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "hafta sonu = week-end (fin de semaine) ; geçen hafta sonu = le week-end dernier."
+            },
+            {
+              "id": "q8",
+              "question": "Traduisez : « Geçen yıl Türkiye'ye gittim ».",
+              "type": "single_choice",
+              "options": [
+                "L'année dernière, je suis allé en Turquie.",
+                "Cette année, je vais en Turquie.",
+                "L'année prochaine, j'irai en Turquie.",
+                "Le mois dernier, je suis allé à Istanbul."
+              ],
+              "correctAnswers": [0],
+              "explanation": "geçen yıl = l'année dernière ; Türkiye'ye gittim = je suis allé en Turquie."
+            },
+            {
+              "id": "q9",
+              "question": "Que signifie « geçen kış » ?",
+              "type": "single_choice",
+              "options": [
+                "l'hiver dernier",
+                "l'été dernier",
+                "l'automne dernier",
+                "le printemps dernier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "kış = hiver ; geçen kış = l'hiver dernier."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle phrase signifie « Où étiez-vous la semaine dernière ? » ?",
+              "type": "single_choice",
+              "options": [
+                "Geçen hafta neredeydiniz?",
+                "Gelecek hafta nereye gideceksiniz?",
+                "Bu hafta neredesiniz?",
+                "Geçen ay neredeydin?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "geçen hafta = la semaine dernière ; neredeydiniz = où étiez-vous (siz)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : L'antériorité avec « önce »",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions indiquent une action qui a eu lieu il y a un certain temps ?",
+              "type": "multiple_choice",
+              "options": [
+                "iki gün sonra",
+                "üç gün önce",
+                "bir saat önce",
+                "beş dakika sonra"
+              ],
+              "correctAnswers": [1, 2],
+              "explanation": "« Önce » associé à une durée exprime « il y a ... » : « üç gün önce » (il y a trois jours), « bir saat önce » (il y a une heure)."
+            },
+            {
+              "id": "q2",
+              "question": "Comment traduit-on « il y a deux jours » en turc ?",
+              "type": "single_choice",
+              "options": [
+                "iki gün önce",
+                "iki gün sonra",
+                "iki gün için",
+                "iki gün kadar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "durée + önce = il y a (durée). « İki gün önce » = il y a deux jours."
+            },
+            {
+              "id": "q3",
+              "question": "Comment dit-on « il y a une heure » en turc ?",
+              "type": "single_choice",
+              "options": [
+                "bir saat önce",
+                "bir saat sonra",
+                "bir saat boyunca",
+                "bir saat içinde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "saat = heure ; « bir saat önce » = il y a une heure."
+            },
+            {
+              "id": "q4",
+              "question": "Traduisez : « Film on dakika önce başladı ».",
+              "type": "single_choice",
+              "options": [
+                "Le film a commencé il y a dix minutes.",
+                "Le film va commencer dans dix minutes.",
+                "Le film dure dix minutes.",
+                "Le film s'est terminé il y a une heure."
+              ],
+              "correctAnswers": [0],
+              "explanation": "on dakika önce = il y a dix minutes ; başladı = a commencé."
+            },
+            {
+              "id": "q5",
+              "question": "Comment dit-on « il y a trois ans » en turc ?",
+              "type": "single_choice",
+              "options": [
+                "üç yıl önce",
+                "üç yıl sonra",
+                "üç ay önce",
+                "üç gün önce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "üç (3) + yıl (an/année) + önce = il y a trois ans."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie l'expression « az önce » ou « biraz önce » ?",
+              "type": "single_choice",
+              "options": [
+                "il y a un instant / il y a peu",
+                "beaucoup plus tard",
+                "demain matin",
+                "il y a des siècles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Az önce » / « biraz önce » exprime un passé très proche : il y a un court instant, à l'instant."
+            },
+            {
+              "id": "q7",
+              "question": "Traduisez : « Otobüs az önce geçti ».",
+              "type": "single_choice",
+              "options": [
+                "Le bus est passé il y a un instant.",
+                "Le bus va passer dans peu de temps.",
+                "Le bus ne passe pas aujourd'hui.",
+                "Le bus est arrivé en retard."
+              ],
+              "correctAnswers": [0],
+              "explanation": "otobüs = le bus ; az önce = il y a un instant ; geçti = est passé."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « il y a deux mois, nous avons déménagé » ?",
+              "type": "single_choice",
+              "options": [
+                "İki ay önce taşındık.",
+                "İki ay sonra taşındık.",
+                "İki yıl önce taşındık.",
+                "İki hafta önce taşındık."
+              ],
+              "correctAnswers": [0],
+              "explanation": "iki ay önce = il y a deux mois ; taşınmak = déménager -> taşındık."
+            },
+            {
+              "id": "q9",
+              "question": "Quelle est la différence entre « iki gün önce » et « iki gün sonra » ?",
+              "type": "single_choice",
+              "options": [
+                "« önce » renvoie au passé (il y a deux jours), « sonra » au futur/après (dans deux jours).",
+                "Les deux sont des synonymes parfaits.",
+                "« önce » s'utilise pour les heures et « sonra » pour les jours.",
+                "« önce » est négatif et « sonra » est affirmatif."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Önce = avant / il y a ; sonra = après / dans (au futur)."
+            },
+            {
+              "id": "q10",
+              "question": "Traduisez : « Seni bir hafta önce aradım ».",
+              "type": "single_choice",
+              "options": [
+                "Je t'ai appelé il y a une semaine.",
+                "Je t'appellerai dans une semaine.",
+                "Tu m'as appelé il y a un mois.",
+                "Je t'ai cherché toute la semaine."
+              ],
+              "correctAnswers": [0],
+              "explanation": "seni = toi (COD) ; bir hafta önce = il y a une semaine ; aradım = j'ai appelé/cherché."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : Autrefois et jadis (eskiden)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels termes renvoient à une époque révolue ou au passé lointain ?",
+              "type": "multiple_choice",
+              "options": ["eskiden", "gelecekte", "şimdi", "bir zamanlar"],
+              "correctAnswers": [0, 3],
+              "explanation": "« Eskiden » (autrefois) et « bir zamanlar » (jadis / il était une fois) expriment le passé révolu."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie le mot « eskiden » en français ?",
+              "type": "single_choice",
+              "options": [
+                "autrefois / dans le temps",
+                "demain",
+                "maintenant",
+                "souvent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Eskiden » dérive de « eski » (vieux/ancien) et signifie « autrefois, jadis »."
+            },
+            {
+              "id": "q3",
+              "question": "Traduisez : « Eskiden bu köyde çok insan yaşadı ».",
+              "type": "single_choice",
+              "options": [
+                "Autrefois, beaucoup de gens vivaient dans ce village.",
+                "Aujourd'hui, peu de gens vivent ici.",
+                "Demain, des personnes viendront au village.",
+                "Autrefois, il n'y avait personne dans ce village."
+              ],
+              "correctAnswers": [0],
+              "explanation": "eskiden = autrefois ; bu köyde = dans ce village ; çok insan = beaucoup de gens ; yaşadı = ont vécu."
+            },
+            {
+              "id": "q4",
+              "question": "Que signifie l'expression « bir zamanlar » ?",
+              "type": "single_choice",
+              "options": [
+                "jadis / il était une fois",
+                "à l'avenir",
+                "en même temps",
+                "sans arrêt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Bir zamanlar » signifie « jadis », « autrefois » ou « il fut un temps »."
+            },
+            {
+              "id": "q5",
+              "question": "Quel mot turc désigne « le passé » en tant que nom ?",
+              "type": "single_choice",
+              "options": ["geçmiş", "gelecek", "şimdi", "günümüz"],
+              "correctAnswers": [0],
+              "explanation": "« Geçmiş » signifie le passé (opposé à « gelecek », l'avenir)."
+            },
+            {
+              "id": "q6",
+              "question": "Traduisez : « Geçmişte telefonlar yoktu ».",
+              "type": "single_choice",
+              "options": [
+                "Dans le passé, il n'y avait pas de téléphones.",
+                "Dans le passé, tout le monde avait un téléphone.",
+                "À l'avenir, il n'y aura plus de téléphone.",
+                "Actuellement, il y a des téléphones."
+              ],
+              "correctAnswers": [0],
+              "explanation": "geçmişte = dans le passé ; telefonlar yoktu = il n'y avait pas de téléphones."
+            },
+            {
+              "id": "q7",
+              "question": "Quel terme s'oppose directement à « eskiden » ?",
+              "type": "single_choice",
+              "options": [
+                "şimdi (maintenant)",
+                "dün (hier)",
+                "önce (avant)",
+                "geçen yıl (l'an passé)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Eskiden » (autrefois) s'oppose naturellement à « şimdi » (maintenant, aujourd'hui)."
+            },
+            {
+              "id": "q8",
+              "question": "Complétez : « ... burada büyük bir orman vardı » (Autrefois, il y avait une grande forêt ici).",
+              "type": "single_choice",
+              "options": ["Eskiden", "Yarın", "Gelecekte", "Sonra"],
+              "correctAnswers": [0],
+              "explanation": "« Eskiden » introduit le contexte historique passé : « Eskiden burada büyük bir orman vardı »."
+            },
+            {
+              "id": "q9",
+              "question": "Que signifie la phrase « Dedem eskiden öğretmendi » ?",
+              "type": "single_choice",
+              "options": [
+                "Mon grand-père était autrefois professeur.",
+                "Mon grand-père est actuellement professeur.",
+                "Mon père sera professeur plus tard.",
+                "Mon grand-père n'a jamais été enseignant."
+              ],
+              "correctAnswers": [0],
+              "explanation": "dedem = mon grand-père ; eskiden = autrefois ; öğretmendi = était enseignant."
+            },
+            {
+              "id": "q10",
+              "question": "Comment traduit-on « il y a très longtemps » ?",
+              "type": "single_choice",
+              "options": [
+                "çok uzun zaman önce",
+                "biraz önce",
+                "az sonra",
+                "yarın sabah"
+              ],
+              "correctAnswers": [0],
+              "explanation": "çok (très) + uzun zaman (longtemps) + önce (avant/il y a) = il y a très longtemps."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Le passé immédiat et récent (az önce, demin)",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adverbes désignent une action accomplie à l'instant même ou il y a très peu de temps ?",
+              "type": "multiple_choice",
+              "options": ["demin", "az önce", "seneye", "eskiden"],
+              "correctAnswers": [0, 1],
+              "explanation": "« Demin » et « az önce » signifient tous deux « à l'instant, tout à l'heure (passé immédiat) »."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie le mot « demin » en turc ?",
+              "type": "single_choice",
+              "options": [
+                "tout à l'heure (il y a un instant)",
+                "demain après-midi",
+                "l'année passée",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Demin » fait référence à un événement tout récent survenu quelques minutes ou instants plus tôt."
+            },
+            {
+              "id": "q3",
+              "question": "Traduisez : « Demin seni sordular ».",
+              "type": "single_choice",
+              "options": [
+                "Ils ont demandé après toi tout à l'heure.",
+                "Ils te demanderont demain.",
+                "Tu as posé une question tout à l'heure.",
+                "Ils ne te connaissent pas."
+              ],
+              "correctAnswers": [0],
+              "explanation": "demin = à l'instant / tout à l'heure ; seni = toi (COD) ; sordular = ils ont demandé."
+            },
+            {
+              "id": "q4",
+              "question": "Comment dit-on « le train vient tout juste de partir » en turc ?",
+              "type": "single_choice",
+              "options": [
+                "Tren az önce kalktı.",
+                "Tren yarın kalkacak.",
+                "Tren hiç gelmedi.",
+                "Tren şimdi geliyor."
+              ],
+              "correctAnswers": [0],
+              "explanation": "tren = le train ; az önce = à l'instant ; kalktı = est parti (a décollé/démarré)."
+            },
+            {
+              "id": "q5",
+              "question": "Quelle phrase signifie « J'ai vu Ali à l'instant dans le couloir » ?",
+              "type": "single_choice",
+              "options": [
+                "Ali'yi az önce koridorda gördüm.",
+                "Ali'yi yarın koridorda göreceğim.",
+                "Ali koridorda beni bekledi.",
+                "Ali dün koridordaydı."
+              ],
+              "correctAnswers": [0],
+              "explanation": "az önce = à l'instant ; koridorda = dans le couloir ; gördüm = j'ai vu."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie « Demin buradaydı, şimdi gitti » ?",
+              "type": "single_choice",
+              "options": [
+                "Il était là à l'instant, maintenant il est parti.",
+                "Il sera là tout à l'heure, ne pars pas.",
+                "Il n'est jamais venu ici.",
+                "Il vient d'arriver avec nous."
+              ],
+              "correctAnswers": [0],
+              "explanation": "demin buradaydı = il était ici il y a un instant ; şimdi gitti = maintenant il est parti."
+            },
+            {
+              "id": "q7",
+              "question": "Quel mot s'utilise pour dire « ce matin » quand on en parle l'après-midi au passé ?",
+              "type": "single_choice",
+              "options": ["bu sabah", "yarın sabah", "her sabah", "o sabah"],
+              "correctAnswers": [0],
+              "explanation": "« Bu sabah » (ce matin) s'associe au passé pour raconter ce qui s'est produit plus tôt dans la journée."
+            },
+            {
+              "id": "q8",
+              "question": "Traduisez : « Bu sabah kahvaltı yapmadım ».",
+              "type": "single_choice",
+              "options": [
+                "Ce matin, je n'ai pas pris de petit-déjeuner.",
+                "Ce matin, j'ai beaucoup mangé.",
+                "Demain matin, je ne mangerai pas.",
+                "Hier matin, j'étais chez moi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "bu sabah = ce matin ; kahvaltı yapmadım = je n'ai pas pris de petit-déjeuner."
+            },
+            {
+              "id": "q9",
+              "question": "Que signifie « henüz » dans « Zil henüz çaldı » ?",
+              "type": "single_choice",
+              "options": [
+                "La sonnerie vient tout juste de retentir.",
+                "La sonnerie ne sonnera jamais.",
+                "La sonnerie a sonné hier.",
+                "La sonnerie va sonner dans dix minutes."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Henüz » avec un verbe au passé affirmatif signifie « tout juste, à peine »."
+            },
+            {
+              "id": "q10",
+              "question": "Comment dit-on « Nous venons d'arriver » ?",
+              "type": "single_choice",
+              "options": [
+                "Az önce geldik.",
+                "Yarın geleceğiz.",
+                "Dün gelmedik.",
+                "Hiç gelmedik."
+              ],
+              "correctAnswers": [0],
+              "explanation": "az önce = il y a un instant / tout juste ; geldik = nous sommes arrivés/venus."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Exprimer la durée au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles expressions indiquent une durée continue au cours du passé ?",
+              "type": "multiple_choice",
+              "options": [
+                "yarın saat beşte",
+                "bütün gün",
+                "iki saat boyunca",
+                "haftaya"
+              ],
+              "correctAnswers": [1, 2],
+              "explanation": "« Bütün gün » (toute la journée) et « iki saat boyunca » (pendant deux heures) expriment une durée au passé."
+            },
+            {
+              "id": "q2",
+              "question": "Comment dit-on « toute la journée » en turc ?",
+              "type": "single_choice",
+              "options": ["bütün gün", "her gün", "bir gün", "öbür gün"],
+              "correctAnswers": [0],
+              "explanation": "bütün (tout/entier) + gün (jour) = bütün gün (toute la journée)."
+            },
+            {
+              "id": "q3",
+              "question": "Que signifie le mot postposé « boyunca » dans « üç gün boyunca » ?",
+              "type": "single_choice",
+              "options": ["pendant / durant", "après", "avant", "sans"],
+              "correctAnswers": [0],
+              "explanation": "« Boyunca » indique le déroulement continu : « üç gün boyunca » = pendant trois jours."
+            },
+            {
+              "id": "q4",
+              "question": "Traduisez : « Dün bütün gece yağmur yağdı ».",
+              "type": "single_choice",
+              "options": [
+                "Hier, il a plu toute la nuit.",
+                "Hier, il a fait beau toute la journée.",
+                "Demain, il va pleuvoir la nuit.",
+                "Hier soir, la pluie s'est arrêtée."
+              ],
+              "correctAnswers": [0],
+              "explanation": "bütün gece = toute la nuit ; yağmur yağdı = il a plu."
+            },
+            {
+              "id": "q5",
+              "question": "Comment traduit-on « pendant des heures » en turc ?",
+              "type": "single_choice",
+              "options": ["saatlerce", "günlerce", "aylarca", "yıllarca"],
+              "correctAnswers": [0],
+              "explanation": "saat (heure) + -ler (pluriel) + -ce (suffixe de modalité) = saatlerce (durant des heures)."
+            },
+            {
+              "id": "q6",
+              "question": "Que signifie « günlerce seni bekledim » ?",
+              "type": "single_choice",
+              "options": [
+                "Je t'ai attendu pendant des jours.",
+                "Je t'ai attendu deux heures.",
+                "Tu m'as attendu hier.",
+                "Je t'attendrai demain."
+              ],
+              "correctAnswers": [0],
+              "explanation": "günlerce = pendant des jours entiers ; bekledim = j'ai attendu."
+            },
+            {
+              "id": "q7",
+              "question": "Traduisez : « İki saat ders çalıştık ».",
+              "type": "single_choice",
+              "options": [
+                "Nous avons étudié pendant deux heures.",
+                "Nous étudierons à deux heures.",
+                "Nous avons commencé à deux heures.",
+                "Il est deux heures."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« İki saat » placé devant le verbe fonctionne comme complément de durée : nous avons révisé pendant 2 heures."
+            },
+            {
+              "id": "q8",
+              "question": "Comment dit-on « pendant des années, il a habité à Ankara » ?",
+              "type": "single_choice",
+              "options": [
+                "Yıllarca Ankara'da yaşadı.",
+                "Aylarca Ankara'da yaşadı.",
+                "Günlerce Ankara'ya gitti.",
+                "Saatlerce Ankara'da kaldı."
+              ],
+              "correctAnswers": [0],
+              "explanation": "yıl-lar-ca = pendant des années ; yaşadı = il a habité/vécu."
+            },
+            {
+              "id": "q9",
+              "question": "Que signifie « sabahtan akşama kadar » ?",
+              "type": "single_choice",
+              "options": [
+                "du matin jusqu'au soir",
+                "le matin seulement",
+                "hier soir tard",
+                "chaque matin et chaque soir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sabah-tan (depuis le matin) + akşam-a kadar (jusqu'au soir) = du matin au soir."
+            },
+            {
+              "id": "q10",
+              "question": "Traduisez : « Dün sabahtan akşama kadar evde temizlik yaptık ».",
+              "type": "single_choice",
+              "options": [
+                "Hier, nous avons fait le ménage à la maison du matin au soir.",
+                "Hier matin, nous sommes sortis nous promener.",
+                "Demain, nous nettoierons la maison toute la journée.",
+                "Hier soir, nous avons rangé notre chambre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "temizlik yapmak = faire le ménage ; sabahtan akşama kadar = du matin au soir."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Position du marqueur dans la phrase",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Dans quelles phrases le marqueur temporel est-il placé à un endroit naturel et correct ?",
+              "type": "multiple_choice",
+              "options": [
+                "Dün akşam arkadaşımla sinemaya gittik.",
+                "Ben geçen hafta yeni bir bisiklet aldım.",
+                "Arkadaşımla gittik sinemaya dün akşam.",
+                "Aldım bir bisiklet dün ben."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En turc standard (SOV), le complément de temps se place souvent en tête de phrase ou directement après le sujet."
+            },
+            {
+              "id": "q2",
+              "question": "Quelle est la place la plus courante du complément de temps dans la phrase turque ?",
+              "type": "single_choice",
+              "options": [
+                "au tout début de la phrase ou juste après le sujet",
+                "obligatoirement après le verbe conjugué",
+                "entre le verbe et son suffixe de personne",
+                "à la toute fin de la phrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le complément de temps ouvre très souvent la phrase pour donner le cadre temporel de l'énoncé."
+            },
+            {
+              "id": "q3",
+              "question": "Réorganisez les éléments pour une phrase standard : [gittim / dün / okula].",
+              "type": "single_choice",
+              "options": [
+                "Dün okula gittim.",
+                "Okula gittim dün.",
+                "Gittim dün okula.",
+                "Gittim okula dün."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Temps (Dün) + Lieu (okula) + Verbe (gittim) = Dün okula gittim."
+            },
+            {
+              "id": "q4",
+              "question": "Quelle phrase met particulièrement l'accent sur le moment « hier » ?",
+              "type": "single_choice",
+              "options": [
+                "Okula dün gittim.",
+                "Dün okula gittim.",
+                "Gittim dün okula.",
+                "Dün gittim ben okula."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élément placé juste avant le verbe reçoit l'accent informatif principal : « Okula DÜN gittim » (c'est hier que j'y suis allé)."
+            },
+            {
+              "id": "q5",
+              "question": "Traduisez : « Geçen pazar kardeşimle parka gittik ».",
+              "type": "single_choice",
+              "options": [
+                "Dimanche dernier, je suis allé au parc avec mon frère/ma sœur.",
+                "Dimanche prochain, nous irons au parc.",
+                "Mon frère est allé seul au parc hier.",
+                "Nous allons souvent au parc le dimanche."
+              ],
+              "correctAnswers": [0],
+              "explanation": "geçen pazar (temps) + kardeşimle (accompagnement) + parka (lieu) + gittik (verbe)."
+            },
+            {
+              "id": "q6",
+              "question": "Quelle phrase est correctement ordonnée selon la structure SOV ?",
+              "type": "single_choice",
+              "options": [
+                "Biz geçen ay bir araba aldık.",
+                "Biz aldık bir araba geçen ay.",
+                "Bir araba aldık biz geçen ay.",
+                "Aldık bir araba biz geçen ay."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sujet (Biz) + Temps (geçen ay) + COD (bir araba) + Verbe final (aldık)."
+            },
+            {
+              "id": "q7",
+              "question": "Dans « İki gün önce Ali bana bir mektup yazdı », quel est le sujet ?",
+              "type": "single_choice",
+              "options": ["Ali", "İki gün önce", "bana", "bir mektup"],
+              "correctAnswers": [0],
+              "explanation": "« Ali » est l'agent qui accomplit l'action d'écrire (yazdı)."
+            },
+            {
+              "id": "q8",
+              "question": "Où se place le mot interrogatif « ne zaman » (quand) dans une question ?",
+              "type": "single_choice",
+              "options": [
+                "généralement devant le verbe ou en tête de phrase",
+                "obligatoirement après le verbe conjugué",
+                "toujours à la toute fin de la phrase",
+                "à l'intérieur du verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Sen ne zaman geldin? » (Quand es-tu venu ?) : le mot interrogatif se place devant le verbe."
+            },
+            {
+              "id": "q9",
+              "question": "Traduisez la question : « Sen İstanbul'a ne zaman gittin? »",
+              "type": "single_choice",
+              "options": [
+                "Quand es-tu allé à Istanbul ?",
+                "Comment es-tu allé à Istanbul ?",
+                "Pourquoi es-tu à Istanbul ?",
+                "Avec qui es-tu allé à Istanbul ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ne zaman = quand ; İstanbul'a gittin = tu es allé à Istanbul."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle est la réponse la plus naturelle à « Ne zaman geldin? » ?",
+              "type": "single_choice",
+              "options": [
+                "Dün akşam geldim.",
+                "Okula geldim.",
+                "Ali'yle geldim.",
+                "Arabayla geldim."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ne zaman » demande un marqueur temporel : « Dün akşam geldim » (Je suis venu hier soir)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Marqueurs temporels et négation",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels adverbes s'emploient typiquement avec une phrase négative au passé pour exprimer « jamais » ou « pas encore » ?",
+              "type": "multiple_choice",
+              "options": ["her zaman", "hiç", "henüz", "bazen"],
+              "correctAnswers": [1, 2],
+              "explanation": "« Hiç » (jamais / pas du tout) et « henüz » (pas encore) s'associent naturellement à un verbe négatif."
+            },
+            {
+              "id": "q2",
+              "question": "Que signifie la phrase « Dün beni hiç aramadın » ?",
+              "type": "single_choice",
+              "options": [
+                "Hier tu ne m'as pas du tout appelé.",
+                "Hier tu m'as appelé plusieurs fois.",
+                "Tu m'appelleras demain sans faute.",
+                "Hier je t'ai appelé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "dün = hier ; hiç = pas du tout / jamais ; aramadın = tu n'as pas appelé."
+            },
+            {
+              "id": "q3",
+              "question": "Comment traduit-on « Le train n'est pas encore arrivé » ?",
+              "type": "single_choice",
+              "options": [
+                "Tren henüz gelmedi.",
+                "Tren az önce geldi.",
+                "Tren dün geldi.",
+                "Tren demin geldi."
+              ],
+              "correctAnswers": [0],
+              "explanation": "henüz + verbe négatif = pas encore. « Henüz gelmedi » = n'est pas encore arrivé."
+            },
+            {
+              "id": "q4",
+              "question": "Traduisez : « Geçen hafta hiç dışarı çıkmadım ».",
+              "type": "single_choice",
+              "options": [
+                "La semaine dernière, je ne suis pas du tout sorti.",
+                "La semaine dernière, je suis sorti tous les jours.",
+                "Cette semaine, je ne veux pas sortir.",
+                "Hier je suis sorti avec mes amis."
+              ],
+              "correctAnswers": [0],
+              "explanation": "geçen hafta = la semaine dernière ; hiç = pas du tout ; dışarı çıkmadım = je ne suis pas sorti dehors."
+            },
+            {
+              "id": "q5",
+              "question": "Que signifie « henüz başlamadı » ?",
+              "type": "single_choice",
+              "options": [
+                "ça n'a pas encore commencé",
+                "ça a commencé il y a une heure",
+                "ça commencera demain",
+                "ça vient de finir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "başlamak = commencer ; henüz başlamadı = n'a pas encore commencé."
+            },
+            {
+              "id": "q6",
+              "question": "Traduisez : « Dün akşam televizyon izlemedim ».",
+              "type": "single_choice",
+              "options": [
+                "Hier soir, je n'ai pas regardé la télévision.",
+                "Hier soir, j'ai regardé la télévision.",
+                "Hier matin, j'ai écouté de la musique.",
+                "Ce soir, je ne regarderai pas la télé."
+              ],
+              "correctAnswers": [0],
+              "explanation": "dün akşam = hier soir ; televizyon izlemedim = je n'ai pas regardé la télévision."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « Je n'ai jamais vu cette ville auparavant » ?",
+              "type": "single_choice",
+              "options": [
+                "Daha önce bu şehri hiç görmedim.",
+                "Bu şehri geçen yıl gördüm.",
+                "Bu şehri her zaman görüyorum.",
+                "Yarın bu şehri göreceğim."
+              ],
+              "correctAnswers": [0],
+              "explanation": "daha önce = auparavant ; hiç görmedim = je n'ai jamais vu."
+            },
+            {
+              "id": "q8",
+              "question": "Que signifie « daha » dans « Ödevimi daha bitirmedim » ?",
+              "type": "single_choice",
+              "options": ["pas encore", "déjà", "hier", "beaucoup"],
+              "correctAnswers": [0],
+              "explanation": "« Daha » devant un verbe négatif est synonyme familier de « henüz » (pas encore)."
+            },
+            {
+              "id": "q9",
+              "question": "Traduisez : « O gün hava hiç güzel değildi ».",
+              "type": "single_choice",
+              "options": [
+                "Ce jour-là, le temps n'était pas beau du tout.",
+                "Ce jour-là, il faisait un temps magnifique.",
+                "Aujourd'hui, le ciel est couvert.",
+                "Demain, le temps sera mauvais."
+              ],
+              "correctAnswers": [0],
+              "explanation": "o gün = ce jour-là ; hiç güzel değildi = n'était pas beau du tout."
+            },
+            {
+              "id": "q10",
+              "question": "Complétez : « Zeynep dün derse ... » (ne pas venir, 3e pers.).",
+              "type": "single_choice",
+              "options": ["gelmedi", "gelme", "gelmedim", "gelmedik"],
+              "correctAnswers": [0],
+              "explanation": "Zeynep est à la 3e personne du singulier : gel- + -me- + -di = gelmedi."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Opposer passé et présent",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quelles paires de mots opposent le temps passé au temps présent ?",
+              "type": "multiple_choice",
+              "options": [
+                "dün / bugün",
+                "eskiden / şimdi",
+                "yarın / gelecek hafta",
+                "az önce / demin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« Dün » (hier) s'oppose à « bugün » (aujourd'hui), et « eskiden » (autrefois) à « şimdi » (maintenant)."
+            },
+            {
+              "id": "q2",
+              "question": "Traduisez : « Dün hava yağmurluydu, ama bugün güneşli ».",
+              "type": "single_choice",
+              "options": [
+                "Hier il pleuvait, mais aujourd'hui il fait soleil.",
+                "Hier il faisait beau, mais aujourd'hui il pleut.",
+                "Aujourd'hui et hier il fait un grand soleil.",
+                "Demain il pleuvra, mais pas aujourd'hui."
+              ],
+              "correctAnswers": [0],
+              "explanation": "dün (hier) + yağmurluydu (était pluvieux) ; bugün (aujourd'hui) + güneşli (ensoleillé)."
+            },
+            {
+              "id": "q3",
+              "question": "Comment traduit-on « Autrefois nous habitions à Izmir, maintenant nous sommes à Istanbul » ?",
+              "type": "single_choice",
+              "options": [
+                "Eskiden İzmir'de yaşadık, şimdi İstanbul'dayız.",
+                "Gelecekte İzmir'de yaşayacağız, şimdi Ankara'dayız.",
+                "Dün İzmir'e gittik, yarın İstanbul'a gideceğiz.",
+                "Her zaman İzmir'de yaşıyoruz."
+              ],
+              "correctAnswers": [0],
+              "explanation": "eskiden = autrefois ; şimdi = maintenant ; İstanbul'dayız = nous sommes à Istanbul."
+            },
+            {
+              "id": "q4",
+              "question": "Que signifie la phrase « Dün hastaydım, ama bugün çok iyiyim » ?",
+              "type": "single_choice",
+              "options": [
+                "Hier j'étais malade, mais aujourd'hui je vais très bien.",
+                "Hier j'allais bien, mais aujourd'hui je suis malade.",
+                "Aujourd'hui je suis fatigué comme hier.",
+                "Demain j'irai beaucoup mieux."
+              ],
+              "correctAnswers": [0],
+              "explanation": "hastaydım = j'étais malade ; bugün çok iyiyim = aujourd'hui je vais très bien."
+            },
+            {
+              "id": "q5",
+              "question": "Quelle phrase montre un changement entre l'année dernière et cette année ?",
+              "type": "single_choice",
+              "options": [
+                "Geçen yıl beşinci sınıftaydım, bu yıl altıncı sınıftayım.",
+                "Gelecek yıl okula başlayacağım.",
+                "Her yıl tatile gidiyorum.",
+                "Dün okula gitmedim."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Geçen yıl » (l'an dernier) s'oppose à « bu yıl » (cette année)."
+            },
+            {
+              "id": "q6",
+              "question": "Traduisez : « Eskiden Türkçe bilmiyordum, şimdi konuşuyorum ».",
+              "type": "single_choice",
+              "options": [
+                "Autrefois je ne savais pas le turc, maintenant je le parle.",
+                "Autrefois je parlais turc, mais j'ai oublié.",
+                "J'apprends le turc depuis hier seulement.",
+                "Je ne parlerai jamais turc."
+              ],
+              "correctAnswers": [0],
+              "explanation": "eskiden bilmiyordum = autrefois je ne savais pas ; şimdi konuşuyorum = maintenant je parle."
+            },
+            {
+              "id": "q7",
+              "question": "Comment dit-on « hier j'étais très fatigué, mais aujourd'hui je suis en forme » ?",
+              "type": "single_choice",
+              "options": [
+                "Dün çok yorgundum, ama bugün zindeyim.",
+                "Dün çok mutluydum, bugün üzgünüm.",
+                "Bugün çok yorgunum, dün iyiydim.",
+                "Yarın çok dinç olacağım."
+              ],
+              "correctAnswers": [0],
+              "explanation": "dün yorgundum = hier j'étais fatigué ; bugün zindeyim = aujourd'hui je suis en forme/alerte."
+            },
+            {
+              "id": "q8",
+              "question": "Que signifie « O zaman küçüktüm, şimdi büyüdüm » ?",
+              "type": "single_choice",
+              "options": [
+                "À cette époque j'étais petit, maintenant j'ai grandi.",
+                "J'étais grand autrefois, maintenant je suis petit.",
+                "Je grandirai l'année prochaine.",
+                "Nous étions tous petits hier."
+              ],
+              "correctAnswers": [0],
+              "explanation": "o zaman = à ce moment-là / à cette époque ; küçüktüm = j'étais petit ; büyüdüm = j'ai grandi."
+            },
+            {
+              "id": "q9",
+              "question": "Quel mot turc signifie « à ce moment-là / à cette époque-là » ?",
+              "type": "single_choice",
+              "options": ["o zaman", "bu zaman", "her zaman", "ne zaman"],
+              "correctAnswers": [0],
+              "explanation": "« O zaman » renvoie au moment précis du passé dont on parle."
+            },
+            {
+              "id": "q10",
+              "question": "Traduisez : « Geçen hafta çok kar yağdı, ama bugün hava ılık ».",
+              "type": "single_choice",
+              "options": [
+                "La semaine dernière il a beaucoup neigé, mais aujourd'hui le temps est doux.",
+                "La semaine dernière il faisait chaud, mais aujourd'hui il neige.",
+                "Demain il neigera toute la journée.",
+                "Hier il a plu et aujourd'hui il gèle."
+              ],
+              "correctAnswers": [0],
+              "explanation": "kar yağdı = il a neigé ; ılık = tiède / doux."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Bilan général : Les marqueurs de temps",
+          "questions": [
+            {
+              "id": "q1",
+              "question": "Quels marqueurs temporels appellent obligatoirement un verbe au passé ?",
+              "type": "multiple_choice",
+              "options": ["dün", "geçen hafta", "üç gün önce", "yarın"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "« Dün » (hier), « geçen hafta » (la semaine passée) et « üç gün önce » (il y a trois jours) renvoient tous au passé. « Yarın » (demain) renvoie au futur."
+            },
+            {
+              "id": "q2",
+              "question": "Trouvez la phrase dans laquelle le marqueur temporel est en accord avec le temps du verbe :",
+              "type": "single_choice",
+              "options": [
+                "Dün akşam güzel bir film izledik.",
+                "Yarın akşam güzel bir film izledik.",
+                "Dün akşam bir film izleyeceğiz.",
+                "Gelecek hafta bir film izledim."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Dün akşam » (hier soir) s'accorde parfaitement avec le verbe au passé « izledik » (nous avons regardé)."
+            },
+            {
+              "id": "q3",
+              "question": "Comment traduit-on « Il y a dix minutes, il est sorti de la classe » ?",
+              "type": "single_choice",
+              "options": [
+                "On dakika önce sınıftan çıktı.",
+                "On dakika sonra sınıfa girdi.",
+                "Dün sabah sınıfa gitti.",
+                "Her zaman sınıftan çıkıyor."
+              ],
+              "correctAnswers": [0],
+              "explanation": "on dakika önce = il y a dix minutes ; sınıftan çıktı = il est sorti de la classe."
+            },
+            {
+              "id": "q4",
+              "question": "Que signifie la phrase « Geçen ay yeni bir eve taşındılar » ?",
+              "type": "single_choice",
+              "options": [
+                "Le mois dernier, ils ont déménagé dans une nouvelle maison.",
+                "Le mois prochain, ils achèteront une maison.",
+                "La semaine dernière, ils ont visité une maison.",
+                "Hier, ils ont repeint leur maison."
+              ],
+              "correctAnswers": [0],
+              "explanation": "geçen ay = le mois dernier ; yeni bir eve taşındılar = ils ont déménagé dans une nouvelle maison."
+            },
+            {
+              "id": "q5",
+              "question": "Quel marqueur complète la phrase : « ... hiç kar yağmadı » (L'hiver dernier, il n'a pas neigé du tout) ?",
+              "type": "single_choice",
+              "options": ["Geçen kış", "Gelecek kış", "Yarın", "Gelecek hafta"],
+              "correctAnswers": [0],
+              "explanation": "« Geçen kış » (l'hiver dernier) convient pour une action négative passée."
+            },
+            {
+              "id": "q6",
+              "question": "Traduisez : « Eskiden mektup yazardık, şimdi mesaj gönderiyoruz ».",
+              "type": "single_choice",
+              "options": [
+                "Autrefois nous écrivions des lettres, maintenant nous envoyons des messages.",
+                "Autrefois nous envoyions des messages, maintenant nous écrivons des lettres.",
+                "Demain nous écrirons une lettre et un message.",
+                "Nous n'avons jamais écrit de lettre."
+              ],
+              "correctAnswers": [0],
+              "explanation": "eskiden = autrefois ; şimdi = maintenant ; mektup = lettre ; mesaj = message."
+            },
+            {
+              "id": "q7",
+              "question": "Quelle est la bonne traduction de « tout à l'heure j'ai bu un café avec Ayşe » ?",
+              "type": "single_choice",
+              "options": [
+                "Demin Ayşe'yle kahve içtim.",
+                "Yarın Ayşe'yle kahve içeceğim.",
+                "Dün Ayşe'yle hiç görüşmedim.",
+                "Gelecek hafta Ayşe'yle buluşacağım."
+              ],
+              "correctAnswers": [0],
+              "explanation": "demin = à l'instant / tout à l'heure (au passé) ; Ayşe'yle kahve içtim = j'ai bu un café avec Ayşe."
+            },
+            {
+              "id": "q8",
+              "question": "Que signifie la phrase « Bütün gün seni aradım ama bulamadım » ?",
+              "type": "single_choice",
+              "options": [
+                "Toute la journée je t'ai cherché mais je ne t'ai pas trouvé.",
+                "Toute la nuit j'ai dormi sans te voir.",
+                "Hier je t'ai appelé et tu m'as répondu.",
+                "Demain je te chercherai toute la journée."
+              ],
+              "correctAnswers": [0],
+              "explanation": "bütün gün = toute la journée ; aradım = j'ai cherché/appelé ; bulamadım = je n'ai pas pu trouver."
+            },
+            {
+              "id": "q9",
+              "question": "Choisissez le bon mot : « Ali iki saat ... ders çalıştı » (pendant deux heures).",
+              "type": "single_choice",
+              "options": ["boyunca", "önceden", "eskiden", "yarın"],
+              "correctAnswers": [0],
+              "explanation": "« İki saat boyunca » signifie « durant / pendant deux heures »."
+            },
+            {
+              "id": "q10",
+              "question": "Quelle phrase résume le mieux une routine d'hier racontée chronologiquement ?",
+              "type": "single_choice",
+              "options": [
+                "Dün erken kalktım, kahvaltı ettim, sonra okula gittim.",
+                "Dün okula gideceğim ve erken kalkıyorum.",
+                "Yarın erken kalktım ve kahvaltı edeceğim.",
+                "Eskiden yarın erken kalktım."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Dün erken kalktım, kahvaltı ettim, sonra okula gittim » enchaîne harmonieusement trois actions au passé en -di."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

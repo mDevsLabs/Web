@@ -1,0 +1,2098 @@
+{
+  "id": "4e-portugais-04",
+  "year": "4e",
+  "subject": "portugais",
+  "title": "La grammaire du portugais",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Articles définis o, a, os, as",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'article défini masculin singulier en portugais ?",
+              "options": ["o", "a", "os", "um"],
+              "correctAnswers": [0],
+              "explanation": "En portugais, l'article défini masculin singulier est « o », qui correspond au français « le »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel article défini convient devant le nom féminin singulier « menina » (fille) ?",
+              "options": ["o", "a", "uma", "as"],
+              "correctAnswers": [1],
+              "explanation": "« Menina » est un nom féminin singulier, on emploie donc l'article défini féminin « a »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel article défini pluriel s'accorde avec le nom masculin « livros » (livres) ?",
+              "options": ["as", "uns", "os", "o"],
+              "correctAnswers": [2],
+              "explanation": "Le pluriel masculin de l'article défini est « os » (les livres = os livros)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « les maisons » en portugais ?",
+              "options": ["os casas", "a casas", "umas casas", "as casas"],
+              "correctAnswers": [3],
+              "explanation": "« Casa » est féminin. Au pluriel, « les maisons » se traduit par « as casas »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont des articles définis féminins en portugais ?",
+              "options": ["a", "o", "as", "os"],
+              "correctAnswers": [0, 2],
+              "explanation": "Les articles définis féminins sont « a » au singulier et « as » au pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel article défini convient pour « carro » (voiture, masculin en portugais) ?",
+              "options": ["a", "o", "as", "uma"],
+              "correctAnswers": [1],
+              "explanation": "En portugais, « carro » est masculin singulier, on dit donc « o carro »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En portugais européen, quel article place-t-on couramment devant le prénom « Pedro » ?",
+              "options": ["um", "a", "o", "aucun"],
+              "correctAnswers": [2],
+              "explanation": "En portugais du Portugal, on fait précéder les prénoms de l'article défini : « o Pedro », « a Maria »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel article défini s'accorde avec « praias » (plages) ?",
+              "options": ["as", "os", "a", "umas"],
+              "correctAnswers": [0],
+              "explanation": "« Praia » est un nom féminin, son pluriel est « as praias »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « l'ami » en portugais ?",
+              "options": ["a amiga", "um amigo", "os amigos", "o amigo"],
+              "correctAnswers": [3],
+              "explanation": "« Ami » se traduit par « amigo », précédé de l'article masculin singulier « o » : « o amigo »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « les amies » (féminin pluriel) en portugais ?",
+              "options": ["os amigos", "as amigas", "a amigas", "umas amigas"],
+              "correctAnswers": [1],
+              "explanation": "« Les amies » au féminin pluriel se dit « as amigas »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Articles indéfinis um, uma, uns, umas",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'article indéfini masculin singulier en portugais ?",
+              "options": ["um", "uma", "o", "uns"],
+              "correctAnswers": [0],
+              "explanation": "L'article indéfini masculin singulier est « um », correspondant au français « un »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel article indéfini utilise-t-on devant « cidade » (ville, féminin) ?",
+              "options": ["um", "uma", "a", "umas"],
+              "correctAnswers": [1],
+              "explanation": "« Cidade » est un nom féminin singulier, on dit donc « uma cidade »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel article indéfini pluriel s'accorde avec « rapazes » (garçons) ?",
+              "options": ["umas", "os", "uns", "um"],
+              "correctAnswers": [2],
+              "explanation": "Le masculin pluriel de l'article indéfini est « uns » (des garçons = uns rapazes)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « des pommes » (maçãs, féminin) en portugais ?",
+              "options": ["uns maçãs", "as maçãs", "uma maçãs", "umas maçãs"],
+              "correctAnswers": [3],
+              "explanation": "« Maçã » est féminin. Au pluriel indéfini, « des pommes » se traduit par « umas maçãs »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des articles indéfinis au singulier ?",
+              "options": ["um", "uns", "uma", "umas"],
+              "correctAnswers": [0, 2],
+              "explanation": "Les formes du singulier de l'article indéfini sont « um » (masculin) et « uma » (féminin)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle phrase contient un article indéfini masculin singulier ?",
+              "options": [
+                "Eu tenho a gata.",
+                "Eu tenho um cão.",
+                "Eu tenho uma gata.",
+                "Eu tenho os cães."
+              ],
+              "correctAnswers": [1],
+              "explanation": "Dans « Eu tenho um cão », « um » est l'article indéfini masculin singulier."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « uns dias » en français ?",
+              "options": [
+                "tous les jours",
+                "le jour",
+                "quelques jours",
+                "un jour"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Au pluriel, les articles indéfinis « uns / umas » ont souvent le sens de « quelques » ou « des »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète la phrase : « Comprei ___ caneta » (caneta est féminin).",
+              "options": ["uma", "um", "uns", "o"],
+              "correctAnswers": [0],
+              "explanation": "Comme « caneta » (stylo) est un nom féminin, on utilise « uma » : « Comprei uma caneta »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la forme plurielle de l'article indéfini féminin « uma » ?",
+              "options": ["uns", "as", "umaes", "umas"],
+              "correctAnswers": [3],
+              "explanation": "Le pluriel régulier de « uma » est « umas »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment traduit-on « un livre » en portugais ?",
+              "options": ["uma livre", "um livro", "o livro", "uns livros"],
+              "correctAnswers": [1],
+              "explanation": "« Livro » est masculin singulier, on dit « um livro »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Le genre des noms (masculin et féminin)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En règle générale, quelle est la terminaison typique des noms masculins en portugais ?",
+              "options": ["en -o", "en -a", "en -ção", "en -dade"],
+              "correctAnswers": [0],
+              "explanation": "La plupart des noms masculins se terminent par la voyelle « -o » (ex: o livro, o menino)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison la plus fréquente des noms féminins en portugais ?",
+              "options": ["en -o", "en -a", "en -or", "en -e"],
+              "correctAnswers": [1],
+              "explanation": "La grande majorité des noms féminins se terminent par « -a » (ex: a casa, a menina)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le féminin du nom « o gato » (le chat) ?",
+              "options": ["a gatina", "a gatona", "a gata", "a gotesa"],
+              "correctAnswers": [2],
+              "explanation": "On remplace la terminaison « -o » par « -a » : o gato -> a gata."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le féminin de « o professor » (le professeur) ?",
+              "options": [
+                "a professorita",
+                "a professoressa",
+                "a professoa",
+                "a professora"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Pour les noms en « -or », on ajoute généralement un « -a » pour former le féminin : a professora."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels noms sont du genre féminin en portugais ?",
+              "options": ["a casa", "o caderno", "a flor", "o sol"],
+              "correctAnswers": [0, 2],
+              "explanation": "« A casa » (la maison) et « a flor » (la fleur) sont féminins, alors que « o caderno » et « o sol » sont masculins."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le genre du mot « mapa » (carte géographique) en portugais ?",
+              "options": [
+                "féminin (a mapa)",
+                "masculin (o mapa)",
+                "neutre",
+                "variable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Bien qu'il se termine par « -a », « mapa » est d'origine grecque et est masculin : « o mapa »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le féminin de « o irmão » (le frère) ?",
+              "options": ["a irmana", "a irmã", "a irmandade", "a irmãoa"],
+              "correctAnswers": [1],
+              "explanation": "Le féminin de « o irmão » est irrégulier : « a irmã » (la sœur)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le genre des noms abstraits terminés par « -dade » comme « cidade » ou « amizade » ?",
+              "options": ["féminin", "masculin", "neutre", "indéterminé"],
+              "correctAnswers": [0],
+              "explanation": "Les noms en « -dade » sont toujours féminins (a cidade, a amizade, a verdade)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le féminin de « o aluno » (l'élève masculin) ?",
+              "options": ["a alune", "a alunada", "a alunita", "a aluna"],
+              "correctAnswers": [3],
+              "explanation": "On change le « -o » en « -a » : « a aluna »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel article défini convient devant « dia » (jour) ?",
+              "options": ["a", "o", "uma", "umas"],
+              "correctAnswers": [1],
+              "explanation": "« Dia » est une exception courante : c'est un mot masculin, on dit « o dia » (bom dia !)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Le pluriel régulier des noms",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment forme-t-on le pluriel d'un mot terminé par une voyelle comme « livro » ?",
+              "options": [
+                "on ajoute -s",
+                "on ajoute -es",
+                "on remplace par -is",
+                "on ne change rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les mots terminés par une voyelle ou une diphtongue, on ajoute simplement un « -s » (livro -> livros)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le pluriel du mot « mesa » (table) ?",
+              "options": ["mesaes", "mesas", "meses", "mesais"],
+              "correctAnswers": [1],
+              "explanation": "« Mesa » se termine par la voyelle « a », on ajoute donc un « s » : « mesas »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment forme-t-on le pluriel des mots terminés par les consonnes -r ou -z ?",
+              "options": [
+                "on ajoute -s",
+                "on change en -is",
+                "on ajoute -es",
+                "on supprime la consonne"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les noms terminés par « -r » ou « -z » prennent la terminaison « -es » au pluriel (flor -> flores, rapaz -> rapazes)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « computador » (ordinateur) ?",
+              "options": [
+                "computadors",
+                "computadois",
+                "computadoras",
+                "computadores"
+              ],
+              "correctAnswers": [3],
+              "explanation": "Terminé par « -r », il prend « -es » au pluriel : « computadores »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels pluriels réguliers sont formés avec l'ajout d'un simple -s ?",
+              "options": ["gatos", "luzs", "cadeiras", "professors"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Gatos » (gato + s) et « cadeiras » (cadeira + s) ajoutent un -s car ils finissent par une voyelle. Luz et professor prennent -es."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « rapaz » (garçon / jeune homme) ?",
+              "options": ["rapazs", "rapazes", "rapazos", "rapazis"],
+              "correctAnswers": [1],
+              "explanation": "Les mots en « -z » forment leur pluriel en « -es » : rapaz -> rapazes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « cor » (couleur) ?",
+              "options": ["cores", "cors", "cois", "coras"],
+              "correctAnswers": [0],
+              "explanation": "Le mot « cor » se termine par « -r », son pluriel est « cores »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « voz » (voix) ?",
+              "options": ["vozs", "vois", "vozes", "vozados"],
+              "correctAnswers": [2],
+              "explanation": "Le pluriel de « voz » prend « -es » : « as vozes »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « janela » (fenêtre) ?",
+              "options": ["janelaes", "janeles", "janelais", "janelas"],
+              "correctAnswers": [3],
+              "explanation": "« Janela » se terminant par une voyelle, son pluriel régulier est « janelas »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de la nationalité « português » ?",
+              "options": [
+                "portugueses",
+                "portuguêss",
+                "portugueis",
+                "portuguesa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les mots en « -ês » font leur pluriel en « -eses » en perdant l'accent circonflexe : « portugueses »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les pluriels particuliers (-ão, -l, -m)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment forme-t-on le pluriel des mots terminés par la lettre -m, comme « homem » ?",
+              "options": [
+                "on remplace -m par -ns",
+                "on ajoute -es",
+                "on ajoute un simple -s",
+                "on remplace par -les"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En portugais, la terminaison « -m » se transforme en « -ns » au pluriel (homem -> homens, viagem -> viagens)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « homem » (homme) ?",
+              "options": ["homems", "homens", "homemes", "homeis"],
+              "correctAnswers": [1],
+              "explanation": "Le mot « homem » remplace son « -m » final par « -ns » : « homens »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison plurielle la plus courante pour les mots en -ão, comme « coração » ?",
+              "options": ["-ãos", "-ães", "-ões", "-ons"],
+              "correctAnswers": [2],
+              "explanation": "La majorité des mots en « -ão » font leur pluriel en « -ões » : coração -> corações."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le pluriel particulier de « pão » (pain) ?",
+              "options": ["pãos", "pões", "pans", "pães"],
+              "correctAnswers": [3],
+              "explanation": "Le mot « pão » a un pluriel irrégulier en « -ães » : « pães »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mots forment leur pluriel en remplaçant la finale -m par -ns ?",
+              "options": ["jardim", "mesa", "viagem", "livro"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Jardim » devient « jardins » et « viagem » devient « viagens ». Mesa et livro se terminent par des voyelles."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « mão » (main) ?",
+              "options": ["mãos", "mões", "mães", "mans"],
+              "correctAnswers": [0],
+              "explanation": "« Mão » fait partie des quelques mots en « -ão » qui ajoutent simplement un -s : « mãos »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment forme-t-on le pluriel de « animal » (terminé par -al) ?",
+              "options": ["animals", "animais", "animales", "animaes"],
+              "correctAnswers": [1],
+              "explanation": "Les mots en « -al », « -el », « -ol », « -ul » remplacent le « -l » par « -is » : animal -> animais."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « papel » (papier) ?",
+              "options": ["papels", "papeles", "papéis", "papil"],
+              "correctAnswers": [2],
+              "explanation": "Le mot « papel » remplace « -el » par « -éis » avec un accent ouvert : « papéis »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de « cão » (chien) ?",
+              "options": ["cãos", "cões", "canes", "cães"],
+              "correctAnswers": [3],
+              "explanation": "Le pluriel de « cão » est « cães »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le pluriel de l'adjectif « fácil » (facile) ?",
+              "options": ["fáceis", "fácils", "fáciles", "fácilis"],
+              "correctAnswers": [0],
+              "explanation": "Pour les mots terminés par un « -il » atone (non accentué), la terminaison devient « -eis » : « fáceis »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "L'accord des adjectifs qualificatifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Avec quoi s'accorde l'adjectif qualificatif en portugais ?",
+              "options": [
+                "en genre et en nombre avec le nom",
+                "seulement en genre",
+                "seulement en nombre",
+                "toujours avec le verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en français, l'adjectif qualificatif s'accorde en genre (masculin/féminin) et en nombre (singulier/pluriel) avec le nom qu'il qualifie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « A casa é ___ » (La maison est blanche).",
+              "options": ["branco", "branca", "brancas", "brancos"],
+              "correctAnswers": [1],
+              "explanation": "« Casa » est féminin singulier, l'adjectif prend la forme féminine « branca »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Os rapazes são ___ » (Les garçons sont grands).",
+              "options": ["alta", "alto", "altos", "altas"],
+              "correctAnswers": [2],
+              "explanation": "« Rapazes » est masculin pluriel, l'adjectif prend la forme « altos »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la forme féminine de l'adjectif « simpático » ?",
+              "options": ["simpátic", "simpátice", "simpatia", "simpática"],
+              "correctAnswers": [3],
+              "explanation": "Les adjectifs en « -o » forment leur féminin en « -a » : « simpática »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs ont la même forme au masculin et au féminin singulier ?",
+              "options": ["inteligente", "bonito", "feliz", "pequeno"],
+              "correctAnswers": [0, 2],
+              "explanation": "Les adjectifs terminés par « -e » (inteligente) ou « -z » (feliz) sont invariables en genre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « As raparigas são ___ » (Les filles sont intelligentes).",
+              "options": [
+                "inteligentes",
+                "inteligenta",
+                "inteligentas",
+                "inteligentos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Inteligente » est invariable en genre mais prend un « -s » au pluriel : « inteligentes »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment s'accorde l'adjectif irrégulier « bom » (bon) avec un nom féminin singulier ?",
+              "options": ["bona", "boa", "boma", "bome"],
+              "correctAnswers": [1],
+              "explanation": "Le féminin de « bom » est irrégulier : « boa » (ex: uma boa ideia)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Os exercícios são ___ » (Les exercices sont faciles).",
+              "options": ["fácil", "fáciles", "fáceis", "fácils"],
+              "correctAnswers": [2],
+              "explanation": "Le pluriel de « fácil » est « fáceis »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Où se place le plus couramment l'adjectif qualificatif en portugais ?",
+              "options": [
+                "toujours avant le nom",
+                "toujours en tête de phrase",
+                "uniquement après le verbe",
+                "après le nom"
+              ],
+              "correctAnswers": [3],
+              "explanation": "En portugais, comme en français, l'adjectif qualificatif se place le plus souvent après le nom (ex: um carro azul)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Uma camisola ___ » (Un pull bleu - azul).",
+              "options": ["azul", "azula", "azule", "azulo"],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif « azul » ne change pas au féminin : « uma camisola azul »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les contractions avec de et em",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que donne la contraction obligatoire de la préposition « de » avec l'article défini « o » ?",
+              "options": ["do", "de o", "dum", "no"],
+              "correctAnswers": [0],
+              "explanation": "En portugais, « de + o » fusionne obligatoirement pour former « do » (du)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que donne la contraction de « de » avec l'article « a » ?",
+              "options": ["na", "da", "dea", "dela"],
+              "correctAnswers": [1],
+              "explanation": "« De + a » forme la contraction « da » (de la)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que donne la contraction de la préposition « em » (en / dans) avec l'article « o » ?",
+              "options": ["do", "em o", "no", "ao"],
+              "correctAnswers": [2],
+              "explanation": "« Em + o » se contracte toujours en « no » (dans le / au)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que donne la contraction de « em » avec « a » ?",
+              "options": ["da", "em a", "à", "na"],
+              "correctAnswers": [3],
+              "explanation": "« Em + a » se contracte obligatoirement en « na » (dans la / à la)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes sont des contractions issues de la préposition « de » ?",
+              "options": ["dos", "nos", "das", "nas"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Dos » (de + os) et « das » (de + as) proviennent de « de », tandis que « nos » et « nas » proviennent de « em »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « O livro ___ professor » (Le livre du professeur).",
+              "options": ["no", "do", "ao", "pelo"],
+              "correctAnswers": [1],
+              "explanation": "« Du » se traduit par « do » (de + o professor)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Eu moro ___ cidade de Lisboa » (J'habite dans la ville de Lisbonne).",
+              "options": ["da", "à", "no", "na"],
+              "correctAnswers": [3],
+              "explanation": "« Cidade » est féminin, on utilise « na » (em + a)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que donne la contraction de « de + os » ?",
+              "options": ["dos", "nos", "aos", "pelos"],
+              "correctAnswers": [0],
+              "explanation": "« De + os » devient « dos » (des)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que donne la contraction de « em + os » ?",
+              "options": ["dos", "aos", "nos", "pelos"],
+              "correctAnswers": [2],
+              "explanation": "« Em + os » se contracte en « nos » (dans les / aux)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Estamos ___ escola » (Nous sommes à l'école - a escola).",
+              "options": ["da", "na", "pela", "do"],
+              "correctAnswers": [1],
+              "explanation": "On utilise la préposition « em » contractée avec « a » : « na escola »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les contractions avec a et por",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que donne la contraction de la préposition « a » avec l'article « o » ?",
+              "options": ["ao", "no", "do", "pelo"],
+              "correctAnswers": [0],
+              "explanation": "« A + o » fusionne pour former « ao » (au masculin singulier)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que donne la contraction de « a » avec l'article féminin « a » ?",
+              "options": ["ao", "à", "na", "da"],
+              "correctAnswers": [1],
+              "explanation": "« A + a » produit « à » avec un accent grave, phénomène appelé la crase (crase)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que donne la contraction de « a + os » ?",
+              "options": ["nos", "dos", "aos", "pelos"],
+              "correctAnswers": [2],
+              "explanation": "« A + os » devient « aos » (aux, masculin pluriel)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que donne la contraction de « a + as » ?",
+              "options": ["aos", "nas", "das", "às"],
+              "correctAnswers": [3],
+              "explanation": "« A + as » devient « às » avec l'accent grave de la crase."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes résultent de la contraction de la préposition « por » avec un article défini ?",
+              "options": ["pelo", "ao", "pela", "no"],
+              "correctAnswers": [0, 2],
+              "explanation": "La préposition « por » se contracte avec les articles pour donner « pelo » (por + o) et « pela » (por + a)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que donne « por + o » ?",
+              "options": ["poro", "pelo", "no", "ao"],
+              "correctAnswers": [1],
+              "explanation": "« Por + o » donne « pelo » (par le / à travers le)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Vou ___ cinema » (Je vais au cinéma - o cinema).",
+              "options": ["à", "no", "ao", "do"],
+              "correctAnswers": [2],
+              "explanation": "Le verbe « ir » exige la préposition « a », qui se contracte avec « o » : « vou ao cinema »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Ela vai ___ praia » (Elle va à la plage - a praia).",
+              "options": ["à", "ao", "na", "pela"],
+              "correctAnswers": [0],
+              "explanation": "« A + a praia » donne la crase « à praia »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que donne la contraction de « por + os » ?",
+              "options": ["poros", "nos", "aos", "pelos"],
+              "correctAnswers": [3],
+              "explanation": "« Por + os » devient « pelos » (par les / à travers les)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que donne la contraction de « por + as » ?",
+              "options": ["poras", "pelas", "nas", "às"],
+              "correctAnswers": [1],
+              "explanation": "« Por + as » donne « pelas » (ex: passear pelas ruas)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les adjectifs possessifs et leur accord",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on « mon » devant un nom masculin singulier en portugais ?",
+              "options": ["meu", "minha", "teu", "seu"],
+              "correctAnswers": [0],
+              "explanation": "Le possessif masculin singulier de 1re personne est « meu » (ex: o meu livro)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « ma » devant un nom féminin singulier ?",
+              "options": ["meu", "minha", "tua", "sua"],
+              "correctAnswers": [1],
+              "explanation": "Le possessif féminin singulier de 1re personne est « minha » (ex: a minha mãe)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel possessif correspond à « ton » (informel, associé à « tu ») ?",
+              "options": ["meu", "seu", "teu", "nosso"],
+              "correctAnswers": [2],
+              "explanation": "Pour tutoyer quelqu'un (tu), on emploie « teu » au masculin singulier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète avec l'article et le possessif : « ___ mãe é professora » (Ma mère est professeur).",
+              "options": ["O meu", "O teu", "Os meus", "A minha"],
+              "correctAnswers": [3],
+              "explanation": "« Mãe » est féminin singulier, on emploie « a minha »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels possessifs s'accordent avec un nom masculin pluriel ?",
+              "options": ["meus", "minhas", "nossos", "nossas"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Meus » et « nossos » sont masculins pluriels, alors que « minhas » et « nossas » sont féminins pluriels."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En portugais européen, que place-t-on couramment juste avant le possessif ?",
+              "options": [
+                "l'article défini",
+                "aucun mot",
+                "toujours un verbe",
+                "un pronom relatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au Portugal, l'article défini précède presque toujours le possessif : « o meu irmão », « a tua casa »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel possessif masculin singulier correspond à « notre » ?",
+              "options": ["nossa", "nosso", "nossos", "vosso"],
+              "correctAnswers": [1],
+              "explanation": "« Notre » devant un nom masculin singulier se traduit par « nosso » (ex: o nosso pai)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Os ___ livros estão na mesa » (Mes livres).",
+              "options": ["minhas", "meu", "meus", "minha"],
+              "correctAnswers": [2],
+              "explanation": "« Livros » est masculin pluriel, on emploie donc « meus »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la forme féminine de « vosso » (votre) ?",
+              "options": ["vosse", "vossas", "vossos", "vossa"],
+              "correctAnswers": [3],
+              "explanation": "Le féminin singulier de « vosso » est « vossa » (ex: a vossa escola)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « A ___ casa é grande » (Leur / Sa maison).",
+              "options": ["sua", "seu", "seus", "meu"],
+              "correctAnswers": [0],
+              "explanation": "« Casa » étant féminin, le possessif de 3e personne s'accorde au féminin singulier : « a sua casa »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Les démonstratifs simples (este, esse, aquele)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel démonstratif masculin désigne un objet très proche de la personne qui parle (« ici ») ?",
+              "options": ["este", "esse", "aquele", "aquilo"],
+              "correctAnswers": [0],
+              "explanation": "« Este » désigne ce qui se trouve près du locuteur (aqui) : ce...-ci."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel démonstratif féminin correspond à « este » ?",
+              "options": ["essa", "esta", "aquela", "isto"],
+              "correctAnswers": [1],
+              "explanation": "Le féminin singulier de « este » est « esta » (ex: esta caneta aqui)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel démonstratif masculin désigne un objet proche de l'interlocuteur (« là ») ?",
+              "options": ["este", "aquele", "esse", "isso"],
+              "correctAnswers": [2],
+              "explanation": "« Esse » indique la proximité avec la personne à qui l'on parle (aí)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel démonstratif désigne un objet éloigné des deux interlocuteurs (« là-bas ») ?",
+              "options": ["este", "esse", "aquilo", "aquele"],
+              "correctAnswers": [3],
+              "explanation": "« Aquele » indique l'éloignement par rapport aux deux personnes (ali / lá) : ce...-là-bas."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels démonstratifs sont au masculin singulier ?",
+              "options": ["este", "esta", "aquele", "aquela"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Este » et « aquele » sont masculins singuliers, tandis que « esta » et « aquela » sont féminins."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le pluriel masculin de « este » ?",
+              "options": ["estes", "esses", "aqueles", "estas"],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel de « este » est « estes »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le pluriel féminin de « aquela » ?",
+              "options": ["aqueles", "aquelas", "estas", "essas"],
+              "correctAnswers": [1],
+              "explanation": "« Aquela » forme son pluriel en ajoutant un -s : « aquelas »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que donne la contraction de la préposition « em » avec « este » ?",
+              "options": ["deste", "no este", "neste", "a este"],
+              "correctAnswers": [2],
+              "explanation": "« Em + este » fusionne pour donner « neste » (dans ce...-ci)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que donne la contraction de la préposition « de » avec « esse » ?",
+              "options": ["nesse", "do esse", "daquele", "desse"],
+              "correctAnswers": [3],
+              "explanation": "« De + esse » donne « desse » (de ce...-là)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « ___ caneta aqui é azul » (Ce stylo ici est bleu).",
+              "options": ["Esta", "Essa", "Aquela", "Este"],
+              "correctAnswers": [0],
+              "explanation": "« Caneta » est féminin et l'adverbe « aqui » indique la proximité directe, donc « esta »."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Structure de la phrase affirmative",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'ordre habituel des éléments dans une phrase affirmative simple en portugais ?",
+              "options": [
+                "Sujet - Verbe - Complément",
+                "Verbe - Sujet - Complément",
+                "Complément - Verbe - Sujet",
+                "Sujet - Complément - Verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en français, l'ordre de base le plus naturel est Sujet + Verbe + Complément (SVO)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la phrase « O Pedro come uma maçã », quel élément est le sujet ?",
+              "options": ["come", "O Pedro", "uma", "maçã"],
+              "correctAnswers": [1],
+              "explanation": "« O Pedro » réalise l'action exprimée par le verbe : c'est le sujet grammatical."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la phrase « A Maria lê um livre », quel mot est le verbe ?",
+              "options": ["A Maria", "um", "lê", "livro"],
+              "correctAnswers": [2],
+              "explanation": "« Lê » est la forme conjuguée du verbe « ler » (lire) à la 3e personne du singulier."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la phrase « Nós falamos português », quel mot est le complément d'objet direct ?",
+              "options": ["Nós", "falamos", "livro", "português"],
+              "correctAnswers": [3],
+              "explanation": "« Português » répond à la question « nous parlons quoi ? » : c'est le complément d'objet direct."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases respectent la structure classique Sujet - Verbe - Complément ?",
+              "options": [
+                "O gato bebe leite.",
+                "Bebe leite o gato.",
+                "Eles compram pão.",
+                "Pão compram eles."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« O gato bebe leite » et « Eles compram pão » suivent l'ordre canonique Sujet + Verbe + Complément."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on correctement « João habite à Lisbonne » ?",
+              "options": [
+                "O João mora em Lisboa.",
+                "O João em Lisboa mora.",
+                "Mora Lisboa em o João.",
+                "Em Lisboa o João mora."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phrase suit l'ordre Sujet (O João) + Verbe (mora) + Complément de lieu (em Lisboa)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie le verbe « fala » dans « A Ana fala francês » ?",
+              "options": ["écoute", "parle", "écrit", "comprend"],
+              "correctAnswers": [1],
+              "explanation": "« Fala » vient du verbe « falar », qui signifie « parler »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « O cão corre no jardim », quel élément indique le lieu de l'action ?",
+              "options": ["O cão", "corre", "no jardim", "jardim corre"],
+              "correctAnswers": [2],
+              "explanation": "« No jardim » (dans le jardin) est le complément circonstanciel de lieu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase est syntaxiquement correcte et naturelle en portugais ?",
+              "options": [
+                "Gosto eu música de.",
+                "De música eu gosto não.",
+                "Música eu de gosto.",
+                "Eu gosto de música."
+              ],
+              "correctAnswers": [3],
+              "explanation": "« Eu gosto de música » présente l'ordre normal et la préposition requise après « gostar de »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans la phrase « Os alunos estudam a lição », quel mot est le verbe conjugué ?",
+              "options": ["Os", "estudam", "alunos", "a lição"],
+              "correctAnswers": [1],
+              "explanation": "« Estudam » est le verbe « estudar » conjugué au présent avec le sujet pluriel « os alunos »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'omission du pronom sujet",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pourquoi le pronom sujet personnel est-il très souvent omis en portugais ?",
+              "options": [
+                "parce que la terminaison du verbe indique déjà la personne",
+                "parce qu'il n'existe pas de pronoms en portugais",
+                "parce que c'est une faute de grammaire",
+                "parce que le verbe reste à l'infinitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le portugais est une langue à sujet nul (ou « pro-drop ») : la terminaison verbale suffit à identifier le sujet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la phrase « Falo português », quel est le sujet sous-entendu ?",
+              "options": ["Tu", "Eu", "Ele", "Nós"],
+              "correctAnswers": [1],
+              "explanation": "La terminaison en « -o » indique sans ambiguïté la 1re personne du singulier : « Eu falo »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le sujet sous-entendu dans la phrase « Vivemos em França » ?",
+              "options": ["Eu", "Tu", "Nós", "Eles"],
+              "correctAnswers": [2],
+              "explanation": "La désinence « -mos » correspond toujours à la 1re personne du pluriel : « Nós vivemos »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le sujet sous-entendu dans la question « És estudante ? » ?",
+              "options": ["Eu", "Ele", "Vocês", "Tu"],
+              "correctAnswers": [3],
+              "explanation": "« És » est la 2e personne du singulier du verbe « ser », correspondant au sujet « tu »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases illustrent l'omission naturelle du pronom sujet ?",
+              "options": [
+                "Moro no Porto.",
+                "Eu moro no Porto.",
+                "Comemos uma pizza.",
+                "Nós comemos uma pizza."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Moro no Porto » et « Comemos uma pizza » n'expriment pas de pronom sujet, ce qui est très courant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quand emploie-t-on expressément le pronom sujet (ex: « Eu ») en portugais ?",
+              "options": [
+                "pour insister ou marquer un contraste",
+                "uniquement dans les questions",
+                "jamais à l'oral",
+                "seulement avec le verbe être"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On n'exprime le pronom que pour mettre l'accent sur la personne ou lever une ambiguïté (ex: Eu sou francês, mas ele é português)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la question « Tens irmãos ? » sans pronom sujet explicite ?",
+              "options": [
+                "A-t-il des frères ?",
+                "As-tu des frères et sœurs ?",
+                "Avons-nous des frères ?",
+                "Ont-ils des frères ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Tens » est la conjugaison avec « tu » du verbe « ter » : « As-tu des frères et sœurs ? »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Estuda muito », qui peut être le sujet sous-entendu ?",
+              "options": ["Eu", "Tu", "Ele ou Ela", "Nós"],
+              "correctAnswers": [2],
+              "explanation": "« Estuda » correspond à la 3e personne du singulier : « ele », « ela » ou la formule polie « você »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Nous partons » en un seul mot avec sujet sous-entendu ?",
+              "options": ["Parto", "Partem", "Partes", "Partimos"],
+              "correctAnswers": [3],
+              "explanation": "« Partimos » porte la terminaison de 1re personne du pluriel, rendant le pronom « nós » facultatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on naturellement « Je comprends » en omettant le pronom sujet ?",
+              "options": [
+                "Compreendo",
+                "Compreende",
+                "Compreendemos",
+                "Compreendem"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Compreendo » à la 1re personne du singulier suffit amplement à exprimer « je comprends »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La phrase négative avec não",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où se place l'adverbe « não » pour former une négation simple en portugais ?",
+              "options": [
+                "juste avant le verbe",
+                "après le verbe",
+                "en fin de phrase",
+                "devant le sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour nier une phrase, on place simplement « não » directement devant le verbe conjugué (ex: Eu não falo)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment transforme-t-on « Eu falo » à la forme négative ?",
+              "options": [
+                "Eu falo não.",
+                "Eu não falo.",
+                "Não eu falo.",
+                "Eu nunca falo não."
+              ],
+              "correctAnswers": [1],
+              "explanation": "On place « não » entre le sujet et le verbe : « Eu não falo » (Je ne parle pas)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « Je ne sais pas » en portugais ?",
+              "options": ["Sei não.", "Não eu sei.", "Não sei.", "Não sabo."],
+              "correctAnswers": [2],
+              "explanation": "« Não sei » est la tournure exacte et courante pour « Je ne sais pas »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « Ele não gosta de café » ?",
+              "options": [
+                "Il aime le café.",
+                "Il boit du café.",
+                "Il n'aime pas le thé.",
+                "Il n'aime pas le café."
+              ],
+              "correctAnswers": [3],
+              "explanation": "« Não gosta de » exprime la négation du goût : « Il n'aime pas le café »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases négatives sont correctement formulées ?",
+              "options": [
+                "Não tenho tempo.",
+                "Tenho não tempo.",
+                "Nós não comemos carne.",
+                "Nós comemos não carne."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Não tenho tempo » et « Nós não comemos carne » placent bien la négation « não » devant le verbe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment fonctionne la double négation avec « nada » (rien) placé après le verbe ?",
+              "options": [
+                "on garde « não » avant le verbe",
+                "on supprime « não »",
+                "on remplace « não » par « nunca » obligatoirement",
+                "la double négation est interdite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En portugais, la double négation est obligatoire si le mot négatif est après le verbe : « Não vejo nada »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « Eu não vejo nada » ?",
+              "options": [
+                "Je vois tout.",
+                "Je ne vois rien.",
+                "Je ne vois personne.",
+                "Je vois quelque chose."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Nada » signifie « rien » ; la phrase signifie donc « Je ne vois rien »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « Ela nunca diz a verdade » ?",
+              "options": [
+                "Elle dit toujours la vérité.",
+                "Elle dit la vérité parfois.",
+                "Elle ne dit jamais la vérité.",
+                "Elle ne dit rien."
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Nunca » placé avant le verbe signifie « jamais » : « Elle ne dit jamais la vérité »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète la négation : « Nós ___ moramos aqui. »",
+              "options": ["nem", "sem", "nada", "não"],
+              "correctAnswers": [3],
+              "explanation": "« Não » est l'adverbe standard de négation : « Nós não moramos aqui » (Nous n'habitons pas ici)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « Personne ne parle » avec « ninguém » placé après le verbe ?",
+              "options": [
+                "Não fala ninguém.",
+                "Fala não ninguém.",
+                "Ninguém fala não.",
+                "Não ninguém fala."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si « ninguém » est placé après le verbe, il faut maintenir « não » devant le verbe : « Não fala ninguém »."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les questions fermées (oui ou non)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "À l'oral, comment pose-t-on le plus simplement une question fermée en portugais ?",
+              "options": [
+                "par une intonation montante en fin de phrase",
+                "en inversant obligatoirement verbe et sujet",
+                "en ajoutant « est-ce que »",
+                "en plaçant le verbe à la fin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre des mots ne change pas nécessairement : c'est l'intonation montante qui marque la question."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À l'écrit, comment signale-t-on une question en portugais ?",
+              "options": [
+                "avec un point d'exclamation",
+                "avec un point d'interrogation final (?)",
+                "avec un point d'interrogation inversé au début",
+                "par une majuscule spéciale"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En portugais, on utilise simplement le point d'interrogation final « ? » (contrairement à l'espagnol qui en met un au début)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment transforme-t-on « Tu falas inglês » en question simple ?",
+              "options": [
+                "Falas tu inglês est-ce que ?",
+                "Inglês tu falas ?",
+                "Tu falas inglês ?",
+                "Que tu falas inglês ?"
+              ],
+              "correctAnswers": [2],
+              "explanation": "La phrase garde sa structure : « Tu falas inglês ? » (avec intonation interrogative)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment répond-on affirmativement de façon très naturelle à la question « Comes sopa ? » ?",
+              "options": ["Sim, como não.", "Non.", "Sou.", "Como."],
+              "correctAnswers": [3],
+              "explanation": "En portugais, pour dire « oui », on répète très fréquemment le verbe de la question : « Como » (ou « Sim, como »)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles réponses affirmatives sont naturelles à la question « Vives aqui ? » ?",
+              "options": ["Vivo.", "Não vivo.", "Sim, vivo.", "Nunca."],
+              "correctAnswers": [0, 2],
+              "explanation": "« Vivo » et « Sim, vivo » sont deux réponses affirmatives naturelles et correctes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la locution interrogative « ..., não é ? » ajoutée en fin de phrase ?",
+              "options": [
+                "..., n'est-ce pas ?",
+                "..., pourquoi ?",
+                "..., où ça ?",
+                "..., qui est-ce ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Não é ? » (souvent prononcé « né ? ») équivaut au français « n'est-ce pas ? » pour demander confirmation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase interrogative correspond à « Vous êtes prêts ? » (adressé à des camarades avec « vocês ») ?",
+              "options": [
+                "Estão prontos não ?",
+                "Vocês estão prontos ?",
+                "Prontos vocês que estão ?",
+                "Onde estão prontos ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Vocês estão prontos ? » est la formulation interrogative standard et naturelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment répond-on négativement de façon complète à « Tens carro ? » ?",
+              "options": [
+                "Sim, não tenho.",
+                "Não carro.",
+                "Não, não tenho.",
+                "Sem tenho."
+              ],
+              "correctAnswers": [2],
+              "explanation": "La réponse négative complète associe « Não » et la forme verbale niée : « Não, não tenho »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases est une question fermée attendant oui ou non ?",
+              "options": [
+                "O que tens ?",
+                "Onde vais ?",
+                "Quem és tu ?",
+                "Tens fome ?"
+              ],
+              "correctAnswers": [3],
+              "explanation": "« Tens fome ? » (As-tu faim ?) est une question fermée à laquelle on répond par oui ou non."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la question polie « Posso entrar ? » ?",
+              "options": [
+                "Puis-je entrer ?",
+                "Dois-je sortir ?",
+                "Veux-tu entrer ?",
+                "Qui entre ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Posso » est la 1re personne du verbe « poder » : « Posso entrar ? » = « Puis-je entrer ? »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Mots interrogatifs : quem, onde, quando, como",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander « qui » ?",
+              "options": ["Quem", "Onde", "Quando", "Como"],
+              "correctAnswers": [0],
+              "explanation": "« Quem » correspond au français « qui » pour interroger sur une personne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander « où » ?",
+              "options": ["Quem", "Onde", "Quando", "Porque"],
+              "correctAnswers": [1],
+              "explanation": "« Onde » permet d'interroger sur le lieu (où)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander « quand » ?",
+              "options": ["Quanto", "Onde", "Quando", "Como"],
+              "correctAnswers": [2],
+              "explanation": "« Quando » sert à interroger sur le moment ou le temps (quand)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif utilise-t-on pour demander « comment » ?",
+              "options": ["Qual", "Quem", "Onde", "Como"],
+              "correctAnswers": [3],
+              "explanation": "« Como » correspond au français « comment » pour interroger sur la manière ou l'état."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mots interrogatifs se rapportent respectivement au lieu ou au temps ?",
+              "options": ["Onde", "Quem", "Quando", "Como"],
+              "correctAnswers": [0, 2],
+              "explanation": "« Onde » concerne le lieu et « Quando » concerne le temps."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « ___ estás ? - Estou bem, obrigado. »",
+              "options": ["Como", "Quem", "Onde", "Quando"],
+              "correctAnswers": [0],
+              "explanation": "« Como estás ? » est la salutation classique pour demander « Comment vas-tu ? »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « ___ mora o teu amigo ? - Em Coimbra. »",
+              "options": ["Quem", "Onde", "Quando", "Como"],
+              "correctAnswers": [1],
+              "explanation": "La réponse indiquant une ville (lieu), le mot interrogatif approprié est « Onde »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment demande-t-on « D'où viens-tu ? / D'où es-tu ? » en portugais ?",
+              "options": [
+                "Onde és ?",
+                "Quem és ?",
+                "De onde és ?",
+                "Como és ?"
+              ],
+              "correctAnswers": [2],
+              "explanation": "On associe la préposition « de » et « onde » : « De onde és ? »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la question « Quem é aquele rapaz ? » ?",
+              "options": [
+                "Où est ce garçon ?",
+                "Comment s'appelle ce garçon ?",
+                "Quand vient ce garçon ?",
+                "Qui est ce garçon ?"
+              ],
+              "correctAnswers": [3],
+              "explanation": "« Quem » signifie « qui » et « aquele rapaz » désigne « ce garçon »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « ___ começa a aula ? - Às oito horas. »",
+              "options": ["Quando", "Onde", "Quem", "Como"],
+              "correctAnswers": [0],
+              "explanation": "La réponse donnant une heure, on pose la question sur le temps avec « Quando »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Questions avec o que et porquê / porque",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on « qu'est-ce que / que » en tête de question en portugais ?",
+              "options": ["O que", "Quem", "Onde", "Quando"],
+              "correctAnswers": [0],
+              "explanation": "On emploie « O que » pour demander « que » ou « qu'est-ce que » (ex: O que fazes ?)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie la question « O que fazes ? » ?",
+              "options": [
+                "Où vas-tu ?",
+                "Que fais-tu ?",
+                "Qui es-tu ?",
+                "Comment vas-tu ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Fazes » est le verbe « fazer » (faire) avec « tu » : « Que fais-tu ? »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle forme emploie-t-on pour demander « pourquoi » en début de question ?",
+              "options": ["Porque", "Por isso", "Por que", "Para que"],
+              "correctAnswers": [2],
+              "explanation": "Au début d'une question, « pourquoi » s'écrit en deux mots séparés : « Por que »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle forme utilise-t-on pour répondre « parce que / car » ?",
+              "options": ["Porquê", "Por quê", "Para quê", "Porque"],
+              "correctAnswers": [3],
+              "explanation": "Dans la réponse, « parce que » s'écrit en un seul mot sans accent : « Porque »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles questions permettent de demander « qu'est-ce que c'est ? » ?",
+              "options": [
+                "O que é isto ?",
+                "Quem é isto ?",
+                "O que é ?",
+                "Onde é isto ?"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« O que é isto ? » et « O que é ? » signifient tous deux « qu'est-ce que c'est ? »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quand écrit-on « porquê » en un mot avec un accent circonflexe ?",
+              "options": [
+                "en fin de phrase ou employé tout seul",
+                "toujours en début de phrase",
+                "uniquement dans les réponses",
+                "devant un adjectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Porquê » s'écrit ainsi quand il est placé en fin de phrase ou utilisé seul comme mot interrogatif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète la réponse : « Não vou ___ estou cansado » (Je n'y vais pas parce que je suis fatigué).",
+              "options": ["porquê", "porque", "por que", "para que"],
+              "correctAnswers": [1],
+              "explanation": "Dans la réponse causale (parce que), on écrit « porque » en un seul mot."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « O que queres comer ? » ?",
+              "options": [
+                "Quand veux-tu manger ?",
+                "Où veux-tu manger ?",
+                "Que veux-tu manger ?",
+                "Veux-tu manger ?"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« O que » (que) + « queres » (veux-tu) + « comer » (manger) = « Que veux-tu manger ? »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que demande-t-on avec « Qual é o teu número de telefone ? » ?",
+              "options": [
+                "Où est ton téléphone ?",
+                "Qui a ton téléphone ?",
+                "Pourquoi téléphones-tu ?",
+                "Quel est ton numéro de téléphone ?"
+              ],
+              "correctAnswers": [3],
+              "explanation": "« Qual » s'emploie pour demander « quel » lorsqu'on demande une précision parmi plusieurs possibilités."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la nuance principale entre « qual » et « o que » ?",
+              "options": [
+                "« qual » implique généralement un choix ou une sélection",
+                "il n'y a aucune différence",
+                "« qual » signifie toujours pourquoi",
+                "« o que » ne s'emploie jamais dans les questions"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Qual » invite à identifier ou choisir un élément précis parmi plusieurs (ex: Qual é o teu livro ?)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Conjonctions de coordination : e, mas, ou",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle conjonction de coordination correspond à « et » en portugais ?",
+              "options": ["e", "ou", "mas", "se"],
+              "correctAnswers": [0],
+              "explanation": "La conjonction « e » relie deux mots ou deux propositions, exactement comme « et » en français."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle conjonction correspond à « mais » en portugais ?",
+              "options": ["e", "mas", "ou", "porque"],
+              "correctAnswers": [1],
+              "explanation": "« Mas » (sans « i ») exprime l'opposition et correspond au français « mais »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle conjonction exprime l'alternative « ou / ou bien » ?",
+              "options": ["e", "mas", "ou", "nem"],
+              "correctAnswers": [2],
+              "explanation": "« Ou » est la conjonction qui exprime le choix entre deux options."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Attention au faux-ami : que signifie « mais » avec un -i- en portugais ?",
+              "options": ["mais", "jamais", "moins", "plus"],
+              "correctAnswers": [3],
+              "explanation": "« Mais » avec un « i » signifie « plus » (adverbe de quantité), alors que « mas » signifie « mais »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels mots sont des conjonctions de coordination en portugais ?",
+              "options": ["e", "muito", "mas", "livro"],
+              "correctAnswers": [0, 2],
+              "explanation": "« E » (et) et « mas » (mais) sont des conjonctions de coordination."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Gosto de maçãs ___ não gosto de laranjas. »",
+              "options": ["mas", "ou", "e não", "porque não"],
+              "correctAnswers": [0],
+              "explanation": "Il y a une opposition entre aimer les pommes et ne pas aimer les oranges : on emploie « mas »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Queres chá ___ café ? » (Tu veux du thé ou du café ?).",
+              "options": ["mas", "ou", "nem", "com"],
+              "correctAnswers": [1],
+              "explanation": "Pour proposer une alternative entre deux boissons, on emploie « ou »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « O Pedro ___ a Maria são irmãos. »",
+              "options": ["ou", "mas", "e", "de"],
+              "correctAnswers": [2],
+              "explanation": "On additionne deux personnes avec la conjonction « e » (et)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la double conjonction « nem... nem... » ?",
+              "options": [
+                "et... et...",
+                "ou... ou...",
+                "plus... plus...",
+                "ni... ni..."
+              ],
+              "correctAnswers": [3],
+              "explanation": "« Nem... nem... » traduit la coordination négative « ni... ni... » (ex: Não como carne nem peixe)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Traduis correctement : « Il étudie et travaille. »",
+              "options": [
+                "Ele estuda e trabalha.",
+                "Ele estuda mas trabalha.",
+                "Ele estuda ou trabalha.",
+                "Ele estuda mais trabalha."
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ele estuda e trabalha » traduit fidèlement l'addition des deux actions avec « e »."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Exprimer l'obligation et la permission (ter de, poder)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle structure courante exprime l'obligation personnelle en portugais ?",
+              "options": [
+                "ter de + infinitif",
+                "fazer de + infinitif",
+                "ir a + infinitif",
+                "estar a + infinitif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour dire que l'on « doit » faire quelque chose, on utilise « ter de + infinitif » (ex: tenho de estudar)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « Je dois étudier » en portugais européen ?",
+              "options": [
+                "Posso estudar.",
+                "Tenho de estudar.",
+                "Quero estudar.",
+                "Vou estudar."
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Tenho de estudar » est la formule usuelle pour exprimer l'obligation personnelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel verbe exprime la permission ou la possibilité (« pouvoir ») ?",
+              "options": ["dever", "ter", "poder", "saber"],
+              "correctAnswers": [2],
+              "explanation": "Le verbe « poder » exprime le fait de pouvoir ou d'avoir la permission d'accomplir une action."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « Nous pouvons entrer » ?",
+              "options": [
+                "Temos de entrar.",
+                "Queremos entrar.",
+                "Sabemos entrar.",
+                "Podemos entrar."
+              ],
+              "correctAnswers": [3],
+              "explanation": "« Podemos » est le verbe « poder » conjugué avec « nós » : « Podemos entrar »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment clairement une obligation ?",
+              "options": [
+                "Tenho de arrumar o quarto.",
+                "Posso jogar futebol.",
+                "Eles têm de ir embora.",
+                "Ela sabe nadar."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Tenho de arrumar » et « têm de ir » utilisent « ter de » pour exprimer une obligation."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Tu ___ de fazer os deveres. »",
+              "options": ["tens", "podes", "queres", "estás"],
+              "correctAnswers": [0],
+              "explanation": "Avec « tu », le verbe « ter » se conjugue « tens » : « tens de fazer os deveres »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment demande-t-on poliment la permission : « Puis-je poser une question ? » ?",
+              "options": [
+                "Tenho de fazer uma pergunta ?",
+                "Posso fazer uma pergunta ?",
+                "Devo fazer uma pergunta ?",
+                "Sei fazer uma pergunta ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Posso fazer uma pergunta ? » demande l'autorisation avec le verbe « poder »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « Não podes fumar aqui » ?",
+              "options": [
+                "Tu dois fumer ici.",
+                "Tu veux fumer ici.",
+                "Tu ne peux pas fumer ici.",
+                "Tu sais fumer ici."
+              ],
+              "correctAnswers": [2],
+              "explanation": "La négation de « poder » exprime l'interdiction : « Tu ne peux pas fumer ici »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la forme de « poder » à la 1re personne du singulier (eu) au présent ?",
+              "options": ["podo", "pode", "podemos", "posso"],
+              "correctAnswers": [3],
+              "explanation": "Le verbe « poder » est irrégulier au présent : eu posso, tu podes, ele pode."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complète : « Nós ___ de acordar cedo amanhã » (Nous devons nous réveiller tôt demain).",
+              "options": ["somos", "temos", "podemos", "vamos"],
+              "correctAnswers": [1],
+              "explanation": "L'obligation avec « nós » utilise la forme « temos de »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Phrases exclamatives et ordres simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment forme-t-on une exclamation admirative devant un adjectif avec « Que... ! » ?",
+              "options": [
+                "Que bonito !",
+                "Como bonito !",
+                "Qual bonito !",
+                "O que bonito !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Que » suivi directement d'un adjectif forme une exclamation : « Que bonito ! » (Comme c'est beau !)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'exclamation courante « Que bom ! » ?",
+              "options": [
+                "Quel dommage !",
+                "C'est super ! / Quelle bonne nouvelle !",
+                "Pourquoi pas !",
+                "Au secours !"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Que bom ! » s'utilise pour se réjouir d'une nouvelle : « C'est super ! » ou « Tant mieux ! »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment exprime-t-on l'intensité devant un nom comme « Quelle chaleur ! » ?",
+              "options": [
+                "Como calor !",
+                "Qual calor !",
+                "Que calor !",
+                "Tanto calor que !"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Devant un nom, « Que » exprime l'exclamation : « Que calor ! » (Quelle chaleur !)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'exclamation « Que pena ! » ?",
+              "options": [
+                "Quelle chance !",
+                "C'est délicieux !",
+                "Bravo !",
+                "Quel dommage !"
+              ],
+              "correctAnswers": [3],
+              "explanation": "« Que pena ! » exprime le regret : « Quel dommage ! »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont des exclamations exprimant l'admiration ou l'intensité ?",
+              "options": [
+                "Que linda casa !",
+                "Onde fica a casa ?",
+                "Como és simpático !",
+                "Ele não vem."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« Que linda casa ! » et « Como és simpático ! » sont des phrases exclamatives admiratives."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour donner un ordre poli à une personne (forme você), quelle est la forme pour « Entrez ! » (entrar) ?",
+              "options": ["Entre !", "Entra !", "Entrai !", "Entras !"],
+              "correctAnswers": [0],
+              "explanation": "À la forme polie (você), les verbes en -ar prennent la terminaison en -e : « Entre ! »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « Écoute ! » à un camarade que l'on tutoie (forme tu, verbe escutar) ?",
+              "options": ["Escute !", "Escuta !", "Escutai !", "Escutas !"],
+              "correctAnswers": [1],
+              "explanation": "À l'impératif affirmatif informel (tu), les verbes en -ar prennent la terminaison en -a : « Escuta ! »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'expression exclamative « Parabéns ! » ?",
+              "options": [
+                "Au revoir !",
+                "S'il vous plaît !",
+                "Félicitations ! / Joyeux anniversaire !",
+                "Bonne nuit !"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Parabéns ! » s'utilise pour féliciter quelqu'un ou lui souhaiter un joyeux anniversaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « Attention ! » pour mettre quelqu'un en garde en portugais ?",
+              "options": [
+                "Obrigado !",
+                "De nada !",
+                "Com licença !",
+                "Atenção !"
+              ],
+              "correctAnswers": [3],
+              "explanation": "« Atenção ! » ou « Cuidado ! » sont les exclamations employées pour dire « Attention ! »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « Olá ! Que surpresa ! » ?",
+              "options": [
+                "Salut ! Quelle surprise !",
+                "Bonjour ! Quel dommage !",
+                "Au revoir ! À bientôt !",
+                "Merci ! Bon voyage !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Olá ! » est la salutation amicale et « Que surpresa ! » exprime l'étonnement joyeux."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan : construire et transformer des phrases simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment transforme-t-on la phrase « O Tiago tem um gato » à la forme négative ?",
+              "options": [
+                "O Tiago não tem um gato.",
+                "O Tiago tem não um gato.",
+                "Não o Tiago tem um gato.",
+                "O Tiago tem um gato não."
+              ],
+              "correctAnswers": [0],
+              "explanation": "On intercale la négation « não » directement devant le verbe : « O Tiago não tem um gato »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment transforme-t-on « Tu vais ao cinema » en question avec sujet sous-entendu ?",
+              "options": [
+                "Tu vais ao cinema não ?",
+                "Vais ao cinema ?",
+                "Cinema vais ao ?",
+                "O que vais ao cinema ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En omettant « tu », on obtient directement la question naturelle : « Vais ao cinema ? »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase oppose correctement deux goûts à l'aide de « mas » ?",
+              "options": [
+                "Gosto de fruta, mas gosto de maçã.",
+                "Não gosto de fruta mas nem de legumes.",
+                "Gosto de fruta, mas não gosto de legumes.",
+                "Gosto de fruta mas e legumes."
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Gosto de fruta, mas não gosto de legumes » marque une opposition claire et grammaticalement impeccable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase traduit fidèlement : « Les filles mangent une glace à la plage » ?",
+              "options": [
+                "Os rapazes comem um gelado na praia.",
+                "A rapariga come os gelados da praia.",
+                "As raparigas comem uma sopa no restaurante.",
+                "As raparigas comem um gelado na praia."
+              ],
+              "correctAnswers": [3],
+              "explanation": "« As raparigas comem um gelado na praia » respecte l'accord, le vocabulaire et les contractions."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases simples sont grammaticalement correctes et bien accordées ?",
+              "options": [
+                "Os meus amigos vivem em Lisboa.",
+                "Os meus amigos vive em Lisboa.",
+                "A professora fala com os alunos.",
+                "A professora falam com o alunos."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les phrases 0 et 2 respectent parfaitement les accords sujet-verbe et déterminant-nom."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'ordre correct des éléments : « amanhã / nós / viajar / temos de » ?",
+              "options": [
+                "Nós temos de viajar amanhã.",
+                "Amanhã viajar nós temos de.",
+                "Temos viajar de amanhã nós.",
+                "Nós viajar temos de amanhã."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure correcte est Sujet (Nós) + verbe semi-auxiliaire (temos de) + infinitif (viajar) + adverbe (amanhã)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment poser la question « Où habites-tu ? » de manière naturelle ?",
+              "options": [
+                "Quem moras ?",
+                "Onde moras ?",
+                "Como moras ?",
+                "Quando moras ?"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« Onde » (où) associé au verbe conjugué à la 2e personne donne « Onde moras ? »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase exprime une interdiction claire ?",
+              "options": [
+                "Podes entrar não.",
+                "Tens de entrar.",
+                "Não podes entrar.",
+                "Sabes entrar."
+              ],
+              "correctAnswers": [2],
+              "explanation": "« Não podes entrer » (Tu ne peux pas entrer) exprime formellement l'interdiction."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif complète : « ___ queres fazer hoje ? » (Que veux-tu faire aujourd'hui ?) ?",
+              "options": ["Quem", "Onde", "Como", "O que"],
+              "correctAnswers": [3],
+              "explanation": "Pour demander « que » ou « qu'est-ce que », on emploie « O que » : « O que queres fazer hoje ? »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase combine une salutation amicale et une demande de nouvelles usuelle ?",
+              "options": [
+                "Olá, como estás ?",
+                "Adeus, onde vais ?",
+                "Obrigado, quem és ?",
+                "Por favor, que horas ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Olá, como estás ? » (Salut, comment vas-tu ?) est la formule la plus classique et conviviale."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

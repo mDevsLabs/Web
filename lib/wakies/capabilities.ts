@@ -83,7 +83,7 @@ export const OUTILS_ECRIVANT_COMPTE = [
 ] as const;
 
 /** Outils livrés par un Plugin : jamais exposés si le Plugin ne l'est pas. */
-const FOURNIS_PAR_PLUGIN = new Set(["getWeather", "quizzly"]);
+const FOURNIS_PAR_PLUGIN = new Set(["getWeather"]);
 
 /**
  * Outils livrés par défaut à un Wakie.

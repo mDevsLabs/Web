@@ -1,0 +1,2688 @@
+{
+  "id": "3e-arabe-04",
+  "year": "3e",
+  "subject": "arabe",
+  "title": "La grammaire de l'arabe",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Accords et articles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : L'article défini et les lettres solaires et lunaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est l'article défini unique en langue arabe ?",
+              "options": [
+                "Alif-Lâm (الـ)",
+                "Tâ' marbûta (ة)",
+                "Le tanwîn (ـٌ)",
+                "Le wâw de liaison (و)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En arabe, la détermination se fait par le préfixe invariable 'al-' (الـ), qui s'attache directement au nom ou à l'adjectif sans espace."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lorsque l'article 'al-' précède une lettre solaire (chamsiyya) ?",
+              "options": [
+                "Le lâm s'assimile à la consonne suivante qui prend une chadda",
+                "Le lâm est prononcé avec une soukoun claire et distincte",
+                "L'article disparaît totalement à l'écrit",
+                "Le nom prend automatiquement un tanwîn final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant une lettre solaire, le 'lâm' de l'article ne se prononce pas : sa phonétique s'assimile à la consonne initiale du mot, marquée par une chadda (ex: ach-chams)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parmi ces consonnes, laquelle est une lettre lunaire (qamariyya) ?",
+              "options": [
+                "Le Bâ' (ب)",
+                "Le Tâ' (ت)",
+                "Le Sîn (س)",
+                "Le Chîn (ش)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Bâ' (ب) est une lettre lunaire : l'article 'al-' conserve la prononciation pleine de son lâm (ex: al-bayt / البَيْت)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment se prononce correctement le mot 'الشَّمْس' (le soleil) ?",
+              "options": ["Ach-chams", "Al-chams", "Al-sams", "El-kams"],
+              "correctAnswers": [0],
+              "explanation": "Le chîn (ش) est une lettre solaire : le lâm de l'article est assimilé et l'on prononce 'ach-chams'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles lettres parmi les suivantes sont des lettres solaires (hurûf chamsiyya) ?",
+              "options": [
+                "Le Râ' (ر)",
+                "Le Nûn (ن)",
+                "Le Qâf (ق)",
+                "Le Mîm (م)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Râ' (ر) et le Nûn (ن) sont des lettres solaires (assimilation du lâm). Le Qâf et le Mîm sont des lettres lunaires (prononciation du lâm préservée)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que devient la marque de non-définition (tanwîn) lorsqu'on ajoute l'article 'al-' à un nom ?",
+              "options": [
+                "Elle est supprimée et remplacée par une voyelle simple",
+                "Elle est obligatoirement doublée",
+                "Elle se transforme en soukoun",
+                "Elle reste intacte à la fin du mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'article défini 'al-' et la nunation (tanwîn) sont incompatibles : kitâbun (indéfini) devient al-kitâbu (défini)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se prononce l'expression 'القَمَر' (la lune) ?",
+              "options": ["Al-qamar", "Aq-qamar", "As-samar", "El-gamar"],
+              "correctAnswers": [0],
+              "explanation": "Le qâf (ق) est une lettre lunaire : le lâm de l'article se prononce distinctement avec sa soukoun (al-qamar)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien y a-t-il de lettres solaires dans l'alphabet arabe (sur 28 lettres) ?",
+              "options": [
+                "14 lettres",
+                "7 lettres",
+                "20 lettres",
+                "28 lettres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alphabet arabe compte exactement 28 lettres réparties de manière égale : 14 lettres solaires et 14 lettres lunaires."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le mot 'كِتَابٌ' (kitâbun), la présence du tanwîn final indique que le mot est :",
+              "options": [
+                "Indéfini (nakira)",
+                "Défini par l'article",
+                "Au cas duel",
+                "Un verbe d'action"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tanwîn (terminaison en -un, -an ou -in) est la marque morphologique standard du nom indéfini en arabe classique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la prononciation du lâm dans 'الدَّرْس' (la leçon) ?",
+              "options": [
+                "Il est muet (assimilé dans le dâl : ad-dars)",
+                "Il est prononcé clairement (al-dars)",
+                "Il se transforme en voyelle 'ou'",
+                "Il se prononce comme un 'r'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le dâl (د) est une consonne dentale solaire : le lâm s'assimile complètement et l'on prononce 'ad-dars'."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Le genre : masculin et féminin",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la marque graphique la plus fréquente du féminin au singulier en arabe ?",
+              "options": [
+                "La tâ' marbûta (ة)",
+                "Le nûn final (ن)",
+                "Le lâm-alif (لا)",
+                "Le wâw prolongé (و)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tâ' marbûta (ـة / ة) est la désinence féminine la plus courante ajoutée aux noms et adjectifs singuliers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment forme-t-on le féminin régulier de l'adjectif 'كَبِير' (grand - kabîr) ?",
+              "options": [
+                "كَبِيرَة (kabîra)",
+                "كَبِيرَات (kabîrât)",
+                "كَبِيرُونَ (kabîrûn)",
+                "أَكْبَر (akbar)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On ajoute simplement une tâ' marbûta à la forme masculine singulière : kabîr devient kabîra (كَبِيرَة)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Parmi ces mots, lequel est féminin par nature malgré l'absence de tâ' marbûta ?",
+              "options": [
+                "أُمّ (mère - umm)",
+                "أَب (père - ab)",
+                "كِتَاب (livre - kitâb)",
+                "قَلَم (stylo - qalam)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot 'umm' (أُمّ - mère) désigne un être vivant femelle par nature ; il est donc intrinsèquement féminin sans marqueur suffixé."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels noms de parties doubles du corps humain sont traditionnellement féminins en arabe ?",
+              "options": [
+                "عَيْن ('ayn - œil)",
+                "يَد (yad - main)",
+                "رَأْس (ra's - tête)",
+                "أَنْف (anf - nez)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les organes pairs du corps humain (les deux yeux, les deux mains, les oreilles, les pieds) sont de genre féminin en arabe. La tête et le nez sont uniques et masculins."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le mot 'شَمْس' (chams - soleil) est en arabe de genre :",
+              "options": [
+                "Féminin par usage",
+                "Masculin régulier",
+                "Neutre invariable",
+                "Toujours duel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot 'chams' (soleil) fait partie des mots féminins par usage (mu'annath samâ'î), contrairement à 'qamar' (lune) qui est masculin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le féminin de 'مُعَلِّم' (mu'allim - enseignant) ?",
+              "options": [
+                "مُعَلِّمَة (mu'allima)",
+                "مُعَلِّمُونَ (mu'allimûn)",
+                "مُعَلِّمَات (mu'allimât)",
+                "مُعَلِّمَيْنِ (mu'allimayn)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour former le féminin singulier d'un nom de métier ou de statut, on ajoute une tâ' marbûta : mu'allima (مُعَلِّمَة)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se prononce la tâ' marbûta (ة) lors d'un arrêt complet (waqf / en pause) ?",
+              "options": [
+                "Comme un 'h' doux aspiré ou une voyelle 'a' sans consonne finale",
+                "Comme un 't' éclatant et sonore",
+                "Comme une voyelle longue 'ou'",
+                "Comme une nasale 'an'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la pause (en fin de phrase ou isolée), la tâ' marbûta perd son son [t] et s'entend comme une voyelle [a] ou un léger souffle [h]."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le féminin de l'adjectif de couleur masculin 'أَحْمَر' (rouge - ahmar) ?",
+              "options": [
+                "حَمْرَاء (hamrâ')",
+                "أَحْمَرَة (ahmara)",
+                "حَمِيرَة (hamîra)",
+                "حُمْر (humr)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les adjectifs de couleur et de défauts physiques de schème 'af'al' font leur féminin sur le schème 'fa'lâ'' : ahmar donne hamrâ'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le mot 'مَدِينَة' (madîna - ville) est :",
+              "options": [
+                "Féminin grâce à sa tâ' marbûta",
+                "Masculin irrégulier",
+                "Toujours au pluriel",
+                "Un verbe défectueux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot 'madîna' se termine par une tâ' marbûta, marque explicite du genre féminin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "En règle générale, les noms de villes et de pays sont considérés comme :",
+              "options": [
+                "Féminins",
+                "Masculins",
+                "Neutres",
+                "Pluriels brisés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms géographiques de villes, contrées et pays sont presque tous traités comme des noms féminins (ex: Faransâ jamîla / la France est belle)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Le nombre : singulier, duel et pluriels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien de nombres grammaticaux distingue la langue arabe classique ?",
+              "options": [
+                "Trois : singulier, duel et pluriel",
+                "Deux : singulier et pluriel",
+                "Quatre : singulier, duel, pauvre et abondant",
+                "Un seul nombre invariable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arabe possède un nombre grammatical spécifique pour deux éléments : le duel (al-muthannâ), distinct du singulier (mufrad) et du pluriel (jam')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel suffixe ajoute-t-on au nominatif pour former le duel (al-muthannâ) ?",
+              "options": [
+                "ـَانِ (-âni)",
+                "ـُونَ (-ûna)",
+                "ـَاتٌ (-âtun)",
+                "ـَيْنِ (-ayni)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au cas nominatif (marfû'), le duel masculin et féminin se forme en ajoutant le suffixe 'ـَانِ' (-âni) au singulier."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le duel de 'كِتَاب' (kitâb - livre) au cas sujet (nominatif) ?",
+              "options": [
+                "كِتَابَانِ (kitâbâni)",
+                "كُتُب (kutub)",
+                "كِتَابُونَ (kitâbûna)",
+                "كِتَابَيْنِ (kitâbayni)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le duel de kitâb au nominatif est kitâbâni (كِتَابَانِ). La forme kitâbayni s'emploie à l'accusatif et au génitif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le pluriel qui conserve intacte la structure consonantique du singulier ?",
+              "options": [
+                "Le pluriel sain (jam' sâlim)",
+                "Le pluriel brisé (jam' taksîr)",
+                "Le pluriel interne",
+                "Le duel étendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel sain (jam' sâlim) se contente d'ajouter un suffixe régulier (-ûna/-îna ou -ât) sans altérer la racine du singulier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le suffixe du pluriel masculin sain au cas nominatif ?",
+              "options": [
+                "ـُونَ (-ûna)",
+                "ـِينَ (-îna)",
+                "ـَاتٌ (-âtun)",
+                "ـَانِ (-âni)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel masculin sain prend la désinence 'ـُونَ' (-ûna) au nominatif (ex: mu'allimûna / مُعَلِّمُونَ)."
+            },
+            {
+              "id": "q6",
+              "type": "multiple_choice",
+              "question": "Quels mots ci-dessous représentent des pluriels brisés (jam' taksîr) ?",
+              "options": [
+                "كُتُب (kutub - livres)",
+                "أَوْلَاد (awlâd - enfants)",
+                "مُعَلِّمُونَ (mu'allimûna - enseignants)",
+                "مُهَنْدِسَات (muhandisât - ingénieures)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Kutub (sing. kitâb) et awlâd (sing. walad) sont des pluriels brisés (changement vocalique interne). Mu'allimûna et muhandisât sont des pluriels sains réguliers."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel suffixe caractérise le pluriel féminin sain (jam' mu'annath sâlim) ?",
+              "options": ["ـَات (-ât)", "ـُونَ (-ûn)", "ـَانِ (-ân)", "ـِي (-î)"],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel féminin sain se forme en remplaçant la tâ' marbûta par le suffixe régulier 'ـَات' (-ât), comme dans mudarrisât (مُدَرِّسَات)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le pluriel brisé usuel du mot 'طَالِب' (tâlib - étudiant) ?",
+              "options": [
+                "طُلَّاب (tullâb)",
+                "طَالِبُونَ (tâlibûna)",
+                "طَالِبَات (tâlibât)",
+                "طَالِبَانِ (tâlibâni)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel masculin le plus courant pour tâlib est le pluriel brisé tullâb (طُلَّاب)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que devient le duel 'كِتَابَانِ' au cas accusatif ou génitif ?",
+              "options": [
+                "كِتَابَيْنِ (kitâbayni)",
+                "كُتُب (kutub)",
+                "كِتَابِينَ (kitâbîna)",
+                "كِتَابَات (kitâbât)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au cas accusatif (mansûb) et génitif (majrûr), le suffixe du duel devient 'ـَيْنِ' (-ayni)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la règle d'accord majeure pour les pluriels d'objets inanimés / non-humains (ghayr 'âqil) ?",
+              "options": [
+                "Ils s'accordent comme un féminin singulier",
+                "Ils exigent un adjectif au masculin pluriel sain",
+                "Ils s'accordent obligatoirement au duel",
+                "Ils restent sans aucun adjectif possible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle d'or en arabe : tout pluriel de choses non douées de raison (animaux, objets, idées) commande un accord au féminin singulier (ex: kutub jadîda)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : L'accord de l'adjectif qualificatif (Na't)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où se place l'adjectif épithète (an-na't) par rapport au nom qu'il qualifie (al-man'ût) ?",
+              "options": [
+                "Après le nom qualifié",
+                "Avant le nom qualifié",
+                "Toujours en début de phrase",
+                "Directement collé entre l'article et la racine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En arabe, l'adjectif qualificatif épithète se place toujours après le nom qu'il décrit (ex: al-baytu al-kabîru)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur combien de critères l'adjectif qualificatif s'accorde-t-il avec le nom d'être animé au singulier ?",
+              "options": [
+                "4 critères : genre, nombre, cas grammatical et définition",
+                "2 critères : genre et temps verbal",
+                "1 seul critère : le cas grammatical",
+                "3 critères : racine, forme dérivée et personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif épithète suit son nom en 4 points : le genre (masculin/féminin), le nombre (sing./duel/plur.), le cas (I'râb) et la détermination (défini/indéfini)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans 'قَرَأْتُ كِتَابًا جَدِيدًا' (J'ai lu un nouveau livre), pourquoi 'جَدِيدًا' porte-t-il une tanwîn fatha ?",
+              "options": [
+                "Parce qu'il s'accorde au cas accusatif indéfini avec kitâban (COD)",
+                "Parce qu'il est le sujet de la phrase",
+                "Parce que l'adjectif prend toujours une fatha",
+                "Parce qu'il est précédé d'une préposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kitâban étant complément d'objet direct au cas accusatif indéfini (mansûb), son adjectif jadîdan prend obligatoirement la même désinence casuelle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la traduction arabe correcte de 'La grande maison' ?",
+              "options": [
+                "البَيْتُ الكَبِيرُ (Al-baytu al-kabîru)",
+                "بَيْتٌ كَبِيرٌ (Baytun kabîrun)",
+                "الكَبِيرُ البَيْتُ (Al-kabîru al-baytu)",
+                "بَيْتُ كَبِيرٍ (Baytu kabîrin)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque le nom porte l'article 'al-', son adjectif épithète doit également porter l'article 'al-' : Al-baytu al-kabîru."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans l'expression 'البِنْتَانِ الصَّغِيرَتَانِ' (les deux petites filles), quels accords observe-t-on ?",
+              "options": [
+                "L'accord au duel féminin",
+                "L'accord en définition avec l'article al-",
+                "L'accord au pluriel brisé",
+                "L'accord au cas accusatif indéfini"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les deux mots sont définis par l'article 'al-' et portent le suffixe du duel féminin nominatif '-atâni'. Ils s'accordent parfaitement en genre, nombre, cas et définition."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on 'des voitures rapides' (sayyârât étant un pluriel non-humain) ?",
+              "options": [
+                "سَيَّارَاتٌ سَرِيعَةٌ (adjectif au féminin singulier)",
+                "سَيَّارَاتٌ سَرِيعُونَ (adjectif au masculin pluriel)",
+                "سَيَّارَاتٌ أَسْرَعُ (adjectif invariable)",
+                "سَيَّارَاتٌ سَرِيعَانِ (adjectif au duel)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sayyârât désigne des objets inanimés au pluriel : son adjectif qualificatif prend la forme du féminin singulier (sarî'atun / سَرِيعَةٌ)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si le nom est défini par l'article, que devient l'adjectif pour former un groupe nominal épithète ?",
+              "options": [
+                "Il doit obligatoirement prendre l'article al-",
+                "Il reste indéfini avec un tanwîn",
+                "Il perd sa voyelle finale",
+                "Il se transforme en verbe conjugué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si l'adjectif reste indéfini après un nom défini, on forme une phrase complète (Al-waladu latîfun = Le garçon est gentil). Pour l'épithète, l'adjectif doit porter 'al-'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie exactement 'الوَلَدُ اللَّطِيفُ' (Al-waladu al-latîfu) ?",
+              "options": [
+                "Le gentil garçon",
+                "Le garçon est gentil",
+                "Un gentil garçon",
+                "Ce garçon est un ami"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les deux mots ayant l'article 'al-', il s'agit d'un groupe nominal épithète : 'Le gentil garçon'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans 'مَدِينَةٌ قَدِيمَةٌ' (madînatun qadîmatun), quel accord de genre est appliqué ?",
+              "options": [
+                "L'accord au féminin singulier avec la tâ' marbûta",
+                "L'accord au masculin singulier",
+                "L'accord au duel féminin",
+                "Aucun accord n'est appliqué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Madînatun étant un nom féminin singulier indéfini, qadîmatun prend également la tâ' marbûta et le tanwîn nominatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans 'رَأَيْتُ الطُّلَّابَ المُجْتَهِدِينَ', pourquoi l'adjectif finit-il en 'ـِينَ' (-îna) ?",
+              "options": [
+                "Il s'accorde au cas accusatif avec le nom tullâb (COD de ra'aytu)",
+                "Il est au nominatif singulier",
+                "Il s'agit d'une marque de féminin pluriel",
+                "C'est un suffixe de duel obligatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nom tullâb est COD au cas accusatif mansûb (fatha). Son adjectif au pluriel masculin sain prend donc le suffixe accusatif '-îna'."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : L'annexion nominale (al-Idâfa)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'annexion (al-idâfa / الإِضَافَة) en grammaire arabe ?",
+              "options": [
+                "Une relation de possession ou de complément de nom liant deux noms",
+                "L'accord entre un sujet et son verbe conjugué",
+                "L'ajout d'une préposition de lieu devant un nom",
+                "La transformation d'un nom au temps futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'idâfa relie deux noms sans préposition pour exprimer la possession, la provenance ou la matière (ex: kitâbu at-tâlibi = le livre de l'étudiant)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle interdiction absolue concerne le premier terme d'une idâfa (al-mudâf) ?",
+              "options": [
+                "Il ne prend JAMAIS d'article 'al-' ni de tanwîn",
+                "Il ne peut jamais être au singulier",
+                "Il doit toujours porter une kasra finale",
+                "Il doit obligatoirement être un nom propre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mudâf (premier terme annexé) refuse catégoriquement l'article 'al-' et le tanwîn. Il reçoit une voyelle simple selon son rôle dans la phrase."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quel cas grammatical se trouve obligatoirement le second terme (al-mudâf ilayhi) ?",
+              "options": [
+                "Au cas génitif (majrûr avec kasra)",
+                "Au cas nominatif (marfû' avec damma)",
+                "Au cas accusatif (mansûb avec fatha)",
+                "Au cas apocopé (majzûm)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le second terme (mudâf ilayhi) est toujours et obligatoirement au cas génitif majrûr (marqué par une kasra ou le suffixe -îna/-ayni)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Dans l'expression 'كِتَابُ المُعَلِّمِ' (Le livre du professeur), quelles affirmations sont vraies ?",
+              "options": [
+                "'كِتَابُ' est le mudâf et n'a pas d'article",
+                "'المُعَلِّمِ' est au cas génitif majrûr avec kasra",
+                "'كِتَابُ' porte l'article défini al-",
+                "'المُعَلِّمِ' est au cas nominatif marfû'"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Kitâbu est le premier terme sans article ni tanwîn. Al-mu'allimi est le complément de nom au génitif (majrûr avec kasra)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'La porte de la maison' en arabe classique ?",
+              "options": [
+                "بَابُ البَيْتِ (Bâbu al-bayti)",
+                "البَابُ البَيْتِ (Al-bâbu al-bayti)",
+                "بَابٌ بَيْتٍ (Bâbun baytin)",
+                "البَابُ البَيْتُ (Al-bâbu al-baytu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bâb ne prend pas d'article car il est mudâf, tandis qu'al-bayti prend l'article et la kasra du génitif : Bâbu al-bayti."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si l'on souhaite exprimer un sens indéfini : 'une porte de maison', comment s'écrit l'idâfa ?",
+              "options": [
+                "بَابُ بَيْتٍ (Bâbu baytin avec tanwîn kasra)",
+                "بَابُ البَيْتِ (Bâbu al-bayti)",
+                "البَابُ بَيْتٌ (Al-bâbu baytun)",
+                "بَابٌ البَيْتِ (Bâbun al-bayti)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une annexion indéfinie, le mudâf reste sans article ni tanwîn, et le second terme prend le tanwîn du génitif : Bâbu baytin."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lorsqu'un pronom affixe s'attache à un nom, comme dans 'كِتَابِي' (mon livre), quelle est la nature grammaticale de cette union ?",
+              "options": [
+                "C'est une idâfa (le nom est mudâf, le pronom est mudâf ilayhi)",
+                "C'est un accord nom-adjectif qualificatif",
+                "C'est une phrase verbale avec sujet",
+                "C'est une préposition inséparable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout nom auquel est rattaché un pronom possessif affixe forme une annexion (idâfa) : le pronom occupe la place d'un complément de nom au génitif."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que deviennent les nûns finaux du duel (-âni) ou du pluriel sain (-ûna) lorsqu'ils sont en position de mudâf ?",
+              "options": [
+                "Ils sont obligatoirement supprimés (chute du nûn)",
+                "Ils prennent une chadda de renfort",
+                "Ils se transforment en tâ' marbûta",
+                "Ils restent inchangés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nûn final du duel et du pluriel masculin sain tombe toujours lors de l'annexion (ex: mu'allimû al-madrasati et non mu'allimûna al-madrasati)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Les deux stylos de l'élève' au cas sujet nominatif ?",
+              "options": [
+                "قَلَمَا التِّلْمِيذِ (Qalamâ at-tilmîdhi)",
+                "قَلَمَانِ التِّلْمِيذِ (Qalamâni at-tilmîdhi)",
+                "القَلَمَانِ التِّلْمِيذِ (Al-qalamâni at-tilmîdhi)",
+                "قَلَمَيِ التِّلْمِيذِ (Qalamayi at-tilmîdhi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au duel nominatif, qalamâni perd son nûn final par annexion et devient 'qalamâ' : Qalamâ at-tilmîdhi."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment le premier terme (al-mudâf) acquiert-il sa détermination ?",
+              "options": [
+                "Par contagion de sens grâce au second terme (al-mudâf ilayhi)",
+                "Par l'ajout forcé de l'article al-",
+                "Par la présence obligatoire d'un tanwîn",
+                "Par un démonstratif obligatoirement inséré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mudâf est défini dès lors que son mudâf ilayhi est défini (par l'article, un pronom ou un nom propre). Il n'a donc pas besoin d'article propre."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Les trois cas de la déclinaison (I'râb)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les trois cas grammaticaux fondamentaux des noms en langue arabe ?",
+              "options": [
+                "Le nominatif (marfû'), l'accusatif (mansûb) et le génitif (majrûr)",
+                "Le passé, le présent et le futur",
+                "Le masculin, le féminin et le neutre",
+                "Le singulier, le duel et le pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La flexion nominale arabe (I'râb) repose sur 3 cas : marfû' (sujet/nominatif), mansûb (complément/accusatif) et majrûr (préposition/génitif)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle voyelle brève symbolise le cas nominatif (marfû') au singulier déclinable ?",
+              "options": [
+                "La damma (ـُ / -u)",
+                "La fatha (ـَ / -a)",
+                "La kasra (ـِ / -i)",
+                "La soukoun (ـْ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La damma (ـُ) est la marque désinentielle de base du cas nominatif (marfû') pour les noms singuliers."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle voyelle brève caractérise le cas accusatif (mansûb) au singulier ?",
+              "options": [
+                "La fatha (ـَ / -a)",
+                "La damma (ـُ / -u)",
+                "La kasra (ـِ / -i)",
+                "La chadda (ـّ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fatha (ـَ) est la marque désinentielle standard du cas accusatif (mansûb), utilisé notamment pour les compléments d'objet."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle voyelle brève caractérise le cas génitif (majrûr) au singulier ?",
+              "options": [
+                "La kasra (ـِ / -i)",
+                "La fatha (ـَ / -a)",
+                "La damma (ـُ / -u)",
+                "L'alif de prolongation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La kasra (ـِ) est la marque vocalique du cas génitif (majrûr), employé après une préposition ou en second terme d'annexion."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions grammaticales reçoivent typiquement le cas nominatif (marfû') ?",
+              "options": [
+                "Le sujet de la phrase verbale (al-fâ'il)",
+                "Le thème de la phrase nominale (al-mubtada')",
+                "Le complément d'objet direct (al-maf'ûl bihi)",
+                "Le nom précédé d'une préposition (al-ism al-majrûr)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le fâ'il (sujet du verbe) et le mubtada' (thème/sujet de la phrase nominale) sont toujours au cas nominatif (marfû')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle fonction syntaxique impose obligatoirement le cas accusatif (mansûb) ?",
+              "options": [
+                "Le complément d'objet direct (al-maf'ûl bihi)",
+                "Le sujet du verbe d'action",
+                "Le second terme de l'annexion",
+                "Le premier mot d'une phrase nominale simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le maf'ûl bihi (COD) est par excellence au cas accusatif mansûb (ex: qara'tu al-kitâba)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Après une préposition comme 'فِي' (dans) ou 'إِلَى' (vers), quel cas le nom prend-il ?",
+              "options": [
+                "Le génitif (majrûr)",
+                "Le nominatif (marfû')",
+                "L'accusatif (mansûb)",
+                "L'apocopé (majzûm)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les prépositions sont des 'hurûf al-jarr' : elles imposent obligatoirement le cas génitif (majrûr) au nom qui les suit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne le terme technique 'I'râb' (إِعْرَاب) dans la tradition grammaticale arabe ?",
+              "options": [
+                "L'analyse syntaxique des désinences et marques casuelles finales",
+                "La calligraphie des voyelles coraniques",
+                "La récitation poétique sans voyelle",
+                "L'emprunt lexical à d'autres langues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'I'râb est l'explication du rôle grammatical de chaque mot à travers la variation de sa voyelle ou lettre finale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on un mot dont la terminaison ne change jamais quel que soit son rôle (ex: hâdhâ) ?",
+              "options": [
+                "Invariable (mabnî / مَبْنِيّ)",
+                "Entièrement déclinable (mu'rab)",
+                "Diptote (mamnû' min as-sarf)",
+                "Verbe défectif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un mot 'mabnî' est figé et invariable : sa voyelle finale ne varie jamais avec la fonction grammaticale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la particularité des noms diptotes (mamnû' min as-sarf) à l'état indéfini ?",
+              "options": [
+                "Ils ne prennent jamais de tanwîn et font leur génitif avec une fatha",
+                "Ils prennent un double tanwîn damma à tous les cas",
+                "Ils n'acceptent jamais de pluriel",
+                "Ils deviennent toujours invariables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les diptotes indéfinis refusent le tanwîn et prennent une fatha au génitif au lieu de la kasra usuelle (ex: fî Dimachqa)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Les pronoms personnels isolés et affixes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on 'je' (pronom personnel sujet isolé) en arabe ?",
+              "options": [
+                "أَنَا (Anâ)",
+                "أَنْتَ (Anta)",
+                "هُوَ (Huwa)",
+                "نَحْنُ (Nahnu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Anâ' (أَنَا) est le pronom personnel isolé de la première personne du singulier (masculin et féminin)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel pronom personnel isolé signifie 'il' (3e personne du masculin singulier) ?",
+              "options": ["هُوَ (Huwa)", "هِيَ (Hiya)", "هُمْ (Hum)", "أَنْتَ (Anta)"],
+              "correctAnswers": [0],
+              "explanation": "'Huwa' (هُوَ) désigne la 3e personne du masculin singulier (il)."
+            },
+            {
+              "id": "q3",
+              "type": "multiple_choice",
+              "question": "Quels pronoms isolés correspondent à la 2e personne du singulier (tutoiement) ?",
+              "options": [
+                "أَنْتَ (Anta - masculin singulier)",
+                "أَنْتِ (Anti - féminin singulier)",
+                "أَنْتُمَا (Antumâ - duel)",
+                "نَحْنُ (Nahnu - 1re personne pluriel)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'arabe distingue le tutoiement masculin 'Anta' (أَنْتَ) et le tutoiement féminin 'Anti' (أَنْتِ)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel pronom affixe possessif correspond à 'mon / ma / mes' attaché à un nom ?",
+              "options": [
+                "ـِي (-î / yâ' du locuteur)",
+                "ـهُ (-hu)",
+                "ـهَا (-hâ)",
+                "ـكَ (-ka)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le yâ' du locuteur 'ـِي' (-î) indique la première personne possessive : kitâbî = mon livre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dit-on 'son livre' (le livre d'elle / à elle) en arabe ?",
+              "options": [
+                "كِتَابُهَا (Kitâbuhâ)",
+                "كِتَابُهُ (Kitâbuhu)",
+                "كِتَابُكَ (Kitâbuka)",
+                "كِتَابُكِ (Kitâbuki)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'affixe de la 3e personne du féminin singulier est 'ـهَا' (-hâ) : kitâbuhâ = son livre (à elle)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lorsqu'un pronom affixe est rattaché à un verbe (ex: 'سَأَلَهُ' sa'alahu), quelle fonction remplit-il ?",
+              "options": [
+                "Complément d'objet direct (maf'ûl bihi)",
+                "Sujet de l'action",
+                "Adjectif qualificatif",
+                "Préposition de temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attaché à un verbe, le pronom affixe est toujours complément d'objet direct : sa'ala (il a demandé) + hu (à lui/le) = il lui a demandé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel pronom affixe correspond à 'notre / nos' (ex: dans 'بَيْتُنَا' baytunâ) ?",
+              "options": ["ـنَا (-nâ)", "ـكُمْ (-kum)", "ـهُمْ (-hum)", "ـنِي (-nî)"],
+              "correctAnswers": [0],
+              "explanation": "L'affixe 'ـنَا' (-nâ) exprime la première personne du pluriel : baytunâ = notre maison."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel pronom personnel isolé signifie 'vous' (masculin pluriel) ?",
+              "options": [
+                "أَنْتُمْ (Antum)",
+                "أَنْتُنَّ (Antunna)",
+                "هُمْ (Hum)",
+                "أَنْتُمَا (Antumâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Antum' (أَنْتُمْ) est le pronom isolé de la 2e personne du masculin pluriel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie précisément 'كِتَابُكَ' (Kitâbuka, avec fatha sur le kâf) ?",
+              "options": [
+                "Ton livre (adressé à un garçon)",
+                "Ton livre (adressé à une fille)",
+                "Son livre (à lui)",
+                "Leur livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'affixe '-ka' (avec fatha) est le possessif masculin singulier. Pour une fille, on dirait 'kitâbuki' (avec kasra)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on 'ils' (3e personne du masculin pluriel) avec un pronom isolé ?",
+              "options": [
+                "هُمْ (Hum)",
+                "هُنَّ (Hunna)",
+                "هُمَا (Humâ)",
+                "أَنْتُمْ (Antum)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hum' (هُمْ) désigne la 3e personne du masculin pluriel (ils). Hunna désigne le féminin pluriel (elles)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Les pronoms et démonstratifs (Asmâ' al-ichâra)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel démonstratif masculin singulier signifie 'ceci / ce' (pour un objet proche) ?",
+              "options": [
+                "هَذَا (Hâdhâ)",
+                "هَذِهِ (Hâdhihi)",
+                "ذَلِكَ (Dhâlika)",
+                "تِلْكَ (Tilka)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hâdhâ' (هَذَا) est le pronom/adjectif démonstratif masculin singulier de proximité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel démonstratif féminin singulier signifie 'cette / celle-ci' (de proximité) ?",
+              "options": [
+                "هَذِهِ (Hâdhihi)",
+                "هَذَا (Hâdhâ)",
+                "تِلْكَ (Tilka)",
+                "هَؤُلَاءِ (Hâ'ulâ'i)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hâdhihi' (هَذِهِ) s'emploie pour le féminin singulier proche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel démonstratif utilise-t-on pour désigner un élément masculin éloigné ('ce...-là' / cela) ?",
+              "options": [
+                "ذَلِكَ (Dhâlika)",
+                "هَذَا (Hâdhâ)",
+                "تِلْكَ (Tilka)",
+                "هُنَا (Hunâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Dhâlika' (ذَلِكَ) désigne un référent masculin singulier éloigné dans l'espace ou le discours."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la différence syntaxique capitale entre 'هَذَا كِتَابٌ' et 'هَذَا الكِتَابُ' ?",
+              "options": [
+                "'هَذَا كِتَابٌ' est une phrase complète (C'est un livre), 'هَذَا الكِتَابُ' est un groupe nominal (Ce livre)",
+                "'هَذَا كِتَابٌ' est au pluriel et l'autre au duel",
+                "Il n'y a aucune différence de structure",
+                "'هَذَا الكِتَابُ' est une question fermée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans l'article 'al-', kitâb est attribut : 'Ceci est un livre'. Avec 'al-', al-kitâbu est apposition (badal) : 'Ce livre'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel démonstratif désigne des personnes au pluriel proche ('ceux-ci / ces gens') ?",
+              "options": [
+                "هَؤُلَاءِ (Hâ'ulâ'i)",
+                "ذَلِكَ (Dhâlika)",
+                "هَذَا (Hâdhâ)",
+                "أُولَئِكَ (Ulâ'ika)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hâ'ulâ'i' (هَؤُلَاءِ) s'emploie pour le pluriel des êtres doués de raison (masculin et féminin) à proximité."
+            },
+            {
+              "id": "q6",
+              "type": "multiple_choice",
+              "question": "Quels démonstratifs ci-dessous expriment l'éloignement ('là-bas') ?",
+              "options": [
+                "ذَلِكَ (Dhâlika - masculin singulier)",
+                "تِلْكَ (Tilka - féminin singulier)",
+                "هَذَا (Hâdhâ - masculin singulier)",
+                "هَذِهِ (Hâdhihi - féminin singulier)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dhâlika (masc.) et Tilka (fém.) expriment l'éloignement (ce...-là). Hâdhâ et Hâdhihi expriment la proximité (ce...-ci)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on le groupe nominal 'cette voiture' en arabe ?",
+              "options": [
+                "هَذِهِ السَّيَّارَةُ (Hâdhihi as-sayyâratu)",
+                "هَذَا السَّيَّارَةُ (Hâdhâ as-sayyâratu)",
+                "تِلْكَ سَيَّارَةٌ (Tilka sayyâratun)",
+                "هَذِهِ سَيَّارَةٌ (Hâdhihi sayyâratun)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sayyâra étant féminin et défini par l'article, on emploie : Hâdhihi as-sayyâratu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel démonstratif emploie-t-on pour désigner des objets au pluriel inanimé (ex: ces livres) ?",
+              "options": [
+                "هَذِهِ (Hâdhihi - accord au féminin singulier)",
+                "هَؤُلَاءِ (Hâ'ulâ'i)",
+                "هَذَا (Hâdhâ)",
+                "ذَلِكَ (Dhâlika)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les pluriels de choses non-humaines, on utilise le démonstratif féminin singulier : Hâdhihi al-kutubu (ces livres)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie le mot démonstratif de lieu 'هُنَا' (hunâ) ?",
+              "options": ["Ici", "Là-bas", "Demain", "Maintenant"],
+              "correctAnswers": [0],
+              "explanation": "'Hunâ' (هُنَا) est l'adverbe de lieu indiquant la proximité : ici."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel adverbe démonstratif signifie 'là-bas' en arabe classique ?",
+              "options": [
+                "هُنَاكَ (Hunâka)",
+                "هُنَا (Hunâ)",
+                "أَيْنَ (Ayna)",
+                "كَيْفَ (Kayfa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hunâka' (هُنَاكَ) indique le lieu éloigné : là-bas (ou 'il y a' dans l'arabe moderne)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Les prépositions (Hurûf al-jarr) et le cas majrûr",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle préposition arabe signifie 'dans' ou 'en' ?",
+              "options": ["فِي (Fî)", "مِنْ (Min)", "إِلَى (Ilâ)", "عَلَى ('Alâ)"],
+              "correctAnswers": [0],
+              "explanation": "'Fî' (فِي) est la préposition de lieu et de temps signifiant 'dans' ou 'en'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle préposition arabe signifie 'sur' (superposition) ?",
+              "options": ["عَلَى ('Alâ)", "فِي (Fî)", "مِنْ (Min)", "بِـ (Bi-)"],
+              "correctAnswers": [0],
+              "explanation": "'Alâ (عَلَى) est la préposition qui exprime la position sur une surface."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel effet direct une préposition (harf jarr) produit-elle sur le nom qui la suit ?",
+              "options": [
+                "Elle le met obligatoirement au cas génitif (majrûr avec kasra)",
+                "Elle le met au cas nominatif (marfû' avec damma)",
+                "Elle le met au cas accusatif (mansûb avec fatha)",
+                "Elle supprime toutes les voyelles du mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute préposition arabe impose le cas génitif (majrûr) au nom qui lui succède (ex: fî al-madrasati)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on l'expression 'de l'école à la maison' ?",
+              "options": [
+                "مِنَ المَدْرَسَةِ إِلَى البَيْتِ",
+                "فِي المَدْرَسَةِ عَلَى البَيْتِ",
+                "إِلَى المَدْرَسَةِ مِنَ البَيْتِ",
+                "بِالمَدْرَسَةِ لِلبَيْتِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Min' exprime l'origine (de) et 'ilâ' exprime la direction (à/vers) : mina al-madrasati ilâ al-bayti."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles particules font partie des prépositions inséparables (attachées directement au mot) ?",
+              "options": [
+                "Le Bâ' (بِـ - avec / par / à)",
+                "Le Lâm (لِـ - pour / à)",
+                "La préposition Fî (فِي)",
+                "La préposition Min (مِنْ)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le Bâ' (بِـ) et le Lâm (لِـ) sont des particules prépositionnelles d'une seule lettre rattachées graphiquement au mot suivant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la préposition 'مَعَ' (ma'a) ?",
+              "options": ["Avec (en compagnie de)", "Sans", "Devant", "Contre"],
+              "correctAnswers": [0],
+              "explanation": "'Ma'a' (مَعَ) exprime l'accompagnement ou l'association : avec."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se prononce l'expression 'بِالقَلَمِ' (avec le stylo) ?",
+              "options": [
+                "Bil-qalami",
+                "Bi-al-qalamu",
+                "Bal-qalama",
+                "Bî-qalamin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La préposition 'bi-' s'attache à l'article 'al-', la hamza de liaison s'élide : bil-qalami."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans 'الكِتَابُ عَلَى الطَّاوِلَةِ', quelle est la désinence de 'الطَّاوِلَةِ' ?",
+              "options": [
+                "Une kasra (-i) car le mot est majrûr après 'alâ",
+                "Une damma (-u) car c'est le sujet",
+                "Une fatha (-a) car c'est un COD",
+                "Une soukoun finale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Placé après la préposition 'alâ, at-tâwilati est au cas génitif majrûr et prend une kasra finale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la préposition 'عَنْ' ('an) ?",
+              "options": [
+                "Au sujet de / à propos de / loin de",
+                "Dans l'intérieur de",
+                "Vers le haut de",
+                "Entre deux choses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'An (عَنْ) signifie 'à propos de', 'au sujet de' ou l'éloignement par rapport à quelque chose."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Laquelle de ces phrases respecte la désinence correcte après une préposition ?",
+              "options": [
+                "سَافَرْتُ إِلَى القَاهِرَةِ (kasra du majrûr)",
+                "سَافَرْتُ إِلَى القَاهِرَةُ (damma incorrecte)",
+                "سَافَرْتُ إِلَى القَاهِرَةَ (fatha incorrecte)",
+                "سَافَرْتُ فِي إِلَى القَاهِرَةِ (double préposition)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Après la préposition 'ilâ', le nom 'al-Qâhira' se met au génitif et porte une kasra finale (al-Qâhirati)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Synthèse sur la détermination et les accords",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Un nom sans article 'al-', sans annexion et terminé par un tanwîn est un nom :",
+              "options": [
+                "Indéfini (nakira)",
+                "Défini (ma'rifa)",
+                "Invariable (mabnî)",
+                "Dérivé passif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En grammaire arabe, le tanwîn marque l'indétermination du nom (nakira)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Laquelle de ces propositions constitue un groupe nominal épithète (non une phrase) ?",
+              "options": [
+                "البَيْتُ الكَبِيرُ (La grande maison)",
+                "البَيْتُ كَبِيرٌ (La maison est grande)",
+                "بَيْتٌ هُوَ كَبِيرٌ (Une maison elle est grande)",
+                "كَبِيرٌ البَيْتُ (Grand est la maison)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans 'Al-baytu al-kabîru', les deux termes partagent l'article : il s'agit d'un groupe nominal qualifiant et non d'une phrase."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le pluriel régulier féminin de 'مَكْتَبَة' (bibliothèque) ?",
+              "options": [
+                "مَكْتَبَات (maktabât)",
+                "مَكْتَبُونَ (maktabûn)",
+                "مَكْتَبَيْنِ (maktabayn)",
+                "مَكَاتِب (makâtib - pluriel de bureau)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel féminin régulier de maktaba (مَكْتَبَة) est maktabât (مَكْتَبَات)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Dans quelles situations un nom est-il considéré comme défini (ma'rifa) en arabe ?",
+              "options": [
+                "Quand il porte l'article défini al- (الـ)",
+                "Quand il est le premier terme d'une annexion à un nom défini",
+                "Quand il porte un tanwîn damma",
+                "Dès qu'il est précédé d'un verbe quelconque"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un nom est défini s'il porte l'article 'al-', s'il est un nom propre, s'il est annexé à un terme défini, ou s'il porte un pronom affixe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment accorde-t-on l'adjectif dans 'كُتُبٌ ...' (des livres - pluriel non-humain) ?",
+              "options": [
+                "كُتُبٌ جَدِيدَةٌ (jadîdatun - féminin singulier)",
+                "كُتُبٌ جَدِيدُونَ (jadîdûna - masculin pluriel)",
+                "كُتُبٌ جَدِيدَانِ (jadîdâni - duel)",
+                "كُتُبٌ جَدِيدٍ (jadîdin - génitif)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kutub étant un pluriel d'inanimé, l'adjectif s'accorde au féminin singulier : kutubun jadîdatun."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle expression correspond exactement à 'la clé de la voiture' ?",
+              "options": [
+                "مِفْتَاحُ السَّيَّارَةِ (Miftâhu as-sayyârati)",
+                "المِفْتَاحُ السَّيَّارَةِ (Al-miftâhu as-sayyârati)",
+                "مِفْتَاحُ سَيَّارَةٌ (Miftâhu sayyâratun)",
+                "المِفْتَاحُ السَّيَّارَةُ (Al-miftâhu as-sayyâratu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annexion définie : miftâhu (sans article ni tanwîn) + as-sayyârati (avec article et kasra du majrûr)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel cas prend un adjectif qualifiant un nom au génitif (majrûr) ?",
+              "options": [
+                "Le génitif (majrûr)",
+                "Le nominatif (marfû')",
+                "L'accusatif (mansûb)",
+                "L'apocopé (majzûm)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif épithète suit fidèlement le cas du nom qu'il qualifie : après un nom majrûr, l'adjectif est majrûr."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'ces grandes maisons' (buyût étant un pluriel non-humain) ?",
+              "options": [
+                "هَذِهِ البُيُوتُ الكَبِيرَةُ",
+                "هَؤُلَاءِ البُيُوتُ الكِبَارُ",
+                "هَذَا البُيُوتُ الكَبِيرُ",
+                "تِلْكَ البُيُوتُ الكَبِيرُونَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel inanimé 'al-buyûtu' réclame un démonstratif féminin singulier (hâdhihi) et un adjectif féminin singulier (al-kabîratu)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie 'قَلَمُ الطَّالِبِ الجَدِيدِ' si 'al-jadîdi' porte une kasra (accord avec at-tâlibi) ?",
+              "options": [
+                "Le stylo du nouvel étudiant",
+                "Le nouveau stylo de l'étudiant",
+                "Un nouveau stylo et un étudiant",
+                "L'étudiant a un nouveau stylo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Al-jadîdi portant une kasra, il s'accorde en cas avec at-tâlibi (au génitif) : il s'agit donc du nouvel étudiant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que stipule la maxime syntaxique classique 'كُلُّ جَمْعٍ مُؤَنَّث' (kullu jam'in mu'annath) concernant les inanimés ?",
+              "options": [
+                "Tout pluriel d'objets ou concepts non-humains est traité grammaticalement comme un féminin singulier",
+                "Tous les êtres humains deviennent féminins au pluriel",
+                "Les mots féminins n'ont jamais de pluriel régulier",
+                "Les adjectifs arabes sont tous invariables au féminin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette règle fondamentale énonce que tout pluriel de choses non douées de raison entraîne des accords au féminin singulier."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Phrases simples",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : La phrase nominale (Mubtada' et Khabar)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "De quels deux constituants essentiels se compose la phrase nominale simple (al-jumla al-ismiyya) ?",
+              "options": [
+                "D'un thème (al-mubtada') et d'un propos / attribut (al-khabar)",
+                "D'un verbe, d'un sujet et d'un complément d'objet",
+                "D'une préposition et d'un adverbe de temps",
+                "D'une conjonction et d'un participe présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phrase nominale repose sur le couple mubtada' (le sujet de départ) et khabar (l'information apportée sur ce sujet)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Par quelle catégorie de mot commence classiquement une phrase nominale ?",
+              "options": [
+                "Par un nom ou un pronom",
+                "Par un verbe conjugué au passé",
+                "Par une préposition obligatoire",
+                "Par une particule d'exclamation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, une phrase nominale (jumla ismiyya) s'ouvre sur un nom (ism) ou un pronom personnel."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le cas grammatical habituel du mubtada' et du khabar dans la phrase nominale de base ?",
+              "options": [
+                "Tous deux sont au nominatif (marfû' avec damma)",
+                "Le mubtada' est à l'accusatif et le khabar au génitif",
+                "Le mubtada' est au génitif et le khabar au nominatif",
+                "Tous deux sont obligatoirement à l'accusatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la phrase nominale simple non modifiée, le mubtada' et le khabar sont tous les deux au cas nominatif (marfû')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la phrase 'الأُسْتَاذُ حَاضِرٌ' (Al-ustâdhu hâdirun), quel terme est le khabar ?",
+              "options": [
+                "حَاضِرٌ (hâdirun - présent)",
+                "الأُسْتَاذُ (al-ustâdhu - le professeur)",
+                "Il n'y a pas de khabar exprimé",
+                "Le verbe être sous-entendu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Al-ustâdhu est le mubtada' (défini) et hâdirun est le khabar (indéfini apportant l'information : le professeur est présent)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques de détermination retrouve-t-on le plus souvent dans une phrase nominale type ?",
+              "options": [
+                "Le mubtada' est généralement défini (ma'rifa)",
+                "Le khabar est généralement indéfini (nakira)",
+                "Le mubtada' doit obligatoirement porter un tanwîn fatha",
+                "Le khabar doit toujours porter l'article al-"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pour distinguer la phrase nominale (attribut) du groupe nominal (épithète), le mubtada' est généralement défini et le khabar indéfini."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on en français 'الوَلَدُ مَرِيضٌ' (Al-waladu marîdun) ?",
+              "options": [
+                "Le garçon est malade",
+                "Le garçon malade...",
+                "Un garçon malade est là",
+                "La maladie du garçon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Al-waladu (défini) + marîdun (indéfini) forme une proposition complète : 'Le garçon est malade'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment le verbe 'être' au présent est-il traduit dans une phrase nominale arabe simple ?",
+              "options": [
+                "Il n'est pas exprimé (il est sous-entendu par la juxtaposition)",
+                "Par le verbe kâna conjugué au présent",
+                "Par la particule inna obligatoire",
+                "Par un pronom interrogatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'arabe n'a pas de copule 'être' au présent de l'indicatif : la juxtaposition d'un sujet défini et d'un attribut indéfini suffit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la phrase nominale 'السَّمَاءُ صَافِيَةٌ' (As-samâ'u sâfiyatun) ?",
+              "options": [
+                "Le ciel est clair / dégagé",
+                "Un ciel dégagé s'est levé",
+                "Dans le ciel dégagé",
+                "Regarde le ciel dégagé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "As-samâ'u (le ciel, féminin en arabe) + sâfiyatun (clair/dégagé) = 'Le ciel est clair'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans 'القَلَمُ عَلَى المَكْتَبِ' (Le stylo est sur le bureau), quelle est la nature du khabar ?",
+              "options": [
+                "C'est un groupe prépositionnel (chibh jumla)",
+                "C'est un verbe d'action au passé",
+                "C'est un adjectif épithète simple",
+                "Il n'y a pas de khabar"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le khabar peut être un mot simple, mais aussi un syntagme prépositionnel (chibh jumla) comme 'alâ al-maktabi'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans 'مَنِ الأُسْتَاذُ ؟' (Qui est le professeur ?), quel type de mot occupe la fonction de khabar avancé ?",
+              "options": [
+                "Le pronom interrogatif 'Man' (qui)",
+                "Le verbe être dissimulé",
+                "La préposition de liaison",
+                "L'article défini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans les questions avec pronom interrogatif, celui-ci occupe la première position en tant que khabar muqaddam (prédicat antéposé)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : L'accord dans la phrase nominale et l'absence de copule",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi le khabar s'accorde-t-il obligatoirement avec le mubtada' lorsqu'il s'agit d'un adjectif ou d'un nom de statut ?",
+              "options": [
+                "En genre (masculin/féminin) et en nombre (singulier/duel/pluriel)",
+                "En temps et en personne verbale",
+                "En détermination (il prend l'article al-)",
+                "Il ne s'accorde jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attribut (khabar) s'accorde avec son sujet (mubtada') en genre et en nombre, tout en restant indéfini."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour compléter 'الطَّالِبَةُ ...' (L'étudiante est...), quelle forme de khabar convient ?",
+              "options": [
+                "مُجْتَهِدَةٌ (mujtahidatun - féminin singulier)",
+                "مُجْتَهِدٌ (mujtahidun - masculin singulier)",
+                "مُجْتَهِدُونَ (mujtahidûna - pluriel)",
+                "مُجْتَهِدَانِ (mujtahidâni - duel)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "At-tâlibatu étant féminin singulier, son attribut prend la marque du féminin singulier : mujtahidatun."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment s'accorde le khabar avec le sujet duel 'المُعَلِّمَانِ ...' (Les deux enseignants sont...) ?",
+              "options": [
+                "مَاهِرَانِ (mâhirâni - duel nominatif)",
+                "مَاهِرٌ (mâhirun - singulier)",
+                "مَاهِرُونَ (mâhirûna - pluriel)",
+                "مَاهِرَتَانِ (mâhiratâni - duel féminin)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le khabar s'accorde au duel masculin nominatif avec le suffixe '-âni' : mâhirâni."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles phrases nominales ci-dessous présentent un accord sujet-attribut parfaitement correct ?",
+              "options": [
+                "المُدَرِّسُونَ مُخْلِصُونَ (Al-mudarrisûna mukhlisûna)",
+                "البِنْتُ ذَكِيَّةٌ (Al-bintu dhakiyyatun)",
+                "المُدَرِّسُونَ مُخْلِصَةٌ (désaccord de nombre)",
+                "البِنْتُ ذَكِيٌّ (désaccord de genre)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Mudarrisûna s'accorde au pluriel masculin sain avec mukhlisûna. Bint (fille) s'accorde au féminin singulier avec dhakiyyatun."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Les fenêtres sont ouvertes' (an-nawâfidhu étant un pluriel non-humain) ?",
+              "options": [
+                "النَّوَافِذُ مَفْتُوحَةٌ (khabar au féminin singulier)",
+                "النَّوَافِذُ مَفْتُوحُونَ (khabar au pluriel masculin)",
+                "النَّوَافِذُ مَفْتُوحٌ (khabar au masculin singulier)",
+                "النَّوَافِذُ مَفْتُوحَاتٌ (khabar obligatoire au pluriel)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "An-nawâfidhu (pluriel brisé d'inanimé) commande un accord au féminin singulier pour son khabar : maftûhatun."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle nuance oppose 'البَيْتُ جَمِيلٌ' à 'البَيْتُ الجَمِيلُ' ?",
+              "options": [
+                "'البَيْتُ جَمِيلٌ' est une phrase complète, l'autre est un groupe nominal qualifié",
+                "'البَيْتُ جَمِيلٌ' exprime le passé, l'autre le présent",
+                "Il n'y a aucune différence de structure ni de sens",
+                "'البَيْتُ الجَمِيلُ' est une interrogation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Al-baytu jamîlun = La maison est belle (phrase). Al-baytu al-jamîlu = La belle maison (groupe nominal épithète)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour 'الطَّالِبَاتُ ...' (Les étudiantes sont...), quelle forme de khabar est correcte ?",
+              "options": [
+                "حَاضِرَاتٌ (hâdirâtun - pluriel féminin sain)",
+                "حَاضِرُونَ (hâdirûna - pluriel masculin)",
+                "حَاضِرَةٌ (hâdiratun - singulier)",
+                "حَاضِرٌ (hâdirun - singulier masculin)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S'agissant d'êtres humains de sexe féminin au pluriel, l'attribut prend le pluriel féminin sain : hâdirâtun."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel rôle joue le pronom 'هُوَ' inséré dans 'اللهُ هُوَ الرَّزَّاقُ' ?",
+              "options": [
+                "Pronom de séparation (damîr al-fasl) évitant la confusion avec une épithète",
+                "Sujet d'un verbe d'action passé",
+                "Complément de lieu sous-entendu",
+                "Particule d'interrogation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque le sujet et l'attribut sont tous deux définis, on intercale un pronom de séparation (damîr al-fasl) pour marquer la phrase."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans 'نَحْنُ مُسْتَعِدُّونَ' (Nous sommes prêts), pourquoi 'musta'iddûna' est-il au pluriel masculin sain ?",
+              "options": [
+                "Il s'accorde avec le pronom 'nahnu' renvoyant à un groupe masculin pluriel",
+                "C'est un nom duel",
+                "C'est une particule invariable",
+                "C'est un verbe conjugué au présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pronom nahnu (nous) commande un accord au pluriel masculin sain (-ûna) pour des locuteurs masculins."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Elles sont heureuses' en arabe classique ?",
+              "options": [
+                "هُنَّ سَعِيدَاتٌ (Hunna sa'îdâtun)",
+                "هُمْ سَعِيدُونَ (Hum sa'îdûna)",
+                "هِيَ سَعِيدَةٌ (Hiya sa'îdatun)",
+                "أَنْتُنَّ سَعِيدَاتٌ (Antunna sa'îdâtun)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hunna (elles) + sa'îdâtun (pluriel féminin sain) = 'Elles sont heureuses'."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : La négation avec Laysa (ليس)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la fonction essentielle du mot 'لَيْسَ' (laysa) en arabe ?",
+              "options": [
+                "Nier la phrase nominale au présent (ne pas être)",
+                "Exprimer une obligation future",
+                "Poser une interrogation sur le lieu",
+                "Indiquer la possession d'un objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Laysa' est l'auxiliaire de négation par excellence de la phrase nominale au présent ('ne pas être')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la particularité morphologique remarquable de 'لَيْسَ' ?",
+              "options": [
+                "C'est un verbe figé qui se conjugue comme un passé mais a le sens d'un présent",
+                "C'est un nom d'action totalement indéclinable",
+                "C'est une préposition de lieu inséparable",
+                "C'est un verbe régulier qui possède un futur et un impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Laysa est un verbe défectif/figé (jâmid) : il prend les désinences du passé (mâdî) mais conserve un sens présent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel effet casuel 'laysa' produit-il sur l'attribut (khabar laysa) ?",
+              "options": [
+                "Il fait passer l'attribut au cas accusatif (mansûb avec fatha)",
+                "Il laisse l'attribut au cas nominatif",
+                "Il impose obligatoirement le cas apocopé",
+                "Il supprime totalement l'attribut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme les verbes de la famille de 'kâna', laysa maintient son sujet au nominatif (ism laysa) et met son attribut à l'accusatif (khabar laysa mansûb)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment nie-t-on 'الامْتِحَانُ صَعْبٌ' (L'examen est difficile) avec 'laysa' ?",
+              "options": [
+                "لَيْسَ الامْتِحَانُ صَعْبًا (Laysa al-imtihânu sa'ban)",
+                "لَيْسَ الامْتِحَانُ صَعْبٌ (désinence erronée)",
+                "مَا الامْتِحَانُ صَعْبٍ (kasra erronée)",
+                "لَا الامْتِحَانُ صَعْبٌ (négation inadaptée)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attribut sa'b passe à l'accusatif mansûb avec un tanwîn fatha : Laysa al-imtihânu sa'ban."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases illustrent un emploi grammaticalement correct de 'laysa' ?",
+              "options": [
+                "لَسْتُ مَرِيضًا (Lastu marîdan - Je ne suis pas malade)",
+                "لَيْسَتِ البِنْتُ حَزِينَةً (Laysat al-bintu hazînatan)",
+                "لَسْتَ مَرِيضٌ (erreur de cas sur l'attribut)",
+                "لَيْسُوا حَاضِرَانِ (mélange pluriel et duel)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Lastu marîdan (attribut accusatif) et Laysat al-bintu hazînatan (accord féminin singulier et accusatif) sont parfaitement corrects."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se conjugue 'laysa' avec le pronom 'أَنَا' (je ne suis pas) ?",
+              "options": [
+                "لَسْتُ (Lastu)",
+                "لَسْتَ (Lasta)",
+                "لَيْسَ (Laysa)",
+                "لَسْنَا (Lasnâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la 1re personne du singulier, le verbe devient 'Lastu' (لَسْتُ) : le yâ' tombe devant la consonne avec soukoun."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se conjugue 'laysa' avec 'هِيَ' (elle n'est pas) ?",
+              "options": [
+                "لَيْسَتْ (Laysat)",
+                "لَسْتِ (Lasti)",
+                "لَيْسُوا (Laysû)",
+                "لَسْنَ (Lasna)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'hiya' (3e personne féminin singulier), on ajoute la tâ' sâkina : Laysat (لَيْسَتْ)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la phrase 'لَسْنَا فِي البَيْتِ' (Lasnâ fî al-bayti) ?",
+              "options": [
+                "Nous ne sommes pas à la maison",
+                "Vous n'êtes pas à la maison",
+                "Ils ne sont pas à la maison",
+                "Je ne suis pas à la maison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lasnâ est la 1re personne du pluriel de laysa : 'Nous ne sommes pas à la maison'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle préposition peut précéder le khabar de laysa pour renforcer la négation (ex: laysa bi-ba'îdin) ?",
+              "options": [
+                "La préposition Bi- (بِـ) qui met le nom au génitif",
+                "La préposition Min (مِنْ)",
+                "La préposition Ilâ (إِلَى)",
+                "La préposition 'An (عَنْ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le 'Bâ' za'ida' (بِـ) est fréquemment employé avec laysa pour insister : laysa bi-ba'îdin = ce n'est nullement loin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Tu n'es pas seul' en s'adressant à un garçon ?",
+              "options": [
+                "لَسْتَ وَحْدَكَ (Lasta wahdaka)",
+                "لَسْتِ وَحْدَكِ (Lasti wahdaki)",
+                "لَيْسَ وَحْدَهُ (Laysa wahdahu)",
+                "لَسْتُ وَحْدِي (Lastu wahdî)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lasta s'adresse à un interlocuteur masculin singulier (tu) : Lasta wahdaka."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : La phrase verbale (Fi'l, Fâ'il, Maf'ûl bihi)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Par quel type de mot débute canoniquement une phrase verbale (al-jumla al-fi'liyya) classique ?",
+              "options": [
+                "Par un verbe (fi'l)",
+                "Par un nom de personne",
+                "Par une préposition de lieu",
+                "Par un adjectif qualificatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phrase verbale classique commence par un verbe (fi'l), suivi généralement de son sujet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels sont les deux composants minimaux indispensables d'une phrase verbale ?",
+              "options": [
+                "Le verbe (al-fi'l) et le sujet (al-fâ'il)",
+                "Le verbe et l'adjectif qualificatif",
+                "Le sujet et le complément circonstantiel",
+                "Le COD et le pronom relatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute phrase verbale exige au minimum un verbe (fi'l) et son sujet (fâ'il, qu'il soit explicite ou pronominal)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quel cas grammatical se met toujours le sujet du verbe (al-fâ'il) ?",
+              "options": [
+                "Au cas nominatif (marfû' avec damma)",
+                "Au cas accusatif (mansûb avec fatha)",
+                "Au cas génitif (majrûr avec kasra)",
+                "Au cas apocopé (majzûm)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fâ'il (sujet de l'action) est obligatoirement au cas nominatif marfû' (marqué par la damma au singulier)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À quel cas grammatical se met le complément d'objet direct (al-maf'ûl bihi) ?",
+              "options": [
+                "Au cas accusatif (mansûb avec fatha)",
+                "Au cas nominatif (marfû' avec damma)",
+                "Au cas génitif (majrûr avec kasra)",
+                "Au cas duel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le maf'ûl bihi (COD) est par définition au cas accusatif mansûb (fatha au singulier)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans 'كَتَبَ التِّلْمِيذُ رِسَالَةً' (L'élève a écrit une lettre), quel mot est le maf'ûl bihi ?",
+              "options": [
+                "رِسَالَةً (risâlatan - une lettre)",
+                "التِّلْمِيذُ (at-tilmîdhu - l'élève)",
+                "كَتَبَ (kataba - a écrit)",
+                "Il n'y a aucun complément d'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Risâlatan est l'objet direct qui subit l'action d'écrire : c'est le maf'ûl bihi au cas accusatif indéfini."
+            },
+            {
+              "id": "q6",
+              "type": "multiple_choice",
+              "question": "Dans la phrase 'شَرِبَ الوَلَدُ المَاءَ' (L'enfant a bu l'eau), quelles propositions sont exactes ?",
+              "options": [
+                "'الوَلَدُ' est le fâ'il (sujet) au cas marfû' (damma)",
+                "'المَاءَ' est le maf'ûl bihi (COD) au cas mansûb (fatha)",
+                "'شَرِبَ' est un nom d'action au génitif",
+                "'الوَلَدُ' est un complément de lieu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Al-waladu est le sujet nominatif (marfû' avec damma), et al-mâ'a est le COD accusatif (mansûb avec fatha)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est l'ordre des mots le plus canonique en arabe littéraire classique ?",
+              "options": [
+                "Verbe - Sujet - Objet (V-S-O)",
+                "Sujet - Verbe - Objet (S-V-O)",
+                "Sujet - Objet - Verbe (S-O-V)",
+                "Objet - Verbe - Sujet (O-V-S)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre classique par excellence de la phrase verbale arabe est V-S-O (Fi'l - Fâ'il - Maf'ûl bihi)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans 'كَتَبَ الدَّرْسَ' (sans sujet nominal apparent), qui accomplit l'action ?",
+              "options": [
+                "Il (pronom sujet caché 'huwa' contenu dans le verbe kataba)",
+                "Je (1re personne)",
+                "Nous (1re personne pluriel)",
+                "Ils (3e personne pluriel)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque le sujet n'est pas exprimé par un nom, il est représenté par un pronom latent (damîr mustatir) inclus dans la forme verbale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'La fille mange une pomme' en respectant l'ordre V-S-O ?",
+              "options": [
+                "تَأْكُلُ البِنْتُ تُفَّاحَةً (Ta'kulu al-bintu tuffâhatan)",
+                "يَأْكُلُ البِنْتُ تُفَّاحَةً (désaccord de genre)",
+                "أَكَلَتْ البِنْتُ تُفَّاحَةٌ (désinence nominative erronée)",
+                "البِنْتُ تَأْكُلُ تُفَّاحَةٍ (ordre S-V-O et kasra)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ta'kulu (verbe féminin) + al-bintu (sujet marfû') + tuffâhatan (COD mansûb) forme la phrase verbale modèle."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans 'سَمِعَ الأَوْلَادُ الصَّوْتَ', pourquoi le mot 'الصَّوْتَ' se termine-t-il par une fatha ?",
+              "options": [
+                "Parce qu'il est maf'ûl bihi (COD) au cas accusatif mansûb",
+                "Parce qu'il est le sujet du verbe",
+                "Parce qu'il qualifie les enfants comme adjectif",
+                "Parce qu'il est précédé d'une préposition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "As-sawta est le complément d'objet direct du verbe sami'a ; il prend donc la fatha de l'accusatif (mansûb)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : L'ordre des mots et accord du verbe en tête de phrase",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Lorsqu'un verbe précède un sujet apparent au pluriel, à quel nombre le verbe se met-il en arabe classique ?",
+              "options": [
+                "Au singulier (en s'accordant uniquement en genre)",
+                "Au pluriel obligatoire",
+                "Au duel",
+                "À l'infinitif sans accord"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Règle majeure : placé en tête de phrase devant son sujet explicite, le verbe reste TOUJOURS au singulier, tout en s'accordant en genre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Les étudiants sont entrés' en commençant par le verbe (at-tullâb = masculin pluriel) ?",
+              "options": [
+                "دَخَلَ الطُّلَّابُ (Dakhala at-tullâbu - verbe au singulier)",
+                "دَخَلُوا الطُّلَّابُ (verbe au pluriel incorrect en tête)",
+                "دَخَلْنَ الطُّلَّابُ (verbe féminin pluriel)",
+                "يَدْخُلُونَ الطُّلَّابُ (verbe au pluriel)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sujet étant placé après le verbe, ce dernier reste au masculin singulier : Dakhala at-tullâbu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Les étudiantes sont entrées' en commençant par le verbe (at-tâlibât = féminin pluriel) ?",
+              "options": [
+                "دَخَلَتِ الطَّالِبَاتُ (verbe au féminin singulier)",
+                "دَخَلْنَ الطَّالِبَاتُ (verbe au pluriel)",
+                "دَخَلَ الطَّالِبَاتُ (verbe au masculin)",
+                "دَخَلُوا الطَّالِبَاتُ (verbe au masculin pluriel)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe s'accorde au féminin singulier devant un sujet féminin pluriel : Dakhalat at-tâlibâtu."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Si le sujet est placé AVANT le verbe (ex: At-tullâbu...), comment le verbe s'accorde-t-il ?",
+              "options": [
+                "Le verbe s'accorde pleinement en genre ET en nombre",
+                "On écrit : الطُّلَّابُ دَخَلُوا (verbe au pluriel)",
+                "Le verbe reste obligatoirement au singulier",
+                "Le verbe ne s'accorde plus du tout en genre"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Dans une phrase nominale où le sujet précède le verbe, ce dernier s'accorde complètement en genre et en nombre (At-tullâbu dakhalû)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que devient 'حَضَرَ الرَّجُلَانِ' (Les deux hommes sont venus) si l'on place le sujet 'الرَّجُلَانِ' en tête de phrase ?",
+              "options": [
+                "الرَّجُلَانِ حَضَرَا (verbe au duel avec alif de duel)",
+                "الرَّجُلَانِ حَضَرَ (verbe restant au singulier)",
+                "الرَّجُلَانِ حَضَرُوا (verbe au pluriel)",
+                "حَضَرُوا الرَّجُلَانِ (inversion incorrecte)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Placé après son sujet duel, le verbe doit s'accorder au duel : Ar-rajulâni hadarâ."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans 'جَاءَتِ الأُمَّهَاتُ', quel élément marque le féminin sur le verbe 'جَاءَتْ' ?",
+              "options": [
+                "La tâ' sâkina (تْ) suffixée au verbe",
+                "Un nûn final",
+                "Un wâw de groupe",
+                "L'alif de prolongation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 'tâ' at-ta'nîth as-sâkina' (تْ) est le suffixe marquant la 3e personne du féminin singulier au passé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi prononce-t-on 'دَخَلَتِ' avec une kasra dans 'دَخَلَتِ الطَّالِبَاتُ' ?",
+              "options": [
+                "Pour éviter la rencontre de deux consonnes muettes (iltiqâ' as-sâkinayn)",
+                "Parce que le verbe passe au cas génitif",
+                "Parce qu'il s'agit d'un verbe défectueux",
+                "C'est une erreur de prononciation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La soukoun de 'dakhalat' devient une kasra de liaison pour éviter le choc phonétique avec la soukoun de l'article 'at-'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Les enfants ont joué dans le parc' avec verbe initial (awlâd = masc. pluriel) ?",
+              "options": [
+                "لَعِبَ الأَوْلَادُ فِي الحَدِيقَةِ (verbe au singulier)",
+                "لَعِبُوا الأَوْلَادُ فِي الحَدِيقَةِ (verbe au pluriel)",
+                "الأَوْلَادُ لَعِبَ فِي الحَدِيقَةِ (accord incomplet)",
+                "لَعِبَتْ الأَوْلَادُ فِي الحَدِيقَةِ (verbe féminin)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbe en tête = singulier masculin : La'iba al-awlâdu fî al-hadîqati."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la phrase 'المُعَلِّمُونَ يُشَاهِدُونَ الفِلْمَ' ?",
+              "options": [
+                "Les enseignants regardent le film",
+                "L'enseignant regarde le film",
+                "Les deux enseignants regardent le film",
+                "Regardez le film, enseignants !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Al-mu'allimûna (sujet pluriel) + yuchâhidûna (verbe au pluriel présent) + al-filma (COD) = 'Les enseignants regardent le film'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel accord fait-on si le sujet placé après le verbe est un pluriel non-humain (ex: les journaux sont parus) ?",
+              "options": [
+                "Le verbe se met au féminin singulier",
+                "Le verbe se met obligatoirement au masculin pluriel",
+                "Le verbe se met au duel masculin",
+                "Le verbe ne s'accorde jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les pluriels d'inanimés étant assimilés au féminin singulier, le verbe prend la marque du féminin singulier (ex: sadarati as-suhufu)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : La conjugaison au présent (al-Mudâri')",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment s'appelle le temps verbal de l'inaccompli / présent en langue arabe ?",
+              "options": [
+                "Al-Mudâri' (المُضَارِع)",
+                "Al-Mâdî (المَاضِي)",
+                "Al-Amr (الأَمْر)",
+                "Al-Masdar (المَصْدَر)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps de l'inaccompli (présent/futur) se nomme 'al-mudâri'' (المُضَارِع)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles sont les 4 lettres préfixes caractéristiques du présent (regroupées dans 'anaytu') ?",
+              "options": [
+                "Alif (أ), Nûn (ن), Yâ' (ي), Tâ' (ت)",
+                "Bâ', Lâm, Mîm, Fâ'",
+                "Kâf, Sîn, Chîn, Râ'",
+                "Wâw, Hâ', Dâl, Zây"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout verbe au présent débute par l'un des 4 préfixes d'inaccompli (hurûf al-mudâra'a) : أ, ن, ي, ت."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel préfixe caractérise la première personne du singulier 'je' au présent ?",
+              "options": [
+                "L'alif avec hamza (أَ- / a-)",
+                "Le yâ' (يَ- / ya-)",
+                "Le tâ' (تَ- / ta-)",
+                "Le nûn (نَ- / na-)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 1re personne du singulier 'anâ' prend le préfixe Alif : anâ aktubu (أَنَا أَكْتُبُ)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'J'écris' au présent du verbe 'kataba' ?",
+              "options": [
+                "أَكْتُبُ (Aktubu)",
+                "يَكْتُبُ (Yaktubu)",
+                "تَكْتُبُ (Taktubu)",
+                "نَكْتُبُ (Naktubu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À partir de la racine K-T-B, la 1re personne du singulier au présent est Aktubu (أَكْتُبُ)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales au présent correspondent à 'tu écris' (tutoiement) ?",
+              "options": [
+                "تَكْتُبُ (Taktubu - pour un garçon)",
+                "تَكْتُبِينَ (Taktubîna - pour une fille)",
+                "يَكْتُبُونَ (Yaktubûna - pour ils)",
+                "نَكْتُبُ (Naktubu - pour nous)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le tutoiement masculin singulier est 'taktubu' et le tutoiement féminin singulier est 'taktubîna'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la voyelle désinentielle normale de l'indicatif au présent (al-mudâri' al-marfû') ?",
+              "options": [
+                "La damma (-u) sur la consonne finale",
+                "La fatha (-a)",
+                "La kasra (-i)",
+                "La soukoun invariable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'indicatif sans particule modale, le présent est marfû' et se termine par une damma (ex: yaktubu, yadkhulu)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Nous buvons' au présent à partir de 'chariba' ?",
+              "options": [
+                "نَشْرَبُ (Nachrabu)",
+                "أَشْرَبُ (Achrabu)",
+                "يَشْرَبُونَ (Yachrabûna)",
+                "تَشْرَبِينَ (Tachrabîna)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 1re personne du pluriel 'nahnu' prend le préfixe Nûn : Nachrabu (نَشْرَبُ)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la phrase 'يَذْهَبُونَ إِلَى المَدْرَسَةِ' ?",
+              "options": [
+                "Ils vont à l'école",
+                "Nous allons à l'école",
+                "Vous allez à l'école",
+                "Elle va à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yadh-habûna est la 3e personne du masculin pluriel au présent (ils vont)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle particule ajoute-t-on devant le mudâri' pour indiquer une action future proche ?",
+              "options": [
+                "Le préfixe sîn (سَـ) ou le mot sawfa (سَوْفَ)",
+                "La particule qad (قَدْ)",
+                "La particule lâ (لَا)",
+                "La préposition fî (فِي)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe 'sa-' (سَـ) ou la particule 'sawfa' (سَوْفَ) transforme le présent en futur de certitude (ex: sayaktubu = il écrira)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Elle lit une histoire' au présent ?",
+              "options": [
+                "تَقْرَأُ قِصَّةً (Taqra'u qissatan)",
+                "يَقْرَأُ قِصَّةً (Yaqra'u - masculin)",
+                "أَقْرَأُ قِصَّةً (Aqra'u - je)",
+                "نَقْرَأُ قِصَّةً (Naqra'u - nous)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 3e personne féminin singulier prend le préfixe Tâ' : Taqra'u qissatan."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : La conjugaison au passé accompli (al-Mâdî)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment s'appelle le temps du passé accompli en grammaire arabe ?",
+              "options": [
+                "Al-Mâdî (المَاضِي)",
+                "Al-Mudâri' (المُضَارِع)",
+                "Al-Amr (الأَمْر)",
+                "Al-Masdar (المَصْدَر)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le temps de l'accompli (action achevée dans le passé) s'appelle 'al-mâdî' (المَاضِي)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment la personne grammaticale est-elle exprimée dans la conjugaison du mâdî ?",
+              "options": [
+                "Par des suffixes désinentiels ajoutés à la fin du radical verbal",
+                "Par des préfixes placés au début du mot",
+                "Par des pronoms invariables toujours séparés",
+                "Par des modifications du nom sujet uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au mâdî, les marques de personne sont toutes suffixées à la racine verbale (ex: katab-tu, katab-ta, katab-nâ)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel suffixe correspond à 'أَنَا' (j'ai fait) au mâdî ?",
+              "options": [
+                "ـْتُ (-tu avec damma, ex: fa'altu)",
+                "ـْتَ (-ta avec fatha)",
+                "ـْتِ (-ti avec kasra)",
+                "ـنَا (-nâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le suffixe de la 1re personne du singulier au passé est '-tu' (ـْتُ) : katabtu = j'ai écrit."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles formes du verbe 'étudier' (darasa) au passé correspondent au tutoiement ?",
+              "options": [
+                "دَرَسْتَ (Darasta - pour un garçon)",
+                "دَرَسْتِ (Darasti - pour une fille)",
+                "دَرَسْتُ (Darastu - 1re personne je)",
+                "دَرَسُوا (Darasû - 3e personne ils)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Au passé, le tutoiement masculin singulier prend '-ta' (darasta) et le tutoiement féminin singulier prend '-ti' (darasti)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la forme du verbe 'sortir' (kharaja) pour 'elle est sortie' ?",
+              "options": [
+                "خَرَجَتْ (Kharajat)",
+                "خَرَجَ (Kharaja)",
+                "خَرَجْتُ (Kharajtu)",
+                "خَرَجْنَ (Kharajna)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour 'hiya' (elle), on ajoute la tâ' at-ta'nîth as-sâkina : Kharajat (خَرَجَتْ)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la forme verbale 'أَكَلْنَا' (Akalnâ) ?",
+              "options": [
+                "Nous avons mangé",
+                "J'ai mangé",
+                "Ils ont mangé",
+                "Vous avez mangé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le suffixe '-nâ' (ـنَا) est la marque de la 1re personne du pluriel au passé : Akalnâ = nous avons mangé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel suffixe caractérise le verbe au passé avec le pronom 'هُمْ' (ils ont fait) ?",
+              "options": [
+                "ـُوا (-û / wâw de groupe suivi d'un alif muet)",
+                "ـُونَ (-ûna)",
+                "ـْنَ (-na)",
+                "ـْتُمْ (-tum)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pluriel masculin 'hum' prend le wâw de groupe '-û' écrit avec un alif orthographique muet (ex: katabû / كَتَبُوا)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Vous avez compris la leçon' (adressé à un groupe masculin pluriel) ?",
+              "options": [
+                "فَهِمْتُمُ الدَّرْسَ (Fahimtum ad-darsa)",
+                "فَهِمْنَا الدَّرْسَ (Fahimnâ - nous)",
+                "فَهِمْتِ الدَّرْسَ (Fahimti - tu fém.)",
+                "فَهِمُوا الدَّرْسَ (Fahimû - ils)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le suffixe de la 2e personne du masculin pluriel est '-tum' : Fahimtum ad-darsa."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la forme 'فَعَلَ' (fa'ala, 3e pers. masc. sing.) sert-elle d'entrée dans les dictionnaires arabes ?",
+              "options": [
+                "C'est la forme la plus épurée sans suffixe de personne, équivalente à l'infinitif",
+                "C'est le seul temps utilisé dans les poèmes",
+                "C'est la forme du futur passif",
+                "C'est une obligation religieuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 3e personne du masculin singulier au mâdî (fa'ala) présente le radical trilitère nu ; elle est la forme de citation du verbe en arabe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on 'J'ai voyagé au Maroc' au passé ?",
+              "options": [
+                "سَافَرْتُ إِلَى المَغْرِبِ (Sâfartu ilâ al-Maghribi)",
+                "سَافَرْتَ إِلَى المَغْرِبِ (tu as voyagé)",
+                "يُسَافِرُ إِلَى المَغْرِبِ (il voyage)",
+                "سَافَرُوا إِلَى المَغْرِبِ (ils ont voyagé)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sâfartu (1re pers. singulier mâdî) + ilâ al-Maghribi = J'ai voyagé au Maroc."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Les outils interrogatifs (Adawât al-istifhâm)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel outil interrogatif emploie-t-on pour une question fermée dont la réponse est 'oui' (na'am) ou 'non' (lâ) ?",
+              "options": [
+                "هَلْ (Hal) ou le préfixe أ (a-)",
+                "مَاذَا (Mâdhâ)",
+                "كَيْفَ (Kayfa)",
+                "أَيْنَ (Ayna)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hal' (هَلْ) et la particule 'a-' (أَ) introduisent les questions fermées appelant une réponse binaire oui/non."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel outil interrogatif signifie 'Où ?' pour demander le lieu ?",
+              "options": [
+                "أَيْنَ (Ayna)",
+                "مَتَى (Matâ)",
+                "كَيْفَ (Kayfa)",
+                "مَنْ (Man)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ayna' (أَيْنَ) est le mot interrogatif servant à demander un lieu : où ?"
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel outil interrogatif signifie 'Quand ?' pour interroger sur le temps ?",
+              "options": [
+                "مَتَى (Matâ)",
+                "أَيْنَ (Ayna)",
+                "كَمْ (Kam)",
+                "لِمَاذَا (Limâdhâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Matâ' (مَتَى) est l'adverbe interrogatif temporel : quand ?"
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'Qui ?' pour interroger sur une personne ?",
+              "options": [
+                "مَنْ (Man avec fatha sur mîm)",
+                "مِنْ (Min avec kasra)",
+                "مَا (Mâ)",
+                "كَيْفَ (Kayfa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Man' (مَنْ) est le pronom interrogatif réservé aux personnes (douées de raison). À ne pas confondre avec 'min' (de/depuis)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels outils interrogatifs permettent d'exprimer 'Que / Qu'est-ce que ?' pour des choses ?",
+              "options": [
+                "مَا (Mâ - couramment employé devant un nom)",
+                "مَاذَا (Mâdhâ - couramment employé devant un verbe)",
+                "أَيْنَ (Ayna - lieu)",
+                "مَتَى (Matâ - temps)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Mâ' (مَا) et 'Mâdhâ' (مَاذَا) s'utilisent pour interroger sur des choses ou des actions inanimées : qu'est-ce que ?"
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel outil interrogatif signifie 'Comment ?' pour la manière ou l'état ?",
+              "options": ["كَيْفَ (Kayfa)", "كَمْ (Kam)", "هَلْ (Hal)", "أَيّ (Ayy)"],
+              "correctAnswers": [0],
+              "explanation": "'Kayfa' (كَيْفَ) interroge sur la manière ou l'état de santé (ex: Kayfa hâluka ? = Comment vas-tu ?)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'Combien ?' (prix ou quantité) en arabe ?",
+              "options": [
+                "كَمْ (Kam)",
+                "كَيْفَ (Kayfa)",
+                "لِمَاذَا (Limâdhâ)",
+                "مَتَى (Matâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Kam' (كَمْ) sert à interroger sur la quantité ou le nombre : combien ?"
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la question 'لِمَاذَا تَتَعَلَّمُ العَرَبِيَّةَ ؟' ?",
+              "options": [
+                "Pourquoi apprends-tu l'arabe ?",
+                "Comment apprends-tu l'arabe ?",
+                "Où apprends-tu l'arabe ?",
+                "Quand apprends-tu l'arabe ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Limâdhâ' (لِمَاذَا) interroge sur la cause ou le but : pourquoi ?"
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la réponse affirmative standard à 'هَلْ أَنْتَ طَالِبٌ ؟' ?",
+              "options": [
+                "نَعَمْ، أَنَا طَالِبٌ (Na'am, anâ tâlibun)",
+                "لَا، أَنَا طَالِبٌ (Lâ = non)",
+                "أَيْنَ أَنَا طَالِبٌ (question)",
+                "كَيْفَ أَنَا طَالِبٌ (interrogation)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Na'am' (نَعَمْ) signifie 'oui' en arabe : Na'am, anâ tâlibun (Oui, je suis étudiant)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie l'interrogation usuelle 'مَا اسْمُكَ ؟' (Mâ ismuka) ?",
+              "options": [
+                "Quel est ton nom ? / Comment t'appelles-tu ?",
+                "Où habites-tu ?",
+                "D'où viens-tu ?",
+                "Quel âge as-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Mâ ismuka ?' est la formule consacrée pour demander le nom d'un interlocuteur masculin."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : La négation des verbes (Lâ, Mâ, Lam)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle particule emploie-t-on pour nier un verbe à l'indicatif présent habituel (al-mudâri') ?",
+              "options": ["لَا (Lâ)", "مَا (Mâ)", "لَمْ (Lam)", "لَنْ (Lan)"],
+              "correctAnswers": [0],
+              "explanation": "'Lâ' (لَا an-nâfiya) s'emploie devant le présent de l'indicatif sans en changer les voyelles : lâ aktubu = je n'écris pas."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Je ne bois pas de café' au présent ?",
+              "options": [
+                "لَا أَشْرَبُ القَهْوَةَ (Lâ achrabu al-qahwata)",
+                "مَا أَشْرَبُ القَهْوَةَ",
+                "لَمْ أَشْرَبُ القَهْوَةَ",
+                "لَنْ أَشْرَبُ القَهْوَةَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une habitude présente, on emploie 'Lâ' suivi de l'indicatif : Lâ achrabu al-qahwata."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle particule simple nie traditionnellement un verbe au passé accompli (mâdî) ?",
+              "options": [
+                "مَا (Mâ, ex: mâ fahimtu)",
+                "لَا (Lâ)",
+                "لَنْ (Lan)",
+                "لَيْسَ (Laysa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Mâ' (مَا) est la particule de négation usuelle placée directement devant le verbe au passé : mâ fahimtu = je n'ai pas compris."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel effet la particule 'لَمْ' (lam) produit-elle sur le verbe à l'inaccompli (mudâri') ?",
+              "options": [
+                "Elle nie l'action au passé et met le verbe au cas apocopé (majzûm avec soukoun)",
+                "Elle nie l'action au futur et met le verbe à l'accusatif",
+                "Elle transforme le verbe en adjectif qualificatif",
+                "Elle ne change rien aux désinences"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Lam' est une particule négative qui renvoie le sens au passé et impose le mode apocopé (majzûm) au verbe mudâri'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle particule exprime une négation catégorique dans l'avenir (futur négatif) ?",
+              "options": [
+                "لَنْ (Lan - suivie du mudâri' au subjonctif mansûb)",
+                "لَمْ (Lam)",
+                "مَا (Mâ)",
+                "لَا (Lâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Lan' (لَنْ) nie catégoriquement l'avenir ('jamais / ne ... pas dans le futur') et met le verbe au mode mansûb (fatha)."
+            },
+            {
+              "id": "q6",
+              "type": "multiple_choice",
+              "question": "Quelles phrases ci-dessous expriment une négation au passé ?",
+              "options": [
+                "مَا كَتَبْتُ الرِّسَالَةَ (Mâ katabtu ar-risâlata)",
+                "لَمْ أَكْتُبِ الرِّسَالَةَ (Lam aktub ar-risâlata)",
+                "لَا أَكْتُبُ الرِّسَالَةَ (présent négatif)",
+                "لَنْ أَكْتُبَ الرِّسَالَةَ (futur négatif)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Mâ + mâdî' et 'Lam + mudâri' majzûm' sont deux manières rigoureusement correctes d'exprimer une négation passée en arabe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle désinence porte le verbe régulier singulier après la particule 'لَمْ' (lam) ?",
+              "options": [
+                "Une soukoun (يَكْتُبْ - mode apocopé majzûm)",
+                "Une damma",
+                "Une fatha",
+                "Une kasra"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mode apocopé (jazm) se marque par une soukoun sur la consonne finale d'un verbe sain singulier : lam yaktub (لَمْ يَكْتُبْ)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la phrase 'لَمْ يَفْهَمِ الدَّرْسَ' (Lam yafham ad-darsa) ?",
+              "options": [
+                "Il n'a pas compris la leçon",
+                "Il ne comprend pas la leçon",
+                "Il ne comprendra jamais la leçon",
+                "Comprends la leçon !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Lam yafham' exprime le passé négatif : 'Il n'a pas compris la leçon'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie 'لَنْ أَنْسَى' (Lan ansâ) ?",
+              "options": [
+                "Je n'oublierai pas (futur négatif)",
+                "Je n'ai pas oublié (passé)",
+                "Je n'oublie jamais (présent)",
+                "N'oublie pas ! (prohibition)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Lan' portant sur le futur, 'Lan ansâ' signifie : 'Je n'oublierai pas'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans la défense 'لَا تَكْذِبْ !' (Ne mens pas !), quelle est la nature de 'لَا' ?",
+              "options": [
+                "C'est le 'Lâ' de prohibition (an-nâhiya) suivi du verbe au majzûm",
+                "C'est une négation simple de fait à l'indicatif",
+                "C'est une particule interrogative",
+                "C'est un pronom relatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lâ an-nâhiya sert à exprimer une interdiction/défense et met le verbe au mode apocopé majzûm (soukoun)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Synthèse sur les phrases simples et la syntaxe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre phrase nominale (ismiyya) et phrase verbale (fi'liyya) ?",
+              "options": [
+                "L'ismiyya débute par un nom et pose un état ; la fi'liyya débute par un verbe et décrit une action",
+                "L'ismiyya est toujours négative alors que la fi'liyya est toujours affirmative",
+                "L'ismiyya ne peut jamais contenir d'adjectif qualificatif",
+                "Il n'y a aucune différence de structure en arabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'analyse syntaxique arabe distingue la jumla ismiyya (qui commence par un nom/thème) de la jumla fi'liyya (ouverte par un verbe)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans 'القَاهِرَةُ عَاصِمَةُ مِصْرَ' (Le Caire est la capitale de l'Égypte), quelle est la nature de la phrase ?",
+              "options": [
+                "C'est une phrase nominale avec mubtada' et un khabar formé par une idâfa",
+                "C'est une phrase verbale au passé",
+                "C'est une question sans réponse",
+                "C'est une phrase subordonnée conditionnelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Al-Qâhiratu est le mubtada', et 'âsimatu Misra est le khabar formé d'une annexion nominale (idâfa)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Le professeur explique la leçon en classe' avec l'ordre canonique V-S-O ?",
+              "options": [
+                "يَشْرَحُ المُعَلِّمُ الدَّرْسَ فِي الفَصْلِ",
+                "المُعَلِّمُ يَشْرَحُ الدَّرْسَ فِي الفَصْلِ (ordre S-V-O)",
+                "يَشْرَحُ الدَّرْسَ المُعَلِّمُ فِي الفَصْلِ (V-O-S)",
+                "فِي الفَصْلِ يَشْرَحُ المُعَلِّمُ الدَّرْسَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Yachrahu (verbe) + al-mu'allimu (sujet marfû') + ad-darsa (COD mansûb) + fî al-fasli = ordre classique V-S-O."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase nominale exprime correctement 'Les deux filles sont intelligentes' ?",
+              "options": [
+                "البِنْتَانِ ذَكِيَّتَانِ (Al-bintâni dhakiyyatâni)",
+                "البِنْتَانِ ذَكِيَّةٌ (désaccord duel/singulier)",
+                "البِنْتَانِ ذَكِيَّانِ (désaccord de genre féminin)",
+                "البَنَاتُ ذَكِيَّاتٌ (pluriel et non duel)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mubtada' duel féminin al-bintâni commande un khabar duel féminin : dhakiyyatâni."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels éléments reçoivent obligatoirement le cas accusatif (mansûb) dans ces propositions simples ?",
+              "options": [
+                "Le maf'ûl bihi (COD) d'un verbe d'action",
+                "L'attribut (khabar) du verbe 'laysa' (لَيْسَ)",
+                "Le sujet (fâ'il) du verbe",
+                "Le nom précédé d'une préposition (harf jarr)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le COD (maf'ûl bihi) et l'attribut de laysa (khabar laysa) sont tous deux au cas accusatif (mansûb)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle réponse convient logiquement à la question 'أَيْنَ تَسْكُنُ ؟' (Où habites-tu ?) ?",
+              "options": [
+                "أَسْكُنُ فِي بَارِيسَ (J'habite à Paris)",
+                "نَعَمْ، أَسْكُنُ (réponse oui/non inadaptée)",
+                "اسْمِي مُحَمَّدٌ (réponse sur le nom)",
+                "أَنَا بِخَيْرٍ (réponse sur la santé)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ayna' interrogeant sur le lieu, la réponse apporte un lieu introduit par une préposition : Askunu fî Bârîs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment nie-t-on au passé 'سَمِعْتُ الخَبَرَ' (J'ai entendu la nouvelle) ?",
+              "options": [
+                "مَا سَمِعْتُ الخَبَرَ (Mâ sami'tu al-khabara)",
+                "لَا أَسْمَعُ الخَبَرَ (présent)",
+                "لَيْسَ الخَبَرَ (incomplet)",
+                "لَنْ أَسْمَعَ الخَبَرَ (futur)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La particule 'Mâ' devant le verbe au passé nie l'accompli : Mâ sami'tu al-khabara = Je n'ai pas entendu la nouvelle."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans 'سَافَرَ التَّلَامِيذُ إِلَى مَكَّةَ', pourquoi le verbe 'سَافَرَ' est-il au singulier ?",
+              "options": [
+                "Parce qu'il est placé avant son sujet explicite au pluriel",
+                "Parce qu'il s'agit d'un verbe invariable",
+                "Parce que le mot talamîdh est un singulier",
+                "Parce que le voyage est un nom singulier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un verbe antéposé à son sujet reste obligatoirement au singulier en arabe classique : Sâfara at-talâmîdhu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la question 'هَلْ فَهِمْتَ كُلَّ شَيْءٍ ؟' (Hal fahimta kulla chay'in) ?",
+              "options": [
+                "As-tu tout compris ?",
+                "Où as-tu tout compris ?",
+                "Quand as-tu tout compris ?",
+                "Pourquoi n'as-tu rien compris ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hal' (est-ce que) + fahimta (tu as compris) + kulla chay'in (toute chose / tout) = 'As-tu tout compris ?'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel mot complète logiquement la phrase nominale 'البَيْتُ ...' pour signifier 'La maison est propre' ?",
+              "options": [
+                "نَظِيفٌ (nazîfun - masculin singulier marfû')",
+                "نَظِيفَةٌ (nazîfatun - féminin)",
+                "النَّظِيفُ (an-nazîfu - défini formant une épithète)",
+                "نَظِيفِينَ (nazîfîna - pluriel accusatif)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bayt étant masculin en arabe, son khabar s'accorde au masculin singulier indéfini : Al-baytu nazîfun (البَيْتُ نَظِيفٌ)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1868 @@
+{
+  "id": "6e-mathematiques-04",
+  "year": "6e",
+  "subject": "mathematiques",
+  "title": "Nombres et calculs",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Priorités et fractions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Quelles expressions valent 17 ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 17 ?",
+              "options": [
+                "5 × 3 + 2",
+                "(5 + 3) × 2",
+                "20 − 1 × 3",
+                "4 + 6 × 2"
+              ],
+              "explanation": "5 × 3 + 2 = 17 et 20 − 1 × 3 = 17.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien vaut 8 + 15 ÷ 3 ?",
+              "options": ["7", "13", "23", "4"],
+              "explanation": "15 ÷ 3 = 5, puis 8 + 5 = 13.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien vaut (12 − 4) × 2 ?",
+              "options": ["8", "16", "20", "10"],
+              "explanation": "12 − 4 = 8, puis 8 × 2 = 16.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle somme vaut 3/4 ?",
+              "options": [
+                "1/4 + 1/4",
+                "1/2 + 1/4",
+                "1/2 + 1/2",
+                "1/4 + 1/2 + 1/4"
+              ],
+              "explanation": "1/2 + 1/4 = 3/4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien vaut 3/4 − 1/4 ?",
+              "options": ["1/4", "1/2", "2/8", "1/3"],
+              "explanation": "3/4 − 1/4 = 1/2.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien vaut 24 ÷ 6 + 2 ?",
+              "options": ["4", "6", "8", "26"],
+              "explanation": "24 ÷ 6 = 4, puis 4 + 2 = 6.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien vaut 10 − 2 × 3 ?",
+              "options": ["24", "4", "16", "6"],
+              "explanation": "2 × 3 = 6, puis 10 − 6 = 4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La moitié de 18 est :",
+              "options": ["6", "9", "12", "8"],
+              "explanation": "18 ÷ 2 = 9.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un quart de 20 est :",
+              "options": ["4", "5", "10", "15"],
+              "explanation": "20 ÷ 4 = 5.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien vaut 2 + (8 + 4) ÷ 3 ?",
+              "options": ["4", "6", "8", "14"],
+              "explanation": "8 + 4 = 12, 12 ÷ 3 = 4, puis 2 + 4 = 6.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Quelles expressions valent 14 ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 14 ?",
+              "options": [
+                "2 + 3 × 4",
+                "(2 + 3) × 4",
+                "18 − 2 × 2",
+                "6 × 2 + 3"
+              ],
+              "explanation": "2 + 3 × 4 = 14 et 18 − 2 × 2 = 14.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien vaut 30 − 18 ÷ 3 ?",
+              "options": ["4", "24", "36", "12"],
+              "explanation": "18 ÷ 3 = 6, puis 30 − 6 = 24.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien vaut 6 × (5 − 2) ?",
+              "options": ["12", "18", "27", "8"],
+              "explanation": "5 − 2 = 3, puis 6 × 3 = 18.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Trois quarts d'une heure valent :",
+              "options": [
+                "30 minutes",
+                "45 minutes",
+                "15 minutes",
+                "40 minutes"
+              ],
+              "explanation": "3/4 de 60 = 45 minutes.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Tu manges 1/2 puis 1/4 du même gâteau. Quelle part au total ?",
+              "options": ["1/4", "3/4", "1/2", "2/6"],
+              "explanation": "1/2 + 1/4 = 3/4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien vaut 16 ÷ 4 × 2 ?",
+              "options": ["2", "8", "32", "4"],
+              "explanation": "16 ÷ 4 = 4, puis 4 × 2 = 8.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La moitié de 46 est :",
+              "options": ["22", "23", "24", "21"],
+              "explanation": "46 ÷ 2 = 23.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien vaut 1 − 1/4 ?",
+              "options": ["1/4", "3/4", "2/4", "1/2"],
+              "explanation": "4/4 − 1/4 = 3/4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien vaut (20 + 4) ÷ 6 ?",
+              "options": ["3", "4", "5", "6"],
+              "explanation": "24 ÷ 6 = 4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un quart de 36 est :",
+              "options": ["6", "9", "12", "8"],
+              "explanation": "36 ÷ 4 = 9.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Quelles expressions valent 10 ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 10 ?",
+              "options": [
+                "15 − 3 × 2",
+                "4 + 3 × 2",
+                "20 ÷ 2 × 1",
+                "(4 + 3) × 2"
+              ],
+              "explanation": "4 + 3 × 2 = 10 et 20 ÷ 2 × 1 = 10.",
+              "correctAnswers": [1, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien vaut 50 − 5 × 8 ?",
+              "options": ["10", "390", "45", "15"],
+              "explanation": "5 × 8 = 40, puis 50 − 40 = 10.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien vaut (9 + 3) ÷ 4 ?",
+              "options": ["2", "3", "4", "12"],
+              "explanation": "12 ÷ 4 = 3.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle fraction est la plus grande ?",
+              "options": ["1/4", "1/2", "1/8", "2/8"],
+              "explanation": "1/2 est la plus grande.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien vaut 1/2 + 1/2 ?",
+              "options": ["1/4", "1", "2/4", "3/4"],
+              "explanation": "1/2 + 1/2 = 1.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien vaut 3 + 12 ÷ 4 ?",
+              "options": ["3", "6", "15", "4"],
+              "explanation": "12 ÷ 4 = 3, puis 3 + 3 = 6.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien vaut 7 × 2 − 5 ?",
+              "options": ["4", "9", "14", "19"],
+              "explanation": "7 × 2 = 14, puis 14 − 5 = 9.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La moitié de 64 est :",
+              "options": ["32", "16", "24", "30"],
+              "explanation": "64 ÷ 2 = 32.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux quarts, c'est :",
+              "options": ["1/8", "1/2", "3/4", "1/4"],
+              "explanation": "2/4 = 1/2.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien vaut 40 ÷ 5 + 1 ?",
+              "options": ["5", "9", "8", "41"],
+              "explanation": "40 ÷ 5 = 8, puis 8 + 1 = 9.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Quelles expressions valent 12 ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 12 ?",
+              "options": [
+                "6 + 2 × 3",
+                "(6 + 2) × 3",
+                "18 − 2 × 3",
+                "4 × 3 − 1"
+              ],
+              "explanation": "6 + 2 × 3 = 12 et 18 − 2 × 3 = 12.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien vaut 45 ÷ 9 × 2 ?",
+              "options": ["5", "10", "90", "18"],
+              "explanation": "45 ÷ 9 = 5, puis 5 × 2 = 10.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien vaut (15 − 7) + 4 ?",
+              "options": ["8", "12", "11", "16"],
+              "explanation": "15 − 7 = 8, puis 8 + 4 = 12.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un demi-litre vaut combien de quart-litres ?",
+              "options": ["1", "2", "4", "1/2"],
+              "explanation": "1/2 L = 2 × 1/4 L.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien vaut 3/4 − 1/2 ?",
+              "options": ["1/4", "1/2", "1/8", "2/4"],
+              "explanation": "3/4 − 2/4 = 1/4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien vaut 9 + 6 ÷ 3 ?",
+              "options": ["5", "11", "15", "3"],
+              "explanation": "6 ÷ 3 = 2, puis 9 + 2 = 11.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien vaut 4 × (10 − 7) ?",
+              "options": ["7", "12", "40", "13"],
+              "explanation": "10 − 7 = 3, puis 4 × 3 = 12.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un quart de 100 est :",
+              "options": ["20", "25", "50", "40"],
+              "explanation": "100 ÷ 4 = 25.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien vaut 1 − 3/4 ?",
+              "options": ["1/2", "1/4", "1/8", "3/4"],
+              "explanation": "4/4 − 3/4 = 1/4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien vaut 18 ÷ 3 + 7 ?",
+              "options": ["6", "13", "25", "9"],
+              "explanation": "18 ÷ 3 = 6, puis 6 + 7 = 13.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Quelles expressions valent 8 ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 8 ?",
+              "options": [
+                "20 − 3 × 4",
+                "16 ÷ 2 × 1",
+                "(10 + 2) × 2",
+                "9 + 6 ÷ 3"
+              ],
+              "explanation": "20 − 3 × 4 = 8 et 16 ÷ 2 × 1 = 8.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien vaut 56 ÷ 7 − 3 ?",
+              "options": ["5", "8", "11", "49"],
+              "explanation": "56 ÷ 7 = 8, puis 8 − 3 = 5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien vaut (8 + 8) ÷ 4 ?",
+              "options": ["2", "4", "16", "8"],
+              "explanation": "16 ÷ 4 = 4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur 12 bonbons, tu donnes 1/4 à ton frère. Combien ?",
+              "options": ["2", "3", "4", "6"],
+              "explanation": "12 ÷ 4 = 3 bonbons.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien vaut 1/4 + 1/4 + 1/4 ?",
+              "options": ["1/4", "3/4", "1/2", "1"],
+              "explanation": "3 × 1/4 = 3/4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien vaut 5 × 3 − 7 ?",
+              "options": ["8", "22", "15", "2"],
+              "explanation": "15 − 7 = 8.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien vaut 100 − 25 × 3 ?",
+              "options": ["25", "75", "175", "225"],
+              "explanation": "100 − 75 = 25.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La moitié de 150 est :",
+              "options": ["50", "75", "100", "60"],
+              "explanation": "150 ÷ 2 = 75.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Trois quarts de 8 est :",
+              "options": ["4", "6", "2", "5"],
+              "explanation": "8 ÷ 4 × 3 = 6.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien vaut 2 × 6 + 4 × 2 ?",
+              "options": ["16", "20", "24", "32"],
+              "explanation": "12 + 8 = 20.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Quelles expressions valent 15 ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 15 ?",
+              "options": [
+                "3 × 4 + 3",
+                "30 ÷ 2 × 1",
+                "(3 + 4) × 3",
+                "20 − 5 × 2"
+              ],
+              "explanation": "3 × 4 + 3 = 15 et 30 ÷ 2 × 1 = 15.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien vaut 72 ÷ 8 + 5 ?",
+              "options": ["9", "14", "77", "4"],
+              "explanation": "9 + 5 = 14.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien vaut (25 − 5) ÷ 5 ?",
+              "options": ["4", "5", "20", "10"],
+              "explanation": "20 ÷ 5 = 4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pizza en 4 parts : tu manges 2 parts. Quelle fraction ?",
+              "options": ["1/4", "1/2", "3/4", "2/8"],
+              "explanation": "2/4 = 1/2.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien vaut 2/4 + 1/4 ?",
+              "options": ["1/4", "3/4", "1/2", "1"],
+              "explanation": "3/4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien vaut 11 + 24 ÷ 6 ?",
+              "options": ["5", "15", "35", "17"],
+              "explanation": "11 + 4 = 15.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien vaut 3 × (4 + 1) ?",
+              "options": ["12", "15", "13", "9"],
+              "explanation": "3 × 5 = 15.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un quart de 48 est :",
+              "options": ["10", "12", "16", "8"],
+              "explanation": "48 ÷ 4 = 12.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien vaut 1/2 − 1/4 ?",
+              "options": ["1/4", "1/2", "3/4", "0"],
+              "explanation": "2/4 − 1/4 = 1/4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien vaut 14 − 2 × 5 ?",
+              "options": ["4", "20", "60", "9"],
+              "explanation": "14 − 10 = 4.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Quelles expressions valent 7 ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 7 ?",
+              "options": [
+                "14 ÷ 2 × 1",
+                "10 − 3 × 1",
+                "(2 + 5) × 2",
+                "21 ÷ 3 × 2"
+              ],
+              "explanation": "14 ÷ 2 = 7 et 10 − 3 = 7.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien vaut 6 + 48 ÷ 8 ?",
+              "options": ["6", "12", "54", "7"],
+              "explanation": "6 + 6 = 12.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien vaut (30 − 18) ÷ 3 ?",
+              "options": ["4", "6", "12", "18"],
+              "explanation": "12 ÷ 3 = 4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle fraction est la plus petite ?",
+              "options": ["1/2", "1/4", "3/4", "2/4"],
+              "explanation": "1/4 est la plus petite.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien vaut 3/4 + 1/4 ?",
+              "options": ["1/2", "1", "4/8", "3/8"],
+              "explanation": "4/4 = 1.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien vaut 20 ÷ 4 + 9 ?",
+              "options": ["5", "14", "29", "10"],
+              "explanation": "5 + 9 = 14.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien vaut 8 × 3 − 16 ?",
+              "options": ["8", "24", "40", "12"],
+              "explanation": "24 − 16 = 8.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La moitié de 38 est :",
+              "options": ["18", "19", "20", "17"],
+              "explanation": "38 ÷ 2 = 19.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien vaut 1 − 1/2 − 1/4 ?",
+              "options": ["1/4", "1/2", "3/4", "0"],
+              "explanation": "Reste 1/4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien vaut (6 + 2) × 3 − 10 ?",
+              "options": ["14", "16", "8", "24"],
+              "explanation": "8 × 3 = 24, 24 − 10 = 14.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Quelles expressions valent 20 ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 20 ?",
+              "options": [
+                "5 × 3 + 5",
+                "40 ÷ 2 × 1",
+                "(4 + 6) × 3",
+                "15 + 5 × 2"
+              ],
+              "explanation": "5 × 3 + 5 = 20 et 40 ÷ 2 = 20.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien vaut 63 ÷ 9 × 3 ?",
+              "options": ["7", "21", "54", "18"],
+              "explanation": "7 × 3 = 21.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien vaut (14 + 6) ÷ 2 ?",
+              "options": ["7", "10", "20", "5"],
+              "explanation": "20 ÷ 2 = 10.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur 16 élèves, 1/4 portent des lunettes. Combien ?",
+              "options": ["2", "4", "8", "6"],
+              "explanation": "16 ÷ 4 = 4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien vaut 1/2 + 1/4 + 1/4 ?",
+              "options": ["3/4", "1", "1/2", "5/4"],
+              "explanation": "Somme = 1 entier.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien vaut 17 − 3 × 4 ?",
+              "options": ["5", "56", "13", "8"],
+              "explanation": "17 − 12 = 5.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien vaut 5 + 2 × 7 ?",
+              "options": ["14", "19", "49", "12"],
+              "explanation": "5 + 14 = 19.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Trois quarts de 20 est :",
+              "options": ["10", "15", "5", "12"],
+              "explanation": "20 ÷ 4 × 3 = 15.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien vaut 36 ÷ 6 × 2 ?",
+              "options": ["6", "12", "72", "3"],
+              "explanation": "6 × 2 = 12.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien vaut (9 − 3) × 4 + 2 ?",
+              "options": ["14", "26", "24", "8"],
+              "explanation": "6 × 4 = 24, 24 + 2 = 26.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Quelles expressions valent 9 ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 9 ?",
+              "options": [
+                "12 − 1 × 3",
+                "18 ÷ 2 × 1",
+                "(12 − 1) × 3",
+                "6 + 12 ÷ 6"
+              ],
+              "explanation": "12 − 3 = 9 et 18 ÷ 2 = 9.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien vaut 4 × 5 − 6 ÷ 2 ?",
+              "options": ["17", "19", "13", "7"],
+              "explanation": "20 − 3 = 17.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien vaut (11 + 9) ÷ 5 ?",
+              "options": ["2", "4", "20", "5"],
+              "explanation": "20 ÷ 5 = 4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Il reste 1/4 L dans un bidon d'1 L. Quelle fraction a été utilisée ?",
+              "options": ["1/4", "3/4", "1/2", "2/4"],
+              "explanation": "1 − 1/4 = 3/4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien vaut 4/4 − 2/4 ?",
+              "options": ["1/4", "1/2", "3/4", "2/4"],
+              "explanation": "2/4 = 1/2.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien vaut 28 ÷ 7 + 6 × 2 ?",
+              "options": ["16", "18", "20", "4"],
+              "explanation": "4 + 12 = 16.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien vaut 15 − (8 − 3) ?",
+              "options": ["4", "10", "20", "5"],
+              "explanation": "15 − 5 = 10.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un quart de 28 est :",
+              "options": ["4", "7", "8", "14"],
+              "explanation": "28 ÷ 4 = 7.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La moitié de 1/2 du tout vaut :",
+              "options": ["1/4", "1/2", "1/8", "2/4"],
+              "explanation": "(1/2) × (1/2) = 1/4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien vaut 3 + 6 × 2 − 4 ?",
+              "options": ["11", "14", "7", "16"],
+              "explanation": "3 + 12 − 4 = 11.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Quelles expressions valent 11 ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions valent 11 ?",
+              "options": [
+                "5 + 2 × 3",
+                "20 − 3 × 3",
+                "(5 + 2) × 3",
+                "30 ÷ 3 × 1"
+              ],
+              "explanation": "5 + 6 = 11 et 20 − 9 = 11.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien vaut 81 ÷ 9 + 2 × 3 ?",
+              "options": ["15", "17", "27", "9"],
+              "explanation": "9 + 6 = 15.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien vaut (5 × 2) + (12 ÷ 3) ?",
+              "options": ["14", "10", "8", "16"],
+              "explanation": "10 + 4 = 14.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lecture : 1/4 lundi et 1/2 mardi. Part lue au total ?",
+              "options": ["1/4", "3/4", "1/2", "2/6"],
+              "explanation": "1/4 + 2/4 = 3/4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien vaut 1 − 1/2 − 1/4 ?",
+              "options": ["1/4", "1/2", "3/4", "0"],
+              "explanation": "Reste 1/4.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien vaut 48 ÷ 6 × 2 − 5 ?",
+              "options": ["11", "16", "8", "19"],
+              "explanation": "8 × 2 = 16, 16 − 5 = 11.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien vaut 2 × (10 − 6) + 3 ?",
+              "options": ["7", "11", "8", "13"],
+              "explanation": "2 × 4 + 3 = 11.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La moitié de 82 est :",
+              "options": ["40", "41", "42", "39"],
+              "explanation": "82 ÷ 2 = 41.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Trois quarts de 24 est :",
+              "options": ["6", "18", "12", "8"],
+              "explanation": "24 ÷ 4 × 3 = 18.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien vaut 100 ÷ (5 × 4) + 3 ?",
+              "options": ["5", "8", "23", "20"],
+              "explanation": "100 ÷ 20 = 5, 5 + 3 = 8.",
+              "correctAnswers": [1]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Problèmes numériques",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Lina achète 3 cahiers à 4 € avec un billet de 20 €. Quelles infos s…",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Lina achète 3 cahiers à 4 € avec un billet de 20 €. Quelles infos sont correctes ?",
+              "options": [
+                "Monnaie rendue : 8 €",
+                "Monnaie rendue : 12 €",
+                "Coût total : 12 €",
+                "Coût total : 7 €"
+              ],
+              "explanation": "3 × 4 = 12 € et 20 − 12 = 8 €.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une baguette à 1,20 €, tu en prends 5. Tu paies :",
+              "options": ["5,20 €", "6 €", "6,20 €", "7 €"],
+              "explanation": "5 × 1,20 = 6 €.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "24 élèves sur 6 tables égales : combien par table ?",
+              "options": ["3", "4", "5", "6"],
+              "explanation": "24 ÷ 6 = 4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Gâteau en 8 parts, tu en prends 2. Fraction mangée ?",
+              "options": ["1/8", "1/4", "1/2", "3/8"],
+              "explanation": "2/8 = 1/4.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Départ 8 h, trajet 45 min. Arrivée ?",
+              "options": ["8 h 35", "8 h 45", "9 h 15", "9 h 45"],
+              "explanation": "8 h + 45 min = 8 h 45.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "50 €, jeu 32 € et crayons 6 €. Reste :",
+              "options": ["12 €", "18 €", "22 €", "24 €"],
+              "explanation": "50 − 38 = 12 €.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "4 yaourts pour 3 € : prix d'un yaourt ?",
+              "options": ["0,50 €", "0,75 €", "1 €", "1,25 €"],
+              "explanation": "3 ÷ 4 = 0,75 €.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "15 km à vélo puis 3 km à pied : total ?",
+              "options": ["12 km", "18 km", "45 km", "5 km"],
+              "explanation": "15 + 3 = 18 km.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Recette 4 personnes : 8 œufs. Pour 2 personnes ?",
+              "options": ["2", "4", "6", "16"],
+              "explanation": "8 ÷ 2 = 4 œufs.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "60 bouteilles, on retire 15 puis 10. Reste :",
+              "options": ["25", "35", "45", "50"],
+              "explanation": "60 − 25 = 35.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Sur 20 stickers, Jules colle 1/4 puis 1/2 du paquet. Quelles affirm…",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur 20 stickers, Jules colle 1/4 puis 1/2 du paquet. Quelles affirmations sont vraies ?",
+              "options": [
+                "Il en a collé 15 au total",
+                "Il lui en reste 5",
+                "Il en a collé 8 au total",
+                "Il lui en reste 10"
+              ],
+              "explanation": "5 + 10 = 15 collés, reste 5.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "3 billets à 9 € et 2 à 6 € : total ?",
+              "options": ["39 €", "45 €", "33 €", "27 €"],
+              "explanation": "27 + 12 = 39 €.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "120 km en 2 h : distance en 1 h ?",
+              "options": ["40 km", "60 km", "80 km", "240 km"],
+              "explanation": "120 ÷ 2 = 60 km.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "3/4 L de jus partagés en 3 verres égaux : par verre ?",
+              "options": ["1/4 L", "1/3 L", "1/2 L", "3/4 L"],
+              "explanation": "3/4 ÷ 3 = 1/4 L.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "48 livres dont 1/4 sont des BD : combien de BD ?",
+              "options": ["8", "12", "16", "24"],
+              "explanation": "48 ÷ 4 = 12.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "2 kg de pommes à 2,50 €/kg : prix ?",
+              "options": ["4 €", "4,50 €", "5 €", "5,50 €"],
+              "explanation": "2 × 2,50 = 5 €.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "28 élèves : moitié au sport. Combien en classe ?",
+              "options": ["7", "14", "21", "16"],
+              "explanation": "28 − 14 = 14 en classe.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Parking 3 h : 2 € la 1re h puis 1 €/h. Total ?",
+              "options": ["3 €", "4 €", "5 €", "6 €"],
+              "explanation": "2 + 1 + 1 = 4 €.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "8 biscuits : tu manges 1/4, ton ami la moitié du reste. Il reste :",
+              "options": ["2", "3", "4", "5"],
+              "explanation": "Tu manges 2, reste 6 ; ami mange 3, reste 3.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Travail 5 j × 6 h + samedi 4 h : total d'heures ?",
+              "options": ["30 h", "34 h", "36 h", "40 h"],
+              "explanation": "30 + 4 = 34 h.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "4 croissants à 1,10 € payés avec 10 €. Quelles valeurs sont exactes ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "4 croissants à 1,10 € payés avec 10 €. Quelles valeurs sont exactes ?",
+              "options": [
+                "Total : 4,40 €",
+                "Monnaie : 5,60 €",
+                "Total : 5,40 €",
+                "Monnaie : 4,60 €"
+              ],
+              "explanation": "4 × 1,10 = 4,40 € et 10 − 4,40 = 5,60 €.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "35 + 27 + 18 = ?",
+              "options": ["70", "80", "90", "72"],
+              "explanation": "35 + 27 = 62, 62 + 18 = 80.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "5 paquets de 6 stylos : combien de stylos ?",
+              "options": ["11", "25", "30", "36"],
+              "explanation": "5 × 6 = 30.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Corde 24 m coupée en 3 morceaux égaux : longueur d'un morceau ?",
+              "options": ["6 m", "8 m", "12 m", "4 m"],
+              "explanation": "24 ÷ 3 = 8 m.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "18 € partagés entre 3 amis : part de chacun ?",
+              "options": ["3 €", "6 €", "9 €", "12 €"],
+              "explanation": "18 ÷ 3 = 6 €.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bus 42 places, 28 occupées : places libres ?",
+              "options": ["12", "14", "16", "18"],
+              "explanation": "42 − 28 = 14.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "24 chocolats : 1/2 puis 1/4 du reste mangés. Total mangés ?",
+              "options": ["10", "12", "15", "18"],
+              "explanation": "12 puis 3, total 15.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "12 °C le matin, +5 °C l'après-midi : température ?",
+              "options": ["15 °C", "17 °C", "7 °C", "60 °C"],
+              "explanation": "12 + 5 = 17 °C.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "3 livres à 2,50 € : prix total ?",
+              "options": ["5 €", "7,50 €", "8 €", "6,50 €"],
+              "explanation": "3 × 2,50 = 7,50 €.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Parcours 100 km, 40 km déjà faits : reste ?",
+              "options": ["40 km", "50 km", "60 km", "70 km"],
+              "explanation": "100 − 40 = 60 km.",
+              "correctAnswers": [2]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "6 stylos à 2 €, pièce de 20 € : quoi est exact ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "6 stylos à 2 €, pièce de 20 € : quoi est exact ?",
+              "options": [
+                "Total 12 €",
+                "Monnaie 8 €",
+                "Total 14 €",
+                "Monnaie 6 €"
+              ],
+              "explanation": "6 × 2 = 12 € et 20 − 12 = 8 €.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "2 sachets de 500 g de farine : masse totale ?",
+              "options": ["500 g", "750 g", "1000 g", "1500 g"],
+              "explanation": "2 × 500 = 1000 g.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "90 minutes, c'est :",
+              "options": ["1 h", "1 h 15", "1 h 30", "2 h"],
+              "explanation": "90 min = 1 h 30.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La moitié de 30 € est :",
+              "options": ["10 €", "15 €", "20 €", "25 €"],
+              "explanation": "30 ÷ 2 = 15 €.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Classe 32 élèves, 1/4 absents : présents ?",
+              "options": ["8", "24", "16", "20"],
+              "explanation": "32 − 8 = 24 présents.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "4 paquets de 7 bonbons et 3 paquets de 5 : total ?",
+              "options": ["28", "43", "35", "48"],
+              "explanation": "28 + 15 = 43 bonbons.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "8 rangées de 9 sièges : combien de sièges ?",
+              "options": ["17", "72", "63", "81"],
+              "explanation": "8 × 9 = 72.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "3/4 d'un ruban de 16 m : longueur ?",
+              "options": ["4 m", "12 m", "8 m", "10 m"],
+              "explanation": "16 ÷ 4 × 3 = 12 m.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ticket 8 € + snack 3,50 € : total ?",
+              "options": ["10,50 €", "11 €", "11,50 €", "12 €"],
+              "explanation": "8 + 3,50 = 11,50 €.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Réservoir 40 L, 1/4 utilisé : reste ?",
+              "options": ["10 L", "30 L", "20 L", "35 L"],
+              "explanation": "40 − 10 = 30 L.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "24 € partagés en deux parts égales entre Léa et Tom :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "24 € partagés en deux parts égales entre Léa et Tom :",
+              "options": [
+                "Léa reçoit 12 €",
+                "Tom reçoit 12 €",
+                "Léa reçoit 6 €",
+                "Tom reçoit 18 €"
+              ],
+              "explanation": "24 ÷ 2 = 12 € pour chacun.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "3 tours de circuit à 5 km : distance ?",
+              "options": ["8 km", "15 km", "10 km", "20 km"],
+              "explanation": "3 × 5 = 15 km.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Boîte 20 bonbons, 1/4 offerts : reste ?",
+              "options": ["5", "15", "10", "16"],
+              "explanation": "20 − 5 = 15.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "2 h 15 min en minutes :",
+              "options": ["115", "135", "125", "215"],
+              "explanation": "2 × 60 + 15 = 135 min.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Achat 45 € avec réduction 5 € : à payer ?",
+              "options": ["35 €", "40 €", "50 €", "42 €"],
+              "explanation": "45 − 5 = 40 €.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "36 cartes en 4 paquets égaux : par paquet ?",
+              "options": ["6", "8", "9", "12"],
+              "explanation": "36 ÷ 4 = 9.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "1/4 puis 1/2 de la même tarte : part prise ?",
+              "options": ["1/4", "1/2", "3/4", "1/3"],
+              "explanation": "1/4 + 1/2 = 3/4.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "7 files de 8 élèves : effectif ?",
+              "options": ["48", "56", "64", "15"],
+              "explanation": "7 × 8 = 56.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pièce 2 € et 3 pièces de 0,50 € : total ?",
+              "options": ["2,50 €", "3 €", "3,50 €", "4 €"],
+              "explanation": "2 + 1,50 = 3,50 €.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "250 − 75 − 50 = ?",
+              "options": ["125", "175", "100", "150"],
+              "explanation": "250 − 125 = 125.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Trajet aller-retour de 5 km : quelles affirmations sont vraies ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Trajet aller-retour de 5 km : quelles affirmations sont vraies ?",
+              "options": [
+                "Distance totale 10 km",
+                "5 km + 5 km = 10 km",
+                "Distance totale 5 km",
+                "Un seul sens vaut 10 km"
+              ],
+              "explanation": "Aller 5 km et retour 5 km : 10 km au total.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bidon 1 L : tu bois 1/2 puis 1/4. Reste ?",
+              "options": ["1/4 L", "1/2 L", "3/4 L", "0 L"],
+              "explanation": "1 − 1/2 − 1/4 = 1/4 L.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "84 ÷ 12 = ?",
+              "options": ["6", "7", "8", "9"],
+              "explanation": "84 ÷ 12 = 7.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ménage 3 jours × 25 min : durée totale ?",
+              "options": ["50 min", "75 min", "100 min", "125 min"],
+              "explanation": "3 × 25 = 75 min.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "3/4 de 12 € :",
+              "options": ["3 €", "6 €", "9 €", "8 €"],
+              "explanation": "12 ÷ 4 × 3 = 9 €.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Stock 50, entrée 18, sortie 12 : nouveau stock ?",
+              "options": ["44", "56", "68", "38"],
+              "explanation": "50 + 18 − 12 = 56.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "La moitié de la moitié de 40 bonbons :",
+              "options": ["5", "10", "20", "15"],
+              "explanation": "1/4 de 40 = 10 bonbons.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "4 bouteilles de 1,5 L : volume total ?",
+              "options": ["4,5 L", "5 L", "6 L", "7,5 L"],
+              "explanation": "4 × 1,5 = 6 L.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "16 m en 4 sauts égaux : longueur d'un saut ?",
+              "options": ["2 m", "4 m", "6 m", "8 m"],
+              "explanation": "16 ÷ 4 = 4 m.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Repas 12 € + dessert 4 € + boisson 2 € : total ?",
+              "options": ["16 €", "18 €", "20 €", "14 €"],
+              "explanation": "12 + 4 + 2 = 18 €.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "8 amis se partagent 24 bonbons à parts égales :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "8 amis se partagent 24 bonbons à parts égales :",
+              "options": [
+                "Chacun reçoit 3 bonbons",
+                "Chacun reçoit 4 bonbons",
+                "Il y a 24 bonbons au départ",
+                "Il reste 8 bonbons"
+              ],
+              "explanation": "24 ÷ 8 = 3 bonbons par personne, 24 au départ.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1/4 de 1 heure en minutes :",
+              "options": ["10", "15", "20", "30"],
+              "explanation": "60 ÷ 4 = 15 min.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "4 articles à 3 € : prix total ?",
+              "options": ["7 €", "12 €", "15 €", "9 €"],
+              "explanation": "4 × 3 = 12 €.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "40 élèves, moitié filles : nombre de filles ?",
+              "options": ["10", "20", "30", "15"],
+              "explanation": "40 ÷ 2 = 20 filles.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "63 − 28 + 15 = ?",
+              "options": ["40", "50", "60", "35"],
+              "explanation": "35 + 15 = 50.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Rectangle 3 m sur 2 m : périmètre ?",
+              "options": ["5 m", "6 m", "10 m", "12 m"],
+              "explanation": "2 × (3 + 2) = 10 m.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "16 parts : 1/2 puis 1/4 du reste prises. Reste ?",
+              "options": ["4", "6", "8", "2"],
+              "explanation": "8 prises, reste 8 ; 2 prises, reste 6.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "9 × 11 = ?",
+              "options": ["90", "99", "101", "89"],
+              "explanation": "9 × 11 = 99.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Billet 50 €, achats 19 € et 14 € : monnaie ?",
+              "options": ["17 €", "27 €", "33 €", "23 €"],
+              "explanation": "50 − 33 = 17 €.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "3/4 de 20 minutes :",
+              "options": ["12 min", "15 min", "10 min", "5 min"],
+              "explanation": "20 ÷ 4 × 3 = 15 min.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "2 kg à 3 €/kg payés avec 10 € :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "2 kg à 3 €/kg payés avec 10 € :",
+              "options": ["Coût 6 €", "Monnaie 4 €", "Coût 8 €", "Monnaie 6 €"],
+              "explanation": "2 × 3 = 6 € et 10 − 6 = 4 €.",
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "144 ÷ 12 = ?",
+              "options": ["10", "11", "12", "13"],
+              "explanation": "144 ÷ 12 = 12.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "14 h 20 + 1 h 40 :",
+              "options": ["15 h", "16 h", "15 h 40", "16 h 20"],
+              "explanation": "14 h 20 + 1 h 40 = 16 h.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ruban 8 m : on coupe 1/2 puis 1/4 du reste. Longueur coupée au total ?",
+              "options": ["4 m", "6 m", "7 m", "5 m"],
+              "explanation": "4 m puis 1 m, total 5 m coupés.",
+              "correctAnswers": [3]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "6 rangées de 7 chaises : total ?",
+              "options": ["13", "42", "48", "36"],
+              "explanation": "6 × 7 = 42.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Budget 30 €, deux achats de 11 € : reste ?",
+              "options": ["8 €", "9 €", "7 €", "10 €"],
+              "explanation": "30 − 22 = 8 €.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "3/4 de 28 :",
+              "options": ["7", "21", "14", "18"],
+              "explanation": "28 ÷ 4 × 3 = 21.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "750 g + 250 g :",
+              "options": ["850 g", "1000 g", "900 g", "1,25 kg"],
+              "explanation": "750 + 250 = 1000 g.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "52 cartes, 1/4 rouges : combien de rouges ?",
+              "options": ["10", "13", "14", "16"],
+              "explanation": "52 ÷ 4 = 13.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "18 + 27 − 15 = ?",
+              "options": ["20", "30", "40", "25"],
+              "explanation": "45 − 15 = 30.",
+              "correctAnswers": [1]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "2 cahiers 3 € et 1 trousse 5 € :",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "2 cahiers 3 € et 1 trousse 5 € :",
+              "options": [
+                "Total 11 €",
+                "Total 8 €",
+                "2 × 3 + 5 = 11",
+                "3 + 5 = 8"
+              ],
+              "explanation": "6 + 5 = 11 €.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1/2 de 3 h 30 en minutes :",
+              "options": ["90", "105", "120", "75"],
+              "explanation": "210 min ÷ 2 = 105 min.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "5 × 8 − 6 × 3 = ?",
+              "options": ["22", "40", "18", "34"],
+              "explanation": "40 − 18 = 22.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Corde 15 m : on coupe 1/3. Longueur coupée ?",
+              "options": ["3 m", "5 m", "10 m", "7 m"],
+              "explanation": "15 ÷ 3 = 5 m.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Abonnement 15 €/mois pendant 4 mois :",
+              "options": ["45 €", "60 €", "75 €", "55 €"],
+              "explanation": "15 × 4 = 60 €.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pizza 8 parts, 3/4 mangées : parts restantes ?",
+              "options": ["1", "2", "3", "4"],
+              "explanation": "6 mangées, reste 2 parts.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "96 ÷ 8 = ?",
+              "options": ["10", "11", "12", "14"],
+              "explanation": "96 ÷ 8 = 12.",
+              "correctAnswers": [2]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "3,50 € + 2,50 € + 4 € = ?",
+              "options": ["9 €", "10 €", "11 €", "8 €"],
+              "explanation": "6 + 4 = 10 €.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "1/4 de 64 :",
+              "options": ["12", "16", "18", "20"],
+              "explanation": "64 ÷ 4 = 16.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif 100 km, 3 étapes de 25 km : reste ?",
+              "options": ["25 km", "50 km", "75 km", "0 km"],
+              "explanation": "100 − 75 = 25 km.",
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Panier : 2 boîtes à 4 € et 1 jus à 3 €. Quoi est exact ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Panier : 2 boîtes à 4 € et 1 jus à 3 €. Quoi est exact ?",
+              "options": [
+                "Total 11 €",
+                "Total 10 €",
+                "2 × 4 + 3 = 11",
+                "4 + 3 = 7"
+              ],
+              "explanation": "8 + 3 = 11 €.",
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "1/2 puis 1/4 de 24 stickers collés : combien ?",
+              "options": ["12", "18", "15", "20"],
+              "explanation": "12 + 6 = 18 stickers.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "7 × 6 + 8 × 2 = ?",
+              "options": ["58", "42", "56", "64"],
+              "explanation": "42 + 16 = 58.",
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Réservoir 40 L : 1/2 puis 1/4 du reste utilisés. Reste ?",
+              "options": ["10 L", "15 L", "20 L", "25 L"],
+              "explanation": "20 L utilisés, reste 20 ; 5 L utilisés, reste 15 L.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "15 × 4 = ?",
+              "options": ["50", "60", "45", "75"],
+              "explanation": "15 × 4 = 60.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Marche 2 km, 5 km puis 8 km : total ?",
+              "options": ["13 km", "15 km", "14 km", "16 km"],
+              "explanation": "2 + 5 + 8 = 15 km.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "3/4 de 32 :",
+              "options": ["8", "24", "16", "20"],
+              "explanation": "32 ÷ 4 × 3 = 24.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "100 − 3 × 25 = ?",
+              "options": ["0", "25", "75", "50"],
+              "explanation": "100 − 75 = 25.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "45 € : 1/3 pour A, le reste pour B. Part de B ?",
+              "options": ["15 €", "30 €", "20 €", "25 €"],
+              "explanation": "A reçoit 15 €, B reçoit 30 €.",
+              "correctAnswers": [1]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Salle 5 files de 12 places : capacité ?",
+              "options": ["50", "60", "72", "17"],
+              "explanation": "5 × 12 = 60 places.",
+              "correctAnswers": [1]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

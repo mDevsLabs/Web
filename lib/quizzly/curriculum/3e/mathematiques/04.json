@@ -1,0 +1,1888 @@
+{
+  "id": "3e-mathematiques-04",
+  "year": "3e",
+  "subject": "mathematiques",
+  "title": "Nombres et calculs",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Priorités et fractions",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Priorités opératoires simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles opérations sont prioritaires sur l'addition et la soustraction sans parenthèses ?",
+              "options": [
+                "La multiplication",
+                "La division",
+                "La moyenne",
+                "L'addition"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La multiplication et la division sont prioritaires sur l'addition et la soustraction."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 7 + 3 × 4",
+              "options": ["19", "40", "28", "25"],
+              "correctAnswers": [0],
+              "explanation": "La multiplication est prioritaire : 3 × 4 = 12, puis 7 + 12 = 19."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : 20 - 4 × 3",
+              "options": ["8", "48", "13", "12"],
+              "correctAnswers": [0],
+              "explanation": "La multiplication est prioritaire : 4 × 3 = 12, puis 20 - 12 = 8."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : 15 - 6 + 3",
+              "options": ["12", "6", "9", "18"],
+              "correctAnswers": [0],
+              "explanation": "Addition et soustraction ont la même priorité : on effectue de gauche à droite : 15 - 6 = 9, puis 9 + 3 = 12."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : 24 ÷ 4 × 2",
+              "options": ["12", "3", "6", "16"],
+              "correctAnswers": [0],
+              "explanation": "Multiplication et division s'effectuent de gauche à droite : 24 ÷ 4 = 6, puis 6 × 2 = 12."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : 5 × 4 - 3 × 2",
+              "options": ["14", "34", "10", "26"],
+              "correctAnswers": [0],
+              "explanation": "On calcule les deux multiplications : 20 - 6 = 14."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 10 + 10 ÷ 2",
+              "options": ["15", "10", "20", "5"],
+              "correctAnswers": [0],
+              "explanation": "La division est prioritaire : 10 ÷ 2 = 5, puis 10 + 5 = 15."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : 30 - 12 ÷ 3 + 2",
+              "options": ["28", "8", "24", "26"],
+              "correctAnswers": [0],
+              "explanation": "12 ÷ 3 = 4, puis 30 - 4 + 2 = 26 + 2 = 28."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de : 2 + 3 × 5 - 4 ?",
+              "options": ["13", "21", "17", "11"],
+              "correctAnswers": [0],
+              "explanation": "3 × 5 = 15, puis 2 + 15 - 4 = 17 - 4 = 13."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : 100 - 50 ÷ 5 × 2",
+              "options": ["80", "5", "95", "20"],
+              "correctAnswers": [0],
+              "explanation": "50 ÷ 5 = 10, puis 10 × 2 = 20, enfin 100 - 20 = 80."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Priorités opératoires avec parenthèses",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions donnent un résultat égal à 20 ?",
+              "options": [
+                "(2 + 3) × 4",
+                "2 × (5 + 5)",
+                "30 - (5 × 2)",
+                "4 × 3 + 7"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "(2+3)×4 = 20, 2×10 = 20 et 30-10 = 20. 4×3+7 = 19."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : (8 + 2) × (9 - 3)",
+              "options": ["60", "20", "48", "74"],
+              "correctAnswers": [0],
+              "explanation": "On calcule l'intérieur des parenthèses : 10 × 6 = 60."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : 50 - [3 × (4 + 6)]",
+              "options": ["20", "30", "10", "470"],
+              "correctAnswers": [0],
+              "explanation": "4 + 6 = 10, puis 3 × 10 = 30, et 50 - 30 = 20."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : (15 - 5) ÷ (2 + 3)",
+              "options": ["2", "5", "1", "4"],
+              "correctAnswers": [0],
+              "explanation": "10 ÷ 5 = 2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où placer des parenthèses dans 4 + 6 × 3 pour obtenir 30 ?",
+              "options": [
+                "(4 + 6) × 3",
+                "4 + (6 × 3)",
+                "(4 + 6 × 3)",
+                "Aucune parenthèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(4 + 6) × 3 = 10 × 3 = 30."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : 7 × (12 - 4) - 6",
+              "options": ["50", "56", "42", "78"],
+              "correctAnswers": [0],
+              "explanation": "12 - 4 = 8, puis 7 × 8 = 56, enfin 56 - 6 = 50."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 3 × [20 - (8 + 4)]",
+              "options": ["24", "48", "36", "18"],
+              "correctAnswers": [0],
+              "explanation": "8 + 4 = 12, puis 20 - 12 = 8, et 3 × 8 = 24."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : (18 + 6) ÷ 6 - 2",
+              "options": ["2", "1", "3", "4"],
+              "correctAnswers": [0],
+              "explanation": "24 ÷ 6 = 4, puis 4 - 2 = 2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : 100 ÷ (25 - 5 × 3)",
+              "options": ["10", "5", "20", "15"],
+              "correctAnswers": [0],
+              "explanation": "5 × 3 = 15, puis 25 - 15 = 10, et 100 ÷ 10 = 10."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de : [5 + (3 × 2)] × 2 ?",
+              "options": ["22", "16", "26", "20"],
+              "correctAnswers": [0],
+              "explanation": "3 × 2 = 6, 5 + 6 = 11, et 11 × 2 = 22."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Additions et soustractions de fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sommes de fractions sont égales à 1 ?",
+              "options": ["1/2 + 1/2", "2/5 + 3/5", "1/4 + 2/4", "3/8 + 5/8"],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "1/2+1/2=1, 2/5+3/5=5/5=1 et 3/8+5/8=8/8=1. En revanche 1/4+2/4=3/4."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule et simplifie : 2/7 + 3/7",
+              "options": ["5/7", "5/14", "6/7", "1/7"],
+              "correctAnswers": [0],
+              "explanation": "Même dénominateur : on additionne les numérateurs : (2+3)/7 = 5/7."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : 5/9 - 2/9",
+              "options": ["1/3", "3/9", "7/9", "3/0"],
+              "correctAnswers": [0],
+              "explanation": "5/9 - 2/9 = 3/9 = 1/3 sous forme irréductible."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : 1/2 + 1/4",
+              "options": ["3/4", "2/6", "1/6", "5/4"],
+              "correctAnswers": [0],
+              "explanation": "1/2 = 2/4, donc 2/4 + 1/4 = 3/4."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : 3/4 - 1/3",
+              "options": ["5/12", "2/1", "2/12", "1/4"],
+              "correctAnswers": [0],
+              "explanation": "Dénominateur commun 12 : 9/12 - 4/12 = 5/12."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : 1 - 3/8",
+              "options": ["5/8", "2/8", "-2/8", "7/8"],
+              "correctAnswers": [0],
+              "explanation": "1 = 8/8, d'où 8/8 - 3/8 = 5/8."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 5/6 + 2/3",
+              "options": ["3/2", "7/9", "7/6", "9/6"],
+              "correctAnswers": [0],
+              "explanation": "2/3 = 4/6, donc 5/6 + 4/6 = 9/6 = 3/2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : 7/10 - 2/5",
+              "options": ["3/10", "5/5", "1/5", "3/5"],
+              "correctAnswers": [0],
+              "explanation": "2/5 = 4/10, donc 7/10 - 4/10 = 3/10."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : 2 + 3/5",
+              "options": ["13/5", "5/5", "6/5", "7/5"],
+              "correctAnswers": [0],
+              "explanation": "2 = 10/5, donc 10/5 + 3/5 = 13/5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : 1/6 + 1/4",
+              "options": ["5/12", "2/10", "1/10", "7/12"],
+              "correctAnswers": [0],
+              "explanation": "Dénominateur commun 12 : 2/12 + 3/12 = 5/12."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Multiplications de fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels produits de fractions donnent un résultat inférieur à 1/2 ?",
+              "options": ["1/3 × 1/2", "3/4 × 1/2", "1/4 × 1", "2/3 × 3/4"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "1/6 < 1/2, 3/8 < 1/2, 1/4 < 1/2. Alors que 2/3 × 3/4 = 1/2."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 2/3 × 4/5",
+              "options": ["8/15", "6/8", "8/8", "10/12"],
+              "correctAnswers": [0],
+              "explanation": "On multiplie numérateurs et dénominateurs : (2×4)/(3×5) = 8/15."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule et simplifie : 3/4 × 4/7",
+              "options": ["3/7", "12/28", "7/11", "1/7"],
+              "correctAnswers": [0],
+              "explanation": "On simplifie par 4 avant de multiplier : 3/7."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : 5 × 2/3",
+              "options": ["10/3", "10/15", "7/3", "5/3"],
+              "correctAnswers": [0],
+              "explanation": "5 = 5/1, donc 5 × 2/3 = (5×2)/(1×3) = 10/3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule et simplifie : 7/9 × 3/14",
+              "options": ["1/6", "21/126", "1/7", "3/18"],
+              "correctAnswers": [0],
+              "explanation": "7/14 = 1/2 et 3/9 = 1/3, donc (1×1)/(3×2) = 1/6."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : (-2/3) × 5/7",
+              "options": ["-10/21", "10/21", "-7/10", "-10/10"],
+              "correctAnswers": [0],
+              "explanation": "Le produit d'un nombre négatif par un nombre positif est négatif : -10/21."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : (-3/5) × (-5/3)",
+              "options": ["1", "-1", "15/15", "0"],
+              "correctAnswers": [0],
+              "explanation": "Le produit de deux inverses de même signe négatif vaut +1."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le quart de 8/9 ?",
+              "options": ["2/9", "32/9", "8/36", "4/9"],
+              "correctAnswers": [0],
+              "explanation": "Prendre le quart revient à multiplier par 1/4 : 1/4 × 8/9 = 8/36 = 2/9."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : 9/8 × 16/27",
+              "options": ["2/3", "3/2", "144/216", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "9/27 = 1/3 et 16/8 = 2, donc 2/3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : 10/21 × 14/15",
+              "options": ["4/9", "2/3", "140/315", "5/7"],
+              "correctAnswers": [0],
+              "explanation": "10/15 = 2/3 et 14/21 = 2/3, donc 2/3 × 2/3 = 4/9."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Divisions de fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions concernant l'inverse d'un nombre sont vraies ?",
+              "options": [
+                "L'inverse de 3/4 est 4/3",
+                "L'inverse de 5 est 1/5",
+                "L'inverse de 0 est 0",
+                "Un nombre et son inverse ont le même signe"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "0 n'a pas d'inverse. Pour tout a/b non nul, son inverse est b/a de même signe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour diviser par une fraction non nulle, on :",
+              "options": [
+                "Multiplie par son inverse",
+                "Divise par son inverse",
+                "Soustrait son opposé",
+                "Multiplie par son opposé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diviser par une fraction revient à multiplier par son inverse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : (2/3) ÷ (5/7)",
+              "options": ["14/15", "10/21", "15/14", "7/10"],
+              "correctAnswers": [0],
+              "explanation": "2/3 × 7/5 = 14/15."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : (3/4) ÷ 2",
+              "options": ["3/8", "6/4", "3/2", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "3/4 × 1/2 = 3/8."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : 5 ÷ (1/3)",
+              "options": ["15", "5/3", "1/15", "3/5"],
+              "correctAnswers": [0],
+              "explanation": "5 × 3/1 = 15."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule et simplifie : (4/9) ÷ (2/3)",
+              "options": ["2/3", "8/27", "12/18", "3/2"],
+              "correctAnswers": [0],
+              "explanation": "4/9 × 3/2 = 12/18 = 2/3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : (-5/6) ÷ (10/3)",
+              "options": ["-1/4", "1/4", "-25/18", "-15/60"],
+              "correctAnswers": [0],
+              "explanation": "-5/6 × 3/10 = -15/60 = -1/4."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Combien de quarts d'heure y a-t-il dans 3 heures et demie (7/2 h) ?",
+              "options": ["14", "12", "7", "16"],
+              "correctAnswers": [0],
+              "explanation": "(7/2) ÷ (1/4) = 7/2 × 4 = 28/2 = 14."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : (7/12) ÷ (7/4)",
+              "options": ["1/3", "3", "49/48", "28/84"],
+              "correctAnswers": [0],
+              "explanation": "7/12 × 4/7 = 4/12 = 1/3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : (8/15) ÷ (4/5)",
+              "options": ["2/3", "32/75", "3/2", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "8/15 × 5/4 = (8×5)/(15×4) = 40/60 = 2/3."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Enchaînements d'opérations avec fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans le calcul 1/2 + 3/4 × 2/5, quelles affirmations sont vraies ?",
+              "options": [
+                "La multiplication est prioritaire sur l'addition",
+                "Le produit vaut 6/20 soit 3/10",
+                "On doit d'abord calculer 1/2 + 3/4",
+                "Le résultat final est 4/5"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La multiplication est prioritaire : 3/4 × 2/5 = 6/20 = 3/10. Puis 1/2 + 3/10 = 5/10 + 3/10 = 8/10 = 4/5."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : 2/3 - 1/3 × 1/2",
+              "options": ["1/2", "1/6", "1/3", "5/6"],
+              "correctAnswers": [0],
+              "explanation": "1/3 × 1/2 = 1/6. Puis 2/3 - 1/6 = 4/6 - 1/6 = 3/6 = 1/2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : (1/2 + 1/3) × 6",
+              "options": ["5", "3", "1", "6"],
+              "correctAnswers": [0],
+              "explanation": "1/2 + 1/3 = 5/6. Puis 5/6 × 6 = 5."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : 3/5 ÷ (1 - 2/5)",
+              "options": ["1", "3/5", "9/25", "5/3"],
+              "correctAnswers": [0],
+              "explanation": "1 - 2/5 = 3/5. Donc 3/5 ÷ 3/5 = 1."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : 5/4 - 1/4 ÷ 2",
+              "options": ["9/8", "1/2", "1", "7/8"],
+              "correctAnswers": [0],
+              "explanation": "1/4 ÷ 2 = 1/8. Puis 5/4 - 1/8 = 10/8 - 1/8 = 9/8."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : (3/4 - 1/2) ÷ 1/8",
+              "options": ["2", "1/16", "4", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "3/4 - 1/2 = 1/4. Puis 1/4 ÷ 1/8 = 1/4 × 8 = 2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 7/3 × (1/2 + 1/5)",
+              "options": ["49/30", "7/10", "14/15", "21/30"],
+              "correctAnswers": [0],
+              "explanation": "1/2 + 1/5 = 7/10. Puis 7/3 × 7/10 = 49/30."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : 4/7 + 2/7 × 3",
+              "options": ["10/7", "18/7", "12/7", "8/7"],
+              "correctAnswers": [0],
+              "explanation": "2/7 × 3 = 6/7. Puis 4/7 + 6/7 = 10/7."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : (2 - 1/3) ÷ (2 + 1/3)",
+              "options": ["5/7", "1", "7/5", "3/7"],
+              "correctAnswers": [0],
+              "explanation": "2 - 1/3 = 5/3 et 2 + 1/3 = 7/3. Donc (5/3) ÷ (7/3) = 5/3 × 3/7 = 5/7."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : 1/3 + 2/3 ÷ 4",
+              "options": ["1/2", "3/12", "1/4", "5/6"],
+              "correctAnswers": [0],
+              "explanation": "2/3 ÷ 4 = 2/12 = 1/6. Puis 1/3 + 1/6 = 2/6 + 1/6 = 3/6 = 1/2."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Fractions et puissances",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles égalités avec puissances et fractions sont exactes ?",
+              "options": [
+                "(2/3)² = 4/9",
+                "(1/5)³ = 1/125",
+                "(3/2)⁻¹ = 2/3",
+                "(1/2)² = 1/2"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "(a/b)ⁿ = aⁿ/bⁿ, donc (2/3)² = 4/9 et (1/5)³ = 1/125. L'exposant -1 donne l'inverse : 2/3."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : (3/4)²",
+              "options": ["9/16", "6/8", "9/8", "3/16"],
+              "correctAnswers": [0],
+              "explanation": "3² / 4² = 9/16."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : (-1/2)³",
+              "options": ["-1/8", "1/8", "-1/6", "1/6"],
+              "correctAnswers": [0],
+              "explanation": "(-1)³ / 2³ = -1/8 car l'exposant est impair."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est l'écriture fractionnaire de 10⁻² ?",
+              "options": ["1/100", "1/10", "1/20", "-1/100"],
+              "correctAnswers": [0],
+              "explanation": "10⁻² = 1 / 10² = 1/100."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : (4/5)⁻¹",
+              "options": ["5/4", "-4/5", "-5/4", "1/4"],
+              "correctAnswers": [0],
+              "explanation": "L'exposant -1 correspond à l'inverse : 5/4."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Calcule : 1/2 + (1/2)²",
+              "options": ["3/4", "1", "1/4", "2/4"],
+              "correctAnswers": [0],
+              "explanation": "(1/2)² = 1/4. Puis 1/2 + 1/4 = 2/4 + 1/4 = 3/4."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : 2 × (3/2)²",
+              "options": ["9/2", "9/4", "18/2", "6/2"],
+              "correctAnswers": [0],
+              "explanation": "(3/2)² = 9/4. Puis 2 × 9/4 = 18/4 = 9/2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : (2/3)³ × 27/8",
+              "options": ["1", "2/3", "8/27", "27/8"],
+              "correctAnswers": [0],
+              "explanation": "(2/3)³ = 8/27. Et 8/27 × 27/8 = 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Écris sous forme de fraction irréductible : 2⁻³",
+              "options": ["1/8", "-8", "1/6", "-1/8"],
+              "correctAnswers": [0],
+              "explanation": "2⁻³ = 1 / 2³ = 1/8."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : (5/3)² - 1",
+              "options": ["16/9", "25/9", "7/9", "16/3"],
+              "correctAnswers": [0],
+              "explanation": "25/9 - 9/9 = 16/9."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Écritures fractionnaires et simplifications",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fractions sont déjà sous forme irréductible ?",
+              "options": ["7/11", "9/14", "15/25", "13/21"],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "PGCD(7,11)=1, PGCD(9,14)=1 et PGCD(13,21)=1. 15/25 se simplifie par 5 en 3/5."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Rends la fraction 42/70 irréductible :",
+              "options": ["3/5", "6/10", "21/35", "7/10"],
+              "correctAnswers": [0],
+              "explanation": "En divisant par 14 : 42 ÷ 14 = 3 et 70 ÷ 14 = 5, donc 3/5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Par quel plus grand entier peut-on simplifier 36/48 ?",
+              "options": ["12", "6", "4", "24"],
+              "correctAnswers": [0],
+              "explanation": "Le PGCD de 36 et 48 est 12 (36 = 12 × 3 et 48 = 12 × 4)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Simplifie au maximum : 60/84",
+              "options": ["5/7", "10/14", "15/21", "5/6"],
+              "correctAnswers": [0],
+              "explanation": "En divisant par 12 : 60/84 = 5/7."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle fraction est égale à 0,75 ?",
+              "options": ["3/4", "7/5", "75/10", "4/3"],
+              "correctAnswers": [0],
+              "explanation": "0,75 = 75/100 = 3/4."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle fraction est égale à 1,6 sous forme irréductible ?",
+              "options": ["8/5", "16/10", "5/8", "6/5"],
+              "correctAnswers": [0],
+              "explanation": "1,6 = 16/10 = 8/5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle fraction équivaut à 120/180 ?",
+              "options": ["2/3", "3/4", "4/5", "5/6"],
+              "correctAnswers": [0],
+              "explanation": "En divisant par 60 : 120/180 = 2/3."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Écris 0,35 sous forme de fraction irréductible :",
+              "options": ["7/20", "35/100", "7/25", "3/10"],
+              "correctAnswers": [0],
+              "explanation": "35/100 = (35÷5)/(100÷5) = 7/20."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Simplifie le quotient : (2 × 3 × 5) / (3 × 5 × 7)",
+              "options": ["2/7", "6/21", "30/105", "1/7"],
+              "correctAnswers": [0],
+              "explanation": "On simplifie par 3 et par 5 : il reste 2/7."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle fraction irréductible correspond à 0,125 ?",
+              "options": ["1/8", "1/4", "125/100", "2/15"],
+              "correctAnswers": [0],
+              "explanation": "0,125 = 125/1000 = 1/8."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Comparaison de fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fractions sont strictement supérieures à 1/2 ?",
+              "options": ["3/5", "5/8", "4/9", "7/10"],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "3/5 = 0,6 > 0,5 ; 5/8 = 0,625 > 0,5 ; 7/10 = 0,7 > 0,5. Alors que 4/9 ≈ 0,44 < 0,5."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Laquelle de ces fractions est la plus grande : 3/7 ou 5/7 ?",
+              "options": [
+                "5/7",
+                "3/7",
+                "Elles sont égales",
+                "Impossible de savoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À dénominateur égal, la fraction ayant le plus grand numérateur est la plus grande : 5/7 > 3/7."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Compare 2/3 et 3/4 en réduisant au même dénominateur :",
+              "options": ["2/3 < 3/4", "2/3 > 3/4", "2/3 = 3/4", "2/3 ≥ 3/4"],
+              "correctAnswers": [0],
+              "explanation": "2/3 = 8/12 et 3/4 = 9/12. Comme 8 < 9, 2/3 < 3/4."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle fraction est strictement inférieure à 1 ?",
+              "options": ["8/9", "9/8", "7/7", "11/10"],
+              "correctAnswers": [0],
+              "explanation": "Une fraction positive est inférieure à 1 si son numérateur est plus petit que son dénominateur : 8 < 9."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Range par ordre croissant : 1/4 ; 1/2 ; 1/3",
+              "options": [
+                "1/4 < 1/3 < 1/2",
+                "1/2 < 1/3 < 1/4",
+                "1/3 < 1/4 < 1/2",
+                "1/4 < 1/2 < 1/3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À numérateur égal, la plus grande fraction a le plus petit dénominateur : 1/4 < 1/3 < 1/2."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel signe convient entre 7/10 et 4/5 ?",
+              "options": ["<", ">", "=", "≥"],
+              "correctAnswers": [0],
+              "explanation": "4/5 = 8/10. Comme 7/10 < 8/10, on a 7/10 < 4/5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lequel de ces nombres est compris entre 1/4 et 1/2 ?",
+              "options": ["3/8", "1/8", "5/8", "7/8"],
+              "correctAnswers": [0],
+              "explanation": "1/4 = 2/8 et 1/2 = 4/8. 3/8 est bien compris entre 2/8 et 4/8."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Compare -3/5 et -4/5 :",
+              "options": [
+                "-3/5 > -4/5",
+                "-3/5 < -4/5",
+                "-3/5 = -4/5",
+                "-3/5 ≤ -4/5"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour des nombres négatifs, celui qui a la plus petite valeur absolue est le plus grand : -3/5 > -4/5."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle fraction est la plus proche de 1 ?",
+              "options": ["9/10", "4/5", "2/3", "3/4"],
+              "correctAnswers": [0],
+              "explanation": "1 - 9/10 = 0,1 ; 1 - 4/5 = 0,2 ; 1 - 3/4 = 0,25 ; 1 - 2/3 ≈ 0,33. 9/10 est la plus proche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Compare 5/6 et 7/8 :",
+              "options": ["5/6 < 7/8", "5/6 > 7/8", "5/6 = 7/8", "5/6 ≥ 7/8"],
+              "correctAnswers": [0],
+              "explanation": "5/6 = 20/24 et 7/8 = 21/24. Donc 5/6 < 7/8."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse sur les fractions et priorités",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi les calculs suivants, lesquels donnent un nombre entier ?",
+              "options": [
+                "(3/4) × 8",
+                "(5/2) + (1/2)",
+                "(2/5) × 4",
+                "(1/3) + (2/3)"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "3/4 × 8 = 6, 5/2 + 1/2 = 3 et 1/3 + 2/3 = 1 sont des entiers. (2/5) × 4 = 8/5 n'est pas entier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calcule : A = 3/4 - 5/4 × 1/2",
+              "options": ["1/8", "1/4", "-1/8", "1/2"],
+              "correctAnswers": [0],
+              "explanation": "5/4 × 1/2 = 5/8. Puis 3/4 - 5/8 = 6/8 - 5/8 = 1/8."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Calcule : B = (1 - 1/3) ÷ (1 + 1/3)",
+              "options": ["1/2", "2/3", "4/3", "1/4"],
+              "correctAnswers": [0],
+              "explanation": "1 - 1/3 = 2/3 et 1 + 1/3 = 4/3. Donc (2/3) ÷ (4/3) = 2/4 = 1/2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Calcule : C = 5/2 × 4/15 - 1/3",
+              "options": ["1/3", "2/3", "0", "1"],
+              "correctAnswers": [0],
+              "explanation": "5/2 × 4/15 = 20/30 = 2/3. Puis 2/3 - 1/3 = 1/3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Calcule : D = 2/5 + 3/5 ÷ 3",
+              "options": ["3/5", "1/3", "1", "4/5"],
+              "correctAnswers": [0],
+              "explanation": "3/5 ÷ 3 = 1/5. Puis 2/5 + 1/5 = 3/5."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de : (3/2)² - (1/2)² ?",
+              "options": ["2", "4", "1", "8/4"],
+              "correctAnswers": [0],
+              "explanation": "9/4 - 1/4 = 8/4 = 2."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Calcule : E = (2/3 + 1/6) × 3/5",
+              "options": ["1/2", "5/6", "3/10", "2/5"],
+              "correctAnswers": [0],
+              "explanation": "2/3 + 1/6 = 4/6 + 1/6 = 5/6. Puis 5/6 × 3/5 = 3/6 = 1/2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Calcule : F = 7/4 - (1/2)²",
+              "options": ["3/2", "5/4", "6/4", "1"],
+              "correctAnswers": [0],
+              "explanation": "(1/2)² = 1/4. Puis 7/4 - 1/4 = 6/4 = 3/2."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Calcule : G = (5/6 - 1/2) ÷ (1/4)",
+              "options": ["4/3", "2/3", "1/3", "3/4"],
+              "correctAnswers": [0],
+              "explanation": "5/6 - 3/6 = 2/6 = 1/3. Puis (1/3) ÷ (1/4) = 1/3 × 4 = 4/3."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Calcule : H = 10 - 2 × (3/2)",
+              "options": ["7", "12", "8", "6"],
+              "correctAnswers": [0],
+              "explanation": "2 × 3/2 = 3. Puis 10 - 3 = 7."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Problèmes numériques",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Problèmes concrets avec fractions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans une classe de 30 élèves, 2/3 sont demi-pensionnaires et 1/5 sont externes. Quelles affirmations sont vraies ?",
+              "options": [
+                "Il y a 20 demi-pensionnaires",
+                "Il y a 6 externes",
+                "Il y a 4 internes",
+                "Il y a 10 externes"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "30 × 2/3 = 20 demi-pensionnaires. 30 × 1/5 = 6 externes. Reste d'internes : 30 - (20 + 6) = 4."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Léo dépense 2/5 de son argent de poche de 50 €. Combien lui reste-t-il ?",
+              "options": ["30 €", "20 €", "25 €", "35 €"],
+              "correctAnswers": [0],
+              "explanation": "Dépense : 50 × 2/5 = 20 €. Reste : 50 - 20 = 30 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une bouteille de 1,5 L est remplie aux 3/4. Quel volume de liquide contient-elle ?",
+              "options": ["1,125 L", "1,2 L", "0,75 L", "1,25 L"],
+              "correctAnswers": [0],
+              "explanation": "1,5 × 3/4 = 1,5 × 0,75 = 1,125 L."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un randonneur a parcouru 12 km, soit 3/5 de sa randonnée totale. Quelle est la longueur totale ?",
+              "options": ["20 km", "15 km", "18 km", "24 km"],
+              "correctAnswers": [0],
+              "explanation": "Longueur totale = 12 ÷ (3/5) = 12 × 5/3 = 20 km."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un gâteau pèse 600 g. Sarah en mange 1/3 et Thomas 1/4. Combien de grammes reste-t-il ?",
+              "options": ["250 g", "350 g", "300 g", "200 g"],
+              "correctAnswers": [0],
+              "explanation": "Sarah : 200 g. Thomas : 150 g. Total mangé : 350 g. Reste : 600 - 350 = 250 g."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Lors d'une élection, 3/8 des inscrits votent pour A et 1/2 pour B. Quelle fraction a voté pour A ou B ?",
+              "options": ["7/8", "4/10", "5/8", "1/8"],
+              "correctAnswers": [0],
+              "explanation": "3/8 + 1/2 = 3/8 + 4/8 = 7/8."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un réservoir de 60 L est vide aux 2/3. Combien de litres d'essence contient-il ?",
+              "options": ["20 L", "40 L", "30 L", "15 L"],
+              "correctAnswers": [0],
+              "explanation": "S'il est vide aux 2/3, il est plein au 1/3 : 60 × 1/3 = 20 L."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pierre mange 1/4 d'une pizza à midi et 1/3 du reste le soir. Quelle fraction a-t-il mangée le soir ?",
+              "options": ["1/4", "1/12", "1/2", "3/4"],
+              "correctAnswers": [0],
+              "explanation": "Reste à midi : 3/4. Le soir : 1/3 × 3/4 = 1/4."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un paquet contient 36 bonbons. Julie prend 1/3 et Marc 1/6. Combien en ont-ils pris ensemble ?",
+              "options": [
+                "18 bonbons",
+                "12 bonbons",
+                "15 bonbons",
+                "20 bonbons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Julie : 36/3 = 12. Marc : 36/6 = 6. Ensemble : 12 + 6 = 18 bonbons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un rectangle mesure 4/3 m de long sur 3/5 m de large. Quelle est son aire ?",
+              "options": ["4/5 m²", "2/5 m²", "7/15 m²", "1 m²"],
+              "correctAnswers": [0],
+              "explanation": "Aire = Longueur × largeur = 4/3 × 3/5 = 4/5 m²."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Problèmes de partages et de proportions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "On partage 120 € entre Alice et Bob dans le ratio 2:3. Quelles affirmations sont correctes ?",
+              "options": [
+                "Le total correspond à 5 parts égales",
+                "Alice reçoit 48 €",
+                "Bob reçoit 72 €",
+                "Bob reçoit 60 €"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Nombre de parts : 2 + 3 = 5. Valeur d'une part : 120 / 5 = 24 €. Alice reçoit 2 × 24 = 48 €, Bob reçoit 3 × 24 = 72 €."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "On partage 90 € dans le ratio 1:2. Quelle est la part la plus grande ?",
+              "options": ["60 €", "30 €", "45 €", "50 €"],
+              "correctAnswers": [0],
+              "explanation": "1 + 2 = 3 parts. Une part vaut 90/3 = 30 €. La grande part vaut 2 × 30 = 60 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les angles d'un triangle sont dans le ratio 2:3:4. Combien mesure le plus petit angle ?",
+              "options": ["40°", "60°", "80°", "20°"],
+              "correctAnswers": [0],
+              "explanation": "Somme = 180°. Total parts = 2 + 3 + 4 = 9. 1 part = 180 / 9 = 20°. Petit angle = 2 × 20° = 40°."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour une pâte, le ratio farine/sucre est 3:1. Pour 600 g de farine, quelle masse de sucre faut-il ?",
+              "options": ["200 g", "300 g", "150 g", "180 g"],
+              "correctAnswers": [0],
+              "explanation": "3 parts de farine = 600 g, donc 1 part = 200 g de sucre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans un club de 150 personnes, le ratio filles/garçons est 2:3. Combien y a-t-il de filles ?",
+              "options": ["60", "90", "75", "50"],
+              "correctAnswers": [0],
+              "explanation": "5 parts = 150, donc 1 part = 30. Filles = 2 × 30 = 60."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si 3 stylos coûtent 4,50 €, combien coûtent 7 stylos au même prix ?",
+              "options": ["10,50 €", "9,50 €", "11,00 €", "12,50 €"],
+              "correctAnswers": [0],
+              "explanation": "Prix unitaire = 4,50 / 3 = 1,50 €. Pour 7 stylos : 7 × 1,50 = 10,50 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux associés se partagent 10 000 € dans le ratio 3:7. Quelle est la part du premier ?",
+              "options": ["3 000 €", "7 000 €", "3 500 €", "4 000 €"],
+              "correctAnswers": [0],
+              "explanation": "10 parts = 10 000 €, donc 1 part = 1 000 €. Premier associé = 3 × 1 000 = 3 000 €."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un mélange sirop/eau est dans le ratio 1:7. Quel volume de sirop pour 80 cL de boisson ?",
+              "options": ["10 cL", "20 cL", "8 cL", "14 cL"],
+              "correctAnswers": [0],
+              "explanation": "Total 8 parts = 80 cL. 1 part de sirop = 10 cL."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une corde de 70 cm est coupée dans le ratio 3:4. Quelle est la longueur du plus long morceau ?",
+              "options": ["40 cm", "30 cm", "35 cm", "45 cm"],
+              "correctAnswers": [0],
+              "explanation": "7 parts = 70 cm, 1 part = 10 cm. Plus long morceau = 4 × 10 = 40 cm."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "On partage 240 billes dans le ratio 1:2:3. Combien reçoit le troisième ?",
+              "options": ["120 billes", "80 billes", "40 billes", "100 billes"],
+              "correctAnswers": [0],
+              "explanation": "Total 6 parts = 240 billes. 1 part = 40. Le troisième reçoit 3 × 40 = 120 billes."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Calculs avec pourcentages et réductions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un article à 80 € a une remise de 20 %. Quelles affirmations sont vraies ?",
+              "options": [
+                "La remise s'élève à 16 €",
+                "Le nouveau prix est 64 €",
+                "Le coefficient multiplicateur est 0,80",
+                "Le nouveau prix est 60 €"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Remise : 80 × 0,20 = 16 €. Nouveau prix : 80 - 16 = 64 €. CM = 1 - 0,20 = 0,80."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le prix d'un pantalon à 50 € avec une réduction de 30 % ?",
+              "options": ["35 €", "15 €", "40 €", "30 €"],
+              "correctAnswers": [0],
+              "explanation": "50 × (1 - 0,30) = 50 × 0,70 = 35 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une ville de 25 000 habitants voit sa population augmenter de 4 %. Combien compte-t-elle ?",
+              "options": ["26 000", "25 400", "27 000", "25 100"],
+              "correctAnswers": [0],
+              "explanation": "25 000 × 1,04 = 26 000 habitants."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un collège de 600 élèves, 45 % sont demi-pensionnaires. Combien cela fait-il ?",
+              "options": ["270", "300", "240", "280"],
+              "correctAnswers": [0],
+              "explanation": "600 × 0,45 = 270 élèves."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un objet passe de 40 € à 50 €. Quel est le pourcentage de hausse ?",
+              "options": ["25 %", "20 %", "10 %", "30 %"],
+              "correctAnswers": [0],
+              "explanation": "Hausse = (50 - 40) / 40 = 10 / 40 = 0,25 soit 25 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le coefficient multiplicateur d'une augmentation de 15 % ?",
+              "options": ["1,15", "0,15", "0,85", "1,50"],
+              "correctAnswers": [0],
+              "explanation": "1 + 15/100 = 1,15."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le coefficient multiplicateur d'une baisse de 12 % ?",
+              "options": ["0,88", "1,12", "0,12", "0,78"],
+              "correctAnswers": [0],
+              "explanation": "1 - 12/100 = 0,88."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un pull coûte 40 € après une remise de 50 %. Quel était son prix de départ ?",
+              "options": ["80 €", "60 €", "70 €", "90 €"],
+              "correctAnswers": [0],
+              "explanation": "Prix initial = 40 / 0,50 = 80 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "15 élèves sur 25 portent des lunettes. Quel pourcentage cela représente-t-il ?",
+              "options": ["60 %", "50 %", "75 %", "40 %"],
+              "correctAnswers": [0],
+              "explanation": "15 / 25 = 0,60 = 60 %."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Un produit à 100 € augmente de 10 % puis baisse de 10 %. Quel est son prix final ?",
+              "options": ["99 €", "100 €", "101 €", "90 €"],
+              "correctAnswers": [0],
+              "explanation": "100 × 1,10 × 0,90 = 110 × 0,90 = 99 €."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Vitesse, distance et temps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules reliant la vitesse v, la distance d et le temps t sont exactes ?",
+              "options": ["v = d / t", "d = v × t", "t = d / v", "t = v × d"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "v = d/t implique d = v × t et t = d/v. L'expression t = v × d est fausse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une voiture roule à 80 km/h pendant 2 h 30 min. Quelle distance parcourt-elle ?",
+              "options": ["200 km", "160 km", "240 km", "180 km"],
+              "correctAnswers": [0],
+              "explanation": "2 h 30 min = 2,5 h. Distance = 80 × 2,5 = 200 km."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un train parcourt 360 km en 3 heures. Quelle est sa vitesse moyenne ?",
+              "options": ["120 km/h", "100 km/h", "110 km/h", "130 km/h"],
+              "correctAnswers": [0],
+              "explanation": "v = 360 / 3 = 120 km/h."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de temps met un cycliste à 20 km/h pour parcourir 50 km ?",
+              "options": [
+                "2 h 30 min",
+                "2 h 15 min",
+                "2 h 50 min",
+                "3 h 00 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "t = 50 / 20 = 2,5 h = 2 h 30 min."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Convertis 72 km/h en mètres par seconde (m/s) :",
+              "options": ["20 m/s", "25 m/s", "15 m/s", "30 m/s"],
+              "correctAnswers": [0],
+              "explanation": "On divise par 3,6 : 72 / 3,6 = 20 m/s."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Convertis 15 m/s en kilomètres par heure (km/h) :",
+              "options": ["54 km/h", "45 km/h", "60 km/h", "30 km/h"],
+              "correctAnswers": [0],
+              "explanation": "On multiplie par 3,6 : 15 × 3,6 = 54 km/h."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un piéton marche à 5 km/h pendant 45 minutes. Quelle distance a-t-il parcourue ?",
+              "options": ["3,75 km", "3,5 km", "4 km", "2,5 km"],
+              "correctAnswers": [0],
+              "explanation": "45 min = 0,75 h. Distance = 5 × 0,75 = 3,75 km."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un avion vole à 900 km/h. Quelle distance parcourt-il en 20 minutes ?",
+              "options": ["300 km", "450 km", "180 km", "600 km"],
+              "correctAnswers": [0],
+              "explanation": "20 min = 1/3 h. Distance = 900 × 1/3 = 300 km."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un coureur fait 10 km en 40 minutes. Quelle est sa vitesse en km/h ?",
+              "options": ["15 km/h", "12 km/h", "10 km/h", "18 km/h"],
+              "correctAnswers": [0],
+              "explanation": "40 min = 2/3 h. Vitesse = 10 ÷ (2/3) = 10 × 1,5 = 15 km/h."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour parcourir 90 km à 60 km/h, quelle est la durée du trajet ?",
+              "options": [
+                "1 h 30 min",
+                "1 h 15 min",
+                "1 h 45 min",
+                "1 h 50 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "t = 90 / 60 = 1,5 h = 1 h 30 min."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Problèmes de durées et conversions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles durées sont strictement équivalentes à 2 h 15 min ?",
+              "options": [
+                "2,25 heures",
+                "135 minutes",
+                "8 100 secondes",
+                "2,15 heures"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "2 h 15 = 2 + 15/60 = 2,25 h. 2 × 60 + 15 = 135 min. 135 × 60 = 8 100 s. 2,15 h est une notation décimale erronée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Convertis 3,5 heures en heures et minutes :",
+              "options": [
+                "3 h 30 min",
+                "3 h 50 min",
+                "3 h 05 min",
+                "3 h 15 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0,5 h = 0,5 × 60 = 30 min. Donc 3 h 30 min."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Convertis 1 h 48 min en heures décimales :",
+              "options": ["1,8 h", "1,48 h", "1,75 h", "1,85 h"],
+              "correctAnswers": [0],
+              "explanation": "48 / 60 = 0,8 h, donc 1,8 h."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un film débute à 20 h 45 et dure 1 h 50 min. À quelle heure finit-il ?",
+              "options": ["22 h 35", "22 h 45", "21 h 55", "22 h 25"],
+              "correctAnswers": [0],
+              "explanation": "20 h 45 + 1 h 50 = 21 h 95 min = 22 h 35."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de secondes compte une heure ?",
+              "options": ["3 600 s", "600 s", "60 s", "36 000 s"],
+              "correctAnswers": [0],
+              "explanation": "1 h = 60 min = 60 × 60 s = 3 600 s."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Convertis 210 minutes en heures et minutes :",
+              "options": [
+                "3 h 30 min",
+                "3 h 50 min",
+                "2 h 50 min",
+                "4 h 10 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "210 = 3 × 60 + 30 = 3 h 30 min."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un train part à 14 h 22 et arrive à 17 h 05. Quelle est la durée du trajet ?",
+              "options": [
+                "2 h 43 min",
+                "2 h 47 min",
+                "3 h 17 min",
+                "2 h 33 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De 14h22 à 15h00 : 38 min. De 15h00 à 17h05 : 2 h 05 min. Total : 2 h 43 min."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Convertis 0,6 heure en minutes :",
+              "options": ["36 min", "6 min", "60 min", "40 min"],
+              "correctAnswers": [0],
+              "explanation": "0,6 × 60 = 36 min."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une séance dure 10 800 secondes. Combien d'heures cela représente-t-il ?",
+              "options": ["3 h", "2 h", "3,5 h", "4 h"],
+              "correctAnswers": [0],
+              "explanation": "10 800 ÷ 3 600 = 3 h."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Convertis 2,75 heures en heures et minutes :",
+              "options": [
+                "2 h 45 min",
+                "2 h 75 min",
+                "2 h 35 min",
+                "2 h 50 min"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0,75 h = 45 min, donc 2 h 45 min."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Échelles et grandeurs proportionnelles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur une carte à l'échelle 1/50 000, quelles affirmations sont exactes ?",
+              "options": [
+                "1 cm sur la carte représente 500 m en réalité",
+                "2 cm sur la carte représentent 1 km en réalité",
+                "10 cm sur la carte représentent 5 km en réalité",
+                "1 cm sur la carte représente 5 km en réalité"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "50 000 cm = 500 m = 0,5 km. 2 cm valent 1 km et 10 cm valent 5 km. 1 cm ne vaut pas 5 km."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur un plan à l'échelle 1/200, une pièce mesure 3 cm. Quelle est sa dimension réelle ?",
+              "options": ["6 m", "60 m", "0,6 m", "60 cm"],
+              "correctAnswers": [0],
+              "explanation": "3 × 200 = 600 cm = 6 m."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une distance réelle de 15 km est représentée par 3 cm sur une carte. Quelle est l'échelle ?",
+              "options": ["1/500 000", "1/50 000", "1/5 000", "1/150 000"],
+              "correctAnswers": [0],
+              "explanation": "15 km = 1 500 000 cm. Échelle = 3 / 1 500 000 = 1 / 500 000."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La maquette d'une tour de 30 m est à l'échelle 1/100. Quelle est sa hauteur sur la maquette ?",
+              "options": ["30 cm", "3 cm", "300 cm", "0,3 cm"],
+              "correctAnswers": [0],
+              "explanation": "30 m = 3 000 cm. 3 000 / 100 = 30 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si 4 kg de pommes coûtent 6 €, combien coûtent 10 kg de ces pommes ?",
+              "options": ["15 €", "12 €", "16 €", "14 €"],
+              "correctAnswers": [0],
+              "explanation": "Prix au kilo = 6 / 4 = 1,50 €. Pour 10 kg : 10 × 1,50 = 15 €."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un robinet débite 12 L d'eau par minute. Quel volume s'écoule en 1 heure ?",
+              "options": ["720 L", "120 L", "600 L", "72 L"],
+              "correctAnswers": [0],
+              "explanation": "1 heure = 60 minutes. Volume = 12 × 60 = 720 L."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour peindre 25 m², il faut 2 L de peinture. Combien de litres pour peindre 75 m² ?",
+              "options": ["6 L", "4 L", "5 L", "8 L"],
+              "correctAnswers": [0],
+              "explanation": "75 m² est 3 fois plus grand que 25 m², donc il faut 3 × 2 = 6 L."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un agrandissement de rapport 3 multiplie les longueurs par :",
+              "options": ["3", "9", "6", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "Dans un agrandissement de rapport k, les longueurs sont multipliées par k = 3."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si les longueurs d'une figure sont multipliées par 2, son aire est multipliée par :",
+              "options": ["4", "2", "8", "16"],
+              "correctAnswers": [0],
+              "explanation": "Les aires sont multipliées par k² = 2² = 4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si les dimensions d'un solide sont multipliées par 3, son volume est multiplié par :",
+              "options": ["27", "9", "3", "6"],
+              "correctAnswers": [0],
+              "explanation": "Les volumes sont multipliés par k³ = 3³ = 27."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Problèmes d'aires et volumes appliqués",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels calculs d'aires sont exacts ?",
+              "options": [
+                "Carré de côté 5 cm : aire = 25 cm²",
+                "Rectangle de 4 m sur 6 m : aire = 24 m²",
+                "Triangle de base 6 cm et hauteur 4 cm : aire = 12 cm²",
+                "Disque de rayon 3 cm : aire = 6π cm²"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "5² = 25 cm², 4 × 6 = 24 m², (6 × 4)/2 = 12 cm². Pour le disque : π × 3² = 9π cm²."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un pavé droit a pour dimensions 4 cm, 5 cm et 6 cm. Quel est son volume ?",
+              "options": ["120 cm³", "60 cm³", "15 cm³", "74 cm³"],
+              "correctAnswers": [0],
+              "explanation": "Volume = 4 × 5 × 6 = 120 cm³."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une piscine mesure 8 m sur 4 m avec 1,5 m de profondeur. Quel est son volume ?",
+              "options": ["48 m³", "32 m³", "64 m³", "40 m³"],
+              "correctAnswers": [0],
+              "explanation": "Volume = 8 × 4 × 1,5 = 48 m³."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sachant que 1 m³ = 1 000 L, quelle est la capacité en litres d'une cuve de 2,5 m³ ?",
+              "options": ["2 500 L", "250 L", "25 000 L", "25 L"],
+              "correctAnswers": [0],
+              "explanation": "2,5 × 1 000 = 2 500 L."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un terrain rectangulaire de 20 m sur 15 m coûte 120 € le m². Quel est son prix total ?",
+              "options": ["36 000 €", "300 €", "7 000 €", "18 000 €"],
+              "correctAnswers": [0],
+              "explanation": "Aire = 20 × 15 = 300 m². Prix = 300 × 120 = 36 000 €."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le volume d'un cube d'arête 3 cm ?",
+              "options": ["27 cm³", "9 cm³", "18 cm³", "54 cm³"],
+              "correctAnswers": [0],
+              "explanation": "Volume = 3³ = 27 cm³."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un champ a une superficie de 1,2 hectare (1 ha = 10 000 m²). Combien cela fait-il en m² ?",
+              "options": ["12 000 m²", "1 200 m²", "120 000 m²", "120 m²"],
+              "correctAnswers": [0],
+              "explanation": "1,2 × 10 000 = 12 000 m²."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un cylindre de rayon 3 cm et de hauteur 10 cm a pour volume approché (π ≈ 3,14) :",
+              "options": ["282,6 cm³", "94,2 cm³", "188,4 cm³", "300 cm³"],
+              "correctAnswers": [0],
+              "explanation": "V = π × 3² × 10 = 90π ≈ 282,6 cm³."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "On remplit une baignoire de 180 L avec un seau de 15 L. Combien de seaux faut-il ?",
+              "options": ["12 seaux", "10 seaux", "15 seaux", "14 seaux"],
+              "correctAnswers": [0],
+              "explanation": "180 / 15 = 12 seaux."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une terrasse rectangulaire mesure 6 m de long et 5 m de large. Quel est son périmètre ?",
+              "options": ["22 m", "30 m", "11 m", "60 m"],
+              "correctAnswers": [0],
+              "explanation": "Périmètre = 2 × (6 + 5) = 2 × 11 = 22 m."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Équations simples issues de problèmes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La somme de trois entiers consécutifs vaut 45. Quelles affirmations sont vraies ?",
+              "options": [
+                "L'équation associée est x + (x + 1) + (x + 2) = 45",
+                "Le premier entier x vaut 14",
+                "Les trois entiers sont 14, 15 et 16",
+                "Les trois entiers sont 13, 15 et 17"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "3x + 3 = 45 donc 3x = 42 et x = 14. Les trois entiers consécutifs sont 14, 15 et 16."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Je pense à un nombre. Je le multiplie par 4, j'ajoute 7 et j'obtiens 35. Quel est ce nombre ?",
+              "options": ["7", "8", "6", "9"],
+              "correctAnswers": [0],
+              "explanation": "4x + 7 = 35 => 4x = 28 => x = 7."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La somme d'un nombre et de son double vaut 36. Quel est ce nombre ?",
+              "options": ["12", "18", "9", "24"],
+              "correctAnswers": [0],
+              "explanation": "x + 2x = 36 => 3x = 36 => x = 12."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tom achète 3 BD identiques et un stylo à 2 €. Il paie 29 €. Quel est le prix d'une BD ?",
+              "options": ["9 €", "8 €", "10 €", "7 €"],
+              "correctAnswers": [0],
+              "explanation": "3x + 2 = 29 => 3x = 27 => x = 9 €."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le périmètre d'un rectangle de longueur x et largeur 5 cm vaut 26 cm. Que vaut x ?",
+              "options": ["8 cm", "16 cm", "6 cm", "10 cm"],
+              "correctAnswers": [0],
+              "explanation": "2(x + 5) = 26 => x + 5 = 13 => x = 8 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Emma a 4 ans de plus que Lucas. À eux deux, ils ont 20 ans. Quel est l'âge de Lucas ?",
+              "options": ["8 ans", "12 ans", "10 ans", "6 ans"],
+              "correctAnswers": [0],
+              "explanation": "x + (x + 4) = 20 => 2x = 16 => x = 8 ans."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le triple d'un nombre diminué de 5 vaut 16. Quel est ce nombre ?",
+              "options": ["7", "6", "8", "5"],
+              "correctAnswers": [0],
+              "explanation": "3x - 5 = 16 => 3x = 21 => x = 7."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un abonnement coûte 10 € plus 0,05 € par Mo hors forfait. Pour 13 €, combien de Mo consommés en plus ?",
+              "options": ["60 Mo", "50 Mo", "30 Mo", "100 Mo"],
+              "correctAnswers": [0],
+              "explanation": "10 + 0,05x = 13 => 0,05x = 3 => x = 60 Mo."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux nombres ont pour somme 50 et pour différence 10. Quel est le plus grand nombre ?",
+              "options": ["30", "20", "35", "25"],
+              "correctAnswers": [0],
+              "explanation": "x + y = 50 et x - y = 10. En additionnant : 2x = 60 => x = 30."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Résous le problème : 5 fois un nombre diminué de 2 est égal à 3 fois ce nombre plus 8. Quel est-il ?",
+              "options": ["5", "4", "6", "3"],
+              "correctAnswers": [0],
+              "explanation": "5x - 2 = 3x + 8 => 2x = 10 => x = 5."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Problèmes de gestion de budget et achats",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour financer un voyage de 1 200 €, une tombola rapporte 450 € et une vente 350 €. Quelles assertions sont vraies ?",
+              "options": [
+                "Les deux actions ont rapporté au total 800 €",
+                "Il manque encore 400 € pour financer le voyage",
+                "La tombola représente plus d'un tiers du budget total",
+                "Le voyage est entièrement payé"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "450 + 350 = 800 €. Manque : 1 200 - 800 = 400 €. 450 > 400 (un tiers de 1 200)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un ordinateur coûte 600 €. On verse 20 % d'acompte et le reste en 4 mensualités. Combien vaut chaque mensualité ?",
+              "options": ["120 €", "150 €", "100 €", "80 €"],
+              "correctAnswers": [0],
+              "explanation": "Acompte : 120 €. Reste : 480 €. Mensualité : 480 / 4 = 120 €."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une facture comprend 12 € d'abonnement et 0,15 € par kWh. Pour 200 kWh, quel est le montant ?",
+              "options": ["42 €", "30 €", "40 €", "52 €"],
+              "correctAnswers": [0],
+              "explanation": "12 + 200 × 0,15 = 12 + 30 = 42 €."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une offre propose '2 articles achetés, le 3e gratuit'. Quel est le pourcentage de remise globale ?",
+              "options": ["33,33 %", "50 %", "25 %", "20 %"],
+              "correctAnswers": [0],
+              "explanation": "On paie 2 articles sur 3, ce qui correspond à une réduction de 1/3 ≈ 33,33 %."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un technicien compte 45 € de déplacement et 30 € par heure. Quel est le coût pour 3 heures ?",
+              "options": ["135 €", "90 €", "120 €", "150 €"],
+              "correctAnswers": [0],
+              "explanation": "45 + 3 × 30 = 45 + 90 = 135 €."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur 1 800 € de salaire, Paul consacre 1/3 au loyer et 1/4 à la nourriture. Combien lui reste-t-il ?",
+              "options": ["750 €", "600 €", "800 €", "900 €"],
+              "correctAnswers": [0],
+              "explanation": "Loyer = 600 €. Nourriture = 450 €. Dépenses = 1 050 €. Reste = 1 800 - 1 050 = 750 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour un scooter à 1 500 €, Maxime a 900 €. Quel pourcentage du prix possède-t-il ?",
+              "options": ["60 %", "50 %", "70 %", "65 %"],
+              "correctAnswers": [0],
+              "explanation": "900 / 1 500 = 0,60 = 60 %."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un commerçant achète un bien 40 € et le revend 60 €. Quel est son bénéfice brut ?",
+              "options": ["20 €", "10 €", "25 €", "15 €"],
+              "correctAnswers": [0],
+              "explanation": "Bénéfice = 60 - 40 = 20 €."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le prix TTC d'un article valant 50 € HT avec une TVA à 20 % ?",
+              "options": ["60 €", "55 €", "70 €", "52 €"],
+              "correctAnswers": [0],
+              "explanation": "Prix TTC = 50 × 1,20 = 60 €."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une carte annuelle de cinéma vaut 180 €. La place seule vaut 9 €. Dès quelle séance est-elle rentable ?",
+              "options": [
+                "21 séances",
+                "20 séances",
+                "19 séances",
+                "18 séances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "180 / 9 = 20 places. Elle devient strictement rentable à partir de la 21e séance."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Synthèse et résolution de problèmes complexes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un groupe de 24 personnes paie 200 € au musée (tarif plein 10 €, réduit 6 €). Quelles propositions sont vraies ?",
+              "options": [
+                "14 personnes ont payé le plein tarif",
+                "10 personnes ont payé le tarif réduit",
+                "Le total s'écrit 14 × 10 + 10 × 6 = 200 €",
+                "Il y a autant de tarifs pleins que de réduits"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "10x + 6(24-x) = 200 => 4x = 56 => x = 14 tarifs pleins, donc 10 tarifs réduits."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un train roule à 150 km/h de 10 h 15 à 12 h 35. Quelle distance parcourt-il ?",
+              "options": ["350 km", "300 km", "325 km", "375 km"],
+              "correctAnswers": [0],
+              "explanation": "Durée = 2 h 20 min = 7/3 h. Distance = 150 × 7/3 = 350 km."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un produit subit une remise de 20 % puis 10 % supplémentaires. Quel est le taux de remise globale ?",
+              "options": ["28 %", "30 %", "25 %", "22 %"],
+              "correctAnswers": [0],
+              "explanation": "0,80 × 0,90 = 0,72. Taux global = 1 - 0,72 = 0,28 = 28 %."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un robinet A remplit un bac en 3 h, un robinet B en 6 h. Ensemble, combien de temps mettent-ils ?",
+              "options": ["2 h", "4,5 h", "1,5 h", "2,5 h"],
+              "correctAnswers": [0],
+              "explanation": "En 1 h : 1/3 + 1/6 = 3/6 = 1/2 du bac. Il faut donc 2 heures ensemble."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans une école, 3/5 font espagnol, 1/4 allemand, et les 30 restants italien. Combien d'élèves au total ?",
+              "options": [
+                "200 élèves",
+                "180 élèves",
+                "240 élèves",
+                "150 élèves"
+              ],
+              "correctAnswers": [0],
+              "explanation": "3/5 + 1/4 = 17/20. Reste = 3/20 = 30 élèves, donc Total = 30 × 20/3 = 200 élèves."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un trajet de 120 km se fait à 60 km/h à l'aller et 40 km/h au retour. Quelle est la vitesse moyenne globale ?",
+              "options": ["48 km/h", "50 km/h", "45 km/h", "52 km/h"],
+              "correctAnswers": [0],
+              "explanation": "Temps aller = 2 h, temps retour = 3 h. Total = 240 km en 5 h => 240 / 5 = 48 km/h."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "450 € sont partagés selon les âges : 10 ans, 15 ans et 20 ans. Combien a le plus jeune ?",
+              "options": ["100 €", "150 €", "200 €", "80 €"],
+              "correctAnswers": [0],
+              "explanation": "Total âges = 45. Valeur par an = 450/45 = 10 €. Plus jeune = 10 × 10 = 100 €."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un carré et un rectangle ont un périmètre de 40 cm. Le rectangle a une largeur de 8 cm. Quelle est la différence d'aire ?",
+              "options": ["4 cm²", "16 cm²", "8 cm²", "2 cm²"],
+              "correctAnswers": [0],
+              "explanation": "Aire carré = 10² = 100 cm². Aire rectangle = 12 × 8 = 96 cm². Différence = 4 cm²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un capital de 2 000 € est placé à 3 % d'intérêts simples par an. Quels sont les intérêts après 4 ans ?",
+              "options": ["240 €", "60 €", "120 €", "300 €"],
+              "correctAnswers": [0],
+              "explanation": "Intérêts = 2 000 × 0,03 × 4 = 240 €."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une urne a 1/3 de billes rouges, 2/5 de bleues et 8 vertes. Quel est le nombre total de billes ?",
+              "options": ["30", "45", "60", "24"],
+              "correctAnswers": [0],
+              "explanation": "1 - (1/3 + 2/5) = 4/15. Si 4/15 correspondent à 8 billes, le total est 8 × 15 / 4 = 30 billes."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

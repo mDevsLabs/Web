@@ -1,0 +1,2738 @@
+{
+  "id": "2nde-francais-05",
+  "year": "2nde",
+  "subject": "francais",
+  "title": "Lire et comprendre",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Idée principale",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Identifier le thème et le propos d'un texte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations distinguent correctement le « thème » du « propos » dans un texte ?",
+              "options": [
+                "Le thème est le sujet général dont traite le texte",
+                "Le propos est ce que l'auteur affirme ou développe sur ce sujet",
+                "Le thème change à chaque paragraphe",
+                "Le propos se limite toujours au premier mot de l'extrait"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le thème répond à la question « De quoi parle-t-on ? » et le propos répond à « Qu'en dit-on ? »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un texte sur l'impact des écrans chez les adolescents, que représente « les écrans chez les jeunes » ?",
+              "options": [
+                "Le thème",
+                "La conclusion",
+                "Une figure de style",
+                "L'argument d'autorité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est l'objet général du texte, donc son thème principal."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour identifier rapidement le thème d'un texte informatif, quel élément paratextuel est le plus utile ?",
+              "options": [
+                "Le titre de l'article ou de l'ouvrage",
+                "Le nombre de lignes du deuxième paragraphe",
+                "La couleur de la police d'impression",
+                "Le format de la pagination"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le titre annonce généralement le thème global et guide la première lecture."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle question permet de dégager le propos d'un auteur ?",
+              "options": [
+                "Quelle idée ou opinion l'auteur soutient-il au sujet du thème ?",
+                "Combien de verbes au subjonctif compte le texte ?",
+                "En quelle année est né l'éditeur du livre ?",
+                "Quel est le nombre exact de pages du chapitre ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le propos est l'affirmation centrale ou le point de vue développé sur le thème."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si un texte a pour thème « l'intelligence artificielle », quel énoncé pourrait être son propos ?",
+              "options": [
+                "L'intelligence artificielle transforme profondément les métiers de la création.",
+                "L'intelligence artificielle.",
+                "Les algorithmes et les machines.",
+                "Un ordinateur portable récent."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une phrase complète exprimant un jugement ou une analyse constitue un propos."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on un thème secondaire qui traverse seulement un passage du texte ?",
+              "options": [
+                "Un sous-thème",
+                "Une métaphore filée",
+                "Un oxymore",
+                "Une anaphore rhétorique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un sous-thème précise ou décline le thème principal dans une section spécifique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel risque court un lecteur qui confond exemple et idée principale ?",
+              "options": [
+                "Réduire la portée globale du texte à un simple cas particulier",
+                "Améliorer sa vitesse de mémorisation",
+                "Identifier trop vite la thèse de l'auteur",
+                "Trouver immédiatement le registre dominant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'exemple illustre l'idée mais ne doit pas être pris pour la thèse générale."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel indice textuel signale souvent le propos central dans une introduction d'essai ?",
+              "options": [
+                "Une phrase conclusive affirmant la position prise",
+                "Une note de bas de page bibliographique",
+                "Un tiret de dialogue orphelin",
+                "Une suite de points de suspension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À la fin de l'introduction, la problématique ou la thèse annonce directement le propos."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans l'énoncé « Les voyages forment la jeunesse en confrontant l'individu à l'altérité », quel est le thème ?",
+              "options": [
+                "Les voyages",
+                "La confrontation à l'altérité",
+                "L'ennui adolescent",
+                "La géographie européenne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le thème de base est le voyage, et le propos est son effet formateur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que permet la distinction rigoureuse entre thème et propos lors de la contraction de texte ?",
+              "options": [
+                "Ne pas dévier du message essentiel de l'auteur",
+                "Recopier des phrases entières sans reformulation",
+                "Augmenter arbitrairement le nombre de mots",
+                "Remplacer les idées par des anecdotes personnelles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Identifier le couple thème/propos garantit la fidélité au sens originel du texte."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Repérer la thèse dans un texte argumentatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques définissent la thèse d'un texte argumentatif ?",
+              "options": [
+                "C'est la prise de position défendue par l'auteur",
+                "Elle est appuyée par des arguments et des exemples",
+                "Elle se résume toujours à une liste de faits sans avis",
+                "Elle s'oppose souvent à une thèse adverse ou réfutée"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La thèse est l'opinion maîtresse de l'auteur, soutenue rationnellement face à une opinion contraire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on la thèse que l'auteur combat et cherche à déconstruire ?",
+              "options": [
+                "La thèse réfutée ou adverse",
+                "La thèse soutenue",
+                "Le postulat universel",
+                "L'hypothèse narrative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La thèse réfutée est l'avis opposé que le locuteur attaque dans son argumentation."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Où se situe généralement la thèse dans une démarche déductive ?",
+              "options": [
+                "Au début du texte, avant d'être démontrée",
+                "Uniquement dans le dernier mot du texte",
+                "Dans une parenthèse au milieu d'un exemple",
+                "Dans le titre de l'éditeur uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La démarche déductive énonce la thèse dès l'ouverture puis déroule preuves et illustrations."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une démarche inductive, où la thèse apparaît-elle le plus souvent ?",
+              "options": [
+                "À la fin, comme conclusion tirée des faits observés",
+                "Dès la première ligne sans explication",
+                "Elle n'apparaît jamais et reste ignorée",
+                "Dans l'index des noms propres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La démarche inductive part d'observations ou d'exemples pour aboutir à la thèse finale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle phrase exprime une thèse et non un simple constat neutre ?",
+              "options": [
+                "La lecture régulière développe l'esprit critique bien plus que le visionnage passif.",
+                "Ce roman compte trois cent cinquante pages.",
+                "Victor Hugo est né à Besançon en 1802.",
+                "La bibliothèque municipale ouvre à neuf heures."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette phrase formule un jugement argumenté qui engage la pensée de l'auteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel indice modal signale fréquemment l'expression explicite d'une thèse ?",
+              "options": [
+                "L'emploi de verbes d'opinion (« je soutiens », « il est manifeste que »)",
+                "L'usage exclusif de chiffres statistiques",
+                "Une ponctuation composée uniquement de virgules",
+                "L'absence totale d'adjectifs qualificatifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les modalisateurs et verbes d'opinion indiquent l'engagement du locuteur dans sa prise de position."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une thèse implicite ?",
+              "options": [
+                "Une prise de position non formulée directement, mais déductible du texte",
+                "Une thèse écrite en langue étrangère",
+                "Une opinion fausse inventée par le correcteur",
+                "Une contradiction involontaire de l'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'auteur fait passer son idée par l'ironie, le choix du lexique ou les registres sans la nommer crûment."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la fonction d'un contre-argument dans une argumentation nuancée ?",
+              "options": [
+                "Prendre en compte une objection pour mieux la dépasser",
+                "Prouver que l'auteur ne sait pas quoi penser",
+                "Allonger inutilement le devoir de français",
+                "Masquer l'absence d'exemples concrets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La concession permet d'intégrer une objection avant de réaffirmer la supériorité de sa thèse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans Candide de Voltaire, quelle est la thèse combattue à travers Pangloss ?",
+              "options": [
+                "L'optimisme béat selon lequel « tout est pour le mieux dans le meilleur des mondes »",
+                "La nécessité d'abolir totalement la monarchie française",
+                "L'obligation d'étudier les mathématiques pures",
+                "L'interdiction de voyager en Amérique du Sud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Voltaire réfute la doctrine de l'optimisme providentiel défendue aveuglément par Pangloss."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi est-il crucial de repérer la thèse dès la première lecture analytique ?",
+              "options": [
+                "Pour comprendre l'orientation globale de tous les procédés stylistiques",
+                "Pour corriger l'orthographe de l'auteur",
+                "Pour savoir combien d'heures durera le cours",
+                "Pour remplacer la conclusion par un résumé hâtif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre la thèse éclaire la visée de l'ensemble des figures et des choix d'écriture."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La structure du paragraphe et l'idée directrice",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments composent idéalement un paragraphe argumentatif bien construit ?",
+              "options": [
+                "Une idée directrice clairement énoncée",
+                "Une explication ou justification théorique",
+                "Un exemple précis analysé",
+                "Une accumulation de digressions sans lien logique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Un paragraphe solide suit souvent la structure A-E-I : Argument (idée directrice), Explication, Illustration (exemple)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Où trouve-t-on le plus couramment l'idée directrice d'un paragraphe ?",
+              "options": [
+                "Dans la première phrase (phrase d'accroche ou thématique)",
+                "Dans la ponctuation finale uniquement",
+                "Entre deux crochets typographiques",
+                "Dans l'alinéa sans texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phrase d'attaque du paragraphe donne généralement le cap intellectuel de tout le passage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que marque visuellement le passage à un nouveau paragraphe ?",
+              "options": [
+                "Un retour à la ligne souvent accompagné d'un alinéa",
+                "Un changement obligatoire de couleur d'encre",
+                "L'insertion d'une illustration gravée",
+                "Le soulignement du premier mot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alinéa et le saut de ligne signalent au lecteur une nouvelle étape du raisonnement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le rôle de la dernière phrase d'un paragraphe argumentatif ?",
+              "options": [
+                "Conclure l'argument ou assurer une transition vers le suivant",
+                "Contredire tout ce qui a été dit auparavant",
+                "Poser une question hors sujet",
+                "Recopier l'introduction générale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle clôt la démonstration du paragraphe et prépare l'étape argumentative ultérieure."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si un paragraphe contient trois exemples sans idée formulée, quel est son défaut ?",
+              "options": [
+                "Il juxtapose des faits sans en expliciter le sens argumentatif",
+                "Il est trop synthétique et abstrait",
+                "Il manque cruellement d'illustrations concrètes",
+                "Il utilise trop de connecteurs logiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des exemples sans idée directrice restent stériles et ne prouvent rien par eux-mêmes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la cohérence interne qui unit les phrases d'un même paragraphe ?",
+              "options": [
+                "La cohésion textuelle",
+                "L'assonance poétique",
+                "L'hyperbate",
+                "L'ellipse narrative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cohésion repose sur les reprises anaphoriques, les temps verbaux et les connecteurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle fonction remplit l'alinéa pour le confort intellectuel du lecteur ?",
+              "options": [
+                "Rythmer la pensée et aérer la progression de la lecture",
+                "Indiquer que le texte est traduit du latin",
+                "Signaler une erreur grammaticale volontaire",
+                "Remplacer les citations littéraires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le découpage en paragraphes rend visible la hiérarchie et l'avancement des idées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle relation logique lie l'idée directrice à son exemple au sein du paragraphe ?",
+              "options": [
+                "Une relation du général au particulier",
+                "Une opposition irréconciliable",
+                "Une inversion chronologique pure",
+                "Une équivalence purement sonore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'idée pose un principe général, tandis que l'exemple incarne un cas particulier concret."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un commentaire littéraire, combien d'idées directrices doit idéalement développer un sous-paragraphe ?",
+              "options": [
+                "Une seule idée directrice bien étayée",
+                "Au moins quatre ou cinq idées opposées",
+                "Aucune, seulement des citations",
+                "Dix idées survolées brièvement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La règle d'or est : une unité de sens = un paragraphe = une idée directrice démontrée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment vérifier qu'on a bien compris l'idée directrice d'un paragraphe ?",
+              "options": [
+                "En parvenant à la résumer en une phrase autonome avec ses propres mots",
+                "En comptant le nombre d'adverbes en -ment",
+                "En vérifiant la typographie du mot central",
+                "En mesurant la hauteur du paragraphe en centimètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La reformulation synthétique personnelle est le meilleur test de compréhension conceptuelle."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Distinguer l'essentiel de l'accessoire",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Parmi ces éléments d'un texte, lesquels relèvent généralement de l'accessoire lors d'un résumé ?",
+              "options": [
+                "Les digressions anecdotiques",
+                "Les répétitions et reformulations redondantes",
+                "Les thèses et arguments principaux",
+                "Les détails descriptifs ornementaux"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le résumé élimine le superflu, les anecdotes et les redondances pour ne garder que la colonne vertébrale logique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle opération intellectuelle permet d'extraire l'essentiel d'un passage dense ?",
+              "options": [
+                "La sélection hiérarchisée des informations",
+                "L'apprentissage par cœur mot à mot",
+                "La traduction en rimes embrassées",
+                "La suppression des verbes d'action"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hiérarchiser consiste à séparer ce qui fonde le raisonnement de ce qui ne fait que le décorer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un exemple est considéré comme essentiel quand il…",
+              "options": [
+                "Constitue lui-même la preuve irremplaçable du raisonnement (exemple argumentatif)",
+                "Contient plus de cinquante adjectifs",
+                "Raconte une plaisanterie sans rapport avec le sujet",
+                "Se trouve en note de bas de page"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à l'exemple purement illustratif, l'exemple argumentatif fait partie intégrante de la démonstration."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traiter les propositions incises ou les parenthèses lors du repérage des idées clés ?",
+              "options": [
+                "Les considérer a priori comme secondaires ou explicatives",
+                "Les recopier en priorité dans la synthèse",
+                "Considérer qu'elles annulent la phrase principale",
+                "En faire l'unique objet du plan"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les incises et parenthèses apportent des nuances ou des commentaires périphériques."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que risque un élève qui souligne la quasi-totalité des lignes d'un texte ?",
+              "options": [
+                "Ne plus rien hiérarchiser et perdre la vision d'ensemble",
+                "Obtenir automatiquement la note maximale",
+                "Rendre le texte plus facile à mémoriser",
+                "Détecter plus vite les figures de style"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout surligner revient à ne rien surligner : l'esprit n'a plus de repère entre essentiel et accessoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle technique aide à tester si une information est accessoire dans une phrase ?",
+              "options": [
+                "Le test de suppression : si on la retire, le sens global reste-t-il cohérent ?",
+                "Le test d'inversion sonore à voix haute",
+                "Le comptage des syllabes métriques",
+                "La recherche de son étymologie grecque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si la suppression d'un élément ne nuit pas à la logique globale de la phrase, il est accessoire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une description narrative, quel élément relève de l'essentiel pour l'intrigue ?",
+              "options": [
+                "Un détail physique qui révélera l'identité du coupable",
+                "La nuance exacte de couleur des rideaux du salon",
+                "La marque des boutons de la veste",
+                "Le temps qu'il faisait dix ans plus tôt sans conséquence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indice clé lié à la dramaturgie ou au portrait moral prime sur le décor gratuit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les chiffres et dates dans un texte historique sont accessoires quand ils…",
+              "options": [
+                "Ne font que surcharger la mémoire sans modifier la compréhension du fait majeur",
+                "Fixent le siècle où se déroule l'événement",
+                "Permettent de situer l'époque médiévale",
+                "Sont demandés dans la consigne d'analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accumulation de dates secondaires peut obscurcir la trajectoire historique globale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En contraction de texte, comment reformule-t-on une liste de quatre synonymes imagés ?",
+              "options": [
+                "Par un terme générique synthétique (hyperonyme)",
+                "En recopiant les quatre termes entre guillemets",
+                "En supprimant totalement la phrase entière",
+                "En inventant un cinquième synonyme encore plus rare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'emploi d'un terme générique permet de condenser sans trahir l'idée d'origine."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le but ultime de la distinction essentiel / accessoire ?",
+              "options": [
+                "Construire une représentation mentale claire et structurée du texte",
+                "Finir l'épreuve une heure avant la fin",
+                "Éviter d'avoir à relire le texte une deuxième fois",
+                "Remplacer la réflexion par un automatisme visuel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette compétence critique permet d'assimiler les connaissances et de penser avec clarté."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Les connecteurs logiques et la progression thématique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs logiques expriment typiquement une relation de concession ou d'opposition ?",
+              "options": [
+                "Néanmoins",
+                "Cependant",
+                "C'est pourquoi",
+                "Bien que"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "« Néanmoins », « cependant » et « bien que » marquent la nuance restrictive ou l'opposition, alors que « c'est pourquoi » exprime la conséquence."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel connecteur introduit la cause dans une démonstration ?",
+              "options": [
+                "Puisque",
+                "Par conséquent",
+                "En conclusion",
+                "De surcroît"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Puisque » introduit un fait connu présenté comme la cause de ce qui suit."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans une progression à thème constant, comment se succèdent les phrases ?",
+              "options": [
+                "Le même thème est conservé de phrase en phrase avec des propos nouveaux",
+                "Le propos d'une phrase devient le thème de la suivante",
+                "De nouveaux thèmes apparaissent sans aucun lien entre eux",
+                "Le texte commence chaque phrase par le même pronom relatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À thème constant, le sujet dont on parle reste identique tandis qu'on lui attribue de nouvelles propriétés."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une progression thématique linéaire ?",
+              "options": [
+                "Le propos d'une phrase devient le point de départ (thème) de la phrase suivante",
+                "L'auteur répète exactement le même adjectif à l'infini",
+                "Le texte ne comporte aucune ponctuation forte",
+                "Toutes les phrases sont juxtaposées sans conjonction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La progression linéaire fait rebondir l'information en cascade (Thème 1 -> Propos 1 ; Propos 1 = Thème 2 -> Propos 2)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel connecteur marque une addition ou un renforcement argumentatif ?",
+              "options": [
+                "En outre",
+                "En dépit de",
+                "Au détriment de",
+                "À condition que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« En outre » ajoute un nouvel argument qui renforce la thèse soutenue."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le risque de l'emploi erroné d'un connecteur comme « en effet » ?",
+              "options": [
+                "Faire passer une conséquence pour une justification causale",
+                "Changer l'époque historique de l'auteur",
+                "Créer une fausse rime en fin de ligne",
+                "Modifier la mise en page du texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« En effet » sert à justifier, prouver ou expliciter ce qui vient d'être énoncé, non à tirer une conclusion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une progression à thèmes dérivés, comment s'organise l'information ?",
+              "options": [
+                "Un hyperthème global se décompose en sous-thèmes dans les phrases suivantes",
+                "L'auteur passe d'un personnage à un autre sans explication",
+                "Chaque paragraphe est écrit dans un registre différent",
+                "Les phrases sont classées par ordre alphabétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : « La maison (hyperthème) était vaste. Le salon (sous-thème 1)... La cuisine (sous-thème 2)... »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel connecteur annonce formellement une déduction ou un aboutissement logique ?",
+              "options": ["Dès lors", "Pourtant", "Quoique", "Tandis que"],
+              "correctAnswers": [0],
+              "explanation": "« Dès lors » signifie « par conséquent » ou « à partir de ce constat »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que provoque l'absence totale de connecteurs (asyndète ou parataxe) dans un texte d'idées ?",
+              "options": [
+                "Elle oblige le lecteur à rétablir lui-même mentalement les liens logiques implicites",
+                "Elle rend le texte impossible à publier légalement",
+                "Elle prouve que l'auteur est analphabète",
+                "Elle transforme automatiquement le texte en poésie versifiée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La parataxe crée un style heurté, vif ou percutant où les liens logiques sont sous-entendus."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle étape de lecture repose sur l'analyse des connecteurs logiques ?",
+              "options": [
+                "La reconstitution du plan détaillé et de l'architecture du raisonnement",
+                "Le comptage des fautes d'impression",
+                "L'estimation du prix du recueil en librairie",
+                "L'identification du destinataire postal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les connecteurs sont les balises qui articulent la pensée et révèlent le squelette logique de l'argumentation."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les titres, sous-titres et paratextes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments font partie intégrante du « paratexte » d'un texte littéraire ?",
+              "options": [
+                "Le nom de l'auteur et la date de publication",
+                "Le chapeau introductif et les notes de bas de page",
+                "Les sous-titres et indications de chapitre",
+                "Les dialogues prononcés par les personnages"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le paratexte englobe tout ce qui entoure et éclaire le texte principal sans appartenir à la fiction elle-même."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle premier d'un « chapeau » placé avant un extrait à commenter ?",
+              "options": [
+                "Situer le passage dans l'œuvre et résumer les événements préalables",
+                "Rédiger la conclusion à la place du candidat",
+                "Donner une note sur vingt au texte de l'auteur",
+                "Imposer une interprétation obligatoire sans nuance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chapeau donne le contexte dramatique, narratif ou historique indispensable à la bonne compréhension."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la date de parution d'un texte d'idées est-elle une information capitale ?",
+              "options": [
+                "Elle permet de relier le propos aux débats intellectuels et historiques de l'époque",
+                "Elle indique l'âge exact de l'imprimeur",
+                "Elle détermine le nombre de pages du devoir",
+                "Elle dispense de lire le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire un texte des Lumières (XVIIIe siècle) exige de connaître les combats philosophiques de cette période."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une courte citation placée en tête d'un livre ou d'un chapitre pour en suggérer le sens ?",
+              "options": [
+                "Une épigraphe",
+                "Une dédicace",
+                "Une anaphore",
+                "Un colophon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'épigraphe donne souvent une clé de lecture ou un éclairage thématique majeur."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À quoi servent les notes lexicales fournies en bas de page dans les épreuves de français ?",
+              "options": [
+                "Élucider le sens de mots vieillis, techniques ou polysémiques",
+                "Fournir des citations pour d'autres matières",
+                "Décorer la marge inférieure du document",
+                "Tester si le candidat sait lire les petits caractères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les notes évitent les contre-sens sur le vocabulaire historique ou la langue classique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que révèle souvent le titre d'une œuvre littéraire comme « Le Rouge et le Noir » de Stendhal ?",
+              "options": [
+                "Une tension symbolique au cœur des thèmes et des destins du roman",
+                "Une simple commande commerciale sans signification",
+                "La couleur exacte de la reliure en cuir originale",
+                "Le nom des deux personnages secondaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le titre oriente l'interprétation symbolique (carrière militaire et sacerdoce, passion et mort)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle erreur fréquente commet un lecteur qui néglige le paratexte ?",
+              "options": [
+                "Commettre un anachronisme ou un contresens sur la situation d'énonciation",
+                "Écrire trop vite son introduction",
+                "Trouver trop d'arguments originaux",
+                "Confondre la prose et la poésie en vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ignorer l'époque ou le contexte narratif conduit à projeter des idées fausses sur le texte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'indique généralement la mention du nom de l'auteur sous un texte méconnu ?",
+              "options": [
+                "L'ancrage dans un mouvement littéraire ou une tradition stylistique",
+                "Le lieu où le texte a été imprimé pour la première fois",
+                "Le nom du correcteur de l'académie",
+                "Le pseudonyme obligatoire de l'éditeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Associer un auteur à son siècle permet de mobiliser les repères culturels pertinents."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans un article de presse ou un essai, quel est l'intérêt des intertitres ?",
+              "options": [
+                "Baliser les grandes étapes de la démonstration et faciliter le repérage",
+                "Remplacer les phrases de conclusion",
+                "Obliger à relire l'article depuis le début",
+                "Réduire la longueur du texte d'un tiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les intertitres annoncent l'idée directrice des sections successives."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle précaution faut-il prendre avec un titre d'extrait choisi par un manuel ou un concepteur de sujet ?",
+              "options": [
+                "Se souvenir qu'il n'est pas forcément de l'auteur original et n'est qu'une piste d'orientation",
+                "L'analyser comme s'il s'agissait d'un vers de Racine",
+                "L'ignorer totalement et refuser de le lire",
+                "Le recopier comme première phrase de sa dissertation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Certains titres d'extraits sont ajoutés par les anthologies pour guider l'élève mais n'émanent pas de l'écrivain."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Formuler une synthèse ou un résumé d'extrait",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles règles d'or régissent l'exercice du résumé ou de la contraction de texte ?",
+              "options": [
+                "Respecter le système d'énonciation de l'auteur (ne pas dire « l'auteur montre que »)",
+                "Suivre le mouvement logique et la chronologie de la pensée",
+                "Insérer son opinion personnelle sur le sujet traité",
+                "Respecter le quota de mots imposé sans recopier de phrases intégrales"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Le résumé impose la neutralité absolue, la fidélité au fil directeur et une reformulation personnelle condensée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi est-il interdit d'écrire « Selon l'auteur » ou « Le texte explique » dans une contraction de texte ?",
+              "options": [
+                "Parce qu'on doit adopter la voix du texte comme si on parlait à sa place",
+                "Parce que ces formules sont considérées comme des fautes d'accord",
+                "Parce que cela rallongerait inutilement le texte d'un seul mot",
+                "Parce que l'auteur est obligatoirement anonyme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La contraction de texte n'est pas un compte rendu critique : le rédacteur endosse le système énonciatif de l'auteur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le danger principal du « montage de citations » dans un résumé ?",
+              "options": [
+                "Faire du plagiat sans faire preuve de compréhension autonome",
+                "Dépasser la marge de droite de la copie",
+                "Écrire avec un style trop poétique",
+                "Supprimer sans le vouloir les connecteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recoller des fragments du texte ne démontre aucune assimilation ni capacité de reformulation."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle marge de tolérance est habituellement accordée sur le nombre de mots d'une contraction ?",
+              "options": [
+                "+/- 10 % du total requis",
+                "+/- 50 % du total requis",
+                "Aucune tolérance, le chiffre doit être exact au mot près",
+                "+/- 25 % si le style est soigné"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La règle académique classique tolère une variation maximale de plus ou moins dix pour cent."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment reformuler une idée abstraite sans la déformer ?",
+              "options": [
+                "En dégageant le concept central et en trouvant des équivalents sémantiques rigoureux",
+                "En traduisant la phrase en anglais puis en français",
+                "En remplaçant tous les noms par des pronoms vagues",
+                "En ajoutant une métaphore inventée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fidélité sémantique s'obtient par la précision du vocabulaire et la clarté syntaxique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que doit-on faire des exemples purement ornementaux lors d'une contraction de texte ?",
+              "options": [
+                "Les supprimer pour ne conserver que l'argument sous-jacent",
+                "Les développer longuement pour gagner des points",
+                "Les placer en tête de chaque paragraphe",
+                "Les souligner avec de l'encre rouge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'exemple ornemental est évacué au profit de l'idée générale qu'il concrétisait."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle démarche préliminaire assure la réussite d'une synthèse de texte ?",
+              "options": [
+                "Dresser le plan détaillé du texte paragraphe par paragraphe avant de rédiger",
+                "Écrire directement le texte au propre en une seule traite",
+                "Choisir au hasard dix phrases à conserver",
+                "Changer l'ordre chronologique des arguments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plan d'analyse décompose les étapes logiques et permet un calibrage équilibré du résumé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la maîtrise des connecteurs logiques est-elle décisive dans un résumé condensé ?",
+              "options": [
+                "Pour restituer les enchaînements de pensée avec un minimum de mots",
+                "Pour masquer les fautes d'orthographe lexicale",
+                "Pour allonger artificiellement le nombre de lignes",
+                "Pour éviter d'avoir à ponctuer le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un connecteur précis (« or », « ainsi », « toutefois ») articule deux idées de manière économique et rigoureuse."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « compter les mots » au sens des épreuves du baccalauréat ?",
+              "options": [
+                "Tout ensemble de signes séparé par deux espaces ou un tiret compte pour une unité",
+                "Seuls les mots de plus de quatre lettres sont comptabilisés",
+                "Les articles et les prépositions ne sont jamais comptés",
+                "Une ligne entière compte toujours pour dix mots fixes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple : « c'est-à-dire » compte pour 4 unités, « l'arbre » compte pour 2 unités."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle qualité majeure évalue l'exercice de la synthèse de texte ?",
+              "options": [
+                "La capacité d'écoute du texte d'autrui sans contresens ni parasitage narcissique",
+                "L'habileté à inventer des anecdotes imaginaires captivantes",
+                "La connaissance de la biographie intime de l'auteur",
+                "La rapidité calligraphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Résumer exige de se décentrer pour restituer fidèlement et objectivement la parole d'un autre."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les mots-clés et champs lexicaux dominants",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels traits caractérisent un véritable « champ lexical » dans un extrait ?",
+              "options": [
+                "Un ensemble de mots se rapportant à un même domaine thématique ou sémantique",
+                "Il regroupe différentes classes grammaticales (noms, verbes, adjectifs)",
+                "Il impose que tous les mots riment ensemble",
+                "Sa récurrence éclaire l'atmosphère ou la tonalité du texte"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Un champ lexical rassemble des termes variés (verbes, noms, adjectifs) reliés par une même notion de sens."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle différence fondamentale existe entre un champ lexical et un champ morphologique ?",
+              "options": [
+                "Le champ morphologique regroupe les mots de même famille (même racine), le lexical repose sur le sens",
+                "Le champ lexical ne concerne que les verbes du premier groupe",
+                "Le champ morphologique ne s'applique qu'à la poésie latine",
+                "Il n'y a aucune différence, ce sont deux termes synonymes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terre, terrestre, déterrer relèvent d'un champ morphologique ; terre, sillon, semence, champ relèvent du champ lexical."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment repérer les mots-clés qui structurent l'idée principale ?",
+              "options": [
+                "Observer les termes qui reviennent fréquemment et leurs substituts anaphoriques",
+                "Relever les mots imprimés en italique uniquement",
+                "Choisir les mots les plus longs de chaque ligne",
+                "Prendre le premier mot de chaque alinéa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La répétition, la reprise par des synonymes ou des pronoms signale les concepts moteurs du texte."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans une scène de tempête chez Chateaubriand, quel champ lexical dominera le passage ?",
+              "options": [
+                "Le champ lexical du déchaînement marin, de la violence et du fracas",
+                "Le champ lexical de l'ennui bourgeois et du repos",
+                "Le champ lexical du commerce maritime et des tarifs douaniers",
+                "Le champ lexical de la cuisine et de la gastronomie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les termes de fracas, de vagues écumantes et de ténèbres construisent le registre pathétique ou tragique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle erreur d'analyse stylistique doit-on impérativement éviter avec les champs lexicaux ?",
+              "options": [
+                "Dresser une simple liste de mots sans expliquer leur effet de sens dans le texte",
+                "Citer les mots entre guillemets",
+                "Identifier la classe grammaticale des termes",
+                "Rattacher le champ lexical à l'émotion produite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un relevé sans interprétation ne constitue pas une analyse littéraire : il faut expliquer la visée de ce réseau lexical."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La présence simultanée de deux champs lexicaux opposés (ex: ombre et lumière) crée souvent…",
+              "options": [
+                "Une structure antithétique ou un clair-obscur dramaturgique",
+                "Un contresens stylistique impardonnable de l'écrivain",
+                "Une rupture de syntaxe involontaire",
+                "L'annulation réciproque des deux idées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opposition lexicale tisse un conflit dramatique ou moral très expressif."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie analyser le « réseau sémantique » d'un texte ?",
+              "options": [
+                "Étudier la manière dont plusieurs champs lexicaux s'entrecroisent et dialoguent",
+                "Vérifier le nombre de pages du dictionnaire utilisé par l'auteur",
+                "Calculer la moyenne de mots par phrase",
+                "Tracer un arbre généalogique des personnages"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le réseau sémantique explore les échos et correspondances de sens qui tissent le texte en profondeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on les mots qui désignent une catégorie englobante (ex: « animal » pour chien, loup) ?",
+              "options": [
+                "Des hyperonymes",
+                "Des hyponymes",
+                "Des paronymes",
+                "Des homonymes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hyperonyme est le terme générique au sens plus vaste que ses hyponymes subordonnés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi l'identification des mots-clés est-elle indispensable lors de l'analyse du sujet de dissertation ?",
+              "options": [
+                "Pour délimiter rigoureusement le champ de la réflexion et éviter le hors-sujet",
+                "Pour savoir combien de pages il faudra noircir",
+                "Pour choisir quel auteur citer sans rapport avec la question",
+                "Pour recopier la définition du Petit Larousse sans réfléchir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Décortiquer les mots-clés du sujet met au jour les paradoxes et la problématique à traiter."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que traduit la contamination d'un texte réaliste par un champ lexical médical ou clinique chez Zola ?",
+              "options": [
+                "La visée naturaliste qui envisage l'humain sous l'angle physiologique et héréditaire",
+                "Le fait que Zola voulait être chirurgien et non écrivain",
+                "Une simple erreur d'éditeur à la réimpression",
+                "Le refus total de décrire la société ouvrière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Zola applique au roman la méthode expérimentale en s'inspirant des traités de médecine."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les phrases pivots et conclusions d'un développement",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions peut remplir une « phrase pivot » au milieu d'un texte ?",
+              "options": [
+                "Opérer un revirement ou une rupture dans le raisonnement",
+                "Assurer la transition fluide entre deux grandes parties",
+                "Marquer le point culminant d'une progression dramatique",
+                "Changer arbitrairement la langue d'écriture du texte"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Une phrase pivot articule les mouvements du texte, change la perspective ou concentre l'intensité dramatique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mot amorce fréquemment une phrase pivot oppositive ?",
+              "options": [
+                "« Mais » ou « Or »",
+                "« De même que »",
+                "« Premièrement »",
+                "« En outre »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Mais » et « or » introduisent une rupture fondamentale ou une nouvelle prémisse qui réoriente la réflexion."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans une fable de La Fontaine, où se trouve le plus souvent la phrase pivot morale ?",
+              "options": [
+                "À la fin (moralité finale) ou en amorce (moralité liminaire)",
+                "Dans l'index des rimes",
+                "Dans la troisième strophe obligatoirement",
+                "Dans le titre de l'illustration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La moralité condense la leçon philosophique, généralement située en conclusion du récit apologétique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment reconnaît-on la phrase conclusive d'un long développement argumentatif ?",
+              "options": [
+                "Elle récapitule les étapes franchies et formule le bilan de la démonstration",
+                "Elle introduit soudain un fait totalement nouveau jamais évoqué",
+                "Elle est toujours écrite entièrement en majuscules",
+                "Elle pose une question sans aucun rapport avec la thèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La phrase de conclusion synthétise les arguments précédents pour asseoir la démonstration."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans une tragédie classique, comment nomme-t-on le moment pivot où le destin bascule irrémédiablement ?",
+              "options": [
+                "La péripétie ou le coup de théâtre",
+                "Le prologue narratif",
+                "L'aparté comique",
+                "La tirade didactique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La péripétie renverse la situation des protagonistes et précipite le dénouement tragique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'effet d'une phrase très courte et incisive placée après de longues périodes complexes ?",
+              "options": [
+                "Créer une rupture de rythme (chute) qui met en relief une vérité essentielle",
+                "Prouver que l'auteur était à court d'idées",
+                "Déséquilibrer le texte au détriment de la clarté",
+                "Masquer un manque de vocabulaire de l'écrivain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette cadence brisée focalise l'attention du lecteur sur une formule percutante ou une maxime."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une phrase de transition réussie entre deux parties de commentaire ?",
+              "options": [
+                "Une phrase qui fait le bilan du point achevé tout en ouvrant sur l'axe suivant",
+                "Une citation tronquée sans explication",
+                "Une formule toute faite comme « passons maintenant à autre chose »",
+                "La répétition mot à mot de l'introduction générale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La transition articule le « déjà vu » et le « à venir » pour garantir la fluidité du raisonnement."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans le discours argumentatif, quel terme désigne une conclusion formulée sous forme de maxime universelle ?",
+              "options": [
+                "Une sentence ou une formule sentencieuse",
+                "Une anacoluthe",
+                "Une métonymie",
+                "Une synesthésie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une sentence est une formule concise et générale énonçant une vérité morale ou philosophique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi la dernière phrase d'une nouvelle à chute (comme chez Maupassant) est-elle cruciale ?",
+              "options": [
+                "Elle éclaire l'ensemble de l'histoire d'un jour totalement inattendu",
+                "Elle annonce la date de naissance du héros",
+                "Elle résume l'alphabet utilisé par le narrateur",
+                "Elle corrige les fautes du début de l'intrigue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chute réinterprète rétrospectivement tous les indices semés au long du récit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lors d'une explication linéaire de texte, comment doit-on aborder la fin du texte ?",
+              "options": [
+                "En montrant comment l'aboutissement textuel couronne le projet esthétique et philosophique",
+                "En s'arrêtant brusquement faute de temps sans conclure",
+                "En répétant simplement le dernier mot prononcé",
+                "En disant que la fin est décevante sans argument"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'explication linéaire s'achève sur la portée finale du passage et sa contribution au sens global."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan : dégager l'idée maîtresse d'un texte complexe",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles étapes méthodologiques mènent sûrement à l'idée maîtresse d'un texte d'idées ?",
+              "options": [
+                "Dégager le thème et formuler la thèse défendue",
+                "Analyser l'enchaînement logique des arguments principaux",
+                "Tenir compte de la situation d'énonciation et du ton employé",
+                "Mémoriser l'ordre des virgules dans le premier tiers du texte"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Comprendre l'idée maîtresse exige d'articuler fond (thème, thèse, arguments) et forme (énonciation, tonalité)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un contre-sens sur l'idée maîtresse d'un texte ?",
+              "options": [
+                "Attribuer à l'auteur l'opinion exacte qu'il est en train de combattre",
+                "Faire une faute d'orthographe sur le prénom de l'auteur",
+                "Oublier de citer la ligne exacte d'un exemple",
+                "Rédiger une conclusion de trois lignes au lieu de quatre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contresens majeur consiste souvent à prendre au premier degré une thèse réfutée ou ironique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle démarche adopter face à un texte littéraire polyphonique (plusieurs voix) ?",
+              "options": [
+                "Distinguer soigneusement qui parle et quelle voix exprime la position de l'auteur",
+                "Considérer que tous les personnages pensent la même chose",
+                "Affirmer que le texte n'a aucun sens car trop de personnages s'expriment",
+                "Ne s'intéresser qu'au personnage le plus âgé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La polyphonie demande de démêler les voix narratives pour repérer le point de vue dominant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment l'esprit des Lumières (Voltaire, Diderot) transmet-il souvent son idée maîtresse ?",
+              "options": [
+                "Par le biais du conte philosophique, de l'ironie et de l'apologue",
+                "Par de lourds manuels de droit médiéval sans fiction",
+                "Par des poèmes en vers alexandrins uniquement",
+                "Par des lettres administratives anonymes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'apologue et la fiction plaisante permettent de contourner la censure pour faire triompher la raison."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que révèle la structure en miroir ou circulaire d'un poème ?",
+              "options": [
+                "Une méditation close sur elle-même où le dernier vers répond au premier",
+                "Une erreur d'inattention du poète qui s'est répété",
+                "Le manque d'inspiration de l'écrivain",
+                "Une obligation légale imposée aux auteurs du XIXe siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La structure circulaire enferme le lecteur dans le sentiment poétique ou l'obsession de l'auteur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans un texte polémique, comment l'idée maîtresse s'affirme-t-elle le plus nettement ?",
+              "options": [
+                "Par une attaque vigoureuse des abus et un engagement éthique véhément",
+                "Par un ton tiède et des formules impersonnelles prudentes",
+                "Par des descriptions florales apaisantes",
+                "Par l'absence totale de points d'exclamation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le registre polémique interpelle, dénonce et combat frontalement une injustice."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le danger d'une lecture anachronique de l'idée principale d'un texte ancien ?",
+              "options": [
+                "Juger les idées du XVIIe siècle à l'aune exclusive de nos valeurs contemporaines",
+                "Comparer deux auteurs nés le même mois",
+                "Citer un texte d'une autre édition critique",
+                "Utiliser un dictionnaire moderne de synonymes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anachronisme plaque des concepts modernes sur une époque dont le cadre intellectuel était différent."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle question de synthèse permet de vérifier la saisie de l'idée maîtresse ?",
+              "options": [
+                "« En quoi ce texte transforme-t-il le regard du lecteur sur la condition humaine ou le sujet ? »",
+                "« Combien de mots de plus de trois syllabes compte le premier alinéa ? »",
+                "« Pourquoi l'auteur n'a-t-il pas écrit une pièce de théâtre plutôt qu'un essai ? »",
+                "« Quel est le prix du livre en librairie ancienne ? »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette question invite à formuler la portée philosophique et existentielle profonde de l'écrit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une dissertation, comment l'idée maîtresse d'une œuvre intégrale doit-elle être exploitée ?",
+              "options": [
+                "Comme fil conducteur nourri d'exemples précis pour répondre à la problématique",
+                "Comme une formule magique à répéter à chaque fin de phrase",
+                "Comme un résumé chronologique chapitre par chapitre",
+                "Comme un prétexte pour raconter l'histoire sans analyse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'idée maîtresse sert de boussole pour mobiliser les scènes et citations adéquates."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est l'accomplissement d'un lecteur accompli au terme du lycée ?",
+              "options": [
+                "Être capable de lire de façon critique, autonome et sensible la pensée d'un texte",
+                "Lire cent pages en dix minutes sans retenir les concepts",
+                "Ne lire que des résumés sur Internet sans ouvrir les livres",
+                "Rejeter tout texte écrit avant le XXIe siècle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'autonomie critique et la finesse d'interprétation constituent l'objectif cardinal des études littéraires."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Inférer",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Comprendre l'implicite et le sous-entendu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles caractéristiques distinguent l'explicite de l'implicite dans un texte ?",
+              "options": [
+                "L'explicite est formulé clairement en toutes lettres dans l'énoncé",
+                "L'implicite doit être déduit par le destinataire à partir d'indices textuels et contextuels",
+                "L'implicite est toujours une erreur d'inattention de l'auteur",
+                "L'implicite regroupe les présupposés et les sous-entendus"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "L'explicite est dit nettement ; l'implicite requiert un travail d'interprétation à partir de présupposés ou de sous-entendus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie étymologiquement le terme « inférer » ?",
+              "options": [
+                "Tirer une conséquence logique à partir de faits ou d'indices (du latin inferre, porter en avant)",
+                "Interrompre une conversation théâtrale par un cri",
+                "Copier mot à mot un paragraphe dans la marge",
+                "Traduire un texte grec en français moderne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Inférer, c'est déduire, faire émerger une vérité non dite à partir des indices repérés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans la phrase « Il a cessé de fumer », quelle est l'information implicite présupposée ?",
+              "options": [
+                "Il fumait auparavant",
+                "Il va bientôt recommencer à fumer",
+                "Il déteste tous les fumeurs",
+                "Le tabac est très coûteux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe « cesser » présuppose obligatoirement l'existence antérieure de l'action."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la particularité majeure du sous-entendu par rapport au présupposé ?",
+              "options": [
+                "Le locuteur peut nier avoir voulu le dire en cas de contestation (il n'engage pas formellement l'énoncé)",
+                "Il est inscrit en rouge dans le dictionnaire de l'Académie",
+                "Il ne s'applique qu'aux énoncés mathématiques",
+                "Il s'exprime toujours par un proverbe latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sous-entendu dépend de l'intonation et de la situation ; l'émetteur conserve une porte de sortie."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si quelqu'un dit en plein hiver dans une pièce glacée « Il fait bien frais ici », quelle est la visée inférée ?",
+              "options": [
+                "Demander implicitement de fermer la fenêtre ou d'allumer le chauffage",
+                "Faire un cours de météorologie scientifique",
+                "Se réjouir de la pureté de l'air ambiant",
+                "Rappeler la date du solstice d'hiver"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un acte de parole indirect : le constat apparent cache une demande polie d'action."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel indice stylistique permet de repérer un implicite critique dans un portrait littéraire ?",
+              "options": [
+                "L'emploi d'adjectifs élogieux contredits par un comportement mesquin dans la même phrase",
+                "Le nombre de voyelles accentuées dans le nom du personnage",
+                "La couleur des cheveux du personnage principal",
+                "La présence de propositions relatives purement descriptives"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le décalage entre le vocabulaire laudatif et la réalité des actes trahit l'ironie ou le blâme implicite."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi les écrivains sous l'Ancien Régime recouraient-ils massivement à l'implicite ?",
+              "options": [
+                "Pour échapper à la censure royale et religieuse tout en transmettant des idées subversives",
+                "Parce qu'ils manquaient de papier pour tout écrire explicitement",
+                "Parce que la loi interdisait les phrases affirmatives de plus de dix mots",
+                "Pour amuser exclusivement les enfants de la cour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'implicite permettait aux philosophes de critiquer le pouvoir sans risquer la Bastille."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le fait de faire semblant de ne pas dire ce qu'on dit en réalité (ex: « Je ne rappellerai pas ses dettes... ») ?",
+              "options": [
+                "Une prétérition",
+                "Une allitération",
+                "Une antonomase",
+                "Un pléonasme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La prétérition attire puissamment l'attention sur ce que l'on feint de passer sous silence."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que mobilise en priorité le lecteur pour déchiffrer un implicite culturel ?",
+              "options": [
+                "Sa culture générale et ses connaissances du contexte historique et mythologique",
+                "Une règle de grammaire sur les participes passés",
+                "Sa calculatrice scientifique",
+                "La prononciation des liaisons en vers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre les allusions exige un savoir partagé entre l'écrivain et son lecteur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le risque d'une « surinterprétation » lors du commentaire d'un texte ?",
+              "options": [
+                "Projeter sur le texte un sens qu'aucun indice textuel ne vient légitimer",
+                "Comprendre le texte trop précisément",
+                "Retenir tous les arguments sans hésitation",
+                "Expliquer le vocabulaire avec exactitude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'inférence doit toujours s'appuyer sur des indices concrets du texte, sous peine de délire interprétatif."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Identifier les présupposés dans un énoncé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs linguistiques véhiculent couramment des présupposés ?",
+              "options": [
+                "Les verbes de changement d'état (cesser, commencer, continuer)",
+                "Certains adverbes temporels ou d'itération (encore, de nouveau, déjà)",
+                "Les descriptions définies avec article défini (« Le roi de France » présuppose l'existence du roi)",
+                "La terminaison en -e muet à la fin des vers féminins"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Ces déclencheurs sémantiques introduisent des vérités préalables admises comme acquises sans être affirmées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans l'énoncé « Pierre regrette d'avoir menti », quel est le fait présupposé ?",
+              "options": [
+                "Pierre a menti",
+                "Pierre va continuer à mentir",
+                "Pierre n'a jamais menti de sa vie",
+                "Pierre est incapable de regrets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe factif « regretter » présuppose la vérité incontestable de la proposition complétive."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que se passe-t-il pour un présupposé lorsqu'on met la phrase à la forme négative ?",
+              "options": [
+                "Le présupposé reste vrai (« Pierre ne regrette pas d'avoir menti » implique toujours qu'il a menti)",
+                "Le présupposé s'annule complètement",
+                "Le présupposé devient une question rhétorique",
+                "Le présupposé se transforme en vers blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test de la négation (ou de l'interrogation) prouve la persistance intangible du présupposé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans la question « Avez-vous cessé de tricher aux examens ? », quel piège rhétorique repose sur le présupposé ?",
+              "options": [
+                "Quelle que soit la réponse (oui ou non), l'interlocuteur reconnaît implicitement qu'il a triché",
+                "La question force à parler latin",
+                "La phrase ne comporte aucun verbe conjugué",
+                "Le mot examen est employé de manière métaphorique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une question piège dont le présupposé sous-jacent enferme l'interlocuteur dans un aveu de culpabilité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « Même Julien a réussi l'épreuve », quel est le présupposé introduit par l'adverbe « même » ?",
+              "options": [
+                "L'épreuve était réputée difficile et Julien était le moins susceptible de réussir",
+                "Julien est le seul élève de la classe",
+                "Personne d'autre n'a passé l'épreuve ce jour-là",
+                "Julien est le professeur responsable du sujet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adverbe scalaire « même » présuppose une hiérarchie d'attente déjouée par l'événement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi les orateurs politiques manient-ils fréquemment les présupposés ?",
+              "options": [
+                "Pour faire admettre une idée controversée sans avoir à la justifier par un argument",
+                "Pour raccourcir obligatoirement leurs discours de moitié",
+                "Pour tester la vue de leur auditoire",
+                "Pour respecter les règles de la prosodie poétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En glissant une idée dans le présupposé, on la soustrait au débat critique de l'auditoire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Il est redevenu aimable », que présuppose le préfixe « re- » ?",
+              "options": [
+                "Il a été aimable par le passé, puis a cessé de l'être avant de le redevenir",
+                "Il est impossible qu'il ait jamais été gentil",
+                "Il sera méchant dès demain matin",
+                "L'adjectif aimable n'a aucun sens ici"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe itératif réactive une qualité antérieurement possédée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel terme linguistique désigne l'ensemble des croyances partagées admises avant l'échange verbal ?",
+              "options": [
+                "Le terrain d'entente ou « common ground » pragmatique",
+                "Le registre épidictique",
+                "L'anacoluthe énonciative",
+                "La catharsis tragique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La communication efficace repose sur ce socle commun d'informations partagées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « Si seulement tu avais travaillé... », quel présupposé contrefactuel est exprimé ?",
+              "options": [
+                "Tu n'as pas travaillé",
+                "Tu as travaillé avec acharnement",
+                "Le travail est toujours inutile",
+                "Tu obtiendras la meilleure mention"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'irréel du passé présuppose la non-réalisation de l'action dans le monde réel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi l'analyse des présupposés est-elle essentielle lors de l'étude d'un texte polémique ?",
+              "options": [
+                "Pour démonter la stratégie de manipulation idéologique de l'adversaire",
+                "Pour apprendre par cœur le texte plus aisément",
+                "Pour savoir quel papier a servi à l'impression",
+                "Pour vérifier le nombre de syllabes des mots savants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mettre au jour les présupposés permet de débusquer les postulats cachés de l'argumentation adverse."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Déduire les intentions et visées de l'auteur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles grandes visées communicatives un auteur peut-il poursuivre dans un texte ?",
+              "options": [
+                "Visée argumentative (convaincre ou persuader)",
+                "Visée satirique ou critique (dénoncer des travers humains ou sociaux)",
+                "Visée poétique ou esthétique (susciter l'émotion par la beauté de la langue)",
+                "Visée purement administrative de classement orthographique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les textes littéraires croisent différentes visées : didactique, polémique, esthétique ou expressive."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre « convaincre » et « persuader » ?",
+              "options": [
+                "Convaincre s'adresse à la raison par des arguments logiques ; persuader joue sur les sentiments et les émotions",
+                "Convaincre utilise des mensonges ; persuader dit toujours la vérité",
+                "Convaincre concerne la poésie ; persuader s'applique au théâtre",
+                "Il n'existe aucune différence, ce sont deux parfaits synonymes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convaincre mobilise l'intellect et la démonstration rationnelle ; persuader touche le cœur et la sensibilité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans les Lettres persanes de Montesquieu, quelle est la visée réelle derrière le regard naïf d'Usbek et Rica ?",
+              "options": [
+                "Critiquer les mœurs et institutions françaises sous le couvert de l'étonnement étranger",
+                "Promouvoir le tourisme commercial en Perse",
+                "Donner des cours de géographie orientale aux Parisiens",
+                "Raconter une anecdote sans aucune portée politique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le regard étranger feint la naïveté pour mieux dénoncer les absurdités de la société française."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quand un auteur cherche à susciter l'effroi et la pitié devant la fatalité, quelle visée poursuit-il ?",
+              "options": [
+                "Une visée tragique (recherche de la catharsis)",
+                "Une visée comique de farce paysanne",
+                "Une visée didactique pour le code de la route",
+                "Une visée publicitaire commerciale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aristote définit la tragédie par la purgation des passions (catharsis) par la terreur et la pitié."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel indice textuel trahit la visée polémique d'un pamphlet ?",
+              "options": [
+                "Un lexique péjoratif violent, des apostrophes agressives et des hyperboles accusatrices",
+                "Une langue très douce et des litotes discrètes",
+                "L'emploi exclusif du conditionnel de prudence",
+                "L'absence totale de pronoms personnels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le registre polémique (du grec polemos, le combat) attaque vivement ses cibles sans ménagement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on la visée d'un texte qui cherche avant tout à enseigner une règle de conduite ?",
+              "options": [
+                "Didactique ou morale",
+                "Élégiaque ou plaintive",
+                "Fantastique ou angoissante",
+                "Épique ou guerrière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le texte didactique transmet un savoir ou une morale pratique (comme les fables ou contes philosophiques)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le Discours sur l'origine de l'inégalité de Rousseau, quelle est la visée maîtresse ?",
+              "options": [
+                "Démontrer que les inégalités sociales ne sont pas naturelles mais le produit pervers de l'histoire humaine",
+                "Encourager tous les hommes à vivre seuls dans les arbres sans parole",
+                "Féliciter la monarchie absolue de ses succès fiscaux",
+                "Expliquer la fabrication des outils agricoles en fer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Rousseau fonde une critique politique et morale radicale de l'organisation sociale et de la propriété."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel registre est principalement au service de la visée épidictique (faire l'éloge ou le blâme) ?",
+              "options": [
+                "Le vocabulaire mélioratif ou dépréciatif hautement valorisé",
+                "Le registre burlesque uniquement",
+                "Le mode impératif sans adjectif",
+                "Les dialogues comiques en prose"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le genre épidictique célèbre les vertus ou fustige les vices d'une personne ou d'une institution."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi ne faut-il jamais confondre l'auteur réel et le narrateur fictionnel d'un roman ?",
+              "options": [
+                "Parce que le narrateur est une création de fiction dont les pensées ne reflètent pas forcément celles de l'auteur",
+                "Parce que l'auteur est mort et le narrateur est toujours vivant",
+                "Parce que la loi interdit aux écrivains de raconter leur vie",
+                "Parce que le narrateur a toujours le même âge que le lecteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un auteur vertueux peut inventer un narrateur criminel ou détestable pour en sonder la psychologie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle question méthodologique permet de déduire la visée d'un texte littéraire ?",
+              "options": [
+                "« Quel effet ce texte cherche-t-il à produire sur les pensées ou les émotions de son lecteur ? »",
+                "« Combien de temps a mis l'imprimeur pour composer la page ? »",
+                "« Quel est le nom de l'oncle maternel du narrateur ? »",
+                "« Combien pèse l'exemplaire papier en grammes ? »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La visée pragmatique s'évalue toujours à travers l'effet produit sur la conscience et la sensibilité du lecteur."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Interpréter l'ironie et le second degré",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels procédés stylistiques sont typiques de l'ironie chez Voltaire ?",
+              "options": [
+                "L'antiphrase (dire le contraire de ce que l'on veut faire entendre)",
+                "L'éloge paradoxal ou faussement enthousiaste",
+                "Le rapprochement incongru de termes contradictoires (faux liens logiques)",
+                "L'emploi exclusif d'un ton monocorde sans aucune figure"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'ironie voltairienne repose sur l'antiphrase, la fausse logique, l'éloge feint et les ruptures de ton."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans le chapitre 3 de Candide, l'expression « boucherie héroïque » pour désigner la guerre est…",
+              "options": [
+                "Un oxymore satirique dénonçant l'absurdité sanglante des combats",
+                "Un compliment sincère adressé aux généraux d'armée",
+                "Une simple description culinaire d'époque",
+                "Une formule juridique officielle du traité de paix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alliance de « boucherie » (dégradation animale) et « héroïque » (gloire militaire) fustige la barbarie de la guerre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la condition indispensable pour que l'ironie fonctionne auprès du lecteur ?",
+              "options": [
+                "Une complicité intellectuelle : le lecteur doit percevoir le décalage entre la lettre et l'esprit",
+                "L'auteur doit mettre un point d'ironie ou un émoticône après chaque phrase",
+                "Le texte doit être obligatoirement déclamé au mégaphone",
+                "Tous les mots doivent être traduits en argot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ironie suppose un pacte implicite où le lecteur partage les repères moraux nécessaires pour décoder le second degré."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans De l'esclavage des nègres de Montesquieu, pourquoi certains contemporains ont-ils fait un contresens ?",
+              "options": [
+                "Ils ont pris au premier degré des arguments racistes que l'auteur accumulait pour en montrer l'horreur absurde",
+                "Ils n'avaient pas appris à lire le français classique",
+                "Montesquieu avait oublié d'écrire son nom sur le livre",
+                "Le livre avait été censuré avant d'être rédigé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montesquieu utilise une antiphrase géante : feindre de justifier l'esclavage pour en faire éclater l'infamie morale."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle figure consiste à dire le moins pour suggérer le plus (ex: « Va, je ne te hais point » dans Le Cid) ?",
+              "options": [
+                "La litote",
+                "L'euphémisme",
+                "L'anaphore",
+                "La gradation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La litote atténue l'expression directe pour renforcer la puissance de ce qui est sous-entendu (« je t'aime »)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle différence sépare la litote de l'euphémisme ?",
+              "options": [
+                "La litote intensifie le sens en disant moins ; l'euphémisme adoucit une réalité choquante ou douloureuse",
+                "La litote ne s'emploie qu'en prose romanesque",
+                "L'euphémisme est une figure mathématique d'addition",
+                "Ce sont deux appellations strictement interchangeables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'euphémisme atténue pour ne pas blesser (« il nous a quittés » pour « il est mort »), la litote masque pour faire entendre plus fort."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel risque court un élève qui ne repère pas l'ironie dans un texte de commentaire ?",
+              "options": [
+                "Le contresens total en attribuant à l'auteur l'avis répugnant qu'il tourne en dérision",
+                "Perdre deux points d'orthographe",
+                "Écrire une dissertation trop longue",
+                "Devoir changer de stylo en cours d'épreuve"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Prendre l'ironie au premier degré conduit à une inversion tragique du sens de l'extrait."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment le ton faussement naïf d'un personnage (comme Micromégas ou Candide) sert-il l'ironie ?",
+              "options": [
+                "En posant des questions ingénues qui mettent à nu les préjugés et les hypocrisies de la société",
+                "En prouvant que les héros de romans sont toujours ignorants",
+                "En simplifiant la syntaxe pour les jeunes lecteurs",
+                "En évitant d'avoir à employer des figures de style"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fausse ingénuité déstabilise les certitudes établies avec une force décapante."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'humour noir en littérature ?",
+              "options": [
+                "Traiter avec distance et dérision des sujets graves comme la mort, la maladie ou la misère",
+                "Écrire un roman sans lumière ni bougie",
+                "Une comédie sans aucun dialogue amusant",
+                "Un poème écrit avec de l'encre de Chine foncée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'humour noir choque pour désamorcer l'angoisse par le rire grinçant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel indice paratextuel ou typographique peut parfois suggérer la distance ironique ?",
+              "options": [
+                "L'usage de guillemets d'ironie ou de modalisateurs de distance (« soi-disant », « prétendu »)",
+                "L'emploi d'une police de caractères de petite taille",
+                "La présence de tirets cadratins dans les titres",
+                "L'alignement justifié du paragraphe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les guillemets de mise à distance signalent que l'auteur refuse d'assumer le mot à son propre compte."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Percevoir les sentiments et motivations des personnages",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels indices corporels et physiologiques permettent d'inférer l'émotion d'un personnage de roman ?",
+              "options": [
+                "La pâleur subite ou le rougissement involontaire",
+                "Le tremblement des mains ou l'altération de la voix",
+                "La dilatation du regard ou le souffle court",
+                "La marque de fabrication de son soulier"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les manifestations physiques involontaires trahissent l'émoi intérieur (trouble amoureux, terreur, honte)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans La Princesse de Clèves, que révèle le silence prolongé de l'héroïne devant le duc de Nemours ?",
+              "options": [
+                "Le combat intérieur déchirant entre sa passion ardente et son devoir moral",
+                "Le fait qu'elle a oublié le texte de sa réplique",
+                "Un mépris total et indifférent pour le duc",
+                "Une surdité passagère due à la musique du bal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le silence éloquent de la princesse manifeste l'intensité d'une passion coupable qu'elle tente d'étouffer."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le fait de faire deviner les sentiments sans jamais nommer l'émotion elle-même ?",
+              "options": [
+                "La suggestion psychologique ou dramatisation en creux",
+                "La définition didactique explicite",
+                "Le catalogue de synonymes",
+                "Le monologue oratoire direct"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Suggérer plutôt que nommer confère une profondeur émotionnelle bien plus forte à la scène."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle figure stylistique projette l'état d'âme d'un personnage sur le paysage environnant ?",
+              "options": [
+                "La métaphore ou personnification du paysage-état d'âme",
+                "L'hyperbate chronologique",
+                "L'énallage de personne",
+                "La syllepse grammaticale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le romantisme unit intimement la nature tourmentée aux tempêtes intérieures du moi (ex: Chateaubriand)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'infère-t-on d'un personnage qui multiplie les lapsus ou les maladresses gestuelles ?",
+              "options": [
+                "Un trouble psychologique refoulé ou une dissimulation qui échoue",
+                "Une parfaite maîtrise de soi et de la situation",
+                "L'absence totale d'émotivité",
+                "La preuve qu'il s'agit d'un robot mécanique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les actes manqués et lapsus trahissent la vérité du désir ou de la panique sous le masque social."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans Le Rouge et le Noir, quelle motivation profonde guide l'ambition de Julien Sorel ?",
+              "options": [
+                "Une soif d'ascension sociale mêlée au refus orgueilleux d'être méprisé par les aristocrates",
+                "L'amour inconditionnel de l'argent et du commerce de bois",
+                "Le désir de devenir botaniste professionnel",
+                "La haine des livres et de la poésie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'énergie de Julien naît d'un orgueil blessé et d'une volonté farouche de conquérir sa dignité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel rôle jouent les didascalies au théâtre pour inférer la psychologie des personnages ?",
+              "options": [
+                "Elles indiquent le ton de la voix, les hésitations et les jeux de scène révélateurs",
+                "Elles fixent le tarif d'entrée des spectateurs",
+                "Elles remplacent obligatoirement les vers poétiques",
+                "Elles ne sont destinées qu'au directeur du théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les didascalies éclairent le non-dit, l'émotion corporelle et la sincérité des répliques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment déduire l'hypocrisie d'un personnage comme Tartuffe chez Molière ?",
+              "options": [
+                "Par la contradiction flagrante entre son discours dévot outrancier et ses pulsions charnelles immédiates",
+                "Parce qu'il porte un chapeau noir sur scène",
+                "Parce qu'il ne parle jamais en alexandrins",
+                "Parce que son nom commence par la lettre T"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le contraste comique entre la bigoterie affichée et ses tentatives de séduction dévoile l'imposture."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que traduit la parole hachée, entrecoupée de points de suspension chez un personnage tragique ?",
+              "options": [
+                "L'aphasie causée par l'intensité de la douleur ou la terreur",
+                "Le fait que le personnage s'est endormi",
+                "Un manque d'encre lors de la publication du livre",
+                "Une simple volonté de faire durer la réplique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dislocation de la syntaxe traduit le vacillement de la raison sous le coup de la passion tragique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle compétence littéraire exerce-t-on en devinant les mobiles profonds des personnages ?",
+              "options": [
+                "L'empathie psychologique et l'analyse de la complexité du cœur humain",
+                "La rapidité de frappe au clavier",
+                "Le jugement moral intolérant et sans nuance",
+                "Le calcul des probabilités dramatiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La grande littérature nous apprend à sonder les motivations ambivalentes qui régissent l'âme humaine."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Déduire le sens d'un mot rare d'après le contexte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles stratégies permettent de deviner le sens d'un mot inconnu dans un extrait ?",
+              "options": [
+                "Analyser les racines étymologiques, préfixes et suffixes (morphologie)",
+                "Observer le champ lexical environnant et la situation décrite",
+                "S'appuyer sur les relations de synonymie, antonymie ou comparaison dans la phrase",
+                "Remplacer systématiquement le mot inconnu par un point d'interrogation"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le déchiffrement lexical s'appuie sur la morphologie interne du mot et les indices contextuels immédiats."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « Son visage s'empourpra d'ire face à cette injustice », quel est le sens du mot « ire » déduit du contexte ?",
+              "options": [
+                "La colère vive",
+                "La joie débordante",
+                "Le sommeil profond",
+                "La faim dévorante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe s'empourprer (devenir rouge) lié à l'injustice indique l'emportement de la colère."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le préfixe grec « poly- » dans un mot comme « polyphonie » ?",
+              "options": [
+                "Plusieurs ou nombreux",
+                "Unique ou solitaire",
+                "Contre ou opposé",
+                "Sous ou inférieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Poly- signifie multiple : la polyphonie est la présence de plusieurs voix harmonisées."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « Ce tyran était pusillanime, tremblant au moindre murmure du vent », que signifie « pusillanime » ?",
+              "options": [
+                "Lâche et craintif",
+                "Généreux et sage",
+                "Invincible au combat",
+                "Très intelligent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le participe « tremblant au moindre murmure » explicite directement la peur et la lâcheté."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment le parallélisme de construction « Il aimait la frugalité, mais son frère préférait la bombance » aide-t-il à comprendre « bombance » ?",
+              "options": [
+                "La conjonction d'opposition « mais » indique que bombance est l'antonyme d'un repas sobre et mesuré",
+                "Elle indique que les deux mots sont de même famille",
+                "Elle prouve que les deux frères vivaient au bord de la mer",
+                "Elle empêche toute déduction sans dictionnaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'antithèse permet de déduire que faire bombance, c'est manger et festoyer avec excès."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie le radical latin « vorare » dans carnivore, vorace ou dévorer ?",
+              "options": [
+                "Manger goulûment",
+                "Courir très vite",
+                "Dormir au soleil",
+                "Chasser en meute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vorare signifie avaler, dévorer, se nourrir avec avidité."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Sa voix sépulcrale glaçait l'auditoire », que déduit-on de l'adjectif « sépulcrale » ?",
+              "options": [
+                "Une voix lugubre et caverneuse évoquant la tombe (le sépulcre)",
+                "Une voix aiguë et enfantine",
+                "Une voix mélodieuse et joyeuse",
+                "Une voix totalement inaudible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sépulcral dérive de sépulcre (tombeau) et décrit une sonorité funèbre qui glace d'effroi."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel réflexe faut-il adopter lors d'une épreuve face à un terme inconnu ?",
+              "options": [
+                "Remplacer mentalement le mot par un mot plus simple compatible avec le sens général de la phrase",
+                "Arrêter immédiatement la rédaction de sa copie",
+                "Inventer une définition fantaisiste dans son analyse",
+                "Raturer le mot sur le sujet officiel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'insertion d'un synonyme hypothétique valide ou infirme la cohérence de l'inférence contextuelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie le suffixe « -cide » dans fratricide, régicide ou insecticide ?",
+              "options": [
+                "Qui tue ou détruit",
+                "Qui protège ou soigne",
+                "Qui aime ou chérit",
+                "Qui voyage au loin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Issu du latin caedere (tuer), ce suffixe désigne l'action d'ôter la vie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la polysémie d'un mot exige-t-elle toujours l'examen du contexte ?",
+              "options": [
+                "Parce qu'un même mot peut prendre des sens très différents selon le domaine ou le registre employé",
+                "Parce que les mots changent d'orthographe tous les dix ans",
+                "Parce que les dictionnaires ne sont jamais d'accord entre eux",
+                "Parce que les auteurs classiques n'utilisaient jamais le premier sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot « hôte » par exemple peut désigner celui qui reçoit ou celui qui est invité selon le contexte."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Interpréter les figures de style en contexte",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles figures de style reposent sur une analogie ou une ressemblance entre deux éléments ?",
+              "options": [
+                "La comparaison (avec outil comparatif explicite)",
+                "La métaphore (sans mot de comparaison)",
+                "La personnification (attribuer des traits humains à une chose)",
+                "La litote (dire le moins pour suggérer le plus)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Comparaison, métaphore et personnification sont les trois grandes figures de l'analogie poétique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans « Cet homme d'affaires est un requin », quelle est la figure employée ?",
+              "options": [
+                "Une métaphore",
+                "Une métonymie",
+                "Une comparaison",
+                "Une anaphore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'assimilation directe sans outil de comparaison (« comme ») fait de cette phrase une métaphore."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle métaphore filée trouve-t-on fréquemment dans la poésie de Baudelaire ?",
+              "options": [
+                "Le voyage maritime représentant l'aventure poétique et l'angoisse existentielle",
+                "La fabrication d'horloges suisses au village",
+                "L'ascension des volcans d'Islande",
+                "La culture industrielle de la betterave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De L'Albatros au Voyage, la navigation maritime figure l'envol spirituel, l'exil et le gouffre du Temps."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « Boire un verre entre amis », quelle figure remplace le contenu (le liquide) par le contenant ?",
+              "options": [
+                "Une métonymie",
+                "Un oxymore",
+                "Une hyperbole",
+                "Une antiphrase"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La métonymie repose sur un lien logique de contiguïté matérielle (ici le contenant pour le contenu)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « Cette obscure clarté qui tombe des étoiles » (Corneille), quelle figure réunit deux termes contradictoires ?",
+              "options": [
+                "Un oxymore",
+                "Une chiasme",
+                "Une gradation",
+                "Une prétérition"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oxymore unit deux antonymes dans le même groupe syntaxique pour créer une tension poétique neuve."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'effet de sens visé par une hyperbole comme « Je meurs de soif » ?",
+              "options": [
+                "Amplifier et dramatiser une sensation pour frapper l'imagination",
+                "Donner une information médicale d'urgence",
+                "Respecter la politesse mondaine",
+                "Prouver que l'on est poète lyrique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hyperbole recourt à l'exagération pour exprimer l'intensité d'une sensation ou d'une passion."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle figure répète le même mot en tête de plusieurs phrases ou vers consécutifs ?",
+              "options": [
+                "L'anaphore",
+                "L'assonance",
+                "L'épitrope",
+                "L'hyperbate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'anaphore martèle une idée, rythme le souffle et produit un effet incantatoire ou oratoire puissant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Paris a froid, Paris a faim » (Paul Éluard), quelle figure donne vie à la ville occupée ?",
+              "options": [
+                "La personnification",
+                "L'antiphrase",
+                "L'euphémisme",
+                "Le zeugme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ville de Paris ressent les épreuves physiques comme un être humain souffrant sous l'oppression."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la disposition en chiasme (ABBA) : « Il faut manger pour vivre et non vivre pour manger » ?",
+              "options": [
+                "Une structure croisée qui met en valeur l'inversion morale des priorités de l'existence",
+                "Une rime suivie simple",
+                "Une phrase sans verbe d'état",
+                "Un barbarisme syntaxique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chiasme inverse l'ordre des éléments pour fustiger l'absurdité de ceux qui font de la nourriture le but de leur vie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle règle d'analyse littéraire doit toujours accompagner l'identification d'une figure de style ?",
+              "options": [
+                "Expliquer précisément l'effet poétique, émotionnel ou critique produit dans le texte",
+                "Recopier la définition du dictionnaire sans parler du poème",
+                "Indiquer en quelle année la figure a été inventée en Grèce",
+                "Attribuer une note sur dix à la figure trouvée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nommer une figure sans analyser sa valeur expressive ne présente aucun intérêt dans un commentaire."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Lire entre les lignes dans un dialogue de théâtre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments structurent la communication théâtrale (double énonciation) ?",
+              "options": [
+                "Les personnages dialoguent entre eux sur scène (premier niveau)",
+                "L'auteur s'adresse au public ou spectateur à travers les paroles des personnages (second niveau)",
+                "Les spectateurs peuvent interrompre les acteurs pour modifier le texte à tout moment",
+                "Ce décalage crée des effets d'ironie tragique ou comique majeurs"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La double énonciation théâtrale permet au spectateur d'en savoir souvent plus que les protagonistes eux-mêmes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on une réplique qu'un personnage prononce pour lui-même et que seul le public est censé entendre ?",
+              "options": [
+                "Un aparté",
+                "Une tirade",
+                "Une stichomythie",
+                "Un chœur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aparté (souvent précédé de « à part ») dévoile les pensées secrètes ou les ruses du personnage à l'insu de ses partenaires."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une stichomythie dans une scène de tragédie ou de comédie ?",
+              "options": [
+                "Une succession rapide de répliques vers à vers marquant un affrontement vif",
+                "Un très long monologue de plus de cent vers",
+                "Une musique jouée dans les coulisses",
+                "Un changement complet de décor en plein acte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les stichomythies accélèrent le rythme et matérialisent un duel verbal haletant entre les personnages."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on « l'ironie tragique » au théâtre ?",
+              "options": [
+                "Quand le spectateur comprend le sort funeste réservé au héros alors que celui-ci l'ignore encore",
+                "Quand le personnage raconte des plaisanteries pour détendre la salle",
+                "Quand le costume de l'acteur se déchire accidentellement sur scène",
+                "Quand la pièce finit par un mariage imprévu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Exemple dans Œdipe Roi : le héros maudit le meurtrier sans savoir qu'il s'agit de lui-même."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans Dom Juan de Molière, que traduit l'attitude du héros face aux reproches moraux de son père Don Louis ?",
+              "options": [
+                "Une insolence polie et un mépris glacial manifestés par des réponses d'une brièveté cynique",
+                "Un repentir sincère et des larmes d'humilité",
+                "Une terreur insurmontable devant l'autorité paternelle",
+                "Un enthousiasme débordant pour la vie monastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dom Juan refuse d'écouter les leçons de vertu et répond par l'ironie désinvolte (« Monsieur, si vous étiez assis... »)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que révèle une scène où deux personnages parlent apparemment de la pluie et du beau temps mais s'évitent du regard ?",
+              "options": [
+                "Un sous-texte lourd de tensions et de non-dits inavouables",
+                "Une parfaite harmonie météorologique",
+                "L'absence totale de conflit théâtral",
+                "La preuve que le dramaturge n'avait plus rien à écrire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le « sous-texte » est la véritable partition invisible qui se joue sous la banalité apparente des paroles."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans le théâtre classique, quelle est la fonction dramaturgique de la scène d'exposition (acte I) ?",
+              "options": [
+                "Informer le spectateur sur les personnages, les liens qui les unissent et le nœud de l'intrigue",
+                "Présenter les remerciements aux mécènes de la troupe",
+                "Annoncer le prix des boissons servies à l'entracte",
+                "Faire mourir le traître dès la première scène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'exposition doit être claire, vivante et nouer le problème dramatique sans lourdeur explicative."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel indice textuel permet de déceler la prise de pouvoir d'un personnage sur un autre dans un dialogue ?",
+              "options": [
+                "La longueur disproportionnée de ses tirades et le recours aux phrases impératives ou interrogatives surplombantes",
+                "Le fait qu'il s'assoie toujours à gauche de la scène",
+                "L'absence de consonnes dans ses répliques",
+                "Le port d'une épée en plastique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'occupation de l'espace verbal et les actes directifs révèlent la domination psychologique d'un protagoniste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans Le Mariage de Figaro de Beaumarchais, que combat Figaro dans son célèbre monologue de l'acte V ?",
+              "options": [
+                "Les privilèges immérités de la noblesse de naissance face au mérite des gens du peuple",
+                "La qualité du vin espagnol servi aux noces",
+                "La mauvaise météo lors de sa promenade nocturne",
+                "L'obligation de porter une perruque poudrée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Vous vous êtes donné la peine de naître, et rien de plus ! » : Figaro critique l'injustice de l'ordre aristocratique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le dénouement théâtral artificiel apporté par une intervention divine ou extérieure miraculeuse ?",
+              "options": [
+                "Le deus ex machina",
+                "Le quiproquo comique",
+                "L'apostrophe lyrique",
+                "Le coup de théâtre réaliste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le deus ex machina résout l'impasse de l'intrigue par une force providentielle inattendue (ex: l'exempt du Roi dans Tartuffe)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Reconstituer une chronologie ou des ellipses narratives",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels procédés modifient la vitesse du récit par rapport au temps réel de l'histoire ?",
+              "options": [
+                "L'ellipse (passer sous silence une période plus ou moins longue)",
+                "La scène (temps de lecture proche du temps réel de l'action)",
+                "La pause descriptive (le temps de l'histoire s'arrête pendant que le narrateur décrit)",
+                "La reliure cartonnée du volume"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'écrivain joue avec le tempo narratif grâce aux ellipses, sommaires, scènes et pauses descriptives."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans L'Éducation sentimentale de Flaubert, la célèbre phrase « Il voyagea. [...] Il revint. » séparée par un blanc temporel constitue…",
+              "options": [
+                "Une ellipse temporelle fulgurante traduisant l'échec et la vanité de la vie de Frédéric Moreau",
+                "Une faute de typographie de l'imprimeur",
+                "Un poème en vers libres égaré dans le roman",
+                "Une description minutieuse des gares ferroviaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flaubert engloutit plusieurs années d'un coup pour faire ressentir le néant et la déception existentielle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on un retour en arrière dans le temps par rapport au présent de la narration ?",
+              "options": [
+                "Une analepse (ou flash-back)",
+                "Une prolepse (ou anticipation)",
+                "Une anaphore stylistique",
+                "Un sommaire accéléré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'analepse éclaire le passé d'un personnage pour faire comprendre ses traumatismes ou ses motivations présentes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on l'anticipation d'événements futurs dans le fil du récit ?",
+              "options": [
+                "Une prolepse",
+                "Une ellipse",
+                "Une litote",
+                "Une allégorie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La prolepse annonce à l'avance ce qui adviendra plus tard, créant un sentiment de fatalité tragique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un « sommaire » dans le rythme d'un roman ?",
+              "options": [
+                "Résumer en quelques lignes ou phrases des mois ou des années d'événements",
+                "La table des matières placée à la fin de l'ouvrage",
+                "L'index des noms de villes citées",
+                "La liste des personnages principaux au début"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le sommaire accélère la cadence en condensant une longue période sans s'attarder sur les détails."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi un auteur de roman policier choisit-il de dissimuler certains événements par une ellipse ?",
+              "options": [
+                "Pour créer du suspense et obliger le lecteur à reconstituer le puzzle criminel",
+                "Pour économiser le salaire des imprimeurs",
+                "Parce qu'il a oublié la suite de l'intrigue",
+                "Pour que le livre puisse convenir aux très jeunes enfants"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ellipse policière masque le forfait pour stimuler l'enquête déductive du détective et du lecteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quels indices grammaticaux permettent de repérer les ruptures chronologiques dans un récit ?",
+              "options": [
+                "L'alternance des temps verbaux (imparfait/passé simple versus plus-que-parfait) et les connecteurs temporels",
+                "Le nombre de voyelles dans les participes passés",
+                "L'utilisation exclusive de verbes à l'infinitif",
+                "La présence de tirets au début des dialogues"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le plus-que-parfait marque l'antériorité par rapport au récit au passé, signalant souvent une analepse."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie commencer une histoire « in media res » ?",
+              "options": [
+                "Plonger d'emblée le lecteur au cœur même de l'action sans exposition préalable",
+                "Terminer le récit par une morale en langue latine",
+                "Raconter la fin dès la première phrase sans aucun mystère",
+                "Écrire l'histoire du point de vue d'un narrateur endormi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'entrée « in media res » saisit l'attention du lecteur par un événement dramatique déjà en cours."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle figure de pensée consiste à faire se succéder deux événements sans lien de cause à effet comme si l'un causait l'autre ?",
+              "options": [
+                "Le sophisme « post hoc ergo propter hoc » (après cela, donc à cause de cela)",
+                "L'oxymore poétique",
+                "L'assonance en -i",
+                "Le chiasme grammatical"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Confondre succession chronologique et causalité logique est une illusion cognitive majeure que la lecture critique démasque."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel travail intellectuel réalise le lecteur face à une trame narrative déconstruite (anachronies multiples) ?",
+              "options": [
+                "Reconstituer la fable chronologique originelle sous l'agencement du récit romanesque",
+                "S'arrêter de lire pour protester auprès de l'éditeur",
+                "Numéroter les pages dans le désordre pour s'amuser",
+                "Ignorer complètement les dates données dans le texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La narratologie distingue la diégèse (l'ordre réel des faits) de l'ordre d'exposition choisi par le conteur."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Bilan : interprétation globale et lecture critique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles attitudes intellectuelles caractérisent un lecteur critique accompli ?",
+              "options": [
+                "Interroger les présupposés idéologiques et la visée sous-jacente du texte",
+                "Appuyer chaque interprétation sur des indices formels précis (vocabulaire, syntaxe, figures)",
+                "Refuser le premier degré naïf pour sonder l'ironie, l'implicite et les symboles",
+                "Admettre aveuglément comme vraie toute phrase dès lors qu'elle est imprimée"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La posture critique refuse la crédulité naïve et fonde rigoureusement le sens sur les choix d'écriture."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'affirmation de Roland Barthes : « Le texte est un tissu d'espaces où se marient et se contestent des écritures variées » ?",
+              "options": [
+                "Un texte n'a pas un sens unique figé, mais s'enrichit de multiples échos culturels et interprétations",
+                "Tous les livres doivent être fabriqués en tissu de coton",
+                "L'auteur d'un livre n'a jamais écrit aucune ligne lui-même",
+                "La lecture ne sert à rien car les mots n'ont aucun sens stable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le texte littéraire est ouvert à la pluralité des lectures intelligentes et fondées sur ses structures."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment la visée critique s'articule-t-elle avec la sensibilité esthétique lors de la lecture d'un poème ?",
+              "options": [
+                "L'émotion ressentie est éclairée par l'analyse technique des rythmes, sons et images poétiques",
+                "L'analyse technique détruit obligatoirement toute forme de plaisir poétique",
+                "On ne doit jamais analyser un poème sous peine d'interdiction scolaire",
+                "La poésie ne transmet jamais aucune idée philosophique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comprendre les ressorts formels d'un vers intensifie et raffine l'émotion esthétique qu'il procure."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans quelle mesure l'humanisme de Montaigne invite-t-il à une lecture critique universelle ?",
+              "options": [
+                "En affirmant dans les Essais : « Chaque homme porte la forme entière de l'humaine condition »",
+                "En ordonnant à tous les hommes de ne parler que le dialecte gascon",
+                "En affirmant que les guerres de religion sont nécessaires et justes",
+                "En interdisant de voyager hors de son village natal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Montaigne fonde l'examen de soi sur une tolérance lucide et une curiosité sans borne pour la diversité humaine."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une grille de lecture idéologique réductrice appliquée à une œuvre classique ?",
+              "options": [
+                "Plaquer un dogme rigide et préconçu sans respecter la polysémie et la liberté du texte",
+                "Lire le texte en faisant attention à la grammaire des propositions",
+                "Repérer le siècle de l'auteur dans une biographie sérieuse",
+                "Chercher la signification des mots rares dans le dictionnaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réduire un chef-d'œuvre à un tract politique unilatéral appauvrit sa résonance littéraire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi la littérature des Lumières reste-t-elle le modèle absolu de la lecture émancipatrice ?",
+              "options": [
+                "Parce qu'elle combat l'obscurantisme, le fanatisme et la superstition par l'exercice libre de la raison",
+                "Parce qu'elle a été écrite exclusivement par des rois et des empereurs",
+                "Parce qu'elle interdisait toute forme d'humour ou de légèreté",
+                "Parce qu'elle refusait la science et les découvertes techniques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ose savoir ! » (Sapere aude) : les Lumières invitent chaque citoyen à penser par lui-même avec courage."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de la nuance dans un commentaire de texte argumentatif ?",
+              "options": [
+                "Elle permet de saisir la complexité d'une pensée sans tomber dans le manichéisme ou la caricature",
+                "Elle prouve que l'élève n'a pas réussi à choisir son camp",
+                "Elle fait perdre du temps inutilement pendant l'examen",
+                "Elle est réservée exclusivement aux dissertations de philosophie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intelligence littéraire réside dans la finesse des nuances et la compréhension des paradoxes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel écueil guette le lecteur face à une allégorie comme celle de la Caverne de Platon ?",
+              "options": [
+                "S'arrêter à l'histoire concrète des prisonniers sans décoder la signification philosophique sur la vérité",
+                "Refuser de lire le texte en langue originale grecque",
+                "Confondre Platon avec un auteur du XIXe siècle",
+                "Trop bien comprendre la théorie des Idées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'allégorie est une métaphore continue : il faut savoir franchir le pont entre l'image concrète et le concept abstrait."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment vérifier la pertinence d'une interprétation littéraire personnelle ?",
+              "options": [
+                "En s'assurant qu'elle s'appuie sur plusieurs indices textuels convergents et cohérents",
+                "En vérifiant que personne d'autre n'a jamais eu cette idée farfelue",
+                "En demandant si elle plaît au voisin de table",
+                "En constatant qu'elle contredit totalement la thèse de l'auteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La convergence de faisceaux d'indices stylistiques et sémantiques valide l'interprétation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le pouvoir ultime de la grande littérature selon Marcel Proust ?",
+              "options": [
+                "« Le seul véritable voyage, ce ne serait pas d'aller vers de nouveaux paysages, mais d'avoir d'autres yeux »",
+                "D'apprendre à rédiger des lettres administratives parfaites",
+                "De mémoriser un maximum de dates historiques pour briller en société",
+                "De remplacer tous les écrans par du papier blanc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire permet d'entrer dans la subjectivité d'un autre et d'élargir à l'infini notre propre vision du monde."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

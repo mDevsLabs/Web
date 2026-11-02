@@ -1,0 +1,2598 @@
+{
+  "id": "1ere-nsi-04",
+  "year": "1ere",
+  "subject": "nsi",
+  "title": "Traitement de données en tables",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Sélection",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Format CSV et délimiteurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels caractères sont couramment utilisés comme délimiteurs dans un fichier CSV ?",
+              "options": [
+                "La virgule (,)",
+                "Le point-virgule (;)",
+                "Le caractère nul (\\0)",
+                "L'espace insécable invisible"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La virgule et le point-virgule sont les délimiteurs les plus fréquents dans les fichiers CSV."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le sigle CSV ?",
+              "options": [
+                "Comma-Separated Values",
+                "Computer Structured Vector",
+                "Code Source Vérifié",
+                "Calcul Standard Variable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "CSV signifie Comma-Separated Values (valeurs séparées par des virgules)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans un fichier CSV classique, que représente chaque ligne du fichier (après l'en-tête) ?",
+              "options": [
+                "Un enregistrement ou une entrée",
+                "Un nom de colonne",
+                "Une formule de calcul",
+                "Un type de données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque ligne correspond généralement à un enregistrement individuel de la table."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que contient généralement la toute première ligne d'un fichier CSV ?",
+              "options": [
+                "Les noms des attributs ou descripteurs",
+                "Le nombre total de lignes",
+                "La clé de chiffrement",
+                "La somme des colonnes numériques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La première ligne forme souvent l'en-tête qui nomme les colonnes ou attributs."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment stocke-t-on un texte contenant le séparateur dans un champ CSV ?",
+              "options": [
+                "En l'entourant de guillemets",
+                "En le convertissant en hexadécimal",
+                "En supprimant le champ",
+                "En remplaçant le séparateur par un saut de ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les guillemets doubles permettent d'échapper le délimiteur présent dans une valeur textuelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le format d'encodage de texte standard recommandé pour un fichier CSV ?",
+              "options": [
+                "UTF-8",
+                "EBCDIC",
+                "ASCII 7 bits uniquement",
+                "Binaire brut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "UTF-8 est le standard universel pour préserver tous les caractères, y compris accentués."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un fichier CSV est avant tout :",
+              "options": [
+                "Un fichier texte brut",
+                "Un fichier binaire compilé",
+                "Une base de données relationnelle",
+                "Une image vectorielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le CSV est un simple fichier texte lisible avec n'importe quel éditeur de texte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi le point-virgule est-il très utilisé en France comme délimiteur CSV ?",
+              "options": [
+                "Car la virgule sert déjà de séparateur décimal",
+                "Parce que la virgule est interdite par Python",
+                "Pour chiffrer automatiquement le fichier",
+                "Car le point-virgule prend moins d'octets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En français, la virgule sépare les décimales des nombres (ex: 12,5), d'où l'usage du point-virgule."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle extension porte habituellement un fichier de ce type ?",
+              "options": [".csv", ".tsv", ".db", ".table"],
+              "correctAnswers": [0],
+              "explanation": "L'extension usuelle et standard est .csv."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que sépare le délimiteur 'tabulation' dans un format dérivé du CSV (TSV) ?",
+              "options": [
+                "Les différents champs d'une ligne",
+                "Les différents fichiers",
+                "Les lignes entre elles",
+                "Les noms de tables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un fichier TSV (Tab-Separated Values), la tabulation sépare les colonnes."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Lecture de fichiers CSV en Python",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles classes du module csv de Python permettent de lire des données tabulaires ?",
+              "options": [
+                "csv.reader",
+                "csv.DictReader",
+                "csv.TableLoader",
+                "csv.MatrixScanner"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "csv.reader (renvoyant des listes) et csv.DictReader (renvoyant des dictionnaires) sont les deux lecteurs standards."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel module standard de Python est dédié à la manipulation des fichiers CSV ?",
+              "options": ["csv", "tables", "dataframe", "filecsv"],
+              "correctAnswers": [0],
+              "explanation": "Le module standard s'appelle simplement 'csv'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle fonction Python ouvre un fichier sur le disque avant sa lecture par le module csv ?",
+              "options": ["open()", "load()", "read_file()", "import_csv()"],
+              "correctAnswers": [0],
+              "explanation": "La fonction native open('fichier.csv', 'r') permet d'ouvrir le fichier en lecture."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel paramètre de csv.reader spécifie le caractère de séparation utilisé ?",
+              "options": ["delimiter", "separator", "split_char", "sep"],
+              "correctAnswers": [0],
+              "explanation": "Le paramètre officiel du module csv est 'delimiter' (ex: delimiter=';')."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi utilise-t-on l'instruction 'with open(...) as f:' en Python ?",
+              "options": [
+                "Pour fermer automatiquement le fichier en fin de bloc",
+                "Pour accélérer la vitesse de calcul du processeur",
+                "Pour chiffrer les données lues",
+                "Pour forcer la conversion des nombres en entiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gestionnaire de contexte 'with' garantit la fermeture propre du fichier même en cas d'erreur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Par défaut, quel est le type de toutes les valeurs lues depuis un CSV avec le module csv ?",
+              "options": [
+                "str (chaîne de caractères)",
+                "int (entier)",
+                "float (flottant)",
+                "bool (booléen)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toutes les données brutes lues dans un fichier texte CSV sont de type str."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle fonction intégrée applique une conversion sur une chaîne lue '42' pour obtenir un entier ?",
+              "options": [
+                "int('42')",
+                "float('42')",
+                "str('42')",
+                "to_number('42')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "int() convertit une chaîne représentant un nombre entier en type int."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que spécifie le paramètre encoding='utf-8' lors de l'appel à open() ?",
+              "options": [
+                "Le codage des caractères utilisé pour interpréter le texte",
+                "Le nombre maximal de colonnes à charger",
+                "Le tri alphabétique automatique",
+                "La compression du fichier en mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'encodage indique à Python comment décoder les octets en caractères textuels."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que renvoie l'itération sur un objet csv.reader(f) ?",
+              "options": [
+                "Des listes de chaînes de caractères",
+                "Des dictionnaires Python",
+                "Une seule chaîne géante",
+                "Des tuples de nombres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque ligne lue par csv.reader est représentée sous forme d'une liste de chaînes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que renvoie l'itération sur un objet csv.DictReader(f) ?",
+              "options": [
+                "Des dictionnaires associant nom de colonne et valeur",
+                "Des ensembles (set)",
+                "Des entiers correspondant aux indices de lignes",
+                "Des listes de booléens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DictReader convertit chaque ligne en dictionnaire dont les clés sont les noms d'en-tête."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Représentation par liste de dictionnaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les avantages d'une table représentée sous forme de liste de dictionnaires ?",
+              "options": [
+                "Accès direct aux champs par leur nom d'attribut",
+                "L'ordre des colonnes n'a pas besoin d'être mémorisé",
+                "La mémoire occupée est toujours nulle",
+                "Elle interdit toute modification des valeurs"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les dictionnaires permettent d'accéder aux attributs par leur nom (ex: row['nom']) sans retenir l'indice de colonne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans table = [{'nom': 'Alice', 'age': 16}], comment accède-t-on à l'âge du premier enregistrement ?",
+              "options": [
+                "table[0]['age']",
+                "table['age'][0]",
+                "table[0][1]",
+                "table.age[0]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "table[0] sélectionne le premier dictionnaire, puis ['age'] accède à la clé 'age'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la structure globale d'une telle table en mémoire ?",
+              "options": [
+                "Une liste dont chaque élément est un dictionnaire",
+                "Un dictionnaire dont chaque clé est une liste",
+                "Un tuple de chaînes concaténées",
+                "Un ensemble de nombres entiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La table est modélisée par une liste ordonnée de lignes, chaque ligne étant un dictionnaire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si on tente d'accéder à une clé inexistante row['note'] sans précaution ?",
+              "options": [
+                "Python déclenche une KeyError",
+                "Python renvoie automatiquement 0",
+                "La ligne est supprimée de la table",
+                "Le programme s'arrête avec un TypeError"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accéder à une clé absente d'un dictionnaire avec les crochets lève une exception KeyError."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle méthode de dictionnaire permet d'obtenir une valeur avec une valeur par défaut si la clé manque ?",
+              "options": [
+                "row.get('note', 0)",
+                "row.find('note', 0)",
+                "row.search('note', 0)",
+                "row.default('note', 0)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "dict.get(cle, defaut) renvoie la valeur associée ou la valeur par défaut sans provoquer d'erreur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment ajoute-t-on un nouvel enregistrement 'nouveau' à une table 'table' ?",
+              "options": [
+                "table.append(nouveau)",
+                "table.add(nouveau)",
+                "table.push(nouveau)",
+                "table.insert_row(nouveau)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque 'table' est une liste Python, on utilise la méthode native append()."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de lignes contient une table si len(table) renvoie 25 ?",
+              "options": [
+                "25 lignes",
+                "24 lignes",
+                "26 lignes",
+                "Impossible à savoir sans les colonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La longueur de la liste principale correspond au nombre d'enregistrements (lignes)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment modifier l'attribut 'ville' du deuxième élément d'une table ?",
+              "options": [
+                "table[1]['ville'] = 'Lyon'",
+                "table['ville'][1] = 'Lyon'",
+                "table[2]['ville'] = 'Lyon'",
+                "table.set('ville', 1, 'Lyon')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En Python, l'indice 1 désigne le deuxième élément de la liste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que désigne le terme 'descripteur' ou 'attribut' dans ce modèle ?",
+              "options": [
+                "Une clé présente dans les dictionnaires représentant une colonne",
+                "L'index numérique de la ligne",
+                "Le nom du fichier physique sur le disque",
+                "Le type de processeur exécutant le script"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque clé du dictionnaire correspond à un descripteur (ou attribut) de la table."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment supprime-t-on le premier enregistrement d'une table représentée par une liste ?",
+              "options": [
+                "del table[0]",
+                "delete table['premier']",
+                "table.clear(0)",
+                "table.remove_key(0)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'instruction del table[0] ou la méthode table.pop(0) retire le premier élément."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Représentation par liste de listes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les caractéristiques d'une table modélisée par une liste de listes ?",
+              "options": [
+                "L'accès aux données se fait par des indices numériques [i][j]",
+                "Elle est souvent plus compacte en mémoire qu'une liste de dictionnaires",
+                "Chaque sous-liste répète le nom des colonnes",
+                "Elle interdit le tri des lignes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une liste de listes utilise des indices entiers et n'a pas à stocker les clés dans chaque ligne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans table = [['Nom', 'Age'], ['Bob', 17]], que vaut table[1][0] ?",
+              "options": ["'Bob'", "'Nom'", "17", "'Age'"],
+              "correctAnswers": [0],
+              "explanation": "table[1] désigne la deuxième ligne ['Bob', 17], et [0] désigne le premier élément 'Bob'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que contient généralement table[0] dans une liste de listes issue d'un CSV avec en-tête ?",
+              "options": [
+                "La liste des noms de colonnes",
+                "Le premier enregistrement de données",
+                "Le nombre de lignes",
+                "Le type des variables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La ligne d'indice 0 correspond le plus souvent à la ligne d'en-tête (headers)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment isole-t-on les données sans l'en-tête à l'aide d'un découpage (slice) ?",
+              "options": ["table[1:]", "table[:1]", "table[0]", "table[:-1]"],
+              "correctAnswers": [0],
+              "explanation": "table[1:] extrait tous les éléments à partir de l'indice 1 jusqu'à la fin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le principal inconvénient d'une liste de listes par rapport à une liste de dictionnaires ?",
+              "options": [
+                "Il faut connaître l'indice numérique exact de chaque colonne",
+                "Elle ne supporte pas les chaînes de caractères",
+                "Elle est limitée à un maximum de 10 lignes",
+                "Python ne sait pas itérer dessus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans noms de clés, le code devient moins lisible car dépendant de l'ordre fixe des indices."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si 'Age' est à l'indice 2, comment afficher l'âge de chaque ligne dans 'donnees' ?",
+              "options": [
+                "for ligne in donnees: print(ligne[2])",
+                "for ligne in donnees: print(ligne['Age'])",
+                "for ligne in donnees: print(donnees[2])",
+                "print(donnees[:, 2])"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ligne[2] accède au troisième élément de chaque sous-liste."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle condition vérifie qu'une ligne 'ligne' a le bon nombre de colonnes attendu (ex: 4) ?",
+              "options": [
+                "len(ligne) == 4",
+                "ligne.length == 4",
+                "size(ligne) == 4",
+                "count(ligne) == 4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "len(ligne) renvoie le nombre d'éléments dans la sous-liste."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que renvoie [ligne[0] for ligne in table[1:]] ?",
+              "options": [
+                "La liste de toutes les valeurs de la première colonne (hors en-tête)",
+                "La première ligne complète de la table",
+                "Le premier caractère de chaque en-tête",
+                "Le nombre total de colonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette compréhension de liste extrait l'élément d'indice 0 de chaque ligne de données."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment créer une matrice vide de 3 lignes et 4 colonnes remplie de zéros en Python ?",
+              "options": [
+                "[[0 for _ in range(4)] for _ in range(3)]",
+                "[[0] * 3] * 4",
+                "list(3, 4, 0)",
+                "matrix(3, 4)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette compréhension crée 3 sous-listes distinctes contenant chacune 4 zéros."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la syntaxe [[0]*4]*3 est-elle déconseillée pour créer une table de données ?",
+              "options": [
+                "Elle duplique les références de la même sous-liste 3 fois",
+                "Elle génère une erreur de syntaxe immédiate",
+                "Elle alloue trop de mémoire vive",
+                "Elle empêche toute conversion de type"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modifier une case modifierait la même colonne dans toutes les lignes à cause des références partagées."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Projection de colonnes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies à propos de l'opération de projection d'une table ?",
+              "options": [
+                "Elle sélectionne un sous-ensemble des attributs (colonnes)",
+                "Elle conserve en principe le même nombre de lignes que la table de départ",
+                "Elle supprime les lignes qui ne respectent pas un critère numérique",
+                "Elle modifie obligatoirement l'ordre des lignes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La projection consiste à ne garder que certaines colonnes d'intérêt sans filtrer les lignes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En algèbre relationnelle et traitement de données, que filtre une projection ?",
+              "options": [
+                "Les colonnes (attributs)",
+                "Les lignes (enregistrements)",
+                "Les fichiers sur le disque",
+                "Les types de variables"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La projection opère verticalement en choisissant les colonnes voulues."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour une table de dictionnaires, quelle compréhension réalise la projection sur 'nom' et 'ville' ?",
+              "options": [
+                "[{'nom': r['nom'], 'ville': r['ville']} for r in table]",
+                "[r['nom'], r['ville'] for r in table]",
+                "{r['nom']: r['ville'] for r in table}",
+                "[r for r in table if r == 'nom']"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque dictionnaire résultat est recréé avec uniquement les clés cibles 'nom' et 'ville'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si une table contient 100 lignes et 8 colonnes, quel sera le format après une projection sur 3 colonnes ?",
+              "options": [
+                "100 lignes et 3 colonnes",
+                "3 lignes et 8 colonnes",
+                "37,5 lignes et 3 colonnes",
+                "100 lignes et 8 colonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La projection conserve le nombre d'enregistrements (100) mais réduit les colonnes à 3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment projeter une table de listes sur les colonnes d'indices 0 et 2 ?",
+              "options": [
+                "[[r[0], r[2]] for r in table]",
+                "[r[0, 2] for r in table]",
+                "[r[0:2] for r in table]",
+                "table[:, [0, 2]]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compréhension extrait une nouvelle sous-liste [r[0], r[2]] pour chaque ligne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle fonction Python permet de ne garder que les valeurs uniques d'une projection mono-colonne ?",
+              "options": ["set()", "unique()", "distinct()", "filter()"],
+              "correctAnswers": [0],
+              "explanation": "Convertir une liste en set() élimine automatiquement tous les doublons."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi réalise-t-on souvent une projection avant un traitement lourd ?",
+              "options": [
+                "Pour alléger la mémoire en éliminant les données inutiles",
+                "Pour corriger les fautes d'orthographe",
+                "Pour convertir le CSV en image",
+                "Pour trier les données par ordre décroissant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ne conserver que les attributs pertinents permet d'économiser de la mémoire et du temps de calcul."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que renvoie [r['prenom'] for r in table] si 'table' est une liste de dictionnaires ?",
+              "options": [
+                "Une liste contenant uniquement les prénoms",
+                "Un dictionnaire avec une seule clé 'prenom'",
+                "La table filtrée sans prénom",
+                "Une chaîne de caractères fusionnée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il s'agit d'une projection simple d'un seul attribut sous forme de liste de valeurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La projection modifie-t-elle le contenu des cellules projetées ?",
+              "options": [
+                "Non, elle copie ou extrait les valeurs sans les altérer",
+                "Oui, elle convertit tout en majuscules",
+                "Oui, elle arrondit tous les nombres",
+                "Oui, elle remplace les vides par 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La projection pure sélectionne les attributs sans transformer leurs valeurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL correspond exactement à la projection dans une requête de base de données ?",
+              "options": ["SELECT", "WHERE", "JOIN", "ORDER BY"],
+              "correctAnswers": [0],
+              "explanation": "La clause SELECT énumère les colonnes projetées (ex: SELECT nom, ville FROM table)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Sélection conditionnelle de lignes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formulations en Python sélectionnent correctement les lignes où l'âge dépasse 18 ans ?",
+              "options": [
+                "[r for r in table if r['age'] > 18]",
+                "list(filter(lambda r: r['age'] > 18, table))",
+                "[r['age'] > 18 for r in table]",
+                "[for r in table where r['age'] > 18]"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La compréhension avec 'if' et la fonction filter() avec une lambda permettent toutes deux de filtrer les lignes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En traitement de données, que fait l'opération de sélection (ou filtrage) ?",
+              "options": [
+                "Elle retient les lignes satisfaisant une condition booléenne",
+                "Elle supprime des colonnes de la table",
+                "Elle renomme les descripteurs",
+                "Elle inverse l'ordre des colonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sélection opère horizontalement en filtrant les enregistrements selon un prédicat."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que vaut la longueur de la table filtrée si aucune ligne ne valide la condition ?",
+              "options": ["0", "-1", "None", "Une exception est levée"],
+              "correctAnswers": [0],
+              "explanation": "Le résultat est une liste vide, dont la longueur len() vaut 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle clause SQL correspond à la sélection de lignes ?",
+              "options": ["WHERE", "SELECT", "GROUP BY", "FROM"],
+              "correctAnswers": [0],
+              "explanation": "La clause WHERE spécifie la condition de filtrage des lignes (ex: WHERE age > 18)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que produit [r for r in table if r['ville'] == 'Paris'] ?",
+              "options": [
+                "La liste de tous les enregistrements dont la ville est Paris",
+                "Une liste contenant uniquement le mot 'Paris'",
+                "Un booléen True si Paris existe dans la table",
+                "Le nombre d'habitants de Paris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est la syntaxe idiomatique en Python pour filtrer les dictionnaires sur la clé 'ville'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel opérateur d'égalité compare une valeur en Python dans une condition de sélection ?",
+              "options": ["==", "=", ":=", "equals"],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur de comparaison d'égalité est le double égal '=='."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi faut-il convertir '18' en entier avant de tester r['age'] > 18 sur un CSV brut ?",
+              "options": [
+                "Car comparer une chaîne et un nombre déclenche un TypeError en Python 3",
+                "Car les chaînes sont toujours négatives",
+                "Pour supprimer les espaces",
+                "Pour économiser la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En Python 3, comparer un type str et un type int avec '>' lève une exception TypeError."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment sélectionner les lignes dont le nom commence par la lettre 'M' ?",
+              "options": [
+                "[r for r in table if r['nom'].startswith('M')]",
+                "[r for r in table if r['nom'][1] == 'M']",
+                "[r for r in table if 'M' in r]",
+                "[r for r in table if r['nom'] == 'M*']"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode str.startswith('M') teste si la chaîne débute par le préfixe donné."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si la table initiale fait 50 lignes, que peut-on affirmer sur la taille de la table filtrée ?",
+              "options": [
+                "Elle contient entre 0 et 50 lignes",
+                "Elle contient obligatoirement 25 lignes",
+                "Elle contient au moins 50 lignes",
+                "Elle contient strictement plus de 50 lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une sélection ne peut jamais créer de nouvelles lignes ; sa taille est au plus égale à l'originale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment tester qu'une valeur n'est pas nulle/vide : r['email'] non vide ?",
+              "options": [
+                "r['email'] != ''",
+                "r['email'] == 0",
+                "r['email'] is False",
+                "r['email'].empty()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tester r['email'] != '' vérifie que la chaîne n'est pas vide."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Filtres avec opérateurs logiques (AND, OR, NOT)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels opérateurs logiques natifs de Python permettent de combiner des critères de filtrage ?",
+              "options": ["and", "or", "not", "xor"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "En Python, les opérateurs logiques fondamentaux s'écrivent en toutes lettres : and, or et not."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle condition retient les personnes majeures (>= 18) ET habitant à Nantes ?",
+              "options": [
+                "r['age'] >= 18 and r['ville'] == 'Nantes'",
+                "r['age'] >= 18 or r['ville'] == 'Nantes'",
+                "r['age'] >= 18 & r['ville'] == 'Nantes'",
+                "r['age'] >= 18, r['ville'] == 'Nantes'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mot-clé 'and' impose la validation simultanée des deux prédicats."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quand l'expression (condition1 or condition2) est-elle vraie ?",
+              "options": [
+                "Dès qu'au moins l'une des deux conditions est vraie",
+                "Uniquement si les deux conditions sont vraies",
+                "Uniquement si les deux conditions sont fausses",
+                "Si la première condition est fausse et la seconde inconnue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur 'or' est un OU inclusif : il suffit qu'une condition soit vraie."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie not (r['statut'] == 'archive') ?",
+              "options": [
+                "Le statut n'est pas égal à 'archive'",
+                "Le statut est obligatoirement égal à 'archive'",
+                "La clé statut n'existe pas",
+                "Le dictionnaire est archivé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'not' inverse la valeur de vérité de l'expression booléenne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment écrire de façon compacte qu'une note est comprise entre 10 et 20 inclus en Python ?",
+              "options": [
+                "10 <= r['note'] <= 20",
+                "r['note'] between 10 and 20",
+                "10 <= r['note'] and <= 20",
+                "r['note'] in [10..20]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Python autorise le chaînage d'inégalités : 10 <= x <= 20."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment sélectionner les lignes dont le pays est 'FR', 'BE' ou 'CH' ?",
+              "options": [
+                "r['pays'] in ['FR', 'BE', 'CH']",
+                "r['pays'] == ['FR', 'BE', 'CH']",
+                "r['pays'] contains ('FR', 'BE', 'CH')",
+                "r['pays'] is ('FR' or 'BE' or 'CH')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur 'in' teste l'appartenance à une collection de valeurs autorisées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle loi de De Morgan est équivalente à not (A and B) ?",
+              "options": [
+                "(not A) or (not B)",
+                "(not A) and (not B)",
+                "A or B",
+                "not (A or B)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon les lois de De Morgan, la négation d'une conjonction est la disjonction des négations."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si la première condition d'un 'and' est False en Python ?",
+              "options": [
+                "La seconde condition n'est pas évaluée (court-circuit)",
+                "Une erreur de syntaxe est levée",
+                "La seconde condition est évaluée deux fois",
+                "Le programme s'interrompt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évaluation paresseuse (court-circuit) évite d'évaluer la suite dès que le résultat global est certain."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi utilise-t-on des parenthèses dans : (C1 and C2) or C3 ?",
+              "options": [
+                "Pour expliciter l'ordre de priorité des évaluations logiques",
+                "Parce que Python refuse d'exécuter sans parenthèses",
+                "Pour convertir le résultat en tuple",
+                "Pour accélérer la vitesse du compilateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les parenthèses lèvent toute ambiguïté sur la précédence entre 'and' et 'or'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle syntaxe exclut les lignes où le champ 'classe' vaut 'Terminale' ?",
+              "options": [
+                "r['classe'] != 'Terminale'",
+                "r['classe'] not 'Terminale'",
+                "r['classe'] <> 'Terminale'",
+                "r['classe'] !== 'Terminale'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur de différence en Python est '!='."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Tri d'une table et clés de tri",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont exactes concernant la fonction sorted() en Python ?",
+              "options": [
+                "Elle renvoie une nouvelle liste triée sans modifier l'originale",
+                "Elle accepte un argument 'key' pour définir la fonction d'extraction",
+                "Elle détruit obligatoirement la liste d'origine",
+                "Elle est réservée exclusivement aux entiers"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "sorted() crée une nouvelle liste triée et prend les paramètres key et reverse."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle méthode trie une liste 'table' en place (directement en mémoire) ?",
+              "options": [
+                "table.sort()",
+                "table.sorted()",
+                "table.order()",
+                "table.arrange()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode list.sort() modifie la liste sur place et renvoie None."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment trier une table de dictionnaires selon la clé 'age' par ordre croissant ?",
+              "options": [
+                "sorted(table, key=lambda r: r['age'])",
+                "sorted(table, key='age')",
+                "table.sort('age')",
+                "sorted(table['age'])"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le paramètre key attend une fonction qui extrait la valeur de comparaison de chaque élément."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel paramètre booléen permet d'effectuer un tri par ordre décroissant ?",
+              "options": [
+                "reverse=True",
+                "descending=True",
+                "order='desc'",
+                "inverse=True"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'argument standard en Python est reverse=True (par défaut False)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie la stabilité d'un algorithme de tri (comme Timsort en Python) ?",
+              "options": [
+                "L'ordre relatif initial des éléments ayant la même clé est préservé",
+                "Le tri ne consomme jamais plus de 1 Ko de mémoire",
+                "Le tri s'exécute toujours en moins de 1 seconde",
+                "Les doublons sont automatiquement éliminés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tri stable conserve la position relative des éléments considérés comme égaux."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment trier d'abord par 'ville' puis par 'nom' pour départager ?",
+              "options": [
+                "sorted(table, key=lambda r: (r['ville'], r['nom']))",
+                "sorted(table, key=[r['ville'], r['nom']])",
+                "sorted(table, key='ville' and 'nom')",
+                "sorted(sorted(table, 'ville'), 'nom')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Renvoyer un tuple (cle1, cle2) applique un ordre lexicographique naturel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il lors du tri alphabétique des chaînes '10', '2', '100' ?",
+              "options": [
+                "L'ordre obtenu est '10', '100', '2'",
+                "L'ordre obtenu est '2', '10', '100'",
+                "Une erreur de conversion survient",
+                "L'ordre est aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre lexicographique compare caractère par caractère : '1' vient avant '2'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment forcer un tri numérique sur une colonne contenant des chaînes de chiffres ?",
+              "options": [
+                "key=lambda r: int(r['score'])",
+                "key=lambda r: str(r['score'])",
+                "numeric=True",
+                "convert='int'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convertir la valeur en int dans la fonction de clé permet une comparaison arithmétique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle clause SQL correspond au tri d'une table ?",
+              "options": ["ORDER BY", "SORT BY", "GROUP BY", "ARRANGE BY"],
+              "correctAnswers": [0],
+              "explanation": "En SQL, le tri s'effectue via ORDER BY nom_colonne [ASC|DESC]."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle fonction du module operator remplace avantageusement lambda r: r['age'] ?",
+              "options": [
+                "operator.itemgetter('age')",
+                "operator.attrgetter('age')",
+                "operator.keygetter('age')",
+                "operator.dictgetter('age')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "itemgetter('age') est une fonction compilée très efficace pour extraire un champ."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Recherche dans une table",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies pour la recherche séquentielle dans une table non triée ?",
+              "options": [
+                "Elle parcourt les éléments du début jusqu'à trouver la cible ou la fin",
+                "Sa complexité temporelle dans le pire des cas est linéaire en O(n)",
+                "Elle nécessite que les données soient préalablement triées",
+                "Elle s'exécute toujours en un nombre constant O(1) d'opérations"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La recherche séquentielle examine chaque ligne une à une et s'applique sur toute table, triée ou non."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle boucle parcourt les enregistrements pour trouver le premier élément vérifiant un test ?",
+              "options": [
+                "for ligne in table: if condition: return ligne",
+                "while table: delete ligne",
+                "for ligne in table: return table",
+                "search ligne in table: break"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une boucle for avec un return immédiat dès détection permet de stopper la recherche."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que doit renvoyer conventionnellement une fonction de recherche si l'élément n'existe pas ?",
+              "options": [
+                "None",
+                "False",
+                "-1 obligatoire",
+                "Une boucle infinie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "None est la valeur sentinelle standard en Python pour signifier l'absence de résultat."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle fonction Python native trouve le premier élément d'un itérateur avec une valeur par défaut ?",
+              "options": [
+                "next((r for r in table if condition), None)",
+                "first(table, condition)",
+                "find(table, condition)",
+                "locate(table, condition)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "next(generateur, defaut) est une façon élégante et performante de récupérer le premier match."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de comparaisons au maximum effectue une recherche linéaire sur une table de 10 000 lignes ?",
+              "options": ["10 000", "100", "14", "1"],
+              "correctAnswers": [0],
+              "explanation": "Dans le pire des cas (élément absent ou en dernière position), on examine les 10 000 lignes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment tester si au moins une personne s'appelle 'Alice' dans la table ?",
+              "options": [
+                "any(r['nom'] == 'Alice' for r in table)",
+                "all(r['nom'] == 'Alice' for r in table)",
+                "table.has('Alice')",
+                "exists(table, 'Alice')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "any() renvoie True dès qu'au moins un élément satisfait la condition."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment vérifier que tous les élèves ont une note supérieure ou égale à 10 ?",
+              "options": [
+                "all(r['note'] >= 10 for r in table)",
+                "any(r['note'] >= 10 for r in table)",
+                "every(r['note'] >= 10 for r in table)",
+                "sum(r['note'] >= 10 for r in table) == 10"
+              ],
+              "correctAnswers": [0],
+              "explanation": "all() vérifie que la condition est vraie pour chaque élément de la table."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est l'utilité du mot-clé 'break' dans une boucle de recherche ?",
+              "options": [
+                "Interrompre immédiatement la boucle une fois l'élément trouvé",
+                "Relancer la recherche depuis le début",
+                "Supprimer l'élément trouvé",
+                "Fermer le fichier CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "break évite de parcourir inutilement le reste de la table après avoir trouvé la cible."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur une table triée selon un identifiant numérique, quel algorithme plus rapide peut-on appliquer ?",
+              "options": [
+                "La recherche dichotomique (en O(log n))",
+                "Le tri à bulles",
+                "Le parcours en profondeur",
+                "La recherche aléatoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dichotomie divise par deux l'espace de recherche à chaque étape si la table est triée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle structure de données permettrait une recherche en O(1) par identifiant unique ?",
+              "options": [
+                "Un dictionnaire indexé par identifiant",
+                "Une liste simplement chaînée",
+                "Un fichier texte brut",
+                "Une pile LIFO"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indexer la table dans un dictionnaire avec l'id en clé assure un accès instantané par hachage."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Gestion des types et conversions",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions Python natives utilise-t-on pour convertir des chaînes CSV en types appropriés ?",
+              "options": [
+                "int() pour les entiers",
+                "float() pour les nombres réels décimaux",
+                "cast() pour tout type",
+                "convert() pour les chaînes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "int('42') et float('3.14') sont les fonctions de transtypage standard en Python."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que renvoie l'évaluation de '12' + '5' en Python ?",
+              "options": [
+                "'125' (concaténation de chaînes)",
+                "17 (addition arithmétique)",
+                "Une erreur de type",
+                "60 (multiplication implicite)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans conversion, le symbole '+' concatène les deux chaînes de caractères."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si on exécute int('douze') en Python ?",
+              "options": [
+                "Python lève une ValueError",
+                "Python renvoie 12",
+                "Python renvoie None",
+                "Python renvoie 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "int() déclenche une ValueError lorsque le texte ne représente pas un entier valide."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment gérer une virgule décimale française '14,5' issue d'un CSV avant conversion en float ?",
+              "options": [
+                "float('14,5'.replace(',', '.'))",
+                "float('14,5')",
+                "int('14,5')",
+                "'14,5'.to_float()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En Python, le point est le séparateur décimal ; il faut remplacer la virgule par un point."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle conversion booléenne est correcte pour un champ texte 'True' ou 'False' ?",
+              "options": [
+                "r['actif'] == 'True'",
+                "bool(r['actif'])",
+                "int(r['actif'])",
+                "r['actif'].to_boolean()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "bool('False') vaut True en Python car la chaîne est non vide ! Il faut comparer explicitement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi nettoyer et typer les données (data cleaning) dès la lecture du CSV ?",
+              "options": [
+                "Pour fiabiliser les calculs, tris et comparaisons ultérieurs",
+                "Pour réduire la taille physique du disque dur",
+                "Pour empêcher l'affichage dans la console",
+                "Pour chiffrer le mot de passe utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avoir des types adéquats (int, float, date) est indispensable pour des opérations mathématiques correctes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle méthode supprime les espaces superflus au début et à la fin d'une chaîne lue ?",
+              "options": [
+                "texte.strip()",
+                "texte.clean()",
+                "texte.trim_spaces()",
+                "texte.remove()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "str.strip() retire les espaces, tabulations et retours à la ligne aux extrémités."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle structure try / except permet d'éviter le plantage lors d'une conversion ?",
+              "options": [
+                "try: v = int(x) except ValueError: v = None",
+                "try: v = int(x) catch: v = None",
+                "attempt: v = int(x) rescue: v = None",
+                "if int(x): v = int(x)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bloc try ... except ValueError intercepte les échecs de conversion proprement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel type de données Python est le plus adapté pour représenter une date '2024-05-18' ?",
+              "options": ["datetime.date", "float", "complex", "bytearray"],
+              "correctAnswers": [0],
+              "explanation": "Le module datetime fournit des objets date permettant des comparaisons chronologiques fiables."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment convertir en place l'âge en entier pour toutes les lignes d'une table de dictionnaires ?",
+              "options": [
+                "for r in table: r['age'] = int(r['age'])",
+                "table['age'] = int(table['age'])",
+                "convert(table, 'age', int)",
+                "table.map('age', int)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On itère sur chaque dictionnaire et on réaffecte la clé avec sa valeur entière."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Agrégation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Calcul d'effectifs et comptage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles méthodes permettent de compter les occurrences de chaque valeur d'une colonne en Python ?",
+              "options": [
+                "Utiliser la classe collections.Counter",
+                "Itérer avec un dictionnaire d'effectifs {valeur: compteur}",
+                "Faire la somme des noms de colonnes",
+                "Supprimer toutes les lignes paires"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "collections.Counter ou une boucle de comptage avec un dictionnaire standard sont les deux méthodes classiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle fonction Python intégrée donne le nombre total d'enregistrements d'une table modélisée en liste ?",
+              "options": [
+                "len(table)",
+                "count(table)",
+                "size(table)",
+                "table.length()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "len() renvoie la taille de n'importe quelle séquence en Python."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment compter le nombre d'élèves ayant plus de 15 de moyenne ?",
+              "options": [
+                "sum(1 for r in table if r['moyenne'] > 15)",
+                "count(r['moyenne'] > 15 for r in table)",
+                "len(r['moyenne'] > 15)",
+                "table.count_where('moyenne' > 15)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La somme de 1 pour chaque ligne validant la condition compte exactement les occurrences."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que fait d[valeur] = d.get(valeur, 0) + 1 dans un algorithme de dénombrement ?",
+              "options": [
+                "Il incrémente le compteur de la valeur en l'initialisant à 0 si elle n'existait pas",
+                "Il réinitialise le dictionnaire à zéro",
+                "Il crée une copie de la table",
+                "Il supprime les doublons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "d.get(valeur, 0) renvoie 0 si la clé est absente, permettant un comptage robuste sans exception."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle fonction d'agrégation SQL correspond au comptage des lignes ?",
+              "options": ["COUNT(*)", "TOTAL()", "SUM()", "NUMBER()"],
+              "correctAnswers": [0],
+              "explanation": "COUNT(*) compte le nombre total de lignes renvoyées par la requête."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment compter le nombre de valeurs distinctes d'une colonne 'ville' ?",
+              "options": [
+                "len(set(r['ville'] for r in table))",
+                "count(unique(table['ville']))",
+                "len(table['ville'])",
+                "set(len(r['ville']) for r in table)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "set() élimine les doublons, puis len() compte le nombre de modalités uniques."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que renvoie sum(True, False, True) ou sum([r['reussi'] for r in table]) en Python ?",
+              "options": [
+                "Le nombre de lignes où la valeur booléenne est True",
+                "Une erreur de type",
+                "Un booléen True",
+                "La concaténation des valeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En Python, le type bool hérite de int : True vaut 1 et False vaut 0."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une table de fréquences, que représente la fréquence d'une modalité ?",
+              "options": [
+                "L'effectif de la modalité divisé par l'effectif total",
+                "Le carré de l'effectif",
+                "Le nombre de colonnes associées",
+                "L'indice de la première ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fréquence est la proportion : effectif partiel / effectif total."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle méthode de liste compte le nombre d'occurrences d'un élément précis dans une liste simple ?",
+              "options": [
+                "ma_liste.count(element)",
+                "ma_liste.tally(element)",
+                "ma_liste.occurrences(element)",
+                "ma_liste.freq(element)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode list.count(val) compte le nombre d'apparitions de val."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel dictionnaire de la bibliothèque standard initialise automatiquement les nouvelles clés à 0 ?",
+              "options": [
+                "defaultdict(int)",
+                "AutoDict()",
+                "CounterDict()",
+                "ZeroDict()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "collections.defaultdict(int) attribue la valeur par défaut int() (qui vaut 0) à toute nouvelle clé."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Somme et cumul de valeurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles syntaxes calculent la somme des montants dans une liste de dictionnaires ?",
+              "options": [
+                "sum(r['montant'] for r in table)",
+                "sum([r['montant'] for r in table])",
+                "table.sum('montant')",
+                "sum(table['montant'])"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "sum() accepte une expression génératrice ou une liste issue d'une compréhension."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle fonction Python native calcule la somme d'une séquence de nombres ?",
+              "options": ["sum()", "total()", "add()", "sigma()"],
+              "correctAnswers": [0],
+              "explanation": "La fonction native de base est sum(iterable)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que vaut sum([]) sur une liste vide par défaut en Python ?",
+              "options": ["0", "None", "Une exception est levée", "NaN"],
+              "correctAnswers": [0],
+              "explanation": "sum() renvoie la valeur de départ 'start', qui est 0 par défaut."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment initialiser un accumulateur pour calculer la somme dans une boucle for ?",
+              "options": [
+                "total = 0",
+                "total = None",
+                "total = []",
+                "total = 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "0 est l'élément neutre de l'addition arithmétique."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle fonction du module itertools permet de calculer les sommes cumulées successives d'une série ?",
+              "options": [
+                "itertools.accumulate()",
+                "itertools.cum_sum()",
+                "itertools.progressive()",
+                "itertools.running_total()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "itertools.accumulate() renvoie les sommes partielles cumulées successives."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle fonction d'agrégation SQL correspond au calcul de somme ?",
+              "options": ["SUM()", "ADD()", "TOTAL()", "PLUS()"],
+              "correctAnswers": [0],
+              "explanation": "La fonction SQL standard est SUM(nom_colonne)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si une case contient la chaîne '20' lors de l'appel à sum() sans conversion ?",
+              "options": [
+                "Une exception TypeError est levée",
+                "Le texte est automatiquement converti en entier",
+                "La chaîne est ignorée",
+                "Le résultat vaut 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sum() ne peut pas additionner un entier (0) et une chaîne de caractères (str)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment calculer la somme des salaires uniquement pour le département 'R&D' ?",
+              "options": [
+                "sum(r['salaire'] for r in table if r['dept'] == 'R&D')",
+                "sum(r['salaire'] if r['dept'] == 'R&D' for r in table)",
+                "table.filter('R&D').sum('salaire')",
+                "sum(table['dept' == 'R&D']['salaire'])"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On filtre les éléments dans l'expression génératrice avant de les sommer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel module standard permet d'éviter les erreurs d'arrondi sur les flottants lors de grands cumuls ?",
+              "options": [
+                "math.fsum()",
+                "math.sum_exact()",
+                "math.accurate()",
+                "math.real_sum()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "math.fsum() conserve la précision maximale en virgule flottante pour éviter la perte de précision."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle complexité temporelle a le calcul de la somme d'une colonne de n lignes ?",
+              "options": ["O(n)", "O(log n)", "O(n^2)", "O(1)"],
+              "correctAnswers": [0],
+              "explanation": "Il faut parcourir chaque ligne une seule fois, d'où une complexité linéaire en O(n)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Calcul de moyenne et arrondi",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles conditions sont nécessaires pour calculer la moyenne d'une colonne ?",
+              "options": [
+                "La table ne doit pas être vide (éviter la division par zéro)",
+                "Les valeurs doivent être converties en types numériques (int ou float)",
+                "Toutes les valeurs doivent être strictement positives",
+                "Les données doivent être préalablement triées"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Calculer une moyenne exige des nombres et un effectif non nul pour éviter ZeroDivisionError."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle formule arithmétique définit la moyenne d'une série de valeurs ?",
+              "options": [
+                "La somme des valeurs divisée par l'effectif total",
+                "La valeur maximale moins la valeur minimale",
+                "Le produit des valeurs divisé par l'effectif",
+                "La valeur qui sépare la série en deux parts égales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La moyenne arithmétique est le quotient de la somme par le nombre d'éléments."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment calcule-t-on la moyenne des notes contenues dans une liste 'notes' non vide ?",
+              "options": [
+                "sum(notes) / len(notes)",
+                "sum(notes) // len(notes)",
+                "avg(notes)",
+                "mean(notes) / 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur '/' réalise la division décimale entre sum() et len()."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel module standard de Python propose directement une fonction mean() ?",
+              "options": ["statistics", "math", "numbers", "calc"],
+              "correctAnswers": [0],
+              "explanation": "Le module 'statistics' fournit statistics.mean(), statistics.median(), etc."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle fonction native arrondit un flottant à 2 décimales en Python ?",
+              "options": [
+                "round(valeur, 2)",
+                "math.floor(valeur, 2)",
+                "valeur.round(2)",
+                "format_round(valeur, 2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "round(nombre, n) arrondit au nombre de décimales n spécifié."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle fonction d'agrégation SQL calcule la moyenne ?",
+              "options": ["AVG()", "MEAN()", "AVERAGE()", "MOYENNE()"],
+              "correctAnswers": [0],
+              "explanation": "En langage SQL, la fonction standard est AVG(colonne)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle erreur survient si on exécute sum(table) / len(table) alors que table est vide ?",
+              "options": [
+                "ZeroDivisionError",
+                "ValueError",
+                "IndexError",
+                "OverflowError"
+              ],
+              "correctAnswers": [0],
+              "explanation": "len(table) valant 0, la division par zéro déclenche une ZeroDivisionError."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment calculer une moyenne pondérée où chaque ligne a une 'valeur' et un 'coef' ?",
+              "options": [
+                "sum(r['valeur'] * r['coef'] for r in table) / sum(r['coef'] for r in table)",
+                "sum(r['valeur'] * r['coef'] for r in table) / len(table)",
+                "sum(r['valeur'] for r in table) / sum(r['coef'] for r in table)",
+                "(sum(r['valeur']) + sum(r['coef'])) / 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La moyenne pondérée est la somme des produits valeur*coefficient divisée par la somme des coefficients."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la particularité de round(2.5) en Python 3 (arrondi bancaire) ?",
+              "options": [
+                "Il arrondit à l'entier pair le plus proche (renvoie 2)",
+                "Il arrondit toujours à l'entier supérieur (renvoie 3)",
+                "Il renvoie toujours 2.0",
+                "Il provoque une erreur de précision"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Python 3 utilise l'arrondi bancaire ('round half to even') : 2.5 devient 2 et 3.5 devient 4."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle formule formate un nombre avec 2 chiffres après la virgule dans un f-string ?",
+              "options": [
+                "f\"{moyenne:.2f}\"",
+                "f\"{moyenne, 2}\"",
+                "f\"{round:2:moyenne}\"",
+                "f\"{moyenne.decimals(2)}\""
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le spécificateur de format .2f formate un flottant avec exactement 2 décimales."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Recherche de minimum et maximum",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions Python natives trouvent les valeurs extrêmes d'un itérable ?",
+              "options": ["min()", "max()", "extremum()", "limit()"],
+              "correctAnswers": [0, 1],
+              "explanation": "min() et max() sont les deux fonctions intégrées universelles en Python."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment obtenir l'enregistrement complet de la personne la plus âgée d'une table ?",
+              "options": [
+                "max(table, key=lambda r: r['age'])",
+                "max(table['age'])",
+                "table.max('age')",
+                "max(r['age'] for r in table)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En passant key=lambda r: r['age'], max() compare selon l'âge et renvoie le dictionnaire complet."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que renvoie max(table, key=lambda r: r['score']) si la table est vide sans valeur par défaut ?",
+              "options": ["Une exception ValueError", "None", "0", "-1"],
+              "correctAnswers": [0],
+              "explanation": "Appeler min() ou max() sur un itérable vide déclenche une ValueError."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel paramètre de min() évite de lever une exception sur un itérable vide ?",
+              "options": [
+                "default=None",
+                "catch=True",
+                "safe=True",
+                "empty=None"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'argument 'default' spécifie la valeur à renvoyer si la collection est vide (ex: min([], default=None))."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel algorithme classique trouve le maximum en parcourant une liste non vide ?",
+              "options": [
+                "Initialiser le max au 1er élément, puis comparer à chaque élément suivant",
+                "Trier deux fois la liste",
+                "Additionner tous les éléments",
+                "Prendre le dernier élément de la liste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'algorithme glouton retient le plus grand élément rencontré au cours du parcours séquentiel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Combien de comparaisons effectue cet algorithme sur une table de n lignes ?",
+              "options": [
+                "n - 1 comparaisons",
+                "n * (n - 1) / 2 comparaisons",
+                "log2(n) comparaisons",
+                "1 comparaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le premier élément sert de pivot initial, on le compare ensuite aux n - 1 éléments restants."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelles fonctions SQL correspondent à la recherche des bornes extrêmes ?",
+              "options": [
+                "MIN() et MAX()",
+                "LEAST() et GREATEST()",
+                "LOW() et HIGH()",
+                "BOTTOM() et TOP()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "MIN() et MAX() sont les fonctions d'agrégation standard du langage SQL."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que calcule l'expression max(valeurs) - min(valeurs) en statistique ?",
+              "options": [
+                "L'étendue (ou plage de variation)",
+                "La variance",
+                "L'écart-type",
+                "La médiane"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'étendue statistique est la différence entre la valeur maximale et la valeur minimale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment trouver le mot le plus long dans une liste de chaînes ?",
+              "options": [
+                "max(mots, key=len)",
+                "max(mots)",
+                "mots.longest()",
+                "max(mots.length)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En fournissant key=len, max() compare les chaînes selon leur longueur plutôt que l'ordre alphabétique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle valeur initiale pour l'accumulateur permet de chercher un minimum sans premier élément ?",
+              "options": ["float('inf')", "0", "-1", "float('-inf')"],
+              "correctAnswers": [0],
+              "explanation": "L'infini positif float('inf') est strictement supérieur à n'importe quel nombre réel."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Regroupement par modalité (Group By)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les objectifs d'une opération de regroupement (Group By) sur une table ?",
+              "options": [
+                "Partitionner les enregistrements ayant la même valeur pour un attribut",
+                "Appliquer ensuite des calculs d'agrégation (somme, moyenne, comptage) par groupe",
+                "Supprimer définitivement la table du disque",
+                "Inverser l'encodage UTF-8 en ASCII"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le regroupement rassemble les lignes par catégories pour calculer des statistiques par groupe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle structure Python naturelle permet de stocker les lignes regroupées par 'ville' ?",
+              "options": [
+                "Un dictionnaire de listes {ville: [lignes]}",
+                "Une liste de booléens",
+                "Un ensemble de chaînes",
+                "Un entier unique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque clé est une ville et la valeur associée est la liste des enregistrements de cette ville."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle classe de collections facilite le regroupement sans tester l'existence de la clé ?",
+              "options": [
+                "defaultdict(list)",
+                "OrderedDict()",
+                "deque()",
+                "ChainMap()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "defaultdict(list) crée automatiquement une liste vide dès qu'une nouvelle modalité est rencontrée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle clause SQL permet de partitionner les résultats selon une ou plusieurs colonnes ?",
+              "options": ["GROUP BY", "PARTITION", "SPLIT BY", "CLUSTER BY"],
+              "correctAnswers": [0],
+              "explanation": "GROUP BY est la clause SQL universelle pour grouper des lignes de données."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment regrouper les données d'une table avec une boucle manuelle dans groupes = {} ?",
+              "options": [
+                "for r in table: cle = r['ville']; groupes.setdefault(cle, []).append(r)",
+                "for r in table: groupes[r['ville']] = r",
+                "for r in table: groupes.append(r['ville'])",
+                "groupes = table.group('ville')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "dict.setdefault(cle, []).append(r) initialise la liste si nécessaire puis y ajoute la ligne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle fonction du module itertools regroupe les éléments consécutifs ayant la même clé ?",
+              "options": [
+                "itertools.groupby()",
+                "itertools.cluster()",
+                "itertools.partition()",
+                "itertools.segment()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "itertools.groupby() regroupe les éléments consécutifs (nécessite un tri préalable)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la table doit-elle être préalablement triée sur la clé avant d'utiliser itertools.groupby() ?",
+              "options": [
+                "Car il ne regroupe que les éléments identiques consécutifs",
+                "Parce que le tri alloue la mémoire nécessaire",
+                "Pour supprimer les doublons",
+                "Pour convertir les données en nombres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "itertools.groupby() interrompt le groupe en cours dès qu'une clé différente apparaît."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle clause SQL permet de filtrer les groupes après agrégation (ex: effectif > 5) ?",
+              "options": ["HAVING", "WHERE", "FILTER", "CHECK"],
+              "correctAnswers": [0],
+              "explanation": "WHERE filtre les lignes individuelles avant agrégation, tandis que HAVING filtre les groupes formés."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si on calcule la moyenne par groupe, que contiendra la table finale synthétique ?",
+              "options": [
+                "Une ligne par groupe avec la clé et sa moyenne",
+                "Toutes les lignes de départ intactes",
+                "Une seule valeur globale",
+                "Une matrice vide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'agrégation par groupe produit un tableau récapitulatif condensé à une ligne par modalité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment obtenir la liste de toutes les modalités d'un groupe stocké dans d = {'Paris': [...], 'Lyon': [...]} ?",
+              "options": [
+                "list(d.keys())",
+                "d.groups()",
+                "list(d.values())",
+                "d.all_categories()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les clés du dictionnaire correspondent exactement aux modalités uniques de regroupement."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Principe de la jointure de tables",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les principes d'une opération de jointure entre deux tables ?",
+              "options": [
+                "Associer les lignes de deux tables qui partagent une valeur commune",
+                "Combiner les attributs des deux tables dans une nouvelle table résultat",
+                "Effacer obligatoirement la première table du système",
+                "Multiplier aveuglément les identifiants numériques"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La jointure fusionne des enregistrements complémentaires basés sur la concordance d'un attribut commun."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans une jointure interne (INNER JOIN), que deviennent les lignes sans correspondance dans l'autre table ?",
+              "options": [
+                "Elles sont exclues du résultat final",
+                "Elles sont complétées par des zéros",
+                "Elles provoquent une erreur critique",
+                "Elles sont dupliquées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La jointure interne ne retient que les paires de lignes dont la clé concorde dans les deux tables."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment nomme-t-on l'attribut servant de critère d'association entre deux tables ?",
+              "options": [
+                "La clé de jointure",
+                "Le marqueur temporel",
+                "L'en-tête dynamique",
+                "La constante d'intégrité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clé de jointure est l'attribut (ou ensemble d'attributs) sur lequel porte la condition d'égalité."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL effectue une jointure entre deux tables ?",
+              "options": ["JOIN", "MERGE", "COMBINE", "CONCAT"],
+              "correctAnswers": [0],
+              "explanation": "Le mot-clé standard en SQL est JOIN (ex: tableA JOIN tableB ON tableA.id = tableB.id)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment fusionner deux dictionnaires d1 et d2 en Python 3.9+ pour former une ligne jointe ?",
+              "options": ["d1 | d2", "d1 + d2", "d1 & d2", "merge(d1, d2)"],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur '|' fusionne deux dictionnaires en un nouveau combinant toutes les clés."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si un attribut de même nom existe dans les deux tables avec des valeurs différentes ?",
+              "options": [
+                "L'un risque d'écraser l'autre sans préfixage ou renommage préalable",
+                "Python crée une liste automatique des deux valeurs",
+                "L'interpréteur s'arrête immédiatement",
+                "Le fichier CSV se corrompt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il est nécessaire de renommer ou préfixer les attributs homonymes (ex: table1_nom, table2_nom)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de lignes peut produire une jointure si chaque ligne de A matche avec 2 lignes de B ?",
+              "options": [
+                "Deux fois le nombre de lignes de A",
+                "La moitié du nombre de lignes de A",
+                "Le même nombre de lignes que A",
+                "Aucune ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque correspondance génère une ligne distincte dans la table fusionnée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel type de jointure conserve toutes les lignes de la table de gauche, même sans correspondance ?",
+              "options": [
+                "LEFT JOIN (ou jointure externe gauche)",
+                "INNER JOIN",
+                "RIGHT JOIN",
+                "CROSS JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le LEFT JOIN conserve l'intégralité de la table gauche et remplit les attributs manquants par None/NULL."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi découpe-t-on les données en plusieurs tables reliées plutôt qu'en une seule table géante ?",
+              "options": [
+                "Pour éviter les redondances et limiter les risques d'incohérence",
+                "Pour ralentir volontairement les calculs",
+                "Pour pouvoir afficher plus de 256 couleurs",
+                "Pour rendre les données inaccessibles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La décomposition en tables spécialisées évite la duplication d'informations identiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la clause SQL qui explicite la condition d'égalité de la jointure ?",
+              "options": ["ON", "USING_EQUAL", "WITH", "FOR"],
+              "correctAnswers": [0],
+              "explanation": "La clause ON précise la condition d'égalité (ex: ON clients.id = commandes.client_id)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Clés primaires et clés étrangères",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les propriétés fondamentales d'une clé primaire dans une table relationnelle ?",
+              "options": [
+                "Elle identifie de manière unique chaque enregistrement",
+                "Elle ne peut pas contenir de valeur nulle (None / NULL)",
+                "Elle doit obligatoirement changer de valeur à chaque seconde",
+                "Elle doit contenir uniquement des lettres minuscules"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Une clé primaire garantit l'unicité stricte de chaque ligne et l'absence de valeur indéfinie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une clé étrangère dans une table ?",
+              "options": [
+                "Un attribut qui référence la clé primaire d'une autre table",
+                "Une clé écrite dans une langue étrangère",
+                "Une clé secrète pour déchiffrer les données",
+                "Un attribut qui ne peut contenir que des zéros"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clé étrangère crée un lien relationnel en pointant vers la clé primaire d'une table cible."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que garantit la contrainte d'intégrité référentielle ?",
+              "options": [
+                "Toute valeur de clé étrangère doit correspondre à une clé primaire existante",
+                "Toutes les tables doivent avoir le même nombre de lignes",
+                "Le fichier CSV doit être encodé en UTF-16",
+                "Les colonnes doivent être triées par ordre alphabétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'intégrité référentielle empêche d'avoir des références orphelines vers des enregistrements inexistants."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Parmi les exemples suivants, lequel constitue une excellente clé primaire ?",
+              "options": [
+                "Un numéro d'identifiant unique (ID client)",
+                "Le prénom d'une personne",
+                "La ville de résidence",
+                "La couleur des yeux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un prénom ou une ville présente de nombreux doublons (homonymes) et ne peut garantir l'unicité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment vérifier en Python qu'une colonne 'id' n'a aucun doublon dans 'table' ?",
+              "options": [
+                "len(table) == len(set(r['id'] for r in table))",
+                "table.has_no_duplicates('id')",
+                "sum(r['id'] for r in table) == len(table)",
+                "all(r['id'] == 1 for r in table)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le nombre d'éléments uniques dans le set() égale la longueur de la table, aucun doublon n'existe."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que désigne une 'clé primaire composite' ?",
+              "options": [
+                "Une clé primaire formée de l'association de plusieurs attributs",
+                "Une clé primaire calculée par une IA",
+                "Une clé primaire qui change à chaque requête",
+                "Une clé contenant uniquement des nombres complexes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une clé composite utilise le couple ou tuple de plusieurs champs pour assurer l'unicité (ex: [id_cours, id_eleve])."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que risque-t-il d'arriver si l'on supprime une ligne dont la clé primaire est référencée ailleurs ?",
+              "options": [
+                "Une violation de contrainte d'intégrité référentielle",
+                "Le chiffrement automatique de la base",
+                "Une division par zéro",
+                "L'inversion de l'ordre des colonnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Supprimer l'enregistrement parent laisserait des lignes orphelines dans la table enfant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL déclare une clé primaire lors de la création d'une table ?",
+              "options": [
+                "PRIMARY KEY",
+                "UNIQUE IDENTIFIER",
+                "MAIN KEY",
+                "ROOT KEY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La contrainte SQL standard s'écrit PRIMARY KEY."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL déclare une clé étrangère ?",
+              "options": [
+                "FOREIGN KEY ... REFERENCES ...",
+                "EXTERNAL KEY ... POINTS TO ...",
+                "LINK KEY ... TARGET ...",
+                "OUTER KEY ... TO ..."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clause standard est FOREIGN KEY (colonne) REFERENCES autre_table(cle_primaire)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une clé primaire peut-elle comporter des doublons dans une table bien conçue ?",
+              "options": [
+                "Non, c'est strictement interdit par définition",
+                "Oui, si la table dépasse 1 000 lignes",
+                "Oui, pour les valeurs nulles uniquement",
+                "Oui, le week-end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition même du modèle relationnel, chaque valeur de clé primaire est strictement unique."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Algorithme de produit cartésien et filtrage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont exactes concernant le produit cartésien de deux tables A et B ?",
+              "options": [
+                "Il associe chaque ligne de A à chaque ligne de B",
+                "Le nombre de lignes résultant vaut len(A) * len(B)",
+                "Il filtre automatiquement les lignes selon une égalité d'identifiants",
+                "Le résultat comporte toujours exactement len(A) + len(B) lignes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le produit cartésien apparie toutes les lignes sans condition, produisant le produit des tailles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si table A a 100 lignes et table B a 50 lignes, combien de lignes compte leur produit cartésien ?",
+              "options": [
+                "5 000 lignes",
+                "150 lignes",
+                "50 lignes",
+                "2 lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "100 * 50 = 5 000 combinaisons possibles."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle double boucle réalise l'algorithme naïf de jointure avec produit cartésien ?",
+              "options": [
+                "for a in tableA: for b in tableB: if a['id'] == b['id']: resultat.append(fusion(a, b))",
+                "for a, b in zip(tableA, tableB): if a == b: break",
+                "while tableA: tableB.pop()",
+                "for i in range(len(tableA) + len(tableB)): pass"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La double boucle imbriquée teste toutes les paires possibles pour ne retenir que celles qui vérifient le test."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la complexité en temps de cet algorithme de jointure par boucle imbriquée naïve ?",
+              "options": [
+                "O(n * m) où n et m sont les tailles des deux tables",
+                "O(n + m)",
+                "O(log(n + m))",
+                "O(1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tester chaque couple (a, b) requiert n * m comparaisons."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment optimiser la jointure à O(n + m) en pré-indexant la table B en mémoire ?",
+              "options": [
+                "En créant un dictionnaire index_B = {b['id']: b for b in tableB}",
+                "En triant dix fois la table A",
+                "En transformant la table B en chaîne de caractères",
+                "En supprimant les lignes impaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La jointure par hachage (hash join) permet un accès en O(1) pour chaque ligne de tableA."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle fonction du module itertools génère le produit cartésien de deux itérables ?",
+              "options": [
+                "itertools.product()",
+                "itertools.cartesian()",
+                "itertools.combinations()",
+                "itertools.cross()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "itertools.product(A, B) engendre tous les tuples possibles (a, b)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL désigne explicitement le produit cartésien sans condition de filtrage ?",
+              "options": ["CROSS JOIN", "INNER JOIN", "FULL JOIN", "UNION ALL"],
+              "correctAnswers": [0],
+              "explanation": "CROSS JOIN génère le produit cartésien complet entre deux tables."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi le produit cartésien non filtré est-il dangereux sur des tables volumineuses ?",
+              "options": [
+                "Il peut provoquer une explosion combinatoire et saturer la mémoire (RAM)",
+                "Il supprime les données sources",
+                "Il ralentit la connexion Internet",
+                "Il modifie le BIOS de la machine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une table de 10^5 lignes croisée avec une autre de 10^5 produirait 10^10 lignes, saturant la mémoire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans quel cas un produit cartésien est-il légitime dans une application ?",
+              "options": [
+                "Pour générer toutes les combinaisons possibles (ex: tailles de vêtements et coloris)",
+                "Pour calculer la moyenne d'une note",
+                "Pour trier un tableau par ordre alphabétique",
+                "Pour exporter un fichier CSV"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Associer chaque taille à chaque couleur disponible est une utilisation classique du produit cartésien."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que vaut le produit cartésien d'une table avec une table vide ?",
+              "options": [
+                "Une table vide (0 ligne)",
+                "La table initiale inchangée",
+                "Une ligne d'en-tête seule",
+                "Une exception IndexError"
+              ],
+              "correctAnswers": [0],
+              "explanation": "n * 0 = 0 : aucune paire ne peut être formée avec un ensemble vide."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Anomalies et données manquantes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles anomalies rencontre-t-on fréquemment dans des fichiers de données brutes ?",
+              "options": [
+                "Valeurs manquantes ou champs laissés vides",
+                "Incohérence de typage (texte au lieu de nombre)",
+                "Disparition spontanée de la carte mère de l'ordinateur",
+                "Inversion automatique des pixels de l'écran"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les cases vides, les valeurs aberrantes et les erreurs de saisie de type sont les anomalies courantes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment Python représente-t-il souvent une cellule vide lue par le module csv ?",
+              "options": [
+                "Une chaîne vide ''",
+                "La valeur 0",
+                "Le booléen False",
+                "Le nombre complexe 0j"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une cellule sans texte est retournée sous forme de chaîne de caractères vide ''."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle stratégie consiste à supprimer de la table toute ligne contenant une valeur manquante ?",
+              "options": [
+                "La suppression des lignes incomplètes (listwise deletion)",
+                "L'imputation statistique",
+                "Le reformatage UTF-8",
+                "La compression sans perte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Supprimer les lignes incomplètes est simple mais peut éliminer trop de données si les manques sont fréquents."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En quoi consiste l'imputation d'une donnée manquante ?",
+              "options": [
+                "Remplacer la valeur manquante par une estimation (ex: moyenne ou médiane)",
+                "Accuser un utilisateur d'avoir effacé la case",
+                "Dupliquer la première ligne du fichier",
+                "Changer l'extension du fichier en .txt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imputation estime une valeur de remplacement plausible pour préserver l'enregistrement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une valeur aberrante (outlier) ?",
+              "options": [
+                "Une valeur manifestement erronée ou hors norme (ex: un âge de 450 ans)",
+                "Une valeur égale à zéro",
+                "Une valeur de type flottant",
+                "Une valeur écrite en majuscules"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une valeur aberrante est invraisemblable au regard du domaine de validité de l'attribut."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment filtrer pour ne garder que les lignes où l'âge est valide (0 <= age <= 125) ?",
+              "options": [
+                "[r for r in table if 0 <= r['age'] <= 125]",
+                "[r for r in table if r['age'] != 125]",
+                "[r for r in table if r['age'] == 'valide']",
+                "[r for r in table where age between 0 and 125]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette compréhension retient uniquement les enregistrements respectant l'intervalle réaliste."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle méthode permet de détecter les doublons parfaits dans une liste de dictionnaires ?",
+              "options": [
+                "Comparer len(table) avec le nombre d'éléments uniques après conversion en tuples",
+                "Compter les espaces dans le fichier",
+                "Appeler table.detect_bugs()",
+                "Diviser la table par 2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque les dictionnaires ne sont pas hachables, on les convertit en tuples pour les tester dans un ensemble set()."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne la 'cohérence temporelle' dans un enregistrement contenant date_naissance et date_deces ?",
+              "options": [
+                "La date de naissance doit impérativement être antérieure à la date de décès",
+                "Les deux dates doivent être identiques",
+                "L'heure doit toujours être midi pile",
+                "L'année doit être bissextile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une incohérence logique flagrante serait d'avoir un décès antérieur à la naissance."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle constante en Python représente traditionnellement une valeur absente ou indéfinie ?",
+              "options": ["None", "Null", "Undefined", "Empty"],
+              "correctAnswers": [0],
+              "explanation": "None est le singleton officiel en Python pour désigner l'absence de valeur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi ne doit-on jamais remplacer aveuglément les données manquantes par 0 pour un calcul de moyenne ?",
+              "options": [
+                "Car le zéro fausserait la moyenne à la baisse en augmentant artificiellement l'effectif",
+                "Car Python refuse de diviser par un résultat égal à zéro",
+                "Car le zéro est interdit en format CSV",
+                "Car la moyenne deviendrait négative"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compter un 0 pour une valeur manquante biaise lourdement le calcul statistique."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Écriture et export de tables en CSV",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles classes du module csv permettent d'écrire des données dans un fichier ?",
+              "options": [
+                "csv.writer",
+                "csv.DictWriter",
+                "csv.FilePrinter",
+                "csv.TableSaver"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "csv.writer (à partir de listes) et csv.DictWriter (à partir de dictionnaires) sont les classes officielles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mode d'ouverture de fichier utilise-t-on avec open() pour créer ou écraser un fichier en écriture ?",
+              "options": ["'w'", "'r'", "'a'", "'x+'"],
+              "correctAnswers": [0],
+              "explanation": "'w' (pour write) ouvre le fichier en écriture et le vide s'il existait déjà."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel paramètre newline='' doit-on toujours passer à open() lors de l'écriture CSV sous Windows ?",
+              "options": [
+                "newline=''",
+                "line_end='\\n'",
+                "windows_mode=False",
+                "strip_lines=True"
+              ],
+              "correctAnswers": [0],
+              "explanation": "newline='' évite l'insertion indésirable de lignes vides parasites sous Windows."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle méthode de csv.writer écrit une ligne unique passée sous forme de liste ?",
+              "options": [
+                "writer.writerow(ligne)",
+                "writer.write_line(ligne)",
+                "writer.append_row(ligne)",
+                "writer.print(ligne)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode s'appelle writerow() pour une ligne, et writerows() pour une collection de lignes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel paramètre obligatoire doit-on fournir à l'instanciation de csv.DictWriter ?",
+              "options": [
+                "fieldnames (la liste des noms de colonnes)",
+                "num_rows (le nombre de lignes)",
+                "file_size (la taille en octets)",
+                "data_types (le type de chaque colonne)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "fieldnames définit l'ordre et le nom des attributs qui composeront les colonnes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle méthode de DictWriter écrit la toute première ligne contenant les en-têtes ?",
+              "options": [
+                "writer.writeheader()",
+                "writer.create_header()",
+                "writer.head()",
+                "writer.write_columns()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "writeheader() génère l'en-tête du fichier CSV à partir des fieldnames déclarés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle méthode écrit l'ensemble d'une table en un seul appel avec csv.writer ou DictWriter ?",
+              "options": [
+                "writer.writerows(table)",
+                "writer.write_all(table)",
+                "writer.dump(table)",
+                "writer.save_table(table)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "writerows() prend un itérable de lignes et les écrit successivement sur le disque."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel paramètre permet de changer le délimiteur par défaut lors de l'écriture en CSV ?",
+              "options": [
+                "delimiter=';'",
+                "sep=';'",
+                "separator=';'",
+                "split=';'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le paramètre officiel est delimiter (ex: delimiter=';')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mode d'ouverture de fichier permet d'ajouter des lignes à la fin d'un CSV existant sans l'écraser ?",
+              "options": [
+                "'a' (append)",
+                "'w' (write)",
+                "'r+' (read plus)",
+                "'c' (create)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le mode 'a' pour append positionne le pointeur d'écriture à la fin du fichier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi est-il crucial d'encoder en encoding='utf-8' lors de l'écriture du fichier ?",
+              "options": [
+                "Pour préserver correctement les accents et caractères spéciaux quel que soit l'OS",
+                "Pour chiffrer les données contre le piratage",
+                "Pour rendre le fichier lisible uniquement par Python",
+                "Pour réduire de 90 % le temps d'écriture"
+              ],
+              "correctAnswers": [0],
+              "explanation": "UTF-8 est le standard universel évitant les problèmes d'affichage des caractères accentués (mojibake)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

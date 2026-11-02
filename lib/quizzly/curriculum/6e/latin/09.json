@@ -1,0 +1,2278 @@
+{
+  "id": "6e-latin-09",
+  "year": "6e",
+  "subject": "latin",
+  "title": "Médias et actualité en latin",
+  "order": 9,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Lire un titre",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Hodie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « HODIE MAGNA NUNTIUS », quelles traductions sont correctes ?",
+              "options": ["aujourd'hui", "grand", "nouveau", "message"],
+              "correctAnswers": [0, 1],
+              "explanation": "Hodie = aujourd'hui ; magnus/magna/magnum = grand."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie HODIE seul ?",
+              "options": ["hier", "aujourd'hui", "demain", "souvent"],
+              "correctAnswers": [1],
+              "explanation": "Hodie est l'adverbe latin pour « aujourd'hui »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« HODIE NOVA RES » : nova signifie…",
+              "options": ["vieille", "nouvelle", "petite", "dernière"],
+              "correctAnswers": [1],
+              "explanation": "Novus, nova, novum = nouveau / nouvelle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un titre, RES veut surtout dire…",
+              "options": ["roi", "chose, affaire", "guerre", "ville"],
+              "correctAnswers": [1],
+              "explanation": "Res = chose, événement, affaire d'actualité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot latin pour « aujourd'hui » dans un bandeau ?",
+              "options": ["cras", "heri", "hodie", "semper"],
+              "correctAnswers": [2],
+              "explanation": "Hodie = aujourd'hui ; heri = hier ; cras = demain."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« HODIE ROMA » : que lit-on ?",
+              "options": [
+                "Rome hier",
+                "Rome aujourd'hui",
+                "Rome demain",
+                "Rome toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Hodie indique le jour présent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un titre commence par HODIE. Il parle…",
+              "options": [
+                "du passé lointain",
+                "du jour même",
+                "de la semaine prochaine",
+                "d'une légende"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Hodie situe l'info à aujourd'hui."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« HODIE » est un…",
+              "options": ["nom", "verbe", "adverbe", "pronom"],
+              "correctAnswers": [2],
+              "explanation": "Hodie ne se décline pas : c'est un adverbe de temps."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduction de « Actualité aujourd'hui » en mots latins simples ?",
+              "options": [
+                "HODIE NOVA RES",
+                "MAGNA HERI",
+                "CRAS BELLUM",
+                "SEMPER REX"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hodie + nova res = nouvelle affaire du jour."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « HODIE MAGNUS NUNTIUS », magnus signifie…",
+              "options": ["petit", "grand", "nouveau", "faux"],
+              "correctAnswers": [1],
+              "explanation": "Magnus = grand (masculin)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Novus",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots conviennent pour « nouvelle grande chose » ?",
+              "options": ["nova", "magnus", "magna", "hodie"],
+              "correctAnswers": [0, 2],
+              "explanation": "Nova res ; magna qualifie res au féminin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "NOVA devant RES s'accorde en…",
+              "options": ["masculin", "féminin", "neutre", "pluriel seulement"],
+              "correctAnswers": [1],
+              "explanation": "Res est féminin : nova res."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« NOVUS NUNTIUS » : novus qualifie…",
+              "options": [
+                "nuntius (m.)",
+                "res (f.)",
+                "Roma (f.)",
+                "bellum (n.)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuntius est masculin : novus nuntius."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Traduction de novus ?",
+              "options": ["ancien", "nouveau", "long", "beau"],
+              "correctAnswers": [1],
+              "explanation": "Novus, nova, novum = nouveau."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Titre « NOVA RES HODIE » : sens global ?",
+              "options": [
+                "vieille guerre",
+                "nouvelle affaire aujourd'hui",
+                "grand roi demain",
+                "message d'hier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Nova res hodie = nouvelle chose aujourd'hui."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Opposé simple de novus en français ?",
+              "options": ["petit", "ancien", "lent", "noir"],
+              "correctAnswers": [1],
+              "explanation": "Novus = nouveau, l'opposé usuel est « ancien »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« NOVUM BELLUM » : novum s'accorde avec…",
+              "options": ["bellum (neutre)", "nuntius", "populus", "Roma"],
+              "correctAnswers": [0],
+              "explanation": "Bellum est neutre : novum bellum."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans les médias latins fictifs, NOVA RES annonce…",
+              "options": ["une météo", "une nouvelle", "un menu", "un poème"],
+              "correctAnswers": [1],
+              "explanation": "Nova res = nouvelle (actualité)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Forme féminine de novus ?",
+              "options": ["novus", "novum", "nova", "novi"],
+              "correctAnswers": [2],
+              "explanation": "Trio novus / nova / novum."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« MAGNA NOVA RES » : ordre des idées ?",
+              "options": [
+                "petite vieille chose",
+                "grande nouvelle affaire",
+                "guerre d'hier",
+                "roi demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Magna nova res = grande nouvelle chose."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Magnus",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « MAGNA VICTORIA HODIE », quels mots sont bien traduits ?",
+              "options": ["grande", "victoire", "nouveau", "aujourd'hui"],
+              "correctAnswers": [0, 3],
+              "explanation": "Magna = grande ; hodie = aujourd'hui."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Magnus, magna, magnum signifient…",
+              "options": ["petit", "grand", "nouveau", "rapide"],
+              "correctAnswers": [1],
+              "explanation": "Magnus = grand (trois genres)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« MAGNUS NUNTIUS » : magnus est…",
+              "options": ["féminin", "masculin", "neutre", "adverbe"],
+              "correctAnswers": [1],
+              "explanation": "Nuntius masculin → magnus."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« MAGNA RES » : magna qualifie…",
+              "options": ["res", "hodie", "puto", "cras"],
+              "correctAnswers": [0],
+              "explanation": "Res féminin → magna."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Titre « MAGNUM BELLUM » : sens ?",
+              "options": [
+                "petite paix",
+                "grande guerre",
+                "nouveau roi",
+                "message d'hier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Magnum bellum = grande guerre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour « grande Rome », on écrit plutôt…",
+              "options": [
+                "magnus Roma",
+                "magna Roma",
+                "magnum Roma",
+                "nova Roma seulement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Roma féminin : magna Roma."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« HODIE MAGNA RES » évoque…",
+              "options": [
+                "un fait important du jour",
+                "une recette",
+                "un exercice de grammaire",
+                "une date ancienne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magna res = grande affaire, gros titrage."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Forme neutre de magnus ?",
+              "options": ["magna", "magni", "magnum", "magne"],
+              "correctAnswers": [2],
+              "explanation": "Magnum pour neutre (bellum, etc.)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« MAGNUS POPULUS » signifie…",
+              "options": [
+                "petit peuple",
+                "grand peuple",
+                "nouveau peuple",
+                "peuple d'hier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Populus masculin : magnus populus."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un titre court, MAGNA en tête annonce…",
+              "options": [
+                "une nouvelle",
+                "une affaire importante",
+                "une question",
+                "un adverbe"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Magna met l'accent sur l'importance."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Titres composés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« NOVA RES MAGNA HODIE » : quels mots repères reconnais-tu ?",
+              "options": ["nouvelle", "aujourd'hui", "grand", "je pense"],
+              "correctAnswers": [0, 1],
+              "explanation": "Nova et hodie sont des repères du chapitre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Ordre de lecture d'un titre latin court ?",
+              "options": [
+                "de droite à gauche seulement",
+                "mot à mot, sens global",
+                "ignorer les majuscules",
+                "lire à l'envers"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On lit chaque mot puis le sens d'ensemble."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« NUNTIUS NOVUS » signifie…",
+              "options": [
+                "vieux message",
+                "nouveau message",
+                "grand peuple",
+                "Rome aujourd'hui"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Novus nuntius = nouveau message / nouvelle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "NUNTIUS veut dire…",
+              "options": ["guerre", "message, nouvelle", "roi", "mer"],
+              "correctAnswers": [1],
+              "explanation": "Nuntius = messager, nouvelle."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« ROMA MAGNA HODIE » : lieu + …",
+              "options": [
+                "hier + petit",
+                "aujourd'hui + grand",
+                "demain + nouveau",
+                "jamais + vieux"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Magna Roma hodie = Rome importante aujourd'hui."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un titre en majuscules aide surtout à…",
+              "options": [
+                "compter les syllabes",
+                "repérer les mots",
+                "conjugaison",
+                "décliner puto"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les mots se détachent visuellement."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« BELLUM NOVUM » annonce…",
+              "options": [
+                "une paix",
+                "une guerre nouvelle",
+                "un sport",
+                "un repas"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Novum bellum = nouvelle guerre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "POPULUS dans un titre signifie…",
+              "options": ["peuple", "porte", "pont", "pluie"],
+              "correctAnswers": [0],
+              "explanation": "Populus = le peuple."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« HODIE MAGNUS NUNTIUS » : sujet principal ?",
+              "options": [
+                "hier",
+                "un grand message aujourd'hui",
+                "une ville petite",
+                "toujours"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Hodie + magnus nuntius."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "RES NOVA et NOVA RES : sens…",
+              "options": [
+                "opposés",
+                "proches (nouvelle affaire)",
+                "sans lien",
+                "négatifs"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'ordre change peu le sens global ici."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Roma et actualité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « ROMA HODIE NOVA RES », quelles traductions sont justes ?",
+              "options": ["Rome", "aujourd'hui", "je pense", "toujours"],
+              "correctAnswers": [0, 1],
+              "explanation": "Roma = Rome ; hodie = aujourd'hui."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "ROMA est…",
+              "options": ["masculin", "féminin", "neutre", "verbe"],
+              "correctAnswers": [1],
+              "explanation": "Roma, Romae : nom féminin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« ROMA MAGNA » signifie…",
+              "options": [
+                "petite Rome",
+                "grande Rome",
+                "Rome nouvelle",
+                "Rome hier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Magna Roma = grande Rome."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Titre « ROMA NOVA RES » : où ?",
+              "options": ["En Gaule", "À Rome", "En mer", "Au ciel"],
+              "correctAnswers": [1],
+              "explanation": "Roma indique la ville."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« HODIE ROMA » dans un journal latin imaginaire…",
+              "options": [
+                "parle de Rome aujourd'hui",
+                "nie Rome",
+                "date antique",
+                "menu scolaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hodie situe l'info au jour présent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "ITALIA dans un titre évoque…",
+              "options": ["l'Italie", "la mer seule", "un verbe", "puto"],
+              "correctAnswers": [0],
+              "explanation": "Italia = l'Italie (géographie)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« MAGNA RES ROMAE » : res romae = …",
+              "options": [
+                "chose de Rome",
+                "guerre de France",
+                "message d'hier",
+                "nouveau verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Res Romae = affaire (de) Rome."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un titre géographique commence souvent par…",
+              "options": ["le nom du lieu", "puto", "cras seulement", "amen"],
+              "correctAnswers": [0],
+              "explanation": "Le lieu accroche le lecteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« NOVA ROMA » peut suggérer…",
+              "options": [
+                "Rome nouvelle / renouvelée",
+                "Rome invisible",
+                "pas de Rome",
+                "hier seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nova Roma = Rome nouvelle (sens figuré simple)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Lire ROMA en premier aide à…",
+              "options": [
+                "conjugaison",
+                "situer l'info",
+                "traduire puto",
+                "compter"
+              ],
+              "correctAnswers": [1],
+              "explanation": "On repère où se passe l'actualité."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Bellum et pax",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« MAGNUM BELLUM HODIE » : mots repérables ?",
+              "options": [
+                "grande guerre",
+                "aujourd'hui",
+                "nouveau",
+                "je pense"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Magnum bellum = grande guerre ; hodie = aujourd'hui."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "BELLUM signifie…",
+              "options": ["guerre", "paix", "port", "pain"],
+              "correctAnswers": [0],
+              "explanation": "Bellum = guerre."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "PAX signifie…",
+              "options": ["paix", "guerre", "peuple", "pont"],
+              "correctAnswers": [0],
+              "explanation": "Pax = paix."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« NOVUM BELLUM » : novum car bellum est…",
+              "options": ["masculin", "féminin", "neutre", "pluriel"],
+              "correctAnswers": [2],
+              "explanation": "Bellum neutre → novum."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Titre « PAX MAGNA HODIE » : idée ?",
+              "options": [
+                "grande paix aujourd'hui",
+                "guerre hier",
+                "petit message",
+                "nouveau roi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pax magna hodie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Opposés simples dans l'actualité ?",
+              "options": [
+                "bellum / pax",
+                "hodie / hodie",
+                "magnus / magnus",
+                "nova / nova"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Guerre et paix s'opposent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« BELLUM MAGNUM » sans hodie…",
+              "options": [
+                "indique toujours hier",
+                "parle d'une grande guerre",
+                "est une question",
+                "signifie puto"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Magnum bellum = grande guerre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un titre alarmant peut contenir…",
+              "options": ["bellum", "pax seule", "amen", "cras seul"],
+              "correctAnswers": [0],
+              "explanation": "Bellum annonce conflit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« HODIE PAX » annonce…",
+              "options": [
+                "guerre demain",
+                "paix aujourd'hui",
+                "Rome antique",
+                "exercice"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pax + hodie = paix du jour."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "MAGNA PAX : pax est…",
+              "options": ["féminin", "masculin", "neutre", "verbe"],
+              "correctAnswers": [0],
+              "explanation": "Pax féminin → magna pax."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Populus",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« MAGNUS POPULUS HODIE » : traductions correctes ?",
+              "options": ["grand peuple", "aujourd'hui", "nouvelle", "message"],
+              "correctAnswers": [0, 1],
+              "explanation": "Magnus populus ; hodie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "POPULUS signifie…",
+              "options": ["peuple", "pont", "port", "pluie"],
+              "correctAnswers": [0],
+              "explanation": "Populus = peuple."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« POPULUS ROMANUS » évoque…",
+              "options": [
+                "le peuple romain",
+                "la guerre seule",
+                "puto",
+                "cras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Populus Romanus = peuple romain."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Magnus avec populus : magnus car…",
+              "options": [
+                "populus masculin",
+                "populus féminin",
+                "adverbe",
+                "neutre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Populus masculin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Titre « NOVA RES POPULO » (simplifié) : pour qui ?",
+              "options": [
+                "pour le peuple",
+                "pour hier",
+                "pour puto",
+                "pour cras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Populo = pour le peuple (datif simplifié)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un titre citoyen parle souvent du…",
+              "options": ["populus", "bellum seul", "amen", "numerus"],
+              "correctAnswers": [0],
+              "explanation": "Actualité = peuple concerné."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« HODIE POPULUS » : sens vague ?",
+              "options": [
+                "le peuple aujourd'hui",
+                "guerre ancienne",
+                "nouveau verbe",
+                "Rome seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hodie + populus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "NOVI NUNTIUS POPULO : nuntius pour…",
+              "options": ["le peuple", "la lune", "puto", "semper"],
+              "correctAnswers": [0],
+              "explanation": "Nouvelle destinée au peuple."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Grand titre démocratique latin court ?",
+              "options": [
+                "MAGNA RES POPULI",
+                "CRAS PUTo",
+                "HERI AMEN",
+                "NULLA RES"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Res populi = affaire du peuple."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "POPULI (génitif) suggère…",
+              "options": ["du peuple", "contre Rome", "sans sens", "puto"],
+              "correctAnswers": [0],
+              "explanation": "Populi = du peuple."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Verbes à l'infinitif dans les titres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans « ROMA VINCERE » (titre sportif), que repères-tu ?",
+              "options": ["Rome", "vaincre (idée)", "hodie", "puto"],
+              "correctAnswers": [0, 1],
+              "explanation": "Roma + vincere (infinitif = vaincre)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un infinitif dans un titre latin…",
+              "options": [
+                "donne une action",
+                "remplace toujours hodie",
+                "est puto",
+                "est un chiffre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'infinitif nomme l'action."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« NUNTIUS NOVUS VENIT » (style titre) : venit = …",
+              "options": ["vient", "vient hier seulement", "puto", "paix"],
+              "correctAnswers": [0],
+              "explanation": "Venit = il/elle vient."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« MAGNA RES EST » : est = …",
+              "options": ["est", "sont", "étaient", "sera"],
+              "correctAnswers": [0],
+              "explanation": "Est = c'est / il est."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Titre « HODIE EST NOVA RES » : structure…",
+              "options": [
+                "aujourd'hui c'est une nouvelle affaire",
+                "guerre d'hier",
+                "puto seul",
+                "sans verbe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hodie est nova res."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« ROMA VINCIT » dans un bandeau…",
+              "options": [
+                "Rome vainc",
+                "Rome hier",
+                "puto Rome",
+                "cras seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vincit = il/elle vainc."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un titre avec EST relie…",
+              "options": [
+                "sujet et info",
+                "seulement deux noms",
+                "puto et cras",
+                "rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Est = lien « c'est »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« BELLUM EST MAGNUM » : ordre français ?",
+              "options": [
+                "La guerre est grande",
+                "Grande est hier",
+                "Puto bellum",
+                "Nova cras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bellum est magnum."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour 6e, on évite…",
+              "options": ["titres très longs", "hodie", "nova", "magnus"],
+              "correctAnswers": [0],
+              "explanation": "On garde des titres courts."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« PAX EST » signifie…",
+              "options": [
+                "C'est la paix",
+                "Guerre est",
+                "Puto paix",
+                "Hodie seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pax est = c'est la paix."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Chiffres et urgence",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« HODIE MAGNA RES — NUNTIUS URGENS » : mots clés ?",
+              "options": ["aujourd'hui", "message urgent", "puto", "amen"],
+              "correctAnswers": [0, 1],
+              "explanation": "Hodie ; nuntius = message ; urgens = urgent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "URGENS en français…",
+              "options": ["urgent", "ancien", "lent", "petit"],
+              "correctAnswers": [0],
+              "explanation": "Urgens = urgent."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« CITO » dans un titre…",
+              "options": ["vite", "lentement", "hier", "puto"],
+              "correctAnswers": [0],
+              "explanation": "Cito = vite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« MAGNA NOX » (titre fictif) : nox = …",
+              "options": ["nuit", "jour", "guerre", "peuple"],
+              "correctAnswers": [0],
+              "explanation": "Nox = nuit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un bandeau « HODIE » seul équivaut à…",
+              "options": ["À la une du jour", "Hier", "Demain", "Puto"],
+              "correctAnswers": [0],
+              "explanation": "Hodie = actualité du jour."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« NOVA HORA » : hora = …",
+              "options": ["heure", "guerre", "Rome", "puto"],
+              "correctAnswers": [0],
+              "explanation": "Hora = heure."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Titre avec MAGNA + NUNTIUS…",
+              "options": [
+                "gros titre de nouvelle",
+                "recette",
+                "conjugaison",
+                "carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Annonce importante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« RES MAGNA CITO » : cito renforce…",
+              "options": ["rapidité", "lenteur", "puto", "paix"],
+              "correctAnswers": [0],
+              "explanation": "Cito = rapidement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Lire un titre urgent : d'abord…",
+              "options": [
+                "mots connus (hodie, magna…)",
+                "puto",
+                "fin seulement",
+                "syllabes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Repères du chapitre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« NUNTIUS NOVUS HODIE » : type de média ?",
+              "options": [
+                "nouvelle du jour",
+                "livre ancien",
+                "carte",
+                "silence"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule d'actualité."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse lire un titre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots du chapitre apparaissent souvent dans les titres ?",
+              "options": ["hodie", "nova", "magnus", "puto"],
+              "correctAnswers": [0, 1],
+              "explanation": "Hodie et nova/magnus sont repères u1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« HODIE MAGNA NOVA RES » : sens global ?",
+              "options": [
+                "Grande nouvelle affaire aujourd'hui",
+                "Guerre d'hier",
+                "Puto seul",
+                "Rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Combinaison des repères."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour traduire un titre, tu…",
+              "options": [
+                "traduis mot à mot puis sens",
+                "ignores hodie",
+                "lis puto d'abord",
+                "ne traduis pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode 6e."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "RES + adjectif : l'adjectif s'accorde avec…",
+              "options": ["res (f.)", "toujours masculin", "puto", "hodie"],
+              "correctAnswers": [0],
+              "explanation": "Res féminin."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« MAGNUS NUNTIUS NOVUS » : deux adjectifs pour…",
+              "options": [
+                "nuntius (m.)",
+                "bellum (n.)",
+                "pax (f.)",
+                "hora (f.)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nuntius masculin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un titre sans verbe…",
+              "options": [
+                "reste compréhensible",
+                "est impossible",
+                "est puto",
+                "est cras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nom + adjectif suffit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« ROMA — NOVA RES » : tiret aide à…",
+              "options": [
+                "séparer les blocs",
+                "conjugaison",
+                "puto",
+                "déclinaison"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecture en deux parties."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Bellum ou pax dans un titre indique…",
+              "options": ["thème du fait", "couleur", "nombre", "puto"],
+              "correctAnswers": [0],
+              "explanation": "Thème guerre/paix."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "HODIE en fin de titre…",
+              "options": [
+                "peut préciser « aujourd'hui »",
+                "interdit la lecture",
+                "remplace nova",
+                "est puto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hodie = repère temporel."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif u1 ?",
+              "options": [
+                "Comprendre un titre latin court",
+                "Analyser un discours",
+                "Traduire Virgile entier",
+                "Conjuguer puto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lire un titre, niveau 6e."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Commenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Puto",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "PUTO dans un commentaire signifie surtout…",
+              "options": ["je pense", "aujourd'hui", "grand", "nouveau"],
+              "correctAnswers": [0, 3],
+              "explanation": "Puto = je pense ; nova = nouveau (repère distinct)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Traduction de puto ?",
+              "options": ["je pense", "je mange", "aujourd'hui", "guerre"],
+              "correctAnswers": [0],
+              "explanation": "Puto = je pense, j'estime."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Puto : magna res » : sens ?",
+              "options": [
+                "Je pense : c'est une grande affaire",
+                "Hier grande guerre",
+                "Nova hodie",
+                "Paix est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puto introduit un avis."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Puto est à la…",
+              "options": [
+                "1re personne singulier",
+                "2e pluriel",
+                "infinitif",
+                "impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Je pense."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Commentaire : « Puto, hodie nova res »…",
+              "options": [
+                "avis + actualité du jour",
+                "titre seul",
+                "guerre",
+                "carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puto + hodie nova res."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Puto exprime…",
+              "options": ["opinion", "date exacte", "couleur", "nombre"],
+              "correctAnswers": [0],
+              "explanation": "Opinion personnelle."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Non puto » (simplifié) suggère…",
+              "options": ["je ne pense pas", "aujourd'hui", "grand", "nouveau"],
+              "correctAnswers": [0],
+              "explanation": "Non = négation."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Après puto, on peut mettre…",
+              "options": [
+                "une phrase courte",
+                "seulement un chiffre",
+                "rien",
+                "amen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Explication de l'avis."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Puto vs hodie : puto = …",
+              "options": ["opinion", "jour", "lieu", "guerre"],
+              "correctAnswers": [0],
+              "explanation": "Hodie = temps ; puto = penser."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Puto : nuntius novus »…",
+              "options": [
+                "Je pense : nouvelle message",
+                "Grande Rome",
+                "Bellum est",
+                "Cras pax"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commentaire sur une nouvelle."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Commenter un titre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour commenter « HODIE MAGNA RES », tu peux dire…",
+              "options": [
+                "Puto : res magna est",
+                "Hodie = aujourd'hui",
+                "Magnus est neutre toujours",
+                "Puto = hier"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avis avec puto ; rappel de hodie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Bon début de commentaire ?",
+              "options": ["Puto, …", "Bellum, …", "Nox, …", "Cito seul"],
+              "correctAnswers": [0],
+              "explanation": "Puto marque l'avis."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Puto : titulus clarus est » : titulus = …",
+              "options": ["titre", "guerre", "peuple", "nuit"],
+              "correctAnswers": [0],
+              "explanation": "Titulus = titre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Commenter = …",
+              "options": [
+                "donner son avis court",
+                "recopier le titre",
+                "traduire mot à mot seulement",
+                "ignorer hodie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commenter, pas seulement lire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Puto : nova res bona est » : bona = …",
+              "options": ["bonne", "grande", "mauvaise", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Bonus, bona, bonum = bon."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Relier titre et commentaire avec…",
+              "options": ["les mêmes mots clés", "puto seul", "cras", "amen"],
+              "correctAnswers": [0],
+              "explanation": "Reprise de magna, nova, hodie…"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Puto : non magna res » : sens ?",
+              "options": [
+                "Je pense : ce n'est pas une grande affaire",
+                "Aujourd'hui guerre",
+                "Rome est",
+                "Nova cito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avis négatif modéré."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "CLARUS dans « titulus clarus » = …",
+              "options": ["clair", "secret", "petit", "lent"],
+              "correctAnswers": [0],
+              "explanation": "Clarus = clair, net."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un commentaire 6e doit rester…",
+              "options": [
+                "court",
+                "un paragraphe de lycée",
+                "sans français",
+                "sans puto"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Niveau collège."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après lecture du titre, puto sert à…",
+              "options": ["réagir", "décliner", "compter", "cartographier"],
+              "correctAnswers": [0],
+              "explanation": "Réaction personnelle."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Accord et avis",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "« Puto : magna res et nova » : accords corrects avec…",
+              "options": ["res (f.)", "bellum (n.)", "puto (verbe)", "hodie"],
+              "correctAnswers": [0, 2],
+              "explanation": "Magna/nova avec res ; puto = verbe 1re pers."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Puto : magnus nuntius » : magnus car…",
+              "options": ["nuntius m.", "res f.", "pax f.", "hora f."],
+              "correctAnswers": [0],
+              "explanation": "Accord masculin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Puto : magna Roma hodie » : lie…",
+              "options": ["avis + lieu + temps", "guerre", "puto hier", "cras"],
+              "correctAnswers": [0],
+              "explanation": "Commentaire géo-temporel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "ET dans un commentaire latin court = …",
+              "options": ["et", "mais toujours", "sans", "contre"],
+              "correctAnswers": [0],
+              "explanation": "Et = et."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Puto : res non nova » : sens ?",
+              "options": [
+                "Je pense : affaire pas nouvelle",
+                "Grande guerre",
+                "Hodie seul",
+                "Pax magna"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non nova = pas nouvelle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Bon commentaire sur « NOVUM BELLUM » ?",
+              "options": [
+                "Puto : bellum malum est",
+                "Puto hodie",
+                "Magnus puto",
+                "Cras res"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avis sur la guerre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "MALUM = …",
+              "options": ["mauvais", "bon", "grand", "nouveau"],
+              "correctAnswers": [0],
+              "explanation": "Malus, mala, malum = mauvais."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Puto : pax bona est » après titre PAX…",
+              "options": ["cohérent", "impossible", "puto seul", "sans sens"],
+              "correctAnswers": [0],
+              "explanation": "Reprise du thème paix."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Commenter avec puto en français aussi : « Je pense que… »",
+              "options": [
+                "équivalent de puto",
+                "remplace hodie",
+                "est interdit",
+                "est bellum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même rôle communicatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Erreur fréquente : « magnus res » car on oublie…",
+              "options": ["res est féminin", "puto", "hodie", "nuntius"],
+              "correctAnswers": [0],
+              "explanation": "Magna res."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Credere simple",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "CREDO en commentaire (6e) = …",
+              "options": [
+                "je crois",
+                "je pense (proche)",
+                "aujourd'hui",
+                "grand"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Credo = je crois ; proche de puto."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Credo : nuntius verus est » : verus = …",
+              "options": ["vrai", "faux", "petit", "nouveau"],
+              "correctAnswers": [0],
+              "explanation": "Verus = vrai."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Puto vs credo : les deux…",
+              "options": [
+                "donnent un avis",
+                "remplacent hodie",
+                "sont des noms",
+                "sont des titres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Verbes d'opinion."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Credo : magna res hodie »…",
+              "options": [
+                "Je crois : grande affaire aujourd'hui",
+                "Guerre est",
+                "Nova puto",
+                "Cras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Structure commentaire."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Non credo » = …",
+              "options": ["je ne crois pas", "aujourd'hui", "grand", "nouveau"],
+              "correctAnswers": [0],
+              "explanation": "Négation simple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Commentaire prudent sur une rumeur ?",
+              "options": [
+                "Puto / credo + verus?",
+                "Bellum",
+                "Nox",
+                "Cito seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vrai ou pas ?"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "FALSUS = …",
+              "options": ["faux", "vrai", "grand", "urgent"],
+              "correctAnswers": [0],
+              "explanation": "Falsus = faux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "« Credo : titulus falsus est »…",
+              "options": ["titre faux", "titre grand", "hodie", "pax"],
+              "correctAnswers": [0],
+              "explanation": "Commentaire critique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En 6e, credo et puto restent…",
+              "options": [
+                "courts",
+                "discours entiers",
+                "sans verbe",
+                "sans latin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrases brèves."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Après credo, est introduit…",
+              "options": [
+                "une affirmation",
+                "seulement hodie",
+                "bellum",
+                "rien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Credo + phrase."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Réagir à l'actualité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Face à « HODIE BELLUM MAGNUM », tu peuses…",
+              "options": [
+                "Puto : res mala est",
+                "Puto : pax bona est",
+                "Hodie = demain",
+                "Nova = petit"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Réactions possibles (mala res / souhait de paix)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Puto : populus tristis est » : tristis = …",
+              "options": ["triste", "joyeux", "grand", "nouveau"],
+              "correctAnswers": [0],
+              "explanation": "Tristis = triste."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Commentaire positif ?",
+              "options": [
+                "Puto : res bona est",
+                "Puto : res mala est",
+                "Bellum magnum",
+                "Non hodie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bona = bonne."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Puto : hodie laetus sum » : laetus = …",
+              "options": ["content", "triste", "grand", "faux"],
+              "correctAnswers": [0],
+              "explanation": "Laetus = heureux, content."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Réagir à nova res…",
+              "options": [
+                "Puto : nova et bona",
+                "Ignorer",
+                "Sans puto interdit ici",
+                "Bellum seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avis sur la nouveauté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "MAGNUS + avis négatif : « Puto : non magna res »…",
+              "options": [
+                "minimise l'événement",
+                "agrandit",
+                "date",
+                "traduit hodie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Opinion modérée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Puto : nuntius clarus non est »…",
+              "options": ["message pas clair", "guerre claire", "Rome", "Cras"],
+              "correctAnswers": [0],
+              "explanation": "Clarus + non."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un commentaire peut reprendre…",
+              "options": [
+                "hodie du titre",
+                "seulement cras",
+                "amen",
+                "syllabes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence titre-commentaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "TRISTIS / LAETUS s'opposent comme…",
+              "options": [
+                "triste / content",
+                "guerre / guerre",
+                "puto / puto",
+                "hodie / hodie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Émotions simples."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif : relier média latin et…",
+              "options": [
+                "réaction personnelle",
+                " analyse lycée",
+                "hexamètre",
+                "philosophie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commenter en 6e."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Phrases modèles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Modèles utiles de commentaire ?",
+              "options": [
+                "Puto : … est",
+                "Credo : … est",
+                "… est seul sans sujet",
+                "Hodie seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Puto/Credo + est + complément."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Puto : res magna est » structure…",
+              "options": [
+                "avis + nom + est + adj.",
+                "titre",
+                "guerre",
+                "carte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Phrase nominale simple."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Puto : nuntius novus est » reprend…",
+              "options": ["vocabulaire du titre", "cras", "amen", "numerus"],
+              "correctAnswers": [0],
+              "explanation": "Mots du chapitre."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "EST après le sujet…",
+              "options": [
+                "lie sujet et adjectif",
+                "remplace puto",
+                "est hodie",
+                "est bellum seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Copule est."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "« Puto : Roma magna est »…",
+              "options": [
+                "Je pense : Rome est grande",
+                "Hier",
+                "Puto = Rome",
+                "Nova cras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commentaire géographique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Varier puto avec…",
+              "options": ["credo", "seulement bellum", "nox", "cito"],
+              "correctAnswers": [0],
+              "explanation": "Synonyme simple d'avis."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Credo : pax est magna »…",
+              "options": [
+                "Je crois : la paix est grande",
+                "Guerre",
+                "Falsus",
+                "Hodie seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Modèle credo."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un commentaire en deux mots latin + français ?",
+              "options": [
+                "Puto : bon / mauvais (res)",
+                "Bellum hodie",
+                "Magnus cras",
+                "Nuntius nox"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Français autorisé en explication."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Puto : titulus bonus est » : bonus = …",
+              "options": ["bon", "mauvais", "clair", "urgent"],
+              "correctAnswers": [0],
+              "explanation": "Bonus = bon."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Éviter en commentaire 6e…",
+              "options": ["phrases très longues", "puto", "nova", "hodie"],
+              "correctAnswers": [0],
+              "explanation": "Rester concis."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Questionner",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour questionner un titre, en 6e tu peux…",
+              "options": [
+                "Puto : verus est?",
+                "Est nova res?",
+                "Ignorer le titre",
+                "Bellum seul"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Puto + question ; est… ?"
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« Est magna res? » = …",
+              "options": [
+                "Est-ce une grande affaire ?",
+                "Guerre est",
+                "Puto hier",
+                "Cras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question simple."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Point d'interrogation latin = …",
+              "options": ["?", "!", ".", ";"],
+              "correctAnswers": [0],
+              "explanation": "Même signe en classe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "« Puto : sed non certus sum » : certus = …",
+              "options": ["sûr", "grand", "faux", "nouveau"],
+              "correctAnswers": [0],
+              "explanation": "Certus = certain, sûr."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Commentaire dubitatif…",
+              "options": [
+                "Puto : fortasse nova res",
+                "Bellum magna",
+                "Hodie hodie",
+                "Pax pax"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fortasse = peut-être."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "FORTASSE = …",
+              "options": ["peut-être", "toujours", "jamais", "hier"],
+              "correctAnswers": [0],
+              "explanation": "Fortasse = peut-être."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Est hodie nova res? » après titre HODIE…",
+              "options": [
+                "vérifie la compréhension",
+                "est puto",
+                "est cras",
+                "sans lien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question de relecture."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "SED = …",
+              "options": ["mais", "et", "donc", "sans"],
+              "correctAnswers": [0],
+              "explanation": "Sed = mais."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Puto : sed quaero » (simplifié) : quaero = …",
+              "options": ["je me demande", "je mange", "guerre", "paix"],
+              "correctAnswers": [0],
+              "explanation": "Quaero = je cherche, je me demande."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Questionner ≠ …",
+              "options": [
+                "analyser un discours entier",
+                "douter avec puto",
+                "demander verus",
+                "est… ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pas le niveau lycée."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Comparer deux titres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Comparer « HODIE MAGNA RES » et « CRAS NOVA RES »…",
+              "options": [
+                "hodie vs cras",
+                "magna vs nova possible",
+                "puto interdit",
+                "sans verbes"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Temps différent ; adjectifs repérables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "CRAS = …",
+              "options": ["demain", "hier", "aujourd'hui", "toujours"],
+              "correctAnswers": [0],
+              "explanation": "Cras = demain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Puto : hodie magna, cras nova »…",
+              "options": [
+                "avis comparatif court",
+                "titre unique",
+                "bellum",
+                "amen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Commentaire comparatif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "HERI = …",
+              "options": ["hier", "demain", "aujourd'hui", "vite"],
+              "correctAnswers": [0],
+              "explanation": "Heri = hier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux titres : l'un PAX, l'autre BELLUM…",
+              "options": [
+                "Puto : pax melior est",
+                "Identiques",
+                "Sans puto",
+                "Cras seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Préférence paix."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "MELIOR = …",
+              "options": ["meilleur", "pire", "grand", "petit"],
+              "correctAnswers": [0],
+              "explanation": "Melior = meilleur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« Puto : titulus primus clarior est » : clarior = …",
+              "options": ["plus clair", "moins clair", "guerre", "hodie"],
+              "correctAnswers": [0],
+              "explanation": "Comparatif de clarus."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "PRIMUS = …",
+              "options": ["premier", "dernier", "nouveau", "faux"],
+              "correctAnswers": [0],
+              "explanation": "Primus = premier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer en 6e = …",
+              "options": [
+                "2 titres courts + puto",
+                " deux pages",
+                " sans mots latin",
+                " discours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode simple."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "« Magna res hodie, parva res heri » : parva = …",
+              "options": ["petite", "grande", "nouvelle", "vraie"],
+              "correctAnswers": [0],
+              "explanation": "Parvus, parva, parvum = petit."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Médias fictifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Un « journal latin » 6e contient…",
+              "options": [
+                "titres courts",
+                "commentaires puto",
+                "épopées entières",
+                "sans hodie"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Titres + avis."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "« ACTA HODIE » (fictif) : acta = …",
+              "options": ["actes, faits", "guerre", "puto", "cras"],
+              "correctAnswers": [0],
+              "explanation": "Acta = choses faites, compte rendu."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Puto : acta hodie utilia sunt » : utilia = …",
+              "options": ["utiles", "inutiles", "grandes", "fausses"],
+              "correctAnswers": [0],
+              "explanation": "Utilis = utile."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "VOX POPULI (titre) : vox = …",
+              "options": ["voix", "guerre", "nuit", "pain"],
+              "correctAnswers": [0],
+              "explanation": "Vox = voix."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Commentaire sur VOX POPULI…",
+              "options": [
+                "Puto : populus loquitur",
+                "Bellum est",
+                "Nova hodie",
+                "Cras"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Loquitur = parle."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "LOQUITUR = …",
+              "options": ["il/elle parle", "je pense", "hier", "demain"],
+              "correctAnswers": [0],
+              "explanation": "3e personne."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "« NUNTIUS URGENS — Puto : cito lego » : lego = …",
+              "options": ["je lis", "je mange", "guerre", "paix"],
+              "correctAnswers": [0],
+              "explanation": "Lego = je lis."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Média = titre + …",
+              "options": [
+                "réaction lecteur",
+                "sans latin",
+                "lycée",
+                "carte seule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lecteur commente."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "« Puto : magna vis nuntii » : vis = …",
+              "options": ["force, impact", "paix", "puto", "cras"],
+              "correctAnswers": [0],
+              "explanation": "Vis = force (impact du message)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Objectif médias fictifs…",
+              "options": [
+                "lire et commenter",
+                "traduction seule",
+                "Virgile",
+                "sans français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Double compétence u1+u2."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Synthèse commenter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour finir le chapitre, tu maîtrises…",
+              "options": [
+                "lire hodie/nova/magnus",
+                "commenter avec puto",
+                "analyse de style lycée",
+                "200 mots inutiles"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Objectifs 6e du chapitre 09."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Enchaînement idéal…",
+              "options": [
+                "Titre → traduction → puto",
+                "Puto sans titre",
+                "Cras seul",
+                "Bellum sans sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Méthode complète."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "« Puto : hodie nova res magna est »…",
+              "options": [
+                "commentaire complet court",
+                "titre seul",
+                "discours",
+                "sans est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Reprise de tous les repères."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Credo ou puto : choix…",
+              "options": [
+                "équivalent en 6e pour avis",
+                "interdit",
+                "remplace magna",
+                "est hodie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux verbes d'opinion."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un bon commentaire mentionne…",
+              "options": [
+                "éléments du titre",
+                "rien du titre",
+                "seulement cras",
+                "amen"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cohérence."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "« Puto : titulus et commentarium bona sunt » (jeu) : bon travail si…",
+              "options": [
+                "titre lu + avis clair",
+                "sans traduction",
+                "lycée",
+                "puto absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Auto-évaluation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "French explication après puto…",
+              "options": [
+                "aide en classe",
+                "interdit",
+                "remplace latin",
+                "est bellum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bilingue pédagogique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Chapitre 09 latin 6e thème…",
+              "options": [
+                "Médias et actualité",
+                "Guerre mondiale détaillée",
+                "Morphologie complète",
+                "Poésie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titre du chapitre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dernier repère : MAGNA NOVA RES HODIE + Puto…",
+              "options": [
+                "Je pense : c'est une grande nouvelle aujourd'hui",
+                "Hier seul",
+                "Sans sens",
+                "Puto = grand"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Synthèse finale."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Tu es prêt si tu peux…",
+              "options": [
+                "lire un titre et répondre avec puto",
+                "réciter l'Énéide",
+                "sans hodie",
+                "sans français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Compétence visée."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

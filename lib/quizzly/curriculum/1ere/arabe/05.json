@@ -1,0 +1,2683 @@
+{
+  "id": "1ere-arabe-05",
+  "year": "1ere",
+  "subject": "arabe",
+  "title": "Le passé en arabe",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Le verbe au passé (al-mâdî) : bases et terminaisons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales correspondent à une conjugaison au passé accompli (al-mâdî) ? (deux réponses)",
+              "options": [
+                "كَتَبَ (kataba)",
+                "يَكْتُبُ (yaktubu)",
+                "سَمِعَتْ (sami'at)",
+                "سَيَكْتُبُ (sayaktubu)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« kataba » (il a écrit) et « sami'at » (elle a entendu) sont au passé accompli (mâdî). « yaktubu » est à l'inaccompli présent et « sayaktubu » au futur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la voyelle finale de la 3e personne du masculin singulier au passé régulier (ex: كَتَبَ) ?",
+              "options": [
+                "La fatḥa (-a)",
+                "La ḍamma (-u)",
+                "La kasra (-i)",
+                "Le sukûn (absence de voyelle)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La forme canonique de base du verbe au passé se termine par une fatḥa à la 3e personne du masculin singulier (فَعَلَ - fa'ala)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel suffixe ajoute-t-on au verbe pour exprimer « elle a fait » (3e personne du féminin singulier) ?",
+              "options": ["-at (ـَتْ)", "-ta (ـْتَ)", "-tu (ـْتُ)", "-nâ (ـْنَا)"],
+              "correctAnswers": [0],
+              "explanation": "La marque du féminin singulier à la 3e personne du passé est le tâ' marbûta ou tâ' maftûha portant un sukûn : « ـَتْ » (-at), comme dans كَتَبَتْ (katabat)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « il est sorti » en arabe littéraire ?",
+              "options": [
+                "خَرَجَ (kharaja)",
+                "دَخَلَ (dakhala)",
+                "ذَهَبَ (dhahaba)",
+                "رَجَعَ (raja'a)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kharaja » (خَرَجَ) signifie « il est sorti ». « dakhala » signifie « il est entré » et « dhahaba » signifie « il est allé »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans le verbe قَرَأَ (qara'a), quel est le sens ?",
+              "options": [
+                "Il a lu",
+                "Il a écrit",
+                "Il a parlé",
+                "Il a compris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« qara'a » (قَرَأَ) signifie « il a lu ». C'est un verbe régulier hamzé à la 3e consonne radicale."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel terme arabe désigne le temps du passé accompli ?",
+              "options": [
+                "المَاضِي (al-mâdî)",
+                "المُضَارِع (al-muḍâri')",
+                "الأَمْر (al-amr)",
+                "المَصْدَر (al-masdar)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-mâdî » (المَاضِي) désigne le passé ou l'accompli en grammaire arabe. « al-muḍâri' » est l'inaccompli."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « جَلَسَ الوَلَدُ عَلَى الكُرْسِيِّ » ?",
+              "options": [
+                "Le garçon s'est assis sur la chaise",
+                "Le garçon s'assiéra sur la chaise",
+                "Le garçon regarde la chaise",
+                "Le garçon monte sur la chaise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« jalasa » (جَلَسَ) signifie « s'est assis ». L'action est achevée au passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la voyelle médiane du verbe شَرِبَ (shariba, il a bu) ?",
+              "options": ["Une kasra", "Une fatḥa", "Une ḍamma", "Un sukûn"],
+              "correctAnswers": [0],
+              "explanation": "Certains verbes réguliers au passé ont un schème فَعِلَ (fa'ila) avec une kasra sur la deuxième radicale, comme شَرِبَ (shariba) ou سَمِعَ (sami'a)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la voyelle médiane du verbe كَرُمَ (karuma, il a été généreux) ?",
+              "options": ["Une ḍamma", "Une fatḥa", "Une kasra", "Une shadda"],
+              "correctAnswers": [0],
+              "explanation": "Le schème فَعُلَ (fa'ula) porte une ḍamma médiane et exprime souvent un état ou une qualité permanente, comme كَرُمَ (karuma)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que traduit la forme فَهِمَ (fahima) ?",
+              "options": [
+                "Il a compris",
+                "Il comprendra",
+                "Comprends !",
+                "La compréhension"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« fahima » (فَهِمَ) est la 3e personne du masculin singulier au passé du verbe « comprendre »."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Conjugaison au passé : les pronoms du singulier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles terminaisons correspondent à la 2e personne du singulier au passé ? (deux réponses)",
+              "options": [
+                "ـْتَ (-ta pour anta)",
+                "ـْتِ (-ti pour anti)",
+                "ـْتُ (-tu pour ana)",
+                "ـُوا (-û pour hum)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Au passé, « tu » masculin prend la désinence « -ta » (كَتَبْتَ) et « tu » féminin prend « -ti » (كَتَبْتِ). « -tu » correspond à « je » (أنا)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « j'ai écrit » en arabe ?",
+              "options": [
+                "كَتَبْتُ (katabtu)",
+                "كَتَبْتَ (katabta)",
+                "كَتَبَ (kataba)",
+                "كَتَبْنَا (katabnâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 1re personne du singulier prend le suffixe « -tu » : كَتَبْتُ (katabtu = j'ai écrit)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle forme signifie « tu as compris » en s'adressant à une fille ?",
+              "options": [
+                "فَهِمْتِ (fahimti)",
+                "فَهِمْتَ (fahimta)",
+                "فَهِمْتُ (fahimtu)",
+                "فَهِمَتْ (fahimat)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour t'adresser à une personne féminine au singulier (anti), la terminaison au passé est « -ti » : فَهِمْتِ."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie « ذَهَبْتَ » (dhahabta) ?",
+              "options": [
+                "Tu es allé (masculin)",
+                "Tu es allée (féminin)",
+                "Je suis allé",
+                "Il est allé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le suffixe « -ta » (ـْتَ) marque la deuxième personne du masculin singulier : « tu es allé »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Complétez la phrase : « أَنَا ______ الرِّسَالَةَ » (J'ai lu la lettre).",
+              "options": [
+                "قَرَأْتُ (qara'tu)",
+                "قَرَأْتَ (qara'ta)",
+                "قَرَأَ (qara'a)",
+                "قَرَأَتْ (qara'at)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec le pronom « أنا » (ana), le verbe prend la désinence « -tu » (قَرَأْتُ)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel pronom personnel correspond au verbe « سَمِعَتْ » (sami'at) ?",
+              "options": [
+                "هِيَ (hiya - elle)",
+                "هُوَ (huwa - il)",
+                "أَنْتَ (anta - toi masc.)",
+                "أَنَا (ana - moi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« sami'at » (سَمِعَتْ) porte le tâ' sakin de la 3e personne du féminin singulier (« hiya »)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduire « tu as bu le thé » adressé à un garçon ?",
+              "options": [
+                "شَرِبْتَ الشَّايَ",
+                "شَرِبْتِ الشَّايَ",
+                "شَرِبْتُ الشَّايَ",
+                "شَرِبَ الشَّايَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour le masculin singulier (anta), on emploie « sharibta » (شَرِبْتَ)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle voyelle porte le tâ' dans « فَعَلْتُ » (j'ai fait) ?",
+              "options": ["ḍamma (-u)", "fatḥa (-a)", "kasra (-i)", "sukûn"],
+              "correctAnswers": [0],
+              "explanation": "Le tâ' de la 1re personne du singulier au passé porte toujours une ḍamma : fa'altu (فَعَلْتُ)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « دَخَلْتِ المَكْتَبَةَ », à qui parle-t-on ?",
+              "options": [
+                "À une fille ou une femme (anti)",
+                "À un homme ou un garçon (anta)",
+                "À un groupe d'élèves",
+                "À soi-même (ana)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La terminaison « -ti » avec kasra s'adresse exclusivement à la 2e personne du féminin singulier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle proposition traduit fidèlement « elle a mangé une pomme » ?",
+              "options": [
+                "أَكَلَتْ تُفَّاحَةً",
+                "أَكَلْتُ تُفَّاحَةً",
+                "أَكَلَ تُفَّاحَةً",
+                "أَكَلْتِ تُفَّاحَةً"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« akalat » (أَكَلَتْ) est la 3e personne du féminin singulier au passé."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Conjugaison au passé : duel et pluriel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales expriment un pluriel au passé ? (deux réponses)",
+              "options": [
+                "كَتَبْنَا (katabnâ)",
+                "كَتَبُوا (katabû)",
+                "كَتَبَا (katabâ)",
+                "كَتَبَتْ (katabat)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« katabnâ » (nous avons écrit) et « katabû » (ils ont écrit) sont des pluriels. « katabâ » est un duel et « katabat » un singulier."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « nous sommes allés » en arabe ?",
+              "options": [
+                "ذَهَبْنَا (dhahabnâ)",
+                "ذَهَبْتُمْ (dhahabtum)",
+                "ذَهَبُوا (dhahabû)",
+                "ذَهَبَا (dhahabâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La désinence de la 1re personne du pluriel (naḥnu) au passé est « -nâ » (ـْنَا) : ذَهَبْنَا."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle forme correspond à « vous avez fait » pour un groupe d'hommes (antum) ?",
+              "options": [
+                "فَعَلْتُمْ (fa'altum)",
+                "فَعَلْتُنَّ (fa'altunna)",
+                "فَعَلُوا (fa'alû)",
+                "فَعَلْنَا (fa'alnâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour la 2e personne du masculin pluriel (أنتم), la terminaison est « -tum » (ـْتُمْ)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle forme correspond à « vous avez fait » pour un groupe de femmes (antunna) ?",
+              "options": [
+                "فَعَلْتُنَّ (fa'altunna)",
+                "فَعَلْتُمْ (fa'altum)",
+                "فَعَلْنَ (fa'alna)",
+                "فَعَلْتُمَا (fa'altumâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour la 2e personne du féminin pluriel (أنتنَّ), la désinence est « -tunna » (ـْتُنَّ)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie la terminaison « -û » avec alif muet dans « كَتَبُوا » ?",
+              "options": [
+                "Ils ont écrit (masculin pluriel)",
+                "Elles ont écrit (féminin pluriel)",
+                "Vous avez écrit",
+                "Les deux garçons ont écrit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le wâw du pluriel suivi de l'alif orthographique de protection (alif al-wiqâya) marque la 3e personne du masculin pluriel (hum)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme verbale au passé pour « elles ont écrit » (hunna) ?",
+              "options": [
+                "كَتَبْنَ (katabna)",
+                "كَتَبُوا (katabû)",
+                "كَتَبَتَا (katabatâ)",
+                "كَتَبْتُمْ (katabtum)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La marque du féminin pluriel à la 3e personne (هنَّ) est le nûn al-niswa : كَتَبْنَ (katabna)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle terminaison marque le duel masculin à la 3e personne au passé (هما للغائب) ?",
+              "options": ["ـَا (-â)", "ـَتَا (-atâ)", "ـْتُمَا (-tumâ)", "ـُوا (-û)"],
+              "correctAnswers": [0],
+              "explanation": "On ajoute un alif long au verbe pour le duel masculin : ذَهَبَا (dhahabâ = ils sont allés tous les deux)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle forme correspond à « elles sont allées toutes les deux » (duel féminin 3e personne) ?",
+              "options": [
+                "ذَهَبَتَا (dhahabatâ)",
+                "ذَهَبَا (dhahabâ)",
+                "ذَهَبْتُمَا (dhahabtumâ)",
+                "ذَهَبْنَ (dhahabna)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour le duel féminin à la 3e personne, on ajoute « -atâ » : ذَهَبَتَا (dhahabatâ)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle forme s'adresse à deux interlocuteurs (duel 2e personne, antumâ) ?",
+              "options": [
+                "فَعَلْتُمَا (fa'altumâ)",
+                "فَعَلْتُمْ (fa'altum)",
+                "فَعَلَا (fa'alâ)",
+                "فَعَلْنَا (fa'alnâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le suffixe « -tumâ » (ـْتُمَا) s'utilise pour les deux genres à la deuxième personne du duel (أنتما)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « الطُّلابُ دَرَسُوا بِجِدٍّ », pourquoi le verbe est-il au pluriel ?",
+              "options": [
+                "Parce qu'il est placé après le sujet pluriel",
+                "Parce que le sujet est féminin",
+                "Parce que le verbe est au subjonctif",
+                "C'est une erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la phrase nominale (sujet avant le verbe), le verbe s'accorde en genre et en nombre avec son sujet : الطلاب درسوا."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Les verbes sains et verbes défectueux au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes sont des verbes concaves (contenant une lettre faible au milieu de la racine) ? (deux réponses)",
+              "options": [
+                "قَالَ (qâla)",
+                "زَارَ (zâra)",
+                "وَصَلَ (waṣala)",
+                "كَتَبَ (kataba)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« qâla » (racine q-w-l) et « zâra » (racine z-w-r) ont une semi-voyelle médiane : ce sont des verbes concaves (ajwaf)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se conjugue « قَالَ » (il a dit) à la 1re personne du singulier (أنا) ?",
+              "options": [
+                "قُلْتُ (qultu)",
+                "قَالْتُ (qâltu)",
+                "قَلْتُ (qaltu)",
+                "قِيلْتُ (qîltu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant un sukûn sur la 3e radicale, la voyelle longue s'abrège en ḍamma courte : قُلْتُ (qultu = j'ai dit)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle forme prend le verbe « عَاشَ » (il a vécu) avec le pronom « أنا » ?",
+              "options": [
+                "عِشْتُ ('ishtu)",
+                "عُشْتُ ('ushtu)",
+                "عَاشْتُ ('âshtu)",
+                "عَشْتُ ('ashtu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour un verbe concave de type ya'î (yâ'), l'alif s'abrège en kasra courte : عِشْتُ ('ishtu = j'ai vécu)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment se nomme un verbe dont la première lettre de racine est un waw ou un ya (ex: وَصَلَ) ?",
+              "options": [
+                "Un verbe assimilé (mithâl)",
+                "Un verbe concave (ajwaf)",
+                "Un verbe défectueux (nâqiṣ)",
+                "Un verbe sourd (muḍâ'af)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un verbe dont la 1re radicale est faible est appelé « mithâl » (assimilé). Au passé, il se conjugue comme un verbe sain (وَصَلْتُ)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment conjugue-t-on le verbe assimilé « وَصَلَ » (arriver) avec « نحن » ?",
+              "options": [
+                "وَصَلْنَا (waṣalnâ)",
+                "صِلْنَا (ṣilnâ)",
+                "وُصِلْنَا (wuṣilnâ)",
+                "أَوْصَلْنَا (awṣalnâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au passé, le verbe assimilé conserve sa première radicale sans altération : وَصَلْنَا (nous sommes arrivés)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se conjugue « مَشَى » (il a marché) à la 1re personne « أنا » ?",
+              "options": [
+                "مَشَيْتُ (mashaytu)",
+                "مَشَوْتُ (mashawtu)",
+                "مَشَاتُ (mashâtu)",
+                "مَشِيتُ (mashîtu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'alif maqsûra réapparaît sous forme de yâ' vocalisé : مَشَيْتُ (mashaytu = j'ai marché)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se conjugue « دَعَا » (il a invité / prié) avec « أنا » ?",
+              "options": [
+                "دَعَوْتُ (da'awtu)",
+                "دَعَيْتُ (da'aytu)",
+                "دَعَاتُ (da'âtu)",
+                "دَعْتُ (da'tu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La dernière radicale est un wâw (racine d-'-w) qui réapparaît devant les désinences consonantiques : دَعَوْتُ (da'awtu)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que devient le verbe sourd (avec shadda) « رَدَّ » (répondre) avec « أنا » ?",
+              "options": [
+                "رَدَدْتُ (radadtu)",
+                "رَدَّيْتُ (raddaytu)",
+                "رَدْتُ (radtu)",
+                "رَدَدَ (radada)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aux personnes dont la terminaison commence par une consonne (tu, ta, ti, nâ...), la réduplication se dissocie : رَدَدْتُ."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on « ils ont dit » (hum) au passé ?",
+              "options": [
+                "قَالُوا (qâlû)",
+                "قُلُوا (qulû)",
+                "قَوْلُوا (qawlû)",
+                "قَالْنَ (qâlna)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant la désinence vocalique « -û », la voyelle longue médiane est conservée : قَالُوا (qâlû)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle forme correspond à « elle a visité » avec le verbe زَارَ ?",
+              "options": [
+                "زَارَتْ (zârat)",
+                "زُرَتْ (zurat)",
+                "زَارَتَا (zâratâ)",
+                "زُرْتِ (zurti)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant la désinence « -at » commençant par une voyelle, la racine conserve son alif : زَارَتْ (zârat)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "L'auxiliaire 'kâna' (كان) au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales de « كَانَ » (être) sont correctement conjuguées au passé ? (deux réponses)",
+              "options": [
+                "كُنْتُ (kuntu - j'étais)",
+                "كَانُوا (kânû - ils étaient)",
+                "كَوْنُوا (kawnû)",
+                "كَنَتْ (kanat)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« kuntu » (كُنْتُ) et « kânû » (كَانُوا) sont les formes correctes de « kâna » au passé. La racine est k-w-n."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle syntaxique principal de « كَانَ » lorsqu'il introduit une phrase nominale ?",
+              "options": [
+                "Il met l'attribut (khabar) au cas accusatif (manṣûb)",
+                "Il met le sujet au cas génitif (majrûr)",
+                "Il supprime le sujet",
+                "Il transforme le verbe au passif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kâna » maintient son sujet (ism kâna) au nominatif (marfû') et met son attribut (khabar kâna) à l'accusatif (manṣûb)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « Le temps était beau » en respectant la syntaxe de kâna ?",
+              "options": [
+                "كَانَ الطَّقْسُ جَمِيلاً",
+                "كَانَ الطَّقْسَ جَمِيلٌ",
+                "كَانَ الطَّقْسِ جَمِيلاً",
+                "كَانَ الطَّقْسُ جَمِيلٌ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attribut « jamîlan » porte le tanwîn fatḥa de l'accusatif exigé par kâna : كَانَ الطَّقْسُ جَمِيلاً."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « j'étais étudiant » ?",
+              "options": ["كُنْتُ طَالِبًا", "كَانَ طَالِبًا", "كُنْتَ طَالِبٌ", "كُنَّا طَالِبًا"],
+              "correctAnswers": [0],
+              "explanation": "« kuntu » (كُنْتُ) correspond à « j'étais » et « ṭâliban » est au cas accusatif comme khabar kâna."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dit-on « nous étions à la maison hier » ?",
+              "options": [
+                "كُنَّا فِي البَيْتِ أَمْسِ",
+                "كَانُوا فِي البَيْتِ أَمْسِ",
+                "كُنْتُمْ فِي البَيْتِ أَمْسِ",
+                "كُنْتِ فِي البَيْتِ أَمْسِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kunnâ » (كُنَّا) est la 1re personne du pluriel du verbe kâna : « nous étions »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme de kâna pour « elles étaient » (hunna) ?",
+              "options": [
+                "كُنَّ (kunna)",
+                "كَانُوا (kânû)",
+                "كُنْتُنَّ (kuntunna)",
+                "كَانَتْ (kânat)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour le pronom « هنَّ » (hunna), la forme est « kunna » (كُنَّ) avec une shadda sur le nûn."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « كَانَتِ المَدِينَةُ هَادِئَةً » ?",
+              "options": [
+                "La ville était calme",
+                "La ville sera animée",
+                "La ville est grande",
+                "La ville était bruyante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kânat » est au féminin pour s'accorder avec « al-madîna » (la ville), et « hâdi'atan » signifie « calme »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « tu étais malade » en s'adressant à un ami masculin ?",
+              "options": ["كُنْتَ مَرِيضًا", "كُنْتِ مَرِيضَةً", "كَانَ مَرِيضًا", "كُنْتُ مَرِيضًا"],
+              "correctAnswers": [0],
+              "explanation": "« kunta » (كُنْتَ) s'adresse à la 2e personne du masculin singulier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle voyelle prend la lettre kâf dans « كُنْتُ » ?",
+              "options": ["Une ḍamma", "Une fatḥa", "Une kasra", "Un sukûn"],
+              "correctAnswers": [0],
+              "explanation": "Dans la conjugaison de kâna abrégée devant consonne, le kâf prend une ḍamma : kuntu, kunta, kunti, kunnâ."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « vous étiez heureux » pour un groupe masculin (antum) ?",
+              "options": [
+                "كُنْتُمْ سُعَدَاءَ",
+                "كَانُوا سُعَدَاءَ",
+                "كُنَّا سُعَدَاءَ",
+                "كُنْتُنَّ سُعَدَاءَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kuntum » (كُنْتُمْ) est la 2e personne du masculin pluriel au passé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "L'expression de l'antériorité avec 'qad' (قد)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions la particule « قَدْ » (qad) peut-elle avoir lorsqu'elle précède un verbe au passé (mâdî) ? (deux réponses)",
+              "options": [
+                "Marquer l'accomplissement certain de l'action",
+                "Exprimer l'antériorité temporelle",
+                "Exprimer le doute ou l'incertitude",
+                "Marquer l'impératif direct"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Devant un verbe au passé, « qad » (حرف تحقيق) confirme l'accomplissement effectif de l'action ou souligne son antériorité (« a déjà fait »)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « قَدْ وَصَلَ القِطَارُ » ?",
+              "options": [
+                "Le train est déjà arrivé (il vient d'arriver)",
+                "Le train arrivera peut-être",
+                "Le train n'est pas arrivé",
+                "Le train partira bientôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« qad » combiné au verbe passé « waṣala » insiste sur le fait que l'arrivée est bel et bien effective et accomplie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel temps français correspond à la structure « كَانَ قَدْ كَتَبَ » (kâna qad kataba) ?",
+              "options": [
+                "Le plus-que-parfait (il avait écrit)",
+                "Le présent de l'indicatif",
+                "Le futur antérieur",
+                "L'imparfait continu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La combinaison « kâna » au passé + « qad » + verbe au passé exprime classiquement le plus-que-parfait en arabe littéraire."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que traduit « كُنْتُ قَدْ زُرْتُ المَتْحَفَ مِنْ قَبْلُ » ?",
+              "options": [
+                "J'avais déjà visité le musée auparavant",
+                "Je vais bientôt visiter le musée",
+                "Je n'ai jamais visité le musée",
+                "J'aimerais visiter le musée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kuntu qad zurtu » exprime une action antérieure achevée avant un autre moment du passé : « j'avais déjà visité »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle particule de renfort peut être préfixée à « قَدْ » pour donner « لَقَدْ » (laqad) ?",
+              "options": [
+                "Le lâm de serment ou d'insistance (lâm al-ta'kîd)",
+                "Le lâm de négation",
+                "Le lâm de possession",
+                "Le lâm de but"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« laqad » (لَقَدْ) renforce encore davantage l'affirmation en y associant la particule d'insistance « la- »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie « لَقَدْ نَجَحْتَ فِي الاِمْتِحَانِ » ?",
+              "options": [
+                "Tu as assurément réussi à l'examen !",
+                "Tu vas passer l'examen",
+                "Tu as échoué à l'examen",
+                "Réussiras-tu à l'examen ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« laqad najaḥta » souligne avec certitude et bienveillance la réussite accomplie."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si « qad » est suivi d'un verbe à l'inaccompli (muḍâri'), quel sens prend-il généralement ?",
+              "options": [
+                "La probabilité ou la possibilité (peut-être)",
+                "L'obligation stricte",
+                "La certitude absolue",
+                "L'ordre formel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant l'inaccompli, « qad » exprime souvent l'éventualité ou la rareté : قَدْ يَكُونُ (il se peut que, peut-être)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « لَمَّا وَصَلْتُ، كَانُوا ______ غَادَرُوا المَكَانَ » (ils avaient déjà quitté les lieux).",
+              "options": ["قَدْ (qad)", "لَنْ (lan)", "سَوْفَ (sawfa)", "مَا (mâ)"],
+              "correctAnswers": [0],
+              "explanation": "Pour exprimer le plus-que-parfait après kânû, on emploie la particule d'antériorité « qad »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « قَدْ فَهِمْنَا الدَّرْسَ جَيِّدًا » ?",
+              "options": [
+                "Nous avons bien compris la leçon",
+                "Nous allons étudier la leçon",
+                "Nous n'avons pas compris la leçon",
+                "Comprenez bien la leçon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« qad fahimnâ » affirme l'assimilation complète et réussie de la leçon."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans le récit au passé, quel rôle joue « kâna qad + verbe au passé » ?",
+              "options": [
+                "Créer un retour en arrière (flashback ou antériorité)",
+                "Annoncer le futur proche",
+                "Donner un ordre au lecteur",
+                "Raconter une action simultanée au présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette structure établit un repère chronologique antérieur aux événements principaux du récit."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "L'aspect inaccompli dans le passé ('kâna yaf'alu')",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles valeurs temporelles ou aspectuelles sont exprimées par « كَانَ + verbe à l'inaccompli » ? (deux réponses)",
+              "options": [
+                "Une action continue ou en cours dans le passé",
+                "Une habitude ou répétition passée",
+                "Un ordre direct au présent",
+                "Une certitude absolue sur le futur"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« kâna + muḍâri' » traduit l'imparfait français : il exprime la durée, la continuité ou une coutume passée (« il faisait d'habitude »)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « il écrivait tous les soirs » (habitude passée) ?",
+              "options": [
+                "كَانَ يَكْتُبُ كُلَّ مَسَاءٍ",
+                "كَتَبَ كُلَّ مَسَاءٍ فَقَطْ",
+                "سَيَكْتُبُ كُلَّ مَسَاءٍ",
+                "قَدْ كَتَبَ الآنَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kâna yaktubu » combine l'auxiliaire au passé et l'inaccompli pour rendre l'aspect imperfectif ou itératif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « كُنْتُ أَعِيشُ فِي القَاهِرَةِ » ?",
+              "options": [
+                "Je vivais (j'habitais) au Caire",
+                "Je vivrai au Caire",
+                "Je visite Le Caire maintenant",
+                "Je suis né au Caire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kuntu a'îshu » exprime un état durable situé dans le passé : « j'habitais / je vivais »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « nous lisions un livre quand le téléphone a sonné » ?",
+              "options": [
+                "كُنَّا نَقْرَأُ كِتَابًا",
+                "قَرَأْنَا كِتَابًا فَقَطْ",
+                "سَنَقْرَأُ كِتَابًا",
+                "اقْرَأُوا كِتَابًا"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kunnâ naqra'u » (nous étions en train de lire) pose le cadre d'arrière-plan de l'action."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans « كَانَتْ أُمِّي تُعِدُّ الطَّعَامَ », à quel temps français correspond le verbe ?",
+              "options": [
+                "À l'imparfait (ma mère préparait le repas)",
+                "Au passé simple ponctuel",
+                "Au futur simple",
+                "Au présent de vérité générale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La périphrase exprime une action en cours de déroulement dans le passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme prend la structure pour « ils jouaient au football » ?",
+              "options": [
+                "كَانُوا يَلْعَبُونَ كُرَةَ القَدَمِ",
+                "كَانُوا لَعِبُوا كُرَةَ القَدَمِ",
+                "كُنْتُمْ تَلْعَبُونَ",
+                "كَانَ يَلْعَبُ كُرَةَ القَدَمِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'auxiliaire « kânû » et l'inaccompli « yal'abûna » s'accordent tous deux au masculin pluriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « كُنْتَ تَتَكَلَّمُ العَرَبِيَّةَ بِطَلاقَةٍ » ?",
+              "options": [
+                "Tu parlais l'arabe avec fluidité",
+                "Tu vas apprendre l'arabe",
+                "Parle arabe correctement",
+                "Tu as refusé de parler arabe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kunta tatakallamu » exprime une capacité ou habitude passée : « tu parlais »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle différence d'aspect y a-t-il entre « شَرِبَ » et « كَانَ يَشْرَبُ » ?",
+              "options": [
+                "« shariba » est ponctuel achevé, « kâna yashrabu » est duratif ou habituel",
+                "« shariba » est un ordre, l'autre une interdiction",
+                "Il n'y a aucune différence",
+                "« kâna yashrabu » est au futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe au passé seul est global/ponctuel, tandis que kâna + muḍâri' marque le déroulement ou l'habitude."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dire « elle marchait vers l'école » ?",
+              "options": [
+                "كَانَتْ تَمْشِي إِلَى المَدْرَسَةِ",
+                "كَانَ يَمْشِي إِلَى المَدْرَسَةِ",
+                "مَشَتْ إِلَى المَدْرَسَةِ أَمْسِ",
+                "سَتَمْشِي إِلَى المَدْرَسَةِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kânat tamshî » est la forme féminine singulière marquant l'action en cours."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un récit, quel temps français rend le mieux « كَانَ المَطَرُ يَهْطِلُ » ?",
+              "options": [
+                "La pluie tombait à verse",
+                "La pluie tomba soudainement",
+                "La pluie tombera",
+                "Qu'il pleuve !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est une description de l'arrière-plan météorologique, rendue fidèlement par l'imparfait."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "La négation au passé avec 'mâ' (ما) et 'lam' (لم)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles structures expriment correctement la négation d'un événement au passé ? (deux réponses)",
+              "options": [
+                "مَا فَعَلَ (mâ + verbe au passé)",
+                "لَمْ يَفْعَلْ (lam + verbe à l'apocopé)",
+                "لَنْ يَفْعَلَ (lan + subjonctif)",
+                "لا تَفْعَلْ (lâ de défense)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pour nier le passé, on emploie « mâ » suivi du verbe au passé ou « lam » suivi de l'inaccompli apocopé (majzûm). « lan » nie le futur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel mode verbal la particule « لَمْ » (lam) exige-t-elle obligatoirement ?",
+              "options": [
+                "L'apocopé (al-jazm)",
+                "Le subjonctif (al-naṣb)",
+                "L'indicatif (al-raf')",
+                "Le passé accompli (al-mâdî)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« lam » est une particule de négation et d'apocope (ḥarf nafy wa jazm wa qalb) qui rend le verbe majzûm tout en basculant son sens au passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « je n'ai pas écrit » avec la particule « لَمْ » ?",
+              "options": [
+                "لَمْ أَكْتُبْ (lam aktub)",
+                "لَمْ كَتَبْتُ (lam katabtu)",
+                "لَمْ أَكْتُبُ (lam aktubu)",
+                "لَمْ أَكْتُبَ (lam aktuba)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe prend un sukûn à la 1re personne du singulier au mode apocopé : لَمْ أَكْتُبْ."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « il n'est pas venu » avec la particule « مَا » ?",
+              "options": [
+                "مَا جَاءَ (mâ jâ'a)",
+                "لا يَجِيءُ (lâ yajî'u)",
+                "لَنْ يَجِيءَ (lan yajî'a)",
+                "لَمْ جَاءَ (lam jâ'a)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« mâ » se place directement devant le verbe conjugué au passé : مَا جَاءَ (mâ jâ'a)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « لَمْ أَسْمَعِ الخَبَرَ أَمْسِ » ?",
+              "options": [
+                "Je n'ai pas entendu la nouvelle hier",
+                "Je n'écouterai pas la nouvelle",
+                "J'ai bien entendu la nouvelle",
+                "Écoute la nouvelle hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« lam asma' » nie l'action d'entendre au passé. La kasra finale sert de liaison euphonique devant l'article al-."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme prend « يَذْهَبُونَ » après « لَمْ » ?",
+              "options": [
+                "لَمْ يَذْهَبُوا (lam yadh-habû)",
+                "لَمْ يَذْهَبُونَ (lam yadh-habûna)",
+                "لَمْ يَذْهَبْنَ (lam yadh-habna)",
+                "لَمْ يَذْهَبْ (lam yadh-hab)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'apocopé des cinq verbes (al-amthila al-khamsa), la terminaison en -ûna perd son nûn : lam yadh-habû."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle phrase signifie « nous n'avons rien compris » ?",
+              "options": [
+                "مَا فَهِمْنَا شَيْئًا",
+                "لَنْ نَفْهَمَ شَيْئًا",
+                "لا نَفْهَمُ شَيْئًا",
+                "لَيْسَ نَفْهَمُ شَيْئًا"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« mâ fahimnâ shay'an » emploie la négation « mâ » devant le verbe passé à la 1re personne du pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que provoque « لَمْ » sur un verbe défectueux comme « يَمْشِي » (il marche) ?",
+              "options": [
+                "La suppression de la lettre faible finale (لَمْ يَمْشِ)",
+                "L'ajout d'un alif",
+                "L'allongement de la voyelle",
+                "L'adjonction d'une shadda"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'apocopé, les verbes se terminant par une semi-voyelle perdent cette dernière (ḥadhf ḥarf al-'illa) : لَمْ يَمْشِ."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi dit-on que « لَمْ » est un حرف قلب (particule d'inversion temporelle) ?",
+              "options": [
+                "Car elle fait basculer le sens du verbe inaccompli vers le passé",
+                "Car elle inverse l'ordre des lettres du verbe",
+                "Car elle transforme une question en affirmation",
+                "Car elle inverse le sujet et l'objet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien que le verbe soit de forme inaccomplie (présente), « lam » reporte son sens temporel dans le passé révolu."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « مَا كُنْتُ أَعْلَمُ ذَلِكَ » ?",
+              "options": [
+                "Je ne savais pas cela",
+                "Je savais parfaitement cela",
+                "Tu ne sais pas cela",
+                "Ne sache pas cela"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« mâ kuntu a'lamu » nie l'état de connaissance dans le passé : « je ne savais pas cela »."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Raconter une journée passée (vocabulaire du récit)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels verbes expriment des actions matinales dans un récit d'hier ? (deux réponses)",
+              "options": [
+                "اسْتَيْقَظْتُ (je me suis réveillé)",
+                "تَنَاوَلْتُ الفُطُورَ (j'ai pris le petit-déjeuner)",
+                "نِمْتُ (j'ai dormi)",
+                "شَاهَدْتُ النُّجُومَ (j'ai regardé les étoiles)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« istayqaẓtu » (se réveiller) et « tanâwaltu al-fuṭûr » (déjeuner le matin) ouvrent le récit de la journée passée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « hier, je suis allé au lycée » ?",
+              "options": [
+                "أَمْسِ، ذَهَبْتُ إِلَى الثَّانَوِيَّةِ",
+                "غَدًا، أَذْهَبُ إِلَى الثَّانَوِيَّةِ",
+                "اليَوْمَ، أَنَا فِي الثَّانَوِيَّةِ",
+                "ذَهَبَ أَخِي إِلَى السُّوقِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« amsi » signifie « hier », « dhahabtu » est « je suis allé » et « al-thânawiyya » est le lycée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « قَابَلْتُ أَصْدِقَائِي فِي الفِنَاءِ » ?",
+              "options": [
+                "J'ai rencontré mes amis dans la cour",
+                "J'ai invité mes amis au restaurant",
+                "Mes amis sont partis en vacances",
+                "J'ai cherché mes amis dans la classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« qâbaltu » signifie « j'ai rencontré » et « al-finâ' » désigne la cour (d'école ou de récréation)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « nous avons révisé nos cours » ?",
+              "options": [
+                "رَاجَعْنَا دُرُوسَنَا",
+                "كَتَبْنَا وَاجِبَاتِنَا فَقَطْ",
+                "قَرَأْتُ كِتَابِي",
+                "لَعِبْنَا فِي الشَّارِعِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« râja'nâ » (رَاجَعْنَا) signifie « nous avons révisé » et « durûsanâ » est « nos cours »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie le verbe « رَجَعْتُ » dans « رَجَعْتُ إِلَى البَيْتِ مَسَاءً » ?",
+              "options": [
+                "Je suis rentré / revenu",
+                "Je suis sorti",
+                "J'ai téléphoné",
+                "J'ai déménagé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« raja'a » (رَجَعَ) exprime le retour : « je suis rentré à la maison le soir »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « j'ai fait mes devoirs » en arabe ?",
+              "options": [
+                "عَمِلْتُ وَاجِبَاتِي المَنْزِلِيَّةَ",
+                "نَسِيتُ كُتُبِي",
+                "اشْتَرَيْتُ دَفْتَرًا جَدِيدًا",
+                "أَكَلْتُ عَشَائِي"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« 'amiltu wâjibâtî al-manziliyya » signifie « j'ai fait mes devoirs scolaires/maison »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment exprimer « j'ai passé une journée agréable » ?",
+              "options": [
+                "قَضَيْتُ يَوْمًا مُمْتِعًا",
+                "خَسِرْتُ يَوْمِي أَمْسِ",
+                "كَانَ اليَوْمُ صَعْبًا جِدًّا",
+                "ضَاعَ يَوْمِي كُلُّهُ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe « qaḍâ » (قَضَى - قَضَيْتُ) signifie « passer du temps » : « qaḍaytu yawman mumti'an »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « شَعَرْتُ بِالتَّعَبِ فِي نِهَايَةِ اليَوْمِ » ?",
+              "options": [
+                "J'ai ressenti de la fatigue à la fin de la journée",
+                "J'étais plein d'énergie le soir",
+                "Je me suis réveillé tard",
+                "J'ai fêté la fin de la journée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« sha'artu bi- » (شَعَرْتُ بِـ) signifie « j'ai ressenti » et « al-ta'ab » est la fatigue."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel verbe signifie « j'ai dîné » dans un récit au passé ?",
+              "options": [
+                "تَعَشَّيْتُ (ta'ashshaytu)",
+                "تَغَدَّيْتُ (taghaddaytu)",
+                "أَفْطَرْتُ (afṭartu)",
+                "شَرِبْتُ (sharibtu)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ta'ashshâ » (تَعَشَّى / تَعَشَّيْتُ) signifie « j'ai dîné » (repas du soir, 'ashâ')."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « je me suis couché à dix heures » ?",
+              "options": [
+                "نِمْتُ فِي السَّاعَةِ العَاشِرَةِ",
+                "صَحَوْتُ فِي السَّاعَةِ العَاشِرَةِ",
+                "خَرَجْتُ فِي السَّاعَةِ العَاشِرَةِ",
+                "وَصَلْتُ فِي السَّاعَةِ العَاشِرَةِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« nimtu » (نِمْتُ, du verbe nâma) signifie « j'ai dormi / je me suis couché »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Récit autobiographique et souvenirs d'enfance",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions introduisent typiquement des souvenirs d'enfance au passé ? (deux réponses)",
+              "options": [
+                "عِنْدَمَا كُنْتُ صَغِيرًا (quand j'étais petit)",
+                "فِي أَيَّامِ طُفُولَتِي (aux jours de mon enfance)",
+                "فِي المُسْتَقْبَلِ القَرِيبِ (dans un avenir proche)",
+                "غَدًا إِنْ شَاءَ اللهُ (demain si Dieu veut)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« 'indamâ kuntu ṣaghîran » et « fî ayyâmi ṭufûlatî » sont des formules emblématiques de l'évocation des souvenirs."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « je suis né à Paris » ?",
+              "options": [
+                "وُلِدْتُ فِي بَارِيسَ",
+                "سَكَنْتُ فِي بَارِيسَ الآنَ",
+                "وَلَدْتُ فِي بَارِيسَ",
+                "سَافَرْتُ إِلَى بَارِيسَ غَدًا"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe passif « wulidtu » (وُلِدْتُ) signifie « je suis né »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « نَشَأْتُ فِي قَرْيَةٍ جَمِيلَةٍ » ?",
+              "options": [
+                "J'ai grandi dans un beau village",
+                "J'ai acheté une maison au village",
+                "Je visiterai un beau village",
+                "J'ai quitté mon village natal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« nasha'tu » (نَشَأْتُ) signifie « j'ai grandi / j'ai été élevé »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduire « je me souviens du premier jour d'école » ?",
+              "options": [
+                "أَتَذَكَّرُ اليَوْمَ الأَوَّلَ فِي المَدْرَسَةِ",
+                "نَسِيتُ المَدْرَسَةَ كُلَّهَا",
+                "سَأَدْخُلُ المَدْرَسَةَ غَدًا",
+                "كَرِهْتُ المَدْرَسَةَ أَمْسِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« atadhakkaru » signifie « je me rappelle / je me souviens » et introduit le souvenir passé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie le mot « الذِّكْرَيَات » (al-dhikrayât) ?",
+              "options": [
+                "Les souvenirs",
+                "Les leçons",
+                "Les devoirs",
+                "Les projets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-dhikrayât » (الذكريات) est le pluriel de « dhikrā » qui désigne les souvenirs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « mon grand-père me racontait des histoires » ?",
+              "options": [
+                "كَانَ جَدِّي يَحْكِي لِي قِصَصًا",
+                "حَكَى لِي جَدِّي قِصَّةً الآنَ",
+                "سَيَحْكِي لِي جَدِّي قِصَصًا",
+                "جَدِّي يَقْرَأُ الجَرِيدَةَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kâna yaḥkî » (auxiliaire passé + inaccompli) rend l'habitude passée de raconter des histoires."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que traduit « تَعَلَّمْتُ السِّبَاحَةَ فِي الصَّيْفِ » ?",
+              "options": [
+                "J'ai appris à nager pendant l'été",
+                "J'enseigne la natation l'été",
+                "Je n'aime pas nager l'été",
+                "J'irai à la piscine en été"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ta'allamtu » (تَعَلَّمْتُ) est la forme passée de la 5e forme du verbe 'alima : « j'ai appris »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « cette époque était merveilleuse » ?",
+              "options": [
+                "كَانَتْ تِلْكَ الفَتْرَةُ رَائِعَةً",
+                "سَتَكُونُ الأَيَّامُ رَائِعَةً",
+                "هَذِهِ الفَتْرَةُ صَعْبَةٌ",
+                "لَيْسَتِ الفَتْرَةُ جَمِيلَةً"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kânat tilka al-fatra râ'i'atan » met l'attribut « râ'i'atan » à l'accusatif féminin singulier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot arabe correspond à « l'enfance » ?",
+              "options": [
+                "الطُّفُولَة (al-ṭufûla)",
+                "الشَّبَاب (al-shabâb)",
+                "الشَّيْخُوخَة (al-shaykhûkha)",
+                "المُرَاهَقَة (al-murâhaqa)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-ṭufûla » (الطفولة) désigne la période de l'enfance, issue de la racine ṭ-f-l (ṭifl = enfant)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « لَنْ أَنْسَى ذَلِكَ اليَوْمَ أَبَدًا » dans un bilan de souvenirs ?",
+              "options": [
+                "Je n'oublierai jamais ce jour-là",
+                "J'ai oublié ce qui s'est passé",
+                "Ce jour était ordinaire",
+                "Je ne veux pas me souvenir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« lan ansâ dhâlika al-yawma abadan » exprime la trace indélébile laissée par ce souvenir marquant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Hier et avant-hier (amsi et awwal ams)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes arabes renvoient précisément au passé immédiat d'hier ou d'avant-hier ? (deux réponses)",
+              "options": [
+                "أَمْسِ (amsi)",
+                "أَوَّلَ أَمْسِ (awwala amsi)",
+                "غَدًا (ghadan)",
+                "بَعْدَ غَدٍ (ba'da ghadin)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« amsi » (hier) et « awwal ams » (avant-hier) désignent les jours immédiatement passés. « ghadan » est demain."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la voyelle finale invariable caractéristique du mot « أَمْسِ » (hier) ?",
+              "options": [
+                "Une kasra (-i)",
+                "Une fatḥa (-a)",
+                "Une ḍamma (-u)",
+                "Un tanwîn ḍamm"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En arabe littéraire classique, le mot « amsi » (أَمْسِ) est bâti sur une kasra invariable (mabnî 'alâ al-kasr)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « avant-hier, j'ai fini mon projet » ?",
+              "options": [
+                "أَوَّلَ أَمْسِ، أَنْهَيْتُ مَشْرُوعِي",
+                "أَمْسِ، بَدَأْتُ مَشْرُوعِي",
+                "غَدًا، سَأُنْهِي مَشْرُوعِي",
+                "اليَوْمَ، أَعْمَلُ فِي مَشْرُوعِي"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« awwala amsi » (أوّل أمسِ) signifie spécifiquement « avant-hier »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « مَسَاءَ أَمْسِ » ?",
+              "options": ["Hier soir", "Hier matin", "Demain soir", "Ce soir"],
+              "correctAnswers": [0],
+              "explanation": "« masâ'a amsi » combine le soir (masâ') avec hier (amsi) pour signifier « hier soir »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dit-on « hier matin » en arabe ?",
+              "options": [
+                "صَبَاحَ أَمْسِ (ṣabâḥa amsi)",
+                "مَسَاءَ أَمْسِ (masâ'a amsi)",
+                "لَيْلَةَ أَمْسِ (laylata amsi)",
+                "ظُهْرَ اليَوْمِ (ẓuhra al-yawmi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ṣabâḥa amsi » (صباحَ أمسِ) traduit fidèlement « hier matin »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle nuance apporte l'emploi de « البَارِحَة » (al-bâriḥa) ?",
+              "options": [
+                "Elle désigne fréquemment la nuit passée ou la veille",
+                "Elle désigne la semaine prochaine",
+                "Elle signifie aujourd'hui à midi",
+                "Elle exprime un doute futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-bâriḥa » (البارحة) est couramment employée pour désigner « hier soir » ou « la nuit passée / la veille »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez la phrase : « شَاهَدْتُ فِيلْمًا وَثَائِقِيًّا ______ » (hier).",
+              "options": [
+                "أَمْسِ (amsi)",
+                "غَدًا (ghadan)",
+                "الآنَ (al-âna)",
+                "بَعْدَ يَوْمَيْنِ (ba'da yawmayni)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« amsi » s'accorde logiquement avec le verbe au passé « shâhadtu » (j'ai regardé)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que traduit « لَيْلَةَ البَارِحَةِ كَانَ الجَوُّ بَارِدًا » ?",
+              "options": [
+                "Hier soir / la nuit dernière, il faisait froid",
+                "Demain soir, il fera froid",
+                "Aujourd'hui, il fait beau",
+                "La semaine dernière, il a neigé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« laylata al-bâriḥa » renvoie à la nuit d'hier et « kâna al-jawwu bâridan » au froid qu'il faisait."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans l'analyse grammaticale, quel rôle temporel joue « amsi » dans la phrase ?",
+              "options": [
+                "Un complément circonstanciel de temps (ẓarf zamân)",
+                "Un sujet (fâ'il)",
+                "Un attribut du sujet (khabar)",
+                "Un verbe d'état"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« amsi » fonctionne comme circonstanciel de temps (ظرف زمان) situant le procès verbal."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si quelqu'un dit « كَانَ ذَلِكَ أَمْسِ القَرِيبِ », quelle nuance exprime-t-il ?",
+              "options": [
+                "C'était hier encore (c'est tout récent)",
+                "C'était il y a un siècle",
+                "Ce sera dans très longtemps",
+                "Cela n'est jamais arrivé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression métaphorique « amsi al-qarîb » souligne que l'événement semble s'être produit hier tant il est proche."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les jours de la semaine au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels jours correspondent au lundi et au vendredi en arabe ? (deux réponses)",
+              "options": [
+                "يَوْمُ الاِثْنَيْنِ (yawm al-ithnayn)",
+                "يَوْمُ الجُمُعَةِ (yawm al-jumu'a)",
+                "يَوْمُ الأَحَدِ (yawm al-aḥad)",
+                "يَوْمُ الثُّلاثَاءِ (yawm al-thulâthâ')"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« yawm al-ithnayn » est le lundi et « yawm al-jumu'a » est le vendredi. « al-aḥad » est le dimanche."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « dimanche dernier » en arabe ?",
+              "options": [
+                "يَوْمَ الأَحَدِ المَاضِيَ",
+                "يَوْمَ الأَحَدِ القَادِمَ",
+                "يَوْمَ الاِثْنَيْنِ المَاضِيَ",
+                "يَوْمَ السَّبْتِ القَادِمَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-mâdî » (الماضي) qualifie le jour passé : « yawma al-aḥadi al-mâḍiya »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « سَافَرْتُ يَوْمَ الخَمِيسِ المَاضِي » ?",
+              "options": [
+                "Je suis parti jeudi dernier",
+                "Je partirai jeudi prochain",
+                "Je voyage tous les jeudis",
+                "Je suis rentré mardi dernier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-khamîs » est le jeudi et « al-mâdî » indique qu'il s'agit du jeudi précédent."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel jour correspond à « يَوْمُ السَّبْتِ » (yawm al-sabt) ?",
+              "options": [
+                "Le samedi",
+                "Le dimanche",
+                "Le mercredi",
+                "Le mardi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« yawm al-sabt » (يوم السبت) correspond au samedi dans le calendrier arabe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduit-on « mardi dernier, nous avons visité la bibliothèque » ?",
+              "options": [
+                "يَوْمَ الثُّلاثَاءِ المَاضِي، زُرْنَا المَكْتَبَةَ",
+                "يَوْمَ الأَرْبِعَاءِ القَادِمِ، سَنَزُورُ المَكْتَبَةَ",
+                "زُرْنَا المَكْتَبَةَ كُلَّ ثُلاثَاءٍ",
+                "الثُّلاثَاءُ هُوَ يَوْمُ العُطْلَةِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-thulâthâ' » est le mardi et « zurnâ » est la forme passée de la 1re personne du pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel jour de la semaine est « الأَرْبِعَاء » (al-arbi'â') ?",
+              "options": ["Le mercredi", "Le jeudi", "Le vendredi", "Le lundi"],
+              "correctAnswers": [0],
+              "explanation": "« al-arbi'â' » (الأربعاء) désigne le quatrième jour depuis dimanche, soit le mercredi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle fonction porte le nom du jour lorsqu'il est vocalisé avec une fatḥa (ex: يَوْمَ الجُمُعَةِ) ?",
+              "options": [
+                "Circonstanciel de temps à l'accusatif (ẓarf zamân manṣûb)",
+                "Sujet au nominatif",
+                "Complément de nom au génitif",
+                "Particule d'interrogation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« yawma » avec fatḥa est à l'accusatif circonstanciel de temps, indiquant le moment de l'action."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « فِي يَوْمِ الجُمُعَةِ المَاضِي التَقَيْنَا » ?",
+              "options": [
+                "Vendredi dernier, nous nous sommes rencontrés",
+                "Nous nous rencontrerons vendredi",
+                "Le vendredi est un jour saint",
+                "Vendredi dernier, je suis resté seul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Précédé de la préposition « fî », « yawmi » prend la kasra du génitif tout en situant la rencontre vendredi dernier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la traduction de « samedi soir dernier » ?",
+              "options": [
+                "مَسَاءَ السَّبْتِ المَاضِي",
+                "صَبَاحَ السَّبْتِ المَاضِي",
+                "ظُهْرَ السَّبْتِ القَادِمِ",
+                "لَيْلَةَ الأَحَدِ القَادِمِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« masâ'a al-sabti al-mâdî » désigne précisément la fin de journée du samedi passé."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dire « j'ai passé mon examen lundi » ?",
+              "options": [
+                "اجْتَزْتُ امْتِحَانِي يَوْمَ الاِثْنَيْنِ",
+                "سَأَجْتَازُ امْتِحَانِي يَوْمَ الاِثْنَيْنِ",
+                "امْتِحَانِي سَيَكُونُ الاِثْنَيْنَ",
+                "رَسَبْتُ فِي الاِمْتِحَانِ الاِثْنَيْنَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ijtaztu » (اجْتَزْتُ) est le verbe au passé signifiant « j'ai passé/réussi »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "La semaine dernière, le mois dernier, l'an dernier (al-mâdî)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions désignent des périodes temporelles révolues ? (deux réponses)",
+              "options": [
+                "الأُسْبُوعَ المَاضِيَ (la semaine dernière)",
+                "الشَّهْرَ المَاضِيَ (le mois dernier)",
+                "الأُسْبُوعَ القَادِمَ (la semaine prochaine)",
+                "الشَّهْرَ المُقْبِلَ (le mois prochain)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'adjectif « al-mâdî » (الماضي) qualifie ce qui est passé et achevé. « al-qâdim » et « al-muqbil » désignent l'avenir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment s'accorde l'adjectif « al-mâdî » avec « السَّنَة » (l'année, mot féminin) ?",
+              "options": [
+                "السَّنَةَ المَاضِيَةَ (al-mâḍiya)",
+                "السَّنَةَ المَاضِيَ (al-mâḍî)",
+                "السَّنَةَ المَاضُونَ (al-mâḍûn)",
+                "السَّنَةَ مَاضٍ (mâḍin)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif prend la marque du féminin tâ' marbûṭa pour s'accorder avec « al-sana » : al-sanata al-mâḍiyata."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on « l'an dernier » avec le mot masculin « العَام » ?",
+              "options": [
+                "العَامَ المَاضِيَ (al-'âma al-mâḍiya)",
+                "العَامَ المَاضِيَةَ (al-'âma al-mâḍiyata)",
+                "عَامٌ مَاضٍ فَقَطْ",
+                "العَامَ القَادِمَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-'âm » étant masculin, l'adjectif reste au masculin sans tâ' marbûṭa : al-'âma al-mâḍiya."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « انْتَقَلْنَا إِلَى مَنْزِلٍ جَدِيدٍ الشَّهْرَ المَاضِيَ » ?",
+              "options": [
+                "Nous avons déménagé dans une nouvelle maison le mois dernier",
+                "Nous allons déménager le mois prochain",
+                "Nous cherchons une nouvelle maison",
+                "Notre maison est neuve depuis un an"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« intaqalnâ » (انْتَقَلْنَا) signifie « nous avons déménagé / nous nous sommes installés »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduit-on « la semaine passée, j'étais malade » ?",
+              "options": [
+                "الأُسْبُوعَ المَاضِيَ، كُنْتُ مَرِيضًا",
+                "الأُسْبُوعَ القَادِمَ، سَأَكُونُ مَرِيضًا",
+                "أَنَا مَرِيضٌ هَذَا الأُسْبُوعَ",
+                "مَرِضْتُ يَوْمَ أَمْسِ فَقَطْ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-usbû'a al-mâḍiya » sert de repère temporel passé et « kuntu marîḍan » décrit l'état de maladie."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot est synonyme de « السَّنَة المَاضِيَة » ?",
+              "options": [
+                "العَام المَاضِي",
+                "الشَّهْر المَاضِي",
+                "اليَوْم المَاضِي",
+                "الفَصْل القَادِم"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-'âm » (العام) et « al-sana » (السنة) sont deux synonymes désignant l'année en arabe."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « فِي الفَصْلِ المَاضِي حَصَلْتُ عَلَى دَرَجَاتٍ مُمْتَازَةٍ » ?",
+              "options": [
+                "Le trimestre / semestre dernier, j'ai obtenu d'excellentes notes",
+                "Le trimestre prochain sera difficile",
+                "Je n'ai pas eu mes notes de cours",
+                "J'ai changé de classe récemment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-faṣl al-mâdî » désigne le trimestre ou la saison passée, et « ḥaṣaltu » signifie « j'ai obtenu »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : « زَارَنَا أَقَارِبُنَا مِنَ المَغْرِبِ فِي الصَّيْفِ ______ » (l'été dernier).",
+              "options": [
+                "المَاضِي (al-mâdî)",
+                "المُقْبِل (al-muqbil)",
+                "القَادِم (al-qâdim)",
+                "الحَالِي (al-ḥâlî)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« fî al-ṣayfi al-mâdî » s'accorde au masculin avec « al-ṣayf » (l'été) pour exprimer l'été passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle préposition peut s'ajouter devant « al-usbû' al-mâdî » sans en altérer le sens ?",
+              "options": [
+                "فِي (dans / en)",
+                "إِلَى (vers)",
+                "عَنْ (au sujet de)",
+                "مِنْ أَجْلِ (pour)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut dire soit « fî al-usbû'i al-mâdî », soit directement « al-usbû'a al-mâdiya » à l'accusatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que traduit « فِي السَّنَوَاتِ المَاضِيَةِ تَغَيَّرَتِ المَدِينَةُ كَثِيرًا » ?",
+              "options": [
+                "Ces dernières années, la ville a beaucoup changé",
+                "La ville va s'agrandir l'année prochaine",
+                "La ville était déserte autrefois",
+                "Chaque année la ville organise une fête"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« fî al-sanawâti al-mâḍiyati » utilise le féminin pluriel/singulier de l'adjectif pour qualifier les années passées."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "L'expression 'il y a' avec 'mundhu' (منذ)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sens la particule « مُنْذُ » (mundhu) peut-elle exprimer selon le contexte ? (deux réponses)",
+              "options": [
+                "« Depuis » (durée débutée au passé et continue)",
+                "« Il y a » (point temporel dans le passé)",
+                "« Dans » (délai avant le futur)",
+                "« Jamais » (négation absolue)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« mundhu » traduit à la fois « il y a » (avec un verbe passé : mundhu yawmayn = il y a deux jours) et « depuis »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel cas porte le nom qui suit directement « مُنْذُ » lorsqu'elle est employée comme préposition ?",
+              "options": [
+                "Le génitif (al-jarr)",
+                "L'accusatif (al-naṣb)",
+                "Le nominatif (al-raf')",
+                "L'apocopé (al-jazm)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En tant que préposition de temps, « mundhu » régit le cas génitif (majrûr) : مُنْذُ يَوْمَيْنِ (mundhu yawmayni)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « je suis arrivé il y a deux heures » ?",
+              "options": [
+                "وَصَلْتُ مُنْذُ سَاعَتَيْنِ",
+                "سَأَصِلُ مُنْذُ سَاعَتَيْنِ",
+                "وَصَلْتُ بَعْدَ سَاعَتَيْنِ",
+                "أَصِلُ الآنَ فِي سَاعَتَيْنِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« waṣaltu mundhu sâ'atayni » emploie le duel au génitif (sâ'atayni) après la préposition mundhu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « غَادَرَ القِطَارُ مُنْذُ عَشْرِ دَقَائِقَ » ?",
+              "options": [
+                "Le train est parti il y a dix minutes",
+                "Le train partira dans dix minutes",
+                "Le train a dix minutes de retard",
+                "Le trajet dure dix minutes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ghâdara » est au passé accompli et « mundhu 'ashri daqâ'iqa » indique que le départ s'est produit 10 minutes plus tôt."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle forme courte de « مُنْذُ » existe également en arabe littéraire classique ?",
+              "options": ["مُذْ (mudh)", "مَنْ (man)", "مَا (mâ)", "مِنْ (min)"],
+              "correctAnswers": [0],
+              "explanation": "« mudh » (مُذْ) est une variante allégée classique tout à fait équivalente à « mundhu »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « il y a trois jours » en arabe ?",
+              "options": [
+                "مُنْذُ ثَلاثَةِ أَيَّامٍ",
+                "بَعْدَ ثَلاثَةِ أَيَّامٍ",
+                "قَبْلَ ثَلاثَةُ أَيَّامٍ",
+                "فِي ثَلاثَةِ أَيَّامٍ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« mundhu thalâthati ayyâmin » est la tournure exacte avec l'annexion numérique au génitif pluriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « عَرَفْتُهُ مُنْذُ زَمَنٍ طَوِيلٍ » ?",
+              "options": [
+                "Je l'ai connu / je le connais depuis longtemps",
+                "Je le connaîtrai plus tard",
+                "Je ne l'ai jamais rencontré",
+                "Il a changé depuis peu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« mundhu zamanin ṭawîlin » exprime une longue durée écoulée depuis la première rencontre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on « nous avons fini le devoir il y a peu de temps » ?",
+              "options": [
+                "أَنْهَيْنَا الوَاجِبَ مُنْذُ وَقْتٍ قَصِيرٍ",
+                "سَنُنْهِي الوَاجِبَ بَعْدَ قَلِيلٍ",
+                "لَمْ نُنْهِ الوَاجِبَ بَعْدُ",
+                "نَبْدَأُ الوَاجِبَ الآنَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« mundhu waqtin qaṣîrin » traduit « il y a peu de temps / il y a un court instant »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : « اشْتَرَيْتُ هَذَا الهَاتِفَ ______ شَهْرَيْنِ » (il y a deux mois).",
+              "options": [
+                "مُنْذُ (mundhu)",
+                "بَعْدَ (ba'da)",
+                "إِلَى (ilâ)",
+                "عَلَى ('alâ)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« mundhu shahrayni » situe l'achat deux mois en arrière par rapport au présent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle distinction fait-on entre « mundhu » et « ba'da » ?",
+              "options": [
+                "« mundhu » renvoie au temps écoulé (il y a), « ba'da » exprime la postérité (après)",
+                "Elles sont parfaitement interchangeables",
+                "« mundhu » s'emploie uniquement au futur",
+                "« ba'da » est réservé aux jours de la semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« mundhu » mesure le temps écoulé en arrière, alors que « ba'da » exprime la succession ou l'après."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Avant et après : 'qabla' (قبل) et 'ba'da' (بعد)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions expriment une relation d'antériorité avec « قَبْلَ » (qabla) ? (deux réponses)",
+              "options": [
+                "قَبْلَ الاِمْتِحَانِ رَاجَعْتُ كَثِيرًا (avant l'examen, j'ai beaucoup révisé)",
+                "وَصَلْتُ قَبْلَ الظُّهْرِ (je suis arrivé avant midi)",
+                "ذَهَبْتُ بَعْدَ العَصْرِ (je suis parti après l'après-midi)",
+                "أَكَلْتُ بَعْدَ أَنْ غَسَلْتُ يَدَيَّ (j'ai mangé après m'être lavé les mains)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« qabla » (قَبْلَ) signifie « avant », marquant l'antériorité par rapport à un repère temporel ou un événement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle voyelle porte « قَبْلَ » lorsqu'il est suivi d'un complément de nom au génitif ?",
+              "options": [
+                "Une fatḥa de circonstanciel (qabla)",
+                "Une ḍamma invariable (qablu)",
+                "Une kasra obligatoire",
+                "Un sukûn"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En tant qu'adverbe prépositionnel régissant un complément, il se met à l'accusatif circonstanciel : « qabla » (قَبْلَ)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quand « قَبْلُ » (qablu) et « بَعْدُ » (ba'du) se terminent-ils par une ḍamma ?",
+              "options": [
+                "Lorsqu'ils sont employés seuls, sans complément exprimé (auparavant / ensuite)",
+                "Quand ils sont placés devant un verbe",
+                "Quand ils sont précédés d'un nom propre",
+                "Uniquement à la fin d'un poème"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsqu'ils sont employés adverbialement sans complément explicite (« auparavant / plus tard »), ils portent une ḍamma invariable."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la conjonction « بَعْدَ أَنْ » (ba'da an) suivie d'un verbe ?",
+              "options": [
+                "Après que / après avoir",
+                "Avant de",
+                "Pendant que",
+                "Depuis que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ba'da an » (بَعْدَ أَنْ) relie deux propositions et signifie « après que » ou « après avoir fait »."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment traduit-on « avant d'entrer en classe, j'ai éteint mon téléphone » ?",
+              "options": [
+                "قَبْلَ أَنْ أَدْخُلَ الفَصْلَ، أَطْفَأْتُ هَاتِفِي",
+                "بَعْدَ أَنْ دَخَلْتُ الفَصْلَ، تَكَلَّمْتُ",
+                "عِنْدَمَا دَخَلْتُ، ضَاعَ هَاتِفِي",
+                "أَطْفَأْتُ الهَاتِفَ بَعْدَ الدَّرْسِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« qabla an » (قَبْلَ أَنْ) exprime « avant de / avant que »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie « مِنْ قَبْلُ » (min qablu) ?",
+              "options": [
+                "Auparavant / autrefois",
+                "À l'instant",
+                "Très bientôt",
+                "En aucun cas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« min qablu » (مِنْ قَبْلُ) est une locution adverbiale très fréquente signifiant « auparavant / jadis »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « après le repas, nous avons bu du thé » ?",
+              "options": [
+                "بَعْدَ الطَّعَامِ، شَرِبْنَا الشَّايَ",
+                "قَبْلَ الطَّعَامِ، نِمْنَا",
+                "مَعَ الطَّعَامِ، طَبَخْنَا",
+                "دُونَ الطَّعَامِ، شَبِعْنَا"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ba'da al-ṭa'âmi » situe la dégustation du thé postérieurement au repas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « لَمْ أَرَ هَذَا المَشْهَدَ مِنْ قَبْلُ », quel est le sens ?",
+              "options": [
+                "Je n'avais jamais vu cette scène auparavant",
+                "Je verrai cette scène plus tard",
+                "J'ai souvent vu cette scène",
+                "Je refuse de voir cette scène"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« min qablu » renforce ici la négation de l'expérience passée (« jamais auparavant »)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle préposition est utilisée dans « بَعْدَ ذَلِكَ » (ba'da dhâlika) ?",
+              "options": [
+                "بَعْدَ (après)",
+                "قَبْلَ (avant)",
+                "مَعَ (avec)",
+                "فَوْقَ (au-dessus)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ba'da dhâlika » signifie textuellement « après cela » et sert de transition chronologique majeure."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « وَصَلَ عَلِيٌّ بَعْدِي » ?",
+              "options": [
+                "Ali est arrivé après moi",
+                "Ali est arrivé avant moi",
+                "Ali est arrivé avec moi",
+                "Ali n'est pas arrivé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ba'dî » combine « ba'da » et le pronom suffixe de la 1re personne « -î » : « après moi »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Pendant et durant : 'khilâla' (خلال) et 'athnâ'a' (أثناء)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes arabes signifient « pendant » ou « durant » dans un récit au passé ? (deux réponses)",
+              "options": [
+                "خِلالَ (khilâla)",
+                "أَثْنَاءَ (athnâ'a)",
+                "بَعْدَ (ba'da)",
+                "قَبْلَ (qabla)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« khilâla » et « athnâ'a » sont deux quasi-synonymes utilisés comme circonstanciels pour marquer la concomitance temporelle."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel cas prend le nom qui suit « خِلالَ » ou « أَثْنَاءَ » ?",
+              "options": [
+                "Le génitif (al-jarr)",
+                "L'accusatif (al-naṣb)",
+                "Le nominatif (al-raf')",
+                "L'apocopé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque « khilâla » et « athnâ'a » forment une annexion nominale (iḍâfa), le second terme est obligatoirement au génitif (muḍâf ilayh)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « pendant les vacances d'été, j'ai voyagé » ?",
+              "options": [
+                "خِلالَ العُطْلَةِ الصَّيْفِيَّةِ، سَافَرْتُ",
+                "بَعْدَ العُطْلَةِ، دَرَسْتُ",
+                "قَبْلَ العُطْلَةِ، عَمِلْتُ",
+                "فِي العُطْلَةِ القَادِمَةِ، سَأَبْقَى"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« khilâla al-'uṭlati al-ṣayfiyyati » exprime la durée continue des vacances d'été."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « أَثْنَاءَ الدَّرْسِ، اسْتَمَعَ الطُّلاَّبُ بِانْتِبَاهٍ » ?",
+              "options": [
+                "Pendant le cours, les élèves ont écouté attentivement",
+                "Après le cours, les élèves sont sortis",
+                "Avant le cours, les élèves parlaient",
+                "Pendant la récréation, ils ont joué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« athnâ'a al-darsi » situe l'écoute attentive des élèves durant le déroulement de la leçon."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle expression arabe correspond à « pendant ce temps » ?",
+              "options": [
+                "فِي أَثْنَاءِ ذَلِكَ / خِلالَ ذَلِكَ",
+                "بَعْدَ ذَلِكَ",
+                "قَبْلَ ذَلِكَ",
+                "مِنْ أَجْلِ ذَلِكَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« fî athnâ'i dhâlik » ou « khilâla dhâlik » permet d'introduire une action parallèle se déroulant simultanément."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que traduit « طَوَالَ اليَوْمِ » (ṭawâla al-yawmi) ?",
+              "options": [
+                "Toute la journée (durant toute la journée)",
+                "Une heure par jour",
+                "Hier soir seulement",
+                "À midi pile"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ṭawâla » (طَوَالَ) insiste sur l'intégralité de la durée : « tout au long de la journée »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « il a plu durant la nuit » ?",
+              "options": [
+                "هَطَلَ المَطَرُ خِلالَ اللَّيْلِ",
+                "سَيَهْطِلُ المَطَرُ نَهَارًا",
+                "تَوَقَّفَ المَطَرُ قَبْلَ اللَّيْلِ",
+                "المَطَرُ نَادِرٌ فِي الصَّيْفِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« khilâla al-layli » situe la pluie pendant la durée nocturne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « تَحَدَّثْنَا كَثِيرًا أَثْنَاءَ الطَّرِيقِ », que signifie « athnâ'a al-ṭarîq » ?",
+              "options": [
+                "Pendant le trajet / en chemin",
+                "À la fin de la route",
+                "Avant de prendre la route",
+                "Loin de la route"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« athnâ'a al-ṭarîq » signifie littéralement « durant le cheminement », c'est-à-dire en route."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Peut-on utiliser « فِي خِلالِ » avec la préposition « fî » ?",
+              "options": [
+                "Oui, c'est tout à fait correct et courant",
+                "Non, c'est strictement interdit",
+                "Uniquement avec les jours de fête",
+                "Seulement à l'impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut employer indifféremment « khilâla » (à l'accusatif) ou « fî khilâli » (au génitif précédé de fî)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie « نَامَ الطِّفْلُ طَوَالَ الرِّحْلَةِ » ?",
+              "options": [
+                "L'enfant a dormi pendant tout le voyage",
+                "L'enfant s'est réveillé au début du voyage",
+                "L'enfant a refusé de voyager",
+                "Le voyage a été très court"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ṭawâla al-riḥlati » exprime la continuité ininterrompue du sommeil de l'enfant tout le long du trajet."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quand et lorsque : 'lammâ' (لما) et '‘indamâ' (عندما)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles conjonctions signifient « quand » ou « lorsque » pour introduire une proposition au passé ? (deux réponses)",
+              "options": [
+                "عِنْدَمَا ('indamâ)",
+                "لَمَّا (lammâ)",
+                "كَيْ (kay)",
+                "لِأَنَّ (li'anna)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« 'indamâ » et « lammâ » introduisent des subordonnées temporelles au passé. « kay » exprime le but et « li'anna » la cause."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la particularité de la conjonction « لَمَّا » (lammâ) temporelle ?",
+              "options": [
+                "Elle s'emploie spécifiquement avec un verbe au passé (mâdî)",
+                "Elle s'emploie uniquement au futur",
+                "Elle exige le mode subjonctif",
+                "Elle ne s'utilise qu'à l'oral"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En tant que conjonction de temps (« quand, lorsque »), « lammâ » (لما الحينية) est toujours suivie d'un verbe au passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « quand le professeur est entré, les élèves se sont levés » ?",
+              "options": [
+                "لَمَّا دَخَلَ الأُسْتَاذُ، وَقَفَ التَّلامِيذُ",
+                "إِذَا دَخَلَ الأُسْتَاذُ، سَيَقِفُونَ",
+                "كَيْ يَدْخُلَ الأُسْتَاذُ، وَقَفُوا",
+                "لَمْ يَدْخُلِ الأُسْتَاذُ أَمْسِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« lammâ dakhala al-ustâdhu, waqafa al-talâmîdhu » enchaîne parfaitement deux actions accomplies au passé."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la conjonction « حِينَمَا » (ḥînamâ) ?",
+              "options": [
+                "Au moment où / lorsque",
+                "Pourquoi",
+                "Parce que",
+                "Bien que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ḥînamâ » (حينما) est synonyme de « 'indamâ » et marque la simultanéité (« au moment où »)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « عِنْدَمَا كُنْتُ فِي المَغْرِبِ، زُرْتُ مَدِينَةَ فَاسَ » ?",
+              "options": [
+                "Quand j'étais au Maroc, j'ai visité la ville de Fès",
+                "Si je vais au Maroc, je visiterai Fès",
+                "Je n'ai pas pu visiter Fès",
+                "Fès est la plus belle ville du Maroc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« 'indamâ kuntu » situe la visite de Fès dans la période passée passée au Maroc."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle différence existe-t-il entre « لَمَّا » temporelle et « لَمَّا » négative ?",
+              "options": [
+                "La temporelle est suivie du passé, la négative de l'apocopé (« pas encore »)",
+                "Il n'y a aucune différence",
+                "La temporelle signifie « demain »",
+                "La négative s'emploie uniquement avec les noms"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« lammâ » + mâdî signifie « lorsque » ; « lammâ » + muḍâri' majzûm signifie « ne... pas encore » (harf jazm)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduire « dès que je suis arrivé, je t'ai appelé » ?",
+              "options": [
+                "بِمُجَرَّدِ أَنْ وَصَلْتُ، اتَّصَلْتُ بِكَ",
+                "عِنْدَمَا تَصِلُ، اتَّصِلْ بِي",
+                "لَمْ أَتَّصِلْ بِكَ أَمْسِ",
+                "قَبْلَ أَنْ تَصِلَ، هَاتَفْتُكَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« bi-mujarradi an » (بمجرد أن) exprime l'immédiateté : « dès que / aussitôt que »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « وَقْتَمَا » (waqtamâ) dans un récit ?",
+              "options": [
+                "Au moment où / quand",
+                "Quelle heure est-il ?",
+                "Jamais",
+                "Tard dans la nuit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« waqtamâ » est composé de « waqt » (temps/moment) et du « mâ » conjonctif pour signifier « au moment où »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « لَمَّا رَأَيْتُهُ، عَرَفْتُهُ فَوْرًا », que signifie « fawran » ?",
+              "options": [
+                "Immédiatement / sur-le-champ",
+                "Plus tard",
+                "Difficilement",
+                "Avec hésitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« fawran » (فَوْرًا) est un adverbe marquant la réaction instantanée consécutive au « lammâ »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « lorsqu'il a entendu la nouvelle, il s'est réjoui » ?",
+              "options": [
+                "لَمَّا سَمِعَ الخَبَرَ، فَرِحَ",
+                "إِذَا سَمِعَ الخَبَرَ، سَيَفْرَحُ",
+                "لِأَنَّهُ سَمِعَ، حَزِنَ",
+                "كَيْ يَسْمَعَ الخَبَرَ، جَاءَ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La proposition subordonnée temporelle introduite par « lammâ » se résout par la proposition principale « fariḥa » (il s'est réjoui)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Fréquence et durée dans le passé (kulla, dâ'iman, ahyânan)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels adverbes expriment la régularité ou la fréquence d'une action passée ? (deux réponses)",
+              "options": [
+                "دَائِمًا (dâ'iman - toujours)",
+                "أَحْيَانًا (aḥyânan - parfois)",
+                "أَبَدًا (abadan - dans un futur négatif)",
+                "الآنَ (al-âna - maintenant)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« dâ'iman » (toujours) et « aḥyânan » (parfois) marquent des degrés de fréquence dans les récits d'habitudes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « chaque jour, j'allais à la bibliothèque » ?",
+              "options": [
+                "كُلَّ يَوْمٍ كُنْتُ أَذْهَبُ إِلَى المَكْتَبَةِ",
+                "يَوْمًا وَاحِدًا ذَهَبْتُ فَقَطْ",
+                "لَمْ أَذْهَبْ أَبَدًا إِلَى المَكْتَبَةِ",
+                "غَدًا سَأَذْهَبُ إِلَى المَكْتَبَةِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« kulla yawmin » (كُلَّ يَوْمٍ) exprime la répétition quotidienne associée à l'imparfait d'habitude « kuntu adh-habu »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le mot « غَالِبًا » (ghâliban) dans un récit ?",
+              "options": [
+                "La plupart du temps / généralement",
+                "Rarement",
+                "Jamais",
+                "Exactement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ghâliban » (غالبًا) indique une très forte fréquence : « la plupart du temps / le plus souvent »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « rarement » en arabe ?",
+              "options": [
+                "نَادِرًا (nâdiran)",
+                "كَثِيرًا (kathîran)",
+                "دَائِمًا (dâ'iman)",
+                "حَتْمًا (ḥatman)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« nâdiran » (نادرًا) qualifie un événement peu fréquent ou exceptionnel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie « كُنَّا نَلْتَقِي مِنْ حِينٍ لِآخَرَ » ?",
+              "options": [
+                "Nous nous rencontrions de temps en temps",
+                "Nous ne nous voyions jamais",
+                "Nous vivions ensemble",
+                "Nous nous sommes disputés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression « min ḥînin li-âkhar » (من حين لآخر) correspond à la locution française « de temps à autre / de temps en temps »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on « plusieurs fois » en arabe ?",
+              "options": [
+                "عِدَّةَ مَرَّاتٍ (iddata marrâtin)",
+                "مَرَّةً وَاحِدَةً (marratan wâḥidatan)",
+                "دُونَ مَرَّةٍ (dûna marratin)",
+                "آخِرَ مَرَّةٍ (âkhira marratin)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« 'iddata marrâtin » (عدة مرات) est l'expression consacrée pour désigner plusieurs occurrences répétées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « زُرْتُ المَدِينَةَ مَرَّتَيْنِ » ?",
+              "options": [
+                "J'ai visité la ville deux fois",
+                "J'ai visité la ville une fois",
+                "Je visite la ville tous les jours",
+                "Je n'ai jamais visité la ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« marratayni » est le duel à l'accusatif de « marra » (fois), signifiant « deux fois »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dire « j'ai marché pendant des heures » ?",
+              "options": [
+                "مَشَيْتُ لِسَاعَاتٍ طَوِيلَةٍ",
+                "مَشَيْتُ دَقِيقَةً وَاحِدَةً",
+                "لَمْ أَمْشِ أَبَدًا",
+                "سَأَمْشِي بَعْدَ سَاعَةٍ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« li-sâ'âtin ṭawîlatin » traduit la durée prolongée : « pendant de longues heures »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que traduit « كَانَ يَزُورُنَا أُسْبُوعِيًّا » ?",
+              "options": [
+                "Il nous rendait visite chaque semaine (de façon hebdomadaire)",
+                "Il nous a rendu visite une seule fois",
+                "Il ne venait jamais nous voir",
+                "Il est resté un mois entier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'adverbe « usbû'iyyan » (أسبوعيًا) marque la périodicité hebdomadaire de la visite."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans « كُنْتُ أُمَارِسُ الرِّيَاضَةَ بَانْتِظَامٍ », que signifie « bi-intiẓâm » ?",
+              "options": [
+                "Régulièrement / avec régularité",
+                "Exceptionnellement",
+                "Par obligation seulement",
+                "Le week-end uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« bi-intiẓâm » (بانتظام) exprime la constance et la régularité d'une pratique."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les moments de la journée au passé (matin, soir, nuit)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes désignent des parties de la journée utilisées comme circonstanciels de temps ? (deux réponses)",
+              "options": [
+                "صَبَاحًا (ṣabâḥan - le matin)",
+                "مَسَاءً (masâ'an - le soir)",
+                "شِمَالاً (shimâlan - au nord)",
+                "قَلِيلاً (qalîlan - un peu)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« ṣabâḥan » (le matin) et « masâ'an » (le soir) sont des circonstanciels temporels portant le tanwîn fatḥa."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on « hier à midi, j'ai déjeuné avec mon frère » ?",
+              "options": [
+                "أَمْسِ ظُهْرًا، تَغَدَّيْتُ مَعَ أَخِي",
+                "غَدًا صَبَاحًا، سَآكُلُ مَعَ أَخِي",
+                "أَمْسِ لَيْلاً، سَافَرْتُ مَعَ أَخِي",
+                "تَنَاوَلْتُ الفُطُورَ وَحْدِي"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ẓuhran » (ظُهْرًا) désigne le milieu de journée / midi, et « taghaddaytu » signifie « j'ai déjeuné »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot désigne le crépuscule ou la tombée de la nuit en arabe ?",
+              "options": [
+                "الغُرُوب (al-ghurûb)",
+                "الشُّرُوق (al-shurûq)",
+                "الظَّهِيرَة (al-ẓahîra)",
+                "الفَجْر (al-fajr)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-ghurûb » (الغروب) est le coucher du soleil et le crépuscule. « al-shurûq » est le lever du soleil."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « à l'aube, les voyageurs sont partis » ?",
+              "options": [
+                "عِنْدَ الفَجْرِ، انْطَلَقَ المُسَافِرُونَ",
+                "عِنْدَ الظُّهْرِ، نَامَ المُسَافِرُونَ",
+                "فِي اللَّيْلِ، وَصَلَ المُسَافِرُونَ",
+                "بَعْدَ الغُرُوبِ، رَجَعُوا"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« 'inda al-fajri » (عند الفجر) désigne précisément le point temporel de l'aube."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « سَهِرْنَا لَيْلاً نَتَحَدَّثُ » ?",
+              "options": [
+                "Nous avons veillé la nuit en discutant",
+                "Nous avons dormi tôt la nuit",
+                "Nous sommes sortis le matin",
+                "Nous n'avons rien dit de la soirée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le verbe « sahira » (سَهِرَ / سَهِرْنَا) signifie « veiller tard la nuit »."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduire « en début de soirée » ?",
+              "options": [
+                "فِي بِدَايَةِ المَسَاءِ / أَوَّلَ المَسَاءِ",
+                "فِي نِهَايَةِ اللَّيْلِ",
+                "عِنْدَ مُنْتَصَفِ النَّهَارِ",
+                "قَبْلَ طُلُوعِ الشَّمْسِ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« fî bidâyati al-masâ' » ou « awwala al-masâ' » désigne le début de la soirée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « مُنْتَصَف اللَّيْل » (muntaṣaf al-layl) ?",
+              "options": [
+                "Minuit (le milieu de la nuit)",
+                "Midi",
+                "Le lever du soleil",
+                "Le milieu de l'après-midi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« muntaṣaf al-layl » (منتصف الليل) se traduit exactement par « minuit »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « hier après-midi » en arabe ?",
+              "options": [
+                "بَعْدَ ظُهْرِ أَمْسِ (ba'da ẓuhri amsi)",
+                "صَبَاحَ أَمْسِ (ṣabâḥa amsi)",
+                "فَجْرَ أَمْسِ (fajra amsi)",
+                "لَيْلَةَ أَمْسِ (laylata amsi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ba'da ẓuhri amsi » (بعد ظهر أمس) traduit le créneau de l'après-midi d'hier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « رَجَعَ أَبِي مِنَ العَمَلِ عِنْدَ الغُرُوبِ » ?",
+              "options": [
+                "Mon père est rentré du travail au coucher du soleil",
+                "Mon père est parti au travail à l'aube",
+                "Mon père travaille de nuit",
+                "Mon père ne travaille pas aujourd'hui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« 'inda al-ghurûbi » situe le retour du père au moment où le soleil se couche."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle préposition et quel nom désignent le temps matinal dans « فِي الصَّبَاحِ البَاكِرِ » ?",
+              "options": [
+                "« De bon matin » (tôt le matin)",
+                "« Tard le soir »",
+                "« En plein midi »",
+                "« Au milieu de la nuit »"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« al-ṣabâḥ al-bâkir » (الصباح الباكر) correspond exactement au français « le petit matin / de bon matin »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Connecteurs chronologiques et structuration du récit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots de liaison permettent d'ordonner la chronologie des faits dans un récit au passé ? (deux réponses)",
+              "options": [
+                "أَوَّلاً (awwalan - d'abord)",
+                "ثُمَّ (thumma - puis / ensuite)",
+                "لَعَلَّ (la'alla - peut-être)",
+                "لَيْتَ (layta - si seulement)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« awwalan » (premièrement / d'abord) et « thumma » (puis / ensuite) structurent le déroulement temporel d'un récit."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle nuance existe-t-il entre la conjonction « فَـ » (fa) et « ثُمَّ » (thumma) ?",
+              "options": [
+                "« fa- » marque une succession immédiate sans délai, « thumma » admet un intervalle de temps",
+                "« thumma » marque la cause, « fa- » marque le but",
+                "Il n'y a aucune différence d'emploi",
+                "« fa- » ne s'emploie qu'au futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« fa- » implique l'enchaînement immédiat (tartîb ma'a ta'qîb), alors que « thumma » sous-entend un laps de temps plus long (tartîb ma'a tarâkhî)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « enfin / pour terminer » dans la conclusion d'un récit ?",
+              "options": [
+                "أَخِيرًا (akhîran) / فِي النِّهَايَةِ (fî al-nihâyati)",
+                "بَدْءًا (bad'an)",
+                "أَوَّلاً (awwalan)",
+                "فَجْأَةً (faj'atan)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« akhîran » ou « fî al-nihâya » marque l'étape ultime de la narration chronologique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le connecteur « فَجْأَةً » (faj'atan) introduit dans une histoire ?",
+              "options": [
+                "Soudain / tout à coup",
+                "Lentement",
+                "Comme d'habitude",
+                "Le lendemain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« faj'atan » (فجأةً) introduit un événement imprévu ou brutal qui fait basculer le récit."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dit-on « le lendemain » dans la suite d'une narration au passé ?",
+              "options": [
+                "فِي اليَوْمِ التَّالِي (fî al-yawmi al-tâlî)",
+                "أَمْسِ (amsi)",
+                "اليَوْمَ نَفْسَهُ (al-yawma nafsahu)",
+                "قَبْلَ يَوْمَيْنِ (qabla yawmayni)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« fî al-yawmi al-tâlî » (في اليوم التالي) permet de passer à la journée suivante dans le fil de l'histoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la locution « وَفِي تِلْكَ الأَثْنَاءِ » ?",
+              "options": [
+                "Et pendant ce temps-là",
+                "Et après cela",
+                "Et bien avant cela",
+                "Et enfin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette formule sert à faire alterner deux scènes simultanées dans le récit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez la suite logique : « أَوَّلاً ذَهَبْتُ إِلَى السُّوقِ، ______ رَجَعْتُ إِلَى المَنْزِلِ » (puis).",
+              "options": [
+                "ثُمَّ (thumma)",
+                "لَكِنَّ (lâkinna)",
+                "لِأَنَّ (li'anna)",
+                "بَلْ (bal)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« thumma » est le connecteur chronologique attendu après « awwalan »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « بَعْدَ مُرُورِ أَيَّامٍ » ?",
+              "options": [
+                "Après quelques jours (quelques jours ayant passé)",
+                "Avant plusieurs jours",
+                "Pendant un seul jour",
+                "Tous les jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ba'da murûri ayyâmin » marque une ellipse temporelle de plusieurs jours dans le récit."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on « d'une part... d'autre part » pour articuler deux actions passées ?",
+              "options": [
+                "مِنْ جِهَةٍ... وَمِنْ جِهَةٍ أُخْرَى",
+                "هَذَا... أَوْ ذَاكَ",
+                "لا هَذَا... وَلا ذَاكَ",
+                "هُنَا... هُنَاكَ فَقَطْ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« min jihatin... wa-min jihatin ukhrâ » permet de structurer les faits de manière élégante."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase illustre un dénouement réussi de récit ?",
+              "options": [
+                "وَهَكَذَا انْتَهَتْ رِحْلَتُنَا بِنَجَاحٍ وَسَعَادَةٍ",
+                "بَدَأْنَا الرِّحْلَةَ فِي الصَّبَاحِ البَاكِرِ",
+                "كُنَّا نُفَكِّرُ فِي السَّفَرِ قَبْلاً",
+                "فَجْأَةً هَطَلَ المَطَرُ بِغَزَارَةٍ"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« wa-hâkadhâ intahat riḥlatunâ... » formule une conclusion narrative classique (« et c'est ainsi que notre voyage s'est achevé »)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

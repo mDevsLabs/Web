@@ -9,6 +9,10 @@
  */
 
 import { z } from "zod";
+import {
+  composePersonalInstructions,
+  type PersonalBlock,
+} from "@/lib/prompts/personal";
 
 export const COACH_INTENTS = [
   "chat",
@@ -571,4 +575,32 @@ export function modeleCoachEnregistrable(params: {
     return false;
   }
   return params.catalogueIds.includes(id) && params.autorise(id);
+}
+
+export const COACH_FACT_GUARD =
+  "La personnalisation règle le ton et l'adaptation à l'élève. Elle ne change pas les faits du cours, les règles du jeu ni la note déjà décidée.";
+
+export function blocsCompteCoach(input: {
+  instructions: string | null;
+  instructionsEnabled: boolean;
+  memory: string | null;
+}): string | null {
+  const blocks: PersonalBlock[] = [
+    {
+      body: input.instructionsEnabled ? input.instructions : null,
+      label: "INSTRUCTIONS DE L'ÉLÈVE",
+    },
+    { body: input.memory, label: "MÉMOIRE" },
+  ];
+  return composePersonalInstructions(blocks);
+}
+
+export function promptCoachAvecCompte(
+  systemPrompt: string,
+  personal: string | null
+): string {
+  const base = systemPrompt.includes(COACH_FACT_GUARD)
+    ? systemPrompt
+    : `${systemPrompt}\n${COACH_FACT_GUARD}`;
+  return personal ? `${base}\n\n${personal}` : base;
 }

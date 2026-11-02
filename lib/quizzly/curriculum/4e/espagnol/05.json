@@ -1,0 +1,2218 @@
+{
+  "id": "4e-espagnol-05",
+  "year": "4e",
+  "subject": "espagnol",
+  "title": "Le passé en espagnol",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Formation du passé composé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se forme le passé composé (pretérito perfecto) en espagnol ?",
+              "options": [
+                "Auxiliaire estar + participe passé",
+                "Auxiliaire haber + participe passé",
+                "Auxiliaire ser + participe passé",
+                "Auxiliaire tener + gérondif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En espagnol, le passé composé se forme toujours avec l'auxiliaire haber conjugué au présent, suivi du participe passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme de haber pour « yo » au présent de l'indicatif ?",
+              "options": ["has", "hay", "he", "ha"],
+              "correctAnswers": [2],
+              "explanation": "Au présent, haber se conjugue : he, has, ha, hemos, habéis, han. Pour 'yo', c'est 'he'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Nosotros ________ hablado con el profesor hoy. »",
+              "options": ["habéis", "hemos", "han", "he"],
+              "correctAnswers": [1],
+              "explanation": "Avec le pronom sujet 'nosotros', la forme de haber au présent est 'hemos'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Le participe passé s'accorde-t-il avec le sujet au passé composé en espagnol ?",
+              "options": [
+                "Oui, toujours en genre et en nombre",
+                "Non, il reste toujours invariable en -o",
+                "Uniquement si le sujet est féminin pluriel",
+                "Seulement avec les verbes de mouvement"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Contrairement au français, le participe passé employé avec l'auxiliaire haber est strictement invariable et se termine en -o."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases contiennent une forme correcte de l'auxiliaire « haber » au passé composé ?",
+              "options": [
+                "Tú has comido una manzana.",
+                "Ellos han terminado los deberes.",
+                "Ella es cantado una canción.",
+                "Vosotros tenéis bailado mucho."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Has comido' et 'han terminado' sont corrects car ils emploient l'auxiliaire haber (has, han). Ser et tener ne servent pas d'auxiliaires ici."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Peut-on intercaler un mot entre haber et le participe passé en espagnol ?",
+              "options": [
+                "Oui, la négation « no »",
+                "Oui, un adverbe de temps",
+                "Non, haber et le participe passé sont inséparables",
+                "Oui, les pronoms compléments"
+              ],
+              "correctAnswers": [2],
+              "explanation": "En espagnol, haber et le participe passé forment un bloc inséparable : on dit « No he comido » et jamais « He no comido »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Où se place le pronom réfléchi au passé composé dans « (levantarse) yo » ?",
+              "options": [
+                "Me he levantado",
+                "He me levantado",
+                "He levantádome",
+                "He levantado me"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pronom réfléchi se place obligatoirement devant l'auxiliaire haber conjugué : « Me he levantado »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme pour « vosotros » au passé composé du verbe « llegar » ?",
+              "options": [
+                "habéis llegado",
+                "habéis llegados",
+                "habéis llegando",
+                "habéis llegaste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec vosotros, on utilise 'habéis' et le participe invariable 'llegado'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la traduction de « Ils ont voyagé » ?",
+              "options": [
+                "Ellos han viajado",
+                "Ellos habéis viajado",
+                "Ellos ha viajado",
+                "Ellos hemos viajado"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour ellos (3e personne du pluriel), la forme de haber est 'han', d'où « han viajado »."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant le passé composé espagnol sont vraies ?",
+              "options": [
+                "L'auxiliaire utilisé est exclusivement haber",
+                "Le participe s'accorde au féminin avec le sujet",
+                "Le participe passé reste invariable en -o",
+                "On emploie le verbe estar comme auxiliaire"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Le passé composé se forme uniquement avec haber et son participe passé est strictement invariable en -o."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Les participes passés réguliers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison du participe passé régulier pour les verbes en -AR ?",
+              "options": ["-ido", "-ado", "-asto", "-ando"],
+              "correctAnswers": [1],
+              "explanation": "Les verbes en -AR forment leur participe passé régulier en ajoutant -ado au radical (ex. hablar -> hablado)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison du participe passé pour les verbes en -ER et en -IR ?",
+              "options": ["-ado", "-ido", "-iendo", "-ed"],
+              "correctAnswers": [1],
+              "explanation": "Les verbes réguliers en -ER et en -IR forment leur participe passé avec la terminaison -ido (ex. comer -> comido, vivir -> vivido)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « cantar » ?",
+              "options": ["cantido", "cantado", "cantando", "canto"],
+              "correctAnswers": [1],
+              "explanation": "Cantar est un verbe en -AR, son participe passé régulier est 'cantado'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « aprender » ?",
+              "options": ["aprendado", "aprendo", "aprendido", "aprendiendo"],
+              "correctAnswers": [2],
+              "explanation": "Aprender est un verbe en -ER, son participe passé régulier est 'aprendido'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes forment leur participe passé régulier en « -ado » ?",
+              "options": ["bailar", "vivir", "escuchar", "beber"],
+              "correctAnswers": [0, 2],
+              "explanation": "Bailar (bailado) et escuchar (escuchado) se terminent en -AR et prennent donc -ado. Vivir et beber prennent -ido."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « salir » ?",
+              "options": ["salido", "salado", "salto", "saliendo"],
+              "correctAnswers": [0],
+              "explanation": "Salir est un verbe en -IR, son participe passé régulier est 'salido'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Esta mañana ellos han ________ (beber) un zumo de naranja. »",
+              "options": ["bebado", "bebido", "bebiendo", "bebo"],
+              "correctAnswers": [1],
+              "explanation": "Beber est un verbe en -ER, son participe passé est 'bebido'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Juan ha ________ (viajar) por toda España. »",
+              "options": ["viajido", "viajado", "viajando", "viajo"],
+              "correctAnswers": [1],
+              "explanation": "Viajar est un verbe en -AR, son participe passé est 'viajado'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « compartir » ?",
+              "options": [
+                "compartado",
+                "compartido",
+                "comparto",
+                "compartiendo"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Compartir est un verbe en -IR, son participe passé est 'compartido'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels verbes forment leur participe passé régulier en « -ido » ?",
+              "options": ["dormir", "comprender", "trabajar", "cenar"],
+              "correctAnswers": [0, 1],
+              "explanation": "Dormir (dormido) et comprender (comprendido) sont en -IR et -ER, donc ils se terminent en -ido. Trabajar et cenar prennent -ado."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Les participes passés irréguliers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le participe passé irrégulier du verbe « hacer » ?",
+              "options": ["hacido", "hecho", "haciendo", "hazo"],
+              "correctAnswers": [1],
+              "explanation": "Le verbe 'hacer' a un participe passé irrégulier très fréquent : 'hecho' (fait)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le participe passé irrégulier du verbe « decir » ?",
+              "options": ["decido", "dicho", "dichozo", "diciendo"],
+              "correctAnswers": [1],
+              "explanation": "Le verbe 'decir' fait 'dicho' au participe passé (dit)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « ver » ?",
+              "options": ["visto", "veído", "vido", "viendo"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'ver' a pour participe passé irrégulier 'visto' (vu)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « escribir » ?",
+              "options": ["escribido", "escrito", "escripto", "escribado"],
+              "correctAnswers": [1],
+              "explanation": "Le verbe 'escribir' fait 'escrito' au participe passé (écrit)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes possèdent un participe passé irrégulier en espagnol ?",
+              "options": ["abrir", "poner", "comer", "hablar"],
+              "correctAnswers": [0, 1],
+              "explanation": "Abrir donne 'abierto' et poner donne 'puesto'. Comer (comido) et hablar (hablado) sont réguliers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « volver » ?",
+              "options": ["volvido", "vuelto", "volto", "volvado"],
+              "correctAnswers": [1],
+              "explanation": "Le verbe 'volver' a un participe passé irrégulier : 'vuelto' (revenu / rentré)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « abrir » ?",
+              "options": ["abrido", "abierto", "aberto", "abriento"],
+              "correctAnswers": [1],
+              "explanation": "Le verbe 'abrir' a pour participe passé 'abierto' (ouvert)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe « poner » ?",
+              "options": ["ponido", "posado", "puesto", "poniendo"],
+              "correctAnswers": [2],
+              "explanation": "Le verbe 'poner' fait 'puesto' au participe passé (mis / posé)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « ¿Dónde has ________ (poner) mis llaves? »",
+              "options": ["puesto", "ponido", "puestado", "ponado"],
+              "correctAnswers": [0],
+              "explanation": "Le participe passé de poner est 'puesto', d'où « has puesto »."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles paires verbe / participe passé irrégulier sont correctes ?",
+              "options": [
+                "morir -> muerto",
+                "romper -> roto",
+                "vivir -> vierto",
+                "beber -> bicho"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Morir donne 'muerto' et romper donne 'roto'. Vivir (vivido) et beber (bebido) sont réguliers."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : L'auxiliaire haber au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle forme de haber correspond au pronom « tú » au présent ?",
+              "options": ["he", "has", "ha", "hay"],
+              "correctAnswers": [1],
+              "explanation": "Pour la 2e personne du singulier (tú), haber se conjugue 'has'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle forme de haber correspond à « él / ella / usted » au présent ?",
+              "options": ["ha", "has", "he", "han"],
+              "correctAnswers": [0],
+              "explanation": "Pour la 3e personne du singulier (él, ella, usted), la forme est 'ha'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle forme de haber correspond à « nosotros / nosotras » au présent ?",
+              "options": ["hemos", "habemos", "habéis", "han"],
+              "correctAnswers": [0],
+              "explanation": "Pour la 1re personne du pluriel (nosotros), la forme correcte est 'hemos'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle forme de haber correspond à « vosotros / vosotras » au présent ?",
+              "options": ["hemos", "habéis", "habés", "han"],
+              "correctAnswers": [1],
+              "explanation": "Pour la 2e personne du pluriel (vosotros), haber se conjugue 'habéis' avec un accent sur le e."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes de haber correspondent à des personnes du singulier ?",
+              "options": [
+                "he (yo)",
+                "has (tú)",
+                "hemos (nosotros)",
+                "han (ellos)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'he' et 'has' sont les formes du singulier (1re et 2e personnes). 'hemos' et 'han' sont au pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme de haber correspond à « ellos / ellas / ustedes » au présent ?",
+              "options": ["he", "ha", "han", "hacen"],
+              "correctAnswers": [2],
+              "explanation": "Pour la 3e personne du pluriel (ellos, ellas, ustedes), haber devient 'han'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la différence entre « hay » et « ha » ?",
+              "options": [
+                "« Hay » signifie « il y a » et « ha » est l'auxiliaire du passé composé",
+                "Ce sont deux formes parfaitement interchangeables",
+                "« Hay » est l'auxiliaire de 'él' et « ha » signifie 'il y a'",
+                "« Ha » s'utilise uniquement avec les adjectifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hay' est la forme impersonnelle qui exprime l'existence (il y a), alors que 'ha' est l'auxiliaire devant un participe passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Mis padres ________ vuelto de Madrid hoy. »",
+              "options": ["ha", "han", "hemos", "habéis"],
+              "correctAnswers": [1],
+              "explanation": "'Mis padres' correspond à 'ellos', donc la forme correcte de haber est 'han'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « ¿Vosotros ________ visto esta película? »",
+              "options": ["han", "habéis", "hemos", "has"],
+              "correctAnswers": [1],
+              "explanation": "Le sujet 'vosotros' demande l'auxiliaire 'habéis'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont correctement accordées au passé composé ?",
+              "options": [
+                "Yo he hablado español hoy.",
+                "Tú has hecho los ejercicios.",
+                "Nosotros habéis dormido bien.",
+                "Ellos ha salido temprano."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Yo he hablado' et 'tú has hecho' sont bien accordés. Pour nosotros il faudrait 'hemos' et pour ellos 'han'."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Le passé simple des verbes en -ar",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le nom espagnol du passé simple ?",
+              "options": [
+                "Pretérito perfecto compuesto",
+                "Pretérito indefinido",
+                "Pretérito imperfecto",
+                "Futuro simple"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le passé simple s'appelle le 'pretérito indefinido' ou 'pretérito perfecto simple'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison de « yo » au passé simple pour les verbes en -AR ?",
+              "options": ["-í", "-é", "-ó", "-aba"],
+              "correctAnswers": [1],
+              "explanation": "Pour 'yo', la terminaison régulière des verbes en -AR au passé simple est -é (ex. hablé, canté)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison de « él / ella » au passé simple pour les verbes en -AR ?",
+              "options": ["-ó", "-ió", "-a", "-aba"],
+              "correctAnswers": [0],
+              "explanation": "Pour él/ella/usted, la terminaison est -ó avec un accent écrit (ex. habló, cantó)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Conjugue « hablar » avec « nosotros » au passé simple :",
+              "options": ["hablamos", "hablábamos", "hablasteis", "hablaron"],
+              "correctAnswers": [0],
+              "explanation": "Pour nosotros, 'hablamos' est identique au présent de l'indicatif !"
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes régulières du passé simple des verbes en -AR portent un accent écrit ?",
+              "options": [
+                "yo (terminaison -é)",
+                "él/ella (terminaison -ó)",
+                "nosotros (terminaison -amos)",
+                "ellos (terminaison -aron)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Au passé simple régulier des verbes en -AR, seules la 1re personne du singulier (-é) et la 3e personne du singulier (-ó) portent un accent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Conjugue « comprar » avec « tú » au passé simple :",
+              "options": ["compraste", "comprasteis", "compró", "compras"],
+              "correctAnswers": [0],
+              "explanation": "La terminaison de la 2e personne du singulier (tú) est -aste : 'compraste'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison de « ellos / ellas » au passé simple pour les verbes en -AR ?",
+              "options": ["-aron", "-ieron", "-aban", "-asteis"],
+              "correctAnswers": [0],
+              "explanation": "Pour la 3e personne du pluriel, la terminaison régulière est -aron (ex. bailaron, cantaron)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme pour « vosotros » au passé simple du verbe « escuchar » ?",
+              "options": [
+                "escuchasteis",
+                "escucharon",
+                "escuchaste",
+                "escuchabais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour vosotros, la terminaison est -asteis : 'escuchasteis'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduis : « Hier, j'ai voyagé en train » (au passé simple) :",
+              "options": [
+                "Ayer viajé en tren",
+                "Ayer viajo en tren",
+                "Ayer he viajado en tren",
+                "Ayer viajaba en tren"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'ayer' (hier), on emploie le passé simple : 'viajé'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales appartiennent à la conjugaison de « bailar » au passé simple ?",
+              "options": ["bailé", "bailaste", "bailaba", "bailando"],
+              "correctAnswers": [0, 1],
+              "explanation": "'bailé' (yo) et 'bailaste' (tú) sont au passé simple. 'bailaba' est à l'imparfait et 'bailando' est le gérondif."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Le passé simple des verbes en -er et -ir",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Les verbes réguliers en -ER et en -IR ont-ils les mêmes terminaisons au passé simple ?",
+              "options": [
+                "Non, elles sont différentes",
+                "Oui, elles partagent les mêmes terminaisons",
+                "Seulement pour les pronoms du singulier",
+                "Seulement pour 'yo'"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En espagnol, tous les verbes réguliers en -ER et en -IR ont exactement les mêmes terminaisons au passé simple."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison pour « yo » au passé simple pour les verbes en -ER et -IR ?",
+              "options": ["-é", "-í", "-ió", "-o"],
+              "correctAnswers": [1],
+              "explanation": "Pour 'yo', la terminaison est -í avec un accent écrit (ex. comí, viví)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison pour « él / ella » au passé simple pour -ER et -IR ?",
+              "options": ["-ó", "-ió", "-e", "-ía"],
+              "correctAnswers": [1],
+              "explanation": "Pour la 3e personne du singulier, la terminaison est -ió accentué sur le o (ex. comió, escribió)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Conjugue « comer » avec « tú » au passé simple :",
+              "options": ["comiste", "comisteis", "comió", "comías"],
+              "correctAnswers": [0],
+              "explanation": "Pour 'tú', la terminaison est -iste : 'comiste'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes du verbe « beber » sont correctement conjuguées au passé simple ?",
+              "options": ["yo bebí", "ellos bebieron", "él bebó", "tú bebaste"],
+              "correctAnswers": [0, 1],
+              "explanation": "'yo bebí' et 'ellos bebieron' sont correctes. Pour él, c'est 'bebió' et pour tú, c'est 'bebiste'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme de « vivir » avec « nosotros » au passé simple ?",
+              "options": ["vivimos", "vivíamos", "vivisteis", "vivieron"],
+              "correctAnswers": [0],
+              "explanation": "'Vivimos' est la forme au passé simple, identique au présent pour les verbes en -IR."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme pour « vosotros » au passé simple du verbe « salir » ?",
+              "options": ["salisteis", "salieron", "saliste", "salíais"],
+              "correctAnswers": [0],
+              "explanation": "Pour vosotros, la terminaison est -isteis : 'salisteis'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison pour « ellos / ellas » au passé simple pour -ER et -IR ?",
+              "options": ["-aron", "-ieron", "-ían", "-isteis"],
+              "correctAnswers": [1],
+              "explanation": "Pour la 3e personne du pluriel des verbes en -ER/-IR, la terminaison est -ieron (ex. comieron, vivieron)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Anoche, Mateo ________ (perder) su reloj. »",
+              "options": ["perdió", "perde", "perdo", "perdía"],
+              "correctAnswers": [0],
+              "explanation": "Mateo (él) avec un verbe en -ER au passé simple donne 'perdió'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur le passé simple régulier des verbes en -ER/-IR sont exactes ?",
+              "options": [
+                "La terminaison pour 'yo' est -í",
+                "La terminaison pour 'ellos' est -ieron",
+                "La terminaison pour 'él' est -ó",
+                "La terminaison pour 'tú' est -aste"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les terminaisons régulières en -ER/-IR sont : -í, -iste, -ió, -imos, -isteis, -ieron. Pour él c'est -ió, et -aste appartient aux verbes en -AR."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Le passé simple des verbes irréguliers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels deux verbes ont exactement la même conjugaison au passé simple ?",
+              "options": [
+                "tener et estar",
+                "ser et ir",
+                "hacer et decir",
+                "ver et dar"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ser (être) et ir (aller) partagent les mêmes formes au passé simple : fui, fuiste, fue, fuimos, fuisteis, fueron."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme de « ser / ir » pour « él / ella » au passé simple ?",
+              "options": ["fui", "fue", "fuiste", "era"],
+              "correctAnswers": [1],
+              "explanation": "Pour él/ella/usted, la forme au passé simple de ser et ir est 'fue'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le radical irrégulier du verbe « tener » au passé simple ?",
+              "options": ["ten-", "tuv-", "tov-", "tenu-"],
+              "correctAnswers": [1],
+              "explanation": "Tener prend le radical irrégulier tuv- : tuve, tuviste, tuvo, tuvimos, tuvisteis, tuvieron."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le radical irrégulier du verbe « estar » au passé simple ?",
+              "options": ["estuv-", "estab-", "estav-", "est-"],
+              "correctAnswers": [0],
+              "explanation": "Estar prend le radical estuv- : estuve, estuviste, estuvo, estuvimos, estuvisteis, estuvieron."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales appartiennent au verbe « ir » au passé simple ?",
+              "options": ["fui", "fuimos", "iba", "íbamos"],
+              "correctAnswers": [0, 1],
+              "explanation": "'fui' (yo) et 'fuimos' (nosotros) sont au passé simple. 'iba' et 'íbamos' sont à l'imparfait."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme du verbe « hacer » pour « él / ella » au passé simple ?",
+              "options": ["hizo", "hice", "hacio", "hace"],
+              "correctAnswers": [0],
+              "explanation": "Pour conserver le son [s]/[θ] devant le o, le c devient un z : él 'hizo'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme pour « yo » au passé simple du verbe « hacer » ?",
+              "options": ["hice", "hizo", "hací", "hici"],
+              "correctAnswers": [0],
+              "explanation": "Pour 'yo', la forme est 'hice' (sans accent écrit)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les passés simples à radical irrégulier (tuve, estuve, hice) portent-ils des accents écrits sur leurs terminaisons ?",
+              "options": [
+                "Oui, sur la 1re personne",
+                "Oui, sur la 3e personne",
+                "Non, aucun accent écrit sur les terminaisons",
+                "Oui, sur toutes les personnes"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Règle clé : les passés simples à radical irrégulier (prétérits forts) ne prennent aucun accent écrit sur leurs terminaisons."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Ayer nosotros ________ (estar) en la biblioteca. »",
+              "options": [
+                "estuvimos",
+                "estábamos",
+                "estuvisteis",
+                "estuvieron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec nosotros, le verbe estar au passé simple donne 'estuvimos'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels verbes ont un radical irrégulier en « -uv- » au passé simple ?",
+              "options": [
+                "tener (tuv-)",
+                "estar (estuv-)",
+                "comer (comuv-)",
+                "hablar (habluv-)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Tener donne 'tuve' et estar donne 'estuve'. Comer et hablar sont réguliers."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : L'imparfait de l'indicatif",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment s'appelle l'imparfait de l'indicatif en espagnol ?",
+              "options": [
+                "Pretérito perfecto compuesto",
+                "Pretérito indefinido",
+                "Pretérito imperfecto",
+                "Pluscuamperfecto"
+              ],
+              "correctAnswers": [2],
+              "explanation": "L'imparfait de l'indicatif se nomme le 'pretérito imperfecto de indicativo'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison des verbes en -AR pour « yo » à l'imparfait ?",
+              "options": ["-ía", "-aba", "-é", "-o"],
+              "correctAnswers": [1],
+              "explanation": "Les verbes en -AR forment l'imparfait avec la terminaison -aba (ex. hablaba, cantaba)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison des verbes en -ER et en -IR pour « yo » à l'imparfait ?",
+              "options": ["-aba", "-ía", "-í", "-e"],
+              "correctAnswers": [1],
+              "explanation": "Les verbes en -ER et en -IR prennent la terminaison -ía à toutes les personnes (ex. comía, vivía)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de verbes irréguliers existe-t-il à l'imparfait en espagnol ?",
+              "options": [
+                "Seulement 3 verbes",
+                "Plus de 15 verbes",
+                "Aucun verbe",
+                "Environ 8 verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il n'y a que trois verbes irréguliers à l'imparfait en espagnol : ser, ir et ver."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels sont les verbes irréguliers à l'imparfait de l'indicatif en espagnol ?",
+              "options": ["ser", "ir", "ver", "tener"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les 3 uniques verbes irréguliers à l'imparfait sont ser (era), ir (iba) et ver (veía). Tener est régulier : tenía."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la forme de « ser » avec « él / ella » à l'imparfait ?",
+              "options": ["era", "fue", "es", "érase"],
+              "correctAnswers": [0],
+              "explanation": "Pour él/ella, le verbe ser à l'imparfait se conjugue 'era'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme de « ir » avec « nosotros » à l'imparfait ?",
+              "options": ["íbamos", "ibamos", "fuimos", "vamos"],
+              "correctAnswers": [0],
+              "explanation": "Pour nosotros, la forme est 'íbamos' avec un accent écrit obligatoire sur le premier i."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle personne des verbes en -AR porte un accent écrit à l'imparfait ?",
+              "options": [
+                "nosotros (-ábamos)",
+                "yo (-aba)",
+                "ellos (-aban)",
+                "toutes les personnes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les verbes en -AR à l'imparfait, seule la forme 'nosotros' prend un accent : hablábamos, cantábamos."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Conjugue « vivir » avec « tú » à l'imparfait :",
+              "options": ["vivías", "vivabas", "viviste", "vives"],
+              "correctAnswers": [0],
+              "explanation": "Les verbes en -IR prennent la terminaison -ías pour tú : 'vivías'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales sont correctement conjuguées à l'imparfait ?",
+              "options": [
+                "Yo cantaba",
+                "Ellos comían",
+                "Tú hablabas",
+                "Él fue"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "'cantaba', 'comían' et 'hablabas' sont à l'imparfait. 'fue' est au passé simple du verbe ser/ir."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Passé simple ou imparfait ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel temps utilise-t-on pour décrire le décor, le cadre ou une habitude dans le passé ?",
+              "options": [
+                "Le passé simple",
+                "L'imparfait",
+                "Le futur simple",
+                "Le présent du subjonctif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "L'imparfait sert à décrire le cadre, l'atmosphère, des caractéristiques physiques ou des habitudes passées."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel temps emploie-t-on pour une action ponctuelle, précise et achevée dans le passé ?",
+              "options": [
+                "L'imparfait",
+                "Le passé simple",
+                "Le conditionnel",
+                "Le gérondif"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Le passé simple (indefinido) exprime une action précise, ponctuelle et complètement terminée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans « Cuando era niño, siempre ________ (jugar) en el parque », quel temps convient ?",
+              "options": [
+                "jugaba (imparfait)",
+                "jugué (passé simple)",
+                "he jugado (passé composé)",
+                "juego (présent)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Siempre' et 'cuando era niño' indiquent une action habituelle et répétée dans le passé : on utilise l'imparfait 'jugaba'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans « De repente, alguien ________ (llamar) a la puerta », quel temps convient ?",
+              "options": ["llamaba", "llamó", "llama", "ha llamado"],
+              "correctAnswers": [1],
+              "explanation": "'De repente' (soudain) introduit une action ponctuelle et soudaine qui fait avancer l'histoire : passé simple 'llamó'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles situations exigent l'emploi de l'imparfait ?",
+              "options": [
+                "Décrire le temps qu'il faisait (la météo)",
+                "Exprimer une habitude répétée dans le passé",
+                "Indiquer une action soudaine qui interrompt une autre",
+                "Énumérer une série d'actions consécutives et brèves"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'imparfait sert aux descriptions d'arrière-plan et aux habitudes passées. Les actions ponctuelles prennent le passé simple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Yo ________ (dormir) tranquilamente cuando sonó el despertador. »",
+              "options": ["dormía", "dormí", "he dormido", "duermo"],
+              "correctAnswers": [0],
+              "explanation": "L'action continue en cours de déroulement (dormir) se met à l'imparfait : 'dormía'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans « Ayer me levanté, desayuné y salí », pourquoi tous les verbes sont-ils au passé simple ?",
+              "options": [
+                "Car ce sont des descriptions d'état",
+                "Car c'est une succession d'actions ponctuelles achevées",
+                "Car ce sont des actions simultanées",
+                "Car le sujet est au pluriel"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Une succession d'actions terminées qui s'enchaînent dans un récit se conjugue au passé simple."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase illustre une action ponctuelle interrompant une action continue ?",
+              "options": [
+                "Estudiaba cuando mi madre llegó",
+                "Estudié cuando mi madre llegaba",
+                "Estudiaba mientras mi madre cocinaba",
+                "Estudié y salí a pasear"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Estudiaba' (action de fond à l'imparfait) est interrompue par 'llegó' (action ponctuelle au passé simple)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduis : « Il faisait beau hier » (description météo en arrière-plan) :",
+              "options": [
+                "Ayer hizo buen tiempo",
+                "Ayer hacía buen tiempo",
+                "Ayer ha hecho buen tiempo",
+                "Ayer hace buen tiempo"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pour décrire le temps météorologique en arrière-plan d'un souvenir, on utilise l'imparfait : 'hacía buen tiempo'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases associent correctement l'imparfait et le passé simple ?",
+              "options": [
+                "Caminaba por la calle cuando vi a Carlos.",
+                "Leía un libro cuando se apagó la luz.",
+                "Caminé por la calle cuando veía a Carlos.",
+                "Leí un libro cuando se apagaba la luz."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'action en cours est à l'imparfait (caminaba, leía) et l'événement ponctuel qui survient est au passé simple (vi, se apagó)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Raconter une anecdote au passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle formule traditionnelle de conte utilise l'imparfait pour dire « Il était une fois » ?",
+              "options": [
+                "Había una vez...",
+                "Hubo una vez...",
+                "Ha habido una vez...",
+                "Hay una vez..."
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule traditionnelle de conte est 'Había una vez...' avec l'imparfait de haber."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète ce récit : « El sábado pasado nosotros ________ (hacer) una excursión a la montaña. »",
+              "options": ["hicimos", "hacíamos", "hemos hecho", "hacemos"],
+              "correctAnswers": [0],
+              "explanation": "'El sábado pasado' renvoie à un événement révolu et daté : passé simple 'hicimos'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « El paisaje ________ (ser) maravilloso y no había nadie. »",
+              "options": ["fue", "era", "ha sido", "es"],
+              "correctAnswers": [1],
+              "explanation": "C'est une description du paysage dans le récit : on utilise l'imparfait 'era'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Mientras caminábamos, mi hermano ________ (tropezar) con una piedra. »",
+              "options": ["tropezó", "tropezaba", "ha tropezado", "tropieza"],
+              "correctAnswers": [0],
+              "explanation": "Trébucher est un événement soudain et ponctuel au cours de la marche : passé simple 'tropezó'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes sont au passé simple dans : « Salí de casa, tomé el autobús y llegué al colegio. » ?",
+              "options": ["Salí", "tomé", "llegué", "colegio"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "'Salí', 'tomé' et 'llegué' sont tous les trois des verbes conjugués au passé simple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme convient pour exprimer l'âge d'un personnage dans un souvenir : « Cuando yo ________ (tener) diez años... » ?",
+              "options": ["tuve", "tenía", "he tenido", "tengo"],
+              "correctAnswers": [1],
+              "explanation": "L'âge dans le passé exprime un état d'arrière-plan durable : imparfait 'tenía'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Al final del día, todos ________ (volver) a casa cansados pero contentos. »",
+              "options": ["volvieron", "volvían", "han vuelto", "vuelven"],
+              "correctAnswers": [0],
+              "explanation": "La conclusion de la journée marque l'aboutissement ponctuel de la sortie : passé simple 'volvieron'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans un journal intime, comment dirais-tu : « Aujourd'hui, j'ai passé une journée formidable » ?",
+              "options": [
+                "Hoy pasé un día formidable",
+                "Hoy he pasado un día formidable",
+                "Hoy pasaba un día formidable",
+                "Hoy pasaste un día formidable"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Avec 'hoy' (journée non achevée), la règle d'Espagne exige le passé composé : 'he pasado'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « La casa de mis abuelos ________ (tener) un jardín enorme. »",
+              "options": ["tuvo", "tenía", "ha tenido", "tiene"],
+              "correctAnswers": [1],
+              "explanation": "La description d'un lieu dans un souvenir passé demande l'imparfait : 'tenía'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels procédés permettent de structurer efficacement un récit au passé en espagnol ?",
+              "options": [
+                "Alterner imparfait pour la description et passé simple pour l'action",
+                "Utiliser des connecteurs temporels comme 'primero', 'luego', 'de repente'",
+                "Mettre systématiquement tous les verbes au subjonctif",
+                "Accorder le participe passé avec le sujet au passé composé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'alternance des temps (imparfait/passé simple) et les connecteurs temporels permettent de construire un récit clair."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Quiz 1 : Marqueurs du passé récent",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel temps verbal est le plus souvent associé au marqueur « hoy » (aujourd'hui) en Espagne ?",
+              "options": [
+                "Le passé simple",
+                "Le passé composé",
+                "Le futur simple",
+                "L'imparfait"
+              ],
+              "correctAnswers": [1],
+              "explanation": "En espagnol d'Espagne, 'hoy' appartient à une période non terminée et s'associe au passé composé (pretérito perfecto)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel marqueur temporel signifie « ce matin » en espagnol ?",
+              "options": [
+                "esta mañana",
+                "mañana",
+                "ayer por la mañana",
+                "anoche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Esta mañana' signifie 'ce matin' et fait partie de la journée en cours."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Esta semana, nosotros ________ (tener) muchos exámenes. »",
+              "options": ["tuvimos", "hemos tenido", "teníamos", "tendremos"],
+              "correctAnswers": [1],
+              "explanation": "'Esta semana' inclut le moment présent, on utilise le passé composé : 'hemos tenido'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le marqueur « ya » dans une phrase comme « Ya he terminado » ?",
+              "options": ["déjà", "encore", "jamais", "demain"],
+              "correctAnswers": [0],
+              "explanation": "'Ya' signifie 'déjà' et souligne qu'une action est achevée."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs temporels appellent typiquement le passé composé en Espagne ?",
+              "options": ["este año", "este mes", "el año pasado", "ayer"],
+              "correctAnswers": [0, 1],
+              "explanation": "'este año' et 'este mes' incluent le présent et déclenchent le passé composé. 'el año pasado' et 'ayer' appellent le passé simple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie « todavía no » dans la phrase « Todavía no ha llegado » ?",
+              "options": ["pas encore", "déjà", "toujours", "bientôt"],
+              "correctAnswers": [0],
+              "explanation": "'Todavía no' (ou 'aún no') signifie 'pas encore' et s'utilise couramment avec le passé composé."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « ¿Has estado ________ (déjà / une fois) en Barcelona? »",
+              "options": ["siempre", "alguna vez", "nunca", "todavía"],
+              "correctAnswers": [1],
+              "explanation": "'alguna vez' signifie 'déjà / une fois' dans une question sur une expérience vécue avec le passé composé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Este fin de semana, mis amigos ________ (ir) al cine. »",
+              "options": ["han ido", "fueron", "iban", "van a ir"],
+              "correctAnswers": [0],
+              "explanation": "'Este fin de semana' désigne une période reliée au présent : passé composé 'han ido'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase traduit correctement « J'ai déjà mangé » ?",
+              "options": [
+                "Ya he comido",
+                "Ya comí",
+                "Todavía he comido",
+                "Nunca he comido"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Ya he comido » est la traduction exacte de « J'ai déjà mangé »."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs de temps renvoient à une période temporelle non terminée ?",
+              "options": ["hoy", "esta tarde", "ayer", "el mes pasado"],
+              "correctAnswers": [0, 1],
+              "explanation": "'hoy' et 'esta tarde' désignent des moments de la journée en cours non achevée."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Quiz 2 : Marqueurs du passé révolu",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le marqueur temporel « ayer » ?",
+              "options": ["demain", "hier", "aujourd'hui", "avant-hier"],
+              "correctAnswers": [1],
+              "explanation": "'Ayer' signifie 'hier' en espagnol."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « anoche » en espagnol ?",
+              "options": [
+                "hier soir / la nuit dernière",
+                "ce soir",
+                "la nuit prochaine",
+                "demain soir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Anoche' signifie 'hier soir' ou 'la nuit dernière'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel temps verbal s'emploie principalement avec « ayer » et « anoche » ?",
+              "options": [
+                "Le passé simple (pretérito indefinido)",
+                "Le passé composé",
+                "Le présent",
+                "Le futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces marqueurs désignent une période révolue et coupée du présent : ils imposent le passé simple."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on « avant-hier » en espagnol ?",
+              "options": [
+                "anteayer",
+                "antemañana",
+                "después de ayer",
+                "pasado ayer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Avant-hier » se dit 'anteayer' (ou 'antes de ayer')."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs temporels appellent l'emploi du passé simple ?",
+              "options": [
+                "el año pasado",
+                "la semana pasada",
+                "esta semana",
+                "hoy"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'el año pasado' et 'la semana pasada' désignent des périodes de temps révolues et terminées."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « El lunes pasado, Lucía ________ (comprar) una bicicleta. »",
+              "options": ["compró", "ha comprado", "compraba", "compra"],
+              "correctAnswers": [0],
+              "explanation": "'El lunes pasado' est un moment précis et révolu : passé simple 'compró'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « En 1492, Cristóbal Colón ________ (llegar) a América. »",
+              "options": ["llegó", "ha llegado", "llegaba", "llega"],
+              "correctAnswers": [0],
+              "explanation": "Une date historique précise dans le passé exige le passé simple : 'llegó'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on « l'été dernier » en espagnol ?",
+              "options": [
+                "el verano pasado",
+                "este verano",
+                "el próximo verano",
+                "un verano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« L'été dernier » se traduit par 'el verano pasado'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduis : « Hier soir, nous sommes sortis avec des amis » :",
+              "options": [
+                "Anoche salimos con amigos",
+                "Anoche hemos salido con amigos",
+                "Anoche salíamos con amigos",
+                "Anoche salgamos con amigos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'anoche', on utilise le passé simple : 'salimos'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases contiennent un marqueur du passé révolu ?",
+              "options": [
+                "Ayer vi a mi primo en la plaza.",
+                "El mes pasado visitamos Toledo.",
+                "Hoy he comido paella.",
+                "Esta tarde he estudiado."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Ayer' et 'el mes pasado' sont des marqueurs du passé révolu. 'Hoy' et 'esta tarde' sont des marqueurs du passé récent."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Quiz 3 : Marqueurs de l'imparfait et de l'habitude",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le marqueur « antes » ?",
+              "options": ["avant / autrefois", "après", "maintenant", "demain"],
+              "correctAnswers": [0],
+              "explanation": "'Antes' signifie 'avant' ou 'autrefois' et introduit souvent une habitude ou une description à l'imparfait."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel temps verbal utilise-t-on avec l'expression « cuando era pequeño » ?",
+              "options": [
+                "L'imparfait",
+                "Le passé simple",
+                "Le futur",
+                "Le passé composé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette expression sert à évoquer une période d'enfance et des habitudes : on utilise l'imparfait."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « todos los días » en espagnol ?",
+              "options": [
+                "tous les jours",
+                "un jour sur deux",
+                "jamais",
+                "parfois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Todos los días' signifie 'tous les jours' et indique la répétition habituelle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « En aquella época, la gente no ________ (tener) teléfonos móviles. »",
+              "options": ["tenía", "tuvo", "ha tenido", "tiene"],
+              "correctAnswers": [0],
+              "explanation": "'En aquella época' (à cette époque-là) décrit une situation générale passée : imparfait 'tenía'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs temporels signalent une répétition ou une habitude passée ?",
+              "options": ["siempre", "a menudo", "de repente", "en un segundo"],
+              "correctAnswers": [0, 1],
+              "explanation": "'siempre' (toujours) et 'a menudo' (souvent) expriment la fréquence et l'habitude. 'de repente' exprime la soudaineté."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Antes, nosotros ________ (vivir) en un pueblo tranquilo. »",
+              "options": ["vivíamos", "vivimos", "hemos vivido", "vivieron"],
+              "correctAnswers": [0],
+              "explanation": "Avec 'antes' exprimant un état antérieur, on utilise l'imparfait : 'vivíamos'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « cada verano » ?",
+              "options": [
+                "chaque été",
+                "cet été",
+                "l'été dernier",
+                "jamais en été"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Cada verano' signifie 'chaque été' et indique une action répétée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Cuando vivía en Sevilla, los domingos ________ (ir) al parque », quelle forme convient ?",
+              "options": ["iba", "fui", "he ido", "voy"],
+              "correctAnswers": [0],
+              "explanation": "L'habitude répétée ('los domingos' = tous les dimanches) demande l'imparfait du verbe ir : 'iba'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie « con frecuencia » ?",
+              "options": [
+                "fréquemment / souvent",
+                "rarement",
+                "soudainement",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Con frecuencia' signifie 'fréquemment / souvent'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles expressions introduisent naturellement une description à l'imparfait ?",
+              "options": [
+                "De pequeño...",
+                "En aquellos tiempos...",
+                "Ayer a las tres en punto...",
+                "El 12 de octubre de 1492..."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'De pequeño...' et 'En aquellos tiempos...' renvoient à des époques propices à la description à l'imparfait."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Quiz 4 : L'expression temporelle « hace »",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie la structure « hace + durée » comme dans « hace dos días » ?",
+              "options": [
+                "il y a deux jours",
+                "dans deux jours",
+                "depuis deux jours seulement",
+                "pendant deux jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En espagnol, 'hace + durée' correspond au français 'il y a + durée' pour situer un fait dans le passé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel temps verbal utilise-t-on le plus souvent avec « hace + durée » pour une action ponctuelle révolue ?",
+              "options": [
+                "Le passé simple",
+                "Le futur",
+                "Le présent du subjonctif",
+                "L'impératif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une action ponctuelle située dans le passé avec 'hace' prend généralement le passé simple (ex. Llegó hace tres días)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduis-tu « Il est parti il y a dix minutes » ?",
+              "options": [
+                "Salió hace diez minutos",
+                "Sale desde diez minutos",
+                "Ha salido para diez minutos",
+                "Salía en diez minutos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Il y a dix minutes » se dit 'hace diez minutos', avec le passé simple 'salió'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie « hace poco » ?",
+              "options": [
+                "il y a peu de temps / récemment",
+                "il y a longtemps",
+                "presque jamais",
+                "bientôt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hace poco' signifie 'il y a peu de temps' ou 'récemment'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement l'expression temporelle « hace » ?",
+              "options": [
+                "Terminé el colegio hace un año.",
+                "Llegaron a Madrid hace dos horas.",
+                "Hace mañana iremos a la playa.",
+                "Voy al cine hace tres días."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Terminé... hace un año' et 'Llegaron... hace dos horas' situent correctement une action révolue dans le passé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « il y a longtemps » en espagnol ?",
+              "options": [
+                "hace mucho tiempo",
+                "hace poco tiempo",
+                "desde tiempo",
+                "por mucho tiempo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Il y a longtemps » se dit 'hace mucho tiempo' (ou 'hace mucho')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Mis abuelos compraron esta casa ________ cincuenta años. »",
+              "options": ["hace", "desde", "en", "para"],
+              "correctAnswers": [0],
+              "explanation": "On emploie 'hace' pour signifier 'il y a cinquante ans'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La forme « hace » varie-t-elle avec une durée au pluriel (ex. hace dos años) ?",
+              "options": [
+                "Non, 'hace' reste invariable",
+                "Oui, on doit dire 'hacen dos años'",
+                "Oui, on doit dire 'hacían'",
+                "Uniquement au féminin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la locution temporelle 'hace + durée', le verbe 'hace' reste invariable."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « La película empezó hace media ________ (heure). »",
+              "options": ["hora", "tiempo", "momento", "rato"],
+              "correctAnswers": [0],
+              "explanation": "'Media hora' signifie une demi-heure."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant l'expression « hace » sont exactes ?",
+              "options": [
+                "Elle traduit 'il y a' suivi d'une durée écoulée",
+                "Elle reste invariable au singulier (hace un mes, hace tres meses)",
+                "Elle ne s'utilise qu'au futur",
+                "Elle s'accorde obligatoirement au pluriel"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Hace + durée' traduit 'il y a + durée' et reste invariable."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Quiz 5 : Choisir le temps avec « ayer » et « hoy »",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Complète : « Ayer nosotros ________ (visitar) el museo del Prado. »",
+              "options": [
+                "visitamos",
+                "hemos visitado",
+                "visitábamos",
+                "visitaremos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'ayer' (hier), l'action est révolue : passé simple 'visitamos'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complète : « Hoy yo ________ (desayunar) tostadas con tomate. »",
+              "options": [
+                "he desayunado",
+                "desayuné",
+                "desayunaba",
+                "desayunaste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'hoy' (aujourd'hui), la journée n'étant pas finie, on utilise le passé composé en Espagne : 'he desayunado'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Esta mañana, Marta ________ (recibir) una carta. »",
+              "options": ["ha recibido", "recibió", "recibía", "recibe"],
+              "correctAnswers": [0],
+              "explanation": "'Esta mañana' fait partie du jour présent : passé composé 'ha recibido'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « Anoche vosotros ________ (ver) una película divertida. »",
+              "options": ["visteis", "habéis visto", "veíais", "vieron"],
+              "correctAnswers": [0],
+              "explanation": "'Anoche' (hier soir) demande le passé simple : 'visteis'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles associations entre marqueur et temps verbal sont conformes à l'usage espagnol standard ?",
+              "options": [
+                "Ayer -> Passé simple (indefinido)",
+                "Hoy -> Passé composé (perfecto)",
+                "Esta semana -> Passé simple (indefinido)",
+                "El año pasado -> Passé composé (perfecto)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ayer s'associe au passé simple, et hoy au passé composé."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Traduis : « Qu'as-tu fait hier ? » en espagnol :",
+              "options": [
+                "¿Qué hiciste ayer?",
+                "¿Qué has hecho ayer?",
+                "¿Qué hacías ayer?",
+                "¿Qué haces ayer?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'ayer', la question se formule au passé simple : « ¿Qué hiciste ayer? »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduis : « Qu'as-tu fait aujourd'hui ? » en espagnol :",
+              "options": [
+                "¿Qué has hecho hoy?",
+                "¿Qué hiciste hoy?",
+                "¿Qué hacías hoy?",
+                "¿Qué harás hoy?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'hoy', on utilise le passé composé : « ¿Qué has hecho hoy? »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Anteayer Pablo y yo ________ (jugar) al tenis. »",
+              "options": ["jugamos", "hemos jugado", "jugábamos", "juegan"],
+              "correctAnswers": [0],
+              "explanation": "Avec 'anteayer' (avant-hier), on utilise le passé simple : 'jugamos'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Este año nosotros ________ (aprender) mucho español. »",
+              "options": [
+                "hemos aprendido",
+                "aprendimos",
+                "aprendíamos",
+                "aprenderemos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Este año' inclut l'année en cours : passé composé 'hemos aprendido'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Dans quelles phrases le choix du temps verbal est-il correct ?",
+              "options": [
+                "Ayer comí una ensalada.",
+                "Hoy he hablado con el director.",
+                "Ayer he comido una ensalada.",
+                "Hoy comí con el director."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En espagnol standard d'Espagne, 'ayer' prend le passé simple (comí) et 'hoy' prend le passé composé (he hablado)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Quiz 6 : Chronologie et connecteurs de succession",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le connecteur « primero » au début d'un récit ?",
+              "options": [
+                "d'abord / premièrement",
+                "ensuite",
+                "enfin",
+                "soudain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Primero' signifie 'd'abord' ou 'en premier lieu'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quels mots signifient « ensuite / puis » pour enchaîner deux actions ?",
+              "options": [
+                "luego / después",
+                "primero / ante todo",
+                "finalmente / por fin",
+                "mientras / durante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Luego' et 'después' signifient 'ensuite / puis / après'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « por fin » ou « finalmente » ?",
+              "options": [
+                "enfin / finalement",
+                "au début",
+                "par hasard",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Por fin' et 'finalmente' indiquent l'aboutissement ou la conclusion d'un récit."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète la suite logique : « Primero me duché, ________ desayuné y por último salí. »",
+              "options": ["luego", "antes", "ayer", "mañana"],
+              "correctAnswers": [0],
+              "explanation": "'Luego' (ensuite) s'insère naturellement entre la première action et la dernière."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs permettent de clore une série d'événements dans un récit ?",
+              "options": [
+                "al final",
+                "por último",
+                "primero",
+                "en primer lugar"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Al final' et 'por último' permettent de conclure le déroulement d'une série d'actions."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « al principio » ?",
+              "options": ["au début", "à la fin", "au milieu", "rarement"],
+              "correctAnswers": [0],
+              "explanation": "'Al principio' signifie 'au début / au commencement'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « ________ (D'abord), preparamos las mochilas para el viaje. »",
+              "options": ["Primero", "Después", "Al final", "Por último"],
+              "correctAnswers": [0],
+              "explanation": "'Primero' correspond à 'D'abord'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle expression signifie « plus tard » en espagnol ?",
+              "options": ["más tarde", "más temprano", "muy pronto", "ahora"],
+              "correctAnswers": [0],
+              "explanation": "« Plus tard » se dit 'más tarde'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduis : « Après avoir mangé, nous sommes sortis » (avec después de + infinitif) :",
+              "options": [
+                "Después de comer, salimos",
+                "Después que comer, salimos",
+                "Antes de comer, salimos",
+                "Luego comiendo, salimos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En espagnol, on dit « después de + infinitif » : 'Después de comer, salimos'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels mots servent à ordonner chronologiquement les étapes d'une histoire ?",
+              "options": ["primero", "después", "luego", "verde"],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "'Primero' (d'abord), 'después' (après) et 'luego' (ensuite) sont les connecteurs chronologiques essentiels."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Quiz 7 : Rupture et simultanéité (mientras, de repente)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie la conjonction « mientras » ?",
+              "options": [
+                "pendant que / tandis que",
+                "parce que",
+                "alors que pourtant",
+                "après que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Mientras' signifie 'pendant que' ou 'tandis que' et exprime la simultanéité de deux actions."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel temps verbal suit généralement « mientras » pour exprimer deux actions continues et parallèles dans le passé ?",
+              "options": [
+                "L'imparfait",
+                "Le futur simple",
+                "L'impératif",
+                "Le passé simple exclusif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux actions parallèles continues dans le passé se mettent toutes deux à l'imparfait : « Mientras yo leía, él cocinaba »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « de repente » ou « de pronto » ?",
+              "options": [
+                "soudain / tout à coup",
+                "lentement",
+                "tous les jours",
+                "autrefois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'De repente' et 'de pronto' signifient 'soudain' ou 'tout à coup'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel temps verbal introduit généralement « de repente » lorsqu'un événement inattendu surgit ?",
+              "options": [
+                "Le passé simple",
+                "L'imparfait",
+                "Le subjonctif présent",
+                "Le conditionnel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une action soudaine et inattendue qui surgit se met au passé simple : « De repente sonó la alarma »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions espagnoles expriment la soudaineté dans un récit ?",
+              "options": [
+                "de repente",
+                "de pronto",
+                "todos los días",
+                "habitualmente"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'De repente' et 'de pronto' signifient tous deux 'soudain / brusquement'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « Mientras los niños ________ (jugar), los padres hablaban tranquilamente. »",
+              "options": ["jugaban", "jugaron", "han jugado", "juegan"],
+              "correctAnswers": [0],
+              "explanation": "Action continue et simultanée avec hablaban : imparfait 'jugaban'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « Estábamos en el parque cuando, de repente, ________ (empezar) a llover. »",
+              "options": ["empezó", "empezaba", "ha empezado", "empieza"],
+              "correctAnswers": [0],
+              "explanation": "La pluie commence soudainement, c'est un événement déclencheur ponctuel : passé simple 'empezó'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « al mismo tiempo » en espagnol ?",
+              "options": ["en même temps", "à temps", "trop tard", "autrefois"],
+              "correctAnswers": [0],
+              "explanation": "'Al mismo tiempo' exprime la simultanéité ('en même temps')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « Yo escuchaba música ________ hacía los deberes. »",
+              "options": ["mientras", "de repente", "ayer", "anoche"],
+              "correctAnswers": [0],
+              "explanation": "'Mientras' lie deux actions simultanées en cours de déroulement à l'imparfait."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases illustrent l'opposition entre action de fond et rupture soudaine ?",
+              "options": [
+                "Dormía profundamente cuando de repente un ruido me despertó.",
+                "Miraba la tele cuando de pronto se fue la luz.",
+                "Dormí profundamente mientras un ruido me despertaba.",
+                "Miré la tele mientras se fue la luz."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'action continue est à l'imparfait (dormía, miraba) et la rupture soudaine est au passé simple (despertó, se fue la luz)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Quiz 8 : Marqueurs de fréquence passée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot « nunca » en espagnol ?",
+              "options": ["jamais", "toujours", "souvent", "parfois"],
+              "correctAnswers": [0],
+              "explanation": "'Nunca' (ou 'jamás') signifie 'jamais'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie « a menudo » en espagnol ?",
+              "options": ["souvent", "rarement", "hier", "jamais"],
+              "correctAnswers": [0],
+              "explanation": "'A menudo' est une locution adverbiale très courante qui signifie 'souvent'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie « a veces » ?",
+              "options": [
+                "parfois / quelquefois",
+                "toujours",
+                "tous les soirs",
+                "jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'A veces' signifie 'parfois' ou 'de temps en temps'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie « rara vez » ou « raras veces » ?",
+              "options": ["rarement", "souvent", "toujours", "immédiatement"],
+              "correctAnswers": [0],
+              "explanation": "'Rara vez' signifie 'rarement'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs indiquent une fréquence élevée d'une action ?",
+              "options": ["siempre", "con frecuencia", "nunca", "rara vez"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Siempre' (toujours) et 'con frecuencia' (fréquemment) indiquent une fréquence élevée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complète : « En vacaciones, nosotros íbamos a la playa ________ (tous les jours). »",
+              "options": ["todos los días", "rara vez", "nunca", "anteayer"],
+              "correctAnswers": [0],
+              "explanation": "'Todos los días' signifie 'tous les jours'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie « casi nunca » ?",
+              "options": [
+                "presque jamais",
+                "presque toujours",
+                "parfois",
+                "souvent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Casi nunca' signifie 'presque jamais'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans « Nunca he comido caracoles », quel temps verbal est utilisé ?",
+              "options": [
+                "Le passé composé",
+                "Le passé simple",
+                "L'imparfait",
+                "Le plus-que-parfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'He comido' est le passé composé (pretérito perfecto) du verbe comer."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « De niño, yo ________ (toujours) me levantaba temprano. »",
+              "options": ["siempre", "ayer", "anoche", "anteayer"],
+              "correctAnswers": [0],
+              "explanation": "'Siempre' (toujours) accompagne l'imparfait pour exprimer une habitude de l'enfance."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quels mots expriment la rareté ou l'absence d'une action ?",
+              "options": ["nunca", "rara vez", "siempre", "todos los días"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Nunca' (jamais) et 'rara vez' (rarement) expriment l'absence ou la très faible fréquence."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Quiz 9 : Localiser dans le temps (fechas y épocas)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment dit-on « au XIXe siècle » en espagnol ?",
+              "options": [
+                "en el siglo XIX",
+                "en el año XIX",
+                "en la época XIX",
+                "en el mes XIX"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Siècle » se dit 'siglo' : 'en el siglo XIX' (se prononce 'siglo diecinueve')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle préposition introduit une année précise, comme « en 2010 » ?",
+              "options": ["en", "a", "por", "de"],
+              "correctAnswers": [0],
+              "explanation": "En espagnol, on emploie 'en' devant une année : « en 2010 »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on « pendant les vacances » en espagnol ?",
+              "options": [
+                "durante las vacaciones",
+                "mientras las vacaciones",
+                "en cuanto vacaciones",
+                "para las vacaciones"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant un nom, on utilise la préposition 'durante' : 'durante las vacaciones'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'expression « en esa época » ?",
+              "options": [
+                "à cette époque-là",
+                "à cette heure-là",
+                "maintenant",
+                "l'année prochaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'En esa época' signifie 'à cette époque-là'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions permettent de situer un événement historique dans le passé ?",
+              "options": [
+                "en la Edad Media",
+                "en el siglo XVIII",
+                "la próxima semana",
+                "mañana por la tarde"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'En la Edad Media' (au Moyen Âge) et 'en el siglo XVIII' situent des faits dans l'Histoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on « au début du mois » en espagnol ?",
+              "options": [
+                "a principios de mes",
+                "a finales de mes",
+                "a mediados de mes",
+                "en medio de mes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'A principios de' signifie 'au début de'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on « à la fin de l'année » en espagnol ?",
+              "options": [
+                "a finales de año",
+                "a principios de año",
+                "a mediados de año",
+                "antes de año"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'A finales de' signifie 'à la fin de'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie « a mediados de siglo » ?",
+              "options": [
+                "au milieu du siècle",
+                "au début du siècle",
+                "à la fin du siècle",
+                "au siècle dernier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'A mediados de' signifie 'au milieu de / vers le milieu de'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complète : « La Guerra Civil española empezó ________ 1936. »",
+              "options": ["en", "a", "de", "con"],
+              "correctAnswers": [0],
+              "explanation": "On emploie la préposition 'en' devant une année : 'en 1936'."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles expressions indiquent une période de l'histoire révolue ?",
+              "options": [
+                "En la Antigüedad",
+                "En el siglo pasado",
+                "Mañana temprano",
+                "Pasado mañana"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'En la Antigüedad' (Dans l'Antiquité) et 'En el siglo pasado' (Au siècle dernier) se réfèrent au passé révolu."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Quiz 10 : Bilan global : marqueurs et temps du passé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Avec quel marqueur doit-on utiliser le passé composé en espagnol standard ?",
+              "options": [
+                "esta tarde",
+                "ayer",
+                "el mes pasado",
+                "hace dos años"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Esta tarde' fait partie de la journée en cours non achevée : passé composé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Avec quel marqueur doit-on obligatoirement utiliser le passé simple ?",
+              "options": [
+                "ayer por la tarde",
+                "hoy",
+                "esta semana",
+                "todavía no"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ayer por la tarde' (hier après-midi) appartient au passé révolu : passé simple."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complète : « Cuando ________ (ser) joven, mi abuelo viajaba en barco. »",
+              "options": ["era", "fue", "ha sido", "es"],
+              "correctAnswers": [0],
+              "explanation": "Période de la jeunesse / état d'arrière-plan : imparfait 'era'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complète : « El año pasado nosotros ________ (ganar) el campeonato escolar. »",
+              "options": ["ganamos", "hemos ganado", "ganábamos", "ganasteis"],
+              "correctAnswers": [0],
+              "explanation": "'El año pasado' est révolu : passé simple 'ganamos'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient le temps du passé adapté à leur marqueur temporel ?",
+              "options": [
+                "Hoy he recibido un regalo.",
+                "Ayer comí en casa de mi tía.",
+                "Ayer he recibido un regalo.",
+                "Hoy comí en casa de mi tía."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En espagnol standard d'Espagne, 'hoy' s'accorde avec le passé composé et 'ayer' avec le passé simple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que traduit l'expression « hace tres días » ?",
+              "options": [
+                "il y a trois jours",
+                "dans trois jours",
+                "pendant trois jours",
+                "depuis trois jours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Hace tres días' situe une action terminée il y a trois jours."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complète : « De repente, el perro ________ (ladrar) fuertemente. »",
+              "options": ["ladró", "ladraba", "ha ladrado", "ladra"],
+              "correctAnswers": [0],
+              "explanation": "'De repente' (soudain) introduit une action ponctuelle : passé simple 'ladró'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complète : « Todos los veranos mi familia ________ (alquilar) una casa cerca del mar. »",
+              "options": ["alquilaba", "alquiló", "ha alquilado", "alquile"],
+              "correctAnswers": [0],
+              "explanation": "Habitude estivale répétée : imparfait 'alquilaba'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans « Ya he hecho los deberes », que signifie « ya » ?",
+              "options": ["déjà", "encore", "jamais", "parfois"],
+              "correctAnswers": [0],
+              "explanation": "'Ya' signifie 'déjà' et souligne que l'action est terminée au moment où l'on parle."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles phrases décrivent deux actions simultanées à l'imparfait ?",
+              "options": [
+                "Mientras mi madre leía, mi padre cocinaba.",
+                "Yo escuchaba música mientras mi hermano dibujaba.",
+                "Mientras mi madre leyó, mi padre cocinó.",
+                "Yo escuché música cuando mi hermano dibujó."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Deux actions simultanées et continues en cours dans le passé utilisent l'imparfait relié par 'mientras'."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

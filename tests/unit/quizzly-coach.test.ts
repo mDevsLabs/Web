@@ -1,12 +1,15 @@
 import { describe, expect, it } from "vitest";
 import {
   assemblerTentatives,
+  blocsCompteCoach,
+  COACH_FACT_GUARD,
   type ContexteCoach,
   construireTentative,
   messagesPourModele,
   messageVisibleCoach,
   modeleCoachEnregistrable,
   preparerEchangeCoach,
+  promptCoachAvecCompte,
   type QuizTente,
   resoudreModeleCoach,
   scoreRetenu,
@@ -81,6 +84,37 @@ describe("dernière tentative Quizzly", () => {
       { correctCount: tentative.correctCount, passed: tentative.passed }
     );
     expect(retenu).toEqual({ correctCount: 8, passed: true });
+  });
+
+  it("génère une tentative partielle exploitable par le Coach en cas d'interruption Game Over", () => {
+    const tentative = construireTentative(
+      questions,
+      {
+        correctCount: 0,
+        passed: false,
+        results: [
+          {
+            correct: false,
+            expectedIndexes: [1],
+            givenIndexes: [0],
+            questionId: "q1",
+          },
+        ],
+        totalCount: 10,
+      },
+      new Date("2026-10-31T08:30:00.000Z")
+    );
+    expect(tentative.passed).toBe(false);
+    expect(tentative.correctCount).toBe(0);
+    expect(tentative.totalCount).toBe(10);
+    expect(tentative.misses).toHaveLength(1);
+    expect(tentative.misses[0]?.questionId).toBe("q1");
+
+    const retenu = scoreRetenu(null, {
+      correctCount: tentative.correctCount,
+      passed: tentative.passed,
+    });
+    expect(retenu).toEqual({ correctCount: 0, passed: false });
   });
 });
 
@@ -304,5 +338,62 @@ describe("lecture d'une tentative illisible", () => {
         () => null
       )
     ).toEqual([]);
+  });
+});
+
+describe("instructions personnalisées et mémoire du Coach", () => {
+  it("inclut les instructions seulement si activées, et intègre la mémoire", () => {
+    const vide = blocsCompteCoach({
+      instructions: "Tutoyer et être concis.",
+      instructionsEnabled: false,
+      memory: null,
+    });
+    expect(vide).toBeNull();
+
+    const avecInstructions = blocsCompteCoach({
+      instructions: "Tutoyer et être concis.",
+      instructionsEnabled: true,
+      memory: null,
+    });
+    expect(avecInstructions).toContain("INSTRUCTIONS DE L'ÉLÈVE");
+    expect(avecInstructions).toContain("Tutoyer et être concis.");
+    expect(avecInstructions).not.toContain("MÉMOIRE");
+
+    const avecMemoire = blocsCompteCoach({
+      instructions: null,
+      instructionsEnabled: false,
+      memory: "1. L'élève révise le brevet.",
+    });
+    expect(avecMemoire).toContain("MÉMOIRE");
+    expect(avecMemoire).toContain("1. L'élève révise le brevet.");
+    expect(avecMemoire).not.toContain("INSTRUCTIONS DE L'ÉLÈVE");
+
+    const complet = blocsCompteCoach({
+      instructions: "Parler simplement.",
+      instructionsEnabled: true,
+      memory: "1. Aime les exemples géométriques.",
+    });
+    expect(complet).toContain("INSTRUCTIONS DE L'ÉLÈVE");
+    expect(complet).toContain("Parler simplement.");
+    expect(complet).toContain("MÉMOIRE");
+    expect(complet).toContain("1. Aime les exemples géométriques.");
+  });
+
+  it("ajoute la garde pédagogique stricte et ne modifie pas les règles", () => {
+    const base = "Tu es le coach Quizzly.";
+    const sansPerso = promptCoachAvecCompte(base, null);
+    expect(sansPerso).toContain(COACH_FACT_GUARD);
+    expect(sansPerso).toContain(
+      "La personnalisation règle le ton et l'adaptation à l'élève. Elle ne change pas les faits du cours, les règles du jeu ni la note déjà décidée."
+    );
+
+    const avecPerso = promptCoachAvecCompte(base, "BLOC PERSO");
+    expect(avecPerso).toContain(COACH_FACT_GUARD);
+    expect(avecPerso).toContain("BLOC PERSO");
+
+    // Idempotent
+    const double = promptCoachAvecCompte(sansPerso, null);
+    const occurrences = double.split(COACH_FACT_GUARD).length - 1;
+    expect(occurrences).toBe(1);
   });
 });

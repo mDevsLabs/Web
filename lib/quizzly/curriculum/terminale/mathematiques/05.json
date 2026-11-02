@@ -1,0 +1,2223 @@
+{
+  "id": "terminale-mathematiques-05",
+  "year": "terminale",
+  "subject": "mathematiques",
+  "title": "Proportionnalité et grandeurs",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Tableaux et échelles",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Coefficients de proportionnalité et linéarité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Deux grandeurs x et y sont proportionnelles si et seulement si :",
+              "options": [
+                "Il existe un réel non nul k tel que y = kx",
+                "Leur somme x + y est constante",
+                "Leur différence y - x est constante",
+                "Leur produit xy est constant et non nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La proportionnalité se traduit algébriquement par une fonction linéaire y = kx, où k est le coefficient de proportionnalité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si pour x = 4 on a y = 14 dans une relation proportionnelle, que vaut le coefficient k (y = kx) ?",
+              "options": ["3,5", "2,5", "4", "0,285"],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient k est donné par le quotient y / x = 14 / 4 = 3,5."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle propriété algébrique caractérise une fonction linéaire f modélisant une proportionnalité ?",
+              "options": [
+                "Pour tous réels a et b, f(a + b) = f(a) + f(b)",
+                "Pour tous réels a et b, f(ab) = f(a) + f(b)",
+                "Pour tout réel a, f(a²) = [f(a)]²",
+                "Pour tout réel a non nul, f(1/a) = 1/f(a)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fonction linéaire vérifie l'additivité f(a + b) = f(a) + f(b) et l'homogénéité f(ka) = k f(a)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Lequel des couples de listes (x) et (y) forme un tableau de proportionnalité ?",
+              "options": [
+                "x = (2 ; 5 ; 8) et y = (7 ; 17,5 ; 28)",
+                "x = (2 ; 5 ; 8) et y = (6 ; 15 ; 25)",
+                "x = (3 ; 6 ; 9) et y = (5 ; 10 ; 16)",
+                "x = (1 ; 4 ; 7) et y = (3 ; 12 ; 22)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On vérifie les rapports : 7/2 = 3,5 ; 17,5/5 = 3,5 ; 28/8 = 3,5. Les rapports sont tous égaux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans un repère cartésien, la courbe représentative d'une situation de proportionnalité est :",
+              "options": [
+                "Une droite passant par l'origine",
+                "Une droite ne passant pas par l'origine",
+                "Une branche de parabole issue de l'origine",
+                "Une branche d'hyperbole équilatère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une fonction linéaire f(x) = kx est représentée par une droite passant impérativement par l'origine du repère."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soit f une fonction linéaire telle que f(3) = 12. Que vaut f(7) ?",
+              "options": ["28", "21", "24", "36"],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient est k = f(3)/3 = 12/3 = 4. D'où f(7) = 4 * 7 = 28."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le taux d'accroissement [f(x2) - f(x1)] / (x2 - x1) d'une fonction linéaire f(x) = kx est :",
+              "options": [
+                "Constant et égal à k",
+                "Dépendant de x1 et x2",
+                "Nul pour tout x",
+                "Égal à k²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour une fonction linéaire f(x) = kx, le taux d'accroissement est constant et égal à la pente k de la droite."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si la masse de pommes et leur prix sont proportionnels, multiplier la masse achetée par 3 entraîne :",
+              "options": [
+                "La multiplication du prix par 3",
+                "La multiplication du prix par 9",
+                "L'ajout de 3 € au prix initial",
+                "La division du prix par 3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La proportionnalité conserve la multiplication par un scalaire : tripler l'antécédent triple l'image."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Soit f(x) = ax + b. Pour quelle condition sur (a, b) f traduit-elle une stricte proportionnalité ?",
+              "options": [
+                "a non nul et b = 0",
+                "a = 0 et b quelconque",
+                "a quelconque et b non nul",
+                "a = 1 et b = 1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si b est non nul, la fonction est affine non linéaire : l'image de 0 n'est pas 0, il n'y a pas proportionnalité."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions définies sur R modélisent une relation de proportionnalité ?",
+              "options": [
+                "f(x) = -4,5x",
+                "g(x) = (2/3)x",
+                "h(x) = 3x + 2",
+                "k(x) = 2x²"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Seules les fonctions linéaires de la forme f(x) = ax (sans ordonnée à l'origine ni puissance supérieure) traduisent une proportionnalité."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Produits en croix et quatrième proportionnelle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la valeur de x vérifiant l'égalité de quotients 3 / 5 = x / 20 ?",
+              "options": ["12", "15", "10", "8"],
+              "correctAnswers": [0],
+              "explanation": "Par produit en croix : x = (3 * 20) / 5 = 60 / 5 = 12."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans le tableau de proportionnalité [2, a ; 7, 21], que vaut a ?",
+              "options": ["6", "14", "9", "4,5"],
+              "correctAnswers": [0],
+              "explanation": "On applique l'égalité des produits en croix : 7 * a = 2 * 21 = 42, d'où a = 42 / 7 = 6."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pour des nombres a, b, c, d non nuls, l'égalité a / b = c / d équivaut à :",
+              "options": [
+                "ad - bc = 0",
+                "ac - bd = 0",
+                "ab - cd = 0",
+                "a + d = b + c"
+              ],
+              "correctAnswers": [0],
+              "explanation": "a/b = c/d équivaut à ad = bc, ce qui s'écrit ad - bc = 0."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une recette pour 4 personnes nécessite 250 g de farine. Combien en faut-il pour 10 personnes ?",
+              "options": ["625 g", "500 g", "750 g", "600 g"],
+              "correctAnswers": [0],
+              "explanation": "La quatrième proportionnelle donne : (250 * 10) / 4 = 2500 / 4 = 625 g."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À vitesse constante, une voiture parcourt 150 km en 2 h. Quelle distance parcourt-elle en 3 h 30 min ?",
+              "options": ["262,5 km", "225 km", "250 km", "280 km"],
+              "correctAnswers": [0],
+              "explanation": "3 h 30 min = 3,5 h. Distance = (150 * 3,5) / 2 = 75 * 3,5 = 262,5 km."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Déterminer y tel que 7 / 9 = 28 / y :",
+              "options": ["36", "32", "42", "27"],
+              "correctAnswers": [0],
+              "explanation": "y = (9 * 28) / 7 = 9 * 4 = 36."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un véhicule consomme 6 L de carburant aux 100 km. Quel volume est nécessaire pour 450 km ?",
+              "options": ["27 L", "24 L", "30 L", "25,5 L"],
+              "correctAnswers": [0],
+              "explanation": "Volume = (6 * 450) / 100 = 2700 / 100 = 27 L."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le taux de change fixe est 1 € = 1,12 $. Combien obtient-on de dollars pour 350 € ?",
+              "options": ["392 $", "380 $", "400 $", "312,5 $"],
+              "correctAnswers": [0],
+              "explanation": "Montant = 350 * 1,12 = 392 $."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si trois stylos coûtent 4,50 €, combien coûtent sept stylos identiques ?",
+              "options": ["10,50 €", "9,50 €", "11,00 €", "12,25 €"],
+              "correctAnswers": [0],
+              "explanation": "Le prix unitaire est 4,50 / 3 = 1,50 €. Pour 7 stylos : 7 * 1,50 = 10,50 €."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles relations expriment la proportionnalité entre les couples (x1, y1) et (x2, y2) non nuls ?",
+              "options": [
+                "x1 * y2 = x2 * y1",
+                "y1 / x1 = y2 / x2",
+                "x1 + y2 = x2 + y1",
+                "x1 * x2 = y1 * y2"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'égalité des rapports y1/x1 = y2/x2 équivaut par produit en croix à x1*y2 = x2*y1."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Pourcentages et variations relatives",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Augmenter une grandeur de 20 % revient à multiplier sa valeur par :",
+              "options": ["1,20", "0,20", "1,02", "2,00"],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient multiplicateur est CM = 1 + t = 1 + 20/100 = 1,20."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Diminuer une valeur de 15 % revient à la multiplier par :",
+              "options": ["0,85", "0,15", "0,75", "1,15"],
+              "correctAnswers": [0],
+              "explanation": "Le coefficient multiplicateur est CM = 1 - 15/100 = 0,85."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un article affiché à 80 € subit une hausse de 25 %. Quel est son nouveau prix ?",
+              "options": ["100 €", "95 €", "105 €", "110 €"],
+              "correctAnswers": [0],
+              "explanation": "Nouveau prix = 80 * (1 + 0,25) = 80 * 1,25 = 100 €."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Deux hausses successives de 10 % correspondent à une hausse globale de :",
+              "options": ["21 %", "20 %", "22 %", "19 %"],
+              "correctAnswers": [0],
+              "explanation": "CM global = 1,10 * 1,10 = 1,21, ce qui équivaut à une hausse globale de 21 %."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel taux d'évolution compense exactement une baisse de 50 % pour revenir à la valeur initiale ?",
+              "options": ["+100 %", "+50 %", "+75 %", "+200 %"],
+              "correctAnswers": [0],
+              "explanation": "CM réciproque = 1 / 0,50 = 2,00 = 1 + 100/100, soit une hausse de 100 %."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un prix passe de 50 € à 65 €. Quel est le taux d'évolution en pourcentage ?",
+              "options": ["+30 %", "+15 %", "+25 %", "+35 %"],
+              "correctAnswers": [0],
+              "explanation": "Taux = (65 - 50) / 50 = 15 / 50 = 0,30, soit une hausse de 30 %."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Après une remise de 20 %, un manteau coûte 64 €. Quel était son prix initial ?",
+              "options": ["80 €", "76,80 €", "82 €", "85 €"],
+              "correctAnswers": [0],
+              "explanation": "Prix initial = 64 / 0,80 = 80 €."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une hausse de 5 % suivie d'une baisse de 5 % conduit à un coefficient multiplicateur global de :",
+              "options": ["0,9975", "1,0000", "0,9500", "0,9925"],
+              "correctAnswers": [0],
+              "explanation": "CM = (1 + 0,05) * (1 - 0,05) = 1,05 * 0,95 = 1 - 0,0025 = 0,9975 (soit une baisse de 0,25 %)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si une population est multipliée par 1,6 en 10 ans, son taux d'accroissement global est de :",
+              "options": ["60 %", "160 %", "6 %", "40 %"],
+              "correctAnswers": [0],
+              "explanation": "Taux = CM - 1 = 1,6 - 1 = 0,60 = 60 %."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant les taux d'évolution sont exactes ?",
+              "options": [
+                "Une hausse de 100 % correspond à un doublement de la valeur",
+                "Deux baisses successives de 10 % équivalent à une baisse globale de 19 %",
+                "Pour compenser une hausse de 25 %, il faut une baisse de 25 %",
+                "Le coefficient multiplicateur associé à une baisse de 8 % est 0,98"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "CM(doublement) = 2 = 1 + 100 %. Deux baisses de 10 % : 0,9 * 0,9 = 0,81 = 1 - 0,19 (-19 %). Pour 25 %, le réciproque est 1/1,25 = 0,80 (-20 %)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Échelles de plans et de cartes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Par définition, l'échelle d'une carte est le quotient :",
+              "options": [
+                "Distance sur la carte / distance réelle (exprimées dans la même unité)",
+                "Distance réelle / distance sur la carte (exprimées dans la même unité)",
+                "Surface sur la carte / surface réelle",
+                "Distance sur la carte * distance réelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'échelle est le rapport sans dimension de la distance sur le plan à la distance réelle correspondante."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Sur une carte à l'échelle 1 / 50 000, un segment de 2 cm représente une distance réelle de :",
+              "options": ["1 km", "100 m", "10 km", "500 m"],
+              "correctAnswers": [0],
+              "explanation": "Distance réelle = 2 cm * 50 000 = 100 000 cm = 1 000 m = 1 km."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une distance réelle de 15 km est représentée par 3 cm sur une carte. Quelle est l'échelle ?",
+              "options": [
+                "1 / 500 000",
+                "1 / 50 000",
+                "1 / 5 000",
+                "1 / 5 000 000"
+              ],
+              "correctAnswers": [0],
+              "explanation": "15 km = 1 500 000 cm. Échelle = 3 / 1 500 000 = 1 / 500 000."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur un plan d'architecte au 1 / 200, un salon mesure 4 cm de long. Sa longueur réelle est :",
+              "options": ["8 m", "80 m", "80 cm", "4 m"],
+              "correctAnswers": [0],
+              "explanation": "4 cm * 200 = 800 cm = 8 m."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une échelle supérieure à 1 (par exemple 5 : 1) correspond à :",
+              "options": [
+                "Un agrandissement",
+                "Une réduction",
+                "Une conservation exacte des dimensions",
+                "Une carte topographique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une échelle E > 1 signifie que le dessin est plus grand que l'objet réel, c'est donc un agrandissement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Sur une carte au 1 / 25 000, quelle longueur sépare deux points distants de 2,5 km en réalité ?",
+              "options": ["10 cm", "1 cm", "25 cm", "4 cm"],
+              "correctAnswers": [0],
+              "explanation": "2,5 km = 250 000 cm. Distance carte = 250 000 / 25 000 = 10 cm."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur une carte routière au 1 / 1 000 000, 1 cm sur la carte représente en réalité :",
+              "options": ["10 km", "1 km", "100 km", "100 m"],
+              "correctAnswers": [0],
+              "explanation": "1 cm * 1 000 000 = 1 000 000 cm = 10 000 m = 10 km."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un composant électronique de 0,4 mm est dessiné avec une taille de 20 mm. Quelle est l'échelle ?",
+              "options": ["50 : 1", "5 : 1", "1 : 50", "20 : 1"],
+              "correctAnswers": [0],
+              "explanation": "Échelle = 20 / 0,4 = 50, soit une échelle de grossissement de 50 : 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si une carte est à l'échelle 1 / k, la distance réelle D et la distance sur plan d vérifient :",
+              "options": ["D = k * d", "D = k + d", "D = d / k", "D * d = k"],
+              "correctAnswers": [0],
+              "explanation": "Par définition d / D = 1 / k, ce qui implique D = k * d."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Sur une carte à l'échelle 1 / 20 000, quelles affirmations sont exactes ?",
+              "options": [
+                "5 cm sur la carte représentent 1 km réel",
+                "1 mm sur la carte représente 20 m réels",
+                "10 cm sur la carte représentent 20 km réels",
+                "Une surface réelle de 40 000 m² est représentée par 1 cm²"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "5 cm * 20 000 = 100 000 cm = 1 km. 1 mm * 20 000 = 20 000 mm = 20 m. Les deux premières affirmations sont vraies."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Agrandissement et réduction : longueurs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Dans un agrandissement de rapport k = 3, toutes les longueurs sont :",
+              "options": [
+                "Multipliées par 3",
+                "Multipliées par 9",
+                "Augmentées de 3 unités",
+                "Multipliées par 27"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition d'un agrandissement ou réduction de rapport k, les longueurs sont multipliées par k."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un segment de 12 cm subit une réduction de rapport k = 0,25. Sa nouvelle longueur est :",
+              "options": ["3 cm", "4 cm", "48 cm", "2,4 cm"],
+              "correctAnswers": [0],
+              "explanation": "Nouvelle longueur = 12 * 0,25 = 3 cm."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un rapport k de transformation géométrique vérifiant 0 < k < 1 caractérise :",
+              "options": [
+                "Une réduction",
+                "Un agrandissement",
+                "Une translation simple",
+                "Une réflexion axiale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lorsque 0 < k < 1, les dimensions de la figure image sont strictement inférieures à celles de la figure initiale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un triangle de côtés 3 cm, 4 cm et 5 cm est agrandi avec un rapport k = 2,5. Son périmètre vaut :",
+              "options": ["30 cm", "12 cm", "25 cm", "75 cm"],
+              "correctAnswers": [0],
+              "explanation": "Périmètre initial = 3 + 4 + 5 = 12 cm. Nouveau périmètre = 12 * 2,5 = 30 cm."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux triangles semblables ont un rapport d'homothétie k = 4. Si un côté mesure 7 cm, le côté homologue mesure :",
+              "options": ["28 cm", "11 cm", "14 cm", "21 cm"],
+              "correctAnswers": [0],
+              "explanation": "Le côté homologue mesure 7 * 4 = 28 cm."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le périmètre d'un polygone passe de 18 cm à 54 cm après transformation. Quel est le rapport k ?",
+              "options": ["3", "2", "6", "9"],
+              "correctAnswers": [0],
+              "explanation": "Le rapport des périmètres est égal au rapport k des longueurs : k = 54 / 18 = 3."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lors d'un agrandissement ou d'une réduction de rapport k > 0, que deviennent les mesures des angles ?",
+              "options": [
+                "Elles restent strictement inchangées",
+                "Elles sont multipliées par k",
+                "Elles sont multipliées par k²",
+                "Elles sont divisées par k"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les similitudes et homothéties conservent les mesures des angles géométriques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour un rapport de réduction k = 2 / 5, une distance réelle de 50 m est représentée par :",
+              "options": ["20 m", "25 m", "125 m", "10 m"],
+              "correctAnswers": [0],
+              "explanation": "Distance = 50 * (2/5) = 20 m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si une figure F' est obtenue à partir de F par homothétie de rapport k = -3, les distances sont multipliées par :",
+              "options": ["3", "-3", "9", "-9"],
+              "correctAnswers": [0],
+              "explanation": "Les distances sont toujours positives et sont multipliées par la valeur absolue du rapport, soit |k| = |-3| = 3."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés géométriques sont conservées lors d'un agrandissement de rapport k > 0 ?",
+              "options": [
+                "La mesure des angles",
+                "Le parallélisme des droites",
+                "La longueur des segments",
+                "L'aire des surfaces"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Un agrandissement conserve les angles et le parallélisme, mais multiplie les longueurs par k et les aires par k²."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Agrandissement et réduction : aires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Si les longueurs d'une figure plane sont multipliées par k (k > 0), son aire est multipliée par :",
+              "options": ["k²", "k", "2k", "k³"],
+              "correctAnswers": [0],
+              "explanation": "L'aire est une grandeur à deux dimensions : elle est multipliée par k²."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un carré de côté 3 cm est agrandi avec un rapport k = 4. Par combien son aire est-elle multipliée ?",
+              "options": ["16", "4", "8", "64"],
+              "correctAnswers": [0],
+              "explanation": "Le facteur multiplicatif de l'aire est k² = 4² = 16."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'aire d'un disque est de 20 cm². Après une réduction de rapport k = 0,5, son aire devient :",
+              "options": ["5 cm²", "10 cm²", "2,5 cm²", "4 cm²"],
+              "correctAnswers": [0],
+              "explanation": "Nouvelle aire = 20 * (0,5)² = 20 * 0,25 = 5 cm²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si l'aire d'un polygone est multipliée par 9 lors d'un agrandissement, quel est le rapport k sur les longueurs ?",
+              "options": ["3", "4,5", "9", "81"],
+              "correctAnswers": [0],
+              "explanation": "On a k² = 9 avec k > 0, d'où k = racine carrée de 9 = 3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Si le rayon d'un cercle est triplé, l'aire du disque correspondant est multipliée par :",
+              "options": ["9", "3", "6", "27"],
+              "correctAnswers": [0],
+              "explanation": "L'aire d'un disque est proportionnelle au carré du rayon : 3² = 9."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un triangle d'aire 14 cm² subit une homothétie de rapport k = -2. Quelle est l'aire du triangle image ?",
+              "options": ["56 cm²", "-28 cm²", "28 cm²", "-56 cm²"],
+              "correctAnswers": [0],
+              "explanation": "L'aire est multipliée par k² = (-2)² = 4. D'où 14 * 4 = 56 cm² (une aire est toujours positive)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux rectangles semblables ont un rapport de longueurs k = 5 / 2. Quel est le rapport de leurs aires ?",
+              "options": ["25 / 4", "5 / 2", "10 / 4", "125 / 8"],
+              "correctAnswers": [0],
+              "explanation": "Le rapport des aires est (5/2)² = 25 / 4 = 6,25."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pour doubler l'aire d'un carré, par quel facteur doit-on multiplier la longueur de son côté ?",
+              "options": ["racine de 2", "2", "4", "racine de 3"],
+              "correctAnswers": [0],
+              "explanation": "On veut k² = 2, donc k = racine carrée de 2 (environ 1,414)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Sur un plan au 1 / 100, une pièce fait 20 cm². Quelle est son aire réelle en mètres carrés ?",
+              "options": ["20 m²", "2 m²", "200 m²", "0,2 m²"],
+              "correctAnswers": [0],
+              "explanation": "L'échelle des longueurs est 1/100, donc l'échelle des aires est 1/10 000. Aire réelle = 20 * 10 000 cm² = 200 000 cm² = 20 m²."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Lors d'un agrandissement géométrique de rapport k = 5 d'une surface plane :",
+              "options": [
+                "Le périmètre de la surface est multiplié par 5",
+                "L'aire de la surface est multipliée par 25",
+                "L'aire de la surface est multipliée par 5",
+                "Les angles intérieurs sont multipliés par 5"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le périmètre (longueur) est multiplié par k = 5, l'aire par k² = 25, et les angles restent inchangés."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Agrandissement et réduction : volumes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Si les longueurs d'un solide sont multipliées par k (k > 0), son volume est multiplié par :",
+              "options": ["k³", "k²", "3k", "6k"],
+              "correctAnswers": [0],
+              "explanation": "Le volume est une grandeur à trois dimensions : il varie proportionnellement à k³."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si le rayon d'une sphère est multiplié par 2, son volume est multiplié par :",
+              "options": ["8", "4", "6", "16"],
+              "correctAnswers": [0],
+              "explanation": "Facteur multiplicatif du volume : k³ = 2³ = 8."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une maquette de navire à l'échelle 1 / 100 a un volume de 2 dm³. Quel est le volume réel du navire ?",
+              "options": ["2 000 m³", "200 m³", "20 m³", "20 000 m³"],
+              "correctAnswers": [0],
+              "explanation": "Rapport des longueurs = 100. Rapport des volumes = 100³ = 1 000 000. Volume réel = 2 dm³ * 1 000 000 = 2 000 000 dm³ = 2 000 m³."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si le volume d'un cône est multiplié par 27 après dilatation, quel a été le facteur multiplicatif de sa hauteur ?",
+              "options": ["3", "9", "4,5", "facultatif"],
+              "correctAnswers": [0],
+              "explanation": "k³ = 27 implique k = 27^(1/3) = 3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une boîte cubique a une arête de 10 cm. Si on divise la longueur de son arête par 2, son volume est divisé par :",
+              "options": ["8", "4", "2", "6"],
+              "correctAnswers": [0],
+              "explanation": "L'arête est multipliée par 1/2, donc le volume est multiplié par (1/2)³ = 1/8, c'est-à-dire divisé par 8."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Deux solides semblables ont des volumes de 16 cm³ et 250 cm³. Quel est le rapport k d'agrandissement des arêtes ?",
+              "options": ["2,5", "1,5", "3", "4"],
+              "correctAnswers": [0],
+              "explanation": "Rapport des volumes = 250 / 16 = 125 / 8 = (5/2)³. D'où k = 5/2 = 2,5."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Si la contenance d'une bouteille homothétique est multipliée par 8, sa hauteur a été multipliée par :",
+              "options": ["2", "4", "8", "2,82"],
+              "correctAnswers": [0],
+              "explanation": "Contenance = volume. k³ = 8 donne k = 2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un lingot miniature à l'échelle 1 / 10 pèse 20 g. Combien pèse le lingot réel en même matériau ?",
+              "options": ["20 kg", "2 kg", "200 g", "200 kg"],
+              "correctAnswers": [0],
+              "explanation": "Masse proportionnelle au volume : 20 g * 10³ = 20 g * 1 000 = 20 000 g = 20 kg."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour quadrupler le volume d'une sphère, par quel facteur son rayon doit-il être multiplié ?",
+              "options": [
+                "Racine cubique de 4",
+                "2",
+                "Racine carrée de 2",
+                "4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "k³ = 4 implique k = 4^(1/3) = racine cubique de 4 (environ 1,587)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Soit un solide agrandi d'un facteur k = 2. Quelles affirmations sont vraies ?",
+              "options": [
+                "L'aire de ses faces est multipliée par 4",
+                "Son volume total est multiplié par 8",
+                "La somme des longueurs de ses arêtes est multipliée par 4",
+                "Son volume total est multiplié par 6"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les longueurs sont multipliées par k = 2, les aires par k² = 4 et les volumes par k³ = 8."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Similitudes et homothéties dans le plan et l'espace",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Soit O un point et k un réel non nul. L'homothétie h(O, k) associe à tout point M le point M' tel que :",
+              "options": [
+                "vecteur OM' = k * vecteur OM",
+                "vecteur OM' = (1/k) * vecteur OM",
+                "vecteur MM' = k * vecteur OM",
+                "norme(OM') = k + norme(OM)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition vectorielle de l'homothétie de centre O et de rapport k, vecteur OM' = k * vecteur OM."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une homothétie de rapport k = -1 correspond géométriquement à :",
+              "options": [
+                "Une symétrie centrale de centre O",
+                "Une symétrie axiale",
+                "L'application identité",
+                "Une translation de vecteur non nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "vecteur OM' = - vecteur OM signifie que O est le milieu de [MM'], c'est la symétrie centrale de centre O."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Par une homothétie, l'image d'une droite (d) est :",
+              "options": [
+                "Une droite strictement parallèle à (d) ou confondue",
+                "Une droite perpendiculaire à (d)",
+                "Une droite formant un angle dépendant de k",
+                "Un cercle passant par le centre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une homothétie transforme toute droite en une droite qui lui est parallèle."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans un repère, l'homothétie de centre O(0,0) transforme A(2 ; 4) en A'(6 ; 12). Quel est son rapport k ?",
+              "options": ["3", "2", "4", "1/3"],
+              "correctAnswers": [0],
+              "explanation": "On a 6 = k * 2 et 12 = k * 4, d'où k = 3."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une similitude plane directe de rapport k > 0 et d'angle thêta est la composée de :",
+              "options": [
+                "Une homothétie de rapport k et une rotation d'angle thêta de même centre",
+                "Une translation et une réflexion axiale",
+                "Deux symétries axiales d'axes parallèles",
+                "Une homothétie et une projection orthogonale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Toute similitude directe se décompose de façon unique en une homothétie et une rotation partageant le même centre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si une homothétie a pour rapport k = -4, le facteur multiplicatif des distances géométriques est :",
+              "options": ["4", "-4", "16", "2"],
+              "correctAnswers": [0],
+              "explanation": "Une distance est positive : A'B' = |k| * AB = |-4| * AB = 4 * AB."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'image d'un cercle C de centre I et de rayon R par une homothétie de rapport k est :",
+              "options": [
+                "Un cercle de centre h(I) et de rayon |k| * R",
+                "Une ellipse de demi-grand axe |k| * R",
+                "Un cercle de centre I et de rayon R / k",
+                "Un disque plein de rayon k² * R"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'image d'un cercle par une homothétie est un cercle dont le centre est l'image du centre et le rayon |k| * R."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Deux triangles ABC et A'B'C' sont dits semblables s'ils vérifient l'une des conditions :",
+              "options": [
+                "Leurs angles deux à deux ont même mesure",
+                "Leurs aires sont strictement égales",
+                "Leurs périmètres sont égaux",
+                "Ils possèdent au moins un côté commun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Deux triangles semblables ont la même forme, ce qui équivaut à avoir leurs angles de même mesure deux à deux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la nature de la transformation réciproque d'une homothétie h(O, k) ?",
+              "options": [
+                "Une homothétie de même centre O et de rapport 1/k",
+                "Une homothétie de centre O et de rapport -k",
+                "Une translation de vecteur opposé",
+                "Une rotation d'angle pi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réciproque de vecteur OM' = k * vecteur OM est vecteur OM = (1/k) * vecteur OM', soit h(O, 1/k)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles sont les propriétés conservées par toute homothétie de rapport k non nul ?",
+              "options": [
+                "L'alignement des points",
+                "Le parallélisme entre droites",
+                "Les distances entre deux points",
+                "L'orientation des figures lorsque k < 0"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'homothétie conserve l'alignement et le parallélisme. Elle ne conserve pas les distances (multipliées par |k|) et inverse l'orientation si k < 0."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Proportionnalité inverse et fonctions homographiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Deux grandeurs strictement positives x et y sont dites inversement proportionnelles si :",
+              "options": [
+                "Leur produit x * y est constant",
+                "Leur quotient y / x est constant",
+                "Leur somme x + y est constante",
+                "Leur différence y - x est constante"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La proportionnalité inverse signifie que y = C / x, c'est-à-dire que le produit x * y reste constant."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Si 6 ouvriers construisent un mur en 10 jours, combien de jours mettront 12 ouvriers au même rythme ?",
+              "options": ["5 jours", "20 jours", "8 jours", "6 jours"],
+              "correctAnswers": [0],
+              "explanation": "Le nombre d'ouvriers et le temps sont inversement proportionnels : 6 * 10 = 60 ouvrier-jours ; 60 / 12 = 5 jours."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La représentation graphique de la relation y = k / x (avec k > 0 et x > 0) est :",
+              "options": [
+                "Une branche d'hyperbole",
+                "Une droite passant par l'origine",
+                "Une demi-parabole",
+                "Un arc de cercle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction inverse f(x) = k/x est représentée par une hyperbole ayant les axes de coordonnées pour asymptotes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour une distance fixe d, la vitesse moyenne v et la durée du parcours t sont deux grandeurs :",
+              "options": [
+                "Inversement proportionnelles",
+                "Directement proportionnelles",
+                "Sans relation mathématique",
+                "Exponentiellement liées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque v * t = d (constant), doubler la vitesse divise la durée par deux : elles sont inversement proportionnelles."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Loi de Boyle-Mariotte : à T constante, P * V = constante. Si le volume V est divisé par 3, la pression P est :",
+              "options": [
+                "Multipliée par 3",
+                "Divisée par 3",
+                "Inchangée",
+                "Multipliée par 9"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le produit P * V étant constant, diminuer V d'un facteur 3 multiplie P par 3."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si y est inversement proportionnel à x et que y = 4 quand x = 5, quelle est la valeur de y quand x = 2 ?",
+              "options": ["10", "1,6", "8", "6,25"],
+              "correctAnswers": [0],
+              "explanation": "La constante est C = x * y = 5 * 4 = 20. Pour x = 2, y = 20 / 2 = 10."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour doubler la fréquence f d'une onde à célérité c constante (c = lambda * f), la longueur d'onde lambda doit être :",
+              "options": [
+                "Divisée par 2",
+                "Multipliée par 2",
+                "Multipliée par 4",
+                "Inchangée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "lambda = c / f : lambda et f sont inversement proportionnelles à célérité constante."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans la fonction f(x) = k / x avec k > 0, quelle est la limite de f(x) quand x tend vers +infini ?",
+              "options": ["0", "+infini", "k", "1"],
+              "correctAnswers": [0],
+              "explanation": "Lorsque le dénominateur tend vers l'infini avec un numérateur constant, le quotient tend vers 0."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Trois pompes identiques vident un bassin en 8 h. Combien de pompes identiques faut-il pour le vider en 6 h ?",
+              "options": ["4", "5", "6", "2"],
+              "correctAnswers": [0],
+              "explanation": "Le travail total représente 3 * 8 = 24 pompe-heures. Pour vider en 6 h : 24 / 6 = 4 pompes."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles situations décrivent deux grandeurs inversement proportionnelles ?",
+              "options": [
+                "La durée d'un trajet et la vitesse moyenne à distance constante",
+                "La pression et le volume d'un gaz à température constante",
+                "Le périmètre d'un cercle et son rayon",
+                "La distance d'arrêt et la vitesse d'un véhicule"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vitesse et durée (v*t = d) ainsi que pression et volume (P*V = cte) ont un produit constant. Le périmètre est linéaire (P = 2*pi*R)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Modélisation et problèmes de proportionnalité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Loi de Hooke : la force de rappel d'un ressort idéal est F = k * Delta_L. Que sont F et Delta_L ?",
+              "options": [
+                "Directement proportionnelles",
+                "Inversement proportionnelles",
+                "Sans lien linéaire",
+                "Quadratiquement liées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "F est proportionnelle à l'allongement Delta_L, la constante de raideur k étant le coefficient de proportionnalité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un robinet à débit constant remplit un réservoir de 300 L en 15 min. Quel volume délivre-t-il en 40 min ?",
+              "options": ["800 L", "750 L", "600 L", "900 L"],
+              "correctAnswers": [0],
+              "explanation": "Débit = 300 / 15 = 20 L/min. Volume en 40 min = 20 * 40 = 800 L."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Partager 1 200 € entre deux personnes A et B dans le ratio 2 : 3 attribue à A et B respectivement :",
+              "options": [
+                "480 € et 720 €",
+                "400 € et 800 €",
+                "500 € et 700 €",
+                "600 € et 600 €"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nombre total de parts est 2 + 3 = 5. Valeur d'une part = 1 200 / 5 = 240 €. A reçoit 2 * 240 = 480 €, B reçoit 3 * 240 = 720 €."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Loi d'Ohm : U = R * I. À résistance R constante, la tension U et l'intensité I sont :",
+              "options": [
+                "Directement proportionnelles",
+                "Inversement proportionnelles",
+                "Indépendantes",
+                "Constantes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "U est une fonction linéaire de I : U = R * I avec R pour coefficient de proportionnalité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une imprimante 3D produit 15 pièces identiques en 6 heures. Combien en produit-elle en 10 heures ?",
+              "options": ["25 pièces", "20 pièces", "30 pièces", "22 pièces"],
+              "correctAnswers": [0],
+              "explanation": "Cadence = 15 / 6 = 2,5 pièces/h. En 10 h : 2,5 * 10 = 25 pièces."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Trois associés investissent 20 000 €, 30 000 € et 50 000 €. Comment répartir équitablement 10 000 € de bénéfice ?",
+              "options": [
+                "2 000 €, 3 000 € et 5 000 €",
+                "3 333 €, 3 333 € et 3 334 €",
+                "1 000 €, 3 000 € et 6 000 €",
+                "2 500 €, 3 500 € et 4 000 €"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Total apporté = 100 000 €. Les proportions respectives sont 20 %, 30 % et 50 %, soit 2 000 €, 3 000 € et 5 000 €."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Relation poids-masse P = m * g (avec g constante locale). Le poids et la masse sont :",
+              "options": [
+                "Proportionnels avec g pour coefficient",
+                "Inversement proportionnels",
+                "Égaux numériquement",
+                "Non corrélés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le poids P est directement proportionnel à la masse m, le coefficient d'intensité de la pesanteur étant g."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si les coûts variables de fabrication sont de 8 € par unité, le coût variable total pour q unités produites est :",
+              "options": [
+                "Proportionnel à la quantité q",
+                "Indépendant de la quantité q",
+                "Inversement proportionnel à q",
+                "Égal à 8 + q"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le coût variable total s'écrit C(q) = 8q, fonction linéaire traduisant la proportionnalité à la quantité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Les trois côtés d'un triangle sont dans le ratio 3 : 4 : 5. Si son périmètre vaut 60 cm, le plus grand côté mesure :",
+              "options": ["25 cm", "20 cm", "30 cm", "15 cm"],
+              "correctAnswers": [0],
+              "explanation": "Nombre de parts = 3 + 4 + 5 = 12. Une part = 60 / 12 = 5 cm. Le plus grand côté mesure 5 * 5 = 25 cm."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles relations traduisent une stricte proportionnalité entre les variables réelles x et y ?",
+              "options": [
+                "y = 5x",
+                "y / x = 12 (pour x non nul)",
+                "y = 5x + 3",
+                "x * y = 10"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "y = 5x et y/x = 12 (équivalent à y = 12x) sont des fonctions linéaires. y = 5x + 3 est affine et xy = 10 est une proportionnalité inverse."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Unités",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Unités du Système International (SI) et préfixes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de base de la durée dans le Système International (SI) ?",
+              "options": [
+                "La seconde (s)",
+                "La minute (min)",
+                "L'heure (h)",
+                "La milliseconde (ms)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La seconde (symbole s) est l'une des 7 unités de base du Système International."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de base de la masse dans le Système International (SI) ?",
+              "options": [
+                "Le kilogramme (kg)",
+                "Le gramme (g)",
+                "La tonne (t)",
+                "Le milligramme (mg)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le kilogramme (kg) est la seule unité de base du SI dont le nom comporte déjà un préfixe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "À quel facteur multiplicatif correspond le préfixe 'méga' (symbole M) ?",
+              "options": ["10^6", "10^3", "10^9", "10^12"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe méga (M) correspond à un facteur de 10^6 (un million)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de secondes représente 1 nanoseconde (ns) ?",
+              "options": ["10^-9 s", "10^-6 s", "10^-12 s", "10^-3 s"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe nano (n) correspond au facteur 10^-9 (un milliardième)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Combien de mètres représente 1 micromètre (symbole µm) ?",
+              "options": ["10^-6 m", "10^-3 m", "10^-9 m", "10^-4 m"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe micro (µ) correspond au facteur 10^-6 (un millionième de mètre)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle unité du Système International mesure la quantité de matière ?",
+              "options": [
+                "La mole (mol)",
+                "Le kilogramme (kg)",
+                "Le mètre cube (m³)",
+                "Le dalton (Da)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La mole (symbole mol) est l'unité de base SI de la quantité de matière."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À quelle puissance de 10 correspond le préfixe 'giga' (symbole G) ?",
+              "options": ["10^9", "10^6", "10^12", "10^15"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe giga (G) désigne 10^9 (un milliard)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est l'unité de base de l'intensité du courant électrique dans le SI ?",
+              "options": [
+                "L'ampère (A)",
+                "Le volt (V)",
+                "Le coulomb (C)",
+                "L'ohm (oméga)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ampère (A) est l'unité de base du Système International pour le courant électrique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel préfixe normalisé correspond au facteur 10^-12 ?",
+              "options": ["pico (p)", "femto (f)", "nano (n)", "micro (µ)"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe pico (p) équivaut à 10^-12 ; femto correspond à 10^-15."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles unités font partie des sept unités fondamentales du Système International ?",
+              "options": [
+                "Le mètre (m)",
+                "Le kelvin (K)",
+                "Le joule (J)",
+                "Le newton (N)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le mètre et le kelvin sont des unités de base du SI. Le joule et le newton sont des unités dérivées."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Conversions de longueurs, surfaces et volumes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Combien de décimètres carrés (dm²) compte un mètre carré (m²) ?",
+              "options": ["100 dm²", "10 dm²", "1 000 dm²", "10 000 dm²"],
+              "correctAnswers": [0],
+              "explanation": "1 m = 10 dm, donc 1 m² = (10 dm)² = 100 dm²."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de litres (L) équivalent exactement à 1 mètre cube (m³) ?",
+              "options": ["1 000 L", "100 L", "10 000 L", "10 L"],
+              "correctAnswers": [0],
+              "explanation": "1 m³ = 1 000 dm³ et 1 dm³ = 1 L, d'où 1 m³ = 1 000 L."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Convertir 0,05 m² en centimètres carrés (cm²) :",
+              "options": ["500 cm²", "50 cm²", "5 000 cm²", "5 cm²"],
+              "correctAnswers": [0],
+              "explanation": "1 m² = 10 000 cm². Donc 0,05 m² = 0,05 * 10 000 = 500 cm²."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Combien de millimètres cubes (mm³) contient un centimètre cube (cm³) ?",
+              "options": ["1 000 mm³", "100 mm³", "10 000 mm³", "10 mm³"],
+              "correctAnswers": [0],
+              "explanation": "1 cm = 10 mm, donc 1 cm³ = 10³ mm³ = 1 000 mm³."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un millilitre (1 mL) correspond exactement au volume de :",
+              "options": ["1 cm³", "1 dm³", "10 cm³", "0,1 cm³"],
+              "correctAnswers": [0],
+              "explanation": "1 L = 1 000 mL = 1 000 cm³, ce qui donne directement 1 mL = 1 cm³."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Convertir 2,5 hectares (ha) en mètres carrés (m²) :",
+              "options": ["25 000 m²", "2 500 m²", "250 000 m²", "250 m²"],
+              "correctAnswers": [0],
+              "explanation": "1 hectare = 1 hm² = 10 000 m². Donc 2,5 ha = 25 000 m²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de mètres cubes valent 450 dm³ ?",
+              "options": ["0,45 m³", "4,5 m³", "0,045 m³", "45 m³"],
+              "correctAnswers": [0],
+              "explanation": "1 m³ = 1 000 dm³, donc 450 dm³ = 450 / 1 000 = 0,45 m³."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La surface d'un micromètre carré (1 µm²) exprimée en mètres carrés (m²) vaut :",
+              "options": ["10^-12 m²", "10^-6 m²", "10^-9 m²", "10^-8 m²"],
+              "correctAnswers": [0],
+              "explanation": "1 µm = 10^-6 m, donc (10^-6 m)² = 10^-12 m²."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un kilomètre carré (1 km²) équivaut à combien d'hectares (ha) ?",
+              "options": ["100 ha", "10 ha", "1 000 ha", "10 000 ha"],
+              "correctAnswers": [0],
+              "explanation": "1 km² = 1 000 000 m² et 1 ha = 10 000 m². D'où 1 km² = 1 000 000 / 10 000 = 100 ha."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles équivalences d'unités de capacité et volume sont exactes ?",
+              "options": [
+                "1 dm³ = 1 L",
+                "1 m³ = 1 000 L",
+                "1 cm³ = 1 cL",
+                "100 L = 1 m³"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 dm³ = 1 L et 1 m³ = 1 000 dm³ = 1 000 L. En revanche, 1 cm³ = 1 mL (et non 1 cL = 10 mL)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Grandeurs quotients : vitesse et débit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la formule définissant la vitesse moyenne v sur une distance d parcourue pendant la durée t ?",
+              "options": [
+                "v = d / t",
+                "v = d * t",
+                "v = t / d",
+                "v = 0,5 * d * t²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La vitesse est une grandeur quotient définie par le rapport de la distance à la durée : v = d / t."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pour convertir une vitesse exprimée en m/s en km/h, on multiplie par :",
+              "options": ["3,6", "0,278", "60", "1 000"],
+              "correctAnswers": [0],
+              "explanation": "1 m/s = (10^-3 km) / (1/3600 h) = 3 600 / 1 000 km/h = 3,6 km/h."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une vitesse de 90 km/h exprimée en mètres par seconde (m/s) vaut :",
+              "options": ["25 m/s", "30 m/s", "20 m/s", "32,4 m/s"],
+              "correctAnswers": [0],
+              "explanation": "90 / 3,6 = 25 m/s."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est l'unité du Système International (SI) pour le débit volumique ?",
+              "options": [
+                "Le mètre cube par seconde (m³/s)",
+                "Le litre par minute (L/min)",
+                "Le mètre par seconde (m/s)",
+                "Le kilogramme par seconde (kg/s)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le débit volumique est un volume divisé par un temps, donc en unités SI : m³/s."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un robinet a un débit de 12 L/min. Quelle est la valeur de ce débit en L/s ?",
+              "options": ["0,2 L/s", "2 L/s", "0,5 L/s", "720 L/s"],
+              "correctAnswers": [0],
+              "explanation": "1 minute = 60 secondes. Débit = 12 / 60 = 0,2 L/s."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un train roule à la vitesse constante de 180 km/h pendant 45 minutes. Quelle distance parcourt-il ?",
+              "options": ["135 km", "120 km", "150 km", "140 km"],
+              "correctAnswers": [0],
+              "explanation": "45 min = 0,75 h. Distance = 180 * 0,75 = 135 km."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un athlète parcourt 100 m en 10 s. Quelle est sa vitesse moyenne en km/h ?",
+              "options": ["36 km/h", "30 km/h", "40 km/h", "32 km/h"],
+              "correctAnswers": [0],
+              "explanation": "Vitesse = 100 / 10 = 10 m/s. En km/h : 10 * 3,6 = 36 km/h."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un débit de 36 m³/h converti en litres par seconde (L/s) équivaut à :",
+              "options": ["10 L/s", "1 L/s", "100 L/s", "6 L/s"],
+              "correctAnswers": [0],
+              "explanation": "36 m³ = 36 000 L et 1 h = 3 600 s. Débit = 36 000 / 3 600 = 10 L/s."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si une conduite débite 2 m³/s, quel volume d'eau s'écoule en 1 heure ?",
+              "options": ["7 200 m³", "120 m³", "3 600 m³", "72 000 m³"],
+              "correctAnswers": [0],
+              "explanation": "Volume = Débit * durée = 2 m³/s * 3 600 s = 7 200 m³."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propositions concernant les grandeurs quotients sont correctes ?",
+              "options": [
+                "Une vitesse de 10 m/s équivaut à 36 km/h",
+                "Le débit volumique est homogène à un volume divisé par un temps",
+                "Pour passer de km/h en m/s, on multiplie par 3,6",
+                "Le débit massique s'exprime en mètres cubes par seconde"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "10 m/s * 3,6 = 36 km/h. Le débit volumique est V/t (m³/s). Pour passer de km/h en m/s on divise par 3,6."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Grandeurs produits : énergie et travail",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "L'énergie E consommée par un dipôle de puissance constante P pendant une durée t est donnée par :",
+              "options": ["E = P * t", "E = P / t", "E = t / P", "E = P² * t"],
+              "correctAnswers": [0],
+              "explanation": "L'énergie est une grandeur produit égale au produit de la puissance par la durée : E = P * t."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Combien de joules (J) compte exactement un watt-heure (1 Wh) ?",
+              "options": ["3 600 J", "60 J", "1 000 J", "360 000 J"],
+              "correctAnswers": [0],
+              "explanation": "1 W = 1 J/s et 1 h = 3 600 s. Donc 1 Wh = 1 W * 3 600 s = 3 600 J."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est l'unité du Système International pour l'énergie et le travail mécanique ?",
+              "options": [
+                "Le joule (J)",
+                "Le watt (W)",
+                "Le kilowatt-heure (kWh)",
+                "Le newton (N)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le joule (symbole J) est l'unité SI officielle de l'énergie, de la chaleur et du travail."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Convertir un kilowatt-heure (1 kWh) en mégajoules (MJ) :",
+              "options": ["3,6 MJ", "0,36 MJ", "36 MJ", "1 MJ"],
+              "correctAnswers": [0],
+              "explanation": "1 kWh = 1 000 Wh = 1 000 * 3 600 J = 3 600 000 J = 3,6 MJ."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Le travail W d'une force constante F sur un déplacement L colinéaire (W = F * L) a pour dimension :",
+              "options": [
+                "Une force multipliée par une longueur (N * m = J)",
+                "Une force divisée par une longueur",
+                "Une masse multipliée par une vitesse",
+                "Une puissance divisée par un temps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "W = F * L exprime une grandeur produit : 1 newton-mètre = 1 joule."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un four de puissance 2 000 W fonctionne pendant 3 heures. Quelle est l'énergie consommée en kWh ?",
+              "options": ["6 kWh", "2 kWh", "6 000 kWh", "0,6 kWh"],
+              "correctAnswers": [0],
+              "explanation": "P = 2 kW. Énergie = 2 kW * 3 h = 6 kWh."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une grandeur produit résulte mathématiquement de :",
+              "options": [
+                "La multiplication de deux grandeurs physiques",
+                "La division d'une grandeur par une autre",
+                "L'addition de deux grandeurs identiques",
+                "La dérivation d'une fonction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, une grandeur produit s'obtient par la multiplication de deux grandeurs (ex : aire = L*l, énergie = P*t)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La charge électrique q transportée par un courant d'intensité I pendant une durée t est q = I * t. Son unité SI est :",
+              "options": [
+                "Le coulomb (C = A * s)",
+                "Le volt (V)",
+                "Le farad (F)",
+                "L'ampère-heure (Ah)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'unité SI de charge est le coulomb, défini par 1 C = 1 A * 1 s."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien de joules correspondent à 2,5 kWh ?",
+              "options": [
+                "9,0 * 10^6 J",
+                "2,5 * 10^3 J",
+                "7,2 * 10^6 J",
+                "9,0 * 10^5 J"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2,5 kWh = 2,5 * 3,6 * 10^6 J = 9,0 * 10^6 J (ou 9 MJ)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles unités représentent des grandeurs physiques de type produit ?",
+              "options": [
+                "Le kilowatt-heure (kW * h)",
+                "Le newton-mètre (N * m)",
+                "Le mètre par seconde (m / s)",
+                "Le kilomètre par heure (km / h)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "kW*h et N*m sont des grandeurs produits (multiplication d'unités). m/s et km/h sont des grandeurs quotients."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Masse volumique et densité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "La masse volumique rho d'un corps homogène de masse m et de volume V est définie par :",
+              "options": [
+                "rho = m / V",
+                "rho = V / m",
+                "rho = m * V",
+                "rho = m / V²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La masse volumique est le quotient de la masse par le volume : rho = m / V."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unité légale du Système International (SI) pour la masse volumique ?",
+              "options": ["kg / m³", "g / cm³", "kg / L", "g / mL"],
+              "correctAnswers": [0],
+              "explanation": "L'unité SI est le kilogramme par mètre cube (kg/m³ ou kg * m^-3)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La masse volumique de l'eau liquide dans les conditions standard vaut approximativement :",
+              "options": [
+                "1 000 kg / m³",
+                "100 kg / m³",
+                "10 kg / m³",
+                "1 kg / m³"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'eau pure a une masse volumique de 1 000 kg/m³, ce qui équivaut à 1 kg/L ou 1 g/cm³."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un cylindre en aluminium de volume 200 cm³ a une masse de 540 g. Sa masse volumique est :",
+              "options": [
+                "2,7 g/cm³",
+                "0,37 g/cm³",
+                "1,08 g/cm³",
+                "2 700 g/cm³"
+              ],
+              "correctAnswers": [0],
+              "explanation": "rho = 540 / 200 = 2,7 g/cm³."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "La densité d d'un liquide ou d'un solide par rapport à l'eau est :",
+              "options": [
+                "Le rapport rho / rho_eau, sans unité",
+                "Le produit rho * rho_eau exprimé en kg/m³",
+                "La masse d'un mètre cube du corps",
+                "Le quotient inverse rho_eau / rho"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La densité est le quotient adimensionnel de la masse volumique du corps par celle de l'eau pure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Convertir une masse volumique de 1 g/cm³ en kg/m³ :",
+              "options": [
+                "1 000 kg/m³",
+                "100 kg/m³",
+                "10 kg/m³",
+                "0,001 kg/m³"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 g/cm³ = (10^-3 kg) / (10^-6 m³) = 10^3 kg/m³ = 1 000 kg/m³."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une huile a une densité d = 0,8. Quelle est la masse de 2 L de cette huile ?",
+              "options": ["1,6 kg", "2,5 kg", "1,8 kg", "0,8 kg"],
+              "correctAnswers": [0],
+              "explanation": "rho_huile = 0,8 * 1 kg/L = 0,8 kg/L. Pour 2 L : m = 0,8 * 2 = 1,6 kg."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un objet homogène flotte à la surface de l'eau liquide si et seulement si :",
+              "options": [
+                "Sa densité par rapport à l'eau est inférieure à 1",
+                "Sa densité est supérieure à 1",
+                "Son volume est supérieur à 1 m³",
+                "Sa masse est inférieure à 1 kg"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un corps flotte si sa masse volumique est plus faible que celle du fluide environnant (densité d < 1)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un cube d'arête 10 cm a une masse volumique de 8 000 kg/m³. Quelle est sa masse ?",
+              "options": ["8 kg", "800 g", "80 kg", "0,8 kg"],
+              "correctAnswers": [0],
+              "explanation": "Volume = (0,1 m)³ = 0,001 m³. Masse = 8 000 * 0,001 = 8 kg."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles propositions concernant la masse volumique et la densité sont exactes ?",
+              "options": [
+                "La masse volumique possède une unité (par exemple kg/m³)",
+                "La densité est un nombre sans dimension (sans unité)",
+                "La masse volumique de l'eau vaut 1 kg/m³",
+                "La densité dépend de l'unité choisie pour mesurer le volume"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "rho s'exprime en unité de masse/volume (kg/m³). La densité est un rapport de grandeurs identiques, donc sans dimension."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Puissance et énergie électrique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "La puissance moyenne P liée à une énergie E transférée pendant la durée Delta_t est définie par :",
+              "options": [
+                "P = E / Delta_t",
+                "P = E * Delta_t",
+                "P = Delta_t / E",
+                "P = 0,5 * E * Delta_t²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La puissance est le débit d'énergie, c'est-à-dire le quotient de l'énergie transférée par la durée : P = E / Delta_t."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'unité SI de la puissance est le watt (W). Un watt équivaut à :",
+              "options": [
+                "1 joule par seconde (1 J/s)",
+                "1 joule-seconde (1 J * s)",
+                "1 volt par seconde",
+                "1 newton-mètre par seconde²"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par définition, 1 W = 1 J / 1 s = 1 J * s^-1."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En régime continu, la puissance électrique P délivrée à un composant sous tension U et traversé par un courant I est :",
+              "options": ["P = U * I", "P = U / I", "P = I / U", "P = U² * I"],
+              "correctAnswers": [0],
+              "explanation": "La puissance électrique est le produit de la tension par l'intensité du courant : P = U * I."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un moteur d'une puissance de 750 W fonctionne pendant 2 heures. Quelle énergie en joules a-t-il consommée ?",
+              "options": [
+                "5,4 * 10^6 J",
+                "1,5 * 10^3 J",
+                "2,7 * 10^6 J",
+                "9,0 * 10^5 J"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 h = 7 200 s. Énergie = 750 * 7 200 = 5 400 000 J = 5,4 * 10^6 J."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "À combien de watts équivaut un kilowatt (kW) ?",
+              "options": ["1 000 W", "100 W", "10 000 W", "10^6 W"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe kilo (k) signifie 10^3, donc 1 kW = 1 000 W."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Par effet Joule, la puissance thermique dissipée dans une résistance R traversée par un courant I vaut :",
+              "options": [
+                "P = R * I²",
+                "P = R² * I",
+                "P = R / I²",
+                "P = U * R"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec U = R * I, la puissance P = U * I devient P = (R * I) * I = R * I²."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un radiateur de 2 300 W est alimenté sous une tension de 230 V. Quelle est l'intensité du courant I ?",
+              "options": ["10 A", "0,1 A", "5 A", "20 A"],
+              "correctAnswers": [0],
+              "explanation": "I = P / U = 2 300 / 230 = 10 A."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une éolienne fournit 2 MW pendant 5 heures. Quelle quantité d'énergie a-t-elle produite ?",
+              "options": ["10 MWh", "2,5 MWh", "10 MW", "7 MWh"],
+              "correctAnswers": [0],
+              "explanation": "Énergie = 2 MW * 5 h = 10 MWh."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un mégawatt (MW) équivaut à combien de watts ?",
+              "options": ["10^6 W", "10^3 W", "10^9 W", "10^12 W"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe méga (M) désigne un facteur de 10^6 (un million de watts)."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles relations fondamentales reliant puissance, énergie, tension et courant sont exactes ?",
+              "options": [
+                "E = P * Delta_t",
+                "P = U * I (en courant continu)",
+                "P = E * Delta_t",
+                "E = P / Delta_t"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'énergie est E = P * Delta_t et la puissance électrique en continu est P = U * I."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Concentrations molaires et massiques",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "La concentration molaire C d'une espèce en solution de volume V contenant n moles est :",
+              "options": ["C = n / V", "C = n * V", "C = V / n", "C = m * n"],
+              "correctAnswers": [0],
+              "explanation": "La concentration molaire est le quotient de la quantité de matière par le volume : C = n / V."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est l'unité usuelle de la concentration molaire en laboratoire de chimie ?",
+              "options": ["mol / L", "mol / m³", "g / L", "mol * L"],
+              "correctAnswers": [0],
+              "explanation": "L'unité usuelle est la mole par litre (mol/L ou mol * L^-1) ; l'unité SI stricte est mol/m³."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La concentration massique (ou concentration en masse) Cm est donnée par :",
+              "options": [
+                "Cm = m / V",
+                "Cm = m * V",
+                "Cm = V / m",
+                "Cm = n / m"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La concentration massique est le quotient de la masse de soluté par le volume total de solution : Cm = m / V."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle formule relie la concentration massique Cm, la concentration molaire C et la masse molaire M ?",
+              "options": [
+                "Cm = C * M",
+                "C = Cm * M",
+                "Cm = C / M",
+                "M = Cm * C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme m = n * M, on a Cm = m / V = (n * M) / V = (n / V) * M = C * M."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "On dissout 0,5 mol de saccharose dans de l'eau pour obtenir 250 mL de solution. Que vaut C ?",
+              "options": [
+                "2,0 mol/L",
+                "0,125 mol/L",
+                "1,25 mol/L",
+                "0,5 mol/L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "V = 250 mL = 0,25 L. Concentration C = 0,5 / 0,25 = 2,0 mol/L."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "On dissout 10 g de sel dans de l'eau pour obtenir 500 mL de solution. Quelle est la valeur de Cm ?",
+              "options": ["20 g/L", "5 g/L", "50 g/L", "2 g/L"],
+              "correctAnswers": [0],
+              "explanation": "V = 0,5 L. Cm = 10 / 0,5 = 20 g/L."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lors d'une dilution d'une solution aqueuse par ajout d'eau distillée, quelle grandeur reste invariante ?",
+              "options": [
+                "La quantité de matière de soluté",
+                "La concentration molaire",
+                "Le volume de la solution",
+                "La masse volumique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Diluer ajoute du solvant sans modifier la quantité de soluté dissous : n_initial = n_final."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le facteur de dilution F s'exprime en fonction des concentrations mère C_m et fille C_f par :",
+              "options": [
+                "F = C_m / C_f",
+                "F = C_f / C_m",
+                "F = C_m * C_f",
+                "F = C_m - C_f"
+              ],
+              "correctAnswers": [0],
+              "explanation": "F est supérieur à 1 et vaut F = C_m / C_f = V_f / V_m."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour préparer 100 mL d'une solution fille à 0,1 mol/L à partir d'une solution mère à 1,0 mol/L, quel volume prélever ?",
+              "options": ["10 mL", "1 mL", "20 mL", "5 mL"],
+              "correctAnswers": [0],
+              "explanation": "C_m * V_m = C_f * V_f => 1,0 * V_m = 0,1 * 100 => V_m = 10 mL."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles relations sont rigoureusement exactes en chimie des solutions ?",
+              "options": [
+                "Cm = C * M",
+                "C_mere * V_mere = C_fille * V_fille",
+                "C = Cm * M",
+                "V_mere = F * V_fille"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Cm = C * M est la passerelle massique/molaire. La conservation du soluté lors d'une dilution s'écrit C_mere * V_mere = C_fille * V_fille."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Pression, force et unités associées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "La pression P exercée par une force pressante F orthogonale répartie sur une surface S est :",
+              "options": ["P = F / S", "P = F * S", "P = S / F", "P = F² / S"],
+              "correctAnswers": [0],
+              "explanation": "La pression est le quotient de l'intensité de la force pressante par l'aire de la surface : P = F / S."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'unité du Système International pour la pression est le pascal (Pa). À quoi correspond 1 pascal ?",
+              "options": [
+                "1 newton par mètre carré (1 N/m²)",
+                "1 newton par centimètre carré",
+                "1 joule par mètre",
+                "1 kilogramme par seconde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 Pa = 1 N / 1 m² = 1 N * m^-2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Combien de pascals (Pa) contient exactement un bar (1 bar) ?",
+              "options": ["10^5 Pa", "10^3 Pa", "10^6 Pa", "10^4 Pa"],
+              "correctAnswers": [0],
+              "explanation": "1 bar = 100 000 Pa = 10^5 Pa (soit 1 000 hPa)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La pression atmosphérique standard au niveau de la mer est d'environ :",
+              "options": ["1 013 hPa", "101,3 hPa", "10 130 hPa", "10,13 hPa"],
+              "correctAnswers": [0],
+              "explanation": "P_atm = 1 013,25 hPa = 1,01325 * 10^5 Pa = 1,013 bar."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une force de 500 N s'exerce uniformément sur une surface de 0,05 m². Quelle est la pression exercée ?",
+              "options": ["10 000 Pa", "2 500 Pa", "25 000 Pa", "1 000 Pa"],
+              "correctAnswers": [0],
+              "explanation": "P = 500 / 0,05 = 10 000 Pa (soit 100 hPa ou 0,1 bar)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Convertir un hectopascal (1 hPa) en pascals (Pa) :",
+              "options": ["100 Pa", "10 Pa", "1 000 Pa", "0,01 Pa"],
+              "correctAnswers": [0],
+              "explanation": "Le préfixe hecto (h) signifie 100, donc 1 hPa = 100 Pa."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sous une force pressante F constante, si la surface de contact S est divisée par 2, la pression P est :",
+              "options": [
+                "Multipliée par 2",
+                "Divisée par 2",
+                "Inchangée",
+                "Multipliée par 4"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pression est inversement proportionnelle à la surface : diviser S par 2 double la pression P."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Loi fondamentale de la statique des fluides incompressibles : Delta_P entre deux profondeurs vaut :",
+              "options": [
+                "Delta_P = rho * g * Delta_h",
+                "Delta_P = rho * g / Delta_h",
+                "Delta_P = m * g * Delta_h",
+                "Delta_P = rho * Delta_h / g"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La différence de pression hydrostatique dépend de la masse volumique du fluide, de g et du dénivelé Delta_h."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À quelle valeur en pascals correspond une atmosphère normale (1 atm) ?",
+              "options": [
+                "101 325 Pa",
+                "100 000 Pa",
+                "1 000 000 Pa",
+                "98 100 Pa"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 atm = 101 325 Pa par définition internationale."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles unités sont communément employées pour mesurer une pression ?",
+              "options": [
+                "Le pascal (Pa)",
+                "Le bar (bar)",
+                "Le newton (N)",
+                "Le joule (J)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le pascal et le bar mesurent des pressions. Le newton est une unité de force et le joule une unité d'énergie."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Analyse dimensionnelle et cohérence d'une formule",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En analyse dimensionnelle, quelle est la dimension d'une vitesse v ?",
+              "options": [
+                "[v] = L * T^-1",
+                "[v] = L * T^-2",
+                "[v] = L * T",
+                "[v] = M * L * T^-1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une vitesse est le rapport d'une longueur L par un temps T, soit [v] = L * T^-1."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la dimension d'une accélération a en mécanique ?",
+              "options": [
+                "[a] = L * T^-2",
+                "[a] = L * T^-1",
+                "[a] = L² * T^-2",
+                "[a] = M * L * T^-2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accélération est la dérivée de la vitesse par rapport au temps : [a] = [v] / T = L * T^-2."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "D'après la loi fondamentale F = m * a, quelle est la dimension d'une force [F] ?",
+              "options": [
+                "[F] = M * L * T^-2",
+                "[F] = M * L * T^-1",
+                "[F] = M * L² * T^-2",
+                "[F] = M * T^-2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "[F] = [m] * [a] = M * (L * T^-2) = M * L * T^-2."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle est la dimension d'une énergie [E] (travail d'une force W = F * L) ?",
+              "options": [
+                "[E] = M * L² * T^-2",
+                "[E] = M * L * T^-2",
+                "[E] = M * L² * T^-1",
+                "[E] = L² * T^-2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "[E] = [F] * L = (M * L * T^-2) * L = M * L² * T^-2."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux termes que l'on additionne dans une équation physique doivent impérativement :",
+              "options": [
+                "Avoir la même dimension physique",
+                "Être sans dimension",
+                "Être proportionnels au temps",
+                "Avoir une valeur numérique égale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est le principe d'homogénéité : on ne peut additionner que des grandeurs ayant la même dimension."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pour un pendule simple, T = 2 * pi * racine(l / g). Quelle est la dimension de racine(l / g) ?",
+              "options": [
+                "Un temps T",
+                "Une longueur L",
+                "Une vitesse L * T^-1",
+                "Une accélération L * T^-2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "[l/g] = L / (L * T^-2) = T². Donc [racine(l/g)] = (T²)^(1/2) = T. L'expression est homogène à une durée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la dimension de la pression [P] (P = F / S) ?",
+              "options": [
+                "[P] = M * L^-1 * T^-2",
+                "[P] = M * L * T^-2",
+                "[P] = M * L^-2 * T^-2",
+                "[P] = L^-1 * T^-2"
+              ],
+              "correctAnswers": [0],
+              "explanation": "[P] = [F] / L² = (M * L * T^-2) / L² = M * L^-1 * T^-2."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une grandeur adimensionnelle (comme l'indice de réfraction n ou la densité d) a pour dimension :",
+              "options": ["1 (sans dimension)", "L * T^-1", "M", "T"],
+              "correctAnswers": [0],
+              "explanation": "Les grandeurs sans dimension résultent du rapport de grandeurs de même nature ; leur dimension se note 1."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que peut-on affirmer de manière certaine si une équation physique n'est pas homogène dimensionnellement ?",
+              "options": [
+                "Elle est obligatoirement fausse",
+                "Elle est obligatoirement exacte",
+                "Elle est valide uniquement dans le vide",
+                "Elle dépend du choix du repère"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'homogénéité dimensionnelle est une condition nécessaire : une formule non homogène est à coup sûr erronée."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles expressions physiques sont homogènes à une énergie (dimension M * L² * T^-2) ?",
+              "options": [
+                "L'énergie cinétique Ec = 0,5 * m * v²",
+                "L'énergie potentielle Ep = m * g * h",
+                "La quantité de mouvement p = m * v",
+                "La puissance P = E * t"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ec et Ep ont la dimension d'une énergie (M * L² * T^-2). p a pour dimension M * L * T^-1."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Conversions complexes et unités anglo-saxonnes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Le mille marin (mille nautique, NM) vaut exactement :",
+              "options": [
+                "1 852 mètres",
+                "1 609 mètres",
+                "1 500 mètres",
+                "2 000 mètres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par convention internationale, 1 mille nautique = 1 852 m (historiquement lié à une minute d'arc de méridien terrestre)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un pouce (inch, noté in) équivaut exactement à :",
+              "options": ["2,54 cm", "2,50 cm", "3,00 cm", "2,45 cm"],
+              "correctAnswers": [0],
+              "explanation": "Par définition internationale de 1959, 1 inch = 2,54 cm exactement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le nœud (kn) est une unité de vitesse utilisée en marine et en aéronautique qui vaut :",
+              "options": [
+                "1 mille marin par heure (1,852 km/h)",
+                "1 mille terrestre par heure (1,609 km/h)",
+                "1 mètre par seconde",
+                "1 kilomètre par heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 nœud correspond à une vitesse d'un mille nautique par heure, soit 1,852 km/h ou environ 0,514 m/s."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La livre anglo-saxonne (pound, notée lb) correspond approximativement à :",
+              "options": ["453,6 g", "500 g", "350 g", "1 000 g"],
+              "correctAnswers": [0],
+              "explanation": "1 livre avoirdupois (lb) = 0,45359237 kg, soit environ 453,6 g."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un pied (foot, noté ft) vaut 12 pouces, ce qui équivaut à environ :",
+              "options": ["30,48 cm", "25,40 cm", "33,33 cm", "50,00 cm"],
+              "correctAnswers": [0],
+              "explanation": "1 ft = 12 * 2,54 cm = 30,48 cm (soit 0,3048 m)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un avion de ligne vole à une altitude de 30 000 pieds (ft). À combien de mètres cela correspond-il environ ?",
+              "options": ["9 144 m", "6 000 m", "12 500 m", "15 000 m"],
+              "correctAnswers": [0],
+              "explanation": "Altitude = 30 000 * 0,3048 m = 9 144 m (environ 9,1 km)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un baril standard de pétrole (bbl) équivaut à un volume d'environ :",
+              "options": [
+                "159 litres",
+                "100 litres",
+                "200 litres",
+                "120 litres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 baril de pétrole vaut 42 gallons américains, soit environ 158,987 litres (environ 159 L)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Un gallon américain pour liquide (US gal) équivaut à environ :",
+              "options": [
+                "3,785 litres",
+                "4,546 litres",
+                "2,500 litres",
+                "5,000 litres"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 US liquid gallon = 3,78541 L. (Le gallon impérial britannique vaut environ 4,546 L)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "La température absolue T en kelvins (K) est reliée à la température thêta en degrés Celsius (°C) par :",
+              "options": [
+                "T(K) = thêta(°C) + 273,15",
+                "T(K) = thêta(°C) - 273,15",
+                "T(K) = 1,8 * thêta(°C) + 32",
+                "T(K) = thêta(°C) / 273,15"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le zéro absolu correspond à 0 K = -273,15 °C. Donc T(K) = thêta(°C) + 273,15."
+            },
+            {
+              "id": "q10",
+              "type": "multiple_choice",
+              "question": "Quelles équivalences de mesures d'unités usuelles sont exactes ?",
+              "options": [
+                "1 pouce = 2,54 cm",
+                "1 nœud = 1 mille marin par heure",
+                "1 mille terrestre = 1 852 m",
+                "1 pied = 10 pouces"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "1 pouce = 2,54 cm et 1 nœud = 1 NM/h. Le mille terrestre (mile) vaut environ 1 609 m (1 852 m est le mille marin) et 1 pied vaut 12 pouces."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

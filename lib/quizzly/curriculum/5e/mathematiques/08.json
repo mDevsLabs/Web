@@ -1,0 +1,2003 @@
+{
+  "id": "5e-mathematiques-08",
+  "year": "5e",
+  "subject": "mathematiques",
+  "title": "Algèbre",
+  "order": 8,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Mettre en équation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "On ajoute 6 à un nombre x et on obtient 14. Quelles égalités traduisent cette situation ?",
+              "options": ["x + 6 = 14", "x - 6 = 14", "14 = x + 6", "6x = 14"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Le triple d'un nombre vaut 21. Quelle équation convient ?",
+              "options": ["3x = 21", "x + 3 = 21", "x / 3 = 21", "21x = 3"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "En retranchant 4 à x, on obtient 9. Quelle égalité modélise cela ?",
+              "options": ["x - 4 = 9", "4 - x = 9", "x + 4 = 9", "4x = 9"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Léa a x euros. Elle achète un livre à 11 € et il lui reste 5 €. Quelle équation ?",
+              "options": [
+                "x - 11 = 5",
+                "x + 11 = 5",
+                "11 - x = 5",
+                "x - 5 = 11"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "x + 7 = 12. La valeur x = 5 vérifie-t-elle l'égalité ?",
+              "options": [
+                "Oui",
+                "Non",
+                "On ne peut pas savoir",
+                "Il manque une donnée"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "La moitié d'un nombre x vaut 8. Quelle équation ?",
+              "options": ["x / 2 = 8", "2x = 8", "x - 2 = 8", "x + 2 = 8"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Un rectangle a une longueur x et une largeur 3 cm. Son périmètre vaut 26 cm. Quelle équation ?",
+              "options": [
+                "2x + 6 = 26",
+                "x + 3 = 26",
+                "2x + 3 = 26",
+                "x × 3 = 26"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Un nombre augmenté de 10 vaut 25 » se traduit par :",
+              "options": [
+                "x + 10 = 25",
+                "10x = 25",
+                "x - 10 = 25",
+                "25 + x = 10"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Pour modéliser une quantité inconnue, on utilise le plus souvent :",
+              "options": [
+                "Une lettre comme x",
+                "Uniquement le chiffre 0",
+                "Toujours le signe +",
+                "Aucune variable"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "3x = 18. Est-ce que x = 6 convient ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement si x est pair",
+                "Impossible à tester"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "En soustrayant 5 à x, on obtient 13. Quelles égalités sont correctes ?",
+              "options": [
+                "x - 5 = 13",
+                "5 - x = 13",
+                "13 = x - 5",
+                "x + 5 = 13"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Tom a x billes. Il en perd 7 et il en reste 15. Quelle équation ?",
+              "options": [
+                "x - 7 = 15",
+                "x + 7 = 15",
+                "7 - x = 15",
+                "x / 7 = 15"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Le quadruple de x vaut 32. Quelle équation ?",
+              "options": ["4x = 32", "x + 4 = 32", "x - 4 = 32", "32 + x = 4"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "x - 3 = 8. Quelle valeur de x convient pour tester l'égalité ?",
+              "options": ["11", "5", "24", "8"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Un segment mesure x cm. On lui ajoute 2 cm et on obtient 17 cm. Quelle équation ?",
+              "options": ["x + 2 = 17", "2x = 17", "x - 2 = 17", "x / 2 = 17"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Le produit de 5 et d'un nombre vaut 40 » s'écrit :",
+              "options": ["5x = 40", "x + 5 = 40", "x - 5 = 40", "x / 5 = 40"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "x + 9 = 20. x = 10 vérifie-t-il l'égalité ?",
+              "options": ["Non", "Oui", "Oui et non", "Toujours oui"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Un nombre x est partagé en 4 parts égales de 5. Quelle équation ?",
+              "options": ["x / 4 = 5", "4x = 5", "x - 4 = 5", "x + 4 = 5"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Côté d'un carré : x cm. Périmètre 36 cm. Quelle équation ?",
+              "options": ["4x = 36", "x + 4 = 36", "2x = 36", "x² = 36"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Dans x + 12 = 30, que représente x ?",
+              "options": [
+                "Le nombre cherché",
+                "Toujours 12",
+                "Le résultat 30",
+                "La somme de 12 et 30"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Le double de x vaut 18. Quelles égalités traduisent cette phrase ?",
+              "options": ["2x = 18", "x + 2 = 18", "18 = 2x", "x / 2 = 18"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Après avoir gagné 8 points, Nora a x points au total et 25 points. Quelle équation ?",
+              "options": ["x + 8 = 25", "x - 8 = 25", "8x = 25", "x / 8 = 25"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "x / 3 = 7 signifie :",
+              "options": [
+                "On partage x en 3 parts égales valant 7",
+                "On multiplie x par 3 pour obtenir 7",
+                "On ajoute 3 à x",
+                "x vaut 3"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Un taxi facture 4 € de prise en charge plus x € par km. Pour 10 km, la course coûte 34 €. Quelle équation ?",
+              "options": [
+                "4 + 10x = 34",
+                "4x + 10 = 34",
+                "10 + 4x = 34",
+                "x + 4 = 34"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Tester x = 4 dans 2x = 8 donne :",
+              "options": [
+                "Une égalité vraie",
+                "Une égalité fausse",
+                "Une division par zéro",
+                "Impossible"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« x diminué de 9 vaut 2 » s'écrit :",
+              "options": ["x - 9 = 2", "9 - x = 2", "x + 9 = 2", "9x = 2"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Deux nombres consécutifs : le plus petit est x, le plus grand vaut 19. Quelle équation ?",
+              "options": ["x + 1 = 19", "x - 1 = 19", "2x = 19", "x + 19 = 1"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "5x = 45. x = 8 vérifie-t-il l'équation ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Oui car 5 × 8 = 40",
+                "On ne teste pas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Un sac contient x bonbons. On en retire 6 et il en reste 14. Quelle équation ?",
+              "options": ["x - 6 = 14", "x + 6 = 14", "6x = 14", "x / 6 = 14"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Quelle phrase correspond à x + 15 = 40 ?",
+              "options": [
+                "Un nombre augmenté de 15 vaut 40",
+                "Un nombre multiplié par 15 vaut 40",
+                "On retire 15 à un nombre pour obtenir 40",
+                "40 est divisé par x"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "x augmenté de 11 vaut 30. Quelles écritures sont équivalentes ?",
+              "options": [
+                "x + 11 = 30",
+                "30 = x + 11",
+                "11x = 30",
+                "x - 11 = 30"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Un film dure x minutes. Un court métrage dure 12 min de moins et 48 min. Quelle équation ?",
+              "options": [
+                "x - 12 = 48",
+                "x + 12 = 48",
+                "12x = 48",
+                "x / 12 = 48"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "6x = 54 traduit :",
+              "options": [
+                "6 fois un nombre vaut 54",
+                "6 plus un nombre vaut 54",
+                "Un nombre moins 6 vaut 54",
+                "54 moins x vaut 6"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "x = 7 est-il solution de x + 5 = 11 ?",
+              "options": ["Non", "Oui", "Oui car 7 > 5", "Solution double"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Un terrain rectangulaire : largeur x m, longueur 12 m, périmètre 40 m. Quelle équation ?",
+              "options": [
+                "2x + 24 = 40",
+                "x + 12 = 40",
+                "12x = 40",
+                "x + 24 = 40"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« On multiplie un nombre par 7 et on obtient 56 » :",
+              "options": ["7x = 56", "x + 7 = 56", "x - 7 = 56", "x / 7 = 56"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Dans une équation, le signe = signifie :",
+              "options": [
+                "Les deux membres ont la même valeur",
+                "Il faut toujours additionner",
+                "x vaut toujours 1",
+                "Le résultat est inconnu"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 8 = 15. Quelle valeur tester pour vérifier x = 23 ?",
+              "options": [
+                "23 + (-8) = 15",
+                "23 - 8 = 14",
+                "8 - 23 = 15",
+                "23 × 8 = 15"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Un bus transporte x élèves. 9 montent et il y en a 42. Quelle équation ?",
+              "options": ["x + 9 = 42", "x - 9 = 42", "9x = 42", "x / 9 = 42"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Quelle situation correspond à 3x = 24 ?",
+              "options": [
+                "Trois fois un nombre vaut 24",
+                "On ajoute 3 à x pour obtenir 24",
+                "On retire 3 à x",
+                "x est 3 de plus que 24"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "On divise x par 5 et on obtient 4. Quelles égalités conviennent ?",
+              "options": ["x / 5 = 4", "5x = 4", "4 = x / 5", "x - 5 = 4"],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Paul a x ans. Sa sœur a 3 ans de moins et 10 ans. Quelle équation pour l'âge de Paul ?",
+              "options": ["x - 3 = 10", "x + 3 = 10", "3x = 10", "x / 3 = 10"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "x + 14 = 14. x = 0 convient-il ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement en 5e",
+                "x doit être positif"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Une corde mesure x m. On coupe 2 m et il reste 13 m. Quelle équation ?",
+              "options": ["x - 2 = 13", "x + 2 = 13", "2x = 13", "x / 2 = 13"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "8x = 64. Quelle phrase décrit l'équation ?",
+              "options": [
+                "8 fois un nombre vaut 64",
+                "8 plus x vaut 64",
+                "x est 8 de moins que 64",
+                "64 divisé par 8 vaut x toujours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Tester x = 5 dans x / 5 = 2 :",
+              "options": [
+                "L'égalité est vraie",
+                "L'égalité est fausse",
+                "x ne peut pas valoir 5",
+                "Il faut diviser par 2"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Un nombre x, augmenté de son double, vaut 27. Quelle équation en 5e ?",
+              "options": [
+                "x + 2x = 27",
+                "2x + 2 = 27",
+                "x × x = 27",
+                "x + 2 = 27"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 12 = 0. Quelle valeur de x rend l'égalité vraie ?",
+              "options": ["12", "0", "-12", "24"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Un ticket coûte x €. Trois tickets coûtent 18 €. Quelle équation ?",
+              "options": ["3x = 18", "x + 3 = 18", "x - 3 = 18", "18x = 3"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Pour vérifier une solution, on :",
+              "options": [
+                "Remplace x par la valeur proposée",
+                "Efface l'équation",
+                "Change le signe =",
+                "Ajoute toujours 1"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "x moins 7 vaut 16. Quelles égalités modélisent cela ?",
+              "options": [
+                "x - 7 = 16",
+                "7 - x = 16",
+                "16 = x - 7",
+                "x + 7 = 16"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Une pile de x cahiers, on en pose 5 de plus : 20 cahiers. Quelle équation ?",
+              "options": ["x + 5 = 20", "x - 5 = 20", "5x = 20", "x / 5 = 20"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "2x = 14. x = 7 est-il solution ?",
+              "options": [
+                "Oui",
+                "Non",
+                "7 est trop grand",
+                "2x ne se teste pas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Un nombre plus 20 vaut 50 » s'écrit :",
+              "options": ["x + 20 = 50", "20x = 50", "x - 20 = 50", "50x = 20"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Un aquarium contient x poissons. On en ajoute 4 et il y en a 19. Quelle équation ?",
+              "options": ["x + 4 = 19", "x - 4 = 19", "4x = 19", "x / 4 = 19"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x / 2 = 9 signifie que x vaut :",
+              "options": [
+                "18 si l'équation est vraie",
+                "4,5 toujours",
+                "2",
+                "9"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "x + 6 = 6. Quelle valeur de x convient ?",
+              "options": ["0", "6", "12", "1"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Un vélo parcourt x km en une heure. En 3 h, 45 km. Quelle équation simple ?",
+              "options": ["3x = 45", "x + 3 = 45", "x - 3 = 45", "45x = 3"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "x = 3 est-il solution de x + 4 = 7 ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Impossible à tester",
+                "Seulement si x > 0"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Quelle équation traduit « le quart de x vaut 6 » ?",
+              "options": ["x / 4 = 6", "4x = 6", "x - 4 = 6", "x + 4 = 6"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "9x = 63. Quelles écritures sont correctes pour « neuf fois x vaut 63 » ?",
+              "options": ["9x = 63", "63 = 9x", "x + 9 = 63", "x / 9 = 63"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Un nombre x, on lui retire 15 et on obtient 8. Quelle équation ?",
+              "options": ["x - 15 = 8", "15 - x = 8", "x + 15 = 8", "15x = 8"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "x + 2 = 2. Tester x = 0 :",
+              "options": [
+                "L'égalité est vraie",
+                "L'égalité est fausse",
+                "0 est interdit",
+                "Il faut x = 2"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Deux fois x plus 3 vaut 17 (problème linéaire simple). Quelle équation ?",
+              "options": [
+                "2x + 3 = 17",
+                "2x = 17",
+                "x + 3 = 17",
+                "3x + 2 = 17"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Un stock de x litres, on en utilise 10 et il reste 25. Quelle équation ?",
+              "options": [
+                "x - 10 = 25",
+                "x + 10 = 25",
+                "10x = 25",
+                "x / 10 = 25"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x / 6 = 5. Quelle situation est modélisée ?",
+              "options": [
+                "x partagé en 6 parts égales de 5",
+                "x plus 6 vaut 5",
+                "6 plus x vaut 5",
+                "x moins 6 vaut 5"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "x = 9 vérifie-t-il 3x = 27 ?",
+              "options": ["Oui", "Non", "Seulement le matin", "27 est fixe"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« x plus le double de x vaut 30 » s'écrit :",
+              "options": [
+                "x + 2x = 30",
+                "x + 2 = 30",
+                "2x + 2 = 30",
+                "x × 2x = 30"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Un triangle isocèle a un côté x cm et les deux autres valent 5 cm. Périmètre 21 cm. Quelle équation ?",
+              "options": [
+                "x + 10 = 21",
+                "2x + 5 = 21",
+                "x + 5 = 21",
+                "3x = 21"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Mettre en équation, c'est :",
+              "options": [
+                "Traduire un problème par une égalité avec une inconnue",
+                "Calculer x sans réfléchir",
+                "Toujours utiliser x = 1",
+                "Ignorer les données"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "x + 4 = 19. Quelles formes sont correctes ?",
+              "options": ["x + 4 = 19", "19 = x + 4", "4x = 19", "x - 4 = 19"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Un magazine coûte x €. Deux magazines coûtent 10 €. Quelle équation ?",
+              "options": ["2x = 10", "x + 2 = 10", "x - 2 = 10", "10x = 2"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "x - 5 = 5. x = 10 convient ?",
+              "options": ["Oui", "Non", "10 est pair donc non", "5 seulement"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Une boîte contient x g de chocolat. On en mange 25 g, il reste 75 g. Quelle équation ?",
+              "options": [
+                "x - 25 = 75",
+                "x + 25 = 75",
+                "25x = 75",
+                "x / 25 = 75"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "10x = 100 traduit :",
+              "options": [
+                "Dix fois un nombre vaut 100",
+                "10 plus x vaut 100",
+                "x moins 10 vaut 100",
+                "x divisé par 10 vaut 100"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x = 6 est-il solution de x + 3 = 8 ?",
+              "options": ["Non", "Oui", "6 + 3 = 9 donc oui", "Toujours oui"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Un escalier a x marches. 3 marches de plus qu'un palier de 14 marches. Quelle équation ?",
+              "options": ["x = 14 + 3", "x + 3 = 14", "3x = 14", "x - 3 = 14"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x / 8 = 3. Quelle phrase ?",
+              "options": [
+                "x partagé en 8 parts égales vaut 3",
+                "x plus 8 vaut 3",
+                "8x vaut 3",
+                "x moins 8 vaut 3"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Un jeu : score x, bonus +5, total 32. Quelle équation ?",
+              "options": ["x + 5 = 32", "5x = 32", "x - 5 = 32", "x / 5 = 32"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Dans 4 + x = 11, x représente :",
+              "options": [
+                "Le nombre qu'il faut ajouter à 4 pour obtenir 11",
+                "Toujours 4",
+                "Le produit 4 × 11",
+                "La différence 11 - 4 uniquement sans x"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Le quintuple de x vaut 35. Quelles égalités conviennent ?",
+              "options": ["5x = 35", "35 = 5x", "x + 5 = 35", "x / 5 = 35"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Un jardin mesure x m de long. On agrandit de 6 m : 30 m. Quelle équation ?",
+              "options": ["x + 6 = 30", "x - 6 = 30", "6x = 30", "x / 6 = 30"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "x + 13 = 25. x = 12 vérifie ?",
+              "options": [
+                "Oui",
+                "Non",
+                "12 est trop petit",
+                "13 est la solution"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Un nombre x, on ajoute 7 puis on double : on obtient 34. Étape équation (5e) :",
+              "options": [
+                "2(x + 7) = 34",
+                "2x + 7 = 34",
+                "x + 14 = 34",
+                "x + 7 + 2 = 34"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "7x = 49. Quelle situation ?",
+              "options": [
+                "Sept fois un nombre vaut 49",
+                "7 plus x vaut 49",
+                "x moins 7 vaut 49",
+                "x est 7"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Tester x = 4 dans x - 2 = 3 :",
+              "options": [
+                "Faux car 4 - 2 = 2",
+                "Vrai",
+                "4 est solution",
+                "3 est solution"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Un taxi : x € par km, 2 km pour 14 € sans prise en charge. Quelle équation ?",
+              "options": ["2x = 14", "x + 2 = 14", "x - 2 = 14", "14x = 2"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 20 = 5. Quelle valeur de x rend vrai ?",
+              "options": ["25", "15", "5", "20"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« On retranche 8 à x et on obtient x - 8 » est :",
+              "options": [
+                "Une traduction directe en expression",
+                "Une équation du second degré",
+                "Un système",
+                "Impossible en 5e"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "x / 10 = 2 modélise :",
+              "options": [
+                "x divisé en 10 parts de 2",
+                "x plus 10 vaut 2",
+                "10 moins x vaut 2",
+                "2x vaut 10"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "x plus 18 vaut 40. Quelles égalités sont valides ?",
+              "options": [
+                "x + 18 = 40",
+                "40 = x + 18",
+                "18x = 40",
+                "x - 18 = 40"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Un entraîneur compte x joueurs. 4 absents, 16 présents. Quelle équation ?",
+              "options": ["x - 4 = 16", "x + 4 = 16", "4x = 16", "x / 4 = 16"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "12x = 60. x = 5 est-il solution ?",
+              "options": ["Oui", "Non", "60 / 12 ≠ 5", "12 est la solution"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Un nombre x augmenté de 25 vaut 100. Quelle équation ?",
+              "options": [
+                "x + 25 = 100",
+                "25x = 100",
+                "x - 25 = 100",
+                "100x = 25"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "x = 2 vérifie 5x = 10 ?",
+              "options": ["Oui", "Non", "10 seulement", "5 seulement"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Une salle a x places. On en bloque 12 pour 88 libres. Quelle équation ?",
+              "options": [
+                "x - 12 = 88",
+                "x + 12 = 88",
+                "12x = 88",
+                "x / 12 = 88"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "x / 7 = 4. x vaut alors :",
+              "options": ["28", "11", "4", "7"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Choisir l'équation pour « triple de x moins 1 vaut 20 » (5e) :",
+              "options": [
+                "3x - 1 = 20",
+                "3x + 1 = 20",
+                "x - 3 = 20",
+                "3 - x = 20"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "x + 0 = 15. Solution ?",
+              "options": ["x = 15", "x = 0", "Pas de solution", "x = 1"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Une égalité avec une lettre s'appelle souvent :",
+              "options": [
+                "Une équation",
+                "Un triangle",
+                "Un système",
+                "Un produit notable"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Résoudre",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Pour x + 3 = 10, quelles affirmations sont correctes ?",
+              "options": ["x vaut 7", "7 + 3 = 10", "x vaut 10", "x vaut 13"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Résoudre x + 5 = 12.",
+              "options": ["x = 7", "x = 17", "x = 5", "x = 12"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Résoudre x - 4 = 9.",
+              "options": ["x = 13", "x = 5", "x = 4", "x = 9"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Résoudre 3x = 15.",
+              "options": ["x = 5", "x = 45", "x = 3", "x = 15"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Résoudre x / 2 = 6.",
+              "options": ["x = 12", "x = 3", "x = 6", "x = 8"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x + 8 = 20. x vaut :",
+              "options": ["12", "28", "8", "20"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "2x = 18. x vaut :",
+              "options": ["9", "36", "2", "16"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 7 = 0. x vaut :",
+              "options": ["7", "0", "-7", "14"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "x + 11 = 30. x vaut :",
+              "options": ["19", "41", "11", "30"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "4x = 28. x vaut :",
+              "options": ["7", "112", "4", "24"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Pour 2x = 14, quelles affirmations sont correctes ?",
+              "options": ["x vaut 7", "2 × 7 = 14", "x vaut 14", "x vaut 2"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Résoudre x + 9 = 25.",
+              "options": ["x = 16", "x = 34", "x = 9", "x = 25"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Résoudre x - 12 = 5.",
+              "options": ["x = 17", "x = 7", "x = 12", "x = 5"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Résoudre 5x = 40.",
+              "options": ["x = 8", "x = 200", "x = 5", "x = 35"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "x / 5 = 3. x vaut :",
+              "options": ["15", "8", "5", "3"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x + 6 = 6. x vaut :",
+              "options": ["0", "6", "12", "1"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "3x = 21. x vaut :",
+              "options": ["7", "63", "3", "18"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 3 = 15. x vaut :",
+              "options": ["18", "12", "3", "15"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "x + 14 = 50. x vaut :",
+              "options": ["36", "64", "14", "50"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "6x = 54. x vaut :",
+              "options": ["9", "324", "6", "48"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Pour x - 2 = 8, quelles affirmations sont correctes ?",
+              "options": ["x vaut 10", "10 - 2 = 8", "x vaut 8", "x vaut 6"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Résoudre x + 15 = 40.",
+              "options": ["x = 25", "x = 55", "x = 15", "x = 40"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Résoudre x - 9 = 11.",
+              "options": ["x = 20", "x = 2", "x = 9", "x = 11"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Résoudre 7x = 63.",
+              "options": ["x = 9", "x = 441", "x = 7", "x = 56"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "x / 4 = 5. x vaut :",
+              "options": ["20", "9", "4", "5"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x + 20 = 35. x vaut :",
+              "options": ["15", "55", "20", "35"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "8x = 64. x vaut :",
+              "options": ["8", "512", "64", "56"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 15 = 25. x vaut :",
+              "options": ["40", "10", "15", "25"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "x + 2 = 17. x vaut :",
+              "options": ["15", "19", "2", "17"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "9x = 81. x vaut :",
+              "options": ["9", "729", "9", "72"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Pour x / 3 = 4, quelles affirmations sont correctes ?",
+              "options": ["x vaut 12", "12 / 3 = 4", "x vaut 4", "x vaut 3"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Résoudre x + 7 = 19.",
+              "options": ["x = 12", "x = 26", "x = 7", "x = 19"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Résoudre x - 6 = 14.",
+              "options": ["x = 20", "x = 8", "x = 6", "x = 14"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Résoudre 4x = 36.",
+              "options": ["x = 9", "x = 144", "x = 4", "x = 32"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "x / 6 = 2. x vaut :",
+              "options": ["12", "8", "6", "2"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x + 10 = 10. x vaut :",
+              "options": ["0", "10", "20", "1"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "5x = 35. x vaut :",
+              "options": ["7", "175", "5", "30"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 8 = 12. x vaut :",
+              "options": ["20", "4", "8", "12"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "x + 18 = 33. x vaut :",
+              "options": ["15", "51", "18", "33"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "10x = 70. x vaut :",
+              "options": ["7", "700", "10", "60"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Pour x + 6 = 14, quelles affirmations sont correctes ?",
+              "options": ["x vaut 8", "8 + 6 = 14", "x vaut 14", "x vaut 20"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Résoudre x + 4 = 22.",
+              "options": ["x = 18", "x = 26", "x = 4", "x = 22"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Résoudre x - 5 = 20.",
+              "options": ["x = 25", "x = 15", "x = 5", "x = 20"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Résoudre 6x = 48.",
+              "options": ["x = 8", "x = 288", "x = 6", "x = 42"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "x / 8 = 3. x vaut :",
+              "options": ["24", "11", "8", "3"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x + 13 = 28. x vaut :",
+              "options": ["15", "41", "13", "28"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "2x = 24. x vaut :",
+              "options": ["12", "48", "2", "22"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 11 = 4. x vaut :",
+              "options": ["15", "7", "11", "4"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "x + 25 = 100. x vaut :",
+              "options": ["75", "125", "25", "100"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "11x = 99. x vaut :",
+              "options": ["9", "1089", "11", "88"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Pour 4x = 20, quelles affirmations sont correctes ?",
+              "options": ["x vaut 5", "4 × 5 = 20", "x vaut 20", "x vaut 4"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Résoudre x + 12 = 27.",
+              "options": ["x = 15", "x = 39", "x = 12", "x = 27"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Résoudre x - 14 = 6.",
+              "options": ["x = 20", "x = 8", "x = 14", "x = 6"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Résoudre 8x = 56.",
+              "options": ["x = 7", "x = 448", "x = 8", "x = 48"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "x / 7 = 5. x vaut :",
+              "options": ["35", "12", "7", "5"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x + 16 = 16. x vaut :",
+              "options": ["0", "16", "32", "1"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "3x = 27. x vaut :",
+              "options": ["9", "81", "3", "24"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 20 = 30. x vaut :",
+              "options": ["50", "10", "20", "30"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "x + 30 = 45. x vaut :",
+              "options": ["15", "75", "30", "45"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "12x = 84. x vaut :",
+              "options": ["7", "1008", "12", "72"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Pour x - 5 = 12, quelles affirmations sont correctes ?",
+              "options": ["x vaut 17", "17 - 5 = 12", "x vaut 12", "x vaut 7"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Résoudre x + 8 = 31.",
+              "options": ["x = 23", "x = 39", "x = 8", "x = 31"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Résoudre x - 7 = 18.",
+              "options": ["x = 25", "x = 11", "x = 7", "x = 18"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Résoudre 9x = 72.",
+              "options": ["x = 8", "x = 648", "x = 9", "x = 63"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "x / 9 = 2. x vaut :",
+              "options": ["18", "11", "9", "2"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x + 19 = 24. x vaut :",
+              "options": ["5", "43", "19", "24"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "7x = 49. x vaut :",
+              "options": ["7", "343", "49", "42"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 4 = 16. x vaut :",
+              "options": ["20", "12", "4", "16"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "x + 21 = 50. x vaut :",
+              "options": ["29", "71", "21", "50"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "2x = 50. x vaut :",
+              "options": ["25", "100", "2", "48"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Pour x + 10 = 18, quelles affirmations sont correctes ?",
+              "options": ["x vaut 8", "8 + 10 = 18", "x vaut 18", "x vaut 28"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Résoudre x + 3 = 30.",
+              "options": ["x = 27", "x = 33", "x = 3", "x = 30"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Résoudre x - 10 = 25.",
+              "options": ["x = 35", "x = 15", "x = 10", "x = 25"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Résoudre 5x = 60.",
+              "options": ["x = 12", "x = 300", "x = 5", "x = 55"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "x / 10 = 4. x vaut :",
+              "options": ["40", "14", "10", "4"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x + 22 = 22. x vaut :",
+              "options": ["0", "22", "44", "1"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "4x = 44. x vaut :",
+              "options": ["11", "176", "4", "40"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 13 = 7. x vaut :",
+              "options": ["20", "6", "13", "7"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "x + 17 = 42. x vaut :",
+              "options": ["25", "59", "17", "42"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "6x = 66. x vaut :",
+              "options": ["11", "396", "6", "60"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Pour 3x = 24, quelles affirmations sont correctes ?",
+              "options": ["x vaut 8", "3 × 8 = 24", "x vaut 24", "x vaut 3"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Résoudre x + 14 = 29.",
+              "options": ["x = 15", "x = 43", "x = 14", "x = 29"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Résoudre x - 16 = 9.",
+              "options": ["x = 25", "x = 7", "x = 16", "x = 9"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Résoudre 7x = 56.",
+              "options": ["x = 8", "x = 392", "x = 7", "x = 49"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "x / 2 = 11. x vaut :",
+              "options": ["22", "13", "2", "11"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x + 24 = 60. x vaut :",
+              "options": ["36", "84", "24", "60"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "8x = 80. x vaut :",
+              "options": ["10", "640", "8", "72"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 19 = 1. x vaut :",
+              "options": ["20", "18", "19", "1"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "x + 40 = 55. x vaut :",
+              "options": ["15", "95", "40", "55"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "5x = 65. x vaut :",
+              "options": ["13", "325", "5", "60"],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Pour x / 4 = 7, quelles affirmations sont correctes ?",
+              "options": ["x vaut 28", "28 / 4 = 7", "x vaut 7", "x vaut 4"],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Résoudre x + 20 = 38.",
+              "options": ["x = 18", "x = 58", "x = 20", "x = 38"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Résoudre x - 18 = 22.",
+              "options": ["x = 40", "x = 4", "x = 18", "x = 22"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Résoudre 10x = 90.",
+              "options": ["x = 9", "x = 900", "x = 10", "x = 80"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "x / 3 = 9. x vaut :",
+              "options": ["27", "12", "3", "9"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "x + 50 = 50. x vaut :",
+              "options": ["0", "50", "100", "1"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "2x + 3 = 17 (une inconnue). x vaut :",
+              "options": ["7", "10", "8", "14"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "x - 25 = 75. x vaut :",
+              "options": ["100", "50", "25", "75"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "x + 35 = 90. x vaut :",
+              "options": ["55", "125", "35", "90"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "3x - 2 = 13. x vaut :",
+              "options": ["5", "11", "4", "15"],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

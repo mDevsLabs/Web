@@ -81,7 +81,8 @@ function placeOf(row: Record<string, unknown>) {
 
 function mapsGeocode(deps: PluginToolDeps) {
   return tool({
-    description: "Transforme une adresse ou un lieu en coordonnées Google Maps.",
+    description:
+      "Transforme une adresse ou un lieu en coordonnées Google Maps.",
     execute: async ({ limit, query }) => {
       const result = await maps(deps, "/maps/api/geocode/json", {
         address: query,
@@ -94,7 +95,10 @@ function mapsGeocode(deps: PluginToolDeps) {
         .map(placeOf);
       return {
         places,
-        source: sourceRef(`${BASE}/maps/api/geocode/json`, "Géocodage Google Maps"),
+        source: sourceRef(
+          `${BASE}/maps/api/geocode/json`,
+          "Géocodage Google Maps"
+        ),
         total: places.length,
       };
     },
@@ -115,7 +119,9 @@ function mapsReverseGeocode(deps: PluginToolDeps) {
       if (!result.ok) {
         return { error: result.error };
       }
-      const places = jsonRecords(result.data, "results").slice(0, 3).map(placeOf);
+      const places = jsonRecords(result.data, "results")
+        .slice(0, 3)
+        .map(placeOf);
       return {
         places,
         source: sourceRef(
@@ -188,12 +194,12 @@ function mapsDirections(deps: PluginToolDeps) {
         durationSeconds:
           typeof duration?.value === "number" ? duration.value : null,
         endAddress: textField(leg?.end_address, 240),
-        startAddress: textField(leg?.start_address, 240),
-        summary: textField(route?.summary, 180),
         source: sourceRef(
           `${BASE}/maps/api/directions/json`,
           "Itinéraire Google Maps"
         ),
+        startAddress: textField(leg?.start_address, 240),
+        summary: textField(route?.summary, 180),
       };
     },
     inputSchema: z.object({

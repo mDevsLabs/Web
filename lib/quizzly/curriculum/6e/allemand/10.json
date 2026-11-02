@@ -1,0 +1,2818 @@
+{
+  "id": "6e-allemand-10",
+  "year": "6e",
+  "subject": "allemand",
+  "title": "Vers l'examen en l'allemand",
+  "order": 10,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Compréhension",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Salutations",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels mots allemands sont des salutations ?",
+              "options": ["Hallo", "Tschüss", "Guten Tag", "Danke"],
+              "correctAnswers": [0, 2],
+              "explanation": "Hallo et Guten Tag servent à saluer ; Tschüss = au revoir, Danke = merci."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Tschüss » signifie :",
+              "options": ["Bonjour", "Merci", "Au revoir", "Pardon"],
+              "correctAnswers": [2],
+              "explanation": "Tschüss = au revoir (familier)."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Wie geht's? » :",
+              "options": [
+                "Comment ça va ?",
+                "Comment tu t'appelles ?",
+                "Quelle heure est-il ?",
+                "Où es-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question familière sur le bien-être."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Mir geht es gut » veut dire :",
+              "options": ["J'ai mal", "Ça va bien", "Au revoir", "Merci"],
+              "correctAnswers": [1],
+              "explanation": "Réponse positive à « comment ça va »."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Guten Abend » =",
+              "options": ["Bonjour", "Bonsoir", "Bonne nuit", "Au revoir"],
+              "correctAnswers": [1],
+              "explanation": "Salutation du soir."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Danke » =",
+              "options": ["De rien", "Merci", "Pardon", "Bonjour"],
+              "correctAnswers": [1],
+              "explanation": "Remerciement."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Entschuldigung » =",
+              "options": ["Merci", "Excusez-moi", "Bonsoir", "Au revoir"],
+              "correctAnswers": [1],
+              "explanation": "Pour s'excuser ou attirer l'attention."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Auf Wiedersehen » =",
+              "options": ["Salut", "Au revoir (formel)", "Bonne nuit", "Merci"],
+              "correctAnswers": [1],
+              "explanation": "Formule de politesse pour partir."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Guten Morgen » s'utilise :",
+              "options": ["Le soir", "Le matin", "La nuit", "En partant"],
+              "correctAnswers": [1],
+              "explanation": "Morgen = matin."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Dans « Hallo! — Hallo! », les deux :",
+              "options": [
+                "Se saluent",
+                "Disent au revoir",
+                "Remercient",
+                "Demandent l'heure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse identique = échange de salutations."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases parlent du prénom ?",
+              "options": [
+                "Ich heiße Tom.",
+                "Wie heißt du?",
+                "Guten Tag.",
+                "Ich bin zwölf."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "heißen = s'appeler ; Wie heißt du? = comment tu t'appelles ?"
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Wie heißt du? — Ich heiße Lisa. » Lisa :",
+              "options": [
+                "Donne son âge",
+                "Donne son prénom",
+                "Dit au revoir",
+                "Remercie"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Ich heiße + prénom."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Wie alt bist du? » demande :",
+              "options": ["Le prénom", "L'âge", "La ville", "Le métier"],
+              "correctAnswers": [1],
+              "explanation": "alt = âgé ; wie alt = quel âge."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Ich bin vierzehn. » signifie :",
+              "options": [
+                "J'ai 14 ans",
+                "Je suis en 6e",
+                "Je suis allemand",
+                "J'habite à Berlin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ich bin + nombre = j'ai X ans."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Wo wohnst du? » =",
+              "options": [
+                "Où habites-tu ?",
+                "Comment ça va ?",
+                "Quelle heure est-il ?",
+                "Qu'est-ce que tu aimes ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wo = où ; wohnen = habiter."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Ich wohne in Paris. » parle de :",
+              "options": [
+                "L'école",
+                "Le lieu de vie",
+                "La nourriture",
+                "Le sport"
+              ],
+              "correctAnswers": [1],
+              "explanation": "wohnen in + ville."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Freut mich! » après une présentation :",
+              "options": ["Enchanté", "Au revoir", "Désolé", "Non merci"],
+              "correctAnswers": [0],
+              "explanation": "Freut mich = ravi de te rencontrer."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Und du? » veut dire :",
+              "options": ["Et toi ?", "Merci", "Bonjour", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Reprise de question à l'autre."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Das ist mein Freund Max. » Max est :",
+              "options": [
+                "Un ami présenté",
+                "Un professeur",
+                "Une matière",
+                "Une ville"
+              ],
+              "correctAnswers": [0],
+              "explanation": "mein Freund = mon ami."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Ich komme aus Frankreich. » =",
+              "options": [
+                "Je viens de France",
+                "Je vais en France",
+                "J'aime la France",
+                "Je parle français"
+              ],
+              "correctAnswers": [0],
+              "explanation": "kommen aus = venir de."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "À l'école — lieux",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels mots désignent des lieux à l'école ?",
+              "options": [
+                "Klassenzimmer",
+                "Schulhof",
+                "Kino",
+                "Bibliothek (Schulbibliothek)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Klassenzimmer = salle de classe ; Schulhof = cour."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« die Schule » =",
+              "options": ["L'école", "La maison", "Le parc", "Le magasin"],
+              "correctAnswers": [0],
+              "explanation": "Schule = école."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« das Klassenzimmer » =",
+              "options": [
+                "La cantine",
+                "La salle de classe",
+                "Le gymnase",
+                "La bibliothèque"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Klasse + Zimmer."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« der Lehrer / die Lehrerin » =",
+              "options": [
+                "L'élève",
+                "Le professeur",
+                "Le directeur",
+                "Le parent"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Lehrer(in) = enseignant(e)."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« der Schüler / die Schülerin » =",
+              "options": ["Le prof", "L'élève", "Le médecin", "Le voisin"],
+              "correctAnswers": [1],
+              "explanation": "Schüler(in) = élève."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« die Pause » =",
+              "options": [
+                "Le cours",
+                "La récréation",
+                "Les vacances",
+                "Le devoir"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Pause = récréation."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« die Hausaufgaben » =",
+              "options": [
+                "Les notes",
+                "Les devoirs",
+                "Les livres",
+                "Les cartables"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Hausaufgaben = devoirs à la maison."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« der Stundenplan » =",
+              "options": [
+                "L'emploi du temps",
+                "Le stylo",
+                "Le tableau",
+                "La cloche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Stundenplan = planning des heures."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Wir haben Mathe. » =",
+              "options": [
+                "Nous avons maths (comme cours)",
+                "Nous aimons les maths",
+                "Nous détestons les maths",
+                "Nous finissons les maths"
+              ],
+              "correctAnswers": [0],
+              "explanation": "haben + matière = avoir cours de."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Die Schule beginnt um acht Uhr. » =",
+              "options": [
+                "L'école commence à 8 h",
+                "L'école finit à 8 h",
+                "Il est 8 h",
+                "Cours de 8 h"
+              ],
+              "correctAnswers": [0],
+              "explanation": "beginnt um = commence à."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "À l'école — matières",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles matières sont nommées ?",
+              "options": ["Deutsch", "Sport", "Kochen (cuisine pro)", "Mathe"],
+              "correctAnswers": [0, 3],
+              "explanation": "Deutsch = allemand ; Mathe = maths (familier)."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Englisch » =",
+              "options": ["Allemand", "Anglais", "Espagnol", "Français"],
+              "correctAnswers": [1],
+              "explanation": "Englisch = anglais."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Kunst » =",
+              "options": ["Musique", "Arts plastiques", "Histoire", "Sport"],
+              "correctAnswers": [1],
+              "explanation": "Kunst = arts."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Musik » =",
+              "options": ["Musique", "Maths", "Physique", "Géo"],
+              "correctAnswers": [0],
+              "explanation": "Musik = musique."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Ich mag Sport. » =",
+              "options": [
+                "Je n'aime pas le sport",
+                "J'aime le sport",
+                "Je fais du sport demain",
+                "Je regarde le sport"
+              ],
+              "correctAnswers": [1],
+              "explanation": "mögen/mag = aimer."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Deutsch ist interessant. » =",
+              "options": [
+                "L'allemand est intéressant",
+                "L'allemand est difficile",
+                "Pas de cours d'allemand",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "interessant = intéressant."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Welches Fach magst du? » demande :",
+              "options": [
+                "Quelle matière aimes-tu ?",
+                "Quelle heure ?",
+                "Quel prof ?",
+                "Quelle ville ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fach = matière (scolaire)."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Ich hasse Mathe nicht. » =",
+              "options": [
+                "Je déteste les maths",
+                "Je ne déteste pas les maths",
+                "J'adore les maths",
+                "Je n'ai pas maths"
+              ],
+              "correctAnswers": [1],
+              "explanation": "nicht = ne ... pas."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Nach der Schule » =",
+              "options": [
+                "Avant l'école",
+                "Après l'école",
+                "Pendant le cours",
+                "À l'école"
+              ],
+              "correctAnswers": [1],
+              "explanation": "nach = après."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Ich bin in der sechsten Klasse. » =",
+              "options": [
+                "Je suis en 6e",
+                "Je suis prof",
+                "Je suis en terminale",
+                "Je suis absent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sechste Klasse ≈ 6e (Allemagne)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Goûts — aimer",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases expriment un goût positif ?",
+              "options": [
+                "Ich mag Pizza.",
+                "Ich liebe Schokolade.",
+                "Ich hasse Pizza.",
+                "Das ist langweilig."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "mögen/lieben = aimer (fort)."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Ich mag Apfel. » (Ich mag Äpfel.) =",
+              "options": [
+                "J'aime les pommes",
+                "Je mange une pomme",
+                "Je n'aime pas",
+                "Pomme demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "mag + nom = j'aime."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« gern » avec un verbe :",
+              "options": ["Volontiers / aime", "Jamais", "Hier", "Demain"],
+              "correctAnswers": [0],
+              "explanation": "Ich spiele gern Fußball = j'aime jouer au foot."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Ich trinke gern Tee. » =",
+              "options": [
+                "J'aime boire du thé",
+                "Je bois du thé hier",
+                "Je n'aime pas le thé",
+                "Thé à l'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gern = avec plaisir."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« lecker » décrit :",
+              "options": [
+                "C'est bon (au goût)",
+                "C'est grand",
+                "C'est cher",
+                "C'est triste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "lecker = délicieux."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Was isst du gern? » =",
+              "options": [
+                "Qu'est-ce que tu aimes manger ?",
+                "Qu'as-tu mangé ?",
+                "Manges-tu maintenant ?",
+                "Où manges-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gern + manger."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Super! » dans un dialogue sur la nourriture :",
+              "options": ["D'accord / génial", "Au revoir", "Non", "Pardon"],
+              "correctAnswers": [0],
+              "explanation": "Super = super, d'accord."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Ich mag Fußball. » =",
+              "options": [
+                "J'aime le football",
+                "Je joue demain",
+                "Je déteste",
+                "Je regarde la télé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fußball = football."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Das finde ich toll. » =",
+              "options": [
+                "Je trouve ça super",
+                "Je trouve ça nul",
+                "Je ne sais pas",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "toll = génial."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Lieblingsfarbe: Blau » =",
+              "options": [
+                "Couleur préférée : bleu",
+                "Couleur : rouge",
+                "Je n'aime pas le bleu",
+                "Bleu demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieblings- = préféré(e)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Goûts — négatif",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases sont négatives sur un goût ?",
+              "options": [
+                "Ich mag das nicht.",
+                "Das schmeckt schlecht.",
+                "Ich mag das sehr.",
+                "Das ist lecker."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "nicht / schlecht = négatif."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Ich hasse Brokkoli. » =",
+              "options": [
+                "J'adore le brocoli",
+                "Je déteste le brocoli",
+                "Je mange du brocoli",
+                "Brocoli demain"
+              ],
+              "correctAnswers": [1],
+              "explanation": "hassen = détester."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« langweilig » =",
+              "options": ["Ennuyeux", "Drôle", "Rapide", "Cher"],
+              "correctAnswers": [0],
+              "explanation": "langweilig = ennuyeux."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Nein, danke. » =",
+              "options": [
+                "Non merci (refus poli)",
+                "Oui merci",
+                "Bonjour",
+                "Excusez-moi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Refus poli."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Das mag ich nicht. » =",
+              "options": [
+                "Je n'aime pas ça",
+                "J'aime ça",
+                "J'aime beaucoup",
+                "C'est bon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nicht = pas."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Ich spiele nicht gern Tennis. » =",
+              "options": [
+                "J'aime le tennis",
+                "Je n'aime pas jouer au tennis",
+                "Je joue au tennis",
+                "Tennis hier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "nicht gern = ne ... pas volontiers."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« schrecklich » (Essen) =",
+              "options": ["Affreux", "Excellent", "Petit", "Bleu"],
+              "correctAnswers": [0],
+              "explanation": "schrecklich = terrible."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Lieblingsfach? — Mathe, nein! Deutsch! » Il préfère :",
+              "options": ["Les maths", "L'allemand", "Le sport", "Rien"],
+              "correctAnswers": [1],
+              "explanation": "nein Mathe = pas les maths ; Deutsch affirmé."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« zu süß » (Kuchen) =",
+              "options": ["Trop sucré", "Trop salé", "Très bon", "Froid"],
+              "correctAnswers": [0],
+              "explanation": "zu = trop ; süß = sucré."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Das ist nicht mein Ding. » (familier) =",
+              "options": [
+                "Ce n'est pas mon truc",
+                "C'est mon préféré",
+                "Merci",
+                "Bonsoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "pas mon truc = je n'aime pas."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Hier — passé simple",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels mots renvoient au passé ou à « hier » ?",
+              "options": ["gestern", "vorher", "morgen", "übermorgen"],
+              "correctAnswers": [0, 1],
+              "explanation": "gestern = hier ; vorher = avant (déjà passé). morgen et übermorgen = futur."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« gestern » =",
+              "options": [
+                "Demain",
+                "Hier",
+                "Aujourd'hui",
+                "La semaine prochaine"
+              ],
+              "correctAnswers": [1],
+              "explanation": "gestern = hier."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Gestern war Montag. » =",
+              "options": [
+                "Hier c'était lundi",
+                "Demain c'est lundi",
+                "Aujourd'hui lundi",
+                "Lundi prochain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "war = était (passé)."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Ich war in der Schule. » =",
+              "options": [
+                "J'étais / je suis allé à l'école (hier)",
+                "Je suis à l'école demain",
+                "Je n'aime pas l'école",
+                "L'école est grande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "war in der Schule = j'étais à l'école."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Was hast du gestern gemacht? » =",
+              "options": [
+                "Qu'as-tu fait hier ?",
+                "Que fais-tu demain ?",
+                "Comment ça va ?",
+                "Quelle heure ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gemacht = fait (Part. II)."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Ich habe Fußball gespielt. » =",
+              "options": [
+                "J'ai joué au foot",
+                "Je joue au foot",
+                "Je jouerai",
+                "Je déteste le foot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "haben + Part. II = passé composé allemand (Perfekt)."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« gestern Abend » =",
+              "options": [
+                "Hier soir",
+                "Demain matin",
+                "Ce matin",
+                "Après-demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Abend = soir."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Ich habe Pizza gegessen. » =",
+              "options": [
+                "J'ai mangé de la pizza",
+                "Je mange",
+                "Je n'aime pas",
+                "Pizza demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gegessen = mangé."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Es war schön. » =",
+              "options": [
+                "C'était bien",
+                "Ce sera bien",
+                "C'est mauvais",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "war schön = c'était agréable."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Gestern habe ich keine Hausaufgaben gehabt. » =",
+              "options": [
+                "Hier je n'avais pas de devoirs",
+                "Demain pas de devoirs",
+                "J'aime les devoirs",
+                "Devoirs maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gehabt = eu ; keine = pas de."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Hier — activités",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels verbes au passé (Perfekt) décrivent une activité d'hier ?",
+              "options": ["gespielt", "geschaut", "spiele", "morgen"],
+              "correctAnswers": [0, 1],
+              "explanation": "gespielt = joué ; geschaut = regardé ; spiele = présent ; morgen = demain."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Ich habe ferngesehen. » =",
+              "options": [
+                "J'ai regardé la télé",
+                "Je regarde la télé",
+                "Demain télé",
+                "Pas de télé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "fernsehen → ferngesehen."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Wir sind ins Kino gegangen. » =",
+              "options": [
+                "Nous sommes allés au cinéma",
+                "Nous allons demain",
+                "Nous détestons",
+                "Au cinéma maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sind ... gegangen = allés (mouvement)."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Ich habe Musik gehört. » =",
+              "options": [
+                "J'ai écouté de la musique",
+                "J'aime la musique",
+                "Cours de musique",
+                "Demain concert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gehört = écouté."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Gestern war ich müde. » =",
+              "options": [
+                "Hier j'étais fatigué(e)",
+                "Demain fatigué",
+                "Jamais fatigué",
+                "Fatigué maintenant seulement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "müde = fatigué."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Ich habe meine Freunde getroffen. » =",
+              "options": [
+                "J'ai rencontré mes amis",
+                "Je rencontre demain",
+                "Pas d'amis",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "getroffen = rencontré."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Am Wochenende habe ich gelesen. » =",
+              "options": [
+                "Le week-end j'ai lu",
+                "Je lis demain",
+                "Je n'aime pas lire",
+                "École"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gelesen = lu."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Das Wetter war schlecht. » =",
+              "options": [
+                "Il faisait mauvais",
+                "Beau temps",
+                "Demain soleil",
+                "Il pleut maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wetter = temps (météo)."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Ich bin früh ins Bett gegangen. » =",
+              "options": [
+                "Je suis allé(e) tôt au lit",
+                "Je me lève tôt",
+                "Demain lit",
+                "Pas dormi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ins Bett = au lit."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Hast du gestern gelernt? — Ja! » =",
+              "options": [
+                "As-tu révisé hier ? — Oui",
+                "Apprends-tu demain ?",
+                "Tu détestes",
+                "Bonjour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gelernt = appris/révisé."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Demain — futur proche",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quels mots parlent du futur proche ?",
+              "options": [
+                "morgen",
+                "übermorgen",
+                "gestern",
+                "heute Abend (ce soir, pas demain matin seul)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "morgen = demain ; übermorgen = après-demain."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« morgen » =",
+              "options": ["Hier", "Demain", "Hier soir", "L'an passé"],
+              "correctAnswers": [1],
+              "explanation": "morgen = demain."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Morgen habe ich Schule. » =",
+              "options": [
+                "Demain j'ai école",
+                "Hier école",
+                "Pas d'école",
+                "École finie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Futur avec présent + adverbe demain (6e)."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« übermorgen » =",
+              "options": ["Après-demain", "Aujourd'hui", "Hier", "Chaque jour"],
+              "correctAnswers": [0],
+              "explanation": "übermorgen = après-demain."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Am Montag spiele ich Tennis. » =",
+              "options": [
+                "Lundi je jouerai / je joue au tennis",
+                "Hier tennis",
+                "Je déteste",
+                "Prof de tennis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plan futur avec jour + présent."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Was machst du morgen? » =",
+              "options": [
+                "Que fais-tu demain ?",
+                "Qu'as-tu fait ?",
+                "Comment ça va ?",
+                "Quelle matière ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "morgen dans la question."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Ich gehe morgen ins Schwimmbad. » =",
+              "options": [
+                "Demain je vais à la piscine",
+                "Hier piscine",
+                "J'aime nager",
+                "Pas demain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gehe = vais."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Nächste Woche » =",
+              "options": [
+                "La semaine prochaine",
+                "La semaine dernière",
+                "Ce soir",
+                "Hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "nächste = prochaine."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Morgen früh » =",
+              "options": [
+                "Demain matin",
+                "Demain soir",
+                "Hier matin",
+                "Ce soir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "früh = tôt / matin."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Bis morgen! » =",
+              "options": ["À demain !", "Bonjour", "Merci", "Hier"],
+              "correctAnswers": [0],
+              "explanation": "Formule de départ."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Demain — projets",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases parlent de projets futurs ?",
+              "options": [
+                "Morgen lerne ich.",
+                "Nächstes Jahr fahre ich nach Berlin.",
+                "Gestern war Feiertag.",
+                "Ich bin müde."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "morgen / nächstes Jahr = futur."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Ich werde Pizza essen. » (simple 6e) ≈",
+              "options": [
+                "Je vais manger de la pizza",
+                "J'ai mangé",
+                "Je n'aime pas",
+                "Pizza hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "werden + infinitif = futur (intro 6e)."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Wir treffen uns morgen. » =",
+              "options": [
+                "On se voit demain",
+                "On s'est vu hier",
+                "Au revoir pour toujours",
+                "On ne se voit pas"
+              ],
+              "correctAnswers": [0],
+              "explanation": "treffen = se retrouver."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Ich kaufe morgen ein Geschenk. » =",
+              "options": [
+                "Demain j'achète un cadeau",
+                "Cadeau hier",
+                "Pas de cadeau",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "kaufen = acheter."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Der Test ist nächste Woche. » =",
+              "options": [
+                "Le contrôle est la semaine prochaine",
+                "Le contrôle était hier",
+                "Pas de contrôle",
+                "Contrôle maintenant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Test = contrôle."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Am Wochenende fahre ich mit dem Fahrrad. » =",
+              "options": [
+                "Le week-end je vais à vélo",
+                "Hier vélo",
+                "Je déteste",
+                "École"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fahrrad = vélo."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Ich helfe morgen meiner Mutter. » =",
+              "options": [
+                "Demain j'aide ma mère",
+                "Hier maman",
+                "Ma mère est prof",
+                "Au revoir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "helfen = aider."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Um neun Uhr beginnt der Unterricht. » (demain implicite) =",
+              "options": [
+                "Le cours commence à 9 h",
+                "Le cours finit",
+                "9 h hier",
+                "Pas de cours"
+              ],
+              "correctAnswers": [0],
+              "explanation": "beginnt = commence."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Vielleicht gehe ich ins Kino. » =",
+              "options": [
+                "Peut-être j'irai au cinéma",
+                "J'y suis allé hier",
+                "Je déteste",
+                "Cinéma fermé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "vielleicht = peut-être."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Gute Nacht — schlaf gut! » le soir avant demain :",
+              "options": [
+                "Bonne nuit — dors bien",
+                "Bonjour",
+                "À demain matin (autre formule possible)",
+                "Merci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formules du coucher."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Expression",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Dire bonjour",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles formules sont des salutations (pas des adieux) ?",
+              "options": [
+                "Guten Morgen!",
+                "Guten Tag!",
+                "Gute Nacht!",
+                "Tschüss!"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Guten Morgen et Guten Tag saluent ; Gute Nacht et Tschüss servent à partir ou dire au revoir."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Tu rencontres ton professeur (formel). Tu dis :",
+              "options": [
+                "Tschüss!",
+                "Guten Tag, Herr Müller!",
+                "Hallo du!",
+                "Gute Nacht!"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Formule polie + Herr/Frau + nom."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Un ami te dit « Hallo! » Tu réponds :",
+              "options": [
+                "Hallo!",
+                "Auf Wiedersehen!",
+                "Danke!",
+                "Entschuldigung!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même registre familier."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Quelqu'un te dit « Danke! » Tu réponds :",
+              "options": ["Bitte!", "Guten Tag!", "Tschüss!", "Wie geht's?"],
+              "correctAnswers": [0],
+              "explanation": "Bitte = de rien."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Tu bouscules quelqu'un. Tu dis :",
+              "options": [
+                "Entschuldigung!",
+                "Mir geht es gut.",
+                "Ich heiße Max.",
+                "Guten Abend!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Excuse."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Il est 19 h. Tu arrives chez un ami. Tu dis :",
+              "options": [
+                "Guten Abend!",
+                "Guten Morgen!",
+                "Gute Nacht! (en entrant)",
+                "Tschüss!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bonsoir en arrivée."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Tu quittes le cours (formel). Tu dis :",
+              "options": [
+                "Auf Wiedersehen!",
+                "Guten Morgen!",
+                "Wie heißt du?",
+                "Ich mag Sport."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au revoir formel."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "On te demande « Wie geht's? » Ça va bien. Tu réponds :",
+              "options": [
+                "Mir geht es gut, danke!",
+                "Ich bin müde gestern.",
+                "Morgen Schule.",
+                "Pizza lecker."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse standard positive."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Tu vois ton voisin le matin. Le plus adapté :",
+              "options": [
+                "Guten Morgen!",
+                "Gute Nacht!",
+                "Tschüss!",
+                "Entschuldigung!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salutation matinale."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Tu pars voir un ami demain. Ce soir tu dis :",
+              "options": [
+                "Bis morgen!",
+                "Gestern war schön.",
+                "Ich hasse das.",
+                "Die Schule beginnt."
+              ],
+              "correctAnswers": [0],
+              "explanation": "À demain."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Se présenter",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles phrases présentent quelqu'un ?",
+              "options": [
+                "Ich heiße Sara.",
+                "Das ist meine Freundin Lea.",
+                "Guten Tag.",
+                "Tschüss."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nom ou présentation d'une amie."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "On te demande ton prénom. Tu dis :",
+              "options": [
+                "Ich heiße Paul.",
+                "Ich bin Paul alt.",
+                "Paul wohnen.",
+                "Wie geht's Paul."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ich heiße + prénom."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Tu as 12 ans. Tu dis :",
+              "options": [
+                "Ich bin zwölf.",
+                "Ich bin zwölf Jahre alt.",
+                "Ich zwölf.",
+                "Alt ich zwölf."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ich bin zwölf ou Ich bin zwölf Jahre alt ; la forme la plus courte suffit en 6e."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Tu habites à Lyon. Tu dis :",
+              "options": [
+                "Ich wohne in Lyon.",
+                "Ich komme Lyon.",
+                "Lyon ich bin.",
+                "Wo wohnst du Lyon."
+              ],
+              "correctAnswers": [0],
+              "explanation": "wohnen in + ville."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Tu viens d'Espagne. Tu dis :",
+              "options": [
+                "Ich komme aus Spanien.",
+                "Ich wohne aus Spanien.",
+                "Spanien heiße ich.",
+                "Aus ich Spanien."
+              ],
+              "correctAnswers": [0],
+              "explanation": "kommen aus."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Après « Ich heiße Nina », tu demandes le prénom :",
+              "options": [
+                "Wie heißt du?",
+                "Wie alt bist du?",
+                "Wo wohnst du?",
+                "Was magst du?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Même type de question."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Quelqu'un dit « Freut mich! » Tu peux répondre :",
+              "options": [
+                "Freut mich auch!",
+                "Tschüss!",
+                "Gestern!",
+                "Nein danke."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réciprocité."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Tu présentes ton frère Tim :",
+              "options": [
+                "Das ist mein Bruder Tim.",
+                "Tim ist ich Bruder.",
+                "Mein Tim Bruder das.",
+                "Bruder Tim wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Das ist mein Bruder."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "On demande « Woher kommst du? » Tu réponds :",
+              "options": [
+                "Ich komme aus der Schweiz.",
+                "Ich bin in der Schweiz alt.",
+                "Schweiz mag ich.",
+                "Gestern Schweiz."
+              ],
+              "correctAnswers": [0],
+              "explanation": "woher = d'où."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Tu es en 6e en Allemagne. Tu dis :",
+              "options": [
+                "Ich bin in der sechsten Klasse.",
+                "Ich sechste Klasse bin in.",
+                "Klasse sechste ich.",
+                "Sechste ich Klasse wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule classe."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "À l'école — demander",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Quelles questions concernent l'école ?",
+              "options": [
+                "Welches Fach haben wir?",
+                "Wo ist das Klassenzimmer?",
+                "Wie heißt du?",
+                "Was isst du gern?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Matière et lieu."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Tu demandes l'heure du cours :",
+              "options": [
+                "Wann beginnt der Unterricht?",
+                "Wie alt bist du?",
+                "Wo wohnst du?",
+                "Magst du Pizza?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wann = quand."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Tu ne trouves pas la salle. Tu demandes :",
+              "options": [
+                "Wo ist Raum 204?",
+                "Was ist dein Name?",
+                "Hast du Hunger?",
+                "Bis morgen!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wo ist ... ?"
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Tu demandes la matière de l'après-midi :",
+              "options": [
+                "Was haben wir heute Nachmittag?",
+                "Gestern Nachmittag?",
+                "Ich mag Nachmittag.",
+                "Tschüss Nachmittag."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Was haben wir = qu'est-ce qu'on a."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Tu demandes si il y a des devoirs :",
+              "options": [
+                "Gibt es Hausaufgaben?",
+                "Ich habe Hausaufgaben gestern.",
+                "Hausaufgaben lecker.",
+                "Keine Schule."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gibt es = y a-t-il."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Tu demandes le nom du prof :",
+              "options": [
+                "Wie heißt der Lehrer?",
+                "Wie alt ist der Lehrer?",
+                "Wo wohnt der Lehrer?",
+                "Mag der Lehrer Pizza?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "heißen pour les noms."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Tu demandes où est la cour :",
+              "options": [
+                "Wo ist der Schulhof?",
+                "Wann ist Pause?",
+                "Ich bin Schulhof.",
+                "Schulhof mag ich."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schulhof = cour."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Kann ich bitte …? » sert à :",
+              "options": [
+                "Demander la permission poliment",
+                "Dire au revoir",
+                "Parler d'hier",
+                "Refuser"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kann ich = puis-je."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Tu demandes un stylo :",
+              "options": [
+                "Hast du einen Stift?",
+                "Du hast Stift gestern.",
+                "Stift ist Schule.",
+                "Ich esse Stift."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hast du = as-tu."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Tu demandes « À quelle heure finit la récré ? » :",
+              "options": [
+                "Wann ist die Pause vorbei?",
+                "Pause ist lecker.",
+                "Ich bin Pause.",
+                "Gestern Pause."
+              ],
+              "correctAnswers": [0],
+              "explanation": "vorbei = terminé."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "À l'école — répondre",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Bonnes réponses à des questions scolaires :",
+              "options": [
+                "Um neun Uhr.",
+                "Deutsch und Mathe.",
+                "Tschüss!",
+                "Ich heiße Anna."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Heure et matières."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Welches Fach magst du? — … » Tu aimes l'allemand :",
+              "options": [
+                "Ich mag Deutsch.",
+                "Ich Deutsch mag nicht.",
+                "Deutsch wohne ich.",
+                "Gestern Deutsch."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ich mag + matière."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Hast du den Stundenplan? — … » Oui :",
+              "options": [
+                "Ja, hier bitte.",
+                "Nein danke Pizza.",
+                "Gestern Stundenplan.",
+                "Tschüss Plan."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ja + montrer."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Wo ist die Toilette? — … »",
+              "options": [
+                "Dort drüben.",
+                "Mir geht es gut.",
+                "Ich bin zwölf.",
+                "Morgen Kino."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dort drüben = là-bas."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Le prof demande « Seid ihr bereit? » Vous êtes prêts :",
+              "options": [
+                "Ja, wir sind bereit.",
+                "Nein, wir sind müde gestern.",
+                "Bereit wohne.",
+                "Tschüss bereit."
+              ],
+              "correctAnswers": [0],
+              "explanation": "bereit = prêt."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "« Was bedeutet das Wort? — … » Tu expliques :",
+              "options": [
+                "Das heißt …",
+                "Das wohne …",
+                "Das Tschüss …",
+                "Das gestern …"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Das heißt = cela signifie."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "On te demande si tu comprends : « Verstehst du? » Oui :",
+              "options": [
+                "Ja, ich verstehe.",
+                "Nein, ich verstehe nicht. (si non)",
+                "Verstehe du ich.",
+                "Verstehe gestern."
+              ],
+              "correctAnswers": [0],
+              "explanation": "verstehen = comprendre."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Wie spellst du das? — … »",
+              "options": [
+                "B-I-R-K-E.",
+                "Ich mag Birke.",
+                "Birke ist gestern.",
+                "Tschüss Birke."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Épeler lettre par lettre."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Fehlt jemand? — … » Personne absent :",
+              "options": [
+                "Nein, alle sind da.",
+                "Ja, alle sind da.",
+                "Alle gestern.",
+                "Da wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "alle sind da = tous sont là."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "« Wie war der Test? — … » Difficile :",
+              "options": [
+                "Er war schwer.",
+                "Er war lecker.",
+                "Er war morgen.",
+                "Er wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "schwer = difficile."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Exprimer un goût",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Phrases pour dire qu'on aime :",
+              "options": [
+                "Ich mag …",
+                "Ich esse gern …",
+                "Ich hasse …",
+                "Das ist schlecht."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "mag / gern = positif."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Tu aimes le chocolat :",
+              "options": [
+                "Ich mag Schokolade.",
+                "Ich Schokolade hasse.",
+                "Schokolade wohne.",
+                "Gestern Schokolade."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ich mag + nom."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Tu aimes jouer au basket :",
+              "options": [
+                "Ich spiele gern Basketball.",
+                "Ich spiele nicht Basketball gestern.",
+                "Basketball ist Toilette.",
+                "Tschüss Basketball."
+              ],
+              "correctAnswers": [0],
+              "explanation": "spielen gern."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Tu adores (fort) les chats :",
+              "options": [
+                "Ich liebe Katzen.",
+                "Ich Katzen liebe nicht.",
+                "Katzen bin ich.",
+                "Katzen morgen."
+              ],
+              "correctAnswers": [0],
+              "explanation": "lieben = aimer beaucoup."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "La pizza est bonne. Tu dis :",
+              "options": [
+                "Die Pizza ist lecker.",
+                "Die Pizza ist schlecht.",
+                "Die Pizza wohne.",
+                "Die Pizza gestern."
+              ],
+              "correctAnswers": [0],
+              "explanation": "lecker = bon."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Ta couleur préférée est le vert :",
+              "options": [
+                "Meine Lieblingsfarbe ist grün.",
+                "Grün hasse ich Liebling.",
+                "Farbe wohne grün.",
+                "Grün gestern."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lieblingsfarbe."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Tu aimes écouter de la pop :",
+              "options": [
+                "Ich höre gern Popmusik.",
+                "Ich höre Popmusik nicht gestern.",
+                "Popmusik ist Raum.",
+                "Tschüss Pop."
+              ],
+              "correctAnswers": [0],
+              "explanation": "hören gern."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "On demande « Was magst du? » Tu aimes le sport :",
+              "options": [
+                "Ich mag Sport.",
+                "Sport wohne ich.",
+                "Mag Sport du.",
+                "Gestern Sport nur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réponse directe."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Tu trouves un film super :",
+              "options": [
+                "Der Film ist toll.",
+                "Der Film ist langweilig.",
+                "Film wohne.",
+                "Film gestern nur."
+              ],
+              "correctAnswers": [0],
+              "explanation": "toll = super."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Tu aimes lire :",
+              "options": [
+                "Ich lese gern.",
+                "Ich lese nicht gern. (si non)",
+                "Lese wohne.",
+                "Gern lese gestern."
+              ],
+              "correctAnswers": [0],
+              "explanation": "lesen gern."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Refuser poliment",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Refus polis :",
+              "options": [
+                "Nein, danke.",
+                "Das mag ich nicht.",
+                "Ja, gern!",
+                "Ich liebe das."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Nein danke / négation goût."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "On te propose du brocoli, tu refuses :",
+              "options": [
+                "Nein, danke. Ich mag keinen Brokkoli.",
+                "Ja, lecker Brokkoli!",
+                "Brokkoli wohne.",
+                "Gestern Brokkoli."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Refus + raison."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Tu n'aimes pas les maths :",
+              "options": [
+                "Ich mag Mathe nicht.",
+                "Ich mag Mathe sehr.",
+                "Mathe ist toll immer.",
+                "Mathe lese gern."
+              ],
+              "correctAnswers": [0],
+              "explanation": "nicht après verbe."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Tu détestes (fort) les devoirs :",
+              "options": [
+                "Ich hasse Hausaufgaben.",
+                "Ich liebe Hausaufgaben.",
+                "Hausaufgaben lecker.",
+                "Hausaufgaben wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "hassen."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "C'est ennuyeux. Tu dis :",
+              "options": [
+                "Das ist langweilig.",
+                "Das ist toll.",
+                "Langweilig wohne.",
+                "Langweilig gestern."
+              ],
+              "correctAnswers": [0],
+              "explanation": "langweilig."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Tu ne veux pas de gâteau (poli) :",
+              "options": [
+                "Nein, danke. Ich bin satt.",
+                "Ja, gern zwei Stück!",
+                "Kuchen wohne.",
+                "Kuchen ist Montag."
+              ],
+              "correctAnswers": [0],
+              "explanation": "satt = rassasié."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Tu ne joues pas volontiers au tennis :",
+              "options": [
+                "Ich spiele nicht gern Tennis.",
+                "Ich spiele gern Tennis.",
+                "Tennis ist Lehrer.",
+                "Tennis gestern immer."
+              ],
+              "correctAnswers": [0],
+              "explanation": "nicht gern."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Tu refuses une invitation ce soir (poli) :",
+              "options": [
+                "Heute Abend geht leider nicht.",
+                "Ja, gern heute!",
+                "Heute wohne.",
+                "Heute ist Brokkoli."
+              ],
+              "correctAnswers": [0],
+              "explanation": "leider nicht = malheureusement non."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Tu n'aimes pas ça :",
+              "options": [
+                "Das mag ich nicht.",
+                "Das mag ich sehr.",
+                "Das wohne.",
+                "Das gestern."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Formule standard."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "On propose « Möchtest du Kaffee? » Tu es enfant, tu refuses :",
+              "options": [
+                "Nein, danke. Ich trinke keinen Kaffee.",
+                "Ja, gern drei Tassen!",
+                "Kaffee ist Klasse.",
+                "Kaffee wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "keinen = pas de (accusatif)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Parler d'hier",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Phrases au passé sur hier :",
+              "options": [
+                "Gestern habe ich …",
+                "Ich war gestern …",
+                "Morgen werde ich …",
+                "Guten Tag!"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Perfekt ou war + gestern."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Hier tu as joué au foot. Tu dis :",
+              "options": [
+                "Gestern habe ich Fußball gespielt.",
+                "Morgen spiele ich Fußball.",
+                "Ich spiele Fußball gern.",
+                "Fußball ist lecker."
+              ],
+              "correctAnswers": [0],
+              "explanation": "gespielt + gestern."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Hier c'était dimanche. Tu dis :",
+              "options": [
+                "Gestern war Sonntag.",
+                "Morgen ist Sonntag.",
+                "Sonntag wohne.",
+                "Sonntag mag ich."
+              ],
+              "correctAnswers": [0],
+              "explanation": "war = était."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Hier tu as regardé un film :",
+              "options": [
+                "Gestern habe ich einen Film gesehen.",
+                "Gestern sehe ich Film.",
+                "Film wohne gestern.",
+                "Film morgen gesehen."
+              ],
+              "correctAnswers": [0],
+              "explanation": "gesehen = vu."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Hier tu étais malade :",
+              "options": [
+                "Gestern war ich krank.",
+                "Gestern bin ich krank morgen.",
+                "Krank lecker.",
+                "Krank wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "krank = malade."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "On demande « Was hast du gestern gemacht? » Tu as lu :",
+              "options": [
+                "Ich habe ein Buch gelesen.",
+                "Ich lese morgen Buch.",
+                "Buch ist Pause.",
+                "Buch wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "gelesen."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Hier il pleuvait. Tu dis (simple) :",
+              "options": [
+                "Gestern hat es geregnet.",
+                "Morgen regnet es.",
+                "Regen mag ich.",
+                "Regen wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "geregnet = plu."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Hier pas de école (vacances scolaires) :",
+              "options": [
+                "Gestern hatten wir schulfrei.",
+                "Morgen schulfrei.",
+                "Schulfrei lecker.",
+                "Schulfrei wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "schulfrei = pas d'école."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Hier tu as rencontré Léa :",
+              "options": [
+                "Gestern habe ich Lea getroffen.",
+                "Gestern treffe ich Lea morgen.",
+                "Lea ist Stift.",
+                "Lea wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "getroffen."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Hier c'était bien :",
+              "options": [
+                "Gestern war es schön.",
+                "Gestern war es schrecklich.",
+                "Schön wohne.",
+                "Schön morgen."
+              ],
+              "correctAnswers": [0],
+              "explanation": "schön = bien/agréable."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Parler d'hier — questions",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Questions sur le passé récent :",
+              "options": [
+                "Was hast du gestern gemacht?",
+                "Warst du gestern in der Schule?",
+                "Was machst du morgen?",
+                "Wie heißt du?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "gemacht / warst du = hier."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Tu demandes à un ami s'il a aimé hier :",
+              "options": [
+                "Hat dir gestern gefallen?",
+                "Gefällt dir morgen?",
+                "Gestern wohne?",
+                "Gefallen Tschüss?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gefällt/gefallen = plaire."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Tu demandes « Étais-tu à l'école hier ? » :",
+              "options": [
+                "Warst du gestern in der Schule?",
+                "Bist du morgen Schule?",
+                "Schule wohne gestern?",
+                "Warst du lecker?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Warst du = étais-tu."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Tu demandes l'heure d'hier du match :",
+              "options": [
+                "Wann war das Spiel gestern?",
+                "Wann ist das Spiel morgen?",
+                "Spiel wohne?",
+                "Spiel ist Brokkoli?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "wann war."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Tu demandes « Qu'as-tu mangé hier ? » :",
+              "options": [
+                "Was hast du gestern gegessen?",
+                "Was isst du morgen?",
+                "Essen wohne?",
+                "Gegessen Tschüss?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "gegessen."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Réponse : « Oui, hier j'ai révisé. » :",
+              "options": [
+                "Ja, ich habe gestern gelernt.",
+                "Nein, morgen gelernt.",
+                "Gelernt wohne.",
+                "Ja, Tschüss."
+              ],
+              "correctAnswers": [0],
+              "explanation": "gelernt."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "Tu demandes si hier il faisait beau :",
+              "options": [
+                "War das Wetter gestern schön?",
+                "Ist morgen Wetter?",
+                "Wetter wohne?",
+                "Schön ist Lehrer?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Wetter + schön."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Tu demandes « Avec qui étais-tu hier ? » :",
+              "options": [
+                "Mit wem warst du gestern?",
+                "Mit wem bist du morgen?",
+                "Wem wohne?",
+                "Mit Tschüss?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mit wem."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Tu demandes « As-tu fait du sport hier ? » :",
+              "options": [
+                "Hast du gestern Sport gemacht?",
+                "Machst du morgen Sport?",
+                "Sport wohne?",
+                "Gemacht Hallo?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sport gemacht."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Ami : « Gestern war ich müde. » Tu compaties :",
+              "options": [
+                "Oh, das ist schade!",
+                "Super, toll!",
+                "Schade wohne.",
+                "Morgen müde!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "schade = dommage."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Parler de demain",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Phrases sur demain :",
+              "options": [
+                "Morgen gehe ich …",
+                "Am Samstag spiele ich … (futur proche si contexte)",
+                "Gestern ging ich …",
+                "Danke!"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "morgen / jour futur + présent."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "Demain tu as cours d'allemand :",
+              "options": [
+                "Morgen habe ich Deutsch.",
+                "Gestern habe ich Deutsch.",
+                "Deutsch wohne.",
+                "Deutsch Tschüss."
+              ],
+              "correctAnswers": [0],
+              "explanation": "morgen + haben."
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "Demain tu vas au parc :",
+              "options": [
+                "Morgen gehe ich in den Park.",
+                "Gestern Park.",
+                "Park lecker.",
+                "Park wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "gehen in."
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "Tu dis « À demain ! » à un ami :",
+              "options": [
+                "Bis morgen!",
+                "Gestern war schön!",
+                "Morgen wohne!",
+                "Bis gestern!"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bis morgen."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "Après-demain tu es libre :",
+              "options": [
+                "Übermorgen habe ich frei.",
+                "Gestern frei.",
+                "Frei ist Stift.",
+                "Frei wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "übermorgen + frei."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Demain matin tu te lèves tôt :",
+              "options": [
+                "Morgen früh stehe ich früh auf.",
+                "Gestern früh auf.",
+                "Früh wohne.",
+                "Früh lecker."
+              ],
+              "correctAnswers": [0],
+              "explanation": "aufstehen."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "La semaine prochaine, contrôle :",
+              "options": [
+                "Nächste Woche habe ich einen Test.",
+                "Letzte Woche Test.",
+                "Test wohne.",
+                "Test gestern."
+              ],
+              "correctAnswers": [0],
+              "explanation": "nächste Woche."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "Tu demandes les plans de demain :",
+              "options": [
+                "Was machst du morgen?",
+                "Was hast du gestern gemacht?",
+                "Morgen wohne?",
+                "Machst Tschüss?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Question futur."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "Demain tu iras nager (simple) :",
+              "options": [
+                "Morgen schwimme ich.",
+                "Gestern schwimme.",
+                "Schwimmen wohne.",
+                "Schwimmen Danke."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Présent + morgen."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Tu promets de téléphoner demain :",
+              "options": [
+                "Ich rufe dich morgen an.",
+                "Ich rief gestern an.",
+                "Rufe wohne.",
+                "An Tschüss."
+              ],
+              "correctAnswers": [0],
+              "explanation": "anrufen."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Mini-dialogues",
+          "questions": [
+            {
+              "id": "q1",
+              "order": 1,
+              "type": "multiple_choice",
+              "question": "Répliques qui vont ensemble (salutations) :",
+              "options": [
+                "Guten Tag! — Guten Tag!",
+                "Tschüss! — Tschüss!",
+                "Danke! — Bitte!",
+                "Wie heißt du? — Ich bin müde."
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Salut/salut et merci/de rien."
+            },
+            {
+              "id": "q2",
+              "order": 2,
+              "type": "single_choice",
+              "question": "« Wie geht's? — Mir geht es gut. » Tu réponds ensuite poliment :",
+              "options": [
+                "Und dir?",
+                "Gestern schlecht.",
+                "Tschüss sofort.",
+                "Ich wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Et toi ?"
+            },
+            {
+              "id": "q3",
+              "order": 3,
+              "type": "single_choice",
+              "question": "« Magst du Pizza? — Ja, sehr! » Tu demandes la même chose :",
+              "options": [
+                "Und du?",
+                "Wo wohnst du?",
+                "Gestern Pizza.",
+                "Pizza wohne."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Et toi ? (goût)"
+            },
+            {
+              "id": "q4",
+              "order": 4,
+              "type": "single_choice",
+              "question": "« Was hast du gestern gemacht? — Ich habe … » Tu continues avec une activité :",
+              "options": [
+                "… Fußball gespielt.",
+                "… morgen schwimmen.",
+                "… Guten Tag.",
+                "… wohne Berlin."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Passé cohérent."
+            },
+            {
+              "id": "q5",
+              "order": 5,
+              "type": "single_choice",
+              "question": "« Was machst du morgen? — … »",
+              "options": [
+                "Ich gehe ins Kino.",
+                "Ich ging gestern Kino.",
+                "Kino wohne.",
+                "Kino Entschuldigung."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Futur cohérent."
+            },
+            {
+              "id": "q6",
+              "order": 6,
+              "type": "single_choice",
+              "question": "Tu entends « Entschuldigung, wo ist …? » Tu aides :",
+              "options": [
+                "Dort, links.",
+                "Mir geht es gut.",
+                "Ich heiße …",
+                "Tschüss links."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indiquer direction."
+            },
+            {
+              "id": "q7",
+              "order": 7,
+              "type": "single_choice",
+              "question": "« Welches Fach hast du? — Deutsch. » Tu réagis (tu aimes) :",
+              "options": [
+                "Cool, ich mag Deutsch auch!",
+                "Ich hasse immer alles.",
+                "Deutsch wohne.",
+                "Deutsch gestern."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Accord positif."
+            },
+            {
+              "id": "q8",
+              "order": 8,
+              "type": "single_choice",
+              "question": "« Bis morgen! — … »",
+              "options": [
+                "Bis morgen!",
+                "Guten Morgen gestern!",
+                "Danke Pizza!",
+                "Wo wohnst du?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Réciprocité."
+            },
+            {
+              "id": "q9",
+              "order": 9,
+              "type": "single_choice",
+              "question": "« Nein, danke. » contexte : on propose un bonbon. Tu refuses poliment — c'est déjà dit. L'autre peut répondre :",
+              "options": [
+                "OK, kein Problem.",
+                "Ja, nimm zwei!",
+                "Problem wohne.",
+                "Gestern Bonbon."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Kein Problem = pas de souci."
+            },
+            {
+              "id": "q10",
+              "order": 10,
+              "type": "single_choice",
+              "question": "Fin de présentation : « Ich heiße Ben. — Freut mich, ich bin Lara. » Lara :",
+              "options": [
+                "Se présente aussi",
+                "Dit au revoir seulement",
+                "Parle d'hier",
+                "Refuse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ich bin + prénom = présentation."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

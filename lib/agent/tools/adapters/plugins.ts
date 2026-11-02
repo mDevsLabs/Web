@@ -354,25 +354,6 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "date fériée",
     "public holiday on",
   ],
-  mapsDirections: [
-    "itinéraire google maps",
-    "trajet en voiture",
-    "comment aller de",
-  ],
-  mapsGeocode: [
-    "géocoder",
-    "coordonnées de",
-    "adresse google maps",
-  ],
-  mapsReverseGeocode: [
-    "adresse de ces coordonnées",
-    "géocodage inverse",
-  ],
-  mapsSearchPlaces: [
-    "chercher un lieu",
-    "trouver un endroit",
-    "lieux google maps",
-  ],
   jsonToolbox: [
     "json",
     "minifier json",
@@ -404,6 +385,18 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "pays banque mondiale",
     "pays et régions",
     "niveau de revenu des pays",
+  ],
+  mapsDirections: [
+    "itinéraire google maps",
+    "trajet en voiture",
+    "comment aller de",
+  ],
+  mapsGeocode: ["géocoder", "coordonnées de", "adresse google maps"],
+  mapsReverseGeocode: ["adresse de ces coordonnées", "géocodage inverse"],
+  mapsSearchPlaces: [
+    "chercher un lieu",
+    "trouver un endroit",
+    "lieux google maps",
   ],
   quizzly: ["quiz", "questionnaire", "tester mes connaissances"],
   readGithubFile: [

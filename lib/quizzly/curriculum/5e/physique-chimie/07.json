@@ -1,0 +1,2493 @@
+{
+  "id": "5e-physique-chimie-07",
+  "year": "5e",
+  "subject": "physique-chimie",
+  "title": "L'électricité",
+  "order": 7,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Circuit",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels éléments peuvent faire partie d'un circuit électrique simple avec une pile et une lampe ?",
+              "options": [
+                "Un interrupteur",
+                "Un moteur à essence",
+                "Des fils de connexion",
+                "Une planche en bois sec"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quoi sert une pile dans un circuit ?",
+              "options": [
+                "À fournir l'énergie électrique",
+                "À mesurer la tension",
+                "À couper le courant uniquement",
+                "À refroidir la lampe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que devient une lampe si le circuit est ouvert ?",
+              "options": [
+                "Elle s'éteint",
+                "Elle brille plus fort",
+                "Elle devient un isolant",
+                "Elle produit de la pile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un circuit fermé signifie que…",
+              "options": [
+                "Le courant peut circuler en boucle",
+                "Aucun fil n'est branché",
+                "La pile est vide",
+                "L'interrupteur est ouvert"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Où doit circuler le courant pour qu'une lampe s'allume ?",
+              "options": [
+                "Dans un chemin continu entre les bornes de la pile",
+                "Uniquement dans l'air autour de la lampe",
+                "Seulement dans le plastique du fil",
+                "Nulle part si la pile est neuve"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le rôle d'un interrupteur ouvert est de…",
+              "options": [
+                "Empêcher le courant de passer",
+                "Augmenter la tension de la pile",
+                "Transformer la lampe en pile",
+                "Mesurer l'intensité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Les fils métalliques dans un cordon électrique servent surtout à…",
+              "options": [
+                "Conduire le courant",
+                "Isoler la chaleur uniquement",
+                "Rendre le fil flexible sans conduire",
+                "Stocker l'électricité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si tu retires un fil entre la pile et la lampe, le circuit devient…",
+              "options": [
+                "Ouvert",
+                "Toujours fermé",
+                "Plus conducteur",
+                "Un court-circuit utile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pour allumer une lampe avec une pile, il faut brancher…",
+              "options": [
+                "La lampe et la pile avec des conducteurs",
+                "La lampe sans pile",
+                "Seulement l'interrupteur",
+                "Un isolant à la place de la pile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans un schéma simple, la pile est représentée pour montrer…",
+              "options": [
+                "La source d'énergie du circuit",
+                "Un appareil qui consomme toujours la lumière",
+                "Un isolant",
+                "Un voltmètre"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels cas correspondent à un circuit ouvert ?",
+              "options": [
+                "Interrupteur ouvert",
+                "Fil débranché",
+                "Tous les fils bien connectés et interrupteur fermé",
+                "Circuit complet pile-lampe"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quand l'interrupteur est fermé (allumé), le courant…",
+              "options": [
+                "Peut circuler si le reste du circuit est complet",
+                "Ne circule jamais",
+                "Circule seulement dans le plastique",
+                "S'arrête dans la pile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une ampoule grillée peut ouvrir le circuit si…",
+              "options": [
+                "Le filament est coupé à l'intérieur",
+                "Elle brille encore faiblement",
+                "La pile est neuve",
+                "Les fils sont en cuivre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour vérifier si un circuit est fermé, on observe surtout…",
+              "options": [
+                "Si les composants utiles sont reliés sans coupure",
+                "La couleur des fils",
+                "Le poids de la pile",
+                "La marque de la lampe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Deux bornes d'une pile sont reliées par un fil sans lampe : c'est…",
+              "options": [
+                "Dangereux et à éviter (court-circuit)",
+                "Le bon montage pour éclairer",
+                "Un circuit ouvert",
+                "Un isolant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si la lampe ne s'allume pas, une cause possible est…",
+              "options": [
+                "Un mauvais contact ou une coupure",
+                "Une pile trop neuve",
+                "Trop de lumière ambiante",
+                "Un fil trop court"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un circuit fermé forme…",
+              "options": [
+                "Une boucle",
+                "Une ligne sans retour",
+                "Un triangle ouvert",
+                "Deux piles séparées"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Ouvrir l'interrupteur équivaut à…",
+              "options": [
+                "Créer une coupure dans le circuit",
+                "Doubler l'intensité",
+                "Fermer la boucle",
+                "Changer la pile en voltmètre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le courant circule dans un circuit fermé du pôle de la pile vers…",
+              "options": [
+                "L'autre pôle en passant par les composants",
+                "Le vide uniquement",
+                "L'extérieur du fil isolé",
+                "Nulle part"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans boucle complète, la lampe reste éteinte car…",
+              "options": [
+                "Le courant ne peut pas faire le tour",
+                "La pile refuse toute énergie",
+                "Les fils deviennent isolants",
+                "La tension disparaît dans l'air"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels matériaux sont en général de bons conducteurs d'électricité ?",
+              "options": [
+                "Le cuivre",
+                "L'aluminium",
+                "Le caoutchouc sec",
+                "Le verre"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un conducteur laisse passer…",
+              "options": [
+                "Le courant électrique",
+                "Uniquement la lumière",
+                "L'eau sans électricité",
+                "Le son"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi le cœur d'un fil électrique est en métal ?",
+              "options": [
+                "Parce que le métal conduit le courant",
+                "Parce que le métal isole",
+                "Pour être plus lourd",
+                "Pour ne jamais chauffer"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Une pièce de monnaie en métal dans un montage scolaire…",
+              "options": [
+                "Peut servir de liaison conductrice",
+                "Est toujours un isolant",
+                "Remplace une pile",
+                "Empêche tout contact"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'eau avec sel ou impuretés…",
+              "options": [
+                "Conduit mieux l'électricité que l'eau pure",
+                "Est toujours isolante",
+                "Remplace une lampe",
+                "Mesure la tension"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Toucher deux bornes d'une pile avec les mains mouillées est…",
+              "options": [
+                "Dangereux car le corps peut conduire",
+                "Sans danger car l'eau isole",
+                "Recommandé en classe",
+                "Impossible"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le graphite d'un crayon peut parfois…",
+              "options": [
+                "Conduire un peu le courant",
+                "Isoler comme le plastique",
+                "Produire une pile",
+                "Mesurer l'intensité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une prise murale, les contacts métalliques servent à…",
+              "options": [
+                "Laisser entrer le courant dans l'appareil",
+                "Décorer la prise",
+                "Isoler totalement",
+                "Refroidir la prise"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un fil de fer nu peut…",
+              "options": [
+                "Conduire le courant",
+                "Bloquer tout courant",
+                "Être une source d'énergie",
+                "Remplacer un interrupteur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Classer un matériau « conducteur » signifie qu'il…",
+              "options": [
+                "Laisse passer le courant assez facilement",
+                "Ne laisse jamais passer le courant",
+                "Stocke la tension",
+                "Est toujours liquide"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels matériaux sont plutôt isolants en électricité ?",
+              "options": [
+                "Le plastique autour d'un fil",
+                "Le bois sec",
+                "Le fil de cuivre nu",
+                "La feuille d'aluminium"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un isolant sert surtout à…",
+              "options": [
+                "Empêcher le courant de sortir du fil",
+                "Augmenter le courant",
+                "Remplacer la pile",
+                "Allumer la lampe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La gaine plastique d'un câble protège car…",
+              "options": [
+                "Le plastique ne conduit pas bien le courant",
+                "Le plastique est un métal",
+                "Elle produit de l'électricité",
+                "Elle mesure la tension"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Tenir une pince en plastique pour manipuler des fils sous tension est…",
+              "options": [
+                "Plus sûr que avec les doigts nus",
+                "Inutile car le plastique conduit",
+                "Interdit car le plastique est conducteur",
+                "Identique au métal"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une règle en plastique posée entre deux fils…",
+              "options": [
+                "Empêche le courant de passer d'un fil à l'autre",
+                "Crée un court-circuit",
+                "Devient une pile",
+                "Mesure l'intensité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le caoutchouc des semelles aide à…",
+              "options": [
+                "Limiter le passage du courant vers le sol",
+                "Conduire le courant",
+                "Charger la pile",
+                "Augmenter la tension"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Un support en céramique pour une ampoule est choisi car la céramique…",
+              "options": [
+                "Isole et supporte la chaleur",
+                "Conduit très bien",
+                "Est liquide",
+                "Remplace le filament"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si tu relies deux bornes avec une planche sèche, le courant…",
+              "options": [
+                "Ne passe pratiquement pas",
+                "Circule très fort",
+                "Allume la planche",
+                "Double la pile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Distinction utile : conducteur…",
+              "options": [
+                "Laisse passer ; isolant bloque",
+                "Bloque ; isolant laisse passer",
+                "Mesure ; isolant produit",
+                "Chauffe ; isolant refroidit toujours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Les pinces crocodile recouvertes de plastique isolent…",
+              "options": [
+                "La partie que tu tiens",
+                "Le métal qui touche le circuit",
+                "La pile entière",
+                "La lampe allumée"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans une chaîne pile–lampe–interrupteur, quels éléments consomment ou commandent l'énergie ?",
+              "options": [
+                "La lampe",
+                "L'interrupteur (commande)",
+                "Le fil isolant seul",
+                "L'air autour"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Brancher deux lampes l'une après l'autre sur une pile, c'est une…",
+              "options": [
+                "Mise en série",
+                "Pile sans fil",
+                "Isolation totale",
+                "Mesure de tension seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En série, si une lampe est enlevée et laisse une coupure…",
+              "options": [
+                "Les autres s'éteignent aussi",
+                "Les autres brillent plus",
+                "La pile disparaît",
+                "Le courant saute dans l'air"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un seul interrupteur dans une boucle simple commande…",
+              "options": [
+                "Tout le circuit branché en série derrière lui",
+                "Uniquement la pile",
+                "Le plastique des fils",
+                "La gravité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'ordre pile–lampe–interrupteur en série change-t-il le fait que le circuit peut être fermé ?",
+              "options": [
+                "Non, si la boucle reste complète",
+                "Oui, le courant ne circule jamais",
+                "Oui, la pile s'inverse seule",
+                "Oui, les fils deviennent isolants"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Plus de composants en série sur une petite pile scolaire peut…",
+              "options": [
+                "Diminuer la luminosité des lampes",
+                "Créer une deuxième pile",
+                "Isoler le circuit",
+                "Supprimer le besoin de fils"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une boucle correcte contient au minimum…",
+              "options": [
+                "Une source, des conducteurs, un récepteur",
+                "Seulement des isolants",
+                "Deux piles opposées sans fil",
+                "Un voltmètre sans pile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le fil de connexion en série transporte…",
+              "options": [
+                "Le même courant partout (idée simple)",
+                "De la tension uniquement sans courant",
+                "Rien du tout",
+                "De la lumière"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ajouter une lampe en série sans changer la pile…",
+              "options": [
+                "Partage l'énergie avec la première",
+                "Double automatiquement la lumière",
+                "Ouvre le circuit",
+                "Transforme les fils en isolants"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour qu'une chaîne de lampes s'allume, il faut…",
+              "options": [
+                "Un chemin fermé passant par chaque lampe",
+                "Une lampe hors du circuit",
+                "Aucune pile",
+                "Uniquement des isolants"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Que fait un interrupteur lorsqu'on l'utilise correctement ?",
+              "options": [
+                "Ouvre ou ferme le circuit",
+                "Coupe le passage du courant quand il est ouvert",
+                "Fournit l'énergie comme une pile",
+                "Mesure la tension"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Position « off » sur un interrupteur : le circuit est…",
+              "options": [
+                "Ouvert",
+                "Toujours fermé",
+                "Un court-circuit",
+                "Sans pile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un interrupteur est branché en série pour…",
+              "options": [
+                "Couper le passage du courant",
+                "Augmenter la pile",
+                "Refroidir la lampe",
+                "Mesurer l'intensité partout"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Appuyer sur un poussoir lumineux fermé permet…",
+              "options": [
+                "Au courant de circuler",
+                "D'isoler la prise murale du réseau",
+                "De vider la pile instantanément",
+                "De voir la tension sans appareil"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans interrupteur, on peut couper un circuit en…",
+              "options": [
+                "Débranchant un fil (en manipulant avec prudence)",
+                "Soufflant sur la lampe",
+                "Changeant la couleur du fil",
+                "Posant un livre sur la table"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Un interrupteur ne doit pas remplacer…",
+              "options": [
+                "La pile ou le générateur",
+                "Un fil conducteur fermé",
+                "Une lampe consommatrice",
+                "Un schéma"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux interrupteurs en série sur une boucle : les deux fermés…",
+              "options": [
+                "Permettent le courant si le reste est complet",
+                "Empêchent toujours le courant",
+                "Créent deux piles",
+                "Mesurent le voltmètre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "L'interrupteur d'une lampe de chevet sert à…",
+              "options": [
+                "Économiser l'énergie en coupant le circuit",
+                "Produire de l'électricité",
+                "Isoler le matelas",
+                "Changer la tension du réseau seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un interrupteur cassé bloqué ouvert équivaut à…",
+              "options": [
+                "Une coupure permanente",
+                "Une pile neuve",
+                "Un conducteur parfait",
+                "Un voltmètre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour la sécurité, couper le circuit avant de changer une ampoule…",
+              "options": [
+                "Évite qu'un courant passe pendant la manipulation",
+                "Augmente l'intensité",
+                "Charge la nouvelle ampoule",
+                "Mesure la pile"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sur une pile et une lampe sont correctes ?",
+              "options": [
+                "La pile fournit l'énergie",
+                "La lampe transforme une partie en lumière",
+                "La lampe est la source",
+                "La pile s'allume comme une lampe"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le « + » et le « − » sur une pile indiquent…",
+              "options": [
+                "Les deux bornes entre lesquelles le courant est poussé",
+                "La couleur des fils obligatoire",
+                "Que la pile est un isolant",
+                "La vitesse du vent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Une pile usée peut expliquer une lampe…",
+              "options": [
+                "Peu ou pas lumineuse",
+                "Trop brillante",
+                "Qui isole le circuit",
+                "Qui devient voltmètre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La lampe du montage scolaire transforme l'énergie électrique surtout en…",
+              "options": [
+                "Lumière et chaleur",
+                "Son seulement",
+                "Pile neuve",
+                "Plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Brancher la lampe à l'envers sur une pile simple (une lampe)…",
+              "options": [
+                "Peut quand même s'allumer",
+                "Empêche toujours le courant",
+                "Fait exploser la pile en classe",
+                "Transforme la pile en isolant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ne pas mélanger types de piles sans consigne en classe car…",
+              "options": [
+                "Cela peut être dangereux ou abîmer le montage",
+                "Cela augmente toujours la lumière",
+                "Les fils deviennent isolants",
+                "La lampe mesure la tension"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une LED dans un kit nécessite parfois…",
+              "options": [
+                "Le bon sens de branchement",
+                "Aucun fil",
+                "De l'eau dans le circuit",
+                "Un isolant à la place de la pile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "La pile se vide quand le circuit est fermé car…",
+              "options": [
+                "De l'énergie est utilisée par les composants",
+                "Le plastique consomme la pile",
+                "L'interrupteur ouvert charge la pile",
+                "Le voltmètre produit du courant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comparer deux montages identiques sauf pile neuve ou usée : la neuve…",
+              "options": [
+                "Donne en général une lampe plus vive",
+                "Éteint toujours la lampe",
+                "Isole les fils",
+                "Supprime le circuit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le récepteur dans pile + lampe est…",
+              "options": [
+                "La lampe",
+                "Le fil plastique",
+                "L'air",
+                "Le carton de la pile"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles règles de sécurité en électricité scolaire sont importantes ?",
+              "options": [
+                "Ne pas court-circuiter une pile",
+                "Manipuler prises du réseau seul sans adulte",
+                "Utiliser des fils isolés",
+                "Mélanger eau et montage sous tension"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un court-circuit avec une pile peut…",
+              "options": [
+                "La faire chauffer dangereusement",
+                "Augmenter sa durée de vie",
+                "Isoler le circuit",
+                "Mesurer la tension sans fil"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les fils du réseau domestique sont dangereux car…",
+              "options": [
+                "La tension est bien plus grande que celle d'une pile",
+                "Ils sont toujours en plastique isolant",
+                "Ils ne conduisent pas",
+                "Ils sont des piles"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Avant de modifier un montage à pile, il vaut mieux…",
+              "options": [
+                "Ouvrir le circuit",
+                "Relier directement les deux bornes",
+                "Mouiller les doigts",
+                "Utiliser une prise murale"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Un fil dénudé qui touche deux métal voisins peut créer…",
+              "options": [
+                "Un court-circuit",
+                "Un isolant",
+                "Une pile",
+                "Un voltmètre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Range un montage en classe en…",
+              "options": [
+                "Couvrant ou débranchant les piles",
+                "Laissant les bornes en contact",
+                "Versant de l'eau",
+                "Branchant sur le secteur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Signe qu'un fil ou une pile chauffe anormalement…",
+              "options": [
+                "Il faut couper le circuit",
+                "Il faut serrer encore plus",
+                "C'est normal et on laisse",
+                "On ajoute de l'eau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Les expériences du cours utilisent surtout…",
+              "options": [
+                "Piles et basse tension",
+                "Le réseau 230 V sans protection",
+                "La foudre",
+                "Des fils nus au secteur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Un boîtier plastique d'appareil protège en…",
+              "options": [
+                "Isolant l'utilisateur des parties conductrices",
+                "Conduisant le courant vers les doigts",
+                "Remplaçant la pile",
+                "Mesurant l'intensité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si une lampe clignote et les fils chauffent avec une pile, tu…",
+              "options": [
+                "Ouvres le circuit et demandes de l'aide",
+                "Serres plus fort",
+                "Ajoutes de l'eau",
+                "Branches une prise"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Sur un schéma de circuit, on représente souvent…",
+              "options": [
+                "Une pile",
+                "Une lampe",
+                "Un nuage météo",
+                "Une montagne"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Un schéma de circuit sert à…",
+              "options": [
+                "Montrer les connexions entre composants",
+                "Remplacer tous les fils réels",
+                "Mesurer directement la tension",
+                "Isoler la pile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Les fils sur un schéma sont des…",
+              "options": [
+                "Traits reliant les symboles",
+                "Photos des fils",
+                "Isolants réels",
+                "Piles"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si le schéma a une coupure au niveau de l'interrupteur ouvert…",
+              "options": [
+                "Le circuit réel correspondant est ouvert",
+                "Le courant double",
+                "La pile disparaît du dessin",
+                "La lampe devient source"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Même ordre des symboles en boucle : le schéma indique…",
+              "options": [
+                "Que les éléments sont en série",
+                "Qu'il n'y a pas de pile",
+                "Que les fils sont en plastique seulement",
+                "Qu'on mesure avec un voltmètre seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Construire le montage à partir du schéma demande de…",
+              "options": [
+                "Respecter les liaisons dessinées",
+                "Ignorer la pile",
+                "Utiliser uniquement des isolants",
+                "Ne pas fermer la boucle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux lampes dessinées l'une après l'autre sur une seule boucle : en réel…",
+              "options": [
+                "Elles sont en série",
+                "Elles ne partagent pas le même circuit",
+                "Il n'y a pas de pile",
+                "Les fils ne servent à rien"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Le symbole d'interrupteur fermé sur le schéma signifie…",
+              "options": [
+                "Passage possible du courant à cet endroit",
+                "Coupure volontaire",
+                "Pile usée",
+                "Isolant permanent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Une erreur fréquente est de oublier de…",
+              "options": [
+                "Fermer la boucle sur le schéma et en réel",
+                "Dessiner le ciel",
+                "Mettre de l'eau",
+                "Couper toutes les piles du monde"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Le schéma et le montage réel doivent…",
+              "options": [
+                "Avoir le même type de connexions",
+                "Être totalement différents",
+                "Ne jamais inclure de lampe",
+                "Remplacer la sécurité"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Pour qu'un circuit simple fonctionne, il faut…",
+              "options": [
+                "Une source comme une pile",
+                "Un chemin fermé de conducteurs",
+                "Uniquement des isolants",
+                "Aucune connexion"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Révision : un isolant typique est…",
+              "options": [
+                "Le caoutchouc",
+                "Le cuivre nu",
+                "L'aluminium",
+                "Le fer"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Révision : couper le courant se fait avec…",
+              "options": [
+                "Un interrupteur ouvert ou une coupure",
+                "Une pile supplémentaire en parallèle",
+                "Un fil isolant seul",
+                "Un voltmètre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Révision : la lampe est un…",
+              "options": [
+                "Récepteur",
+                "Générateur de réseau",
+                "Isolant",
+                "Voltmètre"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Révision : circuit ouvert, la lampe…",
+              "options": [
+                "Ne s'allume pas",
+                "Brille à fond",
+                "Charge la pile",
+                "Mesure l'intensité"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Révision : le métal dans un fil…",
+              "options": [
+                "Conduit",
+                "Isole toujours",
+                "Est une pile",
+                "Est un interrupteur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Révision : en série, une coupure au milieu…",
+              "options": [
+                "Arrête toute la chaîne",
+                "N'affecte rien",
+                "Crée deux piles",
+                "Isole le plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Révision : éviter de relier directement les deux bornes d'une pile car…",
+              "options": [
+                "Court-circuit dangereux",
+                "Cela éteint toujours le monde",
+                "Cela isole la lampe",
+                "C'est obligatoire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Révision : le courant circule dans…",
+              "options": [
+                "Les conducteurs du circuit fermé",
+                "Le plastique externe",
+                "Le vide seul",
+                "Le schéma papier"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Révision : l'énergie part de…",
+              "options": [
+                "La pile (source)",
+                "La lampe seule",
+                "L'interrupteur ouvert",
+                "Le voltmètre"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Intensité et tension",
+      "quizzes": [
+        {
+          "id": "q01",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans un circuit fermé, qu'est-ce qui circule dans les fils conducteurs ?",
+              "options": [
+                "Le courant électrique",
+                "Un déplacement de charges dans le métal (idée simple)",
+                "Le plastique isolant",
+                "L'air autour du fil"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'intensité du courant indique en idée simple…",
+              "options": [
+                "À quel point le courant est « fort »",
+                "La couleur de la lampe",
+                "Le poids de la pile",
+                "La longueur du câble seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "L'unité d'intensité au collège est…",
+              "options": [
+                "L'ampère (A)",
+                "Le volt (V)",
+                "Le mètre (m)",
+                "Le kilogramme (kg)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un ampèremètre sert à…",
+              "options": [
+                "Mesurer l'intensité",
+                "Mesurer la masse",
+                "Produire la pile",
+                "Isoler le circuit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pour mesurer l'intensité dans une branche, on branche l'ampèremètre…",
+              "options": [
+                "En série dans cette branche",
+                "En parallèle seulement sur la pile",
+                "Dans l'air",
+                "Sur le plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Si aucun courant ne circule (circuit ouvert), l'intensité est…",
+              "options": [
+                "Nulle (0 A)",
+                "Toujours très grande",
+                "Égale à la tension",
+                "Impossible à définir sans couleur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le courant circule des bornes de la pile vers…",
+              "options": [
+                "Les composants puis retour",
+                "Uniquement le plastique",
+                "Le ciel",
+                "Le voltmètre sans fil"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une petite pile avec une lampe qui brille faiblement peut avoir…",
+              "options": [
+                "Une intensité plus faible qu'avec une grosse consommation",
+                "Toujours zéro ampère",
+                "Des ampères sans courant",
+                "Une intensité en volts"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le symbole I désigne souvent…",
+              "options": [
+                "L'intensité",
+                "La tension",
+                "La température",
+                "La masse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Sans circuit fermé, parler de courant qui circule est…",
+              "options": [
+                "Incorrect",
+                "Toujours vrai",
+                "Égal à mesurer la tension",
+                "Identique à isoler"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "La tension électrique est liée à…",
+              "options": [
+                "La « poussée » de la pile ou du générateur",
+                "Ce qu'un voltmètre peut mesurer entre deux points",
+                "La couleur des fils",
+                "Le nombre de pages du cahier"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "L'unité de tension est…",
+              "options": [
+                "Le volt (V)",
+                "L'ampère (A)",
+                "Le litre (L)",
+                "Le newton (N)"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Un voltmètre mesure…",
+              "options": [
+                "La tension",
+                "La masse de la pile",
+                "La vitesse du vent",
+                "La longueur du fil"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "On branche un voltmètre en parallèle pour mesurer la tension…",
+              "options": [
+                "Entre deux points du circuit",
+                "En coupant le fil obligatoirement",
+                "Dans le plastique seulement",
+                "Sans contact"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Une pile 4,5 V indique une tension de…",
+              "options": [
+                "4,5 volts",
+                "4,5 ampères",
+                "4,5 mètres",
+                "4,5 watts obligatoirement"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le réseau domestique est environ 230 V : c'est…",
+              "options": [
+                "Beaucoup plus dangereux qu'une pile",
+                "Identique à une pile bouton",
+                "Une intensité en ampères",
+                "Un isolant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Le symbole U désigne souvent…",
+              "options": ["La tension", "L'intensité", "La masse", "Le volume"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Tension aux bornes d'une lampe éteinte (circuit ouvert) : en idée…",
+              "options": [
+                "On ne parle pas de circulation ; la pile peut encore avoir sa tension",
+                "Le voltmètre devient une pile",
+                "La tension devient 0 V sur la pile toujours",
+                "L'intensité devient des volts"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Deux piles identiques en série dans un kit scolaire peuvent…",
+              "options": [
+                "Augmenter la tension totale",
+                "Diminuer la tension à zéro",
+                "Transformer l'ampère en volt seul",
+                "Isoler le circuit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Confondre volts et ampères, c'est…",
+              "options": [
+                "Mélanger tension et intensité",
+                "Correct en sciences",
+                "Mesurer la masse",
+                "Isoler un fil"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Différences importantes entre intensité et tension ?",
+              "options": [
+                "L'intensité se mesure avec un ampèremètre en série",
+                "La tension se mesure avec un voltmètre",
+                "Ce sont la même grandeur",
+                "La tension se mesure en ampères"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Image utile : la tension, c'est la poussée ; l'intensité, c'est…",
+              "options": [
+                "Le débit de courant qui passe",
+                "La couleur du fil",
+                "Le poids du voltmètre",
+                "L'isolation"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Circuit ouvert : l'intensité est nulle, la pile peut encore avoir…",
+              "options": [
+                "Sa tension",
+                "Des ampères qui circulent",
+                "Un voltmètre en série obligatoire",
+                "Un court-circuit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Circuit fermé avec lampe : le courant circule donc l'intensité…",
+              "options": [
+                "N'est plus nulle (en général)",
+                "Reste toujours 0 A",
+                "Devient des volts",
+                "Disparaît dans le plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mesurer la tension aux bornes de la pile : voltmètre…",
+              "options": [
+                "Entre + et −",
+                "Dans le plastique loin de la pile",
+                "Sans contact magique",
+                "Remplace la lampe"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Brancher mal un ampèremètre (comme un fil) peut…",
+              "options": [
+                "Endommager l'appareil ou la pile",
+                "Isoler le circuit",
+                "Supprimer la tension",
+                "Rendre la lampe isolante"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Une valeur en mA signifie…",
+              "options": [
+                "Des milliampères (petite intensité)",
+                "Des millivolts",
+                "Des mètres",
+                "Des millilitres"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Une valeur en mV signifie…",
+              "options": [
+                "Des millivolts (petite tension)",
+                "Des milliampères",
+                "Des mètres cubes",
+                "Des minutes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Le courant est le même partout en série (idée 5e) signifie…",
+              "options": [
+                "Même intensité dans la boucle simple",
+                "Tension nulle partout",
+                "Pas de pile",
+                "Voltmètre en série"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "La tension d'une pile usée peut…",
+              "options": [
+                "Baisser un peu",
+                "Devenir des ampères",
+                "Empêcher tout isolant",
+                "Mesurer l'intensité seule"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels appareils de mesure correspond à quoi ?",
+              "options": [
+                "Ampèremètre → intensité",
+                "Voltmètre → tension",
+                "Balance → tension",
+                "Thermomètre → ampères"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Avant de mesurer, on choisit l'appareil adapté à…",
+              "options": [
+                "La grandeur (I ou U)",
+                "La couleur",
+                "L'odeur",
+                "Le jour de la semaine"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur un multimètre en mode ampère, on lit…",
+              "options": [
+                "Une intensité",
+                "Une masse",
+                "Une distance",
+                "Un volume"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Sur un multimètre en mode volt, on lit…",
+              "options": [
+                "Une tension",
+                "Un courant obligatoirement en série",
+                "Une température seule",
+                "Un poids"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "L'ampèremètre doit être traversé par le courant : branchement…",
+              "options": [
+                "En série",
+                "Uniquement en parallèle sur la lampe",
+                "Hors circuit",
+                "Sur le isolant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Le voltmètre compare deux points : branchement…",
+              "options": [
+                "En parallèle entre ces points",
+                "En série en coupant tout",
+                "Dans l'eau",
+                "Sans borne"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lire 0,2 A sur l'écran signifie…",
+              "options": [
+                "0,2 ampère",
+                "0,2 volt",
+                "0,2 mètre",
+                "0,2 kilogramme"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lire 3 V sur l'écran signifie…",
+              "options": [
+                "3 volts",
+                "3 ampères",
+                "3 watts seulement",
+                "3 secondes"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Mesurer l'intensité dans un circuit ouvert donne…",
+              "options": [
+                "0 A",
+                "230 V",
+                "Une tension infinie",
+                "Un court-circuit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Noter ses mesures en TP, c'est…",
+              "options": [
+                "Indiquer valeur et unité",
+                "Oublier l'unité",
+                "Écrire en couleur seulement",
+                "Confondre A et V"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quand la lampe brille, on peut dire que…",
+              "options": [
+                "Un courant circule (intensité non nulle)",
+                "De l'énergie est transformée en lumière",
+                "L'intensité est toujours 0 A",
+                "La tension est toujours 0 V"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Plus de lampes identiques en série sur une pile fixe : souvent elles…",
+              "options": [
+                "Brillent moins chacune",
+                "Brillent toutes plus fort",
+                "Ne consomment rien",
+                "Mesurent la tension seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si l'intensité diminue, la lampe peut…",
+              "options": [
+                "Devenir moins vive",
+                "Devenir une pile",
+                "Isoler le circuit",
+                "Augmenter la tension du réseau"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "La pile « pousse » le courant grâce à sa…",
+              "options": ["Tension", "Couleur", "Masse en kg", "Isolation"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans tension suffisante, même circuit fermé : la lampe…",
+              "options": [
+                "Peut rester faible ou éteinte",
+                "Brille toujours à fond",
+                "Devient voltmètre",
+                "Circule dans le plastique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Court-circuit : l'intensité peut devenir…",
+              "options": [
+                "Très grande et dangereuse",
+                "Toujours nulle",
+                "Mesurée en volts",
+                "Impossible"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Interrupteur ouvert : intensité dans la branche…",
+              "options": [
+                "Nulle",
+                "Égale à 230 V",
+                "Toujours 10 A",
+                "Des volts"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Consommer de l'énergie dans la lampe implique qu'un…",
+              "options": [
+                "Courant passe dans le filament",
+                "Isolant remplace le fil",
+                "Voltmètre est en série",
+                "Air conduit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En 5e, on retient : tension et intensité sont…",
+              "options": [
+                "Deux grandeurs différentes",
+                "La même chose",
+                "Toujours nulles",
+                "Mesurées en mètres"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Une pile 1,5 V branchée correctement peut produire un…",
+              "options": [
+                "Petit courant dans une lampe",
+                "Courant du secteur",
+                "Isolant",
+                "Ampèremètre sans fil"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Situations où l'intensité est nulle ?",
+              "options": [
+                "Interrupteur ouvert",
+                "Fil coupé",
+                "Circuit fermé lampe allumée",
+                "Boucle complète avec pile"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Tension aux bornes d'une pile non branchée (idée) : on peut…",
+              "options": [
+                "La mesurer au voltmètre",
+                "La mesurer en ampères en série",
+                "La voir à l'œil nu en volts",
+                "La confondre avec un isolant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Deux points reliés par un fil conducteur en circuit fermé : même…",
+              "options": [
+                "Courant qui les traverse (série)",
+                "Tension toujours identique partout sans réserve",
+                "Isolation",
+                "Masse en kg"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Plusieurs appareils du quotidien consomment un courant : l'intensité dépend…",
+              "options": [
+                "De l'appareil et du circuit",
+                "Uniquement de la couleur",
+                "Du prénom",
+                "Du voltmètre seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Fusible ou disjoncteur du réseau protège quand…",
+              "options": [
+                "L'intensité devient trop forte",
+                "La tension est 0 V",
+                "Il pleut",
+                "La lampe est éteinte"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Une pile faible : tension plus basse peut donner…",
+              "options": [
+                "Moins de courant et lampe faible",
+                "Plus de courant",
+                "Tension en ampères",
+                "Circuit ouvert automatique"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "L'eau pure ne conduit pas bien ; avec le corps humide…",
+              "options": [
+                "Un courant dangereux peut passer",
+                "La tension disparaît",
+                "L'intensité est toujours 0 A",
+                "Le voltmètre isole"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Batterie de voiture 12 V : le chiffre 12 indique…",
+              "options": [
+                "Une tension",
+                "Une intensité en A obligatoire",
+                "Une masse",
+                "Une longueur"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Ampoule LED basse consommation : pour même lumière, intensité souvent…",
+              "options": [
+                "Plus faible qu'ancienne lampe",
+                "Toujours 230 A",
+                "Nulle",
+                "En volts"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Documenter « I = 0,15 A » veut dire…",
+              "options": [
+                "Intensité 0,15 ampère",
+                "Tension 0,15 volt",
+                "0,15 mètre",
+                "0,15 seconde"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Bonnes pratiques de mesure en classe ?",
+              "options": [
+                "Choisir le bon mode A ou V",
+                "Respecter série pour A, parallèle pour V",
+                "Court-circuiter la pile volontairement",
+                "Confondre les unités"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Calibre trop petit sur ampèremètre peut…",
+              "options": [
+                "Abîmer l'appareil",
+                "Isoler la pile",
+                "Augmenter la tension",
+                "Éteindre le soleil"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Commencer par un calibre adapté en tension évite…",
+              "options": [
+                "Une lecture fausse ou risque",
+                "De fermer le circuit",
+                "D'avoir une pile",
+                "De compter en ampères"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Mesurer U aux bornes de la lampe allumée : le voltmètre est…",
+              "options": [
+                "En parallèle sur la lampe",
+                "En série à la place de la lampe",
+                "Dans le plastique",
+                "Hors circuit sans contact"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Mesurer I dans le fil menant à la lampe : ampèremètre…",
+              "options": [
+                "Dans ce fil (série)",
+                "Entre deux fils sans couper",
+                "Sur la table",
+                "Remplace la pile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Tableau de mesures : colonne « U (V) » contient…",
+              "options": [
+                "Des tensions",
+                "Des intensités",
+                "Des masses",
+                "Des distances"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Tableau de mesures : colonne « I (A) » contient…",
+              "options": [
+                "Des intensités",
+                "Des tensions",
+                "Des volumes",
+                "Des temps"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si l'ampèremètre affiche une valeur négative, souvent c'est…",
+              "options": [
+                "Les bornes inversées",
+                "La tension nulle",
+                "Un isolant",
+                "0 volt obligatoire"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Après mesure, couper le circuit sert à…",
+              "options": [
+                "Préserver pile et appareils",
+                "Augmenter I",
+                "Mesurer en kg",
+                "Ouvrir le réseau 230 V"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Interpréter 1,2 V sur une pile neuve 1,5 V : la pile est…",
+              "options": [
+                "Encore utilisable mais un peu faible",
+                "Toujours 0 A",
+                "Un ampèremètre",
+                "Un isolant"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Exemples de sources de tension ?",
+              "options": [
+                "Pile",
+                "Générateur / dynamo (idée)",
+                "Fil plastique",
+                "Règle en bois"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Une dynamo de vélo produit…",
+              "options": [
+                "Une tension quand on pédale",
+                "Une masse",
+                "Un isolant",
+                "0 V toujours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Le secteur fournit tension et peut permettre un…",
+              "options": [
+                "Fort courant si appareil branché",
+                "Courant sans fil",
+                "Isolant total",
+                "Ampère sans volt"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Panneau solaire ensoleillé : idée simple…",
+              "options": [
+                "Crée une tension",
+                "Isole comme le caoutchouc",
+                "Mesure la masse",
+                "Consomme 0 énergie lumineuse"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Sans source (pas de pile), circuit avec fils seuls…",
+              "options": [
+                "Ne fait pas circuler un courant utile",
+                "Brille toujours",
+                "230 V automatique",
+                "Mesure I en série seule"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La tension ne « circule » pas comme le courant : elle est…",
+              "options": [
+                "Une différence entre deux points",
+                "Un débit dans le fil",
+                "Toujours 0",
+                "En ampères"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Plusieurs piles en série même sens : tensions…",
+              "options": [
+                "S'additionnent (idée)",
+                "Disparaissent",
+                "Deviennent ampères",
+                "Isolent"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Brancher une petite lampe sur grosse pile avec modération car…",
+              "options": [
+                "Le courant peut être trop fort pour la lampe",
+                "La tension devient 0",
+                "Le voltmètre isole",
+                "L'intensité est en volts"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Économiser les piles revient à…",
+              "options": [
+                "Couper le circuit quand inutile",
+                "Court-circuiter",
+                "Laisser toujours fermé",
+                "Mélanger eau et fils"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Chargeur de téléphone : transforme tension du secteur pour…",
+              "options": [
+                "Alimenter l'appareil avec une tension adaptée",
+                "Mesurer I en kg",
+                "Isoler le réseau",
+                "Supprimer le courant"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Phrases correctes sur le courant électrique ?",
+              "options": [
+                "Il passe dans les conducteurs d'un circuit fermé",
+                "C'est de la matière liquide dans le fil",
+                "Sans boucle fermée, il ne circule pas",
+                "Il est identique à la lumière du soleil seul"
+              ],
+              "correctAnswers": [0, 2]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Le courant est transporté surtout par…",
+              "options": [
+                "Les électrons dans le métal (idée)",
+                "L'air dans le fil",
+                "Le plastique",
+                "Le papier du schéma"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sens conventionnel du courant (cours) : de + vers − à l'extérieur de la pile…",
+              "options": [
+                "À travers les composants",
+                "Uniquement dans le plastique",
+                "Sans retour",
+                "Dans le voltmètre seul"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Un moteur de jouet branché consomme un…",
+              "options": ["Courant", "Isolant", "Voltmètre", "Nuage"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comparer deux fils identiques en série : intensité…",
+              "options": [
+                "La même (idée 5e)",
+                "Double dans un seul",
+                "Nulle dans les deux",
+                "En volts"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "La puissance (idée) lie énergie utilisée et temps ; en 5e on retient surtout…",
+              "options": [
+                "Tension pousse, courant circule",
+                "Loi d'Ohm formelle",
+                "Calcul R=U/I obligatoire",
+                "Résistance en cours"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Trop d'appareils sur une multiprise peut…",
+              "options": [
+                "Faire chauffer et déclencher protection",
+                "Baisser la tension du soleil",
+                "Isoler le réseau",
+                "Mettre I à 0 V"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pile bouton 3 V : l'intensité dépend du…",
+              "options": [
+                "Circuit branché",
+                "Prénom de l'élève",
+                "Ciel",
+                "Voltmètre seul sans circuit"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Question de sens : le voltmètre ne doit pas…",
+              "options": [
+                "Remplacer un fil en série comme un ampèremètre mal utilisé",
+                "Mesurer entre deux points",
+                "Avoir des bornes",
+                "Être en parallèle"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Résumé : mesurer la « force du courant », c'est…",
+              "options": [
+                "L'intensité",
+                "La tension",
+                "La masse",
+                "La distance"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Révision finale : associe correctement…",
+              "options": [
+                "Intensité → A, ampèremètre, série",
+                "Tension → V, voltmètre, parallèle",
+                "Intensité → V, voltmètre",
+                "Tension → A, ampèremètre série pour U"
+              ],
+              "correctAnswers": [0, 1]
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Circuit ouvert : I = …",
+              "options": ["0 A", "230 V", "10 A", "1 kg"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "La pile fournit surtout la…",
+              "options": ["Tension", "Couleur", "Masse", "Isolation"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Ce qui circule dans le fil métallique fermé…",
+              "options": ["Le courant", "Le plastique", "Le vent", "Le schéma"],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Ne pas confondre : mesurer U avec…",
+              "options": [
+                "Voltmètre",
+                "Ampèremètre en série seul",
+                "Règle",
+                "Balance"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Ne pas confondre : mesurer I avec…",
+              "options": [
+                "Ampèremètre",
+                "Voltmètre en parallèle seul",
+                "Thermomètre",
+                "Compas"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Lampe plus vive avec même pile peut signifier…",
+              "options": [
+                "Intensité plus grande (idée)",
+                "Tension 0 V",
+                "Circuit ouvert",
+                "Isolant"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Sécurité : le réseau 230 V peut provoquer un…",
+              "options": [
+                "Courant dangereux dans le corps",
+                "Courant nul toujours",
+                "Isolant",
+                "0 V sur la pile"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En 5e, la loi d'Ohm R=U/I…",
+              "options": [
+                "N'est pas le cœur du chapitre",
+                "Remplace la pile",
+                "Mesure la masse",
+                "Isole les fils"
+              ],
+              "correctAnswers": [0]
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Phrase juste :",
+              "options": [
+                "La tension se mesure en volts",
+                "La tension se mesure en ampères",
+                "L'intensité se mesure en volts",
+                "Le courant se mesure en mètres"
+              ],
+              "correctAnswers": [0]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
