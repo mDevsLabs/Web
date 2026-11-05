@@ -1,64 +1,75 @@
 # mAI Web
 
-mAI Web est la plateforme principale de l’écosystème mAI: chat, agent, mémoire, projets, outils, serveurs MCP, génération multimodale et tâches planifiées. L’interface et la documentation du dépôt sont en français.
+Plateforme d'IA multi-fonction en français : chat, Agent autonome, bots, Skills,
+serveurs MCP, mémoire, projets, recherche, génération d'images et de voix, tâches
+planifiées — plus quatre applications portées sous son propre domaine
+(`/vibe`, `/wakies`, `/site`, `/blackline`) et une application de révision
+(`/quizzly`).
 
-## Architecture du dépôt
+Version : **0.9.3**.
 
-Le dépôt rassemble plusieurs applications dont les commandes et les cycles de publication sont distincts.
+## Deux runtimes, puis des applications à côté
 
-| Partie | Rôle | Sources principales |
+Le point le plus important à comprendre avant de modifier quoi que ce soit :
+**le dépôt n'est pas un workspace pnpm** (`pnpm-workspace.yaml` contient
+`packages: []`). Chaque dossier de `apps/` s'installe et se compile pour son
+compte, avec son propre gestionnaire de paquets.
+
+| Partie | Ce que c'est | Comment elle tourne |
 | --- | --- | --- |
-| Application Web | Application Next.js et BFF qui sert l’interface authentifiée et ses API | app/, components/, lib/, hooks/ |
-| API mAI | Backend Hono déployé séparément sur Val Town | main.ts et modules TypeScript à la racine |
-| mAI Coder | Application de développement pour ordinateur, basée sur Electron | apps/coder/ |
-| Clients bureau et mobile | Conteneurs Electron et Capacitor qui ouvrent le site mAI | apps/desktop/, apps/mobile/ |
-| Sources de Vibe, Wakies et Site | Applications autonomes conservées comme sources des intégrations de l’hôte | apps/vibe/, apps/wakies/, apps/site/ |
-| Bibliothèques | Composants React et icônes distribuables | packages/ui/, packages/icons/ |
+| Application Web | Next 16 (App Router), React 19, BFF | `app/`, `components/`, `lib/`, `hooks/` — `pnpm build` |
+| API mAI | Backend Hono, ~64 modules racine (`main.ts`, `vibe-*.ts`, `config.ts`…) | Déployé sur Val Town, **hors** du build et du typecheck Next |
+| Ordonnanceur | `cron.ts` (val CRON Val Town) | Réveille les quatre ticks `app/api/cron/**` toutes les 5 min |
+| Vibe · Wakies · Site · Blackline | Sources autonomes portées dans l'hôte | `apps/vibe/`, `apps/wakies/`, `apps/site/`, `apps/blackline/` |
+| Quizzly | Application de révision | `app/(quizzly)/`, `lib/quizzly/` — dans le build Next |
+| mAI Coder | Agent de développement Electron | `apps/coder/` (pnpm, install propre) |
+| Desktop · Mobile | Conteneurs ouvrant le site | `apps/desktop/` (Electron), `apps/mobile/` (Capacitor) |
+| Bibliothèques | `@mdevs/ui`, `@mdevs/icons` | `packages/`, consommés en dépendance `file:` |
 
-L’application Next et le backend Hono ne partagent pas le même runtime. Le build racine compile Next.js. Les fichiers TypeScript Hono à la racine sont déployés indépendamment et ne sont pas couverts par le typecheck Next.
+`tsconfig.json` exclut `apps/` : modifier une source autonome ne déclenche ni
+typecheck ni build racine.
 
-Vibe, Wakies et le Site officiel sont disponibles dans l’hôte sous /vibe, /wakies et /site. Leurs versions autonomes dans apps/ servent de sources ou de références; elles ne sont pas compilées par le build Next racine.
+## Démarrer
 
-## Démarrer l’application Web
+Prérequis : Node.js **22 ou supérieur** et pnpm **10** (`packageManager:
+pnpm@10.32.1`).
 
-Prérequis: Node.js 22 ou supérieur et pnpm 10.
-
-~~~powershell
+```sh
 pnpm install
-Copy-Item.env.example.env.local
-~~~
-
-Renseignez les variables nécessaires dans.env.local, dont la connexion PostgreSQL. Pour une base prête à recevoir l’application, appliquez les migrations puis démarrez Next:
-
-~~~powershell
+cp .env.example .env.local   # Windows : Copy-Item .env.example .env.local
 pnpm db:migrate
 pnpm dev
-~~~
+```
 
-L’application locale est servie sur http://localhost:3000. Les migrations exigent une base PostgreSQL configurée; ne les lancez pas sur une base de production sans suivre la procédure de déploiement.
+L'application est servie sur `http://localhost:3000`. Les variables
+indispensables sont `DATABASE_URL`, `MAI_JWT_SECRET`, `MAI_API_URL` (défaut
+`https://mai.val.run`) et `MCP_ENCRYPTION_KEY` — sans cette dernière, le coffre
+de secrets des intégrations et des serveurs MCP est inutilisable. `.env.example`
+fait foi pour la liste complète.
 
 ## Commandes racine
 
 | Commande | Action |
 | --- | --- |
-| pnpm dev | Serveur Next.js de développement |
-| pnpm build | Génération des styles intégrés puis build Next.js |
-| pnpm check | Contrôle Biome via Ultracite |
-| pnpm typecheck | Typecheck de l’application Next |
-| pnpm test:unit | Tests unitaires Vitest |
-| pnpm test | Tests de bout en bout Playwright |
-| pnpm db:generate | Génération des migrations Drizzle |
-| pnpm db:migrate | Application des migrations PostgreSQL |
+| `pnpm dev` | `next dev` (via `scripts/dev.mjs`, qui accepte `--host`) |
+| `pnpm build` | Valide les news du Site, régénère les quatre feuilles CSS et le jeu, puis `next build` |
+| `pnpm check` / `pnpm fix` | Biome via ultracite — il n'y a ni ESLint ni Prettier |
+| `pnpm typecheck` | `tsc --noEmit` (l'application Next uniquement) |
+| `pnpm test:unit` / `pnpm test` | Vitest / Playwright |
+| `pnpm db:generate` / `db:migrate` / `db:studio` | Drizzle |
+| `pnpm build:blackline` | Compile le jeu et re-ancre sa feuille vers `public/blackline/` |
+| `pnpm dev:coder` / `build:coder` / `desktop:dev` | Délégations vers `apps/` |
+| `pnpm plugins:gen` / `plugins:check` | Catalogue des plugins |
 
-Les applications dans apps/ ont leurs propres scripts. Consultez leur README avant de les lancer. Le workflow principal de validation se trouve dans.github/workflows/build.yml.
+## Où lire quoi
 
-## Repères
+- [AGENTS.md](AGENTS.md) — règles transversales, pièges payés, conventions
+- [docs/README.md](docs/README.md) — index de toute la documentation
+- [docs/1-web/](docs/1-web/README.md) — architecture, Agent, backend, base, sécurité
+- [docs/2-vibe/](docs/2-vibe/README.md) · [docs/3-wakies/](docs/3-wakies/README.md) ·
+  [docs/5-site/](docs/5-site/README.md) · [docs/6-blackline/](docs/6-blackline/README.md)
+- [docs/4-coder/](docs/4-coder/README.md) — mAI Coder
+- Intégration continue : [`.github/workflows/build.yml`](.github/workflows/build.yml)
 
-- Architecture Web et API: [docs/1-web/README.md](docs/1-web/README.md)
-- Vue d’ensemble de la documentation: [docs/README.md](docs/README.md)
-- Intégration Vibe: [docs/2-vibe/INTEGRATION.md](docs/2-vibe/INTEGRATION.md)
-- Intégration Wakies: [docs/3-wakies/INTEGRATION.md](docs/3-wakies/INTEGRATION.md)
-- Intégration Site: [docs/5-site/INTEGRATION.md](docs/5-site/INTEGRATION.md)
-- mAI Coder: [apps/coder/README.md](apps/coder/README.md)
-
-Ne versionnez jamais.env.local ni les secrets personnels. Utilisez.env.example comme liste de variables à configurer.
+N'exécutez jamais `pnpm fix` à l'aveugle sur un arbre partagé : il réécrit tout
+le dépôt, y compris les `*.sql` et les `*.md`.

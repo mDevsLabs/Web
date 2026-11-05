@@ -1,0 +1,2743 @@
+{
+  "id": "5e-grec-02",
+  "year": "5e",
+  "subject": "grec",
+  "title": "Le quotidien",
+  "order": 2,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Famille, école et loisirs",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "La famille et les liens de parenté",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ πατήρ » (ho patêr) ?",
+              "options": [
+                "Le père",
+                "La mère",
+                "Le frère",
+                "Le grand-père"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ πατήρ » (ho patêr) désigne le père de famille, autorité centrale et tuteur de la maisonnée."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ἡ μήτηρ » (hê mêtêr) ?",
+              "options": [
+                "La sœur",
+                "La tante",
+                "La mère",
+                "La fille"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« ἡ μήτηρ » (hê mêtêr) désigne la mère. Elle veille sur l'intérieur de la maison et la première enfance."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel membre de la famille désigne le mot « ὁ ἀδελφός » (ho adelphos) ?",
+              "options": [
+                "Le cousin",
+                "Le frère",
+                "L'oncle",
+                "Le neveu"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« ὁ ἀδελφός » (ho adelphos) désigne le frère. Il a donné le terme moderne « adelphe »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on « la sœur » en grec ancien ?",
+              "options": [
+                "ἡ ἀδελφή (hê adelphê)",
+                "ἡ γυνή (hê gunê)",
+                "ἡ μήτηρ (hê mêtêr)",
+                "ἡ θυγάτηρ (hê thugatêr)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἡ ἀδελφή » (hê adelphê) est le féminin d'adelphos et signifie la sœur."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels termes grecs désignent des enfants par rapport à leurs parents ?",
+              "options": [
+                "ὁ υἱός (le fils)",
+                "ὁ πάππος (le grand-père)",
+                "ἡ θυγάτηρ (la fille)",
+                "ὁ θεῖος (l'oncle)"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "« ὁ υἱός » (le fils) et « ἡ θυγάτηρ » (la fille) désignent les enfants du couple."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ πάππος » (ho pappos) ?",
+              "options": [
+                "Le neveu",
+                "Le parrain",
+                "Le grand-père",
+                "Le beau-frère"
+              ],
+              "correctAnswers": [2],
+              "explanation": "« ὁ πάππος » (ho pappos) désigne le grand-père. Il a inspiré le terme familier « papy » !"
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le maître de maison et chef légal de la famille à Athènes ?",
+              "options": [
+                "Le kyrios (ὁ κύριος)",
+                "L'éphèbe (ὁ ἔφηβος)",
+                "Le stratège (ὁ στρατηγός)",
+                "L'archonte (ὁ ἄρχων)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le kyrios est le maître de l'oikos et le représentant légal de tous les membres de la famille."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne le terme neutre « τὸ τέκνον » (to teknon) en grec ancien ?",
+              "options": [
+                "L'ami",
+                "L'enfant",
+                "L'esclave",
+                "L'animal familier"
+              ],
+              "correctAnswers": [1],
+              "explanation": "« τὸ τέκνον » (to teknon) désigne l'enfant engendré par ses parents, quel que soit son sexe."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot français partage la même racine que le grec « πατήρ » (patêr) ?",
+              "options": [
+                "Patrimoine",
+                "Fraternité",
+                "Sororité",
+                "Maternité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Patrimoine » vient du latin pater, apparenté à la même racine indo-européenne que patêr."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qui veille sur les nouveau-nés et les tout-petits au sein de la maison grecque ?",
+              "options": [
+                "Le maître d'école",
+                "Le gymnasiarque",
+                "La mère et la nourrice (ἡ τροφός)",
+                "Le stratège militaire"
+              ],
+              "correctAnswers": [2],
+              "explanation": "Les premières années de l'enfant se déroulent auprès de sa mère et d'une nourrice (trophos)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "La maison grecque et l'oikos",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que désigne globalement le mot grec « ὁ οἶκος » (ho oikos) ?",
+              "options": [
+                "La maison, la famille et les biens du domaine",
+                "Un temple public sur l'Acropole",
+                "La place du marché aux poissons",
+                "Le campement militaire des hoplites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'oikos réunit la maison matérielle, la famille, les serviteurs et l'ensemble des biens familiaux."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans la maison grecque, quelle pièce est réservée aux femmes et aux jeunes enfants ?",
+              "options": [
+                "Le gynécée (τὸ γυναικεῖον)",
+                "L'andron (ὁ ἀνδρών)",
+                "Le propylée",
+                "L'odéon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gynécée (gynaikeion) est l'espace intime où les femmes travaillent la laine et élèvent les enfants."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle pièce masculine est spécialement réservée pour recevoir les hôtes et banquets ?",
+              "options": [
+                "L'andron (ὁ ἀνδρών)",
+                "Le prytanée",
+                "Le tholos",
+                "Le bouleutérion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'andron (de anêr, l'homme) est la salle de réception ornée de lits de banquet (klinai)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel espace central à ciel ouvert distribue la lumière dans la maison grecque ?",
+              "options": [
+                "La cour intérieure (l'aulê)",
+                "Le grand donjon de guet",
+                "La galerie souterraine",
+                "Le toit-terrasse fortifié"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cour centrale (aulê) apporte air et lumière à toutes les pièces disposées autour d'elle."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels espaces trouve-t-on typiquement dans une demeure grecque citadine ?",
+              "options": [
+                "L'andron pour les réceptions",
+                "Le colisée pour les fauves",
+                "Le gynécée pour les femmes",
+                "L'amphithéâtre circulaire"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'andron (partie masculine) et le gynécée (partie féminine) structurent la maison grecque."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la porte d'entrée de la maison en grec ancien ?",
+              "options": [
+                "ἡ θύρα (hê thura)",
+                "ἡ στοά (hê stoa)",
+                "τὸ τεῖχος (to teichos)",
+                "ὁ ποταμός (ho potamos)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἡ θύρα » (hê thura) signifie la porte. Le portier de la maison s'appelle thurôros."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "De quoi étaient faits les murs des maisons athéniennes ordinaires ?",
+              "options": [
+                "De marbre sculpté et doré",
+                "De briques d'argile crue séchées au soleil",
+                "D'épaisses plaques de bronze",
+                "De blocs de granit polis"
+              ],
+              "correctAnswers": [1],
+              "explanation": "Les maisons athéniennes étaient modestes, édifiées en briques de terre séchée sur un socle de pierre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle divinité protège le foyer domestique et le feu sacré de la maison ?",
+              "options": [
+                "Hestia (Ἑστία)",
+                "Aphrodite",
+                "Artémis",
+                "Déméter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hestia est la déesse du foyer domestique ; son feu sacré est le symbole de l'union familiale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot français dérive du grec « οἶκος » (oikos) et « νόμος » (loi, règle) ?",
+              "options": [
+                "Économie",
+                "Écologie",
+                "Autonomie",
+                "Astronomie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'économie (oikonomia) désignait à l'origine la bonne gestion du domaine et de la maisonnée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ἡ ἑστία » (hê hestia) dans la maison ?",
+              "options": [
+                "Le foyer ou l'âtre",
+                "La toiture en tuiles",
+                "La fenêtre sans vitre",
+                "L'escalier extérieur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'hestia est le foyer central où l'on cuisine, se réchauffe et honore les dieux protecteurs."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les esclaves et le travail domestique",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment désigne-t-on un esclave homme en grec ancien ?",
+              "options": [
+                "ὁ δοῦλος (ho doulos)",
+                "ὁ πολίτης (ho politês)",
+                "ὁ ἥρως (ho hêrôs)",
+                "ὁ βασιλεύς (ho basileus)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ δοῦλος » (ho doulos) est l'esclave masculin. La servante se dit « ἡ δούλη » (hê doulê)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle activité artisanale occupait principalement les servantes au gynécée ?",
+              "options": [
+                "Le filage et le tissage de la laine",
+                "La forge des armes en fer",
+                "La sculpture de statues de dieux",
+                "La construction des navires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le travail textile (carder, filer et tisser la laine) était la tâche centrale des femmes et servantes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelait-on l'esclave chargé d'accompagner l'enfant à l'école ?",
+              "options": [
+                "Le pédagogue (ὁ παιδαγωγός)",
+                "L'hoplite",
+                "Le chorège",
+                "Le démiurge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pédagogue (de païs, enfant, et agô, conduire) escortait l'élève et surveillait sa bonne conduite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "À Athènes, quel rôle d'ordre public était confié à des esclaves publics scythes ?",
+              "options": [
+                "La garde de police municipale (archers scythes)",
+                "Le commandement de la cavalerie",
+                "La présidence du tribunal populaire",
+                "La gestion du trésor de Delphes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les archers scythes étaient des esclaves publics assurant la police et le calme sur l'Agora."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles tâches quotidiennes pouvaient être accomplies par les esclaves de maison ?",
+              "options": [
+                "Garder la porte d'entrée",
+                "Voter les lois à l'Assemblée",
+                "Accompagner le maître au marché",
+                "Être élu magistrat suprême"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "Les esclaves servaient de portiers, faisaient les courses ou cuisinaient, sans aucun droit civique."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « τὸ ἔργον » (to ergon) ?",
+              "options": [
+                "Le travail, l'ouvrage ou l'action",
+                "Le sommeil prolongé",
+                "La fête de village",
+                "La promenade de santé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« τὸ ἔργον » (to ergon) signifie le travail ou la tâche. Il a donné « ergonomie » en français."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel statut juridique possédaient les esclaves dans la société athénienne ?",
+              "options": [
+                "Ils étaient une propriété légale de leur maître",
+                "Ils possédaient le droit de vote citoyen",
+                "Ils étaient des magistrats rétribués",
+                "Ils formaient la garde royale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En droit grec, l'esclave était considéré comme un bien mobilier dépendant de son propriétaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelait-on l'esclave portier qui filtrait les visites à l'entrée ?",
+              "options": [
+                "Le thyrôros (ὁ θυρωρός)",
+                "Le triérarque",
+                "Le pédotribe",
+                "Le grammatiste"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le thyrôros (gardien de la thura, la porte) veillait à la sécurité de l'accès à la maison."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ἡ τροφός » (hê trophos) ?",
+              "options": [
+                "La nourrice",
+                "La cuisinière",
+                "L'institutrice",
+                "La marchande de légumes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La trophos (nourrice) allaitait les nourrissons et restait très attachée à la maisonnée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment un maître pouvait-il récompenser un esclave pour son dévouement exceptionnel ?",
+              "options": [
+                "En lui accordant l'affranchissement (la liberté)",
+                "En le nommant roi d'Athènes",
+                "En lui offrant un siège au conseil des 500",
+                "En l'adoptant comme archonte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'affranchissement libérait l'esclave, qui devenait alors un métèque (étranger libre résidant)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "L'école à Athènes et les maîtres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel maître apprenait la lecture, l'écriture et le calcul aux écoliers athéniens ?",
+              "options": [
+                "Le grammatiste (ὁ γραμματιστής)",
+                "Le cithariste",
+                "Le pédotribe",
+                "Le rhéteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le grammatiste enseignait les lettres (grammata), la lecture à voix haute et l'écriture."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quel âge environ un jeune garçon athénien commençait-il son éducation scolaire ?",
+              "options": [
+                "Vers 7 ans",
+                "Dès l'âge de 2 ans",
+                "À 15 ans révolus",
+                "À 21 ans"
+              ],
+              "correctAnswers": [0],
+              "explanation": "À l'âge de 7 ans, le garçon quittait le gynécée pour fréquenter les maîtres d'école privés."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment étaient financées les écoles primaires dans l'Athènes classique ?",
+              "options": [
+                "Par les parents eux-mêmes (écoles privées payantes)",
+                "Par l'État athénien gratuitement",
+                "Par les contributions des généraux",
+                "Par les offrandes des temples d'Apollon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'école athénienne était payante : chaque famille choisissait et rémunérait directement les maîtres."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Où les jeunes filles athéniennes recevaient-elles généralement leur éducation ?",
+              "options": [
+                "À la maison auprès de leur mère",
+                "Dans un lycée public mixte",
+                "Dans des académies de rhétorique",
+                "Dans des camps militaires en plein air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les filles restaient au sein du foyer pour apprendre les travaux ménagers, le tissage et la musique."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels maîtres enseignaient aux jeunes garçons de bonne famille à Athènes ?",
+              "options": [
+                "Le grammatiste pour les lettres",
+                "Le tribun de la plèbe romaine",
+                "Le cithariste pour la musique",
+                "Le consul impérial"
+              ],
+              "correctAnswers": [0, 2],
+              "explanation": "L'éducation reposait sur le grammatiste (lettres), le cithariste (musique) et le pédotribe (sport)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ διδάσκαλος » (ho didaskalos) ?",
+              "options": [
+                "Le maître ou professeur",
+                "L'élève paresseux",
+                "Le livre de poésie",
+                "Le pupitre de classe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ διδάσκαλος » (ho didaskalos) désigne le maître. Il a donné le mot français « didactique »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel maître enseignait l'exercice corporel et les sports à la palestre ?",
+              "options": [
+                "Le pédotribe (ὁ παιδοτρίβης)",
+                "L'aède errant",
+                "Le sophiste itinérant",
+                "L'épistate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pédotribe (entraîneur de jeunes) enseignait la gymnastique, la course et la lutte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel grand poète grec était appris par cœur et récité par tous les élèves ?",
+              "options": [
+                "Homère",
+                "Virgile",
+                "Cicéron",
+                "Horace"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Iliade et l'Odyssée d'Homère servaient de modèle pour la langue, la morale et l'histoire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "D'où vient le mot français « école » ?",
+              "options": [
+                "Du grec « σχολή » (scholê, le loisir d'étude)",
+                "Du latin « scutum » (le bouclier)",
+                "Du mot phénicien pour le parchemin",
+                "Du verbe latin signifiant courir vite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« σχολή » (scholê) désignait le loisir libéré du travail manuel, propice à la culture de l'esprit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que désigne l'idéal de la « paideia » (παιδεία) en Grèce antique ?",
+              "options": [
+                "L'éducation globale harmonisant corps et esprit",
+                "La seule préparation physique des hoplites",
+                "La pratique exclusive de la poésie lyrique",
+                "Le commerce des objets d'art précieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La paideia est l'idéal d'accomplissement intellectuel, moral et physique du futur citoyen."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Le matériel scolaire et l'écriture",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Sur quel support économique les écoliers grecs s'exerçaient-ils à écrire ?",
+              "options": [
+                "Des tablettes de bois garnies de cire",
+                "Des cahiers en papier blanc reliés",
+                "Des ardoises électroniques tactiles",
+                "Des stèles de marbre sculpté"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tablettes de cire (deltoi) permettaient d'écrire et d'effacer les exercices à volonté."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel instrument pointu en métal ou en os gravait les lettres dans la cire ?",
+              "options": [
+                "Le stylet (ὁ στῦλος / τὸ γραφεῖον)",
+                "La plume d'oie à réservoir",
+                "Le compas d'architecte",
+                "Le ciseau de sculpteur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le stylet comportait une pointe pour graver et un bout plat pour effacer en lissant la cire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment l'élève corrigeait-il une faute sur sa tablette de cire ?",
+              "options": [
+                "En lissant la cire avec la spatule plate du stylet",
+                "En grattant avec une lame tranchante",
+                "En versant de l'eau froide sur la tablette",
+                "En brûlant le bois de la tablette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'extrémité plate du stylet écrasait et lissait la cire pour permettre une réécriture immédiate."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle plante fournissait le support précieux réservé aux livres et rouleaux ?",
+              "options": [
+                "Le papyrus d'Égypte",
+                "Le roseau des marais d'Athènes",
+                "Le chêne des forêts de Crète",
+                "Le peuplier de Macédoine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tiges de papyrus découpées et collées formaient de grands rouleaux de lecture (volumina)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels objets faisaient partie de la trousse d'un écolier grec ?",
+              "options": [
+                "La tablette de cire à charnière",
+                "Le stylet métallique pointu",
+                "Le stylo-plume à cartouche",
+                "La calculatrice solaire"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La tablette de bois ciré et le stylet constituaient le matériel de base indispensable."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelait-on deux tablettes de cire reliées par une charnière de cuir ?",
+              "options": [
+                "Un diptyque (δίπτυχον)",
+                "Un triptyque",
+                "Un obélisque",
+                "Un codex moderne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le diptyque se refermait comme un livre pour protéger la cire gravée des frottements."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel roseau taillé en biseau servait à écrire à l'encre sur papyrus ?",
+              "options": [
+                "Le calame (ὁ κάλαμος)",
+                "Le pinceau de soie",
+                "Le burin en acier",
+                "Le poinçon en silex"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le calame est une tige de roseau creux taillée dont la fente retient et conduit l'encre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel tesson de poterie brisée était couramment employé pour tracer des notes ?",
+              "options": [
+                "L'ostrakon (τὸ ὄστρακον)",
+                "L'aryballe",
+                "L'amphore de vin",
+                "Le cratère à figures rouges"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ostrakon était un morceau de céramique cassée gratuit et réutilisé pour écrire ou voter."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel instrument de calcul à jetons facilitait les opérations d'arithmétique ?",
+              "options": [
+                "L'abaque (ὁ ἄβαξ)",
+                "L'astrolabe",
+                "Le sextant",
+                "La boussole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'abaque était une table quadrillée où l'on déplaçait des galets (psêphoi) pour compter."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifiait originellement le verbe grec « γράφω » (graphô) ?",
+              "options": [
+                "Égratigner, inciser ou tracer",
+                "Chanter à tue-tête",
+                "Sauter par-dessus un fossé",
+                "Courir sur le sable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« γράφω » signifiait à l'origine égratigner une surface dure, avant de signifier écrire ou dessiner."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "L'apprentissage de la musique et de la poésie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel maître apprenait aux jeunes Grecs à chanter et jouer des instruments à cordes ?",
+              "options": [
+                "Le cithariste (ὁ κιθαριστής)",
+                "Le géomètre",
+                "Le sophiste",
+                "L'éphore"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cithariste enseignait le maniement de la lyre et le répertoire poétique traditionnel."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel instrument à cordes pincées était le symbole de l'harmonie et d'Apollon ?",
+              "options": [
+                "La lyre (ἡ λύρα)",
+                "Le violon classique",
+                "Le clavecin",
+                "La trompette droite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lyre, souvent confectionnée avec une écaille de tortue, accompagnait les chants poétiques."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel instrument à vent à double tuyau et anches était très répandu en Grèce ?",
+              "options": [
+                "L'aulos (ὁ αὐλός)",
+                "L'orgue hydraulique",
+                "L'accordéon diatonique",
+                "Le trombone à coulisse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aulos possédait deux tuyaux percés de trous et produisait un son puissant et expressif."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi la musique était-elle jugée essentielle dans l'éducation athénienne ?",
+              "options": [
+                "Elle harmonisait l'esprit et formait le sens moral",
+                "Elle remplaçait le service militaire obligatoire",
+                "Elle permettait d'éviter tout effort de lecture",
+                "Elle servait uniquement à faire fortune au théâtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Grecs attribuaient à la musique un pouvoir éducatif sur l'éthos (le caractère moral)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels instruments de musique nobles étaient couramment pratiqués en Grèce antique ?",
+              "options": [
+                "La lyre",
+                "La cithare",
+                "La guitare électrique",
+                "Le cor d'harmonie moderne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La lyre et la cithare étaient les deux grands instruments à cordes pincées des Grecs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie littéralement le mot grec « ἡ μουσική » (hê mousikê) ?",
+              "options": [
+                "L'art inspiré par les Muses",
+                "Le chant des guerriers armés",
+                "Le bruit des vagues en mer",
+                "La parole des magistrats"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« mousikê » désignait l'ensemble des arts des Muses : poésie chantée, mélodie et danse."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de Muses inspiratrices dénombre la mythologie grecque classique ?",
+              "options": [
+                "Neuf Muses",
+                "Trois Muses",
+                "Douze Muses",
+                "Sept Muses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les neuf Muses, filles de Zeus et de Mnémosyne (la Mémoire), protègent chacune un art."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle Muse est la protectrice attitrée de la poésie épique et d'Homère ?",
+              "options": [
+                "Calliope (Καλλιόπη)",
+                "Clio",
+                "Thalie",
+                "Uranie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Calliope (« à la belle voix ») préside à la poésie héroïque et aux grandes épopées."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "De quelle matière était souvent faite la caisse de résonance de la lyre primitive ?",
+              "options": [
+                "D'une carapace de tortue",
+                "D'un coquillage géant",
+                "D'une corne de taureau creusée",
+                "D'un bloc d'écorce de pin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Selon le mythe, le dieu Hermès fabriqua la première lyre en tendant des cordes sur une carapace de tortue."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel poète thébain composait de célèbres chants pour fêter les athlètes victorieux ?",
+              "options": [
+                "Pindare",
+                "Sophocle",
+                "Thucydide",
+                "Hésiode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pindare est l'auteur des Olympiques et Pythiques, odes célébrant les victoires sportives."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "La palestre et les sports",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment s'appelle l'établissement clos où les garçons s'entraînaient à la lutte ?",
+              "options": [
+                "La palestre (ἡ παλαίστρα)",
+                "L'hippodrome",
+                "Le prytanée",
+                "L'acropole"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La palestre était une cour sablée entourée de portiques dédiée aux sports de combat."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "De quel mot grec dérive directement le terme « palestre » ?",
+              "options": [
+                "De « palê » (ἡ πάλη), la lutte",
+                "De « polis » (la cité)",
+                "De « pyr » (le feu)",
+                "De « pan » (tout)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἡ πάλη » (hê palê) désigne la lutte, discipline centrale de l'éducation physique grecque."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "De quelle substance les athlètes s'enduisaient-ils le corps avant l'exercice ?",
+              "options": [
+                "D'huile d'olive",
+                "De lait d'ânesse",
+                "De miel liquide",
+                "De cire chaude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'huile d'olive protégeait la peau contre le soleil et le frottement du sable de combat."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel instrument incurvé en métal servait à racler la sueur et l'huile après l'effort ?",
+              "options": [
+                "Le strigile (ἡ στλεγγίς)",
+                "Le ciseau à bois",
+                "Le fer de lance",
+                "Le rasoir droit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le strigile raclait le mélange de sueur, d'huile et de poussière collé à la peau de l'athlète."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles disciplines composaient le célèbre pentathlon des Jeux antiques ?",
+              "options": [
+                "La course à pied",
+                "Le lancer du disque",
+                "Le marathon aquatique",
+                "Le tir au pistolet"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le pentathlon réunissait la course, le saut avec haltères, le disque, le javelot et la lutte."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie littéralement le mot grec « gymnasion » (γυμνάσιον) ?",
+              "options": [
+                "Le lieu où l'on s'exerce nu (gymnos)",
+                "La salle des repas sacrés",
+                "La cour du palais royal",
+                "Le sanctuaire des victoires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« γυμνός » (gymnos) signifie nu : les athlètes grecs concouraient sans habit."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel petit flacon en céramique à panse ronde contenait l'huile de l'athlète ?",
+              "options": [
+                "L'aryballe (ὁ ἀρύβαλλος)",
+                "Le cratère monumental",
+                "L'amphore de transport",
+                "L'hydrie à eau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'aryballe était transporté au poignet par une lanière en cuir jusqu'à la palestre."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel sport de combat très rude associait les techniques de lutte et de pugilat ?",
+              "options": [
+                "Le pancrace (τὸ παγκράτιον)",
+                "L'escrime médiévale",
+                "Le tir à l'arc à cheval",
+                "La joute équestre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pancrace (tous les pouvoirs) autorisait tous les coups sauf les morsures et crever les yeux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle récompense végétale honorifique recevait le vainqueur des Jeux Olympiques ?",
+              "options": [
+                "Une couronne d'olivier sauvage (kotinos)",
+                "Un diadème d'or massif",
+                "Un bouquet de roses rouges",
+                "Un collier de perles précieuses"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La couronne d'olivier sauvage d'Olympie symbolisait la plus haute gloire athlétique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi l'exercice physique était-il essentiel pour le futur citoyen grec ?",
+              "options": [
+                "Pour être capable de défendre la cité en tant que soldat hoplite",
+                "Pour participer à des spectacles de foire rémunérés",
+                "Pour être exempté de toutes les taxes citoyennes",
+                "Pour voyager gratuitement à bord des galères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le citoyen athénien devait maintenir une vigueur physique pour porter l'armure de l'hoplite."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les jeux d'enfants et divertissements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel jeu d'adresse populaire utilisait de petits os de mouton ou de chèvre ?",
+              "options": [
+                "Les osselets (οἱ ἀστράγαλοι)",
+                "Les dés en ivoire",
+                "Les fléchettes en plomb",
+                "Les billes en verre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les astragales (osselets) avaient quatre faces inégales valant chacune un nombre de points."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel jouet circulaire en métal ou en bois les enfants faisaient-ils rouler dans la rue ?",
+              "options": [
+                "Le cerceau (ὁ τροχός)",
+                "La trottinette",
+                "Le monocycle",
+                "La roue de charriot"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cerceau (trochos) était guidé à l'aide d'une baguette en métal recourbée."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que désigne le mot grec « ἡ σφαῖρα » (hê sphaira) dans les cours de récréation ?",
+              "options": [
+                "La balle ou le ballon",
+                "La toupie en bois",
+                "Le cerf-volant",
+                "L'échasse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les enfants jouaient à la balle (sphaira) faite de cuir et remplie de plumes ou de laine."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on les figurines articulées en terre cuite avec lesquelles jouaient les fillettes ?",
+              "options": [
+                "Les poupées (plangones)",
+                "Les marionnettes d'ombre",
+                "Les statuettes votives",
+                "Les idoles de marbre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ces poupées articulées en terre cuite peinte accompagnaient les petites filles jusqu'au mariage."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels jouets traditionnels divertissaient les enfants de la Grèce antique ?",
+              "options": [
+                "La toupie actionnée au fouet",
+                "Le petit chariot tiré par une cordelette",
+                "La console de jeu électronique",
+                "L'hélicoptère téléguidé"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les toupies, chariots à roulettes et hochets animaient le quotidien des enfants grecs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie le verbe grec « παίζω » (paizô) ?",
+              "options": [
+                "Jouer ou plaisanter",
+                "Pleurer en silence",
+                "Courir au pas cadencé",
+                "Combattre sur le ring"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« παίζω » (paizô) signifie jouer ou s'amuser comme un enfant (païs)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que faisaient les jeunes filles grecques de leurs jouets la veille de leur mariage ?",
+              "options": [
+                "Elles les consacraient à Artémis",
+                "Elles les enterraient dans leur jardin",
+                "Elles les brûlaient au carrefour",
+                "Elles les jetaient dans la mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Donner ses poupées à Artémis marquait solennellement la fin de l'enfance et l'entrée dans la vie adulte."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel jeu d'adresse au bord de l'eau consistait à faire ricocher des tessons de poterie plate ?",
+              "options": [
+                "L'épostrakismos (les ricochets)",
+                "Le saut de grenouille",
+                "La pêche au harpon",
+                "Le plongeon acrobatique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'épostrakismos consistait à lancer des galets plats ou tessons pour bondir sur l'eau."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À quel jeu moderne ressemble le jeu grec de la « mouche de bronze » (chalkê muia) ?",
+              "options": [
+                "À Colin-Maillard (les yeux bandés)",
+                "Au jeu de l'oie",
+                "À la marelle à neuf cases",
+                "Aux dames sur damier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un joueur avait les yeux bandés et tentait d'attraper ses camarades qui voletaient autour de lui."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel animal familier est représenté jouant avec les enfants sur de nombreuses stèles athéniennes ?",
+              "options": [
+                "Le petit chien de compagnie",
+                "Le perroquet d'Inde",
+                "Le furet apprivoisé",
+                "Le singe savant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les bas-reliefs et vases montrent souvent des enfants courant avec un petit chien de compagnie."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les repas quotidiens et l'alimentation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que mangeaient souvent les Grecs le matin au réveil (l'akratismos) ?",
+              "options": [
+                "Du pain d'orge trempé dans du vin pur",
+                "Des œufs au plat avec de la charcuterie",
+                "Des tartines de confiture beurrées",
+                "Un rôti de sanglier complet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'akratismos était un repas matinal très sobre composé de pain sec humecté de vin."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel aliment quotidien à base de farine d'orge servait de base à la nourriture du peuple ?",
+              "options": [
+                "La maza (ἡ μᾶζα)",
+                "La focaccia",
+                "La polenta de maïs",
+                "La brioche feuilletée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La maza était une galette ou pâte d'orge non levée, aliment quotidien des Grecs modestes."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels sont les trois produits piliers de la « triade méditerranéenne » antique ?",
+              "options": [
+                "Les céréales, l'olivier et la vigne",
+                "Le riz, la pomme de terre et le maïs",
+                "Le café, le sucre et le cacao",
+                "Le soja, le thé et le bambou"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les céréales (blé/orge), l'huile d'olive et le vin forment la base de l'alimentation grecque."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « τὸ ἔλαιον » (to elaion) ?",
+              "options": [
+                "L'huile d'olive",
+                "Le vinaigre de vin",
+                "Le lait de brebis",
+                "L'eau de source"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« τὸ ἔλαιον » (to elaion) désigne l'huile d'olive, utilisée pour la cuisine, l'éclairage et la toilette."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels aliments simples trouvaient-on d'ordinaire sur la table d'un citoyen athénien ?",
+              "options": [
+                "Des olives noires et des figues sèches",
+                "Du fromage de chèvre ou de brebis",
+                "Des steaks de bœuf importés d'Irlande",
+                "Des pommes de terre rôties au four"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Olives, figues, fromage et galettes constituaient le menu ordinaire des Grecs."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ ἄρτος » (ho artos) ?",
+              "options": [
+                "Le pain de froment (blé)",
+                "La viande de porc",
+                "La soupe de lentilles",
+                "Le gâteau d'anniversaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ ἄρτος » (ho artos) désigne le pain de blé blanc levé, plus raffiné et cher que la maza d'orge."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi la viande de bœuf était-elle rarement mangée au quotidien par le peuple ?",
+              "options": [
+                "Elle coûtait cher et était réservée aux fêtes avec sacrifices religieux",
+                "Elle était interdite par toutes les lois civiques d'Athènes",
+                "Les Grecs étaient tous strictement végétariens par décret",
+                "Il n'existait aucun bovin sur le sol grec antique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La viande était rare et précieuse : on la dégustait surtout après les sacrifices publics offerts aux dieux."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel était le repas principal pris en fin de journée en famille ou entre amis ?",
+              "options": [
+                "Le deipnon (τὸ δεῖπνον)",
+                "L'akratismos",
+                "L'ariston",
+                "La collation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le deipnon était le dîner du soir, le moment le plus copieux et convivial de la journée."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Faute de sucre moderne, quel ingrédient naturel édulcorait les desserts antiques ?",
+              "options": [
+                "Le miel (τὸ μέλι)",
+                "Le sirop de canne raffiné",
+                "La sève d'érable du Canada",
+                "L'aspartame synthétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le miel (meli), notamment celui du mont Hymette en Attique, parfumait gâteaux et boissons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ ἰχθῦς » (ho ichthus), très apprécié sur les marchés athéniens ?",
+              "options": [
+                "Le poisson",
+                "L'agneau",
+                "Le canard",
+                "Le lièvre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ ἰχθῦς » (ho ichthus) signifie le poisson. Les Athéniens raffolaient des poissons frais ou salés."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Le banquet et la vie sociale",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment s'appelle la fête rituelle masculine où les invités boivent et conversent après le dîner ?",
+              "options": [
+                "Le symposium (τὸ συμπόσιον)",
+                "L'héliée",
+                "Le prytanée",
+                "L'odéon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le banquet ou symposium suivait le repas et était consacré au vin partagé, aux chants et à la philosophie."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie littéralement le mot grec « συμπόσιον » (symposion) ?",
+              "options": [
+                "L'action de boire ensemble (syn + pinein)",
+                "L'action de manger debout",
+                "Le concours de rhétorique",
+                "La fête des moissons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De sun (ensemble) et de la racine pinein (boire), symposion signifie « réunion de buveurs »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quel grand vase en céramique mélangeait-on le vin et l'eau au centre de la pièce ?",
+              "options": [
+                "Le cratère (ὁ κρατήρ)",
+                "L'aryballe",
+                "Le lecythe",
+                "La pyxide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cratère (du verbe kerannumi, mélanger) recevait le vin et l'eau pour les doser harmonieusement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pourquoi les Grecs coupaient-ils toujours leur vin avec de l'eau fraîche ?",
+              "options": [
+                "Boire du vin pur était considéré comme une coutume barbare et dangereuse",
+                "Leur vin ne contenait aucune trace d'alcool naturel",
+                "L'eau de mer était nécessaire pour la conservation",
+                "Pour punir les convives qui arrivaient en retard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vin pur (akratos) était réputé rendre fou ou violent ; la modération exigeait de le couper d'eau."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels objets ou vases voyait-on couramment sur les tables d'un banquet grec ?",
+              "options": [
+                "Le cratère pour le mélange du vin",
+                "Le kylix pour boire les coupes",
+                "La canette d'aluminium",
+                "Le verre en cristal taillé moderne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le cratère (mélange) et le kylix (coupe évasée à anses) étaient les vases emblématiques du banquet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans quelle posture les convives passaient-ils la soirée du banquet dans l'andron ?",
+              "options": [
+                "Allongés sur des lits de repos appelés klinai",
+                "Assis sur des chaises hautes en marbre",
+                "À genoux sur des nattes de paille",
+                "Debout autour d'un grand buffet central"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les convives s'allongeaient sur des lits (klinai), accoudés sur le bras gauche pour garder la main droite libre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel jeu d'adresse consistait à lancer le fond de son vin sur une cible métallique ?",
+              "options": [
+                "Le cottabe (ὁ κότταβος)",
+                "Le billard",
+                "Le tir à l'arc d'appartement",
+                "La roulette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le cottabe (kottabos) mettait à l'épreuve l'adresse des convives lançant les dernières gouttes de leur kylix."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment s'appelle la coupe large et peu profonde à deux anses fines utilisée pour boire le vin ?",
+              "options": [
+                "Le kylix (ἡ κύλιξ)",
+                "L'amphore",
+                "L'œnochoé",
+                "L'hydrie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le kylix avait souvent un médaillon peint au fond représentant Dionysos ou un satyre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel invité désigné dirigeait la fête et fixait la proportion d'eau et de vin ?",
+              "options": [
+                "Le symposiarque (roi du banquet)",
+                "L'échanson scythe",
+                "Le cithariste de garde",
+                "L'archonte de la cité"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le symposiarque décidait du nombre de coupes et de l'ambiance des discussions philosophiques."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel célèbre dialogue de Platon met en scène Socrate débattant d'amour au cours d'un banquet ?",
+              "options": [
+                "Le Banquet (Συμπόσιον)",
+                "La République",
+                "Phédon",
+                "L'Apologie de Socrate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans Le Banquet de Platon, chaque convive prononce à tour de rôle un discours en hommage à Éros."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Décrire et raconter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Décrire une personne : adjectifs simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie l'adjectif grec fondamental « καλός » (kalos) ?",
+              "options": [
+                "Beau, harmonieux ou noble",
+                "Laid et difforme",
+                "Lourd et massif",
+                "Sombre et effrayant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« καλός » (kalos) désigne la beauté extérieure ainsi que la noblesse morale et esthétique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'adjectif grec « ἀγαθός » (agathos) ?",
+              "options": [
+                "Bon, vertueux ou courageux",
+                "Mauvais et mesquin",
+                "Pauvre et fragile",
+                "Injuste et traître"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἀγαθός » (agathos) exprime la bonté, la vertu civique et l'excellence (arétê)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle expression grecque célèbre résume l'idéal de l'homme accompli à la fois beau et bon ?",
+              "options": [
+                "Kalos kagathos (καλὸς κἀγαθός)",
+                "Carpe diem",
+                "Veni vidi vici",
+                "Mens sana in corpore sano"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La formule « kalos kagathos » exprime l'idéal grec associant harmonie physique et droiture morale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'adjectif grec « μικρός » (mikros) ?",
+              "options": [
+                "Petit",
+                "Immense",
+                "Large",
+                "Profond"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« μικρός » (mikros) signifie petit. Il a donné « microscope », « microbe » et « microphone »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs grecs expriment une qualité physique ou morale positive ?",
+              "options": [
+                "καλός (beau)",
+                "ἀγαθός (bon)",
+                "κακός (mauvais)",
+                "δειλός (lâche)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« καλός » (beau) et « ἀγαθός » (bon) expriment les vertus suprêmes de l'homme accompli."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'adjectif grec « μέγας » (megas) ?",
+              "options": [
+                "Grand ou puissant",
+                "Minuscule",
+                "Étroit",
+                "Court"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« μέγας » (megas) signifie grand. Il se retrouve dans « mégalithe », « mégapole » et « mégaphone »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie l'adjectif grec « σοφός » (sophos) ?",
+              "options": [
+                "Sage, savant ou habile",
+                "Ignorant et naïf",
+                "Fou et déraisonnable",
+                "Avare et cupide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« σοφός » (sophos) qualifie celui qui possède sagesse et compétence. Il a donné « philosophie »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'adjectif opposé « κακός » (kakos) en grec ancien ?",
+              "options": [
+                "Mauvais, méchant ou lâche",
+                "Splendide et lumineux",
+                "Fort et courageux",
+                "Honnête et bienveillant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« κακός » (kakos) désigne ce qui est mauvais ou laid. Il a donné le terme « cacophonie »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie l'adjectif grec « νέος » (neos) ?",
+              "options": [
+                "Jeune ou nouveau",
+                "Antique et décrépit",
+                "Ruineux et stérile",
+                "Plein de rides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« νέος » (neos) signifie jeune ou nouveau. On le retrouve dans « néolithique » et « néologisme »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on « ancien » ou « d'autrefois » en grec ancien ?",
+              "options": [
+                "παλαιός (palaios)",
+                "ταχύς (tachus)",
+                "κοῦφος (kouphos)",
+                "ὀξύς (oxus)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« παλαιός » (palaios) signifie ancien. Il a donné le préfixe « paléo- » (ex: paléontologie)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les parties du corps",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ἡ κεφαλή » (hê kephalê) ?",
+              "options": [
+                "La tête",
+                "Le genou",
+                "L'épaule",
+                "Le poignet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἡ κεφαλή » (hê kephalê) désigne la tête. Il a donné le terme médical « céphalée »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel organe de la vue désigne « ὁ ὀφθαλμός » (ho ophthalmos) ?",
+              "options": [
+                "L'œil",
+                "Le nez",
+                "L'oreille",
+                "La langue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ ὀφθαλμός » (ho ophthalmos) désigne l'œil. Il a donné « ophtalmologie » en français."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que désigne le mot grec « ἡ χείρ » (hê cheir, génitif cheiros) ?",
+              "options": [
+                "La main",
+                "La jambe",
+                "Le thorax",
+                "Le coude"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἡ χείρ » (hê cheir) désigne la main. Il est à l'origine de « chirurgien » (qui opère de la main)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ πούς » (ho pous, génitif podos) ?",
+              "options": [
+                "Le pied",
+                "Le bras",
+                "Le doigt",
+                "Le nombril"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ πούς » (ho pous, au génitif podos) est le pied. Il a donné « podologue » et « trépied »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles parties du visage retrouve-t-on parmi ces termes grecs ?",
+              "options": [
+                "ἡ ῥίς (le nez)",
+                "τὸ στόμα (la bouche)",
+                "ὁ νεφρός (le rein)",
+                "τὸ ἧπαρ (le foie)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« ἡ ῥίς » (le nez, d'où rhinite) et « τὸ στόμα » (la bouche, d'où stomatologue) sont sur le visage."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que désigne le mot grec « ἡ καρδία » (hê kardia) ?",
+              "options": [
+                "Le cœur",
+                "L'estomac",
+                "Le poumon",
+                "Le rein"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἡ καρδία » (hê kardia) désigne le cœur. Il a donné la spécialité médicale de la « cardiologie »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « τὸ σῶμα » (to sôma) ?",
+              "options": [
+                "Le corps",
+                "L'âme",
+                "L'esprit",
+                "La voix"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« τὸ σῶμα » (to sôma) désigne le corps physique, par opposition à l'âme (psuchê)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « τὸ οὖς » (to ous, génitif ôtos) ?",
+              "options": [
+                "L'oreille",
+                "La dent",
+                "La joue",
+                "Le menton"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« τὸ οὖς » (to ous, génitif ôtos) désigne l'oreille. Il a donné la racine médicale « oto- » (ex: otite)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot grec désigne la jambe et a donné le nom de la jambière d'hoplite « cnémide » ?",
+              "options": [
+                "ἡ κνήμη (hê knêmê)",
+                "ὁ δάκτυλος",
+                "τὸ γόνυ",
+                "ὁ ὦμος"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἡ κνήμη » (hê knêmê) désigne la jambe. Les cnémides (knêmides) protégeaient les tibias des guerriers."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ ὀδούς » (ho odous, génitif odontos) ?",
+              "options": [
+                "La dent",
+                "L'ongle",
+                "Le cil",
+                "Le sourcil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ ὀδούς » (ho odous, génitif odontos) est la dent. Il a donné le mot « odontologie »."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les vêtements et parures",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le vêtement de base, tunique portée par les hommes comme par les femmes ?",
+              "options": [
+                "Le chiton (ὁ χιτών)",
+                "La toge romaine",
+                "Le pantalon bouffant",
+                "Le pourpoint en cuir"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le chiton est la tunique drapée de lin ou de laine fermée sur les épaules par des fibules."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment s'appelle le grand manteau de laine drapé que les citoyens portaient par-dessus le chiton ?",
+              "options": [
+                "L'himation (τὸ ἱμάτιον)",
+                "Le sarouel",
+                "La djellaba",
+                "La cape à capuche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'himation était une ample pièce de tissu drapée autour du corps selon des règles d'élégance précises."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel vêtement féminin en laine était agrafé aux épaules avec un rabat sur la poitrine ?",
+              "options": [
+                "Le péplos (ὁ πέπλος)",
+                "Le tablier de forge",
+                "La chasuble brodée",
+                "La cotte d'armes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le péplos était la tunique dorienne traditionnelle en laine portée par les femmes grecques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que portaient couramment les Grecs aux pieds lorsqu'ils marchaient dans la cité ?",
+              "options": [
+                "Des sandales de cuir (τὰ σανδάλια)",
+                "Des bottes en caoutchouc",
+                "Des sabots de chêne",
+                "Des mocassins fourrés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les sandales de cuir (sandalia) maintenaient le pied avec des lanières nouées aux chevilles."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels vêtements formaient la base du costume masculin classique à Athènes ?",
+              "options": [
+                "Le chiton porté comme tunique",
+                "L'himation porté comme manteau",
+                "La chemise de soie à boutons",
+                "Le jean en denim bleu"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le chiton (dessous) et l'himation (manteau de dessus) composaient l'habit athénien."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel court manteau fendu était porté par les cavaliers, chasseurs et jeunes éphèbes ?",
+              "options": [
+                "La chlamyde (ἡ χλαμύς)",
+                "Le burnous",
+                "Le pardessus",
+                "Le boléro"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La chlamyde était une courte cape militaire agrafée sur l'épaule droite pour faciliter les mouvements."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel chapeau de feutre à larges bords protégeait les voyageurs du soleil et de la pluie ?",
+              "options": [
+                "Le pétase (ὁ πέτασος)",
+                "Le casque corinthien",
+                "Le béret marin",
+                "La mitre dorée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pétase était le chapeau de voyageur par excellence, souvent associé au dieu messager Hermès."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle broche ou épingle métallique servait à retenir les plis des tuniques sur les épaules ?",
+              "options": [
+                "La fibule (ἡ περόνη)",
+                "Le cadenas de fer",
+                "L'anneau de rideau",
+                "Le bouton cousu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fibule (peronê en grec) tenait lieu d'épingle de sûreté décorative pour fixer le vêtement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ στέφανος » (ho stephanos) ?",
+              "options": [
+                "La couronne de feuillage ou de fleurs",
+                "Le bracelet d'or massif",
+                "La gourmette d'argent",
+                "Le collier d'émeraudes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le stephanos est la couronne (laurier, lierre, myrte) arborée lors des fêtes, concours et banquets."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle fibre végétale importée servait à tisser des tuniques fines et légères pour l'été ?",
+              "options": [
+                "Le lin (τὸ λίνον)",
+                "Le nylon moderne",
+                "La viscose artificielle",
+                "Le chanvre brut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lin (linon) offrait un tissu souple et frais particulièrement apprécié sous le soleil méditerranéen."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Situer dans l'espace : prépositions et adverbes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie la préposition grecque « ἐν » (en) suivie du cas datif ?",
+              "options": [
+                "Dans ou sur (lieu où l'on est)",
+                "Vers ou contre",
+                "Loin de tout",
+                "Sans personne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἐν » indique la situation stationnaire sans mouvement : « ἐν τῇ πόλει » = dans la ville."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie la préposition « εἰς » (eis) suivie de l'accusatif ?",
+              "options": [
+                "Vers l'intérieur de ou dans (avec mouvement)",
+                "En provenance directe de",
+                "Sous le sol profond",
+                "Par-dessus les toits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« εἰς » indique le mouvement pénétrant dans un lieu : « εἰs τὸν οἶκον » = vers la maison."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie la préposition « ἐκ » ou « ἐξ » (ek / ex) suivie du génitif ?",
+              "options": [
+                "Hors de ou en venant de",
+                "Au beau milieu de",
+                "En direction de",
+                "Autour de la place"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἐκ » (devant consonne) ou « ἐξ » (devant voyelle) indique la sortie ou l'origine d'un lieu."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe de lieu grec « ἐνθάδε » (enthade) ?",
+              "options": [
+                "Ici ou en cet endroit",
+                "Nulle part au monde",
+                "Là-bas tout au bout",
+                "Partout à la fois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἐνθάδε » (enthade) désigne le lieu où se trouve le locuteur : « ici »."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles prépositions grecques expriment une idée de déplacement ou de trajectoire ?",
+              "options": [
+                "εἰς (vers l'intérieur de)",
+                "ἐκ (hors de)",
+                "καί (et)",
+                "δέ (or, d'autre part)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« εἰς » (vers) et « ἐκ » (hors de) sont des prépositions spatiales indiquant un trajet."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la préposition « περί » (peri) quand elle marque une position ?",
+              "options": [
+                "Autour de",
+                "En face de",
+                "Au-dessous de",
+                "À l'écart de"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« περί » exprime l'encerclement ou le pourtour. Il a donné « périmètre » et « périphérique »."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la préposition « πρός » (pros) suivie du cas accusatif ?",
+              "options": [
+                "Vers ou en direction de",
+                "Loin de tout regard",
+                "Sous le plancher",
+                "Au fond de la pièce"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« πρός » avec accusatif indique la direction ou le mouvement orienté vers un but."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel adverbe interrogatif grec pose la question du lieu : « Où ? » ?",
+              "options": [
+                "ποῦ ; (pou)",
+                "τίς ; (tis)",
+                "πῶς ; (pôs)",
+                "πότε ; (pote)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ποῦ » (avec accent circonflexe) est l'adverbe interrogatif signifiant « où ? »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la préposition « ὑπό » (hupo) quand elle indique une situation spatiale ?",
+              "options": [
+                "Sous ou au-dessous de",
+                "Au-dessus de",
+                "À l'extérieur de",
+                "En plein air"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὑπό » (hupo) signifie sous. On le retrouve dans « hypothermie » et « hypogée »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la préposition « ὑπέρ » (huper) dans l'espace ?",
+              "options": [
+                "Au-dessus de ou par-delà",
+                "Au fin fond de la terre",
+                "Sous les racines d'un arbre",
+                "Au ras du sol"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὑπέρ » (huper) signifie au-dessus ou au-delà. Il a donné le préfixe français « hyper- »."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Situer dans le temps : moments de la journée et saisons",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec féminin « ἡ ἡμέρα » (hê hêmera) ?",
+              "options": [
+                "Le jour ou la journée",
+                "La nuit obscure",
+                "La semaine de travail",
+                "L'heure précise"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἡ ἡμέρα » (hê hêmera) signifie le jour. Il a donné l'adjectif « éphémère » (qui ne dure qu'un jour)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « la nuit » en grec ancien ?",
+              "options": [
+                "ἡ νύξ (hê nux)",
+                "ἡ σελήνη (hê selênê)",
+                "τὸ ὕδωρ (to hudôr)",
+                "ἡ σκιά (hê skia)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἡ νύξ » (hê nux, génitif nuktos) est la nuit. Il a donné la racine « nyct- » (ex: nycthémère)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ χρόνος » (ho chronos) ?",
+              "options": [
+                "Le temps qui s'écoule",
+                "La vitesse de course",
+                "La saison des pluies",
+                "Le calendrier gravé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ χρόνος » (ho chronos) désigne le temps. Il a donné « chronologie », « chronomètre »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe temporel grec « νῦν » (nun) ?",
+              "options": [
+                "Maintenant ou à présent",
+                "Avant-hier",
+                "Plus tard",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« νῦν » (nun) signifie maintenant, dans l'instant présent."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels termes grecs désignent des saisons de l'année ?",
+              "options": [
+                "ὁ χειμών (l'hiver)",
+                "τὸ θέρος (l'été)",
+                "ὁ ποταμός (le fleuve)",
+                "τὸ ὄρος (la montagne)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« ὁ χειμών » (l'hiver) et « τὸ θέρος » (l'été) sont deux saisons majeures de l'année grecque."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la saison froide de l'hiver en grec ancien ?",
+              "options": [
+                "ὁ χειμών (ho cheimôn)",
+                "τὸ ἔαρ (to ear)",
+                "τὸ θέρος (to theros)",
+                "τὸ φθινόπωρον"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ χειμών » (ho cheimôn) désigne l'hiver, le mauvais temps et les tempêtes en mer."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne le mot grec « τὸ θέρος » (to theros) ?",
+              "options": [
+                "L'été et la saison des moissons",
+                "Le brouillard d'automne",
+                "La gelée printanière",
+                "La neige des sommets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« τὸ θέρος » (to theros) désigne l'été chaud propice à la récolte des céréales."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le printemps en grec ancien ?",
+              "options": [
+                "τὸ ἔαρ (to ear)",
+                "ὁ ἄνεμος (ho anemos)",
+                "ἡ θάλασσα (hê thalassa)",
+                "τὸ πῦρ (to pur)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« τὸ ἔαρ » (to ear) est le printemps, saison de la renaissance des plantes et de la navigation."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe temporel « ἀεί » (aei) en grec ancien ?",
+              "options": [
+                "Toujours ou sans cesse",
+                "Parfois",
+                "À peine",
+                "Hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἀεί » (aei) signifie toujours ou éternellement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel adverbe interrogatif grec sert à demander « Quand ? » ?",
+              "options": [
+                "πότε ; (pote)",
+                "ποῦ ; (pou)",
+                "πῶς ; (pôs)",
+                "τί ; (ti)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« πότε » (avec accent sur l'omicro) interroge sur le moment : « quand ? »."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Les verbes du quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le verbe grec « λέγω » (legô) à la 1re personne du singulier ?",
+              "options": [
+                "Je dis ou je parle",
+                "Je dors",
+                "Je cours",
+                "Je mange"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« λέγω » (legô) signifie dire, raconter ou parler. Il a donné « dialogue » et « lexique »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le verbe « γράφω » (graphô) ?",
+              "options": [
+                "J'écris ou je dessine",
+                "J'écoute de la musique",
+                "J'achète au marché",
+                "Je nage en mer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« γράφω » signifie tracer des signes, peindre ou écrire. On le retrouve dans « calligraphie »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le verbe grec « ἀκούω » (akouô) ?",
+              "options": [
+                "J'écoute ou j'entends",
+                "Je goûte un plat",
+                "Je touche du doigt",
+                "Je respire une fleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἀκούω » (akouô) signifie entendre ou prêter l'oreille. Il a donné « acoustique »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le verbe grec « βλέπω » (blepô) ou « ὁράω » (horaô) ?",
+              "options": [
+                "Je regarde ou je vois",
+                "Je ferme les yeux",
+                "Je tourne le dos",
+                "Je m'endors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« βλέπω » et « ὁράω » expriment l'action de regarder ou voir par les yeux."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes grecs décrivent des actions de langage et de communication ?",
+              "options": [
+                "λέγω (je dis)",
+                "γράφω (j'écris)",
+                "καθεύδω (je dors)",
+                "πίπτω (je tombe)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« λέγω » (parler) et « γράφω » (écrire) expriment la parole et la trace écrite."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie le verbe grec de mouvement « βαίνω » (bainô) ?",
+              "options": [
+                "Je marche ou j'avance",
+                "Je monte à cheval",
+                "Je glisse sur l'eau",
+                "Je vole dans les airs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« βαίνω » exprime le déplacement pédestre, la marche en avant."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie le verbe grec « ἐσθίω » (esthiô) ?",
+              "options": [
+                "Je mange",
+                "Je verse à boire",
+                "Je prépare la braise",
+                "Je lave la vaisselle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἐσθίω » (esthiô) signifie manger ou se nourrir."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie le verbe grec « πίνω » (pinô) ?",
+              "options": [
+                "Je bois",
+                "Je souffle",
+                "Je siffle",
+                "Je baille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« πίνω » (pinô) signifie boire. Il a donné le terme biologique « pinocytose »."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie le verbe grec « μανθάνω » (manthanô) ?",
+              "options": [
+                "J'apprends ou je comprends",
+                "J'oublie la leçon",
+                "Je refuse d'étudier",
+                "Je perds patience"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« μανθάνω » (manthanô) signifie apprendre ou s'instruire. Il a donné « mathématiques »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie le verbe grec très employé « φέρω » (pherô) ?",
+              "options": [
+                "Je porte ou j'apporte",
+                "Je brise en deux",
+                "Je jette au loin",
+                "Je cache sous terre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« φέρω » (pherô) signifie porter, transporter ou supporter. Il a donné « métaphore »."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Raconter une action : phrases simples et sujets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se traduit la forme verbale grecque « εἰμί » (eimi) au présent ?",
+              "options": [
+                "Je suis",
+                "Tu as",
+                "Il court",
+                "Nous allons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« εἰμί » est la 1re personne du singulier du verbe être : « je suis »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on « il est » ou « elle est » en grec ancien ?",
+              "options": [
+                "ἐστί(ν) (esti)",
+                "εἶ (ei)",
+                "ἐσμέν (esmen)",
+                "εἰσί(ν) (eisi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἐστί » (ou ἐστίν devant voyelle) est la 3e personne du singulier du verbe être."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel cas grammatical marque obligatoirement le sujet d'un verbe conjugué en grec ?",
+              "options": [
+                "Le nominatif",
+                "L'accusatif",
+                "Le génitif",
+                "Le datif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le nominatif est le cas du sujet et de son attribut dans la proposition grecque."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel cas grammatical exprime le complément d'objet direct (COD) du verbe ?",
+              "options": [
+                "L'accusatif",
+                "Le vocatif",
+                "Le locatif",
+                "L'ablatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accusatif est le cas réservé au complément d'objet direct recevant l'action du verbe."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes appartiennent au verbe être « εἰμί » au présent de l'indicatif ?",
+              "options": [
+                "εἰμί (je suis)",
+                "ἐστί (il est)",
+                "λέγει (il dit)",
+                "γράφει (il écrit)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« εἰμί » (1re pers. sing.) et « ἐστί » (3e pers. sing.) sont des formes du verbe être."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la phrase grecque « ὁ παῖς γράφει » (ho pais graphei) ?",
+              "options": [
+                "L'enfant écrit",
+                "L'enfant dort",
+                "Le maître parle",
+                "Le père arrive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ παῖς » (l'enfant, sujet au nominatif) + « γράφει » (écrit, verbe au présent)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la phrase « ὁ διδάσκαλος λέγει » (ho didaskalos legei) ?",
+              "options": [
+                "Le maître parle",
+                "L'élève récite",
+                "Le gardien crie",
+                "Le juge écoute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ διδάσκαλος » (le maître d'école) + « λέγει » (parle ou dit)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment s'écrit la négation ordinaire « ne ... pas » devant une consonne en grec ?",
+              "options": [
+                "οὐ (ou)",
+                "μή (mê)",
+                "δέ (de)",
+                "γάρ (gar)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« οὐ » est la particule négative d'indicatif devant consonne (« οὐ λέγει » = il ne dit pas)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle forme prend la négation « οὐ » devant une voyelle avec esprit doux ?",
+              "options": [
+                "οὐκ (ouk)",
+                "οὐχ (ouch)",
+                "οὔτε (oute)",
+                "οὐκέτι (ouketi)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Devant voyelle à esprit doux, la négation devient « οὐκ » (ex: οὐκ ἀκούει = il n'écoute pas)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la phrase grecque « ὁ πατὴρ ἐν τῷ οἴκῳ ἐστίν » ?",
+              "options": [
+                "Le père est dans la maison",
+                "La mère sort du jardin",
+                "Le fils dort dans sa chambre",
+                "Le maître arrive à la ferme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ πατήρ » (le père) + « ἐν τῷ οἴκῳ » (dans la maison) + « ἐστίν » (est)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les couleurs et la nature au quotidien",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie l'adjectif grec de couleur « λευκός » (leukos) ?",
+              "options": [
+                "Blanc ou éclatant",
+                "Noir foncé",
+                "Jaune paille",
+                "Bleu profond"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« λευκός » (leukos) signifie blanc. Il a donné le terme médical « leucocyte » (globule blanc)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie l'adjectif de couleur opposé « μέλας » (melas) ?",
+              "options": [
+                "Noir ou sombre",
+                "Blanc immaculé",
+                "Orange vif",
+                "Rose poudré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« μέλας » (melas, génitif melanos) est le noir. Il a donné « mélanine » et « mélancolie »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que désigne le mot grec « τὸ δένδρον » (to dendron) dans la nature ?",
+              "options": [
+                "L'arbre",
+                "Le buisson d'épines",
+                "Le ruisseau limpide",
+                "Le roc escarpé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« τὸ δένδρον » (to dendron) désigne l'arbre. Il a donné « dendrochronologie » et « rhododendron »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que désigne le mot grec poétique « τὸ ἄνθος » (to anthos) ?",
+              "options": [
+                "La fleur",
+                "La racine",
+                "L'écorce",
+                "La feuille morte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« τὸ ἄνθος » (to anthos) signifie la fleur. Il a donné « anthologie » (bouquet de beaux textes)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels adjectifs désignent des couleurs en grec ancien ?",
+              "options": [
+                "ἐρυθρός (rouge)",
+                "χλωρός (vert ou pâle)",
+                "λίθος (la pierre)",
+                "ἄνεμος (le vent)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "« ἐρυθρός » (rouge) et « χλωρός » (vert pâle) sont des adjectifs de couleur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'adjectif grec « ἐρυθρός » (eruthros) ?",
+              "options": [
+                "Rouge",
+                "Mauve",
+                "Turquoise",
+                "Brun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἐρυθρός » (eruthros) signifie rouge. Il a donné « érythrocyte » (globule rouge du sang)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel astre royal du ciel désigne « ὁ ἥλιος » (ho hêlios) ?",
+              "options": [
+                "Le soleil",
+                "L'étoile filante",
+                "La planète Mars",
+                "La comète dorée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ ἥλιος » (ho hêlios) est le soleil. Il a donné « héliocentrisme » et « héliport »."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel astre lumineux de la nuit désigne « ἡ σελήνη » (hê selênê) ?",
+              "options": [
+                "La lune",
+                "L'aurore boréale",
+                "L'éclair d'orage",
+                "L'étoile polaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἡ σελήνη » (hê selênê) désigne la lune. Elle a donné « sélénologie » (étude de la lune)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que désigne le mot grec « ἡ θάλασσα » (hê thalassa), horizon quotidien des Grecs ?",
+              "options": [
+                "La mer",
+                "La haute montagne",
+                "La plaine cultivée",
+                "Le désert aride"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἡ θάλασσα » (hê thalassa) est la mer. Elle a donné « thalassothérapie » et « thalassocratie »."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ οὐρανός » (ho ouranos) ?",
+              "options": [
+                "Le ciel",
+                "La terre ferme",
+                "Le gouffre sous-marin",
+                "Le vent du sud"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ οὐρανός » (ho ouranos) désigne la voûte céleste. Il a donné le nom de la planète Uranus."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Les animaux domestiques et familiers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ ἵππος » (ho hippos) ?",
+              "options": [
+                "Le cheval",
+                "Le lion",
+                "Le cerf",
+                "Le lynx"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ ἵππος » (ho hippos) est le cheval. Il a donné « hippodrome » et « hippopotame »."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel animal familier et fidèle gardien désigne « ὁ κύων » (ho kuôn, génitif kunos) ?",
+              "options": [
+                "Le chien",
+                "Le loup",
+                "Le renard",
+                "Le chacal"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ κύων » (ho kuôn) désigne le chien. Ce mot est à l'origine du nom des philosophes « cyniques »."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ ὄρνις » (ho ornis, génitif ornithos) ?",
+              "options": [
+                "L'oiseau",
+                "Le serpent",
+                "La grenouille",
+                "Le lézard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ ὄρνις » (ho ornis) désigne l'oiseau. Il a donné la science appelée « ornithologie »."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que désigne le mot grec « ὁ βοῦς » (ho bous) ?",
+              "options": [
+                "Le bœuf ou la vache",
+                "Le sanglier sauvage",
+                "Le bélier à cornes",
+                "Le dromadaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ βοῦς » (ho bous) désigne le bovin. Il a donné « hécatombe » (sacrifice antique de cent bœufs)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels animaux d'élevage ou de bât étaient familiers dans les campagnes grecques ?",
+              "options": [
+                "ὁ ὄνος (l'âne)",
+                "ἡ αἴξ (la chèvre)",
+                "ὁ ἐλέφας (l'éléphant indien)",
+                "ὁ ῥινόκερως (le rhinocéros)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'âne pour le portage et la chèvre pour le lait composaient le troupeau paysan grec."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ ὄνος » (ho onos) ?",
+              "options": [
+                "L'âne",
+                "Le mouton",
+                "Le porc",
+                "L'oie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ ὄνος » (ho onos) désigne l'âne, bête de somme rustique et essentielle aux chemins escarpés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que désigne le mot grec « τὸ πρόβατον » (to probaton) ?",
+              "options": [
+                "Le mouton ou la brebis",
+                "Le dindon",
+                "Le lapin",
+                "La colombe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« τὸ πρόβατον » (to probaton) désigne le mouton, élevé pour sa toison de laine et son lait."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel petit animal marin a un nom formé avec la racine grecque « hippos » (cheval) ?",
+              "options": [
+                "L'hippocampe (cheval marin)",
+                "L'espadon",
+                "La raie manta",
+                "La seiche"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« Hippocampe » réunit hippos (cheval) et kampos (monstre marin à queue recourbée)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec « ὁ αἴλουρος » (ho ailouros) ?",
+              "options": [
+                "Le chat",
+                "La belette",
+                "La fouine",
+                "Le hérisson"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ αἴλουρος » (ho ailouros, à la queue frétillante) désigne le chat chasseur de souris."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que désigne le mot grec « ἡ αἴξ » (hê aix, génitif aigos) ?",
+              "options": [
+                "La chèvre",
+                "La poule pondeuse",
+                "La truie",
+                "La canne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ἡ αἴξ » (hê aix, au génitif aigos) est la chèvre. On retrouve la racine dans « égide »."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Raconter une fable ou une anecdote : le récit d'Ésope",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel auteur grec est considéré comme le père fondateur de la fable animalière ?",
+              "options": [
+                "Ésope (Αἴσωπος)",
+                "Hérodote",
+                "Sophocle",
+                "Aristote"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ésope, fabuliste du VIe siècle av. J.-C., a inventé les fables mettant en scène des animaux parlants."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie originellement le mot grec « ὁ μῦθος » (ho muthos) ?",
+              "options": [
+                "Le récit, la fable ou la parole",
+                "La démonstration mathématique",
+                "La sentence de mort",
+                "Le décret d'amnistie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ μῦθος » (ho muthos) désigne le récit imagé, le conte ou la fable avant de désigner le mythe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel animal rusé et beau parleur est la vedette de nombreuses fables d'Ésope ?",
+              "options": [
+                "Le renard (ἡ ἀλώπηξ)",
+                "Le sanglier",
+                "Le taureau",
+                "L'ours brun"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le renard (alôpêx) incarne l'intelligence vive, la flatterie et la ruse dans le monde animal."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la leçon de morale placée à la conclusion d'une fable grecque ?",
+              "options": [
+                "L'épimythion (τὸ ἐπιμύθιον)",
+                "Le prologue",
+                "L'exorde",
+                "L'antithèse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'épimythion (d'epi, après, et muthos, récit) formule explicitement la morale philosophique."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels deux animaux s'affrontent dans la célèbre fable d'Ésope sur la régularité dans l'effort ?",
+              "options": [
+                "La tortue (ἡ χελώνη)",
+                "Le lièvre (ὁ λαγώς)",
+                "Le crocodile (ὁ κροκόδειλος)",
+                "Le guépard (ὁ πάνθηρ)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La fable de la Tortue et du Lièvre illustre que persévérance et lenteur triomphent de la prétention."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel poète français du Grand Siècle a adapté les fables d'Ésope avec génie ?",
+              "options": [
+                "Jean de La Fontaine",
+                "Molière",
+                "Corneille",
+                "Boileau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Jean de La Fontaine s'est directement inspiré des fables d'Ésope pour composer son chef-d'œuvre."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie le mot grec fondamental « ὁ λόγος » (ho logos) ?",
+              "options": [
+                "La parole, le discours ou la raison",
+                "La terreur nocturne",
+                "Le silence absolu",
+                "La force brute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "« ὁ λόγος » (ho logos) désigne la parole rationnelle, le raisonnement et le discours argumenté."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans la fable du « Corbeau et le Renard » d'Ésope, quelle ruse emploie le renard ?",
+              "options": [
+                "Il flatte la voix du corbeau pour lui faire ouvrir le bec",
+                "Il secoue l'arbre jusqu'à faire tomber l'oiseau",
+                "Il propose un troc avec des pièces d'or",
+                "Il fait semblant d'être mort au pied du tronc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En flattant le chant de l'oiseau, le renard l'amène à lâcher la nourriture qu'il convoitait."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Selon la tradition biographique, quel était le statut d'Ésope au début de son existence ?",
+              "options": [
+                "Il était esclave avant d'être affranchi",
+                "Il était archonte suprême d'Athènes",
+                "Il était général de Sparte",
+                "Il était grand prêtre de Delphes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tradition rapporte qu'Ésope était esclave et gagna sa liberté grâce à son esprit vif et ses fables."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle était la vocation pédagogique majeure des fables pour les écoliers grecs ?",
+              "options": [
+                "Instruire avec plaisir et développer le sens moral",
+                "Apprendre par cœur les lois fiscales de la cité",
+                "S'entraîner aux manœuvres de la guerre maritime",
+                "Prédire l'avenir par la consultation des oracles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fable permettait d'instruire les enfants avec humour tout en aiguisant leur jugement éthique."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

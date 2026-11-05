@@ -1,0 +1,2093 @@
+{
+  "id": "terminale-italien-05",
+  "year": "terminale",
+  "subject": "italien",
+  "title": "Le passé en l'italien",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Raconter hier",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "L'auxiliaire au passato prossimo : avere o essere ?",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel auxiliaire utilise-t-on avec le verbe transitif 'mangiare' au passato prossimo ?",
+              "options": ["Avere", "Essere", "Stare", "Venire"],
+              "correctAnswers": [0],
+              "explanation": "Les verbes transitifs directs comme 'mangiare' se conjuguent avec l'auxiliaire 'avere' au passato prossimo."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel auxiliaire s'emploie principalement avec le verbe de mouvement 'andare' ?",
+              "options": ["Essere", "Avere", "Fare", "Dare"],
+              "correctAnswers": [0],
+              "explanation": "Les verbes indiquant un mouvement orienté avec changement de lieu (comme 'andare', 'venire', 'partire') utilisent l'auxiliaire 'essere'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'Ieri sera noi ___ andati al cinema con gli amici.'",
+              "options": ["siamo", "abbiamo", "siete", "hanno"],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'noi' et le verbe 'andare', on utilise la première personne du pluriel de 'essere' : 'siamo'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'Marco ___ comprato una nuova chitarra classica.'",
+              "options": ["ha", "è", "era", "fu"],
+              "correctAnswers": [0],
+              "explanation": "'Comprare' est un verbe transitif qui se conjugue avec l'auxiliaire 'avere' (3e personne du singulier : 'ha')."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes se conjuguent obligatoirement avec l'auxiliaire 'essere' au passato prossimo ?",
+              "options": ["Nascere", "Arrivare", "Scrivere", "Mangiare"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Nascere' (changement d'état) et 'arrivare' (mouvement) requièrent l'auxiliaire 'essere'. 'Scrivere' et 'mangiare' prennent 'avere'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel auxiliaire emploie-t-on avec le verbe intransitif 'dormire' ?",
+              "options": ["Avere", "Essere", "Stare", "Rimanere"],
+              "correctAnswers": [0],
+              "explanation": "La plupart des verbes exprimant une activité corporelle sans déplacement comme 'dormire' prennent 'avere' (ho dormito)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'Giulia ___ uscita con le compagne di classe.'",
+              "options": ["è", "ha", "era", "fu"],
+              "correctAnswers": [0],
+              "explanation": "'Uscire' est un verbe de mouvement qui prend l'auxiliaire 'essere' : 'Giulia è uscita'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel auxiliaire convient pour le verbe 'cadere' (tomber) au passato prossimo ?",
+              "options": ["Essere", "Avere", "Fare", "Prendere"],
+              "correctAnswers": [0],
+              "explanation": "'Cadere' implique un changement involontaire d'état ou de position et se conjugue avec 'essere' (è caduto)."
+            },
+            {
+              "id": "q9",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement l'auxiliaire au passato prossimo ?",
+              "options": [
+                "Abbiamo parlato a lungo con il professore.",
+                "Ieri sera siamo tornati a casa tardi.",
+                "Loro hanno andati al mercato stamattina.",
+                "Marta ha arrivata puntuale alla lezione."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Parlare' prend 'avere' (abbiamo parlato) et 'tornare' prend 'essere' (siamo tornati). Les deux autres phrases sont incorrectes."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase est correcte au passato prossimo ?",
+              "options": [
+                "I turisti sono partiti presto.",
+                "I turisti hanno partiti presto.",
+                "I turisti sono partito presto.",
+                "I turisti hanno partito presto."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Partire' exige l'auxiliaire 'essere' et le participe passé s'accorde au masculin pluriel : 'sono partiti'."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Les participes passés réguliers et l'accord de base",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la terminaison régulière du participe passé pour les verbes en -are ?",
+              "options": ["-ato", "-uto", "-ito", "-etto"],
+              "correctAnswers": [0],
+              "explanation": "Les verbes réguliers du premier groupe (-are) forment leur participe passé en -ato (parlare -> parlato)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le participe passé régulier du verbe 'credere' (-ere) ?",
+              "options": ["creduto", "credato", "credito", "credetto"],
+              "correctAnswers": [0],
+              "explanation": "Les verbes réguliers du deuxième groupe (-ere) forment généralement leur participe passé en -uto (credere -> creduto)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le participe passé régulier du verbe 'partire' (-ire) ?",
+              "options": ["partito", "partato", "partuto", "parso"],
+              "correctAnswers": [0],
+              "explanation": "Les verbes réguliers du troisième groupe (-ire) forment leur participe passé en -ito (partire -> partito)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment se termine le participe passé avec l'auxiliaire 'avere' en l'absence de pronom COD antéposé ?",
+              "options": [
+                "Toujours en -o invariable",
+                "En -a avec un sujet féminin",
+                "En -i avec un sujet pluriel",
+                "En -e avec un sujet féminin pluriel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec l'auxiliaire 'avere', sans pronom COD direct placé avant le verbe, le participe reste neutre et invariable en -o."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels participes passés réguliers sont correctement formés ?",
+              "options": ["Camminato", "Finito", "Prendato", "Faciuto"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Camminato' (camminare -> -ato) et 'finito' (finire -> -ito) sont réguliers. 'Prendere' donne 'preso' et 'fare' donne 'fatto'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez avec la forme correcte : 'Maria e Lucia sono ___ (tornare) ieri da Roma.'",
+              "options": ["tornate", "tornati", "tornato", "tornata"],
+              "correctAnswers": [0],
+              "explanation": "Avec 'essere', le participe passé s'accorde en genre et en nombre avec le sujet féminin pluriel 'Maria e Lucia' : 'tornate'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : 'I ragazzi hanno ___ (ascoltare) una conferenza interessante.'",
+              "options": ["ascoltato", "ascoltati", "ascoltata", "ascoltate"],
+              "correctAnswers": [0],
+              "explanation": "Avec 'avere' et sans pronom direct antéposé, le participe reste invariable : 'hanno ascoltato'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : 'Mio cugino è ___ (uscire) con il cane.'",
+              "options": ["uscito", "uscita", "usciti", "uscite"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet 'mio cugino' est masculin singulier et l'auxiliaire est 'essere', donc le participe se termine en -o : 'uscito'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle désinence prend le participe passé de 'vendere' (verbe régulier en -ere) ?",
+              "options": ["-uto", "-ato", "-ito", "-ento"],
+              "correctAnswers": [0],
+              "explanation": "Le participe passé régulier des verbes en -ere prend la terminaison -uto (vendere -> venduto)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : 'Le nostre amiche sono ___ (partire) per Firenze.'",
+              "options": ["partite", "partiti", "partita", "partito"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet 'le nostre amiche' est féminin pluriel, avec 'essere' le participe s'accorde en -e : 'partite'."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les participes passés irréguliers indispensables",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le participe passé irrégulier du verbe 'fare' ?",
+              "options": ["fatto", "facuto", "faciuto", "feso"],
+              "correctAnswers": [0],
+              "explanation": "'Fare' forme son participe passé irrégulier en 'fatto'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe 'dire' ?",
+              "options": ["detto", "dicuto", "diciuto", "diretto"],
+              "correctAnswers": [0],
+              "explanation": "'Dire' a pour participe passé irrégulier 'detto'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le participe passé usuel du verbe 'vedere' ?",
+              "options": ["visto", "vedato", "visuto", "vettuto"],
+              "correctAnswers": [0],
+              "explanation": "'Visto' est la forme moderne courante et standard du participe passé de 'vedere'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe 'leggere' ?",
+              "options": ["letto", "legguto", "leggeto", "leso"],
+              "correctAnswers": [0],
+              "explanation": "'Leggere' a pour participe passé irrégulier 'letto' (avec double t)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes ont un participe passé se terminant par une double consonne en -tto ?",
+              "options": [
+                "Scrivere (scritto)",
+                "Rompere (rotto)",
+                "Prendere (preso)",
+                "Chiudere (chiuso)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Scrivere' donne 'scritto' et 'rompere' donne 'rotto'. 'Prendere' donne 'preso' et 'chiudere' donne 'chiuso'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe 'prendere' ?",
+              "options": ["preso", "prenduto", "prendito", "pretto"],
+              "correctAnswers": [0],
+              "explanation": "'Prendere' forme son participe passé en 'preso'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe 'mettere' ?",
+              "options": ["messo", "mettuto", "metso", "metto"],
+              "correctAnswers": [0],
+              "explanation": "'Mettere' forme son participe passé en 'messo' (avec double s)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe 'aprire' ?",
+              "options": ["aperto", "aprito", "apruto", "apresto"],
+              "correctAnswers": [0],
+              "explanation": "'Aprire' a pour participe passé irrégulier 'aperto'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe 'chiudere' ?",
+              "options": ["chiuso", "chiuduto", "chiudito", "chietto"],
+              "correctAnswers": [0],
+              "explanation": "'Chiudere' a pour participe passé irrégulier 'chiuso'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel est le participe passé du verbe 'rimanere' ?",
+              "options": ["rimasto", "rimanuto", "rimanto", "rimeso"],
+              "correctAnswers": [0],
+              "explanation": "'Rimanere' se conjugue avec 'essere' et a pour participe passé 'rimasto' (es: sono rimasto a casa)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "L'accord du participe passé avec essere et les verbes réfléchis",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Avec quel élément le participe passé s'accorde-t-il lorsque l'auxiliaire est 'essere' ?",
+              "options": [
+                "Avec le sujet en genre et en nombre",
+                "Avec le complément d'objet direct placé après",
+                "Il reste toujours invariable en -o",
+                "Avec le verbe de la proposition principale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec l'auxiliaire 'essere', le participe s'accorde toujours en genre (masculin/féminin) et en nombre (singulier/pluriel) avec le sujet."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez avec la forme correcte : 'Anna si è ___ (svegliare) alle sei e mezza.'",
+              "options": ["svegliata", "svegliato", "svegliati", "svegliate"],
+              "correctAnswers": [0],
+              "explanation": "'Svegliarsi' est un verbe réfléchi qui prend l'auxiliaire 'essere' ; le participe s'accorde avec le sujet féminin 'Anna' : 'svegliata'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : 'Paolo e Luca si sono ___ (incontrare) davanti alla scuola.'",
+              "options": ["incontrati", "incontrate", "incontrato", "incontrata"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet 'Paolo e Luca' est masculin pluriel, le participe s'accorde en -i : 'incontrati'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel auxiliaire prennent obligatoirement tous les verbes réfléchis et pronominaux en italien ?",
+              "options": ["Essere", "Avere", "Stare", "Dovere"],
+              "correctAnswers": [0],
+              "explanation": "En italien, tous les verbes réfléchis (comme 'alzarsi', 'lavarsi', 'vestirsi') utilisent exclusivement l'auxiliaire 'essere'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quelles phrases le participe passé est-il correctement accordé au féminin pluriel ?",
+              "options": [
+                "Le ragazze si sono divertite alla festa.",
+                "Le mie cugine sono arrivate in treno.",
+                "Le sorelle si sono lavati i denti.",
+                "Loro sono andati alla stazione ieri sera."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Divertite' et 'arrivate' s'accordent correctement au féminin pluriel avec le sujet féminin pluriel. Les deux autres formes comportent un accord masculin."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : 'Chiara e Francesca si sono ___ (preparare) con cura per la recita.'",
+              "options": ["preparate", "preparati", "preparato", "preparata"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet est féminin pluriel ('Chiara e Francesca'), donc le participe s'accorde en -e : 'preparate'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Deux jeunes femmes disent : 'Noi ci siamo ___ (trovare) molto bene in Italia.'",
+              "options": ["trovate", "trovati", "trovato", "trovata"],
+              "correctAnswers": [0],
+              "explanation": "Puisque 'noi' désigne ici deux femmes, le participe s'accorde au féminin pluriel : 'trovate'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : 'Ieri mattina Marco si è ___ (alzare) presto per studiare.'",
+              "options": ["alzato", "alzata", "alzati", "alzate"],
+              "correctAnswers": [0],
+              "explanation": "Le sujet 'Marco' est masculin singulier, donc l'accord se fait en -o : 'alzato'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase avec un verbe réciproque est correctement accordée ?",
+              "options": [
+                "Giulia e Matteo si sono salutati con affetto.",
+                "Giulia e Matteo si sono salutato con affetto.",
+                "Giulia e Matteo si hanno salutati con affetto.",
+                "Giulia e Matteo si sono salutate con affetto."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un groupe mixte (Giulia et Matteo) prend l'accord masculin pluriel (-i) avec l'auxiliaire 'essere' : 'si sono salutati'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi écrit-on 'Le dottoresse si sono fermate' avec une terminaison en -e ?",
+              "options": [
+                "Car le sujet est féminin pluriel et l'auxiliaire est 'essere'",
+                "Car l'auxiliaire est 'avere'",
+                "Car le verbe est transitif direct",
+                "Car 'dottoresse' est un mot invariable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'essere', l'accord en genre et en nombre avec le sujet féminin pluriel ('dottoresse') impose la désinence -e."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "L'accord du participe passé avec les pronoms directs et 'ne'",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Devant quels pronoms compléments d'objet direct l'accord du participe passé avec 'avere' est-il obligatoire ?",
+              "options": ["Lo, la, li, le", "Mi, ti, ci, vi", "Gli, le, loro", "Ci, vi de lieu"],
+              "correctAnswers": [0],
+              "explanation": "L'accord du participe passé conjugué avec 'avere' est strictement obligatoire avec les pronoms COD directs de 3e personne : 'lo, la, li, le'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'La torta ? I bambini l'hanno ___ (mangiare) tutta.'",
+              "options": ["mangiata", "mangiato", "mangiati", "mangiate"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom 'l'' remplace 'la torta' (féminin singulier), donc le participe s'accorde au féminin singulier : 'mangiata'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'I compiti di matematica ? Li ho ___ (finire) dieci minuti fa.'",
+              "options": ["finiti", "finito", "finita", "finite"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom 'li' remplace 'i compiti' (masculin pluriel) ; le participe prend la terminaison -i : 'finiti'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'Le chiavi di casa ? Le ho ___ (cercare) per ore.'",
+              "options": ["cercate", "cercato", "cercati", "cercata"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom 'le' remplace 'le chiavi' (féminin pluriel) ; le participe prend la terminaison -e : 'cercate'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quelles phrases le participe passé s'accorde-t-il obligatoirement avec le pronom antéposé ?",
+              "options": [
+                "Ieri l'ho vista al supermercato (la zia).",
+                "Queste mele, ne ho comprate due chili.",
+                "Le ho telefonato ieri sera (a lei).",
+                "Ho mangiato una pizza buonissima."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Avec le pronom COD direct 'la' (l'ho vista) et le pronom partitif 'ne' quantifié (ne ho comprate), l'accord est obligatoire. 'Le ho telefonato' comporte un COI indirect."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez avec le pronom partitif 'ne' : 'Quante caramelle hai preso ? - Ne ho ___ (prendere) tre.'",
+              "options": ["prese", "preso", "presi", "presa"],
+              "correctAnswers": [0],
+              "explanation": "'Caramelle' est féminin pluriel et 'ne' en reprend la quantité (tre) : le participe s'accorde au féminin pluriel : 'prese'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez avec 'ne' : 'Quanti caffè hai bevuto oggi ? - Ne ho ___ (bere) uno solo.'",
+              "options": ["bevuto", "bevuta", "bevuti", "bevute"],
+              "correctAnswers": [0],
+              "explanation": "'Caffè' est ici au masculin singulier ('uno solo') ; le participe s'accorde au masculin singulier : 'bevuto'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'Il nuovo museo ? L'abbiamo ___ (visitare) sabato scorso.'",
+              "options": ["visitato", "visitata", "visitati", "visitate"],
+              "correctAnswers": [0],
+              "explanation": "Le pronom élidé 'l'' reprend 'il nuovo museo' (masculin singulier) : le participe s'accorde en -o : 'visitato'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle phrase illustre un accord correct avec le pronom pluriel masculin 'li' ?",
+              "options": [
+                "I biglietti ? Li ho comprati ieri online.",
+                "I biglietti ? Li ho comprato ieri online.",
+                "I biglietti ? Li ho comprate ieri online.",
+                "I biglietti ? Li sono comprati ieri online."
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avec 'li' (masculin pluriel), le participe passé prend obligatoirement la terminaison -i : 'comprati'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans la phrase 'Ho telefonato a Maria e le ho parlato', pourquoi 'parlato' ne s'accorde-t-il pas ?",
+              "options": [
+                "Car 'le' est ici un pronom complément indirect (a lei)",
+                "Car 'parlato' est un verbe irrégulier invariable",
+                "Car l'auxiliaire 'avere' interdit tout accord",
+                "Car le sujet est masculin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le pronom 'le' signifie ici 'a lei' (à elle) ; les pronoms compléments indirects n'entraînent pas d'accord du participe passé."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "L'imparfait de l'indicatif : morphologie et verbes réguliers",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la désinence de la première personne du singulier (io) à l'imparfait de l'indicatif ?",
+              "options": ["-vo", "-vi", "-va", "-vamo"],
+              "correctAnswers": [0],
+              "explanation": "Pour tous les verbes réguliers, la désinence de 'io' à l'imparfait se termine par -vo (parlavo, leggevo, dormivo)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Conjuguez le verbe 'parlare' avec la personne 'tu' à l'imparfait :",
+              "options": ["parlavi", "parlavo", "parlava", "parlavate"],
+              "correctAnswers": [0],
+              "explanation": "La deuxième personne du singulier de l'imparfait prend la désinence -vi : 'tu parlavi'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Conjuguez le verbe 'prendere' avec la personne 'lui/lei' à l'imparfait :",
+              "options": ["prendeva", "prendevo", "prendevi", "prendevano"],
+              "correctAnswers": [0],
+              "explanation": "La troisième personne du singulier de l'imparfait en -ere prend la terminaison -eva : 'lui/lei prendeva'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Conjuguez le verbe 'dormire' avec la personne 'noi' à l'imparfait :",
+              "options": ["dormivamo", "dormivate", "dormivano", "dormivo"],
+              "correctAnswers": [0],
+              "explanation": "La première personne du pluriel 'noi' à l'imparfait prend la désinence -vamo : 'dormivamo'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales correspondent à la 3e personne du pluriel (loro) à l'imparfait ?",
+              "options": ["Cantavano", "Sentivano", "Cantavamo", "Sentivate"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Loro cantavano' et 'loro sentivano' ont la désinence de 3e personne du pluriel (-vano). '-vamo' est 'noi' et '-vate' est 'voi'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Conjuguez le verbe 'leggere' avec la personne 'voi' à l'imparfait :",
+              "options": ["leggevate", "leggevamo", "leggevano", "leggevi"],
+              "correctAnswers": [0],
+              "explanation": "La deuxième personne du pluriel 'voi' à l'imparfait se termine par -vate : 'voi leggevate'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle consonne caractéristique retrouve-t-on dans toutes les terminaisons de l'imparfait régulier ?",
+              "options": ["La lettre 'v'", "La lettre 's'", "La lettre 'r'", "La lettre 't'"],
+              "correctAnswers": [0],
+              "explanation": "La consonne 'v' est la marque morphologique constante de l'imparfait en italien (-vo, -vi, -va, -vamo, -vate, -vano)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Conjuguez 'abitare' à la première personne du singulier (io) à l'imparfait :",
+              "options": ["abitavo", "abitavi", "abitava", "abitavamo"],
+              "correctAnswers": [0],
+              "explanation": "'Abitare' au radical abit- + terminaison -avo donne 'io abitavo'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Conjuguez 'finire' à la troisième personne du pluriel (loro) à l'imparfait :",
+              "options": ["finivano", "finivate", "finivamo", "finiva"],
+              "correctAnswers": [0],
+              "explanation": "'Finire' donne 'loro finivano' à l'imparfait de l'indicatif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'Da ragazzi noi ___ (giocare) a calcio ogni pomeriggio.'",
+              "options": ["giocavamo", "giocavate", "giocavano", "giocavi"],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'noi', la forme correcte de l'imparfait est 'giocavamo'."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "L'imparfait des verbes irréguliers fondamentaux",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle est la forme de 'io' à l'imparfait pour le verbe 'essere' ?",
+              "options": ["ero", "eri", "era", "eravamo"],
+              "correctAnswers": [0],
+              "explanation": "L'imparfait du verbe 'essere' est irrégulier et commence par 'io ero'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la forme de 'noi' à l'imparfait pour le verbe 'essere' ?",
+              "options": ["eravamo", "eravate", "erano", "eravamo stati"],
+              "correctAnswers": [0],
+              "explanation": "'Noi eravamo' est la forme de 1re personne du pluriel de 'essere' à l'imparfait."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Sur quelle base historique se forme l'imparfait du verbe 'fare' ?",
+              "options": [
+                "face- (du latin facere)",
+                "fa-",
+                "far-",
+                "fec-"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imparfait de 'fare' se base sur l'ancienne racine latine 'facere' : facevo, facevi, faceva, facevamo, facevate, facevano."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Conjuguez 'dire' avec la personne 'lui/lei' à l'imparfait :",
+              "options": ["diceva", "dicevo", "dicevi", "dicevano"],
+              "correctAnswers": [0],
+              "explanation": "L'imparfait de 'dire' s'appuie sur la base 'dice-' (latin dicere) : 'lui/lei diceva'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels verbes irréguliers fondent leur imparfait sur une base en -ce- ou -ve- issue du latin ?",
+              "options": [
+                "Dire (dicevo)",
+                "Bere (bevevo)",
+                "Parlare (parlavo)",
+                "Credere (credevo)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Dire' (base dice-) et 'bere' (base beve- du latin bibere) conservent leur radical étymologique. 'Parlare' et 'credere' sont réguliers."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Conjuguez le verbe 'bere' avec la personne 'tu' à l'imparfait :",
+              "options": ["bevevi", "bevevo", "beveva", "bevevate"],
+              "correctAnswers": [0],
+              "explanation": "'Bere' forme son imparfait sur 'beve-' : io bevevo, tu bevevi."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Conjuguez le verbe 'tradurre' avec la personne 'io' à l'imparfait :",
+              "options": ["traducevo", "traduvo", "tradivo", "tradussi"],
+              "correctAnswers": [0],
+              "explanation": "Les verbes en -durre (tradurre, produrre, condurre) forment leur imparfait en -ducevo (io traducevo)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme de 'loro' à l'imparfait pour le verbe 'essere' ?",
+              "options": ["erano", "eravamo", "eravate", "eri"],
+              "correctAnswers": [0],
+              "explanation": "La 3e personne du pluriel de 'essere' à l'imparfait est 'erano' (loro erano)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Conjuguez le verbe 'fare' avec la personne 'voi' à l'imparfait :",
+              "options": ["facevate", "facevamo", "facevano", "facevi"],
+              "correctAnswers": [0],
+              "explanation": "La 2e personne du pluriel de 'fare' à l'imparfait est 'voi facevate'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'Da bambino Luca non ___ (bere) mai bevande gassate.'",
+              "options": ["beveva", "bevevo", "bevevi", "bevevano"],
+              "correctAnswers": [0],
+              "explanation": "Avec le sujet 'Luca' (3e personne du singulier), la forme correcte est 'beveva'."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Les valeurs de l'imparfait : description, habitude et durée",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel temps de l'indicatif privilégie-t-on pour décrire un état physique, la météo ou un paysage passé ?",
+              "options": [
+                "L'imparfait (imperfetto)",
+                "Le passato prossimo",
+                "Le futur antérieur",
+                "Le présent de narration"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imparfait est le temps par excellence de la description et du décor dans le passé en italien."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez pour exprimer une habitude : 'Ogni estate noi ___ (andare) in vacanza in Sardegna.'",
+              "options": ["andavamo", "siamo andati", "andammo", "andremmo"],
+              "correctAnswers": [0],
+              "explanation": "'Ogni estate' indique une habitude répétée dans le passé, ce qui appelle l'imparfait : 'andavamo'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle phrase illustre une description psychologique ou une émotion durable dans le passé ?",
+              "options": [
+                "Marco era triste e non voleva parlare con nessuno.",
+                "Marco ha deciso di partire all'improvviso.",
+                "Marco comprò una casa a Milano.",
+                "Marco è arrivato alle otto precise."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Era triste e non voleva' décrit un état d'âme et un sentiment continus dans le passé à l'imparfait."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour évoquer une action en cours de déroulement interrompue par un événement soudain, on emploie :",
+              "options": [
+                "L'imparfait pour l'action de fond",
+                "Le passato prossimo pour l'action de fond",
+                "Le trapassato remoto pour l'action de fond",
+                "Le conditionnel passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action en cours qui sert d'arrière-plan s'exprime à l'imparfait (ex: 'Mentre dormivo, il telefono ha suonato')."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Dans quels contextes l'emploi de l'imparfait est-il requis en italien ?",
+              "options": [
+                "Pour exprimer une action habituelle répétée dans le passé",
+                "Pour décrire un décor ou une situation en arrière-plan",
+                "Pour exprimer un événement ponctuel daté et précis",
+                "Pour donner un ordre impératif immédiat"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'imparfait s'utilise pour l'habitude (répétition) et la description d'arrière-plan. Les faits ponctuels achevés prennent le passato prossimo."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez la description : 'Ieri sera faceva molto freddo e la neve ___ (cadere) silenziosa.'",
+              "options": ["cadeva", "è caduta", "cadde", "caduto"],
+              "correctAnswers": [0],
+              "explanation": "Il s'agit d'une description atmosphérique en cours, qui demande l'imparfait : 'cadeva'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle nuance fondamentale apporte l'imparfait par rapport au passato prossimo ?",
+              "options": [
+                "Il envisage l'action dans sa durée sans préciser son début ni sa fin",
+                "Il indique que l'action s'est déroulée en une seule seconde",
+                "Il garantit que l'action va se reproduire demain",
+                "Il marque obligatoirement une condition hypothétique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'imparfait a un aspect sécant/imperfectif : il présente l'action en cours de déroulement sans bornes temporelles fermées."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : 'Mentre noi ___ (cenare), è andata via la corrente elettrica.'",
+              "options": ["cenavamo", "abbiamo cenato", "cenammo", "cenate"],
+              "correctAnswers": [0],
+              "explanation": "L'action en cours de déroulement introduite par 'mentre' se conjugue à l'imparfait : 'cenavamo'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on l'habitude : 'Tous les dimanches, nous allions chez les grands-parents' ?",
+              "options": [
+                "Tutte le domeniche andavamo dai nonni.",
+                "Tutte le domeniche siamo andati dai nonni.",
+                "Tutte le domeniche andammo dai nonni.",
+                "Tutte le domeniche andassimo dai nonni."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression 'tutte le domeniche' exprime une répétition rituelle dans le passé, traduite par l'imparfait 'andavamo'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel temps emploie-t-on pour indiquer l'âge dans le passé ('Quand j'avais quinze ans...') ?",
+              "options": [
+                "L'imparfait : 'Quando avevo quindici anni'",
+                "Le passato prossimo : 'Quando ho avuto quindici anni'",
+                "Le présent : 'Quando ho quindici anni'",
+                "Le subjonctif : 'Quando avessi quindici anni'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En italien, l'âge dans le passé est un état continu qui s'exprime systématiquement à l'imparfait : 'Quando avevo...'."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Le choix entre passato prossimo et imperfetto dans le récit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle phrase exprime une action ponctuelle, accomplie et délimitée dans le passé ?",
+              "options": [
+                "Ieri ho incontrato Francesca in centro.",
+                "Da piccola Francesca abitava in centro.",
+                "Il centro era sempre molto affollato.",
+                "Francesca voleva spesso andare in centro."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ho incontrato' exprime un événement précis, achevé et ponctuel dans le passé, caractérisé par le passato prossimo."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'Mentre io studiavo, mia madre ___ (entrare) nella mia stanza.'",
+              "options": ["è entrata", "entrava", "entra", "fosse entrata"],
+              "correctAnswers": [0],
+              "explanation": "L'action ponctuelle qui interrompt l'arrière-plan ('mentre studiavo') se met au passato prossimo : 'è entrata'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : 'Ieri ___ (piovere) tutto il giorno, quindi non siamo usciti.'",
+              "options": ["pioveva", "è piovuto", "ha piovuto", "piovesse"],
+              "correctAnswers": [0],
+              "explanation": "'Pioveva' pose le cadre atmosphérique continu et explicatif de la journée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle phrase associe correctement l'imparfait de situation et le passato prossimo d'événement ?",
+              "options": [
+                "Mentre camminavo sul marciapiede, è caduto un vaso di fiori.",
+                "Mentre ho camminato sul marciapiede, cadeva un vaso di fiori.",
+                "Mentre camminavo sul marciapiede, cadeva un vaso di fiori.",
+                "Mentre ho camminato sul marciapiede, è caduto un vaso di fiori."
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action en cours d'arrière-plan est à l'imparfait (camminavo) et l'événement soudain qui survient est au passato prossimo (è caduto)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient judicieusement l'alternance entre imperfetto et passato prossimo ?",
+              "options": [
+                "Era mezzanotte quando abbiamo sentito un rumore strano.",
+                "Leggevo tranquillamente quando è squillato il telefono.",
+                "Ieri ho dormito mentre ieri sono andato al cinema.",
+                "Tutti i giorni siamo andati al mare perché pioveva."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les phrases 1 et 2 articulent une situation en cours à l'imparfait et un événement déclencheur au passato prossimo."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi emploie-t-on le passato prossimo dans : 'Ho abitato a Napoli per cinque anni' ?",
+              "options": [
+                "Parce que la durée est précisément délimitée et l'action est définitivement achevée",
+                "Parce que l'action continue encore aujourd'hui",
+                "Parce que c'est une action imaginaire",
+                "Parce que 'abitare' ne s'emploie jamais à l'imparfait"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression d'une durée close et achevée ('per cinque anni') requiert le passato prossimo."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : 'Sabato scorso noi ___ (comprare) i biglietti per lo spettacolo.'",
+              "options": ["abbiamo comprato", "compravamo", "comprammo", "compreremmo"],
+              "correctAnswers": [0],
+              "explanation": "'Sabato scorso' indique un repère ponctuel précis dans le passé récent, appelant le passato prossimo : 'abbiamo comprato'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle différence de sens observe-t-on entre 'Ho conosciuto Laura' et 'Conoscevo Laura' ?",
+              "options": [
+                "'Ho conosciuto' signifie 'j'ai fait la connaissance', alors que 'conoscevo' signifie 'je connaissais déjà'",
+                "'Conoscevo' exprime une action future, 'ho conosciuto' une action passée",
+                "'Ho conosciuto' est familier, 'conoscevo' est soutenu",
+                "Il n'y a absolument aucune différence de sens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Au passato prossimo, 'conoscere' a une valeur inchoative (rencontrer pour la première fois), tandis qu'à l'imparfait il décrit un état continu."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : 'Ieri sera Paolo ___ (uscire) perché non ___ (avere) compiti.'",
+              "options": [
+                "è uscito / aveva",
+                "usciva / ha avuto",
+                "è uscito / ha avuto",
+                "usciva / aveva"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'action ponctuelle de sortir se met au passato prossimo ('è uscito'), et la situation explicative d'arrière-plan à l'imparfait ('non aveva compiti')."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : 'Quando eravamo piccoli, ogni sera la nonna ci ___ (raccontare) una favola.'",
+              "options": ["raccontava", "ha raccontato", "racconterà", "ebbe raccontato"],
+              "correctAnswers": [0],
+              "explanation": "L'expression 'ogni sera' doublée du cadre 'quando eravamo piccoli' dénote une habitude régulière, imposant l'imparfait 'raccontava'."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Le trapassato prossimo et aperçu du passato remoto",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment se forme le trapassato prossimo (plus-que-parfait) en italien ?",
+              "options": [
+                "Auxiliaire avere ou essere à l'imparfait + participe passé",
+                "Auxiliaire avere ou essere au présent + participe passé",
+                "Auxiliaire avere ou essere au futur + participe passé",
+                "Participe présent + participe passé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le trapassato prossimo se forme avec l'imparfait de l'auxiliaire (avevo / ero) suivi du participe passé du verbe."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "À quel temps de la conjugaison française correspond le trapassato prossimo ?",
+              "options": ["Au plus-que-parfait", "Au passé simple", "Au passé composé", "Au futur antérieur"],
+              "correctAnswers": [0],
+              "explanation": "Le trapassato prossimo correspond exactement au plus-que-parfait français pour exprimer une action antérieure à un repère passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez : 'Quando sono arrivato alla stazione, il treno era già ___ (partire).'",
+              "options": ["partito", "partita", "partiti", "partite"],
+              "correctAnswers": [0],
+              "explanation": "Avec l'auxiliaire 'essere' (era), le participe s'accorde avec 'il treno' (masculin singulier) : 'partito'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez : 'Non avevo fame perché ___ (mangiare) un panino poco prima.'",
+              "options": ["avevo mangiato", "ho mangiato", "mangiavo", "ebbi mangiato"],
+              "correctAnswers": [0],
+              "explanation": "L'action d'avoir mangé est antérieure à l'état passé 'non avevo fame', ce qui justifie le trapassato prossimo 'avevo mangiato'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles formes verbales correspondent à des formes de trapassato prossimo ?",
+              "options": [
+                "Avevamo visto",
+                "Erano partiti",
+                "Abbiamo visto",
+                "Siamo partiti"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Avevamo visto' et 'erano partiti' combinent l'imparfait de l'auxiliaire et le participe passé, formant le trapassato prossimo."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans quel contexte principal rencontre-t-on le passato remoto dans l'italien standard actuel ?",
+              "options": [
+                "Dans la littérature, les récits historiques et les contes",
+                "Dans les SMS et messages instantanés quotidiens",
+                "Dans les prévisions météorologiques",
+                "Uniquement à l'oral dans les supermarchés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En italien standard, le passato remoto est surtout employé dans la langue écrite, les romans, les contes et les livres d'histoire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la forme de 3e personne du singulier au passato remoto du verbe 'essere' ?",
+              "options": ["fu", "era", "fossi", "stato"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'essere' fait 'io fui, tu fosti, lui/lei fu' au passato remoto."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la forme de 3e personne du singulier au passato remoto du verbe 'avere' ?",
+              "options": ["ebbe", "aveva", "ebbi", "avuto"],
+              "correctAnswers": [0],
+              "explanation": "Le verbe 'avere' fait 'io ebbi, tu avesti, lui/lei ebbe' au passato remoto."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez au passato remoto : 'Dante Alighieri ___ (nascere) a Firenze nel 1265.'",
+              "options": ["nacque", "è nato", "nasceva", "nascerà"],
+              "correctAnswers": [0],
+              "explanation": "Pour un fait biographique ou historique lointain, on utilise le passato remoto : 'nacque' (du verbe nascere)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel rôle chronologique joue le trapassato prossimo par rapport à un autre événement du passé ?",
+              "options": [
+                "Il exprime une action antérieure et préalable à un événement passé",
+                "Il exprime une action simultanée et future",
+                "Il remplace le présent de narration",
+                "Il indique une conséquence incertaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le trapassato prossimo sert à marquer l'antériorité par rapport à un moment déjà situé dans le passé."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Marqueurs de temps",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Hier et le passé proche : ieri, avantieri, ieri sera",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment traduit-on le mot 'hier' en italien ?",
+              "options": ["Ieri", "Domani", "Oggi", "Adesso"],
+              "correctAnswers": [0],
+              "explanation": "'Ieri' signifie 'hier' en italien."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'avant-hier' en italien standard ?",
+              "options": ["L'altro ieri", "Il giorno dopo", "Due giorni poi", "Ieri prima"],
+              "correctAnswers": [0],
+              "explanation": "'L'altro ieri' (ou 'avantieri') est la formulation courante pour dire 'avant-hier'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'hier soir' en italien ?",
+              "options": ["Ieri sera", "Ieri notte", "Ieri sera presto", "Ieri dopo"],
+              "correctAnswers": [0],
+              "explanation": "'Ieri sera' traduit fidèlement 'hier soir'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'hier matin' en italien ?",
+              "options": ["Ieri mattina", "Ieri sera", "Ieri pomeriggio", "Ieri notte"],
+              "correctAnswers": [0],
+              "explanation": "'Ieri mattina' (ou 'ieri stamattina') désigne la matinée de la veille."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions désignent précisément un moment situé dans les jours précédant aujourd'hui ?",
+              "options": ["Avantieri", "Ieri l'altro", "Dopodomani", "Domani sera"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Avantieri' et 'ieri l'altro' sont deux synonymes désignant 'avant-hier'. 'Dopodomani' signifie 'après-demain'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez la phrase : '___ pomeriggio siamo andati al parco a fare jogging.'",
+              "options": ["Ieri", "Domani", "Stasera", "Ora"],
+              "correctAnswers": [0],
+              "explanation": "'Ieri pomeriggio' (hier après-midi) s'associe logiquement au passé composé 'siamo andati'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie précisément l'expression 'la notte scorsa' ?",
+              "options": ["La nuit dernière", "La nuit prochaine", "Toutes les nuits", "La nuit de Noël"],
+              "correctAnswers": [0],
+              "explanation": "'La notte scorsa' fait référence à la nuit qui vient de s'écouler (la nuit dernière)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle phrase est correctement formulée avec un repère de la veille ?",
+              "options": [
+                "Ieri sera abbiamo cenato in pizzeria con gli amici.",
+                "Ieri sera ceneremo in pizzeria con gli amici.",
+                "Domani sera abbiamo cenato in pizzeria con gli amici.",
+                "Oggi pomeriggio abbiamo cenato ieri sera."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ieri sera' s'accorde parfaitement avec l'action passée achevée 'abbiamo cenato'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'hier à midi' en italien ?",
+              "options": ["Ieri a mezzogiorno", "Ieri a mezzanotte", "Ieri mattina presto", "Ieri alle due"],
+              "correctAnswers": [0],
+              "explanation": "'Mezzogiorno' signifie midi, d'où 'ieri a mezzogiorno'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : 'Ho finito di scrivere questo saggio solo ___ notte.'",
+              "options": ["ieri", "domani", "adesso", "sempre"],
+              "correctAnswers": [0],
+              "explanation": "'Ieri notte' (hier dans la nuit) complète convenablement cette action passée."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "L'expression du recul temporel : 'fa'",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où se place l'adverbe 'fa' par rapport à l'expression de durée en italien ?",
+              "options": [
+                "Après l'expression de durée",
+                "Avant l'expression de durée",
+                "Obligatoirement avant le verbe",
+                "Entre l'auxiliaire et le participe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En italien, 'fa' se place toujours après la mention temporelle (ex: 'due giorni fa', 'un anno fa')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'il y a trois jours' en italien ?",
+              "options": ["Tre giorni fa", "Fa tre giorni", "Ci sono tre giorni", "Da tre giorni fa"],
+              "correctAnswers": [0],
+              "explanation": "La formule standard est le nombre + l'unité de temps + 'fa' : 'tre giorni fa'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'il y a dix minutes' en italien ?",
+              "options": ["Dieci minuti fa", "Fa dieci minuti", "Da dieci minuti", "Dieci minuti dopo"],
+              "correctAnswers": [0],
+              "explanation": "'Dieci minuti fa' est la tournure exacte traduisant 'il y a dix minutes'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'expression italienne 'poco fa' ?",
+              "options": [
+                "Il y a peu de temps / tout à l'heure",
+                "Dans peu de temps / bientôt",
+                "Beaucoup plus tard",
+                "Jamais auparavant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Poco fa' indique un événement très récent qui vient de se dérouler il y a quelques instants."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles phrases emploient correctement l'adverbe 'fa' pour situer un fait révolu ?",
+              "options": [
+                "Il treno è partito venti minuti fa.",
+                "Abbiamo visitato Venezia due anni fa.",
+                "Fa due anni visiteremo Venezia.",
+                "Il treno partirà venti minuti fa."
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Fa' postposé à la durée renvoie à un passé révolu compatible avec le passato prossimo."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on 'il y a longtemps' en italien ?",
+              "options": ["Molto tempo fa", "Poco tempo fa", "Tra molto tempo", "Da molto tempo fa"],
+              "correctAnswers": [0],
+              "explanation": "'Molto tempo fa' ou 'tanto tempo fa' traduit 'il y a longtemps'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : 'Mio fratello si è laureato esattamente un mese ___.'",
+              "options": ["fa", "prima", "poi", "dopo"],
+              "correctAnswers": [0],
+              "explanation": "'Un mese fa' (il y a un mois) s'emploie pour mesurer l'écart entre le présent et l'événement passé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduire 'il y a un quart d'heure' ?",
+              "options": ["Un quarto d'ora fa", "Fa un quarto d'ora", "Tra un quarto d'ora", "In un quarto d'ora"],
+              "correctAnswers": [0],
+              "explanation": "'Un quarto d'ora fa' est la construction idiomatique correcte."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle préposition française correspond généralement à 'fa' placé après un laps de temps ?",
+              "options": ["Il y a", "Depuis", "Pendant", "Dans"],
+              "correctAnswers": [0],
+              "explanation": "La locution française 'il y a' + durée se traduit en italien par durée + 'fa'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : 'Li ho incontrati per strada proprio ___ fa.'",
+              "options": ["poco", "molti", "spesso", "sempre"],
+              "correctAnswers": [0],
+              "explanation": "'Proprio poco fa' signifie 'tout à l'heure / il y a un instant à peine'."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Les qualificatifs temporels : scorso et passato",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'la semaine dernière' en italien ?",
+              "options": ["La settimana scorsa", "La settimana passante", "La settimana prossima", "La settimana prima"],
+              "correctAnswers": [0],
+              "explanation": "'La settimana scorsa' est l'expression usuelle pour désigner la semaine dernière."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'l'année dernière' en italien ?",
+              "options": ["L'anno scorso", "L'anno prossimo", "L'anno futuro", "L'anno seguente"],
+              "correctAnswers": [0],
+              "explanation": "'L'anno scorso' (ou 'l'anno passato') désigne l'année précédente."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'le mois dernier' en italien ?",
+              "options": ["Il mese scorso", "Il mese prossimo", "Il mese avanti", "Il mese futuro"],
+              "correctAnswers": [0],
+              "explanation": "'Il mese scorso' est la traduction correcte de 'le mois dernier'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le féminin pluriel de l'adjectif temporel 'scorso' ?",
+              "options": ["scorse", "scorsi", "scorsa", "scorso"],
+              "correctAnswers": [0],
+              "explanation": "L'adjectif régulier 'scorso' s'accorde : scorso (m.s.), scorsa (f.s.), scorsi (m.p.), scorse (f.p.)."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions désignent le week-end qui vient de s'écouler ?",
+              "options": [
+                "Lo scorso fine settimana",
+                "Il fine settimana scorso",
+                "Il prossimo fine settimana",
+                "Il futuro fine settimana"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'adjectif 'scorso' peut se placer avant ou après le nom : 'lo scorso fine settimana' ou 'il fine settimana scorso'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez avec la terminaison correcte : 'Nelle settimane ___ (scorso) abbiamo studiato molto.'",
+              "options": ["scorse", "scorsi", "scorsa", "scorso"],
+              "correctAnswers": [0],
+              "explanation": "'Settimane' est féminin pluriel, l'adjectif s'accorde donc en -e : 'scorse'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'l'été dernier' en italien ?",
+              "options": ["L'estate scorsa", "L'estate prossimo", "L'estate passato", "L'estate seguente"],
+              "correctAnswers": [0],
+              "explanation": "En italien, 'estate' est un nom féminin (l'estate), donc on dit 'l'estate scorsa'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez : 'L'inverno ___ è stato insolitamente mite in tutta la penisola.'",
+              "options": ["scorso", "scorsa", "scorsi", "scorse"],
+              "correctAnswers": [0],
+              "explanation": "'Inverno' est masculin singulier, l'adjectif prend la forme 'scorso'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "L'adjectif 'passato' peut-il être employé comme synonyme de 'scorso' ?",
+              "options": [
+                "Oui, 'l'anno passato' est parfaitement équivalent à 'l'anno scorso'",
+                "Non, 'passato' ne s'emploie jamais pour le temps",
+                "Uniquement au pluriel",
+                "Uniquement avec les jours de la semaine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Scorso' et 'passato' sont interchangeables dans les repères temporels (l'anno passato = l'anno scorso)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on 'mardi dernier' en italien ?",
+              "options": ["Martedì scorso", "Martedì prossimo", "Martedì fa", "Martedì dopo"],
+              "correctAnswers": [0],
+              "explanation": "'Martedì scorso' indique le mardi de la semaine passée."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "L'origine temporelle : da, da bambino, da allora",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie l'expression temporelle italienne 'da piccolo' ou 'da bambino' ?",
+              "options": [
+                "Quand j'étais petit / dans mon enfance",
+                "Depuis que j'ai grandi",
+                "Pour les petits enfants",
+                "De petite taille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Da piccolo' / 'da bambino' s'utilise pour situer une époque de la vie passée ('quand j'étais enfant')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'depuis ce moment-là / depuis lors' en italien ?",
+              "options": ["Da allora", "Fino ad allora", "Per allora", "Verso allora"],
+              "correctAnswers": [0],
+              "explanation": "'Da allora' indique le point de départ d'une situation à partir d'un événement passé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez pour situer une période de vie : '___ giovane, mio nonno viaggiava continuamente.'",
+              "options": ["Da", "A", "In", "Su"],
+              "correctAnswers": [0],
+              "explanation": "La préposition 'da' suivie d'un adjectif d'âge/statut exprime 'à l'époque où l'on était...' : 'Da giovane'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la formule 'fin da piccolo' ?",
+              "options": [
+                "Dès son plus jeune âge",
+                "Jusqu'à ce qu'il soit petit",
+                "À la fin de l'enfance",
+                "Seulement pour les petits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Fin da' renforce le point de départ temporel pour signifier 'dès / depuis tout petit'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles expressions utilisent 'da' pour désigner une condition passée ?",
+              "options": ["Da studente", "Da ragazzo", "Verso studente", "Durante ragazzo"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Da studente' (quand j'étais étudiant) et 'da ragazzo' (quand j'étais jeune homme) sont des structures idiomatiques avec 'da'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : 'Ci conosciamo ___ quando eravamo compagni di banco alle medie.'",
+              "options": ["da", "per", "in", "su"],
+              "correctAnswers": [0],
+              "explanation": "'Da quando' introduit la proposition temporelle indiquant le point de départ d'une relation."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Traduisez : 'Dès l'enfance, elle aimait écouter de la musique classique.'",
+              "options": [
+                "Fin da bambina le piaceva ascoltare la musica classica.",
+                "Fino a bambina le piaceva ascoltare la musica classica.",
+                "Per bambina le piaceva ascoltare la musica classica.",
+                "Da bambina le piacerà ascoltare la musica classica."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Fin da bambina' traduit exactement 'dès l'enfance / dès toute petite'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie précisément l'expression 'da quel giorno' ?",
+              "options": [
+                "À partir de ce jour-là / depuis ce jour",
+                "Ce jour-là seulement",
+                "Avant ce jour-là",
+                "Un jour ou l'autre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Da quel giorno' marque un tournant à partir duquel une situation a commencé dans le passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : 'Non l'ho più rivista ___ allora.'",
+              "options": ["da", "a", "per", "fino"],
+              "correctAnswers": [0],
+              "explanation": "'Non... più da allora' signifie 'ne plus... depuis lors'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle nuance temporelle apporte 'da tempo' dans un contexte passé ?",
+              "options": [
+                "Une antériorité durable ou une habitude ancienne",
+                "Une action qui commence demain",
+                "Une durée d'une fraction de seconde",
+                "Un événement imprévisible"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Da tempo' (depuis longtemps) marque un fait installé durablement dans la durée."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Succession et chronologie : prima, poi, dopo, in seguito",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'd'abord / auparavant' en italien ?",
+              "options": ["Prima", "Dopo", "Poi", "Infine"],
+              "correctAnswers": [0],
+              "explanation": "'Prima' indique la priorité chronologique ou l'antériorité ('d'abord', 'avant')."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'ensuite / puis' dans un enchaînement narratif ?",
+              "options": ["Poi", "Prima", "Mentre", "Durante"],
+              "correctAnswers": [0],
+              "explanation": "'Poi' sert à relier deux actions successives ('puis', 'ensuite')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'après / plus tard' en italien ?",
+              "options": ["Dopo", "Prima", "Subito", "Finché"],
+              "correctAnswers": [0],
+              "explanation": "'Dopo' indique la postériorité dans le temps ('après')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'par la suite / ultérieurement' dans un style soutenu ?",
+              "options": ["In seguito", "Al contrario", "In mezzo", "Invece"],
+              "correctAnswers": [0],
+              "explanation": "'In seguito' ou 'successivamente' exprime la succession temporelle soutenue ('par la suite')."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs permettent de marquer les étapes successives d'un récit au passé ?",
+              "options": ["Dapprima", "Successivamente", "Contemporaneamente", "Insieme"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Dapprima' (dans un premier temps) et 'successivamente' (par la suite) structurent les étapes chronologiques successives."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez la séquence : 'Prima abbiamo visitato il museo, ___ abbiamo pranzato in trattoria.'",
+              "options": ["poi", "prima", "durante", "finché"],
+              "correctAnswers": [0],
+              "explanation": "Le couple 'prima... poi...' est la structure chronologique fondamentale ('d'abord... ensuite...')."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 'prima di tutto' ?",
+              "options": [
+                "Avant toute chose / tout d'abord",
+                "Après tout le monde",
+                "Jamais de la vie",
+                "Au milieu de tout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Prima di tutto' sert à poser le tout premier élément dans l'ordre d'énonciation ou d'action."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on 'quelques jours plus tard' en italien ?",
+              "options": ["Qualche giorno dopo", "Qualche giorno fa", "Qualche giorno prima", "Qualche giorno durante"],
+              "correctAnswers": [0],
+              "explanation": "'Dopo' placé après l'indication temporelle signifie 'plus tard / après' : 'qualche giorno dopo'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez : 'Ha ascoltato tutti con pazienza e ___ ha preso la sua decisione.'",
+              "options": ["infine", "prima", "ancora", "mentre"],
+              "correctAnswers": [0],
+              "explanation": "'Infine' (enfin / finalement) marque l'étape d'aboutissement au terme d'une série d'actions."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la locution 'poco dopo' ?",
+              "options": [
+                "Peu après / peu de temps après",
+                "Beaucoup plus tard",
+                "Juste avant",
+                "Pendant longtemps"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Poco dopo' indique un faible intervalle de temps après un repère mentionné."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "La simultanéité dans le passé : mentre, durante, contemporaneamente",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel mot traduit 'pendant que / tandis que' et s'associe à l'imparfait pour exprimer deux actions simultanées ?",
+              "options": ["Mentre", "Durante", "Dopo", "Prima"],
+              "correctAnswers": [0],
+              "explanation": "'Mentre' est une conjonction de subordination suivie d'un verbe conjugué (généralement à l'imparfait)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle préposition s'emploie obligatoirement devant un groupe nominal pour traduire 'pendant' ?",
+              "options": ["Durante", "Mentre", "Poi", "Finché"],
+              "correctAnswers": [0],
+              "explanation": "'Durante' est une préposition suivie d'un nom (ex: 'durante il viaggio'), jamais d'une proposition avec verbe conjugué."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Complétez la phrase : '___ le vacanze estive abbiamo visitato molti musei.'",
+              "options": ["Durante", "Mentre", "Quando che", "Finché"],
+              "correctAnswers": [0],
+              "explanation": "Devant le groupe nominal 'le vacanze estive', la préposition requise est 'Durante'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Complétez la phrase : '___ io leggevo un libro, Marco ascoltava la radio.'",
+              "options": ["Mentre", "Durante", "Dopo", "In seguito"],
+              "correctAnswers": [0],
+              "explanation": "Devant la proposition avec sujet et verbe conjugué ('io leggevo'), on emploie la conjonction 'Mentre'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels termes ou locutions expriment la simultanéité parfaite entre deux faits passés ?",
+              "options": [
+                "Nello stesso tempo",
+                "Contemporaneamente",
+                "Successivamente",
+                "In seguito"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Nello stesso tempo' et 'contemporaneamente' expriment la simultanéité ('en même temps'). 'Successivamente' et 'in seguito' expriment la succession."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'simultanément / en même temps' par un adverbe en italien ?",
+              "options": ["Contemporaneamente", "Continuamente", "Costantemente", "Certamente"],
+              "correctAnswers": [0],
+              "explanation": "'Contemporaneamente' est l'adverbe désignant la stricte simultanéité d'événements."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Peut-on écrire 'durante io mangiavo' en italien standard ?",
+              "options": [
+                "Non, 'durante' exige un nom, il faut dire 'mentre mangiavo'",
+                "Oui, c'est parfaitement correct et courant",
+                "Seulement à l'écrit soutenu",
+                "Seulement au passé simple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Durante' est prépositionnel (+ nom) ; pour introduire un verbe conjugué, on doit employer 'mentre'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'Ci siamo addormentati ___ la proiezione del film.'",
+              "options": ["durante", "mentre", "poi", "finché"],
+              "correctAnswers": [0],
+              "explanation": "'La proiezione del film' est un syntagme nominal, introduit par 'durante'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduisez : 'Tandis qu'elle parlait, tout le monde écoutait en silence.'",
+              "options": [
+                "Mentre parlava, tutti ascoltavano in silenzio.",
+                "Durante parlava, tutti ascoltavano in silenzio.",
+                "Dopo parlava, tutti ascoltavano in silenzio.",
+                "Prima parlava, tutti ascoltavano in silenzio."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Mentre parlava' associe parfaitement la simultanéité et l'imparfait descriptif."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la formule 'al tempo stesso' dans un récit ?",
+              "options": [
+                "En même temps / à la fois",
+                "Autrefois seulement",
+                "Plus tard",
+                "Trop tard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Al tempo stesso' exprime la concomitance temporelle ou la coexistence de deux aspects."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Les adverbes de temps au passato prossimo : già, ancora, appena, mai",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Où se place généralement l'adverbe 'già' (déjà) au passato prossimo ?",
+              "options": [
+                "Entre l'auxiliaire et le participe passé",
+                "Tout au début de la phrase",
+                "Toujours à la toute fin de la phrase",
+                "Après le complément d'objet direct"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En italien standard, 'già' s'intercale couramment entre l'auxiliaire et le participe : 'ho già mangiato'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie la phrase : 'Ho appena finito di fare i compiti' ?",
+              "options": [
+                "Je viens juste de terminer mes devoirs",
+                "Je n'ai presque pas fait mes devoirs",
+                "Je vais bientôt faire mes devoirs",
+                "Je ne ferai jamais mes devoirs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Appena' avec un temps composé traduit l'immédiateté d'une action tout juste achevée ('venir de')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Je n'ai pas encore mangé' en italien ?",
+              "options": [
+                "Non ho ancora mangiato",
+                "Non ho già mangiato",
+                "Non ho mai mangiato",
+                "Non ho appena mangiato"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Non... ancora' correspond à 'ne... pas encore' en français."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Je ne suis jamais allé à Venise' ?",
+              "options": [
+                "Non sono mai stato a Venezia",
+                "Non sono già stato a Venezia",
+                "Non sono ancora stato a Venezia",
+                "Sono mai stato a Venezia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La double négation 'non... mai' encadrant l'auxiliaire traduit 'ne... jamais'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels adverbes de temps s'intercalent fréquemment entre l'auxiliaire et le participe passé ?",
+              "options": ["Già", "Appena", "Ieri", "Domani"],
+              "correctAnswers": [0, 1],
+              "explanation": "'Già', 'ancora', 'appena', 'mai' se placent très naturellement entre l'auxiliaire et le participe. 'Ieri' et 'domani' se placent en tête ou en fin de proposition."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'énoncé : 'Il treno è già arrivato al binario 3' ?",
+              "options": [
+                "Le train est déjà arrivé sur la voie 3",
+                "Le train va bientôt arriver voie 3",
+                "Le train n'est pas encore arrivé voie 3",
+                "Le train ne partira jamais de la voie 3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'È già arrivato' constate l'accomplissement effectif de l'arrivée au moment présent."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : 'Hai ___ visitato Firenze ? È una città magnifica !'",
+              "options": ["mai", "ancora non", "ieri sera", "durante"],
+              "correctAnswers": [0],
+              "explanation": "Dans une interrogation, 'mai' a le sens positif de 'déjà / une fois dans sa vie' : 'Hai mai visitato... ?'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment exprimer qu'une personne vient tout juste d'arriver ?",
+              "options": [
+                "È appena arrivata",
+                "È già arrivata ieri",
+                "Non è mai arrivata",
+                "Arriverà subito dopo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'È appena arrivata' marque l'action immédiate accomplie il y a quelques instants."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Complétez la réplique négative : 'Hai chiamato il dottore ? - No, non l'ho ___ chiamato.'",
+              "options": ["ancora", "già", "appena", "sempre"],
+              "correctAnswers": [0],
+              "explanation": "'Non l'ho ancora chiamato' traduit 'je ne l'ai pas encore appelé'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle phrase exprime que l'action est déjà accomplie au moment considéré ?",
+              "options": [
+                "Abbiamo già comprato i regali di Natale.",
+                "Non abbiamo mai comprato regali.",
+                "Compreremo presto i regali.",
+                "Stiamo per comprare i regali."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Abbiamo già comprato' confirme que l'action d'achat est d'ores et déjà effectuée."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Soudaineté et rupture : all'improvviso, subito, d'un tratto",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'tout à coup / soudain' en italien ?",
+              "options": ["All'improvviso", "Di solito", "Poco a poco", "Da tempo"],
+              "correctAnswers": [0],
+              "explanation": "'All'improvviso' est la locution adverbiale la plus courante pour exprimer la soudaineté."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle expression est un synonyme exact de 'all'improvviso' ?",
+              "options": ["D'un tratto", "A poco a poco", "Ogni tanto", "Di buon'ora"],
+              "correctAnswers": [0],
+              "explanation": "'D'un tratto' ou 'di colpo' signifie 'd'un coup / tout à coup'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe italien 'subito' ?",
+              "options": [
+                "Tout de suite / immédiatement",
+                "Lentement",
+                "Parfois",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Attention au faux-ami : 'subito' ne signifie pas 'subi' mais 'immédiatement / tout de suite'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on l'adverbe 'soudainement' en italien ?",
+              "options": ["Improvvisamente", "Lentamente", "Chiaramente", "Certamente"],
+              "correctAnswers": [0],
+              "explanation": "'Improvvisamente' dérive de l'adjectif 'improvviso' et signifie 'soudainement'."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels marqueurs temporels introduisent une rupture inattendue dans un récit au passé ?",
+              "options": [
+                "All'improvviso",
+                "Di colpo",
+                "A mano a mano",
+                "Giorno dopo giorno"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'All'improvviso' et 'di colpo' introduisent un changement brusque et imprévu. 'A mano a mano' et 'giorno dopo giorno' expriment la gradualité."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel temps verbal suit typiquement un marqueur de rupture comme 'all'improvviso' dans une narration ?",
+              "options": [
+                "Le passato prossimo (événement ponctuel)",
+                "Le futur simple",
+                "L'imparfait d'habitude",
+                "Le subjonctif présent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La rupture soudaine constitue une action ponctuelle et saillante, exprimée au passato prossimo (ou passato remoto)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : 'Dormivamo profondamente quando, ___, è suonato l'allarme.'",
+              "options": ["all'improvviso", "di rado", "lentamente", "per sempre"],
+              "correctAnswers": [0],
+              "explanation": "'All'improvviso' s'insère parfaitement pour marquer le retentissement brusque de l'alarme."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduisez : 'Dès qu'il a entendu la nouvelle, il a tout de suite téléphoné à ses parents.'",
+              "options": [
+                "Appena ha saputo la notizia, ha subito telefonato ai genitori.",
+                "Appena ha saputo la notizia, ha tardi telefonato ai genitori.",
+                "Quando sapeva la notizia, telefonava spesso ai genitori.",
+                "Prima di sapere la notizia, ha subito telefonato ai genitori."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Ha subito telefonato' traduit exactement l'immédiateté de la réaction ('a tout de suite téléphoné')."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie l'expression imagée 'in un batter d'occhio' ?",
+              "options": [
+                "En un clin d'œil / en un instant",
+                "Avec tristesse",
+                "Pendant la nuit",
+                "Après mûre réflexion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'In un batter d'occhio' décrit une action accomplie dans la fraction de seconde d'un battement de paupière."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'Appena ha visto il pericolo, il cane è scappato ___.'",
+              "options": ["subito", "mai", "ancora", "ieri"],
+              "correctAnswers": [0],
+              "explanation": "'È scappato subito' (s'est enfui tout de suite) traduit la promptitude de la réaction."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Durée et limitation dans le passé : per, in, fino a, da... a...",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle préposition emploie-t-on pour indiquer une durée révolue et achevée (ex: pendant deux heures) ?",
+              "options": [
+                "Per (es: per due ore)",
+                "A (es: a due ore)",
+                "Tra (es: tra due ore)",
+                "Su (es: su due ore)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Per' indique la durée totale d'une action passée délimitée (ho studiato per due ore)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle préposition indique le temps nécessaire pour accomplir une tâche (ex: en trois jours) ?",
+              "options": [
+                "In (es: in tre giorni)",
+                "Da (es: da tre giorni)",
+                "Per (es: per tre giorni)",
+                "Con (es: con tre giorni)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'In' exprime le délai à l'intérieur duquel l'action a été menée à terme ('en trois jours')."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'jusqu'à hier' en italien ?",
+              "options": ["Fino a ieri", "Da ieri", "Per ieri", "Verso ieri"],
+              "correctAnswers": [0],
+              "explanation": "'Fino a' exprime la limite finale d'une période dans le temps ('jusqu'à')."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'de 2015 à 2020' en italien ?",
+              "options": [
+                "Dal 2015 al 2020",
+                "Di 2015 a 2020",
+                "Per 2015 in 2020",
+                "Tra 2015 fino 2020"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les prépositions articulées 'dal... al...' fixent les bornes initiale et finale d'une période chiffrée."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quelles tournures fixent des bornes temporelles bien délimitées dans le passé ?",
+              "options": [
+                "Da lunedì a venerdì",
+                "Fino alla fine delle vacanze",
+                "Sempre e comunque",
+                "Ogni tanto"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Da... a...' et 'fino a...' marquent des limites temporelles précises. 'Sempre' et 'ogni tanto' expriment la fréquence."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez : 'Ha vissuto in Francia ___ tre anni prima di tornare in Italia.'",
+              "options": ["per", "in", "a", "su"],
+              "correctAnswers": [0],
+              "explanation": "'Per tre anni' indique la durée complète et achevée du séjour passé en France."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Complétez : 'Lo studente ha risolto il difficile problema di fisica ___ soli dieci minuti.'",
+              "options": ["in", "per", "da", "fino"],
+              "correctAnswers": [0],
+              "explanation": "'In soli dieci minuti' exprime le temps record nécessaire pour achever la résolution."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Traduisez : 'Nous avons attendu jusqu'à minuit avant de rentrer.'",
+              "options": [
+                "Abbiamo aspettato fino a mezzanotte prima di rientrare.",
+                "Abbiamo aspettato da mezzanotte prima di rientrare.",
+                "Abbiamo aspettato in mezzanotte prima di rientrare.",
+                "Abbiamo aspettato per mezzanotte prima di rientrare."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Fino a mezzanotte' traduit 'jusqu'à minuit'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 'per tutta la notte' ?",
+              "options": [
+                "Pendant toute la nuit / la nuit entière",
+                "Vers minuit seulement",
+                "Au début de la soirée",
+                "Pendant le jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Per tutta la notte' souligne la persistance continue de l'action durant l'ensemble de la nuit."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Complétez : 'La mostra artistica è rimasta aperta ___ maggio a settembre.'",
+              "options": ["da", "in", "per", "su"],
+              "correctAnswers": [0],
+              "explanation": "La formule corrélative est 'da maggio a settembre' (de mai à septembre)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Connecteurs complexes et chronologie du récit",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le connecteur temporel 'nel frattempo' au sein d'un récit ?",
+              "options": [
+                "Entre-temps / pendant ce temps-là",
+                "Beaucoup plus tôt",
+                "Jamais auparavant",
+                "À la fin de l'histoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Nel frattempo' permet d'évoquer un fait qui se déroule parallèlement pendant un intervalle donné."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel adverbe italien est un équivalent direct de 'nel frattempo' ?",
+              "options": ["Intanto", "Invece", "Purtroppo", "Dunque"],
+              "correctAnswers": [0],
+              "explanation": "'Intanto' et 'nel frattempo' sont deux connecteurs synonymes signifiant 'pendant ce temps'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'à cette époque-là' en italien ?",
+              "options": ["A quell'epoca", "In questo momento", "Per l'epoca futura", "D'ora in poi"],
+              "correctAnswers": [0],
+              "explanation": "'A quell'epoca' (ou 'a quel tempo') renvoie à une période historique ou biographique passée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie la conjonction 'finché' dans la phrase : 'Finché rimase a Roma, scrisse molti articoli' ?",
+              "options": [
+                "Tant que / aussi longtemps que",
+                "Après que",
+                "Parce que",
+                "Bien que"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Finché' exprime la continuité d'une action pendant toute la durée d'une autre ('tant que')."
+            },
+            {
+              "id": "q5",
+              "type": "multiple_choice",
+              "question": "Quels connecteurs permettent de rapporter des actions menées parallèlement dans une narration au passé ?",
+              "options": [
+                "Nel frattempo",
+                "Intanto",
+                "In seguito",
+                "Successivamente"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "'Nel frattempo' et 'intanto' marquent la simultanéité parallèle, tandis que 'in seguito' et 'successivamente' marquent la succession postérieure."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Complétez la phrase : 'Marco preparava la cena; ___, Laura apparecchiava la tavola.'",
+              "options": ["intanto", "dopo di che", "prima", "infine"],
+              "correctAnswers": [0],
+              "explanation": "'Intanto' montre que Laura mettait la table pendant que Marco préparait le dîner."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie l'expression juridique et journalistique 'all'epoca dei fatti' ?",
+              "options": [
+                "Au moment où les faits se sont produits",
+                "Bien avant l'histoire",
+                "Dans un avenir proche",
+                "Sans aucun rapport avec les faits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'All'epoca dei fatti' situe un événement à la date exacte où les faits ont eu lieu."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Complétez pour marquer le contexte révolu : 'Quando eravamo giovani, ___ non c'erano gli smartphone.'",
+              "options": ["allora", "domani", "adesso", "subito"],
+              "correctAnswers": [0],
+              "explanation": "'Allora' s'emploie ici au sens de 'à cette époque-là' en regard du passé."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Traduisez : 'Entre-temps, la situation avait complètement changé.'",
+              "options": [
+                "Nel frattempo, la situazione era completamente cambiata.",
+                "D'ora in poi, la situazione era completamente cambiata.",
+                "Invece, la situazione era completamente cambiata.",
+                "Prima di tutto, la situazione era completamente cambiata."
+              ],
+              "correctAnswers": [0],
+              "explanation": "'Nel frattempo' traduit 'entre-temps', accompagné ici du trapassato prossimo 'era cambiata'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel connecteur permet de marquer le dénouement chronologique final d'un récit ?",
+              "options": ["Alla fine / infine", "Dapprima", "All'inizio", "Mentre"],
+              "correctAnswers": [0],
+              "explanation": "'Alla fine' (ou 'infine') introduit la conclusion chronologique des événements narrés."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

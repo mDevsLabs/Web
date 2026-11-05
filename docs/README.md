@@ -1,16 +1,36 @@
 # Documentation mAI
 
-Les guides sont classés selon la partie du dépôt qu’ils décrivent. Pour les règles communes de contribution, commencez par [AGENTS.md](../AGENTS.md). Les sources de code restent la référence lorsqu’une page documentaire diverge.
+Sept espaces, classés par partie du dépôt. Les règles transversales — double
+runtime, forfaits, migrations, conventions de code — sont dans
+[AGENTS.md](../AGENTS.md), à la racine. **Une page documentaire qui diverge du
+code a tort** : vérifiez la source avant d'appliquer une instruction.
 
-| Espace | Contenu | Entrée |
+| Espace | Ce qu'il couvre | Entrée |
 | --- | --- | --- |
-| 1-web | Application Next.js, API Hono, agent, base et sécurité | [mAI Web](1-web/README.md) |
-| 2-vibe | Source Vibe et intégration sous /vibe | [Vibe](2-vibe/README.md) |
-| 3-wakies | Source Wakies et intégration sous /wakies | [Wakies](3-wakies/README.md) |
-| 4-coder | Application Electron de développement | [mAI Coder](4-coder/README.md) |
-| 5-site | Site autonome et intégration sous /site | [Site officiel](5-site/README.md) |
-| 6-blackline | Jeu 3D Vite monté sous /blackline | [Blackline](6-blackline/README.md) |
+| `1-web` | Application Next.js, backend Hono, Agent, base, sécurité, intégrations OAuth | [mAI Web](1-web/README.md) |
+| `2-vibe` | Source Vite de Vibe et son port sous `/vibe` | [Vibe](2-vibe/README.md) |
+| `3-wakies` | Référence OpenMuse et le port sous `/wakies` | [Wakies](3-wakies/README.md) |
+| `4-coder` | Application Electron de développement | [mAI Coder](4-coder/README.md) |
+| `5-site` | Site officiel autonome et son port sous `/site` | [Site officiel](5-site/README.md) |
+| `6-blackline` | FPS Three.js monté sous `/blackline` | [Blackline](6-blackline/README.md) |
 
-Les guides de domaine contiennent leurs propres règles AGENTS.md, les plans d’intégration et les références d’architecture. Le dossier 4-coder/llm-wiki/ est un index maintenu des modules de mAI Coder. Les images et démonstrations sont conservées à proximité de leur guide.
+Chaque espace porte son propre `AGENTS.md` : ce sont les règles impératives du
+domaine, à lire **avant** toute modification dans le dossier correspondant.
 
-Cette documentation couvre plusieurs runtimes : le build Next racine, le backend déployé séparément, les applications autonomes dans apps/ et les packages dans packages/. Vérifiez le chemin avant d’appliquer une commande ou une règle d’un autre projet.
+## Dossiers et fichiers hors section
+
+- [`CLEANUP.md`](CLEANUP.md), [`CLEANUP_INVENTORY.json`](CLEANUP_INVENTORY.json),
+  [`CLEANUP_IMAGES.json`](CLEANUP_IMAGES.json) — inventaire du retrait des
+  services autonomes OpenMuse et de ce qui doit rester protégé.
+- [`CORRECTIONS_UI_NATIVE.md`](CORRECTIONS_UI_NATIVE.md) et
+  `CORRECTIONS_UI_PREVIEW_2/3/4.md` — journal des corrections d'interface native.
+- Les médias (captures, démonstrations) vivent à côté du guide qui les cite, pas
+  dans un dépôt commun.
+
+## Précaution de lecture
+
+Cette documentation décrit des runtimes qui ne se recouvrent pas : le build Next
+racine, le backend Val Town déployé à part, les applications de `apps/` (qui ne
+sont pas des membres du workspace pnpm) et les paquets de `packages/`. Une
+commande ou une règle prise dans le mauvais projet échoue silencieusement — ou
+pire, s'applique au mauvais arbre. Vérifiez le chemin avant d'exécuter.

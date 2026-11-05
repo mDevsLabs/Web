@@ -1,0 +1,2743 @@
+{
+  "id": "terminale-nsi-04",
+  "year": "terminale",
+  "subject": "nsi",
+  "title": "Traitement de données en tables",
+  "order": 4,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Sélection",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Représentation tabulaire et formats de données",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles structures Python sont couramment utilisées pour représenter une table de données en mémoire ?",
+              "options": [
+                "Une liste de dictionnaires ayant les mêmes clés",
+                "Un dictionnaire de dictionnaires indexé par un identifiant",
+                "Un simple entier non signé",
+                "Un booléen immuable"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les tables sont fréquemment modélisées par des listes de dictionnaires (lignes) ou des dictionnaires indexés par clé primaire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Dans un fichier CSV, que représente généralement chaque ligne du fichier en dehors de l'en-tête ?",
+              "options": [
+                "Un enregistrement (ou n-uplet) de données",
+                "Le nom d'un attribut de la table",
+                "Le type de données de la colonne",
+                "Une fonction d'agrégation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un fichier CSV, chaque ligne correspond à un enregistrement individuel de la table."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel module standard de Python permet de lire et écrire nativement des fichiers au format CSV ?",
+              "options": [
+                "csv",
+                "json",
+                "math",
+                "random"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le module standard 'csv' propose des lecteurs comme csv.reader et csv.DictReader."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que renvoie l'itérateur csv.DictReader lors de la lecture d'une ligne d'un fichier CSV ?",
+              "options": [
+                "Un dictionnaire associant chaque nom de colonne à sa valeur textuelle",
+                "Une liste de nombres entiers convertis automatiquement",
+                "Un tuple de booléens",
+                "Une chaîne de caractères brute non découpée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "csv.DictReader utilise la première ligne pour former les clés d'un dictionnaire pour chaque ligne suivante."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel problème majeur survient si les nombres d'un CSV ne sont pas convertis après lecture en Python ?",
+              "options": [
+                "Les comparaisons numériques comme 9 < 100 échouent ('9' > '100')",
+                "Le programme lève immédiatement une erreur de syntaxe",
+                "Toutes les valeurs deviennent automatiquement nulles",
+                "La table s'efface de la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les chaînes sont comparées dans l'ordre lexicographique : '9' est supérieur à '100', d'où la nécessité de convertir."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Dans le modèle relationnel, comment appelle-t-on les colonnes d'une table ?",
+              "options": [
+                "Les attributs",
+                "Les index primaires obligatoires",
+                "Les pointeurs de cellules",
+                "Les instances de graphes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les colonnes d'une relation sont appelées attributs et possèdent un nom et un domaine de valeurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une liste de dictionnaires 'table', comment accède-t-on à la valeur de la colonne 'nom' de la première ligne ?",
+              "options": [
+                "table[0]['nom']",
+                "table['nom'][0]",
+                "table.get('nom', 0)",
+                "table[1].nom"
+              ],
+              "correctAnswers": [0],
+              "explanation": "table[0] accède au dictionnaire de la première ligne, puis ['nom'] extrait la valeur associée à la clé."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle est la principale caractéristique d'un n-uplet nommé (namedtuple) par rapport à un dictionnaire ?",
+              "options": [
+                "Il est immuable et permet un accès par attribut ou par indice",
+                "Il accepte des modifications dynamiques de ses clés",
+                "Il ne peut contenir que des chaînes de caractères",
+                "Il consomme deux fois plus de mémoire vive qu'un dictionnaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un namedtuple est immuable et plus économe en mémoire qu'un dictionnaire classique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel caractère est fréquemment utilisé comme séparateur alternatif à la virgule dans les fichiers CSV français ?",
+              "options": [
+                "Le point-virgule (;)",
+                "L'arobase (@)",
+                "Le point d'exclamation (!)",
+                "Le tilde (~)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En français, la virgule servant de séparateur décimal, le point-virgule est très fréquent comme délimiteur CSV."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le schéma d'une table de données ?",
+              "options": [
+                "La liste des attributs accompagnée de leurs domaines ou types de données",
+                "Le nombre de lignes actuellement stockées sur le disque",
+                "Le chemin absolu vers le fichier de stockage physique",
+                "La couleur utilisée pour l'affichage graphique de la table"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le schéma relationnel spécifie le nom de la table, la liste des attributs et leurs types respectifs."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Projections et extraction de colonnes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant l'opération de projection sont vraies ?",
+              "options": [
+                "Elle permet de ne conserver qu'un sous-ensemble des colonnes de la table",
+                "En SQL, elle est principalement définie par les attributs listés après SELECT",
+                "Elle modifie nécessairement le nombre de lignes initiales de la table",
+                "Elle supprime physiquement les fichiers de données d'origine"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "La projection sélectionne certaines colonnes (SELECT col1, col2) sans modifier le nombre de lignes (hors élimination des doublons)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En compréhension de liste Python, comment projeter les attributs 'nom' et 'note' d'une table ?",
+              "options": [
+                "[{'nom': e['nom'], 'note': e['note']} for e in table]",
+                "[e['nom'] and e['note'] for e in table]",
+                "[table['nom'], table['note']]",
+                "[e for e in table if 'nom' in e]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On construit pour chaque élément 'e' de la table un nouveau dictionnaire restreint aux deux clés voulues."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle commande SQL permet de projeter toutes les colonnes d'une table nommée 'eleves' ?",
+              "options": [
+                "SELECT * FROM eleves;",
+                "SELECT ALL COLUMNS FROM eleves;",
+                "PROJECT eleves;",
+                "GET * IN eleves;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le caractère joker '*' dans la clause SELECT désigne l'ensemble des attributs de la table."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En SQL, quel mot-clé permet d'éliminer les doublons après une projection d'attributs ?",
+              "options": [
+                "DISTINCT",
+                "UNIQUE_ONLY",
+                "NO_DUPLICATE",
+                "CLEAN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SELECT DISTINCT supprime les lignes dupliquées dans le résultat de la requête."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot-clé SQL permet de renommer une colonne projetée dans le résultat d'une requête ?",
+              "options": [
+                "AS",
+                "INTO",
+                "NEW",
+                "SET"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clause 'SELECT age AS age_eleve' crée un alias pour l'attribut dans la table résultat."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soit t = [{'a': 1, 'b': 2}, {'a': 3, 'b': 4}]. Que vaut [x['a'] for x in t] ?",
+              "options": [
+                "[1, 3]",
+                "[{'a': 1}, {'a': 3}]",
+                "[1, 2, 3, 4]",
+                "['a', 'a']"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'expression extrait la valeur de la clé 'a' pour chaque dictionnaire, donnant la liste [1, 3]."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la complexité temporelle de la projection de k colonnes sur une table de n lignes en Python ?",
+              "options": [
+                "O(n * k)",
+                "O(1)",
+                "O(n²)",
+                "O(k!)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour chacune des n lignes, l'extraction de k attributs prend un temps proportionnel à k, soit O(n * k)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si une table initiale contient 50 lignes, combien de lignes comportera une projection simple sans clause DISTINCT en SQL ?",
+              "options": [
+                "Exactement 50 lignes",
+                "Moins de 50 lignes",
+                "Plus de 50 lignes",
+                "0 ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une projection sans DISTINCT conserve toutes les lignes de la table d'origine."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En Python, que renvoie l'expression list(map(lambda r: r['ville'], table)) ?",
+              "options": [
+                "La liste des villes de chaque enregistrement de la table",
+                "Une nouvelle table filtrée contenant seulement les villes uniques",
+                "Le nombre total de villes différentes",
+                "Une erreur de type car lambda ne s'applique pas aux listes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "map applique la fonction d'extraction à chaque ligne, produisant la liste des valeurs de l'attribut 'ville'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi évite-t-on l'usage systématique de 'SELECT *' dans les applications en production ?",
+              "options": [
+                "Cela charge des données inutiles et dégrade les performances réseau et mémoire",
+                "Cela déclenche une suppression accidentelle des données",
+                "Le standard SQL interdit formellement cette syntaxe",
+                "Cela transforme automatiquement tous les nombres en chaînes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Projeter uniquement les colonnes nécessaires réduit les transferts réseau et la consommation de mémoire vive."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Filtrage simple et prédicats élémentaires",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles propositions correspondent à des prédicats valides en SQL pour la clause WHERE ?",
+              "options": [
+                "age >= 18",
+                "ville = 'Lyon'",
+                "classe == 'Terminale'",
+                "table = DROP"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En SQL, l'égalité se note '=' (et non '==') et les comparaisons habituelles comme '>=' sont valides."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment s'écrit la sélection des personnes majeures (age >= 18) en compréhension de liste Python ?",
+              "options": [
+                "[p for p in personnes if p['age'] >= 18]",
+                "[p for p in personnes while p['age'] >= 18]",
+                "[p if p['age'] >= 18 for p in personnes]",
+                "[p for p in personnes where p['age'] >= 18]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clause conditionnelle se place en fin de compréhension avec le mot-clé 'if'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel opérateur SQL teste l'inégalité de deux valeurs ?",
+              "options": [
+                "<> (ou !=)",
+                "===",
+                "IS NOT SAME",
+                "~="
+              ],
+              "correctAnswers": [0],
+              "explanation": "En SQL standard, l'inégalité est notée '<>' (l'opérateur '!=' est également très couramment supporté)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle requête SQL sélectionne les élèves ayant une note strictement supérieure à 15 ?",
+              "options": [
+                "SELECT * FROM eleves WHERE note > 15;",
+                "SELECT * FROM eleves IF note > 15;",
+                "FILTER eleves WHERE note > 15;",
+                "SELECT note > 15 FROM eleves;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clause WHERE permet de filtrer les lignes selon une condition booléenne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En Python, que fait la fonction filter(lambda x: x['actif'], utilisateurs) ?",
+              "options": [
+                "Elle conserve uniquement les enregistrements dont la clé 'actif' s'évalue à True",
+                "Elle supprime la clé 'actif' de chaque dictionnaire",
+                "Elle trie les utilisateurs selon leur statut d'activité",
+                "Elle compte le nombre total d'utilisateurs actifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "filter applique le prédicat et ne garde que les éléments pour lesquels il retourne True."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la complexité temporelle d'un filtrage simple sur une table non indexée de n lignes ?",
+              "options": [
+                "O(n)",
+                "O(1)",
+                "O(log n)",
+                "O(n²)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans index, il est nécessaire de parcourir chaque ligne pour tester la condition, d'où un coût O(n)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Soit t = [{'v': 10}, {'v': 25}, {'v': 5}]. Combien d'éléments renvoie [x for x in t if x['v'] < 20] ?",
+              "options": [
+                "2",
+                "1",
+                "3",
+                "0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Seuls les dictionnaires avec v = 10 et v = 5 vérifient la condition strictement inférieure à 20."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que renvoie la requête 'SELECT * FROM clients WHERE 1 = 0;' ?",
+              "options": [
+                "Une table vide (aucun enregistrement)",
+                "Une erreur de syntaxe",
+                "Toutes les lignes de la table",
+                "La première ligne uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La condition 1 = 0 est toujours fausse, donc aucune ligne ne correspond au critère de sélection."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que teste l'expression Python 'valeur in [12, 14, 16]' ?",
+              "options": [
+                "L'appartenance de 'valeur' à la liste donnée",
+                "La division exacte de 'valeur' par la liste",
+                "La position d'index de la liste dans la variable",
+                "La conversion de 'valeur' en tableau dynamique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur 'in' teste si l'élément se trouve parmi les valeurs spécifiées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans une base de données, quel composant permet d'accélérer drastiquement les requêtes de sélection WHERE ?",
+              "options": [
+                "Un index (souvent basé sur un arbre B ou une table de hachage)",
+                "Un commentaire dans le schéma",
+                "Une boucle for explicite",
+                "Un alias de nom de table"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les index permettent de retrouver rapidement les lignes sans avoir à scanner séquentiellement toute la table."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Connecteurs logiques et prédicats composés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les opérateurs logiques valides en SQL standard pour combiner des prédicats ?",
+              "options": [
+                "AND",
+                "OR",
+                "&&",
+                "||"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "SQL utilise les mots-clés en toutes lettres AND, OR et NOT pour exprimer la logique booléenne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En Python, comment traduire la condition SQL 'WHERE age >= 16 AND ville = 'Paris'' ?",
+              "options": [
+                "ligne['age'] >= 16 and ligne['ville'] == 'Paris'",
+                "ligne['age'] >= 16 & ligne['ville'] == 'Paris'",
+                "ligne['age'] >= 16 AND ligne['ville'] = 'Paris'",
+                "ligne['age'] >= 16 or ligne['ville'] == 'Paris'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Python emploie le mot-clé 'and' en minuscules et le double égal '==' pour tester l'égalité."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle est la priorité de l'opérateur AND par rapport à l'opérateur OR en SQL ?",
+              "options": [
+                "AND est prioritaire sur OR",
+                "OR est prioritaire sur AND",
+                "Ils ont exactement la même priorité et s'évaluent toujours de droite à gauche",
+                "Leur priorité dépend du type des colonnes comparées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme en algèbre booléenne, l'opérateur AND a une priorité plus élevée que OR. Il est recommandé de parenthéser."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Selon les lois de De Morgan, quelle est la négation de la condition (A AND B) ?",
+              "options": [
+                "(NOT A) OR (NOT B)",
+                "(NOT A) AND (NOT B)",
+                "NOT (A OR B)",
+                "A OR B"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation d'une conjonction est la disjonction des négations : NOT (A AND B) équivaut à (NOT A) OR (NOT B)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que sélectionne la requête 'SELECT * FROM produits WHERE NOT (prix > 100);' ?",
+              "options": [
+                "Les produits dont le prix est inférieur ou égal à 100",
+                "Les produits dont le prix est strictement supérieur à 100",
+                "Les produits gratuits uniquement",
+                "Aucun produit car la syntaxe est erronée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La négation de 'prix > 100' est 'prix <= 100' (en excluant les éventuelles valeurs NULL)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Soit la condition (ville = 'Nantes' OR ville = 'Rennes') AND age < 20. Qui est sélectionné ?",
+              "options": [
+                "Un jeune de 18 ans habitant à Nantes",
+                "Un adulte de 25 ans habitant à Rennes",
+                "Un jeune de 17 ans habitant à Lyon",
+                "Une personne de 30 ans habitant à Paris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'âge doit impérativement être inférieur à 20 et la ville doit être soit Nantes, soit Rennes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi l'utilisation de parenthèses est-elle fortement conseillée lors du mélange de AND et OR ?",
+              "options": [
+                "Pour lever toute ambiguïté de lecture et garantir l'ordre d'évaluation souhaité",
+                "Car le compilateur SQL refuse d'exécuter la requête sans parenthèses",
+                "Pour accélérer le temps d'exécution de la requête de moitié",
+                "Pour forcer le résultat à n'avoir aucun doublon"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le parenthésage explicite évite les erreurs d'interprétation liées aux règles de priorité des opérateurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "En Python, que signifie l'évaluation en court-circuit (short-circuit) de l'expression 'X and Y' ?",
+              "options": [
+                "Si X est faux, Y n'est même pas évalué car le résultat global est nécessairement faux",
+                "Les deux expressions sont toujours évaluées simultanément en parallèle",
+                "Si X est vrai, l'expression retourne immédiatement False",
+                "Une exception est levée dès que X est nul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'évaluation s'interrompt dès que le résultat final de l'opération booléenne est déterminé avec certitude."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle requête filtre les élèves qui ont validé NSI ou Maths, tout en ayant plus de 12 de moyenne générale ?",
+              "options": [
+                "SELECT * FROM eleves WHERE (option = 'NSI' OR option = 'Maths') AND moyenne > 12;",
+                "SELECT * FROM eleves WHERE option = 'NSI' OR option = 'Maths' AND moyenne > 12;",
+                "SELECT * FROM eleves WHERE option = 'NSI' AND option = 'Maths' OR moyenne > 12;",
+                "SELECT * FROM eleves WHERE option IN ('NSI', 'Maths') OR moyenne > 12;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le parenthésage autour de la disjonction est indispensable pour appliquer la condition sur la moyenne aux deux options."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si condition1 vaut False et condition2 vaut True, que vaut l'expression (condition1 and condition2) or True ?",
+              "options": [
+                "True",
+                "False",
+                "None",
+                "Une erreur d'exécution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "(False and True) vaut False, puis False or True donne True."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Recherche textuelle et motifs",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels caractères spéciaux servent de jokers dans la clause SQL LIKE ?",
+              "options": [
+                "% (représente zéro, un ou plusieurs caractères)",
+                "_ (représente exactement un seul caractère)",
+                "* (représente tous les chiffres)",
+                "# (représente une lettre majuscule)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "En SQL, '%' remplace une suite de caractères quelconque et '_' remplace un caractère unique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel motif SQL LIKE sélectionne toutes les chaînes commençant par la lettre 'A' ?",
+              "options": [
+                "'A%'",
+                "'%A'",
+                "'_A'",
+                "'A_'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'A%' impose que le premier caractère soit 'A', suivi de n'importe quelle séquence de caractères."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel motif SQL LIKE sélectionne les chaînes composées d'exactement 3 caractères ?",
+              "options": [
+                "'___'",
+                "'%3%'",
+                "'...'",
+                "'###'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque caractère souligné '_' représente exactement un caractère, donc trois soulignés représentent 3 caractères."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment vérifier en Python qu'une chaîne 'nom' se termine par l'extension '.csv' ?",
+              "options": [
+                "nom.endswith('.csv')",
+                "nom.startswith('.csv')",
+                "nom.contains('.csv')",
+                "nom.find('.csv') == 0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La méthode endswith() renvoie True si la chaîne se termine par le suffixe fourni."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel opérateur SQL est souvent proposé pour effectuer une recherche insensible à la casse (notamment sous PostgreSQL) ?",
+              "options": [
+                "ILIKE",
+                "SAME",
+                "NOCASE",
+                "APPROX"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ILIKE effectue une comparaison de motifs insensible aux majuscules et minuscules."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment tester en Python si la sous-chaîne 'info' apparaît dans la chaîne 'titre' ?",
+              "options": [
+                "'info' in titre",
+                "titre.has('info')",
+                "'info' == titre",
+                "titre.index_of('info')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur 'in' teste directement la présence d'une sous-chaîne dans une chaîne en Python."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que recherche le motif SQL 'nom LIKE '%dupont%'' ?",
+              "options": [
+                "Les noms contenant la séquence 'dupont' n'importe où dans le texte",
+                "Uniquement les noms qui sont exactement égaux à 'dupont'",
+                "Les noms commençant par 'dupont' et rien d'autre",
+                "Les noms se terminant obligatoirement par 'dupont'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entourer un motif de '%' permet de rechercher la sous-chaîne à n'importe quelle position."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment échapper le caractère '%' dans une recherche LIKE si l'on cherche littéralement le symbole pour cent ?",
+              "options": [
+                "En utilisant le mot-clé ESCAPE (par ex. WHERE remise LIKE '%\\%%' ESCAPE '\\')",
+                "En écrivant '%%%' sans autre précaution",
+                "Il est rigoureusement impossible de chercher ce caractère",
+                "En remplaçant le caractère par le mot 'POURCENT'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clause ESCAPE définit le caractère d'échappement permettant de traiter '%' ou '_' comme un caractère ordinaire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle méthode Python permet de découper une chaîne selon un délimiteur en une liste de morceaux ?",
+              "options": [
+                "split()",
+                "join()",
+                "strip()",
+                "slice()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "split() sépare une chaîne selon un séparateur (espace par défaut ou délimiteur passé en argument)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pour comparer deux chaînes sans tenir compte de la casse en Python, quelle méthode applique-t-on couramment ?",
+              "options": [
+                "lower() ou casefold()",
+                "capitalize()",
+                "title()",
+                "swapcase()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convertir les deux chaînes avec .lower() ou .casefold() permet une comparaison insensible à la casse."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Gestion des valeurs manquantes et nulles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant la valeur NULL en SQL ?",
+              "options": [
+                "NULL représente l'absence d'information ou une valeur inconnue",
+                "Le prédicat 'colonne = NULL' est toujours évalué à UNKNOWN en SQL standard",
+                "NULL est strictement équivalent au nombre 0",
+                "NULL est strictement équivalent à la chaîne vide ''"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "NULL est un état désignant une valeur absente ; le test d'égalité '= NULL' ne fonctionne pas, il faut employer IS NULL."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle clause SQL teste correctement si la colonne 'telephone' ne contient aucune valeur ?",
+              "options": [
+                "WHERE telephone IS NULL",
+                "WHERE telephone = NULL",
+                "WHERE telephone == NULL",
+                "WHERE telephone IS EMPTY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En SQL, le test de nullité s'effectue exclusivement avec le prédicat 'IS NULL'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle clause SQL teste qu'une colonne contient une valeur non nulle ?",
+              "options": [
+                "WHERE telephone IS NOT NULL",
+                "WHERE telephone != NULL",
+                "WHERE telephone <> NULL",
+                "WHERE telephone HAS VALUE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'absence de nullité se teste via la syntaxe 'IS NOT NULL'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel objet Python correspond le plus fidèlement au concept de valeur NULL d'une base de données ?",
+              "options": [
+                "None",
+                "False",
+                "0",
+                "NaN (issu uniquement de sys)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'objet singleton 'None' est la valeur canonique en Python pour représenter l'absence de données."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment tester de manière idiomatique si une variable 'x' vaut None en Python ?",
+              "options": [
+                "x is None",
+                "x == None",
+                "x is null",
+                "x.is_none()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque None est un singleton en mémoire, l'opérateur d'identité 'is' est la façon recommandée de le tester."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En logique trivaluée SQL, quel est le résultat de l'expression booléenne (TRUE AND NULL) ?",
+              "options": [
+                "UNKNOWN (ou NULL)",
+                "TRUE",
+                "FALSE",
+                "Une erreur d'exécution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans la logique trivaluée, TRUE AND UNKNOWN produit UNKNOWN, car le résultat dépend de la valeur inconnue."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle fonction SQL permet de remplacer une valeur NULL par une valeur par défaut de secours ?",
+              "options": [
+                "COALESCE(valeur, defaut)",
+                "REPLACE_NULL(valeur, defaut)",
+                "FALLBACK(valeur, defaut)",
+                "DEFAULT_VAL(valeur, defaut)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "COALESCE renvoie le premier argument non nul parmi la liste de ses paramètres."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Lors du calcul de la moyenne (AVG) sur une colonne en SQL, comment sont traitées les lignes contenant NULL ?",
+              "options": [
+                "Elles sont purement ignorées du calcul (ni au numérateur, ni au dénominateur)",
+                "Elles sont comptées comme valant 0 au numérateur",
+                "La requête lève immédiatement une erreur de division par zéro",
+                "Toute la moyenne devient automatiquement égale à NULL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fonctions d'agrégation standard (hors COUNT(*)) ignorent silencieusement les valeurs NULL."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En Python, que fait [row for row in table if row['email'] is not None] ?",
+              "options": [
+                "Elle filtre et garde les lignes où l'email est renseigné",
+                "Elle efface les adresses email de la table",
+                "Elle remplace les emails manquants par une chaîne vide",
+                "Elle compte les lignes avec un email invalide"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette compréhension de liste ne conserve que les enregistrements dont la clé 'email' n'est pas None."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans la définition d'une colonne SQL, quelle contrainte interdit l'insertion de valeurs nulles ?",
+              "options": [
+                "NOT NULL",
+                "NO NULLABLE",
+                "REQUIRED TRUE",
+                "PREVENT_VOID"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La contrainte d'intégrité NOT NULL garantit qu'une valeur doit être obligatoirement renseignée."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Intervalles et appartenance à des ensembles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formulations SQL permettent de tester si une note est comprise entre 10 et 20 inclus ?",
+              "options": [
+                "note BETWEEN 10 AND 20",
+                "note >= 10 AND note <= 20",
+                "10 <= note <= 20",
+                "note IN (10, 20)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "BETWEEN inclut les deux bornes et est strictement équivalent à la double inégalité avec AND. L'écriture chaînée n'est pas du SQL standard."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Est-ce que l'opérateur SQL BETWEEN est inclusif ou exclusif vis-à-vis des bornes ?",
+              "options": [
+                "Il est inclusif pour les deux bornes (borne_inf <= x <= borne_sup)",
+                "Il est exclusif pour les deux bornes (borne_inf < x < borne_sup)",
+                "Il inclut la borne inférieure mais exclut la borne supérieure",
+                "Il dépend du système de gestion de bases de données utilisé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En SQL standard, BETWEEN a AND b est toujours inclusif : il englobe les bornes a et b."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle requête SQL sélectionne les clients domiciliés à Paris, Lyon ou Marseille ?",
+              "options": [
+                "SELECT * FROM clients WHERE ville IN ('Paris', 'Lyon', 'Marseille');",
+                "SELECT * FROM clients WHERE ville = ('Paris', 'Lyon', 'Marseille');",
+                "SELECT * FROM clients WHERE ville AMONG ('Paris', 'Lyon', 'Marseille');",
+                "SELECT * FROM clients WHERE ville CONTAINS ('Paris', 'Lyon', 'Marseille');"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur IN teste l'égalité avec l'une quelconque des valeurs listées entre parenthèses."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduire en Python la condition SQL 'WHERE statut NOT IN ('banni', 'suspendu')' ?",
+              "options": [
+                "u['statut'] not in ('banni', 'suspendu')",
+                "not u['statut'] == 'banni' or 'suspendu'",
+                "u['statut'] != ('banni', 'suspendu')",
+                "u['statut'] outside ('banni', 'suspendu')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En Python, l'expression 'valeur not in ensemble' teste l'absence d'appartenance de manière directe et lisible."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que sélectionne la condition SQL 'WHERE date_naissance NOT BETWEEN '2000-01-01' AND '2005-12-31'' ?",
+              "options": [
+                "Les personnes nées strictement avant 2000 ou strictement après 2005",
+                "Les personnes nées exactement entre 2000 et 2005",
+                "Uniquement les personnes nées en 2000 ou en 2005",
+                "Aucune personne car les dates ne supportent pas BETWEEN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NOT BETWEEN sélectionne toutes les valeurs situées en dehors de l'intervalle fermé défini par les deux bornes."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En Python, quelle structure de données offre un test d'appartenance avec 'in' en temps moyen O(1) ?",
+              "options": [
+                "Le set (ensemble)",
+                "La liste (list)",
+                "Le tuple",
+                "La chaîne de caractères (str)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les tables de hachage sous-jacentes aux ensembles ('set') permettent des recherches en temps constant O(1)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle condition en Python teste qu'une note est comprise entre 0 et 20 inclus de façon concise ?",
+              "options": [
+                "0 <= note <= 20",
+                "0 <= note and <= 20",
+                "note in range(0, 20)",
+                "between(note, 0, 20)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Python autorise le chaînage d'opérateurs de comparaison '0 <= note <= 20', ce qui est très idiomatique."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que renvoie l'évaluation de 'valeur IN ()' avec une liste vide en SQL standard ?",
+              "options": [
+                "Elle provoque une erreur de syntaxe ou s'évalue à FALSE",
+                "Elle s'évalue toujours à TRUE",
+                "Elle renvoie l'ensemble de la table",
+                "Elle supprime la colonne testée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une liste vide dans IN est soit invalide selon les moteurs, soit s'évalue à faux (aucun élément n'appartient à l'ensemble vide)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on écrit 'WHERE col BETWEEN 20 AND 10' en SQL, que se passe-t-il ?",
+              "options": [
+                "Aucune ligne n'est sélectionnée car 20 > 10 rend l'intervalle vide",
+                "Le moteur inverse automatiquement les bornes pour faire 10 à 20",
+                "La base de données s'arrête en erreur fatale",
+                "Toutes les lignes sont renvoyées par précaution"
+              ],
+              "correctAnswers": [0],
+              "explanation": "BETWEEN exige que la première valeur soit inférieure ou égale à la seconde ; sinon la condition n'est jamais satisfaite."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est l'utilité principale de l'opérateur IN par rapport à une suite de OR ?",
+              "options": [
+                "Il rend la requête plus concise, lisible et souvent mieux optimisée par le planificateur",
+                "Il permet d'exécuter des calculs matriciels complexes",
+                "Il évite la conversion des chaînes en majuscules",
+                "Il est obligatoire dès qu'il y a plus de deux critères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "IN(v1, v2, v3) remplace avantageusement 'col = v1 OR col = v2 OR col = v3' en clarté et efficacité."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Tri et ordonnancement des lignes",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots-clés SQL spécifient le sens du tri dans une clause ORDER BY ?",
+              "options": [
+                "ASC (ordre croissant, valeur par défaut)",
+                "DESC (ordre décroissant)",
+                "UP (vers le haut)",
+                "DOWN (vers le bas)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "ASC (ascendant) et DESC (descendant) sont les deux modificateurs officiels de sens de tri en SQL."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "En Python, quelle fonction retourne une nouvelle liste triée sans modifier la liste originale ?",
+              "options": [
+                "sorted()",
+                "list.sort()",
+                "order()",
+                "arrange()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "sorted(l) crée une nouvelle liste triée, tandis que l.sort() trie la liste en place (mutation)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment trier une table de dictionnaires par ordre décroissant de la clé 'note' en Python ?",
+              "options": [
+                "sorted(table, key=lambda x: x['note'], reverse=True)",
+                "sorted(table, key='note', order='desc')",
+                "table.sort_by('note', reverse=True)",
+                "order(table, -x['note'])"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'argument 'key' reçoit une fonction d'extraction et 'reverse=True' inverse l'ordre pour obtenir un tri décroissant."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que produit la clause SQL 'ORDER BY nom ASC, prenom ASC' ?",
+              "options": [
+                "Un tri par nom croissant, puis par prénom croissant en cas d'égalité de nom",
+                "Un tri aléatoire entre le nom et le prénom",
+                "Un tri par prénom d'abord, puis par nom en second",
+                "Une erreur car ORDER BY n'accepte qu'un seul attribut"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les attributs sont évalués dans l'ordre de gauche à droite : le second critère départage les égalités du premier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel algorithme de tri est utilisé par la fonction standard sorted() de Python ?",
+              "options": [
+                "Timsort (dérivé du tri fusion et du tri par insertion)",
+                "Le tri à bulles (Bubble sort)",
+                "Le tri stupide (Bogo sort)",
+                "Le tri par tas pur (Heapsort sans optimisation)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Python utilise Timsort, un algorithme adaptatif et stable de complexité O(n log n) dans le pire des cas."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie la notion de stabilité pour un algorithme de tri ?",
+              "options": [
+                "Il préserve l'ordre initial des éléments ayant des clés de tri identiques",
+                "Il s'exécute toujours exactement dans le même temps à la nanoseconde près",
+                "Il n'utilise aucune mémoire vive supplémentaire",
+                "Il refuse de trier les listes contenant des doublons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un tri stable garantit que deux éléments égaux restent dans le même ordre relatif qu'au départ."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle est la complexité temporelle optimale pour trier n éléments par comparaisons ?",
+              "options": [
+                "O(n log n)",
+                "O(n)",
+                "O(1)",
+                "O(log n)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La borne théorique minimale pour le tri par comparaison dans le pire des cas est en Omega(n log n)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans une requête SQL, où doit impérativement se situer la clause ORDER BY ?",
+              "options": [
+                "Après les clauses FROM et WHERE (vers la fin de la requête)",
+                "Avant la clause SELECT",
+                "Entre le SELECT et le FROM",
+                "N'importe où, l'ordre des clauses SQL est sans importance"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La clause ORDER BY s'applique sur les résultats filtrés et se place après FROM et WHERE."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Par défaut, si ASC ou DESC n'est pas précisé dans 'ORDER BY age', quel tri est appliqué en SQL ?",
+              "options": [
+                "Le tri croissant (ASC)",
+                "Le tri décroissant (DESC)",
+                "Un ordre non déterministe",
+                "L'ordre physique d'insertion sur le disque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En l'absence de précision, l'ordre croissant (ASC) est toujours la valeur par défaut en SQL."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel module standard Python fournit 'itemgetter' pour accélérer l'extraction de clés de tri ?",
+              "options": [
+                "operator",
+                "functools",
+                "itertools",
+                "collections"
+              ],
+              "correctAnswers": [0],
+              "explanation": "operator.itemgetter('cle') crée une fonction d'extraction très rapide en langage C pour sorted()."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Limitation et pagination des sélections",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles clauses SQL sont directement associées à la pagination des résultats ?",
+              "options": [
+                "LIMIT (pour définir le nombre maximal de lignes retournées)",
+                "OFFSET (pour sauter un certain nombre de lignes initiales)",
+                "PAGE (mot-clé natif universel)",
+                "SPLIT (clause de partitionnement d'affichage)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "LIMIT et OFFSET sont couramment associés pour paginer des résultats (ex: LIMIT 10 OFFSET 20)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle requête SQL permet d'obtenir les 3 meilleurs scores d'une table 'scores' ?",
+              "options": [
+                "SELECT * FROM scores ORDER BY points DESC LIMIT 3;",
+                "SELECT TOP 3 * FROM scores WHERE points = MAX;",
+                "SELECT * FROM scores LIMIT 3 ORDER BY points ASC;",
+                "SELECT * FROM scores WHERE points IN (1, 2, 3);"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On trie d'abord par points décroissants puis on restreint le résultat aux 3 premières lignes avec LIMIT 3."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En Python, quelle syntaxe de découpage (slicing) extrait les 5 premiers éléments d'une liste 'l' ?",
+              "options": [
+                "l[:5]",
+                "l[0:4]",
+                "l[1:5]",
+                "l[5:]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "l[:5] prend les indices 0, 1, 2, 3 et 4, soit exactement les 5 premiers éléments."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Pour afficher la page 3 de résultats avec 10 éléments par page, quelle clause SQL utilise-t-on ?",
+              "options": [
+                "LIMIT 10 OFFSET 20",
+                "LIMIT 20 OFFSET 10",
+                "LIMIT 10 OFFSET 30",
+                "LIMIT 3 OFFSET 10"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La page 1 saute 0 ligne, la page 2 saute 10 lignes, la page 3 saute (3 - 1) * 10 = 20 lignes."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi associe-t-on presque toujours ORDER BY à une clause LIMIT ?",
+              "options": [
+                "Sans tri explicite, l'ordre des lignes renvoyées par un SGBD est imprévisible et non reproductible",
+                "Parce que le compilateur SQL lève une erreur de syntaxe sinon",
+                "Pour diviser la consommation mémoire par deux",
+                "Pour forcer l'indexation de la table"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans ORDER BY, les données peuvent être renvoyées dans un ordre arbitraire selon le stockage physique du disque."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En Python, comment extraire les éléments d'une liste 'l' correspondant à la page 2 (éléments de l'indice 10 à 19 inclus) ?",
+              "options": [
+                "l[10:20]",
+                "l[10:19]",
+                "l[2:10]",
+                "l[9:20]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La tranche [10:20] s'arrête juste avant l'indice 20, couvrant ainsi les indices de 10 à 19."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que renvoie une requête avec 'LIMIT 0' en SQL ?",
+              "options": [
+                "Un ensemble vide de lignes tout en conservant la structure des colonnes",
+                "Toutes les lignes de la table",
+                "Une erreur de division par zéro",
+                "La dernière ligne de la table"
+              ],
+              "correctAnswers": [0],
+              "explanation": "LIMIT 0 renvoie zéro résultat, ce qui est parfois utilisé pour inspecter les métadonnées des colonnes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si la valeur de OFFSET dépasse le nombre total de lignes de la table ?",
+              "options": [
+                "La requête s'exécute sans erreur et renvoie un résultat vide",
+                "La base de données renvoie les lignes en boucle depuis le début",
+                "Une exception 'IndexOutOfBounds' fait échouer la transaction",
+                "La dernière ligne est renvoyée indéfiniment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sauter plus de lignes qu'il n'en existe conduit simplement à un jeu de résultats vide sans générer d'erreur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'inconvénient majeur de la pagination par 'OFFSET k' sur de très gros volumes de données (ex: k = 1 000 000) ?",
+              "options": [
+                "Le SGBD doit parcourir et ignorer les k premières lignes, ce qui devient très lent",
+                "Le résultat devient non déterministe",
+                "La taille du fichier de log dépasse la limite autorisée",
+                "Toutes les données sont supprimées de la mémoire cache"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SGBD doit générer et écarter les k premières lignes, entraînant un surcoût proportionnel à la valeur d'offset."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la technique alternative de pagination basée sur une condition comme 'WHERE id > dernier_id_vu LIMIT 10' ?",
+              "options": [
+                "La pagination par curseur (keyset pagination)",
+                "La pagination aléatoire",
+                "La projection circulaire",
+                "L'indexation inverse"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pagination par curseur s'appuie sur un index pour accéder immédiatement aux lignes suivantes en temps O(1)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Sélections avancées et sous-requêtes simples",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels opérateurs SQL permettent d'associer une sous-requête à une clause WHERE ?",
+              "options": [
+                "IN (teste si la valeur fait partie des résultats de la sous-requête)",
+                "EXISTS (teste si la sous-requête renvoie au moins une ligne)",
+                "LINK (lie physiquement deux requêtes)",
+                "ATTACH (associe deux tables sans condition)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "IN et EXISTS sont les constructions standard pour évaluer une sous-requête dans une clause de sélection."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle requête sélectionne les élèves ayant une note supérieure à la moyenne générale ?",
+              "options": [
+                "SELECT * FROM eleves WHERE note > (SELECT AVG(note) FROM eleves);",
+                "SELECT * FROM eleves WHERE note > AVG(note);",
+                "SELECT * FROM eleves HAVING note > AVG(note);",
+                "SELECT * FROM eleves WHERE note > MEAN;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les fonctions d'agrégation ne sont pas admises directement dans WHERE : il faut passer par une sous-requête scalaire."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on une sous-requête scalaire en SQL ?",
+              "options": [
+                "Une sous-requête qui renvoie exactement une seule valeur (une ligne et une colonne)",
+                "Une sous-requête qui retourne une table entière sans filtre",
+                "Une requête qui modifie la structure d'une table",
+                "Une fonction mathématique appliquée à un tableau de vecteurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une sous-requête scalaire renvoie une valeur atomique unique, utilisable dans une comparaison arithmétique."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que teste le prédicat SQL 'WHERE EXISTS (SELECT 1 FROM commandes WHERE clients.id = commandes.client_id)' ?",
+              "options": [
+                "La présence d'au moins une commande passée par le client considéré",
+                "Le fait que le client ait passé exactement une seule commande",
+                "Que toutes les commandes du client aient été payées",
+                "Le montant total des commandes du client"
+              ],
+              "correctAnswers": [0],
+              "explanation": "EXISTS retourne TRUE dès que la sous-requête corrélée produit au moins une ligne de résultat."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En Python, comment simuler l'extraction des éléments dont la valeur est supérieure à la moyenne des valeurs ?",
+              "options": [
+                "moy = sum(x['n'] for x in t) / len(t); res = [x for x in t if x['n'] > moy]",
+                "res = [x for x in t if x['n'] > avg(t)]",
+                "res = filter(lambda x: x > mean, t)",
+                "res = [x for x in t where x['n'] > sum(t)]"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On calcule d'abord la moyenne globale une seule fois, puis on filtre la table avec une compréhension."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une sous-requête corrélée en SQL ?",
+              "options": [
+                "Une sous-requête qui fait référence à un attribut de la requête principale externe",
+                "Une sous-requête qui utilise deux clauses GROUP BY consécutives",
+                "Une requête qui s'exécute sur deux serveurs distants synchronisés",
+                "Une requête qui ne renvoie que des valeurs booléennes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une sous-requête corrélée dépend des valeurs de la ligne en cours d'examen par la requête englobante."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que renvoie la condition 'valeur > ALL (SELECT note FROM controles)' ?",
+              "options": [
+                "True si 'valeur' est strictement supérieure à toutes les notes renvoyées par la sous-requête",
+                "True si 'valeur' est supérieure à au moins une note",
+                "True uniquement si toutes les notes sont identiques",
+                "Une erreur car ALL est réservé aux jointures"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'opérateur '> ALL' impose que la comparaison soit vraie vis-à-vis de l'ensemble des éléments retournés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'opérateur SQL 'ANY' (ou 'SOME') combiné avec un comparateur ?",
+              "options": [
+                "La condition doit être vérifiée pour au moins un des éléments de la sous-requête",
+                "La condition doit être vérifiée pour la totalité des éléments",
+                "La sous-requête ne doit contenir aucun élément nul",
+                "Le résultat doit être une liste ordonnée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "x = ANY(...) est équivalent à x IN (...) : il suffit qu'un seul élément valide la comparaison."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi est-il crucial de calculer la moyenne en amont en Python au lieu de la recalculer dans la boucle if ?",
+              "options": [
+                "Pour éviter une complexité quadratique O(n²) au lieu d'une complexité linéaire O(n)",
+                "Car Python interdit d'appeler sum() à l'intérieur d'une boucle",
+                "Pour éviter de modifier le contenu des dictionnaires",
+                "Pour forcer le garbage collector à libérer la mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Recalculer la moyenne à chaque élément coûte O(n) par itération, faisant exploser la complexité à O(n²)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que fait la clause 'WHERE NOT EXISTS (...)' ?",
+              "options": [
+                "Elle sélectionne les lignes pour lesquelles la sous-requête ne renvoie absolument aucun résultat",
+                "Elle vérifie que la table cible n'a pas encore été créée",
+                "Elle supprime les lignes de la table externe",
+                "Elle renvoie True si la table contient des doublons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "NOT EXISTS est vrai lorsque la sous-requête est vide, ce qui est très pratique pour détecter les absences de relations."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Agrégation",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Dénombrement et fonction COUNT",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant la fonction COUNT en SQL sont exactes ?",
+              "options": [
+                "COUNT(*) compte toutes les lignes de la table, y compris celles avec des valeurs nulles",
+                "COUNT(colonne) compte uniquement les lignes où 'colonne' n'est pas NULL",
+                "COUNT(*) renvoie une chaîne de caractères formatée",
+                "COUNT(colonne) supprime automatiquement toutes les lignes dupliquées"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "COUNT(*) dénombre toutes les lignes, tandis que COUNT(nom_colonne) ignore les enregistrements contenant NULL pour cet attribut."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle fonction Python intégrée permet de déterminer le nombre d'éléments d'une liste ?",
+              "options": [
+                "len()",
+                "count()",
+                "size()",
+                "length()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction native len() renvoie la longueur (nombre d'éléments) d'une collection ou d'un conteneur en Python."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle requête SQL compte le nombre total d'élèves enregistrés dans la table 'eleves' ?",
+              "options": [
+                "SELECT COUNT(*) FROM eleves;",
+                "SELECT SUM(*) FROM eleves;",
+                "SELECT TOTAL(eleves);",
+                "COUNT FROM eleves;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SELECT COUNT(*) FROM eleves calcule le nombre total d'enregistrements présents dans la table."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Si une table contient 10 lignes dont 3 ont un 'telephone' NULL, que renvoie 'SELECT COUNT(telephone) FROM table' ?",
+              "options": [
+                "7",
+                "10",
+                "3",
+                "NULL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "COUNT(colonne) n'incrémente son compteur que pour les valeurs non nulles : 10 - 3 = 7."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment compter en Python le nombre d'élèves ayant plus de 18 ans dans une table de dictionnaires ?",
+              "options": [
+                "sum(1 for e in table if e['age'] > 18)",
+                "table.count(e['age'] > 18)",
+                "len(e['age'] > 18 for e in table)",
+                "count(e in table if e['age'] > 18)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La somme de 1 pour chaque élément filtré via un générateur calcule efficacement le dénombrement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la complexité temporelle pour compter les éléments vérifiant un prédicat dans une liste Python de taille n ?",
+              "options": [
+                "O(n)",
+                "O(1)",
+                "O(log n)",
+                "O(n²)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut tester le prédicat sur chacun des n éléments de la liste, ce qui demande un temps linéaire O(n)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que renvoie la requête 'SELECT COUNT(*) FROM table WHERE 1 = 0' sur une table vide ou non vide ?",
+              "options": [
+                "0",
+                "NULL",
+                "Une erreur de division",
+                "-1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction COUNT renvoie toujours 0 lorsqu'aucune ligne ne satisfait la condition WHERE."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle clause permet de compter le nombre de villes distinctes présentes dans une table d'adresses ?",
+              "options": [
+                "SELECT COUNT(DISTINCT ville) FROM adresses;",
+                "SELECT DISTINCT COUNT(ville) FROM adresses;",
+                "SELECT COUNT(UNIQUE ville) FROM adresses;",
+                "SELECT COUNT(ville) GROUP DISTINCT FROM adresses;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "COUNT(DISTINCT nom_colonne) élimine les doublons avant d'effectuer le dénombrement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "En Python, que renvoie len([x for x in table if x['note'] >= 10]) ?",
+              "options": [
+                "Le nombre d'éléments ayant une note supérieure ou égale à 10",
+                "La liste de toutes les notes supérieures à 10",
+                "La moyenne des notes supérieures à 10",
+                "Le score maximum parmi les notes filtrées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La compréhension crée une sous-liste des éléments conformes au critère, puis len() calcule sa taille."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel type de données SQL renvoie la fonction COUNT ?",
+              "options": [
+                "Un entier (INTEGER ou BIGINT)",
+                "Un nombre à virgule flottante (FLOAT)",
+                "Une chaîne de caractères (VARCHAR)",
+                "Un booléen (BOOLEAN)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le résultat d'un dénombrement est toujours un nombre entier représentant une quantité de lignes."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Calculs de sommes et moyennes (SUM, AVG)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles fonctions SQL font partie des fonctions d'agrégation arithmétiques standard ?",
+              "options": [
+                "SUM (calcule la somme des valeurs d'une colonne)",
+                "AVG (calcule la moyenne arithmétique des valeurs)",
+                "MEAN (fonction standard universelle de moyenne)",
+                "ADD (fonction d'agrégation d'addition collective)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "SUM et AVG sont les deux fonctions standard SQL pour additionner et moyenner des attributs numériques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que renvoie la fonction SUM en SQL si toutes les lignes sélectionnées ont la valeur NULL ?",
+              "options": [
+                "NULL",
+                "0",
+                "Une erreur d'exécution",
+                "NaN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Contrairement à COUNT qui renvoie 0, SUM renvoie NULL lorsqu'il n'y a aucune valeur non nulle à additionner."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment calculer en Python la moyenne des valeurs d'une liste de nombres non vide 'notes' ?",
+              "options": [
+                "sum(notes) / len(notes)",
+                "avg(notes)",
+                "mean(notes)",
+                "sum(notes) // len(notes)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans importer de bibliothèque externe, la moyenne se calcule en divisant sum(notes) par len(notes)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle requête SQL calcule le salaire moyen des employés du département 'Informatique' ?",
+              "options": [
+                "SELECT AVG(salaire) FROM employes WHERE departement = 'Informatique';",
+                "SELECT MEAN(salaire) FROM employes WHERE departement = 'Informatique';",
+                "SELECT SUM(salaire) / TOTAL(*) FROM employes WHERE dep = 'Informatique';",
+                "SELECT AVERAGE(salaire) WHERE departement = 'Informatique';"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction standard AVG s'applique sur la colonne salaire avec le filtre WHERE sur le département."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que risque-t-il de se produire lors du calcul de la moyenne en Python si la table filtrée est vide ?",
+              "options": [
+                "Une exception ZeroDivisionError",
+                "La variable prend la valeur 0 sans avertissement",
+                "Le script s'arrête avec une boucle infinie",
+                "La liste est automatiquement réinitialisée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si len(liste) vaut 0, l'opération sum(liste) / len(liste) déclenche une division par zéro (ZeroDivisionError)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle fonction du module standard 'statistics' en Python permet de calculer directement la moyenne arithmétique ?",
+              "options": [
+                "statistics.mean()",
+                "statistics.avg()",
+                "statistics.average()",
+                "statistics.sum_div()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le module 'statistics' fournit la fonction mean() pour calculer la moyenne arithmétique d'un itérable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Sur quel type d'attribut peut-on appliquer légitimement la fonction SQL SUM ?",
+              "options": [
+                "Des attributs numériques (entiers, décimaux, réels)",
+                "Des chaînes de caractères quelconques (VARCHAR)",
+                "Des dates brutes sans transformation",
+                "Des booléens uniquement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SUM n'a de sens mathématique que sur des données numériques (INTEGER, FLOAT, NUMERIC)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment arrondir la moyenne calculée à deux décimales en SQL ?",
+              "options": [
+                "ROUND(AVG(note), 2)",
+                "TRUNCATE_DECIMAL(AVG(note), 2)",
+                "FLOOR(AVG(note), 2)",
+                "APPROX(AVG(note), 2)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction ROUND(nombre, decimales) permet d'arrondir un résultat numérique au nombre de décimales choisi."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Soit une table avec les valeurs [10, 20, NULL]. Que vaut SELECT AVG(valeur) en SQL ?",
+              "options": [
+                "15 (car (10 + 20) / 2 = 15, NULL étant ignoré)",
+                "10 (car (10 + 20 + 0) / 3 = 10)",
+                "NULL",
+                "Erreur de calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "AVG ignore les valeurs nulles à la fois pour le calcul de la somme et pour le nombre d'éléments du dénominateur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la complexité en temps d'un algorithme calculant la somme d'une colonne de n nombres ?",
+              "options": [
+                "O(n)",
+                "O(1)",
+                "O(log n)",
+                "O(n²)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut visiter les n nombres une fois chacun pour accumuler la somme, d'où une complexité linéaire O(n)."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Extrema et bornes (MIN, MAX)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant les fonctions MIN et MAX en SQL ?",
+              "options": [
+                "MIN et MAX fonctionnent aussi bien sur des nombres que sur des dates ou des chaînes",
+                "Sur des chaînes de caractères, MIN renvoie la première valeur dans l'ordre alphabétique",
+                "MIN et MAX imposent que toutes les valeurs de la colonne soient strictement positives",
+                "MIN renvoie toujours 0 si la table contient des valeurs négatives"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "MIN et MAX s'appliquent à tout type ordonnable (numérique, texte selon l'ordre lexicographique, dates chronologiques)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles fonctions natives en Python trouvent respectivement le plus petit et le plus grand élément d'une liste ?",
+              "options": [
+                "min() et max()",
+                "minimum() et maximum()",
+                "bottom() et top()",
+                "inf() et sup()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "min() et max() sont des fonctions built-in fondamentales du langage Python."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle requête SQL trouve la note la plus élevée obtenue à l'épreuve de NSI ?",
+              "options": [
+                "SELECT MAX(note) FROM resultats WHERE matiere = 'NSI';",
+                "SELECT TOP(note) FROM resultats WHERE matiere = 'NSI';",
+                "SELECT HIGHEST(note) FROM resultats WHERE matiere = 'NSI';",
+                "SELECT note FROM resultats WHERE note = GREATEST;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "MAX(note) agrège toutes les notes vérifiant le filtre WHERE pour renvoyer la valeur maximale."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment trouver le dictionnaire ayant le score maximal dans une liste 'joueurs' en Python ?",
+              "options": [
+                "max(joueurs, key=lambda j: j['score'])",
+                "max(joueurs['score'])",
+                "joueurs.max('score')",
+                "max(j['score'] for j in joueurs)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En utilisant l'argument 'key', max() renvoie l'objet joueur complet possédant la clé 'score' la plus haute."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que renvoie SELECT MIN(date_naissance) FROM utilisateurs ?",
+              "options": [
+                "La date de naissance de l'utilisateur le plus âgé",
+                "La date de naissance de l'utilisateur le plus jeune",
+                "La date de création de la table",
+                "La date du jour"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une date antérieure étant plus petite qu'une date récente dans l'ordre chronologique, MIN donne la personne la plus âgée."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'on applique min([]) sur une liste vide en Python sans valeur par défaut ?",
+              "options": [
+                "Une exception ValueError: min() arg is an empty sequence est levée",
+                "La fonction renvoie None",
+                "La fonction renvoie 0",
+                "Le programme boucle indéfiniment"
+              ],
+              "correctAnswers": [0],
+              "explanation": "min() exige au moins un élément ou un paramètre 'default' explicite (par exemple min(liste, default=0))."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de comparaisons au minimum sont nécessaires pour déterminer le maximum d'une liste de n éléments non ordonnée ?",
+              "options": [
+                "n - 1 comparaisons",
+                "n / 2 comparaisons",
+                "log2(n) comparaisons",
+                "n * (n - 1) comparaisons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour trouver le maximum parmi n éléments inconnus, il faut obligatoirement éliminer les n - 1 autres par comparaison."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment les valeurs NULL sont-elles traitées par les fonctions MIN et MAX en SQL ?",
+              "options": [
+                "Elles sont totalement ignorées lors de la recherche",
+                "Elles sont toujours considérées comme les plus petites valeurs",
+                "Elles sont toujours considérées comme les plus grandes valeurs",
+                "Le résultat devient immédiatement NULL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Comme pour SUM et AVG, les valeurs NULL sont ignorées par MIN et MAX."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que renvoie la requête 'SELECT MIN(nom) FROM eleves' si les noms sont 'Durand', 'Albert' et 'Zidane' ?",
+              "options": [
+                "'Albert'",
+                "'Zidane'",
+                "'Durand'",
+                "NULL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans l'ordre alphabétique lexicographique standard, 'Albert' précède 'Durand' et 'Zidane'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle requête récupère à la fois la note minimale et la note maximale d'une table d'examens ?",
+              "options": [
+                "SELECT MIN(note), MAX(note) FROM examens;",
+                "SELECT RANGE(note) FROM examens;",
+                "SELECT MIN_MAX(note) FROM examens;",
+                "SELECT note FROM examens WHERE note = MIN OR note = MAX;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plusieurs fonctions d'agrégation peuvent être calculées simultanément dans la même clause SELECT."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Regroupement avec GROUP BY",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles règles fondamentales s'appliquent à l'usage de la clause GROUP BY en SQL ?",
+              "options": [
+                "Elle partitionne les lignes de la table en groupes partageant les mêmes valeurs d'attributs",
+                "Les attributs du SELECT hors agrégats doivent généralement figurer dans la clause GROUP BY",
+                "Elle supprime définitivement les données de la base",
+                "Elle remplace obligatoirement la clause WHERE"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "GROUP BY regroupe les enregistrements identiques ; les colonnes non agrégées dans SELECT doivent faire partie de la clause de regroupement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle requête SQL donne le nombre d'élèves par classe ?",
+              "options": [
+                "SELECT classe, COUNT(*) FROM eleves GROUP BY classe;",
+                "SELECT classe, COUNT(*) FROM eleves ORDER BY classe;",
+                "SELECT classe, TOTAL(eleves) FROM eleves;",
+                "SELECT COUNT(*) GROUP BY classe FROM eleves;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On regroupe les lignes par 'classe' et on calcule le dénombrement COUNT(*) pour chaque classe."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quel ordre logique le SGBD évalue-t-il les clauses d'une requête SELECT comportant WHERE et GROUP BY ?",
+              "options": [
+                "FROM, puis WHERE (filtrage des lignes), puis GROUP BY (regroupement)",
+                "GROUP BY d'abord, puis WHERE sur les groupes",
+                "SELECT en premier, puis WHERE et enfin FROM",
+                "ORDER BY, puis GROUP BY, puis WHERE"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtrage WHERE intervient avant la création des groupes par la clause GROUP BY."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "En Python, quelle structure de données est naturellement adaptée pour effectuer un regroupement manuel ?",
+              "options": [
+                "Un dictionnaire où chaque clé est une valeur de groupe et la valeur associée est une liste",
+                "Un simple booléen",
+                "Un entier représentant la somme",
+                "Une liste contenant uniquement des entiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un dictionnaire de listes (d[cle] = [elements...]) permet de collecter les enregistrements par groupe."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle classe du module 'collections' en Python simplifie grandement la création de dictionnaires de regroupement ?",
+              "options": [
+                "defaultdict",
+                "OrderedDict",
+                "namedtuple",
+                "deque"
+              ],
+              "correctAnswers": [0],
+              "explanation": "defaultdict(list) crée automatiquement une liste vide pour toute nouvelle clé rencontrée lors du parcours."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il pour les lignes contenant une valeur NULL dans la colonne de regroupement GROUP BY ?",
+              "options": [
+                "Toutes les lignes avec NULL sont rassemblées dans un seul et même groupe",
+                "Elles sont automatiquement supprimées du résultat",
+                "Chaque valeur NULL forme son propre groupe indépendant",
+                "Une erreur de contrainte est déclenchée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En SQL standard, toutes les valeurs NULL d'un attribut de regroupement sont considérées égales et réunies en un groupe unique."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de lignes renvoie une requête avec GROUP BY s'il y a 4 catégories distinctes dans la table ?",
+              "options": [
+                "Exactement 4 lignes (une ligne par catégorie distincte)",
+                "Le nombre initial de lignes de la table",
+                "1 seule ligne contenant la somme",
+                "4 fois le nombre total de lignes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Chaque groupe formé produit exactement une ligne de synthèse dans le tableau de résultat."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Peut-on regrouper des données selon plusieurs colonnes à la fois en SQL (ex: GROUP BY pays, ville) ?",
+              "options": [
+                "Oui, un groupe est alors formé pour chaque combinaison unique de valeurs de ces colonnes",
+                "Non, le SQL standard limite le regroupement à une seule colonne",
+                "Oui, mais uniquement si les deux colonnes ont le même type",
+                "Non, il faut obligatoirement créer deux requêtes distinctes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "GROUP BY col1, col2 regroupe les enregistrements ayant des valeurs identiques sur le couple (col1, col2)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle requête calcule le chiffre d'affaires total (SUM(montant)) par client ?",
+              "options": [
+                "SELECT client_id, SUM(montant) FROM ventes GROUP BY client_id;",
+                "SELECT client_id, SUM(montant) FROM ventes ORDER BY montant;",
+                "SELECT client_id, TOTAL FROM ventes GROUP BY montant;",
+                "SELECT SUM(montant) FROM ventes GROUP BY ALL;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On regroupe par client_id et on applique l'agrégation SUM sur l'attribut montant."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle fonction du module 'itertools' permet de regrouper des éléments consécutifs ayant la même clé en Python ?",
+              "options": [
+                "itertools.groupby()",
+                "itertools.aggregate()",
+                "itertools.cluster()",
+                "itertools.partition()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "itertools.groupby regroupe les éléments consécutifs partagés (attention : nécessite que les données soient triées au préalable)."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Filtrage des groupes avec HAVING",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles différences distinguent fondamentalement la clause WHERE de la clause HAVING ?",
+              "options": [
+                "WHERE filtre les lignes individuelles avant tout regroupement",
+                "HAVING filtre les groupes résultant d'un GROUP BY après agrégation",
+                "WHERE peut contenir des fonctions d'agrégation comme COUNT(*) ou AVG()",
+                "HAVING s'exécute toujours avant la clause FROM"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "WHERE filtre en amont les n-uplets individuels, tandis que HAVING filtre en aval les groupes formés en se basant sur des agrégats."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle requête SQL sélectionne les classes comptant plus de 30 élèves ?",
+              "options": [
+                "SELECT classe, COUNT(*) FROM eleves GROUP BY classe HAVING COUNT(*) > 30;",
+                "SELECT classe, COUNT(*) FROM eleves WHERE COUNT(*) > 30 GROUP BY classe;",
+                "SELECT classe FROM eleves HAVING classe > 30;",
+                "SELECT classe, COUNT(*) FROM eleves GROUP BY classe WHERE COUNT(*) > 30;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le filtre sur l'agrégat COUNT(*) s'exprime obligatoirement avec HAVING après la clause GROUP BY."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Pourquoi la requête 'SELECT ville FROM clients WHERE COUNT(*) >= 5 GROUP BY ville' est-elle invalide ?",
+              "options": [
+                "Les fonctions d'agrégation comme COUNT(*) sont interdites dans la clause WHERE",
+                "Le mot-clé ville doit être écrit en majuscules",
+                "On ne peut pas regrouper par une colonne textuelle",
+                "La clause FROM doit impérativement précéder le SELECT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "WHERE s'exécute ligne par ligne avant le calcul des agrégats ; pour filtrer sur un agrégat, il faut employer HAVING."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Peut-on utiliser la clause HAVING sans clause GROUP BY préalable ?",
+              "options": [
+                "Oui, l'ensemble de la table est alors traité comme un groupe global unique",
+                "Non, c'est formellement interdit et produit toujours une erreur de syntaxe",
+                "Oui, mais uniquement avec l'attribut de clé primaire",
+                "Non, HAVING exige au moins deux clauses GROUP BY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sans GROUP BY explicite, toute la table constitue un unique groupe agrégé auquel HAVING peut s'appliquer."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle requête trouve les matières dont la moyenne des notes est strictement inférieure à 10 ?",
+              "options": [
+                "SELECT matiere, AVG(note) FROM resultats GROUP BY matiere HAVING AVG(note) < 10;",
+                "SELECT matiere FROM resultats WHERE AVG(note) < 10 GROUP BY matiere;",
+                "SELECT matiere, MEAN(note) FROM resultats HAVING note < 10;",
+                "SELECT matiere FROM resultats GROUP BY matiere WHERE note < 10;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On groupe par matière et on filtre les groupes via la condition HAVING AVG(note) < 10."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En Python, comment simuler l'effet de HAVING sur un dictionnaire de groupes 'groupes' (où chaque valeur est une liste) ?",
+              "options": [
+                "{k: v for k, v in groupes.items() if len(v) > 5}",
+                "[k for k in groupes if groupes[k] < 5]",
+                "filter(lambda k: k > 5, groupes)",
+                "{k: len(v) for k, v in groupes if v > 5}"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On filtre le dictionnaire en conservant uniquement les entrées dont la liste associée vérifie la condition agrégée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans une requête comportant WHERE, GROUP BY et HAVING, dans quel ordre sont-elles évaluées ?",
+              "options": [
+                "WHERE (filtrage individuel), puis GROUP BY (regroupement), puis HAVING (filtrage des groupes)",
+                "GROUP BY, puis HAVING, puis WHERE",
+                "HAVING, puis WHERE, puis GROUP BY",
+                "WHERE, puis HAVING, puis GROUP BY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lignes individuelles sont d'abord filtrées (WHERE), puis groupées (GROUP BY), et les groupes obtenus sont enfin filtrés (HAVING)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Si l'on veut filtrer les clients selon leur pays 'France' ET ne garder que ceux ayant passé plus de 3 commandes, comment structurer la requête ?",
+              "options": [
+                "WHERE pays = 'France' GROUP BY client_id HAVING COUNT(*) > 3",
+                "HAVING pays = 'France' GROUP BY client_id WHERE COUNT(*) > 3",
+                "WHERE pays = 'France' AND COUNT(*) > 3 GROUP BY client_id",
+                "GROUP BY client_id HAVING pays = 'France' AND COUNT(*) > 3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test d'attribut simple 'pays' va dans le WHERE, et la condition sur le nombre de commandes va dans le HAVING."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Peut-on utiliser plusieurs conditions combinées avec AND/OR dans une clause HAVING ?",
+              "options": [
+                "Oui, par exemple : HAVING COUNT(*) >= 10 AND AVG(montant) > 100",
+                "Non, HAVING ne tolère qu'une seule expression unaire",
+                "Uniquement si l'on utilise des sous-requêtes imbriquées",
+                "Non, seul l'opérateur OR est supporté dans HAVING"
+              ],
+              "correctAnswers": [0],
+              "explanation": "HAVING accepte n'importe quelle expression logique booléenne combinant des prédicats d'agrégation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi préférer WHERE à HAVING pour un critère portant sur un attribut non agrégé ?",
+              "options": [
+                "Filtrer avec WHERE réduit le volume de lignes dès le départ, ce qui accélère le calcul du GROUP BY",
+                "Parce que HAVING supprime la table si elle est trop volumineuse",
+                "Parce que le SGBD refuse d'exécuter HAVING sur des chaînes de caractères",
+                "C'est purement esthétique et cela n'a aucun impact sur les performances"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Éliminer les lignes au plus tôt (via WHERE) évite au moteur de traiter des données inutiles lors du regroupement."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Combinaison d'agrégations, regroupements et tris",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant l'association de GROUP BY et ORDER BY sont correctes ?",
+              "options": [
+                "On peut trier les résultats selon le résultat d'une fonction d'agrégation (ex: ORDER BY COUNT(*) DESC)",
+                "ORDER BY s'exécute après la formation et le filtrage des groupes",
+                "ORDER BY réinitialise les calculs des sommes et moyennes",
+                "Il est obligatoire de trier uniquement sur les attributs de la clause WHERE"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "ORDER BY s'applique à la toute fin sur les lignes de résultats produites par l'agrégation et le regroupement."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle requête classe les départements du plus peuplé au moins peuplé ?",
+              "options": [
+                "SELECT departement, SUM(population) FROM communes GROUP BY departement ORDER BY SUM(population) DESC;",
+                "SELECT departement, SUM(population) FROM communes ORDER BY population DESC GROUP BY departement;",
+                "SELECT departement, POPULATION FROM communes GROUP BY departement ASC;",
+                "SELECT SUM(population) ORDER BY departement FROM communes;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On groupe par département, on somme la population de ses communes, et on trie par cette somme décroissante."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Peut-on utiliser un alias défini dans le SELECT au sein de la clause ORDER BY en SQL ?",
+              "options": [
+                "Oui, dans la très grande majorité des SGBD (ex: SELECT AVG(n) AS moy ... ORDER BY moy DESC)",
+                "Non, les alias sont strictement interdits dans ORDER BY",
+                "Uniquement si l'alias est écrit en lettres minuscules",
+                "Non, il faut obligatoirement réécrire la requête entière"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Puisque ORDER BY est évalué après la projection du SELECT, la visibilité des alias y est généralement assurée."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle requête extrait les 5 clients ayant dépensé le montant total le plus élevé ?",
+              "options": [
+                "SELECT client_id, SUM(montant) FROM achats GROUP BY client_id ORDER BY SUM(montant) DESC LIMIT 5;",
+                "SELECT client_id, SUM(montant) FROM achats LIMIT 5 GROUP BY client_id ORDER BY montant;",
+                "SELECT TOP 5 client_id FROM achats WHERE montant = MAX GROUP BY client_id;",
+                "SELECT client_id, MAX(montant) FROM achats GROUP BY client_id ORDER BY client_id LIMIT 5;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La combinaison 'GROUP BY ... ORDER BY agrégat DESC LIMIT 5' est le modèle canonique pour obtenir un top 5 agrégé."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En Python, comment trier une liste de tuples (categorie, total) par total décroissant ?",
+              "options": [
+                "sorted(donnees, key=lambda x: x[1], reverse=True)",
+                "sorted(donnees, key=lambda x: x[0], reverse=True)",
+                "donnees.sort_by(total, desc=True)",
+                "order(donnees, by=1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élément x[1] correspond au total dans chaque couple (categorie, total), et reverse=True assure le tri décroissant."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est l'ordre chronologique complet d'évaluation standard des 6 clauses majeures en SQL ?",
+              "options": [
+                "FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY",
+                "SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY",
+                "FROM -> SELECT -> WHERE -> ORDER BY -> GROUP BY -> HAVING",
+                "WHERE -> FROM -> GROUP BY -> SELECT -> HAVING -> ORDER BY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'ordre sémantique d'exécution débute par les tables sources (FROM/WHERE), agrège (GROUP BY/HAVING), projette (SELECT) et trie (ORDER BY)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si l'on écrit 'ORDER BY 2 DESC' dans une requête SQL comportant deux colonnes dans SELECT ?",
+              "options": [
+                "Le résultat est trié selon la deuxième colonne du SELECT par ordre décroissant",
+                "Le tri est exécuté deux fois de suite",
+                "La requête renvoie les deux premières lignes seulement",
+                "Le SGBD lève systématiquement une erreur de type"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En SQL, un entier positif dans ORDER BY fait référence à la position de la colonne projetée dans le SELECT."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment départager deux groupes ayant la même valeur agrégée dans un ORDER BY ?",
+              "options": [
+                "En ajoutant un critère de tri secondaire (ex: ORDER BY COUNT(*) DESC, nom_categorie ASC)",
+                "En relançant la requête une seconde fois",
+                "Le SGBD supprime aléatoirement l'un des deux groupes",
+                "En utilisant la clause DISTINCT sur les groupes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lister plusieurs expressions dans ORDER BY permet de définir des critères de départage successifs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si l'on veut les catégories ayant au moins 10 articles, ordonnées alphabétiquement, quelle requête écrire ?",
+              "options": [
+                "SELECT cat, COUNT(*) FROM articles GROUP BY cat HAVING COUNT(*) >= 10 ORDER BY cat ASC;",
+                "SELECT cat, COUNT(*) FROM articles WHERE COUNT(*) >= 10 GROUP BY cat ORDER BY cat;",
+                "SELECT cat FROM articles ORDER BY cat ASC HAVING COUNT(*) >= 10;",
+                "SELECT cat, COUNT(*) GROUP BY cat ORDER BY cat ASC WHERE articles >= 10;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On regroupe par 'cat', on filtre les groupes via HAVING COUNT(*) >= 10, puis on applique ORDER BY cat ASC."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la complexité temporelle globale du tri de g groupes résultant d'une agrégation ?",
+              "options": [
+                "O(g log g)",
+                "O(n²)",
+                "O(1)",
+                "O(g!)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le tri des g groupes finaux s'effectue en temps quasi-linéaire O(g log g) via un algorithme de tri efficace."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Déduplication et agrégats distincts",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels agrégats SQL acceptent le modificateur DISTINCT pour ignorer les doublons avant calcul ?",
+              "options": [
+                "COUNT(DISTINCT colonne)",
+                "SUM(DISTINCT colonne)",
+                "AVG(DISTINCT colonne)",
+                "LIMIT(DISTINCT colonne)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "COUNT, SUM et AVG acceptent le mot-clé DISTINCT pour n'agréger que les valeurs uniques d'une colonne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Soit la colonne 'salaire' avec les valeurs [2000, 2000, 3000]. Que renvoie SELECT SUM(DISTINCT salaire) ?",
+              "options": [
+                "5000",
+                "7000",
+                "2000",
+                "3000"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les valeurs distinctes sont 2000 et 3000, leur somme vaut donc 2000 + 3000 = 5000."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment obtenir en Python le nombre de valeurs distinctes contenues dans une liste 'notes' ?",
+              "options": [
+                "len(set(notes))",
+                "notes.count_unique()",
+                "set(len(notes))",
+                "count(distinct(notes))"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Convertir la liste en un ensemble 'set' élimine tous les doublons, puis len() donne le nombre d'éléments uniques."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle requête compte combien de clients distincts ont passé au moins une commande ?",
+              "options": [
+                "SELECT COUNT(DISTINCT client_id) FROM commandes;",
+                "SELECT DISTINCT COUNT(client_id) FROM commandes;",
+                "SELECT COUNT(client_id) FROM commandes WHERE UNIQUE;",
+                "SELECT UNIQUE(client_id) FROM commandes;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "COUNT(DISTINCT client_id) ne comptabilise chaque identifiant client qu'une seule fois."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi l'utilisation de COUNT(DISTINCT col) est-elle généralement plus coûteuse pour le moteur de base de données que COUNT(col) ?",
+              "options": [
+                "Le SGBD doit mémoriser ou trier les valeurs pour identifier et écarter les doublons",
+                "Car DISTINCT oblige à réécrire la table sur le disque",
+                "Parce qu'elle désactive l'utilisation de la mémoire cache",
+                "Parce qu'elle nécessite une double connexion réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dédoublonner nécessite une table de hachage ou un tri intermédiaire, ce qui consomme du CPU et de la mémoire vive."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Est-ce que l'expression 'COUNT(DISTINCT *)' est valide en SQL standard ?",
+              "options": [
+                "Non, la syntaxe COUNT(DISTINCT *) n'est pas autorisée en SQL standard",
+                "Oui, elle compte les lignes entièrement distinctes",
+                "Oui, elle est strictement équivalente à COUNT(*)",
+                "Uniquement sous le moteur SQLite"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La norme SQL interdit COUNT(DISTINCT *) ; il faut spécifier expressément une ou plusieurs colonnes."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Soit la liste Python L = [1, 2, 2, 3, 3, 3]. Que vaut sum(set(L)) ?",
+              "options": [
+                "6",
+                "14",
+                "3",
+                "1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "set(L) vaut {1, 2, 3}, et la somme 1 + 2 + 3 est égale à 6."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dédoublonner une liste de dictionnaires en Python selon la valeur d'une clé 'id' ?",
+              "options": [
+                "En utilisant un dictionnaire temporaire {e['id']: e for e in table}.values()",
+                "En écrivant directement set(table)",
+                "En appelant table.distinct('id')",
+                "En triant la liste avec sorted(table)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un dictionnaire ne pouvant contenir qu'une seule fois chaque clé, cela déduplique selon l'identifiant."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que vaut SELECT MIN(DISTINCT note) par rapport à SELECT MIN(note) ?",
+              "options": [
+                "Les deux requêtes renvoient exactement le même résultat",
+                "MIN(DISTINCT) est toujours strictement supérieur",
+                "MIN(DISTINCT) renvoie NULL",
+                "MIN(DISTINCT) est interdit par la norme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La plus petite valeur d'un ensemble de nombres reste identique que l'on conserve ou élimine les doublons."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle clause permet de lister les villes sans répétition avant de les compter en sous-requête ?",
+              "options": [
+                "SELECT DISTINCT ville FROM clients;",
+                "SELECT UNIQUE ville FROM clients;",
+                "SELECT NO_REPEAT ville FROM clients;",
+                "SELECT DEDUPLICATE ville FROM clients;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "SELECT DISTINCT est la syntaxe standard pour éliminer les doublons de lignes dans une projection."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Implémentation d'agrégats en Python",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels algorithmes ou patrons (patterns) classiques sont utilisés pour agréger des données en Python ?",
+              "options": [
+                "Le patron accumulateur (initialiser une variable et la mettre à jour dans une boucle for)",
+                "L'utilisation de la fonction functools.reduce()",
+                "L'utilisation d'une boucle while sans variable de contrôle",
+                "La récursivité infinie sans cas de base"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'accumulateur itératif et la fonction reduce de functools sont les deux manières canoniques de réaliser des agrégations."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment initialiser un accumulateur pour calculer le produit de tous les nombres d'une liste ?",
+              "options": [
+                "A 1 (élément neutre de la multiplication)",
+                "A 0 (élément absorbant)",
+                "A -1",
+                "A None"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élément neutre de la multiplication est 1 ; débuter à 0 donnerait un produit final nul."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que fait ce code : acc = 0; \nfor x in L: acc += x ?",
+              "options": [
+                "Il calcule la somme de tous les éléments de la liste L",
+                "Il compte le nombre d'éléments de L",
+                "Il recherche le maximum de L",
+                "Il inverse la liste L"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La variable 'acc' part de 0 et cumule chaque élément de la liste, réalisant ainsi une somme."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quelle fonction du module 'functools' permet d'appliquer récursivement une fonction binaire pour réduire une séquence ?",
+              "options": [
+                "reduce()",
+                "accumulate()",
+                "fold_left()",
+                "compress()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "functools.reduce(fonction, iterable, initial) applique une fonction à deux arguments de manière cumulative."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment implémenter un compteur de fréquences de mots dans une liste 'mots' avec un dictionnaire simple ?",
+              "options": [
+                "d = {}; for m in mots: d[m] = d.get(m, 0) + 1",
+                "d = {}; for m in mots: d[m] += 1",
+                "d = {m: len(m) for m in mots}",
+                "d = dict.fromkeys(mots, 1)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "d.get(m, 0) renvoie la valeur actuelle ou 0 si la clé n'existe pas encore, permettant d'incrémenter sans KeyError."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle classe du module 'collections' en Python est spécialement optimisée pour le dénombrement d'occurrences ?",
+              "options": [
+                "Counter",
+                "DefaultDict",
+                "FrequencyTable",
+                "Accumulator"
+              ],
+              "correctAnswers": [0],
+              "explanation": "collections.Counter prend un itérable et construit instantanément un dictionnaire d'occurrences."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pour calculer le minimum d'une liste sans utiliser min(), quelle valeur initiale donner à l'accumulateur 'plus_petit' ?",
+              "options": [
+                "Le premier élément de la liste (ou float('inf'))",
+                "0 systématiquement",
+                "-1",
+                "float('-inf')"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Choisir le premier élément ou l'infini positif garantit que tout nombre de la liste pourra être plus petit."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle fonction du module 'itertools' calcule les sommes cumulées partielles au fil de l'itération ?",
+              "options": [
+                "itertools.accumulate()",
+                "itertools.chain()",
+                "itertools.cumulative()",
+                "itertools.running_sum()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "itertools.accumulate([1, 2, 3, 4]) produit les sommes cumulées successives : 1, 3, 6, 10."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment calculer en une seule passe la moyenne sans stocker toute la liste en mémoire (flux de données) ?",
+              "options": [
+                "En maintenant deux accumulateurs : un compteur du nombre d'éléments et une somme totale",
+                "En triant le flux de données en continu",
+                "Ce n'est pas possible en streaming sans stocker tous les points",
+                "En recalculant la médiane à chaque élément"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En incrémentant la taille et en ajoutant la valeur à la somme pour chaque élément, on obtient moyenne = somme / taille en mémoire O(1)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la complexité spatiale d'un calcul de somme cumulative avec accumulateur en mémoire vive ?",
+              "options": [
+                "O(1)",
+                "O(n)",
+                "O(n²)",
+                "O(log n)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une seule variable suffit pour conserver la somme courante, d'où un encombrement mémoire constant O(1)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Jointures et agrégations croisées",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant la combinaison d'une jointure (JOIN) et d'une agrégation (GROUP BY) ?",
+              "options": [
+                "La jointure rassemble les lignes des différentes tables avant que le GROUP BY n'effectue l'agrégation",
+                "Elle permet de calculer des totaux ou des moyennes en reliant des entités (ex: total des commandes par client)",
+                "Une jointure interdit formellement l'utilisation de la clause HAVING",
+                "Le GROUP BY s'exécute toujours avant la jointure interne"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Le moteur relie d'abord les tables (JOIN) puis partitionne le résultat combiné (GROUP BY) pour l'agrégation."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle requête calcule le montant total des commandes passées par chaque client identifié par son nom ?",
+              "options": [
+                "SELECT c.nom, SUM(cmd.montant) FROM clients c JOIN commandes cmd ON c.id = cmd.client_id GROUP BY c.id, c.nom;",
+                "SELECT c.nom, SUM(cmd.montant) FROM clients c, commandes cmd GROUP BY cmd.id;",
+                "SELECT c.nom, TOTAL(cmd.montant) WHERE c.id = cmd.client_id;",
+                "SELECT SUM(cmd.montant) FROM clients c NATURAL GROUP BY c.nom;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La jointure associe clients et commandes, puis GROUP BY regroupe par client pour sommer leurs montants."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Si un client n'a jamais passé de commande, quel type de jointure permet de le faire apparaître avec un total de 0 ou NULL ?",
+              "options": [
+                "Une jointure externe gauche (LEFT JOIN)",
+                "Une jointure interne classique (INNER JOIN)",
+                "Une jointure croisée aveugle (CROSS JOIN)",
+                "Une auto-jointure (SELF JOIN)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "LEFT JOIN conserve tous les enregistrements de la table de gauche, même sans correspondance dans la table de droite."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Dans le cas d'un LEFT JOIN où un client n'a aucune commande, que renvoie COUNT(cmd.id) comparé à COUNT(*) ?",
+              "options": [
+                "COUNT(cmd.id) renvoie 0, tandis que COUNT(*) renvoie 1 (car la ligne du client existe)",
+                "Les deux renvoient 0",
+                "Les deux renvoient 1",
+                "Les deux renvoient NULL"
+              ],
+              "correctAnswers": [0],
+              "explanation": "COUNT(colonne) ignore les NULL (cmd.id est NULL ici), tandis que COUNT(*) compte la ligne conservée par le LEFT JOIN."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En Python, comment joint-on deux tables représentées par des dictionnaires sur une clé commune 'id' avant regroupement ?",
+              "options": [
+                "En indexant l'une des tables dans un dictionnaire par clé pour une recherche rapide en O(1)",
+                "En effectuant deux boucles for imbriquées obligatoirement",
+                "En concaténant simplement les deux listes avec l'opérateur +",
+                "Ce n'est pas réalisable sans une bibliothèque C++ externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Indexer la table secondaire dans un dictionnaire permet de réaliser la jointure en complexité linéaire O(n + m)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle requête compte le nombre de livres empruntés par auteur ?",
+              "options": [
+                "SELECT a.nom, COUNT(e.id) FROM auteurs a JOIN livres l ON a.id = l.auteur_id JOIN emprunts e ON l.id = e.livre_id GROUP BY a.id, a.nom;",
+                "SELECT a.nom, COUNT(*) FROM auteurs a, livres l, emprunts e GROUP BY l.id;",
+                "SELECT a.nom, SUM(e.id) FROM auteurs a NATURAL JOIN emprunts e;",
+                "SELECT COUNT(a.nom) FROM emprunts GROUP BY livres;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On effectue deux jointures successives (auteur vers livre, puis livre vers emprunt) avant de regrouper par auteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel piège fréquent survient lors de jointures multiples 1-N suivies d'une fonction SUM() ?",
+              "options": [
+                "La duplication des lignes de la première table peut fausser la somme en la multipliant indûment",
+                "Le SGBD refuse d'additionner des données jointes",
+                "Toutes les valeurs deviennent automatiquement nulles",
+                "Le nom des attributs est effacé du schéma"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les jointures 1-N multiples créent un produit cartésien partiel qui duplique des lignes et fausse les sommes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment éviter le problème des lignes dupliquées lors d'agrégations sur des tables reliées par des relations multiples ?",
+              "options": [
+                "En effectuant l'agrégation dans une sous-requête avant d'effectuer la jointure",
+                "En supprimant les clés primaires des tables",
+                "En remplaçant tous les nombres par des chaînes",
+                "En utilisant impérativement un CROSS JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pré-agréger dans une sous-requête garantit qu'on ne joint qu'une seule ligne résumée par entité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle clause SQL garantit qu'une jointure ne conserve que les lignes ayant une clé correspondante dans les deux tables ?",
+              "options": [
+                "INNER JOIN",
+                "LEFT JOIN",
+                "RIGHT JOIN",
+                "FULL OUTER JOIN"
+              ],
+              "correctAnswers": [0],
+              "explanation": "INNER JOIN (ou simplement JOIN) ne conserve que l'intersection des deux relations selon la condition ON."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle est la complexité optimale d'une jointure équi-join entre deux tables de tailles n et m en utilisant une table de hachage ?",
+              "options": [
+                "O(n + m)",
+                "O(n * m)",
+                "O(n²)",
+                "O(log(n + m))"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La jointure par hachage (hash join) construit la table de hachage en O(n) et sonde en O(m), d'où O(n + m)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Qualité des données et cohérence d'agrégation",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles anomalies peuvent fausser significativement les résultats d'une agrégation statistique ?",
+              "options": [
+                "La présence de valeurs sentinelles comme -999 ou 9999 non filtrées pour désigner des données manquantes",
+                "Des erreurs de typage où des nombres sont stockés sous forme de chaînes de caractères",
+                "L'utilisation d'index sur la table",
+                "La présence de commentaires SQL dans la requête"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les valeurs sentinelles faussent moyennes et extrema ; les types chaînes empêchent les calculs arithmétiques corrects."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que provoque une valeur sentinelle -999 codant une température manquante lors du calcul de AVG(temperature) ?",
+              "options": [
+                "Elle effondre artificiellement la moyenne calculée",
+                "Elle est automatiquement reconnue et ignorée par le SGBD",
+                "Elle fait planter la requête avec une erreur de syntaxe",
+                "Elle n'a aucun impact sur le résultat final"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SGBD traite -999 comme un nombre ordinaire, ce qui fausse complètement le calcul de la moyenne."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle mesure de tendance centrale est beaucoup moins sensible aux valeurs extrêmes aberrantes que la moyenne ?",
+              "options": [
+                "La médiane",
+                "La somme totale",
+                "La variance",
+                "L'étendue"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La médiane sépare la distribution en deux moitiés égales et résiste très bien aux valeurs aberrantes (statistique robuste)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment convertir explicitement une colonne texte en nombre flottant en SQL (selon le standard) ?",
+              "options": [
+                "CAST(colonne AS FLOAT)",
+                "TO_FLOAT(colonne)",
+                "CONVERT_NUM(colonne)",
+                "PARSE(colonne)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction standard CAST(expression AS type) convertit explicitement un type de données en un autre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En Python, que se passe-t-il si l'on exécute float('14,5') avec une virgule française ?",
+              "options": [
+                "Une exception ValueError est levée",
+                "La chaîne est convertie en 14.5",
+                "La valeur devient 145",
+                "Le résultat est arrondi à 14"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En Python, le séparateur décimal doit obligatoirement être un point '.' ; une virgule lève ValueError."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment nettoyer en Python une chaîne représentant un prix comme ' 12.50 € ' avant conversion numérique ?",
+              "options": [
+                "float(chaine.replace('€', '').strip())",
+                "float(chaine)",
+                "int(chaine.split('€'))",
+                "chaine.to_number()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On retire le symbole de monnaie avec replace(), les espaces superflus avec strip(), puis on applique float()."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le paradoxe de Simpson en analyse de données tabulaires ?",
+              "options": [
+                "Une tendance observée dans plusieurs sous-groupes peut s'inverser lorsque les groupes sont combinés",
+                "Une table ne peut pas contenir à la fois des moyennes et des médianes",
+                "Les calculs de moyennes sont toujours égaux aux sommes",
+                "La somme de deux nombres négatifs devient positive après GROUP BY"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le paradoxe de Simpson montre qu'agréger sans précaution peut masquer ou inverser des réalités statistiques."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle contrainte d'intégrité SQL permet de s'assurer à l'insertion qu'un âge est toujours positif ?",
+              "options": [
+                "CHECK (age >= 0)",
+                "VALIDATE (age >= 0)",
+                "ASSERT (age >= 0)",
+                "POSITIVE ONLY (age)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La contrainte CHECK définit une condition booléenne que chaque ligne insérée ou modifiée doit respecter."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle méthode permet d'identifier rapidement la présence de doublons sur une clé supposée unique en SQL ?",
+              "options": [
+                "SELECT cle, COUNT(*) FROM table GROUP BY cle HAVING COUNT(*) > 1;",
+                "SELECT cle FROM table WHERE cle = DUPLICATE;",
+                "SELECT DISTINCT cle FROM table WHERE COUNT > 1;",
+                "CHECK DUPLICATES FROM table ON cle;"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Regrouper par la clé et filtrer avec HAVING COUNT(*) > 1 isole immédiatement les clés dupliquées."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi est-il indispensable de valider et typer rigoureusement les données issues d'un fichier CSV ?",
+              "options": [
+                "Car les fichiers CSV ne contiennent aucune information de typage : tout y est stocké sous forme de texte",
+                "Pour accélérer la vitesse de rotation du disque dur",
+                "Car le langage Python refuse d'ouvrir les fichiers sans schéma prédéfini",
+                "Pour empêcher la modification du fichier par le système d'exploitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le format CSV est textuel par nature ; les nombres, dates et booléens doivent être parsés et vérifiés par le programme."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

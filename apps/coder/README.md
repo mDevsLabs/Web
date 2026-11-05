@@ -1,48 +1,80 @@
 # mAI Coder
 
-mAI Coder est une application desktop de développement centrée sur un agent. Elle réunit un éditeur Monaco, un explorateur de projet, Git, un terminal PTY, des outils MCP et plusieurs fournisseurs de modèles. L’application est conçue pour laisser l’utilisateur examiner et contrôler les actions de l’agent.
+Application desktop de développement, centrée sur un agent : éditeur Monaco,
+explorateur de projet, Git, terminal PTY, outils MCP, navigateur et plusieurs
+fournisseurs de modèles. Elle est conçue pour que l'utilisateur examine et
+contrôle chaque action de l'agent.
 
-## Fonctionnalités
+## Deux processus, une frontière
 
-- Modes Agent, Plan, Ask et Debug.
-- Lecture, recherche, édition de fichiers et exécution de commandes depuis le workspace.
-- Prévisualisation des modifications et approbation des opérations sensibles.
-- Conversations et paramètres conservés localement.
-- Fournisseurs Anthropic, OpenAI, Gemini et endpoints compatibles OpenAI.
-- Intégrations MCP, navigateur et bots de messagerie selon la configuration.
+| | Renderer | Main |
+| --- | --- | --- |
+| Source | `src/` | `main-src/` |
+| Rôle | Application React 19 et Monaco | Electron, système de fichiers, Git, PTY, SQLite, MCP, bots, navigateur, LSP |
+| Sortie | Vite → `dist/` | `esbuild.main.mjs` → `electron/main.bundle.cjs` |
 
-## Architecture
+Le pont est `electron/preload.cjs` : un `contextBridge` et une liste d'autorisation
+de canaux IPC. **Ne jamais** importer `fs`, `child_process`, `node-pty` ou
+`better-sqlite3` dans `src/`. Une nouvelle capacité système est un handler Main
+plus une entrée dans le contrat du preload — pas un import de plus dans le
+Renderer.
 
-Le processus Renderer est une application React/Vite. Le processus Main gère Electron, le système de fichiers, Git, les processus PTY, la persistance et les intégrations. Le Renderer accède aux fonctions natives uniquement par le preload sécurisé et ses canaux IPC.
+## Démarrer
 
-~~~text
-apps/coder/src/                 Interface React et Monaco
-apps/coder/main-src/            Processus Electron et services natifs
-apps/coder/electron/preload.cjs  API autorisée exposée au Renderer
-apps/coder/docs/                Documentation et captures
-~~~
+`apps/coder` n'est **pas** un membre du workspace pnpm racine (`pnpm-workspace.yaml`
+du dépôt est vide) : il a son propre `pnpm-workspace.yaml` et son propre lockfile.
+Prérequis : Node.js 22 ou supérieur et pnpm 10.
 
-Ne branchez pas directement fs, child_process ou une dépendance native dans le Renderer. Toute nouvelle capacité système doit passer par un handler Main et le contrat du preload.
-
-## Développement
-
-Prérequis : Node.js et pnpm (le dépôt racine épingle `pnpm@10.32.1`). Depuis ce dossier :
-
-~~~sh
+```sh
 pnpm install
 pnpm run dev
-~~~
+```
 
-Ou depuis la racine du dépôt : `pnpm dev:coder`, `pnpm build:coder`.
+Depuis la racine du dépôt : `pnpm dev:coder` et `pnpm build:coder` délèguent ici
+avec `pnpm --dir apps/coder`.
 
-Commandes utiles : pnpm run typecheck, pnpm test et pnpm run build. Le build prépare le Main et le Renderer ; les scripts de release sont disponibles pour Windows, macOS et Linux dans package.json.
+## Commandes
 
-Les clés de fournisseurs se configurent dans l’application. Ne les ajoutez pas au dépôt ni aux journaux. Consultez la documentation avant de modifier les frontières Main/Renderer.
+| Commande | Action |
+| --- | --- |
+| `pnpm run dev` | Renderer sur Vite et fenêtre Electron en développement |
+| `pnpm run build` | Synchronise l'équipe intégrée, puis compile Main et Renderer |
+| `pnpm run build:main` / `build:renderer` | Une seule des deux parties |
+| `pnpm run typecheck` | `tsc --noEmit` |
+| `pnpm test` | Tests Vitest (fourches, `jsdom` pour `src/**`) |
+| `pnpm run release:win` / `release:mac` / `release:linux` | Installateurs par plateforme |
 
-## Documentation et licence
+Types, tests et bundles sont vérifiés par le job `coder-check` de
+[`.github/workflows/build.yml`](../../.github/workflows/build.yml).
 
-- Architecture, intégrations et règles de contribution : [documentation mAI Coder](../../docs/4-coder/README.md)
-- Contrat de sécurité du processus : [directives agents](../../docs/4-coder/AGENTS.md)
+## Relation avec la plateforme mAI
+
+Coder joint le même backend Hono que l'hôte : `main-src/maiApiBase.ts` résout
+`MAI_API_BASE`, puis `MAI_API_URL`, puis `https://mai.val.run`. Les bibliothèques
+`@mdevs/ui` et `@mdevs/icons` viennent en dépendance `file:` de `packages/`.
+
+Sous `/coder` du site mAI, la page est un point de **téléchargement** : elle
+dirige vers les publications du dépôt et annonce ce que l'application desktop
+apporte en plus. Réciproquement, `apps/desktop` peut embarquer Coder.
+
+Les clés de fournisseurs se règlent **dans l'application** et restent locales.
+Ne les ajoutez ni au dépôt, ni aux journaux, ni à une variable d'environnement
+partagée.
+
+## Pièges connus
+
+- `vite.config.ts` fixe `css.postcss: { plugins: [] }` volontairement : hériter
+  la configuration Tailwind du dépôt racine casse la compilation.
+- Le port 5173 est en `strictPort`, avec un libérateur de port dédié.
+- `pnpm run build` appelle `sync:builtin-team`, qui lit un dépôt externe ; sans
+  lui, l'équipe intégrée reste celle déjà présente dans `resources/`.
+
+## Documentation
+
+- [Guides mAI Coder](../../docs/4-coder/README.md) — architecture, agent, build desktop, intégrations
+- [Règles pour agents et contributeurs](../../docs/4-coder/AGENTS.md)
+- [Wiki technique des modules](../../docs/4-coder/llm-wiki/README.md)
 - Licence : [Apache 2.0](LICENSE)
 
-Les captures présentes dans docs/assets illustrent l’application ; elles ne constituent pas des garanties de disponibilité de chaque intégration.
+Les versions citées dans `docs/4-coder/` peuvent diverger de `package.json` : en
+cas d'écart, **`package.json` et le code font foi**.

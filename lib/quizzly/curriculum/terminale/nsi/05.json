@@ -1,0 +1,2743 @@
+{
+  "id": "terminale-nsi-05",
+  "year": "terminale",
+  "subject": "nsi",
+  "title": "Interactions homme-machine",
+  "order": 5,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Événements",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Introduction au modèle événementiel",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le paradigme de programmation événementielle ?",
+              "options": [
+                "L'exécution du code dépend d'événements déclenchés par l'utilisateur ou le système",
+                "Le programme s'exécute uniquement de manière séquentielle et figée de haut en bas",
+                "Le code source est entièrement recompilé à chaque clic de l'utilisateur",
+                "Les données sont traitées exclusivement par lots sans aucune interaction"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En programmation événementielle, le flux d'exécution est dicté par l'apparition d'événements (clics, frappes au clavier, signaux réseau)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel composant central gère les événements en attente dans un environnement d'exécution comme JavaScript ?",
+              "options": [
+                "La boucle d'événements (Event Loop)",
+                "Le ramasse-miettes (Garbage Collector)",
+                "Le compilateur juste-à-temps (JIT)",
+                "Le gestionnaire de pile d'appels récursive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Event Loop surveille la pile d'exécution et dépile les gestionnaires d'événements dès que la pile est vide."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que fait un programme piloté par événements lorsqu'aucune action n'a lieu ?",
+              "options": [
+                "Il reste en attente d'événements sans bloquer le système",
+                "Il termine son exécution et quitte le système d'exploitation",
+                "Il consomme 100% du processeur dans une boucle infinie bloquante",
+                "Il réinitialise toutes ses variables globales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le programme attend passivement ou dans une boucle d'événements non bloquante l'arrivée d'une nouvelle notification."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les propositions suivantes, lesquelles représentent des événements typiques d'une IHM ?",
+              "options": [
+                "Un clic de souris sur un bouton",
+                "L'appui sur une touche du clavier",
+                "La déclaration statique d'une variable globale",
+                "Le survol d'une image par le pointeur"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Les actions de l'utilisateur sur les périphériques d'entrée (souris, clavier) constituent les événements fondamentaux d'une IHM."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on la fonction exécutée automatiquement en réponse à un événement ?",
+              "options": [
+                "Une fonction de rappel (callback) ou gestionnaire (handler)",
+                "Une directive de préprocesseur",
+                "Un constructeur de classe racine",
+                "Une fonction récursive terminale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le gestionnaire d'événement (event handler ou callback) est la fonction invoquée lorsque l'événement associé survient."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si un gestionnaire d'événement exécute un calcul bloquant de longue durée ?",
+              "options": [
+                "L'interface graphique se fige et ne répond plus aux interactions",
+                "Le système d'exploitation alloue automatiquement un nouveau cœur",
+                "Le calcul est immédiatement ignoré et l'interface continue sans délai",
+                "L'événement est dupliqué en mémoire jusqu'à la fin du calcul"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si le thread principal exécutant l'Event Loop est bloqué par un calcul lourd, l'IHM devient totalement figée (not responding)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans quel ordre la file des événements (Event Queue) traite-t-elle les événements entrants ?",
+              "options": [
+                "Premier entré, premier sorti (FIFO)",
+                "Dernier entré, premier sorti (LIFO)",
+                "Par ordre alphabétique du nom d'événement",
+                "De façon aléatoire selon la mémoire vive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une file d'attente suit le principe FIFO (First-In, First-Out) : les événements sont traités dans l'ordre chronologique de leur arrivée."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle différence fondamentale existe-t-il entre programmation séquentielle et événementielle ?",
+              "options": [
+                "En séquentiel le flux est prédéfini, en événementiel il dépend des actions extérieures",
+                "La programmation séquentielle ne fonctionne qu'avec des nombres entiers",
+                "La programmation événementielle n'utilise aucune fonction ni variable",
+                "La programmation séquentielle est obligatoirement multithreadée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En programmation séquentielle le déroulement suit un ordre strict programmé, tandis qu'en événementiel les actions extérieures pilotent le flux."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel rôle joue un écouteur d'événement (event listener) ?",
+              "options": [
+                "Il surveille un composant et déclenche le callback approprié dès que l'événement survient",
+                "Il supprime automatiquement les composants inactifs de l'écran",
+                "Il chiffre les données saisies par l'utilisateur",
+                "Il compile le code HTML en binaire exécutable"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'écouteur est enregistré auprès d'un élément pour faire le lien entre un type d'événement et la fonction à exécuter."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel patron de conception (design pattern) est à la base du mécanisme des événements ?",
+              "options": [
+                "Observateur / Observé (Observer)",
+                "Singleton",
+                "Fabrique abstraite (Abstract Factory)",
+                "Adaptateur (Adapter)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le patron Observateur permet à un sujet d'informer une liste d'observateurs inscrits lors d'un changement d'état ou d'un événement."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Événements du DOM et JavaScript",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle méthode standard du DOM permet d'attacher un écouteur d'événement en JavaScript ?",
+              "options": [
+                "addEventListener()",
+                "attachListener()",
+                "bindEvent()",
+                "listenTo()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "element.addEventListener(type, callback) est la méthode standard du W3C pour écouter des événements sur un nœud DOM."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel événement est déclenché lorsqu'un utilisateur clique sur un élément HTML ?",
+              "options": [
+                "click",
+                "press",
+                "tap",
+                "select"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'click' est émis lorsqu'un bouton de pointage est pressé puis relâché sur un même élément."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel événement survient lorsqu'un champ de formulaire perd le focus après modification de sa valeur ?",
+              "options": [
+                "change",
+                "blur",
+                "focusout",
+                "input"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'change' est émis lorsque la valeur d'un élément de formulaire a été modifiée et validée (notamment lors de la perte de focus)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les événements suivants, lesquels sont associés au pointeur ou à la souris dans le DOM ?",
+              "options": [
+                "mouseover",
+                "contextmenu",
+                "keydown",
+                "wheel"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "mouseover, contextmenu (clic droit) et wheel (molette) sont des événements souris. keydown concerne le clavier."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la différence principale entre les événements 'input' et 'change' sur un champ texte ?",
+              "options": [
+                "'input' se déclenche à chaque modification de caractère, 'change' lors de la perte de focus",
+                "'change' se déclenche à chaque frappe, 'input' lors de la soumission",
+                "'input' ne fonctionne que sur les cases à cocher, 'change' sur les champs texte",
+                "'change' recharge automatiquement la page alors qu'input non"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'input' réagit en direct à chaque caractère tapé ou effacé, tandis que 'change' attend généralement la sortie du champ."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel événement signale que le document HTML initial est totalement chargé et analysé sans attendre les images ?",
+              "options": [
+                "DOMContentLoaded",
+                "load",
+                "init",
+                "complete"
+              ],
+              "correctAnswers": [0],
+              "explanation": "DOMContentLoaded indique que l'arbre DOM est construit et prêt à être manipulé, sans attendre les ressources externes (images, feuilles de style)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que représente le premier paramètre 'e' ou 'event' reçu par une fonction de rappel d'événement ?",
+              "options": [
+                "Un objet Event décrivant le contexte et les propriétés de l'événement",
+                "Le nom du fichier JavaScript sous forme de chaîne de caractères",
+                "Le temps en millisecondes écoulé depuis le démarrage de l'ordinateur",
+                "Une référence vers le compilateur du navigateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'objet Event regroupe des informations capitales comme les coordonnées de la souris, la touche pressée ou l'élément cible."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel événement survient dès qu'une touche du clavier est enfoncée ?",
+              "options": [
+                "keydown",
+                "keypress",
+                "keyup",
+                "keyhit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "keydown est émis immédiatement au moment où la touche s'enfonce, avant même la répétition ou l'émission du caractère."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel événement est déclenché lors de la soumission d'un formulaire HTML ?",
+              "options": [
+                "submit",
+                "send",
+                "post",
+                "commit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'submit' est levé sur l'élément <form> lorsqu'un bouton de type submit est cliqué ou que la touche Entrée est pressée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle méthode permet de retirer un écouteur d'événement précédemment attaché avec addEventListener ?",
+              "options": [
+                "removeEventListener()",
+                "detachListener()",
+                "unbind()",
+                "deleteEventListener()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "element.removeEventListener() détache un écouteur en lui passant le même type et la même référence de fonction."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Propagation et cycle de vie des événements",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le bouillonnement (bubbling) d'un événement dans l'arbre DOM ?",
+              "options": [
+                "L'événement remonte de l'élément cible vers les nœuds ancêtres jusqu'à la racine",
+                "L'événement descend de la racine window vers l'élément cible",
+                "L'événement se répète indéfiniment en consommant toute la mémoire",
+                "L'événement est dupliqué vers tous les éléments frères"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le bouillonnement (bubbling) propage l'événement de la cible enfant vers ses parents successifs jusqu'au document."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle phase de propagation précède la phase de bouillonnement ?",
+              "options": [
+                "La phase de capture (capturing)",
+                "La phase de destruction",
+                "La phase de compilation",
+                "La phase de sérialisation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement traverse d'abord la phase de capture (du haut vers la cible), atteint la cible, puis remonte en phase de bouillonnement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle méthode de l'objet Event permet d'interrompre la propagation d'un événement vers les ancêtres ?",
+              "options": [
+                "stopPropagation()",
+                "preventDefault()",
+                "cancelBubbleOnly()",
+                "haltEvent()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "event.stopPropagation() stoppe le cheminement de l'événement dans les phases de capture et de bouillonnement."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations concernant event.preventDefault() sont exactes ?",
+              "options": [
+                "Elle empêche l'action par défaut du navigateur associée à l'événement",
+                "Elle n'arrête pas la propagation de l'événement dans le DOM",
+                "Elle supprime automatiquement l'élément HTML déclencheur",
+                "Elle permet par exemple de bloquer l'envoi classique d'un formulaire"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "preventDefault() annule le comportement natif (soumission, ouverture de lien) mais ne bloque pas la propagation (qui nécessite stopPropagation)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle propriété de l'objet Event désigne l'élément exact qui a déclenché l'événement ?",
+              "options": [
+                "event.target",
+                "event.currentTarget",
+                "event.sourceNode",
+                "event.origin"
+              ],
+              "correctAnswers": [0],
+              "explanation": "event.target fait référence au nœud précis ayant provoqué l'événement, même au sein d'un conteneur parent."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle est la distinction entre event.target et event.currentTarget ?",
+              "options": [
+                "target est l'élément d'origine de l'événement, currentTarget est l'élément qui porte l'écouteur",
+                "currentTarget est l'élément d'origine, target est l'élément racine de la page",
+                "target est une chaîne de caractères, currentTarget est un entier",
+                "Il n'existe aucune distinction, ce sont deux synonymes parfaits"
+              ],
+              "correctAnswers": [0],
+              "explanation": "currentTarget identifie l'élément auquel le gestionnaire d'événements a été attaché pendant la traversée du DOM."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En quoi consiste la délégation d'événements (event delegation) ?",
+              "options": [
+                "Attacher un unique écouteur sur un élément parent pour gérer les événements de tous ses enfants",
+                "Déléguer le calcul d'un événement à un serveur distant via une requête HTTP",
+                "Transférer les clics de souris vers une fenêtre contextuelle externe",
+                "Exécuter l'écouteur dans un processus système séparé"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce au bouillonnement, un parent peut intercepter les événements de ses enfants (actuels et futurs) avec un seul gestionnaire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est le bénéfice principal de la délégation d'événements pour une liste de 1 000 éléments ?",
+              "options": [
+                "Économiser la mémoire en évitant d'attacher 1 000 écouteurs individuels",
+                "Augmenter la résolution des images affichées dans la liste",
+                "Empêcher tout clic accidentel de l'utilisateur",
+                "Accélérer la connexion Internet de l'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un seul écouteur consomme bien moins de mémoire et gère automatiquement les éléments ajoutés dynamiquement dans la liste."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment activer l'écoute d'un événement pendant la phase de capture dans addEventListener ?",
+              "options": [
+                "En passant { capture: true } ou true comme troisième argument",
+                "En utilisant le préfixe 'oncapture' sur le nom de l'événement",
+                "En appelant la méthode enableCaptureMode() au préalable",
+                "Ce n'est pas possible en JavaScript moderne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le troisième paramètre de addEventListener (booléen ou objet d'options) permet d'activer la phase de capture avec la valeur true."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que fait event.stopImmediatePropagation() par rapport à event.stopPropagation() ?",
+              "options": [
+                "Elle stoppe la propagation et empêche aussi l'exécution des autres écouteurs sur le même élément",
+                "Elle redémarre immédiatement le navigateur web de l'utilisateur",
+                "Elle force l'événement à remonter deux fois plus vite dans l'arbre DOM",
+                "Elle supprime l'élément HTML de la mémoire vive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "stopImmediatePropagation() bloque immédiatement la propagation et interdit tout autre gestionnaire enregistré sur le même nœud."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Événements souris et clavier en détail",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle propriété d'un MouseEvent indique la position horizontale par rapport à la zone visible (viewport) ?",
+              "options": [
+                "clientX",
+                "pageX",
+                "screenX",
+                "offsetX"
+              ],
+              "correctAnswers": [0],
+              "explanation": "clientX renvoie la coordonnée X par rapport à la zone d'affichage du navigateur, sans tenir compte du défilement (scroll)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre clientX et pageX lors d'un défilement vertical/horizontal ?",
+              "options": [
+                "pageX prend en compte le défilement du document alors que clientX reste relatif au viewport",
+                "clientX prend en compte le défilement alors que pageX est relatif à l'écran entier",
+                "screenX et clientX sont toujours strictement égaux",
+                "pageX mesure la distance en centimètres et clientX en pixels"
+              ],
+              "correctAnswers": [0],
+              "explanation": "pageX mesure la position depuis le bord gauche du document complet, incluant la partie masquée par le scroll."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle propriété moderne d'un KeyboardEvent renvoie la valeur textuelle de la touche enfoncée ?",
+              "options": [
+                "event.key",
+                "event.keyCode",
+                "event.which",
+                "event.charCode"
+              ],
+              "correctAnswers": [0],
+              "explanation": "event.key fournit directement la chaîne représentant la touche ('a', 'Enter', 'ArrowLeft'), remplaçant l'ancien keyCode déprécié."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles propriétés booléennes indiquent si une touche modificatrice était maintenue lors d'un événement ?",
+              "options": [
+                "event.shiftKey",
+                "event.ctrlKey",
+                "event.turboKey",
+                "event.altKey"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "shiftKey, ctrlKey, altKey et metaKey permettent de détecter les combinaisons de touches ou clics modifiés."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel événement de souris se déclenche lorsque le bouton enfoncé est relâché ?",
+              "options": [
+                "mouseup",
+                "mousedown",
+                "click",
+                "mouseexit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "mousedown se produit à l'enfoncement, mouseup au relâchement, et la séquence complète déclenche ensuite 'click'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle valeur numérique de event.button correspond traditionnellement au clic gauche principal ?",
+              "options": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La norme W3C attribue 0 au bouton principal (gauche), 1 au bouton central (molette), et 2 au bouton secondaire (droit)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel événement permet d'intercepter l'ouverture du menu contextuel (généralement via clic droit) ?",
+              "options": [
+                "contextmenu",
+                "rightclick",
+                "menushow",
+                "popup"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'contextmenu' se déclenche avant l'affichage du menu contextuel, permettant de le personnaliser via preventDefault()."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que représente la propriété event.code d'un événement clavier ?",
+              "options": [
+                "Le code physique de la touche sur le clavier, indépendant de la disposition (ex: 'KeyQ' sur AZERTY et QWERTY)",
+                "Le code ASCII du caractère sous forme de nombre entier",
+                "Le pays de fabrication du clavier matériel",
+                "L'état actif ou inactif du verrouillage majuscule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "event.code identifie la touche physique pressée selon son emplacement matériel (ex: 'KeyA'), sans être affecté par la disposition locale."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle est la particularité de mouseenter et mouseleave par rapport à mouseover et mouseout ?",
+              "options": [
+                "mouseenter et mouseleave ne se propagent pas par bouillonnement (pas de bubbling)",
+                "mouseenter ne fonctionne que sur les téléphones tactiles",
+                "mouseleave désactive définitivement les écouteurs sur le bouton",
+                "mouseover ne détecte pas les mouvements rapides"
+              ],
+              "correctAnswers": [0],
+              "explanation": "mouseenter et mouseleave ne bouillonnent pas vers les éléments parents, évitant des déclenchements intempestifs lors du survol d'enfants."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel événement est émis lors de la rotation de la molette de souris ou du balayage à deux doigts sur pavé tactile ?",
+              "options": [
+                "wheel",
+                "scrollwheel",
+                "mousewheel_deprecated",
+                "rotate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement standardisé 'wheel' mesure le déplacement de la molette avec les propriétés deltaX, deltaY et deltaZ."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Événements asynchrones et communication réseau",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Pourquoi les échanges réseau sont-ils exécutés de manière asynchrone dans les IHM ?",
+              "options": [
+                "Pour ne pas figer l'interface graphique pendant l'attente de la réponse du serveur",
+                "Parce que le protocole HTTP interdit tout transfert de données synchrone",
+                "Pour obliger le navigateur à afficher une fenêtre contextuelle d'attente",
+                "Car les serveurs web refusent les connexions provenant d'un navigateur actif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'asynchronisme libère le thread d'affichage pour que l'utilisateur puisse continuer à interagir pendant le transfert réseau."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle API JavaScript moderne basée sur les Promesses permet d'effectuer des requêtes HTTP asynchrones ?",
+              "options": [
+                "fetch()",
+                "XMLHttpRequest",
+                "socket()",
+                "httpGet()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "fetch() est l'interface moderne standard pour réaliser des requêtes réseau en JavaScript, renvoyant une Promesse."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quels mots-clés permettent d'écrire du code asynchrone avec une lisibilité semblable au code séquentiel ?",
+              "options": [
+                "async et await",
+                "try et catch",
+                "promise et then",
+                "defer et load"
+              ],
+              "correctAnswers": [0],
+              "explanation": "async/await simplifie la gestion des Promesses en évitant l'imbrication excessive de rappels (callback hell)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels états une Promesse JavaScript peut-elle successivement adopter ?",
+              "options": [
+                "Pending (en attente d'achèvement)",
+                "Fulfilled (résolue avec succès)",
+                "Rejected (rejetée avec une erreur)",
+                "Archived (enregistrée sur disque dur)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Une Promesse débute à l'état 'pending' puis devient immuablement 'fulfilled' ou 'rejected'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle méthode d'une Promesse permet d'attacher un gestionnaire pour intercepter une erreur d'exécution ?",
+              "options": [
+                ".catch()",
+                ".finally()",
+                ".error()",
+                ".fault()"
+              ],
+              "correctAnswers": [0],
+              "explanation": ".catch(errorHandler) est appelée si la Promesse est rejetée ou si une exception est levée dans la chaîne."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel événement est émis par XMLHttpRequest à chaque changement de l'état d'avancement de la requête ?",
+              "options": [
+                "readystatechange",
+                "progressupdate",
+                "netstatus",
+                "fetchready"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement readystatechange signale les transitions de readyState de 0 à 4 (DONE)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel protocole permet une communication bidirectionnelle en temps réel persistante et pilotée par événements ?",
+              "options": [
+                "WebSocket",
+                "FTP",
+                "DNS",
+                "SMTP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "WebSocket maintient une connexion TCP ouverte où client et serveur peuvent s'échanger des messages sous forme d'événements à tout instant."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle fonction permet de planifier l'exécution unique d'une fonction après un délai spécifié en millisecondes ?",
+              "options": [
+                "setTimeout()",
+                "setInterval()",
+                "sleep()",
+                "deferExecution()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "setTimeout(callback, delay) enregistre un minuteur auprès du navigateur pour exécuter le callback à l'issue du délai."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle fonction permet de répéter l'exécution périodique d'une fonction toutes les X millisecondes ?",
+              "options": [
+                "setInterval()",
+                "setTimeout()",
+                "repeatTask()",
+                "loopEvent()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "setInterval(callback, interval) réinjecte le callback dans l'Event Queue à chaque période écoulée."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment annuler un minuteur préalablement programmé avec setTimeout(fn, 1000) ?",
+              "options": [
+                "En passant l'identifiant retourné à clearTimeout()",
+                "En appelant stopTimeout() sans argument",
+                "En modifiant la variable globale window.timeout à false",
+                "En fermant l'onglet du navigateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "setTimeout renvoie un identifiant numérique que l'on transmet à clearTimeout(id) pour annuler son déclenchement."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Gestion des formulaires et saisie utilisateur",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel comportement par défaut se produit lorsqu'un formulaire HTML est soumis sans JavaScript ?",
+              "options": [
+                "Le navigateur recharge la page en envoyant une requête HTTP à l'URL définie dans l'attribut 'action'",
+                "Tous les champs sont immédiatement effacés sans aucune requête réseau",
+                "Une boîte d'alerte s'affiche pour demander confirmation",
+                "Les données sont téléchargées localement dans un fichier texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Par défaut, la soumission provoque une requête GET ou POST synchrone vers l'attribut 'action', provoquant le rechargement de la page."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment traiter les données d'un formulaire en JavaScript sans provoquer le rechargement de la page ?",
+              "options": [
+                "Écouter l'événement 'submit' sur le formulaire et appeler event.preventDefault()",
+                "Remplacer la balise form par une balise div",
+                "Supprimer tous les boutons de type submit du document",
+                "Mettre l'attribut action à la valeur '#' exclusivement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'appel à event.preventDefault() dans le gestionnaire de l'événement 'submit' empêche le rechargement natif de la page."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel événement survient dès qu'un champ de formulaire reçoit le focus de saisie ?",
+              "options": [
+                "focus",
+                "blur",
+                "hover",
+                "activate"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'focus' indique qu'un composant (champ texte, bouton) est devenu l'élément actif recevant les entrées clavier."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles affirmations sont vraies concernant la validation des formulaires ?",
+              "options": [
+                "La validation côté client offre un retour immédiat et améliore l'ergonomie",
+                "La validation côté serveur est indispensable pour assurer la sécurité et l'intégrité",
+                "La validation côté client dispense totalement de valider côté serveur",
+                "HTML5 propose des contraintes natives comme required, min, max et pattern"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "La validation client améliore le confort mais peut être contournée ; le contrôle serveur reste le garant absolu de la sécurité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel objet JavaScript standard permet d'extraire facilement tous les couples clé/valeur d'un formulaire HTML ?",
+              "options": [
+                "FormData",
+                "FormSerializer",
+                "InputCollector",
+                "FormDictionary"
+              ],
+              "correctAnswers": [0],
+              "explanation": "new FormData(formElement) collecte automatiquement l'ensemble des champs nommés du formulaire, prêt pour un envoi avec fetch()."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel attribut HTML5 permet de contraindre la saisie d'un champ texte à l'aide d'une expression régulière ?",
+              "options": [
+                "pattern",
+                "regex",
+                "match",
+                "mask"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attribut pattern='[0-9]{5}' valide que la saisie correspond rigoureusement à l'expression régulière spécifiée."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel événement se déclenche lorsqu'une case à cocher (checkbox) change d'état sélectionné / non-sélectionné ?",
+              "options": [
+                "change",
+                "check",
+                "toggle",
+                "flip"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'change' est émis sur une case à cocher dès que sa propriété 'checked' bascule de valeur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi la validation client seule ne peut-elle pas garantir la sécurité des données ?",
+              "options": [
+                "Un utilisateur malveillant peut désactiver JavaScript ou forger directement les requêtes HTTP",
+                "Les navigateurs récents interdisent l'exécution d'expressions régulières",
+                "Le protocole HTTPS empêche la lecture des champs texte sur le client",
+                "Les données client sont toujours converties en images avant d'être transmises"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tout code s'exécutant sur le client peut être altéré, contourné ou court-circuité par des requêtes manuelles (ex: curl)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle pseudo-classe CSS permet de styliser un champ dont la saisie ne respecte pas les critères de validation ?",
+              "options": [
+                ":invalid",
+                ":error",
+                ":wrong",
+                ":unaccepted"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La pseudo-classe CSS :invalid sélectionne les éléments de formulaire en échec de validation selon leurs contraintes HTML5."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel événement est émis lorsqu'un formulaire est remis à ses valeurs initiales via un bouton de type reset ?",
+              "options": [
+                "reset",
+                "clear",
+                "restore",
+                "wipe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'reset' se déclenche sur le formulaire lors d'une réinitialisation, pouvant également être intercepté."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Programmation événementielle en Python avec Tkinter",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel module standard de la bibliothèque Python permet de concevoir des interfaces graphiques ?",
+              "options": [
+                "tkinter",
+                "pygame",
+                "turtle",
+                "graphics"
+              ],
+              "correctAnswers": [0],
+              "explanation": "tkinter est le binding standard fourni avec Python pour la boîte à outils graphique Tk (Tcl/Tk)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle méthode doit obligatoirement être appelée pour lancer la boucle d'événements dans une application Tkinter ?",
+              "options": [
+                "mainloop()",
+                "run()",
+                "start()",
+                "listen()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "fenetre.mainloop() démarre la boucle infinie qui intercepte et distribue les événements clavier, souris et affichage."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle méthode permet d'associer un événement précis d'un widget Tkinter à une fonction callback ?",
+              "options": [
+                "bind()",
+                "connect()",
+                "attach()",
+                "listen()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "widget.bind('<Event>', handler) configure une écoute fine d'événements particuliers sur ce composant."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les chaînes de désignation d'événements suivantes dans Tkinter, lesquelles sont valides ?",
+              "options": [
+                "<Button-1> (clic avec le bouton gauche)",
+                "<KeyPress-Return> (pression sur la touche Entrée)",
+                "<ClickLeftDirect>",
+                "<Motion> (déplacement du pointeur sur le widget)"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Tkinter utilise une syntaxe standardisée entre chevrons comme <Button-1>, <KeyPress-Return> ou <Motion>."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel argument obligatoire reçoit la fonction callback liée via la méthode bind() de Tkinter ?",
+              "options": [
+                "Un objet Event contenant notamment les coordonnées x, y et la touche pressée",
+                "L'identifiant du thread sous forme d'entier",
+                "Le nom du fichier de script Python",
+                "Une référence vers le ramasse-miettes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La fonction liée par bind doit accepter un argument (souvent nommé event) regroupant les métadonnées de l'action."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel paramètre du widget Button dans Tkinter permet de définir l'action à exécuter lors d'un clic simple ?",
+              "options": [
+                "command",
+                "action",
+                "callback",
+                "trigger"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le paramètre command=ma_fonction accepte une référence de fonction sans paramètre appelée lors du clic."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment transmettre des arguments à une fonction affectée au paramètre command d'un Button Tkinter ?",
+              "options": [
+                "En utilisant une fonction lambda anonyme ou functools.partial",
+                "En ajoutant des parenthèses avec les arguments directement dans command=ma_fonction(arg)",
+                "En séparant le nom de la fonction et les arguments par une virgule",
+                "Ce n'est pas réalisable avec Tkinter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Écrire command=lambda: ma_fonction(arg) évite l'exécution immédiate lors de l'instanciation du bouton."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle méthode d'un widget Tkinter permet d'exécuter une fonction après un délai sans bloquer la boucle d'événements ?",
+              "options": [
+                "after()",
+                "sleep()",
+                "wait()",
+                "delay()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "widget.after(ms, callback) planifie un rappel asynchrone intégré dans l'Event Loop de Tkinter sans geler l'interface."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que se passe-t-il si on exécute time.sleep(5) à l'intérieur du callback d'un bouton Tkinter ?",
+              "options": [
+                "L'interface graphique se bloque pendant 5 secondes et ne réagit à aucun événement",
+                "Tkinter crée automatiquement un thread d'exécution séparé",
+                "Le bouton s'efface temporairement puis réapparaît",
+                "L'application se ferme avec une erreur de syntaxe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "time.sleep bloque le thread principal, ce qui empêche le traitement des événements et fige l'affichage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle classe de variable spéciale Tkinter permet de synchroniser automatiquement une valeur avec l'affichage ?",
+              "options": [
+                "StringVar",
+                "LiveVar",
+                "ObservableString",
+                "SyncText"
+              ],
+              "correctAnswers": [0],
+              "explanation": "StringVar, IntVar et DoubleVar intègrent le patron Observateur et notifient l'IHM lors des appels à .set() ou .get()."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "Boucle d'animation et événements de jeux (Canvas/Pygame)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quelle fonction du navigateur est recommandée pour cadencer une boucle d'animation fluide à la fréquence de l'écran ?",
+              "options": [
+                "requestAnimationFrame()",
+                "setInterval()",
+                "setTimeout()",
+                "setImmediate()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "requestAnimationFrame synchronise les dessins avec le taux de rafraîchissement de l'écran (ex: 60 Hz) et s'endort si l'onglet est inactif."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi requestAnimationFrame() est-elle préférable à setInterval() pour animer un Canvas ?",
+              "options": [
+                "Elle évite les déchirements d'images et réduit la consommation énergétique quand l'onglet est masqué",
+                "Elle compile le JavaScript directement en assembleur GPU",
+                "Elle garantit un temps de réponse nul sur le réseau",
+                "Elle permet de dessiner sans utiliser de mémoire vive"
+              ],
+              "correctAnswers": [0],
+              "explanation": "requestAnimationFrame est optimisée par le navigateur pour n'effectuer les rendus que lorsque l'affichage est effectif."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que désigne le 'delta time' (dt) dans une boucle de jeu vidéo ?",
+              "options": [
+                "Le temps réel écoulé entre l'image précédente et l'image actuelle",
+                "Le nombre total d'images affichées depuis le début de la partie",
+                "La vitesse maximale du processeur divisée par deux",
+                "Le délai de ping moyen avec le serveur de jeu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le delta time permet d'exprimer les déplacements en unités par seconde plutôt qu'en unités par image, assurant une vitesse constante."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles étapes constituent la structure classique d'une boucle de jeu (Game Loop) ?",
+              "options": [
+                "Dépouillement des événements en attente (clavier, souris)",
+                "Mise à jour des positions et états physiques des entités (update)",
+                "Effacement et rendu graphique de la nouvelle image (draw / render)",
+                "Compilation du code source à chaque tour de boucle"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La Game Loop itère en permanence : gestion des entrées (events), mise à jour logique (update), puis rendu graphique (draw)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans la bibliothèque Python Pygame, quelle fonction récupère tous les événements en attente dans la file ?",
+              "options": [
+                "pygame.event.get()",
+                "pygame.event.poll_all()",
+                "pygame.event.read()",
+                "pygame.event.pop_queue()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "pygame.event.get() vide la file d'attente système et renvoie une liste ordonnée des événements survenus."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel type d'événement Pygame signale une demande de fermeture de la fenêtre par l'utilisateur ?",
+              "options": [
+                "pygame.QUIT",
+                "pygame.CLOSE",
+                "pygame.DESTROY",
+                "pygame.EXIT"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement pygame.QUIT est émis lorsque l'utilisateur clique sur la croix de la fenêtre ou utilise un raccourci de fermeture."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment détecter en temps réel qu'une touche est maintenue enfoncée dans Pygame à chaque image ?",
+              "options": [
+                "En interrogeant l'état des touches avec pygame.key.get_pressed()",
+                "En comptant le nombre d'événements KEYDOWN consécutifs",
+                "En mesurant le temps d'exécution de la boucle principale",
+                "Ce n'est pas possible en Python sans pilote externe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "pygame.key.get_pressed() renvoie un tableau booléen de l'état instantané de toutes les touches du clavier."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel élément HTML5 offre une surface de dessin matricielle programmable par script ?",
+              "options": [
+                "<canvas>",
+                "<svg>",
+                "<paint>",
+                "<board>"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'élément <canvas> fournit un contexte de rendu 2D ou WebGL permettant de manipuler des pixels et des formes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle méthode du contexte Canvas 2D permet d'effacer une région rectangulaire avant de redessiner ?",
+              "options": [
+                "clearRect()",
+                "eraseRect()",
+                "wipe()",
+                "resetCanvas()"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ctx.clearRect(x, y, width, height) efface les pixels en les rendant totalement transparents."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le phénomène de scintillement (flickering) et quelle technique permet de l'éliminer ?",
+              "options": [
+                "Un clignotement visuel indésirable éliminé grâce au double tamponnage (double buffering)",
+                "Une panne d'écran résolue en réduisant le volume sonore",
+                "Une baisse de tension électrique éliminée en changeant de câble HDMI",
+                "Une saturation de la pile d'appels corrigée par récursion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le double buffering dessine la scène sur une surface hors écran avant de la basculer d'un coup, évitant de montrer une image incomplète."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Événements tactiles et capteurs mobiles",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel événement tactile signale qu'un doigt vient d'entrer en contact avec l'écran tactile ?",
+              "options": [
+                "touchstart",
+                "touchbegin",
+                "touchdown",
+                "tap"
+              ],
+              "correctAnswers": [0],
+              "explanation": "touchstart est déclenché dès qu'un point de contact est détecté sur la surface tactile."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel événement est émis en continu pendant le déplacement d'un doigt sur un écran tactile ?",
+              "options": [
+                "touchmove",
+                "touchdrag",
+                "touchslide",
+                "touchshift"
+              ],
+              "correctAnswers": [0],
+              "explanation": "touchmove se déclenche à chaque déplacement des points de contact sur l'écran."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel événement tactile se produit lorsqu'un doigt quitte la surface de l'écran ?",
+              "options": [
+                "touchend",
+                "touchup",
+                "touchrelease",
+                "touchleave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "touchend survient lorsqu'un doigt est levé de la surface de l'écran tactile."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles informations sont disponibles au sein d'un objet Touch représentant un contact tactile ?",
+              "options": [
+                "Un identifiant unique pour suivre le doigt lors de contacts multiples (identifier)",
+                "Les coordonnées du contact sur la page (clientX, clientY, pageX, pageY)",
+                "La force de pression exercée sur les écrans compatibles (force)",
+                "Le numéro de série de la carte SIM du téléphone"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "L'API Touch Events fournit l'identifiant du point de contact, ses coordonnées cartésiennes et la pression estimée."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la technologie 'multi-touch' sur une interface tactile ?",
+              "options": [
+                "La capacité matérielle et logicielle à détecter et suivre plusieurs doigts simultanément",
+                "La possibilité de brancher plusieurs claviers sur un seul appareil",
+                "La gestion de plusieurs applications s'exécutant en arrière-plan",
+                "L'exécution de plusieurs requêtes réseau lors d'un même tapotement"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le multi-touch permet de reconnaître des gestes complexes impliquant deux doigts ou plus (pincement, rotation)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel geste tactile à deux doigts est traditionnellement utilisé pour agrandir ou rétrécir une zone (zoom) ?",
+              "options": [
+                "Pinch-to-zoom (pincement)",
+                "Swipe (balayage)",
+                "Long press (pression longue)",
+                "Double tap (double frappe)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le geste de pincement rapproche ou écarte deux doigts pour contrôler l'échelle de zoom."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel événement permet de détecter le basculement d'un appareil mobile entre les modes portrait et paysage ?",
+              "options": [
+                "orientationchange",
+                "screenflip",
+                "tiltchange",
+                "layoutswitch"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement 'orientationchange' (ou le media query orientation) détecte la rotation de l'appareil par l'utilisateur."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle API web permet de réagir aux mouvements et accélérations physiques d'un appareil dans l'espace ?",
+              "options": [
+                "DeviceMotionEvent",
+                "AccelerometerStream",
+                "PhysicalTrackerAPI",
+                "SpatialMotionEngine"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'événement devicemotion fournit les données d'accélération mesurées par l'accéléromètre et le gyroscope."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Pourquoi l'accès à l'API de géolocalisation exige-t-il obligatoirement une confirmation de l'utilisateur ?",
+              "options": [
+                "Pour préserver la vie privée et éviter la localisation non consentie de l'utilisateur",
+                "Parce que la puce GPS consomme des crédits payants à chaque appel",
+                "Car le navigateur doit formater la mémoire flash avant chaque position",
+                "Pour interdire l'utilisation de cartes géographiques gratuites"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La géolocalisation est une donnée personnelle sensible nécessitant une autorisation explicite et un contexte sécurisé (HTTPS)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que permet la directive CSS 'touch-action: manipulation' sur un bouton mobile ?",
+              "options": [
+                "Supprimer le délai de 300 ms sur les clics tactiles tout en autorisant le défilement et le zoom continu",
+                "Désactiver totalement la sensibilité tactile de l'écran",
+                "Interdire le redimensionnement de l'élément en CSS",
+                "Transformer les appuis tactiles en fichiers audio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "'touch-action: manipulation' élimine le délai d'attente historique de double-tap pour zoomer, rendant les clics instantanés."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Optimisation, robustesse et sécurité événementielle",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la technique de 'debouncing' (anti-rebond) appliquée à un gestionnaire d'événement ?",
+              "options": [
+                "Retarder l'exécution de la fonction jusqu'à ce qu'un délai de silence ou d'inactivité soit écoulé",
+                "Exécuter la fonction immédiatement à chaque milliseconde sans exception",
+                "Bloquer définitivement tout futur événement sur la page web",
+                "Annuler tous les calculs précédents pour afficher un message d'erreur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le debouncing réinitialise un minuteur à chaque déclenchement, n'exécutant l'action que lorsque l'utilisateur a fini d'agir."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre le throttling et le debouncing ?",
+              "options": [
+                "Le throttling garantit une exécution régulière plafonnée dans le temps, le debouncing attend une période de calme",
+                "Le throttling ne s'applique qu'au clavier, le debouncing à la souris",
+                "Le debouncing supprime les requêtes réseau, le throttling les dédouble",
+                "Ce sont deux appellations strictement interchangeables pour le même algorithme"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le throttling limite la cadence d'exécution (au maximum une fois toutes les X ms), idéal pour le scroll ou le resize."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans quelle situation concrète la technique du debouncing est-elle particulièrement recommandée ?",
+              "options": [
+                "Un champ de recherche avec autocomplétion interrogeant une API distante pendant la saisie",
+                "L'appui continu sur le bouton de tir dans un jeu d'arcade",
+                "La lecture continue d'un flux vidéo en direct",
+                "Le clic initial sur un lien hypertexte standard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Elle évite de surcharger l'API en attendant que l'utilisateur marque une pause dans sa frappe avant d'envoyer la requête."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels risques de sécurité ou de stabilité peuvent découler d'une mauvaise gestion des événements ?",
+              "options": [
+                "Injection de scripts malveillants (XSS) via des gestionnaires inline mal filtrés",
+                "Gel du navigateur par saturation de l'Event Loop lors de calculs synchrones infinis",
+                "Détournement de clic (Clickjacking) superposant des éléments invisibles piégés",
+                "Altération physique irréversible du microcode de la carte mère"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les vulnérabilités XSS, le déni de service de l'IHM et le Clickjacking sont des risques majeurs liés aux interfaces web."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment prévenir les fuites de mémoire (memory leaks) lors de la destruction dynamique de composants d'IHM ?",
+              "options": [
+                "Détacher les écouteurs avec removeEventListener() avant de retirer les éléments du DOM",
+                "Forcer le rechargement de la page web toutes les deux minutes",
+                "Affecter null à l'objet racine window du navigateur",
+                "Supprimer toutes les fonctions fléchées du code JavaScript"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si un écouteur référence un élément supprimé de l'arbre, le ramasse-miettes ne peut pas libérer sa mémoire."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "En quoi consiste l'attaque par détournement de clic (Clickjacking) ?",
+              "options": [
+                "Superposer une page transparente piégée au-dessus d'un bouton légitime pour tromper l'utilisateur",
+                "Prendre le contrôle matériel de la souris sans fil de la victime",
+                "Simuler des millions de clics pour fausser des statistiques de référencement",
+                "Désactiver le clic droit sur un site web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Clickjacking pousse la victime à cliquer sans le savoir sur un bouton invisible inséré dans une iframe transparente."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle directive HTTP moderne protège efficacement une page web contre le Clickjacking en iframe ?",
+              "options": [
+                "Content-Security-Policy avec la directive frame-ancestors",
+                "Access-Control-Allow-Origin: *",
+                "Cache-Control: no-cache",
+                "Strict-Transport-Security: max-age=0"
+              ],
+              "correctAnswers": [0],
+              "explanation": "frame-ancestors 'self' (ou none) interdit l'affichage du site dans une iframe sur des domaines non autorisés."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Pourquoi l'utilisation des gestionnaires d'événements inline comme onclick='...' est-elle déconseillée ?",
+              "options": [
+                "Elle mélange la structure et le comportement, viole les politiques CSP et favorise les failles XSS",
+                "Elle est bloquée par l'ensemble des serveurs web récents",
+                "Elle consomme cinq fois plus de bande passante réseau",
+                "Elle ne fonctionne qu'avec des écrans cathodiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les attributs inline compliquent la maintenance et sont proscrits par les règles strictes de Content Security Policy (CSP)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que permet l'option { passive: true } fournie à addEventListener pour l'événement 'scroll' ou 'touchmove' ?",
+              "options": [
+                "Garantir que l'écouteur n'appellera pas preventDefault(), permettant au navigateur de fluidifier le défilement",
+                "Réduire l'opacité visuelle de l'élément lors du défilement",
+                "Mettre en pause l'écouteur lorsque la batterie est faible",
+                "Enregistrer les positions de défilement dans une base de données"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Grâce aux écouteurs passifs, le thread de rendu n'attend plus la fin du script JavaScript pour faire défiler la page."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que permet de vérifier la propriété event.isTrusted en JavaScript ?",
+              "options": [
+                "Si l'événement a été généré par une action physique de l'utilisateur ou synthétisé par un script (dispatch)",
+                "Si le site web dispose d'un certificat TLS/HTTPS valide",
+                "Si l'utilisateur est authentifié avec des droits administrateur",
+                "Si le navigateur est exempt de tout logiciel espion"
+              ],
+              "correctAnswers": [0],
+              "explanation": "event.isTrusted vaut true uniquement si l'événement provient d'une vraie action utilisateur (clic matériel, frappe)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Interfaces",
+      "quizzes": [
+        {
+          "id": "q01",
+          "title": "Principes d'ergonomie et utilisabilité",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En ergonomie des interfaces, que désigne l'affordance d'un élément graphique ?",
+              "options": [
+                "Sa capacité visuelle à suggérer intuitivement son utilisation et sa fonction (ex: un bouton en relief invitant au clic)",
+                "Le coût financier total de développement de l'interface logicielle",
+                "Le temps nécessaire au processeur pour afficher le composant à l'écran",
+                "Le nombre d'octets de mémoire consommés par l'icône associée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'affordance est la propriété d'un objet d'indiquer naturellement à l'utilisateur comment interagir avec lui sans notice."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que stipule la loi de Fitts dans la conception des interfaces homme-machine ?",
+              "options": [
+                "Le temps pour atteindre une cible dépend de la distance à parcourir et de la taille de la cible",
+                "Le nombre d'erreurs d'un utilisateur double toutes les dix secondes",
+                "La mémoire à court terme ne peut retenir que trois éléments visuels",
+                "Une interface ne doit jamais comporter plus de deux couleurs contrastées"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La loi de Fitts modélise le temps de pointage : une cible plus grande et plus proche est atteinte plus rapidement."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que décrit la loi de Hick concernant la prise de décision dans une interface ?",
+              "options": [
+                "Le temps nécessaire pour prendre une décision augmente de façon logarithmique avec le nombre d'options proposées",
+                "L'attention visuelle d'un utilisateur se porte toujours au centre géométrique de l'écran",
+                "La vitesse de lecture est proportionnelle au contraste du texte",
+                "Les utilisateurs cliquent systématiquement sur le bouton le plus coloré"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Multiplier les choix ralentit l'utilisateur ; simplifier et regrouper les menus accélère la décision."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les heuristiques d'utilisabilité de Jakob Nielsen, lesquelles sont fondamentales ?",
+              "options": [
+                "Visibilité de l'état du système avec retour d'information continu",
+                "Prévention des erreurs et guidage pour leur récupération",
+                "Obligation d'utiliser un thème sombre sur toutes les fenêtres",
+                "Cohérence et respect des conventions établies"
+              ],
+              "correctAnswers": [0, 1, 3],
+              "explanation": "Nielsen met l'accent sur la transparence du système, la tolérance aux erreurs et la cohérence des repères visuels."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi le retour d'information (feedback) immédiat est-il essentiel après une action utilisateur ?",
+              "options": [
+                "Il rassure l'utilisateur sur la prise en compte de son action et prévient les clics répétés inutiles",
+                "Il réduit la température interne du microprocesseur",
+                "Il empêche le navigateur d'exécuter du code malveillant",
+                "Il accélère la vitesse de téléchargement de la page web"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un indicateur visuel (changement d'état, spinner) informe que la commande est en cours de traitement."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la 'charge cognitive' dans l'évaluation d'une IHM ?",
+              "options": [
+                "La quantité d'effort mental requise pour comprendre et manipuler l'interface",
+                "La quantité de mémoire vive allouée par le système d'exploitation",
+                "Le poids physique de l'écran d'ordinateur ou du terminal",
+                "Le nombre de requêtes HTTP transmises par minute"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une bonne IHM minimise la charge cognitive en rendant la navigation fluide, prévisible et intuitive."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En quoi consiste le principe de cohérence (consistency) dans une application logicielle ?",
+              "options": [
+                "Conserver les mêmes termes, icônes, emplacements et comportements sur l'ensemble des écrans",
+                "Stocker toutes les données dans un seul tableau à une dimension",
+                "Obliger tous les utilisateurs à adopter le même mot de passe",
+                "Rendre l'application compatible uniquement avec un seul modèle d'ordinateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La cohérence réduit l'apprentissage : l'utilisateur applique ce qu'il a appris sur un écran à tous les autres."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle recommandation ergonomique désigne la 'règle des 3 clics' ?",
+              "options": [
+                "Une information ou action clé devrait être accessible en 3 interactions au maximum depuis l'accueil",
+                "L'utilisateur doit obligatoirement cliquer 3 fois de suite pour valider un paiement",
+                "Un logiciel doit se fermer après 3 clics infructueux",
+                "Chaque écran doit contenir exactement 3 boutons interactifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bien qu'indicative, cette règle vise à limiter la profondeur de navigation pour que l'utilisateur ne se perde pas."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans les critères ergonomiques de Bastien et Scapin, à quoi correspond le critère de 'guidage' ?",
+              "options": [
+                "L'ensemble des indices visuels et textuels aidant l'utilisateur à savoir quoi faire et où aller",
+                "L'obligation de guider la souris à l'aide d'un rail physique",
+                "L'utilisation d'une boussole numérique sur chaque fenêtre",
+                "La géolocalisation en temps réel de l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le guidage inclut l'incitation, le groupement/distinction visuelle, le retour immédiat et la lisibilité."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Qu'est-ce que l'accessibilité cognitive dans la conception d'interfaces ?",
+              "options": [
+                "Adapter l'interface pour les personnes ayant des difficultés d'apprentissage, d'attention ou de mémoire",
+                "Utiliser exclusivement des réseaux de neurones artificiels pour l'affichage",
+                "Interdire l'usage de mots de plus de quatre lettres dans les menus",
+                "Augmenter la vitesse de défilement des textes longs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accessibilité cognitive utilise des structures claires, un langage simple et des repères stables pour faciliter la compréhension."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "title": "Accessibilité numérique et normes (WCAG)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que signifie le sigle international WCAG ?",
+              "options": [
+                "Web Content Accessibility Guidelines",
+                "World Computer Animation Graphics",
+                "Wireless Communication Access Gateway",
+                "Wide Component Architecture Grid"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les WCAG sont les directives internationales d'accessibilité des contenus web publiées par le W3C."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi l'attribut 'alt' est-il indispensable sur une balise d'image <img> informative ?",
+              "options": [
+                "Il fournit une description textuelle lue par les lecteurs d'écran pour les personnes malvoyantes",
+                "Il augmente la résolution graphique de l'image affichée",
+                "Il compresse automatiquement le fichier image pour accélérer son chargement",
+                "Il empêche le téléchargement non autorisé de l'image"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'attribut alt transmet le sens de l'image aux personnes utilisant des synthèses vocales ou des plages braille."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel rapport de contraste minimal de luminance est requis par les WCAG (niveau AA) pour du texte standard ?",
+              "options": [
+                "4.5:1",
+                "2:1",
+                "7:1",
+                "10:1"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le niveau AA exige un ratio de 4.5:1 pour le texte normal et 3:1 pour les textes de grande taille (>= 18pt ou 14pt gras)."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels sont les quatre grands principes fondamentaux qui structurent les WCAG (POUR) ?",
+              "options": [
+                "Perceptible (l'information doit pouvoir être perçue par tous les sens appropriés)",
+                "Utilisable (les composants d'interface et la navigation doivent être manipulables)",
+                "Compréhensible (les informations et l'utilisation doivent être intelligibles)",
+                "Payant (réservé aux services commerciaux validés)"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les principes POUR des WCAG sont : Perceptible, Opérable (Utilisable), Compréhensible et Robuste."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi toute interface doit-elle être entièrement navigable et opérable au clavier seul ?",
+              "options": [
+                "Pour permettre son utilisation par les personnes ne pouvant pas manipuler de souris ou de pavé tactile",
+                "Pour réduire la bande passante consommée par les périphériques USB",
+                "Parce que le HTML standard interdit la détection des souris",
+                "Pour augmenter la vitesse de calcul du processeur central"
+              ],
+              "correctAnswers": [0],
+              "explanation": "De nombreux utilisateurs en situation de handicap moteur ou visuel naviguent exclusivement à l'aide du clavier (tabulation, entrée)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel est le rôle des attributs et rôles WAI-ARIA en HTML ?",
+              "options": [
+                "Enrichir la sémantique de l'IHM pour transmettre l'état et le rôle des composants aux technologies d'assistance",
+                "Accélérer le téléchargement des scripts JavaScript",
+                "Remplacer obligatoirement toutes les balises HTML natives",
+                "Chiffrer le code source de l'interface graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "ARIA (Accessible Rich Internet Applications) comble les lacunes sémantiques des widgets dynamiques personnalisés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi est-il proscrit de communiquer une information uniquement par la couleur (ex: rouge pour erreur) ?",
+              "options": [
+                "Les personnes daltoniennes ou malvoyantes ne peuvent pas distinguer cette information",
+                "Les écrans modernes ne sont pas capables d'afficher des couleurs vives",
+                "Le protocole HTTP supprime automatiquement les styles de couleur",
+                "Cela surcharge la mémoire de la carte graphique"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il faut toujours coupler la couleur à une icône explicite, un texte ou une texture pour assurer la compréhension."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel est l'avantage de lier un élément <label> à son champ <input> via l'attribut 'for' ?",
+              "options": [
+                "Il associe le libellé au champ pour les lecteurs d'écran et agrandit la zone cliquable au clic sur le texte",
+                "Il interdit toute faute d'orthographe dans le champ",
+                "Il enregistre automatiquement la saisie dans un cookie",
+                "Il transforme le texte en mot de passe masqué"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cliquer sur le <label> donne le focus au champ associé, ce qui améliore considérablement le confort sur mobile et pour l'accessibilité."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel attribut HTML permet de contrôler l'ordre de tabulation séquentiel d'un élément au clavier ?",
+              "options": [
+                "tabindex",
+                "keyorder",
+                "navindex",
+                "focusstep"
+              ],
+              "correctAnswers": [0],
+              "explanation": "tabindex='0' insère un élément dans l'ordre naturel du flux, tandis que tabindex='-1' le rend focalisable par script sans tabulation."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la règle CSS 'outline: none' sans style de remplacement est-elle considérée comme une faute grave ?",
+              "options": [
+                "Elle supprime le contour visuel du focus, rendant la navigation au clavier totalement aveugle",
+                "Elle désactive le clic gauche de la souris sur le bouton",
+                "Elle empêche l'affichage des images d'arrière-plan",
+                "Elle bloque l'exécution des scripts JavaScript"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'indicateur de focus (outline) est indispensable pour que l'utilisateur au clavier sache quel élément est actuellement sélectionné."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "title": "Composants fondamentaux d'une IHM (Widgets)",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quel est le comportement caractéristique d'une boîte de dialogue modale (modal dialog) ?",
+              "options": [
+                "Elle suspend l'interaction avec le reste de l'application tant qu'elle n'est pas validée ou fermée",
+                "Elle s'affiche obligatoirement sous la forme d'un nouvel onglet de navigateur",
+                "Elle modifie automatiquement la résolution de l'écran d'ordinateur",
+                "Elle envoie les données directement à une imprimante réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une modale capte toute l'attention et le focus de l'utilisateur, empêchant toute interaction sur la page en arrière-plan."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la règle d'usage distinguant les boutons radio des cases à cocher (checkboxes) ?",
+              "options": [
+                "Les boutons radio imposent un choix exclusif unique, les cases à cocher permettent des choix multiples indépendants",
+                "Les cases à cocher imposent un choix unique, les boutons radio des choix multiples",
+                "Les boutons radio ne fonctionnent qu'avec un écran tactile",
+                "Les cases à cocher exigent obligatoirement de saisir un mot de passe"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dans un groupe nommé de boutons radio, une seule option peut être cochée à la fois, contrairement aux cases à cocher."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle d'un fil d'Ariane (breadcrumb) dans une interface de navigation ?",
+              "options": [
+                "Indiquer la position de la page actuelle au sein de l'arborescence hiérarchique du site",
+                "Lister l'historique chronologique des sites web visités depuis un an",
+                "Afficher le code source HTML de la page courante",
+                "Mesurer la latence réseau en millisecondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le fil d'Ariane permet à l'utilisateur de se situer dans la hiérarchie et de remonter rapidement aux niveaux parents."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les composants suivants, lesquels sont spécifiquement conçus pour encadrer ou restreindre la saisie ?",
+              "options": [
+                "Une liste déroulante (<select>)",
+                "Un curseur glissière (<input type='range'>)",
+                "Un sélecteur de date interactif (date picker)",
+                "Un paragraphe de texte brut statique"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Les listes déroulantes, sliders et sélecteurs de date guident la saisie en limitant les erreurs de format par rapport au texte libre."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel composant d'interface permet d'alterner entre plusieurs panneaux de contenu superposés via une barre d'en-têtes ?",
+              "options": [
+                "Un conteneur à onglets (tabbed view)",
+                "Un fil d'Ariane linéaire",
+                "Une infobulle flottante",
+                "Une boîte d'alerte modale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les onglets organisent l'information en plusieurs vues distinctes accessibles sans recharger ni faire défiler la page."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une infobulle (tooltip) dans une interface graphique ?",
+              "options": [
+                "Un court message explicatif apparaissant au survol ou au focus d'un composant",
+                "Une publicité vidéo qui démarre automatiquement avec le son",
+                "Un formulaire complet demandant les coordonnées de l'utilisateur",
+                "Une icône permanente en bas à droite de l'écran"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'infobulle apporte une aide contextuelle succincte sans encombrer visuellement l'interface au repos."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En quoi consiste le composant d'interface appelé 'accordéon' (accordion) ?",
+              "options": [
+                "Une liste verticale de sections dont les volets peuvent être pliés ou dépliés individuellement",
+                "Un carrousel d'images défilant en diagonale",
+                "Une mélodie jouée à chaque clic de souris",
+                "Un menu contextuel affiché uniquement lors d'un clic molette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'accordéon permet de compacter une grande quantité de texte (comme une FAQ) en ne montrant que les titres au départ."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel composant affiche une notification temporaire et non bloquante souvent en bas de l'écran ?",
+              "options": [
+                "Un toast (ou snackbar)",
+                "Une boîte de dialogue modale",
+                "Un volet de navigation permanent",
+                "Un écran de veille"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le toast informe brièvement d'une action réussie (ex: 'Message envoyé') puis disparaît sans interrompre le travail."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on le 'menu hamburger' dans la conception d'interfaces mobiles ?",
+              "options": [
+                "Une icône à trois traits horizontaux empilés qui ouvre un tiroir de navigation latéral",
+                "Un menu permettant de commander des repas en ligne",
+                "Une liste de commandes système réservée au superutilisateur",
+                "Un raccourci clavier combinant les touches Ctrl, Alt et H"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'icône hamburger masque les liens de navigation sur petit écran pour économiser l'espace précieux d'affichage."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel avantage offre un écran squelette (skeleton screen) par rapport à une roue de chargement (spinner) classique ?",
+              "options": [
+                "Il réduit la sensation d'attente en préfigurant la mise en page finale des données en cours de chargement",
+                "Il divise par deux la quantité de données téléchargées sur le réseau",
+                "Il interdit l'apparition d'erreurs 404 sur le serveur",
+                "Il fonctionne sans aucune feuille de style CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le skeleton screen affiche des formes grises mimant le contenu futur, améliorant la perception de réactivité par l'utilisateur."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "title": "Mise en page moderne et design responsive",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que désigne le terme 'Responsive Web Design' ?",
+              "options": [
+                "La capacité d'une interface à adapter automatiquement sa disposition à toutes les résolutions et tailles d'écran",
+                "La vitesse de calcul d'un serveur qui répond en moins d'une milliseconde",
+                "L'utilisation exclusive de scripts JavaScript pour calculer les positions de chaque élément",
+                "La création obligatoire d'un sous-domaine spécifique pour chaque modèle de smartphone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le design responsive garantit une expérience optimale sur smartphone, tablette ou grand écran d'ordinateur."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle balise <meta> dans l'en-tête HTML est indispensable pour permettre l'affichage responsive sur mobile ?",
+              "options": [
+                "<meta name='viewport' content='width=device-width, initial-scale=1.0'>",
+                "<meta name='responsive' content='true'>",
+                "<meta name='screen' content='mobile-first'>",
+                "<meta name='display' content='adaptive'>"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La balise viewport indique au navigateur mobile d'utiliser la largeur réelle de l'appareil plutôt qu'une fausse résolution de bureau."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle règle CSS permet d'appliquer conditionnellement des styles selon la largeur de la fenêtre ?",
+              "options": [
+                "@media",
+                "@screen",
+                "@viewport",
+                "@query"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les media queries (@media screen and (min-width: 768px)) définissent les adaptations stylistiques par palier de dimension."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Parmi les caractéristiques suivantes, lesquelles s'appliquent au module CSS Flexbox ?",
+              "options": [
+                "Il est conçu pour la disposition unidimensionnelle (en ligne ou en colonne)",
+                "Il permet de distribuer et d'aligner facilement l'espace entre les éléments enfants",
+                "Il s'active sur le parent avec la propriété display: flex",
+                "Il remplace entièrement les bases de données SQL du serveur"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Flexbox organise les éléments le long d'un axe principal (flex-direction), facilitant les alignements et répartitions d'espace."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la différence fondamentale entre CSS Flexbox et CSS Grid ?",
+              "options": [
+                "Flexbox gère un axe unidimensionnel, alors que Grid gère deux dimensions simultanément (lignes et colonnes)",
+                "Flexbox ne fonctionne que sur les ordinateurs, Grid sur les smartphones",
+                "Flexbox requiert du JavaScript alors que Grid est du pur HTML",
+                "Grid ne permet aucun redimensionnement automatique des éléments"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Flexbox est idéal pour aligner des composants le long d'une rangée ou colonne, tandis que Grid structure des grilles complètes 2D."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la démarche 'Mobile-First' en intégration web ?",
+              "options": [
+                "Concevoir d'abord le style pour petit écran puis enrichir la mise en page pour les écrans plus larges via min-width",
+                "Bloquer délibérément l'accès du site web aux ordinateurs de bureau",
+                "Programmer en langage Swift avant de concevoir le code HTML",
+                "Créer une interface sans aucun texte pour n'utiliser que des icônes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mobile-First privilégie l'essentiel sur mobile, puis utilise des media queries ascendantes (min-width) pour enrichir la version bureau."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle unité CSS relative est proportionnelle à la taille de police de la racine (<html>) ?",
+              "options": [
+                "rem",
+                "em",
+                "px",
+                "vh"
+              ],
+              "correctAnswers": [0],
+              "explanation": "1 rem (root em) équivaut à la font-size de l'élément racine <html>, facilitant l'accessibilité si l'utilisateur modifie la taille par défaut."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que représentent les unités CSS relatives vw et vh ?",
+              "options": [
+                "1% de la largeur (viewport width) et 1% de la hauteur (viewport height) de la zone visible",
+                "La vitesse de défilement de la page en pixels par seconde",
+                "Le volume audio maximal des balises multimédias",
+                "Des mesures vectorielles réservées au langage SVG"
+              ],
+              "correctAnswers": [0],
+              "explanation": "100vw correspond à l'intégralité de la largeur visible du navigateur et 100vh à l'intégralité de sa hauteur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on un 'point de rupture' (breakpoint) dans une feuille de style responsive ?",
+              "options": [
+                "Une dimension d'écran clé (ex: 768px, 1024px) déclenchant un réagencement de la mise en page via @media",
+                "Une erreur critique dans le fichier CSS qui stoppe son exécution",
+                "Le moment où le serveur web coupe la connexion avec le client",
+                "La limite maximale de mémoire vive autorisée par le navigateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les breakpoints définissent les frontières dimensionnelles entre les formats mobiles, tablettes et ordinateurs."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle propriété CSS Grid permet de déclarer la taille et le nombre de colonnes d'une grille ?",
+              "options": [
+                "grid-template-columns",
+                "grid-column-count",
+                "columns-layout",
+                "grid-cols-repeat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "grid-template-columns: repeat(3, 1fr) définit par exemple une grille de 3 colonnes de largeurs égales."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "title": "Architecture logicielle des IHM : le patron MVC",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Que désignent les trois lettres du patron d'architecture MVC ?",
+              "options": [
+                "Modèle - Vue - Contrôleur",
+                "Mémoire - Variable - Calcul",
+                "Module - Visuel - Composant",
+                "Moteur - Vecteur - Commande"
+              ],
+              "correctAnswers": [0],
+              "explanation": "MVC sépare l'application en Modèle (données/métier), Vue (affichage/IHM) et Contrôleur (gestion des actions)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quel est le rôle du Modèle dans l'architecture logicielle MVC ?",
+              "options": [
+                "Gérer les données de l'application, leur persistance et les règles métiers",
+                "Afficher les fenêtres, boutons et composants graphiques à l'écran",
+                "Intercepter les clics de souris et les frappes au clavier",
+                "Traduire le code source en instructions assembleur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Modèle encapsule l'état et la logique fonctionnelle de l'application, indépendamment de toute représentation graphique."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel est le rôle de la Vue dans le patron MVC ?",
+              "options": [
+                "Présenter les données du modèle à l'utilisateur et constituer l'interface graphique",
+                "Exécuter les requêtes directes de modification de la base de données",
+                "Chiffrer les mots de passe et assurer la sécurité réseau",
+                "Allouer les blocs de mémoire vive au démarrage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Vue est la représentation visuelle du Modèle destinée à l'utilisateur final."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles responsabilités incombent au Contrôleur dans une architecture MVC ?",
+              "options": [
+                "Intercepter les actions et événements déclenchés par l'utilisateur sur la Vue",
+                "Ordonner la mise à jour des données au Modèle en appliquant la logique adéquate",
+                "Demander à la Vue de se rafraîchir ou sélectionner la prochaine vue à afficher",
+                "Recompiler le noyau du système d'exploitation à chaque requête"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le Contrôleur fait le lien entre les commandes utilisateur et les mutations du Modèle, orchestrant ensuite le retour visuel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le bénéfice fondamental de la séparation des responsabilités offerte par MVC ?",
+              "options": [
+                "Faciliter la maintenance, les tests unitaires et la modification de l'interface sans impacter la logique métier",
+                "Accélérer automatiquement la cadence d'horloge du microprocesseur",
+                "Supprimer l'obligation de documenter le code source",
+                "Permettre à un programme de fonctionner sans système d'exploitation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Découpler l'IHM et la logique permet par exemple de changer d'interface graphique sans retoucher au code métier."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment la Vue est-elle typiquement notifiée d'un changement d'état du Modèle ?",
+              "options": [
+                "Par le mécanisme de notification du patron Observateur",
+                "En redémarrant complètement l'ordinateur à chaque modification",
+                "Par une requête DNS broadcastée sur le réseau local",
+                "En rechargeant l'ensemble du disque dur en mémoire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La Vue s'abonne au Modèle en tant qu'Observateur et reçoit un signal dès que les données sont altérées."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Pourquoi est-il déconseillé que la Vue modifie directement les données du Modèle sans passer par le Contrôleur ?",
+              "options": [
+                "Cela brise l'encapsulation, complique la validation des règles métiers et rend le code fragile",
+                "Parce que le HTML ne peut pas modifier un fichier texte",
+                "Car cela provoque systématiquement un court-circuit matériel",
+                "Parce que la Vue est toujours stockée en mémoire morte (ROM)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Court-circuiter le Contrôleur empêche le filtrage des entrées et lie trop étroitement la vue aux structures internes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle variante courante du MVC lie automatiquement les variables de l'IHM aux données par 'data-binding' ?",
+              "options": [
+                "MVVM (Modèle - Vue - Vue-Modèle)",
+                "MVP (Modèle - Valeur - Processus)",
+                "MCR (Modèle - Calcul - Rendu)",
+                "MDA (Modèle - Donnée - Affichage)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le patron MVVM (très populaire dans les frameworks réactifs) utilise un ViewModel et la liaison de données bidirectionnelle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans une application web monopage moderne, quelle partie du système joue principalement le rôle de Vue ?",
+              "options": [
+                "Les composants d'affichage HTML/CSS rendus et mis à jour dynamiquement dans le navigateur",
+                "Le serveur de base de données relationnelle",
+                "Le script de déploiement continu du serveur",
+                "Le protocole de transport TCP"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les composants graphiques dans le navigateur représentent la Vue avec laquelle l'utilisateur interagit directement."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel problème récurrent apparaît lorsqu'une application mélange code d'IHM et code de calcul métier ?",
+              "options": [
+                "Le code devient monolithique, très difficile à tester automatiquement et complexe à maintenir",
+                "L'écran de l'utilisateur n'affiche plus que du noir et blanc",
+                "Les claviers USB ne répondent plus aux frappes",
+                "La carte mère refuse de sauvegarder les fichiers"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le couplage fort rend les tests unitaires impossibles sans lancer l'interface et bloque toute refonte graphique."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "title": "Frameworks front-end et interfaces réactives",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le DOM Virtuel (Virtual DOM) utilisé par des bibliothèques comme React ?",
+              "options": [
+                "Une copie légère en mémoire de l'arbre DOM permettant de calculer les modifications minimales avant d'impacter le vrai DOM",
+                "Un émulateur matériel de carte graphique intégré au navigateur",
+                "Un serveur web distant hébergeant les pages HTML",
+                "Un fichier binaire compilé qui remplace le fichier HTML initial"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Virtual DOM optimise les performances en comparant les arbres en mémoire et en n'appliquant que les différences réelles."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Pourquoi la modification directe et répétée du DOM réel du navigateur est-elle coûteuse en performances ?",
+              "options": [
+                "Elle déclenche des calculs lourds de réorganisation géométrique (reflow) et de redessin (repaint)",
+                "Elle exige l'envoi systématique d'une requête HTTP vers le serveur web",
+                "Elle réinitialise la mémoire cache du processeur central",
+                "Elle bloque l'accès aux disques durs de l'utilisateur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le recalcul du layout et le repeinte des pixels par le moteur de rendu sont les goulots d'étranglement majeurs des IHM web."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "En quoi consiste l'approche déclarative pour la création d'IHM dans les frameworks modernes ?",
+              "options": [
+                "Décrire l'apparence de l'interface en fonction de l'état courant, le framework gérant les mises à jour nécessaires",
+                "Écrire manuellement chaque étape impérative d'ajout et suppression de nœuds dans le DOM",
+                "Déclarer toutes les fonctions en langage C dans un fichier séparé",
+                "Interdire l'utilisation de variables dynamiques dans le code"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'approche déclarative (IHM = f(état)) libère le développeur de la synchronisation manuelle des éléments du DOM."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels concepts sont fondamentaux dans la création d'interfaces par composants réutilisables ?",
+              "options": [
+                "L'état local (state) qui déclenche un nouveau rendu lors de sa mutation",
+                "Les propriétés (props) transmises par les composants parents vers leurs enfants",
+                "L'encapsulation de la structure, du style et du comportement au sein d'une même brique",
+                "L'écriture obligatoire du code en langage assembleur x86"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Composants, état (state), propriétés (props) et encapsulation forment le socle de l'ingénierie front-end moderne."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on la 'réactivité' au sein d'une interface graphique moderne ?",
+              "options": [
+                "La mise à jour automatique et ciblée de la vue dès que les données associées sont modifiées",
+                "La vitesse à laquelle l'écran physique s'allume lors de la mise sous tension",
+                "La capacité d'un serveur à répondre aux courriels en moins de 10 minutes",
+                "La conversion automatique du code JavaScript en langage Python"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réactivité lie la couche de données à la couche de présentation pour que tout changement de variable se reflète instantanément à l'écran."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une SPA (Single Page Application) ?",
+              "options": [
+                "Une application web qui charge une page HTML unique et met à jour dynamiquement son contenu sans rechargement de page",
+                "Un site web limité à une seule image et dix lignes de texte au total",
+                "Un programme informatique qui ne peut être exécuté qu'une seule fois",
+                "Un document statique conçu pour être imprimé sur une seule feuille de papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les SPA offrent une fluidité comparable aux applications natives en interceptant la navigation pour modifier le DOM en direct."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on le flux de données où les données descendent des parents aux enfants et les actions remontent par événements ?",
+              "options": [
+                "Le flux de données unidirectionnel (one-way data flow)",
+                "La récursion bidirectionnelle non bornée",
+                "Le routage circulaire infini",
+                "Le partage global de pointeurs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le flux unidirectionnel rend l'état de l'application prévisible, traçable et beaucoup plus facile à déboguer."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel algorithme compare l'ancien arbre virtuel et le nouvel arbre virtuel pour identifier le lot minimal de mutations ?",
+              "options": [
+                "L'algorithme de réconciliation (diffing algorithm)",
+                "L'algorithme de Dijkstra pour le plus court chemin",
+                "L'algorithme de hachage cryptographique SHA-256",
+                "L'algorithme de tri rapide (quicksort)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réconciliation (ou diffing) compare les deux arbres de composants et applique le patch minimal sur le DOM réel."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un composant pur (stateless / composant de présentation) ?",
+              "options": [
+                "Un composant qui dépend exclusivement de ses propriétés en entrée (props) sans maintenir d'état interne",
+                "Un composant qui ne possède aucune balise HTML",
+                "Un composant dont le code est effacé après chaque affichage",
+                "Un composant qui ne peut pas afficher de texte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un composant sans état produit toujours le même résultat visuel pour les mêmes données en entrée, facilitant grandement les tests."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel problème est résolu par l'isolation des styles CSS au sein des composants (Scoped CSS / CSS Modules) ?",
+              "options": [
+                "Éviter les conflits de nommage et les effets de bord où les règles d'un composant polluent d'autres éléments",
+                "Interdire aux utilisateurs d'ajuster la luminosité de leur écran",
+                "Réduire le coût de l'abonnement Internet de l'hébergeur",
+                "Permettre d'écrire du code sans respecter les règles de syntaxe CSS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le style scopé garantit que les classes CSS s'appliquent strictement au composant local sans impacter le reste du site."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "title": "Conception d'IHM en Python : Gestionnaires de géométrie",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Quels sont les trois gestionnaires de géométrie (layout managers) standards fournis par Tkinter ?",
+              "options": [
+                "pack, grid et place",
+                "flow, border et card",
+                "flex, box et table",
+                "align, row et column"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tkinter propose pack (empilement), grid (tableau 2D) et place (positionnement cartésien absolu ou relatif)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment fonctionne le gestionnaire de disposition pack() dans Tkinter ?",
+              "options": [
+                "Il empile les widgets le long des bords de leur conteneur parent (TOP, BOTTOM, LEFT, RIGHT)",
+                "Il impose des coordonnées en millimètres physiques",
+                "Il calcule des coordonnées sphériques tridimensionnelles",
+                "Il compile les composants en images bitmap statiques"
+              ],
+              "correctAnswers": [0],
+              "explanation": "pack() dispose les éléments les uns après les autres en occupant les bords disponibles du conteneur."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment fonctionne le gestionnaire de géométrie grid() dans Tkinter ?",
+              "options": [
+                "Il organise les widgets au sein d'une grille bidimensionnelle définie par des lignes (row) et des colonnes (column)",
+                "Il place les boutons de façon aléatoire dans la fenêtre",
+                "Il affiche les composants sur un cercle trigonométrique",
+                "Il interdit l'insertion de plus de quatre composants dans la fenêtre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "grid(row=i, column=j) permet d'aligner précisément des formulaires et des tableaux de composants."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles options du gestionnaire grid() permettent d'ajuster l'espacement et l'étirement d'un widget ?",
+              "options": [
+                "padx et pady pour ajouter des marges intérieures ou extérieures",
+                "rowspan et columnspan pour fusionner plusieurs cellules de la grille",
+                "sticky pour ancrer ou étirer le composant vers les points cardinaux (N, S, E, W)",
+                "cpu_priority pour accélérer l'affichage du widget"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "padx/pady gèrent les espacements, rowspan/columnspan la fusion de cellules, et sticky l'alignement/étirement."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle est la caractéristique du gestionnaire place() dans Tkinter ?",
+              "options": [
+                "Il positionne un widget à des coordonnées précises en pixels (x, y) ou en ratios relatifs (relx, rely)",
+                "Il ordonne automatiquement les composants par ordre alphabétique de leur libellé",
+                "Il range les variables dans la mémoire vive de l'ordinateur",
+                "Il télécharge les composants depuis un serveur en ligne"
+              ],
+              "correctAnswers": [0],
+              "explanation": "place() offre un contrôle au pixel près mais ne gère pas naturellement le redimensionnement fluide des fenêtres."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Pourquoi l'utilisation de coordonnées absolues en pixels avec place(x=100, y=50) est-elle généralement déconseillée ?",
+              "options": [
+                "L'interface ne s'adapte pas aux redimensionnements de fenêtre, aux résolutions d'écran variées ni aux changements de polices",
+                "Le langage Python interdit formellement l'utilisation de nombres entiers dans place()",
+                "Cela ralentit l'exécution du processeur d'un facteur 100",
+                "Les boutons deviennent invisibles sur les écrans couleur récents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le positionnement absolu est rigide : dès que la fenêtre grandit ou que la taille du texte change, les éléments se chevauchent ou sont coupés."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que se produit-il si l'on mélange pack() et grid() au sein d'un même conteneur parent dans Tkinter ?",
+              "options": [
+                "Une boucle de négociation de géométrie infinie fige totalement l'application",
+                "Python convertit automatiquement tous les widgets en boutons radio",
+                "L'ordinateur redémarre instantanément sans avertissement",
+                "Les widgets sont effacés du disque dur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "pack et grid essaient chacun de redimensionner le parent selon leurs propres règles, provoquant un blocage mutuel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel widget Tkinter sert de boîte conteneur intermédiaire pour structurer et isoler des groupes de widgets ?",
+              "options": [
+                "Frame",
+                "Box",
+                "Container",
+                "Zone"
+              ],
+              "correctAnswers": [0],
+              "explanation": "tkinter.Frame regroupe des composants sous un même parent, permettant d'utiliser pack dans un cadre et grid dans un autre."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans le framework graphique PyQt, quel mécanisme avancé remplace et généralise les callbacks simples ?",
+              "options": [
+                "Les signaux et les slots (Signals & Slots)",
+                "Les pointeurs bruts de mémoire en C",
+                "Les interruptions matérielles directes du BIOS",
+                "Les fichiers de configuration texte temporaires"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le système de Signaux et Slots de Qt permet de connecter de façon sûre et typée un émetteur d'événement à un récepteur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Dans Tkinter, comment autoriser une colonne d'une grille à s'étirer lors du redimensionnement de la fenêtre ?",
+              "options": [
+                "En utilisant la méthode fenetre.columnconfigure(col_index, weight=1)",
+                "En ajoutant l'attribut expand='auto' au constructeur du widget",
+                "En modifiant le registre du système d'exploitation",
+                "Ce comportement n'est pas pris en charge par Tkinter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "columnconfigure(index, weight=1) attribue un poids d'étirement à la colonne pour qu'elle s'agrandisse proportionnellement."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "title": "IHM pour systèmes embarqués et objets connectés",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on un système fonctionnant en mode sans tête (headless mode) ?",
+              "options": [
+                "Un système informatique dépourvu d'écran graphique direct, administré à distance via le réseau ou une API",
+                "Un ordinateur portable dont la webcam a été physiquement désactivée",
+                "Un écran de contrôle dont le haut a été coupé lors de la fabrication",
+                "Une interface réservée exclusivement aux commandes vocales"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Un serveur ou objet connecté 'headless' s'exécute sans écran ni périphériques locaux de saisie (souris/clavier)."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelles contraintes fortes caractérisent la conception d'IHM pour systèmes embarqués (IoT, microcontrôleurs) ?",
+              "options": [
+                "Mémoire RAM et stockage très réduits, processeurs basse consommation et contraintes de réactivité temps réel",
+                "Obligation d'afficher une résolution 4K minimale sur tous les écrans",
+                "Interdiction d'utiliser des écrans couleur",
+                "Nécessité de brancher une souris optique filaire à trois boutons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'embarqué requiert des bibliothèques graphiques légères et économes en cycles de calcul et en mémoire vive."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Dans une IHM critique (aéronautique, santé), quelle exigence ergonomique est impérative ?",
+              "options": [
+                "La clarté absolue des états, la prévention des ambiguïtés et une latence de réponse bornée et déterministe",
+                "La présence d'animations 3D décoratives à 120 images par seconde",
+                "La possibilité pour l'utilisateur de personnaliser toutes les couleurs de fond",
+                "L'affichage d'un flux d'actualités en temps réel dans un bandeau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La sécurité des personnes exige qu'une alarme ou un état critique soit perçu et compris sans le moindre doute possible."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quels canaux de retour sensoriel peuvent être combinés sur un appareil mobile ou embarqué ?",
+              "options": [
+                "Retour haptique (vibrations et impulsions mécaniques contrôlées)",
+                "Retour visuel (voyants LED, pictogrammes et messages à l'écran)",
+                "Retour auditif (bips sonores, alertes ou synthèse vocale)",
+                "Retour gravitationnel modifiant la masse de l'appareil"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "La combinaison multimodale (visuelle, auditive et haptique) renforce la perception du retour utilisateur même en environnement bruyant."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi l'IHM d'un tableau de bord automobile doit-elle respecter la règle du regard bref (glanceability) ?",
+              "options": [
+                "Pour permettre au conducteur de saisir une information en moins de deux secondes afin de ne pas quitter la route des yeux",
+                "Pour économiser l'ampoule du plafonnier du véhicule",
+                "Pour éviter de décharger la batterie du smartphone des passagers",
+                "Parce que les écrans de voiture s'éteignent automatiquement après deux secondes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La 'glanceability' impose des polices lisibles, des contrastes forts et des données épurées pour préserver la sécurité routière."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle bibliothèque graphique en langage C très populaire est optimisée pour les microcontrôleurs (ESP32, STM32) ?",
+              "options": [
+                "LVGL (Light and Versatile Graphics Library)",
+                "Unreal Engine 5",
+                "DirectX 12",
+                "PyQt6"
+              ],
+              "correctAnswers": [0],
+              "explanation": "LVGL est une bibliothèque open source ultra-légère conçue pour créer de superbes IHM sur des puces ayant très peu de mémoire."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment qualifie-t-on une interface homme-machine pilotée par la parole et les commandes vocales ?",
+              "options": [
+                "Une VUI (Voice User Interface)",
+                "Une GUI (Graphical User Interface)",
+                "Une CLI (Command Line Interface)",
+                "Une TUI (Text User Interface)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les VUI (Voice User Interfaces) exploitent la reconnaissance vocale et le traitement du langage naturel pour interagir sans écran."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel protocole réseau léger basé sur publication/abonnement est massivement utilisé pour interconnecter des IHM et des objets IoT ?",
+              "options": [
+                "MQTT",
+                "SMTP",
+                "POP3",
+                "NFS"
+              ],
+              "correctAnswers": [0],
+              "explanation": "MQTT est un protocole de messagerie léger à faible empreinte, idéal pour remonter des données de capteurs vers des tableaux de bord."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment fonctionne un bouton tactile capacitif par rapport à un interrupteur mécanique classique ?",
+              "options": [
+                "Il mesure la variation de capacité électrique induite par la proximité ou le contact du doigt humain sans pièce mobile",
+                "Il mesure la chaleur thermique de la pièce",
+                "Il contient un micro-ressort métallique qui s'enfonce sous la pression mécanique",
+                "Il émet des ondes radio pour scanner la paume de la main"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les touches capacitives détectent les variations du champ électrostatique générées par le doigt, offrant une excellente durabilité sans usure mécanique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la latence d'interaction tactile (touch-to-response) doit-elle impérativement rester sous le seuil des 100 ms ?",
+              "options": [
+                "Pour que le cerveau humain perçoive l'action comme immédiate et naturelle sans sensation de retard désagréable",
+                "Parce que les écrans tactiles surchauffent au-delà de 100 ms",
+                "Pour éviter que le système d'exploitation ne considère le bouton comme détruit",
+                "Car la fréquence du réseau électrique impose une réponse en 100 ms"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sous 100 ms, l'action semble instantanée ; au-delà, l'utilisateur perçoit un décalage perturbant son geste moteur."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "title": "Évaluation, ergonomie et tests d'interfaces",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "En quoi consiste un test d'utilisabilité (user testing) lors de la conception d'une IHM ?",
+              "options": [
+                "Observer des utilisateurs cibles réalisant des tâches types pour repérer les incompréhensions et difficultés réelles",
+                "Demander aux développeurs de relire leur propre code source",
+                "Faire tourner un script mesurant le débit maximal de la carte réseau",
+                "Mesurer la température maximale atteinte par le processeur sous forte charge"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test utilisateur confronte la conception à la réalité des usages pour identifier les points de friction inattendus."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Qu'est-ce que la technique de test A/B (A/B testing) pour une interface logicielle ?",
+              "options": [
+                "Diffuser deux versions distinctes d'un écran auprès de deux groupes d'utilisateurs pour mesurer objectivement la plus performante",
+                "Tester l'application successivement sur un clavier AZERTY puis sur un clavier QWERTY",
+                "Vérifier le bon fonctionnement sur deux ordinateurs de marques différentes",
+                "Mesurer le temps d'exécution entre la lettre A et la lettre B de l'alphabet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le test A/B permet de trancher scientifiquement entre deux choix de design en mesurant des indicateurs d'usage réels."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que mesure le taux de conversion dans l'analyse de l'efficacité d'une interface web ?",
+              "options": [
+                "La proportion d'utilisateurs qui accomplissent avec succès une action cible souhaitée (ex: inscription, achat, validation)",
+                "La vitesse de conversion d'un fichier PNG en fichier WebP",
+                "Le nombre de requêtes SQL converties en code binaire par seconde",
+                "Le taux de changement d'avis d'un utilisateur au sein d'un formulaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le taux de conversion évalue l'efficacité de l'interface à guider l'utilisateur jusqu'à l'accomplissement d'un objectif clé."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles métriques quantitatives sont couramment mesurées lors des séances de tests d'IHM ?",
+              "options": [
+                "Le temps nécessaire pour accomplir une tâche donnée (Time on Task)",
+                "Le taux d'erreurs ou d'abandons commis par les utilisateurs",
+                "Le taux de réussite de la tâche (Task Success Rate)",
+                "Le nombre de transistors gravés sur la puce de l'appareil"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Temps d'exécution, taux d'erreur et taux de complétion sont les métriques quantitatives clés de l'utilisabilité."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'une carte de chaleur (heatmap) dans l'analyse du comportement des utilisateurs ?",
+              "options": [
+                "Une représentation visuelle colorée illustrant les zones de l'écran où les utilisateurs cliquent ou posent leur regard le plus souvent",
+                "Un schéma mesurant la température physique de la puce graphique de l'ordinateur",
+                "Une carte géographique montrant les pays où l'application est la plus populaire",
+                "Un diagramme représentant les variations météo au cours de la journée"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les zones chaudes (rouges) indiquent une forte densité d'attention ou de clics, révélant ce qui attire ou distrait l'œil."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce que le questionnaire SUS (System Usability Scale) ?",
+              "options": [
+                "Un questionnaire standardisé en 10 questions délivrant un score global d'utilisabilité perçue sur 100",
+                "Un outil d'évaluation de la résistance d'un serveur aux attaques DDOS",
+                "Un test ophtalmologique mesurant l'acuité visuelle des programmeurs",
+                "Une certification de conformité aux normes électriques industrielles"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le SUS est une échelle standardisée éprouvée fournissant un score de satisfaction et d'utilisabilité rapide et fiable."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "En quoi consiste l'évaluation heuristique d'une interface logicielle ?",
+              "options": [
+                "Une expertise méthodique menée par des spécialistes confrontant l'IHM à une grille de principes ergonomiques reconnus",
+                "Une série de clics aléatoires exécutés par un robot logiciel pour faire planter l'interface",
+                "La vérification automatisée de l'alignement des pixels par une caméra industrielle",
+                "Une estimation du prix de vente d'une application logicielle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Des experts en IHM inspectent l'interface écran par écran en appliquant des règles établies (ex: critères de Nielsen)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que désigne l'expression 'Dark Pattern' (ou interface trompeuse) en ergonomie ?",
+              "options": [
+                "Un mécanisme de conception volontairement trompeur ou manipulateur visant à piéger l'utilisateur à son détriment",
+                "Un mode d'affichage nocturne conçu pour économiser la batterie des écrans OLED",
+                "Un écran noir affiché lors d'une panne critique du système d'exploitation",
+                "Une interface logicielle accessible uniquement sur des réseaux cryptés"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les Dark Patterns induisent en erreur (ex: case pré-cochée invisible, désabonnement complexe) au profit exclusif de l'éditeur."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'objectif du protocole de verbalisation à voix haute ('Think Aloud') pendant un test d'utilisabilité ?",
+              "options": [
+                "Accéder au raisonnement intérieur, aux hésitations et aux attentes de l'utilisateur lorsqu'il interagit",
+                "Tester la sensibilité du microphone connecté à l'ordinateur",
+                "Empêcher l'utilisateur de s'endormir durant la séance de test",
+                "Enregistrer le timbre de voix pour une future commande vocale"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Entendre l'utilisateur formuler ses doutes et suppositions permet de comprendre pourquoi il échoue ou se trompe."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Combien d'utilisateurs cibles suffisent généralement selon Jakob Nielsen pour identifier près de 85% des problèmes d'utilisabilité ?",
+              "options": [
+                "Environ 5 utilisateurs",
+                "Au minimum 500 utilisateurs",
+                "Exactement 100 utilisateurs certifiés",
+                "Au moins un million d'utilisateurs actifs"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tester avec 5 utilisateurs permet de découvrir la grande majorité des problèmes majeurs, rendant les tests itératifs très rentables."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "title": "Conception centrée utilisateur et prototypage",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un 'Persona' dans la démarche de conception centrée utilisateur (UCD) ?",
+              "options": [
+                "Un personnage archétypal fictif représentant un groupe cible d'utilisateurs avec ses objectifs, contraintes et motivations",
+                "Le pseudonyme de l'ingénieur chargé de la maintenance des serveurs",
+                "Une mascotte graphique animée qui salue l'utilisateur sur la page d'accueil",
+                "L'identifiant numérique unique attribué à chaque compte client"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Persona humanise les besoins utilisateurs et guide l'équipe de conception dans ses choix fonctionnels et graphiques."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Quelle est la distinction principale entre un wireframe et une maquette haute fidélité (mockup) ?",
+              "options": [
+                "Le wireframe est un schéma structurel simplifié en niveaux de gris, la maquette intègre le design visuel final (couleurs, typographies)",
+                "Le wireframe contient le code exécutable alors que la maquette est un dessin sur papier",
+                "Le wireframe ne s'applique qu'aux smartphones et la maquette aux ordinateurs de bureau",
+                "Il n'existe aucune distinction, ce sont deux termes anglais strictement équivalents"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le wireframe pose les bases de l'organisation et du contenu, sans se laisser distraire par les détails cosmétiques de la maquette."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Qu'apporte un prototype interactif par rapport à une série de maquettes statiques ?",
+              "options": [
+                "Il simule la navigation, les transitions et les interactions réelles entre les écrans sans nécessiter de code complexe",
+                "Il génère automatiquement la base de données SQL en arrière-plan",
+                "Il permet de remplacer définitivement l'étape de développement logiciel",
+                "Il vérifie la sécurité cryptographique des échanges réseau"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prototype cliquable permet de tester concrètement les flux et l'enchaînement des écrans auprès d'utilisateurs."
+            },
+            {
+              "id": "q4",
+              "type": "multiple_choice",
+              "question": "Quelles étapes fondamentales composent la démarche itérative du Design Thinking ?",
+              "options": [
+                "Empathie (comprendre les besoins réels des utilisateurs cibles)",
+                "Idéation (explorer et générer un grand nombre d'idées de solutions)",
+                "Prototypage et Test (concrétiser rapidement pour tester auprès des usagers)",
+                "Archivage immédiat sans aucune confrontation au terrain"
+              ],
+              "correctAnswers": [0, 1, 2],
+              "explanation": "Le Design Thinking repose sur 5 phases : Empathie, Définition, Idéation, Prototypage et Test."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "En quoi consiste la méthodologie 'Atomic Design' théorisée par Brad Frost ?",
+              "options": [
+                "Une approche hiérarchique modulaire organisant les composants en atomes, molécules, organismes, modèles et pages",
+                "Une technique de programmation quantique basée sur la physique nucléaire",
+                "Un algorithme de compression ultra-rapide des images de l'interface",
+                "Une règle imposant que chaque fichier source fasse exactement 100 octets"
+              ],
+              "correctAnswers": [0],
+              "explanation": "L'Atomic Design construit des interfaces complexes et cohérentes en assemblant des briques élémentaires réutilisables."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Qu'est-ce qu'un 'Design System' au sein d'une organisation numérique ?",
+              "options": [
+                "Un référentiel partagé regroupant principes de design, composants d'interface réutilisables, règles et code source",
+                "Le système d'exploitation installé sur les postes de travail de l'équipe de graphistes",
+                "Un logiciel antivirus spécialisé dans l'analyse des fichiers d'icônes vectorielles",
+                "La convention collective régissant le travail des développeurs front-end"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Design System est la source unique de vérité qui garantit l'harmonie graphique et l'efficacité entre designers et développeurs."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Dans la terminologie de l'Atomic Design, que représente une 'molécule' ?",
+              "options": [
+                "L'assemblage de plusieurs atomes formant une unité fonctionnelle simple (ex: un champ de saisie + son étiquette + un bouton)",
+                "Un élément HTML élémentaire indivisible comme une balise <button>",
+                "L'écran final complet rempli de ses données réelles de production",
+                "Un composant graphique invisible servant au tracking publicitaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une molécule combine plusieurs atomes élémentaires pour former un composant d'IHM cohérent et autonome."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Qu'appelle-t-on un parcours utilisateur (User Journey / User Flow) ?",
+              "options": [
+                "La trajectoire pas à pas suivie par l'utilisateur à travers l'interface pour accomplir un objectif précis",
+                "Le déplacement physique d'un utilisateur lorsqu'il transporte son ordinateur portable",
+                "Le cheminement des paquets de données TCP/IP à travers les différents routeurs mondiaux",
+                "L'historique des modifications d'un fichier source enregistré dans Git"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cartographier le parcours utilisateur permet d'optimiser chaque étape et de supprimer les étapes inutiles ou déroutantes."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel est l'intérêt d'effectuer du prototypage papier (paper prototyping) en tout début de projet ?",
+              "options": [
+                "Confronter et ajuster très rapidement les concepts d'IHM à coût quasi nul avant d'écrire la moindre ligne de code",
+                "Vérifier la qualité d'impression des feuilles de style CSS sur une imprimante",
+                "Économiser l'électricité des écrans d'ordinateur de l'équipe de développement",
+                "Remplacer à terme les interfaces numériques par des documents papier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le prototype papier permet d'échouer vite et d'itérer immédiatement sans investissement technique lourd."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Pourquoi la démarche itérative 'Concevoir - Prototyper - Tester - Ajuster' est-elle le standard de l'IHM moderne ?",
+              "options": [
+                "Elle détecte les erreurs au plus tôt, évitant de développer des fonctionnalités inutiles ou inadaptées",
+                "Elle est imposée par les constructeurs de cartes graphiques pour vendre plus de matériel",
+                "Elle garantit mathématiquement qu'aucun bug mémoire ne pourra jamais survenir",
+                "Elle supprime totalement le besoin de former les développeurs à la programmation"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Plus une erreur de conception est découverte tardivement, plus son coût de correction est élevé ; l'itération précoce garantit le succès du produit."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

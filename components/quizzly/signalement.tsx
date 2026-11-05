@@ -1,6 +1,16 @@
 "use client";
 
 import { type FormEvent, useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { AlertTriangleIcon } from "@mdevs/icons";
 
 export const MENTION_IA =
   "L'intelligence artificielle a été utilisée pour concevoir les exercices. N'hésitez pas à signaler un contenu incorrect.";
@@ -62,20 +72,33 @@ export function FormulaireSignalement({
 
   return (
     <div className="flex flex-col gap-2">
-      <MentionIa />
       {envoye ? (
         <p className="text-xs text-success">Signalement envoyé. Merci.</p>
       ) : (
-        <>
-          <button
-            className="chip w-fit"
-            onClick={() => setOuvert((valeur) => !valeur)}
-            type="button"
-          >
-            Signaler
-          </button>
-          {ouvert ? (
-            <form className="flex flex-col gap-2" onSubmit={envoyer}>
+        <Dialog open={ouvert} onOpenChange={setOuvert}>
+          <DialogTrigger asChild>
+            <button className="chip w-fit" type="button">
+              Signaler
+            </button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Signaler cette question</DialogTitle>
+              <DialogDescription asChild>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-start gap-2 rounded-lg border border-warning/30 bg-warning/5 p-3">
+                    <AlertTriangleIcon className="mt-0.5 size-4 shrink-0 text-warning" />
+                    <p className="text-xs text-warning">{MENTION_IA}</p>
+                  </div>
+                </div>
+              </DialogDescription>
+            </DialogHeader>
+            <form
+              className="flex flex-col gap-4"
+              onSubmit={(event) => {
+                void envoyer(event);
+              }}
+            >
               <label className="flex flex-col gap-1 text-xs text-muted-foreground">
                 Question {questionNumber} · {subjectLabel}
                 <textarea
@@ -87,18 +110,22 @@ export function FormulaireSignalement({
                   value={message}
                 />
               </label>
-              <button
-                className="w-fit rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background disabled:opacity-40"
-                disabled={envoi || message.trim().length === 0}
-                type="submit"
-              >
-                {envoi ? "Envoi…" : "Envoyer le signalement"}
-              </button>
+              {erreur ? (
+                <p className="text-xs text-destructive">{erreur}</p>
+              ) : null}
+              <DialogFooter>
+                <button
+                  className="w-fit rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background disabled:opacity-40"
+                  disabled={envoi || message.trim().length === 0}
+                  type="submit"
+                >
+                  {envoi ? "Envoi…" : "Envoyer le signalement"}
+                </button>
+              </DialogFooter>
             </form>
-          ) : null}
-        </>
+          </DialogContent>
+        </Dialog>
       )}
-      {erreur ? <p className="text-xs text-destructive">{erreur}</p> : null}
     </div>
   );
 }

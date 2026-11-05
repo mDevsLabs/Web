@@ -1,0 +1,2763 @@
+{
+  "id": "5e-latin-01",
+  "year": "5e",
+  "subject": "latin",
+  "title": "Découvrir le latin",
+  "order": 1,
+  "units": [
+    {
+      "id": "u1",
+      "order": 1,
+      "title": "Saluer et se présenter",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "Dire bonjour et saluer",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules emploie-t-on en latin pour saluer quelqu'un à son arrivée ?",
+              "options": [
+                "Salve",
+                "Salvete",
+                "Vale",
+                "Valete"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Salve s'adresse à une personne et Salvete à plusieurs pour dire bonjour. Vale et Valete servent à prendre congé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment salue-t-on poliment une seule personne en arrivant ?",
+              "options": [
+                "Salve",
+                "Salvete",
+                "Valete",
+                "Noli"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salve est la formule singulière pour saluer une personne en latin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment salue-t-on un groupe de plusieurs personnes en arrivant ?",
+              "options": [
+                "Salvete",
+                "Salve",
+                "Vale",
+                "Ego"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salvete est le pluriel de salve, utilisé pour saluer plusieurs personnes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "De quel verbe latin dérive la salutation 'salve' ?",
+              "options": [
+                "Salvere (se porter bien)",
+                "Amare (aimer)",
+                "Videre (voir)",
+                "Audire (entendre)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salve vient du verbe salvere qui signifie être en bonne santé ou se porter bien."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle autre formule solennelle signifie 'salut' ou 'je te salue' ?",
+              "options": [
+                "Ave",
+                "Cura",
+                "Non",
+                "Sed"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ave (ou Have) est une salutation latine solennelle souvent adressée aux dieux ou à l'empereur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie littéralement le mot 'salve' ?",
+              "options": [
+                "Porte-toi bien",
+                "Dors en paix",
+                "Écoute-moi",
+                "Mange bien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salve est un impératif souhaitant une bonne santé à l'interlocuteur."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que répond-on traditionnellement à un ami romain qui nous dit 'Salve' ?",
+              "options": [
+                "Salve et tu (salut à toi aussi)",
+                "Nihil (rien)",
+                "Cur (pourquoi)",
+                "Ubi (où)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On peut répondre en retournant la salutation par 'Salve et tu' ou simplement 'Salve'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans 'Ave Caesar, morituri te salutant', qui salue César ?",
+              "options": [
+                "Ceux qui vont mourir",
+                "Les marchands du forum",
+                "Les sénateurs romains",
+                "Les paysans de Gaule"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Morituri signifie 'ceux qui vont mourir', formule légendaire associée aux gladiateurs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "À quel mode grammatical est conjugué le mot 'salve' ?",
+              "options": [
+                "À l'impératif présent",
+                "À l'infinitif parfait",
+                "Au subjonctif imparfait",
+                "Au participe futur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Salve est un impératif présent à la 2e personne du singulier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Si Marcus rencontre Julia, quelle salutation lui adresse-t-il ?",
+              "options": [
+                "Salve, Julia !",
+                "Valete, Julia !",
+                "Salvete, Julia !",
+                "Ave omnes, Julia !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Julia étant seule, Marcus utilise l'impératif singulier 'Salve'."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Dire au revoir et prendre congé",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules utilise-t-on en latin pour dire au revoir ?",
+              "options": [
+                "Vale",
+                "Valete",
+                "Salve",
+                "Salvete"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Vale s'adresse à une personne et Valete à plusieurs pour prendre congé."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on au revoir à une seule personne ?",
+              "options": [
+                "Vale",
+                "Valete",
+                "Ave",
+                "Salvete"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vale est la formule singulière pour prendre congé."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on au revoir à plusieurs personnes ?",
+              "options": [
+                "Valete",
+                "Vale",
+                "Salve",
+                "Ave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valete est la formule plurielle pour souhaiter au revoir à plusieurs personnes."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "De quel verbe latin dérive la salutation d'adieu 'vale' ?",
+              "options": [
+                "Valere (être fort, bien se porter)",
+                "Velle (vouloir)",
+                "Venire (venir)",
+                "Vincere (vaincre)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vale provient de valere, qui signifie être en bonne santé ou être vigoureux."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie littéralement 'vale' ?",
+              "options": [
+                "Porte-toi bien / Sois fort",
+                "Regarde derrière toi",
+                "Reste assis",
+                "Ferme la porte"
+              ],
+              "correctAnswers": [0],
+              "explanation": "C'est un souhait de bonne santé et de force adressé à celui qui part."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle formule signifie 'prends soin de toi' en latin ?",
+              "options": [
+                "Cura ut valeas",
+                "Veni celeriter",
+                "Audi me",
+                "Tace statim"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cura ut valeas signifie 'prends soin de bien te porter'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "À la fin de leurs lettres, quelle formule les Romains écrivaient-ils souvent ?",
+              "options": [
+                "Vale",
+                "Hic",
+                "Cur",
+                "Quis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les lettres latines se concluaient fréquemment par 'Vale' ou 'Vale carissime'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on 'à bientôt' ou 'au revoir prochain' en latin ?",
+              "options": [
+                "In proximum",
+                "Ab ovo",
+                "Sine die",
+                "Ex nihilo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "In proximum exprime l'idée de se revoir très prochainement."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si un maître quitte ses élèves, que leur dit-il ?",
+              "options": [
+                "Valete, discipuli !",
+                "Vale, discipuli !",
+                "Salve, discipuli !",
+                "Ego sum magister !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "S'adressant à plusieurs élèves (discipuli), le maître emploie le pluriel Valete."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle voyelle s'ajoute au singulier 'vale' pour former le pluriel 'valete' ?",
+              "options": [
+                "-te",
+                "-re",
+                "-nt",
+                "-ba"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La désinence -te marque la deuxième personne du pluriel à l'impératif."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "Demander et dire son nom",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions permettent de demander le nom de quelqu'un en latin ?",
+              "options": [
+                "Quod nomen tibi est ?",
+                "Quis es ?",
+                "Ubi habitas ?",
+                "Quot annos habes ?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quod nomen tibi est (Quel est ton nom ?) et Quis es (Qui es-tu ?) permettent de demander l'identité."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment répond-on 'Mon nom est Marcus' en latin ?",
+              "options": [
+                "Mihi nomen est Marcus",
+                "Tibi nomen est Marcus",
+                "Ego habito Marcus",
+                "Nos sumus Marcus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mihi nomen est (littéralement : le nom à moi est) sert à donner son nom."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Que signifie le mot 'nomen' en français ?",
+              "options": [
+                "Le nom",
+                "La maison",
+                "Le maître",
+                "L'école"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nomen, nominis (neutre) désigne le nom."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on simplement 'Je m'appelle Julia' avec le verbe appeler au passif ?",
+              "options": [
+                "Julia vocor",
+                "Julia sumus",
+                "Julia vocas",
+                "Julia vocant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocor signifie 'je suis appelé(e)', d'où 'Julia vocor' = 'je m'appelle Julia'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Dans 'Quod nomen tibi est ?', à quel cas est le pronom 'tibi' ?",
+              "options": [
+                "Au datif",
+                "Au génitif",
+                "À l'ablatif",
+                "À l'accusatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Tibi est le datif singulier du pronom de 2e personne (à toi)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Son nom est Lucius' ?",
+              "options": [
+                "Ei nomen est Lucius",
+                "Mihi nomen est Lucius",
+                "Tibi nomen est Lucius",
+                "Nobis nomen est Lucius"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ei est le datif singulier de 'is/ea/id' et signifie 'à lui' ou 'à elle'."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Combien de noms (tria nomina) composent l'identité officielle d'un citoyen romain ?",
+              "options": [
+                "Trois (praenomen, nomen, cognomen)",
+                "Un seul",
+                "Cinq",
+                "Huit"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le citoyen libre possède un prénom, un nom de famille (gens) et un surnom."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans 'Marcus Tullius Cicero', quel élément est le praenomen (prénom) ?",
+              "options": [
+                "Marcus",
+                "Tullius",
+                "Cicero",
+                "Aucun des trois"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Marcus est le praenomen, Tullius le nomen de la gens, et Cicero le cognomen."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment demande-t-on 'Qui es-tu ?' en latin ?",
+              "options": [
+                "Quis es ?",
+                "Quid est ?",
+                "Cur es ?",
+                "Ubi es ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quis est le pronom interrogatif désignant une personne : Quis es ? = Qui es-tu ?"
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment traduire 'Je suis un écolier romain' ?",
+              "options": [
+                "Discipulus romanus sum",
+                "Discipuli romani sunt",
+                "Magister romanus es",
+                "Discipula romana estis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discipulus (élève masculin) + romanus (romain) + sum (je suis)."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "Demander comment ça va",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions signifient 'Comment vas-tu ?' en latin ?",
+              "options": [
+                "Quid agis ?",
+                "Quomodo te habes ?",
+                "Ubi est Marcus ?",
+                "Quis clamat ?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quid agis (que fais-tu / comment vas-tu) et Quomodo te habes (comment te portes-tu) sont courantes."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie la réponse courante 'Bene me habeo' ?",
+              "options": [
+                "Je vais bien",
+                "J'ai faim",
+                "Je suis fatigué",
+                "Je pars à Rome"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Bene me habeo signifie mot à mot 'je me tiens bien', c'est-à-dire 'je vais bien'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Très bien' en latin ?",
+              "options": [
+                "Optime",
+                "Pessime",
+                "Male",
+                "Nihil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Optime est le superlatif de bene et signifie 'très bien' ou 'parfaitement'."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Mal' en latin pour exprimer qu'on ne va pas fort ?",
+              "options": [
+                "Male",
+                "Bene",
+                "Satis",
+                "Multum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Male est l'adverbe qui signifie 'mal'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie la réponse 'Non male' ?",
+              "options": [
+                "Pas mal",
+                "Très mal",
+                "Impossible",
+                "Jamais"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non male signifie 'pas mal' (litote fréquente pour dire 'assez bien')."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que veut dire l'adverbe 'quomodo' ?",
+              "options": [
+                "Comment",
+                "Pourquoi",
+                "Quand",
+                "Où"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quomodo est un mot interrogatif exprimant la manière (comment)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dire 'Et toi, comment vas-tu ?' ?",
+              "options": [
+                "Et tu, quomodo te habes ?",
+                "Cur tu venis ?",
+                "Ubi tu habitas ?",
+                "Quis est pater ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Et tu (et toi) + quomodo te habes (comment vas-tu)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie 'Valesco' ou 'Valeo' ?",
+              "options": [
+                "Je me porte bien",
+                "Je cours vite",
+                "Je chante fort",
+                "Je lis un livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Valeo signifie 'je suis fort' ou 'je suis en bonne santé'."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Si quelqu'un répond 'Aegroto', qu'exprime-t-il ?",
+              "options": [
+                "Il est malade",
+                "Il est heureux",
+                "Il est riche",
+                "Il est en voyage"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aegroto signifie 'je suis malade' en latin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la formule de politesse 'Si vales, bene est ; ego valeo' ?",
+              "options": [
+                "Si tu vas bien, c'est bien ; moi je vais bien",
+                "Si tu pars, adieu ; moi je reste ici",
+                "Si tu dors, tant mieux ; moi je travaille",
+                "Si tu ris, c'est drôle ; moi je pleure"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cette formule (abrégée SVBEEV) débutait traditionnellement la correspondance romaine."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "Présenter quelqu'un",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles expressions servent à désigner ou présenter une personne présente ?",
+              "options": [
+                "Hic est (voici / celui-ci est)",
+                "Ecce (voici / regarde)",
+                "Cur curris ?",
+                "Non timeo"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Hic est (pour un homme) et Ecce (interjection de présentation) permettent d'introduire quelqu'un."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment présente-t-on un ami masculin : 'Voici Marcus' ?",
+              "options": [
+                "Hic est Marcus",
+                "Haec est Marcus",
+                "Hoc est Marcus",
+                "Illi sunt Marcus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hic est le démonstratif masculin singulier (celui-ci)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment présente-t-on une amie féminine : 'Voici Julia' ?",
+              "options": [
+                "Haec est Julia",
+                "Hic est Julia",
+                "Hoc est Julia",
+                "Hi sunt Julia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Haec est le démonstratif féminin singulier (celle-ci)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie le mot latin 'amicus' ?",
+              "options": [
+                "Un ami",
+                "Un ennemi",
+                "Un soldat",
+                "Un esclave"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amicus désigne l'ami (amica au féminin)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dit-on 'C'est mon ami' en latin ?",
+              "options": [
+                "Amicus meus est",
+                "Amicus tuus sum",
+                "Hostis meus est",
+                "Filius noster sunt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amicus (ami) meus (mon) est (est)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment présente-t-on deux amis au pluriel : 'Voici Marcus et Quintus' ?",
+              "options": [
+                "Hi sunt Marcus et Quintus",
+                "Hic est Marcus et Quintus",
+                "Haec sunt Marcus et Quintus",
+                "Hoc est Marcus et Quintus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hi est le nominatif masculin pluriel (ceux-ci) et sunt est le verbe au pluriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie le mot 'ecce' ?",
+              "options": [
+                "Voici / Regarde",
+                "Jamais",
+                "Pourquoi",
+                "Aujourd'hui"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ecce attire l'attention sur ce que l'on montre (voici, voilà)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Voici notre maître' ?",
+              "options": [
+                "Ecce magister noster",
+                "Ecce discipulus tuus",
+                "Ecce servus meus",
+                "Ecce villa parva"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magister (maître) + noster (notre)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Dans 'Hic est vir romanus', que signifie 'vir' ?",
+              "options": [
+                "Un homme / un citoyen",
+                "Un enfant",
+                "Un cheval",
+                "Un temple"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vir, viri désigne l'homme d'honneur, le citoyen."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel adjectif féminin signifie 'amie' dans 'Haec est amica mea' ?",
+              "options": [
+                "Amica",
+                "Amicus",
+                "Amicum",
+                "Amici"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Amica est la forme féminine de l'ami(e)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Dire d'où l'on vient et où l'on habite",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles interrogations permettent de se renseigner sur le lieu de vie ou de provenance ?",
+              "options": [
+                "Ubi habitas ?",
+                "Unde venis ?",
+                "Quis clamat ?",
+                "Quid legis ?"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ubi habitas (Où habites-tu ?) et Unde venis (D'où viens-tu ?) interrogent sur le lieu."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie la question 'Ubi habitas ?' ?",
+              "options": [
+                "Où habites-tu ?",
+                "Quand viens-tu ?",
+                "Pourquoi cours-tu ?",
+                "Quel âge as-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ubi exprime le lieu où l'on est, et habitas signifie 'tu habites'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'J'habite à Rome' avec le locatif ?",
+              "options": [
+                "Romae habito",
+                "Romam habito",
+                "Romas habito",
+                "Romarum habito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les villes de la 1re déclinaison au singulier, le locatif en -ae exprime le lieu où l'on est."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'J'habite en Gaule' ?",
+              "options": [
+                "In Gallia habito",
+                "Ad Galliam habito",
+                "De Gallia habito",
+                "Galliae habito"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pour les pays et régions, on utilise la préposition 'in' suivie de l'ablatif."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie la question 'Unde venis ?' ?",
+              "options": [
+                "D'où viens-tu ?",
+                "Où vas-tu ?",
+                "Par où passes-tu ?",
+                "Qui es-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Unde est le mot interrogatif pour demander le lieu d'origine (d'où)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment répond-on 'Je viens de Rome' en latin ?",
+              "options": [
+                "Roma venio",
+                "Romam venio",
+                "Romae venio",
+                "In Romam venio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms de villes expriment la provenance par le simple ablatif sans préposition : Roma."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que demande l'interrogatif 'Quo vadis ?' ?",
+              "options": [
+                "Où vas-tu ?",
+                "D'où viens-tu ?",
+                "Pourquoi pleures-tu ?",
+                "Comment t'appelles-tu ?"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quo interroge sur la direction ou le lieu où l'on va (où vas-tu ?)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Je vais à Rome' ?",
+              "options": [
+                "Romam eo",
+                "Romae eo",
+                "Roma eo",
+                "In Roma eo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le lieu où l'on va pour une ville s'exprime par l'accusatif sans préposition : Romam."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne la patrie ou le pays natal ?",
+              "options": [
+                "Patria",
+                "Schola",
+                "Silva",
+                "Aqua"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Patria, patriae (féminin) désigne la terre des pères, la patrie."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment traduire 'L'Italie est ma patrie' ?",
+              "options": [
+                "Italia patria mea est",
+                "Gallia patria tua sum",
+                "Graecia urbs nostra est",
+                "Roma villa parva est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Italia (l'Italie) patria (patrie) mea (ma) est (est)."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Les formules de politesse",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles formules emploie-t-on pour dire 's'il te plaît' ou 'je t'en prie' ?",
+              "options": [
+                "Quaeso",
+                "Si vis (ou sis)",
+                "Vale",
+                "Non"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Quaeso (je te prie) et Si vis / Sis (si tu veux) traduisent 's'il te plaît'."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Merci' ou 'Je te remercie' en latin ?",
+              "options": [
+                "Gratias tibi ago",
+                "Malum tibi do",
+                "Nihil video",
+                "Tacere debeo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gratias agere signifie rendre grâces, remercier : Gratias tibi ago = je te remercie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Merci beaucoup' ou 'Grand merci' ?",
+              "options": [
+                "Maximas gratias tibi ago",
+                "Parvas gratias audio",
+                "Nullam gratiam habeo",
+                "Bene dormio"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Maximas gratias (les plus grandes grâces) amplifie le remerciement."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment demande-t-on pardon : 'Pardonne-moi' ?",
+              "options": [
+                "Ignosce mihi",
+                "Audi me",
+                "Veni mecum",
+                "Cura te"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ignosce est l'impératif du verbe ignoscere qui régit le datif (mihi = à moi)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que répond-on poliment pour dire 'De rien' ou 'Il n'y a pas de quoi' ?",
+              "options": [
+                "Nihil est",
+                "Valde timeo",
+                "Non placet",
+                "Semper clamo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nihil est signifie littéralement 'ce n'est rien' (de rien)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'abréviation familière 'sis' ?",
+              "options": [
+                "Si vis (s'il te plaît)",
+                "Sine ira (sans colère)",
+                "Sub sole (sous le soleil)",
+                "Summus vir (très grand homme)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sis est la contraction de si vis (si tu veux)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on 's'il vous plaît' quand on s'adresse à plusieurs personnes ?",
+              "options": [
+                "Si vultis (sultis)",
+                "Si vis",
+                "Quaeso te",
+                "Mihi placet"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Si vultis (ou sultis) est la forme plurielle adressée à plusieurs personnes."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Dans 'Gratias tibi ago', quel est le sens du verbe 'ago' ?",
+              "options": [
+                "Je rends / j'agis",
+                "Je détruis",
+                "J'achète",
+                "Je dors"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Agere a de nombreux sens, dont 'rendre' dans l'expression gratias agere."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quelle expression signifie 'avec plaisir' en latin ?",
+              "options": [
+                "Libenter",
+                "Invite",
+                "Tristiter",
+                "Numquam"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Libenter est un adverbe qui signifie volontiers ou de bon cœur."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie 'Mea culpa' lorsqu'on s'excuse d'une erreur ?",
+              "options": [
+                "C'est ma faute",
+                "C'est mon idée",
+                "C'est ton problème",
+                "C'est une gloire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mea culpa exprime l'aveu d'une faute personnelle (par ma faute)."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "Les pronoms personnels sujets",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les pronoms personnels des 1re et 2e personnes du singulier en latin ?",
+              "options": [
+                "Ego (moi / je)",
+                "Tu (toi / tu)",
+                "Is (lui / il)",
+                "Qui (qui)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Ego est le pronom de la 1re personne du singulier et Tu celui de la 2e personne."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie le pronom 'ego' ?",
+              "options": [
+                "Moi / Je",
+                "Toi / Tu",
+                "Nous",
+                "Ils"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ego désigne la première personne du singulier en latin."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel pronom latin correspond à 'nous' ?",
+              "options": [
+                "Nos",
+                "Vos",
+                "Ego",
+                "Tu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nos est le pronom de la 1re personne du pluriel."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel pronom latin correspond à 'vous' ?",
+              "options": [
+                "Vos",
+                "Nos",
+                "Tu",
+                "Ii"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vos est le pronom de la 2e personne du pluriel."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Pourquoi les pronoms sujets sont-ils souvent sous-entendus en latin ?",
+              "options": [
+                "Parce que la terminaison du verbe indique déjà la personne",
+                "Parce qu'ils étaient interdits à l'oral",
+                "Parce qu'ils coûtent trop cher à écrire",
+                "Parce que le latin n'a pas de verbes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La désinence verbale (ex: -o, -s, -t) précise clairement qui fait l'action."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quand emploie-t-on expressément le pronom 'ego' ou 'tu' devant un verbe ?",
+              "options": [
+                "Pour insister ou marquer une opposition",
+                "Uniquement dans les questions négatives",
+                "Seulement pour parler aux esclaves",
+                "Jamais, c'est une faute de grammaire"
+              ],
+              "correctAnswers": [0],
+              "explanation": "On l'exprime pour insister : 'Ego lego, tu scribis' (Moi je lis, toi tu écris)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel pronom masculin de 3e personne équivaut à 'il / lui' ?",
+              "options": [
+                "Is",
+                "Ea",
+                "Id",
+                "Ego"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Is est le pronom démonstratif personnel masculin singulier (il, lui)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel pronom féminin de 3e personne équivaut à 'elle' ?",
+              "options": [
+                "Ea",
+                "Is",
+                "Id",
+                "Tu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ea est la forme féminine au nominatif singulier."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel pronom neutre de 3e personne équivaut à 'cela / il' (objet neutre) ?",
+              "options": [
+                "Id",
+                "Is",
+                "Ea",
+                "Nos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Id est la forme neutre au nominatif et accusatif singulier."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Toi et moi sommes amis' en respectant l'ordre latin ?",
+              "options": [
+                "Ego et tu amici sumus",
+                "Tu et ego amici sunt",
+                "Vos et nos amici estis",
+                "Is et ea amici sum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En latin, la 1re personne se place traditionnellement en premier : 'Ego et tu'."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Les verbes être et s'appeler au présent",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles sont les formes correctes du verbe 'esse' (être) au singulier ?",
+              "options": [
+                "Sum (je suis)",
+                "Es (tu es)",
+                "Est (il/elle est)",
+                "Sumus (nous sommes)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sum, es, est sont les trois personnes du singulier du verbe esse au présent."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Je suis romain' en latin ?",
+              "options": [
+                "Romanus sum",
+                "Romanus es",
+                "Romanus est",
+                "Romani sumus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sum est la 1re personne du singulier : Romanus sum = je suis romain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quelle forme du verbe 'esse' correspond à 'tu es' ?",
+              "options": [
+                "Es",
+                "Sum",
+                "Est",
+                "Estis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Es est la 2e personne du singulier du présent de l'indicatif de esse."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Il est le maître' ?",
+              "options": [
+                "Magister est",
+                "Magister sum",
+                "Magister es",
+                "Magistri sunt"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Est est la 3e personne du singulier du verbe être."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle forme correspond à 'nous sommes' ?",
+              "options": [
+                "Sumus",
+                "Estis",
+                "Sunt",
+                "Sum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sumus est la 1re personne du pluriel."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quelle forme correspond à 'vous êtes' ?",
+              "options": [
+                "Estis",
+                "Sumus",
+                "Sunt",
+                "Es"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Estis est la 2e personne du pluriel."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quelle forme correspond à 'ils / elles sont' ?",
+              "options": [
+                "Sunt",
+                "Sumus",
+                "Estis",
+                "Est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sunt est la 3e personne du pluriel."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie la phrase 'Discipuli sumus' ?",
+              "options": [
+                "Nous sommes des élèves",
+                "Vous êtes des maîtres",
+                "Ils sont des amis",
+                "Tu es un soldat"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discipuli (élèves au nominatif pluriel) + sumus (nous sommes)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on 'Tu t'appelles Marcus' avec le verbe vocari ?",
+              "options": [
+                "Marcus vocaris",
+                "Marcus vocor",
+                "Marcus vocatur",
+                "Marcus vocamini"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocaris est la 2e personne du singulier au passif présent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'La fille s'appelle Claudia' ?",
+              "options": [
+                "Puella Claudia vocatur",
+                "Puella Claudia vocor",
+                "Puellae Claudia vocantur",
+                "Puella Claudia vocaris"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vocatur est la 3e personne du singulier du passif (elle est appelée)."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Dialogues et situations de rencontre",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Dans une première rencontre polie, quelles répliques s'enchaînent naturellement ?",
+              "options": [
+                "Salve ! Quod nomen tibi est ?",
+                "Mihi nomen est Marcus. Et tibi ?",
+                "Hostes vincimus statim !",
+                "Naves incendite !"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Saluer et demander son nom constituent l'échange de politesse fondamental lors d'une première rencontre."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Marcus dit : 'Salve !' Que répond immédiatement Titus ?",
+              "options": [
+                "Salve, Marce !",
+                "Tace, Marce !",
+                "Curre, Marce !",
+                "Time, Marce !"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Titus rend poliment la salutation en employant le vocatif 'Marce'."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel cas utilise-t-on pour interpeller directement quelqu'un par son nom ?",
+              "options": [
+                "Le vocatif",
+                "L'ablatif",
+                "Le génitif",
+                "L'accusatif"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le vocatif est le cas de l'apostrophe et de l'interpellation directe."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel est le vocatif de 'Marcus' ?",
+              "options": [
+                "Marce",
+                "Marcum",
+                "Marco",
+                "Marci"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms masculins en -us de la 2e déclinaison font leur vocatif singulier en -e."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel est le vocatif singulier de 'Tullius' ?",
+              "options": [
+                "Tulli",
+                "Tullium",
+                "Tullio",
+                "Tullie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Les noms propres en -ius font leur vocatif en -i (ex: Tulli, mi fili)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Julia demande : 'Ubi est schola ?' Que cherche-t-elle ?",
+              "options": [
+                "Où est l'école",
+                "Qui est le maître",
+                "Quelle heure est-il",
+                "Où est le marché"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schola désigne l'école : Julia s'enquiert de l'emplacement de l'école."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie la réponse : 'Hic est amica mea, Flavia' ?",
+              "options": [
+                "Voici mon amie Flavia",
+                "Flavia est à la maison",
+                "Flavia n'est pas là",
+                "Flavia cherche son livre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La réplique introduit une nouvelle camarade auprès des interlocuteurs."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment clore poliment une conversation quand on doit partir ?",
+              "options": [
+                "Vale ! Nunc abire debeo",
+                "Clama fortiter",
+                "Curre in forum",
+                "Pugna mecum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Vale (au revoir) + Nunc abire debeo (maintenant je dois partir)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que répond l'ami à qui l'on vient de dire 'Vale ! Nunc abire debeo' ?",
+              "options": [
+                "Vale et tu ! Cura ut valeas !",
+                "Cur non clamas ?",
+                "Ego nihil audio",
+                "Sunt multi servi"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Il prend congé en retour en lui souhaitant de bien se porter."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quelle expression traduit 'Enchanté de faire ta connaissance' en latin ?",
+              "options": [
+                "Gaudium mihi est te convenire",
+                "Timeo te videre",
+                "Noli me tangere",
+                "Ita vero non est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Gaudium mihi est te convenire exprime la joie de rencontrer la personne."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "order": 2,
+      "title": "Les mots essentiels",
+      "quizzes": [
+        {
+          "id": "q01",
+          "order": 1,
+          "title": "L'alphabet et la prononciation latine",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles lettres de notre alphabet moderne n'existaient pas en latin classique ?",
+              "options": [
+                "La lettre J",
+                "La lettre W",
+                "La lettre A",
+                "La lettre M"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les lettres J, W (et initialement le U distinct du V) ne faisaient pas partie de l'alphabet latin classique."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment se prononçait la lettre 'C' en latin classique ?",
+              "options": [
+                "Toujours dur comme le 'k' de 'kilo'",
+                "Toujours doux comme le 's' de 'soleil'",
+                "Comme le 'ch' de 'cheval'",
+                "Elle était muette"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En latin classique, le 'C' se prononce toujours dur /k/, même devant 'e' ou 'i' (ex: Cicero = Kikéro)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment se prononçait la lettre 'G' en latin classique ?",
+              "options": [
+                "Toujours dur comme dans 'gare'",
+                "Toujours doux comme dans 'girafe'",
+                "Comme un 'j'",
+                "Comme un 'z'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le 'G' latin se prononce toujours dur /g/, quelle que soit la voyelle suivante (ex: genus = guénous)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment se prononce la diphtongue 'AE' en latin classique ?",
+              "options": [
+                "Comme 'a-ï' en un seul élan",
+                "Comme un 'é' fermé",
+                "Comme un 'ou'",
+                "Comme un 'o' ouvert"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En prononciation restituée, 'ae' se prononce comme une diphtongue /aï/ (ex: Caesar = Kaïsar)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quelle lettre servait à la fois de consonne et de voyelle pour noter le son 'u' et 'v' ?",
+              "options": [
+                "La lettre V",
+                "La lettre X",
+                "La lettre Z",
+                "La lettre P"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La lettre V notait à la fois la voyelle /u/ et la semi-consonne /w/."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment se prononce la diphtongue 'OE' en latin classique ?",
+              "options": [
+                "Comme 'o-ï'",
+                "Comme 'eu'",
+                "Comme 'in'",
+                "Comme 'an'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La diphtongue 'oe' se prononce /oï/ (ex: poena = po-i-na)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment se prononce la consonne 'S' située entre deux voyelles en latin ?",
+              "options": [
+                "Toujours dur comme le son 'ss'",
+                "Doux comme le son 'z'",
+                "Muet",
+                "Comme un 't'"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En latin classique, le 'S' ne se sonorise pas en 'z' entre deux voyelles : rosa se prononce 'rossa'."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quelle lettre grecque fut importée à Rome pour noter les mots d'origine grecque ?",
+              "options": [
+                "Le Y (i graeca)",
+                "Le B",
+                "Le D",
+                "Le F"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Le Y et le Z ont été introduits à la fin de la République pour transcrire les mots empruntés au grec."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie la distinction entre voyelles brèves et voyelles longues en latin ?",
+              "options": [
+                "Leur durée d'émission orale",
+                "Leur couleur d'écriture à l'encre",
+                "Leur majuscule obligatoire",
+                "Leur nombre de syllabes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Une voyelle longue durait le double du temps d'une voyelle brève, ce qui changeait le sens ou l'accent."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Où se place l'accent tonique dans un mot latin de deux syllabes ?",
+              "options": [
+                "Toujours sur la première syllabe",
+                "Toujours sur la dernière syllabe",
+                "Le latin n'a jamais d'accent",
+                "Au hasard selon l'humeur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "En latin, les mots dissyllabiques sont toujours accentués sur la première syllabe (l'avant-dernière)."
+            }
+          ]
+        },
+        {
+          "id": "q02",
+          "order": 2,
+          "title": "Les nombres de 1 à 10",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels sont les trois premiers nombres cardinaux latins déclinables ?",
+              "options": [
+                "Unus (un)",
+                "Duo (deux)",
+                "Tres (trois)",
+                "Quattuor (quatre)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Unus, duo et tres se déclinent selon le genre et le cas, tandis que les nombres suivants sont invariables."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'quatre' en latin ?",
+              "options": [
+                "Quattuor",
+                "Quinque",
+                "Sex",
+                "Septem"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quattuor est le chiffre 4 en latin (chiffre romain IV)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'cinq' en latin ?",
+              "options": [
+                "Quinque",
+                "Quattuor",
+                "Sex",
+                "Octo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quinque correspond au nombre 5 (chiffre romain V)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne le nombre 6 ?",
+              "options": [
+                "Sex",
+                "Septem",
+                "Octo",
+                "Novem"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sex est le nombre 6 en latin (chiffre romain VI)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dit-on 'sept' en latin ?",
+              "options": [
+                "Septem",
+                "Sex",
+                "Octo",
+                "Decem"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Septem correspond au chiffre 7 (chiffre romain VII)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne le nombre 8 ?",
+              "options": [
+                "Octo",
+                "Novem",
+                "Decem",
+                "Sex"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Octo est le nombre 8 en latin (chiffre romain VIII)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment dit-on 'neuf' en latin ?",
+              "options": [
+                "Novem",
+                "Octo",
+                "Decem",
+                "Unus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Novem correspond au chiffre 9 (chiffre romain IX)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment dit-on 'dix' en latin ?",
+              "options": [
+                "Decem",
+                "Centum",
+                "Mille",
+                "Novem"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Decem est le nombre 10 en latin (chiffre romain X)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Combien font 'duo et tres' en latin ?",
+              "options": [
+                "Quinque",
+                "Sex",
+                "Quattuor",
+                "Septem"
+              ],
+              "correctAnswers": [0],
+              "explanation": "2 + 3 = 5, ce qui donne quinque en latin."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel chiffre romain représente le nombre 'decem' ?",
+              "options": [
+                "X",
+                "V",
+                "L",
+                "C"
+              ],
+              "correctAnswers": [0],
+              "explanation": "X est le symbole romain pour le nombre dix."
+            }
+          ]
+        },
+        {
+          "id": "q03",
+          "order": 3,
+          "title": "La famille et les proches",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes latins désignent respectivement le père et la mère ?",
+              "options": [
+                "Pater",
+                "Mater",
+                "Frater",
+                "Filius"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Pater désigne le père et mater désigne la mère."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'le fils' en latin ?",
+              "options": [
+                "Filius",
+                "Filia",
+                "Frater",
+                "Pater"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filius, filii (masculin) désigne le fils."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'la fille' en latin ?",
+              "options": [
+                "Filia",
+                "Filius",
+                "Soror",
+                "Mater"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Filia, filiae (féminin) désigne la fille par rapport aux parents."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'le frère' ?",
+              "options": [
+                "Frater",
+                "Soror",
+                "Avus",
+                "Filius"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Frater, fratris (masculin) désigne le frère."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'la sœur' ?",
+              "options": [
+                "Soror",
+                "Frater",
+                "Mater",
+                "Filia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Soror, sororis (féminin) désigne la sœur."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on 'le grand-père' en latin ?",
+              "options": [
+                "Avus",
+                "Avia",
+                "Patruus",
+                "Nepos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avus, avi désigne le grand-père (avia pour la grand-mère)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel terme désigne l'ensemble des enfants par rapport aux parents ?",
+              "options": [
+                "Liberi",
+                "Servi",
+                "Amici",
+                "Hostes"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liberi (au pluriel) désigne les enfants légitimes et libres de la famille."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie le mot latin 'servus' au sein du domaine familial ?",
+              "options": [
+                "L'esclave / le serviteur",
+                "L'oncle paternel",
+                "Le voisin",
+                "Le médecin libre"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Servus, servi désigne l'esclave attaché à la maison ou aux champs."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment traduit-on 'Mon père est bon' ?",
+              "options": [
+                "Pater meus bonus est",
+                "Mater mea bona est",
+                "Filius tuus malus est",
+                "Frater noster parvus est"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pater (père) meus (mon) bonus (bon) est (est)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel nom porte la communauté formée par tous les proches et serviteurs sous le pater ?",
+              "options": [
+                "Familia",
+                "Civitas",
+                "Legio",
+                "Curia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La familia regroupe les membres libres et les esclaves sous l'autorité paternelle."
+            }
+          ]
+        },
+        {
+          "id": "q04",
+          "order": 4,
+          "title": "La maison et le mobilier",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots latins désignent des pièces ou espaces de la maison romaine ?",
+              "options": [
+                "Atrium (hall d'entrée)",
+                "Culina (cuisine)",
+                "Navis (navire)",
+                "Gladius (glaive)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "L'atrium et la culina sont des pièces indispensables de la domus romaine."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'la maison' de ville en latin ?",
+              "options": [
+                "Domus",
+                "Campus",
+                "Mons",
+                "Fluvius"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Domus désigne la maison urbaine individuelle."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on 'la grande propriété rurale' ou maison de campagne ?",
+              "options": [
+                "Villa",
+                "Insula",
+                "Castrum",
+                "Forum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "La villa est une maison de campagne ou domaine agricole romain."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'la porte' d'entrée de la maison ?",
+              "options": [
+                "Ianua",
+                "Mensa",
+                "Sella",
+                "Lectus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ianua, ianuae (féminin) désigne la porte de la maison (liée au dieu Janus)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Comment dit-on 'la fenêtre' en latin ?",
+              "options": [
+                "Fenestra",
+                "Ianua",
+                "Murus",
+                "Porta"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Fenestra, fenestrae (féminin) désigne la fenêtre."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'le jardin' attenant à la maison ?",
+              "options": [
+                "Hortus",
+                "Campus",
+                "Silva",
+                "Ager"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Hortus, horti (masculin) désigne le jardin potager ou d'agrément."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on 'la table' en latin ?",
+              "options": [
+                "Mensa",
+                "Sella",
+                "Lectus",
+                "Arca"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mensa, mensae (féminin) désigne la table où l'on pose les repas."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'le lit' ou banquette de repos ?",
+              "options": [
+                "Lectus",
+                "Mensa",
+                "Ianua",
+                "Murus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lectus, lecti (masculin) désigne le lit ou lit de table (triclinium)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on 'le siège' ou 'la chaise' en latin ?",
+              "options": [
+                "Sella",
+                "Lectus",
+                "Ianua",
+                "Focus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sella, sellae désigne la chaise ou le siège."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel mot désigne 'le mur' délimitant la pièce ou la propriété ?",
+              "options": [
+                "Murus",
+                "Hortus",
+                "Aqua",
+                "Via"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Murus, muri désigne le mur maçonné."
+            }
+          ]
+        },
+        {
+          "id": "q05",
+          "order": 5,
+          "title": "L'école et le matériel d'écriture",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels objets servaient couramment à écrire dans l'Antiquité romaine ?",
+              "options": [
+                "Tabulae (tablettes de cire)",
+                "Stilus (stylet)",
+                "Computatrum (ordinateur)",
+                "Charta chemica (papier moderne)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Les écoliers romains écrivaient avec un stilus pointu sur des tablettes enduites de cire."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'l'école' en latin ?",
+              "options": [
+                "Schola",
+                "Curia",
+                "Basilica",
+                "Taberna"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Schola, scholae (féminin) désigne l'école ou le lieu d'étude."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot désigne 'le maître d'école' en latin ?",
+              "options": [
+                "Magister",
+                "Discipulus",
+                "Miles",
+                "Pastor"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Magister, magistri désigne l'enseignant ou maître d'école."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on 'l'élève' ou 'l'écolier' en latin ?",
+              "options": [
+                "Discipulus",
+                "Magister",
+                "Dominus",
+                "Senator"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discipulus, discipuli désigne l'élève masculin (discipula au féminin)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'le livre' (rouleau de papyrus) ?",
+              "options": [
+                "Liber",
+                "Littera",
+                "Stilus",
+                "Tabula"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Liber, libri (masculin) désigne le livre ou rouleau manuscrit."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on 'la lettre de l'alphabet' en latin ?",
+              "options": [
+                "Littera",
+                "Verbum",
+                "Nomen",
+                "Sententia"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Littera désigne le caractère d'écriture (et au pluriel litterae : la lettre, le courrier)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel verbe latin signifie 'écrire' ?",
+              "options": [
+                "Scribere",
+                "Legere",
+                "Audire",
+                "Cantare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Scribere signifie tracer des lettres, écrire."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel verbe latin signifie 'lire' ?",
+              "options": [
+                "Legere",
+                "Scribere",
+                "Dormire",
+                "Laborare"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Legere signifie cueillir du regard, déchiffrer, lire."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel verbe signifie 'apprendre' pour un écolier ?",
+              "options": [
+                "Discere",
+                "Docere",
+                "Pugnare",
+                "Edere"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Discere signifie apprendre (qui a donné discipulus) tandis que docere signifie enseigner."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Quel verbe latin signifie 'enseigner' ?",
+              "options": [
+                "Docere",
+                "Discere",
+                "Vincere",
+                "Habere"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Docere signifie enseigner ou instruire (qui a donné docteur, docte)."
+            }
+          ]
+        },
+        {
+          "id": "q06",
+          "order": 6,
+          "title": "Les animaux familiers et sauvages",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels mots latins désignent des animaux de la vie quotidienne à la campagne ?",
+              "options": [
+                "Equus (cheval)",
+                "Canis (chien)",
+                "Astrum (étoile)",
+                "Mons (montagne)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Equus et canis sont des animaux familiers très présents chez les Romains."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'le chien' en latin ?",
+              "options": [
+                "Canis",
+                "Felis",
+                "Lupus",
+                "Avis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Canis, canis (masculin ou féminin) désigne le chien de garde ou de compagnie."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'le chat' en latin ?",
+              "options": [
+                "Felis",
+                "Canis",
+                "Ursus",
+                "Piscis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Felis, felis désigne le chat ou félin."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'le cheval' ?",
+              "options": [
+                "Equus",
+                "Asinus",
+                "Taurus",
+                "Leo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Equus, equi (masculin) désigne le cheval (qui a donné équestre, équitation)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'le loup' légendaire qui allaita Romulus et Rémus ?",
+              "options": [
+                "Lupus",
+                "Vulpes",
+                "Ursus",
+                "Canis"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Lupus désigne le loup (et lupa la louve de Rome)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on 'l'oiseau' en latin ?",
+              "options": [
+                "Avis",
+                "Apis",
+                "Serpens",
+                "Bos"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Avis, avis (féminin) désigne l'oiseau (qui a donné aviaire, aviation)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'le poisson' ?",
+              "options": [
+                "Piscis",
+                "Avis",
+                "Mus",
+                "Leo"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Piscis, piscis (masculin) désigne le poisson (qui a donné piscine, pisciculture)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel grand prédateur de l'amphithéâtre s'appelle 'leo' en latin ?",
+              "options": [
+                "Le lion",
+                "L'ours",
+                "Le tigre",
+                "L'éléphant"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Leo, leonis (masculin) désigne le lion d'Afrique."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on 'le taureau' en latin ?",
+              "options": [
+                "Taurus",
+                "Aries",
+                "Caper",
+                "Porcus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Taurus, tauri (masculin) désigne le taureau."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la mise en garde inscrite sur les mosaïques de Pompéi : 'Cave canem' ?",
+              "options": [
+                "Attention au chien",
+                "Nourrissez le chien",
+                "Le chien dort",
+                "Voici un beau chien"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cave canem signifie 'Prends garde au chien', célèbre avertissement à l'entrée des domus."
+            }
+          ]
+        },
+        {
+          "id": "q07",
+          "order": 7,
+          "title": "Le corps humain",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes désignent des parties de la tête en latin ?",
+              "options": [
+                "Caput (la tête)",
+                "Oculus (l'œil)",
+                "Pes (le pied)",
+                "Manus (la main)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Caput désigne la tête et oculus désigne l'œil. Pes est le pied et manus la main."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'la tête' en latin ?",
+              "options": [
+                "Caput",
+                "Corpus",
+                "Cor",
+                "Bracchium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caput, capitis (neutre) désigne la tête (qui a donné capitale, capitaine)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'l'œil' ?",
+              "options": [
+                "Oculus",
+                "Auris",
+                "Nasus",
+                "Os"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Oculus, oculi (masculin) désigne l'œil (qui a donné oculaire, oculiste)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'l'oreille' en latin ?",
+              "options": [
+                "Auris",
+                "Oculus",
+                "Nasus",
+                "Dens"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Auris, auris (féminin) désigne l'oreille (qui a donné auriculaire)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'la bouche' ou le visage ?",
+              "options": [
+                "Os",
+                "Cor",
+                "Pes",
+                "Genu"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Os, oris (neutre) désigne la bouche et la parole (qui a donné oral, orateur)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on 'la main' en latin ?",
+              "options": [
+                "Manus",
+                "Pes",
+                "Digitus",
+                "Bracchium"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Manus, manus (féminin de la 4e déclinaison) désigne la main (qui a donné manuel)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'le pied' ?",
+              "options": [
+                "Pes",
+                "Manus",
+                "Crus",
+                "Venter"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Pes, pedis (masculin) désigne le pied (qui a donné piéton, pédestre)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Comment appelle-t-on 'le cœur' en latin ?",
+              "options": [
+                "Cor",
+                "Caput",
+                "Corpus",
+                "Cerebrum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cor, cordis (neutre) désigne le cœur (qui a donné cordial, courage)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne l'ensemble du 'corps' ?",
+              "options": [
+                "Corpus",
+                "Caput",
+                "Crus",
+                "Collum"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Corpus, corporis (neutre) désigne le corps humain ou physique."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la célèbre formule 'Mens sana in corpore sano' ?",
+              "options": [
+                "Un esprit sain dans un corps sain",
+                "Un grand corps avec un petit esprit",
+                "La santé avant la gloire militaire",
+                "Une vie longue sans maladie"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mens (esprit) sana (sain) in corpore sano (dans un corps sain) est une maxime de Juvénal."
+            }
+          ]
+        },
+        {
+          "id": "q08",
+          "order": 8,
+          "title": "La nature et les éléments",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quels termes désignent les astres célestes visibles jour et nuit ?",
+              "options": [
+                "Sol (le soleil)",
+                "Luna (la lune)",
+                "Ager (le champ)",
+                "Saxum (le rocher)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Sol est le soleil et Luna est la lune."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Comment dit-on 'le ciel' en latin ?",
+              "options": [
+                "Caelum",
+                "Terra",
+                "Mare",
+                "Ventus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Caelum, caeli (neutre) désigne le ciel ou le séjour des dieux."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'la terre' nourricière ou le sol ?",
+              "options": [
+                "Terra",
+                "Aqua",
+                "Ignis",
+                "Aer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Terra, terrae (féminin) désigne la terre (qui a donné terrestre, terrain)."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Comment dit-on 'l'eau' en latin ?",
+              "options": [
+                "Aqua",
+                "Terra",
+                "Ignis",
+                "Silva"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Aqua, aquae (féminin) désigne l'eau (qui a donné aqueduc, aquatique)."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'le feu' parmi les quatre éléments ?",
+              "options": [
+                "Ignis",
+                "Aqua",
+                "Terra",
+                "Aer"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Ignis, ignis (masculin) désigne le feu (qui a donné ignifugé, ignition)."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Comment dit-on 'la mer' en latin ?",
+              "options": [
+                "Mare",
+                "Fluvius",
+                "Lacus",
+                "Fons"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mare, maris (neutre) désigne la mer (qui a donné marin, maritime)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Comment les Romains appelaient-ils la Méditerranée : 'Mare ...' ?",
+              "options": [
+                "Nostrum (notre mer)",
+                "Magnum (la grande)",
+                "Novum (la nouvelle)",
+                "Frigidum (la froide)"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Mare Nostrum (notre mer) soulignait le contrôle total de Rome autour du bassin méditerranéen."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Quel mot latin désigne 'la forêt' ou le bois sauvage ?",
+              "options": [
+                "Silva",
+                "Hortus",
+                "Ager",
+                "Campus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Silva, silvae (féminin) désigne la forêt (qui a donné sylvestre, sylviculture)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on 'la nuit' en latin ?",
+              "options": [
+                "Nox",
+                "Dies",
+                "Lux",
+                "Hora"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nox, noctis (féminin) désigne la nuit (qui a donné nocturne)."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Comment dit-on 'le jour' en latin ?",
+              "options": [
+                "Dies",
+                "Nox",
+                "Umbra",
+                "Somnus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Dies, diei (masculin/féminin) désigne le jour (qui a donné diurne, midi)."
+            }
+          ]
+        },
+        {
+          "id": "q09",
+          "order": 9,
+          "title": "Les petits mots invariables essentiels",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles conjonctions servent à relier deux propositions ou mots en latin ?",
+              "options": [
+                "Et (et)",
+                "Sed (mais)",
+                "Roma (Rome)",
+                "Magister (maître)"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Et et Sed sont deux conjonctions de coordination invariables fondamentales."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie la conjonction 'sed' en français ?",
+              "options": [
+                "Mais",
+                "Et",
+                "Car",
+                "Donc"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Sed introduit une opposition (mais)."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Comment dit-on 'non' ou exprime-t-on la négation en latin ?",
+              "options": [
+                "Non",
+                "Sic",
+                "Etiam",
+                "Ita"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Non est l'adverbe de négation principal."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe 'quoque' ?",
+              "options": [
+                "Aussi / également",
+                "Pourquoi",
+                "Jamais",
+                "Souvent"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quoque se place après le mot qu'il souligne et signifie 'aussi'."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Quel mot interrogatif signifie 'pourquoi' ?",
+              "options": [
+                "Cur",
+                "Ubi",
+                "Quis",
+                "Quando"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Cur est l'adverbe interrogatif signifiant pourquoi."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Quel mot répond à 'cur' en signifiant 'parce que' ?",
+              "options": [
+                "Quia",
+                "Tamen",
+                "Autem",
+                "Igitur"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Quia ou quod introduit la cause (parce que)."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe de temps 'semper' ?",
+              "options": [
+                "Toujours",
+                "Jamais",
+                "Demain",
+                "Hier"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Semper signifie toujours (qui a donné sempiternel)."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe de temps 'nunc' ?",
+              "options": [
+                "Maintenant",
+                "Autrefois",
+                "Bientôt",
+                "Tard"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Nunc exprime le moment présent (maintenant, à présent)."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Comment dit-on 'souvent' en latin ?",
+              "options": [
+                "Saepe",
+                "Raro",
+                "Numquam",
+                "Semel"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Saepe est l'adverbe invariable pour 'souvent'."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie l'adverbe de négation temporelle 'numquam' ?",
+              "options": [
+                "Jamais",
+                "Toujours",
+                "Parfois",
+                "Soudain"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Numquam (ou nunquam) signifie ne... jamais."
+            }
+          ]
+        },
+        {
+          "id": "q10",
+          "order": 10,
+          "title": "Mots et expressions latines célèbres",
+          "questions": [
+            {
+              "id": "q1",
+              "type": "multiple_choice",
+              "question": "Quelles devises ou locutions latines sont passées directement dans la culture courante ?",
+              "options": [
+                "Carpe diem (cueille le jour présent)",
+                "Veni, vidi, vici (je suis venu, j'ai vu, j'ai vaincu)",
+                "Computer portable",
+                "Grand magasin"
+              ],
+              "correctAnswers": [0, 1],
+              "explanation": "Carpe diem et Veni vidi vici sont des sentences latines universellement célèbres."
+            },
+            {
+              "id": "q2",
+              "type": "single_choice",
+              "question": "Que signifie littéralement 'Carpe diem' du poète Horace ?",
+              "options": [
+                "Cueille le jour présent (profite de l'instant)",
+                "Dors toute la journée",
+                "Travaille sans relâche",
+                "Fuis le soleil"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Carpere signifie cueillir : invite à savourer l'instant présent sans attendre demain."
+            },
+            {
+              "id": "q3",
+              "type": "single_choice",
+              "question": "Quel général romain a prononcé la formule concise 'Veni, vidi, vici' ?",
+              "options": [
+                "Jules César",
+                "Auguste",
+                "Scipion l'Africain",
+                "Néron"
+              ],
+              "correctAnswers": [0],
+              "explanation": "César annonça ainsi sa victoire éclair lors de la bataille de Zéla en 47 av. J.-C."
+            },
+            {
+              "id": "q4",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 'alter ego' en français ?",
+              "options": [
+                "Un autre moi-même (un ami inséparable)",
+                "Un adversaire redoutable",
+                "Un maître exigeant",
+                "Un esclave rebelle"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alter ego désigne un second moi-même, un ami très intime ou un double."
+            },
+            {
+              "id": "q5",
+              "type": "single_choice",
+              "question": "Que signifie l'abréviation 'etc.' (et cetera) employée en fin d'énumération ?",
+              "options": [
+                "Et toutes les autres choses",
+                "Et c'est la fin",
+                "Et attention à vous",
+                "Et rien de plus"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Et cetera signifie 'et le reste' ou 'et toutes les autres choses'."
+            },
+            {
+              "id": "q6",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 'Alea jacta est' attribuée à César franchissant le Rubicon ?",
+              "options": [
+                "Le sort en est jeté (les dés sont jetés)",
+                "La paix est signée",
+                "L'armée bat en retraite",
+                "Le fleuve déborde"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Alea désigne le dé à jouer : César prend une décision irréversible en franchissant le fleuve."
+            },
+            {
+              "id": "q7",
+              "type": "single_choice",
+              "question": "Que signifie 'curriculum vitae' (CV) pour désigner un parcours professionnel ?",
+              "options": [
+                "La course de la vie",
+                "L'honneur de la naissance",
+                "Le livre des ancêtres",
+                "La fin des études"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Curriculum signifie la course, la trajectoire : le parcours de vie d'une personne."
+            },
+            {
+              "id": "q8",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 'persona non grata' ?",
+              "options": [
+                "Une personne qui n'est pas bienvenue",
+                "Un citoyen modèle",
+                "Un invité d'honneur",
+                "Un soldat victorieux"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Désigne une personne indésirable ou rejetée sur un territoire ou dans un cercle."
+            },
+            {
+              "id": "q9",
+              "type": "single_choice",
+              "question": "Que signifie l'expression 'Urbi et Orbi' employée lors des bénédictions solennelles ?",
+              "options": [
+                "À la ville (de Rome) et au monde",
+                "Aux riches et aux pauvres",
+                "Au passé et à l'avenir",
+                "Aux vivants et aux morts"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Urbs désigne Rome et Orbis désigne le monde terrestre."
+            },
+            {
+              "id": "q10",
+              "type": "single_choice",
+              "question": "Que signifie la devise 'Festina lente' ?",
+              "options": [
+                "Hâte-toi lentement (agis vite mais prudemment)",
+                "Dors paisiblement",
+                "Ne marche jamais seul",
+                "Cours jusqu'au bout"
+              ],
+              "correctAnswers": [0],
+              "explanation": "Festina lente invite à concilier rapidité d'exécution et prudence rigoureuse."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
