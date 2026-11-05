@@ -16,15 +16,15 @@
     "build:ios": "cap sync ios && sh -c 'if [ -d ios/App/App.xcworkspace ]; then T=\"-workspace ios/App/App.xcworkspace\"; else T=\"-project ios/App/App.xcodeproj\"; fi; xcodebuild archive $T -scheme App -configuration Release -archivePath ios/App/build/App.xcarchive CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_INJECT_BASE_ENTITLEMENTS=NO'"
   },
   "dependencies": {
-    "@capacitor/android": "^6.2.2",
-    "@capacitor/core": "^6.2.2",
-    "@capacitor/ios": "^6.2.2",
-    "@capacitor/status-bar": "^6.0.3",
-    "@capacitor/splash-screen": "^6.0.4"
+    "@capacitor/android": "^6.2.3",
+    "@capacitor/core": "^6.2.3",
+    "@capacitor/ios": "^6.2.3",
+    "@capacitor/splash-screen": "^6.0.4",
+    "@capacitor/status-bar": "^6.0.3"
   },
   "devDependencies": {
-    "@capacitor/cli": "^6.2.2",
-    "@types/node": "^24.19.1",
+    "@capacitor/cli": "^6.2.3",
+    "@types/node": "^24.19.2",
     "typescript": "^5.9.3"
   }
 }

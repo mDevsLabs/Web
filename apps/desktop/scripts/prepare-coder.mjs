@@ -53,6 +53,24 @@ if (target === "mac") {
   source = path.join(outputRoot, `${target === "win" ? "win" : "linux"}${architectureSuffix}-unpacked`);
 }
 if (!existsSync(source)) throw new Error("Le runtime Coder compilé est absent.");
+// electron-builder nomme l'exécutable Linux d'après le NOM DU PAQUET, pas d'après
+// `productName` : sans `executableName` explicite dans apps/coder, un paquet
+// scoped produit un binaire que mAI Desktop ne sait pas lancer. On vérifie donc
+// le payload AVANT de le copier, avec le message qui indique quoi corriger.
+const relativeExecutable = {
+  win: "mAI Coder.exe",
+  mac: "Contents/MacOS/mAI Coder",
+  linux: "mai-coder",
+}[target];
+const relativeAsar = target === "mac" ? "Contents/Resources/app.asar" : "resources/app.asar";
+if (!existsSync(path.join(source, relativeExecutable))) {
+  throw new Error(
+    `Le paquet Coder (${target}/${arch}) ne contient pas ${relativeExecutable}. Vérifiez « executableName » dans apps/coder/package.json.`
+  );
+}
+if (!existsSync(path.join(source, relativeAsar))) {
+  throw new Error(`Le paquet Coder (${target}/${arch}) ne contient pas ${relativeAsar}.`);
+}
 const destination = path.join(desktopRoot, `build/coder-${arch}`);
 const buildRoot = path.resolve(desktopRoot, "build");
 if (path.dirname(path.resolve(destination)) !== buildRoot) throw new Error("Destination Coder hors du dossier de build.");
