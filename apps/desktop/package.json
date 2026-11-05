@@ -114,6 +114,7 @@
     "afterSign": null,
     "linux": {
       "syncDesktopName": true,
+      "artifactName": "mAI-${version}-linux-${arch}.${ext}",
       "target": [
         {
           "target": "AppImage",
