@@ -22,6 +22,8 @@
   "build": {
     "appId": "app.mai.officiel.desktop",
     "productName": "mAI",
+    "executableName": "mai",
+    "desktopName": "mai.desktop",
     "copyright": "Copyright © 2026 mAI",
     "npmRebuild": true,
     "directories": {
@@ -111,6 +113,7 @@
     },
     "afterSign": null,
     "linux": {
+      "syncDesktopName": true,
       "target": [
         {
           "target": "AppImage",
