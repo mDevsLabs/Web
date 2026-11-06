@@ -196,7 +196,7 @@ jobs:
           - os: ubuntu-latest
             arch: x64
             target: linux
-          - os: macos-14
+          - os: macos-15
             arch: x64 et arm64
             target: mac
           - os: windows-latest
@@ -357,7 +357,7 @@ jobs:
     if: needs.changes.outputs.mobile == 'true'
   mobile-ios:
     name: Mobile iOS (IPA non signé)
-    runs-on: macos-14
+    runs-on: macos-15
     timeout-minutes: 45
     steps:
       - name: Checkout
@@ -486,7 +486,7 @@ jobs:
     if: needs.changes.outputs.vibe == 'true'
   build-ios:
     name: Vibe iOS (IPA non signé)
-    runs-on: macos-14
+    runs-on: macos-15
     timeout-minutes: 45
     if: ${{ needs.changes.outputs.vibe == 'true' && ((github.event_name == 'workflow_dispatch' && inputs.build_ios) || github.event_name == 'push' || github.event_name == 'pull_request') }}
     defaults:
@@ -645,7 +645,7 @@ jobs:
 
   coder-macos:
     name: Coder macOS (DMG / ZIP non signé)
-    runs-on: macos-14
+    runs-on: macos-15
     needs: [changes, coder-check]
     if: needs.changes.outputs.coder == 'true'
     defaults:
